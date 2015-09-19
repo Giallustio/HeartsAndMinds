@@ -1,3 +1,6 @@
+
+private ["_city","_ieds","_ieds_check"];
+
 _city = _this select 0;
 _ieds = _this select 1;
 
@@ -6,8 +9,7 @@ if (btc_debug_log) then {diag_log format ["START IED CHECK CITY ID %1",_city get
 
 _ieds_check = + _ieds;
 
-while {_city getVariable ["active", false]} do
-{
+while {_city getVariable ["active", false]} do {
 	{
 		private "_ied";
 		_ied = _x;

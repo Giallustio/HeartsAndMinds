@@ -18,7 +18,7 @@ class Header
 
 #include "fnc\fob\dlg.hpp"
 //#include "fnc\gear\dlg.hpp"
-//#include "fnc\int\dlg.hpp"
+#include "fnc\int\progress_bar.hpp"
 #include "fnc\log\dlg.hpp"
 //#include "fnc\rev\dlg.hpp"
 

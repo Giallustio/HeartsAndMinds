@@ -430,7 +430,7 @@ class Mission
 				{
 					position[]={8328.2637,75.183662,10082.849};
 					azimut=-145.407;
-					id=22;
+					id=18;
 					side="WEST";
 					vehicle="B_Helipilot_F";
 					player="PLAY CDG";
@@ -510,7 +510,7 @@ class Mission
 				{
 					position[]={8292.6396,76.422638,10061.107};
 					azimut=-29.034599;
-					id=18;
+					id=22;
 					side="WEST";
 					vehicle="B_crew_F";
 					player="PLAY CDG";

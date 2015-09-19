@@ -8,10 +8,8 @@ _dlg = createDialog "btc_dlg_interaction";
 _ui = uiNamespace getVariable "btc_dlg_interaction";
 waitUntil {Dialog};
 
-switch (_this) do
-{
-	case 0 :
-	{
+switch (_this) do {
+/*	case 0 : {
 		{(_ui displayCtrl _x) ctrlShow false;} foreach [9993,9994,9995,9996];
 		(_ui displayCtrl 9991) ctrlSetText "Treatment";
 		(_ui displayCtrl 9991) buttonSetAction "1 spawn btc_fnc_int_open_dlg;";
@@ -20,7 +18,7 @@ switch (_this) do
 			if !(player in (assignedCargo vehicle player)) then {(_ui displayCtrl 9991) ctrlEnable false;};
 		};
 		
-		if (player getVariable ["btc_hasEarplugs",false]) then {(_ui displayCtrl 9992) ctrlSetText "Remove earplugs";} else {(_ui displayCtrl 9992) ctrlSetText "Use earplugs";/*if (btc_wounds_mod && {!("BTC_w_earplugs" in items player)}) then {(_ui displayCtrl 9992) ctrlEnable false;};*/};
+		if (player getVariable ["btc_hasEarplugs",false]) then {(_ui displayCtrl 9992) ctrlSetText "Remove earplugs";} else {(_ui displayCtrl 9992) ctrlSetText "Use earplugs";};
 		(_ui displayCtrl 9992) buttonSetAction "[] spawn btc_fnc_deaf_earplugs";
 		
 		if (vehicle player == player) then
@@ -82,8 +80,7 @@ switch (_this) do
 			};
 		};
 	};
-	case 1 :
-	{
+	case 1 : {
 		//TREATMENT
 		//btc_int_target spawn btc_rev_fn_examine_result;
 		(_ui displayCtrl 9991) ctrlSetText "Examine";
@@ -116,7 +113,7 @@ switch (_this) do
 			if (_n_items == 0 || (!(player call btc_fnc_rev_is_medic) && {btc_rev_blood_only_medic})) then {(_ui displayCtrl 9996) ctrlEnable false;};		
 		}
 		else
-		{*/
+		{
 			(_ui displayCtrl 9992) ctrlSetText "Bandage";
 			(_ui displayCtrl 9992) buttonSetAction "[btc_int_target,1] spawn btc_fnc_rev_treat";
 			
@@ -136,9 +133,8 @@ switch (_this) do
 			(_ui displayCtrl 9996) buttonSetAction "[btc_int_target,5] spawn btc_fnc_rev_treat";
 			if ((!(player call btc_fnc_rev_is_medic) && {btc_rev_blood_only_medic}) || (btc_rev_medikit_required && {{_x == "Medikit"} count items player == 0})) then {(_ui displayCtrl 9996) ctrlEnable false;};
 		//};
-	};
-	case 2 :
-	{
+	};*/
+	case 2 : {
 		//Players
 		{(_ui displayCtrl _x) ctrlShow false;} foreach [9995,9996];
 		(_ui displayCtrl 9991) ctrlSetText "Treatment";

@@ -29,6 +29,8 @@ if (!isDedicated) then {
 		
 		player addEventHandler ["Respawn", btc_fnc_eh_player_respawn];
 		
+		call btc_fnc_int_add_actions;
+		
 		//Side
 		if (btc_side_assigned) then	{
 			[] spawn {

@@ -1,7 +1,6 @@
 
 btc_int_action_result = nil;
-_this spawn
-{
+_this spawn {
 	_time = _this select 0;
 	_title = _this select 1;
 	_target = _this select 2;
@@ -24,18 +23,15 @@ _this spawn
 
 
 	_time = time + _time;
-	waitUntil 
-	{
-		!dialog || {!alive player} || {player getVariable ["btc_rev_isUnc",false]} || {time > _time} || {_target distance _pos > _radius}
+	waitUntil {
+		!dialog || {!alive player} || {player getVariable ["ACE_isUnconscious",false]} || {time > _time} || {_target distance _pos > _radius}
 	};
 
 	closeDialog 0;
 
-	if (time > _time) then 
-	{
+	if (time > _time) then {
 		btc_int_action_result = true
-	} else 
-	{
+	} else {
 		btc_int_action_result = false
 	};
 };

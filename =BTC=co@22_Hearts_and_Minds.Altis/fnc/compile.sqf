@@ -173,8 +173,6 @@ if (!isDedicated) then
 	btc_fnc_ied_disarm = compile preprocessFile "fnc\ied\disarm.sqf";
 	
 	//INT
+	btc_fnc_int_add_actions = compile preprocessFile "fnc\int\add_actions.sqf";
 	btc_fnc_int_action_result = compile preprocessFile "fnc\int\action_result.sqf";
-	btc_fnc_int_key_pressed = compile preprocessFile "fnc\int\key_pressed.sqf";
-	btc_fnc_int_open_dlg = compile preprocessFile "fnc\int\open_dlg.sqf";
-	btc_fnc_int_select_weapon = compile preprocessFile "fnc\int\select_weapon.sqf";
 };

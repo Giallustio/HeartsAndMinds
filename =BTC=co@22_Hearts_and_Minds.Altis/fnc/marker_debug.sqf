@@ -17,4 +17,4 @@ _color = "";_markers = [];
 player sideChat format ["UNITS:%1 - GROUPS:%2", count allunits, count allgroups];
 sleep 1;
 {deleteMarker _x} foreach _markers;
-_marker = [] spawn btc_fnc_veh_track_marker_debug;
+_marker = [] spawn btc_fnc_marker_debug;
