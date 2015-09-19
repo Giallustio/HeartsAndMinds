@@ -2,6 +2,7 @@ _is_vehicle = true;
 
 _veh = _this select 0;
 _resp = _this select 1;
+_p_marker = _this select 3;
 
 _v_type = typeOf _veh;
 _v_pos = getPos _veh;
