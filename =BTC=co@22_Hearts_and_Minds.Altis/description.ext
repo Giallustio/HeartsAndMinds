@@ -14,18 +14,16 @@ class Header
 	maxPlayers = 22;
 };
 
-#include "define.h"
+#include "dlg\define.h"
 
 #include "fnc\fob\dlg.hpp"
-#include "fnc\gear\dlg.hpp"
-#include "fnc\int\dlg.hpp"
+//#include "fnc\gear\dlg.hpp"
+//#include "fnc\int\dlg.hpp"
 #include "fnc\log\dlg.hpp"
-#include "fnc\rev\dlg.hpp"
+//#include "fnc\rev\dlg.hpp"
 
-class RscTitles 
-{
-    class Default 
-    {
+class RscTitles {
+    class Default {
         idd = -1;
         fadein = 0;
         fadeout = 0;
@@ -35,18 +33,15 @@ class RscTitles
 	#include "fnc\log\rsc.hpp"
 };
 
-class CfgSounds 
-{
-	class btc_sound_allahu_akbar
-	{
+class CfgSounds {
+	class btc_sound_allahu_akbar {
 		name = "btc_sound_allahu_akbar";
 		sound[] = {"sounds\allahu_akbar.ogg", 15, 1};
 		titles[] = {};
 	};
 };
 
-class Params
-{
+class Params {
     class btc_p_time
     {
 	//paramsArray[0]
@@ -111,49 +106,9 @@ class Params
 		texts[]={"Very Low","Low","Normal","High"}; 
 		default = 200; 
 	};	
-    class btc_p_revive
-    {
-	//paramsArray[8]
-        title = "Medical system:";
-		values[]={0,1,2}; 
-		texts[]={"Disable", "No revive", "Revive"}; 
-		default = 2; 
-	};
-    class btc_p_t_revive
-    {
-	//paramsArray[9]
-        title = "Revive time:";
-		values[]={120,180,300,600,9999}; 
-		texts[]={"2 min", "3 min", "5 min", "10 min", "No limit"}; 
-		default = 9999; 
-	};
-    class btc_p_medic
-    {
-	//paramsArray[10]
-        title = "Only medic class can perform medical actions:";
-		values[]={0,1}; 
-		texts[]={"No","Yes"}; 
-		default = 1; 
-	};
-    class btc_p_medikit
-    {
-	//paramsArray[11]
-        title = "Is medikit required to perform medical actions:";
-		values[]={0,1}; 
-		texts[]={"No","Yes"}; 
-		default = 1; 
-	};
-    class btc_p_daef
-    {
-	//paramsArray[12]
-        title = "Deafness:";
-		values[]={0,1}; 
-		texts[]={"No","Yes"}; 
-		default = 1; 
-	};
     class btc_p_redeploy
     {
-	//paramsArray[13]
+	//paramsArray[8]
         title = "Allow re-deploy at base:";
 		values[]={0,1}; 
 		texts[]={"No","Yes"}; 
@@ -161,7 +116,7 @@ class Params
 	};
     class btc_p_set_skill
     {
-	//paramsArray[14]
+	//paramsArray[9]
         title = "Set skill?";
 		values[]={0,1}; 
 		texts[]={"No","Yes"}; 
@@ -169,7 +124,7 @@ class Params
 	};
     class btc_p_set_skill_general
     {
-	//paramsArray[15]
+	//paramsArray[10]
         title = "Set skill, general";
 		values[]={0,1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100}; 
 		texts[]={"0","0.1","0.2","0.3","0.4","0.5","0.6","0.7","0.8","0.9","1","2","3","4","5","6","7","8","9","10"}; 
@@ -177,7 +132,7 @@ class Params
 	};
     class btc_p_set_skill_aimingAccuracy
     {
-	//paramsArray[16]
+	//paramsArray[11]
         title = "Set skill, aimingAccuracy";
 		values[]={0,1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100}; 
 		texts[]={"0","0.1","0.2","0.3","0.4","0.5","0.6","0.7","0.8","0.9","1","2","3","4","5","6","7","8","9","10"}; 
@@ -185,7 +140,7 @@ class Params
 	};
     class btc_p_set_skill_aimingShake
     {
-	//paramsArray[17]
+	//paramsArray[12]
         title = "Set skill, aimingShake";
 		values[]={0,1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100}; 
 		texts[]={"0","0.1","0.2","0.3","0.4","0.5","0.6","0.7","0.8","0.9","1","2","3","4","5","6","7","8","9","10"}; 
@@ -193,7 +148,7 @@ class Params
 	};
     class btc_p_set_skill_aimingSpeed
     {
-	//paramsArray[18]
+	//paramsArray[13]
         title = "Set skill, aimingSpeed";
 		values[]={0,1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100}; 
 		texts[]={"0","0.1","0.2","0.3","0.4","0.5","0.6","0.7","0.8","0.9","1","2","3","4","5","6","7","8","9","10"}; 
@@ -201,7 +156,7 @@ class Params
 	};
     class btc_p_set_skill_endurance
     {
-	//paramsArray[19]
+	//paramsArray[14]
         title = "Set skill, endurance";
 		values[]={0,1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100}; 
 		texts[]={"0","0.1","0.2","0.3","0.4","0.5","0.6","0.7","0.8","0.9","1","2","3","4","5","6","7","8","9","10"}; 
@@ -209,7 +164,7 @@ class Params
 	};
     class btc_p_set_skill_spotDistance
     {
-	//paramsArray[20]
+	//paramsArray[15]
         title = "Set skill, spotDistance";
 		values[]={0,1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100}; 
 		texts[]={"0","0.1","0.2","0.3","0.4","0.5","0.6","0.7","0.8","0.9","1","2","3","4","5","6","7","8","9","10"}; 
@@ -217,7 +172,7 @@ class Params
 	};
     class btc_p_set_skill_spotTime
     {
-	//paramsArray[21]
+	//paramsArray[16]
         title = "Set skill, spotTime";
 		values[]={0,1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100}; 
 		texts[]={"0","0.1","0.2","0.3","0.4","0.5","0.6","0.7","0.8","0.9","1","2","3","4","5","6","7","8","9","10"}; 
@@ -225,7 +180,7 @@ class Params
 	};
     class btc_p_set_skill_courage
     {
-	//paramsArray[22]
+	//paramsArray[17]
         title = "Set skill, courage";
 		values[]={0,1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100}; 
 		texts[]={"0","0.1","0.2","0.3","0.4","0.5","0.6","0.7","0.8","0.9","1","2","3","4","5","6","7","8","9","10"}; 
@@ -233,7 +188,7 @@ class Params
 	};
     class btc_p_set_skill_reloadSpeed
     {
-	//paramsArray[23]
+	//paramsArray[18]
         title = "Set skill, reloadSpeed";
 		values[]={0,1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100}; 
 		texts[]={"0","0.1","0.2","0.3","0.4","0.5","0.6","0.7","0.8","0.9","1","2","3","4","5","6","7","8","9","10"}; 
@@ -241,7 +196,7 @@ class Params
 	};
     class btc_p_set_skill_commanding
     {
-	//paramsArray[24]
+	//paramsArray[19]
         title = "Set skill, commanding";
 		values[]={0,1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100}; 
 		texts[]={"0","0.1","0.2","0.3","0.4","0.5","0.6","0.7","0.8","0.9","1","2","3","4","5","6","7","8","9","10"}; 
@@ -249,7 +204,7 @@ class Params
 	};
     class btc_p_debug
     {
-	//paramsArray[25]
+	//paramsArray[20]
         title = "Debug:";
 		values[]={0,1,2}; 
 		texts[]={"No","Yes", "Log only"}; 

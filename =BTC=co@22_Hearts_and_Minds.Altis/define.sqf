@@ -7,14 +7,8 @@ _cache_info_def = (paramsArray select 4);
 _cache_info_ratio = (paramsArray select 5);
 _info_chance = (paramsArray select 6);
 _p_rep = (paramsArray select 7);
-btc_p_revive = (paramsArray select 8);
-btc_p_t_revive = (paramsArray select 9);
-_rev_only_medic = (paramsArray select 10);
-_rev_medikit_required = (paramsArray select 11);
-btc_p_deaf = if ((paramsArray select 12) == 0) then {false} else {true};
-btc_p_redeploy_base  = if ((paramsArray select 13) == 0) then {false} else {true};
-btc_p_set_skill  = if ((paramsArray select 14) == 0) then {false} else {true};
-btc_p_debug  = (paramsArray select 25);
+btc_p_set_skill  = if ((paramsArray select 9) == 0) then {false} else {true};
+btc_p_debug  = (paramsArray select 20);
 
 //btc_wounds_mod = isClass(configFile >> "cfgPatches" >> "BTC_wounds");
 btc_acre_mod = isClass(configFile >> "cfgPatches" >> "acre_main");
@@ -340,6 +334,7 @@ btc_construction_array =
 		]
 	]
 ];
+
 _c_array = btc_construction_array select 1;
 btc_log_def_draggable = (_c_array select 1) + (_c_array select 2);
 btc_log_def_loadable = (_c_array select 0) + (_c_array select 1) + (_c_array select 2) + (_c_array select 3) + (_c_array select 4) + (_c_array select 5);
@@ -500,82 +495,20 @@ btc_rep_malus_civ_killed = - 10;
 btc_rep_malus_player_respawn = - 10;
 btc_rep_malus_veh_killed = 25;
 
-//Rev
-//BTC_wounds_disabled = true;
-btc_rev_medikit_required = if (_rev_medikit_required == 1) then {true} else {false};
-btc_rev_lbndg_only_medic = if (_rev_only_medic == 1) then {true} else {false};
-btc_rev_mor_only_medic = if (_rev_only_medic == 1) then {true} else {false};
-btc_rev_epi_only_medic = if (_rev_only_medic == 1) then {true} else {false};
-btc_rev_blood_only_medic = if (_rev_only_medic == 1) then {true} else {false};
-
-btc_rev_max_damage_head = 0.8;
-btc_rev_max_damage_body = 1.2;
-btc_rev_max_damage_hands = 3;
-btc_rev_max_damage_legs = 3;
-
-btc_rev_max_pain = 1;
-btc_rev_max_mor  = 3;
-
-btc_rev_examination_time = 10;
-btc_rev_examination_completed = false;
-btc_rev_examination_failed = false;
-
 //Side
 if (isNil "btc_side_assigned") then {btc_side_assigned = false;};
 
 //Skill
 btc_AI_skill =
 [
-    (paramsArray select 15)/10,//general
-	(paramsArray select 16)/10,//aimingAccuracy
-    (paramsArray select 17)/10,//aimingShake
-    (paramsArray select 18)/10,//aimingSpeed
-    (paramsArray select 19)/10,//endurance
-    (paramsArray select 20)/10,//spotDistance
-    (paramsArray select 21)/10,//spotTime
-    (paramsArray select 22)/10,//courage
-    (paramsArray select 23)/10,//reloadSpeed
-    (paramsArray select 24)/10//commanding
+    (paramsArray select 10)/10,//general
+	(paramsArray select 11)/10,//aimingAccuracy
+    (paramsArray select 12)/10,//aimingShake
+    (paramsArray select 13)/10,//aimingSpeed
+    (paramsArray select 14)/10,//endurance
+    (paramsArray select 15)/10,//spotDistance
+    (paramsArray select 16)/10,//spotTime
+    (paramsArray select 17)/10,//courage
+    (paramsArray select 18)/10,//reloadSpeed
+    (paramsArray select 19)/10//commanding
 ];
-
-/*
-player setpos getpos ((nearestObjects [position player, [btc_cache_type], 200]) select 0)
-
-//REVIVE
-btc_fnc_rev_debug =
-{
-	[] spawn {player allowDamage true;
-	btc_rev_debug_cond = true;
-	while {btc_rev_debug_cond} do
-	{
-		hintSilent parseText format 
-		[
-			"
-			UNC: %1<br/>
-			BUSY: %2<br/>
-			BLOSS: %3 (%4)<br/>
-			PAIN: %5<br/>
-			MOR: %6<br/>
-			FATIGUE: %7<br/>
-			P: %8 %9 %10 %11<br/>
-
-			",
-			player getVariable ["btc_rev_isUnc",false],
-			player getVariable ["btc_int_busy",false],
-			player getVariable ["btc_rev_bloss",0],
-			player getVariable ["btc_rev_bleed",0],
-			player getVariable ["btc_rev_pain",0],
-			player getVariable ["btc_rev_mor",0],
-			getFatigue player,
-			player getVariable ["btc_rev_head",0],
-			player getVariable ["btc_rev_body",0],
-			player getVariable ["btc_rev_hands",0],
-			player getVariable ["btc_rev_legs",0]
-		];
-		sleep 1;
-	};}
-};
-[] spawn {
-	while {true} do {diag_log diag_fps;};};
-
-*/

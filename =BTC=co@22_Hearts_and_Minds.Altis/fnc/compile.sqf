@@ -74,9 +74,8 @@ if (isServer) then
 btc_fnc_code_on_local = compile preprocessFile "fnc\code_on_local.sqf";
 btc_fnc_get_cardinal = compile preprocessFile "fnc\get_cardinal.sqf";
 btc_fnc_is_engineer = compile preprocessFile "fnc\is_engineer.sqf";
-btc_fnc_marker = compile preprocessFile "fnc\marker.sqf";
 btc_fnc_show_hint = compile preprocessFile "fnc\show_hint.sqf";
-
+btc_fnc_veh_track_marker = compile preprocessFile "fnc\veh_track_marker.sqf";
 
 //EH
 btc_fnc_eh_helo_respawn = compile preprocessFile "fnc\eh\helo_respawn.sqf";
@@ -89,17 +88,6 @@ btc_fnc_fob_create = compile preprocessFile "fnc\fob\create.sqf";
 btc_fnc_fob_create_s = compile preprocessFile "fnc\fob\create_s.sqf";
 btc_fnc_fob_lb_change = compile preprocessFile "fnc\fob\lb_change.sqf";
 btc_fnc_fob_redeploy = compile preprocessFile "fnc\fob\redeploy.sqf";
-
-//GEAR
-btc_fnc_gear_add_to_weapon = compile preprocessFile "fnc\gear\add_to_weapon.sqf";
-btc_fnc_gear_change_cargo = compile preprocessFile "fnc\gear\change_cargo.sqf";
-btc_fnc_gear_change_container = compile preprocessFile "fnc\gear\change_container.sqf";
-btc_fnc_gear_get_text = compile preprocessFile "fnc\gear\get_text.sqf";
-btc_fnc_gear_handle = compile preprocessFile "fnc\gear\handle.sqf";
-btc_fnc_gear_lb_fill = compile preprocessFile "fnc\gear\lb_fill.sqf";
-btc_fnc_gear_open_dlg = compile preprocessFile "fnc\gear\open_dlg.sqf";
-btc_fnc_gear_remove_w_item = compile preprocessFile "fnc\gear\remove_w_item.sqf";
-btc_fnc_gear_show_button = compile preprocessFile "fnc\gear\show_button.sqf";
 
 //INFO
 btc_fnc_info_ask = compile preprocessFile "fnc\info\ask.sqf";
@@ -156,28 +144,6 @@ btc_fnc_log_tow = compile preprocessFile "fnc\log\tow.sqf";
 btc_fnc_log_unhook = compile preprocessFile "fnc\log\unhook.sqf";
 btc_fnc_log_unload = compile preprocessFile "fnc\log\unload.sqf";
 
-//REV
-btc_fnc_rev_ans_var = compile preprocessFileLineNumbers "fnc\rev\ans_var.sqf";
-btc_fnc_rev_ask_var = compile preprocessFileLineNumbers "fnc\rev\ask_var.sqf";
-btc_fnc_rev_apply_treat = compile preprocessFileLineNumbers "fnc\rev\apply_treat.sqf";
-btc_fnc_rev_carry = compile preprocessFileLineNumbers "fnc\rev\carry.sqf";
-btc_fnc_rev_drag = compile preprocessFileLineNumbers "fnc\rev\drag.sqf";
-btc_fnc_rev_effects = compile preprocessFileLineNumbers "fnc\rev\effects.sqf";
-btc_fnc_rev_effect_pain = compile preprocessFileLineNumbers "fnc\rev\effect_pain.sqf";
-btc_fnc_rev_examine = compile preprocessFileLineNumbers "fnc\rev\examine.sqf";
-btc_fnc_rev_examine_result = compile preprocessFileLineNumbers "fnc\rev\examine_result.sqf";
-btc_fnc_rev_get_gear = compile preprocessFileLineNumbers "fnc\rev\get_gear.sqf";
-btc_fnc_rev_hd = compile preprocessFileLineNumbers "fnc\rev\hd.sqf";
-btc_fnc_rev_init_var = compile preprocessFileLineNumbers "fnc\rev\init_var.sqf";
-btc_fnc_rev_is_medic = compile preprocessFileLineNumbers "fnc\rev\is_medic.sqf";
-btc_fnc_rev_load = compile preprocessFileLineNumbers "fnc\rev\load.sqf";
-btc_fnc_rev_set_gear = compile preprocessFileLineNumbers "fnc\rev\set_gear.sqf";
-btc_fnc_rev_stateHandler = compile preprocessFileLineNumbers "fnc\rev\stateHandler.sqf";
-btc_fnc_rev_treat = compile preprocessFileLineNumbers "fnc\rev\treat.sqf";
-btc_fnc_rev_unc = compile preprocessFileLineNumbers "fnc\rev\unc.sqf";
-btc_fnc_rev_unit_init = compile preprocessFileLineNumbers "fnc\rev\unit_init.sqf";
-btc_fnc_rev_unload = compile preprocessFileLineNumbers "fnc\rev\unload.sqf";
-
 //SIDE
 btc_fnc_side_abort = compile preprocessFileLineNumbers "fnc\side\abort.sqf";
 btc_fnc_side_create = compile preprocessFileLineNumbers "fnc\side\create.sqf";
@@ -201,12 +167,7 @@ if (!isDedicated) then
 	
 	//EH
 	btc_fnc_eh_player_respawn = compile preprocessFile "fnc\eh\player_respawn.sqf";
-	
-	//DEAF
-	btc_fnc_deaf_earplugs = compile preprocessFile "fnc\deaf\earplugs.sqf";
-	btc_fnc_deaf_fired_near = compile preprocessFile "fnc\deaf\fired_near.sqf";
-	btc_fnc_deaf_loop = compile preprocessFile "fnc\deaf\loop.sqf";	
-	
+
 	//IED
 	btc_fnc_ied_check_for = compile preprocessFile "fnc\ied\check_for.sqf";
 	btc_fnc_ied_disarm = compile preprocessFile "fnc\ied\disarm.sqf";

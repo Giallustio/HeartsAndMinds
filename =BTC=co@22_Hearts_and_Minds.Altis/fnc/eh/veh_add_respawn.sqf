@@ -14,4 +14,4 @@ deleteVehicle _vehicle;
 _veh = _type createVehicle _pos;
 _veh setDir _dir;
 _veh setPos _pos;
-if (_has_marker) then {_veh spawn btc_fnc_marker;};
+if (_has_marker) then {_veh spawn btc_fnc_veh_track_marker;};
