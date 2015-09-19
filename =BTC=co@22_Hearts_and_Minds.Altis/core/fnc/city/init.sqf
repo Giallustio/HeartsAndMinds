@@ -15,7 +15,7 @@ for "_i" from 0 to (count _locations - 1) do {
 		_radius_x = getNumber(_current >> "RadiusA");
 		_radius_y = getNumber(_current >> "RadiusB");
 		
-		//if (_name find btc_city_blacklist >= 0) exitWith {};
+		if (btc_city_blacklist find _name >= 0) exitWith {};
 		
 	/*
 		//if you want a safe area
@@ -43,8 +43,7 @@ for "_i" from 0 to (count _locations - 1) do {
 		_trigger setTriggerActivation["WEST","PRESENT",true];
 		_trigger setTriggerStatements ["this", format ["[%1] spawn btc_fnc_city_activate",_id], format ["[%1] spawn btc_fnc_city_de_activate",_id]];
 		
-		if (btc_debug) then//_debug
-		{
+		if (btc_debug) then	{//_debug
 			private ["_marker"];
 			_marker = createmarker [format ["loc_%1",_id],_position];
 			_marker setMarkerShape "ELLIPSE";

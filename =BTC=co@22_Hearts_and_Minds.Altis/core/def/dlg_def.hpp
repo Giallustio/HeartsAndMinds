@@ -1,4 +1,4 @@
-﻿class btc_dlg_RscText 
+class btc_dlg_RscText 
 {
 	x = 0;
 	y = 0;

@@ -1,3 +1,6 @@
+
+private ["_city","_is_init","_data_units","_type","_radius_x","_radius_y","_has_en","_has_ho","_ieds","_radius"];
+
 hint ("Activate " + str(_this));
 
 _city = btc_city_all select (_this select 0);
@@ -43,7 +46,7 @@ if (count _data_units > 0) then {
 	_ratio = (switch _type do {case "Hill" : {0.6};case "NameLocal" : {0.75};case "NameVillage" : {1};case "NameCity" : {2};case "NameCityCapital" : {4}; default {0.1};});
 	if (_has_en) then
 	{
-		private ["_groups","_n"];
+		private ["_groups","_n","_trigger"];
 		//Find a better way to randomize city occupation
 		_n = random 3;
 		_groups = ceil ((1 + _n) * _ratio);
@@ -81,7 +84,7 @@ if (btc_cache_pos distance _city < (_radius_x+_radius_y)) then {
 };
 
 if (_has_ho && {!(_city getVariable ["ho_units_spawned",false])}) then {
-	private ["_pos"];
+	private ["_pos","_random"];
 	_city setVariable ["ho_units_spawned",true];
 	//_pos = _city getVariable ["ho_pos",getPos _city];ho
 	_pos = _city getVariable ["ho",_city];
@@ -95,13 +98,13 @@ if (_has_ho && {!(_city getVariable ["ho_units_spawned",false])}) then {
 			private ["_statics"];
 			_statics = btc_type_gl + btc_type_mg;
 			//format position
-			[[((getPos _pos) select 0) + 7,((getPos _pos) select 1) + 7,0],_statics,45] call BTC_fnc_mil_create_static;
+			[[((getPos _pos) select 0) + 7,((getPos _pos) select 1) + 7,0],_statics,45] call btc_fnc_mil_create_static;
 		};
 		case (_random > 0.75) : {
 			private ["_statics"];
 			_statics = btc_type_gl + btc_type_mg;
-			[[((getPos _pos) select 0) + 7,((getPos _pos) select 1) + 7,0],_statics,45] call BTC_fnc_mil_create_static;
-			[[((getPos _pos) select 0) - 7,((getPos _pos) select 1) - 7,0],_statics,225] call BTC_fnc_mil_create_static;	
+			[[((getPos _pos) select 0) + 7,((getPos _pos) select 1) + 7,0],_statics,45] call btc_fnc_mil_create_static;
+			[[((getPos _pos) select 0) - 7,((getPos _pos) select 1) - 7,0],_statics,225] call btc_fnc_mil_create_static;	
 		};
 	};
 };

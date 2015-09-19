@@ -1,15 +1,15 @@
 enableSaving [false,false];
 //Server
-call compile preprocessFile "define.sqf";
-call compile preprocessFile "define_mod.sqf";
-call compile preprocessFile "fnc\compile.sqf";
+call compile preprocessFile "core\def\mission.sqf";
+call compile preprocessFile "core\define_mod.sqf";
+call compile preprocessFile "core\fnc\compile.sqf";
 
 if (isServer) then {
 	
-	call compile preprocessFile "fnc\city\init.sqf";
+	call compile preprocessFile "core\fnc\city\init.sqf";
 	for "_i" from 1 to btc_hideout_n do {[] call btc_fnc_mil_create_hideout;};
 	
-	[] execVM "fnc\cache\init.sqf";
+	[] execVM "core\fnc\cache\init.sqf";
 	
 	//[btc_helo_1,30,true] spawn btc_fnc_eh_veh_add_respawn;
 	[btc_helo_1,true,30] spawn btc_fnc_veh_track_marker;
@@ -20,7 +20,7 @@ if (isServer) then {
 
 if (!isDedicated) then {
 
-	[] execVM "doc.sqf";
+	[] execVM "core\doc.sqf";
 	
 	[] spawn {
 		waitUntil {!isNull player};
