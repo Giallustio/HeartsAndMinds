@@ -21,7 +21,16 @@ class Header
 #include "core\fnc\log\dlg.hpp"
 //#include "core\fnc\rev\dlg.hpp"
 
-#include "core\def\rsc_titles.hpp"
+class RscTitles {
+    class Default {
+        idd = -1;
+        fadein = 0;
+        fadeout = 0;
+        duration = 0;
+    };
+	//#include "core\fnc\rev\rsc.hpp"
+	#include "core\fnc\log\rsc.hpp"
+};
 
 #include "core\sounds\sounds.hpp"
 
