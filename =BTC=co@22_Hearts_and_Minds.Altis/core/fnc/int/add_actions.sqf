@@ -45,3 +45,6 @@ _action = ["Repair_wreck", "Repair wreck", "", {[btc_create_object_point] spawn 
 //Re-deploy
 _action = ["fob_redeploy", "Re-deploy", "", {[] spawn btc_fnc_fob_redeploy}, {true}, {}, [], [0.4,0,0.4], 5] call ace_interact_menu_fnc_createAction;
 [btc_gear_object, 0, [], _action] call ace_interact_menu_fnc_addActionToObject;
+//Flag Teleport
+_action = ["Teleport", "Teleport", "", {[] spawn btc_fnc_fob_redeploy;}, {true}] call ace_interact_menu_fnc_createAction;
+[btc_fob_flag, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToClass;
