@@ -48,3 +48,6 @@ _action = ["fob_redeploy", "Re-deploy", "", {[] spawn btc_fnc_fob_redeploy}, {tr
 //Flag Teleport
 _action = ["Teleport", "Teleport", "", {[] spawn btc_fnc_fob_redeploy;}, {true}] call ace_interact_menu_fnc_createAction;
 [btc_fob_flag, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToClass;
+// Mount FOB
+_action = ["Mount_FOB", "Mount FOB", "", {btc_int_target = (_this select 0); btc_int_target spawn btc_fnc_fob_create;}, { ((_this select 0) distance (getMarkerPos "btc_base") > 1000)}] call ace_interact_menu_fnc_createAction;
+[btc_fob_mat, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToClass;
