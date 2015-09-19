@@ -2,7 +2,7 @@ disabledAI=1;
 respawn = "BASE";
 respawndelay = "3";
 
-loadScreen = "img\btc.paa";
+loadScreen = "core\img\btc.paa";
 author = Giallustio;
 onLoadName = Hearts and Minds;
 onLoadMission = www.blacktemplars.altervista.org;
