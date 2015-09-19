@@ -43,10 +43,10 @@ _action = ["Require_object", "Require object", "", {[btc_create_object_point] sp
 _action = ["Repair_wreck", "Repair wreck", "", {[btc_create_object_point] spawn btc_fnc_log_repair_wreck}, {true}, {}, [], [0,0,0], 5] call ace_interact_menu_fnc_createAction;
 [btc_create_object, 0, ["ACE_MainActions","Logistic"], _action] call ace_interact_menu_fnc_addActionToObject;
 //Re-deploy
-_action = ["fob_redeploy", "Re-deploy", "", {[] spawn btc_fnc_fob_redeploy}, {true}, {}, [], [0.4,0,0.4], 5] call ace_interact_menu_fnc_createAction;
+_action = ["fob_redeploy", "Re-deploy", "", {[] spawn btc_fnc_fob_redeploy}, {btc_p_redeploy_base}, {}, [], [0.4,0,0.4], 5] call ace_interact_menu_fnc_createAction;
 [btc_gear_object, 0, [], _action] call ace_interact_menu_fnc_addActionToObject;
 //Flag Teleport
-_action = ["Teleport", "Teleport", "", {[] spawn btc_fnc_fob_redeploy;}, {true}] call ace_interact_menu_fnc_createAction;
+_action = ["Teleport", "Teleport", "", {[] spawn btc_fnc_fob_redeploy;}, {btc_p_redeploy_base}] call ace_interact_menu_fnc_createAction;
 [btc_fob_flag, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToClass;
 // Mount FOB
 _action = ["Mount_FOB", "Mount FOB", "", {btc_int_target = (_this select 0); btc_int_target spawn btc_fnc_fob_create;}, { ((_this select 0) distance (getMarkerPos "btc_base") > 1000)}] call ace_interact_menu_fnc_createAction;
