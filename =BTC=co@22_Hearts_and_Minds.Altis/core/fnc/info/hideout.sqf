@@ -1,7 +1,8 @@
 
 if (count btc_hideouts == 0) exitWith {};
 
-_hd = btc_hq_red getVariable ["info_hideout",objNull];
+_hd = [btc_hq_red getVariable ["info_hideout",objNull], btc_hq_green getVariable ["info_hideout",objNull]] select (str(btc_enemy_side)=="GUER");
+
 
 if (isNull _hd) then
 {
