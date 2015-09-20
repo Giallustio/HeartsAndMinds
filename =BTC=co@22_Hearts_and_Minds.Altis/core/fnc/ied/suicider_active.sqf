@@ -1,6 +1,13 @@
 (uniformContainer _this) addMagazineCargo ["DemoCharge_Remote_Mag", 2];
 
-[_this] joinSilent BTC_hq_red;
+if (str(btc_enemy_side)=="GUER") then 
+{
+	[_this] joinSilent btc_hq_green;
+}
+else 
+{
+	[_this] joinSilent btc_hq_red;
+};
 [_this] joinSilent GrpNull;
 
 while {(count (waypoints group _this)) > 0} do { deleteWaypoint ((waypoints group _this) select 0); };
