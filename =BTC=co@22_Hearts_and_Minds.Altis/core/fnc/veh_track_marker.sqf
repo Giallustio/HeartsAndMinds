@@ -43,7 +43,7 @@ if (_resp) then
 	_veh = _v_type createVehicle _v_pos;
 	_veh setDir _v_dir;
 	_veh setPos _v_pos;
-	[_veh,true,(_this select 2)] spawn btc_fnc_veh_track_marker;
+	[_veh,true,(_this select 2),_p_marker] spawn btc_fnc_veh_track_marker;
 };
 
 
