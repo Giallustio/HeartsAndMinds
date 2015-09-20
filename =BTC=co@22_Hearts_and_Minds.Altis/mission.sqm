@@ -41,7 +41,7 @@ class Mission
 	randomSeed=6599878;
 	class Intel
 	{
-		briefingName="=BTC= co 22 HEARTS AND MINDS_side";
+		briefingName="=BTC= co 22 HEARTS AND MINDS";
 		overviewText="by Giallustio";
 		resistanceWest=0;
 		resistanceEast=1;
