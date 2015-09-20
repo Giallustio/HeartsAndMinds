@@ -56,7 +56,13 @@ if (count _data_units > 0) then {
 		
 		_trigger = createTrigger["EmptyDetector",getPos _city];
 		_trigger setTriggerArea[(_radius_x+_radius_y),(_radius_x+_radius_y),0,false];
-		_trigger setTriggerActivation["EAST","NOT PRESENT",false];
+		if (str(btc_enemy_side)=="GUER") then {
+        		_trigger setTriggerActivation["GUER","NOT PRESENT",false];
+		}
+        	else 
+        	{
+            		_trigger setTriggerActivation["EAST","NOT PRESENT",false];
+        	};
 		_trigger setTriggerStatements ["this", format ["[%1] spawn btc_fnc_city_set_clear",(_this select 0)], ""];
 		_city setVariable ["trigger",_trigger];
 	
@@ -98,13 +104,13 @@ if (_has_ho && {!(_city getVariable ["ho_units_spawned",false])}) then {
 			private ["_statics"];
 			_statics = btc_type_gl + btc_type_mg;
 			//format position
-			[[((getPos _pos) select 0) + 7,((getPos _pos) select 1) + 7,0],_statics,45] call btc_fnc_mil_create_static;
+			[[((_pos) select 0) + 7,((_pos) select 1) + 7,0],_statics,45] call btc_fnc_mil_create_static;
 		};
 		case (_random > 0.75) : {
 			private ["_statics"];
 			_statics = btc_type_gl + btc_type_mg;
-			[[((getPos _pos) select 0) + 7,((getPos _pos) select 1) + 7,0],_statics,45] call btc_fnc_mil_create_static;
-			[[((getPos _pos) select 0) - 7,((getPos _pos) select 1) - 7,0],_statics,225] call btc_fnc_mil_create_static;	
+			[[((_pos) select 0) + 7,((_pos) select 1) + 7,0],_statics,45] call btc_fnc_mil_create_static;
+			[[((_pos) select 0) - 7,((_pos) select 1) - 7,0],_statics,225] call btc_fnc_mil_create_static;	
 		};
 	};
 };
