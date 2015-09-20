@@ -105,13 +105,13 @@ if (_has_ho && {!(_city getVariable ["ho_units_spawned",false])}) then {
 			private ["_statics"];
 			_statics = btc_type_gl + btc_type_mg;
 			//format position
-			[[((getPos _pos) select 0) + 7,((getPos _pos) select 1) + 7,0],_statics,45] call btc_fnc_mil_create_static;
+			[[((_pos) select 0) + 7,((_pos) select 1) + 7,0],_statics,45] call btc_fnc_mil_create_static;
 		};
 		case (_random > 0.75) : {
 			private ["_statics"];
 			_statics = btc_type_gl + btc_type_mg;
-			[[((getPos _pos) select 0) + 7,((getPos _pos) select 1) + 7,0],_statics,45] call btc_fnc_mil_create_static;
-			[[((getPos _pos) select 0) - 7,((getPos _pos) select 1) - 7,0],_statics,225] call btc_fnc_mil_create_static;	
+			[[((_pos) select 0) + 7,((_pos) select 1) + 7,0],_statics,45] call btc_fnc_mil_create_static;
+			[[((_pos) select 0) - 7,((_pos) select 1) - 7,0],_statics,225] call btc_fnc_mil_create_static;	
 		};
 	};
 };
