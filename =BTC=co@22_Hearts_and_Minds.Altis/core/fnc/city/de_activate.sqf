@@ -1,3 +1,6 @@
+
+private ["_city","_radius_x","_radius_y","_radius","_has_en","_trigger","_data_units"];
+
 _city = btc_city_all select (_this select 0);
 
 waitUntil {!(_city getVariable ["activating",false])};

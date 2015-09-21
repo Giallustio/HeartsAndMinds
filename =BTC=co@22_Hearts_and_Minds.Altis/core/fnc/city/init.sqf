@@ -1,3 +1,6 @@
+
+private ["_locations","_cities"];
+
 _locations = configfile >> "cfgworlds" >> worldname >> "names";
 
 _cities = ["NameVillage","NameCity","NameCityCapital","NameLocal","Hill"];//
@@ -8,7 +11,7 @@ for "_i" from 0 to (count _locations - 1) do {
 
 	_type = gettext(_current >> "type");
 	if (_type in _cities) then {
-		private ["_city","_position","_name","_position","_radius_x","_radius_y","_has_en"];
+		private ["_id","_city","_position","_name","_position","_radius_x","_radius_y","_has_en","_trigger"];
 		_id = count btc_city_all;
 		_position = getarray(_current >> "position");
 		_name = getText(_current >> "name");

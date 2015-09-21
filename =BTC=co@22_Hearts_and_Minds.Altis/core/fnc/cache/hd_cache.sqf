@@ -1,14 +1,16 @@
+
+private ["_cache","_damage","_ammo","_explosive","_cache"];
+
 _cache = _this select 0;
 _damage = _this select 2;
 _ammo = _this select 4;
 
 _explosive = (getNumber(configFile >> "cfgAmmo" >> _ammo >> "explosive") > 0);
 
-if (isNil {_cache getVariable "btc_hd_cache"} && {_explosive} && {_damage > 0.6}) then
-{
+if (isNil {_cache getVariable "btc_hd_cache"} && {_explosive} && {_damage > 0.6}) then {
 	_cache setVariable ["btc_hd_cache",true];
 	//Effects
-	private ["_pos"];
+	private ["_pos","_marker"];
 	_pos = getposATL btc_cache_obj;
 	"Bo_GBU12_LGB_MI10" createVehicle _pos;
 	_pos spawn {sleep 2;"M_PG_AT" createVehicle _this;sleep 2;"M_Titan_AT" createVehicle _this;};
@@ -19,8 +21,7 @@ if (isNil {_cache getVariable "btc_hd_cache"} && {_explosive} && {_damage > 0.6}
 	_marker setMarkerText format ["Cached %1 destroyed", btc_cache_n];
 	_marker setMarkerSize [1, 1];
 	_marker setMarkerColor "ColorRed";
-	if (btc_debug_log) then
-	{
+	if (btc_debug_log) then	{
 		diag_log format ["CACHE DESTROYED: ID %1 POS %2",btc_cache_n,btc_cache_pos];
 	};	
 	btc_rep_bonus_cache spawn btc_fnc_rep_change;
