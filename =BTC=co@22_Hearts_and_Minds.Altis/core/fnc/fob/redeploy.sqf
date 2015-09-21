@@ -22,7 +22,6 @@ createDialog "btc_fob_redeploy";
 waitUntil {dialog};
 
 _idc = 778;
-if (btc_p_redeploy_base) then {lbAdd [ _idc, "Base"];};
 
 {_index = lbAdd [ _idc, _x ];} foreach _fobs;
 
@@ -30,7 +29,7 @@ lbSetCurSel [_idc, 0];
 
 while {!btc_fob_dlg} do
 {
-	if !(dialog) then {hint "Do not close the dialog with esc";createDialog "btc_fob_redeploy";if (btc_p_redeploy_base) then {lbAdd [ _idc, "Base"];};{_index = lbAdd [ _idc, _x ];} foreach _fobs;lbSetCurSel [_idc, 0];};
+	if !(dialog) then {hint "Do not close the dialog with esc";createDialog "btc_fob_redeploy";{_index = lbAdd [ _idc, _x ];} foreach _fobs;lbSetCurSel [_idc, 0];};
 	sleep 0.1;
 };
 
