@@ -146,4 +146,12 @@ class Params {
 		texts[]={"No","Yes", "Log only"}; 
 		default = 0; 
 	};
+	class btc_p_marker
+    {
+    //paramsArray[21]
+        title = "Show Helicopter marker :";
+        values[]={0,1}; 
+        texts[]={"No","Yes"}; 
+        default = 0; 
+    };
 };

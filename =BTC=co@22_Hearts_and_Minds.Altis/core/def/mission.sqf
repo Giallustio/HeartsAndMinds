@@ -10,6 +10,7 @@ _p_rep = (paramsArray select 7);
 _p_rep = (paramsArray select 8);
 btc_p_redeploy  = if ((paramsArray select 9) == 0) then {false} else {true};
 btc_p_debug  = (paramsArray select 20);
+btc_p_marker  = (paramsArray select 21);
 
 //btc_wounds_mod = isClass(configFile >> "cfgPatches" >> "BTC_wounds");
 btc_acre_mod = isClass(configFile >> "cfgPatches" >> "acre_main");
