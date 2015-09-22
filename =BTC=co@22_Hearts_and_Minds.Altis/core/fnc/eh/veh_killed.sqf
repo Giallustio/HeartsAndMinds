@@ -1,3 +1,6 @@
+
+private ["_vehicle","_marker"];
+
 _vehicle = _this select 0;
 
 _marker = createmarker [format ["m_%1",_vehicle],getPos _vehicle];
