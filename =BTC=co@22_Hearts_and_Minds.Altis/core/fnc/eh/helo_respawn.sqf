@@ -1,4 +1,6 @@
 
+private "_veh";
+
 (_this select 0) spawn {sleep 30;deleteVehicle _this;};
 
 _veh = btc_helo_type createVehicle btc_helo_pos;

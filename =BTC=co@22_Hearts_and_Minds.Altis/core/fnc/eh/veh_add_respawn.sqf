@@ -1,3 +1,6 @@
+
+private ["_vehicle","_time","_has_marker","_type","_pos","_dir","_veh"];
+
 _vehicle = _this select 0;
 _time = _this select 1;
 _has_marker = _this select 2;
