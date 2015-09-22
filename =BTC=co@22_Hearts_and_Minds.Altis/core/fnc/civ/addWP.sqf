@@ -1,3 +1,6 @@
+
+private ["_group","_pos","_radius","_wp","_houses"];
+
 _group = _this;
 
 _pos = getpos leader _group;
@@ -11,14 +14,12 @@ _wp setWaypointSpeed "LIMITED";
 _wp setWaypointBehaviour "SAFE";
 
 _houses = [_pos,_radius] call btc_fnc_getHouses;
-if (count _houses > 0) then
-{
+if (count _houses > 0) then {
 	private ["_house","_n_pos"];
 	_house = _houses select (floor random count _houses);
 
 	_n_pos = 0;
-	while {format ["%1", _house buildingPos _n_pos] != "[0,0,0]" } do 
-	{
+	while {format ["%1", _house buildingPos _n_pos] != "[0,0,0]" } do {
 		_n_pos = _n_pos + 1;
 		_wp = _group addWaypoint [getPos _house, 0];
 		_wp setWaypointType "MOVE";
@@ -30,8 +31,7 @@ if (count _houses > 0) then
 	_houses = _houses - [_house];
 };
 
-for "_i" from 1 to 4 do
-{
+for "_i" from 1 to 4 do {
 	private "_wp_pos";
 	_wp_pos = [_pos, _radius] call btc_fnc_randomize_pos;
 	_wp = _group addWaypoint [_wp_pos, 0];
@@ -39,14 +39,12 @@ for "_i" from 1 to 4 do
 	_wp setWaypointCompletionRadius 0;
 };
 
-if (count _houses > 0) then
-{
+if (count _houses > 0) then {
 	private ["_house","_n_pos"];
 	_house = _houses select (floor random count _houses);
 
 	_n_pos = 0;
-	while {format ["%1", _house buildingPos _n_pos] != "[0,0,0]" } do 
-	{
+	while {format ["%1", _house buildingPos _n_pos] != "[0,0,0]" } do {
 		_n_pos = _n_pos + 1;
 		_wp = _group addWaypoint [getPos _house, 0];
 		_wp setWaypointType "MOVE";

@@ -1,9 +1,12 @@
+
+private ["_pos","_range","_units"];
+
 _pos = _this select 0;
 _range = _this select 1;
 _units = [];
 if (count _this > 2) then {_units = _this select 2;} else {_units = _pos nearEntities [btc_civ_type_units, _range];};
 {
-	private ["_array_id"];
+	private ["_array_id","_wp"];
 	if (btc_debug_log) then	{diag_log format ["fnc_civ_get_weapons %1 - %2",_x,side _x];};
 	if (side _x == btc_enemy_side) exitWith {};
 

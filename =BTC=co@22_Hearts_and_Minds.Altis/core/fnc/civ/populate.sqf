@@ -1,3 +1,6 @@
+
+private ["_city","_area","_n","_pos","_houses"];
+
 _city = _this select 0;
 _area = _this select 1;
 _n = _this select 2;
@@ -6,17 +9,15 @@ _n = _this select 2;
 
 _pos = [];
 
-switch (typeName _city) do
-{
-	case "ARRAY" :{_pos = _city;};
-	case "STRING":{_pos = getMarkerPos _city;};
-	case "OBJECT":{_pos = position _city;};
+switch (typeName _city) do {
+	case "ARRAY" : {_pos = _city;};
+	case "STRING": {_pos = getMarkerPos _city;};
+	case "OBJECT": {_pos = position _city;};
 };
 
 _houses = [];
 
-for [{_i = 25},{_i < _area},{_i = _i + 50}] do
-{
+for [{_i = 25},{_i < _area},{_i = _i + 50}] do {
 	private "_hs";
 	_hs = [[(_pos select 0) + _i,(_pos select 1) + _i,0],50] call btc_fnc_getHouses;
 	_houses = _houses + _hs;

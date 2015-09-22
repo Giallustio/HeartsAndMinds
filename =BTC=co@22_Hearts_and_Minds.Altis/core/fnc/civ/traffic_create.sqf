@@ -1,3 +1,6 @@
+
+private ["_city","_area","_cities","_useful","_unit_type","_veh_type","_group","_veh"];
+
 _city = _this select 0;
 _area = _this select 1;
 
@@ -10,10 +13,9 @@ _useful = [];
 {
 	if !(_x getVariable ["active",false]) then {_useful = _useful + [getPos _x];};
 } foreach _cities;
-if (count _useful == 0) then 
-{
-	while {count _useful == 0} do
-	{
+
+if (count _useful == 0) then {
+	while {count _useful == 0} do {
 		private "_pos";
 		_pos = [getPos _city, _area] call btc_fnc_randomize_pos;
 		if ({_x distance _pos < 500} count playableUnits == 0) then {_useful = _useful + [_pos];};

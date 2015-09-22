@@ -1,3 +1,6 @@
+
+private ["_city","_area","_pos","_rpos","_unit_type","_group"];
+
 _city = _this select 0;
 _area = _this select 1;
 
@@ -24,8 +27,7 @@ _group setSpeedMode "LIMITED";
 
 {_x call BTC_fnc_rep_add_eh} foreach units _group;
 
-if (BTC_debug_log) then
-{
+if (BTC_debug_log) then {
 	diag_log format ["BTC_fnc_civ_create: _this = %1 ; POS %2 UNITS N %3",_this,_pos,count units _group];
 };
 
