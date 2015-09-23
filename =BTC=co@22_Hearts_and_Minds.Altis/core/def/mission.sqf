@@ -7,7 +7,7 @@ _cache_info_def = (paramsArray select 4);
 _cache_info_ratio = (paramsArray select 5);
 _info_chance = (paramsArray select 6);
 _p_rep = (paramsArray select 7);
-btc_p_redeploy = (paramsArray select 8);
+btc_p_redeploy = if ((paramsArray select 8) == 0) then {false} else {true};
 btc_p_set_skill  = if ((paramsArray select 9) == 0) then {false} else {true};
 btc_p_debug  = (paramsArray select 20);
 btc_p_engineer  = (paramsArray select 21);
