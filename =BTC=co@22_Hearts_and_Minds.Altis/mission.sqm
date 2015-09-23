@@ -7,30 +7,32 @@ class Mission
 		"a3_map_altis",
 		"A3_Structures_F_EPB_Items_Military",
 		"a3_characters_f",
-		"A3_Soft_F_MRAP_01",
-		"A3_Armor_F_AMV",
-		"A3_Air_F_Beta_Heli_Transport_01",
 		"A3_Soft_F_HEMTT",
 		"A3_Characters_F_OPFOR",
 		"A3_Structures_F_Ind_Cargo",
 		"A3_Structures_F_Mil_Helipads",
-		"A3_Air_F_Heli_Light_01",
 		"A3_Weapons_F_Ammoboxes",
 		"A3_Soft_F_Gamma_HEMTT",
-		"A3_Structures_F_Mil_Flags"
+		"A3_Structures_F_Mil_Flags",
+		"rhsusf_c_hmmwv",
+		"rhsusf_vehicles",
+		"RHS_US_A2Port_Armor",
+		"RHS_US_A2_AirImport",
+		"rhsusf_c_rg33"
 	};
 	addOnsAuto[]=
 	{
 		"A3_Characters_F_BLUFOR",
 		"a3_characters_f",
 		"A3_Characters_F_OPFOR",
-		"A3_Soft_F_MRAP_01",
-		"A3_Armor_F_AMV",
-		"A3_Air_F_Beta_Heli_Transport_01",
+		"rhsusf_c_hmmwv",
+		"rhsusf_vehicles",
+		"RHS_US_A2Port_Armor",
+		"RHS_US_A2_AirImport",
 		"A3_Soft_F_HEMTT",
+		"rhsusf_c_rg33",
 		"A3_Structures_F_Ind_Cargo",
 		"A3_Structures_F_Mil_Helipads",
-		"A3_Air_F_Heli_Light_01",
 		"A3_Weapons_F_Ammoboxes",
 		"A3_Soft_F_Gamma_HEMTT",
 		"A3_Structures_F_Mil_Flags",
@@ -523,14 +525,14 @@ class Mission
 	};
 	class Vehicles
 	{
-		items=22;
+		items=24;
 		class Item0
 		{
 			position[]={8303.3174,76.190857,10075.396};
 			azimut=-35.819302;
 			id=23;
 			side="EMPTY";
-			vehicle="B_MRAP_01_hmg_F";
+			vehicle="rhsusf_m1025_d_m2";
 			skill=0.60000002;
 			text="btc_veh_3";
 			init="this setVariable [""btc_dont_delete"",true]";
@@ -541,7 +543,7 @@ class Mission
 			azimut=-35.819302;
 			id=24;
 			side="EMPTY";
-			vehicle="B_MRAP_01_hmg_F";
+			vehicle="rhsusf_m1025_d_m2";
 			skill=0.60000002;
 			text="btc_veh_2";
 			init="this setVariable [""btc_dont_delete"",true]";
@@ -552,7 +554,7 @@ class Mission
 			azimut=-32.3554;
 			id=25;
 			side="EMPTY";
-			vehicle="B_APC_Wheeled_01_cannon_F";
+			vehicle="RHS_M2A3";
 			skill=0.60000002;
 			text="btc_veh_1";
 			init="this setVariable [""btc_dont_delete"",true];";
@@ -563,7 +565,7 @@ class Mission
 			azimut=-33.0196;
 			id=26;
 			side="EMPTY";
-			vehicle="B_Heli_Transport_01_camo_F";
+			vehicle="RHS_CH_47F_10";
 			skill=0.60000002;
 			text="btc_helo_1";
 			init="this setVariable [""btc_dont_delete"",true];";
@@ -574,7 +576,7 @@ class Mission
 			azimut=-35.819302;
 			id=27;
 			side="EMPTY";
-			vehicle="B_MRAP_01_hmg_F";
+			vehicle="rhsusf_m1025_d_m2";
 			skill=0.60000002;
 			text="btc_veh_4";
 			init="this setVariable [""btc_dont_delete"",true]";
@@ -596,7 +598,7 @@ class Mission
 			azimut=83.1604;
 			id=29;
 			side="EMPTY";
-			vehicle="B_MRAP_01_hmg_F";
+			vehicle="rhsusf_m1025_d_m2";
 			skill=0.60000002;
 			text="btc_veh_7";
 			init="this setVariable [""btc_dont_delete"",true]";
@@ -618,7 +620,7 @@ class Mission
 			azimut=54.846901;
 			id=31;
 			side="EMPTY";
-			vehicle="B_MRAP_01_hmg_F";
+			vehicle="rhsusf_rg33_m2_d";
 			skill=0.60000002;
 			text="btc_veh_6";
 			init="this setVariable [""btc_dont_delete"",true]";
@@ -626,10 +628,10 @@ class Mission
 		class Item9
 		{
 			position[]={8273.3438,78.904205,10058.275};
-			azimut=37.431683;
+			azimut=37.431702;
 			id=32;
 			side="EMPTY";
-			vehicle="B_MRAP_01_hmg_F";
+			vehicle="rhsusf_rg33_m2_d";
 			skill=0.60000002;
 			text="btc_veh_5";
 			init="this setVariable [""btc_dont_delete"",true]";
@@ -668,18 +670,18 @@ class Mission
 		};
 		class Item13
 		{
-			position[]={8240.1309,77.362213,10048.469};
-			azimut=-27.935011;
+			position[]={8209.9434,76.416351,10021.622};
+			azimut=-27.934999;
 			id=36;
 			side="EMPTY";
-			vehicle="B_Heli_Light_01_armed_F";
+			vehicle="RHS_AH64D";
 			skill=0.60000002;
 			text="btc_veh_10";
 			init="this setVariable [""btc_dont_delete"",true]";
 		};
 		class Item14
 		{
-			position[]={8240.1211,77.388405,10049.567};
+			position[]={8209.9336,76.380455,10022.721};
 			azimut=51.220901;
 			id=37;
 			side="EMPTY";
@@ -752,6 +754,26 @@ class Mission
 			id=44;
 			side="EMPTY";
 			vehicle="Flag_NATO_F";
+			skill=0.60000002;
+		};
+		class Item22
+		{
+			position[]={8241.458,77.378105,10048.173};
+			azimut=-27.934999;
+			id=45;
+			side="EMPTY";
+			vehicle="RHS_UH1Y_d";
+			skill=0.60000002;
+			text="btc_veh_14";
+			init="this setVariable [""btc_dont_delete"",true]";
+		};
+		class Item23
+		{
+			position[]={8240.2227,77.387703,10049.465};
+			azimut=51.220901;
+			id=46;
+			side="EMPTY";
+			vehicle="Land_HelipadSquare_F";
 			skill=0.60000002;
 		};
 	};

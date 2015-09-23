@@ -1,3 +1,6 @@
+
+private ["_tower","_towed","_array","_can_tow","_pos_towed","_pos_tower"];
+
 _tower = _this select 0;
 _towed = _this select 1;
 
