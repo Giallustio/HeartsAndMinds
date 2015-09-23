@@ -146,12 +146,11 @@ class Params {
 		texts[]={"No","Yes", "Log only"}; 
 		default = 0; 
 	};
-	class btc_p_engineer
-    {
-    //paramsArray[22]
-        title = "Everybody can disarm IED :";
+	class btc_p_engineer {
+    //paramsArray[21]
+        title = "Everybody can disarm IED with the same chances:";
         values[]={0,1}; 
         texts[]={"No","Yes"}; 
-        default = 1; 
+        default = 0; 
     };
 };
