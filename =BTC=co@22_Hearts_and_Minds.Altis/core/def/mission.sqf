@@ -7,8 +7,8 @@ _cache_info_def = (paramsArray select 4);
 _cache_info_ratio = (paramsArray select 5);
 _info_chance = (paramsArray select 6);
 _p_rep = (paramsArray select 7);
-btc_p_redeploy = (paramsArray select 8);
-btc_p_set_skill  = if ((paramsArray select 9) == 0) then {false} else {true};
+btc_p_redeploy = if ((paramsArray select 8) isEqualTo 0) then {false} else {true};
+btc_p_set_skill  = if ((paramsArray select 9) isEqualTo 0) then {false} else {true};
 btc_p_debug  = (paramsArray select 20);
 btc_p_engineer  = (paramsArray select 21);
 
@@ -404,12 +404,10 @@ btc_log_def_rc =
 	"Land_Cargo40_military_green_F",40
 ];
 
-btc_fnc_log_get_towable =
-{
+btc_fnc_log_get_towable = {
 	_tower = _this select 0;
 	_array   = [];
-	switch (true) do
-	{
+	switch (true) do {
 		case (_tower isKindOf "Car") : {_array = ["Car"];};
 		case (_tower isKindOf "Truck") : {_array = ["Car","Truck"];};
 		case (_tower isKindOf "Truck") : {_array = ["Car","Truck","Wheeled_APC"];};
@@ -419,22 +417,25 @@ btc_fnc_log_get_towable =
 };
 
 //Lift
-btc_fnc_log_get_liftable =
-{
+btc_fnc_log_get_liftable = {
 	_chopper = _this select 0;
 	_array   = [];
-	switch (typeOf _chopper) do
-	{
+	switch (typeOf _chopper) do	{
 		//MH9
 		case "B_Heli_Light_01_F"     : {_array = ["Motorcycle","ReammoBox","ReammoBox_F","Quadbike_01_base_F","Strategic"];};
 		//PO-30
 		case "O_Heli_Light_02_F"     : {_array = ["Motorcycle","ReammoBox","ReammoBox_F","StaticWeapon","Car"];};
+	
+		case "RHS_UH1Y_d" : {_array = (["Motorcycle","ReammoBox","ReammoBox_F","StaticWeapon","Car","Truck","Wheeled_APC","Air","Ship"]) + ((btc_construction_array select 1) select 3) + ((btc_construction_array select 1) select 4) + ((btc_construction_array select 1) select 5);};
+		
 		//UH80
 		case "B_Heli_Transport_01_F" : {_array = (["Motorcycle","ReammoBox","ReammoBox_F","StaticWeapon","Car","Truck","Wheeled_APC","Air","Ship"]) + ((btc_construction_array select 1) select 3) + ((btc_construction_array select 1) select 4) + ((btc_construction_array select 1) select 5);};
 		//UH80 - CAMO
 		case "B_Heli_Transport_01_camo_F" : {_array = (["Motorcycle","ReammoBox","ReammoBox_F","StaticWeapon","Car","Truck","Wheeled_APC","Air","Ship"]) + ((btc_construction_array select 1) select 3) + ((btc_construction_array select 1) select 4) + ((btc_construction_array select 1) select 5);};
 		//CH49
 		case "I_Heli_Transport_02_F" : {_array = (["Motorcycle","ReammoBox","ReammoBox_F","StaticWeapon","Car","Truck","Wheeled_APC","Tracked_APC","APC_Tracked_01_base_F","APC_Tracked_02_base_F","Air","Ship"]) + ((btc_construction_array select 1) select 3) + ((btc_construction_array select 1) select 4) + ((btc_construction_array select 1) select 5);};
+	
+		case "RHS_CH_47F_10" : {_array = (["Motorcycle","ReammoBox","ReammoBox_F","StaticWeapon","Car","Truck","Wheeled_APC","Tracked_APC","APC_Tracked_01_base_F","APC_Tracked_02_base_F","Air","Ship"]) + ((btc_construction_array select 1) select 3) + ((btc_construction_array select 1) select 4) + ((btc_construction_array select 1) select 5);};
 	};
 	_array
 };

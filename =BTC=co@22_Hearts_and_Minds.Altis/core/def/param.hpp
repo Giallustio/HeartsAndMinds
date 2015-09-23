@@ -57,10 +57,10 @@ class Params {
 	};	
     class btc_p_redeploy {
 	//paramsArray[8]
-        title = "Allow re-deploy at base:";
+        title = "Allow re-deploy?";
 		values[]={0,1}; 
 		texts[]={"No","Yes"}; 
-		default = 0; 
+		default = 1; 
 	};
     class btc_p_set_skill {
 	//paramsArray[9]

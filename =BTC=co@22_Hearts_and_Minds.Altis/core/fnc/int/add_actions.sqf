@@ -1,7 +1,7 @@
 
 
-_action = ["Arsenal", "Arsenal", "", {["Open",true] call BIS_fnc_arsenal;}, {true}, {}, [], [0,0,0.4], 5] call ace_interact_menu_fnc_createAction;
-[btc_gear_object, 0, [], _action] call ace_interact_menu_fnc_addActionToObject;
+_action = ["btc_arsenal", "Arsenal", "", {["Open",true] call BIS_fnc_arsenal;}, {true}] call ace_interact_menu_fnc_createAction;
+[btc_gear_object, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToObject;
 
 //Orders
 _action = ["Civil_Orders","Civil Orders","",{},{true}] call ace_interact_menu_fnc_createAction;
@@ -43,19 +43,18 @@ _action = ["Require_object", "Require object", "", {[btc_create_object_point] sp
 _action = ["Repair_wreck", "Repair wreck", "", {[btc_create_object_point] spawn btc_fnc_log_repair_wreck}, {true}, {}, [], [0,0,0], 5] call ace_interact_menu_fnc_createAction;
 [btc_create_object, 0, ["ACE_MainActions","Logistic"], _action] call ace_interact_menu_fnc_addActionToObject;
 
-//Tow
-_action = ["Logistic","Logistic","",{},{true}] call ace_interact_menu_fnc_createAction;
-["LandVehicle", 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToClass;
-_action = ["log_tow", "Tow", "", {(_this select 0) spawn btc_fnc_log_tow;}, {!isNull btc_log_vehicle_selected && {btc_log_vehicle_selected != (_this select 0)} && {[(_this select 0),btc_log_vehicle_selected] call btc_fnc_log_can_tow}}] call ace_interact_menu_fnc_createAction;
-["LandVehicle", 0, ["ACE_MainActions","Logistic"], _action] call ace_interact_menu_fnc_addActionToClass;
-_action = ["log_hook", "Hook", "", {(_this select 0) spawn btc_fnc_log_hook;}, {true}] call ace_interact_menu_fnc_createAction;
-["LandVehicle", 0, ["ACE_MainActions","Logistic"], _action] call ace_interact_menu_fnc_addActionToClass;
-_action = ["log_hook", "Unhook", "", {(_this select 0) spawn btc_fnc_log_unhook;}, {true}] call ace_interact_menu_fnc_createAction;
-["LandVehicle", 0, ["ACE_MainActions","Logistic"], _action] call ace_interact_menu_fnc_addActionToClass;
+//Lift
+_action = ["Lift","Lift","",{},{(typeOf vehicle player) isKindOf "Helicopter"}] call ace_interact_menu_fnc_createAction;
+[player, 1, ["ACE_SelfActions"], _action] call ace_interact_menu_fnc_addActionToObject;
+
+_action = ["Deploy_ropes","Deploy ropes","",{[] spawn btc_fnc_log_lift_deploy_ropes;},{!btc_ropes_deployed && {((driver vehicle player) isEqualTo player)} && {(getposATL player) select 2 > 4}}] call ace_interact_menu_fnc_createAction;
+[player, 1, ["ACE_SelfActions","Lift"], _action] call ace_interact_menu_fnc_addActionToObject;
+_action = ["Cut_ropes","Cut ropes","",{[] spawn btc_fnc_log_lift_destroy_ropes;},{btc_ropes_deployed && {((driver vehicle player) isEqualTo player)}}] call ace_interact_menu_fnc_createAction;
+[player, 1, ["ACE_SelfActions","Lift"], _action] call ace_interact_menu_fnc_addActionToObject;
 
 //Re-deploy
 _action = ["fob_redeploy", "Re-deploy", "", {[] spawn btc_fnc_fob_redeploy}, {btc_p_redeploy}, {}, [], [0.4,0,0.4], 5] call ace_interact_menu_fnc_createAction;
-[btc_gear_object, 0, [], _action] call ace_interact_menu_fnc_addActionToObject;
+[btc_gear_object, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToObject;
 
 //Side missions
 _action = ["side_mission","Side mission","",{},{!(isNil {player getVariable "side_mission"})}] call ace_interact_menu_fnc_createAction;
