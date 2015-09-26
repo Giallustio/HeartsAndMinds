@@ -1,4 +1,3 @@
-closeDialog 0;
 
 _veh = _this;
 
