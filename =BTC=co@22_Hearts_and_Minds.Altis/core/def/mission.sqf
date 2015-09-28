@@ -11,8 +11,20 @@ btc_p_redeploy = if ((paramsArray select 8) isEqualTo 0) then {false} else {true
 btc_p_set_skill  = if ((paramsArray select 9) isEqualTo 0) then {false} else {true};
 btc_p_debug  = (paramsArray select 20);
 btc_p_engineer  = (paramsArray select 21);
+_p_db = if ((paramsArray select 22) isEqualTo 0) then {false} else {true};
+_p_skill = [    
+	(paramsArray select 10)/10,//general
+	(paramsArray select 11)/10,//aimingAccuracy
+    (paramsArray select 12)/10,//aimingShake
+    (paramsArray select 13)/10,//aimingSpeed
+    (paramsArray select 14)/10,//endurance
+    (paramsArray select 15)/10,//spotDistance
+    (paramsArray select 16)/10,//spotTime
+    (paramsArray select 17)/10,//courage
+    (paramsArray select 18)/10,//reloadSpeed
+    (paramsArray select 19)/10//commanding
+];
 
-//btc_wounds_mod = isClass(configFile >> "cfgPatches" >> "BTC_wounds");
 btc_acre_mod = isClass(configFile >> "cfgPatches" >> "acre_main");
 btc_tfr_mod = isClass(configFile >> "cfgPatches" >> "task_force_radio");
 
@@ -33,13 +45,16 @@ if (isServer) then {
 	
 	//Civ
 	btc_civ_veh_active = 0;
-
+	
+	//Database
+	btc_db_is_saving = false;
+	btc_db_load = _p_db;
+	
 	//Hideout
 	btc_hideouts = [];
 	btc_hideouts_id = 0;
 	btc_hideout_n = _hideout_n;
-	if (btc_hideout_n == 99) then
-	{
+	if (btc_hideout_n == 99) then {
 		btc_hideout_n = (round random 5);
 	};
 	btc_hideout_safezone = 4000;
@@ -502,16 +517,4 @@ btc_rep_malus_veh_killed = 25;
 if (isNil "btc_side_assigned") then {btc_side_assigned = false;};
 
 //Skill
-btc_AI_skill =
-[
-    (paramsArray select 10)/10,//general
-	(paramsArray select 11)/10,//aimingAccuracy
-    (paramsArray select 12)/10,//aimingShake
-    (paramsArray select 13)/10,//aimingSpeed
-    (paramsArray select 14)/10,//endurance
-    (paramsArray select 15)/10,//spotDistance
-    (paramsArray select 16)/10,//spotTime
-    (paramsArray select 17)/10,//courage
-    (paramsArray select 18)/10,//reloadSpeed
-    (paramsArray select 19)/10//commanding
-];
+btc_AI_skill = _p_skill;

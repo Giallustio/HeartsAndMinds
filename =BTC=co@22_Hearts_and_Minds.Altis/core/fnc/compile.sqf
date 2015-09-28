@@ -34,6 +34,10 @@ if (isServer) then
 	btc_fnc_data_add_group = compile preprocessFile "core\fnc\data\add_group.sqf";
 	btc_fnc_data_get_group = compile preprocessFile "core\fnc\data\get_group.sqf";
 	btc_fnc_data_spawn_group = compile preprocessFile "core\fnc\data\spawn_group.sqf";
+
+	//DB
+	btc_fnc_db_save = compile preprocessFile "core\fnc\db\save.sqf";
+	btc_fnc_db_delete = compile preprocessFile "core\fnc\db\delete.sqf";
 	
 	//IED
 	btc_fnc_ied_boom = compile preprocessFile "core\fnc\ied\boom.sqf";
@@ -71,10 +75,7 @@ if (isServer) then
 };
 /////////////////////CLIENT AND SERVER\\\\\\\\\\\\\\\\\\\\\
 
-btc_fnc_code_on_local = compile preprocessFile "core\fnc\code_on_local.sqf";
-btc_fnc_get_cardinal = compile preprocessFile "core\fnc\get_cardinal.sqf";
-btc_fnc_is_engineer = compile preprocessFile "core\fnc\is_engineer.sqf";
-btc_fnc_show_hint = compile preprocessFile "core\fnc\show_hint.sqf";
+
 btc_fnc_veh_track_marker = compile preprocessFile "core\fnc\veh_track_marker.sqf";
 
 //EH
@@ -153,17 +154,21 @@ btc_fnc_side_request = compile preprocessFileLineNumbers "core\fnc\side\request.
 btc_fnc_side_supply = compile preprocessFileLineNumbers "core\fnc\side\supply.sqf";
 btc_fnc_side_vehicle = compile preprocessFileLineNumbers "core\fnc\side\vehicle.sqf";
 
-//TASK
-btc_fnc_task_create = compile preprocessFileLineNumbers "core\fnc\task\create.sqf";
-btc_fnc_task_fail = compile preprocessFileLineNumbers "core\fnc\task\fail.sqf";
-btc_fnc_task_set_done = compile preprocessFileLineNumbers "core\fnc\task\set_done.sqf";
+
 
 /////////////////////CLIENT\\\\\\\\\\\\\\\\\\\\\
 if (!isDedicated) then
 {
-	btc_fnc_end_mission = compile preprocessFile "core\fnc\end_mission.sqf";
+	//DB
+	btc_fnc_db_request_save = compile preprocessFile "core\fnc\db\request_save.sqf";
+	btc_fnc_db_request_delete = compile preprocessFile "core\fnc\db\request_delete.sqf";
 	
+	//COMMON
+	btc_fnc_end_mission = compile preprocessFile "core\fnc\end_mission.sqf";
+	btc_fnc_get_cardinal = compile preprocessFile "core\fnc\get_cardinal.sqf";
+	btc_fnc_is_engineer = compile preprocessFile "core\fnc\is_engineer.sqf";
 	btc_fnc_marker_debug = compile preprocessFile "core\fnc\marker_debug.sqf";
+	btc_fnc_show_hint = compile preprocessFile "core\fnc\show_hint.sqf";	
 	
 	//EH
 	btc_fnc_eh_player_respawn = compile preprocessFile "core\fnc\eh\player_respawn.sqf";
@@ -175,4 +180,9 @@ if (!isDedicated) then
 	//INT
 	btc_fnc_int_add_actions = compile preprocessFile "core\fnc\int\add_actions.sqf";
 	btc_fnc_int_action_result = compile preprocessFile "core\fnc\int\action_result.sqf";
+
+	//TASK
+	btc_fnc_task_create = compile preprocessFileLineNumbers "core\fnc\task\create.sqf";
+	btc_fnc_task_fail = compile preprocessFileLineNumbers "core\fnc\task\fail.sqf";
+	btc_fnc_task_set_done = compile preprocessFileLineNumbers "core\fnc\task\set_done.sqf";
 };

@@ -1,5 +1,9 @@
 call compile preprocessFile "core\fnc\city\init.sqf";
-	
+
+if (btc_db_load && {profileNamespace getVariable ["btc_hm_db",false]}) then {
+	call compile preprocessFile "core\fnc\db\load.sqf";
+};
+
 for "_i" from 1 to btc_hideout_n do {[] call btc_fnc_mil_create_hideout;};
 	
 [] execVM "core\fnc\cache\init.sqf";

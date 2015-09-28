@@ -153,4 +153,11 @@ class Params {
         texts[]={"No","Yes"}; 
         default = 0; 
     };
+	class btc_p_load {
+    //paramsArray[22]
+        title = "Load the savegame (if available)";
+        values[]={0,1}; 
+        texts[]={"No","Yes"}; 
+        default = 1; 
+    };
 };
