@@ -5,6 +5,9 @@ _playerKills = profileNamespace getVariable "var_kills";*/
 
 private ["_cities_status","_fobs"];
 
+hint "saving...";
+[[8],"btc_fnc_show_hint"] spawn BIS_fnc_MP;
+
 btc_db_is_saving = true;
 
 for "_i" from 0 to (count btc_city_all - 1) do {
@@ -12,7 +15,7 @@ for "_i" from 0 to (count btc_city_all - 1) do {
 	_s = [_i] spawn btc_fnc_city_de_activate;
 	waitUntil {scriptDone _s};
 };
-
+hint "saving...2";
 //City status
 _cities_status = [];
 {
@@ -54,5 +57,7 @@ profileNamespace setVariable ["btc_hm_fobs",_fobs];
 //
 profileNamespace setVariable ["btc_hm_db",true];
 saveProfileNamespace;
+hint "saving...3";
+[[9],"btc_fnc_show_hint"] spawn BIS_fnc_MP;
 
 btc_db_is_saving = false;

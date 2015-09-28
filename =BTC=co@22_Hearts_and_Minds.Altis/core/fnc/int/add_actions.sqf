@@ -4,13 +4,14 @@ _action = ["btc_arsenal", "Arsenal", "", {["Open",true] call BIS_fnc_arsenal;}, 
 [btc_gear_object, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToObject;
 
 //Database
-_action = ["Database","Database","",{},{serverCommandAvailable "#logout"}] call ace_interact_menu_fnc_createAction;
-[btc_create_object, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToObject;
+//_action = ["Database","Database","",{},{serverCommandAvailable "#logout"}] call ace_interact_menu_fnc_createAction;
+_action = ["Database","Database","",{},{serverCommandAvailable "#logout" || !isMultiplayer}] call ace_interact_menu_fnc_createAction;
+[player, 1, ["ACE_SelfActions"], _action] call ace_interact_menu_fnc_addActionToObject;
 
 _action = ["request_save","Save","",{call btc_fnc_db_request_save;},{true}] call ace_interact_menu_fnc_createAction;
-[player, 0, ["ACE_MainActions","Database"], _action] call ace_interact_menu_fnc_addActionToObject;
+[player, 1, ["ACE_SelfActions","Database"], _action] call ace_interact_menu_fnc_addActionToObject;
 _action = ["request_delete","Delete","",{call btc_fnc_db_request_save;},{true}] call ace_interact_menu_fnc_createAction;
-[player, 0, ["ACE_MainActions","Database"], _action] call ace_interact_menu_fnc_addActionToObject;
+[player, 1, ["ACE_SelfActions","Database"], _action] call ace_interact_menu_fnc_addActionToObject;
 
 //Intel
 _action = ["Search_intel", "Search for intel", "", {(_this select 0) spawn btc_fnc_info_search_for_intel;}, {!Alive (_this select 0)}] call ace_interact_menu_fnc_createAction;
