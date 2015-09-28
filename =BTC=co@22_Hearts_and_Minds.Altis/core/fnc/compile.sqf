@@ -7,13 +7,13 @@ if (isServer) then
 	btc_fnc_cache_spawn = compile preprocessFile "core\fnc\cache\spawn.sqf";
 	
 	//COMMON
-	btc_fnc_check_los = compile preprocessFile "core\fnc\check_los.sqf";
-	btc_fnc_clean_up = compile preprocessFile "core\fnc\clean_up.sqf";
-	btc_fnc_create_composition = compile preprocessFile "core\fnc\create_composition.sqf";
-	btc_fnc_getHouses = compile preprocessFile "core\fnc\getHouses.sqf";
-	btc_fnc_house_addWP = compile preprocessFile "core\fnc\house_addWP.sqf";
-	btc_fnc_randomize_pos = compile preprocessFile "core\fnc\randomize_pos.sqf";
-	btc_fnc_task_patrol = compile preprocessFile "core\fnc\task_patrol.sqf";
+	btc_fnc_check_los = compile preprocessFile "core\fnc\common\check_los.sqf";
+	btc_fnc_clean_up = compile preprocessFile "core\fnc\common\clean_up.sqf";
+	btc_fnc_create_composition = compile preprocessFile "core\fnc\common\create_composition.sqf";
+	btc_fnc_getHouses = compile preprocessFile "core\fnc\common\getHouses.sqf";
+	btc_fnc_house_addWP = compile preprocessFile "core\fnc\common\house_addWP.sqf";
+	btc_fnc_randomize_pos = compile preprocessFile "core\fnc\common\randomize_pos.sqf";
+	btc_fnc_task_patrol = compile preprocessFile "core\fnc\common\task_patrol.sqf";
 	
 	//CITY
 	btc_fnc_city_activate = compile preprocessFile "core\fnc\city\activate.sqf";
@@ -76,7 +76,7 @@ if (isServer) then
 /////////////////////CLIENT AND SERVER\\\\\\\\\\\\\\\\\\\\\
 
 
-btc_fnc_veh_track_marker = compile preprocessFile "core\fnc\veh_track_marker.sqf";
+btc_fnc_veh_track_marker = compile preprocessFile "core\fnc\common\veh_track_marker.sqf";
 
 //EH
 btc_fnc_eh_helo_respawn = compile preprocessFile "core\fnc\eh\helo_respawn.sqf";
@@ -164,11 +164,11 @@ if (!isDedicated) then
 	btc_fnc_db_request_delete = compile preprocessFile "core\fnc\db\request_delete.sqf";
 	
 	//COMMON
-	btc_fnc_end_mission = compile preprocessFile "core\fnc\end_mission.sqf";
-	btc_fnc_get_cardinal = compile preprocessFile "core\fnc\get_cardinal.sqf";
-	btc_fnc_is_engineer = compile preprocessFile "core\fnc\is_engineer.sqf";
-	btc_fnc_marker_debug = compile preprocessFile "core\fnc\marker_debug.sqf";
-	btc_fnc_show_hint = compile preprocessFile "core\fnc\show_hint.sqf";	
+	btc_fnc_end_mission = compile preprocessFile "core\fnc\common\end_mission.sqf";
+	btc_fnc_get_cardinal = compile preprocessFile "core\fnc\common\get_cardinal.sqf";
+	btc_fnc_is_engineer = compile preprocessFile "core\fnc\common\is_engineer.sqf";
+	btc_fnc_marker_debug = compile preprocessFile "core\fnc\common\marker_debug.sqf";
+	btc_fnc_show_hint = compile preprocessFile "core\fnc\common\show_hint.sqf";	
 	
 	//EH
 	btc_fnc_eh_player_respawn = compile preprocessFile "core\fnc\eh\player_respawn.sqf";
