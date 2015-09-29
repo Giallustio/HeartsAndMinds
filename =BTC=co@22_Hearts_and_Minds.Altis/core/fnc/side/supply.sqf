@@ -31,7 +31,7 @@ _marker setmarkertype "hd_flag";
 _marker setmarkertext "Supplies";
 _marker setMarkerSize [0.6, 0.6];
 
-waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || count (nearestObjects [_pos, ["Land_Cargo20_red_F"], 30]) > 0)};
+waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || count (nearestObjects [_pos, [btc_supplies_mat], 30]) > 0)};
 
 {deletemarker _x} foreach [_area,_marker];
 
