@@ -16,7 +16,7 @@ enableSaving [false,false];
 // Specifying "B_Heli" would stop all units with that class type from transferring to HCs
 // However, if you specify "BLUE1", "NAVYBLUE10" will also be ignored
 
-[true,30,false,true,30,3,true,[]] execVM "WerthlesHeadless.sqf";
+[true,30,false,true,30,3,true,[]] execVM "core\WerthlesHeadless.sqf";
 
 //Server
 call compile preprocessFile "core\def\mission.sqf";
