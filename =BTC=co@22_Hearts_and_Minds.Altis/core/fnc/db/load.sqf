@@ -29,6 +29,42 @@ _cities_status = profileNamespace getVariable ["btc_hm_cities",[]];
 	};
 } foreach _cities_status;
 
+//HIDEOUT
+/*
+	_data pushBack (getPos _x);
+	_data pushBack (_x getVariable ["id",0]);
+	_data pushBack (_x getVariable ["rinf_time",0]);
+	_data pushBack (_x getVariable ["cap_time",0]);
+	_data pushBack (_x getVariable ["assigned_to",objNull]);
+*/
+{
+	[(_x select 0),btc_composition_hideout] call btc_fnc_create_composition;
+
+	_hideout = nearestObject [_pos, "C_supplyCrate_F"];
+	clearWeaponCargoGlobal _hideout;clearItemCargoGlobal _hideout;clearMagazineCargoGlobal _hideout;
+	_hideout setVariable ["id",(_x select 1)];
+	_hideout setVariable ["rinf_time",(_x select 2)];
+	_hideout setVariable ["cap_time",(_x select 3)];
+	_hideout setVariable ["assigned_to",(_x select 4)];
+
+	_hideout addEventHandler ["HandleDamage", btc_fnc_mil_hd_hideout];
+
+	if (btc_debug) then {
+		//Marker
+		_marker = createmarker [format ["btc_hideout_%1", _pos], _pos];
+		format ["btc_hideout_%1", _pos] setmarkertypelocal "mil_unknown";
+		format ["btc_hideout_%1", _pos] setMarkerTextLocal format ["Hideout %1", btc_hideouts_id];
+		format ["btc_hideout_%1", _pos] setMarkerSizeLocal [0.8, 0.8];
+		(format ["loc_%1",_city getVariable "id"]) setMarkerColor "ColorRed";
+	};
+
+	if (btc_debug_log) then {diag_log format ["btc_fnc_mil_create_hideout: _this = %1 ; POS %2 ID %3",_this,_pos,btc_hideouts_id];};
+
+	btc_hideouts_id = btc_hideouts_id + 1;
+	btc_hideouts = btc_hideouts + [_hideout];
+} foreach btc_hideouts;
+_array_ho = profileNamespace getVariable ["btc_hm_ho",[]];
+
 //REP
 btc_global_reputation = profileNamespace getVariable ["btc_hm_rep",0];
 

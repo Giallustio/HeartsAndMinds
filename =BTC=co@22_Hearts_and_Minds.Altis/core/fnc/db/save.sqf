@@ -38,8 +38,22 @@ _cities_status = [];
 	_cities_status pushBack _city_status;
 	//diag_log format ["SAVE: %1 - %2",(_x getVariable "id"),(_x getVariable "occupied")];
 } foreach btc_city_all;
-
 profileNamespace setVariable ["btc_hm_cities",_cities_status];
+
+//HIDEOUT
+_array_ho = [];
+{
+	_data = [];
+	_data pushBack (getPos _x);
+	_data pushBack (_x getVariable ["id",0]);
+	_data pushBack (_x getVariable ["rinf_time",0]);
+	_data pushBack (_x getVariable ["cap_time",0]);
+	_data pushBack (_x getVariable ["assigned_to",objNull]);
+	_array_ho pushBack _data;
+} foreach btc_hideouts;
+profileNamespace setVariable ["btc_hm_ho",_array_ho];
+
+
 //rep status
 profileNamespace setVariable ["btc_hm_rep",btc_global_reputation];
 //FOBS
