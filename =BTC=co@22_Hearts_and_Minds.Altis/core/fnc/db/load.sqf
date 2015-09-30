@@ -37,6 +37,8 @@ _cities_status = profileNamespace getVariable ["btc_hm_cities",[]];
 	_data pushBack (_x getVariable ["cap_time",0]);
 	_data pushBack (_x getVariable ["assigned_to",objNull]);
 */
+_array_ho = profileNamespace getVariable ["btc_hm_ho",[]];
+
 {
 	[(_x select 0),btc_composition_hideout] call btc_fnc_create_composition;
 
@@ -62,8 +64,44 @@ _cities_status = profileNamespace getVariable ["btc_hm_cities",[]];
 
 	btc_hideouts_id = btc_hideouts_id + 1;
 	btc_hideouts = btc_hideouts + [_hideout];
-} foreach btc_hideouts;
-_array_ho = profileNamespace getVariable ["btc_hm_ho",[]];
+} foreach _array_ho;
+
+
+//CACHE
+
+btc_cache_cities = + btc_city_all;
+btc_cache_markers = [];
+
+_array_cache = profileNamespace getVariable ["btc_hm_cache",[]];
+
+btc_cache_pos = _array_cache select 0;
+btc_cache_n = _array_cache select 1;
+btc_cache_info = _array_cache select 2;
+
+btc_cache_obj = btc_cache_type createVehicle btc_cache_pos;
+btc_cache_obj setPosATL (_array_cache select 0);
+clearWeaponCargoGlobal btc_cache_obj;clearItemCargoGlobal btc_cache_obj;clearMagazineCargoGlobal btc_cache_obj;
+btc_cache_obj addEventHandler ["HandleDamage", btc_fnc_cache_hd_cache];
+
+{
+	_marker = createmarker [format ["%1", (_x select 0)], (_x select 0)];
+	_marker setmarkertype "hd_unknown";
+	_marker setMarkerText (_x select 1);
+	_marker setMarkerSize [0.5, 0.5];
+	_marker setMarkerColor "ColorRed";
+	btc_cache_markers = btc_cache_markers + [_marker];
+} foreach (_array_cache select 3);
+
+if (btc_debug_log) then {diag_log format ["CACHE SPAWNED: ID %1 POS %2",btc_cache_n,btc_cache_pos];};
+
+if (btc_debug) then {
+	player sideChat format ["Cache spawned in %1",btc_cache_pos];
+	//Marker
+	createmarker [format ["%1", btc_cache_pos], btc_cache_pos];
+	format ["%1", btc_cache_pos] setmarkertypelocal "mil_unknown";
+	format ["%1", btc_cache_pos] setMarkerTextLocal format ["Cache %1", btc_cache_n];
+	format ["%1", btc_cache_pos] setMarkerSizeLocal [0.8, 0.8];
+};
 
 //REP
 btc_global_reputation = profileNamespace getVariable ["btc_hm_rep",0];

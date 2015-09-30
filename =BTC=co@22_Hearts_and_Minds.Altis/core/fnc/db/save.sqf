@@ -53,6 +53,19 @@ _array_ho = [];
 } foreach btc_hideouts;
 profileNamespace setVariable ["btc_hm_ho",_array_ho];
 
+//CACHE
+_array_cache = [];
+_array_cache pushback (getposATL btc_cache_obj);
+_array_cache pushback (btc_cache_n);
+_array_cache pushback (btc_cache_info);
+_cache_markers = [];
+{
+	_data = [];
+	_data pushback (getMarkerPos _x);
+	_data pushback (markerText _x);	
+} foreach btc_cache_markers;
+_array_cache pushback (_cache_markers);
+profileNamespace setVariable ["btc_hm_cache",_array_cache];
 
 //rep status
 profileNamespace setVariable ["btc_hm_rep",btc_global_reputation];
