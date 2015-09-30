@@ -50,7 +50,19 @@ _fobs = [];
 	_fobs pushBack [_x,_pos];
 } foreach btc_fobs;
 profileNamespace setVariable ["btc_hm_fobs",_fobs];
+
 //Vehicles status
+_array_veh = [];
+{
+	_data = [];
+	_data pushBack (typeOf _x);
+	_data pushBack (getPos _x);
+	_data pushBack (getDir _x);
+	_data pushBack (fuel _x);
+	_data pushBack (damage _x);
+	_array_veh pushBack _data;
+} foreach btc_vehicles;
+profileNamespace setVariable ["btc_hm_vehs",_array_veh];
 
 //Objects status
 

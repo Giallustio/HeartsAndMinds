@@ -50,3 +50,47 @@ _fobs_loaded = [];
 } foreach _fobs;
 
 btc_fobs = _fobs_loaded;
+
+//VEHICLES
+/*	_data pushBack (typeOf _x);
+	_data pushBack (getPos _x);
+	_data pushBack (getDir _x);
+	_data pushBack (fuel _x);
+	_data pushBack (damage _x);
+*/
+
+{deleteVehicle _x} foreach btc_vehicles;
+btc_vehicles = [];
+_vehs = profileNamespace getVariable ["btc_hm_vehs",[]];
+
+{
+	private "_veh";
+	_veh = (_x select 0) createVehicle (_x select 1);
+	btc_vehicles = btc_vehicles + [_veh];
+	_veh addEventHandler ["Killed", {_this call btc_fnc_eh_veh_killed}];
+	_veh setVariable ["btc_dont_delete",true];
+	_veh setDir (_x select 2);
+	_veh setFuel (_x select 3);
+	_veh setDamage (_x select 4);
+} foreach _vehs;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
