@@ -160,4 +160,11 @@ class Params {
         texts[]={"No","Yes"}; 
         default = 1; 
     };
+	class btc_p_rev {
+    //paramsArray[23]
+        title = "Revive time:";
+        values[]={0,60,120,180,240,300,600,900,1200,999999}; 
+        texts[]={"0","60","120","180","240","300","600","900","1200","999999"}; 
+        default = 1; 
+    };
 };
