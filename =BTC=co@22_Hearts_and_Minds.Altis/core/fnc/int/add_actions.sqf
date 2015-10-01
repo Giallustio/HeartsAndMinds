@@ -10,7 +10,7 @@ _action = ["Database","Database","",{},{serverCommandAvailable "#logout" || !isM
 
 _action = ["request_save","Save","",{call btc_fnc_db_request_save;},{true}] call ace_interact_menu_fnc_createAction;
 [player, 1, ["ACE_SelfActions","Database"], _action] call ace_interact_menu_fnc_addActionToObject;
-_action = ["request_delete","Delete","",{call btc_fnc_db_request_save;},{true}] call ace_interact_menu_fnc_createAction;
+_action = ["request_delete","Delete","",{call btc_fnc_db_request_delete;},{true}] call ace_interact_menu_fnc_createAction;
 [player, 1, ["ACE_SelfActions","Database"], _action] call ace_interact_menu_fnc_addActionToObject;
 
 //Intel
@@ -41,6 +41,8 @@ _action = ["check_cargo", "Check Cargo", "", {(vehicle player) spawn btc_fnc_log
 [player, 1, ["ACE_SelfActions","Logistic"], _action] call ace_interact_menu_fnc_addActionToObject;
 _action = ["Mount_FOB", "Mount FOB", "", {(_this select 0) spawn btc_fnc_fob_create}, {true}] call ace_interact_menu_fnc_createAction;
 [btc_fob_mat, 0, ["ACE_MainActions","Logistic"], _action] call ace_interact_menu_fnc_addActionToClass;
+_action = ["Place", "Place", "", {(_this select 0) spawn btc_fnc_log_place;}, {!btc_log_placing}] call ace_interact_menu_fnc_createAction;
+{[_x, 0, ["ACE_MainActions","Logistic"], _action] call ace_interact_menu_fnc_addActionToClass;} foreach btc_log_def_placeable;
 
 //Lift
 _action = ["Lift","Lift","",{},{(typeOf vehicle player) isKindOf "Helicopter"}] call ace_interact_menu_fnc_createAction;

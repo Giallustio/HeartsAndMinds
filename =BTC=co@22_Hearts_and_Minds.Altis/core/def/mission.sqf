@@ -235,7 +235,8 @@ btc_log_def_placeable = (_c_array select 0) + (_c_array select 3) + (_c_array se
 btc_log_max_distance_load = 15;
 btc_log_object_selected = objNull;
 btc_log_vehicle_selected = objNull;
-btc_log_place_placement_area = 20;
+btc_log_placing_max_h = 12;
+btc_log_placing = false;
 
 btc_log_main_cc =
 [

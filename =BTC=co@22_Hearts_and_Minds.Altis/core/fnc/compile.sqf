@@ -117,7 +117,6 @@ btc_fnc_log_create_apply = compile preprocessFile "core\fnc\log\create_apply.sqf
 btc_fnc_log_create_load = compile preprocessFile "core\fnc\log\create_load.sqf";
 btc_fnc_log_create_change_target = compile preprocessFile "core\fnc\log\create_change_target.sqf";
 btc_fnc_log_create_s = compile preprocessFile "core\fnc\log\create_s.sqf";
-btc_fnc_log_drag = compile preprocessFile "core\fnc\log\drag.sqf";
 btc_fnc_log_hook = compile preprocessFile "core\fnc\log\hook.sqf";
 btc_fnc_log_lift_check = compile preprocessFile "core\fnc\log\lift_check.sqf";
 btc_fnc_log_lift_deploy_ropes = compile preprocessFile "core\fnc\log\lift_deploy_ropes.sqf";
