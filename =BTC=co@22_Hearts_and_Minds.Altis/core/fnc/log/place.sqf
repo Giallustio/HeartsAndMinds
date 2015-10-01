@@ -16,7 +16,7 @@ btc_log_placing_dir = 0;
 btc_log_release = player addAction [("<t color=""#ED2744"">" + ("Release") + "</t>"),{btc_log_placing = false;}, [], 9, true, false, "", "true"];
 btc_log_place_EH_keydown = (findDisplay 46) displayAddEventHandler ["KeyDown", btc_fnc_log_place_key_down];
 	
-[player] call ace_weaponselect_fnc_putWeaponAway
+[player] call ace_weaponselect_fnc_putWeaponAway;
 player forceWalk true;
 	
 btc_log_placing_obj enableSimulation false;
