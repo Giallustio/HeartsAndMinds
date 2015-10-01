@@ -33,4 +33,7 @@ switch (_type) do {
 	case 9 : {
 		hint "Game has been saved!";
 	};
+	case 10 : {
+		hint "Database deleted!";
+	};
 };
