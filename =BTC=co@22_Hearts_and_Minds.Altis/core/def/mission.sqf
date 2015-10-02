@@ -237,6 +237,7 @@ btc_log_object_selected = objNull;
 btc_log_vehicle_selected = objNull;
 btc_log_placing_max_h = 12;
 btc_log_placing = false;
+btc_log_obj_created = [];
 
 btc_log_main_cc =
 [

@@ -31,7 +31,7 @@ if ((_rc_tot + _rc) > _cc) exitWith {hint format ["There is no enough space for 
 waitUntil {!(isNil "btc_int_action_result")};
 
 if (btc_int_action_result) then {
-	player setVariable ["btc_log_isDragging",false];
+	//player setVariable ["btc_log_isDragging",false];
 	[[btc_log_object_selected,_veh],"btc_fnc_log_server_load",false] spawn BIS_fnc_MP;
 	hint format ["%1 has been loaded in %2",_obj_name,_veh_name];
 } else {hint "Loading aborted";};

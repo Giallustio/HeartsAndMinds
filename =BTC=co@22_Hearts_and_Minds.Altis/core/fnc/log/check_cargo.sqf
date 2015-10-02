@@ -1,4 +1,6 @@
 
+private ["_veh","_cargo","_text","_ui"];
+
 _veh = _this;
 
 if (isNull _veh) exitWith {};
@@ -17,7 +19,7 @@ waitUntil {Dialog};
 
 _ui = uiNamespace getVariable "btc_log_dlg";
 
-player setVariable ["btc_int_busy",true];
+//player setVariable ["btc_int_busy",true];
 
 _cargo = btc_int_ask_data;
 _text = ("Vehicle: " + getText (configFile >> "cfgVehicles" >> typeof _veh >> "displayName") + format ["  CC: %1/%2",[_veh,_cargo] call btc_fnc_log_check_cc,[_veh] call btc_fnc_log_get_cc]);
@@ -36,5 +38,5 @@ lbSetCurSel [ 991, 0 ];
 
 waitUntil {!Dialog};
 
-player setVariable ["btc_int_busy",false];
+//player setVariable ["btc_int_busy",false];
 btc_log_veh_selected = objNull;

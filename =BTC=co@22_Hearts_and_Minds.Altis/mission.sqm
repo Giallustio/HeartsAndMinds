@@ -11,7 +11,6 @@ class Mission
 		"A3_Characters_F_OPFOR",
 		"A3_Structures_F_Ind_Cargo",
 		"A3_Structures_F_Mil_Helipads",
-		"A3_Weapons_F_Ammoboxes",
 		"A3_Soft_F_Gamma_HEMTT",
 		"A3_Structures_F_Mil_Flags",
 		"rhsusf_c_hmmwv",
@@ -45,7 +44,6 @@ class Mission
 		"rhsusf_c_rg33",
 		"A3_Structures_F_Ind_Cargo",
 		"A3_Structures_F_Mil_Helipads",
-		"A3_Weapons_F_Ammoboxes",
 		"A3_Soft_F_Gamma_HEMTT",
 		"A3_Structures_F_Mil_Flags",
 		"a3_map_altis"
@@ -825,7 +823,7 @@ class Mission
 	};
 	class Vehicles
 	{
-		items=24;
+		items=21;
 		class Item0
 		{
 			position[]={8303.3174,76.190857,10075.396};
@@ -990,88 +988,61 @@ class Mission
 		};
 		class Item15
 		{
-			position[]={8317.0313,75.635979,10079.462};
-			azimut=98.362991;
-			id=44;
-			side="EMPTY";
-			vehicle="Box_NATO_Ammo_F";
-			skill=0.60000002;
-		};
-		class Item16
-		{
-			position[]={8315.2861,75.703285,10079.419};
-			azimut=-53.249569;
-			id=45;
-			side="EMPTY";
-			vehicle="Box_NATO_Ammo_F";
-			skill=0.60000002;
-		};
-		class Item17
-		{
-			position[]={8316.0703,75.668419,10078.288};
-			azimut=15.906755;
-			id=46;
-			side="EMPTY";
-			vehicle="Box_NATO_Ammo_F";
-			skill=0.60000002;
-		};
-		class Item18
-		{
 			position[]={8358.6895,73.372658,10100.906};
 			azimut=-37.320667;
-			id=47;
+			id=44;
 			side="EMPTY";
 			vehicle="B_Truck_01_ammo_F";
 			skill=0.60000002;
 			text="btc_veh_11";
 			init="this setVariable [""btc_dont_delete"",true]";
 		};
-		class Item19
+		class Item16
 		{
 			position[]={8353.4756,73.568039,10097.638};
 			azimut=-37.320667;
-			id=48;
+			id=45;
 			side="EMPTY";
 			vehicle="B_Truck_01_fuel_F";
 			skill=0.60000002;
 			text="btc_veh_12";
 			init="this setVariable [""btc_dont_delete"",true]";
 		};
-		class Item20
+		class Item17
 		{
 			position[]={8348.7539,73.829521,10094.76};
 			azimut=-37.320667;
-			id=49;
+			id=46;
 			side="EMPTY";
 			vehicle="B_Truck_01_Repair_F";
 			skill=0.60000002;
 			text="btc_veh_13";
 			init="this setVariable [""btc_dont_delete"",true]";
 		};
-		class Item21
+		class Item18
 		{
 			position[]={8316.8945,75.622955,10074.888};
-			id=50;
+			id=47;
 			side="EMPTY";
 			vehicle="Flag_NATO_F";
 			skill=0.60000002;
 		};
-		class Item22
+		class Item19
 		{
 			position[]={8241.458,77.378105,10048.173};
 			azimut=-27.934999;
-			id=51;
+			id=48;
 			side="EMPTY";
 			vehicle="RHS_UH1Y_d";
 			skill=0.60000002;
 			text="btc_veh_14";
 			init="this setVariable [""btc_dont_delete"",true]";
 		};
-		class Item23
+		class Item20
 		{
 			position[]={8240.2227,77.387703,10049.465};
 			azimut=51.220901;
-			id=52;
+			id=49;
 			side="EMPTY";
 			vehicle="Land_HelipadSquare_F";
 			skill=0.60000002;

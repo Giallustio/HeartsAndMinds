@@ -1,6 +1,8 @@
 
 private ["_cities_status","_fobs","_fobs_loaded"];
 
+setDate (profileNamespace getVariable ["btc_hm_date",date]);
+
 //CITIES
 _cities_status = profileNamespace getVariable ["btc_hm_cities",[]];
 //diag_log format ["_cities_status: %1",_cities_status];
@@ -36,6 +38,14 @@ _cities_status = profileNamespace getVariable ["btc_hm_cities",[]];
 	_data pushBack (_x getVariable ["rinf_time",0]);
 	_data pushBack (_x getVariable ["cap_time",0]);
 	_data pushBack (_x getVariable ["assigned_to",objNull]);
+	
+	_cache_markers = [];
+	{
+		_data = [];
+		_data pushback (getMarkerPos _x);
+		_data pushback (markerText _x);	
+	} foreach (_x getVariable ["markers",[]]);
+	_data pushback (_cache_markers);
 */
 _array_ho = profileNamespace getVariable ["btc_hm_ho",[]];
 
@@ -51,6 +61,18 @@ _array_ho = profileNamespace getVariable ["btc_hm_ho",[]];
 
 	_hideout addEventHandler ["HandleDamage", btc_fnc_mil_hd_hideout];
 
+	_markers = [];
+	{
+		_marker = createmarker [format ["%1", (_x select 0)], (_x select 0)];
+		_marker setmarkertype "hd_warning";
+		_marker setMarkerText (_x select 1);
+		_marker setMarkerSize [0.5, 0.5];
+		_marker setMarkerColor "ColorRed";
+		_markers pushBack _marker;
+	} foreach (_x select 5);
+	
+	_hideout setVariable ["markers",_markers];
+	
 	if (btc_debug) then {
 		//Marker
 		_marker = createmarker [format ["btc_hideout_%1", _pos], _pos];
@@ -66,7 +88,8 @@ _array_ho = profileNamespace getVariable ["btc_hm_ho",[]];
 	btc_hideouts = btc_hideouts + [_hideout];
 } foreach _array_ho;
 
-
+_ho = profileNamespace getVariable ["btc_hm_ho_sel",objNull];
+btc_hq_red getVariable ["info_hideout",_ho];
 //CACHE
 
 btc_cache_cities = + btc_city_all;
@@ -131,6 +154,7 @@ btc_fobs = _fobs_loaded;
 	_data pushBack (getDir _x);
 	_data pushBack (fuel _x);
 	_data pushBack (damage _x);
+	_data pushBack (_x getVariable ["cargo",[]];);
 */
 
 {deleteVehicle _x} foreach btc_vehicles;
@@ -146,25 +170,29 @@ _vehs = profileNamespace getVariable ["btc_hm_vehs",[]];
 	_veh setDir (_x select 2);
 	_veh setFuel (_x select 3);
 	_veh setDamage (_x select 4);
+	{
+		private "_obj";
+		_obj = (_x select 0) createVehicle [0,0,0];
+		btc_log_obj_created = btc_log_obj_created + [_obj];
+		[_obj,_veh] call btc_fnc_log_server_load;
+	} foreach (_x select 5);
 } foreach _vehs;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//Objs
+/*
+	if (!isNil {_x getVariable "loaded"}) exitWith {};
+	_data = [];
+	_data pushBack (typeOf _x);
+	_data pushBack (getPosASL _x);
+	_data pushBack (getDir _x);
+	_array_obj pushBack _data;
+*/
+//btc_log_obj_created = [];
+_objs = profileNamespace getVariable ["btc_hm_objs",[]];
+{
+	private "_obj";
+	_obj = (_x select 0) createVehicle (_x select 1);
+	btc_log_obj_created = btc_log_obj_created + [_obj];
+	_obj setDir (_x select 2);
+	_obj setPosASL (_x select 1);
+} foreach _objs;

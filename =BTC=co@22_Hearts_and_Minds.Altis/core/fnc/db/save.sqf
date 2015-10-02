@@ -10,6 +10,8 @@ hint "saving...";
 
 btc_db_is_saving = true;
 
+profileNamespace setVariable ["btc_hm_date",date];
+
 for "_i" from 0 to (count btc_city_all - 1) do {
 	private "_s";
 	_s = [_i] spawn btc_fnc_city_de_activate;
@@ -49,9 +51,20 @@ _array_ho = [];
 	_data pushBack (_x getVariable ["rinf_time",0]);
 	_data pushBack (_x getVariable ["cap_time",0]);
 	_data pushBack (_x getVariable ["assigned_to",objNull]);
+	
+	_cache_markers = [];
+	{
+		_data = [];
+		_data pushback (getMarkerPos _x);
+		_data pushback (markerText _x);	
+	} foreach (_x getVariable ["markers",[]]);
+	_data pushback (_cache_markers);
+	
 	_array_ho pushBack _data;
 } foreach btc_hideouts;
 profileNamespace setVariable ["btc_hm_ho",_array_ho];
+
+profileNamespace setVariable ["btc_hm_ho_sel",(btc_hq_red getVariable ["info_hideout",objNull])];
 
 //CACHE
 _array_cache = [];
@@ -87,11 +100,24 @@ _array_veh = [];
 	_data pushBack (getDir _x);
 	_data pushBack (fuel _x);
 	_data pushBack (damage _x);
+	_cargo = [];
+	{_cargo pushBack (typeOf _x)} foreach (_x getVariable ["cargo",[]]);
+	_data pushBack _cargo;
 	_array_veh pushBack _data;
 } foreach btc_vehicles;
 profileNamespace setVariable ["btc_hm_vehs",_array_veh];
 
 //Objects status
+_array_obj = [];
+{
+	if (!isNil {_x getVariable "loaded"} || !Alive _x || isNull _x) exitWith {};
+	_data = [];
+	_data pushBack (typeOf _x);
+	_data pushBack (getPosASL _x);
+	_data pushBack (getDir _x);
+	_array_obj pushBack _data;
+} foreach btc_log_obj_created;
+profileNamespace setVariable ["btc_hm_objs",_array_obj];
 
 //
 profileNamespace setVariable ["btc_hm_db",true];

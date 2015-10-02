@@ -22,7 +22,7 @@ if (isNull _obj) exitWith {hint "null";};
 
 _cargo = _cargo - [_obj];
 _veh setVariable ["cargo",_cargo];
-
+_obj setVariable ["loaded",nil];
 
 
 _obj hideObjectGlobal false;
