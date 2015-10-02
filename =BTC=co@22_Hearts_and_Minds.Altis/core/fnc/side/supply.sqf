@@ -1,4 +1,5 @@
-//{if (_x getVariable ["occupied",false] && {_x getVariable ["type",""] != "NameLocal"} && {_x getVariable ["type",""] != "Hill"}) then {_useful = _useful + [_x];};} foreach btc_city_all;
+
+private ["_useful","_city","_pos","_area","_marker"];
 
 _useful = [];
 {if (_x getVariable ["type",""] != "NameLocal" && {_x getVariable ["type",""] != "Hill"}) then {_useful = _useful + [_x];};} foreach btc_city_all;
@@ -35,8 +36,7 @@ waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || count (nearestObject
 
 {deletemarker _x} foreach [_area,_marker];
 
-if (btc_side_aborted || btc_side_failed) exitWith
-{
+if (btc_side_aborted || btc_side_failed) exitWith {
 	[3,"btc_fnc_task_fail",true] spawn BIS_fnc_MP;
 	btc_side_assigned = false;publicVariable "btc_side_assigned";
 };
@@ -45,10 +45,8 @@ if (btc_side_aborted || btc_side_failed) exitWith
 
 [3,"btc_fnc_task_set_done",true] spawn BIS_fnc_MP;
 
-if (count (nearestObjects [_pos, [btc_supplies_mat], 30]) > 0) then
-{
-	_pos spawn
-	{
+if (count (nearestObjects [_pos, [btc_supplies_mat], 30]) > 0) then {
+	_pos spawn {
 		private "_obj";
 		_obj = (nearestObjects [_this, [btc_supplies_mat], 30]) select 0;
 		

@@ -1,4 +1,6 @@
 
+private ["_ho","_pos","_marker","_array"];
+
 if (count btc_hideouts == 0) exitWith {};
 
 private ["_ho","_pos","_marker","_array"];
