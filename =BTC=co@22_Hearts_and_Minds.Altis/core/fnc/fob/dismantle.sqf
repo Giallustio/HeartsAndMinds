@@ -4,7 +4,7 @@
 	if (!_cond) exitWith {hint "Can't find the material required!";};
 	_cond = false;
 	_obj = _array select 0;
-	if (_obj distance getMarkerpos "respawn_west" > 500) then {_cond = true;};//500
+	if (_obj distance getMarkerpos btc_respawn_marker > 500) then {_cond = true;};//500
 	if (!_cond) exitWith {hint "Too close to the main base!";};
 	_pos = getPos _obj;
 	deleteVehicle _obj;

@@ -27,8 +27,7 @@ _idc = 778;
 
 lbSetCurSel [_idc, 0];
 
-while {!btc_fob_dlg} do
-{
+while {!btc_fob_dlg} do {
 	if !(dialog) then {hint "Do not close the dialog with esc";createDialog "btc_fob_redeploy";{_index = lbAdd [ _idc, _x ];} foreach _fobs;lbSetCurSel [_idc, 0];};
 	sleep 0.1;
 };
@@ -37,7 +36,7 @@ _fob = lbText [_idc, lbCurSel _idc];
 
 _marker = lbText [_idc, lbCurSel _idc];
 
-if (_marker == "Base") then {_marker = "respawn_west";};
+if (_marker == "Base") then {_marker = btc_respawn_marker;};
 
 forceMap false;
 

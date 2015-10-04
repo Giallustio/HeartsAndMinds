@@ -5,7 +5,7 @@ if (count _this > 0) then {_city = _this;} else {
 	_useful = [];
 	{
 		//"NameVillage","NameCity","NameCityCapital","NameLocal","Hill"
-		if (!(_x getVariable ["active",false]) && {_x distance (getMarkerPos "respawn_west") > btc_hideout_safezone} && {!(_x getVariable ["has_ho",false])} && (_x getVariable ["type",""] == "NameLocal" || {_x getVariable ["type",""] == "Hill"} || {_x getVariable ["type",""] == "NameVillage"})) then {_useful = _useful + [_x];};
+		if (!(_x getVariable ["active",false]) && {_x distance (getMarkerPos btc_respawn_marker) > btc_hideout_safezone} && {!(_x getVariable ["has_ho",false])} && (_x getVariable ["type",""] == "NameLocal" || {_x getVariable ["type",""] == "Hill"} || {_x getVariable ["type",""] == "NameVillage"})) then {_useful = _useful + [_x];};
 	} foreach btc_city_all;
 	_id = floor random count _useful;
 	_city = _useful select _id;

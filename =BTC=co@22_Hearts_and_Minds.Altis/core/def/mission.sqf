@@ -207,6 +207,7 @@ btc_construction_array =
 			"B_supplyCrate_F",
 			"B_CargoNet_01_ammo_F",
 			"ACE_Wheel",
+			"ACE_Track",
 			"FlexibleTank_01_forest_F",
 			"Box_NATO_AmmoVeh_F"
 			
@@ -342,11 +343,10 @@ btc_lift_HUD_y  = 0.825;// * safezoneH + safezoneY;
 
 //Mil
 btc_player_side           = west;
-btc_enemy_side            = east;
-switch (true) do 
-{
-	case (_p_en == 0) :
-	{
+btc_respawn_marker        = "respawn_west";
+switch (true) do {
+	case (_p_en == 0) :	{
+		btc_enemy_side            = east;
 		btc_type_units            = ["O_G_Soldier_F","O_G_Soldier_TL_F","O_G_Soldier_AR_F","O_G_engineer_F","O_G_Soldier_exp_F","O_G_Soldier_GL_F","O_G_Soldier_LAT_F"];
 		btc_type_crewmen          = "O_G_Soldier_F";
 		btc_type_vehicles         = ["I_G_Offroad_01_F","I_G_Offroad_01_armed_F"];
@@ -354,8 +354,8 @@ switch (true) do
 		btc_type_mg = ["O_HMG_01_F","O_HMG_01_high_F"];
 		btc_type_gl = ["O_GMG_01_F","O_GMG_01_high_F"];
 	};
-	case (_p_en == 1 && isClass(configFile >> "cfgVehicles" >> "CAF_AG_ME_T_AK47")) :
-	{
+	case (_p_en == 1 && isClass(configFile >> "cfgVehicles" >> "CAF_AG_ME_T_AK47")) : {
+		btc_enemy_side            = east;
 		btc_type_units            = ["CAF_AG_ME_AK47","CAF_AG_ME_T_AK74","CAF_AG_ME_T_PKM","CAF_AG_ME_T_RPK74","CAF_AG_ME_T_RPG","CAF_AG_ME_T_GL"];
 		btc_type_crewmen          = "CAF_AG_ME_T_AK47";
 		btc_type_vehicles         = ["CAF_AG_ME_T_Offroad_armed_01"];
@@ -364,8 +364,8 @@ switch (true) do
 		btc_type_gl = ["O_GMG_01_F","O_GMG_01_high_F"];
 		btc_civ_type_units  = ["CAF_AG_ME_CIV","CAF_AG_ME_CIV_02","CAF_AG_ME_CIV_03","CAF_AG_ME_CIV_04"];
 	};
-	default
-	{
+	default	{
+		btc_enemy_side            = east;
 		btc_type_units            = ["O_G_Soldier_F","O_G_Soldier_TL_F","O_G_Soldier_AR_F","O_G_engineer_F","O_G_Soldier_exp_F","O_G_Soldier_GL_F","O_G_Soldier_LAT_F"];
 		btc_type_crewmen          = "O_G_Soldier_F";
 		btc_type_vehicles         = ["I_G_Offroad_01_F","I_G_Offroad_01_armed_F"];
