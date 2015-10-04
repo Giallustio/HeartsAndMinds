@@ -34,7 +34,7 @@ if (_explosive && {_damage > 0.6}) then {
 	
 	if (btc_hq_red getVariable ["info_hideout",objNull] isEqualTo _hideout) then {btc_hq_red setVariable ["info_hideout",objNull]};
 	
-	if (count btc_hideouts == 0) then {[] execVM "fnc\final_phase.sqf";};
+	if (count btc_hideouts == 0) then {[] execVM "core\fnc\common\final_phase.sqf";};
 	
 	//Notification
 	[[2,count btc_hideouts],"btc_fnc_show_hint"] spawn BIS_fnc_MP;
