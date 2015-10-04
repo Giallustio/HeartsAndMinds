@@ -2,8 +2,7 @@ if (isDedicated) exitWith {};
 
 switch _this do
 {
-	case 0 : 
-	{
+	case 0 : {
 		private "_task";
 		_task = player getVariable "task_0";		
 		_task setTaskState "SUCCEEDED";
@@ -12,8 +11,7 @@ switch _this do
 		_task = player getVariable "task_2";
 		_task setTaskState "SUCCEEDED";
 	};
-	case 1 : 
-	{
+	case 1 : {
 		private "_task";
 		_task = player getVariable "task_1";	
 		_task setTaskState "SUCCEEDED";
@@ -27,32 +25,28 @@ switch _this do
 		player setVariable ["task_2",_task];	
 		["TaskAssigned",["New task assigned!","Size the last positions held by the enemies"]] call bis_fnc_showNotification;
 	};
-	case 3 : 
-	{
+	case 3 : {
 		private "_task";
 		_task = player getVariable "task_3";		
 		_task setTaskState "SUCCEEDED";
 		["TaskSucceeded",["Side mission Accomplished!","Supplies have been delivered"]] call bis_fnc_showNotification;
 		player setVariable ["task_3",nil];
 	};
-	case 4 : 
-	{
+	case 4 : {
 		private "_task";
 		_task = player getVariable "task_4";		
 		_task setTaskState "SUCCEEDED";
 		["TaskSucceeded",["Side mission Accomplished!","The minefield has been cleared"]] call bis_fnc_showNotification;
 		player setVariable ["task_4",nil];
 	};
-	case 5 : 
-	{
+	case 5 : {
 		private "_task";
 		_task = player getVariable "task_5";		
 		_task setTaskState "SUCCEEDED";
 		["TaskSucceeded",["Side mission Accomplished!","The vehicle has been repaired"]] call bis_fnc_showNotification;
 		player setVariable ["task_5",nil];
 	};
-	case 6 : 
-	{
+	case 6 : {
 		private "_task";
 		_task = player getVariable "task_6";		
 		_task setTaskState "SUCCEEDED";

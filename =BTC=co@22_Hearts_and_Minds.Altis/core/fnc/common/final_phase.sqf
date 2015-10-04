@@ -22,5 +22,7 @@ btc_city_remaining = [];
 
 waitUntil {sleep 15; (count btc_city_remaining == 0)};
 
+[0,"btc_fnc_task_set_done",true,true] spawn BIS_fnc_MP;
+
 //END
 [[],"btc_fnc_end_mission",true,true] spawn BIS_fnc_MP;
