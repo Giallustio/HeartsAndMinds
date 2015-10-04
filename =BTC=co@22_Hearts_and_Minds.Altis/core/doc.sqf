@@ -35,7 +35,7 @@ You can re-deploy at the new location interacting with the flag.
 
 player createDiaryRecord ["Documentation", ["Sling loading", "
 =BTC= Lift will not replace the A3 sling loading, you can use both.<br/><br/>
-Lifting an object is pretty simple. Get in a chopper as pilot, hover above the object and use your sel interaction menu to deploy ropes.<br/>
+Lifting an object is pretty simple. Get in a chopper as pilot, hover above the object and use your self interaction menu to deploy ropes.<br/>
 When you are in the right position a new scroll wheel action will appear ('HOOK'). If you want you can open the HUD to facilitate the operation.<br/>
 To release an object open you self interaction menu and select 'CUT ROPES'
 	"]
