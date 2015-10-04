@@ -1,3 +1,6 @@
+
+btc_version = 1.11; diag_log format ["=BTC= HEARTS AND MINDS VERSION %1",btc_version];
+
 //Param
 btc_p_time  = (paramsArray select 0);
 _p_en = (paramsArray select 1);

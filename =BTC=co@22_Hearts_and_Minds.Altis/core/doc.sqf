@@ -115,15 +115,12 @@ Use your user action 2 to change your gear.
 ];
 
 player createDiaryRecord ["Documentation", ["Interaction", "
-The interaction system created for this mission is based on two keys that you can set in your option:<br/>
-User action 1 for self interaction<br/>
-User action 2 for interact with objects and players<br/><br/>
-	
-If you want to interact with an object, point at it and press your user action 2.<br/><br/>
-	
-You can switch weapon with the key combination:<br/><br/>
-SHIFT + 1 primary weapon<br/>
-SHIFT + 2 handgun<br/>
-SHIFT + 3 secondary weapon<br/>
+Use ACE 3 interactions system.
 	"]
+];
+
+player createDiaryRecord ["Documentation", [
+	"Version", 
+	format ["Version %1",btc_version]
+	]
 ];
