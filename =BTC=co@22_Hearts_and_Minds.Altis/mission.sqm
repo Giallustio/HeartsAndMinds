@@ -59,6 +59,8 @@ class Mission
 	{
 		briefingName="=BTC= co 22 HEARTS AND MINDS";
 		overviewText="by Giallustio";
+		resistanceWest=0;
+		resistanceEast=1;
 		startWeather=0.29999998;
 		startWind=0.099999994;
 		startWaves=0.099999994;
