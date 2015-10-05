@@ -64,7 +64,7 @@ _array_ho = [];
 } foreach btc_hideouts;
 profileNamespace setVariable ["btc_hm_ho",_array_ho];
 
-profileNamespace setVariable ["btc_hm_ho_sel",(btc_hq_red getVariable ["info_hideout",objNull])];
+profileNamespace setVariable ["btc_hm_ho_sel",(btc_hq getVariable ["info_hideout",objNull])];
 
 //CACHE
 _array_cache = [];

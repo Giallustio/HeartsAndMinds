@@ -32,7 +32,7 @@ if (_explosive && {_damage > 0.6}) then {
 	
 	{deleteMarker _x} foreach _array;
 	
-	if (btc_hq_red getVariable ["info_hideout",objNull] isEqualTo _hideout) then {btc_hq_red setVariable ["info_hideout",objNull]};
+	if (btc_hq getVariable ["info_hideout",objNull] isEqualTo _hideout) then {btc_hq setVariable ["info_hideout",objNull]};
 	
 	if (count btc_hideouts == 0) then {[] execVM "core\fnc\common\final_phase.sqf";};
 	

@@ -12,7 +12,7 @@ if (count _this > 2) then {_units = _this select 2;} else {_units = _pos nearEnt
 
 	[_x] spawn btc_fnc_civ_add_weapons;
 	
-	[_x] joinSilent btc_hq_red;
+	[_x] joinSilent btc_hq;
 	[_x] joinSilent GrpNull;
 	
 	_array_id = _x getVariable "btc_rep_eh_added";

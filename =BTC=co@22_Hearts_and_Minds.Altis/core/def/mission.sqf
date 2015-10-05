@@ -349,6 +349,7 @@ btc_player_side           = west;
 btc_respawn_marker        = "respawn_west";
 switch (true) do {
 	case (_p_en == 0) :	{
+		btc_hq                    = btc_hq_red;
 		btc_enemy_side            = east;
 		btc_type_units            = ["O_G_Soldier_F","O_G_Soldier_TL_F","O_G_Soldier_AR_F","O_G_engineer_F","O_G_Soldier_exp_F","O_G_Soldier_GL_F","O_G_Soldier_LAT_F"];
 		btc_type_crewmen          = "O_G_Soldier_F";
@@ -358,6 +359,7 @@ switch (true) do {
 		btc_type_gl = ["O_GMG_01_F","O_GMG_01_high_F"];
 	};
 	case (_p_en == 1 && isClass(configFile >> "cfgVehicles" >> "CAF_AG_ME_T_AK47")) : {
+		btc_hq                    = btc_hq_red;
 		btc_enemy_side            = east;
 		btc_type_units            = ["CAF_AG_ME_AK47","CAF_AG_ME_T_AK74","CAF_AG_ME_T_PKM","CAF_AG_ME_T_RPK74","CAF_AG_ME_T_RPG","CAF_AG_ME_T_GL"];
 		btc_type_crewmen          = "CAF_AG_ME_T_AK47";
@@ -368,6 +370,7 @@ switch (true) do {
 		btc_civ_type_units  = ["CAF_AG_ME_CIV","CAF_AG_ME_CIV_02","CAF_AG_ME_CIV_03","CAF_AG_ME_CIV_04"];
 	};
 	default	{
+		btc_hq                    = btc_hq_red;
 		btc_enemy_side            = east;
 		btc_type_units            = ["O_G_Soldier_F","O_G_Soldier_TL_F","O_G_Soldier_AR_F","O_G_engineer_F","O_G_Soldier_exp_F","O_G_Soldier_GL_F","O_G_Soldier_LAT_F"];
 		btc_type_crewmen          = "O_G_Soldier_F";

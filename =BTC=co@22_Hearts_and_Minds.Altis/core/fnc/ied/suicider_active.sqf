@@ -1,7 +1,7 @@
 
 private ["_trigger","_array","_expl1","_expl2","_expl3","_man","_cond"];
 
-[_this] joinSilent btc_hq_red;
+[_this] joinSilent btc_hq;
 [_this] joinSilent GrpNull;
 
 while {(count (waypoints group _this)) > 0} do { deleteWaypoint ((waypoints group _this) select 0); };
