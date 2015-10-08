@@ -1,3 +1,6 @@
+
+private ["_pos","_type","_dir","_static","_group","_unit_type","_gunner"];
+
 _pos  = _this select 0;
 _type = _this select 1;
 _dir = 0; if (count _this > 2) then {_dir = _this select 2;};
@@ -16,7 +19,4 @@ _gunner setCombatMode "RED";
 
 _gunner call btc_fnc_mil_unit_create;
 
-if (btc_debug_log) then
-{
-	diag_log format ["btc_fnc_mil_create_static: _this = %1 ; POS %2 _type %3",_this,_pos,_type];
-};	
+if (btc_debug_log) then {diag_log format ["btc_fnc_mil_create_static: _this = %1 ; POS %2 _type %3",_this,_pos,_type];};	

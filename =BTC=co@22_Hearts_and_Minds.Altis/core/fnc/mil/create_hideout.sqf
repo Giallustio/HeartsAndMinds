@@ -1,3 +1,6 @@
+
+private ["_city","_pos","_hideout"];
+
 _city = objNull;
 
 if (count _this > 0) then {_city = _this;} else {
@@ -5,7 +8,16 @@ if (count _this > 0) then {_city = _this;} else {
 	_useful = [];
 	{
 		//"NameVillage","NameCity","NameCityCapital","NameLocal","Hill"
-		if (!(_x getVariable ["active",false]) && {_x distance (getMarkerPos btc_respawn_marker) > btc_hideout_safezone} && {!(_x getVariable ["has_ho",false])} && (_x getVariable ["type",""] == "NameLocal" || {_x getVariable ["type",""] == "Hill"} || {_x getVariable ["type",""] == "NameVillage"})) then {_useful = _useful + [_x];};
+		if (
+			!(_x getVariable ["active",false]) &&
+			{_x distance (getMarkerPos btc_respawn_marker) > btc_hideout_safezone} && 
+			{!(_x getVariable ["has_ho",false])} && 
+			(
+				_x getVariable ["type",""] == "NameLocal" ||
+				{_x getVariable ["type",""] == "Hill"} || 
+				{_x getVariable ["type",""] == "NameVillage"}
+			)
+		) then {_useful = _useful + [_x];};
 	} foreach btc_city_all;
 	_id = floor random count _useful;
 	_city = _useful select _id;
@@ -35,7 +47,7 @@ _city setVariable ["ho_units_spawned",false];
 
 if (btc_debug) then {
 	//Marker
-	_marker = createmarker [format ["btc_hideout_%1", _pos], _pos];
+	createmarker [format ["btc_hideout_%1", _pos], _pos];
 	format ["btc_hideout_%1", _pos] setmarkertypelocal "mil_unknown";
 	format ["btc_hideout_%1", _pos] setMarkerTextLocal format ["Hideout %1", btc_hideouts_id];
 	format ["btc_hideout_%1", _pos] setMarkerSizeLocal [0.8, 0.8];

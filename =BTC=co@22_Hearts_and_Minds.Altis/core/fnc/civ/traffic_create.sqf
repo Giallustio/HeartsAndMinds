@@ -41,6 +41,6 @@ _unit_type createUnit [_pos, _group, "this moveinDriver _veh;this assignAsDriver
 _veh setVariable ["driver",leader _group];
 _veh addEventHandler ["HandleDamage", btc_fnc_civ_traffic_hd];
 
-{_x call BTC_fnc_rep_add_eh;_x setVariable ["traffic",_veh];} foreach units _group;
+{_x call btc_fnc_rep_add_eh;_x setVariable ["traffic",_veh];} foreach units _group;
 
 [_group,_area] call btc_fnc_civ_traffic_add_WP;

@@ -1,3 +1,6 @@
+
+private ["_hideout","_damage","_ammo","_explosive"];
+
 _hideout = _this select 0;
 _damage = _this select 2;
 _ammo = _this select 4;
