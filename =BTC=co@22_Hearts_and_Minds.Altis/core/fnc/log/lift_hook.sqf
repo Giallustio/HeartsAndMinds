@@ -1,4 +1,6 @@
+
 private ["_chopper","_array","_cargo_array","_cargo"];
+
 _chopper = vehicle player;
 _array = [vehicle player] call btc_fnc_log_get_liftable;
 _cargo_array = nearestObjects [_chopper, _array, 30];
@@ -6,15 +8,18 @@ if (count _cargo_array > 0 && driver (_cargo_array select 0) == player) then {_c
 if (count _cargo_array > 0) then {_cargo = _cargo_array select 0;} else {_cargo = objNull;};
 if (isNull _cargo) exitWith {};
 
-if (!Alive _cargo) exitWith {
-	_cargo spawn btc_fnc_log_lift_hook_fake;
-};
+if (!Alive _cargo) exitWith {_cargo spawn btc_fnc_log_lift_hook_fake;};
 
 private ["_rope","_max_cargo","_mass"];
 
 {ropeDestroy _x;} foreach ropes _chopper;
 
-_rope = ropeCreate [vehicle player, "slingload0", _cargo, [0, 0, 0], 10];
+_bbr = boundingBoxReal _cargo;hint str(_bbr);
+
+ropeCreate [vehicle player, "slingload0", _cargo, [((_bbr select 0) select 0), ((_bbr select 1) select 1), 0], 10];
+ropeCreate [vehicle player, "slingload0", _cargo, [((_bbr select 0) select 0), ((_bbr select 0) select 1), 0], 10];
+ropeCreate [vehicle player, "slingload0", _cargo, [((_bbr select 1) select 0), ((_bbr select 0) select 1), 0], 10];
+ropeCreate [vehicle player, "slingload0", _cargo, [((_bbr select 1) select 0), ((_bbr select 1) select 1), 0], 10];
 
 _max_cargo  = getNumber (configFile >> "cfgVehicles" >> typeof _chopper >> "slingLoadMaxCargoMass");
 _mass = getMass _cargo;
@@ -31,7 +36,6 @@ if (_mass > _max_cargo) then {
 };
 
 (vehicle player) setVariable ["cargo",_cargo];
-(vehicle player) setVariable ["rope",_rope];
 
 btc_lifted = true;
 

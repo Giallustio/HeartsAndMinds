@@ -235,6 +235,7 @@ btc_construction_array =
 _c_array = btc_construction_array select 1;
 btc_log_def_draggable = (_c_array select 1) + (_c_array select 2);
 btc_log_def_loadable = (_c_array select 0) + (_c_array select 1) + (_c_array select 2) + (_c_array select 3) + (_c_array select 4) + (_c_array select 5);
+btc_log_def_can_load = (_c_array select 3);
 btc_log_def_placeable = (_c_array select 0) + (_c_array select 3) + (_c_array select 4) + (_c_array select 5);
 btc_log_max_distance_load = 15;
 btc_log_object_selected = objNull;

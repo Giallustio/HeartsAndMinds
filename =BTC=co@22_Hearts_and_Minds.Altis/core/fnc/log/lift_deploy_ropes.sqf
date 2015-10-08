@@ -10,7 +10,6 @@ btc_log_lifted = objNull;
 _heli = vehicle player;
 
 _heli setVariable ["cargo",nil];
-_heli setVariable ["rope",nil];
 
 ropeCreate [_heli, "slingload0", 10, []];
 
@@ -23,7 +22,4 @@ btc_ropes_deployed = false;
 player removeAction btc_lift_action;
 player removeAction btc_lift_action_hud;
 
-if (count ropes _heli > 0) then
-{
-	{ropeDestroy _x;} foreach ropes _heli;
-};
+if (count ropes _heli > 0) then {{ropeDestroy _x;} foreach ropes _heli;};

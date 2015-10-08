@@ -37,8 +37,10 @@ _action = ["Logistic","Logistic","",{},{true}] call ace_interact_menu_fnc_create
 {[_x, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToClass;} foreach btc_log_def_loadable;
 _action = ["Load_in", "Load in", "", {(_this select 0) call btc_fnc_log_select;}, {true}] call ace_interact_menu_fnc_createAction;
 {[_x, 0, ["ACE_MainActions","Logistic"], _action] call ace_interact_menu_fnc_addActionToClass;} foreach btc_log_def_loadable;
-_action = ["check_cargo", "Check Cargo", "", {(vehicle player) spawn btc_fnc_log_check_cargo;}, {vehicle player != player}] call ace_interact_menu_fnc_createAction;
-[player, 1, ["ACE_SelfActions","Logistic"], _action] call ace_interact_menu_fnc_addActionToObject;
+_action = ["Load_selected", "Load selected", "", {(_this select 0) spawn btc_fnc_log_load;}, {!isNull btc_log_object_selected && {btc_log_object_selected distance (_this select 0) <= btc_log_max_distance_load}}] call ace_interact_menu_fnc_createAction;
+{[_x, 0, ["ACE_MainActions","Logistic"], _action] call ace_interact_menu_fnc_addActionToClass;} foreach btc_log_def_can_load;
+_action = ["check_cargo", "Check Cargo", "", {(_this select 0) spawn btc_fnc_log_check_cargo;}, {true}] call ace_interact_menu_fnc_createAction;
+{[_x, 0, ["ACE_MainActions","Logistic"], _action] call ace_interact_menu_fnc_addActionToClass;} foreach btc_log_def_can_load;
 _action = ["Mount_FOB", "Mount FOB", "", {(_this select 0) spawn btc_fnc_fob_create}, {true}] call ace_interact_menu_fnc_createAction;
 [btc_fob_mat, 0, ["ACE_MainActions","Logistic"], _action] call ace_interact_menu_fnc_addActionToClass;
 _action = ["Place", "Place", "", {(_this select 0) spawn btc_fnc_log_place;}, {!btc_log_placing}] call ace_interact_menu_fnc_createAction;
