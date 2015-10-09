@@ -23,6 +23,7 @@ hint "saving...2";
 //City status
 _cities_status = [];
 {
+	//[151,false,false,true,false,false,[]]
 	_city_status = [];
 	_city_status pushBack (_x getVariable "id");
 	

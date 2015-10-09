@@ -38,6 +38,7 @@ for "_i" from 0 to (count _locations - 1) do {
 		_city setVariable ["active",false];
 		_city setVariable ["type",_type];
 		_city setVariable ["spawn_more",false];
+		_city setVariable ["data_units",[]];
 		_has_en = false;if (random 1 > 0.45) then {_has_en = true;};
 		_city setVariable ["occupied",_has_en];
 		btc_city_all set [_id,_city];

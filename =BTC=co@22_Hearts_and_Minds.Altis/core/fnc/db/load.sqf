@@ -8,6 +8,22 @@ _cities_status = profileNamespace getVariable ["btc_hm_cities",[]];
 //diag_log format ["_cities_status: %1",_cities_status];
 
 {
+/*
+	_city_status pushBack (_x getVariable "id");
+		
+	_city_status pushBack (_x getVariable "initialized");
+
+	_city_status pushBack (_x getVariable "spawn_more");
+	_city_status pushBack (_x getVariable "occupied");
+	
+	_city_status pushBack (_x getVariable "data_units");
+	
+	_city_status pushBack (_x getVariable ["has_ho",false]);
+	_city_status pushBack (_x getVariable ["ho_units_spawned",false]);
+	_city_status pushBack (_x getVariable ["ieds",[]]);
+*/
+
+
 	private ["_id","_city"];
 	_id = _x select 0;
 	_city = btc_city_all select _id;
@@ -22,8 +38,8 @@ _cities_status = profileNamespace getVariable ["btc_hm_cities",[]];
 	
 	if (btc_debug) then	{//_debug
 
-		if ((_x select 1)) then {(_city getVariable ["marker",""]) setmarkercolor "colorRed";} else {(_city getVariable ["marker",""]) setmarkercolor "colorGreen";};
-		(_city getVariable ["marker",""]) setmarkertext format ["loc_%3 %1 %2 - [%4]",(_city getVariable "name"),_city getVariable "type",_id,(_x select 1)];
+		if (_city getVariable ["occupied",false]) then {(_city getVariable ["marker",""]) setmarkercolor "colorRed";} else {(_city getVariable ["marker",""]) setmarkercolor "colorGreen";};
+		(_city getVariable ["marker",""]) setmarkertext format ["loc_%3 %1 %2 - [%4]",(_city getVariable "name"),_city getVariable "type",_id,(_x select 3)];
 		
 		diag_log format ["ID: %1",_id];
 		diag_log format ["data_city: %1",_x];
@@ -77,11 +93,10 @@ _array_ho = profileNamespace getVariable ["btc_hm_ho",[]];
 	
 	if (btc_debug) then {
 		//Marker
-		_marker = createmarker [format ["btc_hideout_%1", _pos], _pos];
+		createmarker [format ["btc_hideout_%1", _pos], _pos];
 		format ["btc_hideout_%1", _pos] setmarkertypelocal "mil_unknown";
 		format ["btc_hideout_%1", _pos] setMarkerTextLocal format ["Hideout %1", btc_hideouts_id];
 		format ["btc_hideout_%1", _pos] setMarkerSizeLocal [0.8, 0.8];
-		(format ["loc_%1",_city getVariable "id"]) setMarkerColor "ColorRed";
 	};
 
 	if (btc_debug_log) then {diag_log format ["btc_fnc_mil_create_hideout: _this = %1 ; POS %2 ID %3",_x,_pos,btc_hideouts_id];};
@@ -123,9 +138,9 @@ if (btc_debug) then {
 	player sideChat format ["Cache spawned in %1",btc_cache_pos];
 	//Marker
 	createmarker [format ["%1", btc_cache_pos], btc_cache_pos];
-	format ["%1", btc_cache_pos] setmarkertypelocal "mil_unknown";
-	format ["%1", btc_cache_pos] setMarkerTextLocal format ["Cache %1", btc_cache_n];
-	format ["%1", btc_cache_pos] setMarkerSizeLocal [0.8, 0.8];
+	format ["%1", btc_cache_pos] setmarkertype "mil_unknown";
+	format ["%1", btc_cache_pos] setMarkerText format ["Cache %1", btc_cache_n];
+	format ["%1", btc_cache_pos] setMarkerSize [0.8, 0.8];
 };
 
 //REP
