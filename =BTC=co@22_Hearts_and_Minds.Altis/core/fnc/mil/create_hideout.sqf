@@ -46,11 +46,11 @@ _city setVariable ["ho_pos",_pos];
 _city setVariable ["ho_units_spawned",false];
 
 if (btc_debug) then {
-	//Marker
+	//Marker _pos = getpos _x;
 	createmarker [format ["btc_hideout_%1", _pos], _pos];
-	format ["btc_hideout_%1", _pos] setmarkertypelocal "mil_unknown";
-	format ["btc_hideout_%1", _pos] setMarkerTextLocal format ["Hideout %1", btc_hideouts_id];
-	format ["btc_hideout_%1", _pos] setMarkerSizeLocal [0.8, 0.8];
+	format ["btc_hideout_%1", _pos] setmarkertype "mil_unknown";
+	format ["btc_hideout_%1", _pos] setMarkerText format ["Hideout %1", btc_hideouts_id];
+	format ["btc_hideout_%1", _pos] setMarkerSize [0.8, 0.8];
 	(format ["loc_%1",_city getVariable "id"]) setMarkerColor "ColorRed";
 };
 

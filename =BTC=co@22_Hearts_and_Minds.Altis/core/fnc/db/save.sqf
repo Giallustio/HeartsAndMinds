@@ -3,6 +3,8 @@ profileNamespace setVariable ["var_kills",10000];
 saveProfileNamespace;
 _playerKills = profileNamespace getVariable "var_kills";*/
 
+call btc_fnc_db_delete;
+
 private ["_cities_status","_fobs"];
 
 hint "saving...";
@@ -59,7 +61,7 @@ _array_ho = [];
 		_data pushback (markerText _x);	
 	} foreach (_x getVariable ["markers",[]]);
 	_data pushback (_cache_markers);
-	
+	diag_log format ["HO %1 DATA %2",_x,_data];
 	_array_ho pushBack _data;
 } foreach btc_hideouts;
 profileNamespace setVariable ["btc_hm_ho",_array_ho];
@@ -104,6 +106,7 @@ _array_veh = [];
 	{_cargo pushBack (typeOf _x)} foreach (_x getVariable ["cargo",[]]);
 	_data pushBack _cargo;
 	_array_veh pushBack _data;
+	//diag_log format ["VEH %1 DATA %2",_x,_data];
 } foreach btc_vehicles;
 profileNamespace setVariable ["btc_hm_vehs",_array_veh];
 
@@ -115,6 +118,9 @@ _array_obj = [];
 	_data pushBack (typeOf _x);
 	_data pushBack (getPosASL _x);
 	_data pushBack (getDir _x);
+	_cargo = [];
+	{_cargo pushBack (typeOf _x)} foreach (_x getVariable ["cargo",[]]);
+	_data pushBack _cargo;
 	_array_obj pushBack _data;
 } foreach btc_log_obj_created;
 profileNamespace setVariable ["btc_hm_objs",_array_obj];
