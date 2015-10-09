@@ -27,9 +27,9 @@ _bbr = boundingBoxReal btc_log_placing_obj;
 _c = boundingCenter btc_log_placing_obj;
 	
 btc_log_placing_h = (abs ((_bbr select 0) select 2)) - (_c select 2);
-btc_log_placing_d = abs (((_bbr select 1) select 1) - ((_bbr select 0) select 1));
+btc_log_placing_d = 1.5 + (abs (((_bbr select 1) select 1) - ((_bbr select 0) select 1)));
 
-btc_log_placing_obj attachTo [player,[0,(1.5 +btc_log_placing_d),btc_log_placing_h]];
+btc_log_placing_obj attachTo [player,[0,(btc_log_placing_d),btc_log_placing_h]];
 btc_log_placing_obj setDir btc_log_placing_dir;
 
 waitUntil {!alive player || player getVariable ["ACE_isUnconscious",false] || !btc_log_placing};
