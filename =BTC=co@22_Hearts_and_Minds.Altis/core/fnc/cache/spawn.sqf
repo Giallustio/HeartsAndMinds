@@ -19,7 +19,7 @@ if (btc_debug) then {
 	player sideChat format ["Cache spawned in %1",btc_cache_pos];
 	//Marker
 	createmarker [format ["%1", btc_cache_pos], btc_cache_pos];
-	format ["%1", btc_cache_pos] setmarkertypelocal "mil_unknown";
-	format ["%1", btc_cache_pos] setMarkerTextLocal format ["Cache %1", btc_cache_n];
-	format ["%1", btc_cache_pos] setMarkerSizeLocal [0.8, 0.8];
+	format ["%1", btc_cache_pos] setmarkertype "mil_unknown";
+	format ["%1", btc_cache_pos] setMarkerText format ["Cache %1", btc_cache_n];
+	format ["%1", btc_cache_pos] setMarkerSize [0.8, 0.8];
 };
