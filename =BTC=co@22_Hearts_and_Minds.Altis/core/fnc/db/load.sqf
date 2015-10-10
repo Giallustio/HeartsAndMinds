@@ -106,7 +106,10 @@ _array_ho = profileNamespace getVariable ["btc_hm_ho",[]];
 } foreach _array_ho;
 
 _ho = profileNamespace getVariable ["btc_hm_ho_sel",objNull];
-btc_hq getVariable ["info_hideout",_ho];
+btc_hq setVariable ["info_hideout",_ho];
+
+if (count btc_hideouts == 0) then {[] execVM "core\fnc\common\final_phase.sqf";};
+
 //CACHE
 
 btc_cache_cities = + btc_city_all;
