@@ -87,7 +87,7 @@ if (_has_ho && {!(_city getVariable ["ho_units_spawned",false])}) then {
 	private ["_pos","_random"];
 	_city setVariable ["ho_units_spawned",true];
 	//_pos = _city getVariable ["ho_pos",getPos _city];ho
-	_pos = _city getVariable ["ho",_city];
+	_pos = _city getVariable ["ho_pos", getpos _city];
 	[_pos,20,(10 + random 6),0.8] call btc_fnc_mil_create_group;
 	[_pos,120,(1 + random 2),0.5] call btc_fnc_mil_create_group;
 	[_pos,120,(1 + random 2),0.5] call btc_fnc_mil_create_group;
