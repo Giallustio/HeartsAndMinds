@@ -1,4 +1,5 @@
 
+if (count btc_hideouts == 0 && isNull btc_cache_obj) exitWith {[[3],"btc_fnc_show_hint",(_this select 0)] spawn BIS_fnc_MP;};
 
 
 private ["_id","_n"];
