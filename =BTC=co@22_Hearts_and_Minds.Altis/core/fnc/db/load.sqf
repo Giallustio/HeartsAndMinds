@@ -94,9 +94,9 @@ _array_ho = profileNamespace getVariable ["btc_hm_ho",[]];
 	if (btc_debug) then {
 		//Marker
 		createmarker [format ["btc_hideout_%1", _pos], _pos];
-		format ["btc_hideout_%1", _pos] setmarkertypelocal "mil_unknown";
-		format ["btc_hideout_%1", _pos] setMarkerTextLocal format ["Hideout %1", btc_hideouts_id];
-		format ["btc_hideout_%1", _pos] setMarkerSizeLocal [0.8, 0.8];
+		format ["btc_hideout_%1", _pos] setmarkertype "mil_unknown";
+		format ["btc_hideout_%1", _pos] setMarkerText format ["Hideout %1", btc_hideouts_id];
+		format ["btc_hideout_%1", _pos] setMarkerSize [0.8, 0.8];
 	};
 
 	if (btc_debug_log) then {diag_log format ["btc_fnc_mil_create_hideout: _this = %1 ; POS %2 ID %3",_x,_pos,btc_hideouts_id];};
