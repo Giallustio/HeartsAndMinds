@@ -21,7 +21,7 @@ btc_side_assigned = true;publicVariable "btc_side_assigned";
 
 [[7,_pos,_city getVariable "name"],"btc_fnc_task_create",true] spawn BIS_fnc_MP;
 
-btc_side_jip_data = [5,_pos,_city getVariable "name"];
+btc_side_jip_data = [7,_pos,_city getVariable "name"];
 
 _city setVariable ["spawn_more",true];
 
@@ -58,7 +58,6 @@ if (btc_side_aborted || btc_side_failed ) exitWith {
 
 		deleteVehicle _this;
 	};} foreach _tower;
-	};
 };
 
 15 call btc_fnc_rep_change;
