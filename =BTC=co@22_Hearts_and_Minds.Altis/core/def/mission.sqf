@@ -188,7 +188,8 @@ btc_construction_array =
 			"Land_CncWall4_F",
 			"Land_Mil_ConcreteWall_F",
 			"Land_Mil_WallBig_4m_F",
-			"Land_Mil_WallBig_Corner_F"		
+			"Land_Mil_WallBig_Corner_F",
+			"Land_PortableLight_double_F"	
 		],
 		[
 			//"Static"
