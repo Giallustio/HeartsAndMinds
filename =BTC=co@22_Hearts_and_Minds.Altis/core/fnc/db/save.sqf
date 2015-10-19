@@ -55,13 +55,14 @@ _array_ho = [];
 	_data pushBack (_x getVariable ["cap_time",0]);
 	_data pushBack (_x getVariable ["assigned_to",objNull]);
 	
-	_cache_markers = [];
+	_ho_markers = [];
 	{
-		_data = [];
-		_data pushback (getMarkerPos _x);
-		_data pushback (markerText _x);	
+		_marker = [];
+		_marker pushback (getMarkerPos _x);
+		_marker pushback (markerText _x);
+		_ho_markers pushback _marker;
 	} foreach (_x getVariable ["markers",[]]);
-	_data pushback (_cache_markers);
+	_data pushback (_ho_markers);
 	diag_log format ["HO %1 DATA %2",_x,_data];
 	_array_ho pushBack _data;
 } foreach btc_hideouts;
@@ -78,7 +79,8 @@ _cache_markers = [];
 {
 	_data = [];
 	_data pushback (getMarkerPos _x);
-	_data pushback (markerText _x);	
+	_data pushback (markerText _x);
+	_cache_markers pushBack _data;
 } foreach btc_cache_markers;
 _array_cache pushback (_cache_markers);
 profileNamespace setVariable ["btc_hm_cache",_array_cache];

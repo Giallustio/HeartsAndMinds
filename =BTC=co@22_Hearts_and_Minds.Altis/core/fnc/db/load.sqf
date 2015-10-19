@@ -10,7 +10,7 @@ _cities_status = profileNamespace getVariable ["btc_hm_cities",[]];
 {
 /*
 	_city_status pushBack (_x getVariable "id");
-		
+
 	_city_status pushBack (_x getVariable "initialized");
 
 	_city_status pushBack (_x getVariable "spawn_more");

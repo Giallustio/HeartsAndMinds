@@ -79,7 +79,9 @@ if (isServer) then {
 	btc_log_cargo_repo = "Land_HBarrierBig_F" createVehicle [- 5000,- 5000,0];
 	
 	//Patrol
+	btc_patrol_max = 5;
 	btc_patrol_active = 0;
+	btc_patrol_area = 2500;
 	
 	//Rep
 	btc_global_reputation = _p_rep;	
@@ -202,6 +204,7 @@ btc_construction_array =
 		],
 		[
 			//"Ammobox"
+			"rhsusf_mags_crate",
 			"Box_NATO_Ammo_F",
 			"Box_NATO_Support_F",
 			"ACE_medicalSupplyCrate_advanced",
@@ -401,10 +404,6 @@ switch (true) do {
 		btc_type_gl = ["O_GMG_01_F","O_GMG_01_high_F"];	
 	}
 };
-//Patrol
-btc_patrol_max = 10;
-btc_patrol_active = 0;
-btc_patrol_area = 2500;
 
 //Rep
 btc_rep_bonus_cache = 100;
