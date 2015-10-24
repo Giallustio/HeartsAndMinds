@@ -48,6 +48,6 @@ switch _this do
 		_task = player getVariable "task_8";
 		_task setTaskState "FAILED";
 		["TaskFailed",["Side mission failed!","Checkpoint not clean"]] call bis_fnc_showNotification;
-		player setVariable ["task_7",nil];
+		player setVariable ["task_8",nil];
 	};
 };
