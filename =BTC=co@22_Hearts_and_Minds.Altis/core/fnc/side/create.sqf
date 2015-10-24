@@ -16,4 +16,5 @@ switch (_side) do {
 	case 1 : {[] spawn btc_fnc_side_mines;};
 	case 2 : {[] spawn btc_fnc_side_vehicle;};
 	case 3 : {[] spawn btc_fnc_side_get_city;};
+	case 4 : {[] spawn btc_fnc_side_tower;};
 };
