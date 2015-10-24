@@ -1,5 +1,5 @@
 
-private ["_useful","_vehpos","_city","_pos","_roads","_marker","_unit_type","_veh"];
+private ["_useful","_veh","_vehpos","_city","_pos","_r","_houses","_roads","_marker","_unit_type","_fx","_btc_civ_type_item","_item_type","_unconsciousTime","_selection","_type"];
 
 _useful = [];
 {if (!(_x getVariable ["occupied",false]) && {_x getVariable ["type",""] != "NameLocal"} && {_x getVariable ["type",""] != "Hill"}) then {_useful = _useful + [_x];};} foreach btc_city_all;
@@ -8,15 +8,17 @@ _city = _useful select (floor random count _useful);
 _pos = [getPos _city, 100] call btc_fnc_randomize_pos;
 
 _r = random 2;
-if ( _r < 1)	then {_roads = _pos nearRoads 100;
+if ( _r < 1)	then {
+	_roads = _pos nearRoads 100;
 	if (count _roads > 0) then {_pos = getPos (_roads select (floor random count _roads));};
 	_vehpos = [_pos, 10] call btc_fnc_randomize_pos;
-	}
-	else {_houses = [[(_pos select 0),(_pos select 1),0],50] call btc_fnc_getHouses;
-		if (count _houses == 0) exitWith {};
-		_pos = getPos (_houses select (floor random count _houses));
-		_vehpos = [_pos, 5] call btc_fnc_randomize_pos;
-	};
+} else {
+	_houses = [[(_pos select 0),(_pos select 1),0],100] call btc_fnc_getHouses;
+	if (count _houses == 0) exitWith {};
+	_pos = getPos (_houses select (floor random count _houses));
+	_vehpos = [(_pos select 0),(_pos select 1),(_pos select 2) + 0.1];
+	player setPos _vehpos;
+};
 
 btc_side_aborted = false;
 btc_side_done = false;
@@ -27,32 +29,35 @@ btc_side_assigned = true;publicVariable "btc_side_assigned";
 
 btc_side_jip_data = [7,_pos,_city getVariable "name"];
 
-_area = createmarker [format ["sm_%1",_pos],_pos];
-_area setMarkerShape "ELLIPSE";
-_area setMarkerBrush "SolidBorder";
-_area setMarkerSize [30, 30];
-_area setMarkerAlpha 0.3;
-_area setmarkercolor "colorBlue";
-
 _marker = createmarker [format ["sm_2_%1",_pos],_pos];
 _marker setmarkertype "hd_flag";
 _marker setmarkertext "Civil need help";
 _marker setMarkerSize [0.6, 0.6];
 
-if ( _r < 1) then {_veh_type = btc_civ_type_veh select (floor (random (count btc_civ_type_veh)));
+if ( _r < 1) then {
+	_veh_type = btc_civ_type_veh select (floor (random (count btc_civ_type_veh)));
 	_veh = createVehicle [_veh_type, _vehpos, [], 0, "NONE"];
 	_veh setDir (random 360);
 	_veh setDamage 0.7;
+	if (_r <0.5) then {
+		_veh setHit ["wheel_1_2_steering", 1];
+	} else {
+		_veh setHit ["wheel_2_1_steering", 1];
+	};
 	_veh setHit ["wheel_1_1_steering", 1];
 	_fx = "test_EmptyObjectForSmoke" createVehicle (getposATL _veh);
 	_fx attachTo [_veh,[0,0,0]];
-	}
-	else {_veh = createVehicle ["Item_ToolKit", _vehpos, [], 0, "NONE"];
+} else {
+	_btc_civ_type_item = ["Land_PortableLongRangeRadio_F","Land_MobilePhone_smart_F","Land_MobilePhone_old_F"];
+	_item_type = _btc_civ_type_item select (floor (random (count _btc_civ_type_item)));
+	_veh = createVehicle [_item_type, _vehpos, [], 0, "NONE"];
 	_veh setDir (random 360);
-	};
+};
 
 _unit_type = btc_civ_type_units select (floor random count btc_civ_type_units);
 _group = createGroup civilian;
+_group setVariable ["no_cache",true];
+_group setVariable ["btc_patrol",true];
 _unit =_group createUnit [_unit_type, _pos, [], 0, "NONE"];
 (leader _group) setpos _pos;
 _unit setBehaviour "CARELESS";
@@ -61,6 +66,13 @@ _unit setPosATL _pos;
 _unit setUnitPos "DOWN";
 {_x call btc_fnc_rep_add_eh} foreach units _group;
 
+/*
+Author: SENSEI
+Last modified: 10/3/2015
+Description: set unit in cardiac arrest
+Note: needs delay if called directly after spawning unit
+Return: nothing
+__________________________________________________________________*/
 sleep 1;
 if (ace_medical_level isEqualTo 1) then {
 	_unconsciousTime = 120 + round (random 600);
@@ -117,7 +129,7 @@ if (ace_medical_level isEqualTo 1) then {
 
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !Alive _unit || {[_unit] call ace_common_fnc_isAwake && ((_unit getVariable ["ace_medical_pain", 0]) < 0.4)})};
 //|| {[_unit] call ace_common_fnc_isAwake && ((_unit getVariable ["ace_medical_pain", 0]) isEqualTo 0)}
-{deletemarker _x} foreach [_area,_marker];
+{deletemarker _x} foreach [_marker];
 
 if (btc_side_aborted || btc_side_failed || !Alive _unit) exitWith {
 	[7,"btc_fnc_task_fail",true] spawn BIS_fnc_MP;

@@ -57,10 +57,10 @@ switch (_this select 0) do
 	case 7 :
 	{
 		private "_task";
-		_task = player createSimpleTask [("Civil need treatment in " + (_this select 2))];
-		_task setSimpleTaskDescription [format ["Locale population is calling for a medic in %1, stabilise the patioent and wait when he recover all his faculties",(_this select 2)],("Stabilised civil " + (_this select 2)),("Stabilised civil " + (_this select 2))];
+		_task = player createSimpleTask [("Medical emergency call in " + (_this select 2))];
+		_task setSimpleTaskDescription [format ["A civilian is calling for a medic in %1, treating and wait for patient stabilization ",(_this select 2)],("Medical emergency call in " + (_this select 2)),("Medical emergency call in " + (_this select 2))];
 		_task setSimpleTaskDestination (_this select 1);
 		player setVariable ["task_7",_task];
-		["TaskAssigned",["New task assigned!",("Stabilised civil " + (_this select 2))]] call bis_fnc_showNotification;
+		["TaskAssigned",["New task assigned!",("Medical emergency call in " + (_this select 2))]] call bis_fnc_showNotification;
 	};
 };
