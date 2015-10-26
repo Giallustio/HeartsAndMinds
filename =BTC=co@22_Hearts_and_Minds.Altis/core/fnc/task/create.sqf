@@ -67,7 +67,7 @@ switch (_this select 0) do
 	{
 		private "_task";
 		_task = player createSimpleTask [("Medical emergency call in " + (_this select 2))];
-		_task setSimpleTaskDescription [format ["A civilian is calling for a medic in %1, treating and wait for patient stabilization ",(_this select 2)],("Medical emergency call in " + (_this select 2)),("Medical emergency call in " + (_this select 2))];
+		_task setSimpleTaskDescription [format ["A civilian is calling for a medic in %1, treat and wait for patient stabilization ",(_this select 2)],("Medical emergency call in " + (_this select 2)),("Medical emergency call in " + (_this select 2))];
 		_task setSimpleTaskDestination (_this select 1);
 		player setVariable ["task_8",_task];
 		["TaskAssigned",["New task assigned!",("Medical emergency call in " + (_this select 2))]] call bis_fnc_showNotification;

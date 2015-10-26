@@ -64,7 +64,7 @@ switch _this do
 		private "_task";
 		_task = player getVariable "task_8";
 		_task setTaskState "SUCCEEDED";
-		["TaskSucceeded",["Side mission Accomplished!","The civilian is stabilized!"]] call bis_fnc_showNotification;
+		["TaskSucceeded",["Side mission Accomplished!","The civilian has been stabilized!"]] call bis_fnc_showNotification;
 		player setVariable ["task_8",nil];
 	};
 };
