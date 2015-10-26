@@ -6,17 +6,16 @@ _useful = [];
 {if (!(_x getVariable ["occupied",false]) && {_x getVariable ["type",""] != "NameLocal"} && {_x getVariable ["type",""] != "Hill"}) then {_useful = _useful + [_x];};} foreach btc_city_all;
 if (count _useful == 0) exitWith {[] spawn btc_fnc_side_create;};
 _city = _useful select (floor random count _useful);
-_pos = [getPos _city, 100] call btc_fnc_randomize_pos;
+_pos = getPos _city;
 
 //// Choose spawn in house or on road \\\\
 _r = random 2;
 if ( _r < 1)	then {
-	_roads = _pos nearRoads 100;
+	_roads = _pos nearRoads 200;
 	if (count _roads > 0) then {_pos = getPos (_roads select (floor random count _roads));};
 	_vehpos = [_pos, 10] call btc_fnc_randomize_pos;
 } else {
-	_houses = [[(_pos select 0),(_pos select 1),0],100] call btc_fnc_getHouses;
-	if (count _houses == 0) exitWith {};
+	_houses = [[(_pos select 0),(_pos select 1),0],200] call btc_fnc_getHouses;
 	_pos = getPos (_houses select (floor random count _houses));
 	_vehpos = [(_pos select 0),(_pos select 1),(_pos select 2) + 0.1];
 };
@@ -66,7 +65,7 @@ _group setVariable ["btc_patrol",true];
 _unit =_group createUnit [_unit_type, _pos, [], 0, "NONE"];
 (leader _group) setpos _pos;
 _unit setBehaviour "CARELESS";
-_unit setDir random 360;
+_unit setDir (random 360);
 _unit setPosATL _pos;
 _unit setUnitPos "DOWN";
 {_x call btc_fnc_rep_add_eh} foreach units _group;
