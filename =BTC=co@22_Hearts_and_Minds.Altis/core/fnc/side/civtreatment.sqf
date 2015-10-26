@@ -26,9 +26,9 @@ btc_side_done = false;
 btc_side_failed = false;
 btc_side_assigned = true;publicVariable "btc_side_assigned";
 
-[[7,_pos,_city getVariable "name"],"btc_fnc_task_create",true] spawn BIS_fnc_MP;
+[[8,_pos,_city getVariable "name"],"btc_fnc_task_create",true] spawn BIS_fnc_MP;
 
-btc_side_jip_data = [7,_pos,_city getVariable "name"];
+btc_side_jip_data = [8,_pos,_city getVariable "name"];
 
 //// Create marker \\\\
 _marker = createmarker [format ["sm_2_%1",_pos],_pos];
@@ -122,7 +122,7 @@ waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !Alive _unit || {[_u
 {deletemarker _x} foreach [_marker];
 
 if (btc_side_aborted || btc_side_failed || !Alive _unit) exitWith {
-	[7,"btc_fnc_task_fail",true] spawn BIS_fnc_MP;
+	[8,"btc_fnc_task_fail",true] spawn BIS_fnc_MP;
 	btc_side_assigned = false;publicVariable "btc_side_assigned";
 	{_x spawn {
 	waitUntil {sleep 5; ({_x distance _this < 300} count playableUnits == 0)};
@@ -132,7 +132,7 @@ if (btc_side_aborted || btc_side_failed || !Alive _unit) exitWith {
 
 15 call btc_fnc_rep_change;
 
-[7,"btc_fnc_task_set_done",true] spawn BIS_fnc_MP;
+[8,"btc_fnc_task_set_done",true] spawn BIS_fnc_MP;
 
 _unit setUnitPos "UP";
 {_x spawn {
