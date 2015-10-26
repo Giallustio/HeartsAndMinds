@@ -1,13 +1,14 @@
 
 private ["_useful","_veh","_vehpos","_city","_pos","_r","_houses","_roads","_marker","_unit_type","_fx","_btc_civ_type_phone","_item_type","_unconsciousTime","_selection","_type"];
-//// Choose the City \\\\
+
+//// Choose a clear City \\\\
 _useful = [];
 {if (!(_x getVariable ["occupied",false]) && {_x getVariable ["type",""] != "NameLocal"} && {_x getVariable ["type",""] != "Hill"}) then {_useful = _useful + [_x];};} foreach btc_city_all;
 if (count _useful == 0) exitWith {[] spawn btc_fnc_side_create;};
 _city = _useful select (floor random count _useful);
 _pos = [getPos _city, 100] call btc_fnc_randomize_pos;
 
-//// Choose between spawn in house or road \\\\
+//// Choose spawn in house or road \\\\
 _r = random 2;
 if ( _r < 1)	then {
 	_roads = _pos nearRoads 100;
@@ -48,7 +49,7 @@ if ( _r < 1) then {
 		_veh setHit ["wheel_2_1_steering", 1];
 	};
 	_veh setHit ["wheel_1_1_steering", 1];
-	//// Random wheel hit \\\\
+	//// Add fx effect on car \\\\
 	_fx = "test_EmptyObjectForSmoke" createVehicle (getposATL _veh);
 	_fx attachTo [_veh,[0,0,0]];
 } else {
