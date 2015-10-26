@@ -8,7 +8,7 @@ if (count _useful == 0) exitWith {[] spawn btc_fnc_side_create;};
 _city = _useful select (floor random count _useful);
 _pos = [getPos _city, 100] call btc_fnc_randomize_pos;
 
-//// Choose spawn in house or road \\\\
+//// Choose spawn in house or on road \\\\
 _r = random 2;
 if ( _r < 1)	then {
 	_roads = _pos nearRoads 100;
@@ -36,7 +36,7 @@ _marker setmarkertype "hd_flag";
 _marker setmarkertext "Civil need help";
 _marker setMarkerSize [0.6, 0.6];
 
-//// Create civ at choosed location \\\\
+//// Create civ on _pos \\\\
 if ( _r < 1) then {
 	_veh_type = btc_civ_type_veh select (floor (random (count btc_civ_type_veh)));
 	_veh = createVehicle [_veh_type, _vehpos, [], 0, "NONE"];
@@ -49,7 +49,7 @@ if ( _r < 1) then {
 		_veh setHit ["wheel_2_1_steering", 1];
 	};
 	_veh setHit ["wheel_1_1_steering", 1];
-	//// Add fx effect on car \\\\
+	//// Add smoke effect on car \\\\
 	_fx = "test_EmptyObjectForSmoke" createVehicle (getposATL _veh);
 	_fx attachTo [_veh,[0,0,0]];
 } else {
