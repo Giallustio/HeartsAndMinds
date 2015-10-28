@@ -39,7 +39,7 @@ _veh = createVehicle [_veh_type, _Spos, [], 0, "NONE"];
 _unit_type createUnit [_pos, _group, "this moveinDriver _veh;this assignAsDriver _veh;"];
 
 _veh setVariable ["driver",leader _group];
-_veh addEventHandler ["HandleDamage", btc_fnc_civ_traffic_hd];
+_veh addEventHandler ["HandleDamage", {btc_fnc_civ_traffic_hd}];
 
 {_x call btc_fnc_rep_add_eh;_x setVariable ["traffic",_veh];} foreach units _group;
 
