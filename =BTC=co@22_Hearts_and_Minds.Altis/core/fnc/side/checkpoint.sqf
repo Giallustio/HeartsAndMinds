@@ -19,7 +19,7 @@ if (count _roads > 0) then {_road = (_roads select (floor random count _roads));
 _roadConnectedTo = roadsConnectedTo _road;
 _connectedRoad = _roadConnectedTo select 0;
 _direction = [_road, _connectedRoad] call BIS_fnc_dirTo;
-
+hint str(_direction);
 btc_side_aborted = false;
 btc_side_done = false;
 btc_side_failed = false;
@@ -37,27 +37,27 @@ _marker setmarkertext "Destroy checkpoint";
 _marker setMarkerSize [0.6, 0.6];
 
 _btc_composition_checkpoint = [
-	["MetalBarrel_burning_F",348.874,[0.243652,-2.78906,0]],
-	["MetalBarrel_burning_F",348.874,[-0.131836,3.12939,0]],
+	["MetalBarrel_burning_F",0,[0.243652,-2.78906,0]],
+	["MetalBarrel_burning_F",0,[-0.131836,3.12939,0]],
 	["Land_BagFence_Long_F",90,[0.769531,-4.021,0]],
-	["Land_BagFence_Long_F",90.0551,[-0.638672,4.31787,0]],
-	["Flag_Red_F",273.679,[2.23193,-4.375,0]],
-	["Land_BarrelWater_F",348.874,[1.27393,-4.93604,0]],
-	["Land_Pallets_F",231.11,[-2.94336,3.96436,0]],
-	["Land_BarrelWater_F",348.874,[1.83984,-4.95264,0]],
-	["Box_IND_WpsSpecial_F",175.056,[-1.97998,4.88574,0]],
-	["Land_CncBarrier_stripes_F",180.201,[2.26367,-5.38623,0]],
-	["RoadCone_L_F",180.201,[1.14771,-5.89697,0.00211954]],
-	["Land_CncBarrier_stripes_F",359.699,[-2.1416,5.66553,0]],
-	["RoadCone_L_F",359.699,[-1.03101,6.18164,0.00211954]],
-	["RoadCone_L_F",180.201,[2.81616,-5.81689,0.00211954]],
-	["RoadCone_L_F",359.699,[-2.6731,6.17773,0.00211954]]
+	["Land_BagFence_Long_F",90,[-0.638672,4.31787,0]],
+	["Flag_Red_F",-90,[2.23193,-4.375,0]],
+	["Land_BarrelWater_F",0,[1.27393,-4.93604,0]],
+	["Land_Pallets_F",-90,[-2.94336,3.96436,0]],
+	["Land_BarrelWater_F",0,[1.83984,-4.95264,0]],
+	["Box_IND_WpsSpecial_F",180,[-1.97998,4.88574,0]],
+	["Land_CncBarrier_stripes_F",180,[2.26367,-5.38623,0]],
+	["RoadCone_L_F",180,[1.14771,-5.89697,0.00211954]],
+	["Land_CncBarrier_stripes_F",0,[-2.1416,5.66553,0]],
+	["RoadCone_L_F",0,[-1.03101,6.18164,0.00211954]],
+	["RoadCone_L_F",180,[2.81616,-5.81689,0.00211954]],
+	["RoadCone_L_F",0,[-2.6731,6.17773,0.00211954]]
 ];
 
-[_pos,_btc_composition_checkpoint] call btc_fnc_create_composition;
 _statics = btc_type_gl + btc_type_mg;
-[[(_pos select 0) + 2.14355, (_pos select 1)  -2.74805, (_pos select 2)],_statics,_direction] call btc_fnc_mil_create_static;
-[[(_pos select 0) -2.04443, (_pos select 1) + 3.03271, (_pos select 2)],_statics,-_direction] call btc_fnc_mil_create_static;
+[[((_pos select 0) + 2.14355*cos(_direction) - -2.74805*sin(_direction)), ((_pos select 1)  -2.74805*cos(_direction) + 2.14355*sin(_direction)), (_pos select 2)],_statics,_direction] call btc_fnc_mil_create_static;
+[[((_pos select 0) -2.04443*cos(_direction) - 3.03271*sin(_direction)), ((_pos select 1) + 3.03271*cos(_direction) + -2.04443*sin(_direction)), (_pos select 2)],_statics,-_direction] call btc_fnc_mil_create_static;
+[_pos,_direction,_btc_composition_checkpoint] call btc_fnc_create_composition;
 
 _box = nearestObject [_pos, "Box_IND_WpsSpecial_F"];
 
@@ -68,7 +68,6 @@ waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !Alive _box )};
 if (btc_side_aborted || btc_side_failed ) exitWith {
 	[8,"btc_fnc_task_fail",true] spawn BIS_fnc_MP;
 	btc_side_assigned = false;publicVariable "btc_side_assigned";
-	};
 };
 
 80 call btc_fnc_rep_change;
