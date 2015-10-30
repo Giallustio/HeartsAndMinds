@@ -19,7 +19,7 @@ if (count _roads > 0) then {_road = (_roads select (floor random count _roads));
 _roadConnectedTo = roadsConnectedTo _road;
 _connectedRoad = _roadConnectedTo select 0;
 _direction = [_road, _connectedRoad] call BIS_fnc_dirTo;
-hint str(_direction);
+
 btc_side_aborted = false;
 btc_side_done = false;
 btc_side_failed = false;
@@ -33,54 +33,46 @@ _city setVariable ["spawn_more",true];
 
 _marker = createmarker [format ["sm_2_%1",_pos],_pos];
 _marker setmarkertype "hd_flag";
-_marker setmarkertext "Radio Tower";
+_marker setmarkertext "Destroy checkpoint";
 _marker setMarkerSize [0.6, 0.6];
 
-_btc_type_tower = ["Land_Portable_generator_F"];
-_tower_type = _btc_type_tower select (floor (random (count _btc_type_tower)));
-
-_tower = createVehicle [_tower_type, _pos, [], 0, "NONE"];
-_tower setDir (_direction);
-
 _btc_composition_checkpoint = [
-	["C_supplyCrate_F",0,[0.2,0.2,0]],
-	["Flag_Red_F",0,[-0.542969,-0.270508,-0.00143433]],
-	["Land_BagFence_Round_F",146.026,[2.82666,-1.77124,-0.00143433]],
-	["Land_Razorwire_F",0,[1.08496,-3.35547,-0.00143433]],
-	["Land_TentA_F",349.935,[-2.09814,2.94702,-0.00143433]],
-	["Land_TentA_F",349.935,[1.10889,3.53687,-0.00143433]],
-	["Land_Portable_generator_F",243.462,[-3.89404,1.15088,-0.0022583]],
-	["C_supplyCrate_F",55.6146,[-4.60059,-2.28027,-0.00143433]],
-	["Land_PaperBox_open_full_F",143.441,[-3.74023,-3.77405,-0.00143433]],
-	["Land_Razorwire_F",0,[-5.93555,0.444702,-0.00143433]],
-	["Land_PaperBox_closed_F",0,[-5.76221,-3.35876,-0.00143433]],
-	["Land_PaperBox_open_empty_F",324.641,[-4.91895,-4.99585,-0.00143433]],
-	["Land_Pallet_MilBoxes_F",297.549,[-7.8623,-2.05115,-0.00143433]]
+	["MetalBarrel_burning_F",348.874,[0.243652,-2.78906,0]],
+	["MetalBarrel_burning_F",348.874,[-0.131836,3.12939,0]],
+	["Land_BagFence_Long_F",90,[0.769531,-4.021,0]],
+	["Land_BagFence_Long_F",90.0551,[-0.638672,4.31787,0]],
+	["Flag_Red_F",273.679,[2.23193,-4.375,0]],
+	["Land_BarrelWater_F",348.874,[1.27393,-4.93604,0]],
+	["Land_Pallets_F",231.11,[-2.94336,3.96436,0]],
+	["Land_BarrelWater_F",348.874,[1.83984,-4.95264,0]],
+	["Box_IND_WpsSpecial_F",175.056,[-1.97998,4.88574,0]],
+	["Land_CncBarrier_stripes_F",180.201,[2.26367,-5.38623,0]],
+	["RoadCone_L_F",180.201,[1.14771,-5.89697,0.00211954]],
+	["Land_CncBarrier_stripes_F",359.699,[-2.1416,5.66553,0]],
+	["RoadCone_L_F",359.699,[-1.03101,6.18164,0.00211954]],
+	["RoadCone_L_F",180.201,[2.81616,-5.81689,0.00211954]],
+	["RoadCone_L_F",359.699,[-2.6731,6.17773,0.00211954]]
 ];
 
 [_pos,_btc_composition_checkpoint] call btc_fnc_create_composition;
+_statics = btc_type_gl + btc_type_mg;
+[[(_pos select 0) + 2.14355, (_pos select 1)  -2.74805, (_pos select 2)],_statics,_direction] call btc_fnc_mil_create_static;
+[[(_pos select 0) -2.04443, (_pos select 1) + 3.03271, (_pos select 2)],_statics,-_direction] call btc_fnc_mil_create_static;
 
-waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !Alive _tower )};
+_box = nearestObject [_pos, "Box_IND_WpsSpecial_F"];
+
+waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !Alive _box )};
 
 {deletemarker _x} foreach [_marker];
 
 if (btc_side_aborted || btc_side_failed ) exitWith {
-	[7,"btc_fnc_task_fail",true] spawn BIS_fnc_MP;
+	[8,"btc_fnc_task_fail",true] spawn BIS_fnc_MP;
 	btc_side_assigned = false;publicVariable "btc_side_assigned";
-	_tower spawn {
-		waitUntil {sleep 5; ({_x distance _this < 300} count playableUnits == 0)};
-		deleteVehicle _this;
 	};
 };
 
 80 call btc_fnc_rep_change;
 
 [8,"btc_fnc_task_set_done",true] spawn BIS_fnc_MP;
-
-_tower spawn {
-	waitUntil {sleep 5; ({_x distance _this < 300} count playableUnits == 0)};
-	deleteVehicle _this;
-};
-
 
 btc_side_assigned = false;publicVariable "btc_side_assigned";
