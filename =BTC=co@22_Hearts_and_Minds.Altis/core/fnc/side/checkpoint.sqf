@@ -43,7 +43,7 @@ _markers = [];
 for "_i" from 1 to (1 + round random 2) do {
 	//// Choose a road \\\\
 	_pos = [getPos _city, 300] call btc_fnc_randomize_pos;
-	_roads = _pos nearRoads 100;
+	_roads = _pos nearRoads 300;
 	if (count _roads > 0) then {_road = (_roads select (floor random count _roads));
 		_pos = getPos _road;
 		};
@@ -60,8 +60,8 @@ for "_i" from 1 to (1 + round random 2) do {
 	_markers = _markers + [_marker];
 
 	//// Create checkpoint with static at _pos \\\\
-	[[((_pos select 0) + 2.14355*cos(-_direction) - -2.74805*sin(-_direction)), ((_pos select 1)  -2.74805*cos(-_direction) + 2.14355*sin(-_direction)), (_pos select 2)],_statics,_direction] call btc_fnc_mil_create_static;
-	[[((_pos select 0) -2.04443*cos(-_direction) - 3.03271*sin(-_direction)), ((_pos select 1) + 3.03271*cos(-_direction) + -2.04443*sin(-_direction)), (_pos select 2)],_statics,_direction + 180] call btc_fnc_mil_create_static;
+	[[((_pos select 0) -2.39185*cos(-_direction) - 2.33984*sin(-_direction)), ((_pos select 1)  + 2.33984 *cos(-_direction) -2.39185*sin(-_direction)), (_pos select 2)],_statics,_direction + 180] call btc_fnc_mil_create_static;
+	[[((_pos select 0) + 2.72949*cos(-_direction) - -2.03857*sin(-_direction)), ((_pos select 1) -2.03857*cos(-_direction) +2.72949*sin(-_direction)), (_pos select 2)],_statics,_direction ] call btc_fnc_mil_create_static;
 	[_pos,_direction,_btc_composition_checkpoint] call btc_fnc_create_composition;
 
 	_boxes = _boxes + [nearestObject [_pos, "Box_IND_WpsSpecial_F"]];
