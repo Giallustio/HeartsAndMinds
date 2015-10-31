@@ -64,7 +64,7 @@ switch _this do
 		private "_task";
 		_task = player getVariable "task_8";
 		_task setTaskState "SUCCEEDED";
-		["TaskSucceeded",["Side mission Accomplished!","Enemy checkpoint clear!"]] call bis_fnc_showNotification;
+		["TaskSucceeded",["Side mission Accomplished!","Checkpoints have been destroyed!"]] call bis_fnc_showNotification;
 		player setVariable ["task_8",nil];
 	};
 };
