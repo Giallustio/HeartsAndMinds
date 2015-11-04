@@ -1,5 +1,5 @@
 
-private ["_useful","_city","_pos","_road","_roads","_marker","_statics","_tower_type","_tower","_roadConnectedTo","_connectedRoad","_direction"];
+private ["_useful","_city","_pos","_road","_roads","_boxes","_marker","_markers","_statics","_tower_type","_tower","_roadConnectedTo","_connectedRoad","_direction","_btc_type_barrel","_btc_type_canister","_btc_type_pallet","_btc_type_box","_type_barrel","_type_canister","_type_pallet","_type_box","_btc_composition_checkpoint"];
 
 //// Choose an occupied City \\\\
 _useful = [];
@@ -19,23 +19,10 @@ btc_side_jip_data = [8,_pos,_city getVariable "name"];
 
 _city setVariable ["spawn_more",true];
 
-_btc_composition_checkpoint = [
-	["MetalBarrel_burning_F",0,[0.243652,-2.78906,0]],
-	["MetalBarrel_burning_F",0,[-0.131836,3.12939,0]],
-	["Land_BagFence_Long_F",90,[0.769531,-4.021,0]],
-	["Land_BagFence_Long_F",90,[-0.638672,4.31787,0]],
-	["Flag_Red_F",-90,[2.23193,-4.375,0]],
-	["Land_BarrelWater_F",0,[1.27393,-4.93604,0]],
-	["Land_Pallets_F",-90,[-2.94336,3.96436,0]],
-	["Land_BarrelWater_F",0,[1.83984,-4.95264,0]],
-	["Box_IND_WpsSpecial_F",180,[-1.97998,4.88574,0]],
-	["Land_CncBarrier_stripes_F",180,[2.26367,-5.38623,0]],
-	["RoadCone_L_F",180,[1.14771,-5.89697,0.00211954]],
-	["Land_CncBarrier_stripes_F",0,[-2.1416,5.66553,0]],
-	["RoadCone_L_F",0,[-1.03101,6.18164,0.00211954]],
-	["RoadCone_L_F",180,[2.81616,-5.81689,0.00211954]],
-	["RoadCone_L_F",0,[-2.6731,6.17773,0.00211954]]
-];
+_btc_type_barrel = ["Land_GarbageBarrel_01_F","Land_BarrelSand_grey_F","MetalBarrel_burning_F","Land_BarrelWater_F","Land_MetalBarrel_F","Land_MetalBarrel_empty_F"];
+_btc_type_canister = ["Land_CanisterPlastic_F"];
+_btc_type_pallet = ["Land_Pallets_stack_F","Land_Pallets_F","Land_Pallet_F"];
+_btc_type_box = ["Box_East_Wps_F","Box_East_WpsSpecial_F","Box_East_Ammo_F"];
 _statics = btc_type_gl + btc_type_mg;
 
 _boxes = [];
@@ -59,12 +46,36 @@ for "_i" from 1 to (1 + round random 2) do {
 	_marker setMarkerSize [0.6, 0.6];
 	_markers = _markers + [_marker];
 
+	//// Randomise composition \\\\
+	_type_barrel = _btc_type_barrel select (floor (random (count _btc_type_barrel)));
+	_type_barrel_canister1 = (_btc_type_barrel + _btc_type_canister) select (floor (random (count (_btc_type_barrel +_btc_type_canister))));
+	_type_barrel_canister2 = (_btc_type_barrel + _btc_type_canister) select (floor (random (count (_btc_type_barrel +_btc_type_canister))));
+	_type_pallet = _btc_type_pallet select (floor (random (count _btc_type_pallet)));
+	_type_box = _btc_type_box select (floor (random (count _btc_type_box)));
+	_btc_composition_checkpoint = [
+		[_type_barrel,10,[0.243652,-2.78906,0]],
+		[_type_barrel,20,[-0.131836,3.12939,0]],
+		["Land_BagFence_Long_F",90,[0.769531,-4.021,0]],
+		["Land_BagFence_Long_F",90,[-0.638672,4.31787,0]],
+		["Flag_Red_F",-90,[2.23193,-4.375,0]],
+		[_type_barrel_canister1,0,[1.27393,-4.93604,0]],
+		[_type_pallet,-70,[-3.98071,3.75342,0]],
+		[_type_barrel_canister2,0,[1.83984,-4.95264,0]],
+		[_type_box,180,[-1.97998,4.88574,0]],
+		["Land_CncBarrier_stripes_F",180,[2.26367,-5.38623,0]],
+		["RoadCone_L_F",180,[1.14771,-5.89697,0.00211954]],
+		["Land_CncBarrier_stripes_F",0,[-2.1416,5.66553,0]],
+		["RoadCone_L_F",0,[-1.03101,6.18164,0.00211954]],
+		["RoadCone_L_F",180,[2.81616,-5.81689,0.00211954]],
+		["RoadCone_L_F",0,[-2.6731,6.17773,0.00211954]]
+	];
+
 	//// Create checkpoint with static at _pos \\\\
 	[[((_pos select 0) -2.39185*cos(-_direction) - 2.33984*sin(-_direction)), ((_pos select 1)  + 2.33984 *cos(-_direction) -2.39185*sin(-_direction)), (_pos select 2)],_statics,_direction + 180] call btc_fnc_mil_create_static;
 	[[((_pos select 0) + 2.72949*cos(-_direction) - -2.03857*sin(-_direction)), ((_pos select 1) -2.03857*cos(-_direction) +2.72949*sin(-_direction)), (_pos select 2)],_statics,_direction ] call btc_fnc_mil_create_static;
 	[_pos,_direction,_btc_composition_checkpoint] call btc_fnc_create_composition;
 
-	_boxes = _boxes + [nearestObject [_pos, "Box_IND_WpsSpecial_F"]];
+	_boxes = _boxes + [nearestObject [_pos, _type_box]];
 };
 
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({Alive _x} count _boxes == 0))};

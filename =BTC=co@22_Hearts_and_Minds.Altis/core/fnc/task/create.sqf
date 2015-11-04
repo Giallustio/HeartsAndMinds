@@ -66,10 +66,10 @@ switch (_this select 0) do
 	case 8 :
 	{
 		private "_task";
-		_task = player createSimpleTask [("Destroy checkpoints " + (_this select 2))];
-		_task setSimpleTaskDescription [format ["Checkpoints has been located in %1. Local population is asking for your help to destroy it!",(_this select 2)],("Destroy checkpoints " + (_this select 2)),("Destroy checkpoints " + (_this select 2))];
+		_task = player createSimpleTask [("Destroy checkpoints in " + (_this select 2))];
+		_task setSimpleTaskDescription [format ["Checkpoints has been located in %1. Local population is asking for your help to destroy it!",(_this select 2)],("Destroy checkpoints in " + (_this select 2)),("Destroy checkpoints in " + (_this select 2))];
 		_task setSimpleTaskDestination (_this select 1);
 		player setVariable ["task_8",_task];
-		["TaskAssigned",["New task assigned!",("Destroy checkpoints " + (_this select 2))]] call bis_fnc_showNotification;
+		["TaskAssigned",["New task assigned!",("Destroy checkpoints in " + (_this select 2))]] call bis_fnc_showNotification;
 	};
 };
