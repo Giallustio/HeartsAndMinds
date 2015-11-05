@@ -28,7 +28,8 @@ if (isServer) then {
 	btc_fnc_civ_populate = compile preprocessFile "core\fnc\civ\populate.sqf";
 	btc_fnc_civ_traffic_add_WP = compile preprocessFile "core\fnc\civ\traffic_add_WP.sqf";
 	btc_fnc_civ_traffic_create = compile preprocessFile "core\fnc\civ\traffic_create.sqf";
-	btc_fnc_civ_traffic_hd = compile preprocessFile "core\fnc\civ\traffic_hd.sqf";
+	btc_fnc_civ_traffic_eh = compile preprocessFile "core\fnc\civ\traffic_eh.sqf";
+	btc_fnc_civ_traffic_eh_remove = compile preprocessFile "core\fnc\civ\traffic_eh_remove.sqf";
 
 	//DATA
 	btc_fnc_data_add_group = compile preprocessFile "core\fnc\data\add_group.sqf";
@@ -40,8 +41,8 @@ if (isServer) then {
 	btc_fnc_db_delete = compile preprocessFile "core\fnc\db\delete.sqf";
 
 	//EH
-	btc_fnc_eh_helo_respawn = compile preprocessFile "core\fnc\eh\helo_respawn.sqf";
-	//btc_fnc_eh_veh_add_respawn = compile preprocessFile "core\fnc\eh\veh_add_respawn.sqf";
+	//btc_fnc_eh_helo_respawn = compile preprocessFile "core\fnc\eh\helo_respawn.sqf";
+	btc_fnc_eh_veh_add_respawn = compile preprocessFile "core\fnc\eh\veh_add_respawn.sqf";
 	btc_fnc_eh_veh_killed = compile preprocessFile "core\fnc\eh\veh_killed.sqf";
 	btc_fnc_eh_veh_respawn = compile preprocessFile "core\fnc\eh\veh_respawn.sqf";
 
