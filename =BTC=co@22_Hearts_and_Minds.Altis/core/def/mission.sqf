@@ -111,7 +111,7 @@ if (isServer) then {
 	btc_side_assigned = false;
 	btc_side_done = false;
 	btc_side_failed = false;
-	btc_side_list = [0,1,2,3,4,5];
+	btc_side_list = [0,1,2,3,4,5,6];
 	btc_side_list_use = + btc_side_list;
 	btc_side_jip_data = [];
 

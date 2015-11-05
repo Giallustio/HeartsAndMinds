@@ -97,6 +97,7 @@ if (isServer) then {
 	btc_fnc_side_vehicle = compile preprocessFileLineNumbers "core\fnc\side\vehicle.sqf";
 	btc_fnc_side_civtreatment = compile preprocessFileLineNumbers "core\fnc\side\civtreatment.sqf";
 	btc_fnc_side_tower = compile preprocessFileLineNumbers "core\fnc\side\tower.sqf";
+	btc_fnc_side_checkpoint = compile preprocessFileLineNumbers "core\fnc\side\checkpoint.sqf";
 };
 /////////////////////CLIENT AND SERVER\\\\\\\\\\\\\\\\\\\\\
 
