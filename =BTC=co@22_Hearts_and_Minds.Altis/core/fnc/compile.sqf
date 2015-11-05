@@ -30,6 +30,7 @@ if (isServer) then {
 	btc_fnc_civ_traffic_create = compile preprocessFile "core\fnc\civ\traffic_create.sqf";
 	btc_fnc_civ_traffic_eh = compile preprocessFile "core\fnc\civ\traffic_eh.sqf";
 	btc_fnc_civ_traffic_eh_remove = compile preprocessFile "core\fnc\civ\traffic_eh_remove.sqf";
+	btc_fnc_civ_unit_create = compile preprocessFile "core\fnc\civ\unit_create.sqf";
 
 	//DATA
 	btc_fnc_data_add_group = compile preprocessFile "core\fnc\data\add_group.sqf";
@@ -45,6 +46,7 @@ if (isServer) then {
 	btc_fnc_eh_veh_add_respawn = compile preprocessFile "core\fnc\eh\veh_add_respawn.sqf";
 	btc_fnc_eh_veh_killed = compile preprocessFile "core\fnc\eh\veh_killed.sqf";
 	btc_fnc_eh_veh_respawn = compile preprocessFile "core\fnc\eh\veh_respawn.sqf";
+	btc_fnc_eh_unit_init = compile preprocessFile "core\fnc\eh\unit_init.sqf";
 
 	//IED
 	btc_fnc_ied_boom = compile preprocessFile "core\fnc\ied\boom.sqf";
@@ -88,6 +90,7 @@ if (isServer) then {
 	btc_fnc_rep_hd = compile preprocessFile "core\fnc\rep\hd.sqf";
 	btc_fnc_rep_hh = compile preprocessFile "core\fnc\rep\hh.sqf";
 	btc_fnc_rep_killed = compile preprocessFile "core\fnc\rep\killed.sqf";
+	btc_fnc_rep_remove_eh = compile preprocessFile "core\fnc\rep\remove_eh.sqf";
 
 	//SIDE
 	btc_fnc_side_create = compile preprocessFileLineNumbers "core\fnc\side\create.sqf";
