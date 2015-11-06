@@ -46,7 +46,6 @@ if (isServer) then {
 	btc_fnc_eh_veh_add_respawn = compile preprocessFile "core\fnc\eh\veh_add_respawn.sqf";
 	btc_fnc_eh_veh_killed = compile preprocessFile "core\fnc\eh\veh_killed.sqf";
 	btc_fnc_eh_veh_respawn = compile preprocessFile "core\fnc\eh\veh_respawn.sqf";
-	btc_fnc_eh_unit_init = compile preprocessFile "core\fnc\eh\unit_init.sqf";
 
 	//IED
 	btc_fnc_ied_boom = compile preprocessFile "core\fnc\ied\boom.sqf";
@@ -106,6 +105,9 @@ if (isServer) then {
 
 //COMMON
 //btc_fnc_veh_track_marker = compile preprocessFile "core\fnc\common\veh_track_marker.sqf";
+
+//EH
+btc_fnc_eh_unit_init = compile preprocessFile "core\fnc\eh\unit_init.sqf";
 
 //INT
 btc_fnc_int_change_var = compile preprocessFile "core\fnc\int\change_var.sqf";
