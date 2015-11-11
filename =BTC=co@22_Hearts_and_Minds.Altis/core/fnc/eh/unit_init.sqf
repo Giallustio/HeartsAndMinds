@@ -5,10 +5,10 @@ _unit = _this select 0;
 
 _type = typeOf _unit;
 
-diag_log format ["UNIT INIT : %1",[_this,side (_this select 0), btc_enemy_side]];
+diag_log format ["UNIT INIT : %1",[_this,side (_this select 0), _type]];
 
 switch true do {
-	case (side _unit isEqualTo btc_enemy_side) : {
+	case (side _unit != west && side _unit != civilian) : {
 		
 		if (isServer) then {_unit spawn {sleep 0.5;_this call btc_fnc_mil_unit_create;};};
 		
@@ -17,12 +17,8 @@ switch true do {
 			if !(_type in btc_actions_units) then {
 				btc_actions_units pushBack _type;
 
-				_unit spawn {
-					sleep 1;
-					_action = ["Search_intel", "Search for intel", "", {(_this select 0) spawn btc_fnc_info_search_for_intel;}, {!Alive (_this select 0)}] call ace_interact_menu_fnc_createAction;
-					[(typeOf _this), 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToClass;
-					diag_log format ["ADD ACTION : %1",[_this,(typeOf _this), _action]];
-				};
+				_action = ["Search_intel", "Search for intel", "", {(_this select 0) spawn btc_fnc_info_search_for_intel;}, {!Alive (_this select 0)}] call ace_interact_menu_fnc_createAction;
+				[_type, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToClass;
 			};
 		};
 	};
