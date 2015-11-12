@@ -34,15 +34,8 @@ class RscTitles {
 
 #include "core\sounds\sounds.hpp"
 
-
 #include "core\def\param.hpp"
 
 #include "core\def\functions.hpp"
-
-class Extended_PreInit_EventHandlers {
-    class yourPreInitToDefineFunc {
-        init = "btc_fnc_eh_unit_init = compile preProcessFileLineNumbers 'core\fnc\eh\unit_init.sqf';";
-    };
-};
 
 #include "core\fnc\eh\extended_InitPost_EH.hpp"

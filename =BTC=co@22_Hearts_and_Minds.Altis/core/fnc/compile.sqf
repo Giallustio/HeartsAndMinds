@@ -111,7 +111,7 @@ if (isServer) then {
 btc_fnc_db_add_veh = compile preprocessFile "core\fnc\db\add_veh.sqf";
 
 //EH
-//btc_fnc_eh_unit_init = compile preprocessFile "core\fnc\eh\unit_init.sqf";
+btc_fnc_eh_unit_init = compile preprocessFile "core\fnc\eh\unit_init.sqf";
 
 //INT
 btc_fnc_int_change_var = compile preprocessFile "core\fnc\int\change_var.sqf";

@@ -1,5 +1,5 @@
 //_this
-diag_log format ["UNIT CREATE - EH ADDED: %1",_this];
+//diag_log format ["UNIT CREATE - EH ADDED: %1",_this];
 if (_this getVariable ["btc_init", false]) exitWith {true};
 
 _this setVariable ["btc_init",true];
