@@ -1,5 +1,5 @@
 
-private ["_useful","_city","_pos","_road","_roads","_boxes","_marker","_markers","_statics","_tower_type","_tower","_roadConnectedTo","_connectedRoad","_direction","_type_barrel","_type_canister","_type_pallet","_type_box","_btc_composition_checkpoint"];
+private ["_useful","_city","_pos","_road","_roads","_boxes","_marker","_markers","_statics","_tower_type","_tower","_direction","_type_barrel","_type_canister","_type_pallet","_type_box","_btc_composition_checkpoint"];
 
 //// Choose an occupied City \\\\
 _useful = [];
@@ -30,9 +30,8 @@ for "_i" from 1 to (1 + round random 2) do {
 	if (count _roads > 0) then {_road = (_roads select (floor random count _roads));
 		_pos = getPos _road;
 		};
-	_roadConnectedTo = roadsConnectedTo _road;
-	_connectedRoad = _roadConnectedTo select 0;
-	_direction = [_road, _connectedRoad] call BIS_fnc_dirTo;
+
+	_direction = [_road] call btc_fnc_road_direction;
 
 	//// Create marker \\\\
 	_marker = createmarker [format ["sm_2_%1",_pos],_pos];
