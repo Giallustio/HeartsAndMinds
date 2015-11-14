@@ -43,8 +43,7 @@ _marker setmarkertype "hd_flag";
 _marker setmarkertext "Radio Tower";
 _marker setMarkerSize [0.6, 0.6];
 
-_btc_type_tower = ["Land_Communication_F","Land_TTowerBig_1_F","Land_TTowerBig_2_F"];
-_tower_type = _btc_type_tower select (floor (random (count _btc_type_tower)));
+_tower_type = btc_type_tower select (floor (random (count btc_type_tower)));
 
 _tower = createVehicle [_tower_type, _pos, [], 0, "NONE"];
 _tower setDir (_direction);
