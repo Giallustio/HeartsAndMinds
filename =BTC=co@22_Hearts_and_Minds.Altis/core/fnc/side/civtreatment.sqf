@@ -1,5 +1,5 @@
 
-private ["_useful","_veh","_vehpos","_city","_pos","_r","_houses","_roads","_marker","_unit_type","_fx","_btc_civ_type_phone","_item_type","_unconsciousTime","_selection","_type"];
+private ["_useful","_veh","_vehpos","_city","_pos","_r","_houses","_roads","_marker","_unit_type","_fx","_phone_type","_unconsciousTime","_selection","_type"];
 
 //// Choose a clear City \\\\
 _useful = [];
@@ -52,9 +52,8 @@ if ( _r < 1) then {
 	_fx = "test_EmptyObjectForSmoke" createVehicle (getposATL _veh);
 	_fx attachTo [_veh,[0,0,0]];
 } else {
-	_btc_civ_type_phone = ["Land_PortableLongRangeRadio_F","Land_MobilePhone_smart_F","Land_MobilePhone_old_F"];
-	_item_type = _btc_civ_type_phone select (floor (random (count _btc_civ_type_phone)));
-	_veh = createVehicle [_item_type, _vehpos, [], 0, "NONE"];
+	_phone_type = btc_type_phone select (floor (random (count btc_type_phone)));
+	_veh = createVehicle [_phone_type, _vehpos, [], 0, "NONE"];
 	_veh setDir (random 360);
 };
 
