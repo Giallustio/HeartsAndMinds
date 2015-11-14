@@ -1,5 +1,5 @@
 
-private ["_useful","_veh","_vehpos","_city","_pos","_r","_houses","_roads","_marker","_unit_type","_fx","_phone_type","_unconsciousTime","_selection","_type"];
+private ["_useful","_veh","_vehpos","_city","_pos","_r","_houses","_roads","_marker","_unit_type","_fx","_phone_type"];
 
 //// Choose a clear City \\\\
 _useful = [];
