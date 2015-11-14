@@ -34,13 +34,19 @@ _group setVariable ["btc_traffic_id",btc_traffic_id];btc_traffic_id = btc_traffi
 _group setVariable ["city",_city];
 
 _Spos = [];
-if (count (_pos nearRoads 150) > 0) then {_Spos = getPos ((_pos nearRoads 150) select 0)} else {_Spos = [_pos, 0, 500, 13, 0, 60 * (pi / 180), 0] call BIS_fnc_findSafePos;};
+if (count (_pos nearRoads 500) > 0) then {_Spos = getPos ((_pos nearRoads 500) select 0)} else {_Spos = [_pos, 0, 500, 13, 0, 60 * (pi / 180), 0] call BIS_fnc_findSafePos;};
 _veh = createVehicle [_veh_type, _Spos, [], 0, "NONE"];
 _unit_type createUnit [_pos, _group, "this moveinDriver _veh;this assignAsDriver _veh;"];
 
-_veh setVariable ["driver",leader _group];
-_veh addEventHandler ["HandleDamage", btc_fnc_civ_traffic_hd];
+_1 = _veh addEventHandler ["HandleDamage", {_this call btc_fnc_civ_traffic_eh}];
+_2 = _veh addEventHandler ["Fuel", {_this call btc_fnc_civ_traffic_eh}];
+_3 = _veh addEventHandler ["GetOut", {_this call btc_fnc_civ_traffic_eh}];
+//_4 = (leader _group) addEventHandler ["HandleDamage", {_this call btc_fnc_civ_traffic_eh}];
+//_5 = (leader _group) addEventHandler ["Killed", {_this call btc_fnc_civ_traffic_eh}];
 
-{_x call btc_fnc_rep_add_eh;_x setVariable ["traffic",_veh];} foreach units _group;
+_veh setVariable ["eh", [_1,_2,_3/*,4,5*/]];
+_veh setVariable ["driver", leader _group];
+
+{_x call btc_fnc_civ_unit_create;_x setVariable ["traffic",_veh];} foreach units _group;
 
 [_group,_area] call btc_fnc_civ_traffic_add_WP;

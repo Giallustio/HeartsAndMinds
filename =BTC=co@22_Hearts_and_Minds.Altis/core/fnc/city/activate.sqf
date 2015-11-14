@@ -129,10 +129,7 @@ if (btc_patrol_active < btc_patrol_max) then {
 	{
 		[(1 + round random 1),_city,((_radius_x+_radius_y) + btc_patrol_area)] call btc_fnc_mil_patrol_create;
 	};
-	if (btc_debug_log) then
-	{
-		diag_log format ["btc_fnc_city_activate: (patrol) _n = %1 _av %2 _d %3 _r %4",_n,_av,_d,_r];
-	};
+	if (btc_debug_log) then	{diag_log format ["btc_fnc_city_activate: (patrol) _n = %1 _av %2 _d %3 _r %4",_n,_av,_d,_r];};
 };
 
 //Traffic
@@ -146,9 +143,7 @@ if (btc_civ_veh_active < btc_civ_max_veh) then {
 	for "_i" from 1 to _r do {
 		[_city,((_radius_x+_radius_y) + btc_patrol_area)] call btc_fnc_civ_traffic_create;
 	};
-	if (btc_debug_log) then	{
-		diag_log format ["btc_fnc_city_activate: (traffic) _n = %1 _av %2 _d %3 _r %4",_n,_av,_d,_r];
-	};
+	if (btc_debug_log) then	{diag_log format ["btc_fnc_city_activate: (traffic) _n = %1 _av %2 _d %3 _r %4",_n,_av,_d,_r];};
 };
 
 //Suicider 

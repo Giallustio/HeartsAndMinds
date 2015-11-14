@@ -24,8 +24,9 @@ if (_random == 0) then {
 _cities = [];
 {if (_x distance _city < _area) then {_cities = _cities + [_x];};} foreach btc_city_all;
 _useful = [];
-{if !(_x getVariable ["active",false]) then {_useful = _useful + [getPos _x];};} foreach _cities;
+{if (!(_x getVariable ["active",false]) && _x getVariable ["occupied",false]) then {_useful = _useful + [getPos _x];};} foreach _cities;
 
+/*
 if (count _useful == 0) then {
 	while {count _useful == 0} do {
 		private "_pos";
@@ -33,6 +34,9 @@ if (count _useful == 0) then {
 		if ({_x distance _pos < 500} count playableUnits == 0) then {_useful = _useful + [_pos];};
 	};
 };
+*/
+
+if (count _useful == 0) exitWith {true};
 
 _pos = _useful select (floor random count _useful);
 
@@ -73,4 +77,4 @@ switch (true) do {
 	};
 };
 
-{_x spawn btc_fnc_mil_unit_create} foreach units _group;
+{_x call btc_fnc_mil_unit_create} foreach units _group;
