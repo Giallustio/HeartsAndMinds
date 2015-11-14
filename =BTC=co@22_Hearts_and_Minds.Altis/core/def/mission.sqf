@@ -1,5 +1,5 @@
 
-btc_version = 1.11; diag_log format ["=BTC= HEARTS AND MINDS VERSION %1",btc_version];
+btc_version = 1.12; diag_log format ["=BTC= HEARTS AND MINDS VERSION %1",btc_version];
 
 //Param
 btc_p_time  = (paramsArray select 0);
@@ -114,6 +114,13 @@ if (isServer) then {
 	btc_side_list = [0,1,2,3,4,5,6];
 	btc_side_list_use = + btc_side_list;
 	btc_side_jip_data = [];
+	btc_type_tower = ["Land_Communication_F","Land_TTowerBig_1_F","Land_TTowerBig_2_F"];
+	btc_type_phone = ["Land_PortableLongRangeRadio_F","Land_MobilePhone_smart_F","Land_MobilePhone_old_F"];
+	btc_type_barrel = ["Land_GarbageBarrel_01_F","Land_BarrelSand_grey_F","MetalBarrel_burning_F","Land_BarrelWater_F","Land_MetalBarrel_F","Land_MetalBarrel_empty_F"];
+	btc_type_canister = ["Land_CanisterPlastic_F"];
+	btc_type_pallet = ["Land_Pallets_stack_F","Land_Pallets_F","Land_Pallet_F"];
+	btc_type_box = ["Box_East_Wps_F","Box_East_WpsSpecial_F","Box_East_Ammo_F"];
+
 
 	//Vehs
 	btc_vehicles = [btc_veh_1,btc_veh_2,btc_veh_3,btc_veh_4,btc_veh_5,btc_veh_6,btc_veh_7,btc_veh_8,btc_veh_9,btc_veh_10,btc_veh_11,btc_veh_12,btc_veh_13,btc_veh_14];
