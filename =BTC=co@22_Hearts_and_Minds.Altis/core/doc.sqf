@@ -104,10 +104,16 @@ Your options are:<br/>
 - STOP<br/>
 - GET DOWN<br/>
 - GO AWAY<br/><br/>
-	
+
 If you want to give an order just to one unit, interact with it (user action 2).
 	"]
 ];
+
+player createDiaryRecord ["Documentation", ["Traffic", "
+Ask to civilian in a car to lift you.<br/>
+	"]
+];
+
 player createDiaryRecord ["Documentation", ["Gear", "
 You can choose your gear at the red box inside the base.<br/>
 Use your user action 2 to change your gear.
@@ -120,7 +126,7 @@ Use ACE 3 interactions system.
 ];
 
 player createDiaryRecord ["Documentation", [
-	"Version", 
+	"Version",
 	format ["Version %1",btc_version]
 	]
 ];
