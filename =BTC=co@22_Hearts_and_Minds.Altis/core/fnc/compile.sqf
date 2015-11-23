@@ -43,7 +43,7 @@ if (isServer) then {
 
 	//EH
 	//btc_fnc_eh_helo_respawn = compile preprocessFile "core\fnc\eh\helo_respawn.sqf";
-	btc_fnc_eh_CuratorObjectPlaced = compile preprocessFile "core\fnc\eh\CuratorObjectPlaced";
+	btc_fnc_eh_CuratorObjectPlaced = compile preprocessFile "core\fnc\eh\CuratorObjectPlaced.sqf";
 	btc_fnc_eh_veh_add_respawn = compile preprocessFile "core\fnc\eh\veh_add_respawn.sqf";
 	btc_fnc_eh_veh_killed = compile preprocessFile "core\fnc\eh\veh_killed.sqf";
 	btc_fnc_eh_veh_respawn = compile preprocessFile "core\fnc\eh\veh_respawn.sqf";
