@@ -5,7 +5,7 @@ _pos = _this select 0;
 _order = _this select 1;
 
 _units = [];
-_wp_pos = [];
+_wp_pos = [0,0,0];
 
 switch (count _this) do {
 	case 2 : {_units = _pos nearEntities [["Car","Civilian_F"], btc_int_radius_orders];};

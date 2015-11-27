@@ -1,5 +1,5 @@
 
-private ["_order","_unit","_gesture","_pos","_wp","_rep","_ran"];
+private ["_order","_unit","_gesture","_pos","_wp","_rep","_ran","_info_type"];
 
 _order = _this select 0;
 _unit = objNull;
@@ -22,10 +22,12 @@ if (isNull _unit) then {
 	[[_pos,_order],"btc_fnc_int_orders_give",false] spawn BIS_fnc_MP;
 } else {
 	if (_order == 4) then {
+
 		btc_int_ask_data = nil;
 		[[2,nil,player],"btc_fnc_int_ask_var",false] spawn BIS_fnc_MP;
 		waitUntil {!(isNil "btc_int_ask_data")};
 		_rep = btc_int_ask_data;
+
 		if (_rep >= 500) then {
 			hintSilent "Open your map and select a where you want to go.";
 			[player] onMapSingleClick "
@@ -41,11 +43,11 @@ if (isNull _unit) then {
 		} else {
 			if (isNil {player getVariable "interpreter"}) exitWith {hint "I can't understand what is saying";};
 			_ran = round random 3;
-			switch (true) do {
-				case (_rep == 0) : {_info_type = "I hate you ! Get out !";};
-				case (_rep == 1) : {_info_type = "Get Out of my car ! You are not welcome.";};
-				case (_rep == 2) : {_info_type = "I am not a taxi driver !";};
-				case (_rep == 3) : {_info_type = "No ! I go where I want ! ";};
+			_info_type = switch (true) do {
+				case (_ran == 0) : {"I hate you ! Get out !"};
+				case (_ran == 1) : {"Get Out of my car ! You are not welcome."};
+				case (_ran == 2) : {"I am not a taxi driver !"};
+				case (_ran == 3) : {"No ! I go where I want ! "};
 			};
 			_text = format ["%1", _info_type];
 			hint _text;
