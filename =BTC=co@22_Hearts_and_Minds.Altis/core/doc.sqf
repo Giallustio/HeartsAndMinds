@@ -110,7 +110,7 @@ If you want to give an order just to one unit, interact with it (user action 2).
 ];
 
 player createDiaryRecord ["Documentation", ["Traffic", "
-Ask to civilian in a car to lift you.<br/>
+Civilian are travelling by car across cities. If your reputation is higher than normal, you can ask to civilian to lift you at the location choosed on map. If you bump into enemies, don't worry, the civilian will do the best to hide you in the car. <br/>
 	"]
 ];
 
