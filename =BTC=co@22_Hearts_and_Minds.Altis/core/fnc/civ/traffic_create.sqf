@@ -4,6 +4,8 @@ private ["_city","_area","_cities","_useful","_unit_type","_veh_type","_group","
 _city = _this select 0;
 _area = _this select 1;
 
+_type = _city getVariable ["type",""];
+
 btc_civ_veh_active = btc_civ_veh_active + 1;
 if (isNil "btc_traffic_id") then {btc_traffic_id = 0;};
 
@@ -25,7 +27,13 @@ if (count _useful == 0) then {
 _pos = _useful select (floor random count _useful);
 
 _unit_type = btc_civ_type_units select (floor random count btc_civ_type_units);
-_veh_type = btc_civ_type_veh select (floor (random (count btc_civ_type_veh)));
+
+if !(_type == "NameMarine") then {
+	_veh_type = btc_civ_type_veh select (floor (random (count btc_civ_type_veh)));
+	} else {
+		_veh_type = btc_civ_type_boat select (floor (random (count btc_civ_type_boat)));
+	};
+
 
 _group = createGroup civilian;
 _group setVariable ["no_cache",true];

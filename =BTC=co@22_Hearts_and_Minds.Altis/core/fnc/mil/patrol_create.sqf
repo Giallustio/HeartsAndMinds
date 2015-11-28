@@ -5,6 +5,8 @@ _random = _this select 0;//0 random, 1 inf, 2 moto, 3 heli
 _city = _this select 1;
 _area = _this select 2;
 
+_type = _city getVariable ["type",""];
+
 if (isNil "btc_patrol_id") then {btc_patrol_id = 0;};
 
 btc_patrol_active = btc_patrol_active + 1;
@@ -56,11 +58,16 @@ switch (true) do {
 			_group createUnit [_unit_type, _pos, [], 0, "NONE"];
 			sleep 0.1;
 		};
-		_spawn = [_group,_area] spawn btc_fnc_mil_patrol_addWP;	
+		_spawn = [_group,_area] spawn btc_fnc_mil_patrol_addWP;
 	};
 	case (_random == 2) : {
 		private ["_veh_type","_newZone","_veh","_cargo"];
-		_veh_type = btc_type_motorized select (floor (random (count btc_type_motorized)));
+		if !(_type == "NameMarine") then {
+			_veh_type = btc_type_motorized select (floor (random (count btc_type_motorized)));
+			} else {
+				_veh_type = btc_type_boat select (floor (random (count btc_type_boat)));
+			};
+
 		_newZone = [];
 		if (count (_pos nearRoads 150) > 0) then {_newZone = getPos ((_pos nearRoads 150) select 0)} else {_newZone = [_pos, 0, 500, 13, 0, 60 * (pi / 180), 0] call BIS_fnc_findSafePos;};
 		_veh = createVehicle [_veh_type, _newZone, [], 0, "NONE"];
@@ -73,7 +80,7 @@ switch (true) do {
 				_unit_type createUnit [_pos, _group, "this moveinCargo _veh;this assignAsCargo _veh;"];
 			};
 		};
-		_spawn = [_group,_area] spawn btc_fnc_mil_patrol_addWP;	
+		_spawn = [_group,_area] spawn btc_fnc_mil_patrol_addWP;
 	};
 };
 
