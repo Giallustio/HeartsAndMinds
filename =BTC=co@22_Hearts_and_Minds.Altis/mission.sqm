@@ -34,7 +34,7 @@ class Mission
 		"A3_Characters_F_OPFOR",
 		"ace_cargo",
 		"ace_medical",
-		"a3_modules_f_curator_curator",
+		"A3_Modules_F_Curator_Curator",
 		"ace_respawn",
 		"ace_captives",
 		"ace_repair",
@@ -1129,7 +1129,7 @@ class Mission
 		};
 		class Item13
 		{
-			position[]={8209.9434,76.416351,10021.622};
+			position[]={8213.5498,76.487816,10024.03};
 			azimut=-27.934999;
 			id=46;
 			side="EMPTY";
@@ -1140,7 +1140,7 @@ class Mission
 		};
 		class Item14
 		{
-			position[]={8209.9336,76.380455,10022.721};
+			position[]={8213.54,76.510483,10025.129};
 			azimut=51.220901;
 			id=47;
 			side="EMPTY";
