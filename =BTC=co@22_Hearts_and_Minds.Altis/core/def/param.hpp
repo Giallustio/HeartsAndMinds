@@ -165,7 +165,7 @@ class Params {
 	   title = "Medical Level";
 	   values[] = {1,2};
 	   texts[] = {"Basic","Advanced"};
-	   default = 2;
+	   default = 1;
 	};
 	class btc_p_adv_wounds {
 		//paramsArray[24]
