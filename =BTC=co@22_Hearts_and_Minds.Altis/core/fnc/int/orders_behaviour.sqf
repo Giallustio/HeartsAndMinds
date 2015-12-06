@@ -22,8 +22,7 @@ switch (_order) do {
 		_unit doMove _wp_pos;
 	};
 	case 4 : {
-		_wpa = _group addWaypoint [_wp_pos, 1];
-		_wpa setWaypointBehaviour "SAFE";
+		_unit doMove _wp_pos;
 	};
 };
 
