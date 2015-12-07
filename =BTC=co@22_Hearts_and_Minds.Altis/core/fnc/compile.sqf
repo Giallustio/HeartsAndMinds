@@ -194,7 +194,7 @@ if (!isDedicated) then {
 	btc_fnc_info_hideout_asked = compile preprocessFile "core\fnc\info\hideout_asked.sqf";
 	btc_fnc_info_search_for_intel = compile preprocessFile "core\fnc\info\search_for_intel.sqf";
 	btc_fnc_info_troops = compile preprocessFile "core\fnc\info\troops.sqf";
-	btc_fnc_info_reputation = compile preprocessFile "core\fnc\info\ask_reputation.sqf";
+	btc_fnc_info_ask_reputation = compile preprocessFile "core\fnc\info\ask_reputation.sqf";
 
 	//TASK
 	btc_fnc_task_create = compile preprocessFileLineNumbers "core\fnc\task\create.sqf";
