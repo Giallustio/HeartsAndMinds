@@ -82,6 +82,7 @@ if (btc_side_aborted || btc_side_failed || !Alive _unit) exitWith {
 	btc_side_assigned = false;publicVariable "btc_side_assigned";
 	{_x spawn {
 	waitUntil {sleep 5; ({_x distance _this < 300} count playableUnits == 0)};
+	{deleteVehicle _x;} forEach (_this getVariable ["effects", []]);
 	deleteVehicle _this;
 	};} forEach [_unit,_veh,_fx];
 };
@@ -93,6 +94,7 @@ if (btc_side_aborted || btc_side_failed || !Alive _unit) exitWith {
 _unit setUnitPos "UP";
 {_x spawn {
 	waitUntil {sleep 5; ({_x distance _this < 300} count playableUnits == 0)};
+	{deleteVehicle _x;} forEach (_this getVariable ["effects", []]);
 	deleteVehicle _this;
 };} forEach [_unit,_veh,_fx];
 
