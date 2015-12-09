@@ -7,7 +7,10 @@ _isInterrogate = _this select 1;
 
 if (!isNil {_man getVariable "btc_already_asked"}) exitWith {hint format ["%1 I already answered to your question!", name _man];};
 
-if ((round random 3) >= 2 || !_isInterrogate) then {_man setVariable ["btc_already_asked",true];};
+if ((round random 3) >= 2 || !_isInterrogate) then {
+	_man setVariable ["btc_already_asked",true];
+	_man setVariable ["btc_already_interrogated",true];
+};
 
 
 //NO < 200 . FAKE < 600 . REAL > 600
