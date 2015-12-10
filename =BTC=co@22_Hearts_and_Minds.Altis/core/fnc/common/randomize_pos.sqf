@@ -3,11 +3,11 @@ private ["_pos","_random_area","_return_pos","_pos_x","_pos_y","_check_pos","_al
 
 _pos = _this select 0;
 _random_area = _this select 1;
-if (count _this > 1) then {
+if (count _this > 2) then {
 	_allowwater = _this select 2;
-	} else {
-		_allowwater = false;
-	};
+} else {
+	_allowwater = false;
+};
 
 _return_pos = _pos;
 

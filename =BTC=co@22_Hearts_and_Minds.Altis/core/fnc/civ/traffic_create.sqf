@@ -41,8 +41,10 @@ if (count (_pos nearRoads 500) > 0) then {
 
 if !(surfaceIsWater _Spos) then {
 	_veh_type = btc_civ_type_veh select (floor (random (count btc_civ_type_veh)));
+	_isWater = true;
 } else {
-		_veh_type = btc_civ_type_boat select (floor (random (count btc_civ_type_boat)));
+	_veh_type = btc_civ_type_boat select (floor (random (count btc_civ_type_boat)));
+	_isWater = false;
 };
 
 _veh = createVehicle [_veh_type, _Spos, [], 0, "NONE"];
@@ -59,4 +61,4 @@ _veh setVariable ["driver", leader _group];
 
 {_x call btc_fnc_civ_unit_create;_x setVariable ["traffic",_veh];} foreach units _group;
 
-[_group,_area] call btc_fnc_civ_traffic_add_WP;
+[_group,_area,_isWater] call btc_fnc_civ_traffic_add_WP;
