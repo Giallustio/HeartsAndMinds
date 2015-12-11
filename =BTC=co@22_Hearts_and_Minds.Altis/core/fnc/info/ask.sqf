@@ -20,7 +20,7 @@ if (!isNil {_man getVariable "btc_already_asked"}) exitWith {hint format ["%1 I 
 
 if ((round random 3) >= 2 || !_isInterrogate) then {
 	_man setVariable ["btc_already_asked",true];
-	_man setVariable ["btc_already_interrogated",true];
+	if (_isInterrogate) then {_man setVariable ["btc_already_interrogated",true,true];};
 };
 
 
