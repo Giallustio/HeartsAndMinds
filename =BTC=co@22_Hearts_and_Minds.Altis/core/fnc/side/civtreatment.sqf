@@ -1,5 +1,5 @@
 
-private ["_useful","_veh","_vehpos","_city","_pos","_r","_houses","_roads","_marker","_unit_type","_fx","_btc_civ_type_phone","_item_type","_unconsciousTime","_selection","_type"];
+private ["_useful","_veh","_vehpos","_city","_pos","_r","_houses","_roads","_marker","_unit_type","_fx","_phone_type"];
 
 //// Choose a clear City \\\\
 _useful = [];
@@ -52,9 +52,8 @@ if ( _r < 1) then {
 	_fx = "test_EmptyObjectForSmoke" createVehicle (getposATL _veh);
 	_fx attachTo [_veh,[0,0,0]];
 } else {
-	_btc_civ_type_phone = ["Land_PortableLongRangeRadio_F","Land_MobilePhone_smart_F","Land_MobilePhone_old_F"];
-	_item_type = _btc_civ_type_phone select (floor (random (count _btc_civ_type_phone)));
-	_veh = createVehicle [_item_type, _vehpos, [], 0, "NONE"];
+	_phone_type = btc_type_phone select (floor (random (count btc_type_phone)));
+	_veh = createVehicle [_phone_type, _vehpos, [], 0, "NONE"];
 	_veh setDir (random 360);
 };
 
@@ -70,51 +69,8 @@ _unit setPosATL _pos;
 _unit setUnitPos "DOWN";
 {_x call btc_fnc_civ_unit_create} foreach units _group;
 
-/*
-Author: SENSEI
-Last modified: 10/3/2015
-Description: set unit in cardiac arrest
-Note: needs delay if called directly after spawning unit
-Return: nothing
-__________________________________________________________________*/
 sleep 1;
-_selection = [
-    "head",
-    "body",
-    "hand_l",
-    "hand_r",
-    "leg_l",
-    "leg_r"
-];
-_type = [
-    "bullet",
-    "grenade",
-    "explosive",
-    "shell"
-];
-if (ace_medical_level isEqualTo 1) then {
-	_unconsciousTime = 120 + round (random 600);
-	[_unit,true,_unconsciousTime,true] call ace_medical_fnc_setUnconscious;
-	for "_i" from 0 to 2 do {
-		[_unit, (_selection select (random ((count _selection) - 1))), 0.7 + (random 0.15), objNull, (_type select (random ((count _type) - 1)))] call ace_medical_fnc_handleDamage;
-	};
-	[{
-		params ["_args","_id"];
-		_args params ["_unit","_time"];
-
-		if (diag_tickTime > _time) exitWith {
-			[_id] call CBA_fnc_removePerFrameHandler;
-			if !([_unit] call ace_common_fnc_isAwake) then {
-				_unit setDamage 1;
-			};
-		};
-	}, 1, [_unit,diag_tickTime + _unconsciousTime]] call CBA_fnc_addPerFrameHandler;
-} else {
-	[_unit, 0.5] call ace_medical_fnc_adjustPainLevel;
-	[_unit,true,10,true] call ace_medical_fnc_setUnconscious;
-	[_unit] call ace_medical_fnc_setCardiacArrest;
-	[_unit, (_selection select (random ((count _selection) - 1))), 0, objNull, (_type select (random ((count _type) - 1))), 0, 0.2] call ace_medical_fnc_handleDamage_advanced;
-};
+[_unit] call btc_fnc_set_damage;
 
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !Alive _unit || {[_unit] call ace_common_fnc_isAwake && ((_unit getVariable ["ace_medical_pain", 0]) < 0.4)})};
 

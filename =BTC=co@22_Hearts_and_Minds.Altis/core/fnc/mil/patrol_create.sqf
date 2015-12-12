@@ -56,7 +56,7 @@ switch (true) do {
 			_group createUnit [_unit_type, _pos, [], 0, "NONE"];
 			sleep 0.1;
 		};
-		_spawn = [_group,_area] spawn btc_fnc_mil_patrol_addWP;
+		_spawn = [_group,_area] spawn btc_fnc_mil_patrol_addWP;	
 	};
 	case (_random == 2) : {
 		private ["_veh_type","_newZone","_veh","_cargo"];
@@ -73,7 +73,7 @@ switch (true) do {
 				_unit_type createUnit [_pos, _group, "this moveinCargo _veh;this assignAsCargo _veh;"];
 			};
 		};
-		_spawn = [_group,_area] spawn btc_fnc_mil_patrol_addWP;
+		_spawn = [_group,_area] spawn btc_fnc_mil_patrol_addWP;	
 	};
 };
 

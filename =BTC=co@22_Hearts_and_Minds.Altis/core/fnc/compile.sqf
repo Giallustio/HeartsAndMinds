@@ -14,6 +14,8 @@ if (isServer) then {
 	btc_fnc_randomize_pos = compile preprocessFile "core\fnc\common\randomize_pos.sqf";
 	btc_fnc_set_owner = compile preprocessFile "core\fnc\common\set_owner.sqf";
 	btc_fnc_task_patrol = compile preprocessFile "core\fnc\common\task_patrol.sqf";
+	btc_fnc_set_damage = compile preprocessFile "core\fnc\common\set_damage.sqf";
+	btc_fnc_road_direction = compile preprocessFile "core\fnc\common\road_direction.sqf";
 
 	//CITY
 	btc_fnc_city_activate = compile preprocessFile "core\fnc\city\activate.sqf";
@@ -43,7 +45,6 @@ if (isServer) then {
 
 	//EH
 	//btc_fnc_eh_helo_respawn = compile preprocessFile "core\fnc\eh\helo_respawn.sqf";
-	btc_fnc_eh_CuratorObjectPlaced = compile preprocessFile "core\fnc\eh\CuratorObjectPlaced";
 	btc_fnc_eh_veh_add_respawn = compile preprocessFile "core\fnc\eh\veh_add_respawn.sqf";
 	btc_fnc_eh_veh_killed = compile preprocessFile "core\fnc\eh\veh_killed.sqf";
 	btc_fnc_eh_veh_respawn = compile preprocessFile "core\fnc\eh\veh_respawn.sqf";
@@ -112,6 +113,7 @@ btc_fnc_db_add_veh = compile preprocessFile "core\fnc\db\add_veh.sqf";
 
 //EH
 btc_fnc_eh_unit_init = compile preprocessFile "core\fnc\eh\unit_init.sqf";
+btc_fnc_eh_CuratorObjectPlaced = compile preprocessFile "core\fnc\eh\CuratorObjectPlaced.sqf";
 
 //INT
 btc_fnc_int_change_var = compile preprocessFile "core\fnc\int\change_var.sqf";
