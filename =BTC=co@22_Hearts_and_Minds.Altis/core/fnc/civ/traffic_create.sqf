@@ -1,5 +1,5 @@
 
-private ["_city","_area","_cities","_useful","_unit_type","_veh_type","_group","_veh"];
+private ["_city","_area","_cities","_useful","_unit_type","_veh_type","_group","_veh","_iswater"];
 
 _city = _this select 0;
 _area = _this select 1;
@@ -17,7 +17,7 @@ _useful = [];
 if (count _useful == 0) then {
 	while {count _useful == 0} do {
 		private "_pos";
-		_pos = [getPos _city, _area] call btc_fnc_randomize_pos;
+		_pos = [getPos _city, _area, true] call btc_fnc_randomize_pos;
 		if ({_x distance _pos < 500} count playableUnits == 0) then {_useful = _useful + [_pos];};
 	};
 };
@@ -34,7 +34,21 @@ _group setVariable ["btc_traffic_id",btc_traffic_id];btc_traffic_id = btc_traffi
 _group setVariable ["city",_city];
 
 _Spos = [];
-if (count (_pos nearRoads 500) > 0) then {_Spos = getPos ((_pos nearRoads 500) select 0)} else {_Spos = [_pos, 0, 500, 13, 0, 60 * (pi / 180), 0] call BIS_fnc_findSafePos;};
+if (count (_pos nearRoads 100) > 0) then {
+	_Spos = getPos ((_pos nearRoads 500) select 0)
+} else {
+	_Spos = [_pos, 0, 500, 13, 1, 60 * (pi / 180), 0] call BIS_fnc_findSafePos;
+};
+
+if (surfaceIsWater _Spos) then {
+	_Spos = [_Spos select 0, _Spos select 1,0];
+	_veh_type = btc_civ_type_boat select (floor (random (count btc_civ_type_boat)));
+	_iswater = true;
+} else {
+	_veh_type = btc_civ_type_veh select (floor (random (count btc_civ_type_veh)));
+	_iswater = false;
+};
+
 _veh = createVehicle [_veh_type, _Spos, [], 0, "NONE"];
 _unit_type createUnit [_pos, _group, "this moveinDriver _veh;this assignAsDriver _veh;"];
 
@@ -49,4 +63,8 @@ _veh setVariable ["driver", leader _group];
 
 {_x call btc_fnc_civ_unit_create;_x setVariable ["traffic",_veh];} foreach units _group;
 
-[_group,_area] call btc_fnc_civ_traffic_add_WP;
+if (btc_debug_log) then	{
+	player sidechat format ["_isWater = %1",_iswater];
+	diag_log format ["_isWater = %1",_iswater];
+};
+[_group,_area,_iswater] call btc_fnc_civ_traffic_add_WP;
