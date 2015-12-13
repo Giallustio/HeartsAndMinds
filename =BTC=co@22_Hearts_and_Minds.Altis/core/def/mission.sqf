@@ -366,8 +366,10 @@ switch (true) do {
 		btc_hq                    = btc_hq_red;
 		btc_enemy_side            = east;
 		btc_type_units            = ["O_G_Soldier_F","O_G_Soldier_TL_F","O_G_Soldier_AR_F","O_G_engineer_F","O_G_Soldier_exp_F","O_G_Soldier_GL_F","O_G_Soldier_LAT_F"];
+		btc_type_divers            = ["O_diver_F","O_diver_exp_F","O_diver_TL_F"];
 		btc_type_crewmen          = "O_G_Soldier_F";
 		btc_type_vehicles         = ["I_G_Offroad_01_F","I_G_Offroad_01_armed_F"];
+		btc_type_boats			= ["I_Boat_Armed_01_minigun_F","I_Boat_Transport_01_F","I_SDV_01_F","I_G_Boat_Transport_01_F"];
 		btc_type_motorized        = ["I_G_Offroad_01_F","I_G_Offroad_01_armed_F","I_Truck_02_transport_F","I_G_Offroad_01_armed_F","I_Truck_02_covered_F"];
 		btc_type_mg = ["O_HMG_01_F","O_HMG_01_high_F"];
 		btc_type_gl = ["O_GMG_01_F","O_GMG_01_high_F"];
@@ -388,8 +390,10 @@ switch (true) do {
 		btc_hq                    = btc_hq_green;
 		btc_enemy_side 			  = resistance;
 		btc_type_units            = ["I_Soldier_F","I_Soldier_TL_F","I_Soldier_AR_F","I_engineer_F","I_Soldier_exp_F","I_Soldier_GL_F","I_Soldier_LAT_F","I_Soldier_AT_F","I_Soldier_AA_F","I_Spotter_F","I_Sniper_F"];
+		btc_type_divers            = ["I_diver_F","I_diver_exp_F","I_diver_TL_F"];
 		btc_type_crewmen          = "I_Soldier_F";
 		btc_type_vehicles         = ["I_G_Offroad_01_F","I_G_Offroad_01_armed_F","I_MRAP_03_F","I_MRAP_03_hmg_F","I_MRAP_03_gmg_F"];
+		btc_type_boats			= ["I_Boat_Armed_01_minigun_F","I_Boat_Transport_01_F","I_SDV_01_F","I_G_Boat_Transport_01_F"];
 		btc_type_motorized        = ["I_G_Offroad_01_F","I_G_Offroad_01_armed_F","I_Truck_02_transport_F","I_G_Offroad_01_armed_F","I_Truck_02_covered_F","I_MRAP_03_F","I_MRAP_03_hmg_F","I_MRAP_03_gmg_F","I_Heli_light_03_F","I_APC_tracked_03_cannon_F"];
 		btc_type_mg = ["I_HMG_01_F","I_HMG_01_high_F"];
 		btc_type_gl = ["I_GMG_01_F","I_GMG_01_high_F"];
@@ -408,8 +412,10 @@ switch (true) do {
 		btc_hq                    = btc_hq_red;
 		btc_enemy_side            = east;
 		btc_type_units            = ["O_G_Soldier_F","O_G_Soldier_TL_F","O_G_Soldier_AR_F","O_G_engineer_F","O_G_Soldier_exp_F","O_G_Soldier_GL_F","O_G_Soldier_LAT_F"];
+		btc_type_divers            = ["O_diver_F","O_diver_exp_F","O_diver_TL_F"];
 		btc_type_crewmen          = "O_G_Soldier_F";
 		btc_type_vehicles         = ["I_G_Offroad_01_F","I_G_Offroad_01_armed_F"];
+		btc_type_boats			= ["I_Boat_Armed_01_minigun_F","I_Boat_Transport_01_F","I_SDV_01_F","I_G_Boat_Transport_01_F"];
 		btc_type_motorized        = ["I_G_Offroad_01_F","I_G_Offroad_01_armed_F","I_Truck_02_transport_F","I_G_Offroad_01_armed_F","I_Truck_02_covered_F"];
 		btc_type_mg = ["O_HMG_01_F","O_HMG_01_high_F"];
 		btc_type_gl = ["O_GMG_01_F","O_GMG_01_high_F"];
