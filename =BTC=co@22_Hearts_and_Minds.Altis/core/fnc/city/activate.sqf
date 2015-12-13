@@ -56,7 +56,7 @@ if (count _data_units > 0) then {
 		case "NameVillage" : {1};
 		case "NameCity" : {2};
 		case "NameCityCapital" : {4};
-		case "NameMarine" : {0};
+		case "NameMarine" : {0.6};
 		default {0.1};
 		});
 	if (_has_en) then
