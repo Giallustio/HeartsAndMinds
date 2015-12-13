@@ -42,7 +42,7 @@ if (count (_pos nearRoads 100) > 0) then {
 
 if (surfaceIsWater _Spos) then {
 	_Spos = [_Spos select 0, _Spos select 1,0];
-	_veh_type = btc_civ_type_boat select (floor (random (count btc_civ_type_boat)));
+	_veh_type = btc_civ_type_boats select (floor (random (count btc_civ_type_boats)));
 	_iswater = true;
 } else {
 	_veh_type = btc_civ_type_veh select (floor (random (count btc_civ_type_veh)));
