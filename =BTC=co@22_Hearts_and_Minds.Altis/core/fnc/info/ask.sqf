@@ -1,6 +1,6 @@
 if (isNil {player getVariable "interpreter"}) exitWith {hint "I can't understand what is saying";};
 
-private ["_man","_rep","_chance","_info","_info_type","_random","_complain"];
+private ["_man","_rep","_chance","_info","_info_type","_random","_complain","_isInterrogate"];
 
 _man = _this select 0;
 _isInterrogate = _this select 1;
@@ -16,7 +16,7 @@ if ((_man getVariable ["ace_medical_pain", 0]) > 0.4) exitWith {
 	hint format ["%1 %2", name _man, _complain];
 };
 
-if (!isNil {_man getVariable "btc_already_asked"}) exitWith {hint format ["%1 I already answered to your question!", name _man];};
+if ((!isNil {_man getVariable "btc_already_asked"}) || (_man getVariable ["btc_already_interrogated",false])) exitWith {hint format ["%1 I already answered to your question!", name _man];};
 
 if ((round random 3) >= 2 || !_isInterrogate) then {
 	_man setVariable ["btc_already_asked",true];
