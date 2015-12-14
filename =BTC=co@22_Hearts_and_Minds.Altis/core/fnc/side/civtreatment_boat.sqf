@@ -39,9 +39,9 @@ _group setVariable ["btc_patrol",true];
 _unit =_group createUnit [_unit_type, _pos, [], 0, "NONE"];
 sleep 1;
 [_unit] call btc_fnc_set_damage;
-//sleep 1;
 _unit moveinCargo _veh;
 _unit assignAsCargo _veh;
+_unit setUnitPos "DOWN";
 
 {_x call btc_fnc_civ_unit_create} foreach units _group;
 

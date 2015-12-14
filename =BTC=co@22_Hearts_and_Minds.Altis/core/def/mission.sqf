@@ -30,6 +30,7 @@ _p_db = if ((paramsArray select 22) isEqualTo 0) then {false} else {true};
 ace_medical_level = paramsArray select 23;
 ace_medical_enableAdvancedWounds = paramsArray select 24;
 ace_medical_maxReviveTime = paramsArray select 25;
+ace_medical_enableFor = 1;
 //btc_acre_mod = isClass(configFile >> "cfgPatches" >> "acre_main");
 //btc_tfr_mod = isClass(configFile >> "cfgPatches" >> "task_force_radio");
 
