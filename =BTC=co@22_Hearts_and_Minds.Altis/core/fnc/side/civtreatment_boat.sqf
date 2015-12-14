@@ -9,37 +9,41 @@ _city = _useful select (floor random count _useful);
 _pos = getPos _city;
 
 //// Choose a random position \\\\
-_vehpos = [_pos, 10, true] call btc_fnc_randomize_pos;
+_vehpos = [_pos, 0, 600, 20, 2, 60 * (pi / 180), 0] call BIS_fnc_findSafePos;
 
 btc_side_aborted = false;
 btc_side_done = false;
 btc_side_failed = false;
 btc_side_assigned = true;publicVariable "btc_side_assigned";
 
-[[10,_pos,_city getVariable "name"],"btc_fnc_task_create",true] spawn BIS_fnc_MP;
+[[10,_vehpos,_city getVariable "name"],"btc_fnc_task_create",true] spawn BIS_fnc_MP;
 
-btc_side_jip_data = [10,_pos,_city getVariable "name"];
+btc_side_jip_data = [10,_vehpos,_city getVariable "name"];
 
 //// Create marker \\\\
-_marker = createmarker [format ["sm_2_%1",_pos],_pos];
+_marker = createmarker [format ["sm_2_%1",_vehpos],_vehpos];
 _marker setmarkertype "hd_flag";
 _marker setmarkertext "Civil need help";
 _marker setMarkerSize [0.6, 0.6];
 
 //// Create civ on _vehpos \\\\
-_veh_type = btc_civ_type_boat select (floor (random (count btc_civ_type_boat)));
+_veh_type = btc_civ_type_boats select (floor (random (count btc_civ_type_boats)));
 _veh = createVehicle [_veh_type, _vehpos, [], 0, "NONE"];
 _veh setDir (random 360);
+_veh setPos _vehpos;
 
 _unit_type = btc_civ_type_units select (floor random count btc_civ_type_units);
 _group = createGroup civilian;
 _group setVariable ["no_cache",true];
 _group setVariable ["btc_patrol",true];
-_unit = _unit_type createUnit [_vehpos, _group, "this moveinCargo _veh;this assignAsCargo _veh;"]
-{_x call btc_fnc_civ_unit_create} foreach units _group;
-
+_unit =_group createUnit [_unit_type, _pos, [], 0, "NONE"];
 sleep 1;
 [_unit] call btc_fnc_set_damage;
+//sleep 1;
+_unit moveinCargo _veh;
+_unit assignAsCargo _veh;
+
+{_x call btc_fnc_civ_unit_create} foreach units _group;
 
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !Alive _unit || {[_unit] call ace_common_fnc_isAwake && ((_unit getVariable ["ace_medical_pain", 0]) < 0.4)})};
 
