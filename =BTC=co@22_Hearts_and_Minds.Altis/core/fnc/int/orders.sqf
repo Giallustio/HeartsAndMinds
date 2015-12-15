@@ -29,17 +29,16 @@ if (isNull _unit) then {
 		_rep = btc_int_ask_data;
 
 		if (_rep >= 500) then {
-			hintSilent "Open your map and select a where you want to go.";
-			[player] onMapSingleClick "
-				private ['_pos'];
-
+			hintSilent "Show me where you want to go with your map.";
+			["1", "onMapSingleClick", {
 				if (surfaceIsWater _pos) then {
-					hintSilent 'Selected HLZ must be on land.';
+					hintSilent 'Selected area must be on land.';
 				} else {
-					[[(getpos player),4,_unit,_pos],'btc_fnc_int_orders_give',_unit] spawn BIS_fnc_MP;
-					onMapSingleClick '';
+					[[(getpos (_this select 0)),4,_this select 1,_pos],'btc_fnc_int_orders_give',_this select 1] spawn BIS_fnc_MP;
+					["1", "onMapSingleClick"] call BIS_fnc_removeStackedEventHandler;
 				};
-			";
+				hint str(_this select 1);
+			}, [player, _unit]] call BIS_fnc_addStackedEventHandler;
 		} else {
 			if (isNil {player getVariable "interpreter"}) exitWith {hint "I can't understand what is saying";};
 			_ran = round random 3;
