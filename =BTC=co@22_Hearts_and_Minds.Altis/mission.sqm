@@ -26,7 +26,8 @@ class Mission
 		"A3_Modules_F_Multiplayer",
 		"A3_Characters_F_INDEP",
 		"ace_advanced_ballistics",
-		"ace_winddeflection"
+		"ace_winddeflection",
+		"3DEN"
 	};
 	addOnsAuto[]=
 	{
@@ -34,7 +35,8 @@ class Mission
 		"a3_characters_f",
 		"A3_Characters_F_OPFOR",
 		"ace_cargo",
-		"A3_Modules_F_Curator_Curator",
+		"3DEN",
+		"a3_modules_f_curator_curator",
 		"ace_respawn",
 		"ace_captives",
 		"ace_repair",
