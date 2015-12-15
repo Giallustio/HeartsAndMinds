@@ -11,7 +11,7 @@ switch (count _this) do {
 	case 2 : {_units = _pos nearEntities [["Car","Civilian_F"], btc_int_radius_orders];};
 	case 3 : {_units = [_this select 2];};
 	case 4 : {
-		_units = _pos nearEntities [["Car","Civilian_F"], btc_int_radius_orders];
+		_units = [_this select 2];
 		_wp_pos = (_this select 3);
 	};
 };

@@ -37,7 +37,6 @@ if (isNull _unit) then {
 					[[(getpos (_this select 0)),4,_this select 1,_pos],'btc_fnc_int_orders_give',_this select 1] spawn BIS_fnc_MP;
 					["1", "onMapSingleClick"] call BIS_fnc_removeStackedEventHandler;
 				};
-				hint str(_this select 1);
 			}, [player, _unit]] call BIS_fnc_addStackedEventHandler;
 		} else {
 			if (isNil {player getVariable "interpreter"}) exitWith {hint "I can't understand what is saying";};
