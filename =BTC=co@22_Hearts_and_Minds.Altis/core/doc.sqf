@@ -97,6 +97,11 @@ When you destroy an hideout or an ammo cache, all the markers related to it will
 	"]
 ];
 
+player createDiaryRecord ["Documentation", ["Reputation", "
+Reputation can be ask to civilian<br/>
+	"]
+];
+
 player createDiaryRecord ["Documentation", ["Orders", "
 Any player can give orders to civilians.<br/>
 Open your self interaction menu and select 'ORDERS'.<br/>
@@ -104,7 +109,7 @@ Your options are:<br/>
 - STOP<br/>
 - GET DOWN<br/>
 - GO AWAY<br/><br/>
-	
+
 If you want to give an order just to one unit, interact with it (user action 2).
 	"]
 ];
@@ -120,7 +125,7 @@ Use ACE 3 interactions system.
 ];
 
 player createDiaryRecord ["Documentation", [
-	"Version", 
+	"Version",
 	format ["Version %1",btc_version]
 	]
 ];
