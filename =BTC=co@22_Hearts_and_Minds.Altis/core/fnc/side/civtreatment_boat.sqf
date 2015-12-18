@@ -1,5 +1,5 @@
 
-private ["_useful","_veh","_vehpos","_city","_pos","_marker","_unit_type"];
+private ["_useful","_veh","_vehpos","_city","_pos","_marker","_unit_type","_index","_unit","_group","_veh_type"];
 
 //// Choose a Marine location \\\\
 _useful = [];
@@ -39,8 +39,9 @@ _group setVariable ["btc_patrol",true];
 _unit =_group createUnit [_unit_type, _pos, [], 0, "NONE"];
 sleep 1;
 [_unit] call btc_fnc_set_damage;
-_unit assignAsCargo _veh;
-_unit moveinCargo _veh;
+_index = 1 + floor (random (_veh emptyPositions "cargo"));
+_unit assignAsCargoIndex [_veh, _index];
+_unit moveinCargo [_veh, _index];
 _unit setUnitPos "DOWN";
 
 {_x call btc_fnc_civ_unit_create} foreach units _group;
