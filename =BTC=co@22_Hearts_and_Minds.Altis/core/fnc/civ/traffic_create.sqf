@@ -63,8 +63,4 @@ _veh setVariable ["driver", leader _group];
 
 {_x call btc_fnc_civ_unit_create;_x setVariable ["traffic",_veh];} foreach units _group;
 
-if (btc_debug_log) then	{
-	player sidechat format ["_isWater = %1",_iswater];
-	diag_log format ["_isWater = %1",_iswater];
-};
 [_group,_area,_iswater] call btc_fnc_civ_traffic_add_WP;
