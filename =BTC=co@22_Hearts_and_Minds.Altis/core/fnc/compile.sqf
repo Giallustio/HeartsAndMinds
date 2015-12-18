@@ -22,7 +22,7 @@ if (isServer) then {
 
 	//CIV
 	btc_fnc_civ_add_weapons = compile preprocessFile "core\fnc\civ\add_weapons.sqf";
-	btc_fnc_civ_addWP = compile preprocessFileLineNumbers "core\fnc\civ\addWP.sqf";
+	btc_fnc_civ_addWP = compile preprocessFile "core\fnc\civ\addWP.sqf";
 	btc_fnc_civ_create = compile preprocessFile "core\fnc\civ\create.sqf";
 	btc_fnc_civ_get_weapons = compile preprocessFile "core\fnc\civ\get_weapons.sqf";
 	btc_fnc_civ_populate = compile preprocessFile "core\fnc\civ\populate.sqf";
@@ -116,7 +116,7 @@ btc_fnc_eh_unit_init = compile preprocessFile "core\fnc\eh\unit_init.sqf";
 //INT
 btc_fnc_int_change_var = compile preprocessFile "core\fnc\int\change_var.sqf";
 btc_fnc_int_orders_give = compile preprocessFile "core\fnc\int\orders_give.sqf";
-btc_fnc_int_orders_behaviour = compile preprocessFileLineNumbers "core\fnc\int\orders_behaviour.sqf";
+btc_fnc_int_orders_behaviour = compile preprocessFile "core\fnc\int\orders_behaviour.sqf";
 btc_fnc_int_ans_var = compile preprocessFile "core\fnc\int\ans_var.sqf";
 btc_fnc_int_ask_var = compile preprocessFile "core\fnc\int\ask_var.sqf";
 
