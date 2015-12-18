@@ -38,8 +38,4 @@ if (_order == 4) then {
 _unit setVariable ["order",nil];
 _unit setUnitPos "AUTO";
 _unit doMove getPos _unit;
-if (btc_debug) then {
-	player sideChat str(text format ["_group = %1",_group]);
-	diag_log text format ["_group = %1",_group];
-};
 _group spawn btc_fnc_civ_addWP;
