@@ -113,6 +113,12 @@ Your options are:<br/>
 If you want to give an order just to one unit, interact with it (user action 2).
 	"]
 ];
+
+player createDiaryRecord ["Documentation", ["Traffic", "
+Civilian are travelling by car across cities. If your reputation is higher than normal, you can ask a lift to a location choosed on map. If you bump into enemies, don't worry, the civilian driver will do the best to hide you in the car. <br/>
+	"]
+];
+
 player createDiaryRecord ["Documentation", ["Gear", "
 You can choose your gear at the red box inside the base.<br/>
 Use your user action 2 to change your gear.
