@@ -98,6 +98,11 @@ When you destroy an hideout or an ammo cache, all the markers related to it will
 	"]
 ];
 
+player createDiaryRecord ["Documentation", ["Reputation", "
+Reputation can be ask to civilian<br/>
+	"]
+];
+
 player createDiaryRecord ["Documentation", ["Orders", "
 Any player can give orders to civilians.<br/>
 Open your self interaction menu and select 'ORDERS'.<br/>
@@ -109,6 +114,12 @@ Your options are:<br/>
 If you want to give an order just to one unit, interact with it (user action 2).
 	"]
 ];
+
+player createDiaryRecord ["Documentation", ["Traffic", "
+Civilian are travelling by car across cities. If your reputation is higher than normal, you can ask a lift to a location choosed on map. If you bump into enemies, don't worry, the civilian driver will do the best to hide you in the car. <br/>
+	"]
+];
+
 player createDiaryRecord ["Documentation", ["Gear", "
 You can choose your gear at the red box inside the base.<br/>
 Use your user action 2 to change your gear.
