@@ -87,9 +87,10 @@ You can also blow them off with high caliber and explosive satchels.
 player createDiaryRecord ["Documentation", ["Intel", "
 Intel can be retrieved in two ways:<br/>
 - Searching dead bodies<br/>
+- Interrogate prisoner<br/>
 - Talking to civilians<br/><br/>
 Keep in mind that only the interpreter can talk to civilians and they can lie if your reputation level is low.<br/><br/>
-When you find an intel from a dead body, a marker will appear in the map.<br/>
+When you find an intel from a dead body or interrogate a prisoner, a marker will appear in the map. Remember, prisoner have a random number of intel more or less interesting.<br/>
 There are two types of marker:<br/>
 - Red question mark: ammo cache intel<br/>
 - Red esclamation mark: hideout intel<br/><br/><br/>
