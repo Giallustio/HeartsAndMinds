@@ -1,5 +1,5 @@
 
-private ["_city","_area","_n","_wp","_pos","_rpos","_unit_type","_group","_in_house","_iswater"];
+private ["_city","_area","_n","_wp","_pos","_rpos","_unit_type","_group","_in_house","_pos_iswater"];
 
 _city = _this select 0;
 _area = _this select 1;
@@ -18,10 +18,10 @@ _rpos = [_pos, _area,true] call btc_fnc_randomize_pos;
 
 if (surfaceIsWater _rpos) then {
 	_unit_type = btc_type_divers select (floor random count btc_type_divers);
-	_iswater = true;
+	_pos_iswater = true;
 } else {
 	_unit_type = btc_type_units select (floor random count btc_type_units);
-	_iswater = false;
+	_pos_iswater = false;
 };
 
 _group = createGroup btc_enemy_side;
@@ -38,10 +38,10 @@ switch (true) do {
 			_house = _houses select (floor random count _houses);
 			[_group,_house] spawn btc_fnc_house_addWP;
 			_group setVariable ["inHouse",_house];
-		} else {[_group,_rpos,_area,"SAFE",_iswater] spawn btc_fnc_task_patrol;};
+		} else {[_group,_rpos,_area,"SAFE",_pos_iswater] spawn btc_fnc_task_patrol;};
 	};
 	case (_wp > 0.3 && _wp < 0.75) : {
-		[_group,_rpos,(_area*2),"AWARE",_iswater] spawn btc_fnc_task_patrol;
+		[_group,_rpos,(_area*2),"AWARE",_pos_iswater] spawn btc_fnc_task_patrol;
 	};
 	case (_wp > 0.75) :	{
 		private ["_wpa"];
@@ -53,7 +53,7 @@ switch (true) do {
 };
 if (!_in_house) then {
 	for "_i" from 0 to _n do {
-		_unit_type = [btc_type_units select (floor random count btc_type_units), btc_type_divers select (floor random count btc_type_divers) ] select _iswater;
+		_unit_type = [btc_type_units select (floor random count btc_type_units), btc_type_divers select (floor random count btc_type_divers) ] select _pos_iswater;
 		_group createUnit [_unit_type, _rpos, [], 0, "NONE"];
 		sleep 0.5;
 	};
