@@ -66,7 +66,7 @@ switch (true) do {
 		if (count (_pos nearRoads 150) > 0) then {
 			_newZone = getPos ((_pos nearRoads 150) select 0)
 		} else {
-			_newZone = [_pos, 0, 500, 13, 1, 60 * (pi / 180), 0] call BIS_fnc_findSafePos;
+			_newZone = [_pos, 0, 500, 13, [0,1] select btc_p_sea, 60 * (pi / 180), 0] call BIS_fnc_findSafePos;
 		};
 		if (surfaceIsWater _newZone) then {
 			_veh_type = btc_type_boats select (floor (random (count btc_type_boats)));
