@@ -63,3 +63,7 @@ for "_i" from 0 to (count _locations - 1) do {
 		};
 	};
 };
+
+if !(isNil "btc_custom_loc") then {
+	{_x call btc_fnc_city_create} foreach btc_custom_loc;
+};
