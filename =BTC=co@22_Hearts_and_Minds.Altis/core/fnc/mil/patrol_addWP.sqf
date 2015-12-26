@@ -1,10 +1,10 @@
 
-private ["_group","_city","_area","_players"];
+private ["_group","_city","_area","_players","_pos_iswater"];
 
 _group = _this select 0;
 _city = _group getVariable ["city",objNull];
 _area = _this select 1;
-_iswater = _this select 2;
+_pos_iswater = _this select 2;
 
 _players = if (isMultiplayer) then {playableUnits} else {switchableUnits};
 
@@ -15,7 +15,7 @@ if ({_x distance _city < (_area/2) || _x distance leader _group < (_area/2)} cou
 };
 
 _cities = [];
-{if (((_x distance _city < _area) && !_iswater && {_x getVariable ["type",""] != "NameMarine"}) || ((_x distance _city < _area*2) && _iswater && {_x getVariable ["type",""] == "NameMarine"}))  then {
+{if (((_x distance _city < _area) && !_pos_iswater && {_x getVariable ["type",""] != "NameMarine"}) || ((_x distance _city < _area*2) && _pos_iswater && {_x getVariable ["type",""] == "NameMarine"}))  then {
 		_cities = _cities + [_x];
 };} foreach btc_city_all;
 _pos = [];
@@ -50,8 +50,8 @@ if !((vehicle leader _group) isKindOf "Air") then {
 	_wp_1 = _group addWaypoint [_pos, 0];
 	_wp_1 setWaypointType "MOVE";
 	_wp_1 setWaypointCompletionRadius 20;
-	_wp_1 setWaypointStatements ["true", format ["_spawn = [group this,%1,%2] spawn btc_fnc_mil_patrol_addWP;",_area,_iswater]];
-} else {_wp setWaypointStatements ["true", format ["_spawn = [group this,%1,%2] spawn btc_fnc_mil_patrol_addWP;",_area,_iswater]];};
+	_wp_1 setWaypointStatements ["true", format ["_spawn = [group this,%1,%2] spawn btc_fnc_mil_patrol_addWP;",_area,_pos_iswater]];
+} else {_wp setWaypointStatements ["true", format ["_spawn = [group this,%1,%2] spawn btc_fnc_mil_patrol_addWP;",_area,_pos_iswater]];};
 if (btc_debug) then {
 	if (!isNil {_group getVariable "btc_patrol_id"}) then {
 		_marker = createmarker [format ["Patrol_fant_%1", _group getVariable "btc_patrol_id"] , [(_pos select 0) + random 30,(_pos select 1) + random 30,0]];

@@ -1,5 +1,5 @@
 
-private ["_random","_city","_area","_cities","_useful","_pos","_group","_iswater","_crewmen","_unit_type","_needdiver"];
+private ["_random","_city","_area","_cities","_useful","_pos","_group","_pos_iswater","_crewmen","_unit_type","_needdiver"];
 
 _random = _this select 0;//0 random, 1 inf, 2 moto, 3 heli
 _city = _this select 1;
@@ -46,10 +46,10 @@ _group setVariable ["no_cache",true];
 _group setVariable ["btc_patrol",true];
 _group setVariable ["btc_patrol_id",btc_patrol_id];btc_patrol_id = btc_patrol_id + 1;
 
-if (surfaceIsWater _pos) then {_iswater = true;} else {_iswater = false;};
+if (surfaceIsWater _pos) then {_pos_iswater = true;} else {_pos_iswater = false;};
 
 switch (true) do {
-	case ((_random == 1) && !_iswater) : {
+	case ((_random == 1) && !_pos_iswater) : {
 		_n_units   = 4 + (round random 8);
 		_group createUnit [(btc_type_units select 0), _pos, [], 0, "NONE"];(leader _group) setpos _pos;
 		for "_i" from 1 to _n_units do {
@@ -58,9 +58,9 @@ switch (true) do {
 			_group createUnit [_unit_type, _pos, [], 0, "NONE"];
 			sleep 0.1;
 		};
-		_spawn = [_group,_area,_iswater] spawn btc_fnc_mil_patrol_addWP;
+		_spawn = [_group,_area,_pos_iswater] spawn btc_fnc_mil_patrol_addWP;
 	};
-	case ((_random == 2) || _iswater) : {
+	case ((_random == 2) || _pos_iswater) : {
 		private ["_veh_type","_newZone","_veh","_cargo"];
 		_newZone = [];
 		if (count (_pos nearRoads 150) > 0) then {
@@ -70,10 +70,10 @@ switch (true) do {
 		};
 		if (surfaceIsWater _newZone) then {
 			_veh_type = btc_type_boats select (floor (random (count btc_type_boats)));
-			_iswater = true;
+			_pos_iswater = true;
 		} else {
 			_veh_type = btc_type_motorized select (floor (random (count btc_type_motorized)));
-			_iswater = false;
+			_pos_iswater = false;
 		};
 		if (_veh_type == "I_SDV_01_F" || _veh_type == "O_SDV_01_F" || _veh_type == "B_SDV_01_F") then {_needdiver = true; _crewmen = btc_type_divers select 0} else {_needdiver = false; _crewmen = btc_type_crewmen};
 		_veh = createVehicle [_veh_type, _newZone, [], 0, "NONE"];
@@ -86,7 +86,7 @@ switch (true) do {
 				_unit_type createUnit [_pos, _group, "this moveinCargo _veh;this assignAsCargo _veh;"];
 			};
 		};
-		_spawn = [_group,_area,_iswater] spawn btc_fnc_mil_patrol_addWP;
+		_spawn = [_group,_area,_pos_iswater] spawn btc_fnc_mil_patrol_addWP;
 	};
 };
 
