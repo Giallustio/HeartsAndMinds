@@ -3,7 +3,8 @@ private ["_locations","_cities"];
 
 _locations = configfile >> "cfgworlds" >> worldname >> "names";
 
-_cities = ["NameVillage","NameCity","NameCityCapital","NameLocal","Hill","NameMarine"];//
+_cities = ["NameVillage","NameCity","NameCityCapital","NameLocal","Hill"];
+if (btc_p_sea == 1) then {_cities = _cities + ["NameMarine"];}
 btc_city_all = [];
 for "_i" from 0 to (count _locations - 1) do {
 	private ["_current","_type"];
