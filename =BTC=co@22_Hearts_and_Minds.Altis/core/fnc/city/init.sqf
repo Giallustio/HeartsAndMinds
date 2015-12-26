@@ -42,6 +42,7 @@ for "_i" from 0 to (count _locations - 1) do {
 		_city setVariable ["data_units",[]];
 		_has_en = false;if (random 1 > 0.45) then {_has_en = true;};
 		_city setVariable ["occupied",_has_en];
+		if (isNil {[_position, 0, (_radius_x+_radius_y)/2, 13, 2, 60 * (pi / 180), 0] call BIS_fnc_findSafePos} && btc_p_sea) then {_city setVariable ["hasbeach",true];};
 		btc_city_all set [_id,_city];
 		_trigger = createTrigger["EmptyDetector",getPos _city];
 		_trigger setTriggerArea[(_radius_x+_radius_y) + btc_city_radius,(_radius_x+_radius_y) + btc_city_radius,0,false];

@@ -16,12 +16,16 @@ if ({_x distance _city < (_area/2) || _x distance leader _group < (_area/2)} cou
 };
 
 _cities = [];
-{if (((_x distance _city < _area) && !_isboat && {_x getVariable ["type",""] != "NameMarine"}) || ((_x distance _city < _area*2) && _isboat && {_x getVariable ["type",""] == "NameMarine"}))  then {
+{if (((_x distance _city < _area) && !_isboat && {_x getVariable ["type",""] != "NameMarine"}) || ((_x distance _city < _area*2) && _isboat && {_x getVariable ["hasbeach",false]}))  then {
 		_cities = _cities + [_x];
 };} foreach btc_city_all;
 _pos = [];
 if (count _cities == 0) then {_pos = getPos _city;} else {
 	_pos = getPos (_cities select (floor random count _cities));
+};
+if (_isboat) then {
+	_pos = [_pos, 0, (_city getVariable ["RadiusX",0] + _city getVariable ["RadiusX",0])/2, 13, 2, 60 * (pi / 180), 0] call BIS_fnc_findSafePos;
+	_pos = [_pos select 0, _pos select 1, 0];
 };
 
 private ["_wp","_wp_1"];
