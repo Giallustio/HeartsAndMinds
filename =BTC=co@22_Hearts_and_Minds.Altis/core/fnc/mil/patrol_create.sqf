@@ -64,7 +64,7 @@ switch (true) do {
 		private ["_veh_type","_newZone","_veh","_cargo"];
 		_newZone = [];
 		if (count (_pos nearRoads 150) > 0) then {
-			_newZone = getPos ((_pos nearRoads 150) select 0)
+			_newZone = getPos ((_pos nearRoads 150) select 0);
 		} else {
 			_newZone = [_pos, 0, 500, 13, [0,1] select btc_p_sea, 60 * (pi / 180), 0] call BIS_fnc_findSafePos;
 			_newZone = [_newZone select 0, _newZone select 1, 0];
