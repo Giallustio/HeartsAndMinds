@@ -8,17 +8,17 @@ btc_civ_veh_active = btc_civ_veh_active + 1;
 if (isNil "btc_traffic_id") then {btc_traffic_id = 0;};
 
 _cities = [];
-{if (_x distance _city < _area) then {_cities = _cities + [_x];};} foreach btc_city_all;
+{if (_x distance _city < _area) then {_cities pushBack _x;};} foreach btc_city_all;
 _useful = [];
 {
-	if !(_x getVariable ["active",false]) then {_useful = _useful + [getPos _x];};
+	if !(_x getVariable ["active",false]) then {_useful pushBack (getPos _x);};
 } foreach _cities;
 
-if (count _useful == 0) then {
-	while {count _useful == 0} do {
+if (_useful isEqualTo []) then {
+	while {_useful isEqualTo []} do {
 		private "_pos";
 		_pos = [getPos _city, _area, true] call btc_fnc_randomize_pos;
-		if ({_x distance _pos < 500} count playableUnits == 0) then {_useful = _useful + [_pos];};
+		if ({_x distance _pos < 500} count playableUnits isEqualTo 0) then {_useful pushBack _pos;};
 	};
 };
 
@@ -40,12 +40,11 @@ if (count (_pos nearRoads 100) > 0) then {
 	_Spos = [_Spos select 0, _Spos select 1, 0];
 };
 
-if (surfaceIsWater _Spos) then {
+_pos_iswater = (surfaceIsWater _Spos);
+if (_pos_iswater) then {
 	_veh_type = btc_civ_type_boats select (floor (random (count btc_civ_type_boats)));
-	_pos_iswater = true;
 } else {
 	_veh_type = btc_civ_type_veh select (floor (random (count btc_civ_type_veh)));
-	_pos_iswater = false;
 };
 
 _veh = createVehicle [_veh_type, _Spos, [], 0, "NONE"];

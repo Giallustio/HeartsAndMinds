@@ -8,7 +8,7 @@ _isboat = _this select 2;
 
 _players = if (isMultiplayer) then {playableUnits} else {switchableUnits};
 
-if ({_x distance _city < (_area/2) || _x distance leader _group < (_area/2)} count _players == 0) exitWith {//playableUnits
+if ({_x distance _city < (_area/2) || _x distance leader _group < (_area/2)} count _players isEqualTo 0) exitWith {//playableUnits
 	diag_log text "DELETE TRAFFIC GROUP";
 	if (vehicle leader _group != leader _group) then {deleteVehicle (vehicle leader _group)};
 	{deleteVehicle _x;} foreach units _group;deleteGroup _group;
@@ -16,11 +16,11 @@ if ({_x distance _city < (_area/2) || _x distance leader _group < (_area/2)} cou
 };
 
 _cities = [];
-{if (((_x distance _city < _area) && !_isboat && {_x getVariable ["type",""] != "NameMarine"}) || ((_x distance _city < _area*2) && _isboat && {_x getVariable ["type",""] == "NameMarine"}))  then {
-		_cities = _cities + [_x];
+{if (((_x distance _city < _area) && !_isboat && {_x getVariable ["type",""] != "NameMarine"}) || ((_x distance _city < _area*2) && _isboat && {_x getVariable ["type",""] isEqualTo "NameMarine"}))  then {
+		_cities pushBack _x;
 };} foreach btc_city_all;
 _pos = [];
-if (count _cities == 0) then {_pos = getPos _city;} else {
+if (_cities isEqualTo []) then {_pos = getPos _city;} else {
 	_pos = getPos (_cities select (floor random count _cities));
 };
 
