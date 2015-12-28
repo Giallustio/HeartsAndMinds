@@ -17,7 +17,7 @@ _useful = [];
 if (_useful isEqualTo []) then {
 	while {_useful isEqualTo []} do {
 		private "_pos";
-		_pos = [getPos _city, _area, true] call btc_fnc_randomize_pos;
+		_pos = [getPos _city, _area, btc_p_sea] call btc_fnc_randomize_pos;
 		if ({_x distance _pos < 500} count playableUnits isEqualTo 0) then {_useful pushBack _pos;};
 	};
 };
