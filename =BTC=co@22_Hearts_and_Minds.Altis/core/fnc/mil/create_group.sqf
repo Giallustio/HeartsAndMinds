@@ -14,7 +14,7 @@ switch (typeName _city) do {
 	case "OBJECT":{_pos = position _city;};
 };
 
-_rpos = [_pos, _area,true] call btc_fnc_randomize_pos;
+_rpos = [_pos, _area, btc_p_sea] call btc_fnc_randomize_pos;
 
 if (surfaceIsWater _rpos) then {
 	_unit_type = btc_type_divers select (floor random count btc_type_divers);

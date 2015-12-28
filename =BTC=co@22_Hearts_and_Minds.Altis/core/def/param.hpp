@@ -183,7 +183,7 @@ class Params {
     };
     class btc_p_sea {
     //paramsArray[26]
-		title = "Allow sea battelfiled:";
+		title = "Extend battlefield to sea:";
 		values[] = {0,1};
 		texts[] = {"Off","On"};
 		default = 1;

@@ -11,7 +11,7 @@ btc_patrol_active = btc_patrol_active + 1;
 
 if (btc_debug_log) then {diag_log format ["btc_fnc_mil_patrol_create: _random = %1 _city %2 _area %3 btc_patrol_active = %4",_random,_city,_area,btc_patrol_active];};
 
-if (_random == 0) then {
+if (_random isEqualTo 0) then {
 	private ["_n"];
 	_n = random 100;
 	switch (true) do {
@@ -22,9 +22,9 @@ if (_random == 0) then {
 	};
 };
 _cities = [];
-{if (_x distance _city < _area) then {_cities = _cities + [_x];};} foreach btc_city_all;
+{if (_x distance _city < _area) then {_cities pushBack _x;};} foreach btc_city_all;
 _useful = [];
-{if (!(_x getVariable ["active",false]) && _x getVariable ["occupied",false]) then {_useful = _useful + [getPos _x];};} foreach _cities;
+{if (!(_x getVariable ["active",false]) && _x getVariable ["occupied",false]) then {_useful pushBack (getPos _x);};} foreach _cities;
 
 /*
 if (count _useful == 0) then {
@@ -36,7 +36,7 @@ if (count _useful == 0) then {
 };
 */
 
-if (count _useful == 0) exitWith {true};
+if (_useful isEqualTo []) exitWith {true};
 
 _pos = _useful select (floor random count _useful);
 
@@ -46,10 +46,10 @@ _group setVariable ["no_cache",true];
 _group setVariable ["btc_patrol",true];
 _group setVariable ["btc_patrol_id",btc_patrol_id];btc_patrol_id = btc_patrol_id + 1;
 
-if (surfaceIsWater _pos) then {_pos_iswater = true;} else {_pos_iswater = false;};
+_pos_iswater = (surfaceIsWater _pos);
 
 switch (true) do {
-	case ((_random == 1) && !_pos_iswater) : {
+	case ((_random isEqualTo 1) && !_pos_iswater) : {
 		_n_units   = 4 + (round random 8);
 		_group createUnit [(btc_type_units select 0), _pos, [], 0, "NONE"];(leader _group) setpos _pos;
 		for "_i" from 1 to _n_units do {
@@ -60,7 +60,7 @@ switch (true) do {
 		};
 		_spawn = [_group,_area,_pos_iswater] spawn btc_fnc_mil_patrol_addWP;
 	};
-	case ((_random == 2) || _pos_iswater) : {
+	case ((_random isEqualTo 2) || _pos_iswater) : {
 		private ["_veh_type","_newZone","_veh","_cargo"];
 		_newZone = [];
 		if (count (_pos nearRoads 150) > 0) then {
@@ -69,14 +69,16 @@ switch (true) do {
 			_newZone = [_pos, 0, 500, 13, [0,1] select btc_p_sea, 60 * (pi / 180), 0] call BIS_fnc_findSafePos;
 			_newZone = [_newZone select 0, _newZone select 1, 0];
 		};
-		if (surfaceIsWater _newZone) then {
+
+		_pos_iswater = (surfaceIsWater _newZone);
+		if (_pos_iswater) then {
 			_veh_type = btc_type_boats select (floor (random (count btc_type_boats)));
-			_pos_iswater = true;
 		} else {
 			_veh_type = btc_type_motorized select (floor (random (count btc_type_motorized)));
-			_pos_iswater = false;
 		};
-		if (_veh_type == "I_SDV_01_F" || _veh_type == "O_SDV_01_F" || _veh_type == "B_SDV_01_F") then {_needdiver = true; _crewmen = btc_type_divers select 0} else {_needdiver = false; _crewmen = btc_type_crewmen};
+
+		_needdiver = (_veh_type isEqualTo "I_SDV_01_F" || _veh_type isEqualTo "O_SDV_01_F" || _veh_type isEqualTo "B_SDV_01_F");
+		if (_needdiver) then {_crewmen = btc_type_divers select 0} else {_crewmen = btc_type_crewmen};
 		_veh = createVehicle [_veh_type, _newZone, [], 0, "NONE"];
 		[_veh,_group,false,"",_crewmen] call BIS_fnc_spawnCrew;
 		_group selectLeader (driver _veh);
