@@ -16,7 +16,7 @@ if ({_x distance _city < (_area/2) || _x distance leader _group < (_area/2)} cou
 
 _cities = [];
 {if (((_x distance _city < _area) && !_isboat && {_x getVariable ["type",""] != "NameMarine"}) || ((_x distance _city < _area*2) && _isboat && {_x getVariable ["type",""] isEqualTo "NameMarine"}))  then {
-		_cities = _cities + [_x];
+		_cities pushBack _x;
 };} foreach btc_city_all;
 _pos = [];
 if (_cities isEqualTo []) then {_pos = getPos _city;} else {
