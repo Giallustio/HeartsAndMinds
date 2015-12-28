@@ -16,12 +16,11 @@ switch (typeName _city) do {
 
 _rpos = [_pos, _area, btc_p_sea] call btc_fnc_randomize_pos;
 
-if (surfaceIsWater _rpos) then {
+_pos_iswater = (surfaceIsWater _rpos);
+if (_pos_iswater) then {
 	_unit_type = btc_type_divers select (floor random count btc_type_divers);
-	_pos_iswater = true;
 } else {
 	_unit_type = btc_type_units select (floor random count btc_type_units);
-	_pos_iswater = false;
 };
 
 _group = createGroup btc_enemy_side;
