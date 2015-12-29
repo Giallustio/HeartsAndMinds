@@ -13,7 +13,7 @@ Note: the playSound ['',true] command is bugged, so if you are deaf you will not
 ];
 
 player createDiaryRecord ["Documentation", ["Vehicles", "
-When a vehicle is destroyed it will not respawn in base, you need to tow or lift it back to base and repair it near the logistic point (Interact with the red box). Helicopter wreck can only be lift. <br/>
+When a vehicle is destroyed it will not respawn in base, you need to tow or lift it back to base and repair it near the logistic point (Interact with the red box). Helicopter wreck can only be lifted. <br/>
 The Chinook is the only exception, it will respawn after 30 seconds.
 	"]
 ];
