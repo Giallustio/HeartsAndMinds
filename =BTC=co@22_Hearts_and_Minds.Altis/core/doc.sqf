@@ -13,8 +13,8 @@ Note: the playSound ['',true] command is bugged, so if you are deaf you will not
 ];
 
 player createDiaryRecord ["Documentation", ["Vehicles", "
-When a vehicle is destroyed it will not respawn in base, you need to tow it back to base and repair it near the logistic point. (Interacti with the red box)<br/>
-The GostHawk is the only exception, it will respawn after 30 seconds.
+When a vehicle is destroyed it will not respawn in base, you need to tow or lift it back to base and repair it near the logistic point (Interact with the red box). Helicopter wreck can only be lift. <br/>
+The Chinook is the only exception, it will respawn after 30 seconds.
 	"]
 ];
 
@@ -27,7 +27,7 @@ If you don't want to complete a task, you can always abort it with the self inte
 
 player createDiaryRecord ["Documentation", ["FOB", "
 FOB<br/><br/>
-In this mission a FOB is a forward spawn point, to create a FOB approach the red box at the logistic point and require a blu container.<br/>
+In this mission a FOB is a forward spawn point, to create a FOB approach the red box at the logistic point and require a blue container.<br/>
 Move it where you want to deploy a new FOB and interact with it to set it up. Keep in mind that you can not deploy a FOB close to the main base (2.500m) and the terrain needs to be flat.<br/><br/>
 You can re-deploy at the new location interacting with the flag.
 	"]
