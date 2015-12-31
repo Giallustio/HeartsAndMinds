@@ -77,7 +77,7 @@ switch (true) do {
 			_veh_type = btc_type_motorized select (floor (random (count btc_type_motorized)));
 		};
 
-		_needdiver = (_veh_type isEqualTo "I_SDV_01_F" || _veh_type isEqualTo "O_SDV_01_F" || _veh_type isEqualTo "B_SDV_01_F");
+		_needdiver = getText(configfile >> "CfgVehicles" >> _veh_type >> "simulation") isEqualTo "submarinex";
 		if (_needdiver) then {_crewmen = btc_type_divers select 0} else {_crewmen = btc_type_crewmen};
 		_veh = createVehicle [_veh_type, _newZone, [], 0, "NONE"];
 		[_veh,_group,false,"",_crewmen] call BIS_fnc_spawnCrew;
