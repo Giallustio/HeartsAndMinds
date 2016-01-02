@@ -1,5 +1,5 @@
 
-btc_version = 1.12; diag_log format ["=BTC= HEARTS AND MINDS VERSION %1",btc_version];
+btc_version = 1.13; diag_log format ["=BTC= HEARTS AND MINDS VERSION %1",btc_version];
 
 //Param
 btc_p_time  = (paramsArray select 0);
@@ -30,6 +30,7 @@ _p_db = if ((paramsArray select 22) isEqualTo 0) then {false} else {true};
 ace_medical_level = paramsArray select 23;
 ace_medical_enableAdvancedWounds = paramsArray select 24;
 ace_medical_maxReviveTime = paramsArray select 25;
+ace_medical_enableFor = 1;
 btc_p_sea  = if ((paramsArray select 26) isEqualTo 0) then {false} else {true};
 //btc_acre_mod = isClass(configFile >> "cfgPatches" >> "acre_main");
 //btc_tfr_mod = isClass(configFile >> "cfgPatches" >> "task_force_radio");

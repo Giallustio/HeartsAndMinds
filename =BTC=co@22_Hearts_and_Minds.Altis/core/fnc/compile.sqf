@@ -19,6 +19,7 @@ if (isServer) then {
 
 	//CITY
 	btc_fnc_city_activate = compile preprocessFile "core\fnc\city\activate.sqf";
+	btc_fnc_city_create = compile preprocessFile "core\fnc\city\create.sqf";
 	btc_fnc_city_de_activate = compile preprocessFile "core\fnc\city\de_activate.sqf";
 	btc_fnc_city_set_clear = compile preprocessFile "core\fnc\city\set_clear.sqf";
 
@@ -196,6 +197,7 @@ if (!isDedicated) then {
 	btc_fnc_info_hideout_asked = compile preprocessFile "core\fnc\info\hideout_asked.sqf";
 	btc_fnc_info_search_for_intel = compile preprocessFile "core\fnc\info\search_for_intel.sqf";
 	btc_fnc_info_troops = compile preprocessFile "core\fnc\info\troops.sqf";
+	btc_fnc_info_ask_reputation = compile preprocessFile "core\fnc\info\ask_reputation.sqf";
 
 	//TASK
 	btc_fnc_task_create = compile preprocessFileLineNumbers "core\fnc\task\create.sqf";
