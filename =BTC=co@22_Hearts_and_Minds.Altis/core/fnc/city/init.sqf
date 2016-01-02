@@ -43,7 +43,7 @@ for "_i" from 0 to (count _locations - 1) do {
 		_has_en = (random 1 > 0.45);
 		_city setVariable ["occupied",_has_en];
 		if (btc_p_sea) then {
-			_city setVariable ["hasbeach", (((selectBestPlaces [_position,(_radius_x+_radius_y)/2, "sea",10,1]) select 0 select 1) isEqualTo 1)];
+			_city setVariable ["hasbeach", (((selectBestPlaces [_position,0.8*(_radius_x+_radius_y), "sea",10,1]) select 0 select 1) isEqualTo 1)];
 		};
 		btc_city_all set [_id,_city];
 		_trigger = createTrigger["EmptyDetector",getPos _city];
