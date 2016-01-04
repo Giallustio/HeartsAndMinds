@@ -11,6 +11,7 @@ hint "saving...";
 [[8],"btc_fnc_show_hint"] spawn BIS_fnc_MP;
 
 btc_db_is_saving = true;
+_name = worldName;
 
 profileNamespace setVariable [format ["btc_hm_%1_date",_name],date];
 
@@ -26,16 +27,16 @@ _cities_status = [];
 	//[151,false,false,true,false,false,[]]
 	_city_status = [];
 	_city_status pushBack (_x getVariable "id");
-	
+
 	//_city_status pushBack (_x getVariable "name");
-	
+
 	_city_status pushBack (_x getVariable "initialized");
 
 	_city_status pushBack (_x getVariable "spawn_more");
 	_city_status pushBack (_x getVariable "occupied");
-	
+
 	_city_status pushBack (_x getVariable "data_units");
-	
+
 	_city_status pushBack (_x getVariable ["has_ho",false]);
 	_city_status pushBack (_x getVariable ["ho_units_spawned",false]);
 	_city_status pushBack (_x getVariable ["ieds",[]]);
@@ -54,7 +55,7 @@ _array_ho = [];
 	_data pushBack (_x getVariable ["rinf_time",0]);
 	_data pushBack (_x getVariable ["cap_time",0]);
 	_data pushBack (_x getVariable ["assigned_to",objNull]);
-	
+
 	_ho_markers = [];
 	{
 		_marker = [];

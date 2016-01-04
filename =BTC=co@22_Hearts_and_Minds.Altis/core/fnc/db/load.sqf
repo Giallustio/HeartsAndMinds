@@ -6,7 +6,7 @@ _name = worldName;
 setDate (profileNamespace getVariable [format ["btc_hm_%1_date",_name],date]);
 
 //CITIES
-_cities_status = profileNamespace getVariable [format ["btc_hm_%1_cities",[]];
+_cities_status = profileNamespace getVariable [format ["btc_hm_%1_cities",_name],[]];
 //diag_log format ["_cities_status: %1",_cities_status];
 
 {
