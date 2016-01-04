@@ -83,6 +83,8 @@ if (isServer) then {
 	btc_fnc_mil_set_skill = compile preprocessFile "core\fnc\mil\set_skill.sqf";
 	btc_fnc_mil_unit_create = compile preprocessFile "core\fnc\mil\unit_create.sqf";
 	btc_fnc_mil_unit_killed = compile preprocessFile "core\fnc\mil\unit_killed.sqf";
+	btc_fnc_mil_patrol_eh = compile preprocessFile "core\fnc\mil\patrol_eh.sqf";
+	btc_fnc_mil_patrol_eh_remove = compile preprocessFile "core\fnc\mil\patrol_eh_remove.sqf";
 
 	//REP
 	btc_fnc_rep_add_eh = compile preprocessFile "core\fnc\rep\add_eh.sqf";
