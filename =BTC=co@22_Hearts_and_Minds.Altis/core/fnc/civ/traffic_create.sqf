@@ -33,8 +33,8 @@ _group setVariable ["btc_traffic_id",btc_traffic_id];btc_traffic_id = btc_traffi
 _group setVariable ["city",_city];
 
 _Spos = [];
-if (count (_pos nearRoads 100) > 0) then {
-	_Spos = getPos ((_pos nearRoads 100) select 0);
+if (count (_pos nearRoads 200) > 0) then {
+	_Spos = getPos ((_pos nearRoads 200) select 0);
 } else {
 	_Spos = [_pos, 0, 500, 13, [0,1] select btc_p_sea, 60 * (pi / 180), 0] call BIS_fnc_findSafePos;
 	_Spos = [_Spos select 0, _Spos select 1, 0];
