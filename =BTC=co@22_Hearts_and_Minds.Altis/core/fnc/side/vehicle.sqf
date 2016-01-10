@@ -2,7 +2,7 @@
 private ["_city","_pos","_roads","_marker","_veh_type","_veh","_useful"];
 
 _useful = [];
-{if (_x getVariable ["type",""] == "NameMarine") then {_useful = _useful + [_x];};} foreach btc_city_all;
+{if (_x getVariable ["type",""] != "NameMarine") then {_useful = _useful + [_x];};} foreach btc_city_all;
 if (count _useful == 0) exitWith {[] spawn btc_fnc_side_create;};
 _city = _useful select (floor random count _useful);
 
