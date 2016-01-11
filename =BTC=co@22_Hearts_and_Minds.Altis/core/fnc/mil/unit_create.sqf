@@ -4,11 +4,7 @@ if (_this getVariable ["btc_init", false]) exitWith {true};
 
 _this setVariable ["btc_init",true];
 
-if ((vehicle _this != _this) && (leader group _this != _this)) then {
-	(vehicle _this) addEventHandler ["GetOut",{(_this select 2) addEventHandler ["Killed",{_this call btc_fnc_mil_unit_killed}];}];
-} else {
-	_this addEventHandler ["Killed",{_this call btc_fnc_mil_unit_killed}];
-};
+_this addEventHandler ["Killed",{_this call btc_fnc_mil_unit_killed}];
 
 if (btc_p_set_skill) then {_this call btc_fnc_mil_set_skill;};
 
