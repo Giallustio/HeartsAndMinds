@@ -8,6 +8,7 @@ if (isPlayer (_this select 1)) then {
 
 if ((group (_this select 0)) getVariable ["btc_patrol",false] && {({Alive _x} count units (group (_this select 0)) == 0)}) then {
 	btc_patrol_active = btc_patrol_active - 1;
+	if (btc_patrol_active < 0) then {btc_patrol_active = 0;};
 };
 
 //(_this select 0) spawn {sleep 0.5;{deleteVehicle _x} foreach (nearestObjects [_this, ["WeaponHolderSimulated"], 5]);};
