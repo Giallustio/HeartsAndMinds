@@ -83,7 +83,7 @@ if (isServer) then {
 
 	//Patrol
 	btc_patrol_max = 5;
-	btc_patrol_active = 0;
+	btc_patrol_active = [];
 	btc_patrol_area = 2500;
 
 	//Rep
