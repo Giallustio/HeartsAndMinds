@@ -59,7 +59,6 @@ switch (true) do {
 			sleep 0.1;
 		};
 		_spawn = [_group,_area,_iswater] spawn btc_fnc_mil_patrol_addWP;
-		{_x call btc_fnc_mil_unit_create} foreach units _group;
 	};
 	case ((_random == 2) || _iswater) : {
 		private ["_veh_type","_newZone","_veh","_cargo"];
@@ -88,13 +87,7 @@ switch (true) do {
 			};
 		};
 		_spawn = [_group,_area,_iswater] spawn btc_fnc_mil_patrol_addWP;
-
-		(leader _group) addEventHandler ["Killed",{_this call btc_fnc_mil_unit_killed}];
-		_veh addEventHandler ["GetOut",{(_this select 2) addEventHandler ["Killed",{_this call btc_fnc_mil_unit_killed}];}];
-		{
-			if (_x getVariable ["btc_init", false]) exitWith {true};
-			_x setVariable ["btc_init",true];
-			if (btc_p_set_skill) then {_x call btc_fnc_mil_set_skill;};
-		} forEach units _group;
 	};
 };
+
+{_x call btc_fnc_mil_unit_create} foreach units _group;

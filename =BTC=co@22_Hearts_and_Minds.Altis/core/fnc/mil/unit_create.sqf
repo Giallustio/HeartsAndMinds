@@ -15,4 +15,4 @@ if (isNil {_this getVariable "btc_eh_killed_assigned"}) then
 	_this setVariable ["btc_eh_killed_assigned",true];
 };
 */
-true
+true 
