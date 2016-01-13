@@ -1,14 +1,11 @@
-private ["_flag","_pos","_FOBname"];
+private ["_FOBname","_element"];
 
-_flag = (_this select 0);
-_FOBname = _this select 1;
+_FOBname = _this getVariable "btc_fob";
+_element = (btc_fobs select 0) find _FOBname;
 
-_pos = getpos _flag;
-deleteVehicle _flag;
-hint str((nearestObjects [_pos, [btc_fob_structure], 10]));
-deleteVehicle ((nearestObjects [_pos, [btc_fob_structure], 10]) select 0);
+deleteVehicle _this;
+deleteVehicle ((btc_fobs select 1) deleteAt _element);
 
-btc_fobs deleteAt (btc_fobs find _FOBname);
-deleteMarker _FOBname;
+[btc_fob_mat,markerPos _FOBname] call btc_fnc_log_create_s;
 
-[btc_fob_mat,_pos] call btc_fnc_log_create_s;
+deleteMarker ((btc_fobs select 0) deleteAt _element);
