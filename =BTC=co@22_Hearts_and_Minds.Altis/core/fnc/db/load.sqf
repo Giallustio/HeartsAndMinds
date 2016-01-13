@@ -153,7 +153,7 @@ btc_global_reputation = profileNamespace getVariable [format ["btc_hm_%1_rep",_n
 
 //FOB
 _fobs = profileNamespace getVariable [format ["btc_hm_%1_fobs",_name],[]];
-_fobs_loaded = [];
+_fobs_loaded = [[],[]];
 
 {
 	private ["_pos"];
@@ -165,9 +165,9 @@ _fobs_loaded = [];
 	(_x select 0) setMarkerColor "ColorBlue";
 	(_x select 0) setMarkerShape "ICON";
 	{createVehicle [_x, _pos, [], 0, "NONE"];} foreach [btc_fob_structure,btc_fob_flag];
-	_fobs_loaded pushBack (_x select 0);
-} foreach _fobs;
-
+	(_fobs_loaded select 0) pushBack (_x select 0);
+} foreach (_fobs select 0);
+(_fobs_loaded select 1) append (_fobs select 1);
 btc_fobs = _fobs_loaded;
 
 //VEHICLES

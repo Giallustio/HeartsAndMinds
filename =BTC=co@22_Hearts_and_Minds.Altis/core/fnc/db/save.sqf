@@ -26,16 +26,16 @@ _cities_status = [];
 	//[151,false,false,true,false,false,[]]
 	_city_status = [];
 	_city_status pushBack (_x getVariable "id");
-	
+
 	//_city_status pushBack (_x getVariable "name");
-	
+
 	_city_status pushBack (_x getVariable "initialized");
 
 	_city_status pushBack (_x getVariable "spawn_more");
 	_city_status pushBack (_x getVariable "occupied");
-	
+
 	_city_status pushBack (_x getVariable "data_units");
-	
+
 	_city_status pushBack (_x getVariable ["has_ho",false]);
 	_city_status pushBack (_x getVariable ["ho_units_spawned",false]);
 	_city_status pushBack (_x getVariable ["ieds",[]]);
@@ -54,7 +54,7 @@ _array_ho = [];
 	_data pushBack (_x getVariable ["rinf_time",0]);
 	_data pushBack (_x getVariable ["cap_time",0]);
 	_data pushBack (_x getVariable ["assigned_to",objNull]);
-	
+
 	_ho_markers = [];
 	{
 		_marker = [];
@@ -88,12 +88,13 @@ profileNamespace setVariable [format ["btc_hm_%1_cache",_name],_array_cache];
 //rep status
 profileNamespace setVariable [format ["btc_hm_%1_rep",_name],btc_global_reputation];
 //FOBS
-_fobs = [];
+_fobs = [[],[]];
 {
 	private "_pos";
 	_pos = getMarkerPos _x;
-	_fobs pushBack [_x,_pos];
-} foreach btc_fobs;
+	(_fobs select 0) pushBack [_x,_pos];
+} foreach (btc_fobs select 0);
+(_fobs select 1) append (btc_fobs select 1);
 profileNamespace setVariable [format ["btc_hm_%1_fobs",_name],_fobs];
 
 //Vehicles status
