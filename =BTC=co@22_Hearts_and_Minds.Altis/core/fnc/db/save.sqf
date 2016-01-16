@@ -11,6 +11,7 @@ hint "saving...";
 [[8],"btc_fnc_show_hint"] spawn BIS_fnc_MP;
 
 btc_db_is_saving = true;
+_name = worldName;
 
 profileNamespace setVariable [format ["btc_hm_%1_date",_name],date];
 
