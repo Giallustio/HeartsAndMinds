@@ -3,13 +3,14 @@ private ["_useful","_veh","_vehpos","_city","_pos","_marker","_unit_type","_inde
 
 //// Choose a Marine location \\\\
 _useful = [];
-{if (_x getVariable ["type",""] == "NameMarine") then {_useful = _useful + [_x];};} foreach btc_city_all;
+{if ((_x getVariable ["type",""] == "NameMarine") || (_x getVariable ["hasbeach",false])) then {_useful pushBack _x;};} foreach btc_city_all;
 if (count _useful == 0) exitWith {[] spawn btc_fnc_side_create;};
 _city = _useful select (floor random count _useful);
 _pos = getPos _city;
 
 //// Choose a random position \\\\
 _vehpos = [_pos, 0, 600, 20, 2, 60 * (pi / 180), 0] call BIS_fnc_findSafePos;
+_vehpos = [_vehpos select 0 ,_vehpos select 1,0];
 
 btc_side_aborted = false;
 btc_side_done = false;
@@ -36,17 +37,16 @@ _unit_type = btc_civ_type_units select (floor random count btc_civ_type_units);
 _group = createGroup civilian;
 _group setVariable ["no_cache",true];
 _group setVariable ["btc_patrol",true];
-_unit =_group createUnit [_unit_type, _pos, [], 0, "NONE"];
+_unit = _group createUnit [_unit_type, _pos, [], 0, "NONE"];
 sleep 1;
 [_unit] call btc_fnc_set_damage;
 _index = 1 + floor (random (_veh emptyPositions "cargo"));
 _unit assignAsCargoIndex [_veh, _index];
 _unit moveinCargo [_veh, _index];
-_unit setUnitPos "DOWN";
 
 {_x call btc_fnc_civ_unit_create} foreach units _group;
 
-waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !Alive _unit || {[_unit] call ace_common_fnc_isAwake && ((_unit getVariable ["ace_medical_pain", 0]) < 0.4)})};
+waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !Alive _unit || {_unit call ace_medical_fnc_isInStableCondition && [_unit] call ace_common_fnc_isAwake})};
 
 {deletemarker _x} foreach [_marker];
 
