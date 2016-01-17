@@ -4,7 +4,6 @@ private ["_city","_area","_cities","_useful","_unit_type","_veh_type","_group","
 _city = _this select 0;
 _area = _this select 1;
 
-btc_civ_veh_active = btc_civ_veh_active + 1;
 if (isNil "btc_traffic_id") then {btc_traffic_id = 0;};
 
 _cities = [];
@@ -58,6 +57,8 @@ _3 = _veh addEventHandler ["GetOut", {_this call btc_fnc_civ_traffic_eh}];
 
 _veh setVariable ["eh", [_1,_2,_3/*,4,5*/]];
 _veh setVariable ["driver", leader _group];
+
+btc_civ_veh_active pushBack _group;
 
 {_x call btc_fnc_civ_unit_create;_x setVariable ["traffic",_veh];} foreach units _group;
 
