@@ -1,5 +1,5 @@
 
-private ["_city","_is_init","_data_units","_type","_radius_x","_radius_y","_has_en","_has_ho","_ieds","_radius"];
+private ["_city","_is_init","_data_units","_type","_radius_x","_radius_y","_has_en","_has_ho","_ieds","_radius","_number_patrol_active","_number_civ_veh_active"];
 
 hint ("Activate " + str(_this));
 
@@ -151,11 +151,13 @@ if !(_city getVariable ["has_suicider",false]) then {
 _city setVariable ["activating",false];
 
 //Patrol
-if (btc_patrol_active < btc_patrol_max) then {
+btc_patrol_active = btc_patrol_active - [grpNull];
+_number_patrol_active = count btc_patrol_active;
+if (_number_patrol_active < btc_patrol_max) then {
 	private ["_n","_av","_d","_r"];
 	_n = 0;_r = 0;
 	if (_has_en) then	{_n = round (random 3 + (3/2));} else {_n = round random 2;};
-	_av = btc_patrol_max - btc_patrol_active;
+	_av = btc_patrol_max - _number_patrol_active;
 	_d = _n - _av;
 	if (_d > 0) then {_r = _n - _d;} else {_r = _n;};
 	for "_i" from 1 to _r do
@@ -166,11 +168,13 @@ if (btc_patrol_active < btc_patrol_max) then {
 };
 
 //Traffic
-if (btc_civ_veh_active < btc_civ_max_veh) then {
+btc_civ_veh_active = btc_civ_veh_active - [grpNull];
+_number_civ_veh_active = count btc_civ_veh_active;
+if (_number_civ_veh_active < btc_civ_max_veh) then {
 	private ["_n","_av","_d","_r"];
 	_n = 0;_r = 0;
 	_n = round (random 3 + (3/2));
-	_av = btc_civ_max_veh - btc_civ_veh_active;
+	_av = btc_civ_max_veh - _number_civ_veh_active;
 	_d = _n - _av;
 	if (_d > 0) then {_r = _n - _d;} else {_r = _n;};
 	for "_i" from 1 to _r do {
