@@ -13,6 +13,5 @@ if !(isNil {_unit getVariable ["traffic",objNull]}) then {
 	[getPos _unit,(_unit getVariable ["traffic",objNull])] spawn {
 		waitUntil {sleep 5; ({_x distance (_this select 0) < 300} count playableUnits == 0)};
 		deleteVehicle (_this select 1);
-		btc_civ_veh_active = btc_civ_veh_active - 1;
 	};
 };

@@ -12,7 +12,6 @@ if ({_x distance _city < (_area/2) || _x distance leader _group < (_area/2)} cou
 	diag_log text "DELETE TRAFFIC GROUP";
 	if (vehicle leader _group != leader _group) then {deleteVehicle (vehicle leader _group)};
 	{deleteVehicle _x;} foreach units _group;deleteGroup _group;
-	btc_civ_veh_active = btc_civ_veh_active - 1;
 };
 
 _cities = [];
