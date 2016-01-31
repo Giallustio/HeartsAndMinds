@@ -117,15 +117,16 @@ profileNamespace setVariable [format ["btc_hm_%1_vehs",_name],_array_veh];
 //Objects status
 _array_obj = [];
 {
-	if (!isNil {_x getVariable "loaded"} || !Alive _x || isNull _x) exitWith {};
-	_data = [];
-	_data pushBack (typeOf _x);
-	_data pushBack (getPosASL _x);
-	_data pushBack (getDir _x);
-	_cargo = [];
-	{_cargo pushBack (typeOf _x)} foreach (_x getVariable ["cargo",[]]);
-	_data pushBack _cargo;
-	_array_obj pushBack _data;
+	if !(!isNil {_x getVariable "loaded"} || !Alive _x || isNull _x) then {
+		_data = [];
+		_data pushBack (typeOf _x);
+		_data pushBack (getPosASL _x);
+		_data pushBack (getDir _x);
+		_cargo = [];
+		{_cargo pushBack (typeOf _x)} foreach (_x getVariable ["cargo",[]]);
+		_data pushBack _cargo;
+		_array_obj pushBack _data;
+	};
 } foreach btc_log_obj_created;
 profileNamespace setVariable [format ["btc_hm_%1_objs",_name],_array_obj];
 
