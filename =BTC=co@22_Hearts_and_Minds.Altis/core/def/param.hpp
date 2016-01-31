@@ -185,7 +185,7 @@ class Params {
 	//paramsArray[26]
         title = "Civil type:";
 		values[]={0,1};
-		texts[]={"Civilian (A3)","Afghan (Ericj_Taliban)"};
+		texts[]={"Civilian (A3)","Afghan (@Ericj_Taliban)"};
 		default = 0;
 	};
 };
