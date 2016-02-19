@@ -51,6 +51,8 @@ _group setVariable ["btc_patrol_id",btc_patrol_id];btc_patrol_id = btc_patrol_id
 
 _pos_iswater = (surfaceIsWater _pos);
 
+sleep 5 + random 10;
+
 switch (true) do {
 	case ((_random isEqualTo 1) && !_pos_iswater) : {
 		_n_units   = 4 + (round random 8);
@@ -59,7 +61,7 @@ switch (true) do {
 			private ["_unit_type"];
 			_unit_type = btc_type_units select (floor random count btc_type_units);
 			_group createUnit [_unit_type, _pos, [], 0, "NONE"];
-			sleep 0.1;
+			sleep 1;
 		};
 		_spawn = [_group,_area,_pos_iswater] spawn btc_fnc_mil_patrol_addWP;
 	};

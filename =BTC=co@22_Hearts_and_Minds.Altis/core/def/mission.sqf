@@ -28,8 +28,9 @@ btc_p_debug  = (paramsArray select 20);
 btc_p_engineer  = (paramsArray select 21);
 _p_db = if ((paramsArray select 22) isEqualTo 0) then {false} else {true};
 ace_medical_level = paramsArray select 23;
-ace_medical_enableAdvancedWounds = paramsArray select 24;
+ace_medical_enableAdvancedWounds = if ((paramsArray select 24) isEqualTo 0) then {false} else {true};
 ace_medical_maxReviveTime = paramsArray select 25;
+if (ace_medical_maxReviveTime > 0) then {ace_medical_enableRevive = 1;ace_medical_preventInstaDeath = true};
 ace_medical_enableFor = 1;
 btc_p_sea  = if ((paramsArray select 26) isEqualTo 0) then {false} else {true};
 //btc_acre_mod = isClass(configFile >> "cfgPatches" >> "acre_main");
@@ -83,7 +84,7 @@ if (isServer) then {
 	btc_log_cargo_repo = "Land_HBarrierBig_F" createVehicle [- 5000,- 5000,0];
 
 	//Patrol
-	btc_patrol_max = 5;
+	btc_patrol_max = 8;
 	btc_patrol_active = [];
 	btc_patrol_area = 2500;
 
@@ -137,7 +138,7 @@ btc_city_type = "Land_Ammobox_rounds_F";
 btc_civ_type_units  = ["C_man_1","C_man_1_1_F","C_man_1_2_F","C_man_1_3_F","C_man_polo_1_F","C_man_polo_2_F","C_man_polo_3_F","C_man_polo_4_F","C_man_polo_5_F","C_man_polo_6_F"];
 btc_civ_type_veh    = ["C_Hatchback_01_F","C_SUV_01_F","C_Offroad_01_F","C_Van_01_transport_F","C_Van_01_box_F"];
 btc_civ_type_boats    = ["C_Rubberboat","C_Boat_Civil_01_F","C_Boat_Civil_01_rescue_F","C_Boat_Civil_01_police_F"];
-btc_civ_max_veh = 5;
+btc_civ_max_veh = 10;
 btc_w_civs = ["V_Rangemaster_belt","arifle_Mk20_F","30Rnd_556x45_Stanag","hgun_ACPC2_F","9Rnd_45ACP_Mag"];
 
 //Cache

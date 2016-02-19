@@ -5,13 +5,13 @@ private ["_man","_rep","_chance","_info","_info_type","_random","_complain","_is
 _man = _this select 0;
 _isInterrogate = _this select 1;
 
-if ((_man getVariable ["ace_medical_pain", 0]) > 0.4) exitWith {
+if !(_man call ace_medical_fnc_isInStableCondition) exitWith {
 	_random = (round random 3);
 	_complain = switch _random do {
 		case 0 : {"Help me!"};
 		case 1 : {"I am suffering!"};
-		case 2 : {"I have a body pain!"};
-		case 3 : {"I have an acute pain!"};
+		case 2 : {"Injure!"};
+		case 3 : {"I have open wound!"};
 	};
 	hint format ["%1 %2", name _man, _complain];
 };
