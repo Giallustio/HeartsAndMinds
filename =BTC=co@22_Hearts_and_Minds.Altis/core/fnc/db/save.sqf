@@ -100,6 +100,7 @@ profileNamespace setVariable [format ["btc_hm_%1_fobs",_name],_fobs];
 //Vehicles status
 _array_veh = [];
 {
+	private ["_data","_cargo","_cont"];
 	_data = [];
 	_data pushBack (typeOf _x);
 	_data pushBack (getPos _x);
@@ -107,8 +108,10 @@ _array_veh = [];
 	_data pushBack (fuel _x);
 	_data pushBack (damage _x);
 	_cargo = [];
-	{_cargo pushBack (typeOf _x)} foreach (_x getVariable ["cargo",[]]);
+	{_cargo pushBack [(typeOf _x),[getWeaponCargo _x,getMagazineCargo _x,getItemCargo _x]]} foreach (_x getVariable ["cargo",[]]);
 	_data pushBack _cargo;
+	_cont = [getWeaponCargo _x,getMagazineCargo _x,getItemCargo _x];
+	_data pushBack _cont;
 	_array_veh pushBack _data;
 	//diag_log format ["VEH %1 DATA %2",_x,_data];
 } foreach btc_vehicles;
@@ -123,8 +126,11 @@ _array_obj = [];
 		_data pushBack (getPosASL _x);
 		_data pushBack (getDir _x);
 		_cargo = [];
-		{_cargo pushBack (typeOf _x)} foreach (_x getVariable ["cargo",[]]);
+		{_cargo pushBack [(typeOf _x),[getWeaponCargo _x,getMagazineCargo _x,getItemCargo _x]]} foreach (_x getVariable ["cargo",[]]);
 		_data pushBack _cargo;
+		_cont = [getWeaponCargo _x,getMagazineCargo _x,getItemCargo _x];
+		_data pushBack _cont;
+		
 		_array_obj pushBack _data;
 	};
 } foreach btc_log_obj_created;

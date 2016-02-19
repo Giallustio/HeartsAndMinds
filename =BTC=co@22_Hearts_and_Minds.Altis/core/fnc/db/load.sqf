@@ -1,5 +1,5 @@
 
-private ["_cities_status","_fobs","_fobs_loaded"];
+private ["_name","_cities_status","_array_ho","_ho","_array_cache","_fobs","_fobs_loaded","_vehs","_objs"];
 
 _name = worldName;
 
@@ -68,6 +68,8 @@ _cities_status = profileNamespace getVariable [format ["btc_hm_%1_cities",_name]
 _array_ho = profileNamespace getVariable [format ["btc_hm_%1_ho",_name],[]];
 
 {
+	private ["_pos","_hideout","_markers"];
+
 	_pos = (_x select 0);
 
 	[_pos,(random 360),btc_composition_hideout] call btc_fnc_create_composition;
@@ -129,6 +131,7 @@ clearWeaponCargoGlobal btc_cache_obj;clearItemCargoGlobal btc_cache_obj;clearMag
 btc_cache_obj addEventHandler ["HandleDamage", btc_fnc_cache_hd_cache];
 
 {
+	private ["_marker"];
 	_marker = createmarker [format ["%1", (_x select 0)], (_x select 0)];
 	_marker setmarkertype "hd_unknown";
 	_marker setMarkerText (_x select 1);
@@ -193,7 +196,7 @@ diag_log format ["5: %1",(_x select 5)];
 {diag_log format ["5: %1",_x];} foreach (_x select 5)} foreach _vehs;
 */
 {
-	private "_veh";
+	private ["_veh","_cont","_weap","_mags","_items"];
 	_veh = (_x select 0) createVehicle (_x select 1);
 	btc_vehicles pushBack _veh;
 	_veh addEventHandler ["Killed", {_this call btc_fnc_eh_veh_killed}];
@@ -202,12 +205,54 @@ diag_log format ["5: %1",(_x select 5)];
 	_veh setFuel (_x select 3);
 	_veh setDamage (_x select 4);
 	{
-		private "_obj";
-		_obj = _x createVehicle [0,0,0];
+		private ["_type","_cargo_obj","_obj","_weap_obj","_mags_obj","_items_obj"];
+		//{_cargo pushBack [(typeOf _x),[getWeaponCargo _x,getMagazineCargo _x,getItemCargo _x]]} foreach (_x getVariable ["cargo",[]]);
+		_type = _x select 0;
+		_cargo_obj = _x select 1;
+		_obj = _type createVehicle [0,0,0];
 		btc_log_obj_created = btc_log_obj_created + [_obj];
 		btc_curator addCuratorEditableObjects [[_obj], false];
+		clearWeaponCargoGlobal _obj;clearItemCargoGlobal _obj;clearMagazineCargoGlobal _obj;
+		_weap_obj = _cargo_obj select 0;
+		if (count _weap_obj > 0) then {
+			for "_i" from 0 to ((count (_weap_obj select 0)) - 1) do {
+				_obj addWeaponCargoGlobal[((_weap_obj select 0) select _i),((_weap_obj select 1) select _i)];
+			};
+		};
+		_mags_obj = _cargo_obj select 1;
+		if (count _mags_obj > 0) then {
+			for "_i" from 0 to ((count (_mags_obj select 0)) - 1) do {
+				_obj addMagazineCargoGlobal[((_mags_obj select 0) select _i),((_mags_obj select 1) select _i)];
+			};
+		};
+		_items_obj = _cargo_obj select 2;
+		if (count _items_obj > 0) then {
+			for "_i" from 0 to ((count (_items_obj select 0)) - 1) do {
+				_obj addItemCargoGlobal[((_items_obj select 0) select _i),((_items_obj select 1) select _i)];
+			};
+		};
 		[_obj,_veh] call btc_fnc_log_server_load;
 	} foreach (_x select 5);
+	_cont = (_x select 6);
+	clearWeaponCargoGlobal _veh;clearItemCargoGlobal _veh;clearMagazineCargoGlobal _veh;
+	_weap = _cont select 0;
+	if (count _weap > 0) then {
+		for "_i" from 0 to ((count (_weap select 0)) - 1) do {
+			_veh addWeaponCargoGlobal[((_weap select 0) select _i),((_weap select 1) select _i)];
+		};
+	};
+	_mags = _cont select 1;
+	if (count _mags > 0) then {
+		for "_i" from 0 to ((count (_mags select 0)) - 1) do {
+			_veh addMagazineCargoGlobal[((_mags select 0) select _i),((_mags select 1) select _i)];
+		};
+	};
+	_items = _cont select 2;
+	if (count _items > 0) then {
+		for "_i" from 0 to ((count (_items select 0)) - 1) do {
+			_veh addItemCargoGlobal[((_items select 0) select _i),((_items select 1) select _i)];
+		};
+	};
 } foreach _vehs;
 
 //Objs
@@ -226,17 +271,65 @@ diag_log format ["5: %1",(_x select 5)];
 //btc_log_obj_created = [];
 _objs = profileNamespace getVariable [format ["btc_hm_%1_objs",_name],[]];
 {
-	private "_obj";
+	private ["_obj","_cont","_weap","_mags","_items"];
 	_obj = (_x select 0) createVehicle (_x select 1);
 	btc_log_obj_created = btc_log_obj_created + [_obj];
 	btc_curator addCuratorEditableObjects [[_obj], false];
 	_obj setDir (_x select 2);
 	_obj setPosASL (_x select 1);
 	{
-		private "_l";
+		/*private "_l";
 		_l = _x createVehicle [0,0,0];
 		btc_log_obj_created = btc_log_obj_created + [_l];
 		btc_curator addCuratorEditableObjects [[_l], false];
+		[_l,_obj] call btc_fnc_log_server_load;*/
+		//NEW
+		private ["_type","_cargo_obj","_l","_weap_obj","_mags_obj","_items_obj"];
+		//{_cargo pushBack [(typeOf _x),[getWeaponCargo _x,getMagazineCargo _x,getItemCargo _x]]} foreach (_x getVariable ["cargo",[]]);
+		_type = _x select 0;
+		_cargo_obj = _x select 1;
+		_l = _type createVehicle [0,0,0];
+		btc_log_obj_created = btc_log_obj_created + [_l];
+		btc_curator addCuratorEditableObjects [[_l], false];
+		clearWeaponCargoGlobal _l;clearItemCargoGlobal _l;clearMagazineCargoGlobal _l;
+		_weap_obj = _cargo_obj select 0;
+		if (count _weap_obj > 0) then {
+			for "_i" from 0 to ((count (_weap_obj select 0)) - 1) do {
+				_l addWeaponCargoGlobal[((_weap_obj select 0) select _i),((_weap_obj select 1) select _i)];
+			};
+		};
+		_mags_obj = _cargo_obj select 1;
+		if (count _mags_obj > 0) then {
+			for "_i" from 0 to ((count (_mags_obj select 0)) - 1) do {
+				_l addMagazineCargoGlobal[((_mags_obj select 0) select _i),((_mags_obj select 1) select _i)];
+			};
+		};
+		_items_obj = _cargo_obj select 2;
+		if (count _items_obj > 0) then {
+			for "_i" from 0 to ((count (_items_obj select 0)) - 1) do {
+				_l addItemCargoGlobal[((_items_obj select 0) select _i),((_items_obj select 1) select _i)];
+			};
+		};
 		[_l,_obj] call btc_fnc_log_server_load;
 	} foreach (_x select 3);
+	_cont = (_x select 4);
+	clearWeaponCargoGlobal _obj;clearItemCargoGlobal _obj;clearMagazineCargoGlobal _obj;
+	_weap = _cont select 0;
+	if (count _weap > 0) then {
+		for "_i" from 0 to ((count (_weap select 0)) - 1) do {
+			_obj addWeaponCargoGlobal[((_weap select 0) select _i),((_weap select 1) select _i)];
+		};
+	};
+	_mags = _cont select 1;
+	if (count _mags > 0) then {
+		for "_i" from 0 to ((count (_mags select 0)) - 1) do {
+			_obj addMagazineCargoGlobal[((_mags select 0) select _i),((_mags select 1) select _i)];
+		};
+	};
+	_items = _cont select 2;
+	if (count _items > 0) then {
+		for "_i" from 0 to ((count (_items select 0)) - 1) do {
+			_obj addItemCargoGlobal[((_items select 0) select _i),((_items select 1) select _i)];
+		};
+	};
 } foreach _objs;
