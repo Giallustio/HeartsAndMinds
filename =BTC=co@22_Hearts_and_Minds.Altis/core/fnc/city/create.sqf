@@ -30,6 +30,8 @@ _trigger setTriggerArea[(_radius_x+_radius_y) + btc_city_radius,(_radius_x+_radi
 _trigger setTriggerActivation[str(btc_player_side),"PRESENT",true];
 _trigger setTriggerStatements ["this && !btc_db_is_saving", format ["[%1] spawn btc_fnc_city_activate",_id], format ["[%1] spawn btc_fnc_city_de_activate",_id]];
 
+btc_city_all set [_id,_city];
+
 if (btc_debug) then	{//_debug
 	private ["_marker"];
 	_marker = createmarker [format ["loc_%1",_id],_position];
