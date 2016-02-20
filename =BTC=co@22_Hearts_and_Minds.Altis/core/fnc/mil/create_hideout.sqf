@@ -15,8 +15,7 @@ if (count _this > 0) then {_city = _this;} else {
 				{_x getVariable ["type",""] == "Hill"} ||
 				{_x getVariable ["type",""] == "NameVillage"}
 			)
-	};
-	{
+		)};
 	_id = floor random count _useful;
 	_city = _useful select _id;
 };

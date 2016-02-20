@@ -1,5 +1,5 @@
 
-private ["_city","_area","_cities","_useful","_unit_type","_veh_type","_group","_veh","_iswater"];
+private ["_city","_area","_cities","_useful","_unit_type","_veh_type","_group","_veh","_iswater","_pos"];
 
 _city = _this select 0;
 _area = _this select 1;
@@ -7,13 +7,12 @@ _area = _this select 1;
 if (isNil "btc_traffic_id") then {btc_traffic_id = 0;};
 
 _cities = btc_city_all select {(_x distance _city < _area)};
-_useful = btc_city_all select {!(_x getVariable ["active",false])};
-
+_useful = _cities select {!(_x getVariable ["active",false])};
 if (_useful isEqualTo []) then {
 	while {_useful isEqualTo []} do {
 		private "_pos";
 		_pos = [getPos _city, _area, true] call btc_fnc_randomize_pos;
-		if ({_x distance _pos < 500} count playableUnits == 0) then {_useful = _useful + [_pos];};
+		if ({_x distance _pos < 500} count playableUnits == 0) then {_useful pushBack _pos;};
 	};
 	_pos = selectRandom _useful;
 } else {
@@ -31,7 +30,7 @@ _group setVariable ["city",_city];
 
 _Spos = [];
 if (count (_pos nearRoads 100) > 0) then {
-	_Spos = getPos ((_pos nearRoads 500) select 0)
+	_Spos = getPos ((_pos nearRoads 500) select 0);
 } else {
 	_Spos = [_pos, 0, 500, 13, 1, 60 * (pi / 180), 0] call BIS_fnc_findSafePos;
 };

@@ -34,7 +34,7 @@ if (count _useful == 0) then {
 
 if (count _useful == 0) exitWith {true};
 
-_pos = _useful select (floor random count _useful);
+_pos = getpos(_useful select (floor random count _useful));
 
 _group = createGroup btc_enemy_side;
 _group setVariable ["city",_city];

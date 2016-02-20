@@ -3,7 +3,7 @@ private ["_useful","_city","_pos","_area","_marker","_mines"];
 
 _useful = btc_city_all select {(_x getVariable ["type",""] != "NameLocal" && {_x getVariable ["type",""] != "Hill"} && (_x getVariable ["type",""] != "NameMarine"))};
 
-if (_useful isEqualTo 0) then {_useful = + btc_city_all;};
+if (_useful isEqualTo []) then {_useful = + btc_city_all;};
 
 _city = _useful select (floor random count _useful);
 
