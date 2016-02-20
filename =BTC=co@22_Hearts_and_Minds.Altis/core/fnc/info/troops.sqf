@@ -15,7 +15,7 @@ switch _is_real do
 			private ["_man","_dist","_dir","_card"];
 			_man = _array select 0;
 			_dist = (player distance _man) + ((random 150) - (random 150));
-			_dir = [player, _man] call BIS_fnc_dirTo;
+			_dir = player getDir _man;
 			_card = [_dir] call btc_fnc_get_cardinal;
 			_text = format ["%1: I saw some militia movement %2, %3 meter from here", _name,_card,round _dist];
 		} else {
