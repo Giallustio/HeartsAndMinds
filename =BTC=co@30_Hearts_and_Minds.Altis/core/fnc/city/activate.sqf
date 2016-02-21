@@ -138,6 +138,18 @@ if (count _ieds > 0) then {
 	[_city,_ieds_data] spawn btc_fnc_ied_check;
 };
 
+//Suicider
+_city = btc_city_all select (_this select 0);
+if !(_city getVariable ["has_suicider",false]) then {
+	if ((time - btc_ied_suic_spawned) > btc_ied_suic_time && {random 1000 > btc_global_reputation}) then {
+		btc_ied_suic_spawned = time;
+		_city setVariable ["has_suicider",true];
+		[_city,_radius] call btc_fnc_ied_suicider_create;
+	};
+};
+
+_city setVariable ["activating",false];
+
 //Patrol
 btc_patrol_active = btc_patrol_active - [grpNull];
 _number_patrol_active = count btc_patrol_active;
@@ -150,7 +162,7 @@ if (_number_patrol_active < btc_patrol_max) then {
 	if (_d > 0) then {_r = _n - _d;} else {_r = _n;};
 	for "_i" from 1 to _r do
 	{
-		[(1 + round random 1),_city,((_radius_x+_radius_y) + btc_patrol_area)] call btc_fnc_mil_patrol_create;
+		[(1 + round random 1),_city,((_radius_x+_radius_y) + btc_patrol_area)] spawn btc_fnc_mil_patrol_create;
 	};
 	if (btc_debug_log) then	{diag_log format ["btc_fnc_city_activate: (patrol) _n = %1 _av %2 _d %3 _r %4",_n,_av,_d,_r];};
 };
@@ -166,19 +178,7 @@ if (_number_civ_veh_active < btc_civ_max_veh) then {
 	_d = _n - _av;
 	if (_d > 0) then {_r = _n - _d;} else {_r = _n;};
 	for "_i" from 1 to _r do {
-		[_city,((_radius_x+_radius_y) + btc_patrol_area)] call btc_fnc_civ_traffic_create;
+		[_city,((_radius_x+_radius_y) + btc_patrol_area)] spawn btc_fnc_civ_traffic_create;
 	};
 	if (btc_debug_log) then	{diag_log format ["btc_fnc_city_activate: (traffic) _n = %1 _av %2 _d %3 _r %4",_n,_av,_d,_r];};
 };
-
-//Suicider
-_city = btc_city_all select (_this select 0);
-if !(_city getVariable ["has_suicider",false]) then {
-	if ((time - btc_ied_suic_spawned) > btc_ied_suic_time && {random 1000 > btc_global_reputation}) then {
-		btc_ied_suic_spawned = time;
-		_city setVariable ["has_suicider",true];
-		[_city,_radius] call btc_fnc_ied_suicider_create;
-	};
-};
-
-_city setVariable ["activating",false];
