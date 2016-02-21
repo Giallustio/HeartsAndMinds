@@ -2,37 +2,39 @@
 btc_version = 1.13; diag_log format ["=BTC= HEARTS AND MINDS VERSION %1",btc_version];
 
 //Param
-btc_p_time  = (paramsArray select 0);
-_p_en = (paramsArray select 1);
-btc_p_ied = (paramsArray select 2);
-_hideout_n = (paramsArray select 3);
-_cache_info_def = (paramsArray select 4);
-_cache_info_ratio = (paramsArray select 5);
-_info_chance = (paramsArray select 6);
-_p_rep = (paramsArray select 7);
-btc_p_redeploy = if ((paramsArray select 8) isEqualTo 0) then {false} else {true};
-btc_p_set_skill  = if ((paramsArray select 9) isEqualTo 0) then {false} else {true};
+btc_p_time = (paramsArray select 0);
+btc_p_acctime = (paramsArray select 1);
+_p_db = if ((paramsArray select 2) isEqualTo 0) then {false} else {true};
+_p_en = (paramsArray select 3);
+btc_p_ied = (paramsArray select 4);
+btc_p_engineer  = (paramsArray select 5);
+_hideout_n = (paramsArray select 6);
+_cache_info_def = (paramsArray select 7);
+_cache_info_ratio = (paramsArray select 8);
+_info_chance = (paramsArray select 9);
+_p_rep = (paramsArray select 10);
+btc_p_redeploy = if ((paramsArray select 11) isEqualTo 0) then {false} else {true};
+ace_medical_level = paramsArray select 12;
+ace_medical_enableAdvancedWounds = if ((paramsArray select 13) isEqualTo 0) then {false} else {true};
+ace_medical_maxReviveTime = paramsArray select 14;
+btc_p_set_skill  = if ((paramsArray select 15) isEqualTo 0) then {false} else {true};
 _p_skill = [
-	(paramsArray select 10)/10,//general
-	(paramsArray select 11)/10,//aimingAccuracy
-    (paramsArray select 12)/10,//aimingShake
-    (paramsArray select 13)/10,//aimingSpeed
-    (paramsArray select 14)/10,//endurance
-    (paramsArray select 15)/10,//spotDistance
-    (paramsArray select 16)/10,//spotTime
-    (paramsArray select 17)/10,//courage
-    (paramsArray select 18)/10,//reloadSpeed
-    (paramsArray select 19)/10//commanding
+	(paramsArray select 16)/10,//general
+	(paramsArray select 17)/10,//aimingAccuracy
+    (paramsArray select 18)/10,//aimingShake
+    (paramsArray select 19)/10,//aimingSpeed
+    (paramsArray select 20)/10,//endurance
+    (paramsArray select 21)/10,//spotDistance
+    (paramsArray select 22)/10,//spotTime
+    (paramsArray select 23)/10,//courage
+    (paramsArray select 24)/10,//reloadSpeed
+    (paramsArray select 25)/10//commanding
 ];
-btc_p_debug  = (paramsArray select 20);
-btc_p_engineer  = (paramsArray select 21);
-_p_db = if ((paramsArray select 22) isEqualTo 0) then {false} else {true};
-ace_medical_level = paramsArray select 23;
-ace_medical_enableAdvancedWounds = if ((paramsArray select 24) isEqualTo 0) then {false} else {true};
-ace_medical_maxReviveTime = paramsArray select 25;
+btc_p_debug  = (paramsArray select 26);
+//MED
 if (ace_medical_maxReviveTime > 0) then {ace_medical_enableRevive = 1;ace_medical_preventInstaDeath = true};
 ace_medical_enableFor = 1;
-btc_p_sea  = if ((paramsArray select 26) isEqualTo 0) then {false} else {true};
+btc_p_sea  = if ((paramsArray select 27) isEqualTo 0) then {false} else {true};
 //btc_acre_mod = isClass(configFile >> "cfgPatches" >> "acre_main");
 //btc_tfr_mod = isClass(configFile >> "cfgPatches" >> "task_force_radio");
 
