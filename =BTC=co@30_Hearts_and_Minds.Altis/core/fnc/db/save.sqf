@@ -11,6 +11,7 @@ hint "saving...";
 [[8],"btc_fnc_show_hint"] spawn BIS_fnc_MP;
 
 btc_db_is_saving = true;
+_name = worldName;
 
 profileNamespace setVariable [format ["btc_hm_%1_date",_name],date];
 
@@ -26,16 +27,16 @@ _cities_status = [];
 	//[151,false,false,true,false,false,[]]
 	_city_status = [];
 	_city_status pushBack (_x getVariable "id");
-	
+
 	//_city_status pushBack (_x getVariable "name");
-	
+
 	_city_status pushBack (_x getVariable "initialized");
 
 	_city_status pushBack (_x getVariable "spawn_more");
 	_city_status pushBack (_x getVariable "occupied");
-	
+
 	_city_status pushBack (_x getVariable "data_units");
-	
+
 	_city_status pushBack (_x getVariable ["has_ho",false]);
 	_city_status pushBack (_x getVariable ["ho_units_spawned",false]);
 	_city_status pushBack (_x getVariable ["ieds",[]]);
@@ -54,7 +55,7 @@ _array_ho = [];
 	_data pushBack (_x getVariable ["rinf_time",0]);
 	_data pushBack (_x getVariable ["cap_time",0]);
 	_data pushBack (_x getVariable ["assigned_to",objNull]);
-	
+
 	_ho_markers = [];
 	{
 		_marker = [];
@@ -99,6 +100,7 @@ profileNamespace setVariable [format ["btc_hm_%1_fobs",_name],_fobs];
 //Vehicles status
 _array_veh = [];
 {
+	private ["_data","_cargo","_cont"];
 	_data = [];
 	_data pushBack (typeOf _x);
 	_data pushBack (getPos _x);
@@ -106,8 +108,10 @@ _array_veh = [];
 	_data pushBack (fuel _x);
 	_data pushBack (damage _x);
 	_cargo = [];
-	{_cargo pushBack (typeOf _x)} foreach (_x getVariable ["cargo",[]]);
+	{_cargo pushBack [(typeOf _x),[getWeaponCargo _x,getMagazineCargo _x,getItemCargo _x]]} foreach (_x getVariable ["cargo",[]]);
 	_data pushBack _cargo;
+	_cont = [getWeaponCargo _x,getMagazineCargo _x,getItemCargo _x];
+	_data pushBack _cont;
 	_array_veh pushBack _data;
 	//diag_log format ["VEH %1 DATA %2",_x,_data];
 } foreach btc_vehicles;
@@ -116,15 +120,19 @@ profileNamespace setVariable [format ["btc_hm_%1_vehs",_name],_array_veh];
 //Objects status
 _array_obj = [];
 {
-	if (!isNil {_x getVariable "loaded"} || !Alive _x || isNull _x) exitWith {};
-	_data = [];
-	_data pushBack (typeOf _x);
-	_data pushBack (getPosASL _x);
-	_data pushBack (getDir _x);
-	_cargo = [];
-	{_cargo pushBack (typeOf _x)} foreach (_x getVariable ["cargo",[]]);
-	_data pushBack _cargo;
-	_array_obj pushBack _data;
+	if !(!isNil {_x getVariable "loaded"} || !Alive _x || isNull _x) then {
+		_data = [];
+		_data pushBack (typeOf _x);
+		_data pushBack (getPosASL _x);
+		_data pushBack (getDir _x);
+		_cargo = [];
+		{_cargo pushBack [(typeOf _x),[getWeaponCargo _x,getMagazineCargo _x,getItemCargo _x]]} foreach (_x getVariable ["cargo",[]]);
+		_data pushBack _cargo;
+		_cont = [getWeaponCargo _x,getMagazineCargo _x,getItemCargo _x];
+		_data pushBack _cont;
+		
+		_array_obj pushBack _data;
+	};
 } foreach btc_log_obj_created;
 profileNamespace setVariable [format ["btc_hm_%1_objs",_name],_array_obj];
 
