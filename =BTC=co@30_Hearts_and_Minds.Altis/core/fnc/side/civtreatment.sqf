@@ -73,7 +73,7 @@ _unit setUnitPos "DOWN";
 sleep 1;
 [_unit] call btc_fnc_set_damage;
 
-waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !Alive _unit || {[_unit] call ace_common_fnc_isAwake && ((_unit getVariable ["ace_medical_pain", 0]) < 0.4)})};
+waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !Alive _unit || {_unit call ace_medical_fnc_isInStableCondition && [_unit] call ace_common_fnc_isAwake})};
 
 {deletemarker _x} foreach [_marker];
 

@@ -1,5 +1,5 @@
 
-private ["_city","_is_init","_data_units","_type","_radius_x","_radius_y","_has_en","_has_ho","_ieds","_radius"];
+private ["_city","_is_init","_data_units","_type","_radius_x","_radius_y","_has_en","_has_ho","_ieds","_radius","_number_patrol_active","_number_civ_veh_active"];
 
 hint ("Activate " + str(_this));
 
@@ -138,35 +138,6 @@ if (count _ieds > 0) then {
 	[_city,_ieds_data] spawn btc_fnc_ied_check;
 };
 
-//Patrol
-if (btc_patrol_active < btc_patrol_max) then {
-	private ["_n","_av","_d","_r"];
-	_n = 0;_r = 0;
-	if (_has_en) then	{_n = round (random 3 + (3/2));} else {_n = round random 2;};
-	_av = btc_patrol_max - btc_patrol_active;
-	_d = _n - _av;
-	if (_d > 0) then {_r = _n - _d;} else {_r = _n;};
-	for "_i" from 1 to _r do
-	{
-		[(1 + round random 1),_city,((_radius_x+_radius_y) + btc_patrol_area)] call btc_fnc_mil_patrol_create;
-	};
-	if (btc_debug_log) then	{diag_log format ["btc_fnc_city_activate: (patrol) _n = %1 _av %2 _d %3 _r %4",_n,_av,_d,_r];};
-};
-
-//Traffic
-if (btc_civ_veh_active < btc_civ_max_veh) then {
-	private ["_n","_av","_d","_r"];
-	_n = 0;_r = 0;
-	_n = round (random 3 + (3/2));
-	_av = btc_civ_max_veh - btc_civ_veh_active;
-	_d = _n - _av;
-	if (_d > 0) then {_r = _n - _d;} else {_r = _n;};
-	for "_i" from 1 to _r do {
-		[_city,((_radius_x+_radius_y) + btc_patrol_area)] call btc_fnc_civ_traffic_create;
-	};
-	if (btc_debug_log) then	{diag_log format ["btc_fnc_city_activate: (traffic) _n = %1 _av %2 _d %3 _r %4",_n,_av,_d,_r];};
-};
-
 //Suicider
 _city = btc_city_all select (_this select 0);
 if !(_city getVariable ["has_suicider",false]) then {
@@ -178,3 +149,36 @@ if !(_city getVariable ["has_suicider",false]) then {
 };
 
 _city setVariable ["activating",false];
+
+//Patrol
+btc_patrol_active = btc_patrol_active - [grpNull];
+_number_patrol_active = count btc_patrol_active;
+if (_number_patrol_active < btc_patrol_max) then {
+	private ["_n","_av","_d","_r"];
+	_n = 0;_r = 0;
+	if (_has_en) then	{_n = round (random 3 + (3/2));} else {_n = round random 2;};
+	_av = btc_patrol_max - _number_patrol_active;
+	_d = _n - _av;
+	if (_d > 0) then {_r = _n - _d;} else {_r = _n;};
+	for "_i" from 1 to _r do
+	{
+		[(1 + round random 1),_city,((_radius_x+_radius_y) + btc_patrol_area)] spawn btc_fnc_mil_patrol_create;
+	};
+	if (btc_debug_log) then	{diag_log format ["btc_fnc_city_activate: (patrol) _n = %1 _av %2 _d %3 _r %4",_n,_av,_d,_r];};
+};
+
+//Traffic
+btc_civ_veh_active = btc_civ_veh_active - [grpNull];
+_number_civ_veh_active = count btc_civ_veh_active;
+if (_number_civ_veh_active < btc_civ_max_veh) then {
+	private ["_n","_av","_d","_r"];
+	_n = 0;_r = 0;
+	_n = round (random 3 + (3/2));
+	_av = btc_civ_max_veh - _number_civ_veh_active;
+	_d = _n - _av;
+	if (_d > 0) then {_r = _n - _d;} else {_r = _n;};
+	for "_i" from 1 to _r do {
+		[_city,((_radius_x+_radius_y) + btc_patrol_area)] spawn btc_fnc_civ_traffic_create;
+	};
+	if (btc_debug_log) then	{diag_log format ["btc_fnc_city_activate: (traffic) _n = %1 _av %2 _d %3 _r %4",_n,_av,_d,_r];};
+};

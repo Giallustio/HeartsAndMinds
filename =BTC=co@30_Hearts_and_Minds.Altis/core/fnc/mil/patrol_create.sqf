@@ -7,9 +7,7 @@ _area = _this select 2;
 
 if (isNil "btc_patrol_id") then {btc_patrol_id = 0;};
 
-btc_patrol_active = btc_patrol_active + 1;
-
-if (btc_debug_log) then {diag_log format ["btc_fnc_mil_patrol_create: _random = %1 _city %2 _area %3 btc_patrol_active = %4",_random,_city,_area,btc_patrol_active];};
+if (btc_debug_log) then {diag_log format ["btc_fnc_mil_patrol_create: _random = %1 _city %2 _area %3 btc_patrol_active = %4",_random,_city,_area,count(btc_patrol_active)];};
 
 if (_random == 0) then {
 	private ["_n"];
@@ -48,6 +46,8 @@ _group setVariable ["btc_patrol_id",btc_patrol_id];btc_patrol_id = btc_patrol_id
 
 if (surfaceIsWater _pos) then {_iswater = true;} else {_iswater = false;};
 
+sleep 5 + random 10;
+
 switch (true) do {
 	case ((_random == 1) && !_iswater) : {
 		_n_units   = 4 + (round random 8);
@@ -56,7 +56,7 @@ switch (true) do {
 			private ["_unit_type"];
 			_unit_type = btc_type_units select (floor random count btc_type_units);
 			_group createUnit [_unit_type, _pos, [], 0, "NONE"];
-			sleep 0.1;
+			sleep 1;
 		};
 		_spawn = [_group,_area,_iswater] spawn btc_fnc_mil_patrol_addWP;
 	};
@@ -89,5 +89,7 @@ switch (true) do {
 		_spawn = [_group,_area,_iswater] spawn btc_fnc_mil_patrol_addWP;
 	};
 };
+
+btc_patrol_active pushBack _group;
 
 {_x call btc_fnc_mil_unit_create} foreach units _group;
