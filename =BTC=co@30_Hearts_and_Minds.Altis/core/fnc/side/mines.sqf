@@ -1,7 +1,7 @@
 
 private ["_useful","_city","_pos","_area","_marker","_mines"];
 
-_useful = btc_city_all select {(_x getVariable ["type",""] != "NameLocal" && {_x getVariable ["type",""] != "Hill"} && (_x getVariable ["type",""] != "NameMarine"))};
+_useful = btc_city_all select {((_x getVariable ["type",""] != "NameLocal") && {_x getVariable ["type",""] != "Hill"} && (_x getVariable ["type",""] != "NameMarine"))};
 
 if (_useful isEqualTo []) then {_useful = + btc_city_all;};
 
