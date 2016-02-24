@@ -12,5 +12,4 @@ _veh call btc_fnc_mil_patrol_eh_remove;
 	waitUntil {sleep 5; ({_x distance (_this select 0) < 1000} count playableUnits == 0)};
 	{deleteVehicle _x;} foreach ((_this select 1) + [_this select 0]);
 	if (isNull (_this select 0)) exitWith {};//Just to be sure
-	btc_patrol_active = btc_patrol_active - 1;
 };
