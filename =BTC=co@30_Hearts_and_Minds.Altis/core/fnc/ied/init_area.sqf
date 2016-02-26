@@ -17,7 +17,7 @@ for "_i" from 1 to _n do {
 	_sel_pos = [_pos, _area] call btc_fnc_randomize_pos;
 	_sel_pos = [_sel_pos, 30, 150, 1, 0, 60 * (pi / 180), 0] call BIS_fnc_findSafePos;
 
-	_type_ied = selectRandom btc_type_ieds);
+	_type_ied = selectRandom btc_type_ieds;
 
 	_dir = (random 360);
 

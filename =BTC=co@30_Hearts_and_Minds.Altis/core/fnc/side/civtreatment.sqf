@@ -12,7 +12,7 @@ _pos = getPos _city;
 _r = random 2;
 if ( _r < 1)	then {
 	_roads = _pos nearRoads 200;
-	if (count _roads > 0) then {_pos = getPos (selectRandom _roads;};
+	if (count _roads > 0) then {_pos = getPos (selectRandom _roads);};
 	_vehpos = [_pos, 10] call btc_fnc_randomize_pos;
 } else {
 	_houses = [[(_pos select 0),(_pos select 1),0],200] call btc_fnc_getHouses;
