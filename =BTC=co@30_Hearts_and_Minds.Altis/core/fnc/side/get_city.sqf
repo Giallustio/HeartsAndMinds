@@ -6,7 +6,7 @@ _useful = [];
 
 if (count _useful == 0) exitWith {[] spawn btc_fnc_side_create;};
 
-_city = _useful select (floor random count _useful);
+_city = selectRandom _useful;
 
 _pos = getPos _city;
 

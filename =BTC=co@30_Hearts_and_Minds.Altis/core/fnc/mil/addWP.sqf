@@ -25,7 +25,7 @@ switch (true) do {
 		_houses = [_city,_area] call btc_fnc_getHouses;
 		if (count _houses > 0) then	{
 			_in_house = true;
-			_house = _houses select (floor random count _houses);	
+			_house = selectRandom _houses;
 			[_group,_house] spawn btc_fnc_house_addWP;
 			_group setVariable ["inHouse",_house];
 		} else {[_group,_rpos,_area,"SAFE"] call btc_fnc_task_patrol;};
@@ -43,4 +43,4 @@ switch (true) do {
 	};
 };
 
-true 
+true

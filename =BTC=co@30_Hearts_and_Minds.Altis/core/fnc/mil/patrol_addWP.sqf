@@ -19,7 +19,7 @@ _cities = [];
 };} foreach btc_city_all;
 _pos = [];
 if (count _cities == 0) then {_pos = getPos _city;} else {
-	_pos = getPos (_cities select (floor random count _cities));
+	_pos = getPos (selectRandom _cities);
 };
 
 private ["_wp","_wp_1"];

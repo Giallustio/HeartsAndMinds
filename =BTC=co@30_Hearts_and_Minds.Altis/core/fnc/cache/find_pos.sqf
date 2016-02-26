@@ -29,6 +29,6 @@ if (count _houses == 0) then {
 	[] call btc_fnc_cache_find_pos;
 } else {
 	//private ["_isAct","_cache"];
-	_house = _houses select (floor random count _houses);
+	_house = selectRandom _houses;
 	_house spawn btc_fnc_cache_spawn;
 };

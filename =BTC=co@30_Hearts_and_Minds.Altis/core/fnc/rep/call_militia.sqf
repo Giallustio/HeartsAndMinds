@@ -23,7 +23,7 @@ if (count _start_pos == 0) then
 };
 if (btc_debug_log) then {diag_log format ["fnc_rep_call_militia = _start_pos : %1 (CITIES)",_start_pos];};
 
-if (count _start_pos == 0) then 
+if (count _start_pos == 0) then
 {
 	private ["_random"];
 	_random = random 8;
@@ -36,7 +36,7 @@ if (count _start_pos == 0) then
 		case (_random > 4 && _random <= 5) : {_start_pos = [(_pos select 0) - 1000,(_pos select 1) + 0,0];};//W
 		case (_random > 5 && _random <= 6) : {_start_pos = [(_pos select 0) - 750,(_pos select 1) - 750,0];};//SW
 		case (_random > 6 && _random <= 7) : {_start_pos = [(_pos select 0) - 750,(_pos select 1) + 750,0];};//NW
-		case (_random > 7) : {_start_pos = [(_pos select 0) + 0,(_pos select 1) - 1000,0];};//S	
+		case (_random > 7) : {_start_pos = [(_pos select 0) + 0,(_pos select 1) - 1000,0];};//S
 	};
 };
 
@@ -55,7 +55,7 @@ if ((random 1) > _ratio) then
 	private ["_veh_type","_veh","_gunner","_commander","_cargo","_wp"];
 	_group = createGroup btc_enemy_side;
 	_group setVariable ["no_cache",true];
-	_veh_type = btc_type_motorized select (floor random count btc_type_motorized);
+	_veh_type = selectRandom btc_type_motorized;
 	_veh = createVehicle [_veh_type, _start_pos, [], 0, "NONE"];
 	_gunner = _veh emptyPositions "gunner";
 	_commander = _veh emptyPositions "commander";
@@ -65,12 +65,12 @@ if ((random 1) > _ratio) then
 	if (_commander > 0) then {btc_type_crewmen createUnit [_start_pos, _group, "this moveinCommander _veh;this assignAsCommander _veh;"];};
 	for "_i" from 0 to _cargo do
 	{
-		_unit_type = btc_type_units select (round (random ((count btc_type_units) - 1)));
+		_unit_type = selectRandom btc_type_units;
 		_unit_type createUnit [_start_pos, _group, "this moveinCargo _veh;this assignAsCargo _veh;"];
 	};
-	
+
 	_group selectLeader (driver _veh);
-	
+
 	_wp = _group addWaypoint [_pos, 60];
 	_wp setWaypointType "MOVE";
 	_wp setWaypointCombatMode "RED";
@@ -85,13 +85,13 @@ if ((random 1) > _ratio) then
 	{
 		diag_log format ["fnc_rep_call_militia = MOT %1/%2 POS %3",_group,_veh_type,_pos];
 	};
-} 
+}
 else
 {
 	//INF
 	_group = [_start_pos,50,(8 + random 6),1] call btc_fnc_mil_create_group;
 	_group setVariable ["no_cache",true];
-	while {(count (waypoints _group)) > 0} do { deleteWaypoint ((waypoints _group) select 0); }; 
+	while {(count (waypoints _group)) > 0} do { deleteWaypoint ((waypoints _group) select 0); };
 	_wp = _group addWaypoint [_pos, 60];
 	_wp setWaypointType "MOVE";
 	_wp setWaypointCombatMode "RED";

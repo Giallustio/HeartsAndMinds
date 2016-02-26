@@ -36,7 +36,7 @@ if (count _useful == 0) then {
 
 if (count _useful == 0) exitWith {true};
 
-_pos = _useful select (floor random count _useful);
+_pos = selectRandom _useful;
 
 _group = createGroup btc_enemy_side;
 _group setVariable ["city",_city];
@@ -54,7 +54,7 @@ switch (true) do {
 		_group createUnit [(btc_type_units select 0), _pos, [], 0, "NONE"];(leader _group) setpos _pos;
 		for "_i" from 1 to _n_units do {
 			private ["_unit_type"];
-			_unit_type = btc_type_units select (floor random count btc_type_units);
+			_unit_type = selectRandom btc_type_units;
 			_group createUnit [_unit_type, _pos, [], 0, "NONE"];
 			sleep 1;
 		};
@@ -69,10 +69,10 @@ switch (true) do {
 			_newZone = [_pos, 0, 500, 13, 1, 60 * (pi / 180), 0] call BIS_fnc_findSafePos;
 		};
 		if (surfaceIsWater _newZone) then {
-			_veh_type = btc_type_boats select (floor (random (count btc_type_boats)));
+			_veh_type = selectRandom btc_type_boats;
 			_iswater = true;
 		} else {
-			_veh_type = btc_type_motorized select (floor (random (count btc_type_motorized)));
+			_veh_type = selectRandom btc_type_motorized;
 			_iswater = false;
 		};
 		if (_veh_type == "I_SDV_01_F" || _veh_type == "O_SDV_01_F" || _veh_type == "B_SDV_01_F") then {_needdiver = true; _crewmen = btc_type_divers select 0} else {_needdiver = false; _crewmen = btc_type_crewmen};
@@ -82,7 +82,7 @@ switch (true) do {
 		_cargo = (_veh emptyPositions "cargo") - 1;
 		if (_cargo > 0) then {
 			for "_i" from 0 to _cargo do {
-				_unit_type = [btc_type_units select (round (random ((count btc_type_units) - 1))), btc_type_divers select (round (random ((count btc_type_divers) - 1)))] select _needdiver ;
+				_unit_type = [selectRandom btc_type_units, selectRandom btc_type_divers] select _needdiver ;
 				_unit_type createUnit [_pos, _group, "this moveinCargo _veh;this assignAsCargo _veh;"];
 			};
 		};

@@ -4,13 +4,13 @@ private ["_city","_pos","_roads","_marker","_veh_type","_veh","_useful"];
 _useful = [];
 {if (_x getVariable ["type",""] == "NameMarine") then {_useful = _useful + [_x];};} foreach btc_city_all;
 if (count _useful == 0) exitWith {[] spawn btc_fnc_side_create;};
-_city = _useful select (floor random count _useful);
+_city = selectRandom _useful;
 
 _pos = [getPos _city, 100] call btc_fnc_randomize_pos;
 
 _roads = _pos nearRoads 300;
 
-if (count _roads > 0) then {_pos = getPos (_roads select (floor random count _roads));};
+if (count _roads > 0) then {_pos = getPos (selectRandom _roads);};
 
 btc_side_aborted = false;
 btc_side_done = false;
@@ -33,7 +33,7 @@ _marker setmarkertype "hd_flag";
 _marker setmarkertext "Vehicle needs assistance";
 _marker setMarkerSize [0.6, 0.6];
 
-_veh_type = btc_civ_type_veh select (floor (random (count btc_civ_type_veh)));
+_veh_type = selectRandom btc_civ_type_veh;
 _veh = createVehicle [_veh_type, _pos, [], 0, "NONE"];
 
 _veh setDir (random 360);
