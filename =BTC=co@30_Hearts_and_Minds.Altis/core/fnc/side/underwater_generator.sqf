@@ -1,5 +1,5 @@
 
-private ["_useful","_city","_pos","_Radiusx","_Radiusy","_marker","_wrecks","_underwater_generator_type","_generator","_objects"];
+private ["_useful","_city","_pos","_marker","_wrecks","_underwater_generator_type","_generator","_objects"];
 
 //// Choose a Marine location \\\\
 _useful = btc_city_all select {((_x getVariable ["occupied",false]) && (_x getVariable ["type",""] == "NameMarine"))};
@@ -8,19 +8,19 @@ if (_useful isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
 _city = selectRandom _useful;
 
 //// Choose a random position \\\\
-_Radiusx = _city getVariable ["RadiusX",501];
-//_Radiusy = _city getVariable ["RadiusY",501];
-_objects = nearestobjects [getpos _city,[], (_Radiusx + btc_city_radius)];
-player sideChat str(_Radiusx + btc_city_radius);
+_objects = nearestobjects [getpos _city,[], 200];
 
-_wrecks = _objects select {(!((str(_x) find "wreck") isEqualTo -1) || !((str(_x) find "broken") isEqualTo -1))};
-if (_wrecks isEqualTo []) then {
-	_wrecks = _objects select {((getPos _x select 2 < 0) && (((str(_x) find "car") isEqualTo -1) || ((str(_x) find "uaz") isEqualTo -1)))};
-};
+_objects = _objects select {(!((str(_x) find "wreck") isEqualTo -1) || !((str(_x) find "broken") isEqualTo -1) || !((str(_x) find "rock") isEqualTo -1))};
+_objects = _objects select {((getPos _x select 2 < -3) && (((str(_x) find "car") isEqualTo -1) || ((str(_x) find "uaz") isEqualTo -1)))};
+_wrecks = _objects select {((str(_x) find "rock") isEqualTo -1)};
 
 if (_wrecks isEqualTo []) then {
-	_pos = [getPos _city, 100, true] call btc_fnc_randomize_pos;
-	_pos = [_pos select 0, _pos select 1, (getTerrainHeightASL [_pos select 0, _pos select 1])];
+	if (_objects isEqualTo []) then {
+		_pos = [getPos _city, 0, 100, 13, 2, 60 * (pi / 180), 0] call BIS_fnc_findSafePos;
+		_pos = [_pos select 0, _pos select 1, (getTerrainHeightASL [_pos select 0, _pos select 1])];
+	} else {
+		_pos = getpos (selectRandom _objects);
+	};
 } else {
 	_pos = getpos (selectRandom _wrecks);
 };
@@ -54,8 +54,10 @@ _marker setMarkerSize [0.6, 0.6];
 //"StorageBladder_02_water_sand_F"
 _underwater_generator_type = selectRandom btc_type_generator;
 
-_generator = createVehicle [_underwater_generator_type, _pos, [], 0, "NONE"];
+_generator = _underwater_generator_type createVehicle _pos;
+_storagebladder = "StorageBladder_02_water_sand_F" createVehicle [(_pos select 0) + 0.2, (_pos select 1) + 0.2, _pos select 2)];
 
+player setPos _pos;
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !Alive _generator )};
 
 {deletemarker _x} foreach [_area,_marker];
