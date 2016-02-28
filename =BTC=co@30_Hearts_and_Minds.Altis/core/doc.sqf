@@ -29,7 +29,7 @@ player createDiaryRecord ["Documentation", ["FOB", "
 FOB<br/><br/>
 In this mission a FOB is a forward spawn point, to create a FOB approach the red box at the logistic point and require a blue container.<br/>
 Move it where you want to deploy a new FOB and interact with it to set it up. Keep in mind that you can not deploy a FOB close to the main base (2.500m) and the terrain needs to be flat.<br/><br/>
-You can re-deploy at the new location interacting with the flag.
+You can re-deploy at the new location interacting with the flag. You can dismantle a FOB by interacting with the flag on the HQ first floor.
 	"]
 ];
 
