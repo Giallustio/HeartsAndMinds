@@ -25,7 +25,7 @@ waitUntil {dialog};
 
 _idc = 778;
 
-{lbAdd [ _idc, _x ];} foreach _fobs;
+{lbAdd [ _idc, (_x select 0) ];} foreach _fobs;
 
 lbSetCurSel [_idc, 0];
 /*
