@@ -1,5 +1,5 @@
 
-private ["_useful","_city","_pos","_marker","_wrecks","_underwater_generator_type","_generator","_objects"];
+private ["_useful","_city","_pos","_marker","_wrecks","_underwater_generator_type","_generator","_objects","_storagebladder"];
 
 //// Choose a Marine location \\\\
 _useful = btc_city_all select {((_x getVariable ["occupied",false]) && (_x getVariable ["type",""] == "NameMarine"))};
@@ -55,7 +55,7 @@ _marker setMarkerSize [0.6, 0.6];
 _underwater_generator_type = selectRandom btc_type_generator;
 
 _generator = _underwater_generator_type createVehicle _pos;
-_storagebladder = "StorageBladder_02_water_sand_F" createVehicle [(_pos select 0) + 0.2, (_pos select 1) + 0.2, _pos select 2)];
+_storagebladder = "StorageBladder_02_water_sand_F" createVehicle [(_pos select 0) + 5, (_pos select 1), _pos select 2];
 
 player setPos _pos;
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !Alive _generator )};
@@ -65,24 +65,23 @@ waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !Alive _generator )}
 if (btc_side_aborted || btc_side_failed ) exitWith {
 	[11,"btc_fnc_task_fail",true] spawn BIS_fnc_MP;
 	btc_side_assigned = false;publicVariable "btc_side_assigned";
-	_generator spawn {
+	{_x spawn {
 
 		waitUntil {sleep 5; ({_x distance _this < 300} count playableUnits == 0)};
 
 		deleteVehicle _this;
-	};
+	};} forEach [_generator,_storagebladder];
 };
 
 80 call btc_fnc_rep_change;
 
 [11,"btc_fnc_task_set_done",true] spawn BIS_fnc_MP;
 
-_generator spawn {
+{_x spawn {
 
 	waitUntil {sleep 5; ({_x distance _this < 300} count playableUnits == 0)};
 
 	deleteVehicle _this;
-};
-
+};} forEach [_generator,_storagebladder];
 
 btc_side_assigned = false;publicVariable "btc_side_assigned";
