@@ -226,10 +226,12 @@ btc_construction_array =
 			"ACE_medicalSupplyCrate_advanced",
 			"ACE_medicalSupplyCrate",
 			"B_supplyCrate_F",
-			"B_CargoNet_01_ammo_F"
+			"B_CargoNet_01_ammo_F",
+			"ACE_Wheel",
+			"ACE_Track"
 		],
 			//"Ammo Vehicle"
-		(('(configname _x) isKindOf ["CA_Magazine", configFile >> "CfgMagazines"]' configClasses (configFile >> "CfgMagazines")) apply {configname _x}) sort true,
+		(('(configname _x) isKindOf ["CA_Magazine", configFile >> "CfgMagazines"]' configClasses (configFile >> "CfgMagazines")) apply {configname _x}),
 		[
 			//"Containers"
 			"Land_Cargo20_military_green_F",
