@@ -177,6 +177,7 @@ btc_construction_array =
 		"Fortifications",
 		"Static",
 		"Ammobox",
+		"Ammo vehicle",
 		"Containers",
 		"Supplies",
 		"FOB"
@@ -225,13 +226,10 @@ btc_construction_array =
 			"ACE_medicalSupplyCrate_advanced",
 			"ACE_medicalSupplyCrate",
 			"B_supplyCrate_F",
-			"B_CargoNet_01_ammo_F",
-			"ACE_Wheel",
-			"ACE_Track",
-			"FlexibleTank_01_forest_F",
-			"Box_NATO_AmmoVeh_F"
-
+			"B_CargoNet_01_ammo_F"
 		],
+			//"Ammo Vehicle"
+		(('(configname _x) isKindOf ["CA_Magazine", configFile >> "CfgMagazines"]' configClasses (configFile >> "CfgMagazines")) apply {configname _x}) sort true,
 		[
 			//"Containers"
 			"Land_Cargo20_military_green_F",
@@ -250,10 +248,10 @@ btc_construction_array =
 ];
 
 _c_array = btc_construction_array select 1;
-btc_log_def_draggable = (_c_array select 1) + (_c_array select 2);
-btc_log_def_loadable = (_c_array select 0) + (_c_array select 1) + (_c_array select 2) + (_c_array select 3) + (_c_array select 4) + (_c_array select 5);
-btc_log_def_can_load = (_c_array select 3);
-btc_log_def_placeable = (_c_array select 0) + (_c_array select 3) + (_c_array select 4) + (_c_array select 5);
+btc_log_def_draggable = (_c_array select 1) + (_c_array select 2) + (_c_array select 3);
+btc_log_def_loadable = (_c_array select 0) + (_c_array select 1) + (_c_array select 2) + (_c_array select 3) + (_c_array select 4) + (_c_array select 5) + (_c_array select 6);
+btc_log_def_can_load =  (_c_array select 3) + (_c_array select 4) ;
+btc_log_def_placeable = (_c_array select 0) + (_c_array select 4) + (_c_array select 5) + (_c_array select 6);
 btc_log_max_distance_load = 15;
 btc_log_object_selected = objNull;
 btc_log_vehicle_selected = objNull;
