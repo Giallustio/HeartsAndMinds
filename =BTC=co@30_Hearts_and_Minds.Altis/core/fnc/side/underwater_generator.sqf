@@ -54,7 +54,6 @@ _marker setMarkerSize [0.6, 0.6];
 _generator = (selectRandom btc_type_generator) createVehicle _pos;
 _storagebladder = (selectRandom btc_type_storagebladder) createVehicle [(_pos select 0) + 5, (_pos select 1), _pos select 2];
 
-player setPos _pos;
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !Alive _generator )};
 
 {deletemarker _x} foreach [_area,_marker];

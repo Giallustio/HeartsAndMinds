@@ -4,7 +4,7 @@ if (btc_side_assigned) exitWith {};
 if (count btc_side_list_use == 0) then {btc_side_list_use = + btc_side_list;};
 
 _side = btc_side_list_use select (floor random count btc_side_list_use);
-_side = 8;
+
 btc_side_list_use = btc_side_list_use - [_side];
 
 btc_side_aborted = false;
