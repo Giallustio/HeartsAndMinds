@@ -34,6 +34,7 @@ btc_p_debug  = (paramsArray select 26);
 //MED
 if (ace_medical_maxReviveTime > 0) then {ace_medical_enableRevive = 1;ace_medical_preventInstaDeath = true};
 ace_medical_enableFor = 1;
+btc_p_sea  = if ((paramsArray select 27) isEqualTo 0) then {false} else {true};
 //btc_acre_mod = isClass(configFile >> "cfgPatches" >> "acre_main");
 //btc_tfr_mod = isClass(configFile >> "cfgPatches" >> "task_force_radio");
 

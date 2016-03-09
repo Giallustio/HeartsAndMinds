@@ -3,7 +3,8 @@ private ["_locations","_cities"];
 
 _locations = configfile >> "cfgworlds" >> worldname >> "names";
 
-_cities = ["NameVillage","NameCity","NameCityCapital","NameLocal","Hill","NameMarine"];//
+_cities = ["NameVillage","NameCity","NameCityCapital","NameLocal","Hill"];
+if (btc_p_sea) then {_cities pushBack "NameMarine";};
 btc_city_all = [];
 for "_i" from 0 to (count _locations - 1) do {
 	private ["_current","_type"];
@@ -39,8 +40,11 @@ for "_i" from 0 to (count _locations - 1) do {
 		_city setVariable ["type",_type];
 		_city setVariable ["spawn_more",false];
 		_city setVariable ["data_units",[]];
-		_has_en = false;if (random 1 > 0.45) then {_has_en = true;};
+		_has_en = (random 1 > 0.45);
 		_city setVariable ["occupied",_has_en];
+		if (btc_p_sea) then {
+			_city setVariable ["hasbeach", (((selectBestPlaces [_position,0.8*(_radius_x+_radius_y), "sea",10,1]) select 0 select 1) isEqualTo 1)];
+		};
 		btc_city_all set [_id,_city];
 		_trigger = createTrigger["EmptyDetector",getPos _city];
 		_trigger setTriggerArea[(_radius_x+_radius_y) + btc_city_radius,(_radius_x+_radius_y) + btc_city_radius,0,false];
@@ -59,7 +63,7 @@ for "_i" from 0 to (count _locations - 1) do {
 			//_marker setmarkeralpha 0.5;
 			_marke = createmarker [format ["locn_%1",_id],_position];
 			_marke setmarkertype "mil_dot";
-			_marke setmarkertext format ["loc_%3 %1 %2 - [%4]",_name,_type,_id,_has_en];
+			_marke setmarkertext format ["loc_%3 %1 %2 - [%4] - [%5] ",_name,_type,_id,_has_en, _city getVariable ["hasbeach", "empty"] ];
 		};
 	};
 };

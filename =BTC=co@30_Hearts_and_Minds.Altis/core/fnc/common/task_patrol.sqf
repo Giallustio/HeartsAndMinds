@@ -5,7 +5,7 @@ _group = _this select 0;
 _pos = _this select 1;
 _area = _this select 2;
 _behav = _this select 3;
-if (count _this > 3) then {
+if (count _this > 4) then {
 	_allowwater = _this select 4;
 } else {
 	_allowwater = false;
