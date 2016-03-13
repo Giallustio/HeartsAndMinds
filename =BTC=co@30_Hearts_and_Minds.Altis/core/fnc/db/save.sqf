@@ -89,12 +89,13 @@ profileNamespace setVariable [format ["btc_hm_%1_cache",_name],_array_cache];
 //rep status
 profileNamespace setVariable [format ["btc_hm_%1_rep",_name],btc_global_reputation];
 //FOBS
-_fobs = [];
+_fobs = [[],[]];
 {
 	private "_pos";
 	_pos = getMarkerPos _x;
-	_fobs pushBack [_x,_pos];
-} foreach btc_fobs;
+	(_fobs select 0) pushBack [_x,_pos];
+} foreach (btc_fobs select 0);
+(_fobs select 1) append (btc_fobs select 1);
 profileNamespace setVariable [format ["btc_hm_%1_fobs",_name],_fobs];
 
 //Vehicles status

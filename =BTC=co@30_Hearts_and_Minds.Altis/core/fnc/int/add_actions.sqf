@@ -45,7 +45,9 @@ _action = ["check_cargo", "Check cargo", "", {(_this select 0) spawn btc_fnc_log
 {[_x, 0, ["ACE_MainActions","Logistic"], _action] call ace_interact_menu_fnc_addActionToClass;} foreach btc_log_def_can_load;
 _action = ["Mount_FOB", "Mount FOB", "", {(_this select 0) spawn btc_fnc_fob_create}, {true}] call ace_interact_menu_fnc_createAction;
 [btc_fob_mat, 0, ["ACE_MainActions","Logistic"], _action] call ace_interact_menu_fnc_addActionToClass;
-_action = ["Place", "Place", "", {(_this select 0) spawn btc_fnc_log_place;}, {!btc_log_placing}] call ace_interact_menu_fnc_createAction;
+_action = ["Dismantle_FOB", "Dismantle FOB", "", {(_this select 0) spawn btc_fnc_fob_dismantle}, {true},{},[], [0,0,-2], 5] call ace_interact_menu_fnc_createAction;
+[btc_fob_flag, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToClass;
+_action = ["Place", "Place", "", {(_this select 0) spawn btc_fnc_log_place}, {!btc_log_placing}] call ace_interact_menu_fnc_createAction;
 {[_x, 0, ["ACE_MainActions","Logistic"], _action] call ace_interact_menu_fnc_addActionToClass;} foreach btc_log_def_placeable;
 
 _action = ["check_cargo","Check cargo","",{(vehicle player) spawn btc_fnc_log_check_cargo;},{!(vehicle player isEqualto player)}] call ace_interact_menu_fnc_createAction;
