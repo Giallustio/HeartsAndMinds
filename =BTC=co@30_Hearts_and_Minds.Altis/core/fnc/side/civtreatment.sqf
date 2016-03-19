@@ -5,18 +5,18 @@ private ["_useful","_veh","_vehpos","_city","_pos","_r","_houses","_roads","_mar
 _useful = [];
 {if (!(_x getVariable ["occupied",false]) && {_x getVariable ["type",""] != "NameLocal"} && {_x getVariable ["type",""] != "Hill"} && (_x getVariable ["type",""] != "NameMarine")) then {_useful = _useful + [_x];};} foreach btc_city_all;
 if (count _useful == 0) exitWith {[] spawn btc_fnc_side_create;};
-_city = _useful select (floor random count _useful);
+_city = selectRandom _useful;
 _pos = getPos _city;
 
 //// Choose spawn in house or on road \\\\
 _r = random 2;
 if ( _r < 1)	then {
 	_roads = _pos nearRoads 200;
-	if (count _roads > 0) then {_pos = getPos (_roads select (floor random count _roads));};
+	if (count _roads > 0) then {_pos = getPos (selectRandom _roads);};
 	_vehpos = [_pos, 10] call btc_fnc_randomize_pos;
 } else {
 	_houses = [[(_pos select 0),(_pos select 1),0],200] call btc_fnc_getHouses;
-	_pos = getPos (_houses select (floor random count _houses));
+	_pos = getPos (selectRandom _houses);
 	_vehpos = [(_pos select 0),(_pos select 1),(_pos select 2) + 0.1];
 };
 
@@ -37,7 +37,7 @@ _marker setMarkerSize [0.6, 0.6];
 
 //// Create civ on _pos \\\\
 if ( _r < 1) then {
-	_veh_type = btc_civ_type_veh select (floor (random (count btc_civ_type_veh)));
+	_veh_type = selectRandom btc_civ_type_veh;
 	_veh = createVehicle [_veh_type, _vehpos, [], 0, "NONE"];
 	_veh setDir (random 360);
 	_veh setDamage 0.7;
@@ -52,13 +52,13 @@ if ( _r < 1) then {
 	_fx = "test_EmptyObjectForSmoke" createVehicle (getposATL _veh);
 	_fx attachTo [_veh,[0,0,0]];
 } else {
-	_phone_type = btc_type_phone select (floor (random (count btc_type_phone)));
+	_phone_type = selectRandom btc_type_phone;
 	_veh = createVehicle [_phone_type, _vehpos, [], 0, "NONE"];
 	_veh setDir (random 360);
 	_fx = objNull;
 };
 
-_unit_type = btc_civ_type_units select (floor random count btc_civ_type_units);
+_unit_type = selectRandom btc_civ_type_units;
 _group = createGroup civilian;
 _group setVariable ["no_cache",true];
 _group setVariable ["btc_patrol",true];

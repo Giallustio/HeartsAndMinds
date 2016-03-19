@@ -17,10 +17,10 @@ switch (typeName _city) do {
 _rpos = [_pos, _area,true] call btc_fnc_randomize_pos;
 
 if (surfaceIsWater _rpos) then {
-	_unit_type = btc_type_divers select (floor random count btc_type_divers);
+	_unit_type = selectRandom btc_type_divers;
 	_iswater = true;
 } else {
-	_unit_type = btc_type_units select (floor random count btc_type_units);
+	_unit_type = selectRandom btc_type_units;
 	_iswater = false;
 };
 
@@ -35,7 +35,7 @@ switch (true) do {
 		_houses = [_rpos,50] call btc_fnc_getHouses;
 		if (count _houses > 0) then	{
 			_in_house = true;
-			_house = _houses select (floor random count _houses);
+			_house = selectRandom _houses;
 			[_group,_house] spawn btc_fnc_house_addWP;
 			_group setVariable ["inHouse",_house];
 		} else {[_group,_rpos,_area,"SAFE",_iswater] spawn btc_fnc_task_patrol;};
@@ -53,7 +53,7 @@ switch (true) do {
 };
 if (!_in_house) then {
 	for "_i" from 0 to _n do {
-		_unit_type = [btc_type_units select (floor random count btc_type_units), btc_type_divers select (floor random count btc_type_divers) ] select _iswater;
+		_unit_type = [selectRandom btc_type_units, selectRandom btc_type_divers ] select _iswater;
 		_group createUnit [_unit_type, _rpos, [], 0, "NONE"];
 		sleep 0.5;
 	};

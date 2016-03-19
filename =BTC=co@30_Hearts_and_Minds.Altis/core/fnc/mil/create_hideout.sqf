@@ -19,8 +19,7 @@ if (count _this > 0) then {_city = _this;} else {
 			)
 		) then {_useful = _useful + [_x];};
 	} foreach btc_city_all;
-	_id = floor random count _useful;
-	_city = _useful select _id;
+	_city = selectRandom _useful;
 };
 
 _radius = (((_city getVariable ["RadiusX",0]) + (_city getVariable ["RadiusY",0]))/2) - 100;
