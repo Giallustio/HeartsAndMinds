@@ -158,6 +158,7 @@ btc_fnc_log_set_mass = compile preprocessFile "core\fnc\log\set_mass.sqf";
 btc_fnc_log_tow = compile preprocessFile "core\fnc\log\tow.sqf";
 btc_fnc_log_unhook = compile preprocessFile "core\fnc\log\unhook.sqf";
 btc_fnc_log_unload = compile preprocessFile "core\fnc\log\unload.sqf";
+btc_fnc_log_getconfigmagazines = compile preprocessFile "core\fnc\log\getconfigmagazines.sqf";
 
 //SIDE
 btc_fnc_side_abort = compile preprocessFileLineNumbers "core\fnc\side\abort.sqf";

@@ -126,11 +126,11 @@ if (isServer) then {
 	btc_type_canister = ["Land_CanisterPlastic_F"];
 	btc_type_pallet = ["Land_Pallets_stack_F","Land_Pallets_F","Land_Pallet_F"];
 	btc_type_box = ["Box_East_Wps_F","Box_East_WpsSpecial_F","Box_East_Ammo_F"];
-
-
-	//Vehs
-	btc_vehicles = [btc_veh_1,btc_veh_2,btc_veh_3,btc_veh_4,btc_veh_5,btc_veh_6,btc_veh_7,btc_veh_8,btc_veh_9,btc_veh_10,btc_veh_11,btc_veh_12,btc_veh_13,btc_veh_14];
 };
+
+//Vehs
+btc_vehicles = [btc_veh_1,btc_veh_2,btc_veh_3,btc_veh_4,btc_veh_5,btc_veh_6,btc_veh_7,btc_veh_8,btc_veh_9,btc_veh_10,btc_veh_11,btc_veh_12,btc_veh_13,btc_veh_14];
+btc_helo = [btc_helo_1];
 
 //City
 btc_city_type = "Land_Ammobox_rounds_F";
@@ -171,17 +171,26 @@ btc_info_hideout_radius = 4000;
 btc_supplies_mat ="Land_Cargo20_red_F";
 
 //Log
+_btc_rearming_vehicles = (btc_vehicles + btc_helo) apply {typeOf _x};
+{
+	_btc_rearming_vehicles = _btc_rearming_vehicles - [_x];
+	if (count (configFile >> "CfgVehicles" >> _x >> "Turrets") > 0) then {
+		_btc_rearming_vehicles pushBack _x;
+	};
+} forEach _btc_rearming_vehicles;
+
+#define	REARM_TURRET_PATHS  [[-1], [0], [0,0], [0,1], [1], [2], [0,2]]
 btc_construction_array =
 [
 	[
 		"Fortifications",
 		"Static",
 		"Ammobox",
-		"Ammo vehicle",
 		"Containers",
 		"Supplies",
-		"FOB"
-	],
+		"FOB",
+		"Vehicle Logistic"
+	] + (_btc_rearming_vehicles apply {getText (configFile >> "cfgVehicles" >> _x >> "displayName")}),
 	[
 		[
 			//"Fortifications"
@@ -226,12 +235,8 @@ btc_construction_array =
 			"ACE_medicalSupplyCrate_advanced",
 			"ACE_medicalSupplyCrate",
 			"B_supplyCrate_F",
-			"B_CargoNet_01_ammo_F",
-			"ACE_Wheel",
-			"ACE_Track"
+			"B_CargoNet_01_ammo_F"
 		],
-			//"Ammo Vehicle"
-		(('(configname _x) isKindOf ["CA_Magazine", configFile >> "CfgMagazines"]' configClasses (configFile >> "CfgMagazines")) apply {configname _x}),
 		[
 			//"Containers"
 			"Land_Cargo20_military_green_F",
@@ -243,17 +248,33 @@ btc_construction_array =
 			btc_supplies_mat
 		],
 		[
-			//FOB
+			//"FOB"
 			btc_fob_mat
+		],
+		[
+			//"Vehicle logistic"
+			"ACE_Wheel",
+			"ACE_Track"
 		]
-	]
+	] + (_btc_rearming_vehicles apply {
+			_vehicles = _x;
+			_magazines = [];
+			{
+				_magazines append (([_vehicles,_x] call btc_fnc_log_getconfigmagazines));
+			} forEach REARM_TURRET_PATHS;
+			{
+				_magazines = _magazines - [_x];
+				_magazines pushBack _x;
+			} forEach _magazines;
+			_magazines
+		})
 ];
 
 _c_array = btc_construction_array select 1;
-btc_log_def_draggable = (_c_array select 1) + (_c_array select 2) + (_c_array select 3);
-btc_log_def_loadable = (_c_array select 0) + (_c_array select 1) + (_c_array select 2) + (_c_array select 3) + (_c_array select 4) + (_c_array select 5) + (_c_array select 6);
-btc_log_def_can_load =  (_c_array select 3) + (_c_array select 4) ;
-btc_log_def_placeable = (_c_array select 0) + (_c_array select 4) + (_c_array select 5) + (_c_array select 6);
+btc_log_def_draggable = (_c_array select 1) + (_c_array select 2);
+btc_log_def_loadable = (_c_array select 0) + (_c_array select 1) + (_c_array select 2) + (_c_array select 3) + (_c_array select 4) + (_c_array select 5)+ (_c_array select 6);
+btc_log_def_can_load = (_c_array select 3);
+btc_log_def_placeable = (_c_array select 0) + (_c_array select 3) + (_c_array select 4) + (_c_array select 5);
 btc_log_max_distance_load = 15;
 btc_log_object_selected = objNull;
 btc_log_vehicle_selected = objNull;
