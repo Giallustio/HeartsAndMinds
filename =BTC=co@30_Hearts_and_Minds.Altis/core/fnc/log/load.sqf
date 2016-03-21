@@ -5,6 +5,8 @@ _veh = _this;
 
 _veh_name = getText (configFile >> "cfgVehicles" >> typeof _veh >> "displayName");
 _obj_name = getText (configFile >> "cfgVehicles" >> typeof btc_log_object_selected >> "displayName");
+if (_obj_name isEqualTo "ace_rearm_dummy_obj") then {_obj_name = getText (configfile >> "CfgMagazines" >> (btc_log_object_selected getVariable "ace_rearm_magazineClass") >> "displayName");
+};
 
 if (btc_log_object_selected distance _veh > btc_log_max_distance_load) exitWith {hint format ["%1 is too far from %2!",_veh_name,_obj_name];};
 if (speed _veh > 3) exitWith {hint format ["%1 is moving!",_veh_name];};
