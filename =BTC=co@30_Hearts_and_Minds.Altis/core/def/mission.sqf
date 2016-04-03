@@ -205,7 +205,7 @@ if (isServer) then {
 				"Land_HBarrier_3_F",
 				"Land_HBarrier_5_F",
 				"Land_HBarrierBig_F",
-				"ACE_ConcertinaWireCoil",
+				"Land_Razorwire_F",
 				"Land_CncBarrier_F",
 				"Land_CncBarrierMedium_F",
 				"Land_CncBarrierMedium4_F",
