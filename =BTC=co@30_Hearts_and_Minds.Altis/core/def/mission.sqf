@@ -180,6 +180,20 @@ if (isServer) then {
 		};
 	} forEach _btc_rearming_vehicles;
 
+	_btc_rearming_static =
+	[
+		//"Static"
+		"B_static_AT_F",
+		"B_static_AA_F",
+		"B_GMG_01_A_F",
+		"B_GMG_01_high_F",
+		"B_GMG_01_F",
+		"B_HMG_01_A_F",
+		"B_HMG_01_high_F",
+		"B_HMG_01_F",
+		"B_Mortar_01_F"
+	];
+
 	#define	REARM_TURRET_PATHS  [[-1], [0], [0,0], [0,1], [1], [2], [0,2]]
 	btc_construction_array =
 	[
@@ -216,18 +230,18 @@ if (isServer) then {
 				"Land_Mil_WallBig_Corner_F",
 				"Land_PortableLight_double_F"
 			],
-			[
-				//"Static"
-				"B_static_AT_F",
-				"B_static_AA_F",
-				"B_GMG_01_A_F",
-				"B_GMG_01_high_F",
-				"B_GMG_01_F",
-				"B_HMG_01_A_F",
-				"B_HMG_01_high_F",
-				"B_HMG_01_F",
-				"B_Mortar_01_F"
-			],
+			_btc_rearming_static + (_btc_rearming_static apply {
+				_vehicles = _x;
+				_magazines = [];
+				{
+					_magazines append (([_vehicles,_x] call btc_fnc_log_getconfigmagazines));
+				} forEach REARM_TURRET_PATHS;
+				{
+					_magazines = _magazines - [_x];
+					_magazines pushBack _x;
+				} forEach _magazines;
+				_magazines
+			}),
 			[
 				//"Ammobox"
 				"rhsusf_mags_crate",
