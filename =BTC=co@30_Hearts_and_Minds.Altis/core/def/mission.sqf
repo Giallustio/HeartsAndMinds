@@ -273,9 +273,11 @@ if (isServer) then {
 } else {
 	btc_int_ask_data = nil;
 	// [[7,nil,player],"btc_fnc_int_ask_var",false] spawn BIS_fnc_MP;
-	[7,nil,player] remoteExec ["btc_fnc_int_ask_var",2];
-
-	waitUntil {sleep 0.5; !(isNil "btc_int_ask_data")};
+	while {isNil "btc_int_ask_data"} do
+	{
+		[7,nil,player] remoteExec ["btc_fnc_int_ask_var",2];
+		sleep 10;
+	};
 	btc_construction_array = btc_int_ask_data;
 };
 
