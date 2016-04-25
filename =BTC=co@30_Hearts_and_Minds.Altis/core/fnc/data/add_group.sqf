@@ -48,6 +48,6 @@ if !(_city getVariable ["active",false]) then
 
 if (btc_final_phase) then
 {
-	btc_city_remaining = btc_city_remaining + [_city];
+	btc_city_remaining pushBack _city;
 };
 diag_log format ["END = %1",[]];

@@ -19,11 +19,8 @@ if (_random isEqualTo 0) then {
 		case (_n > 96)            : {_random = 4;};
 	};
 };
-_cities = [];
-{if (_x distance _city < _area) then {_cities pushBack _x;};} foreach btc_city_all;
-_usefuls = [];
-{if (!(_x getVariable ["active",false]) && _x getVariable ["occupied",false]) then {_usefuls pushBack _x;};} foreach _cities;
-
+_cities = btc_city_all select {(_x distance _city < _area)};
+_usefuls = _cities select {(!(_x getVariable ["active",false]) && _x getVariable ["occupied",false])};
 /*
 if (count _useful == 0) then {
 	while {count _useful == 0} do {

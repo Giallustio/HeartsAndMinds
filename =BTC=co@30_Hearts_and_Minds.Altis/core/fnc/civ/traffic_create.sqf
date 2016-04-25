@@ -1,27 +1,24 @@
 
-private ["_city","_area","_cities","_useful","_unit_type","_veh_type","_group","_veh","_pos_iswater"];
+private ["_city","_area","_cities","_useful","_unit_type","_veh_type","_group","_veh","_pos_iswater","_pos"];
 
 _city = _this select 0;
 _area = _this select 1;
 
 if (isNil "btc_traffic_id") then {btc_traffic_id = 0;};
 
-_cities = [];
-{if (_x distance _city < _area) then {_cities pushBack _x;};} foreach btc_city_all;
-_useful = [];
-{
-	if !(_x getVariable ["active",false]) then {_useful pushBack (getPos _x);};
-} foreach _cities;
-
+_cities = btc_city_all select {(_x distance _city < _area)};
+_useful = _cities select {!(_x getVariable ["active",false])};
 if (_useful isEqualTo []) then {
 	while {_useful isEqualTo []} do {
 		private "_pos";
 		_pos = [getPos _city, _area, btc_p_sea] call btc_fnc_randomize_pos;
 		if ({_x distance _pos < 500} count playableUnits isEqualTo 0) then {_useful pushBack _pos;};
 	};
+	_pos = selectRandom _useful;
+} else {
+	_pos = getPos(selectRandom _useful);
 };
 
-_pos = selectRandom _useful;
 _unit_type = selectRandom btc_civ_type_units;
 
 _group = createGroup civilian;

@@ -13,10 +13,7 @@ if ({_x distance _city < (_area/2) || _x distance leader _group < (_area/2)} cou
 	{deleteVehicle _x;} foreach units _group;deleteGroup _group;
 };
 
-_cities = [];
-{if ((_x distance _city < _area) && ((!_isboat && {_x getVariable ["type",""] != "NameMarine"}) || (_isboat && {_x getVariable ["hasbeach",false]})))  then {
-		_cities pushBack _x;
-};} foreach btc_city_all;
+_cities = btc_city_all select {((_x distance _city < _area) && ((!_isboat && {_x getVariable ["type",""] != "NameMarine"}) || (_isboat && {_x getVariable ["hasbeach",false]})))};
 _pos = [];
 if (_cities isEqualTo []) then {_pos = getPos _city;} else {
 	_pos = getPos (selectRandom _cities);

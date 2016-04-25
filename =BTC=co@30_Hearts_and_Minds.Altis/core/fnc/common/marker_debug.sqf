@@ -11,7 +11,7 @@ _color = "";_markers = [];
 		switch (true) do {case (side _x == west) : {_color = "ColorBlue"};case (side _x == east) : {_color = "ColorRed"};case (side _x == independent) : {_color = "ColorGreen"}; default {_color = "ColorWhite"};};
 		format ["%1", _x] setmarkerColorlocal _color;
 		format ["%1", _x] setMarkerSizeLocal [0.7, 0.7];
-		_markers = _markers + [_marker];
+		_markers pushBack _marker;
 	};
 } foreach _units;
 player sideChat format ["UNITS:%1 - GROUPS:%2", count allunits, count allgroups];

@@ -27,7 +27,7 @@ _name = ctrlText 777;
 
 _name_to_check = ("FOB " + (toUpper(_name)));
 _array_markers = [];
-{private "_n";_n = toUpper(_x);_array_markers = _array_markers + [_n];} foreach allMapMarkers;
+{private "_n";_n = toUpper(_x);_array_markers pushBack _n;} foreach allMapMarkers;
 
 if (_array_markers find _name_to_check >= 0) exitWith {closeDialog 0;hint "Name already in use!";_mat spawn btc_fnc_fob_create;};
 
