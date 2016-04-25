@@ -34,6 +34,7 @@ btc_p_debug  = (paramsArray select 26);
 //MED
 if (ace_medical_maxReviveTime > 0) then {ace_medical_enableRevive = 1;ace_medical_preventInstaDeath = true};
 ace_medical_enableFor = 1;
+btc_p_sea  = if ((paramsArray select 27) isEqualTo 0) then {false} else {true};
 //btc_acre_mod = isClass(configFile >> "cfgPatches" >> "acre_main");
 //btc_tfr_mod = isClass(configFile >> "cfgPatches" >> "task_force_radio");
 
@@ -117,7 +118,7 @@ if (isServer) then {
 	btc_side_assigned = false;
 	btc_side_done = false;
 	btc_side_failed = false;
-	btc_side_list = [0,1,2,3,4,5,6];
+	btc_side_list = if (btc_p_sea) then {[0,1,2,3,4,5,6,7]} else {[0,1,2,3,4,5,6]};
 	btc_side_list_use = + btc_side_list;
 	btc_side_jip_data = [];
 	btc_type_tower = ["Land_Communication_F","Land_TTowerBig_1_F","Land_TTowerBig_2_F"];
