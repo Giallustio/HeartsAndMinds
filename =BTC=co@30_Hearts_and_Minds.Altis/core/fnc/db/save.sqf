@@ -109,7 +109,7 @@ _array_veh = [];
 	_data pushBack (fuel _x);
 	_data pushBack (damage _x);
 	_cargo = [];
-	{_cargo pushBack [(typeOf _x),[getWeaponCargo _x,getMagazineCargo _x,getItemCargo _x]]} foreach (_x getVariable ["cargo",[]]);
+	{_cargo pushBack [(typeOf _x),(_x getVariable ["ace_rearm_magazineClass",""]),[getWeaponCargo _x,getMagazineCargo _x,getItemCargo _x]]} foreach (_x getVariable ["cargo",[]]);
 	_data pushBack _cargo;
 	_cont = [getWeaponCargo _x,getMagazineCargo _x,getItemCargo _x];
 	_data pushBack _cont;
@@ -126,12 +126,13 @@ _array_obj = [];
 		_data pushBack (typeOf _x);
 		_data pushBack (getPosASL _x);
 		_data pushBack (getDir _x);
+		_data pushBack (_x getVariable ["ace_rearm_magazineClass",""]);
 		_cargo = [];
-		{_cargo pushBack [(typeOf _x),[getWeaponCargo _x,getMagazineCargo _x,getItemCargo _x]]} foreach (_x getVariable ["cargo",[]]);
+		{_cargo pushBack [(typeOf _x),(_x getVariable ["ace_rearm_magazineClass",""]),[getWeaponCargo _x,getMagazineCargo _x,getItemCargo _x]]} foreach (_x getVariable ["cargo",[]]);
 		_data pushBack _cargo;
 		_cont = [getWeaponCargo _x,getMagazineCargo _x,getItemCargo _x];
 		_data pushBack _cont;
-		
+
 		_array_obj pushBack _data;
 	};
 } foreach btc_log_obj_created;

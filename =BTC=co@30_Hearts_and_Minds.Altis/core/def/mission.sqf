@@ -134,6 +134,7 @@ if (isServer) then {
 
 	//Vehs
 	btc_vehicles = [btc_veh_1,btc_veh_2,btc_veh_3,btc_veh_4,btc_veh_5,btc_veh_6,btc_veh_7,btc_veh_8,btc_veh_9,btc_veh_10,btc_veh_11,btc_veh_12,btc_veh_13,btc_veh_14];
+	btc_helo = [btc_helo_1];
 };
 
 //City
@@ -189,87 +190,121 @@ btc_info_hideout_radius = 4000;
 btc_supplies_mat ="Land_Cargo20_red_F";
 
 //Log
-btc_construction_array =
-[
-	[
-		"Fortifications",
-		"Static",
-		"Ammobox",
-		"Containers",
-		"Supplies",
-		"FOB"
-	],
-	[
-		[
-			//"Fortifications"
-			"Land_BagBunker_Small_F",
-			"Land_BagFence_Corner_F",
-			"Land_BagFence_End_F",
-			"Land_BagFence_Long_F",
-			"Land_BagFence_Round_F",
-			"Land_BagFence_Short_F",
-			"Land_HBarrier_1_F",
-			"Land_HBarrier_3_F",
-			"Land_HBarrier_5_F",
-			"Land_HBarrierBig_F",
-			"Land_Razorwire_F",
-			"Land_CncBarrier_F",
-			"Land_CncBarrierMedium_F",
-			"Land_CncBarrierMedium4_F",
-			"Land_CncWall1_F",
-			"Land_CncWall4_F",
-			"Land_Mil_ConcreteWall_F",
-			"Land_Mil_WallBig_4m_F",
-			"Land_Mil_WallBig_Corner_F",
-			"Land_PortableLight_double_F"
-		],
-		[
-			//"Static"
-			"B_static_AT_F",
-			"B_static_AA_F",
-			"B_GMG_01_A_F",
-			"B_GMG_01_high_F",
-			"B_GMG_01_F",
-			"B_HMG_01_A_F",
-			"B_HMG_01_high_F",
-			"B_HMG_01_F",
-			"B_Mortar_01_F"
-		],
-		[
-			//"Ammobox"
-			"rhsusf_mags_crate",
-			"Box_NATO_Ammo_F",
-			"Box_NATO_Support_F",
-			"ACE_medicalSupplyCrate_advanced",
-			"ACE_medicalSupplyCrate",
-			"B_supplyCrate_F",
-			"B_CargoNet_01_ammo_F",
-			"ACE_Wheel",
-			"ACE_Track",
-			"FlexibleTank_01_forest_F",
-			"Box_NATO_AmmoVeh_F"
+if (isServer) then {
+	_btc_rearming_vehicles = (btc_vehicles + btc_helo) apply {typeOf _x};
+	{
+		_btc_rearming_vehicles = _btc_rearming_vehicles - [_x];
+		if (count (configFile >> "CfgVehicles" >> _x >> "Turrets") > 0) then {
+			_btc_rearming_vehicles pushBack _x;
+		};
+	} forEach _btc_rearming_vehicles;
 
-		],
+	#define	REARM_TURRET_PATHS  [[-1], [0], [0,0], [0,1], [1], [2], [0,2]]
+	btc_construction_array =
+	[
 		[
-			//"Containers"
-			"Land_Cargo20_military_green_F",
-			"Land_Cargo40_military_green_F"
+			"Fortifications",
+			"Static",
+			"Ammobox",
+			"Containers",
+			"Supplies",
+			"FOB",
+			"Vehicle Logistic"
+		] + (_btc_rearming_vehicles apply {getText (configFile >> "cfgVehicles" >> _x >> "displayName")}),
+		[
+			[
+				//"Fortifications"
+				"Land_BagBunker_Small_F",
+				"Land_BagFence_Corner_F",
+				"Land_BagFence_End_F",
+				"Land_BagFence_Long_F",
+				"Land_BagFence_Round_F",
+				"Land_BagFence_Short_F",
+				"Land_HBarrier_1_F",
+				"Land_HBarrier_3_F",
+				"Land_HBarrier_5_F",
+				"Land_HBarrierBig_F",
+				"Land_Razorwire_F",
+				"Land_CncBarrier_F",
+				"Land_CncBarrierMedium_F",
+				"Land_CncBarrierMedium4_F",
+				"Land_CncWall1_F",
+				"Land_CncWall4_F",
+				"Land_Mil_ConcreteWall_F",
+				"Land_Mil_WallBig_4m_F",
+				"Land_Mil_WallBig_Corner_F",
+				"Land_PortableLight_double_F"
+			],
+			[
+				//"Static"
+				"B_static_AT_F",
+				"B_static_AA_F",
+				"B_GMG_01_A_F",
+				"B_GMG_01_high_F",
+				"B_GMG_01_F",
+				"B_HMG_01_A_F",
+				"B_HMG_01_high_F",
+				"B_HMG_01_F",
+				"B_Mortar_01_F"
+			],
+			[
+				//"Ammobox"
+				"rhsusf_mags_crate",
+				"Box_NATO_Ammo_F",
+				"Box_NATO_Support_F",
+				"ACE_medicalSupplyCrate_advanced",
+				"ACE_medicalSupplyCrate",
+				"B_supplyCrate_F",
+				"B_CargoNet_01_ammo_F"
+			],
+			[
+				//"Containers"
+				"Land_Cargo20_military_green_F",
+				"Land_Cargo40_military_green_F"
 
-		],
-		[
-			//"Supplies"
-			btc_supplies_mat
-		],
-		[
-			//FOB
-			btc_fob_mat
-		]
-	]
-];
+			],
+			[
+				//"Supplies"
+				btc_supplies_mat
+			],
+			[
+				//"FOB"
+				btc_fob_mat
+			],
+			[
+				//"Vehicle logistic"
+				"ACE_Wheel",
+				"ACE_Track"
+			]
+		] + (_btc_rearming_vehicles apply {
+				_vehicles = _x;
+				_magazines = [];
+				{
+					_magazines append (([_vehicles,_x] call btc_fnc_log_getconfigmagazines));
+				} forEach REARM_TURRET_PATHS;
+				{
+					_magazines = _magazines - [_x];
+					_magazines pushBack _x;
+				} forEach _magazines;
+				_magazines
+			})
+	];
+} else {
+	btc_int_ask_data = nil;
+	// [[7,nil,player],"btc_fnc_int_ask_var",false] spawn BIS_fnc_MP;
+	while {isNil "btc_int_ask_data"} do
+	{
+		[7,nil,player] remoteExec ["btc_fnc_int_ask_var",2];
+		private ["_i"];
+		_i = 0;
+		waitUntil {sleep 1; _i = _i + 1; (_i >= 5 || (!(isNil "btc_int_ask_data")))};
+	};
+	btc_construction_array = btc_int_ask_data;
+};
 
 _c_array = btc_construction_array select 1;
 btc_log_def_draggable = (_c_array select 1) + (_c_array select 2);
-btc_log_def_loadable = (_c_array select 0) + (_c_array select 1) + (_c_array select 2) + (_c_array select 3) + (_c_array select 4) + (_c_array select 5);
+btc_log_def_loadable = (_c_array select 0) + (_c_array select 1) + (_c_array select 2) + (_c_array select 3) + (_c_array select 4) + (_c_array select 5) + (_c_array select 6) + (["ace_rearm_defaultCarriedObject", "ace_rearm_Bo_Mk82","ace_rearm_Bomb_04_F","ace_rearm_Bo_GBU12_LGB","ace_rearm_Bomb_03_F","ace_rearm_Missile_AA_03_F","ace_rearm_Missile_AGM_02_F","ace_rearm_Missile_AGM_01_F","ace_rearm_Rocket_03_AP_F","ace_rearm_R_80mm_HE","ace_rearm_R_60mm_HE","ace_rearm_Rocket_04_HE_F","ace_rearm_R_Hydra_HE","ace_rearm_Missile_AA_04_F","ace_rearm_M_PG_AT","ace_rearm_R_230mm_HE","ace_rearm_Rocket_03_HE_F","ace_rearm_Rocket_04_AP_F","ace_rearm_R_230mm_fly"]);
 btc_log_def_can_load = (_c_array select 3);
 btc_log_def_placeable = (_c_array select 0) + (_c_array select 3) + (_c_array select 4) + (_c_array select 5);
 btc_log_max_distance_load = 15;
