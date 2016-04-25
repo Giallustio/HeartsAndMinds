@@ -66,4 +66,12 @@ switch _this do
 		["TaskFailed",["Side mission failed!","The patient has not been stabilized"]] call bis_fnc_showNotification;
 		player setVariable ["task_10",nil];
 	};
+	case 11 :
+	{
+		private "_task";
+		_task = player getVariable "task_11";
+		_task setTaskState "FAILED";
+		["TaskFailed",["Side mission failed!","Underwater generator have not been destroyed"]] call bis_fnc_showNotification;
+		player setVariable ["task_11",nil];
+	};
 };
