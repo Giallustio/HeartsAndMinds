@@ -17,8 +17,7 @@ if (count _this > 0) then {_city = _this;} else {
 			)
 		) then {_useful = _useful + [_x];};
 	} foreach btc_city_all;
-	_id = floor random count _useful;
-	_city = _useful select _id;
+	_city = selectRandom _useful;
 };
 
 _pos = [getPos _city, 300] call btc_fnc_randomize_pos;

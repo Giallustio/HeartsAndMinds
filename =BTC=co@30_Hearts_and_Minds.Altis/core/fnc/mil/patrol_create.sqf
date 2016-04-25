@@ -36,7 +36,7 @@ if (count _useful == 0) then {
 
 if (_usefuls isEqualTo []) exitWith {true};
 
-_useful = _usefuls select (floor random count _usefuls);
+_useful = selectRandom _usefuls;
 if (_useful getVariable ["hasbeach",false]) then {
 	_pos = [getPos _useful,((_useful getVariable ["RadiusX",0]) + (_useful getVariable ["RadiusY",0])), btc_p_sea] call btc_fnc_randomize_pos;
 } else {
@@ -59,7 +59,7 @@ switch (true) do {
 		_group createUnit [(btc_type_units select 0), _pos, [], 0, "NONE"];(leader _group) setpos _pos;
 		for "_i" from 1 to _n_units do {
 			private ["_unit_type"];
-			_unit_type = btc_type_units select (floor random count btc_type_units);
+			_unit_type = selectRandom btc_type_units;
 			_group createUnit [_unit_type, _pos, [], 0, "NONE"];
 			sleep 1;
 		};
@@ -77,9 +77,9 @@ switch (true) do {
 
 		_pos_iswater = (surfaceIsWater _newZone);
 		if (_pos_iswater) then {
-			_veh_type = btc_type_boats select (floor (random (count btc_type_boats)));
+			_veh_type = selectRandom btc_type_boats;
 		} else {
-			_veh_type = btc_type_motorized select (floor (random (count btc_type_motorized)));
+			_veh_type = selectRandom btc_type_motorized;
 		};
 
 		_needdiver = getText(configfile >> "CfgVehicles" >> _veh_type >> "simulation") isEqualTo "submarinex";
@@ -90,7 +90,7 @@ switch (true) do {
 		_cargo = (_veh emptyPositions "cargo") - 1;
 		if (_cargo > 0) then {
 			for "_i" from 0 to _cargo do {
-				_unit_type = [btc_type_units select (round (random ((count btc_type_units) - 1))), btc_type_divers select (round (random ((count btc_type_divers) - 1)))] select _needdiver ;
+				_unit_type = [selectRandom btc_type_units, selectRandom btc_type_divers] select _needdiver ;
 				_unit_type createUnit [_pos, _group, "this moveinCargo _veh;this assignAsCargo _veh;"];
 			};
 		};

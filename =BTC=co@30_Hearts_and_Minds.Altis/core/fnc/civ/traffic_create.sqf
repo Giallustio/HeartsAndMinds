@@ -21,9 +21,8 @@ if (_useful isEqualTo []) then {
 	};
 };
 
-_pos = _useful select (floor random count _useful);
-
-_unit_type = btc_civ_type_units select (floor random count btc_civ_type_units);
+_pos = selectRandom _useful;
+_unit_type = selectRandom btc_civ_type_units;
 
 _group = createGroup civilian;
 _group setVariable ["no_cache",true];
@@ -41,9 +40,9 @@ if (count (_pos nearRoads 200) > 0) then {
 
 _pos_iswater = (surfaceIsWater _Spos);
 if (_pos_iswater) then {
-	_veh_type = btc_civ_type_boats select (floor (random (count btc_civ_type_boats)));
+	_veh_type = selectRandom btc_civ_type_boats;
 } else {
-	_veh_type = btc_civ_type_veh select (floor (random (count btc_civ_type_veh)));
+	_veh_type = selectRandom btc_civ_type_veh;
 };
 
 _veh = createVehicle [_veh_type, _Spos, [], 0, "NONE"];

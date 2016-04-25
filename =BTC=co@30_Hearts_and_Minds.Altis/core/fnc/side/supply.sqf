@@ -6,7 +6,7 @@ _useful = [];
 
 if (count _useful == 0) then {_useful = + btc_city_all;};
 
-_city = _useful select (floor random count _useful);
+_city = selectRandom _useful;
 
 _pos = [getPos _city, 100] call btc_fnc_randomize_pos;
 

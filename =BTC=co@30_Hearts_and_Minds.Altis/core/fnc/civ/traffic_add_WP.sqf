@@ -20,7 +20,7 @@ _cities = [];
 };} foreach btc_city_all;
 _pos = [];
 if (_cities isEqualTo []) then {_pos = getPos _city;} else {
-	_pos = getPos (_cities select (floor random count _cities));
+	_pos = getPos (selectRandom _cities);
 };
 if (_isboat) then {
 	_pos = [_pos, 0, ((_city getVariable ["RadiusX",0]) + (_city getVariable ["RadiusY",0])), 13, 2, 60 * (pi / 180), 0] call BIS_fnc_findSafePos;

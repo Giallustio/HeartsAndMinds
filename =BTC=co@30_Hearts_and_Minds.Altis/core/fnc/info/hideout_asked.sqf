@@ -26,7 +26,7 @@ switch _is_real do {
 		if ((random 1) > 0.5) then {
 			private ["_array","_dist","_dir"];
 			_array = ["N","E","W","S","NW","NE","SE","SW"];
-			_dir = _array select (floor (random (count _array)));
+			_dir = selectRandom _array;
 			_dist = 300 + (random 2000);
 			_text = format ["%1: I saw a lot of militia activity towards %2, %3 meter from here. Probably there is an hideout!", _name,_dir,round _dist];
 		} else {
