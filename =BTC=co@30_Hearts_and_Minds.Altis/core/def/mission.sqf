@@ -78,7 +78,7 @@ if (isServer) then {
 	btc_ied_suic_spawned = - btc_ied_suic_time;
 
 	//FOB
-	btc_fobs = [];
+	btc_fobs = [[],[]];
 
 
 	//Log

@@ -20,10 +20,11 @@ _marker = createmarker [("FOB " + _name), getPos _flag];
 ("FOB " + _name) setMarkerType "hd_flag";
 ("FOB " + _name) setMarkerText (("FOB " + _name));
 ("FOB " + _name) setMarkerColor "ColorBlue";
-("FOB " + _name) setMarkerShape "ICON";	
+("FOB " + _name) setMarkerShape "ICON";
 
-btc_fobs pushBack (("FOB " + _name));
-
+(btc_fobs select 0) pushBack (("FOB " + _name));
+(btc_fobs select 1) pushBack _struc;
+_flag setVariable ["btc_fob",("FOB " + _name)];
 [[7,("FOB " + _name)],"btc_fnc_show_hint"] spawn BIS_fnc_MP;
 /*
 //_flag setVariable ["BTC_mobile_west",format ["FOB_%1",BTC_fob_id],true];
@@ -39,10 +40,10 @@ btc_fobs pushBack (("FOB " + _name));
 	(_flag getVariable "BTC_mobile_west") setMarkerType "hd_flag";
 	(_flag getVariable "BTC_mobile_west") setMarkerText (_flag getVariable "BTC_mobile_west");
 	(_flag getVariable "BTC_mobile_west") setMarkerColor "ColorBlue";
-	(_flag getVariable "BTC_mobile_west") setMarkerShape "ICON";	
+	(_flag getVariable "BTC_mobile_west") setMarkerShape "ICON";
 	BTC_m_PVEH = [1,_flag];publicVariable "BTC_m_PVEH";
 	_flag addAction [("<t color=""#12F905"">") + ("Dismantle FOB") + "</t>","=BTC=_revive\=BTC=_addAction.sqf",[[_flag],BTC_dismantle_fob], 8, true, true, "", "true"];
 	hint "FOB assembled!";
-	
+
 	#define east_pack "Land_Pod_Heli_Transport_04_box_F"
 #define west_pack "B_Slingload_01_Cargo_F" */
