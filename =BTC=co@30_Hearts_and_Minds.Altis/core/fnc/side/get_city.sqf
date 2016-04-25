@@ -1,7 +1,7 @@
 
 private ["_useful","_city","_pos"];
 
-_useful = btc_city_all select [(_x getVariable ["occupied",false] && {_x getVariable ["type",""] != "NameLocal"} && {_x getVariable ["type",""] != "Hill"} && (_x getVariable ["type",""] != "NameMarine"))];
+_useful = btc_city_all select {((_x getVariable ["occupied",false]) && {_x getVariable ["type",""] != "NameLocal"} && {_x getVariable ["type",""] != "Hill"} && {_x getVariable ["type",""] != "NameMarine"})};
 if (_useful isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
 
 _city = selectRandom _useful;
