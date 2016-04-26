@@ -1,8 +1,11 @@
+
+private ["_group","_house","_n_pos","_wp"];
+
 _group = _this select 0;
 _house = _this select 1;
 
 _n_pos = 0;
-while {format ["%1", _house buildingPos _n_pos] != "[0,0,0]" } do 
+while {format ["%1", _house buildingPos _n_pos] != "[0,0,0]" } do
 {
 	_n_pos = _n_pos + 1;
 	_wp = _group addWaypoint [getPos _house, 0];

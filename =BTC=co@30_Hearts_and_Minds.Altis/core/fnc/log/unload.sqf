@@ -1,5 +1,5 @@
 
-private ["_obj_type","_veh","_ctrlProgressBar","_ctrlProgressBarTitle","_time"];
+private ["_obj_type","_veh"];
 
 if (!Dialog) exitWith {};
 

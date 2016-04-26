@@ -1,5 +1,5 @@
 
-private ["_unit","_type"];
+private ["_unit","_type","_action"];
 
 _unit = _this select 0;
 

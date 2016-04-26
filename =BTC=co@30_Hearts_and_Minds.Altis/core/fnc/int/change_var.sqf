@@ -1,3 +1,6 @@
+
+private ["_obj","_var","_value"];
+
 _obj = _this select 0;
 _var = _this select 1;
 _value = _this select 2;

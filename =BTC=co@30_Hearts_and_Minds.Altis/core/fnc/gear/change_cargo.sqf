@@ -1,4 +1,7 @@
 disableSerialization;
+
+private ["_ui","_type"];
+
 _ui = uiNamespace getVariable "btc_gear_dlg";
 
 _type = lbText [371, lbCurSel 371];

@@ -1,7 +1,10 @@
+
+private ["_obj","_height","_fall"];
+
 _obj    = _this select 0;
 _height = (getPos _obj) select 2;
 _fall   = 0.09;
-while {((getPos _obj) select 2) > 0.1} do 
+while {((getPos _obj) select 2) > 0.1} do
 {
 	_fall = (_fall * 1.1);
 	_obj setPos [getPos _obj select 0, getPos _obj select 1, _height];

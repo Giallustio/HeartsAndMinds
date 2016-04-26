@@ -1,4 +1,6 @@
 
+private ["_name"];
+
 _name = worldName;
 
 profileNamespace setVariable [format ["btc_hm_%1_date",_name],nil];
