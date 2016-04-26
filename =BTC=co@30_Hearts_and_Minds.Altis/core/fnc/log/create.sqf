@@ -1,4 +1,6 @@
 
+private ["_class","_new","_selected"];
+
 closeDialog 0;
 
 btc_log_create_obj = _this select 0;

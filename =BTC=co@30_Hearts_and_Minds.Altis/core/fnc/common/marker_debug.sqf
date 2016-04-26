@@ -1,3 +1,6 @@
+
+private ["_units","_color","_marker","_markers"];
+
 _units = allunits;
 if !(btc_marker_debug_cond) exitWith {};
 _color = "";_markers = [];

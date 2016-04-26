@@ -1,4 +1,7 @@
 disableSerialization;
+
+private ["_ui","_radar","_obj_img","_obj_pic","_arrow","_obj_name","_array_hud","_can_lift","_arrow_up","_arrow_down","_complete","_incomplete"];
+
 939996 cutRsc ["btc_log_hud","PLAIN"];
 _ui        = uiNamespace getVariable "btc_log_hud";
 _radar     = _ui displayCtrl 1001;

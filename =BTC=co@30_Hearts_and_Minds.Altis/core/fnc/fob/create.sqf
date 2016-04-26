@@ -1,4 +1,6 @@
 
+private ["_mat","_name","_array_markers","_name_to_check"];
+
 if (count ((position _this) isflatempty [1,0,0.9,1,0,false,_this]) == 0) exitWith {hint "Area is not flat enough!"};
 
 if (_this distance (getMarkerPos "btc_base") < 2000) exitWith {hint "Too close at the main base!"};

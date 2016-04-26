@@ -1,4 +1,6 @@
 
+private ["_side"];
+
 if (btc_side_assigned) exitWith {};
 
 if (count btc_side_list_use == 0) then {btc_side_list_use = + btc_side_list;};

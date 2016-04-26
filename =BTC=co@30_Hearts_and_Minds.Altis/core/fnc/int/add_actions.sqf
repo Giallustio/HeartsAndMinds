@@ -1,4 +1,6 @@
 
+private ["_action"];
+
 //Arsenal
 _action = ["btc_arsenal", "Arsenal", "", {["Open",true] call BIS_fnc_arsenal;}, {true}] call ace_interact_menu_fnc_createAction;
 [btc_gear_object, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToObject;

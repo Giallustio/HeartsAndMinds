@@ -1,5 +1,7 @@
 if (isDedicated) exitWith {};
 
+private ["_type"];
+
 _type  = _this select 0;
 
 switch (_type) do {
@@ -15,7 +17,7 @@ switch (_type) do {
 	case 3 : {
 		hint "This body does not have any intel";
 	};
-	case 4 : {	
+	case 4 : {
 		hint "Found intels about an ammo cache and an hideout! Map updated";
 	};
 	case 5 : {

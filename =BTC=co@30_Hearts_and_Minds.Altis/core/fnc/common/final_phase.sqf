@@ -1,4 +1,6 @@
 
+private ["_radius_x","_radius_y","_marker"];
+
 [[6],"btc_fnc_show_hint"] spawn BIS_fnc_MP;
 
 [1,"btc_fnc_task_set_done",true,true] spawn BIS_fnc_MP;

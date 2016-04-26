@@ -1,3 +1,6 @@
+
+private ["_idc","_items"];
+
 _idc = _this select 0;
 _items = _this select 1;
 
@@ -13,6 +16,6 @@ lbClear _idc;
 	_picture = getText (configFile >> _type >> _x >> "picture");
 	_index = lbAdd [ _idc, _displayName ];
 	lbSetData [ _idc, _index, _x ];
-	lbSetTooltip [ _idc, _index, _displayName ];	
-	lbSetPicture [ _idc, _index, _picture ];	
-} foreach _items;	
+	lbSetTooltip [ _idc, _index, _displayName ];
+	lbSetPicture [ _idc, _index, _picture ];
+} foreach _items;

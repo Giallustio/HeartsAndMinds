@@ -41,6 +41,9 @@ if ({_x != ""} count _h_items > 0) then
 } else {_text = _text + "Accessories: None";};
 _text = _text + _br + _br + "Ammo and items:";
 */
+
+private ["_ui","_text","_w","_w_items","_h_items","_s_items","_i","_idc"];
+
 _ui = uiNamespace getVariable "btc_gear_dlg";
 _text = "";
 _w = primaryWeapon player;
@@ -94,7 +97,7 @@ if (count _mags > 0) then
 		_picture = getText (configFile >> "cfgMagazines" >> _i >> "picture");
 		_index = lbAdd [ _idc, _displayName ];
 		lbSetData [ _idc, _index, _i ];
-		lbSetTooltip [ _idc, _index, _displayName ];	
+		lbSetTooltip [ _idc, _index, _displayName ];
 		lbSetPicture [ _idc, _index, _picture ];
 		_mags = _mags - [_i];
 	};
@@ -109,7 +112,7 @@ if (count _items > 0) then
 		_picture = getText (configFile >> "cfgWeapons" >> _i >> "picture");
 		_index = lbAdd [ _idc, _displayName ];
 		lbSetData [ _idc, _index, _i ];
-		lbSetTooltip [ _idc, _index, _displayName ];	
+		lbSetTooltip [ _idc, _index, _displayName ];
 		lbSetPicture [ _idc, _index, _picture ];
 		_items = _items - [_i];
 	};
@@ -118,4 +121,4 @@ if (count _items > 0) then
 lbSort [((uiNamespace getVariable "btc_gear_dlg") displayCtrl _idc), "ASC"];
 
 
-true 
+true

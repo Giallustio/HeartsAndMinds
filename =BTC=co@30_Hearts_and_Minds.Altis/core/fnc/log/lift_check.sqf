@@ -1,4 +1,6 @@
 
+private ["_array","_chopper","_can_lift","_cargo_array","_cargo","_cargo_pos","_cargo_x","_cargo_y","_cargo_z"];
+
 if (!(vehicle player isKindOf "Helicopter") || !isNull ((vehicle player) getVariable ["cargo",objNull])) exitWith {false};
 _array = [vehicle player] call btc_fnc_log_get_liftable;
 if (count _array == 0) exitWith {false};
@@ -24,4 +26,4 @@ _cargo_z   = _rel_pos select 2;//hintSilent format ["%1 - %2 - %3",_cargo_x,_car
 if (((abs _cargo_z) < btc_lift_max_h) && ((abs _cargo_z) > btc_lift_min_h) && ((abs _cargo_x) < btc_lift_radius) && ((abs _cargo_y) < btc_lift_radius)) then
 	{_can_lift = true;} else {_can_lift = false;};
 	//hintSilent format ["%1 - %2", _cargo,_cargo_array];
-_can_lift 
+_can_lift

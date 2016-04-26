@@ -7,7 +7,7 @@ _data = _vehicle getVariable ["data_respawn",[]];
 _vehicle spawn {sleep 30;deleteVehicle _this;};
 
 _data spawn {
-	private ["_veh"];
+	private ["_veh","_time"];
 	_time = (_this select 3);
 	sleep _time;
 	_veh = (_this select 0) createVehicle (_this select 1);
