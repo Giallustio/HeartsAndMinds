@@ -1,3 +1,6 @@
+
+private ["_mat","_name","_pos","_struc","_flag","_h","_marker"];
+
 _mat = _this select 0;
 _name = _this select 1;
 

@@ -1,3 +1,6 @@
+
+private ["_pos","_players","_start_pos","_ratio"];
+
 btc_rep_militia_called = time;
 _pos = _this select 0;
 

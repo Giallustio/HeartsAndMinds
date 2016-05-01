@@ -1,3 +1,6 @@
+
+private ["_veh","_dropped","_chute_type","_offset","_dropped","_chute","_smoke","_chem"];
+
 _veh          = _this select 0;
 _dropped      = _this select 1;
 _chute_type   = _this select 2;
@@ -21,7 +24,7 @@ _chute setPosATL (getPosATL _dropped);
 _smoke        = "SmokeshellGreen" createVehicle [0,0,0];
 _chem         = "Chemlight_green" createVehicle [0,0,0];
 _smoke attachto [_dropped,[0,0,0]];
-_chem attachto [_dropped,[0,0,0]]; 
+_chem attachto [_dropped,[0,0,0]];
 _dropped attachTo [_chute,[0,0,- 0.6]];
 
 waitUntil {sleep 1; (((getPos _chute) select 2) < 0.3)};

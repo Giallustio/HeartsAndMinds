@@ -1,3 +1,6 @@
+
+private ["_group","_units","_type_db","_array_pos","_array_type","_side","_array_dam","_behaviour","_array_wp","_array_in_veh","_array_veh","_index_wp","_data"];
+
 _group = _this;
 
 _units = units _group;
@@ -38,7 +41,7 @@ if (vehicle leader _group != leader _group) then {_type_db = 1;};
 
 if (_type_db == 1) then
 {
-	private ["_veh"];
+	private ["_veh","_type","_pos","_dir","_fuel"];
 	_veh = vehicle leader _group;
 	_type = typeOf _veh;
 	_pos = getposATL _veh;

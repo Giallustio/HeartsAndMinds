@@ -1,4 +1,6 @@
 
+private ["_p_db","_p_en","_hideout_n","_cache_info_def","_cache_info_ratio","_info_chance","_p_rep","_p_skill","_c_array","_tower","_array","_chopper"];
+
 btc_version = 1.14; diag_log format ["=BTC= HEARTS AND MINDS VERSION %1",btc_version];
 
 //Param

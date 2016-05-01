@@ -1,3 +1,6 @@
+
+private ["_pos","_radius","_useful","_buildings"];
+
 _pos       = _this select 0;
 _radius    = _this select 1;
 _buildings = nearestObjects [_pos, ["Building"], _radius];

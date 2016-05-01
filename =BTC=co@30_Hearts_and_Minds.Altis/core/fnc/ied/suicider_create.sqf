@@ -1,3 +1,6 @@
+
+private ["_city","_area","_rpos","_unit_type","_group","_suicider","_cond"];
+
 _city = _this select 0;
 _area = _this select 1;
 

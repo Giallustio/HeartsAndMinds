@@ -2,6 +2,8 @@
 
 */
 
+private ["_dlg","_ui"];
+
 closeDialog 0;
 disableSerialization;
 _dlg = createDialog "btc_dlg_interaction";
@@ -17,22 +19,22 @@ switch (_this) do {
 		{
 			if !(player in (assignedCargo vehicle player)) then {(_ui displayCtrl 9991) ctrlEnable false;};
 		};
-		
+
 		if (player getVariable ["btc_hasEarplugs",false]) then {(_ui displayCtrl 9992) ctrlSetText "Remove earplugs";} else {(_ui displayCtrl 9992) ctrlSetText "Use earplugs";};
 		(_ui displayCtrl 9992) buttonSetAction "[] spawn btc_fnc_deaf_earplugs";
-		
+
 		if (vehicle player == player) then
 		{
 			(_ui displayCtrl 9993) ctrlShow true;
 			(_ui displayCtrl 9993) ctrlSetText "Orders";
 			(_ui displayCtrl 9993) buttonSetAction "3 spawn btc_fnc_int_open_dlg;";
-			
+
 			if (player getVariable ["btc_int_busy",false]) then {(_ui displayCtrl 9991) ctrlEnable false;(_ui displayCtrl 9992) ctrlEnable false;(_ui displayCtrl 9993) ctrlEnable false;};
-			if (player getVariable ["btc_rev_isDragging",false] || player getVariable ["btc_rev_isCarrying",false]) then 
+			if (player getVariable ["btc_rev_isDragging",false] || player getVariable ["btc_rev_isCarrying",false]) then
 			{
 				(_ui displayCtrl 9994) ctrlShow true;
 				(_ui displayCtrl 9994) ctrlSetText "Release";
-				(_ui displayCtrl 9994) buttonSetAction "closeDialog 0;player setVariable ['btc_rev_isDragging',false];player setVariable ['btc_rev_isCarrying',false];";			
+				(_ui displayCtrl 9994) buttonSetAction "closeDialog 0;player setVariable ['btc_rev_isDragging',false];player setVariable ['btc_rev_isCarrying',false];";
 				//LOAD
 				if (((count (nearestObjects [player, ["Air","LandVehicle"], 5])) > 0) && {(((nearestObjects [player, ["Air","LandVehicle"], 5]) select 0) emptyPositions "cargo" > 0)}) then
 				{
@@ -41,22 +43,22 @@ switch (_this) do {
 					(_ui displayCtrl 9995) buttonSetAction "(player getVariable ['btc_rev_attached',objNull]) spawn btc_fnc_rev_load";
 				};
 			};
-		} 
+		}
 		else //IN VEH
 		{
 			(_ui displayCtrl 9993) ctrlShow true;
 			(_ui displayCtrl 9993) ctrlSetText "Check Cargo";
 			(_ui displayCtrl 9993) buttonSetAction "(vehicle player) spawn btc_fnc_log_check_cargo";
-			
-			if (vehicle player isKindOf "Helicopter" && {driver vehicle player == player}) then 
+
+			if (vehicle player isKindOf "Helicopter" && {driver vehicle player == player}) then
 			{
-				if (btc_ropes_deployed) then 
+				if (btc_ropes_deployed) then
 				{
 					(_ui displayCtrl 9994) ctrlShow true;
 					(_ui displayCtrl 9994) ctrlSetText "Cut ropes";
-					(_ui displayCtrl 9994) buttonSetAction "[] spawn btc_fnc_log_lift_destroy_ropes";				
+					(_ui displayCtrl 9994) buttonSetAction "[] spawn btc_fnc_log_lift_destroy_ropes";
 				}
-				else 
+				else
 				{
 					(_ui displayCtrl 9994) ctrlShow true;
 					(_ui displayCtrl 9994) ctrlSetText "Deploy ropes";
@@ -68,15 +70,15 @@ switch (_this) do {
 		if !(isNil {player getVariable "side_mission"}) then
 		{
 			(_ui displayCtrl 9996) ctrlShow true;
-			if (btc_side_assigned) then 
+			if (btc_side_assigned) then
 			{
 				(_ui displayCtrl 9996) ctrlSetText "Abort side mission";
-				(_ui displayCtrl 9996) buttonSetAction "[] spawn btc_fnc_side_abort";				
-			} 
+				(_ui displayCtrl 9996) buttonSetAction "[] spawn btc_fnc_side_abort";
+			}
 			else
 			{
 				(_ui displayCtrl 9996) ctrlSetText "Request side mission";
-				(_ui displayCtrl 9996) buttonSetAction "[] spawn btc_fnc_side_request";		
+				(_ui displayCtrl 9996) buttonSetAction "[] spawn btc_fnc_side_request";
 			};
 		};
 	};
@@ -91,44 +93,44 @@ switch (_this) do {
 			(_ui displayCtrl 9992) ctrlSetText format ["Bandage",_n_items];
 			(_ui displayCtrl 9992) buttonSetAction "[btc_int_target,1] spawn btc_fnc_rev_treat";
 			if (_n_items == 0) then {(_ui displayCtrl 9992) ctrlEnable false;};
-			
+
 			_n_items = {_x == "BTC_w_largeBandage"} count items player;
 			(_ui displayCtrl 9993) ctrlSetText format ["Large Bandage",_n_items];
 			(_ui displayCtrl 9993) buttonSetAction "[btc_int_target,2] spawn btc_fnc_rev_treat";
 			if (_n_items == 0 || (!(player call btc_fnc_rev_is_medic) && {btc_rev_lbndg_only_medic})) then {(_ui displayCtrl 9993) ctrlEnable false;};
-			
+
 			_n_items = {_x == "BTC_w_mor"} count items player;
 			(_ui displayCtrl 9994) ctrlSetText format ["Morphine",_n_items];
 			(_ui displayCtrl 9994) buttonSetAction "[btc_int_target,3] spawn btc_fnc_rev_treat";
 			if (_n_items == 0 || (!(player call btc_fnc_rev_is_medic) && {btc_rev_mor_only_medic})) then {(_ui displayCtrl 9994) ctrlEnable false;};
-			
+
 			_n_items = {_x == "BTC_w_epi"} count items player;
 			(_ui displayCtrl 9995) ctrlSetText format ["Epinephrine",_n_items];
 			(_ui displayCtrl 9995) buttonSetAction "[btc_int_target,4] spawn btc_fnc_rev_treat";
 			if (_n_items == 0 || (!(player call btc_fnc_rev_is_medic) && {btc_rev_epi_only_medic})) then {(_ui displayCtrl 9995) ctrlEnable false;};
-			
+
 			_n_items = {_x == "BTC_w_bloodbag"} count items player;
 			(_ui displayCtrl 9996) ctrlSetText format ["Blood Bag",_n_items];
 			(_ui displayCtrl 9996) buttonSetAction "[btc_int_target,5] spawn btc_fnc_rev_treat";
-			if (_n_items == 0 || (!(player call btc_fnc_rev_is_medic) && {btc_rev_blood_only_medic})) then {(_ui displayCtrl 9996) ctrlEnable false;};		
+			if (_n_items == 0 || (!(player call btc_fnc_rev_is_medic) && {btc_rev_blood_only_medic})) then {(_ui displayCtrl 9996) ctrlEnable false;};
 		}
 		else
 		{
 			(_ui displayCtrl 9992) ctrlSetText "Bandage";
 			(_ui displayCtrl 9992) buttonSetAction "[btc_int_target,1] spawn btc_fnc_rev_treat";
-			
+
 			(_ui displayCtrl 9993) ctrlSetText "Large Bandage";
 			(_ui displayCtrl 9993) buttonSetAction "[btc_int_target,2] spawn btc_fnc_rev_treat";
 			if ((!(player call btc_fnc_rev_is_medic) && {btc_rev_lbndg_only_medic}) || (btc_rev_medikit_required && {{_x == "Medikit"} count items player == 0})) then {(_ui displayCtrl 9993) ctrlEnable false;};
-			
+
 			(_ui displayCtrl 9994) ctrlSetText "Morphine";
 			(_ui displayCtrl 9994) buttonSetAction "[btc_int_target,3] spawn btc_fnc_rev_treat";
 			if ((!(player call btc_fnc_rev_is_medic) && {btc_rev_mor_only_medic}) || (btc_rev_medikit_required && {{_x == "Medikit"} count items player == 0})) then {(_ui displayCtrl 9994) ctrlEnable false;};
-			
+
 			(_ui displayCtrl 9995) ctrlSetText "Epinephrine";
 			(_ui displayCtrl 9995) buttonSetAction "[btc_int_target,4] spawn btc_fnc_rev_treat";
 			if ((!(player call btc_fnc_rev_is_medic) && {btc_rev_epi_only_medic}) || (btc_rev_medikit_required && {{_x == "Medikit"} count items player == 0})) then {(_ui displayCtrl 9995) ctrlEnable false;};
-			
+
 			(_ui displayCtrl 9996) ctrlSetText "Blood Bag";
 			(_ui displayCtrl 9996) buttonSetAction "[btc_int_target,5] spawn btc_fnc_rev_treat";
 			if ((!(player call btc_fnc_rev_is_medic) && {btc_rev_blood_only_medic}) || (btc_rev_medikit_required && {{_x == "Medikit"} count items player == 0})) then {(_ui displayCtrl 9996) ctrlEnable false;};
@@ -168,7 +170,7 @@ switch (_this) do {
 	{
 		{(_ui displayCtrl _x) ctrlShow false;} foreach [9995,9996];
 		(_ui displayCtrl 9991) ctrlSetText "Ask info";
-		(_ui displayCtrl 9991) buttonSetAction "[] spawn btc_fnc_info_ask;closeDialog 0;";	
+		(_ui displayCtrl 9991) buttonSetAction "[] spawn btc_fnc_info_ask;closeDialog 0;";
 		(_ui displayCtrl 9992) ctrlSetText "Stop";
 		(_ui displayCtrl 9992) buttonSetAction "[1,btc_int_target] spawn btc_fnc_int_orders";
 		(_ui displayCtrl 9993) ctrlSetText "Get down";
@@ -181,7 +183,7 @@ switch (_this) do {
 	{
 		{(_ui displayCtrl _x) ctrlShow false;} foreach [9993,9994,9995,9996];
 		(_ui displayCtrl 9991) ctrlSetText "Check for IED";
-		(_ui displayCtrl 9991) buttonSetAction "btc_int_target spawn btc_fnc_ied_check_for;closeDialog 0;";	
+		(_ui displayCtrl 9991) buttonSetAction "btc_int_target spawn btc_fnc_ied_check_for;closeDialog 0;";
 		(_ui displayCtrl 9992) ctrlSetText "Disarm IED";
 		(_ui displayCtrl 9992) buttonSetAction "btc_int_target spawn btc_fnc_ied_disarm;closeDialog 0;";
 		if (!(btc_int_target getVariable ["active",false]) || {_x == "ToolKit"} count items player == 0) then {(_ui displayCtrl 9992) ctrlEnable false;};
@@ -190,7 +192,7 @@ switch (_this) do {
 	{
 		{(_ui displayCtrl _x) ctrlShow false;} foreach [9992,9993,9994,9995,9996];
 		(_ui displayCtrl 9991) ctrlSetText "Search for intel";
-		(_ui displayCtrl 9991) buttonSetAction "btc_int_target spawn btc_fnc_info_search_for_intel;closeDialog 0;";	
+		(_ui displayCtrl 9991) buttonSetAction "btc_int_target spawn btc_fnc_info_search_for_intel;closeDialog 0;";
 	};
 	case 7 :
 	{
@@ -206,7 +208,7 @@ switch (_this) do {
 			(_ui displayCtrl 9992) ctrlShow true;
 			(_ui displayCtrl 9992) ctrlSetText "Check Cargo";
 			(_ui displayCtrl 9992) buttonSetAction "btc_int_target spawn btc_fnc_log_check_cargo";
-			if (!isNull btc_log_object_selected) then 
+			if (!isNull btc_log_object_selected) then
 			{
 				(_ui displayCtrl 9993) ctrlShow true;
 				(_ui displayCtrl 9993) ctrlSetText format ["Load %1 in %2",getText (configFile >> "cfgVehicles" >> typeof btc_log_object_selected >> "displayName"),getText (configFile >> "cfgVehicles" >> typeof btc_int_target >> "displayName")];
@@ -218,7 +220,7 @@ switch (_this) do {
 		[[4,btc_int_target,player],"btc_fnc_int_ask_var",false] spawn BIS_fnc_MP;
 
 		waitUntil {!(isNil "btc_int_ask_data")};
-		
+
 		if (!isNull btc_int_ask_data) then
 		{
 			(_ui displayCtrl 9994) ctrlShow true;
@@ -247,11 +249,11 @@ switch (_this) do {
 		{(_ui displayCtrl _x) ctrlShow false;} foreach [9993,9994,9995,9996];
 		(_ui displayCtrl 9991) ctrlSetText "Load in";
 		(_ui displayCtrl 9991) buttonSetAction "[] spawn btc_fnc_log_select";
-		
+
 		(_ui displayCtrl 9992) ctrlSetText "Drag";
 		(_ui displayCtrl 9992) buttonSetAction "btc_int_target spawn btc_fnc_log_drag";
 		if ({btc_int_target isKindOf _x} count btc_log_def_draggable == 0) then {(_ui displayCtrl 9992) ctrlEnable false;};
-		
+
 		//PLACE
 		(_ui displayCtrl 9993) ctrlShow true;
 		(_ui displayCtrl 9993) ctrlSetText "Place";
@@ -269,7 +271,7 @@ switch (_this) do {
 		{(_ui displayCtrl _x) ctrlShow false;} foreach [9993,9994,9995,9996];
 		(_ui displayCtrl 9991) ctrlSetText "Require object";
 		(_ui displayCtrl 9991) buttonSetAction "[btc_create_object_point] spawn btc_fnc_log_create";
-		
+
 		(_ui displayCtrl 9992) ctrlSetText "Repair wreck";
 		(_ui displayCtrl 9992) buttonSetAction "closeDialog 0;[btc_create_object_point] spawn btc_fnc_log_repair_wreck";
 	};

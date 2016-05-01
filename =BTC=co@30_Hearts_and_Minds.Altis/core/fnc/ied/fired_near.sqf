@@ -1,3 +1,6 @@
+
+private ["_pos","_range","_bomb","_bomb_check","_array","_list"];
+
 _pos = getPos _this;
 _pos = [_pos select 0, _pos select 1, (_pos select 2) + 0.5];
 _range = 2;
@@ -19,7 +22,7 @@ while {alive _this && !isNull _this && _this getVariable ["active",false]} do
 	if (count _list > 0) then
 	{
 		{
-			private "_bullet";
+			private ["_bullet","_b"];
 			_b = _x;
 			_bullet = typeOf _b;
 			if ({_bullet isKindOf _x} count ["SmokeShell", "FlareCore", "IRStrobeBase", "GrenadeHand_stone", "Smoke_120mm_AMOS_White", "TMR_R_DG32V_F"] > 0) exitWith {};

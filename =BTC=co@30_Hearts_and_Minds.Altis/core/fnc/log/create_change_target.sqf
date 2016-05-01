@@ -1,3 +1,6 @@
+
+private ["_var","_main_class","_sub_class","_id","_category"];
+
 _var = lbText [71,lbCurSel 71];
 _main_class = btc_construction_array select 0;
 _sub_class  = btc_construction_array select 1;
