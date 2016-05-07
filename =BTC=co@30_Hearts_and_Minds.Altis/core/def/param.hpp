@@ -23,8 +23,8 @@ class Params {
 	class btc_p_en {
 	//paramsArray[3]
         title = "Enemy type:";
-		values[]={0,1,2,3};
-		texts[]={"Guerrilla (A3)","CAF","AAF (A3)","RHS Insurgents"};
+		values[]={0,1,2,3,4};
+		texts[]={"Guerrilla (A3)","CAF","AAF (A3)","RHS Insurgents","Militia (@=BTC= Militia)"};
 		default = 0;
 	};
 	class btc_p_ied {
@@ -191,8 +191,8 @@ class Params {
 	class btc_p_civ {
 	//paramsArray[27]
         title = "Civil type:";
-		values[]={0,1};
-		texts[]={"Civilian (A3)","Afghan (@Ericj_Taliban)"};
+		values[]={0,1,2};
+		texts[]={"Civilian (A3)","Afghan (@Ericj_Taliban)","Afghan (@=BTC= Militia)"};
 		default = 0;
 	};
 };
