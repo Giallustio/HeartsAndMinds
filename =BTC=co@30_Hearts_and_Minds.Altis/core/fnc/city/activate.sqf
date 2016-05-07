@@ -31,7 +31,7 @@ if (!_is_init) then {
 		});
 	_ratio_ied = _ratio;
 	if (_has_en) then {_ratio_ied = _ratio_ied * 1.5;} else {_ratio_ied = _ratio_ied * 0.75;};
-	if (_has_ho) then {_ratio_ied = _ratio_ied * 2;};
+	if (_has_ho) then {_ratio_ied = _ratio_ied * 1;};
 	//if (_has_en == 0 && {!_has_ho}) then {_ratio_ied = 0;};
 	diag_log format ["_ratio_ied %1 - p %2",_ratio_ied,_ratio_ied * btc_p_ied];
 	_ratio_ied = _ratio_ied * btc_p_ied;

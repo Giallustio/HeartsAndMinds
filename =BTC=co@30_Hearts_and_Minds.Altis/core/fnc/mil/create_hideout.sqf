@@ -37,7 +37,7 @@ _hideout setVariable ["assigned_to",_city];
 
 _hideout addEventHandler ["HandleDamage", btc_fnc_mil_hd_hideout];
 
-_city = [_pos,"NameCity",format ["Hideout %1", btc_hideouts_id],700,700,true] call btc_fnc_city_create;
+_city = [_pos,"NameCity",format ["Hideout %1", btc_hideouts_id],400,400,true] call btc_fnc_city_create;
 
 _city setVariable ["occupied",true];
 _city setVariable ["has_ho",true];
