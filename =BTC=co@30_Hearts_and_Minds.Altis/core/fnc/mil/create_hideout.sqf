@@ -28,6 +28,8 @@ if (count _pos == 0) then {_pos = getPos _city;};
 
 [_pos,(random 360),btc_composition_hideout] call btc_fnc_create_composition;
 
+_city = [_pos,"NameCity",format ["Hideout %1", btc_hideouts_id],400,400,true] call btc_fnc_city_create;
+
 _hideout = nearestObject [_pos, "C_supplyCrate_F"];
 clearWeaponCargoGlobal _hideout;clearItemCargoGlobal _hideout;clearMagazineCargoGlobal _hideout;
 _hideout setVariable ["id",btc_hideouts_id];
@@ -36,8 +38,6 @@ _hideout setVariable ["cap_time",(time - btc_hideout_cap_time)];
 _hideout setVariable ["assigned_to",_city];
 
 _hideout addEventHandler ["HandleDamage", btc_fnc_mil_hd_hideout];
-
-_city = [_pos,"NameCity",format ["Hideout %1", btc_hideouts_id],400,400,true] call btc_fnc_city_create;
 
 _city setVariable ["occupied",true];
 _city setVariable ["has_ho",true];
@@ -49,12 +49,12 @@ if (btc_debug) then {
 	//Marker _pos = getpos _x;
 	createmarker [format ["btc_hideout_%1", _pos], _pos];
 	format ["btc_hideout_%1", _pos] setmarkertype "mil_unknown";
-	format ["btc_hideout_%1", _pos] setMarkerText format ["Hideout %1", btc_hideouts_id];
+	//format ["btc_hideout_%1", _pos] setMarkerText format ["Hideout %1", btc_hideouts_id];
 	format ["btc_hideout_%1", _pos] setMarkerSize [0.8, 0.8];
 	(format ["loc_%1",_city getVariable "id"]) setMarkerColor "ColorRed";
 };
 
-if (btc_debug_log) then {diag_log format ["btc_fnc_mil_create_hideout: _this = %1 ; POS %2 ID %3",_this,_pos,btc_hideouts_id];};
+if (btc_debug_log) then {diag_log format ["btc_fnc_mil_create_hideout: _this = %1 ; POS %2 ID %3",(_city getVariable "name"),_pos,btc_hideouts_id];};
 
 btc_hideouts_id = btc_hideouts_id + 1;
 btc_hideouts pushBack _hideout;
