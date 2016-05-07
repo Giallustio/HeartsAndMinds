@@ -200,12 +200,13 @@ diag_log format ["5: %1",(_x select 5)];
 {
 	private ["_veh","_cont","_weap","_mags","_items"];
 	_veh = (_x select 0) createVehicle (_x select 1);
-	btc_vehicles pushBack _veh;
-	_veh addEventHandler ["Killed", {_this call btc_fnc_eh_veh_killed}];
-	_veh setVariable ["btc_dont_delete",true];
+	_veh setPos (_x select 1);
 	_veh setDir (_x select 2);
 	_veh setFuel (_x select 3);
 	_veh setDamage (_x select 4);
+	_veh setVariable ["btc_dont_delete",true];
+	btc_vehicles pushBack _veh;
+	_veh addEventHandler ["Killed", {_this call btc_fnc_eh_veh_killed}];
 	{
 		private ["_type","_cargo_obj","_obj","_weap_obj","_mags_obj","_items_obj"];
 		//{_cargo pushBack [(typeOf _x),[getWeaponCargo _x,getMagazineCargo _x,getItemCargo _x]]} foreach (_x getVariable ["cargo",[]]);
