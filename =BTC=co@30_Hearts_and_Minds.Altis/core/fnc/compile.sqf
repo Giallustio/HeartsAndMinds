@@ -68,6 +68,7 @@ if (isServer) then {
 
 	//FOB
 	btc_fnc_fob_create_s = compile preprocessFile "core\fnc\fob\create_s.sqf";
+	btc_fnc_fob_dismantle_s = compile preprocessFile "core\fnc\fob\dismantle_s.sqf";
 
 	//MIL
 	btc_fnc_mil_addWP = compile preprocessFile "core\fnc\mil\addWP.sqf";
@@ -105,6 +106,11 @@ if (isServer) then {
 	btc_fnc_side_civtreatment = compile preprocessFileLineNumbers "core\fnc\side\civtreatment.sqf";
 	btc_fnc_side_tower = compile preprocessFileLineNumbers "core\fnc\side\tower.sqf";
 	btc_fnc_side_checkpoint = compile preprocessFileLineNumbers "core\fnc\side\checkpoint.sqf";
+	btc_fnc_side_civtreatment_boat = compile preprocessFileLineNumbers "core\fnc\side\civtreatment_boat.sqf";
+	btc_fnc_side_underwater_generator= compile preprocessFileLineNumbers "core\fnc\side\underwater_generator.sqf";
+
+	//LOG
+	btc_fnc_log_getconfigmagazines = compile preprocessFile "core\fnc\log\getconfigmagazines.sqf";
 };
 /////////////////////CLIENT AND SERVER\\\\\\\\\\\\\\\\\\\\\
 
@@ -184,6 +190,7 @@ if (!isDedicated) then {
 	btc_fnc_fob_create = compile preprocessFile "core\fnc\fob\create.sqf";
 	btc_fnc_fob_lb_change = compile preprocessFile "core\fnc\fob\lb_change.sqf";
 	btc_fnc_fob_redeploy = compile preprocessFile "core\fnc\fob\redeploy.sqf";
+	btc_fnc_fob_dismantle = compile preprocessFile "core\fnc\fob\dismantle.sqf";
 
 	//IED
 	btc_fnc_ied_check_for = compile preprocessFile "core\fnc\ied\check_for.sqf";

@@ -58,7 +58,7 @@ if ((random 1) > _ratio) then
 	private ["_veh_type","_veh","_gunner","_commander","_cargo","_wp"];
 	_group = createGroup btc_enemy_side;
 	_group setVariable ["no_cache",true];
-	_veh_type = btc_type_motorized select (floor random count btc_type_motorized);
+	_veh_type = selectRandom btc_type_motorized;
 	_veh = createVehicle [_veh_type, _start_pos, [], 0, "FLY"];
 	_gunner = _veh emptyPositions "gunner";
 	_commander = _veh emptyPositions "commander";
@@ -68,7 +68,7 @@ if ((random 1) > _ratio) then
 	if (_commander > 0) then {btc_type_crewmen createUnit [_start_pos, _group, "this moveinCommander _veh;this assignAsCommander _veh;"];};
 	for "_i" from 0 to _cargo do
 	{
-		_unit_type = btc_type_units select (round (random ((count btc_type_units) - 1)));
+		_unit_type = selectRandom btc_type_units;
 		_unit_type createUnit [_start_pos, _group, "this moveinCargo _veh;this assignAsCargo _veh;"];
 	};
 

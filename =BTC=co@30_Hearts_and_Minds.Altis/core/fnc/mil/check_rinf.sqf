@@ -5,20 +5,17 @@ _city = objNull;
 
 if (count _this > 0) then {_city = _this;} else {
 	private ["_useful","_id"];
-	_useful = [];
 	//"NameVillage","NameCity","NameCityCapital","NameLocal","Hill"
-	{
-		if (
+	_useful = btc_city_all select {(
 			!(_x getVariable ["active",false]) && {_x distance (getMarkerPos btc_respawn_marker) > btc_hideout_safezone} &&
 			{!(_x getVariable ["has_ho",false])} &&
 			(
 				_x getVariable ["type",""] == "NameLocal" ||
 				{_x getVariable ["type",""] == "Hill"} || {_x getVariable ["type",""] == "NameVillage"}
 			)
-		) then {_useful = _useful + [_x];};
-	} foreach btc_city_all;
-	_id = floor random count _useful;
-	_city = _useful select _id;
+		)
+	};
+	_city = selectRandom _useful;
 };
 
 _pos = [getPos _city, 300] call btc_fnc_randomize_pos;
@@ -53,4 +50,4 @@ if (btc_debug) then {
 if (btc_debug_log) then {diag_log format ["btc_fnc_mil_create_hideout: _this = %1 ; POS %2 ID %3",_this,_pos,btc_hideouts_id];};
 
 btc_hideouts_id = btc_hideouts_id + 1;
-btc_hideouts = btc_hideouts + [_hideout];
+btc_hideouts pushBack _hideout;

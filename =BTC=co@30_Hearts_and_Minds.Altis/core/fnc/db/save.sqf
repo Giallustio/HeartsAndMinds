@@ -13,6 +13,10 @@ hint "saving...";
 btc_db_is_saving = true;
 _name = worldName;
 
+//Version
+profileNamespace setVariable [format ["btc_hm_%1_version",_name],btc_version];
+
+//World Date
 profileNamespace setVariable [format ["btc_hm_%1_date",_name],date];
 
 for "_i" from 0 to (count btc_city_all - 1) do {
@@ -89,12 +93,13 @@ profileNamespace setVariable [format ["btc_hm_%1_cache",_name],_array_cache];
 //rep status
 profileNamespace setVariable [format ["btc_hm_%1_rep",_name],btc_global_reputation];
 //FOBS
-_fobs = [];
+_fobs = [[],[]];
 {
 	private "_pos";
 	_pos = getMarkerPos _x;
-	_fobs pushBack [_x,_pos];
-} foreach btc_fobs;
+	(_fobs select 0) pushBack [_x,_pos];
+} foreach (btc_fobs select 0);
+(_fobs select 1) append (btc_fobs select 1);
 profileNamespace setVariable [format ["btc_hm_%1_fobs",_name],_fobs];
 
 //Vehicles status
@@ -108,7 +113,7 @@ _array_veh = [];
 	_data pushBack (fuel _x);
 	_data pushBack (damage _x);
 	_cargo = [];
-	{_cargo pushBack [(typeOf _x),[getWeaponCargo _x,getMagazineCargo _x,getItemCargo _x]]} foreach (_x getVariable ["cargo",[]]);
+	{_cargo pushBack [(typeOf _x),(_x getVariable ["ace_rearm_magazineClass",""]),[getWeaponCargo _x,getMagazineCargo _x,getItemCargo _x]]} foreach (_x getVariable ["cargo",[]]);
 	_data pushBack _cargo;
 	_cont = [getWeaponCargo _x,getMagazineCargo _x,getItemCargo _x];
 	_data pushBack _cont;
@@ -125,8 +130,9 @@ _array_obj = [];
 		_data pushBack (typeOf _x);
 		_data pushBack (getPosASL _x);
 		_data pushBack (getDir _x);
+		_data pushBack (_x getVariable ["ace_rearm_magazineClass",""]);
 		_cargo = [];
-		{_cargo pushBack [(typeOf _x),[getWeaponCargo _x,getMagazineCargo _x,getItemCargo _x]]} foreach (_x getVariable ["cargo",[]]);
+		{_cargo pushBack [(typeOf _x),(_x getVariable ["ace_rearm_magazineClass",""]),[getWeaponCargo _x,getMagazineCargo _x,getItemCargo _x]]} foreach (_x getVariable ["cargo",[]]);
 		_data pushBack _cargo;
 		_cont = [getWeaponCargo _x,getMagazineCargo _x,getItemCargo _x];
 		_data pushBack _cont;

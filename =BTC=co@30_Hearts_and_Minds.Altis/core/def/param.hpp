@@ -195,4 +195,11 @@ class Params {
 		texts[] = {"Off","On"};
 		default = 1;
     };
+	class btc_p_civ {
+	//paramsArray[28]
+        title = "Civil type:";
+		values[]={0,1};
+		texts[]={"Civilian (A3)","Afghan (@Ericj_Taliban)"};
+		default = 0;
+	};
 };

@@ -2,10 +2,9 @@
 private ["_useful","_city","_pos","_road","_roads","_boxes","_marker","_markers","_statics","_tower_type","_tower","_direction","_type_barrel","_type_canister","_type_pallet","_type_box","_btc_composition_checkpoint"];
 
 //// Choose an occupied City \\\\
-_useful = [];
-{if (_x getVariable ["occupied",false] && {_x getVariable ["type",""] != "NameLocal"} && {_x getVariable ["type",""] != "Hill"} && (_x getVariable ["type",""] != "NameMarine")) then {_useful = _useful + [_x];};} foreach btc_city_all;
-if (count _useful == 0) exitWith {[] spawn btc_fnc_side_create;};
-_city = _useful select (floor random count _useful);
+_useful = btc_city_all select {(_x getVariable ["occupied",false] && {_x getVariable ["type",""] != "NameLocal"} && {_x getVariable ["type",""] != "Hill"} && (_x getVariable ["type",""] != "NameMarine"))};
+if (_useful isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
+_city = selectRandom _useful;
 _pos = getPos _city;
 
 btc_side_aborted = false;
@@ -27,9 +26,9 @@ for "_i" from 1 to (1 + round random 2) do {
 	//// Choose a road \\\\
 	_pos = [getPos _city, 300] call btc_fnc_randomize_pos;
 	_roads = _pos nearRoads 300;
-	if (count _roads > 0) then {_road = (_roads select (floor random count _roads));
+	if (count _roads > 0) then {_road = selectRandom _roads;
 		_pos = getPos _road;
-		};
+	};
 
 	_direction = [_road] call btc_fnc_road_direction;
 
@@ -42,11 +41,11 @@ for "_i" from 1 to (1 + round random 2) do {
 	_markers = _markers + [_marker];
 
 	//// Randomise composition \\\\
-	_type_barrel = btc_type_barrel select (floor (random (count btc_type_barrel)));
-	_type_barrel_canister1 = (btc_type_barrel + btc_type_canister) select (floor (random (count (btc_type_barrel +btc_type_canister))));
-	_type_barrel_canister2 = (btc_type_barrel + btc_type_canister) select (floor (random (count (btc_type_barrel +btc_type_canister))));
-	_type_pallet = btc_type_pallet select (floor (random (count btc_type_pallet)));
-	_type_box = btc_type_box select (floor (random (count btc_type_box)));
+	_type_barrel = selectRandom btc_type_barrel;
+	_type_barrel_canister1 = selectRandom(btc_type_barrel + btc_type_canister);
+	_type_barrel_canister2 = selectRandom(btc_type_barrel + btc_type_canister);
+	_type_pallet = selectRandom btc_type_pallet;
+	_type_box = selectRandom btc_type_box;
 	_btc_composition_checkpoint = [
 		[_type_barrel,10,[0.243652,-2.78906,0]],
 		[_type_barrel,20,[-0.131836,3.12939,0]],

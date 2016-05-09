@@ -30,7 +30,7 @@ while {alive _this && !isNull _this && _this getVariable ["active",false]} do
 			{
 				if !(_b in _array) then
 				{
-					_array = _array + [_b];
+					_array pushBack _b;
 					[_this,_b] spawn _bomb_check;
 				};
 			}

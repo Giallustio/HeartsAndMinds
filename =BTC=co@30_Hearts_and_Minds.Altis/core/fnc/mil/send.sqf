@@ -25,7 +25,7 @@ switch (_this select 2) do {
 		_group = createGroup btc_enemy_side;
 		_group setVariable ["no_cache",true];
 		_veh_type = (_this select 3);
-		if (_veh_type == "") then {_veh_type = btc_type_motorized select (floor random count btc_type_motorized)};
+		if (_veh_type == "") then {_veh_type = selectRandom btc_type_motorized};
 		_return_pos = [_pos, 0, 500, 13, 0, 60 * (pi / 180), 0] call BIS_fnc_findSafePos;
 		_veh = createVehicle [_veh_type, _return_pos, [], 0, "FLY"];
 		_gunner = _veh emptyPositions "gunner";
@@ -36,7 +36,7 @@ switch (_this select 2) do {
 		if (_commander > 0) then {btc_type_crewmen createUnit [_pos, _group, "this moveinCommander _veh;this assignAsCommander _veh;"];};
 		for "_i" from 0 to _cargo do {
 			private "_unit_type";
-			_unit_type = btc_type_units select (floor random count btc_type_units);
+			_unit_type = selectRandom btc_type_units;
 			_unit_type createUnit [_pos, _group, "this moveinCargo _veh;this assignAsCargo _veh;"];
 		};
 
