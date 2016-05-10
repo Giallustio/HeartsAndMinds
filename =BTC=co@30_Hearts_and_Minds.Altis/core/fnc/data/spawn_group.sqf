@@ -20,7 +20,7 @@ for "_i" from 0 to (count _array_pos - 1) do {
 
 if (_type == 1) then {
 	private ["_veh"];
-	_veh = (_array_veh select 0) createVehicle (_array_veh select 1);
+	_veh = createVehicle [(_array_veh select 0), (_array_veh select 1), [], 0, "FLY"];
 	_veh setPos (_array_veh select 1);
 	_veh setDir (_array_veh select 2);
 	_veh setFuel (_array_veh select 3);
@@ -75,7 +75,7 @@ if (_type == 5) then {
 		while {Alive _suicider && !isNull _suicider && !_cond} do {
 			sleep 5;
 			if (count (getpos _suicider nearEntities ["SoldierWB", 25]) > 0) then {_cond = true;_suicider spawn btc_fnc_ied_suicider_active};
-		};	
+		};
 	};
 };
 
