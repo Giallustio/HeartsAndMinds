@@ -27,6 +27,6 @@ _smoke attachto [_dropped,[0,0,0]];
 _chem attachto [_dropped,[0,0,0]];
 _dropped attachTo [_chute,[0,0,- 0.6]];
 
-waitUntil {sleep 1; (((getPos _chute) select 2) < 0.3)};
+waitUntil {sleep 1; (((getPos _dropped) select 2) < 0.3)};
 
 detach _dropped;

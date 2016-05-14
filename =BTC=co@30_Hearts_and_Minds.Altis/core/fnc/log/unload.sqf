@@ -13,7 +13,7 @@ _obj_name = getText (configFile >> "cfgVehicles" >> _obj_type >> "displayName");
 if (_obj_name isEqualTo "ace_rearm_dummy_obj") then {_obj_name = "Ammo";};
 
 if (vehicle player != player && {_veh isKindOf "Air"}) then {
-	[5,format ["Unloading %1. . .",_obj_name],_veh,99999] call btc_fnc_int_action_result;
+	[[5,1] select (((getPos _veh) select 2) > 5),format ["Unloading %1. . .",_obj_name],_veh,99999] call btc_fnc_int_action_result;
 } else {
 	[5,format ["Unloading %1. . .",_obj_name],_veh] call btc_fnc_int_action_result;
 };
