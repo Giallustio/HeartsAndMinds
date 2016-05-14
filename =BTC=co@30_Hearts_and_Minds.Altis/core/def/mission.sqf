@@ -456,13 +456,25 @@ switch (true) do {
 		btc_hq                    = btc_hq_red;
 		btc_enemy_side 			  = east;
 		btc_type_units            = ["btc_am_mg","btc_am_m","btc_am_medic","btc_am_r","btc_am_amg","btc_am_at","btc_am_gl","btc_afghan_1_2","btc_afghan_1_3","btc_afghan_1_4","btc_afghan_1_5","btc_am_tl"];
-		btc_type_divers            = ["O_diver_F","O_diver_exp_F","O_diver_TL_F"];
+		btc_type_divers			= ["O_diver_F","O_diver_exp_F","O_diver_TL_F"];
 		btc_type_crewmen          = "btc_am_r";
 		btc_type_vehicles         = ["btc_am_offroad","btc_am_offroad_armed"];
 		btc_type_boats			= ["I_Boat_Armed_01_minigun_F","I_Boat_Transport_01_F","I_SDV_01_F","I_G_Boat_Transport_01_F"];
 		btc_type_motorized        = ["btc_am_offroad","btc_am_offroad_armed","btc_am_ural","btc_am_ural_open","btc_am_btr60","btc_am_bmd1","btc_am_brm1k"];
 		btc_type_mg = ["O_HMG_01_F","O_HMG_01_high_F"];
 		btc_type_gl = ["O_GMG_01_F","O_GMG_01_high_F"];
+	};
+	case (_p_en == 5 && isClass(configFile >> "cfgVehicles" >> "aif_oficial")) : {
+		btc_hq					= btc_hq_green;
+		btc_enemy_side			= resistance;
+		btc_type_units			= ["aif_oficial","aif_oficial2","aif_oficial3","aif_support_MG","aif_specialist_Ex","aif_rifleman","aif_riflemanAK103","aif_riflemanM4","aif_support_AT","aif_riflemanGL","aif_TeamLeader","aif_sniper","aif_riflemanGLM4","aif_support_rpg26","aif_TeamLeader_G","aif_medic_G","aif_rifleman_G"];
+		btc_type_divers			= ["I_diver_F","I_diver_exp_F","I_diver_TL_F"];
+		btc_type_crewmen		= "aif_driver";
+		btc_type_vehicles		= ["aif_offroad","aif_offroad2","aif_car"];
+		btc_type_boats			= ["I_Boat_Armed_01_minigun_F","I_Boat_Transport_01_F","I_SDV_01_F","I_G_Boat_Transport_01_F"];
+		btc_type_motorized		= ["aif_armed","aif_offroad","aif_offroad2","aif_car","aif_truck_ural","aif_truck","aif_heli_MH6","aif_heli_K60","aif_uaz_dshkm","aif_uaz_spg9","aif_apc","aif_uaz_open"];
+		btc_type_mg				= ["aif_Static_M2","aif_Static_M2_MiniTripod"];
+		btc_type_gl				= ["O_GMG_01_F","O_GMG_01_high_F","aif_Static_Mk19_TriPod"];
 	};
 	default	{
 		btc_hq                    = btc_hq_red;
