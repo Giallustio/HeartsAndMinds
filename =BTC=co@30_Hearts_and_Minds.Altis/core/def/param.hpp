@@ -195,7 +195,7 @@ class Params {
 		texts[]={"Civilian (A3)","Afghan (@Ericj_Taliban)","Afghan (@=BTC= Militia)","Russian (@RDS A2 Civilian Pack)"};
 		default = 0;
 	};
-	class btc_p_civ {
+	class btc_p_civ_veh {
 	//paramsArray[28]
         title = "Civil vehicle type:";
 		values[]={0,1};
