@@ -46,6 +46,7 @@ _idshift = 0;
 		_cities_status pushBack _city_status;
 		//diag_log format ["SAVE: %1 - %2",(_x getVariable "id"),(_x getVariable "occupied")];
 	} else {
+		// if city has been remove (only city with destroyed hideout are removed) ignore it and shift down the id of next city
 		_idshift = _idshift - 1;
 	};
 } foreach btc_city_all;
