@@ -1,5 +1,5 @@
 
-private ["_tower","_ground0","_ground1","_h0","_h1","_rel","_normg","_normh"];
+private ["_tower","_ground0","_ground1","_h0","_h1","_rel","_normg","_normh","_boundt","_boundb"];
 
 _tower = _this;
 
