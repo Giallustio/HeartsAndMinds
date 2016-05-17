@@ -30,7 +30,7 @@ _obj hideObjectGlobal false;
 _height = getPos _veh select 2;
 
 deTach _obj;
-_obj attachTo [_veh,[0,-10,-0.2]];sleep 0.1;deTach _obj;
+_obj attachTo [_veh,[0, -(sizeOf typeOf _veh + sizeOf _obj_type)/2,-0.2]];sleep 0.1;deTach _obj;
 _obj allowDamage false;
 
 switch (true) do {
@@ -47,7 +47,7 @@ switch (true) do {
 		_empty = (getPos _veh) findEmptyPosition [0, 15, typeOf _obj];
 		_obj setPos _empty;//(_veh modelToWorld [0,-9,-0.2]);_obj setVelocity [0,0,0.1];
 	};
-};	
+};
 
 _obj allowDamage true;
 

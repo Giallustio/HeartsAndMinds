@@ -1,7 +1,7 @@
 
 private ["_p_db","_p_en","_hideout_n","_cache_info_def","_cache_info_ratio","_info_chance","_p_rep","_p_skill","_c_array","_tower","_array","_chopper"];
 
-btc_version = 1.14; diag_log format ["=BTC= HEARTS AND MINDS VERSION %1",btc_version];
+btc_version = 1.14; diag_log format ["=BTC= HEARTS AND MINDS VERSION %1",(str(btc_version) + ".0")];
 
 //Param
 btc_p_time = (paramsArray select 0);
@@ -292,15 +292,12 @@ if (isServer) then {
 			})
 	];
 } else {
+	waitUntil {!(isNull player)};
+
 	btc_int_ask_data = nil;
 	// [[7,nil,player],"btc_fnc_int_ask_var",false] spawn BIS_fnc_MP;
-	while {isNil "btc_int_ask_data"} do
-	{
-		[7,nil,player] remoteExec ["btc_fnc_int_ask_var",2];
-		private ["_i"];
-		_i = 0;
-		waitUntil {sleep 1; _i = _i + 1; (_i >= 5 || (!(isNil "btc_int_ask_data")))};
-	};
+	[7,nil,player] remoteExec ["btc_fnc_int_ask_var",2];
+	waitUntil {(!(isNil "btc_int_ask_data"))};
 	btc_construction_array = btc_int_ask_data;
 };
 

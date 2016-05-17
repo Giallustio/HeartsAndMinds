@@ -13,6 +13,10 @@ hint "saving...";
 btc_db_is_saving = true;
 _name = worldName;
 
+//Version
+profileNamespace setVariable [format ["btc_hm_%1_version",_name],btc_version];
+
+//World Date
 profileNamespace setVariable [format ["btc_hm_%1_date",_name],date];
 
 for "_i" from 0 to (count btc_city_all - 1) do {

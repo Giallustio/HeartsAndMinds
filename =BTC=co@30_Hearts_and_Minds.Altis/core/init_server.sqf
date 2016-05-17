@@ -1,7 +1,11 @@
 call compile preprocessFile "core\fnc\city\init.sqf";
 
 if (btc_db_load && {profileNamespace getVariable [format ["btc_hm_%1_db",worldName],false]}) then {
-	call compile preprocessFile "core\fnc\db\load.sqf";
+	if (btc_version isEqualTo (profileNamespace getVariable [format ["btc_hm_%1_version",worldName],1.13])) then	{
+		call compile preprocessFile "core\fnc\db\load.sqf";
+	} else {
+		call compile preprocessFile "core\fnc\db\load_old.sqf";
+	};
 } else {
 	for "_i" from 1 to btc_hideout_n do {[] call btc_fnc_mil_create_hideout;};
 
