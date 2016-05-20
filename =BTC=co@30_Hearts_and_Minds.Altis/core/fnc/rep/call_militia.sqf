@@ -1,5 +1,5 @@
 
-private ["_pos","_players","_start_pos","_ratio"];
+private ["_pos","_players","_start_pos","_ratio","_wp_2","_wp_1"];
 
 btc_rep_militia_called = time;
 _pos = _this select 0;

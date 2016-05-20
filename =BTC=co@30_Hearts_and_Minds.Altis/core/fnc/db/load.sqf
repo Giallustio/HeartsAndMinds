@@ -85,6 +85,7 @@ _array_ho = profileNamespace getVariable [format ["btc_hm_%1_ho",_name],[]];
 
 	_markers = [];
 	{
+		private ["_marker"];
 		_marker = createmarker [format ["%1", (_x select 0)], (_x select 0)];
 		_marker setmarkertype "hd_warning";
 		_marker setMarkerText (_x select 1);

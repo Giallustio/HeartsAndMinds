@@ -1,4 +1,6 @@
 
+private ["_target","_asker","_isBusy","_isDragging","_bleed","_bloss","_pain","_mor","_data"];
+
 _target = player;
 _asker  = _this select 0;
 

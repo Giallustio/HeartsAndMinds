@@ -5,7 +5,7 @@ _playerKills = profileNamespace getVariable "var_kills";*/
 
 call btc_fnc_db_delete;
 
-private ["_cities_status","_fobs","_name","_array_ho","_data","_array_cache","_array_veh","_array_obj","_cargo","_cont"];
+private ["_cities_status","_fobs","_name","_array_ho","_data","_array_cache","_array_veh","_array_obj","_cargo","_cont","_cache_markers"];
 
 hint "saving...";
 [[8],"btc_fnc_show_hint"] spawn BIS_fnc_MP;
@@ -29,6 +29,7 @@ hint "saving...2";
 _cities_status = [];
 {
 	//[151,false,false,true,false,false,[]]
+	private ["_city_status"];
 	_city_status = [];
 	_city_status pushBack (_x getVariable "id");
 
@@ -53,6 +54,7 @@ profileNamespace setVariable [format ["btc_hm_%1_cities",_name],_cities_status];
 //HIDEOUT
 _array_ho = [];
 {
+	private ["_data"];
 	_data = [];
 	_data pushBack (getPos _x);
 	_data pushBack (_x getVariable ["id",0]);
@@ -60,8 +62,10 @@ _array_ho = [];
 	_data pushBack (_x getVariable ["cap_time",0]);
 	_data pushBack (_x getVariable ["assigned_to",objNull]);
 
+	private ["_ho_markers"];
 	_ho_markers = [];
 	{
+		private ["_marker"];
 		_marker = [];
 		_marker pushback (getMarkerPos _x);
 		_marker pushback (markerText _x);
@@ -82,6 +86,7 @@ _array_cache pushback (btc_cache_n);
 _array_cache pushback (btc_cache_info);
 _cache_markers = [];
 {
+	private ["_data"];
 	_data = [];
 	_data pushback (getMarkerPos _x);
 	_data pushback (markerText _x);
@@ -126,6 +131,7 @@ profileNamespace setVariable [format ["btc_hm_%1_vehs",_name],_array_veh];
 _array_obj = [];
 {
 	if !(!isNil {_x getVariable "loaded"} || !Alive _x || isNull _x) then {
+		private ["_data","_cargo","_cont"];
 		_data = [];
 		_data pushBack (typeOf _x);
 		_data pushBack (getPosASL _x);

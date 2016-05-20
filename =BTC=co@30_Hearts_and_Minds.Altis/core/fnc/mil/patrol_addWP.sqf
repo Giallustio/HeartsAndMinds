@@ -1,5 +1,5 @@
 
-private ["_group","_city","_area","_players","_isboat"];
+private ["_group","_city","_area","_players","_isboat","_cities","_pos"];
 
 _group = _this select 0;
 _city = _group getVariable ["city",objNull];
@@ -54,6 +54,7 @@ if !((vehicle leader _group) isKindOf "Air") then {
 } else {_wp setWaypointStatements ["true", format ["_spawn = [group this,%1,%2] spawn btc_fnc_mil_patrol_addWP;",_area,_isboat]];};
 if (btc_debug) then {
 	if (!isNil {_group getVariable "btc_patrol_id"}) then {
+		private ["_marker"];
 		_marker = createmarker [format ["Patrol_fant_%1", _group getVariable "btc_patrol_id"] , [(_pos select 0) + random 30,(_pos select 1) + random 30,0]];
 		format ["Patrol_fant_%1", _group getVariable "btc_patrol_id"] setmarkertype "mil_dot";
 		format ["Patrol_fant_%1", _group getVariable "btc_patrol_id"]  setMarkerText format ["P %1", _group getVariable "btc_patrol_id"];

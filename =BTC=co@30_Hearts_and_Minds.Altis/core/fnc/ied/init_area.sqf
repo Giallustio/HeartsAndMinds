@@ -44,6 +44,7 @@ for "_i" from 1 to _n do {
 
 	if (btc_debug) then {
 		//Marker
+		private ["_marker"];
 		_marker = createmarker [format ["btc_ied_%1", _sel_pos], _sel_pos];
 		format ["btc_ied_%1", _sel_pos] setmarkertype "mil_warning";
 		format ["btc_ied_%1", _sel_pos] setmarkercolor "ColorRed";

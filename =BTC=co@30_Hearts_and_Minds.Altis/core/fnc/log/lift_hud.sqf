@@ -1,6 +1,6 @@
 disableSerialization;
 
-private ["_ui","_radar","_obj_img","_obj_pic","_arrow","_obj_name","_array_hud","_can_lift","_arrow_up","_arrow_down","_complete","_incomplete"];
+private ["_ui","_radar","_obj_img","_obj_pic","_arrow","_obj_name","_array_hud","_can_lift","_arrow_up","_arrow_down","_complete","_incomplete","_array","_cargo_array","_cargo_pos","_cargo_x","_cargo_y","_rel_pos","_hud_x","_hud_y","_hud_x_1","_hud_y_1","_name_cargo","_pic_cargo","_cargo_z"];
 
 939996 cutRsc ["btc_log_hud","PLAIN"];
 _ui        = uiNamespace getVariable "btc_log_hud";
