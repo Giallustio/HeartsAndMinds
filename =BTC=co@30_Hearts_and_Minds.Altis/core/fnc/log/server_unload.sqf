@@ -1,5 +1,5 @@
 
-private ["_obj_type","_veh","_obj","_cargo","_found","_height"];
+private ["_obj_type","_veh","_obj","_cargo","_found","_height","_obj_fall"];
 
 _obj_type = _this select 0;
 _veh = _this select 1;

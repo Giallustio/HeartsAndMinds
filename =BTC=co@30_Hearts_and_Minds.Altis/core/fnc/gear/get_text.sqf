@@ -42,7 +42,7 @@ if ({_x != ""} count _h_items > 0) then
 _text = _text + _br + _br + "Ammo and items:";
 */
 
-private ["_ui","_text","_w","_w_items","_h_items","_s_items","_i","_idc"];
+private ["_ui","_text","_w","_s","_w_items","_h_items","_h","_s_items","_i","_n","_idc","_displayName","_items","_mags","_picture"];
 
 _ui = uiNamespace getVariable "btc_gear_dlg";
 _text = "";

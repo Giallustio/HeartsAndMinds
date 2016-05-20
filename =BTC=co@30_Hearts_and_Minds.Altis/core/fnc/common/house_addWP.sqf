@@ -1,5 +1,5 @@
 
-private ["_group","_house"];
+private ["_group","_house","_wp"];
 
 _group = _this select 0;
 _house = _this select 1;
