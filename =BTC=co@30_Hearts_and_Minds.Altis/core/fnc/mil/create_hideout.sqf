@@ -1,5 +1,5 @@
 
-private ["_city","_pos","_radius","_hideout","_random_pos"];
+private ["_city","_pos","_radius","_hideout","_random_pos","_city2"];
 
 _city = objNull;
 
@@ -27,8 +27,8 @@ _pos = [_random_pos, 0, 100, 2, 0, 0.5, 0] call BIS_fnc_findSafePos;//5????
 if (count _pos == 0) then {_pos = getPos _city;};
 
 [_pos,(random 360),btc_composition_hideout] call btc_fnc_create_composition;
-
-_city = [_pos,"NameCity",format ["Hideout %1", btc_hideouts_id],400,400,true] call btc_fnc_city_create;
+_city2 = _city;
+_city = [_pos,"NameCity",format ["Hideout %1", btc_hideouts_id],500,500,true] call btc_fnc_city_create;
 
 _hideout = nearestObject [_pos, "C_supplyCrate_F"];
 clearWeaponCargoGlobal _hideout;clearItemCargoGlobal _hideout;clearMagazineCargoGlobal _hideout;
@@ -44,6 +44,8 @@ _city setVariable ["has_ho",true];
 _city setVariable ["ho",_hideout];
 _city setVariable ["ho_pos",_pos];
 _city setVariable ["ho_units_spawned",false];
+//_city setVariable ["trigger_link_for_activation",_city2];
+_city2 setVariable ["no_de_activation",_city];
 
 if (btc_debug) then {
 	//Marker _pos = getpos _x;

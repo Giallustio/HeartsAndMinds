@@ -47,6 +47,9 @@ _idshift = 0;
 		_city_status pushBack (_x getVariable ["has_ho",false]);
 		_city_status pushBack (_x getVariable ["ho_units_spawned",false]);
 		_city_status pushBack (_x getVariable ["ieds",[]]);
+		//_city_status pushBack ((_x getVariable ["trigger_link_for_activation",objNull]) getVariable ["id",-1]);
+		_city_status pushBack ((_x getVariable ["no_de_activation",objNull]) getVariable ["id",-1]);
+
 
 		_cities_status pushBack _city_status;
 		//diag_log format ["SAVE: %1 - %2",(_x getVariable "id"),(_x getVariable "occupied")];
