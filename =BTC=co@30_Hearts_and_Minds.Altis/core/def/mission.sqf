@@ -1,5 +1,5 @@
 
-private ["_p_db","_p_en","_hideout_n","_cache_info_def","_cache_info_ratio","_info_chance","_p_rep","_p_skill","_c_array","_tower","_array","_chopper","_p_civ","_btc_rearming_vehicles","_vehicles","_magazines"];
+private ["_p_db","_p_en","_hideout_n","_cache_info_def","_cache_info_ratio","_info_chance","_p_rep","_p_skill","_c_array","_tower","_array","_chopper","_p_civ","_btc_rearming_vehicles","_vehicles","_magazines","_p_city_radius"];
 
 btc_version = 1.14; diag_log format ["=BTC= HEARTS AND MINDS VERSION %1",(str(btc_version) + ".0")];
 
@@ -39,6 +39,7 @@ ace_medical_enableFor = 1;
 
 btc_p_sea  = if ((paramsArray select 27) isEqualTo 0) then {false} else {true};
 _p_civ = (paramsArray select 28);
+_p_city_radius = (paramsArray select 29) * 100;
 //btc_acre_mod = isClass(configFile >> "cfgPatches" >> "acre_main");
 //btc_tfr_mod = isClass(configFile >> "cfgPatches" >> "task_force_radio");
 
@@ -54,7 +55,7 @@ if (isServer) then {
 	btc_final_phase = false;
 
 	//City
-	btc_city_radius = 300;
+	btc_city_radius = _p_city_radius;
 	btc_city_blacklist = [];//NAME FROM CFG
 
 	//Civ

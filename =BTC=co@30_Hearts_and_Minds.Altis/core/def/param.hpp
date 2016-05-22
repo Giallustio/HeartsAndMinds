@@ -202,4 +202,11 @@ class Params {
 		texts[]={"Civilian (A3)","Afghan (@Ericj_Taliban)"};
 		default = 0;
 	};
+	class btc_p_city_radius {
+	//paramsArray[29]
+        title = "Spawn city radius coefficient:";
+		values[]={0,1,2,3,4,5,6,7,8};
+		texts[]={"0 m","100 m","200 m","300 m (Default)","400 m","500 m (Takistan)","600 m","700 m","800 m"};
+		default = 3;
+	};
 };
