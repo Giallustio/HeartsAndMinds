@@ -31,6 +31,7 @@ _id = _city getVariable ["id",0];
 deleteVehicle (_city getVariable ["trigger_player_side",objNull]);
 _radius_x = 400;
 _radius_y = _radius_x;
+
 _trigger = createTrigger["EmptyDetector",_pos];
 _trigger setTriggerArea[(_radius_x+_radius_y) + btc_city_radius,(_radius_x+_radius_y) + btc_city_radius,0,false];
 _trigger setTriggerActivation[str(btc_player_side),"PRESENT",true];
@@ -50,6 +51,9 @@ if (btc_debug) then	{//_debug
 	_marker setmarkertype "mil_dot";
 	_marker setmarkertext format ["loc_%3 %1 %2 - [%4]", _city getVariable ["name",""],_city getVariable ["type",""],_id,_city getVariable ["occupied",false]];
 };
+
+_city setVariable ["RadiusX",_radius_x];
+_city setVariable ["RadiusY",_radius_y];
 
 [_pos,(random 360),btc_composition_hideout] call btc_fnc_create_composition;
 
