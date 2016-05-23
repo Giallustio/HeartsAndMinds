@@ -5,8 +5,6 @@ _city = btc_city_all select (_this select 0);
 
 if !(_city getVariable ["active",false]) exitWith {};
 
-if !((_city getVariable ["no_de_activation",objNull]) isEqualTo objNull) exitWith {_city setVariable ["occupied",false];};
-
 waitUntil {!(_city getVariable ["activating",false])};
 
 hint ("DE-Activate " + str(_this));
