@@ -46,26 +46,7 @@ for "_i" from 0 to (count _locations - 1) do {
 			_city setVariable ["hasbeach", (((selectBestPlaces [_position,0.8*(_radius_x+_radius_y), "sea",10,1]) select 0 select 1) isEqualTo 1)];
 		};
 		btc_city_all set [_id,_city];
-		_trigger = createTrigger["EmptyDetector",getPos _city];
-		_trigger setTriggerArea[(_radius_x+_radius_y) + btc_city_radius,(_radius_x+_radius_y) + btc_city_radius,0,false];
-		_trigger setTriggerActivation[str(btc_player_side),"PRESENT",true];
-		_trigger setTriggerStatements ["this && !btc_db_is_saving", format ["[%1] spawn btc_fnc_city_activate",_id], format ["[%1] spawn btc_fnc_city_de_activate",_id]];
-		_city setVariable ["trigger_player_side",_trigger];
-
-		if (btc_debug) then	{//_debug
-			private ["_marker"];
-			_marker = createmarker [format ["loc_%1",_id],_position];
-			_marker setMarkerShape "ELLIPSE";
-			_marker setMarkerBrush "SolidBorder";
-			_marker setMarkerSize [(_radius_x+_radius_y) + btc_city_radius, (_radius_x+_radius_y) + btc_city_radius];
-			_marker setMarkerAlpha 0.3;
-			//_marker setmarkertype "mil_dot";
-			if (_has_en) then {_marker setmarkercolor "colorRed";} else {_marker setmarkercolor "colorGreen";};
-			//_marker setmarkeralpha 0.5;
-			_marke = createmarker [format ["locn_%1",_id],_position];
-			_marke setmarkertype "mil_dot";
-			_marke setmarkertext format ["loc_%3 %1 %2 - [%4] - [%5] ",_name,_type,_id,_has_en, _city getVariable ["hasbeach", "empty"] ];
-		};
+		[_position,_radius_x,_radius_y,_city,_has_en,_name,_type,_id] call btc_fnc_city_trigger_player_side;
 	};
 };
 

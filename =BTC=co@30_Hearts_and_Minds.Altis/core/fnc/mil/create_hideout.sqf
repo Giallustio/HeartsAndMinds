@@ -28,29 +28,12 @@ if (count _pos == 0) then {_pos = getPos _city;};
 
 _city setpos _pos;
 _id = _city getVariable ["id",0];
+if (btc_debug) then	{deleteMarker format ["loc_%1",_id];};
 deleteVehicle (_city getVariable ["trigger_player_side",objNull]);
-_radius_x = 400;
-_radius_y = _radius_x;
+_radius_x = btc_hideouts_radius;
+_radius_y = btc_hideouts_radius;
 
-_trigger = createTrigger["EmptyDetector",_pos];
-_trigger setTriggerArea[(_radius_x+_radius_y) + btc_city_radius,(_radius_x+_radius_y) + btc_city_radius,0,false];
-_trigger setTriggerActivation[str(btc_player_side),"PRESENT",true];
-_trigger setTriggerStatements ["this && !btc_db_is_saving", format ["[%1] spawn btc_fnc_city_activate",_id], format ["[%1] spawn btc_fnc_city_de_activate",_id]];
-_city setVariable ["trigger_player_side",_trigger];
-
-if (btc_debug) then	{//_debug
-	private ["_marker"];
-	deleteMarker format ["loc_%1",_id];
-	_marker = createmarker [format ["loc_%1",_id],_pos];
-	_marker setMarkerShape "ELLIPSE";
-	_marker setMarkerBrush "SolidBorder";
-	_marker setMarkerSize [(_radius_x+_radius_y) + btc_city_radius, (_radius_x+_radius_y) + btc_city_radius];
-	_marker setMarkerAlpha 0.3;
-	if (_city getVariable ["occupied",false]) then {_marker setmarkercolor "colorRed";} else {_marker setmarkercolor "colorGreen";};
-	_marker = createmarker [format ["locn_%1",_id],_pos];
-	_marker setmarkertype "mil_dot";
-	_marker setmarkertext format ["loc_%3 %1 %2 - [%4]", _city getVariable ["name",""],_city getVariable ["type",""],_id,_city getVariable ["occupied",false]];
-};
+[_pos,_radius_x,_radius_y,_city,_city getVariable "occupied",_city getVariable "name",_city getVariable "type",_city getVariable "id"] call btc_fnc_city_trigger_player_side;
 
 _city setVariable ["RadiusX",_radius_x];
 _city setVariable ["RadiusY",_radius_y];
