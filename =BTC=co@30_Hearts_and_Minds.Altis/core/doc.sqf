@@ -29,7 +29,7 @@ player createDiaryRecord ["Documentation", ["FOB", "
 FOB<br/><br/>
 In this mission a FOB is a forward spawn point, to create a FOB approach the red box at the logistic point and require a blue container.<br/>
 Move it where you want to deploy a new FOB and interact with it to set it up. Keep in mind that you can not deploy a FOB close to the main base (2.500m) and the terrain needs to be flat.<br/><br/>
-You can re-deploy at the new location interacting with the flag. You can dismantle a FOB by interacting with the flag on the HQ first floor.
+You can dismantle a FOB by interacting with the flag on the HQ first floor.
 	"]
 ];
 
@@ -49,12 +49,12 @@ At the logistic point you can require new objects (like ammo, fortifications, su
 player createDiaryRecord ["Documentation", ["Logistic", "
 Cargo System<br/><br/>
 You can load objects inside vehicles. Approach the object you want to load and interact with it.<br/>
-Select 'LOAD IN' option.<br/>Afer that interact with the vehicle and select 'LOAD object IN vehicle' option.<br/>
+Select 'LOAD IN' option.<br/>Afer that interact with the vehicle and select 'LOAD object selected' option.<br/>
 The object has to be close to the vehicle.<br/><br/>
-You can unload an object from a vehicle interacting with it. You can be inside the vehicle (user action 1) or outside (user action 2).<br/>
+You can unload an object from a vehicle interacting with it. You can be inside the vehicle (personal interaction) or outside (object interaction).<br/>
 Select the option 'CHECK CARGO', then choose the object you want to unload from the list, and click 'UNLOAD'.<br/>
 If you are inside a chopper the object will be paradropped with a chute. If your height is too low, the object will crash down.<br/>
-Every vehicle has a 'CARCO CAPACITY' (CC in game), and every object has a 'REQUIRED CAPACITY' value (RC in game.)<br/>
+Every vehicle has a 'CARGO CAPACITY' (CC in game), and every object has a 'REQUIRED CAPACITY' value (RC in game.)<br/>
 You can check those values in game with 'LOAD IN' and 'CHECK CARGO' options.<br/><br/><br/>
 Towing system<br/><br/>
 To tow a vehicle interact with it and select the option 'HOOK'.<br/>After that place the tow vehicle in front of it and select 'TOW' in the interaction menu.<br/>
@@ -70,7 +70,7 @@ When you select the option an hint will show all the keys required to move the o
 player createDiaryRecord ["Documentation", ["Hideout", "
 The hideouts are the place where the Oplitas organize their movement.<br/> They send reinforcement from here and can attack the closest city.<br/>
 If you notice a lot of activity in an area, probably there is an hideout closeby.<br/>
-If you want to defeat the Oplitas tou need to destroy all their hideouts.<br/>
+If you want to defeat the Oplitas you need to destroy all their hideouts.<br/>
 Here an example of an hideout:<br/><br/>
 <img image='core\img\hideout.jpg' width='256' height='256'/><br/><br/>
 To destroy an hideout just place a satchel near the ammo box and blow it off!
@@ -111,7 +111,7 @@ Your options are:<br/>
 - GET DOWN<br/>
 - GO AWAY<br/><br/>
 
-If you want to give an order just to one unit, interact with it (user action 2).
+If you want to give an order just to one unit, interact with it (object interaction).
 	"]
 ];
 
@@ -122,7 +122,6 @@ Civilian are travelling by car across cities. If your reputation is higher than 
 
 player createDiaryRecord ["Documentation", ["Gear", "
 You can choose your gear at the red box inside the base.<br/>
-Use your user action 2 to change your gear.
  	"]
 ];
 
@@ -133,6 +132,6 @@ Use ACE 3 interactions system.
 
 player createDiaryRecord ["Documentation", [
 	"Version",
-	format ["Version %1",btc_version]
+	format ["Version %1",(str(btc_version) + ".0")]
 	]
 ];
