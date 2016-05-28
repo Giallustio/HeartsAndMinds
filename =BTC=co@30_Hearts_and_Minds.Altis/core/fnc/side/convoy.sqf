@@ -1,5 +1,5 @@
 
-private ["_usefuls","_city1","_city2","_pos1","_pos2","_area","_marker1","_marker2","_markers","_mines","_crewmen","_roads","_road","_veh_type","_veh","_cargo"];
+private ["_usefuls","_city1","_city2","_pos1","_pos2","_area","_marker1","_marker2","_markers","_mines","_crewmen","_roads","_road","_veh_type","_veh","_cargo","_veh"];
 
 //// Choose two Cities \\\\
 _usefuls = btc_city_all select {((_x getVariable ["type",""] != "NameLocal") && {_x getVariable ["type",""] != "Hill"} && (_x getVariable ["type",""] != "NameMarine") && !(_x getVariable ["occupied",false]))};
@@ -60,15 +60,16 @@ if (btc_debug_log) then {diag_log format ["CONVOY pos2: %1",_pos2];};
 _group = createGroup btc_enemy_side;
 _group setVariable ["no_cache",true];
 
-_veh = [];
+_vehs = [];
 for "_i" from 0 to 4 do {
 	_veh_type = selectRandom btc_type_motorized;
 	_crewmen = btc_type_crewmen;
-	_veh pushBack createVehicle [_veh_type, _pos1, [], 0, "NONE"];
-	if (btc_debug_log) then {diag_log format ["CONVOY veh: %1",_veh];};
+	_vehs pushBack createVehicle [_veh_type, _pos1, [], 0, "NONE"];;
+	if (btc_debug_log) then {diag_log format ["CONVOY veh: %1",_vehs];};
+	if (btc_debug_log) then {diag_log format ["CONVOY veh type: %1",_veh_type];};
 
-	[(_veh select _i),_group,false,"",_crewmen] call BIS_fnc_spawnCrew;
-	_cargo = ((_veh select _i) emptyPositions "cargo") - 1;
+	[(_vehs select _i),_group,false,"",_crewmen] call BIS_fnc_spawnCrew;
+	_cargo = ((_vehs select _i) emptyPositions "cargo") - 1;
 	if (_cargo > 0) then {
 		for "_i" from 0 to _cargo do {
 			_unit_type = selectRandom btc_type_units;
@@ -98,7 +99,7 @@ waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || (_group isEqualTo gr
 if (btc_side_aborted) exitWith {
 	[4,"btc_fnc_task_fail",true] spawn BIS_fnc_MP;
 	btc_side_assigned = false;publicVariable "btc_side_assigned";
-	[_veh,_group] spawn {
+	[_vehs,_group] spawn {
 		waitUntil {sleep 5; ({_x distance (_this select 0) < 300} count playableUnits == 0)};
 		{if (!isNull _x) then {deleteVehicle _x}} foreach units (_this select 1);
 		{if (!isNull _x) then {deleteVehicle _x}} foreach (_this select 0);
@@ -117,7 +118,7 @@ if (btc_side_failed) exitWith {
 
 [4,"btc_fnc_task_set_done",true] spawn BIS_fnc_MP;
 
-[_veh,_group] spawn {
+[_vehs,_group] spawn {
 	waitUntil {sleep 5; ({_x distance (_this select 0) < 500} count playableUnits == 0)};
 		{if (!isNull _x) then {deleteVehicle _x}} foreach units (_this select 1);
 		{if (!isNull _x) then {deleteVehicle _x}} foreach (_this select 0);
