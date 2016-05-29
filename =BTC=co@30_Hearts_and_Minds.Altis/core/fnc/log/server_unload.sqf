@@ -1,5 +1,5 @@
 
-private ["_obj_type","_veh","_obj","_cargo","_found","_height"];
+private ["_obj_type","_veh","_obj","_cargo","_found","_height","_obj_fall"];
 
 _obj_type = _this select 0;
 _veh = _this select 1;
@@ -30,7 +30,7 @@ _obj hideObjectGlobal false;
 _height = getPos _veh select 2;
 
 deTach _obj;
-_obj attachTo [_veh,[0,-10,-0.2]];sleep 0.1;deTach _obj;
+_obj attachTo [_veh,[0, -(sizeOf typeOf _veh + sizeOf _obj_type)/2,-0.2]];sleep 0.1;deTach _obj;
 _obj allowDamage false;
 
 switch (true) do {
@@ -38,16 +38,20 @@ switch (true) do {
 		[_veh,_obj,"B_Parachute_02_F"] spawn btc_fnc_log_paradrop;
 	};
 	case ((_height < 20) && (_height >= 2)): {
-		_obj setPos [getpos _veh select 0,getpos _veh select 1,(getpos _veh select 2) -1];
+		_obj setPos [getpos _obj select 0,getpos _obj select 1,(getpos _obj select 2) -1];
 		sleep 0.1;
 		if (_obj isKindOf "Strategic") then {_obj_fall = [_obj] spawn btc_fnc_log_obj_fall;};
 	};
 	case (_height < 2):	{
-		private "_empty";
-		_empty = (getPos _veh) findEmptyPosition [0, 15, typeOf _obj];
-		_obj setPos _empty;//(_veh modelToWorld [0,-9,-0.2]);_obj setVelocity [0,0,0.1];
+		private ["_empty"];
+		_empty = (getPos _veh) findEmptyPosition [0, (sizeOf typeOf _veh + sizeOf _obj_type)/2 +2, _obj_type];
+		if (_empty isEqualTo []) then {
+			_obj_fall = [_obj] call btc_fnc_log_obj_fall;
+		} else {
+			_obj setPos _empty;//(_veh modelToWorld [0,-9,-0.2]);_obj setVelocity [0,0,0.1];
+		};
 	};
-};	
+};
 
 _obj allowDamage true;
 

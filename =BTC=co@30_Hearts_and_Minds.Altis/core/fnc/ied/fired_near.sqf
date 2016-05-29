@@ -1,5 +1,5 @@
 
-private ["_pos","_range","_bomb","_bomb_check","_array","_list"];
+private ["_pos","_range","_bomb","_bomb_check","_array","_list","_ied","_explosive","_caliber"];
 
 _pos = getPos _this;
 _pos = [_pos select 0, _pos select 1, (_pos select 2) + 0.5];
@@ -30,7 +30,7 @@ while {alive _this && !isNull _this && _this getVariable ["active",false]} do
 			{
 				if !(_b in _array) then
 				{
-					_array = _array + [_b];
+					_array pushBack _b;
 					[_this,_b] spawn _bomb_check;
 				};
 			}

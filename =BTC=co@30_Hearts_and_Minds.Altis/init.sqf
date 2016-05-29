@@ -1,8 +1,8 @@
 enableSaving [false,false];
 //Server
+call compile preprocessFile "core\fnc\compile.sqf";
 call compile preprocessFile "core\def\mission.sqf";
 call compile preprocessFile "define_mod.sqf";
-call compile preprocessFile "core\fnc\compile.sqf";
 
 if (isServer) then {
 	call compile preprocessFile "core\init_server.sqf";

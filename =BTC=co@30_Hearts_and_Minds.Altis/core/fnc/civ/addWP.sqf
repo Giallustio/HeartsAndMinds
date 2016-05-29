@@ -16,7 +16,7 @@ _wp setWaypointBehaviour "SAFE";
 _houses = [_pos,_radius] call btc_fnc_getHouses;
 if (count _houses > 0) then {
 	private ["_house"];
-	_house = _houses select (floor random count _houses);
+	_house = selectRandom _houses;
 	[_group,_house] call btc_fnc_house_addWP_loop;
 	_houses = _houses - [_house];
 };
@@ -31,7 +31,7 @@ for "_i" from 1 to 4 do {
 
 if (count _houses > 0) then {
 	private ["_house"];
-	_house = _houses select (floor random count _houses);
+	_house = selectRandom _houses;
 	[_group,_house] call btc_fnc_house_addWP_loop;
 	_houses = _houses - [_house];
 };

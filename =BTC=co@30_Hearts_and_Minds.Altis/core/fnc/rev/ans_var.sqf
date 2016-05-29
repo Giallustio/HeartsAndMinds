@@ -1,3 +1,6 @@
+
+private ["_examined","_data"];
+
 _examined = _this select 0;
 _data = _this select 1;
 

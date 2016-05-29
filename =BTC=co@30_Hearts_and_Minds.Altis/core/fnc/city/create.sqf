@@ -1,5 +1,5 @@
 
-private ["_position","_type","_name","_radius_x","_radius_y","_has_en","_id","_city"];
+private ["_position","_type","_name","_radius_x","_radius_y","_has_en","_id","_city","_trigger"];
 
 _position = _this select 0;
 _type = _this select 1;
@@ -45,4 +45,4 @@ if (btc_debug) then	{//_debug
 	_marker setmarkertext format ["loc_%3 %1 %2 - [%4]",_name,_type,_id,_has_en];
 };
 
-_city 
+_city

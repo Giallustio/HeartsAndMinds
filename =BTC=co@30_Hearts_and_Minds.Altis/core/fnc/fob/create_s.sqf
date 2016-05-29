@@ -25,8 +25,9 @@ _marker = createmarker [("FOB " + _name), getPos _flag];
 ("FOB " + _name) setMarkerColor "ColorBlue";
 ("FOB " + _name) setMarkerShape "ICON";
 
-btc_fobs pushBack (("FOB " + _name));
-
+(btc_fobs select 0) pushBack (("FOB " + _name));
+(btc_fobs select 1) pushBack _struc;
+_flag setVariable ["btc_fob",("FOB " + _name)];
 [[7,("FOB " + _name)],"btc_fnc_show_hint"] spawn BIS_fnc_MP;
 /*
 //_flag setVariable ["BTC_mobile_west",format ["FOB_%1",BTC_fob_id],true];

@@ -1,5 +1,5 @@
 
-private ["_city","_ieds","_ieds_check"];
+private ["_city","_ieds","_ieds_check","_data"];
 
 _city = _this select 0;
 _ieds = _this select 1;
@@ -14,7 +14,7 @@ while {_city getVariable ["active", false]} do {
 		private "_ied";
 		_ied = _x;
 		if !(_ied getVariable ["active",false]) then {_ieds_check = _ieds_check - [_ied];};
-		if (!isNull _ied && {Alive _ied} && {_ied getVariable ["active",false]}) then 
+		if (!isNull _ied && {Alive _ied} && {_ied getVariable ["active",false]}) then
 		{
 			_list = _ied nearEntities ["allvehicles", 12];
 			{
