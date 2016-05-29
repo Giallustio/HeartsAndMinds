@@ -85,7 +85,14 @@ switch _this do
 		private "_task";
 		_task = player getVariable "task_11";
 		_task setTaskState "SUCCEEDED";
-		["TaskSucceeded",["Side mission Accomplished!","Underwater generator have been destroyed!"]] call bis_fnc_showNotification;
+		["TaskSucceeded",["Side mission Accomplished!","The underwater generator has been destroyed!"]] call bis_fnc_showNotification;
 		player setVariable ["task_11",nil];
+	};
+	case 12 : {
+		private "_task";
+		_task = player getVariable "task_12";
+		_task setTaskState "SUCCEEDED";
+		["TaskSucceeded",["Side mission Accomplished!","The armed convoy has been destroyed!"]] call bis_fnc_showNotification;
+		player setVariable ["task_12",nil];
 	};
 };

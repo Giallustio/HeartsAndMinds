@@ -71,7 +71,15 @@ switch _this do
 		private "_task";
 		_task = player getVariable "task_11";
 		_task setTaskState "FAILED";
-		["TaskFailed",["Side mission failed!","Underwater generator have not been destroyed"]] call bis_fnc_showNotification;
+		["TaskFailed",["Side mission failed!","The underwater generator has not been destroyed"]] call bis_fnc_showNotification;
 		player setVariable ["task_11",nil];
+	};
+	case 12 :
+	{
+		private "_task";
+		_task = player getVariable "task_12";
+		_task setTaskState "FAILED";
+		["TaskFailed",["Side mission failed!","The armed convoy has not been destroyed"]] call bis_fnc_showNotification;
+		player setVariable ["task_12",nil];
 	};
 };

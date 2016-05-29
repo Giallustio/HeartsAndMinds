@@ -37,9 +37,9 @@ btc_side_done = false;
 btc_side_failed = false;
 btc_side_assigned = true;publicVariable "btc_side_assigned";
 
-[[4,_pos1,_city1 getVariable "name"],"btc_fnc_task_create",true] spawn BIS_fnc_MP;
+[[12,_pos1,_city1 getVariable "name"],"btc_fnc_task_create",true] spawn BIS_fnc_MP;
 
-btc_side_jip_data = [4,_pos1,_city1 getVariable "name"];
+btc_side_jip_data = [12,_pos1,_city1 getVariable "name"];
 
 //// Create markers \\\\
 _marker1 = createmarker [format ["sm_2_%1",_pos1],_pos1];
@@ -97,10 +97,10 @@ waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || (_group isEqualTo gr
 {deletemarker _x} foreach _markers;
 
 if (btc_side_aborted) exitWith {
-	[4,"btc_fnc_task_fail",true] spawn BIS_fnc_MP;
+	[12,"btc_fnc_task_fail",true] spawn BIS_fnc_MP;
 	btc_side_assigned = false;publicVariable "btc_side_assigned";
 	[_vehs,_group] spawn {
-		waitUntil {sleep 5; ({_x distance (_this select 0) < 300} count playableUnits == 0)};
+		waitUntil {sleep 5; ({_x distance (_this select 0) < 500} count playableUnits == 0)};
 		{if (!isNull _x) then {deleteVehicle _x}} foreach units (_this select 1);
 		{if (!isNull _x) then {deleteVehicle _x}} foreach (_this select 0);
 		deleteGroup (_this select 1);
@@ -108,15 +108,15 @@ if (btc_side_aborted) exitWith {
 };
 
 if (btc_side_failed) exitWith {
-	[4,"btc_fnc_task_fail",true] spawn BIS_fnc_MP;
+	[12,"btc_fnc_task_fail",true] spawn BIS_fnc_MP;
 	btc_side_assigned = false;publicVariable "btc_side_assigned";
 	_group setVariable ["no_cache",false];
 	_city2 setVariable ["occupied",true];
 };
 
-30 call btc_fnc_rep_change;
+50 call btc_fnc_rep_change;
 
-[4,"btc_fnc_task_set_done",true] spawn BIS_fnc_MP;
+[12,"btc_fnc_task_set_done",true] spawn BIS_fnc_MP;
 
 [_vehs,_group] spawn {
 	waitUntil {sleep 5; ({_x distance (_this select 0) < 500} count playableUnits == 0)};
