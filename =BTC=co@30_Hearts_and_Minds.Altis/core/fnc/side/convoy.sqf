@@ -61,10 +61,10 @@ _group = createGroup btc_enemy_side;
 _group setVariable ["no_cache",true];
 
 _vehs = [];
-for "_i" from 0 to 4 do {
+for "_i" from 0 to (2 + round random 2) do {
 	_veh_type = selectRandom btc_type_motorized;
 	_crewmen = btc_type_crewmen;
-	_vehs pushBack createVehicle [_veh_type, _pos1, [], 0, "NONE"];;
+	_vehs pushBack createVehicle [_veh_type, _pos1, [], 0, "NONE"];
 	if (btc_debug_log) then {diag_log format ["CONVOY veh: %1",_vehs];};
 	if (btc_debug_log) then {diag_log format ["CONVOY veh type: %1",_veh_type];};
 
