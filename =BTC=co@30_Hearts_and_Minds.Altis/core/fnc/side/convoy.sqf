@@ -7,8 +7,8 @@ if (_usefuls isEqualTo []) then {_usefuls = + btc_city_all;};
 _city2 = selectRandom _usefuls;
 if (btc_debug_log) then {diag_log format ["CONVOY city2: %1",_city2];};
 
-_area = btc_patrol_area*2;
-_area = 1000;
+_area = (getNumber (configFile >> "CfgWorlds" >> worldName >> "MapSize"))/10;
+if (btc_debug_log) then {diag_log format ["CONVOY area: %1",_area];};
 _cities = btc_city_all select {(_x distance _city2 > _area)};
 _usefuls = _cities select {((_x getVariable ["type",""] != "NameLocal") && {_x getVariable ["type",""] != "Hill"} && (_x getVariable ["type",""] != "NameMarine") && (_x getVariable ["occupied",false]))};
 if (_usefuls isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
