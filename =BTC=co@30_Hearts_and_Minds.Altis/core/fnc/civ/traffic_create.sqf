@@ -42,7 +42,7 @@ if (_pos_iswater) then {
 	_veh_type = selectRandom btc_civ_type_veh;
 };
 
-_veh = createVehicle [_veh_type, _Spos, [], 0, "NONE"];
+_veh = createVehicle [_veh_type, _Spos, [], 0, "FLY"];
 _unit_type createUnit [_pos, _group, "this moveinDriver _veh;this assignAsDriver _veh;"];
 
 _1 = _veh addEventHandler ["HandleDamage", {_this call btc_fnc_civ_traffic_eh}];

@@ -81,7 +81,7 @@ switch (true) do {
 
 		_needdiver = getText(configfile >> "CfgVehicles" >> _veh_type >> "simulation") isEqualTo "submarinex";
 		if (_needdiver) then {_crewmen = btc_type_divers select 0} else {_crewmen = btc_type_crewmen};
-		_veh = createVehicle [_veh_type, _newZone, [], 0, "NONE"];
+		_veh = createVehicle [_veh_type, _newZone, [], 0, "FLY"];
 		[_veh,_group,false,"",_crewmen] call BIS_fnc_spawnCrew;
 		_group selectLeader (driver _veh);
 		_cargo = (_veh emptyPositions "cargo") - 1;

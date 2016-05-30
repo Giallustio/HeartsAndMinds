@@ -27,7 +27,7 @@ switch (_this select 2) do {
 		_veh_type = (_this select 3);
 		if (_veh_type == "") then {_veh_type = selectRandom btc_type_motorized};
 		_return_pos = [_pos, 0, 500, 13, 0, 60 * (pi / 180), 0] call BIS_fnc_findSafePos;
-		_veh = createVehicle [_veh_type, _return_pos, [], 0, "NONE"];
+		_veh = createVehicle [_veh_type, _return_pos, [], 0, "FLY"];
 		_gunner = _veh emptyPositions "gunner";
 		_commander = _veh emptyPositions "commander";
 		_cargo = (_veh emptyPositions "cargo") - 1;
