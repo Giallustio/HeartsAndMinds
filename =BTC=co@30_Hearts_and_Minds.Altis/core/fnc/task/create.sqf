@@ -109,4 +109,3 @@ switch (_this select 0) do
 		["TaskAssigned",["New task assigned!",("Destroy a convoy attacking " + (_this select 2))]] call bis_fnc_showNotification;
 	};
 };
-};
