@@ -23,6 +23,7 @@ _statics = btc_type_gl + btc_type_mg;
 _boxes = [];
 _markers = [];
 for "_i" from 1 to (1 + round random 2) do {
+	private ["_boxe"];
 	//// Choose a road \\\\
 	_pos = [getPos _city, 300] call btc_fnc_randomize_pos;
 	_roads = _pos nearRoads 300;
@@ -38,7 +39,7 @@ for "_i" from 1 to (1 + round random 2) do {
 	_marker setmarkertext "Checkpoint";
 	_marker setMarkerColor "ColorRed";
 	_marker setMarkerSize [0.6, 0.6];
-	_markers = _markers + [_marker];
+	_markers pushback _marker;
 
 	//// Randomise composition \\\\
 	_type_barrel = selectRandom btc_type_barrel;
@@ -69,7 +70,12 @@ for "_i" from 1 to (1 + round random 2) do {
 	[[((_pos select 0) + 2.72949*cos(-_direction) - -2.03857*sin(-_direction)), ((_pos select 1) -2.03857*cos(-_direction) +2.72949*sin(-_direction)), (_pos select 2)],_statics,_direction ] call btc_fnc_mil_create_static;
 	[_pos,_direction,_btc_composition_checkpoint] call btc_fnc_create_composition;
 
-	_boxes = _boxes + [nearestObject [_pos, _type_box]];
+	_boxe = nearestObject [_pos, _type_box];
+	_boxe spawn {
+		waitUntil {sleep 5; !(Alive _this)};
+		[[11],"btc_fnc_show_hint"] spawn BIS_fnc_MP;
+	};
+	_boxes pushBack _boxe;
 };
 
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({Alive _x} count _boxes == 0))};
