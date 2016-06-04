@@ -1,5 +1,5 @@
 
-private ["_city","_pos","_radius","_hideout","_random_pos","_radius_x","_radius_y","_id"];
+private ["_city","_pos","_radius","_hideout","_random_pos","_radius_x","_radius_y","_id","_area"];
 
 _city = objNull;
 
@@ -22,9 +22,14 @@ if (count _this > 0) then {_city = _this;} else {
 _radius = (((_city getVariable ["RadiusX",0]) + (_city getVariable ["RadiusY",0]))/2) - 100;
 
 _random_pos = [getPos _city, _radius] call btc_fnc_randomize_pos;
-_pos = [_random_pos, 0, 100, 2, 0, 0.5, 0] call BIS_fnc_findSafePos;//5????
 
-if (count _pos == 0) then {_pos = getPos _city;};
+_area = 100;
+for "_i" from 0 to 4 do {
+		_pos = [_random_pos, 0, _area, 2, 0, 0.5, 0] call BIS_fnc_findSafePos;//5????
+		if (count _pos == 2) exitWith {};
+		_area = _area * 1.5;
+};
+if (count _pos == 0 || count _pos > 2) then {_pos = getPos _city;};
 
 _city setpos _pos;
 _id = _city getVariable ["id",0];
