@@ -1,10 +1,13 @@
 disableSerialization;
+
+private ["_ui","_click","_type","_load","_items"];
+
 _ui = uiNamespace getVariable "btc_gear_dlg";
 _click = _this select 0;
 _type = _this select 1;
 switch _type do
 {
-	case 0 : 
+	case 0 :
 	{
 		if (_click == 1) then
 		{
@@ -23,10 +26,10 @@ switch _type do
 			_items = uniformItems player;
 			(_ui displayCtrl 380) progressSetPosition _load;
 			[373,_items] call btc_fnc_gear_lb_fill;
-			btc_gear_container_selected = 0;		
+			btc_gear_container_selected = 0;
 		};
 	};
-	case 1 : 
+	case 1 :
 	{
 		if (_click == 1) then
 		{
@@ -40,7 +43,7 @@ switch _type do
 			call btc_fnc_gear_get_text;
 		}
 		else
-		{		
+		{
 			_load = loadVest player;
 			_items = vestItems player;
 			(_ui displayCtrl 380) progressSetPosition _load;
@@ -48,7 +51,7 @@ switch _type do
 			btc_gear_container_selected = 1;
 		};
 	};
-	case 2 : 
+	case 2 :
 	{
 		if (_click == 1) then
 		{
@@ -62,7 +65,7 @@ switch _type do
 			call btc_fnc_gear_get_text;
 		}
 		else
-		{		
+		{
 			_load = loadBackPack player;
 			_items = backPackItems player;
 			(_ui displayCtrl 380) progressSetPosition _load;

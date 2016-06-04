@@ -1,3 +1,6 @@
+
+private ["_group","_pos","_dist","_city","_wp"];
+
 _group = _this;
 _group setVariable ["no_cache",nil];
 diag_log format ["ADD GROUP = %1",_group];
@@ -48,6 +51,6 @@ if !(_city getVariable ["active",false]) then
 
 if (btc_final_phase) then
 {
-	btc_city_remaining = btc_city_remaining + [_city];
+	btc_city_remaining pushBack _city;
 };
 diag_log format ["END = %1",[]];

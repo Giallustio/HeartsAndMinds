@@ -1,3 +1,6 @@
+
+private ["_hearer","_shooter","_distance","_weapon","_max_distance","_ammo","_caliber","_audible_fire","_initSpeed","_deafness","_magazine"];
+
 _hearer   = _this select 0;
 _shooter  = _this select 1;
 _distance = _this select 2;

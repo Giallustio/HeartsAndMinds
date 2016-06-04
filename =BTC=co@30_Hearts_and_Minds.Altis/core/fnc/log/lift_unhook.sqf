@@ -1,5 +1,5 @@
 
-private ["_chopper","_cargo"];
+private ["_chopper","_cargo","_rope"];
 
 _chopper = (vehicle player);
 _cargo = _chopper getVariable ["cargo",objNull];

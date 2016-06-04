@@ -36,10 +36,10 @@ for "_i" from 0 to _n do
 {
 	private ["_house","_unit_type"];
 	if (count _houses == 0) exitWith {};
-	_house = _houses select (floor random count _houses);
-	
-	_unit_type = btc_civ_type_units select (floor random count btc_civ_type_units);
-	
+	_house = selectRandom _houses;
+
+	_unit_type = selectRandom btc_civ_type_units;
+
 	_group = createGroup civilian;
 	_group createUnit [_unit_type, getPos _house, [], 0, "NONE"];
 	_group spawn btc_fnc_civ_addWP;

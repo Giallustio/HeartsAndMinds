@@ -1,5 +1,5 @@
 
-private ["_group","_city","_area","_players","_isboat"];
+private ["_group","_city","_area","_players","_isboat","_cities","_pos"];
 
 _group = _this select 0;
 _city = _group getVariable ["city",objNull];
@@ -13,13 +13,10 @@ if ({_x distance _city < (_area/2) || _x distance leader _group < (_area/2)} cou
 	{deleteVehicle _x;} foreach units _group;deleteGroup _group;
 };
 
-_cities = [];
-{if ((_x distance _city < _area) && ((!_isboat && {_x getVariable ["type",""] != "NameMarine"}) || (_isboat && {_x getVariable ["hasbeach",false]})))  then {
-		_cities pushBack _x;
-};} foreach btc_city_all;
+_cities = btc_city_all select {((_x distance _city < _area) && ((!_isboat && {_x getVariable ["type",""] != "NameMarine"}) || (_isboat && {_x getVariable ["hasbeach",false]})))};
 _pos = [];
 if (_cities isEqualTo []) then {_pos = getPos _city;} else {
-	_pos = getPos (_cities select (floor random count _cities));
+	_pos = getPos (selectRandom _cities);
 };
 if (_isboat) then {
 	_pos = [_pos, 0, ((_city getVariable ["RadiusX",0]) + (_city getVariable ["RadiusY",0])), 13, 2, 60 * (pi / 180), 0] call BIS_fnc_findSafePos;
@@ -57,6 +54,7 @@ if !((vehicle leader _group) isKindOf "Air") then {
 } else {_wp setWaypointStatements ["true", format ["_spawn = [group this,%1,%2] spawn btc_fnc_mil_patrol_addWP;",_area,_isboat]];};
 if (btc_debug) then {
 	if (!isNil {_group getVariable "btc_patrol_id"}) then {
+		private ["_marker"];
 		_marker = createmarker [format ["Patrol_fant_%1", _group getVariable "btc_patrol_id"] , [(_pos select 0) + random 30,(_pos select 1) + random 30,0]];
 		format ["Patrol_fant_%1", _group getVariable "btc_patrol_id"] setmarkertype "mil_dot";
 		format ["Patrol_fant_%1", _group getVariable "btc_patrol_id"]  setMarkerText format ["P %1", _group getVariable "btc_patrol_id"];

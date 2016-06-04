@@ -1,3 +1,6 @@
+
+private ["_veh","_cargo","_tot_rc"];
+
 _veh  = _this select 0;
 _cargo = _this select 1;
 _tot_rc   = 0;
