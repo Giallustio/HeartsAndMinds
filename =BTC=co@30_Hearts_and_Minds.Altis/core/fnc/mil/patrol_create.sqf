@@ -1,5 +1,5 @@
 
-private ["_random","_city","_area","_cities","_useful","_usefuls","_pos","_group","_pos_iswater","_crewmen","_unit_type","_needdiver","_n_units","_spawn"];
+private ["_random","_city","_area","_cities","_useful","_usefuls","_pos","_group","_pos_iswater","_crewmen","_unit_type","_needdiver","_n_units","_spawn","_random_area"];
 
 _random = _this select 0;//0 random, 1 inf, 2 moto, 3 heli
 _city = _this select 1;
@@ -68,8 +68,12 @@ switch (true) do {
 		if (count (_pos nearRoads 150) > 0) then {
 			_newZone = getPos ((_pos nearRoads 150) select 0);
 		} else {
-			_newZone = [_pos, 0, 500, 13, [0,1] select btc_p_sea, 60 * (pi / 180), 0] call BIS_fnc_findSafePos;
-			_newZone = [_newZone select 0, _newZone select 1, 0];
+			_random_area = 500;
+			for "_i" from 0 to 4 do {
+				_newZone = [_pos, 0, _random_area, 13, [0,1] select btc_p_sea, 60 * (pi / 180), 0] call BIS_fnc_findSafePos;
+				if (count _newZone == 2) exitWith {_newZone = [_newZone select 0, _newZone select 1, 0];};
+				_random_area = _random_area * 1.5;
+			};
 		};
 
 		_pos_iswater = (surfaceIsWater _newZone);
