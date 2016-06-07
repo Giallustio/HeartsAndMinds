@@ -1,5 +1,5 @@
 
-private ["_usefuls","_city1","_city2","_pos1","_pos2","_area","_marker1","_marker2","_markers","_crewmen","_roads","_road","_veh_type","_vehs","_cargo","_radius_y","_radius_x","_veh_types"];
+private ["_usefuls","_city1","_city2","_pos1","_pos2","_area","_marker1","_marker2","_markers","_crewmen","_roads","_road","_veh_type","_vehs","_cargo","_radius_y","_radius_x","_veh_types","_captive","_random","_random_veh"];
 
 //// Choose two Cities \\\\
 _usefuls = btc_city_all select {((_x getVariable ["type",""] != "NameLocal") && {_x getVariable ["type",""] != "Hill"} && (_x getVariable ["type",""] != "NameMarine") && !(_x getVariable ["occupied",false]))};
@@ -62,7 +62,7 @@ for "_i" from 0 to _random do {
 
 	[_veh,_group,false,"",_crewmen] call BIS_fnc_spawnCrew;
 	if (_i == _random_veh) then {
-		(selectRandom btc_type_units) createUnit [_pos1, _group, "this moveinCargo _veh;this assignAsCargo _veh; removeAllWeapons this;"]
+		(selectRandom btc_type_units) createUnit [_pos1, _group, "this moveinCargo _veh;this assignAsCargo _veh; removeAllWeapons this; _captive = this;"]
 	};
 	_cargo = (_veh emptyPositions "cargo") - 1;
 	if (_cargo > 0) then {
@@ -87,11 +87,11 @@ _wp setWaypointSpeed "LIMITED";
 _wp setWaypointFormation "STAG COLUMN";
 _wp setWaypointStatements ["true", "btc_side_failed = true"];
 
-waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({ canMove _x } count _vehs == 0) || (_group isEqualTo grpNull))};
+waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !(Alive _captive) || (_captive distance getpos btc_create_object_point < 10))};
 
 {deletemarker _x} foreach _markers;
 
-if (btc_side_aborted) exitWith {
+if (btc_side_aborted || !(Alive _captive)) exitWith {
 	[12,"btc_fnc_task_fail",true] spawn BIS_fnc_MP;
 	btc_side_assigned = false;publicVariable "btc_side_assigned";
 	[_vehs,_group] spawn {
