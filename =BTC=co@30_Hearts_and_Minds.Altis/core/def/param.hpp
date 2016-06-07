@@ -186,7 +186,7 @@ class Params {
         title = "Debug:";
 		values[]={0,1,2};
 		texts[]={"No","Yes", "Log only"};
-		default = 1;
+		default = 0;
 	};
     class btc_p_sea {
     //paramsArray[27]
