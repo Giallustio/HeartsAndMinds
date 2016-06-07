@@ -1,5 +1,5 @@
 
-private ["_useful","_city","_pos","_marker","_crash_type","_crash"];
+private ["_useful","_city","_pos","_heli","_heli_type","_pitch","_bank","_random_area","_return_pos","_units","_fx","_group"];
 
 //// Choose an occupied City \\\\
 _useful = btc_city_all select {(_x getVariable ["occupied",false] && {_x getVariable ["type",""] != "NameLocal"} && {_x getVariable ["type",""] != "Hill"} && (_x getVariable ["type",""] != "NameMarine"))};
@@ -9,58 +9,80 @@ if (_useful isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
 _city = selectRandom _useful;
 
 //// Randomise composition \\\\
-_pos = [getPos _city, 100] call btc_fnc_randomize_pos;
+_pos = [getPos _city, 300] call btc_fnc_randomize_pos;
+_random_area = 50;
+for "_i" from 0 to 4 do {
+	_return_pos = [_pos, 0, _random_area, 13, 0, 60 * (pi / 180), 0] call BIS_fnc_findSafePos;
+	if (count _return_pos == 2) exitWith {_return_pos = [_return_pos select 0, _return_pos select 1, 0];};
+	_random_area = _random_area * 1.5;
+};
+_pos = _return_pos;
 
 btc_side_aborted = false;
 btc_side_done = false;
 btc_side_failed = false;
 btc_side_assigned = true;publicVariable "btc_side_assigned";
 
-[[7,_pos,_city getVariable "name"],"btc_fnc_task_create",true] spawn BIS_fnc_MP;
+[[7,getPos _city,_city getVariable "name"],"btc_fnc_task_create",true] spawn BIS_fnc_MP;
 
-btc_side_jip_data = [7,_pos,_city getVariable "name"];
+btc_side_jip_data = [7,getPos _city,_city getVariable "name"];
 
 _city setVariable ["spawn_more",true];
 
-//// Create marker \\\\
-_marker = createmarker [format ["sm_2_%1",getPos _city],getPos _city];
-_marker setmarkertype "hd_flag";
-_marker setmarkertext "Rescue Pilot";
-_marker setMarkerSize [0.6, 0.6];
+ _heli_type = typeOf selectRandom ((btc_vehicles + btc_helo) select {_x isKindOf "air"});
+_heli = createVehicle [_heli_type, _pos, [], 0, "NONE"];
+_heli setVariable ["btc_dont_delete",true];
+_heli setDamage 1;
+_heli enableSimulation false;
+_heli setPos [getPosASL _heli select 0, getPosASL _heli select 1, 0 - 1.5];
+_pitch = if(random 1 > 0.5) then{ random 40} else { -1 * random 40};
+_bank = if(random 1 > 0.5) then{ random 40} else { -1 * random 40};
+[_heli, _pitch, _bank] call BIS_fnc_setPitchBank;
+_fx = createVehicle ["test_EmptyObjectForSmoke",_pos,[], 0, "CAN_COLLIDE"];
+_fx attachTo [_heli, [0.5, -2, 1] ];
 
-_crash_type = selectRandom btc_type_crash;
+_group = createGroup btc_player_side;
+_group setVariable ["no_cache",true];
+_group setVariable ["btc_patrol",true];
+getText(configfile >> "CfgVehicles" >> _heli_type >> "crew") createUnit [_pos, _group];
+_units = [];
+{
+	_x setCaptive true;
+	removeAllWeapons _x;
+	_x setBehaviour "CARELESS";
+	_x setDir (random 360);
+	_x setUnitPos "DOWN";
+	_x addEventHandler ["killed", "btc_side_failed = true"];
+	_units pushBack _x;
+} foreach units _group;
 
-_crash = createVehicle [_crash_type, _pos, [], 0, "NONE"];
+[_pos,_group] spawn {
+	if (btc_debug_log) then {diag_log format ["RESCUE pos: %1",(_this select 0)];};
+	if (btc_debug_log) then {diag_log format ["RESCUE group: %1",(_this select 1)];};
+	waitUntil {sleep 5; ({_x distance (_this select 0) > 50} count playableUnits == 0)};
+	if (btc_debug_log) then {diag_log format ["RESCUE join : %1",units (_this select 1)];};
+	units (_this select 1) join ((playableUnits select {_x distance (_this select 0) < 50}) select 0);
+};
 
-_smokeeff = createVehicle ["test_EmptyObjectForSmoke",position _crash,[], 0, "CAN_COLLIDE"];
-_smokeeff attachTo [_crash, [0.5, -2, 1] ];
+waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({_x distance getpos btc_create_object_point > 10} count _units isEqualTo 0))};
 
+if (btc_debug_log) then {diag_log format ["RESCUE fx : %1",_fx];};
+if (btc_debug_log) then {diag_log format ["RESCUE units : %1",_units];};
 
-waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !Alive _tower )};
+[[_fx,_heli],_units,_group] spawn {
+	waitUntil {sleep 5; ({_x distance ((_this select 1) select 0) < 500} count playableUnits isEqualTo 0)};
 
-{deletemarker _x} foreach [_area,_marker];
+	{if (!isNull _x) then {deleteVehicle _x}} foreach ((_this select 0) + (_this select 1));
+	deleteGroup (_this select 2);
+};
 
 if (btc_side_aborted || btc_side_failed ) exitWith {
 	[7,"btc_fnc_task_fail",true] spawn BIS_fnc_MP;
 	btc_side_assigned = false;publicVariable "btc_side_assigned";
-	_crash spawn {
-
-		waitUntil {sleep 5; ({_x distance _this < 300} count playableUnits == 0)};
-
-		deleteVehicle _this;
-	};
 };
 
-80 call btc_fnc_rep_change;
+50 call btc_fnc_rep_change;
 
 [7,"btc_fnc_task_set_done",true] spawn BIS_fnc_MP;
-
-_crash spawn {
-
-	waitUntil {sleep 5; ({_x distance _this < 300} count playableUnits == 0)};
-
-	deleteVehicle _this;
-};
-
 
 btc_side_assigned = false;publicVariable "btc_side_assigned";
