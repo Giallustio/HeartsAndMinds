@@ -70,6 +70,7 @@ _unit setUnitPos "DOWN";
 {_x call btc_fnc_civ_unit_create} foreach units _group;
 
 sleep 1;
+waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({_x distance _unit > 5000} count playableUnits == 0))};
 [_unit] call btc_fnc_set_damage;
 
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !Alive _unit || {_unit call ace_medical_fnc_isInStableCondition && [_unit] call ace_common_fnc_isAwake})};
