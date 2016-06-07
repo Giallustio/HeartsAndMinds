@@ -52,31 +52,24 @@ _units = [];
 	_x setBehaviour "CARELESS";
 	_x setDir (random 360);
 	_x setUnitPos "DOWN";
-	_x addEventHandler ["killed", "btc_side_failed = true"];
 	_units pushBack _x;
 } foreach units _group;
 
 [_pos,_group] spawn {
-	if (btc_debug_log) then {diag_log format ["RESCUE pos: %1",(_this select 0)];};
-	if (btc_debug_log) then {diag_log format ["RESCUE group: %1",(_this select 1)];};
-	waitUntil {sleep 5; ({_x distance (_this select 0) > 50} count playableUnits == 0)};
-	if (btc_debug_log) then {diag_log format ["RESCUE join : %1",units (_this select 1)];};
+	waitUntil {sleep 5; ({_x distance (_this select 0) > 50} count playableUnits == 0) || ((_this select 1) == grpNull)};
 	units (_this select 1) join ((playableUnits select {_x distance (_this select 0) < 50}) select 0);
 };
 
-waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({_x distance getpos btc_create_object_point > 10} count _units isEqualTo 0))};
-
-if (btc_debug_log) then {diag_log format ["RESCUE fx : %1",_fx];};
-if (btc_debug_log) then {diag_log format ["RESCUE units : %1",_units];};
+waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({_x distance getpos btc_create_object_point > 10} count _units isEqualTo 0) || ({Alive _x} count _units isEqualTo 0))};
 
 [[_fx,_heli],_units,_group] spawn {
 	waitUntil {sleep 5; ({_x distance ((_this select 1) select 0) < 500} count playableUnits isEqualTo 0)};
-
+	((_this select 0) select 0) call btc_fnc_deleteTestObj;
 	{if (!isNull _x) then {deleteVehicle _x}} foreach ((_this select 0) + (_this select 1));
 	deleteGroup (_this select 2);
 };
 
-if (btc_side_aborted || btc_side_failed ) exitWith {
+if (btc_side_aborted || btc_side_failed || ({Alive _x} count _units isEqualTo 0)) exitWith {
 	[7,"btc_fnc_task_fail",true] spawn BIS_fnc_MP;
 	btc_side_assigned = false;publicVariable "btc_side_assigned";
 };
