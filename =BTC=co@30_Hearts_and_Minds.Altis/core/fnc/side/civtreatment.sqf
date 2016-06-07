@@ -78,7 +78,7 @@ waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !Alive _unit || {_un
 {deletemarker _x} foreach [_marker];
 
 [_fx,_unit,_veh] spawn {
-	waitUntil {sleep 5; ({_x distance _this < 300} count playableUnits == 0)};
+	waitUntil {sleep 5; ({_x distance (_this select 1) < 300} count playableUnits == 0)};
 	(_this select 0) call btc_fnc_deleteTestObj;
 	{if (!isNull _x) then {deleteVehicle _x}} forEach _this;
 };
