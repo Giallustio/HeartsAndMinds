@@ -1,5 +1,5 @@
 
-private ["_pos","_area","_behav","_allowwater"];
+private ["_group","_pos","_area","_behav","_allowwater"];
 
 _group = _this select 0;
 _pos = _this select 1;

@@ -1,5 +1,5 @@
 
-private ["_useful","_city","_pos","_marker","_wrecks","_generator","_objects","_storagebladder"];
+private ["_useful","_city","_pos","_marker","_wrecks","_generator","_objects","_storagebladder","_area"];
 
 //// Choose a Marine location occupied \\\\
 _useful = btc_city_all select {((_x getVariable ["occupied",false]) && (_x getVariable ["type",""] == "NameMarine"))};

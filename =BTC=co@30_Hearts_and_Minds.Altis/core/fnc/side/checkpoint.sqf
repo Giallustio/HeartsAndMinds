@@ -1,5 +1,5 @@
 
-private ["_useful","_city","_pos","_road","_roads","_boxes","_marker","_markers","_statics","_tower_type","_tower","_direction","_type_barrel","_type_canister","_type_pallet","_type_box","_btc_composition_checkpoint"];
+private ["_useful","_city","_pos","_road","_roads","_boxes","_marker","_markers","_statics","_tower_type","_tower","_direction","_type_barrel","_type_canister","_type_pallet","_type_box","_btc_composition_checkpoint","_type_barrel_canister1","_type_barrel_canister2"];
 
 //// Choose an occupied City \\\\
 _useful = btc_city_all select {(_x getVariable ["occupied",false] && {_x getVariable ["type",""] != "NameLocal"} && {_x getVariable ["type",""] != "Hill"} && (_x getVariable ["type",""] != "NameMarine"))};

@@ -59,8 +59,7 @@ if (count _data_units > 0) then {
 		case "NameMarine" : {0.6};
 		default {0.1};
 		});
-	if (_has_en) then
-	{
+	if (_has_en) then {
 		private ["_groups","_n","_trigger"];
 		//Find a better way to randomize city occupation
 		_n = random 3;
@@ -68,13 +67,6 @@ if (count _data_units > 0) then {
 		//hint ("SPAWNING" + str(_groups) + " ---- " + str(_n));
 		//for "_i" from 1 to (_groups) do {[_city,_radius,(random _ratio),(random 1)] spawn btc_fnc_mil_create_group;sleep 0.5;};
 		for "_i" from 1 to (_groups) do {[_city,_radius,(random _ratio),(random 1)] call btc_fnc_mil_create_group;};
-
-		_trigger = createTrigger["EmptyDetector",getPos _city];
-		_trigger setTriggerArea[(_radius_x+_radius_y),(_radius_x+_radius_y),0,false];
-		_trigger setTriggerActivation[str(btc_enemy_side),"NOT PRESENT",false];
-		_trigger setTriggerStatements ["this", format ["[%1] spawn btc_fnc_city_set_clear",(_this select 0)], ""];
-		_city setVariable ["trigger",_trigger];
-
 	};
 	//spawn mini task (ammo cache, ieds, injured civ)
 
@@ -91,6 +83,14 @@ if (count _data_units > 0) then {
 		_n = 3 * _factor;
 		[_city,(_radius/3),_n] call btc_fnc_civ_populate;
 	};
+};
+
+if (_has_en) then {
+	_trigger = createTrigger["EmptyDetector",getPos _city];
+	_trigger setTriggerArea[(_radius_x+_radius_y),(_radius_x+_radius_y),0,false];
+	_trigger setTriggerActivation[str(btc_enemy_side),"NOT PRESENT",false];
+	_trigger setTriggerStatements ["this", format ["[%1] spawn btc_fnc_city_set_clear",(_this select 0)], ""];
+	_city setVariable ["trigger",_trigger];
 };
 
 if (_city getVariable ["spawn_more",false]) then {

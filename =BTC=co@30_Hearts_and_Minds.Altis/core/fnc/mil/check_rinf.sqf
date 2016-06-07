@@ -40,6 +40,7 @@ _city setVariable ["ho_units_spawned",false];
 
 if (btc_debug) then {
 	//Marker
+	private ["_marker"];
 	_marker = createmarker [format ["btc_hideout_%1", _pos], _pos];
 	format ["btc_hideout_%1", _pos] setmarkertypelocal "mil_unknown";
 	format ["btc_hideout_%1", _pos] setMarkerTextLocal format ["Hideout %1", btc_hideouts_id];

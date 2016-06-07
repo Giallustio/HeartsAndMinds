@@ -5,7 +5,7 @@ private ["_useful","_veh","_vehpos","_city","_pos","_marker","_unit_type","_inde
 _useful = [];
 {if ((_x getVariable ["type",""] == "NameMarine") || (_x getVariable ["hasbeach",false])) then {_useful pushBack _x;};} foreach btc_city_all;
 if (count _useful == 0) exitWith {[] spawn btc_fnc_side_create;};
-_city = _useful select (floor random count _useful);
+_city = selectRandom _useful;
 _pos = getPos _city;
 
 //// Choose a random position \\\\
@@ -28,21 +28,22 @@ _marker setmarkertext "Civil need help";
 _marker setMarkerSize [0.6, 0.6];
 
 //// Create civ on _vehpos \\\\
-_veh_type = btc_civ_type_boats select (floor (random (count btc_civ_type_boats)));
+_veh_type = selectRandom btc_civ_type_boats;
 _veh = createVehicle [_veh_type, _vehpos, [], 0, "NONE"];
 _veh setDir (random 360);
 _veh setPos _vehpos;
 
-_unit_type = btc_civ_type_units select (floor random count btc_civ_type_units);
+_unit_type = selectRandom btc_civ_type_units;
 _group = createGroup civilian;
 _group setVariable ["no_cache",true];
 _group setVariable ["btc_patrol",true];
 _unit = _group createUnit [_unit_type, _pos, [], 0, "NONE"];
-sleep 1;
-[_unit] call btc_fnc_set_damage;
 _index = 1 + floor (random (_veh emptyPositions "cargo"));
 _unit assignAsCargoIndex [_veh, _index];
 _unit moveinCargo [_veh, _index];
+sleep 1;
+waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({_x distance _unit > 5000} count playableUnits == 0))};
+[_unit] call btc_fnc_set_damage;
 
 {_x call btc_fnc_civ_unit_create} foreach units _group;
 

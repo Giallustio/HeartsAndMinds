@@ -1,5 +1,5 @@
 
-private ["_useful","_city","_pos","_road","_roads","_marker","_statics","_tower_type","_tower","_direction"];
+private ["_useful","_city","_pos","_road","_roads","_marker","_statics","_tower_type","_tower","_direction","_area"];
 
 _useful = btc_city_all select {(_x getVariable ["occupied",false] && {_x getVariable ["type",""] != "NameLocal"} && {_x getVariable ["type",""] != "Hill"} && (_x getVariable ["type",""] != "NameMarine"))};
 

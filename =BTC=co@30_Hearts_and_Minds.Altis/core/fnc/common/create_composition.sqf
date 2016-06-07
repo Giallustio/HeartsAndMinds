@@ -1,5 +1,5 @@
 
-private ["_pos","_setdir","_array","_type","_dir","_rel_pos","_rel_x","_rel_y","_rel_z","_pos_z","_pos_x","_pos_y","_obj"];
+private ["_pos","_setdir","_array","_type","_dir","_rel_pos","_rel_x","_rel_y","_rel_z","_pos_z","_pos_x","_pos_y","_obj","_pos_obj"];
 
 _pos = _this select 0;
 //// Direction parameter is align with compass \\\\
