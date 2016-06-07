@@ -72,8 +72,13 @@ for "_i" from 1 to (1 + round random 2) do {
 
 	_boxe = nearestObject [_pos, _type_box];
 	_boxe spawn {
-		waitUntil {sleep 5; !(Alive _this)};
-		[[11],"btc_fnc_show_hint"] spawn BIS_fnc_MP;
+		private ["_pos","_fx"];
+		_pos = getpos _this;
+		waitUntil {sleep 5; btc_side_aborted || btc_side_failed || !(Alive _this)};
+		_fx = "test_EmptyObjectForSmoke" createVehicle _pos;
+		_fx setPos _pos;
+		sleep 120;
+		_fx call btc_fnc_deleteTestObj;
 	};
 	_boxes pushBack _boxe;
 };
