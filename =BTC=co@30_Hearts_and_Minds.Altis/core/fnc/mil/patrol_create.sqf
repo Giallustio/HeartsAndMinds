@@ -68,7 +68,7 @@ switch (true) do {
 		if (count (_pos nearRoads 150) > 0) then {
 			_newZone = getPos ((_pos nearRoads 150) select 0);
 		} else {
-			_newZone = [_pos,500] call btc_fnc_findsafepos;
+			_newZone = [_pos,500,btc_p_sea] call btc_fnc_findsafepos;
 		};
 
 		_pos_iswater = (surfaceIsWater _newZone);

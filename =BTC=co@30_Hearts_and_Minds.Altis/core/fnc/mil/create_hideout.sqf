@@ -22,7 +22,7 @@ if (count _this > 0) then {_city = _this;} else {
 _radius = (((_city getVariable ["RadiusX",0]) + (_city getVariable ["RadiusY",0]))/2) - 100;
 
 _random_pos = [getPos _city, _radius] call btc_fnc_randomize_pos;
-_pos = [_random_pos,100] call btc_fnc_findsafepos;
+_pos = [_random_pos,100,false] call btc_fnc_findsafepos;
 
 if (count _pos == 0 || count _pos > 2) then {_pos = getPos _city;};
 

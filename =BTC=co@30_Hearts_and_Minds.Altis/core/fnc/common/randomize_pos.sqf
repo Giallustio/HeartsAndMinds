@@ -21,7 +21,7 @@ _pos_y = _pos_y + ((random _random_area) - (random _random_area));
 _check_pos = [_pos_x, _pos_y, 0];
 
 if ((surfaceIsWater _check_pos) && !(_allowwater)) then {
-	_return_pos = [_check_pos,_random_area] call btc_fnc_findsafepos;
+	_return_pos = [_check_pos,_random_area,false] call btc_fnc_findsafepos;
 } else {
 	_return_pos = _check_pos;
 };
