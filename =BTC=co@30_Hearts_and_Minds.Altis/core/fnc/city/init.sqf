@@ -12,9 +12,19 @@ for "_i" from 0 to (count _locations - 1) do {
 
 	_type = gettext(_current >> "type");
 	if (_type in _cities) then {
-		private ["_id","_city","_position","_name","_position","_radius_x","_radius_y","_has_en","_trigger"];
+		private ["_id","_city","_position","_name","_position","_radius_x","_radius_y","_has_en","_trigger","_new_position","_area"];
 		_id = count btc_city_all;
 		_position = getarray(_current >> "position");
+		if (surfaceIsWater _position) then {
+			if !(_type isEqualTo "NameMarine") then {
+				_area = 50;
+				for "_i" from 0 to 2 do {
+					_new_position = [_position, 0, _area, 0.5, 0, -1, 0] call BIS_fnc_findSafePos;
+					if (count _new_position == 2) exitWith {_position = _new_position;};
+					_area = _area * 2;
+				};
+			};
+		};
 		_name = getText(_current >> "name");
 		_radius_x = getNumber(_current >> "RadiusA");
 		_radius_y = getNumber(_current >> "RadiusB");
