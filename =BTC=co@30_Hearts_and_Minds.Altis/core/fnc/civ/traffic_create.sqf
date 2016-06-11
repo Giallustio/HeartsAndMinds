@@ -1,5 +1,5 @@
 
-private ["_city","_area","_cities","_useful","_unit_type","_veh_type","_group","_veh","_pos_iswater","_pos","_Spos"];
+private ["_city","_area","_cities","_useful","_unit_type","_veh_type","_group","_veh","_pos_iswater","_pos","_Spos","_1","_2","_3"];
 
 _city = _this select 0;
 _area = _this select 1;
