@@ -27,7 +27,7 @@ switch (_this select 2) do {
 		_veh_type = (_this select 3);
 		if (_veh_type == "") then {_veh_type = selectRandom btc_type_motorized};
 
-		_return_pos = [_pos,500,false] call btc_fnc_findsafepos;
+		_return_pos = [_pos,0,500,13,false] call btc_fnc_findsafepos;
 
 		_veh = createVehicle [_veh_type, _return_pos, [], 0, "NONE"];
 		[_veh,_group,false,"",btc_type_crewmen] call BIS_fnc_spawnCrew;

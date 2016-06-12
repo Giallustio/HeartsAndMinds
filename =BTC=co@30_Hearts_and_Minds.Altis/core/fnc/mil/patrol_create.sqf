@@ -35,7 +35,7 @@ if (_usefuls isEqualTo []) exitWith {true};
 
 _useful = selectRandom _usefuls;
 if (_useful getVariable ["hasbeach",false]) then {
-	_pos = [getPos _useful,((_useful getVariable ["RadiusX",0]) + (_useful getVariable ["RadiusY",0])), btc_p_sea] call btc_fnc_randomize_pos;
+	_pos = [getPos _useful((_useful getVariable ["RadiusX",0]) + (_useful getVariable ["RadiusY",0])), btc_p_sea] call btc_fnc_randomize_pos;
 } else {
 	_pos = getPos _useful;
 };
@@ -68,7 +68,7 @@ switch (true) do {
 		if (count (_pos nearRoads 150) > 0) then {
 			_newZone = getPos ((_pos nearRoads 150) select 0);
 		} else {
-			_newZone = [_pos,500,btc_p_sea] call btc_fnc_findsafepos;
+			_newZone = [_pos,0,500,13,btc_p_sea] call btc_fnc_findsafepos;
 		};
 
 		_pos_iswater = (surfaceIsWater _newZone);
