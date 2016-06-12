@@ -35,7 +35,7 @@ if (_usefuls isEqualTo []) exitWith {true};
 
 _useful = selectRandom _usefuls;
 if (_useful getVariable ["hasbeach",false]) then {
-	_pos = [getPos _useful((_useful getVariable ["RadiusX",0]) + (_useful getVariable ["RadiusY",0])), btc_p_sea] call btc_fnc_randomize_pos;
+	_pos = [getPos _useful,((_useful getVariable ["RadiusX",0]) + (_useful getVariable ["RadiusY",0])), btc_p_sea] call btc_fnc_randomize_pos;
 } else {
 	_pos = getPos _useful;
 };
