@@ -1,5 +1,5 @@
 
-private ["_city","_area","_cities","_useful","_unit_type","_veh_type","_group","_veh","_pos_iswater","_pos","_Spos"];
+private ["_city","_area","_cities","_useful","_unit_type","_veh_type","_group","_veh","_pos_iswater","_pos","_Spos","_1","_2","_3"];
 
 _city = _this select 0;
 _area = _this select 1;
@@ -42,7 +42,7 @@ if (_pos_iswater) then {
 	_veh_type = selectRandom btc_civ_type_veh;
 };
 
-_veh = createVehicle [_veh_type, _Spos, [], 0, "NONE"];
+_veh = createVehicle [_veh_type, _Spos, [], 0, "FLY"];
 _unit_type createUnit [_pos, _group, "this moveinDriver _veh;this assignAsDriver _veh;"];
 
 _1 = _veh addEventHandler ["HandleDamage", {_this call btc_fnc_civ_traffic_eh}];

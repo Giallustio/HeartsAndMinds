@@ -1,5 +1,5 @@
 
-private ["_random","_city","_area","_cities","_useful","_usefuls","_pos","_group","_pos_iswater","_crewmen","_unit_type","_needdiver","_n_units","_spawn"];
+private ["_random","_city","_area","_cities","_useful","_usefuls","_pos","_group","_pos_iswater","_crewmen","_unit_type","_needdiver","_n_units","_spawn","_1"];
 
 _random = _this select 0;//0 random, 1 inf, 2 moto, 3 heli
 _city = _this select 1;
@@ -80,13 +80,13 @@ switch (true) do {
 
 		_needdiver = getText(configfile >> "CfgVehicles" >> _veh_type >> "simulation") isEqualTo "submarinex";
 		if (_needdiver) then {_crewmen = btc_type_divers select 0} else {_crewmen = btc_type_crewmen};
-		_veh = createVehicle [_veh_type, _newZone, [], 0, "NONE"];
+		_veh = createVehicle [_veh_type, _newZone, [], 0, "FLY"];
 		[_veh,_group,false,"",_crewmen] call BIS_fnc_spawnCrew;
 		_group selectLeader (driver _veh);
 		_cargo = (_veh emptyPositions "cargo") - 1;
 		if (_cargo > 0) then {
 			for "_i" from 0 to _cargo do {
-				_unit_type = [selectRandom btc_type_units, selectRandom btc_type_divers] select _needdiver ;
+				_unit_type = [selectRandom btc_type_units, selectRandom btc_type_divers] select _needdiver;
 				_unit_type createUnit [_pos, _group, "this moveinCargo _veh;this assignAsCargo _veh;"];
 			};
 		};

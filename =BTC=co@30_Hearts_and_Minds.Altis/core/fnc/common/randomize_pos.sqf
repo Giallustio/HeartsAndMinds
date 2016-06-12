@@ -25,5 +25,4 @@ if ((surfaceIsWater _check_pos) && !(_allowwater)) then {
 } else {
 	_return_pos = _check_pos;
 };
-
 _return_pos

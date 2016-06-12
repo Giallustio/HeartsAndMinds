@@ -29,7 +29,7 @@ switch (_this select 2) do {
 
 		_return_pos = [_pos,0,500,13,false] call btc_fnc_findsafepos;
 
-		_veh = createVehicle [_veh_type, _return_pos, [], 0, "NONE"];
+		_veh = createVehicle [_veh_type, _return_pos, [], 0, "FLY"];
 		[_veh,_group,false,"",btc_type_crewmen] call BIS_fnc_spawnCrew;
 		_cargo = (_veh emptyPositions "cargo") - 1;
 		for "_i" from 0 to _cargo do {

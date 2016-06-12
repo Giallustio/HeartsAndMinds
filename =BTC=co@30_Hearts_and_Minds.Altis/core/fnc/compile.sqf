@@ -18,6 +18,7 @@ if (isServer) then {
 	btc_fnc_set_damage = compile preprocessFile "core\fnc\common\set_damage.sqf";
 	btc_fnc_road_direction = compile preprocessFile "core\fnc\common\road_direction.sqf";
 	btc_fnc_findsafepos = compile preprocessFile "core\fnc\common\findsafepos.sqf";
+	btc_fnc_deleteTestObj = compile preprocessFile "core\fnc\common\deleteTestObj.sqf";
 
 	//CITY
 	btc_fnc_city_activate = compile preprocessFile "core\fnc\city\activate.sqf";
@@ -114,6 +115,7 @@ if (isServer) then {
 
 	//LOG
 	btc_fnc_log_getconfigmagazines = compile preprocessFile "core\fnc\log\getconfigmagazines.sqf";
+	btc_fnc_log_CuratorObjectPlaced_s = compile preprocessFile "core\fnc\log\CuratorObjectPlaced_s.sqf";
 };
 /////////////////////CLIENT AND SERVER\\\\\\\\\\\\\\\\\\\\\
 
