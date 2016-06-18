@@ -198,15 +198,15 @@ class Params {
 	class btc_p_civ {
 	//paramsArray[28]
         title = "Civil type:";
-		values[]={0,1,2,3};
-		texts[]={"Civilian (A3)","Afghan (@Ericj_Taliban)","Afghan (@=BTC= Militia)","Russian (@RDS A2 Civilian Pack)"};
+		values[]={0,1,2,3,4};
+		texts[]={"Civilian (A3)","Afghan (@Ericj_Taliban)","Afghan (@=BTC= Militia)","Russian (@RDS A2 Civilian Pack)","A2 civils (@CUP Units)"};
 		default = 0;
 	};
 	class btc_p_civ_veh {
 	//paramsArray[29]
         title = "Civil vehicle type:";
-		values[]={0,1};
-		texts[]={"Vanilla (A3)","A2 vehicle (@RDS A2 Civilian Pack)"};
+		values[]={0,1,2};
+		texts[]={"Vanilla (A3)","A2 vehicles (@RDS A2 Civilian Pack)","A2 vehicles (@CUP Vehicles)"};
 		default = 0;
 	};
 	class btc_p_city_radius {
