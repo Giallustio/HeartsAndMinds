@@ -3,9 +3,8 @@ private ["_useful","_house","_id","_city","_xx","_y","_pos","_houses","_house"];
 
 if (count btc_hideouts == 0) exitWith {};
 
-_useful = [];
 _house = objNull;
-{if (_x getVariable ["occupied",false] && {_x getVariable ["type",""] != "NameLocal"} && {_x getVariable ["type",""] != "Hill"} && {_x getVariable ["type",""] != "NameMarine"}) then {_useful = _useful + [_x];};} foreach btc_city_all;
+_useful = btc_city_all select {(_x getVariable ["occupied",false] && {_x getVariable ["type",""] != "NameLocal"} && {_x getVariable ["type",""] != "Hill"} && {_x getVariable ["type",""] != "NameMarine"})};
 
 if (count _useful == 0) then {_useful = btc_city_all;};
 
@@ -29,6 +28,6 @@ if (count _houses == 0) then {
 	[] call btc_fnc_cache_find_pos;
 } else {
 	//private ["_isAct","_cache"];
-	_house = _houses select (floor random count _houses);
+	_house = selectRandom _houses;
 	_house spawn btc_fnc_cache_spawn;
 };

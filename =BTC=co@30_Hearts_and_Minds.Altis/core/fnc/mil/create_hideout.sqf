@@ -1,14 +1,12 @@
 
-private ["_city","_pos","_radius","_hideout","_random_pos"];
+private ["_city","_pos","_radius","_hideout","_random_pos","_random_area"];
 
 _city = objNull;
 
 if (count _this > 0) then {_city = _this;} else {
 	private ["_useful","_id"];
-	_useful = [];
-	{
-		//"NameVillage","NameCity","NameCityCapital","NameLocal","Hill"
-		if (
+	//"NameVillage","NameCity","NameCityCapital","NameLocal","Hill"
+	_useful = btc_city_all select {(
 			!(_x getVariable ["active",false]) &&
 			{_x distance (getMarkerPos btc_respawn_marker) > btc_hideout_safezone} &&
 			{!(_x getVariable ["has_ho",false])} &&
@@ -17,16 +15,19 @@ if (count _this > 0) then {_city = _this;} else {
 				{_x getVariable ["type",""] == "Hill"} ||
 				{_x getVariable ["type",""] == "NameVillage"}
 			)
-		) then {_useful = _useful + [_x];};
-	} foreach btc_city_all;
-	_id = floor random count _useful;
-	_city = _useful select _id;
+		)};
+	_city = selectRandom _useful;
 };
 
 _radius = (((_city getVariable ["RadiusX",0]) + (_city getVariable ["RadiusY",0]))/2) - 100;
 
 _random_pos = [getPos _city, _radius] call btc_fnc_randomize_pos;
-_pos = [_random_pos, 0, 100, 2, 0, 0.5, 0] call BIS_fnc_findSafePos;//5????
+_random_area = 100;
+for "_i" from 0 to 4 do {
+	_pos = [_random_pos, 0, _random_area, 2, 0, 0.5, 0] call BIS_fnc_findSafePos;
+	if (count _pos == 2) exitWith {_pos = [_pos select 0, _pos select 1, 0];};
+	_random_area = _random_area * 1.5;
+};
 
 if (count _pos == 0) then {_pos = getPos _city;};
 
@@ -59,6 +60,6 @@ if (btc_debug) then {
 if (btc_debug_log) then {diag_log format ["btc_fnc_mil_create_hideout: _this = %1 ; POS %2 ID %3",_this,_pos,btc_hideouts_id];};
 
 btc_hideouts_id = btc_hideouts_id + 1;
-btc_hideouts = btc_hideouts + [_hideout];
+btc_hideouts pushBack _hideout;
 
 true

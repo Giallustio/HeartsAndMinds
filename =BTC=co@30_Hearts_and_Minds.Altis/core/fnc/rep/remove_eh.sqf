@@ -1,6 +1,8 @@
 
 if (isNil {_this getVariable "btc_rep_eh_added"}) exitWith {true};
 
+private ["_data"];
+
 _data = _this getVariable "btc_rep_eh_added";
 
 _this removeEventHandler ["HandleHeal", (_data select 0)];

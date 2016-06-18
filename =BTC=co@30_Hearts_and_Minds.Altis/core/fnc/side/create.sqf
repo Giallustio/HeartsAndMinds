@@ -1,9 +1,11 @@
 
+private ["_side"];
+
 if (btc_side_assigned) exitWith {};
 
 if (count btc_side_list_use == 0) then {btc_side_list_use = + btc_side_list;};
 
-_side = btc_side_list_use select (floor random count btc_side_list_use);
+_side = selectRandom btc_side_list_use;
 
 btc_side_list_use = btc_side_list_use - [_side];
 
@@ -19,4 +21,6 @@ switch (_side) do {
 	case 4 : {[] spawn btc_fnc_side_tower;};
 	case 5 : {[] spawn btc_fnc_side_civtreatment;};
 	case 6 : {[] spawn btc_fnc_side_checkpoint;};
+	case 7 : {[] spawn btc_fnc_side_civtreatment_boat;};
+	case 8 : {[] spawn btc_fnc_side_underwater_generator;};
 };

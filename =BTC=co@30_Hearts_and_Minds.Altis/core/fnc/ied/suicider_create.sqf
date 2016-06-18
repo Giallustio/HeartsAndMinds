@@ -1,3 +1,6 @@
+
+private ["_city","_area","_rpos","_unit_type","_group","_suicider","_cond"];
+
 _city = _this select 0;
 _area = _this select 1;
 
@@ -17,7 +20,7 @@ switch (typeName _city) do
 
 _rpos = [_pos, _area] call btc_fnc_randomize_pos;
 
-_unit_type = btc_civ_type_units select (floor random count btc_civ_type_units);
+_unit_type = selectRandom btc_civ_type_units;
 
 _group = createGroup civilian;
 _group createUnit [_unit_type, _rpos, [], 0, "NONE"];

@@ -1,4 +1,6 @@
 
+private ["_mat","_name","_array_markers","_name_to_check"];
+
 if (count ((position _this) isflatempty [1,0,0.9,1,0,false,_this]) == 0) exitWith {hint "Area is not flat enough!"};
 
 if (_this distance (getMarkerPos "btc_base") < 2000) exitWith {hint "Too close at the main base!"};
@@ -27,7 +29,7 @@ _name = ctrlText 777;
 
 _name_to_check = ("FOB " + (toUpper(_name)));
 _array_markers = [];
-{private "_n";_n = toUpper(_x);_array_markers = _array_markers + [_n];} foreach allMapMarkers;
+{private "_n";_n = toUpper(_x);_array_markers pushBack _n;} foreach allMapMarkers;
 
 if (_array_markers find _name_to_check >= 0) exitWith {closeDialog 0;hint "Name already in use!";_mat spawn btc_fnc_fob_create;};
 

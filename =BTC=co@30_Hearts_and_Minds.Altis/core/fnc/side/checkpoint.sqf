@@ -1,11 +1,10 @@
 
-private ["_useful","_city","_pos","_road","_roads","_boxes","_marker","_markers","_statics","_tower_type","_tower","_direction","_type_barrel","_type_canister","_type_pallet","_type_box","_btc_composition_checkpoint"];
+private ["_useful","_city","_pos","_road","_roads","_boxes","_marker","_markers","_statics","_tower_type","_tower","_direction","_type_barrel","_type_canister","_type_pallet","_type_box","_btc_composition_checkpoint","_type_barrel_canister1","_type_barrel_canister2"];
 
 //// Choose an occupied City \\\\
-_useful = [];
-{if (_x getVariable ["occupied",false] && {_x getVariable ["type",""] != "NameLocal"} && {_x getVariable ["type",""] != "Hill"} && (_x getVariable ["type",""] != "NameMarine")) then {_useful = _useful + [_x];};} foreach btc_city_all;
-if (count _useful == 0) exitWith {[] spawn btc_fnc_side_create;};
-_city = _useful select (floor random count _useful);
+_useful = btc_city_all select {(_x getVariable ["occupied",false] && {_x getVariable ["type",""] != "NameLocal"} && {_x getVariable ["type",""] != "Hill"} && (_x getVariable ["type",""] != "NameMarine"))};
+if (_useful isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
+_city = selectRandom _useful;
 _pos = getPos _city;
 
 btc_side_aborted = false;
@@ -24,12 +23,13 @@ _statics = btc_type_gl + btc_type_mg;
 _boxes = [];
 _markers = [];
 for "_i" from 1 to (1 + round random 2) do {
+	private ["_boxe"];
 	//// Choose a road \\\\
 	_pos = [getPos _city, 300] call btc_fnc_randomize_pos;
 	_roads = _pos nearRoads 300;
-	if (count _roads > 0) then {_road = (_roads select (floor random count _roads));
+	if (count _roads > 0) then {_road = selectRandom _roads;
 		_pos = getPos _road;
-		};
+	};
 
 	_direction = [_road] call btc_fnc_road_direction;
 
@@ -39,14 +39,14 @@ for "_i" from 1 to (1 + round random 2) do {
 	_marker setmarkertext "Checkpoint";
 	_marker setMarkerColor "ColorRed";
 	_marker setMarkerSize [0.6, 0.6];
-	_markers = _markers + [_marker];
+	_markers pushback _marker;
 
 	//// Randomise composition \\\\
-	_type_barrel = btc_type_barrel select (floor (random (count btc_type_barrel)));
-	_type_barrel_canister1 = (btc_type_barrel + btc_type_canister) select (floor (random (count (btc_type_barrel +btc_type_canister))));
-	_type_barrel_canister2 = (btc_type_barrel + btc_type_canister) select (floor (random (count (btc_type_barrel +btc_type_canister))));
-	_type_pallet = btc_type_pallet select (floor (random (count btc_type_pallet)));
-	_type_box = btc_type_box select (floor (random (count btc_type_box)));
+	_type_barrel = selectRandom btc_type_barrel;
+	_type_barrel_canister1 = selectRandom(btc_type_barrel + btc_type_canister);
+	_type_barrel_canister2 = selectRandom(btc_type_barrel + btc_type_canister);
+	_type_pallet = selectRandom btc_type_pallet;
+	_type_box = selectRandom btc_type_box;
 	_btc_composition_checkpoint = [
 		[_type_barrel,10,[0.243652,-2.78906,0]],
 		[_type_barrel,20,[-0.131836,3.12939,0]],
@@ -70,7 +70,17 @@ for "_i" from 1 to (1 + round random 2) do {
 	[[((_pos select 0) + 2.72949*cos(-_direction) - -2.03857*sin(-_direction)), ((_pos select 1) -2.03857*cos(-_direction) +2.72949*sin(-_direction)), (_pos select 2)],_statics,_direction ] call btc_fnc_mil_create_static;
 	[_pos,_direction,_btc_composition_checkpoint] call btc_fnc_create_composition;
 
-	_boxes = _boxes + [nearestObject [_pos, _type_box]];
+	_boxe = nearestObject [_pos, _type_box];
+	_boxe spawn {
+		private ["_pos","_fx"];
+		_pos = getpos _this;
+		waitUntil {sleep 5; btc_side_aborted || btc_side_failed || !(Alive _this)};
+		_fx = "test_EmptyObjectForSmoke" createVehicle _pos;
+		_fx setPos _pos;
+		sleep 120;
+		_fx call btc_fnc_deleteTestObj;
+	};
+	_boxes pushBack _boxe;
 };
 
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({Alive _x} count _boxes == 0))};
