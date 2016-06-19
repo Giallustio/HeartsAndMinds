@@ -95,4 +95,11 @@ switch _this do
 		["TaskSucceeded",["Side mission Accomplished!","The armed convoy has been destroyed!"]] call bis_fnc_showNotification;
 		player setVariable ["task_12",nil];
 	};
+	case 13 : {
+		private "_task";
+		_task = player getVariable "task_13";
+		_task setTaskState "SUCCEEDED";
+		["TaskSucceeded",["Side mission Accomplished!","The pilot has been rescued!"]] call bis_fnc_showNotification;
+		player setVariable ["task_13",nil];
+	};
 };
