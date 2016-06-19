@@ -477,7 +477,7 @@ switch (true) do {
 		btc_type_gl = ["O_GMG_01_F","O_GMG_01_high_F"];
 		btc_civ_type_units  = ["CAF_AG_ME_CIV","CAF_AG_ME_CIV_02","CAF_AG_ME_CIV_03","CAF_AG_ME_CIV_04"];
 	};
-	case (_p_en == 2 ) :
+	case (_p_en == 2) :
 	{
 		btc_hq                    = btc_hq_green;
 		btc_enemy_side 			  = resistance;
@@ -525,6 +525,18 @@ switch (true) do {
 		btc_type_motorized		= ["aif_armed","aif_offroad","aif_offroad2","aif_car","aif_truck_ural","aif_truck","aif_heli_MH6","aif_heli_K60","aif_uaz_dshkm","aif_uaz_spg9","aif_apc","aif_uaz_open"];
 		btc_type_mg				= ["aif_Static_M2","aif_Static_M2_MiniTripod"];
 		btc_type_gl				= ["O_GMG_01_F","O_GMG_01_high_F","aif_Static_Mk19_TriPod"];
+	};
+	case (_p_en == 6) : {
+		btc_hq					= btc_hq_green;
+		btc_enemy_side			= resistance;
+		btc_type_units            = ["I_C_Soldier_Bandit_5_F","I_C_Soldier_Bandit_6_F","I_C_Soldier_Bandit_3_F","I_C_Soldier_Bandit_8_F","I_C_Soldier_Bandit_2_F","I_C_Soldier_Bandit_4_F","I_C_Soldier_Bandit_7_F","I_C_Soldier_Bandit_1_F","I_C_Soldier_Para_6_F","I_C_Soldier_Para_7_F","I_C_Soldier_Para_2_F","I_C_Soldier_Para_3_F","I_C_Soldier_Para_4_F","I_C_Soldier_Para_8_F","I_C_Soldier_Para_1_F","I_C_Soldier_Para_5_F"];
+		btc_type_divers            = ["I_diver_F","I_diver_exp_F","I_diver_TL_F"];
+		btc_type_crewmen          = "I_C_Soldier_Bandit_5_F";
+		btc_type_vehicles         = ["I_G_Offroad_01_F","I_G_Offroad_01_armed_F","I_C_Van_01_transport_F","O_T_LSV_02_armed_F","O_T_LSV_02_unarmed_F"];
+		btc_type_boats			= ["I_Boat_Armed_01_minigun_F","I_Boat_Transport_01_F","I_SDV_01_F","I_G_Boat_Transport_01_F","I_C_Boat_Transport_01_F","I_C_Boat_Transport_02_F"];
+		btc_type_motorized        = ["I_G_Offroad_01_F","I_G_Offroad_01_armed_F","I_C_Van_01_transport_F","O_T_LSV_02_armed_F","O_T_LSV_02_unarmed_F","I_Truck_02_transport_F","I_G_Offroad_01_armed_F","I_Truck_02_covered_F"];
+		btc_type_mg = ["I_HMG_01_F","I_HMG_01_high_F"];
+		btc_type_gl = ["I_GMG_01_F","I_GMG_01_high_F"];
 	};
 	default	{
 		btc_hq                    = btc_hq_red;
