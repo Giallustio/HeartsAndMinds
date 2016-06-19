@@ -23,9 +23,9 @@ btc_side_done = false;
 btc_side_failed = false;
 btc_side_assigned = true;publicVariable "btc_side_assigned";
 
-[[7,getPos _city,_city getVariable "name"],"btc_fnc_task_create",true] spawn BIS_fnc_MP;
+[[13,getPos _city,_city getVariable "name"],"btc_fnc_task_create",true] spawn BIS_fnc_MP;
 
-btc_side_jip_data = [7,getPos _city,_city getVariable "name"];
+btc_side_jip_data = [13,getPos _city,_city getVariable "name"];
 
 _city setVariable ["spawn_more",true];
 
@@ -70,12 +70,12 @@ waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({_x distance getpos
 };
 
 if (btc_side_aborted || btc_side_failed || ({Alive _x} count _units isEqualTo 0)) exitWith {
-	[7,"btc_fnc_task_fail",true] spawn BIS_fnc_MP;
+	[13,"btc_fnc_task_fail",true] spawn BIS_fnc_MP;
 	btc_side_assigned = false;publicVariable "btc_side_assigned";
 };
 
 50 call btc_fnc_rep_change;
 
-[7,"btc_fnc_task_set_done",true] spawn BIS_fnc_MP;
+[13,"btc_fnc_task_set_done",true] spawn BIS_fnc_MP;
 
 btc_side_assigned = false;publicVariable "btc_side_assigned";

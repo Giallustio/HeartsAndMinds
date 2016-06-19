@@ -82,4 +82,12 @@ switch _this do
 		["TaskFailed",["Side mission failed!","The armed convoy has not been destroyed"]] call bis_fnc_showNotification;
 		player setVariable ["task_12",nil];
 	};
+	case 13 :
+	{
+		private "_task";
+		_task = player getVariable "task_13";
+		_task setTaskState "FAILED";
+		["TaskFailed",["Side mission failed!","The pilot has not been rescued"]] call bis_fnc_showNotification;
+		player setVariable ["task_13",nil];
+	};
 };

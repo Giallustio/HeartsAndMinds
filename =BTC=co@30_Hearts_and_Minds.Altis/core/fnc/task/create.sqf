@@ -108,4 +108,13 @@ switch (_this select 0) do
 		player setVariable ["task_12",_task];
 		["TaskAssigned",["New task assigned!",("Destroy a convoy attacking " + (_this select 2))]] call bis_fnc_showNotification;
 	};
+	case 13 :
+	{
+		private "_task";
+		_task = player createSimpleTask [("Rescue a pilot near " + (_this select 2))];
+		_task setSimpleTaskDescription [format ["A pilot crashed his helicopter near %1. He is asking for your help to rescue him!",(_this select 2)],("Rescue a pilot near " + (_this select 2)),("Rescue a pilot near " + (_this select 2))];
+		_task setSimpleTaskDestination (_this select 1);
+		player setVariable ["task_12",_task];
+		["TaskAssigned",["New task assigned!",("Rescue a pilot near " + (_this select 2))]] call bis_fnc_showNotification;
+	};
 };
