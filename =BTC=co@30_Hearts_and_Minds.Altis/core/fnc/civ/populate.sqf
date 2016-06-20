@@ -20,13 +20,13 @@ _houses = [];
 for [{_i = 25},{_i < _area},{_i = _i + 50}] do {
 	private "_hs";
 	_hs = [[(_pos select 0) + _i,(_pos select 1) + _i,0],50] call btc_fnc_getHouses;
-	_houses = _houses + _hs;
+	_houses append _hs;
 	_hs = [[(_pos select 0) + _i,(_pos select 1) - _i,0],50] call btc_fnc_getHouses;
-	_houses = _houses + _hs;
+	_houses append _hs;
 	_hs = [[(_pos select 0) - _i,(_pos select 1) - _i,0],50] call btc_fnc_getHouses;
-	_houses = _houses + _hs;
+	_houses append _hs;
 	_hs = [[(_pos select 0) - _i,(_pos select 1) + _i,0],50] call btc_fnc_getHouses;
-	_houses = _houses + _hs;
+	_houses append _hs;
 };
 
 
