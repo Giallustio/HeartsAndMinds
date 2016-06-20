@@ -1,5 +1,5 @@
 
-private ["_veh","_towed"];
+private ["_veh","_towed","_pos"];
 
 _veh = _this;
 
@@ -16,6 +16,8 @@ _towed = btc_int_ask_data;
 
 deTach _towed;
 _towed setVelocity [0, 0, 0.01];
+_pos = getpos _towed;
+_towed setpos [_pos select 0, _pos select 1, 0];
 
 [[_towed,"tow",objNull],"btc_fnc_int_change_var",false] spawn BIS_fnc_MP;
 [[_veh,"tow",objNull],"btc_fnc_int_change_var",false] spawn BIS_fnc_MP;
