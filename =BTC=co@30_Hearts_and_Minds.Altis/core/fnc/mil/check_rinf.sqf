@@ -5,13 +5,13 @@ _city = objNull;
 
 if (count _this > 0) then {_city = _this;} else {
 	private ["_useful","_id"];
-	//"NameVillage","NameCity","NameCityCapital","NameLocal","Hill"
+	//"NameVillage","NameCity","NameCityCapital","NameLocal","Hill","Airport"
 	_useful = btc_city_all select {(
 			!(_x getVariable ["active",false]) && {_x distance (getMarkerPos btc_respawn_marker) > btc_hideout_safezone} &&
 			{!(_x getVariable ["has_ho",false])} &&
 			(
 				_x getVariable ["type",""] == "NameLocal" ||
-				{_x getVariable ["type",""] == "Hill"} || {_x getVariable ["type",""] == "NameVillage"}
+				{_x getVariable ["type",""] == "Hill"} || {_x getVariable ["type",""] == "NameVillage" || {_x getVariable ["type",""] == "Airport"}
 			)
 		)
 	};

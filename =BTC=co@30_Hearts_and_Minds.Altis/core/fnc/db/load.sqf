@@ -124,8 +124,8 @@ _array_ho = profileNamespace getVariable [format ["btc_hm_%1_ho",_name],[]];
 	btc_hideouts pushBack _hideout;
 } foreach _array_ho;
 
-_ho = profileNamespace getVariable [format ["btc_hm_%1_ho_sel",_name],objNull];
-btc_hq setVariable ["info_hideout",_ho];
+_ho = profileNamespace getVariable [format ["btc_hm_%1_ho_sel",_name],0];
+btc_hq setVariable ["info_hideout", btc_hideouts select _ho];
 
 if (count btc_hideouts == 0) then {[] execVM "core\fnc\common\final_phase.sqf";};
 

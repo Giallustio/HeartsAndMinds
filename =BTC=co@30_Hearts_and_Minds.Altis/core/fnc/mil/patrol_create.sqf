@@ -67,15 +67,16 @@ switch (true) do {
 		_newZone = [];
 		if (count (_pos nearRoads 150) > 0) then {
 			_newZone = getPos ((_pos nearRoads 150) select 0);
+			_pos_iswater = false;
+			_veh_type = selectRandom btc_type_motorized;
 		} else {
 			_newZone = [_pos,0,500,13,btc_p_sea] call btc_fnc_findsafepos;
-		};
-
-		_pos_iswater = (surfaceIsWater _newZone);
-		if (_pos_iswater) then {
-			_veh_type = selectRandom btc_type_boats;
-		} else {
-			_veh_type = selectRandom btc_type_motorized;
+			_pos_iswater = surfaceIsWater _newZone;
+			if (_pos_iswater) then {
+				_veh_type = selectRandom btc_type_boats;
+			} else {
+				_veh_type = selectRandom btc_type_motorized;
+			};
 		};
 
 		_needdiver = getText(configfile >> "CfgVehicles" >> _veh_type >> "simulation") isEqualTo "submarinex";
