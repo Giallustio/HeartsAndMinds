@@ -79,7 +79,7 @@ _array_ho = profileNamespace getVariable [format ["btc_hm_%1_ho",_name],[]];
 	_hideout setVariable ["id",(_x select 1)];
 	_hideout setVariable ["rinf_time",(_x select 2)];
 	_hideout setVariable ["cap_time",(_x select 3)];
-	_hideout setVariable ["assigned_to",(_x select 4)];
+	_hideout setVariable ["assigned_to", btc_city_all select (_x select 4)];
 
 	_hideout addEventHandler ["HandleDamage", btc_fnc_mil_hd_hideout];
 
@@ -110,8 +110,8 @@ _array_ho = profileNamespace getVariable [format ["btc_hm_%1_ho",_name],[]];
 	btc_hideouts = btc_hideouts + [_hideout];
 } foreach _array_ho;
 
-_ho = profileNamespace getVariable [format ["btc_hm_%1_ho_sel",_name],objNull];
-btc_hq setVariable ["info_hideout",_ho];
+_ho = profileNamespace getVariable [format ["btc_hm_%1_ho_sel",_name],0];
+btc_hq setVariable ["info_hideout", btc_hideouts select _ho];
 
 if (count btc_hideouts == 0) then {[] execVM "core\fnc\common\final_phase.sqf";};
 
