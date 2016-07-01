@@ -42,7 +42,15 @@ _marker2 = createmarker [format ["sm_2_%1",_pos2],_pos2];
 _marker2 setmarkertype "hd_flag";
 _marker2 setmarkertext "Convoy end";
 _marker2 setMarkerSize [0.6, 0.6];
-_markers = [_marker1,_marker2];
+
+_area = createmarker [format ["sm_%1",_pos2],_pos2];
+_area setMarkerShape "ELLIPSE";
+_area setMarkerBrush "SolidBorder";
+_area setMarkerSize [_radius_x/2, _radius_x/2];
+_area setMarkerAlpha 0.3;
+_area setmarkercolor "colorBlue";
+
+_markers = [_marker1,_marker2,_area];
 
 //// Create convoy \\\\
 _group = createGroup btc_enemy_side;
