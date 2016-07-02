@@ -50,9 +50,9 @@ _group setVariable ["no_cache",false];
 if (btc_side_aborted || btc_side_failed || !(Alive _captive)) exitWith {
 	[13,"btc_fnc_task_fail",true] spawn BIS_fnc_MP;
 	btc_side_assigned = false;publicVariable "btc_side_assigned";
-	[[_captive],_group] spawn {
+	[_captive,_group] spawn {
 	waitUntil {sleep 5; ({_x distance (_this select 0) < 500} count playableUnits isEqualTo 0)};
-	{if (!isNull _x) then {deleteVehicle _x}} foreach ((_this select 0) + units (_this select 1));
+	{if (!isNull _x) then {deleteVehicle _x}} foreach ([(_this select 0)] + units (_this select 1));
 	deleteGroup (_this select 1);
 	};
 };
