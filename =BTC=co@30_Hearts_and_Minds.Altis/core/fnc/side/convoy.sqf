@@ -84,7 +84,7 @@ for "_i" from 0 to (2 + round random 2) do {
 _group setBehaviour "SAFE";
 _wp = _group addWaypoint [_pos2, 0];
 _wp setWaypointType "MOVE";
-_wp setWaypointCompletionRadius 300;
+_wp setWaypointCompletionRadius _radius_x/2;
 _wp setWaypointCombatMode "RED";
 _wp setWaypointSpeed "LIMITED";
 _wp setWaypointFormation "STAG COLUMN";
