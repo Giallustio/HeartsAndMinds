@@ -1,5 +1,5 @@
 
-private ["_useful","_city","_pos","_heli","_heli_type","_pitch","_bank","_random_area","_return_pos","_units","_fx","_group"];
+private ["_useful","_city","_pos","_heli","_heli_type","_pitch","_bank","_random_area","_return_pos","_units","_fx","_group","_triggers","_trigger"];
 
 //// Choose an occupied City \\\\
 _useful = btc_city_all select {(_x getVariable ["occupied",false] && {_x getVariable ["type",""] != "NameLocal"} && {_x getVariable ["type",""] != "Hill"} && (_x getVariable ["type",""] != "NameMarine"))};
@@ -8,8 +8,8 @@ if (_useful isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
 
 _city = selectRandom _useful;
 
-//// Randomise composition \\\\
-_pos = [getPos _city, 300] call btc_fnc_randomize_pos;
+//// Randomise position \\\\
+_pos = [getPos _city, (((_city getVariable ["RadiusX",0]) + (_city getVariable ["RadiusY",0]))/2) - 100] call btc_fnc_randomize_pos;
 _random_area = 50;
 for "_i" from 0 to 4 do {
 	_return_pos = [_pos, 0, _random_area, 13, 0, 60 * (pi / 180), 0] call BIS_fnc_findSafePos;
@@ -29,7 +29,7 @@ btc_side_jip_data = [13,getPos _city,_city getVariable "name"];
 
 _city setVariable ["spawn_more",true];
 
- _heli_type = typeOf selectRandom ((btc_vehicles + btc_helo) select {_x isKindOf "air"});
+_heli_type = typeOf selectRandom ((btc_vehicles + btc_helo) select {_x isKindOf "air"});
 _heli = createVehicle [_heli_type, _pos, [], 0, "NONE"];
 _heli setVariable ["btc_dont_delete",true];
 _heli setDamage 1;
@@ -46,6 +46,7 @@ _group setVariable ["no_cache",true];
 _group setVariable ["btc_patrol",true];
 getText(configfile >> "CfgVehicles" >> _heli_type >> "crew") createUnit [_pos, _group];
 _units = [];
+_triggers = [];
 {
 	_x setCaptive true;
 	removeAllWeapons _x;
@@ -53,16 +54,19 @@ _units = [];
 	_x setDir (random 360);
 	_x setUnitPos "DOWN";
 	_units pushBack _x;
+	//// Create trigger \\\\
+	_trigger = createTrigger["EmptyDetector",getPos _city];
+	_trigger setVariable ["unit", _x];
+	_trigger setTriggerArea[50,50,0,false];
+	_trigger setTriggerActivation[str(btc_player_side),"PRESENT",false];
+	_trigger setTriggerStatements["this", "_unit = thisTrigger getVariable 'unit'; [_unit] join (thisList select 0);", ""];
+	_trigger attachTo [_x,[0,0,0]];
+	_triggers pushBack _trigger;
 } foreach units _group;
 
-[_pos,_group] spawn {
-	waitUntil {sleep 5; ({_x distance (_this select 0) > 50} count playableUnits == 0) || ((_this select 1) == grpNull)};
-	units (_this select 1) join ((playableUnits select {_x distance (_this select 0) < 50}) select 0);
-};
+waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({_x distance getpos btc_create_object_point > 100} count _units isEqualTo 0) || ({Alive _x} count _units isEqualTo 0))};
 
-waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({_x distance getpos btc_create_object_point > 10} count _units isEqualTo 0) || ({Alive _x} count _units isEqualTo 0))};
-
-[[_fx,_heli],_units,_group] spawn {
+[[_fx,_heli] + _triggers,_units,_group] spawn {
 	waitUntil {sleep 5; ({_x distance ((_this select 1) select 0) < 500} count playableUnits isEqualTo 0)};
 	((_this select 0) select 0) call btc_fnc_deleteTestObj;
 	{if (!isNull _x) then {deleteVehicle _x}} foreach ((_this select 0) + (_this select 1));
