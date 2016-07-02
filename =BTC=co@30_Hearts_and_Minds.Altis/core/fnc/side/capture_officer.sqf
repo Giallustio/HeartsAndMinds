@@ -92,7 +92,7 @@ _wp setWaypointType "MOVE";
 _wp setWaypointCompletionRadius _radius_x/1.5;
 _wp setWaypointCombatMode "RED";
 _wp setWaypointSpeed "LIMITED";
-_wp setWaypointFormation "STAG COLUMN";
+_wp setWaypointFormation "COLUMN";
 _wp setWaypointStatements ["true", "btc_side_failed = true"];
 
 //// Create trigger \\\\
