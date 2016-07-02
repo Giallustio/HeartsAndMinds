@@ -68,7 +68,7 @@ switch (true) do {
 		if (count (_pos nearRoads 150) > 0) then {
 			_newZone = getPos ((_pos nearRoads 150) select 0);
 			_pos_iswater = false;
-			_veh_type = selectRandom btc_type_motorized;
+			_veh_type = selectRandom (btc_type_motorized + [selectRandom btc_civ_type_veh]);
 		} else {
 			_newZone = [_pos, 0, 500, 13, [0,1] select btc_p_sea, 60 * (pi / 180), 0] call BIS_fnc_findSafePos;
 			_newZone = [_newZone select 0, _newZone select 1, 0];
@@ -76,7 +76,7 @@ switch (true) do {
 			if (_pos_iswater) then {
 				_veh_type = selectRandom btc_type_boats;
 			} else {
-				_veh_type = selectRandom btc_type_motorized;
+				_veh_type = selectRandom (btc_type_motorized + [selectRandom btc_civ_type_veh]);
 			};
 		};
 
