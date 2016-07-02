@@ -87,7 +87,7 @@ _wp setWaypointType "MOVE";
 _wp setWaypointCompletionRadius _radius_x/2;
 _wp setWaypointCombatMode "RED";
 _wp setWaypointSpeed "LIMITED";
-_wp setWaypointFormation "STAG COLUMN";
+_wp setWaypointFormation "COLUMN";
 _wp setWaypointStatements ["true", "btc_side_failed = true"];
 
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({ canMove _x } count _vehs == 0) || (_group isEqualTo grpNull))};
