@@ -26,4 +26,5 @@ switch (_side) do {
 	case 9 : {[] spawn btc_fnc_side_convoy;};
 	case 10 : {[] spawn btc_fnc_side_rescue;};
 	case 11 : {[] spawn btc_fnc_side_capture_officer;};
+	case 12 : {[] spawn btc_fnc_side_hostage;};
 };
