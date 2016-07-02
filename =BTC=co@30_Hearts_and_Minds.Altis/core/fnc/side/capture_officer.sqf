@@ -1,5 +1,5 @@
 
-private ["_usefuls","_city1","_city2","_pos1","_pos2","_area","_marker1","_marker2","_markers","_crewmen","_roads","_road","_veh_type","_vehs","_cargo","_radius_y","_radius_x","_veh_types","_captive","_random","_random_veh"];
+private ["_usefuls","_city1","_city2","_pos1","_pos2","_area","_marker1","_marker2","_markers","_crewmen","_roads","_road","_veh_type","_vehs","_cargo","_radius_y","_radius_x","_veh_types","_captive","_random","_random_veh","_trigger"];
 
 //// Choose two Cities \\\\
 _usefuls = btc_city_all select {((_x getVariable ["type",""] != "NameLocal") && {_x getVariable ["type",""] != "Hill"} && (_x getVariable ["type",""] != "NameMarine") && !(_x getVariable ["occupied",false]))};
@@ -28,12 +28,12 @@ btc_side_done = false;
 btc_side_failed = false;
 btc_side_assigned = true;publicVariable "btc_side_assigned";
 
-[[14,_pos1,_city1 getVariable "name"],"btc_fnc_task_create",true] spawn BIS_fnc_MP;
+[[14,getPos _city1,_city1 getVariable "name"],"btc_fnc_task_create",true] spawn BIS_fnc_MP;
 
-btc_side_jip_data = [14,_pos1,_city1 getVariable "name"];
+btc_side_jip_data = [14,getPos _city1,_city1 getVariable "name"];
 
 //// Create markers \\\\
-_marker1 = createmarker [format ["sm_2_%1",_pos1],_pos1];
+_marker1 = createmarker [format ["sm_2_%1",getPos _city1],getPos _city1];
 _marker1 setmarkertype "hd_flag";
 _marker1 setmarkertext "Start";
 _marker1 setMarkerSize [0.6, 0.6];
@@ -42,7 +42,15 @@ _marker2 = createmarker [format ["sm_2_%1",_pos2],_pos2];
 _marker2 setmarkertype "hd_flag";
 _marker2 setmarkertext "End";
 _marker2 setMarkerSize [0.6, 0.6];
-_markers = [_marker1,_marker2];
+
+_area = createmarker [format ["sm_%1",_pos2],_pos2];
+_area setMarkerShape "ELLIPSE";
+_area setMarkerBrush "SolidBorder";
+_area setMarkerSize [_radius_x/1.5, _radius_x/1.5];
+_area setMarkerAlpha 0.3;
+_area setmarkercolor "colorBlue";
+
+_markers = [_marker1,_marker2,_area];
 
 //// Create convoy \\\\
 _group = createGroup btc_enemy_side;
@@ -62,7 +70,7 @@ for "_i" from 0 to _random do {
 
 	[_veh,_group,false,"",_crewmen] call BIS_fnc_spawnCrew;
 	if (_i == _random_veh) then {
-		(selectRandom btc_type_units) createUnit [_pos1, _group, "this moveinCargo _veh;this assignAsCargo _veh; removeAllWeapons this; _captive = this;"]
+		(selectRandom btc_type_units) createUnit [_pos1, _group, "this moveinCargo _veh;this assignAsCargo _veh; removeAllWeapons this; _captive = this; _group selectLeader this;"]
 	};
 	_cargo = (_veh emptyPositions "cargo") - 1;
 	if (_cargo > 0) then {
@@ -81,20 +89,28 @@ for "_i" from 0 to _random do {
 _group setBehaviour "SAFE";
 _wp = _group addWaypoint [_pos2, 0];
 _wp setWaypointType "MOVE";
-_wp setWaypointCompletionRadius 300;
+_wp setWaypointCompletionRadius _radius_x/1.5;
 _wp setWaypointCombatMode "RED";
 _wp setWaypointSpeed "LIMITED";
 _wp setWaypointFormation "STAG COLUMN";
 _wp setWaypointStatements ["true", "btc_side_failed = true"];
 
-waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !(Alive _captive) || (_captive distance getpos btc_create_object_point < 10))};
+//// Create trigger \\\\
+_trigger = createTrigger["EmptyDetector",getPos _city1];
+_trigger setVariable ["captive", _captive, true];
+_trigger setTriggerArea[10,10,0,false];
+_trigger setTriggerActivation[str(btc_player_side),"PRESENT",false];
+_trigger setTriggerStatements["this", "_captive = thisTrigger getVariable 'captive'; doStop _captive; [_captive,true] call ace_captives_fnc_setSurrendered;", ""];
+_trigger attachTo [_captive,[0,0,0]];
+
+waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !(Alive _captive) || (_captive distance getpos btc_create_object_point < 100))};
 
 {deletemarker _x} foreach _markers;
 
 if (btc_side_aborted || !(Alive _captive)) exitWith {
 	[14,"btc_fnc_task_fail",true] spawn BIS_fnc_MP;
 	btc_side_assigned = false;publicVariable "btc_side_assigned";
-	[_vehs,_group] spawn {
+	[_vehs + [_trigger],_group] spawn {
 		waitUntil {sleep 5; ({_x distance ((_this select 0) select 0) < 500} count playableUnits isEqualTo 0)};
 		{if (!isNull _x) then {deleteVehicle _x}} foreach units (_this select 1);
 		{if (!isNull _x) then {deleteVehicle _x}} foreach (_this select 0);
@@ -105,6 +121,7 @@ if (btc_side_aborted || !(Alive _captive)) exitWith {
 if (btc_side_failed) exitWith {
 	[14,"btc_fnc_task_fail",true] spawn BIS_fnc_MP;
 	btc_side_assigned = false;publicVariable "btc_side_assigned";
+	deleteVehicle _trigger;
 	_group setVariable ["no_cache",false];
 	{(crew _x) joinSilent (createGroup btc_enemy_side)} forEach _vehs;
 	_city2 setVariable ["occupied",true];
@@ -121,7 +138,7 @@ if (btc_side_failed) exitWith {
 
 [14,"btc_fnc_task_set_done",true] spawn BIS_fnc_MP;
 
-[_vehs,_group] spawn {
+[_vehs + [_trigger],_group] spawn {
 	waitUntil {sleep 5; ({_x distance ((_this select 0) select 0) < 500} count playableUnits isEqualTo 0)};
 		{if (!isNull _x) then {deleteVehicle _x}} foreach units (_this select 1);
 		{if (!isNull _x) then {deleteVehicle _x}} foreach (_this select 0);
