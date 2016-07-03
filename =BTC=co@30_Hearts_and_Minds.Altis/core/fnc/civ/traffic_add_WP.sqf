@@ -15,15 +15,10 @@ if ({_x distance _city < (_area/2) || _x distance leader _group < (_area/2)} cou
 };
 
 _useful =  btc_city_all select {_x distance _city < _area};
-if (btc_debug) then {diag_log text format ["count 1 useful = %1 ",count _useful];};
 _dirTo = (leader _group) getdir _city;
-if (btc_debug) then {diag_log text format ["dirto = %1 ",_dirTo];};
-if (btc_debug) then {diag_log text format ["angle useful = %1 ",_useful apply {_ang = _city getdir _x; (abs(_ang - _dirTo) min (360 - abs(_ang - _dirTo)))}];};
 _dirto_useful = _useful select {_ang = _city getdir _x; (abs(_ang - _dirTo) min (360 - abs(_ang - _dirTo)) < 45);};
-if (btc_debug) then {diag_log text format ["count _dirto_useful = %1 ",count _dirto_useful];};
 if !(_dirto_useful isEqualTo []) then {_useful = _dirto_useful;};
 _cities = _useful select {(!_isboat && {_x getVariable ["type",""] != "NameMarine"}) || (_isboat && {_x getVariable ["hasbeach",false]})};
-if (btc_debug) then {diag_log text format ["count cities = %1 ",count _cities];};
 
 if (_cities isEqualTo []) then {_pos = getPos _city;} else {
 	_pos = getPos (selectRandom _cities);
