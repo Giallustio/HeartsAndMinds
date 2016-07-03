@@ -24,7 +24,7 @@ _unit_type = selectRandom btc_civ_type_units;
 _group = createGroup civilian;
 _group setVariable ["no_cache",true];
 _group setVariable ["btc_patrol",true];
-_group setVariable ["btc_traffic_id",btc_traffic_id];btc_traffic_id = btc_traffic_id + 1;
+_group setVariable ["btc_traffic_id",btc_traffic_id,btc_debug];btc_traffic_id = btc_traffic_id + 1;
 _group setVariable ["city",_city];
 
 _Spos = [];
