@@ -1,5 +1,5 @@
 
-private ["_useful","_city","_pos","_captive","_group_civ","_group","_house","_houses","_marker"];
+private ["_useful","_city","_pos","_captive","_group_civ","_group","_house","_houses","_marker","_wp","_unit","_buildingPos","_pos_number"];
 
 //// Choose an occupied City \\\\
 _useful = btc_city_all select {(_x getVariable ["occupied",false] && {_x getVariable ["type",""] != "NameLocal"} && {_x getVariable ["type",""] != "Hill"} && (_x getVariable ["type",""] != "NameMarine"))};
@@ -10,9 +10,12 @@ _city = selectRandom _useful;
 
 //// Randomise position \\\\
 _houses = [getPos _city,100] call btc_fnc_getHouses;
-_house = selectRandom _houses;
-_pos_number = count (_house buildingPos -1);
-_pos = _house buildingPos (_pos_number - round random 1);
+_houses = _houses apply { [count (_x buildingPos -1), _x] };
+_houses sort false;
+if (count _houses > 2) then {_house = (selectRandom _houses select [0,2]) select 1;} else {_house = _houses select 0 select 1;};
+_buildingPos = _house buildingPos -1;
+_pos_number = count _buildingPos - 1;
+_pos = _buildingPos select (_pos_number - round random 1);
 
 btc_side_aborted = false;
 btc_side_done = false;
@@ -25,7 +28,7 @@ btc_side_jip_data = [13,getPos _city,_city getVariable "name"];
 
 _city setVariable ["spawn_more",true];
 
-_marker = createmarker [format ["sm_2_%1",_pos],_pos];
+_marker = createmarker [format ["sm_2_%1",getPos _house],getPos _house];
 _marker setmarkertype "hd_flag";
 _marker setmarkertext "Hostage";
 _marker setMarkerSize [0.6, 0.6];
@@ -38,11 +41,13 @@ _captive setPos _pos;
 
 _group = [];
 {
-	_group pushBack (createGroup btc_enemy_side);
-	_unit = (_group select _foreachindex) createUnit [selectRandom btc_type_units, _x, [], 0, "NONE"];
-	_unit setDir (random 360);
+	private ["_grp"];
+	_grp = createGroup btc_enemy_side;
+	_unit = _grp createUnit [selectRandom btc_type_units, _x, [], 0, "NONE"];
+	_unit setPos _x;
+	_group pushBack _grp;
 	_unit call btc_fnc_mil_unit_create;
-} forEach ((_house buildingPos -1) - [_pos]);
+} forEach (_buildingPos - [_pos]);
 
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !(_captive getVariable ["ace_captives_isHandcuffed", false]) || !Alive _captive)};
 
