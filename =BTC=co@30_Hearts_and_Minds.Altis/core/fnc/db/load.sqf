@@ -79,12 +79,13 @@ _array_ho = profileNamespace getVariable [format ["btc_hm_%1_ho",_name],[]];
 	_hideout setVariable ["id",(_x select 1)];
 	_hideout setVariable ["rinf_time",(_x select 2)];
 	_hideout setVariable ["cap_time",(_x select 3)];
-	_hideout setVariable ["assigned_to",(_x select 4)];
+	_hideout setVariable ["assigned_to", btc_city_all select (_x select 4)];
 
 	_hideout addEventHandler ["HandleDamage", btc_fnc_mil_hd_hideout];
 
 	_markers = [];
 	{
+		private ["_marker"];
 		_marker = createmarker [format ["%1", (_x select 0)], (_x select 0)];
 		_marker setmarkertype "hd_warning";
 		_marker setMarkerText (_x select 1);
@@ -109,8 +110,8 @@ _array_ho = profileNamespace getVariable [format ["btc_hm_%1_ho",_name],[]];
 	btc_hideouts = btc_hideouts + [_hideout];
 } foreach _array_ho;
 
-_ho = profileNamespace getVariable [format ["btc_hm_%1_ho_sel",_name],objNull];
-btc_hq setVariable ["info_hideout",_ho];
+_ho = profileNamespace getVariable [format ["btc_hm_%1_ho_sel",_name],0];
+btc_hq setVariable ["info_hideout", btc_hideouts select _ho];
 
 if (count btc_hideouts == 0) then {[] execVM "core\fnc\common\final_phase.sqf";};
 
@@ -156,10 +157,10 @@ btc_global_reputation = profileNamespace getVariable [format ["btc_hm_%1_rep",_n
 
 //FOB
 _fobs = profileNamespace getVariable [format ["btc_hm_%1_fobs",_name],[]];
-_fobs_loaded = [];
+_fobs_loaded = [[],[]];
 
 {
-	private ["_pos"];
+	private ["_pos","_fob_structure","_flag"];
 	_pos = (_x select 1);
 	createmarker [(_x select 0), _pos];
 	(_x select 0) setMarkerSize [1,1];
@@ -167,10 +168,12 @@ _fobs_loaded = [];
 	(_x select 0) setMarkerText (_x select 0);
 	(_x select 0) setMarkerColor "ColorBlue";
 	(_x select 0) setMarkerShape "ICON";
-	{createVehicle [_x, _pos, [], 0, "NONE"];} foreach [btc_fob_structure,btc_fob_flag];
-	_fobs_loaded pushBack (_x select 0);
-} foreach _fobs;
-
+	_fob_structure = createVehicle [btc_fob_structure, _pos, [], 0, "NONE"];
+	_flag = createVehicle [btc_fob_flag, _pos, [], 0, "NONE"];
+	_flag setVariable ["btc_fob",_x select 0];
+	(_fobs_loaded select 0) pushBack (_x select 0);
+	(_fobs_loaded select 1) pushBack _fob_structure;
+} foreach (_fobs select 0);
 btc_fobs = _fobs_loaded;
 
 //VEHICLES
@@ -198,18 +201,20 @@ diag_log format ["5: %1",(_x select 5)];
 {
 	private ["_veh","_cont","_weap","_mags","_items"];
 	_veh = (_x select 0) createVehicle (_x select 1);
-	btc_vehicles pushBack _veh;
-	_veh addEventHandler ["Killed", {_this call btc_fnc_eh_veh_killed}];
-	_veh setVariable ["btc_dont_delete",true];
+	_veh setPos (_x select 1);
 	_veh setDir (_x select 2);
 	_veh setFuel (_x select 3);
 	_veh setDamage (_x select 4);
+	_veh setVariable ["btc_dont_delete",true];
+	btc_vehicles pushBack _veh;
+	_veh addEventHandler ["Killed", {_this call btc_fnc_eh_veh_killed}];
 	{
 		private ["_type","_cargo_obj","_obj","_weap_obj","_mags_obj","_items_obj"];
 		//{_cargo pushBack [(typeOf _x),[getWeaponCargo _x,getMagazineCargo _x,getItemCargo _x]]} foreach (_x getVariable ["cargo",[]]);
 		_type = _x select 0;
-		_cargo_obj = _x select 1;
+		_cargo_obj = _x select 2;
 		_obj = _type createVehicle [0,0,0];
+		if ((_x select 1) != "") then {_obj setVariable ["ace_rearm_magazineClass",(_x select 1),true]};
 		btc_log_obj_created = btc_log_obj_created + [_obj];
 		btc_curator addCuratorEditableObjects [[_obj], false];
 		clearWeaponCargoGlobal _obj;clearItemCargoGlobal _obj;clearMagazineCargoGlobal _obj;
@@ -277,6 +282,7 @@ _objs = profileNamespace getVariable [format ["btc_hm_%1_objs",_name],[]];
 	btc_curator addCuratorEditableObjects [[_obj], false];
 	_obj setDir (_x select 2);
 	_obj setPosASL (_x select 1);
+	if ((_x select 3) != "") then {_obj setVariable ["ace_rearm_magazineClass",(_x select 3),true]};
 	{
 		/*private "_l";
 		_l = _x createVehicle [0,0,0];
@@ -287,8 +293,9 @@ _objs = profileNamespace getVariable [format ["btc_hm_%1_objs",_name],[]];
 		private ["_type","_cargo_obj","_l","_weap_obj","_mags_obj","_items_obj"];
 		//{_cargo pushBack [(typeOf _x),[getWeaponCargo _x,getMagazineCargo _x,getItemCargo _x]]} foreach (_x getVariable ["cargo",[]]);
 		_type = _x select 0;
-		_cargo_obj = _x select 1;
+		_cargo_obj = _x select 2;
 		_l = _type createVehicle [0,0,0];
+		if ((_x select 1) != "") then {_l setVariable ["ace_rearm_magazineClass",(_x select 1),true]};
 		btc_log_obj_created = btc_log_obj_created + [_l];
 		btc_curator addCuratorEditableObjects [[_l], false];
 		clearWeaponCargoGlobal _l;clearItemCargoGlobal _l;clearMagazineCargoGlobal _l;
@@ -311,8 +318,8 @@ _objs = profileNamespace getVariable [format ["btc_hm_%1_objs",_name],[]];
 			};
 		};
 		[_l,_obj] call btc_fnc_log_server_load;
-	} foreach (_x select 3);
-	_cont = (_x select 4);
+	} foreach (_x select 4);
+	_cont = (_x select 5);
 	clearWeaponCargoGlobal _obj;clearItemCargoGlobal _obj;clearMagazineCargoGlobal _obj;
 	_weap = _cont select 0;
 	if (count _weap > 0) then {

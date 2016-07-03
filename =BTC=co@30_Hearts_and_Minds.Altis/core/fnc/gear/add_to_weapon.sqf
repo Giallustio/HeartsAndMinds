@@ -1,4 +1,6 @@
 
+private ["_item"];
+
 _item = lbData [372, lbCurSel 372];
 
 switch (btc_gear_acc_type) do

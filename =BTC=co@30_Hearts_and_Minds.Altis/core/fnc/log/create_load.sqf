@@ -1,3 +1,6 @@
+
+private ["_main_class","_sub_class","_lb","_category"];
+
 lbClear 71;
 _main_class = btc_construction_array select 0;
 _sub_class  = btc_construction_array select 1;
@@ -17,5 +20,5 @@ for "_i" from 0 to ((count _category) - 1) do
 	_index = lbAdd [72,_display];
 	lbSetData [72, _index, _class];
 	if (_i == 0) then {lbSetCurSel [72,_index];};
-};	
+};
 true

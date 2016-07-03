@@ -64,6 +64,8 @@ if (_type == 3) then {
 if (_type == 4) then {[[0,0,0],0,units _group] spawn btc_fnc_civ_get_weapons;};
 if (_type == 5) then {
 	_group spawn {
+		private ["_cond","_suicider"];
+
 		_this setVariable ["suicider",true];
 
 		_suicider = leader _this;
@@ -75,7 +77,7 @@ if (_type == 5) then {
 		while {Alive _suicider && !isNull _suicider && !_cond} do {
 			sleep 5;
 			if (count (getpos _suicider nearEntities ["SoldierWB", 25]) > 0) then {_cond = true;_suicider spawn btc_fnc_ied_suicider_active};
-		};	
+		};
 	};
 };
 

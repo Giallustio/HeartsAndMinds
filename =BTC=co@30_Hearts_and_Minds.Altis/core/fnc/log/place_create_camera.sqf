@@ -1,3 +1,6 @@
+
+private ["_obj"];
+
 _obj = _this select 0;
 btc_log_place_camera = "camera" camCreate (position _obj);
 btc_log_place_camera camSetTarget _obj;
