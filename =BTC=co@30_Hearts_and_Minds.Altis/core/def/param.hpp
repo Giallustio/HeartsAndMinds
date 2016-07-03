@@ -30,9 +30,9 @@ class Params {
 	class btc_p_ied {
 	//paramsArray[4]
         title = "IEDs ratio:";
-		values[]={0, 0.5, 1, 1.5};
+		values[]={0, 1, 2, 3};
 		texts[]={"Off","Low","Normal","High"};
-		default = 1;
+		default = 2;
 	};
 	class btc_p_engineer {
     //paramsArray[5]
@@ -186,7 +186,7 @@ class Params {
         title = "Debug:";
 		values[]={0,1,2};
 		texts[]={"No","Yes", "Log only"};
-		default = 0;
+		default = 1;
 	};
     class btc_p_sea {
     //paramsArray[27]

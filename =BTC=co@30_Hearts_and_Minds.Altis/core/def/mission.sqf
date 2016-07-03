@@ -1,14 +1,14 @@
 
 private ["_p_db","_p_en","_hideout_n","_cache_info_def","_cache_info_ratio","_info_chance","_p_rep","_p_skill","_c_array","_tower","_array","_chopper","_p_civ","_btc_rearming_vehicles","_vehicles","_magazines","_p_city_radius"];
 
-btc_version = 1.14; diag_log format ["=BTC= HEARTS AND MINDS VERSION %1",(str(btc_version) + ".0")];
+btc_version = 1.14; diag_log format ["=BTC= HEARTS AND MINDS VERSION %1",(str(btc_version) + ".1")];
 
 //Param
 btc_p_time = (paramsArray select 0);
 btc_p_acctime = (paramsArray select 1);
 _p_db = if ((paramsArray select 2) isEqualTo 0) then {false} else {true};
 _p_en = (paramsArray select 3);
-btc_p_ied = (paramsArray select 4);
+btc_p_ied = (paramsArray select 4)/2;
 btc_p_engineer  = (paramsArray select 5);
 _hideout_n = (paramsArray select 6);
 _cache_info_def = (paramsArray select 7);

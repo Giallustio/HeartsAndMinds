@@ -27,6 +27,7 @@ if (!_is_init) then {
 		case "NameVillage" : {random 3.5};
 		case "NameCity" : {random 5};
 		case "NameCityCapital" : {random 6};
+		case "Airport" : {0};
 		case "NameMarine" : {0};
 		});
 	_ratio_ied = _ratio;
@@ -56,6 +57,7 @@ if (count _data_units > 0) then {
 		case "NameVillage" : {1};
 		case "NameCity" : {2};
 		case "NameCityCapital" : {4};
+		case "Airport" : {4};
 		case "NameMarine" : {0.6};
 		default {0.1};
 		});
@@ -78,6 +80,7 @@ if (count _data_units > 0) then {
 			case "NameVillage" : {1.5};
 			case "NameCity" : {3};
 			case "NameCityCapital" : {6};
+			case "Airport" : {1.5};
 			default {1};
 			});
 		_n = 3 * _factor;
