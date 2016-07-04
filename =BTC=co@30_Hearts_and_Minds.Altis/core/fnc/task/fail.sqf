@@ -98,4 +98,12 @@ switch _this do
 		["TaskFailed",["Side mission failed!","The officer has not been captured"]] call bis_fnc_showNotification;
 		player setVariable ["task_14",nil];
 	};
+	case 15 :
+	{
+		private "_task";
+		_task = player getVariable "task_15";
+		_task setTaskState "FAILED";
+		["TaskFailed",["Side mission failed!","The hostage has not been liberated"]] call bis_fnc_showNotification;
+		player setVariable ["task_15",nil];
+	};
 };
