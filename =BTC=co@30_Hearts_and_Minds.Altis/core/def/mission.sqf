@@ -1,6 +1,5 @@
-private ["_p_civ_veh"];
 
-private ["_p_db","_p_en","_hideout_n","_cache_info_def","_cache_info_ratio","_info_chance","_p_rep","_p_skill","_c_array","_tower","_array","_chopper","_p_civ","_btc_rearming_vehicles","_vehicles","_magazines","_p_city_radius"];
+private ["_p_civ_veh","_p_db","_p_en","_hideout_n","_cache_info_def","_cache_info_ratio","_info_chance","_p_rep","_p_skill","_c_array","_tower","_array","_chopper","_p_civ","_btc_rearming_vehicles","_vehicles","_magazines","_p_city_radius","_magazines_static","_static","_btc_rearming_static"];
 
 btc_version = 1.14; diag_log format ["=BTC= HEARTS AND MINDS VERSION %1",(str(btc_version) + ".1")];
 
@@ -216,6 +215,8 @@ btc_supplies_mat ="Land_Cargo20_red_F";
 
 //Log
 if (isServer) then {
+	#define	REARM_TURRET_PATHS  [[-1], [0], [0,0], [0,1], [1], [2], [0,2]]
+
 	_btc_rearming_vehicles = (btc_vehicles + btc_helo) apply {typeOf _x};
 	{
 		_btc_rearming_vehicles = _btc_rearming_vehicles - [_x];
@@ -224,7 +225,33 @@ if (isServer) then {
 		};
 	} forEach _btc_rearming_vehicles;
 
-	#define	REARM_TURRET_PATHS  [[-1], [0], [0,0], [0,1], [1], [2], [0,2]]
+	_btc_rearming_static =
+	[
+		//"Static"
+		"B_static_AT_F",
+		"B_static_AA_F",
+		"B_GMG_01_A_F",
+		"B_GMG_01_high_F",
+		"B_GMG_01_F",
+		"B_HMG_01_A_F",
+		"B_HMG_01_high_F",
+		"B_HMG_01_F",
+		"B_Mortar_01_F"
+	];
+
+	_magazines_static = [];
+	{
+		_static = _x;
+		{
+			_magazines_static append (([_static,_x] call btc_fnc_log_getconfigmagazines));
+		} forEach REARM_TURRET_PATHS;
+	} forEach _btc_rearming_static;
+	_magazines_static = _magazines_static - ["FakeWeapon"];
+	{
+		_magazines_static = _magazines_static - [_x];
+		_magazines_static pushBack _x;
+	} forEach _magazines_static;
+
 	btc_construction_array =
 	[
 		[
@@ -260,18 +287,7 @@ if (isServer) then {
 				"Land_Mil_WallBig_Corner_F",
 				"Land_PortableLight_double_F"
 			],
-			[
-				//"Static"
-				"B_static_AT_F",
-				"B_static_AA_F",
-				"B_GMG_01_A_F",
-				"B_GMG_01_high_F",
-				"B_GMG_01_F",
-				"B_HMG_01_A_F",
-				"B_HMG_01_high_F",
-				"B_HMG_01_F",
-				"B_Mortar_01_F"
-			],
+			_btc_rearming_static + _magazines_static,
 			[
 				//"Ammobox"
 				"rhsusf_mags_crate",
