@@ -534,7 +534,7 @@ switch (true) do {
 		btc_type_crewmen          = "I_C_Soldier_Bandit_5_F";
 		btc_type_vehicles         = ["I_G_Offroad_01_F","I_G_Offroad_01_armed_F","I_C_Van_01_transport_F","O_T_LSV_02_armed_F","O_T_LSV_02_unarmed_F","I_C_Offroad_02_unarmaed_F"];
 		btc_type_boats			= ["I_Boat_Armed_01_minigun_F","I_Boat_Transport_01_F","I_SDV_01_F","I_G_Boat_Transport_01_F","I_C_Boat_Transport_01_F","I_C_Boat_Transport_02_F"];
-		btc_type_motorized        = ["I_G_Offroad_01_F","I_G_Offroad_01_armed_F","I_C_Van_01_transport_F","O_T_LSV_02_armed_F","O_T_LSV_02_unarmed_F","I_Truck_02_transport_F","I_C_Offroad_02_unarmaed_F","I_G_Offroad_01_armed_F","I_Truck_02_covered_F"];
+		btc_type_motorized        = ["I_G_Offroad_01_F","I_C_Van_01_transport_F","O_T_LSV_02_armed_F","O_T_LSV_02_unarmed_F","I_Truck_02_transport_F","I_C_Offroad_02_unarmaed_F","I_G_Offroad_01_armed_F","I_Truck_02_covered_F"];
 		btc_type_mg = ["I_HMG_01_F","I_HMG_01_high_F"];
 		btc_type_gl = ["I_GMG_01_F","I_GMG_01_high_F"];
 	};
