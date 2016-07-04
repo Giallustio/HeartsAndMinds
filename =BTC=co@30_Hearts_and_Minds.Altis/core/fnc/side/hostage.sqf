@@ -10,6 +10,7 @@ _city = selectRandom _useful;
 
 //// Randomise position \\\\
 _houses = [getPos _city,100] call btc_fnc_getHouses;
+if (_houses isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
 _houses = _houses apply { [count (_x buildingPos -1), _x] };
 _houses sort false;
 if (count _houses > 3) then {_house = (selectRandom _houses select [0,3]) select 1;} else {_house = _houses select 0 select 1;};
