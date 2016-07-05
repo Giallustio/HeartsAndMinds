@@ -3,7 +3,7 @@ loadScreen = "core\img\btc.paa";
 author = Giallustio;
 onLoadName = Hearts and Minds;
 onLoadMission = www.blacktemplars.altervista.org;
-enabledebugconsole = 1;
+
 #include "core\def\dlg_def.hpp"
 
 #include "core\fnc\fob\dlg.hpp"
