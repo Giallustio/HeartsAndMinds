@@ -58,7 +58,7 @@ switch (_this select 0) do
 	{
 		private "_task";
 		_task = player createSimpleTask [("Destroy tower in " + (_this select 2))];
-		_task setSimpleTaskDescription [format ["A Oplitas radio tower has been located in %1. Local population is asking for your help to destroy it!",(_this select 2)],("Destroy tower in " + (_this select 2)),("Destroy tower in " + (_this select 2))];
+		_task setSimpleTaskDescription [format ["A Oplitas radio tower has been located in %1. Local population is asking for your help to destroy it! (Use one explosive satchel)",(_this select 2)],("Destroy tower in " + (_this select 2)),("Destroy tower in " + (_this select 2))];
 		_task setSimpleTaskDestination (_this select 1);
 		player setVariable ["task_7",_task];
 		["TaskAssigned",["New task assigned!",("Destroy tower in " + (_this select 2))]] call bis_fnc_showNotification;
