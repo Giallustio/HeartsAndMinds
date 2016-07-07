@@ -51,6 +51,21 @@ _group = [];
 	_unit setPos _x;
 	_group pushBack _grp;
 	_unit call btc_fnc_mil_unit_create;
+
+	_wp = _grp addWaypoint [_x, 0.2];
+	_wp setWaypointType "MOVE";
+	//_wp setWaypointCombatMode "RED";
+	_wp setWaypointCompletionRadius 0;
+	_wp waypointAttachObject _house;
+	_wp setWaypointHousePosition _foreachindex;
+	_wp setWaypointTimeout [15, 20, 30];
+
+	_wp = _grp addWaypoint [_x, 0.2];
+	_wp setWaypointType "CYCLE";
+	_wp waypointAttachObject _house;
+	_wp setWaypointHousePosition 0;
+	_wp setWaypointCompletionRadius 0;
+	_wp setWaypointTimeout [15, 20, 30];
 } forEach (_buildingPos - [_pos]);
 
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !(_captive getVariable ["ace_captives_isHandcuffed", false]) || !Alive _captive)};
