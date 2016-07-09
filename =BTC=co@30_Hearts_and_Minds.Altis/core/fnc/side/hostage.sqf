@@ -50,38 +50,31 @@ _group = [];
 	_unit = _grp createUnit [selectRandom btc_type_units, _x, [], 0, "NONE"];
 	_unit setPos _x;
 	_group pushBack _grp;
+	_grp setVariable ["no_cache",true];
 	_unit call btc_fnc_mil_unit_create;
-
-	_wp = _grp addWaypoint [_x, 0.2];
-	_wp setWaypointType "MOVE";
-	//_wp setWaypointCombatMode "RED";
-	_wp setWaypointCompletionRadius 0;
-	_wp waypointAttachObject _house;
-	_wp setWaypointHousePosition _foreachindex;
-	_wp setWaypointTimeout [15, 20, 30];
-
-	_wp = _grp addWaypoint [_x, 0.2];
-	_wp setWaypointType "CYCLE";
-	_wp waypointAttachObject _house;
-	_wp setWaypointHousePosition 0;
-	_wp setWaypointCompletionRadius 0;
-	_wp setWaypointTimeout [15, 20, 30];
 } forEach (_buildingPos - [_pos]);
+
+_trigger = createTrigger["EmptyDetector",_pos];
+_trigger setVariable ["group", _group];
+_trigger setTriggerArea[20,20,0,false];
+_trigger setTriggerActivation[str(btc_player_side),"PRESENT",true];
+_trigger setTriggerStatements["this", "_group = thisTrigger getVariable 'group'; {_x setCombatMode 'RED';} foreach _group;", "_group = thisTrigger getVariable 'group'; {_x setCombatMode 'WHITE';} foreach _group;"];
 
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !(_captive getVariable ["ace_captives_isHandcuffed", false]) || !Alive _captive)};
 
 deletemarker _marker;
 _group_civ setVariable ["no_cache",false];
+{_x setVariable ["no_cache",false];} foreach _group;
 
 if (btc_side_aborted || btc_side_failed || !(Alive _captive)) exitWith {
 	[15,"btc_fnc_task_fail",true] spawn BIS_fnc_MP;
 	btc_side_assigned = false;publicVariable "btc_side_assigned";
-	[_captive,_group_civ,_group] spawn {
-		waitUntil {sleep 5; ({_x distance (_this select 0) < 500} count playableUnits isEqualTo 0)};
+	[[_captive,_trigger],_group_civ,_group] spawn {
+		waitUntil {sleep 5; ({_x distance (_this select 0 select 0) < 500} count playableUnits isEqualTo 0)};
 		private ["_unit"];
 		_unit = [];
 		{_unit = _unit + units _x;} forEach (_this select 2);
-		{if (!isNull _x) then {deleteVehicle _x}} foreach ([_this select 0] + _unit);
+		{if (!isNull _x) then {deleteVehicle _x}} foreach (_this select 0 + _unit);
 		{deleteGroup _x} foreach ([_this select 1] + (_this select 2));
 	};
 };
