@@ -1,5 +1,5 @@
 
-private ["_group","_units","_type_db","_array_pos","_array_type","_side","_array_dam","_behaviour","_array_wp","_array_in_veh","_array_veh","_index_wp","_data"];
+private ["_group","_units","_type_db","_array_pos","_array_type","_side","_array_dam","_behaviour","_array_wp","_array_in_veh","_array_veh","_index_wp","_data","_pos"];
 
 _group = _this;
 
@@ -16,9 +16,10 @@ _array_veh 	  = [];
 _index_wp = 0;
 //_group setVariable ["inHouse",true];
 {
-	_array_pos  = _array_pos + [getpos _x];
-	_array_type = _array_type + [typeOf _x];
-	_array_dam  = _array_dam + [getDammage _x];
+	_pos = getPosATL _x;
+	if (surfaceIsWater _pos) then {_array_pos pushBack getpos _x} else {_array_pos pushBack _pos};
+	_array_type pushBack typeOf _x;
+	_array_dam pushBack getDammage _x;
 } foreach _units;
 
 _index_wp = (currentWaypoint _group) + 1;
