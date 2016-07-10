@@ -85,7 +85,7 @@ _group setBehaviour "SAFE";
 _wp = _group addWaypoint [_pos2, 0];
 _wp setWaypointType "MOVE";
 _wp setWaypointCompletionRadius _radius_x/2;
-_wp setWaypointCombatMode "RED";
+_wp setWaypointCombatMode "YELLOW";
 _wp setWaypointSpeed "LIMITED";
 _wp setWaypointFormation "COLUMN";
 _wp setWaypointStatements ["true", "btc_side_failed = true"];
