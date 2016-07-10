@@ -40,6 +40,7 @@ ace_medical_enableFor = 1;
 btc_p_sea  = if ((paramsArray select 27) isEqualTo 0) then {false} else {true};
 _p_civ = (paramsArray select 28);
 _p_city_radius = (paramsArray select 29) * 100;
+ace_rearm_level = (paramsArray select 30);
 //btc_acre_mod = isClass(configFile >> "cfgPatches" >> "acre_main");
 //btc_tfr_mod = isClass(configFile >> "cfgPatches" >> "task_force_radio");
 
