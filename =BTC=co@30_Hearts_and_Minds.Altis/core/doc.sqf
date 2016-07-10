@@ -15,6 +15,7 @@ Note: the playSound ['',true] command is bugged, so if you are deaf you will not
 player createDiaryRecord ["Documentation", ["Vehicles", "
 When a vehicle is destroyed it will not respawn in base, you need to tow or lift it back to base and repair it near the logistic point (Interact with the red box). Helicopter wreck can only be lifted. <br/>
 The Chinook is the only exception, it will respawn after 30 seconds.
+You can also rearm them by spawning the corresponding caliber at logistic point (Interact with the red box, select the vehicle type and caliber). Carry the ammo created and interact with the vehicle to rearm. This only works if rearming is setting on entire magazine or amount based on caliber (not for entire vehicle setting).
 	"]
 ];
 
