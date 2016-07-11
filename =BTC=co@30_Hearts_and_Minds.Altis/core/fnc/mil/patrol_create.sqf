@@ -88,7 +88,7 @@ switch (true) do {
 		if (_cargo > 0) then {
 			for "_i" from 0 to _cargo do {
 				_unit_type = [selectRandom btc_type_units, selectRandom btc_type_divers] select _needdiver;
-				_unit_type createUnit [_pos, _group, "this moveinCargo _veh;this assignAsCargo _veh;"];
+				_unit_type createUnit [_newZone, _group, "this moveinCargo _veh;this assignAsCargo _veh;"];
 			};
 		};
 
