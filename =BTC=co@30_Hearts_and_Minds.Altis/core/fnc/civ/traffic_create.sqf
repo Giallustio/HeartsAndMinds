@@ -1,5 +1,5 @@
 
-private ["_city","_area","_cities","_useful","_unit_type","_veh_type","_group","_veh","_pos_iswater","_pos","_Spos","_1","_2","_3"];
+private ["_city","_area","_cities","_useful","_veh_type","_group","_veh","_pos_iswater","_pos","_Spos","_1","_2","_3"];
 
 _city = _this select 0;
 _area = _this select 1;
@@ -36,9 +36,8 @@ if (count (_pos nearRoads 200) > 0) then {
 
 _veh = createVehicle [_veh_type, _Spos, [], 0, "NONE"];
 
-_unit_type = selectRandom btc_civ_type_units;
 _group = createGroup civilian;
-_unit_type createUnit [_Spos, _group, "this moveinDriver _veh; this assignAsDriver _veh;"];
+(selectRandom btc_civ_type_units) createUnit [_Spos, _group, "this moveinDriver _veh; this assignAsDriver _veh;"];
 _group setVariable ["no_cache",true];
 _group setVariable ["btc_patrol",true];
 _group setVariable ["btc_traffic_id",btc_traffic_id];btc_traffic_id = btc_traffic_id + 1;
@@ -47,6 +46,8 @@ btc_civ_veh_active pushBack _group;
 
 _veh setVariable ["driver", leader _group];
 
+{_x call btc_fnc_civ_unit_create;_x setVariable ["traffic",_veh];} foreach units _group;
+
 _1 = _veh addEventHandler ["HandleDamage", {_this call btc_fnc_civ_traffic_eh}];
 _2 = _veh addEventHandler ["Fuel", {_this call btc_fnc_civ_traffic_eh}];
 _3 = _veh addEventHandler ["GetOut", {_this call btc_fnc_civ_traffic_eh}];
@@ -54,7 +55,4 @@ _3 = _veh addEventHandler ["GetOut", {_this call btc_fnc_civ_traffic_eh}];
 //_5 = (leader _group) addEventHandler ["Killed", {_this call btc_fnc_civ_traffic_eh}];
 
 _veh setVariable ["eh", [_1,_2,_3/*,4,5*/]];
-
-{_x call btc_fnc_civ_unit_create;_x setVariable ["traffic",_veh];} foreach units _group;
-
 [_group,_area,_pos_iswater] call btc_fnc_civ_traffic_add_WP;
