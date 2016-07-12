@@ -9,8 +9,13 @@ _isboat = _this select 2;
 _players = if (isMultiplayer) then {playableUnits} else {switchableUnits};
 
 if ({_x distance _city < (_area/2) || _x distance leader _group < (_area/2)} count _players isEqualTo 0) exitWith {//playableUnits
-	diag_log text "DELETE TRAFFIC GROUP";
-	if (vehicle leader _group != leader _group) then {deleteVehicle (vehicle leader _group)};
+	/*if (btc_debug_log) then	{
+		diag_log format ["DELETE TRAFFIC GROUP 1: veh: %1 driver: %2 pos_veh: %3 ID: %4",vehicle leader _group,units _group, getPos (vehicle leader _group),_group getVariable "btc_traffic_id"];
+	};*/
+	if (vehicle leader _group != leader _group) then {
+		(vehicle leader _group) call btc_fnc_civ_traffic_eh_remove;
+		deleteVehicle (vehicle leader _group);
+	};
 	{deleteVehicle _x;} foreach units _group;deleteGroup _group;
 };
 
