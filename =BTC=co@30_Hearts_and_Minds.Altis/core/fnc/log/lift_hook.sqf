@@ -14,7 +14,8 @@ private ["_rope","_max_cargo","_mass"];
 
 {ropeDestroy _x;} foreach ropes _chopper;
 
-_bbr = boundingBoxReal _cargo;hint str(_bbr);
+_bbr = boundingBoxReal _cargo;
+if (btc_debug) then {hint str(_bbr);};
 
 ropeCreate [vehicle player, "slingload0", _cargo, [((_bbr select 0) select 0), ((_bbr select 1) select 1), 0], 10];
 ropeCreate [vehicle player, "slingload0", _cargo, [((_bbr select 0) select 0), ((_bbr select 0) select 1), 0], 10];
