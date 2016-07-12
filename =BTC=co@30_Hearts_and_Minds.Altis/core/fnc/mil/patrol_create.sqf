@@ -64,7 +64,6 @@ switch (true) do {
 	};
 	case ((_random isEqualTo 2) || _pos_iswater) : {
 		private ["_veh_type","_newZone","_veh","_cargo"];
-		_newZone = [];
 		if (count (_pos nearRoads 150) > 0) then {
 			_newZone = getPos ((_pos nearRoads 150) select 0);
 			_pos_iswater = false;
@@ -72,7 +71,7 @@ switch (true) do {
 		} else {
 			_newZone = [_pos, 0, 500, 13, [0,1] select btc_p_sea, 60 * (pi / 180), 0] call BIS_fnc_findSafePos;
 			_newZone = [_newZone select 0, _newZone select 1, 0];
-			_pos_iswater = (surfaceIsWater _newZone);
+			_pos_iswater = surfaceIsWater _newZone;
 			if (_pos_iswater) then {
 				_veh_type = selectRandom btc_type_boats;
 			} else {
@@ -89,7 +88,7 @@ switch (true) do {
 		if (_cargo > 0) then {
 			for "_i" from 0 to _cargo do {
 				_unit_type = [selectRandom btc_type_units, selectRandom btc_type_divers] select _needdiver;
-				_unit_type createUnit [_pos, _group, "this moveinCargo _veh;this assignAsCargo _veh;"];
+				_unit_type createUnit [_newZone, _group, "this moveinCargo _veh;this assignAsCargo _veh;"];
 			};
 		};
 
