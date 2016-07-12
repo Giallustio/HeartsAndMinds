@@ -40,7 +40,7 @@ _group = createGroup civilian;
 (selectRandom btc_civ_type_units) createUnit [_Spos, _group, "this moveinDriver _veh; this assignAsDriver _veh;"];
 _group setVariable ["no_cache",true];
 _group setVariable ["btc_patrol",true];
-_group setVariable ["btc_traffic_id",btc_traffic_id];btc_traffic_id = btc_traffic_id + 1;
+_group setVariable ["btc_traffic_id",btc_traffic_id,btc_debug];btc_traffic_id = btc_traffic_id + 1;
 _group setVariable ["city",_city];
 btc_civ_veh_active pushBack _group;
 

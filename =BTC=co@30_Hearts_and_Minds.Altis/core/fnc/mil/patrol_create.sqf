@@ -44,7 +44,7 @@ _group = createGroup btc_enemy_side;
 _group setVariable ["city",_city];
 _group setVariable ["no_cache",true];
 _group setVariable ["btc_patrol",true];
-_group setVariable ["btc_patrol_id",btc_patrol_id];btc_patrol_id = btc_patrol_id + 1;
+_group setVariable ["btc_patrol_id",btc_patrol_id,btc_debug];btc_patrol_id = btc_patrol_id + 1;
 
 _pos_iswater = (surfaceIsWater _pos);
 
