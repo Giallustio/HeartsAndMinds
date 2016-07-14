@@ -41,6 +41,12 @@ for "_i" from 1 to (5 + round random 5) do {
 	_m = createMine [_type, _m_pos, [], 0];
 	_mines = _mines + [_m];
 };
+_in_range = btc_city_all select {(_pos distance _x < 2000)};
+_closest = objNull;
+_dist = 999999;
+{if (_x distance _pos < _dist && {!(_x getVariable ["occupied",false])}) then {_closest = _x;_dist = _x distance _pos;};} foreach _in_range;
+
+[getPos _closest,_pos,1,"I_Truck_02_transport_F"] spawn btc_fnc_mil_send;
 
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({!isNull _x} count _mines == 0))};
 
