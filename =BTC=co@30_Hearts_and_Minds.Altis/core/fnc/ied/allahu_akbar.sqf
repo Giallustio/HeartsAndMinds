@@ -9,7 +9,7 @@ _soundToPlay = _soundPath + "core\sounds\allahu_akbar.ogg";
 if (alive _suicider) then {
 	playSound3d [_soundToPlay, _suicider, false, (getPos _suicider), 10, 1];
 	sleep 1.4;
-	{ detach _x; deleteVehicle _x;} forEach attachedObjects _suicider;
+	{deleteVehicle _x;} forEach attachedObjects _suicider;
 	"Bo_GBU12_LGB_MI10" createVehicle getPos _suicider;
 	playSound3d["A3\Missions_F_EPA\data\sounds\combat_deafness.wss", _suicider, false, (getPos _suicider), 3, 1];
 };
