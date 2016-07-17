@@ -16,7 +16,7 @@ if (_cap_to isEqualTo []) exitWith {if (btc_debug_log) then {diag_log "btc_fnc_m
 
 	if (_in_range isEqualTo []) exitWith {if (btc_debug_log) then {diag_log format ["btc_fnc_mil_check_cap: exit no in range = %1",_hd getVariable "id"];};};
 
-	_closest = [_hd] call btc_fnc_find_closecity;
+	_closest = [_hd,_in_range,true] call btc_fnc_find_closecity;
 
 	if (btc_debug_log) then {diag_log format ["btc_fnc_mil_check_cap: _in_range = %1",_in_range];};
 

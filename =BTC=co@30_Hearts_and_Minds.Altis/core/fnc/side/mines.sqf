@@ -42,9 +42,10 @@ for "_i" from 1 to (5 + round random 5) do {
 	_mines = _mines + [_m];
 };
 
-_closest = [_city] call btc_fnc_find_closecity;
-
-[_closest,_city,1,"I_Truck_02_transport_F"] spawn btc_fnc_mil_send;
+_closest = [_city,btc_city_all - [_city],false] call btc_fnc_find_closecity;
+for "_i" from 1 to (round random 1) do {
+	[_closest,_city,1,"I_Truck_02_transport_F"] spawn btc_fnc_mil_send;
+};
 
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({!isNull _x} count _mines == 0))};
 

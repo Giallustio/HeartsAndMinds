@@ -4,7 +4,7 @@ private ["_group","_city","_wp","_marker"];
 _group = _this;
 _group setVariable ["no_cache",nil];
 diag_log format ["ADD GROUP = %1",_group];
-_city = [leader _group] call btc_fnc_find_closecity;
+_city = [leader _group,btc_city_all,false] call btc_fnc_find_closecity;
 
 if (isNull _city) exitWith
 {
