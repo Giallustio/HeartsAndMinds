@@ -39,10 +39,13 @@ for "_i" from 1 to (5 + round random 5) do {
 	if (random 1 > 0.6) then {_type = "APERSMine";};
 	_m_pos = [_pos, 50] call btc_fnc_randomize_pos;
 	_m = createMine [_type, _m_pos, [], 0];
-	_mines = _mines + [_m];
+	_mines pushBack _m;
 };
 
 _closest = [_city,btc_city_all - [_city],false] call btc_fnc_find_closecity;
+
+waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({_x distance _city > 500} count playableUnits == 0))};
+
 for "_i" from 1 to (round random 1) do {
 	[_closest,_city,1,"I_Truck_02_transport_F"] spawn btc_fnc_mil_send;
 };
