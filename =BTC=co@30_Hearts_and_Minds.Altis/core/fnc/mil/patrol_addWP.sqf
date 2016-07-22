@@ -9,7 +9,10 @@ _isboat = _this select 2;
 _players = if (isMultiplayer) then {playableUnits} else {switchableUnits};
 
 if ({_x distance _city < (_area/2) || _x distance leader _group < (_area/2)} count _players isEqualTo 0) exitWith {
-	if (vehicle leader _group != leader _group) then {deleteVehicle (vehicle leader _group)};
+	if (vehicle leader _group != leader _group) then {
+		(vehicle leader _group) call btc_fnc_mil_patrol_eh_remove;
+		deleteVehicle (vehicle leader _group);
+	};
 	{deleteVehicle _x;} foreach units _group;deleteGroup _group;
 };
 

@@ -216,4 +216,11 @@ class Params {
 		texts[]={"0 m","100 m","200 m","300 m (Default)","400 m","500 m (Takistan)","600 m","700 m","800 m"};
 		default = 3;
 	};
+	class btc_p_rearm {
+	//paramsArray[31]
+        title = "Rearm Level:";
+		values[]={0,1,2};
+		texts[]={"Entire vehicle","Entire magazine","Amount based on caliber"};
+		default = 1;
+	};
 };

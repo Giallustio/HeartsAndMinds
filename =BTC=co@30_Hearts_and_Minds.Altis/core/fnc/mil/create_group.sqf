@@ -1,5 +1,5 @@
 
-private ["_city","_area","_n","_wp","_pos","_rpos","_unit_type","_group","_in_house","_pos_iswater"];
+private ["_city","_area","_n","_wp","_pos","_rpos","_unit_type","_group","_in_house","_pos_iswater","_newpos"];
 
 _city = _this select 0;
 _area = _this select 1;
@@ -21,6 +21,8 @@ if (_pos_iswater) then {
 	_unit_type = selectRandom btc_type_divers;
 } else {
 	_unit_type = selectRandom btc_type_units;
+	_newpos = _rpos findEmptyPosition [0, 40];
+	if !(_newpos isEqualTo []) then {_rpos = _newpos;};
 };
 
 _group = createGroup btc_enemy_side;
@@ -59,7 +61,7 @@ if (!_in_house) then {
 	//_group createUnit [btc_type_medic, _pos, [], 0, "NONE"];
 };
 
-if ((position leader _group) distance [0,0,0] < 50) then {{_x setpos _rpos;} foreach units _group;};
+//if ((position leader _group) distance [0,0,0] < 50) then {{_x setpos _rpos;} foreach units _group;};
 
 {_x call btc_fnc_mil_unit_create;} foreach units _group;
 

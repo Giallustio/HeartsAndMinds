@@ -1,5 +1,5 @@
 
-private ["_group","_city","_area","_players","_cities","_pos","_isboat"];
+private ["_group","_city","_area","_players","_cities","_pos","_isboat","_dirTo","_ang","_dirto_useful","_useful"];
 
 _group = _this select 0;
 _city = _group getVariable ["city",objNull];
@@ -9,13 +9,22 @@ _isboat = _this select 2;
 _players = if (isMultiplayer) then {playableUnits} else {switchableUnits};
 
 if ({_x distance _city < (_area/2) || _x distance leader _group < (_area/2)} count _players isEqualTo 0) exitWith {//playableUnits
-	diag_log text "DELETE TRAFFIC GROUP";
-	if (vehicle leader _group != leader _group) then {deleteVehicle (vehicle leader _group)};
+	/*if (btc_debug_log) then	{
+		diag_log format ["DELETE TRAFFIC GROUP 1: veh: %1 driver: %2 pos_veh: %3 ID: %4",vehicle leader _group,units _group, getPos (vehicle leader _group),_group getVariable "btc_traffic_id"];
+	};*/
+	if (vehicle leader _group != leader _group) then {
+		(vehicle leader _group) call btc_fnc_civ_traffic_eh_remove;
+		deleteVehicle (vehicle leader _group);
+	};
 	{deleteVehicle _x;} foreach units _group;deleteGroup _group;
 };
 
-_cities = btc_city_all select {((_x distance _city < _area) && ((!_isboat && {_x getVariable ["type",""] != "NameMarine"}) || (_isboat && {_x getVariable ["hasbeach",false]})))};
-_pos = [];
+_useful =  btc_city_all select {_x distance _city < _area};
+_dirTo = (leader _group) getdir _city;
+_dirto_useful = _useful select {_ang = _city getdir _x; (abs(_ang - _dirTo) min (360 - abs(_ang - _dirTo)) < 45);};
+if !(_dirto_useful isEqualTo []) then {_useful = _dirto_useful;};
+_cities = _useful select {(!_isboat && {_x getVariable ["type",""] != "NameMarine"}) || (_isboat && {_x getVariable ["hasbeach",false]})};
+
 if (_cities isEqualTo []) then {_pos = getPos _city;} else {
 	_pos = getPos (selectRandom _cities);
 };
