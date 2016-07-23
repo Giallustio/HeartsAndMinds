@@ -69,8 +69,7 @@ switch (true) do {
 			_pos_iswater = false;
 			_veh_type = selectRandom (btc_type_motorized + [selectRandom btc_civ_type_veh]);
 		} else {
-			_newZone = [_pos, 0, 500, 13, [0,1] select btc_p_sea, 60 * (pi / 180), 0] call BIS_fnc_findSafePos;
-			_newZone = [_newZone select 0, _newZone select 1, 0];
+			_newZone = [_pos,0,500,13,btc_p_sea] call btc_fnc_findsafepos;
 			_pos_iswater = surfaceIsWater _newZone;
 			if (_pos_iswater) then {
 				_veh_type = selectRandom btc_type_boats;

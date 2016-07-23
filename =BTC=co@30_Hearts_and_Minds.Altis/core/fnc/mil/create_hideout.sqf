@@ -1,5 +1,5 @@
 
-private ["_city","_pos","_radius","_hideout","_random_pos","_random_area"];
+private ["_city","_pos","_radius","_hideout","_random_pos","_radius_x","_radius_y","_id"];
 
 _city = objNull;
 
@@ -20,17 +20,23 @@ if (count _this > 0) then {_city = _this;} else {
 	_city = selectRandom _useful;
 };
 
-_radius = (((_city getVariable ["RadiusX",0]) + (_city getVariable ["RadiusY",0]))/2) - 100;
-
+_radius = (((_city getVariable ["RadiusX",0]) + (_city getVariable ["RadiusY",0]))/2);
 _random_pos = [getPos _city, _radius] call btc_fnc_randomize_pos;
-_random_area = 100;
-for "_i" from 0 to 4 do {
-	_pos = [_random_pos, 0, _random_area, 2, 0, 0.5, 0] call BIS_fnc_findSafePos;
-	if (count _pos == 2) exitWith {_pos = [_pos select 0, _pos select 1, 0];};
-	_random_area = _random_area * 1.5;
-};
+_pos = [_random_pos,0,100,2,false] call btc_fnc_findsafepos;
 
 if (count _pos == 0) then {_pos = getPos _city;};
+
+_city setpos _pos;
+_id = _city getVariable ["id",0];
+if (btc_debug) then	{deleteMarker format ["loc_%1",_id];};
+deleteVehicle (_city getVariable ["trigger_player_side",objNull]);
+_radius_x = btc_hideouts_radius;
+_radius_y = btc_hideouts_radius;
+
+[_pos,_radius_x,_radius_y,_city,_city getVariable "occupied",_city getVariable "name",_city getVariable "type",_city getVariable "id"] call btc_fnc_city_trigger_player_side;
+
+_city setVariable ["RadiusX",_radius_x];
+_city setVariable ["RadiusY",_radius_y];
 
 [_pos,(random 360),btc_composition_hideout] call btc_fnc_create_composition;
 

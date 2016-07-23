@@ -17,6 +17,7 @@ if (isServer) then {
 	btc_fnc_task_patrol = compile preprocessFile "core\fnc\common\task_patrol.sqf";
 	btc_fnc_set_damage = compile preprocessFile "core\fnc\common\set_damage.sqf";
 	btc_fnc_road_direction = compile preprocessFile "core\fnc\common\road_direction.sqf";
+	btc_fnc_findsafepos = compile preprocessFile "core\fnc\common\findsafepos.sqf";
 	btc_fnc_deleteTestObj = compile preprocessFile "core\fnc\common\deleteTestObj.sqf";
 
 	//CITY
@@ -24,6 +25,7 @@ if (isServer) then {
 	btc_fnc_city_create = compile preprocessFile "core\fnc\city\create.sqf";
 	btc_fnc_city_de_activate = compile preprocessFile "core\fnc\city\de_activate.sqf";
 	btc_fnc_city_set_clear = compile preprocessFile "core\fnc\city\set_clear.sqf";
+	btc_fnc_city_trigger_player_side = compile preprocessFile "core\fnc\city\trigger_player_side.sqf";
 
 	//CIV
 	btc_fnc_civ_add_weapons = compile preprocessFile "core\fnc\civ\add_weapons.sqf";

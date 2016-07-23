@@ -26,14 +26,12 @@ switch (_this select 2) do {
 		_group setVariable ["no_cache",true];
 		_veh_type = (_this select 3);
 		if (_veh_type == "") then {_veh_type = selectRandom btc_type_motorized};
-		_return_pos = [_pos, 0, 500, 13, 0, 60 * (pi / 180), 0] call BIS_fnc_findSafePos;
+
+		_return_pos = [_pos,0,500,13,false] call btc_fnc_findsafepos;
+
 		_veh = createVehicle [_veh_type, _return_pos, [], 0, "FLY"];
-		_gunner = _veh emptyPositions "gunner";
-		_commander = _veh emptyPositions "commander";
+		[_veh,_group,false,"",btc_type_crewmen] call BIS_fnc_spawnCrew;
 		_cargo = (_veh emptyPositions "cargo") - 1;
-		btc_type_crewmen createUnit [_pos, _group, "this moveinDriver _veh;this assignAsDriver _veh;"];
-		if (_gunner > 0) then {btc_type_crewmen createUnit [_pos, _group, "this moveinGunner _veh;this assignAsGunner _veh;"];};
-		if (_commander > 0) then {btc_type_crewmen createUnit [_pos, _group, "this moveinCommander _veh;this assignAsCommander _veh;"];};
 		for "_i" from 0 to _cargo do {
 			private "_unit_type";
 			_unit_type = selectRandom btc_type_units;
