@@ -71,7 +71,7 @@ _array_ho = [];
 		_marker pushback (markerText _x);
 		_ho_markers pushback _marker;
 	} foreach (_x getVariable ["markers",[]]);
-	_data pushback (_ho_markers);
+	_data pushback _ho_markers;
 	diag_log format ["HO %1 DATA %2",_x,_data];
 	_array_ho pushBack _data;
 } foreach btc_hideouts;
