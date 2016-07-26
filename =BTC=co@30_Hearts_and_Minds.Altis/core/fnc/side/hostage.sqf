@@ -1,5 +1,5 @@
 
-private ["_useful","_city","_pos","_captive","_group_civ","_group","_house","_houses","_marker","_wp","_unit","_buildingPos","_pos_number"];
+private ["_useful","_city","_pos","_captive","_group_civ","_group","_house","_houses","_marker","_wp","_unit","_buildingPos","_pos_number","_mine"];
 
 //// Choose an occupied City \\\\
 _useful = btc_city_all select {(_x getVariable ["occupied",false] && {_x getVariable ["type",""] != "NameLocal"} && {_x getVariable ["type",""] != "Hill"} && (_x getVariable ["type",""] != "NameMarine"))};
@@ -41,7 +41,7 @@ _group_civ = createGroup civilian;
 _group_civ setVariable ["no_cache",true];
 (selectRandom btc_civ_type_units) createUnit [_pos, _group_civ, "_captive = this; [this,true] call ACE_captives_fnc_setHandcuffed;"];
 _captive setPos _pos;
-{_x call btc_fnc_civ_unit_create} foreach units _group_civ;
+_captive call btc_fnc_civ_unit_create;
 
 _group = [];
 {
@@ -60,7 +60,17 @@ _trigger setTriggerArea[20,20,0,false];
 _trigger setTriggerActivation[str(btc_player_side),"PRESENT",true];
 _trigger setTriggerStatements["this", "_group = thisTrigger getVariable 'group'; {_x setCombatMode 'RED';} foreach _group;", "_group = thisTrigger getVariable 'group'; {_x setCombatMode 'WHITE';} foreach _group;"];
 
+if (btc_debug_log) then	{
+	diag_log format ["hostage: _pos %1 [_pos select 0,_pos select 1,(_pos select 2) - 0.3] %2",_pos,[_pos select 0,_pos select 1,(_pos select 2) - 0.3]];
+	diag_log format ["hostage: getposATL _captive %1 ",getposATL _captive];
+};
+_mine = createMine [selectRandom btc_type_mines, getposATL _captive, [], 0];
+
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !(_captive getVariable ["ace_captives_isHandcuffed", false]) || !Alive _captive)};
+
+if (!(_captive getVariable ["ace_captives_isHandcuffed", false]) && !(_mine isEqualTo objNull)) then {
+	_mine setDamage 1;
+};
 
 deletemarker _marker;
 _group_civ setVariable ["no_cache",false];
@@ -69,12 +79,12 @@ _group_civ setVariable ["no_cache",false];
 if (btc_side_aborted || btc_side_failed || !(Alive _captive)) exitWith {
 	[15,"btc_fnc_task_fail",true] spawn BIS_fnc_MP;
 	btc_side_assigned = false;publicVariable "btc_side_assigned";
-	[[_captive,_trigger],_group_civ,_group] spawn {
+	[[_captive,_trigger,_mine],_group_civ,_group] spawn {
 		waitUntil {sleep 5; ({_x distance (_this select 0 select 0) < 500} count playableUnits isEqualTo 0)};
 		private ["_unit"];
 		_unit = [];
 		{_unit = _unit + units _x;} forEach (_this select 2);
-		{if (!isNull _x) then {deleteVehicle _x}} foreach (_this select 0 + _unit);
+		//{if (!isNull _x) then {deleteVehicle _x}} foreach (_this select 0 + _unit);
 		{deleteGroup _x} foreach ([_this select 1] + (_this select 2));
 	};
 };
