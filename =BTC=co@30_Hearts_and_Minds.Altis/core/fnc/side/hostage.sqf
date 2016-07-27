@@ -60,16 +60,17 @@ _trigger setTriggerArea[20,20,0,false];
 _trigger setTriggerActivation[str(btc_player_side),"PRESENT",true];
 _trigger setTriggerStatements["this", "_group = thisTrigger getVariable 'group'; {_x setCombatMode 'RED';} foreach _group;", "_group = thisTrigger getVariable 'group'; {_x setCombatMode 'WHITE';} foreach _group;"];
 
-if (btc_debug_log) then	{
-	diag_log format ["hostage: _pos %1 [_pos select 0,_pos select 1,(_pos select 2) - 0.3] %2",_pos,[_pos select 0,_pos select 1,(_pos select 2) - 0.3]];
-	diag_log format ["hostage: getposATL _captive %1 ",getposATL _captive];
+if (random 1 > 0.5) then {
+	_mine = createMine [selectRandom btc_type_mines, getposATL _captive, [], 0];
+} else {
+	_mine = objNull;
 };
-_mine = createMine [selectRandom btc_type_mines, getposATL _captive, [], 0];
 
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !(_captive getVariable ["ace_captives_isHandcuffed", false]) || !Alive _captive)};
 
-if (!(_captive getVariable ["ace_captives_isHandcuffed", false]) && !(_mine isEqualTo objNull)) then {
+if (!(_captive getVariable ["ace_captives_isHandcuffed", false])) then {
 	_mine setDamage 1;
+	sleep 1;
 };
 
 deletemarker _marker;
@@ -84,7 +85,7 @@ if (btc_side_aborted || btc_side_failed || !(Alive _captive)) exitWith {
 		private ["_unit"];
 		_unit = [];
 		{_unit = _unit + units _x;} forEach (_this select 2);
-		//{if (!isNull _x) then {deleteVehicle _x}} foreach (_this select 0 + _unit);
+		{if (!isNull _x) then {deleteVehicle _x}} foreach ((_this select 0) + _unit);
 		{deleteGroup _x} foreach ([_this select 1] + (_this select 2));
 	};
 };

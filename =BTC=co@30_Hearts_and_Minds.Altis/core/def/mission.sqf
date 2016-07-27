@@ -134,7 +134,7 @@ if (isServer) then {
 	btc_type_box = ["Box_East_Wps_F","Box_East_WpsSpecial_F","Box_East_Ammo_F"];
 	btc_type_generator = ["Land_Device_assembled_F","Land_Device_disassembled_F"];
 	btc_type_storagebladder = ["StorageBladder_02_water_forest_F","StorageBladder_02_water_sand_F"];
-	btc_type_mines = ["APERSMine","APERSBoundingMine","APERSTripMine","ClaymoreDirectionalMine","SLAMDirectionalMine"];
+	btc_type_mines = ["APERSMine","APERSBoundingMine","APERSTripMine"];
 
 	//Vehs
 	btc_vehicles = [btc_veh_1,btc_veh_2,btc_veh_3,btc_veh_4,btc_veh_5,btc_veh_6,btc_veh_7,btc_veh_8,btc_veh_9,btc_veh_10,btc_veh_11,btc_veh_12,btc_veh_13,btc_veh_14];
