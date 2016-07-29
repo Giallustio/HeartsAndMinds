@@ -13,7 +13,13 @@ if (btc_db_load && {profileNamespace getVariable [format ["btc_hm_%1_db",worldNa
 
 	[] execVM "core\fnc\cache\init.sqf";
 
-	[] spawn {{waitUntil {!isNull _x};_x addMPEventHandler ["MPKilled", {if (isServer) then {_this call btc_fnc_eh_veh_killed};}];} foreach btc_vehicles;};
+	[] spawn {
+		{
+			waitUntil {!isNull _x};
+			if ([_x] call ace_fastroping_fnc_canPrepareFRIES) then {[_x] call ace_fastroping_fnc_equipFRIES};
+			_x addMPEventHandler ["MPKilled", {if (isServer) then {_this call btc_fnc_eh_veh_killed};}];
+		} foreach btc_vehicles;
+	};
 };
 
 {[_x,30,false] spawn btc_fnc_eh_veh_add_respawn;} forEach btc_helo;
