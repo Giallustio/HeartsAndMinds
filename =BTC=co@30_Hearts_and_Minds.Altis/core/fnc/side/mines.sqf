@@ -1,5 +1,5 @@
 
-private ["_useful","_city","_pos","_area","_marker","_mines"];
+private ["_useful","_city","_pos","_area","_marker","_mines","_closest"];
 
 _useful = btc_city_all select {((_x getVariable ["type",""] != "NameLocal") && {_x getVariable ["type",""] != "Hill"} && (_x getVariable ["type",""] != "NameMarine"))};
 
@@ -42,12 +42,11 @@ for "_i" from 1 to (5 + round random 5) do {
 	_mines pushBack _m;
 };
 
-_closest = [_city,btc_city_all - [_city],false] call btc_fnc_find_closecity;
+waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({_x distance _pos > 100} count playableUnits == 0))};
 
-waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({_x distance _city > 500} count playableUnits == 0))};
-
-for "_i" from 1 to (round random 1) do {
-	[_closest,_city,1,"I_Truck_02_transport_F"] spawn btc_fnc_mil_send;
+_closest = [_city,btc_city_all select {!(_x getVariable ["active",false])},false] call btc_fnc_find_closecity;
+for "_i" from 1 to (round random 2) do {
+	[_closest,_pos,1,selectRandom btc_type_motorized] spawn btc_fnc_mil_send;
 };
 
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({!isNull _x} count _mines == 0))};
