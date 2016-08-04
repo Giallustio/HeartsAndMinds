@@ -139,9 +139,13 @@ if (btc_side_failed) exitWith {
 
 [_vehs + [_trigger],_group] spawn {
 	waitUntil {sleep 5; ({_x distance ((_this select 0) select 0) < 500} count playableUnits isEqualTo 0)};
-		{if (!isNull _x) then {deleteVehicle _x}} foreach units (_this select 1);
+		{if (!isNull _x) then {deleteVehicle _x}} foreach ((units (_this select 1)) - leader (_this select 1));
 		{if (!isNull _x) then {deleteVehicle _x}} foreach (_this select 0);
 		deleteGroup (_this select 1);
+};
+[_captive] spawn {
+	waitUntil {sleep 5; ({_x distance (_this select 0) < 500} count playableUnits isEqualTo 0)};
+	if (!isNull (_this select 0)) then {deleteVehicle (_this select 0)};
 };
 
 btc_side_assigned = false;publicVariable "btc_side_assigned";
