@@ -22,7 +22,7 @@ btc_side_jip_data = [4,_pos,_city getVariable "name"];
 _area = createmarker [format ["sm_%1",_pos],_pos];
 _area setMarkerShape "RECTANGLE";
 _area setMarkerBrush "SolidBorder";
-_area setMarkerSize [80, 80];
+_area setMarkerSize [60, 60];
 _area setMarkerAlpha 0.3;
 _area setmarkercolor "colorBlue";
 
