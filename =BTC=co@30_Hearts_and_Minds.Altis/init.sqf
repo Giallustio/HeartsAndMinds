@@ -10,6 +10,10 @@ if (isServer) then {
 
 call compile preprocessFile "core\init_common.sqf";
 
-if (!isDedicated) then {
+if (!isDedicated && hasInterface) then {
 	call compile preprocessFile "core\init_player.sqf";
+};
+
+if (!isDedicated && !hasInterface) then {
+	call compile preprocessFile "core\init_headless.sqf";
 };

@@ -1,5 +1,5 @@
 [] execVM "core\doc.sqf";
-	
+
 [] spawn {
 	waitUntil {!isNull player};
 
@@ -21,11 +21,11 @@
 			btc_int_ask_data spawn btc_fnc_task_create;
 		};
 	};
-		
+
 	{[_x] spawn btc_fnc_task_create} foreach [0,1];
 
 	if (player getVariable ["interpreter", false]) then {player createDiarySubject ["Diary log","Diary log"];};
-	
+
 	removeAllWeapons player;
 	btc_gear_object addAction ["<t color='#ff1111'>Arsenal</t>", "['Open',true] spawn BIS_fnc_arsenal;"];
 };
@@ -33,7 +33,7 @@
 if (btc_debug) then {
 	onMapSingleClick "if (vehicle player == player) then {player setpos _pos} else {vehicle player setpos _pos}";
 	player allowDamage false;
-	
+
 	btc_marker_debug_cond = true;
 	[] spawn btc_fnc_marker_debug;
 };

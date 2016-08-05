@@ -4,10 +4,10 @@ private ["_units","_color","_marker","_markers","_units_owners"];
 _units = allunits select {Alive _x};
 if !(btc_marker_debug_cond) exitWith {};
 
-btc_int_ask_data = nil;
+btc_int_ask_data_owner = nil;
 [8,_units,player] remoteExec ["btc_fnc_int_ask_var",2];
-waitUntil {(!(isNil "btc_int_ask_data"))};
-_units_owners = btc_int_ask_data;
+waitUntil {(!(isNil "btc_int_ask_data_owner"))};
+_units_owners = btc_int_ask_data_owner;
 
 _markers = [];
 {
@@ -15,7 +15,7 @@ _markers = [];
 	_marker setmarkertypelocal "mil_Dot";
 	_marker setMarkerTextLocal format ["%1", typeOf _x];
 	if (leader group _x == _x) then {
-		_marker setMarkerTextLocal format ["%1 (%2) (%3)", typeOf _x,group _x getVariable "btc_patrol_id",group _x getVariable "btc_traffic_id"];
+		_marker setMarkerTextLocal format ["%1 (%2)", typeOf _x,group _x getVariable ["btc_patrol_id",group _x getVariable "btc_traffic_id"]];
 	};
 	switch (true) do {
 		case (side _x == west) : {_color = "ColorBlue"};

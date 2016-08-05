@@ -55,6 +55,9 @@ if (!isMultiplayer) then {btc_debug_log = true;btc_debug = true;};
 if (isServer) then {
 	btc_final_phase = false;
 
+	//Headless
+	btc_headless_array = [];
+
 	//City
 	btc_city_radius = _p_city_radius;
 	btc_city_blacklist = [];//NAME FROM CFG
