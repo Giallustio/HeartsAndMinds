@@ -100,6 +100,9 @@ switch (true) do {
 	};
 };
 
+if !(btc_headless_array isEqualTo []) then {
+	_group setgroupOwner owner (btc_headless_array select 0);
+};
 btc_patrol_active pushBack _group;
 
 {_x call btc_fnc_mil_unit_create} foreach units _group;

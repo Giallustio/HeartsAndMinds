@@ -26,7 +26,7 @@ _markers = [];
 	_marker setmarkerColorlocal _color;
 	_marker setMarkerSizeLocal [0.7, 0.7];
 	if !((_units_owners select _foreachindex) isEqualTo 2) then	{
-		_marker setMarkerAlphaLocal 0.3;
+		_marker setMarkerAlphaLocal 0.5;
 	};
 	_markers pushBack _marker;
 } foreach _units;
