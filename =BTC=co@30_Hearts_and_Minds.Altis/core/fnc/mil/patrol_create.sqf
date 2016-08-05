@@ -100,8 +100,8 @@ switch (true) do {
 	};
 };
 
-if !(btc_headless_array isEqualTo []) then {
-	_group setgroupOwner owner (btc_headless_array select 0);
+if !((entities "HeadlessClient_F") isEqualTo []) then {
+	_group setgroupOwner owner ((entities "HeadlessClient_F") select 0);
 };
 btc_patrol_active pushBack _group;
 

@@ -1,13 +1,17 @@
 
-private ["_units","_color","_marker","_markers","_units_owners"];
+private ["_units","_color","_marker","_markers","_units_owners","_has_headless"];
 
 _units = allunits select {Alive _x};
 if !(btc_marker_debug_cond) exitWith {};
 
-btc_int_ask_data_owner = nil;
-[8,_units,player] remoteExec ["btc_fnc_int_ask_var",2];
-waitUntil {(!(isNil "btc_int_ask_data_owner"))};
-_units_owners = btc_int_ask_data_owner;
+_has_headless = !((entities "HeadlessClient_F") isEqualTo []);
+
+if (_has_headless) then {
+	btc_int_ask_data_owner = nil;
+	[8,_units,player] remoteExec ["btc_fnc_int_ask_var",2];
+	waitUntil {(!(isNil "btc_int_ask_data_owner"))};
+	_units_owners = btc_int_ask_data_owner;
+};
 
 _markers = [];
 {
@@ -25,8 +29,10 @@ _markers = [];
 	};
 	_marker setmarkerColorlocal _color;
 	_marker setMarkerSizeLocal [0.7, 0.7];
-	if !((_units_owners select _foreachindex) isEqualTo 2) then	{
-		_marker setMarkerAlphaLocal 0.5;
+	if (_has_headless) then {
+		if !((_units_owners select _foreachindex) isEqualTo 2) then	{
+			_marker setMarkerAlphaLocal 0.3;
+		};
 	};
 	_markers pushBack _marker;
 } foreach _units;
