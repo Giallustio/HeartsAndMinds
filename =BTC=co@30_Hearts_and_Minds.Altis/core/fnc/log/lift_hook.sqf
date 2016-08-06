@@ -4,6 +4,7 @@ private ["_chopper","_array","_cargo_array","_cargo"];
 _chopper = vehicle player;
 _array = [vehicle player] call btc_fnc_log_get_liftable;
 _cargo_array = nearestObjects [_chopper, _array, 30];
+_cargo_array = _cargo_array select {(typeOf _x) != "ACE_friesAnchorBar"};
 if (count _cargo_array > 0 && driver (_cargo_array select 0) == player) then {_cargo_array set [0,0];_cargo_array = _cargo_array - [0];};
 if (count _cargo_array > 0) then {_cargo = _cargo_array select 0;} else {_cargo = objNull;};
 if (isNull _cargo) exitWith {};

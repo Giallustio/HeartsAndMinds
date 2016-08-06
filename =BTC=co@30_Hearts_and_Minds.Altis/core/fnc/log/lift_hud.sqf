@@ -22,6 +22,7 @@ while {(Alive player && vehicle player != player) && btc_log_hud} do {
 	private ["_cargo"];
 	_array = [vehicle player] call btc_fnc_log_get_liftable;
 	_cargo_array = nearestObjects [vehicle player, _array, 30];
+	_cargo_array = _cargo_array select {(typeOf _x) != "ACE_friesAnchorBar"};
 	if (count _array == 0) then {_cargo_array = [];};
 	if (count _cargo_array > 0 && driver (_cargo_array select 0) == player) then {_cargo_array set [0,0];_cargo_array = _cargo_array - [0];};
 	if (count _cargo_array > 0) then {_cargo = _cargo_array select 0;} else {_cargo = objNull;};
