@@ -17,7 +17,7 @@ _veh setDir _dir;
 _veh setPos _pos;
 _veh setVariable ["btc_dont_delete",true];
 
-if ([_veh] call ace_fastroping_fnc_canPrepareFRIES) then {[_veh] call ace_fastroping_fnc_equipFRIES};
+if (isNumber (configfile >> "CfgVehicles" >> typeof _veh >> "ace_fastroping_enabled")) then {[_veh] call ace_fastroping_fnc_equipFRIES};
 if(getNumber(configFile >> "CfgVehicles" >> typeof _veh >> "isUav")==1) then {
 	createVehicleCrew _veh;
 };
