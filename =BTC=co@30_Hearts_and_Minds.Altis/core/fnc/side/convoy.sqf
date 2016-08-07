@@ -12,15 +12,13 @@ _usefuls = _cities select {((_x getVariable ["type",""] != "NameLocal") && {_x g
 if (_usefuls isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
 _city1 = selectRandom _usefuls;
 
+//// Find Road \\\\
 _radius_x = _city1 getVariable ["RadiusX",0];
 _roads = _city1 nearRoads (_radius_x * 2);
-_roads = _roads select {(_x distance _city1 > _radius_x )};
-if !(_roads isEqualTo []) then {
-	_road = selectRandom _roads;
-	_pos1 = getPos _road;
-} else {
-	_pos1 = getPos _city1;
-};
+_roads = _roads select {(_x distance _city1 > _radius_x ) && isOnRoad _x};
+ if (_roads isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
+_road = selectRandom _roads;
+_pos1 = getPos _road;
 _pos2 = getPos _city2;
 
 btc_side_aborted = false;
