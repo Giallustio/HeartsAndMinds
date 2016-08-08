@@ -27,7 +27,7 @@ for "_i" from 1 to (1 + round random 2) do {
 	_pos = [getPos _city, 300] call btc_fnc_randomize_pos;
 	_roads = _pos nearRoads 300;
 	_roads = _roads select {isOnRoad _x};
-	if (count _roads == 0) exitWith {_boxes pushBack objNull};
+	if (_roads isEqualTo []) exitWith {_boxes pushBack objNull};
 	_road = selectRandom _roads;
 	_pos = getPos _road;
 
