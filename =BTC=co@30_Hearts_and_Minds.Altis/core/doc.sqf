@@ -139,6 +139,6 @@ Use ACE 3 interactions system.
 
 player createDiaryRecord ["Documentation", [
 	"Version",
-	format ["Version %1",(str(btc_version) + ".2")]
+	format ["Version %1",(str(btc_version) + ".0")]
 	]
 ];
