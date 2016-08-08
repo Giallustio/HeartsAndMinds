@@ -1,7 +1,8 @@
 player createDiarySubject ["Documentation","Documentation"];
 
 player createDiaryRecord ["Documentation", ["Wounds", "
-Use the interaction menu to treat your wounds.<br/>Keep in mind that all the actions will be available, even if you do not need them. It is always recommended examine first.
+Use the interaction menu to treat your wounds.<br/>
+Keep in mind that all the actions will be available, even if you do not need them. It is always recommended examine first.
 	"]
 ];
 
@@ -13,8 +14,10 @@ Note: the playSound ['',true] command is bugged, so if you are deaf you will not
 ];
 
 player createDiaryRecord ["Documentation", ["Vehicles", "
+<marker name='blufor_base'>Respawn:</marker><br/><br/>
 When a vehicle is destroyed it will not respawn in base, you need to tow or lift it back to base and repair it near the logistic point (Interact with the red box). Helicopter wreck can only be lifted. <br/>
-The Chinook is the only exception, it will respawn after 30 seconds.
+The Chinook is the only exception, it will respawn after 30 seconds. <br/><br/>
+<marker name='blufor_base'>Rearm:</marker><br/><br/>
 You can also rearm them by spawning the corresponding caliber at logistic point (Interact with the red box, select the vehicle type and caliber). Carry the ammo created and interact with the vehicle to rearm. This only works if rearming is setting on entire magazine or amount based on caliber (not for entire vehicle setting).
 	"]
 ];
@@ -27,7 +30,7 @@ If you don't want to complete a task, you can always abort it with the self inte
 ];
 
 player createDiaryRecord ["Documentation", ["FOB", "
-FOB<br/><br/>
+<marker name='blufor_base'>FOB:</marker><br/><br/>
 In this mission a FOB is a forward spawn point, to create a FOB approach the red box at the logistic point and require a blue container.<br/>
 Move it where you want to deploy a new FOB and interact with it to set it up. Keep in mind that you can not deploy a FOB close to the main base (2.500m) and the terrain needs to be flat.<br/><br/>
 You can dismantle a FOB by interacting with the flag on the HQ first floor.
@@ -48,28 +51,29 @@ At the logistic point you can require new objects (like ammo, fortifications, su
 ];
 
 player createDiaryRecord ["Documentation", ["Logistic", "
-Cargo System<br/><br/>
-You can load objects inside vehicles. Approach the object you want to load and interact with it.<br/>
+<marker name='blufor_base'>Cargo System:</marker><br/><br/>
+<marker name='blufor_base'>- Load:</marker> You can load objects inside vehicles. Approach the object you want to load and interact with it.<br/>
 Select 'LOAD IN' option.<br/>Afer that interact with the vehicle and select 'LOAD object selected' option.<br/>
 The object has to be close to the vehicle.<br/><br/>
-You can unload an object from a vehicle interacting with it. You can be inside the vehicle (personal interaction) or outside (object interaction).<br/>
+<marker name='blufor_base'>- Unload:</marker> You can unload an object from a vehicle interacting with it. You can be inside the vehicle (personal interaction) or outside (object interaction).<br/>
 Select the option 'CHECK CARGO', then choose the object you want to unload from the list, and click 'UNLOAD'.<br/>
 If you are inside a chopper the object will be paradropped with a chute. If your height is too low, the object will crash down.<br/>
 Every vehicle has a 'CARGO CAPACITY' (CC in game), and every object has a 'REQUIRED CAPACITY' value (RC in game.)<br/>
 You can check those values in game with 'LOAD IN' and 'CHECK CARGO' options.<br/><br/><br/>
-Towing system<br/><br/>
+<marker name='blufor_base'>Towing system:</marker><br/><br/>
 To tow a vehicle interact with it and select the option 'HOOK'.<br/>After that place the tow vehicle in front of it and select 'TOW' in the interaction menu.<br/>
 If the two vehicles are too far away or the vehicle can't tow that load, the option will be disabled.<br/>
-To unhook interact with one of the two vehicles and select the option 'UNHOOK'.
+To unhook interact with one of the two vehicles and select the option 'UNHOOK'.<br/><br/>
 
-Place option<br/><br/>
+<marker name='blufor_base'>Place option:</marker><br/><br/>
 With this option you can move heavy objects to build small outpost or base.<br/>
 When you select the option an hint will show all the keys required to move the object.
 	"]
 ];
 
 player createDiaryRecord ["Documentation", ["Hideout", "
-The hideouts are the place where the Oplitas organize their movement.<br/> They send reinforcement from here and can attack the closest city.<br/>
+The hideouts are the place where the Oplitas organize their movement.<br/>
+They send reinforcement from here and can attack the closest city.<br/>
 If you notice a lot of activity in an area, probably there is an hideout closeby.<br/>
 If you want to defeat the Oplitas you need to destroy all their hideouts.<br/>
 Here an example of an hideout:<br/><br/>
@@ -101,6 +105,8 @@ When you destroy an hideout or an ammo cache, all the markers related to it will
 
 player createDiaryRecord ["Documentation", ["Reputation", "
 Reputation can be ask to civilian<br/>
+Bad actions cause bad effetcs.<br/>
+Helping the local population, fighting the Oplitas, disarming IED will rise your reputation; killing civilians, losing vehicles, respawns will decrease your repution. At the beginning you have a very low reputation level, so civilians won't help you revealing important information about Oplitas, they will likely lie instead.
 	"]
 ];
 
