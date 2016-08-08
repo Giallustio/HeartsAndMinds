@@ -75,5 +75,4 @@ _tower spawn {
 	deleteVehicle _this;
 };
 
-
 btc_side_assigned = false;publicVariable "btc_side_assigned";
