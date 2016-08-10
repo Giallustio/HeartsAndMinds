@@ -132,6 +132,7 @@ switch (_this select 0) do
 		_task = player createSimpleTask [("Liberate hostage near " + (_this select 2))];
 		_task setSimpleTaskDescription [format ["Liberate a civilian hostage in %1. Local population is asking for your help!",(_this select 2)],("Liberate hostage near " + (_this select 2)),("Liberate hostage near " + (_this select 2))];
 		_task setSimpleTaskDestination (_this select 1);
+		_task setSimpleTaskType "exit";
 		player setVariable ["task_15",_task];
 		["TaskAssigned",["New task assigned!",("Liberate hostage near " + (_this select 2))]] call bis_fnc_showNotification;
 	};
