@@ -105,6 +105,7 @@ switch (_this select 0) do
 		_task = player createSimpleTask [("Destroy a convoy attacking " + (_this select 2))];
 		_task setSimpleTaskDescription [format ["An armed convoy is going to attack %1. Local population is asking for your help to destroy it before!",(_this select 2)],("Destroy a convoy attacking " + (_this select 2)),("Destroy a convoy attacking " + (_this select 2))];
 		_task setSimpleTaskDestination (_this select 1);
+		_task setSimpleTaskType "attack";
 		player setVariable ["task_12",_task];
 		["TaskAssigned",["New task assigned!",("Destroy a convoy attacking " + (_this select 2))]] call bis_fnc_showNotification;
 	};
