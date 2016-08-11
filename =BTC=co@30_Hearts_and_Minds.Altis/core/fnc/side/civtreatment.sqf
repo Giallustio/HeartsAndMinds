@@ -11,7 +11,9 @@ _pos = getPos _city;
 _r = random 2;
 if ( _r < 1)	then {
 	_roads = _pos nearRoads 200;
-	if (count _roads > 0) then {_pos = getPos (selectRandom _roads);};
+	_roads = _roads select {isOnRoad _x};
+	if (_roads isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
+	_pos = getPos (selectRandom _roads);
 	_vehpos = [_pos, 10] call btc_fnc_randomize_pos;
 } else {
 	_houses = [[(_pos select 0),(_pos select 1),0],200] call btc_fnc_getHouses;
@@ -41,7 +43,7 @@ if ( _r < 1) then {
 	_veh setDir (random 360);
 	_veh setDamage 0.7;
 	//// Random wheel hit \\\\
-	if (_r <0.5) then {
+	if (_r < 0.5) then {
 		_veh setHit ["wheel_1_2_steering", 1];
 	} else {
 		_veh setHit ["wheel_2_1_steering", 1];
@@ -70,7 +72,9 @@ _unit setUnitPos "DOWN";
 {_x call btc_fnc_civ_unit_create} foreach units _group;
 
 sleep 1;
+
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({_x distance _unit > 5000} count playableUnits == 0))};
+
 [_unit] call btc_fnc_set_damage;
 
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !Alive _unit || {_unit call ace_medical_fnc_isInStableCondition && [_unit] call ace_common_fnc_isAwake})};

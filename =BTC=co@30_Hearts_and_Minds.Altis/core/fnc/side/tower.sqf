@@ -10,10 +10,9 @@ _city = selectRandom _useful;
 _pos = [getPos _city, 100] call btc_fnc_randomize_pos;
 
 _roads = _pos nearRoads 100;
-
-if (count _roads > 0) then {_road = selectRandom _roads;
-	_pos = getPos _road;
-	};
+_roads = _roads select {isOnRoad _x};
+if (_roads isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
+_road = selectRandom _roads;
 
 _direction = [_road] call btc_fnc_road_direction;
 
@@ -75,6 +74,5 @@ _tower spawn {
 
 	deleteVehicle _this;
 };
-
 
 btc_side_assigned = false;publicVariable "btc_side_assigned";
