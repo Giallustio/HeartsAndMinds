@@ -120,11 +120,11 @@ switch (_this select 0) do
 	case 14 :
 	{
 		private "_task";
-		_task = player createSimpleTask [("Capture officer in convoy")];
-		_task setSimpleTaskDescription [format ["Capture an officer travelling in a convoy and bring him at base. He is terrorising local population!",(_this select 2)],("Capture officer in convoy"),("Capture officer in convoy")];
+		_task = player createSimpleTask [("Capture officer in secret convoy")];
+		_task setSimpleTaskDescription [format ["Capture an officer travelling in a secret convoy and bring him at base. He is terrorising local population!",(_this select 2)],("Capture officer in secret convoy"),("Capture officer in secret convoy")];
 		_task setSimpleTaskDestination (_this select 1);
 		_task setSimpleTaskType "run";
 		player setVariable ["task_14",_task];
-		["TaskAssigned",["New task assigned!",("Capture officer in convoy")]] call bis_fnc_showNotification;
+		["TaskAssigned",["New task assigned!",("Capture officer in secret convoy")]] call bis_fnc_showNotification;
 	};
 };
