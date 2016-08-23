@@ -36,7 +36,7 @@ _mines = [];
 for "_i" from 1 to (5 + round random 5) do {
 	private ["_type","_m_pos"];
 	_type = "ATMine";
-	if (random 1 > 0.6) then {_type = "APERSMine";};
+	if (random 1 > 0.6) then {_type = selectRandom btc_type_mines;};
 	_m_pos = [_pos, 50] call btc_fnc_randomize_pos;
 	_m = createMine [_type, _m_pos, [], 0];
 	_mines = _mines + [_m];
