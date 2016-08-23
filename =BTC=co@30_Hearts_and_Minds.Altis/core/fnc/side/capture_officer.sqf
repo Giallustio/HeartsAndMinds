@@ -99,8 +99,8 @@ _wp setWaypointStatements ["true", "btc_side_failed = true"];
 //// Create trigger \\\\
 _trigger = createTrigger["EmptyDetector",getPos _city1];
 _trigger setVariable ["captive", _captive];
-_trigger setTriggerArea[10,10,0,false];
-_trigger setTriggerActivation[str(btc_player_side),"PRESENT",false];
+_trigger setTriggerArea[15,15,0,false];
+_trigger setTriggerActivation[str(btc_player_side),"PRESENT",true];
 _trigger setTriggerStatements["this", "_captive = thisTrigger getVariable 'captive'; doStop _captive; [_captive,true] call ace_captives_fnc_setSurrendered;", ""];
 _trigger attachTo [_captive,[0,0,0]];
 
