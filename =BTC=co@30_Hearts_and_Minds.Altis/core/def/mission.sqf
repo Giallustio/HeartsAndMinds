@@ -126,7 +126,7 @@ if (isServer) then {
 	btc_side_assigned = false;
 	btc_side_done = false;
 	btc_side_failed = false;
-	btc_side_list = if (btc_p_sea) then {[0,1,2,3,4,5,6,7,8,9,10]} else {[0,1,2,3,4,5,6,9]};
+	btc_side_list = if (btc_p_sea) then {[0,1,2,3,4,5,6,7,8,9,10,11]} else {[0,1,2,3,4,5,6,9,10,11]};
 	btc_side_list_use = + btc_side_list;
 	btc_side_jip_data = [];
 	btc_type_tower = ["Land_Communication_F","Land_TTowerBig_1_F","Land_TTowerBig_2_F"];
