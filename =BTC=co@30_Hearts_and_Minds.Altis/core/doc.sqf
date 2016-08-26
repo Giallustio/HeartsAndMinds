@@ -7,7 +7,7 @@ Keep in mind that all the actions will be available, even if you do not need the
 ];
 
 player createDiaryRecord ["Documentation", ["Deafness", "
-<marker name='blufor_base'><img image='\z\ace\addons\hearing\UI\Icon_Module_Hearing_ca.paa' width='20' height='20'/> Use the earplugs to protext your ears and avoid combat deafness.<br/>
+<img image='\z\ace\addons\hearing\UI\Icon_Module_Hearing_ca.paa' width='20' height='20'/> Use the earplugs to protext your ears and avoid combat deafness.<br/>
 You can put them on with your self interaction key.<br/><br/>
 Note: the playSound ['',true] command is bugged, so if you are deaf you will not hear any ring sound.
 	"]
@@ -30,9 +30,11 @@ If you don't want to complete a task, you can always abort it with the self inte
 ];
 
 player createDiaryRecord ["Documentation", ["FOB", "
-<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move1_ca.paa' width='20' height='20' color='#FFBF00'/> <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\run_ca.paa' width='20' height='20' color='#FFBF00'/> <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move2_ca.paa' width='20' height='20' color='#FFBF00'/> <marker name='blufor_base'>FOB:</marker><br/>
+<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move1_ca.paa' width='20' height='20' /> <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\run_ca.paa' width='20' height='20' /> <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move2_ca.paa' width='20' height='20' /> <marker name='blufor_base'>FOB:</marker><br/>
  In this mission a FOB is a forward spawn point, to create a FOB approach the red box at the logistic point and require a blue container.<br/>
-<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/> Move it where you want to deploy a new FOB and interact with it to set it up. Keep in mind that you can not deploy a FOB close to the main base (2.500m) and the terrain needs to be flat.<br/><br/>
+- <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/>  <marker name='blufor_base'>Deploy:</marker> <br/>
+Move it where you want to deploy a new FOB and interact with it to set it up. Keep in mind that you can not deploy a FOB close to the main base (2.500m) and the terrain needs to be flat.<br/><br/>
+- <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/> <marker name='blufor_base'>Dismantle:</marker> <br/>
 You can dismantle a FOB by interacting with the flag on the HQ first floor.
 	"]
 ];
@@ -52,11 +54,11 @@ player createDiaryRecord ["Documentation", ["Logistic point", "
 
 player createDiaryRecord ["Documentation", ["Logistic", "
 <marker name='blufor_base'>Cargo System:</marker><br/>
-<marker name='blufor_base'>- Load:</marker> You can load objects inside vehicles. Approach the object you want to load and interact with it.<br/>
+- <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/> <marker name='blufor_base'>Load:</marker> You can load objects inside vehicles. Approach the object you want to load and interact with it.<br/>
 Select 'LOAD IN' option.<br/>
 Afer that interact with the vehicle and select 'LOAD object selected' option.<br/>
 The object has to be close to the vehicle.<br/><br/>
-<marker name='blufor_base'>- Unload:</marker> You can unload an object from a vehicle interacting with it. You can be inside the vehicle (personal interaction) or outside (object interaction).<br/>
+- <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/> <marker name='blufor_base'>Unload:</marker> You can unload an object from a vehicle interacting with it. You can be inside the vehicle (personal interaction) or outside (object interaction).<br/>
 Select the option 'CHECK CARGO', then choose the object you want to unload from the list, and click 'UNLOAD'.<br/>
 If you are inside a chopper the object will be paradropped with a chute. If your height is too low, the object will crash down.<br/>
 Every vehicle has a 'CARGO CAPACITY' (CC in game), and every object has a 'REQUIRED CAPACITY' value (RC in game.)<br/>
@@ -84,7 +86,7 @@ To destroy an hideout just place a satchel near the ammo box and blow it off!
 ];
 
 player createDiaryRecord ["Documentation", ["IED", "
-Any object could be an IED,	approach it carefully and examine it with your interaction menu.<br/>
+<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/> Any object could be an IED,	approach it carefully and examine it with your interaction menu.<br/>
 If you have a defusal kit you can try to disarm it, remember that engineers have better chances to disarm an IED.<br/>
 You can also blow them off with high caliber and explosive satchels.
 	"]
@@ -95,7 +97,7 @@ player createDiaryRecord ["Documentation", ["Intel", "
 - <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\search_ca.paa' width='13' height='13'/> Searching dead bodies<br/>
 - <img image='\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\instructor_ca.paa' width='13' height='13'/> Interrogate prisoner<br/>
 - <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='13' height='13'/> Talking to civilians<br/><br/>
-Keep in mind that only the interpreter can talk to civilians and they can lie if your reputation level is low.<br/><br/>
+<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\talk_ca.paa' width='20' height='20'/> Keep in mind that only the interpreter can talk to civilians and they can lie if your reputation level is low.<br/><br/>
 When you find an intel from a dead body or interrogate a prisoner, a marker will appear in the map. Remember, prisoner have a random number of intel more or less interesting.<br/>
 There are two types of marker:<br/>
 - Red question mark (<img image='\A3\ui_f\data\map\markers\handdrawn\unknown_CA.paa' width='13' height='13' color='#ff0000'/>): ammo cache intel<br/>
@@ -105,15 +107,15 @@ When you destroy an hideout or an ammo cache, all the markers related to it will
 ];
 
 player createDiaryRecord ["Documentation", ["Reputation", "
-Reputation can be ask to civilian<br/>
+<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\talk_ca.paa' width='20' height='20'/> Reputation can be ask to civilian<br/>
 Bad actions cause bad effetcs.<br/>
-Helping the local population, fighting the Oplitas, disarming IED will rise your reputation; killing civilians, losing vehicles, respawns will decrease your repution. At the beginning you have a very low reputation level, so civilians won't help you revealing important information about Oplitas, they will likely lie instead.
+<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='20' height='20'/> Helping the local population, fighting the Oplitas, disarming IED will rise your reputation; killing civilians, losing vehicles, respawns will decrease your repution. At the beginning you have a very low reputation level, so civilians won't help you revealing important information about Oplitas, they will likely lie instead.
 	"]
 ];
 
 player createDiaryRecord ["Documentation", ["Orders", "
 Any player can give orders to civilians.<br/>
-Open your self interaction menu and select 'ORDERS'.<br/>
+<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/> Open your self interaction menu and select 'ORDERS'.<br/>
 Your options are:<br/>
 - STOP<br/>
 - GET DOWN<br/>
@@ -140,6 +142,6 @@ player createDiaryRecord ["Documentation", ["Interaction", "
 
 player createDiaryRecord ["Documentation", [
 	"Version",
-	format ["<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='40' height='40'/> Version %1 <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='40' height='40'/>",(str(btc_version) + ".0")]
+	format ["<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/> Version %1 <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/>",(str(btc_version) + ".0")]
 	]
 ];
