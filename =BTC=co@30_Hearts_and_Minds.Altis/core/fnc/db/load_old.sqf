@@ -68,18 +68,32 @@ _cities_status = profileNamespace getVariable [format ["btc_hm_%1_cities",_name]
 _array_ho = profileNamespace getVariable [format ["btc_hm_%1_ho",_name],[]];
 
 {
-	private ["_pos","_hideout","_markers"];
+	private ["_pos","_hideout","_markers","_id","_city","_radius_x","_radius_y"];
 
 	_pos = (_x select 0);
+	_id = (_x select 4);
+	_city = btc_city_all select _id;
 
 	[_pos,(random 360),btc_composition_hideout] call btc_fnc_create_composition;
 
 	_hideout = nearestObject [_pos, "C_supplyCrate_F"];
 	clearWeaponCargoGlobal _hideout;clearItemCargoGlobal _hideout;clearMagazineCargoGlobal _hideout;
+
+	_city setpos _pos;
+	if (btc_debug) then	{deleteMarker format ["loc_%1",_id];};
+	deleteVehicle (_city getVariable ["trigger_player_side",objNull]);
+	_radius_x = btc_hideouts_radius;
+	_radius_y = btc_hideouts_radius;
+
+	[_pos,_radius_x,_radius_y,_city,_city getVariable "occupied",_city getVariable "name",_city getVariable "type",_id] call btc_fnc_city_trigger_player_side;
+
+	_city setVariable ["RadiusX",_radius_x];
+	_city setVariable ["RadiusY",_radius_y];
+
 	_hideout setVariable ["id",(_x select 1)];
 	_hideout setVariable ["rinf_time",(_x select 2)];
 	_hideout setVariable ["cap_time",(_x select 3)];
-	_hideout setVariable ["assigned_to",(_x select 4)];
+	_hideout setVariable ["assigned_to", _city];
 
 	_hideout addEventHandler ["HandleDamage", btc_fnc_mil_hd_hideout];
 
@@ -107,11 +121,11 @@ _array_ho = profileNamespace getVariable [format ["btc_hm_%1_ho",_name],[]];
 	if (btc_debug_log) then {diag_log format ["btc_fnc_mil_create_hideout: _this = %1 ; POS %2 ID %3",_x,_pos,btc_hideouts_id];};
 
 	btc_hideouts_id = btc_hideouts_id + 1;
-	btc_hideouts = btc_hideouts + [_hideout];
+	btc_hideouts pushBack _hideout;
 } foreach _array_ho;
 
-_ho = profileNamespace getVariable [format ["btc_hm_%1_ho_sel",_name],objNull];
-btc_hq setVariable ["info_hideout",_ho];
+_ho = profileNamespace getVariable [format ["btc_hm_%1_ho_sel",_name],0];
+btc_hq setVariable ["info_hideout", btc_hideouts select _ho];
 
 if (count btc_hideouts == 0) then {[] execVM "core\fnc\common\final_phase.sqf";};
 
@@ -157,10 +171,10 @@ btc_global_reputation = profileNamespace getVariable [format ["btc_hm_%1_rep",_n
 
 //FOB
 _fobs = profileNamespace getVariable [format ["btc_hm_%1_fobs",_name],[]];
-_fobs_loaded = [];
+_fobs_loaded = [[],[]];
 
 {
-	private ["_pos"];
+	private ["_pos","_fob_structure","_flag"];
 	_pos = (_x select 1);
 	createmarker [(_x select 0), _pos];
 	(_x select 0) setMarkerSize [1,1];
@@ -168,10 +182,12 @@ _fobs_loaded = [];
 	(_x select 0) setMarkerText (_x select 0);
 	(_x select 0) setMarkerColor "ColorBlue";
 	(_x select 0) setMarkerShape "ICON";
-	{createVehicle [_x, _pos, [], 0, "NONE"];} foreach [btc_fob_structure,btc_fob_flag];
-	_fobs_loaded pushBack (_x select 0);
-} foreach _fobs;
-
+	_fob_structure = createVehicle [btc_fob_structure, _pos, [], 0, "NONE"];
+	_flag = createVehicle [btc_fob_flag, _pos, [], 0, "NONE"];
+	_flag setVariable ["btc_fob",_x select 0];
+	(_fobs_loaded select 0) pushBack (_x select 0);
+	(_fobs_loaded select 1) pushBack _fob_structure;
+} foreach (_fobs select 0);
 btc_fobs = _fobs_loaded;
 
 //VEHICLES
@@ -199,19 +215,22 @@ diag_log format ["5: %1",(_x select 5)];
 {
 	private ["_veh","_cont","_weap","_mags","_items"];
 	_veh = (_x select 0) createVehicle (_x select 1);
-	btc_vehicles pushBack _veh;
-	_veh addEventHandler ["Killed", {_this call btc_fnc_eh_veh_killed}];
-	_veh setVariable ["btc_dont_delete",true];
+	_veh setPos (_x select 1);
 	_veh setDir (_x select 2);
+	if ((getPos _veh) select 2 < 0) then {_veh setVectorUp surfaceNormal position _veh;};
 	_veh setFuel (_x select 3);
 	_veh setDamage (_x select 4);
+	_veh setVariable ["btc_dont_delete",true];
+	btc_vehicles pushBack _veh;
+	_veh addEventHandler ["Killed", {_this call btc_fnc_eh_veh_killed}];
 	{
 		private ["_type","_cargo_obj","_obj","_weap_obj","_mags_obj","_items_obj"];
 		//{_cargo pushBack [(typeOf _x),[getWeaponCargo _x,getMagazineCargo _x,getItemCargo _x]]} foreach (_x getVariable ["cargo",[]]);
 		_type = _x select 0;
-		_cargo_obj = _x select 1;
+		_cargo_obj = _x select 2;
 		_obj = _type createVehicle [0,0,0];
-		btc_log_obj_created = btc_log_obj_created + [_obj];
+		if ((_x select 1) != "") then {_obj setVariable ["ace_rearm_magazineClass",(_x select 1),true]};
+		btc_log_obj_created pushBack _obj;
 		btc_curator addCuratorEditableObjects [[_obj], false];
 		clearWeaponCargoGlobal _obj;clearItemCargoGlobal _obj;clearMagazineCargoGlobal _obj;
 		_weap_obj = _cargo_obj select 0;
@@ -274,10 +293,11 @@ _objs = profileNamespace getVariable [format ["btc_hm_%1_objs",_name],[]];
 {
 	private ["_obj","_cont","_weap","_mags","_items"];
 	_obj = (_x select 0) createVehicle (_x select 1);
-	btc_log_obj_created = btc_log_obj_created + [_obj];
+	btc_log_obj_created pushBack _obj;
 	btc_curator addCuratorEditableObjects [[_obj], false];
 	_obj setDir (_x select 2);
 	_obj setPosASL (_x select 1);
+	if ((_x select 3) != "") then {_obj setVariable ["ace_rearm_magazineClass",(_x select 3),true]};
 	{
 		/*private "_l";
 		_l = _x createVehicle [0,0,0];
@@ -288,9 +308,10 @@ _objs = profileNamespace getVariable [format ["btc_hm_%1_objs",_name],[]];
 		private ["_type","_cargo_obj","_l","_weap_obj","_mags_obj","_items_obj"];
 		//{_cargo pushBack [(typeOf _x),[getWeaponCargo _x,getMagazineCargo _x,getItemCargo _x]]} foreach (_x getVariable ["cargo",[]]);
 		_type = _x select 0;
-		_cargo_obj = _x select 1;
+		_cargo_obj = _x select 2;
 		_l = _type createVehicle [0,0,0];
-		btc_log_obj_created = btc_log_obj_created + [_l];
+		if ((_x select 1) != "") then {_l setVariable ["ace_rearm_magazineClass",(_x select 1),true]};
+		btc_log_obj_created  pushBack _l;
 		btc_curator addCuratorEditableObjects [[_l], false];
 		clearWeaponCargoGlobal _l;clearItemCargoGlobal _l;clearMagazineCargoGlobal _l;
 		_weap_obj = _cargo_obj select 0;
@@ -312,8 +333,8 @@ _objs = profileNamespace getVariable [format ["btc_hm_%1_objs",_name],[]];
 			};
 		};
 		[_l,_obj] call btc_fnc_log_server_load;
-	} foreach (_x select 3);
-	_cont = (_x select 4);
+	} foreach (_x select 4);
+	_cont = (_x select 5);
 	clearWeaponCargoGlobal _obj;clearItemCargoGlobal _obj;clearMagazineCargoGlobal _obj;
 	_weap = _cont select 0;
 	if (count _weap > 0) then {
