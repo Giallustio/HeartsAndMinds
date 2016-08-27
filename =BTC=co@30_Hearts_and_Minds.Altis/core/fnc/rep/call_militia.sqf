@@ -59,7 +59,7 @@ if ((random 1) > _ratio) then
 	_group = createGroup btc_enemy_side;
 	_group setVariable ["no_cache",true];
 	_veh_type = selectRandom btc_type_motorized;
-	_veh = createVehicle [_veh_type, _start_pos, [], 0, "NONE"];
+	_veh = createVehicle [_veh_type, _start_pos, [], 0, "FLY"];
 	_gunner = _veh emptyPositions "gunner";
 	_commander = _veh emptyPositions "commander";
 	_cargo = (_veh emptyPositions "cargo") - 1;

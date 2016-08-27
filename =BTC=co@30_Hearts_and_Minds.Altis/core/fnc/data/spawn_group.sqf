@@ -15,12 +15,13 @@ _group = createGroup _side;
 for "_i" from 0 to (count _array_pos - 1) do {
 	private ["_u"];
 	_u = _group createUnit [(_array_type select _i), (_array_pos select _i), [], 0, "NONE"];_u setPos (_array_pos select _i);
+	if (btc_debug_log) then {diag_log format ["spawn group : pos %1 in %2 ", (_array_pos select _i),getpos _u];};
 	_u setDamage (_array_dam select _i);
 };
 
 if (_type == 1) then {
 	private ["_veh"];
-	_veh = (_array_veh select 0) createVehicle (_array_veh select 1);
+	_veh = createVehicle [(_array_veh select 0), (_array_veh select 1), [], 0, "FLY"];
 	_veh setPos (_array_veh select 1);
 	_veh setDir (_array_veh select 2);
 	_veh setFuel (_array_veh select 3);

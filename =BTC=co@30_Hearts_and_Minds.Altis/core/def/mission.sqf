@@ -1,46 +1,62 @@
 
-private ["_p_db","_p_en","_hideout_n","_cache_info_def","_cache_info_ratio","_info_chance","_p_rep","_p_skill","_c_array","_tower","_array","_chopper","_p_civ","_btc_rearming_vehicles","_vehicles","_magazines","_p_city_radius"];
+private ["_p_civ_veh","_p_db","_p_en","_hideout_n","_cache_info_def","_cache_info_ratio","_info_chance","_p_rep","_p_skill","_c_array","_tower","_array","_chopper","_p_civ","_btc_rearming_vehicles","_vehicles","_magazines","_p_city_radius","_magazines_static","_static","_btc_rearming_static"];
 
 btc_version = 1.14; diag_log format ["=BTC= HEARTS AND MINDS VERSION %1",(str(btc_version) + ".2")];
 
 //Param
-btc_p_time = (paramsArray select 0);
-btc_p_acctime = (paramsArray select 1);
-_p_db = if ((paramsArray select 2) isEqualTo 0) then {false} else {true};
-_p_en = (paramsArray select 3);
-btc_p_ied = (paramsArray select 4)/2;
-btc_p_engineer  = (paramsArray select 5);
-_hideout_n = (paramsArray select 6);
-_cache_info_def = (paramsArray select 7);
-_cache_info_ratio = (paramsArray select 8);
-_info_chance = (paramsArray select 9);
-_p_rep = (paramsArray select 10);
-btc_p_redeploy = if ((paramsArray select 11) isEqualTo 0) then {false} else {true};
-ace_medical_level = paramsArray select 12;
-ace_medical_enableAdvancedWounds = if ((paramsArray select 13) isEqualTo 0) then {false} else {true};
-ace_medical_maxReviveTime = paramsArray select 14;
-btc_p_set_skill  = if ((paramsArray select 15) isEqualTo 0) then {false} else {true};
+
+//<< Time options >>
+btc_p_time = (paramsArray select 1);
+btc_p_acctime = (paramsArray select 2);
+_p_db = if ((paramsArray select 3) isEqualTo 0) then {false} else {true};
+
+//<< Faction options >>
+_p_en = (paramsArray select 5);
+_p_civ = (paramsArray select 6);
+_p_civ_veh = (paramsArray select 7);
+
+//<< IED options >>
+btc_p_ied = (paramsArray select 9)/2;
+btc_p_engineer  = (paramsArray select 10);
+
+//<< Hideout/Cache options >>
+_hideout_n = (paramsArray select 12);
+_cache_info_def = (paramsArray select 13);
+_cache_info_ratio = (paramsArray select 14);
+_info_chance = (paramsArray select 15);
+
+//<< Medical options >>
+btc_p_redeploy = if ((paramsArray select 17) isEqualTo 0) then {false} else {true};
+ace_medical_level = paramsArray select 18;
+ace_medical_enableAdvancedWounds = if ((paramsArray select 19) isEqualTo 0) then {false} else {true};
+ace_medical_maxReviveTime = paramsArray select 20;
+
+//<< Skill options >>
+btc_p_set_skill  = if ((paramsArray select 22) isEqualTo 0) then {false} else {true};
 _p_skill = [
-	(paramsArray select 16)/10,//general
-	(paramsArray select 17)/10,//aimingAccuracy
-    (paramsArray select 18)/10,//aimingShake
-    (paramsArray select 19)/10,//aimingSpeed
-    (paramsArray select 20)/10,//endurance
-    (paramsArray select 21)/10,//spotDistance
-    (paramsArray select 22)/10,//spotTime
-    (paramsArray select 23)/10,//courage
-    (paramsArray select 24)/10,//reloadSpeed
-    (paramsArray select 25)/10//commanding
+	(paramsArray select 23)/10,//general
+	(paramsArray select 24)/10,//aimingAccuracy
+    (paramsArray select 25)/10,//aimingShake
+    (paramsArray select 26)/10,//aimingSpeed
+    (paramsArray select 27)/10,//endurance
+    (paramsArray select 28)/10,//spotDistance
+    (paramsArray select 29)/10,//spotTime
+    (paramsArray select 30)/10,//courage
+    (paramsArray select 31)/10,//reloadSpeed
+    (paramsArray select 32)/10//commanding
 ];
-btc_p_debug  = (paramsArray select 26);
+
+//<< Other options >>
+_p_rep = (paramsArray select 34);
+ace_rearm_level = (paramsArray select 35);
+btc_p_sea  = if ((paramsArray select 36) isEqualTo 0) then {false} else {true};
+_p_city_radius = (paramsArray select 37) * 100;
+btc_p_debug  = (paramsArray select 38);
+
 //MED
 if (ace_medical_maxReviveTime > 0) then {ace_medical_enableRevive = 1;ace_medical_preventInstaDeath = true};
 ace_medical_enableFor = 1;
 
-btc_p_sea  = if ((paramsArray select 27) isEqualTo 0) then {false} else {true};
-_p_civ = (paramsArray select 28);
-_p_city_radius = (paramsArray select 29) * 100;
-ace_rearm_level = (paramsArray select 30);
 //btc_acre_mod = isClass(configFile >> "cfgPatches" >> "acre_main");
 //btc_tfr_mod = isClass(configFile >> "cfgPatches" >> "task_force_radio");
 
@@ -69,6 +85,7 @@ if (isServer) then {
 	//Hideout
 	btc_hideouts = [];
 	btc_hideouts_id = 0;
+	btc_hideouts_radius = 400;
 	btc_hideout_n = _hideout_n;
 	if (btc_hideout_n == 99) then {
 		btc_hideout_n = (round random 5);
@@ -124,7 +141,8 @@ if (isServer) then {
 	btc_side_assigned = false;
 	btc_side_done = false;
 	btc_side_failed = false;
-	btc_side_list = if (btc_p_sea) then {[0,1,2,3,4,5,6,7,8]} else {[0,1,2,3,4,5,6]};
+	//Side 9 and 11 are not think for map with different islands. Start and end city can be on different islands.
+	btc_side_list = if (btc_p_sea) then {[0,1,2,3,4,5,6,7,8,9,10,11,12]} else {[0,1,2,3,4,5,6,9,10,11,12]};
 	btc_side_list_use = + btc_side_list;
 	btc_side_jip_data = [];
 	btc_type_tower = ["Land_Communication_F","Land_TTowerBig_1_F","Land_TTowerBig_2_F"];
@@ -135,6 +153,7 @@ if (isServer) then {
 	btc_type_box = ["Box_East_Wps_F","Box_East_WpsSpecial_F","Box_East_Ammo_F"];
 	btc_type_generator = ["Land_Device_assembled_F","Land_Device_disassembled_F"];
 	btc_type_storagebladder = ["StorageBladder_02_water_forest_F","StorageBladder_02_water_sand_F"];
+	btc_type_mines = ["APERSMine","APERSBoundingMine","APERSTripMine"];
 
 	//Vehs
 	btc_vehicles = [btc_veh_1,btc_veh_2,btc_veh_3,btc_veh_4,btc_veh_5,btc_veh_6,btc_veh_7,btc_veh_8,btc_veh_9,btc_veh_10,btc_veh_11,btc_veh_12,btc_veh_13,btc_veh_14];
@@ -145,22 +164,41 @@ if (isServer) then {
 btc_city_type = "Land_Ammobox_rounds_F";
 
 //Civ
+btc_civ_type_boats    = ["C_Rubberboat","C_Boat_Civil_01_F","C_Boat_Civil_01_rescue_F","C_Boat_Civil_01_police_F","C_Boat_Transport_02_F","C_Scooter_Transport_01_F"];
 switch (true) do {
 	case (_p_civ == 0) :	{
-		btc_civ_type_units  = ["C_man_1","C_man_1_1_F","C_man_1_2_F","C_man_1_3_F","C_man_polo_1_F","C_man_polo_1_F_afro","C_man_polo_1_F_euro","C_man_polo_1_F_asia","C_man_polo_2_F","C_man_polo_2_F_afro","C_man_polo_2_F_euro","C_man_polo_2_F_asia","C_man_polo_3_F","C_man_polo_3_F_afro","C_man_polo_3_F_euro","C_man_polo_3_F_asia","C_man_polo_4_F","C_man_polo_4_F_afro","C_man_polo_4_F_euro","C_man_polo_4_F_asia","C_man_polo_5_F","C_man_polo_5_F_afro","C_man_polo_5_F_euro","C_man_polo_5_F_asia","C_man_polo_6_F","C_man_polo_6_F_afro","C_man_polo_6_F_euro","C_man_polo_6_F_asia","C_man_p_fugitive_F","C_man_p_fugitive_F_afro","C_man_p_fugitive_F_euro","C_man_p_fugitive_F_asia","C_man_p_beggar_F","C_man_p_beggar_F_afro","C_man_p_beggar_F_euro","C_man_p_beggar_F_asia","C_man_w_worker_F","C_man_hunter_1_F","C_Orestes","C_Nikos"];
-		btc_civ_type_veh    = ["C_Hatchback_01_F","C_SUV_01_F","C_Offroad_01_F","C_Van_01_transport_F","C_Van_01_box_F"];
-		btc_civ_type_boats    = ["C_Rubberboat","C_Boat_Civil_01_F","C_Boat_Civil_01_rescue_F","C_Boat_Civil_01_police_F"];
+		btc_civ_type_units  = ["C_man_1","C_man_1_1_F","C_man_1_2_F","C_man_1_3_F","C_man_polo_1_F","C_man_polo_1_F_afro","C_man_polo_1_F_euro","C_man_polo_1_F_asia","C_man_polo_2_F","C_man_polo_2_F_afro","C_man_polo_2_F_euro","C_man_polo_2_F_asia","C_man_polo_3_F","C_man_polo_3_F_afro","C_man_polo_3_F_euro","C_man_polo_3_F_asia","C_man_polo_4_F","C_man_polo_4_F_afro","C_man_polo_4_F_euro","C_man_polo_4_F_asia","C_man_polo_5_F","C_man_polo_5_F_afro","C_man_polo_5_F_euro","C_man_polo_5_F_asia","C_man_polo_6_F","C_man_polo_6_F_afro","C_man_polo_6_F_euro","C_man_polo_6_F_asia","C_man_p_fugitive_F","C_man_p_fugitive_F_afro","C_man_p_fugitive_F_euro","C_man_p_fugitive_F_asia","C_man_p_beggar_F","C_man_p_beggar_F_afro","C_man_p_beggar_F_euro","C_man_p_beggar_F_asia","C_man_w_worker_F","C_man_hunter_1_F","C_Orestes","C_Nikos","C_Man_casual_4_F","C_Man_casual_5_F","C_Man_casual_6_F","C_Man_sport_1_F","C_Man_sport_2_F","C_Man_sport_3_F","C_Man_casual_1_F","C_Man_casual_2_F","C_Man_casual_3_F"];
 	};
 	case (_p_civ == 1 && isClass(configFile >> "cfgVehicles" >> "Afghan_Civilian2")) :	{
 		btc_civ_type_units  = ["Afghan_Civilian2","Afghan_Civilian2NH","Afghan_civilian3","Afghan_civilian3NH","Afghan_Civilian4","Afghan_Civilian5","Afghan_Civilian6","Afghan_Civilian6NH","Afghan_civilian1","Afghan_civilian1NH"];
-		btc_civ_type_veh    = ["C_Hatchback_01_F","C_SUV_01_F","C_Offroad_01_F","C_Van_01_transport_F","C_Van_01_box_F"];
-		btc_civ_type_boats    = ["C_Rubberboat","C_Boat_Civil_01_F","C_Boat_Civil_01_rescue_F","C_Boat_Civil_01_police_F"];
+	};
+	case (_p_civ == 2 && isClass(configFile >> "cfgVehicles" >> "btc_ac_1")) :	{
+		btc_civ_type_units  = ["btc_ac_1"];
+	};
+	case (_p_civ == 3 && isClass(configFile >> "cfgVehicles" >> "RDS_Assistant")) :	{
+		btc_civ_type_units  = ["RDS_Assistant","RDS_Functionary2","RDS_Functionary1","RDS_Woodlander1","RDS_Woodlander3","RDS_Woodlander2","RDS_Woodlander4","RDS_Citizen2","RDS_Citizen3","RDS_Citizen1","RDS_Citizen4","RDS_SchoolTeacher","RDS_Doctor","RDS_Worker3","RDS_Worker1","RDS_Worker4","RDS_Worker2","RDS_Policeman","RDS_Priest","RDS_Profiteer2","RDS_Profiteer1","RDS_Profiteer3","RDS_Profiteer4","RDS_Villager4","RDS_Villager1","RDS_Villager2","RDS_Villager3"];
+	};
+	case (_p_civ == 4 && isClass(configFile >> "cfgVehicles" >> "CUP_C_C_Assistant_01")) :	{
+		btc_civ_type_units  = ["CUP_C_C_Assistant_01","CUP_C_C_Citizen_02","CUP_C_C_Citizen_01","CUP_C_C_Citizen_04","CUP_C_C_Citizen_03","CUP_C_C_Functionary_01","CUP_C_C_Functionary_02","CUP_C_C_Worker_05","CUP_C_C_Mechanic_02","CUP_C_C_Mechanic_03","CUP_C_C_Mechanic_01","CUP_C_C_Priest_01","CUP_C_C_Profiteer_02","CUP_C_C_Profiteer_03","CUP_C_C_Profiteer_01","CUP_C_C_Profiteer_04","CUP_C_C_Rocker_01","CUP_C_C_Rocker_03","CUP_C_C_Rocker_02","CUP_C_C_Rocker_04","CUP_C_C_Schoolteacher_01","CUP_C_C_Villager_01","CUP_C_C_Villager_04","CUP_C_C_Villager_02","CUP_C_C_Villager_03","CUP_C_C_Woodlander_01","CUP_C_C_Woodlander_02","CUP_C_C_Woodlander_03","CUP_C_C_Woodlander_04","CUP_C_C_Worker_03","CUP_C_C_Worker_04","CUP_C_C_Worker_02","CUP_C_C_Worker_01"];
 	};
 	default	{
-		btc_civ_type_units  = ["C_man_1","C_man_1_1_F","C_man_1_2_F","C_man_1_3_F","C_man_polo_1_F","C_man_polo_1_F_afro","C_man_polo_1_F_euro","C_man_polo_1_F_asia","C_man_polo_2_F","C_man_polo_2_F_afro","C_man_polo_2_F_euro","C_man_polo_2_F_asia","C_man_polo_3_F","C_man_polo_3_F_afro","C_man_polo_3_F_euro","C_man_polo_3_F_asia","C_man_polo_4_F","C_man_polo_4_F_afro","C_man_polo_4_F_euro","C_man_polo_4_F_asia","C_man_polo_5_F","C_man_polo_5_F_afro","C_man_polo_5_F_euro","C_man_polo_5_F_asia","C_man_polo_6_F","C_man_polo_6_F_afro","C_man_polo_6_F_euro","C_man_polo_6_F_asia","C_man_p_fugitive_F","C_man_p_fugitive_F_afro","C_man_p_fugitive_F_euro","C_man_p_fugitive_F_asia","C_man_p_beggar_F","C_man_p_beggar_F_afro","C_man_p_beggar_F_euro","C_man_p_beggar_F_asia","C_man_w_worker_F","C_man_hunter_1_F","C_Orestes","C_Nikos"];
-		btc_civ_type_veh    = ["C_Hatchback_01_F","C_SUV_01_F","C_Offroad_01_F","C_Van_01_transport_F","C_Van_01_box_F"];
-		btc_civ_type_boats    = ["C_Rubberboat","C_Boat_Civil_01_F","C_Boat_Civil_01_rescue_F","C_Boat_Civil_01_police_F"];
+		btc_civ_type_units  = ["C_man_1","C_man_1_1_F","C_man_1_2_F","C_man_1_3_F","C_man_polo_1_F","C_man_polo_1_F_afro","C_man_polo_1_F_euro","C_man_polo_1_F_asia","C_man_polo_2_F","C_man_polo_2_F_afro","C_man_polo_2_F_euro","C_man_polo_2_F_asia","C_man_polo_3_F","C_man_polo_3_F_afro","C_man_polo_3_F_euro","C_man_polo_3_F_asia","C_man_polo_4_F","C_man_polo_4_F_afro","C_man_polo_4_F_euro","C_man_polo_4_F_asia","C_man_polo_5_F","C_man_polo_5_F_afro","C_man_polo_5_F_euro","C_man_polo_5_F_asia","C_man_polo_6_F","C_man_polo_6_F_afro","C_man_polo_6_F_euro","C_man_polo_6_F_asia","C_man_p_fugitive_F","C_man_p_fugitive_F_afro","C_man_p_fugitive_F_euro","C_man_p_fugitive_F_asia","C_man_p_beggar_F","C_man_p_beggar_F_afro","C_man_p_beggar_F_euro","C_man_p_beggar_F_asia","C_man_w_worker_F","C_man_hunter_1_F","C_Orestes","C_Nikos","C_Man_casual_4_F","C_Man_casual_5_F","C_Man_casual_6_F","C_Man_sport_1_F","C_Man_sport_2_F","C_Man_sport_3_F","C_Man_casual_1_F","C_Man_casual_2_F","C_Man_casual_3_F"];
 	}
+};
+switch (true) do {
+	case (_p_civ_veh == 0):	{
+		btc_civ_type_veh    = ["C_Hatchback_01_F","C_SUV_01_F","C_Offroad_01_F","C_Van_01_transport_F","C_Van_01_box_F","C_Truck_02_transport_F","C_Truck_02_covered_F","C_Offroad_02_unarmed_F"];
+	};
+	case (_p_civ_veh == 1 && isClass(configFile >> "cfgVehicles" >> "RDS_Van_01_transport_F")):	{
+		btc_civ_type_veh    = ["RDS_Van_01_transport_F","RDS_Van_01_fuel_F","RDS_Van_01_box_F","RDS_Gaz24_Civ_03","RDS_Gaz24_Civ_01","RDS_Gaz24_Civ_02","RDS_Golf4_Civ_01","RDS_Ikarus_Civ_01","RDS_Ikarus_Civ_02","RDS_S1203_Civ_01","RDS_S1203_Civ_02","RDS_S1203_Civ_03","RDS_Octavia_Civ_01","RDS_SUV_01_F","RDS_Zetor6945_Base","RDS_Lada_Civ_01","RDS_Lada_Civ_04","RDS_Lada_Civ_03","RDS_Lada_Civ_05","RDS_Lada_Civ_02","RDS_Hatchback_01_F"];
+	};
+	case (_p_civ_veh == 2 && isClass(configFile >> "cfgVehicles" >> "RDS_Van_01_transport_F")):	{
+		btc_civ_type_veh    = ["CUP_C_SUV_CIV","CUP_C_LR_Transport_CTK","CUP_C_SUV_TK","CUP_C_UAZ_Unarmed_TK_CIV","CUP_C_UAZ_Open_TK_CIV"];
+		btc_civ_type_boats pushBack "CUP_C_Fishing_Boat_Chernarus";
+	};
+	default	{
+		btc_civ_type_veh    = ["C_Hatchback_01_F","C_SUV_01_F","C_Offroad_01_F","C_Van_01_transport_F","C_Van_01_box_F","C_Truck_02_transport_F","C_Truck_02_covered_F","C_Offroad_02_unarmed_F"];
+	};
 };
 btc_civ_max_veh = 10;
 btc_w_civs = ["V_Rangemaster_belt","arifle_Mk20_F","30Rnd_556x45_Stanag","hgun_ACPC2_F","9Rnd_45ACP_Mag"];
@@ -195,6 +233,8 @@ btc_supplies_mat ="Land_Cargo20_red_F";
 
 //Log
 if (isServer) then {
+	#define	REARM_TURRET_PATHS  [[-1], [0], [0,0], [0,1], [1], [2], [0,2]]
+
 	_btc_rearming_vehicles = (btc_vehicles + btc_helo) apply {typeOf _x};
 	{
 		_btc_rearming_vehicles = _btc_rearming_vehicles - [_x];
@@ -203,7 +243,33 @@ if (isServer) then {
 		};
 	} forEach _btc_rearming_vehicles;
 
-	#define	REARM_TURRET_PATHS  [[-1], [0], [0,0], [0,1], [1], [2], [0,2]]
+	_btc_rearming_static =
+	[
+		//"Static"
+		"B_static_AT_F",
+		"B_static_AA_F",
+		"B_GMG_01_A_F",
+		"B_GMG_01_high_F",
+		"B_GMG_01_F",
+		"B_HMG_01_A_F",
+		"B_HMG_01_high_F",
+		"B_HMG_01_F",
+		"B_Mortar_01_F"
+	];
+
+	_magazines_static = [];
+	{
+		_static = _x;
+		{
+			_magazines_static append (([_static,_x] call btc_fnc_log_getconfigmagazines));
+		} forEach REARM_TURRET_PATHS;
+	} forEach _btc_rearming_static;
+	_magazines_static = _magazines_static - ["FakeWeapon"];
+	{
+		_magazines_static = _magazines_static - [_x];
+		_magazines_static pushBack _x;
+	} forEach _magazines_static;
+
 	btc_construction_array =
 	[
 		[
@@ -239,18 +305,7 @@ if (isServer) then {
 				"Land_Mil_WallBig_Corner_F",
 				"Land_PortableLight_double_F"
 			],
-			[
-				//"Static"
-				"B_static_AT_F",
-				"B_static_AA_F",
-				"B_GMG_01_A_F",
-				"B_GMG_01_high_F",
-				"B_GMG_01_F",
-				"B_HMG_01_A_F",
-				"B_HMG_01_high_F",
-				"B_HMG_01_F",
-				"B_Mortar_01_F"
-			],
+			_btc_rearming_static + _magazines_static,
 			[
 				//"Ammobox"
 				"rhsusf_mags_crate",
@@ -456,7 +511,7 @@ switch (true) do {
 		btc_type_gl = ["O_GMG_01_F","O_GMG_01_high_F"];
 		btc_civ_type_units  = ["CAF_AG_ME_CIV","CAF_AG_ME_CIV_02","CAF_AG_ME_CIV_03","CAF_AG_ME_CIV_04"];
 	};
-	case (_p_en == 2 ) :
+	case (_p_en == 2) :
 	{
 		btc_hq                    = btc_hq_green;
 		btc_enemy_side 			  = resistance;
@@ -478,6 +533,42 @@ switch (true) do {
 		btc_type_vehicles         = ["RHS_UAZ_MSV_01","rhs_uaz_open_MSV_01","rhs_btr60_msv","rhs_btr70_msv","rhs_bmd1_chdkz","rhs_bmd2_chdkz","RHS_Ural_MSV_01","RHS_Ural_Open_MSV_01","RHS_Ural_Open_Flat_MSV_01","RHS_Ural_Flat_MSV_01"];
 		btc_type_boats			= ["I_Boat_Armed_01_minigun_F","I_Boat_Transport_01_F","I_SDV_01_F","I_G_Boat_Transport_01_F"];
 		btc_type_motorized        = ["RHS_UAZ_MSV_01","rhs_uaz_open_MSV_01","rhs_btr60_msv","rhs_btr70_msv","rhs_bmd1_chdkz","rhs_bmd2_chdkz","RHS_Ural_MSV_01","RHS_Ural_Open_MSV_01","RHS_Ural_Open_Flat_MSV_01","RHS_Ural_Flat_MSV_01"];
+		btc_type_mg = ["I_HMG_01_F","I_HMG_01_high_F","rhs_KORD_INS","rhs_KORD_high_INS","RHS_NSV_TriPod_INS","rhs_DSHKM_ins","rhs_DSHKM_Mini_TriPod_ins"];
+		btc_type_gl = ["I_GMG_01_F","I_GMG_01_high_F","RHS_AGS30_TriPod_INS"];
+	};
+	case (_p_en == 4 && isClass(configFile >> "cfgVehicles" >> "btc_am_mg")) : {
+		btc_hq                    = btc_hq_red;
+		btc_enemy_side 			  = east;
+		btc_type_units            = ["btc_am_mg","btc_am_m","btc_am_medic","btc_am_r","btc_am_amg","btc_am_at","btc_am_gl","btc_afghan_1_2","btc_afghan_1_3","btc_afghan_1_4","btc_afghan_1_5","btc_am_tl"];
+		btc_type_divers			= ["O_diver_F","O_diver_exp_F","O_diver_TL_F"];
+		btc_type_crewmen          = "btc_am_r";
+		btc_type_vehicles         = ["btc_am_offroad","btc_am_offroad_armed"];
+		btc_type_boats			= ["I_Boat_Armed_01_minigun_F","I_Boat_Transport_01_F","I_SDV_01_F","I_G_Boat_Transport_01_F"];
+		btc_type_motorized        = ["btc_am_offroad","btc_am_offroad_armed","btc_am_ural","btc_am_ural_open","btc_am_btr60","btc_am_bmd1","btc_am_brm1k"];
+		btc_type_mg = ["O_HMG_01_F","O_HMG_01_high_F"];
+		btc_type_gl = ["O_GMG_01_F","O_GMG_01_high_F"];
+	};
+	case (_p_en == 5 && isClass(configFile >> "cfgVehicles" >> "aif_oficial")) : {
+		btc_hq					= btc_hq_green;
+		btc_enemy_side			= resistance;
+		btc_type_units			= ["aif_oficial","aif_oficial2","aif_oficial3","aif_support_MG","aif_specialist_Ex","aif_rifleman","aif_riflemanAK103","aif_riflemanM4","aif_support_AT","aif_riflemanGL","aif_TeamLeader","aif_sniper","aif_riflemanGLM4","aif_support_rpg26","aif_TeamLeader_G","aif_medic_G","aif_rifleman_G"];
+		btc_type_divers			= ["I_diver_F","I_diver_exp_F","I_diver_TL_F"];
+		btc_type_crewmen		= "aif_driver";
+		btc_type_vehicles		= ["aif_offroad","aif_offroad2","aif_car"];
+		btc_type_boats			= ["I_Boat_Armed_01_minigun_F","I_Boat_Transport_01_F","I_SDV_01_F","I_G_Boat_Transport_01_F"];
+		btc_type_motorized		= ["aif_armed","aif_offroad","aif_offroad2","aif_car","aif_truck_ural","aif_truck","aif_heli_MH6","aif_heli_K60","aif_uaz_dshkm","aif_uaz_spg9","aif_apc","aif_uaz_open"];
+		btc_type_mg				= ["aif_Static_M2","aif_Static_M2_MiniTripod"];
+		btc_type_gl				= ["O_GMG_01_F","O_GMG_01_high_F","aif_Static_Mk19_TriPod"];
+	};
+	case (_p_en == 6) : {
+		btc_hq					= btc_hq_green;
+		btc_enemy_side			= resistance;
+		btc_type_units            = ["I_C_Soldier_Bandit_5_F","I_C_Soldier_Bandit_6_F","I_C_Soldier_Bandit_3_F","I_C_Soldier_Bandit_8_F","I_C_Soldier_Bandit_2_F","I_C_Soldier_Bandit_4_F","I_C_Soldier_Bandit_7_F","I_C_Soldier_Bandit_1_F","I_C_Soldier_Para_6_F","I_C_Soldier_Para_7_F","I_C_Soldier_Para_2_F","I_C_Soldier_Para_3_F","I_C_Soldier_Para_4_F","I_C_Soldier_Para_8_F","I_C_Soldier_Para_1_F","I_C_Soldier_Para_5_F"];
+		btc_type_divers            = ["I_diver_F","I_diver_exp_F","I_diver_TL_F"];
+		btc_type_crewmen          = "I_C_Soldier_Bandit_5_F";
+		btc_type_vehicles         = ["I_G_Offroad_01_F","I_G_Offroad_01_armed_F","I_C_Van_01_transport_F","O_T_LSV_02_armed_F","O_T_LSV_02_unarmed_F","I_C_Offroad_02_unarmaed_F"];
+		btc_type_boats			= ["I_Boat_Armed_01_minigun_F","I_Boat_Transport_01_F","I_SDV_01_F","I_G_Boat_Transport_01_F","I_C_Boat_Transport_01_F","I_C_Boat_Transport_02_F"];
+		btc_type_motorized        = ["I_G_Offroad_01_F","I_C_Van_01_transport_F","O_T_LSV_02_armed_F","O_T_LSV_02_unarmed_F","I_Truck_02_transport_F","I_C_Offroad_02_unarmaed_F","I_G_Offroad_01_armed_F","I_Truck_02_covered_F"];
 		btc_type_mg = ["I_HMG_01_F","I_HMG_01_high_F"];
 		btc_type_gl = ["I_GMG_01_F","I_GMG_01_high_F"];
 	};
