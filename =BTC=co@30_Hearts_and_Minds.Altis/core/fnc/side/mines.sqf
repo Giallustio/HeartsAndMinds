@@ -1,5 +1,5 @@
 
-private ["_useful","_city","_pos","_area","_marker","_mines"];
+private ["_useful","_city","_pos","_area","_marker","_mines","_closest"];
 
 _useful = btc_city_all select {((_x getVariable ["type",""] != "NameLocal") && {_x getVariable ["type",""] != "Hill"} && (_x getVariable ["type",""] != "NameMarine"))};
 
@@ -22,7 +22,7 @@ btc_side_jip_data = [4,_pos,_city getVariable "name"];
 _area = createmarker [format ["sm_%1",_pos],_pos];
 _area setMarkerShape "RECTANGLE";
 _area setMarkerBrush "SolidBorder";
-_area setMarkerSize [80, 80];
+_area setMarkerSize [60, 60];
 _area setMarkerAlpha 0.3;
 _area setmarkercolor "colorBlue";
 
@@ -39,7 +39,14 @@ for "_i" from 1 to (5 + round random 5) do {
 	if (random 1 > 0.6) then {_type = selectRandom btc_type_mines;};
 	_m_pos = [_pos, 50] call btc_fnc_randomize_pos;
 	_m = createMine [_type, _m_pos, [], 0];
-	_mines = _mines + [_m];
+	_mines pushBack _m;
+};
+
+waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({_x distance _pos > 100} count playableUnits == 0))};
+
+_closest = [_city,btc_city_all select {!(_x getVariable ["active",false])},false] call btc_fnc_find_closecity;
+for "_i" from 1 to (round random 2) do {
+	[_closest,_pos,1,selectRandom btc_type_motorized] spawn btc_fnc_mil_send;
 };
 
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({!isNull _x} count _mines == 0))};
