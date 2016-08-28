@@ -15,11 +15,12 @@ if (_has_headless) then {
 {
 	_typeof = typeOf _x;
 	if (leader group _x == _x) then {
-		_text = format ["%1 (%2) (%3)", _typeof,group _x getVariable ["btc_patrol_id",group _x getVariable "btc_traffic_id"]];
+		_text = format ["%1 (%2)", _typeof,group _x getVariable ["btc_patrol_id",group _x getVariable ["btc_traffic_id",""]]];
 	} else {
 		_text = format ["%1", _typeof];
 	};
 
+	_alpha = 1;
 	if (_has_headless) then {
 		if !((_units_owners select _foreachindex) isEqualTo 2) then	{
 			_alpha = 0.3;
