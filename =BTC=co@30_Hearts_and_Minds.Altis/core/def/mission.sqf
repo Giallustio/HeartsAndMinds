@@ -348,14 +348,7 @@ if (isServer) then {
 				_magazines
 			})
 	];
-} else {
-	waitUntil {!(isNull player)};
-
-	btc_int_ask_data = nil;
-	// [[7,nil,player],"btc_fnc_int_ask_var",false] spawn BIS_fnc_MP;
-	[7,nil,player] remoteExec ["btc_fnc_int_ask_var",2];
-	waitUntil {(!(isNil "btc_int_ask_data"))};
-	btc_construction_array = btc_int_ask_data;
+	publicVariable "btc_construction_array";
 };
 
 _c_array = btc_construction_array select 1;
