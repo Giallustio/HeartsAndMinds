@@ -3,7 +3,12 @@
 private ["_pos","_dest"];
 
 _pos = getPos (_this select 0);
-_dest = getPos (_this select 1);
+switch (typeName (_this select 1)) do {
+	case "ARRAY" : {_dest = (_this select 1);};
+	case "STRING": {_dest = getMarkerPos (_this select 1);};
+	case "OBJECT": {_dest = getPos (_this select 1);};
+};
+
 
 switch (_this select 2) do {
 	case 0 : {
