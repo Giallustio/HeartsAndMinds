@@ -26,10 +26,10 @@ if (_has_headless) then {
 		};
 	};
 
-	switch (true) do {
-		case (side _x == west) : {_color = [0,0,1,_alpha]};
-		case (side _x == east) : {_color = [1,0,0,_alpha]};
-		case (side _x == independent) : {_color = [0,1,0,_alpha]};
+	switch (side _x) do {
+		case (west) : {_color = [0,0,1,_alpha]};
+		case (east) : {_color = [1,0,0,_alpha]};
+		case (independent) : {_color = [0,1,0,_alpha]};
 		default {_color = [1,1,1,_alpha]};
 	};
 
