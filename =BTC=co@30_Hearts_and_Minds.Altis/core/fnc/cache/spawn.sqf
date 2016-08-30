@@ -16,7 +16,7 @@ btc_cache_obj addEventHandler ["HandleDamage", btc_fnc_cache_hd_cache];
 if (btc_debug_log) then {diag_log format ["CACHE SPAWNED: ID %1 POS %2",btc_cache_n,btc_cache_pos];};
 
 if (btc_debug) then {
-	player sideChat format ["Cache spawned in %1",btc_cache_pos];
+	systemChat format ["Cache spawned in %1",btc_cache_pos];
 	//Marker
 	createmarker [format ["%1", btc_cache_pos], btc_cache_pos];
 	format ["%1", btc_cache_pos] setmarkertype "mil_unknown";

@@ -4,7 +4,7 @@ private ["_city","_ieds","_ieds_check","_data"];
 _city = _this select 0;
 _ieds = _this select 1;
 
-if (btc_debug) then {player sideChat format ["START IED CHECK CITY ID %1",_city getVariable "id"];};
+if (btc_debug) then {systemChat format ["START IED CHECK CITY ID %1",_city getVariable "id"];};
 if (btc_debug_log) then {diag_log format ["START IED CHECK CITY ID %1",_city getVariable "id"];};
 
 _ieds_check = + _ieds;
@@ -33,5 +33,5 @@ _data = [];
 
 _city setVariable ["ieds",_data];
 
-if (btc_debug) then {player sideChat format ["END IED CHECK CITY ID %1",_city getVariable "id"];};
+if (btc_debug) then {systemChat format ["END IED CHECK CITY ID %1",_city getVariable "id"];};
 if (btc_debug_log) then {diag_log format ["END IED CHECK CITY ID %1",_city getVariable "id"];};
