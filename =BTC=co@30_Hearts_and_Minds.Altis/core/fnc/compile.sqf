@@ -19,6 +19,7 @@ if (isServer) then {
 	btc_fnc_road_direction = compile preprocessFile "core\fnc\common\road_direction.sqf";
 	btc_fnc_findsafepos = compile preprocessFile "core\fnc\common\findsafepos.sqf";
 	btc_fnc_deleteTestObj = compile preprocessFile "core\fnc\common\deleteTestObj.sqf";
+	btc_fnc_get_owners = compile preprocessFile "core\fnc\common\get_owners.sqf";
 
 	//CITY
 	btc_fnc_city_activate = compile preprocessFile "core\fnc\city\activate.sqf";
@@ -191,6 +192,7 @@ if (!isDedicated) then {
 	btc_fnc_get_cardinal = compile preprocessFile "core\fnc\common\get_cardinal.sqf";
 	btc_fnc_is_engineer = compile preprocessFile "core\fnc\common\is_engineer.sqf";
 	btc_fnc_marker_debug = compile preprocessFile "core\fnc\common\marker_debug.sqf";
+	btc_fnc_systemchat_debug = compile preprocessFile "core\fnc\common\systemchat_debug.sqf";
 	btc_fnc_show_hint = compile preprocessFile "core\fnc\common\show_hint.sqf";
 
 	//EH

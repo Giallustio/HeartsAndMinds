@@ -1,16 +1,15 @@
 
-private ["_units","_color","_text","_typeof","_has_headless","_units_owners","_alpha"];
-
-_units = allunits select {Alive _x};
+private ["_units","_color","_text","_typeof","_has_headless","_owners","_alpha"];
 
 _has_headless = !((entities "HeadlessClient_F") isEqualTo []);
 
 if (_has_headless) then {
-	btc_int_ask_data_owner = nil;
-	[8,_units,player] remoteExec ["btc_fnc_int_ask_var",2];
-	waitUntil {(!(isNil "btc_int_ask_data_owner"))};
-	_units_owners = btc_int_ask_data_owner;
+	_units = btc_units_owners select 0;
+	_owners = btc_units_owners select 1;
+} else {
+	_units = allunits select {Alive _x};
 };
+// allMissionObjects "car"
 
 {
 	_typeof = typeOf _x;
@@ -22,7 +21,7 @@ if (_has_headless) then {
 
 	_alpha = 1;
 	if (_has_headless) then {
-		if !((_units_owners select _foreachindex) isEqualTo 2) then	{
+		if !((_owners select _foreachindex) isEqualTo 2) then	{
 			_alpha = 0.3;
 		};
 	};

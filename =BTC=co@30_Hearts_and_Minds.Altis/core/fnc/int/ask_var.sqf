@@ -20,8 +20,6 @@ switch (_id) do {
 	case 5 : {_data = btc_side_jip_data;};
 	case 6 : {_data = btc_fobs;};
 	case 7 : {_data = btc_construction_array;};
-	case 8 : {btc_int_ask_data_owner = _target apply {owner _x};};
 };
 
-if (_id == 8) exitWith{(owner _asker) publicVariableClient "btc_int_ask_data_owner";};
 [_data] remoteExec ["btc_fnc_int_ans_var", _asker, false];

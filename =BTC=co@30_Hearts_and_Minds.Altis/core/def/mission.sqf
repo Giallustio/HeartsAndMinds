@@ -603,3 +603,6 @@ if (isNil "btc_side_assigned") then {btc_side_assigned = false;};
 
 //Skill
 btc_AI_skill = _p_skill;
+
+//Headless
+btc_units_owners = [[],[]];
