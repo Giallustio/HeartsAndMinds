@@ -20,6 +20,7 @@ if (isServer) then {
 	btc_fnc_findsafepos = compile preprocessFile "core\fnc\common\findsafepos.sqf";
 	btc_fnc_deleteTestObj = compile preprocessFile "core\fnc\common\deleteTestObj.sqf";
 	btc_fnc_get_owners = compile preprocessFile "core\fnc\common\get_owners.sqf";
+	btc_fnc_set_groupowner = compile preprocessFile "core\fnc\common\set_groupowner.sqf";
 
 	//CITY
 	btc_fnc_city_activate = compile preprocessFile "core\fnc\city\activate.sqf";
