@@ -1,5 +1,10 @@
 player createDiarySubject ["Documentation","Documentation"];
 
+player createDiaryRecord ["Documentation", ["Headless", "
+This mission support one Headless client.
+	"]
+];
+
 player createDiaryRecord ["Documentation", ["Wounds", "
 Use the interaction menu to treat your wounds.<br/>Keep in mind that all the actions will be available, even if you do not need them. It is always recommended examine first.
 	"]
