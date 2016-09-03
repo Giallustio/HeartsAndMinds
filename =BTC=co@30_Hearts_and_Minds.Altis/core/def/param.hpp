@@ -109,7 +109,7 @@ class Params {
 		title = "			Intel from dead bodies chance:";
 		values[]={0,10,20,30,40,50,60,70,80,90,100};
 		texts[]={"100 %","90 %","80 %","70 %","60 %","50 %","40 %","30 %","20 %","10 %","0 %"};
-		default = 70;
+		default = 0;
 	};
 	class btc_p_medical_title {
 	//paramsArray[16]
