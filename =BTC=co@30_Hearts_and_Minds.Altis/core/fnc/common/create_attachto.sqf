@@ -18,15 +18,15 @@ switch (_pos_type) do {
 		_y = random 180; _p = 0; _r = 0;
 	};
 	case "FRONT": {
-		_holder attachTo [_object, [- _maxWidth_box/6, 0, 0]];
+		_holder attachTo [_object, [- _maxWidth_box/6, 0, -0.1]];
 		_y = random [-20,0,20]; _p = random [-20,0,20]; _r = 255;
 	};
 	case "CORNER_L": {
-		_holder attachTo [_object, [- _maxWidth_box/6, 0, 0]];
+		_holder attachTo [_object, [- _maxWidth_box/6.5, 0, -0.1]];
 		_y = 40; _p = random [-10,0,10]; _r = 255;
 	};
 	case "CORNER_R": {
-		_holder attachTo [_object, [- _maxWidth_box/7.5, 0, 0]];
+		_holder attachTo [_object, [- _maxWidth_box/8.5, 0, -0.1]];
 		_y = -30; _p = random [-10,0,10]; _r = 255;
 	};
 	default	{
