@@ -17,7 +17,7 @@ _pos_type_array = ["TOP","FRONT","CORNER_L","CORNER_R"];
 
 for "_i" from 1 to (1 + round random 3) do {
 	_holder = createVehicle ["groundWeaponHolder", btc_cache_pos, [], 0, "can_collide"];
-	_holder addWeaponCargo [selectRandom btc_cache_weapons_type, 1];
+	_holder addWeaponCargoGlobal [selectRandom btc_cache_weapons_type, 1];
 	_holder setVariable ["no_cache",true];
 
 	_pos_type = selectRandom _pos_type_array;
