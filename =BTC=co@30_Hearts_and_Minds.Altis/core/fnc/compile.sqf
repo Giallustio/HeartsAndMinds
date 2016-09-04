@@ -9,6 +9,7 @@ if (isServer) then {
 	btc_fnc_check_los = compile preprocessFile "core\fnc\common\check_los.sqf";
 	btc_fnc_clean_up = compile preprocessFile "core\fnc\common\clean_up.sqf";
 	btc_fnc_create_composition = compile preprocessFile "core\fnc\common\create_composition.sqf";
+	btc_fnc_create_attachto = compile preprocessFile "core\fnc\common\create_attachto.sqf";
 	btc_fnc_getHouses = compile preprocessFile "core\fnc\common\getHouses.sqf";
 	btc_fnc_house_addWP = compile preprocessFile "core\fnc\common\house_addWP.sqf";
 	btc_fnc_house_addWP_loop = compile preprocessFile "core\fnc\common\house_addWP_loop.sqf";

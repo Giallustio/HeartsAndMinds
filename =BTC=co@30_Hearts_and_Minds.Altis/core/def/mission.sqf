@@ -204,7 +204,7 @@ btc_civ_max_veh = 10;
 btc_w_civs = ["V_Rangemaster_belt","arifle_Mk20_F","30Rnd_556x45_Stanag","hgun_ACPC2_F","9Rnd_45ACP_Mag"];
 
 //Cache
-btc_cache_type = "Box_East_Ammo_F";
+btc_cache_type = ["Box_East_Ammo_F"];
 
 //FOB
 btc_fob_mat = "Land_Cargo20_blue_F";
