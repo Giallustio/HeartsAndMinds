@@ -1,5 +1,5 @@
 
-private ["_n_pos","_max_pos","_weapons_type","_weapons_usefull","_holder"];
+private ["_n_pos","_max_pos","_holder"];
 
 _n_pos = 0;
 while {format ["%1", _this buildingPos _n_pos] != "[0,0,0]" } do {_n_pos = _n_pos + 1};
@@ -13,14 +13,12 @@ btc_cache_obj setPos btc_cache_pos;
 clearWeaponCargoGlobal btc_cache_obj;clearItemCargoGlobal btc_cache_obj;clearMagazineCargoGlobal btc_cache_obj;
 btc_cache_obj addEventHandler ["HandleDamage", btc_fnc_cache_hd_cache];
 
-_weapons_usefull = "true" configClasses (configfile >> "CfgWeapons") select {(getnumber (_x >> 'type') isEqualTo 1) AND !(getarray(_x >> 'magazines') isEqualTo []) AND (getNumber (_x >> 'scope') isEqualTo 2)};
-_weapons_type = _weapons_usefull apply {configName _x};
-
 _pos_type_array = ["TOP","FRONT","CORNER_L","CORNER_R"];
 
 for "_i" from 1 to (1 + round random 3) do {
 	_holder = createVehicle ["groundWeaponHolder", btc_cache_pos, [], 0, "can_collide"];
-	_holder addWeaponCargo [selectRandom _weapons_type, 1];
+	_holder addWeaponCargo [selectRandom btc_cache_weapons_type, 1];
+	_holder setVariable ["no_cache",true];
 
 	_pos_type = selectRandom _pos_type_array;
 	_pos_type_array = _pos_type_array - [_pos_type];
