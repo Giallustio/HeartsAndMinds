@@ -7,7 +7,7 @@ _target = _this select 1;
 _asker  = _this select 2;
 
 switch (_id) do {
-	case 0 : {_data = _target getVariable ["active",true];};
+	case 0 : {_data = _target getVariable ["active",false];};
 	case 1 : {
 		private "_hd";
 		_hd = objNull;

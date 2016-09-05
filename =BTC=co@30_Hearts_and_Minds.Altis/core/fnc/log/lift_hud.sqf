@@ -19,16 +19,18 @@ _complete   = "core\img\rsc\lift\objective_complete_ca.paa";
 _incomplete = "core\img\rsc\lift\objective_incomplete_ca.paa";
 
 while {(Alive player && vehicle player != player) && btc_log_hud} do {
-	private ["_cargo"];
-	_array = [vehicle player] call btc_fnc_log_get_liftable;
-	_cargo_array = nearestObjects [vehicle player, _array, 30];
+	private ["_cargo","_chopper"];
+	_chopper = vehicle player;
+	_array = [_chopper] call btc_fnc_log_get_liftable;
+	_cargo_array = nearestObjects [_chopper, _array, 30];
 	if (count _array == 0) then {_cargo_array = [];};
-	if (count _cargo_array > 0 && driver (_cargo_array select 0) == player) then {_cargo_array set [0,0];_cargo_array = _cargo_array - [0];};
+	_cargo_array = _cargo_array - [_chopper];
+	if (count _cargo_array > 0 && (typeOf (_cargo_array select 0)) isEqualTo "ACE_friesAnchorBar") then {_cargo_array deleteAt 0;};
 	if (count _cargo_array > 0) then {_cargo = _cargo_array select 0;} else {_cargo = objNull;};
 	if (({_cargo isKindOf _x} count _array) > 0) then {_can_lift = true;} else {_can_lift = false;};
 	if (!isNull _cargo) then {
 		_cargo_pos = getPosATL _cargo;
-		_rel_pos   = (vehicle player) worldToModel _cargo_pos;
+		_rel_pos   = (_chopper) worldToModel _cargo_pos;
 		_cargo_x   = _rel_pos select 0;
 		_cargo_y   = _rel_pos select 1;
 		_cargo_z   = _rel_pos select 2;
