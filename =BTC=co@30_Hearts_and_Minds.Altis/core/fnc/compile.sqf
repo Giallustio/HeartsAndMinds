@@ -90,7 +90,6 @@ if (isServer) then {
 	btc_fnc_mil_send = compile preprocessFile "core\fnc\mil\send.sqf";
 	btc_fnc_mil_set_skill = compile preprocessFile "core\fnc\mil\set_skill.sqf";
 	btc_fnc_mil_unit_create = compile preprocessFile "core\fnc\mil\unit_create.sqf";
-	btc_fnc_mil_unit_killed = compile preprocessFile "core\fnc\mil\unit_killed.sqf";
 	btc_fnc_mil_patrol_eh = compile preprocessFile "core\fnc\mil\patrol_eh.sqf";
 	btc_fnc_mil_patrol_eh_remove = compile preprocessFile "core\fnc\mil\patrol_eh_remove.sqf";
 	btc_fnc_mil_CuratorMilPlaced_s = compile preprocessFile "core\fnc\mil\CuratorMilPlaced_s.sqf";
@@ -125,6 +124,13 @@ if (isServer) then {
 	btc_fnc_log_getconfigmagazines = compile preprocessFile "core\fnc\log\getconfigmagazines.sqf";
 	btc_fnc_log_CuratorObjectPlaced_s = compile preprocessFile "core\fnc\log\CuratorObjectPlaced_s.sqf";
 };
+
+/////////////////////SERVER AND HEADLESS\\\\\\\\\\\\\\\\\\\\\
+if (isServer OR (!isDedicated && !hasInterface)) then {
+	//MIL
+	btc_fnc_mil_unit_killed = compile preprocessFile "core\fnc\mil\unit_killed.sqf";
+};
+
 /////////////////////CLIENT AND SERVER\\\\\\\\\\\\\\\\\\\\\
 
 //COMMON
