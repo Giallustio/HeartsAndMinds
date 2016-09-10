@@ -1,5 +1,5 @@
 
-private ["_name","_cities_status","_array_ho","_ho","_array_cache","_fobs","_fobs_loaded","_vehs","_objs","_holder","_pos_type_array","_pos_type"];
+private ["_name","_cities_status","_array_ho","_ho","_array_cache","_fobs","_fobs_loaded","_vehs","_objs"];
 
 _name = worldName;
 
