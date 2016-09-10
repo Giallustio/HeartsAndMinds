@@ -1,5 +1,5 @@
 
-private ["_name","_cities_status","_array_ho","_ho","_array_cache","_fobs","_fobs_loaded","_vehs","_objs"];
+private ["_name","_cities_status","_array_ho","_ho","_array_cache","_fobs","_fobs_loaded","_vehs","_objs","_holder","_pos_type_array","_pos_type"];
 
 _name = worldName;
 
@@ -155,7 +155,6 @@ for "_i" from 1 to (1 + round random 3) do {
 	_pos_type_array = _pos_type_array - [_pos_type];
 	[btc_cache_obj,_holder, _pos_type] call btc_fnc_create_attachto;
 };
-
 
 {
 	private ["_marker"];
