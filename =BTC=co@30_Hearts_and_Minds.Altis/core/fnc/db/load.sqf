@@ -140,10 +140,22 @@ btc_cache_pos = _array_cache select 0;
 btc_cache_n = _array_cache select 1;
 btc_cache_info = _array_cache select 2;
 
-btc_cache_obj = btc_cache_type createVehicle btc_cache_pos;
+btc_cache_obj = selectRandom btc_cache_type createVehicle btc_cache_pos;
 btc_cache_obj setPosATL (_array_cache select 0);
 clearWeaponCargoGlobal btc_cache_obj;clearItemCargoGlobal btc_cache_obj;clearMagazineCargoGlobal btc_cache_obj;
 btc_cache_obj addEventHandler ["HandleDamage", btc_fnc_cache_hd_cache];
+_pos_type_array = ["TOP","FRONT","CORNER_L","CORNER_R"];
+
+for "_i" from 1 to (1 + round random 3) do {
+	_holder = createVehicle ["groundWeaponHolder", btc_cache_pos, [], 0, "can_collide"];
+	_holder addWeaponCargoGlobal [selectRandom btc_cache_weapons_type, 1];
+	_holder setVariable ["no_cache",true];
+
+	_pos_type = selectRandom _pos_type_array;
+	_pos_type_array = _pos_type_array - [_pos_type];
+	[btc_cache_obj,_holder, _pos_type] call btc_fnc_create_attachto;
+};
+
 
 {
 	private ["_marker"];

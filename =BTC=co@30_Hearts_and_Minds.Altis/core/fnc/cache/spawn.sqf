@@ -9,7 +9,7 @@ _n_pos   = floor (random _max_pos);
 btc_cache_pos = (_this buildingPos _n_pos);
 if (btc_cache_pos distance [0,0,0] < 10) exitWith {[] spawn {[] call btc_fnc_cache_find_pos;};};
 btc_cache_obj = selectRandom btc_cache_type createVehicle btc_cache_pos;
-btc_cache_obj setPos btc_cache_pos;
+btc_cache_obj setPosATL btc_cache_pos;
 clearWeaponCargoGlobal btc_cache_obj;clearItemCargoGlobal btc_cache_obj;clearMagazineCargoGlobal btc_cache_obj;
 btc_cache_obj addEventHandler ["HandleDamage", btc_fnc_cache_hd_cache];
 
