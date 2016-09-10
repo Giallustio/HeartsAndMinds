@@ -140,21 +140,7 @@ btc_cache_pos = _array_cache select 0;
 btc_cache_n = _array_cache select 1;
 btc_cache_info = _array_cache select 2;
 
-btc_cache_obj = selectRandom btc_cache_type createVehicle btc_cache_pos;
-btc_cache_obj setPosATL (_array_cache select 0);
-clearWeaponCargoGlobal btc_cache_obj;clearItemCargoGlobal btc_cache_obj;clearMagazineCargoGlobal btc_cache_obj;
-btc_cache_obj addEventHandler ["HandleDamage", btc_fnc_cache_hd_cache];
-_pos_type_array = ["TOP","FRONT","CORNER_L","CORNER_R"];
-
-for "_i" from 1 to (1 + round random 3) do {
-	_holder = createVehicle ["groundWeaponHolder", btc_cache_pos, [], 0, "can_collide"];
-	_holder addWeaponCargoGlobal [selectRandom btc_cache_weapons_type, 1];
-	_holder setVariable ["no_cache",true];
-
-	_pos_type = selectRandom _pos_type_array;
-	_pos_type_array = _pos_type_array - [_pos_type];
-	[btc_cache_obj,_holder, _pos_type] call btc_fnc_create_attachto;
-};
+call btc_fnc_cache_create;
 
 {
 	private ["_marker"];
@@ -163,19 +149,8 @@ for "_i" from 1 to (1 + round random 3) do {
 	_marker setMarkerText (_x select 1);
 	_marker setMarkerSize [0.5, 0.5];
 	_marker setMarkerColor "ColorRed";
-	btc_cache_markers = btc_cache_markers + [_marker];
+	btc_cache_markers pushBack _marker;
 } foreach (_array_cache select 3);
-
-if (btc_debug_log) then {diag_log format ["CACHE SPAWNED: ID %1 POS %2",btc_cache_n,btc_cache_pos];};
-
-if (btc_debug) then {
-	player sideChat format ["Cache spawned in %1",btc_cache_pos];
-	//Marker
-	createmarker [format ["%1", btc_cache_pos], btc_cache_pos];
-	format ["%1", btc_cache_pos] setmarkertype "mil_unknown";
-	format ["%1", btc_cache_pos] setMarkerText format ["Cache %1", btc_cache_n];
-	format ["%1", btc_cache_pos] setMarkerSize [0.8, 0.8];
-};
 
 //REP
 btc_global_reputation = profileNamespace getVariable [format ["btc_hm_%1_rep",_name],0];

@@ -4,6 +4,7 @@ if (isServer) then {
 	btc_fnc_cache_find_pos = compile preprocessFile "core\fnc\cache\find_pos.sqf";
 	btc_fnc_cache_hd_cache = compile preprocessFile "core\fnc\cache\hd_cache.sqf";
 	btc_fnc_cache_spawn = compile preprocessFile "core\fnc\cache\spawn.sqf";
+	btc_fnc_cache_create = compile preprocessFile "core\fnc\cache\create.sqf";
 
 	//COMMON
 	btc_fnc_check_los = compile preprocessFile "core\fnc\common\check_los.sqf";
