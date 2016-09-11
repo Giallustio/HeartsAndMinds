@@ -7,8 +7,8 @@
 
 	player addEventHandler ["Respawn", btc_fnc_eh_player_respawn];
 	["ace_treatmentSucceded", {
-		if (side (_this select 1) isEqualTo civilian) exitWith {};
-		if (!(isPlayer (_this select 1)) && !((_this select 3) isEqualTo "Diagnose"))) then {
+		if (isPlayer (_this select 1)) exitWith {};
+		if ((side (_this select 1) isEqualTo civilian) && !((_this select 3) isEqualTo "Diagnose")) then {
 			_this remoteExec ["btc_fnc_rep_hh",2];
 		};
 	}] call CBA_fnc_addEventHandler;
