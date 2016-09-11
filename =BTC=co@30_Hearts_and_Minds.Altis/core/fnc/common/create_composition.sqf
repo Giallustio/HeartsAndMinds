@@ -8,7 +8,7 @@ _array = _this select 2;
 _pos_x = _pos select 0;
 _pos_y = _pos select 1;
 _pos_z = 0;if (count _pos > 2) then {_pos_z = _pos select 2;};
-{
+_array apply {
 	_type = _x select 0;
 	//// Determine direction function of setdir \\\\
 	_dir  = ((_x select 1) - _setdir);
@@ -21,4 +21,5 @@ _pos_z = 0;if (count _pos > 2) then {_pos_z = _pos select 2;};
 	_obj = createVehicle [_type, _pos_obj, [], 0, "NONE"];
 	_obj setDir _dir;
 	_obj setPos _pos_obj;
-} foreach _array;
+	_obj;
+};
