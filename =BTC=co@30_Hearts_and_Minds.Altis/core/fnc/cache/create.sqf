@@ -3,6 +3,7 @@ private ["_holder","_pos_type","_pos_type_array"];
 
 btc_cache_obj = selectRandom btc_cache_type createVehicle btc_cache_pos;
 btc_cache_obj setPosATL btc_cache_pos;
+btc_cache_obj setDir (random 360);
 clearWeaponCargoGlobal btc_cache_obj;clearItemCargoGlobal btc_cache_obj;clearMagazineCargoGlobal btc_cache_obj;
 btc_cache_obj addEventHandler ["HandleDamage", btc_fnc_cache_hd_cache];
 
