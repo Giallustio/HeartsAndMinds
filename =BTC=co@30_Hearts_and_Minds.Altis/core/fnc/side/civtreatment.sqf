@@ -92,7 +92,7 @@ if (btc_side_aborted || btc_side_failed || !Alive _unit) exitWith {
 	btc_side_assigned = false;publicVariable "btc_side_assigned";
 };
 
-15 call btc_fnc_rep_change;
+10 call btc_fnc_rep_change;
 
 [8,"btc_fnc_task_set_done",true] spawn BIS_fnc_MP;
 
