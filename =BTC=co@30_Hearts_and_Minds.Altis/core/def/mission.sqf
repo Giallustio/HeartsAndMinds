@@ -581,7 +581,7 @@ switch (true) do {
 
 //Rep
 btc_rep_bonus_cache = 100;
-btc_rep_bonus_civ_hh = 10;
+btc_rep_bonus_civ_hh = 3;
 btc_rep_bonus_disarm = 25;
 btc_rep_bonus_hideout = 200;
 btc_rep_bonus_mil_killed = 0.25;
