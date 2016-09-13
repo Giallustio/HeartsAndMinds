@@ -1,3 +1,6 @@
+
+private ["_type","_pos","_dir","_active","_ied"];
+
 _pos = _this select 0;
 _type = _this select 1;
 _dir = _this select 2;

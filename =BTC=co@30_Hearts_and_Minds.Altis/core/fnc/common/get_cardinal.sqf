@@ -1,3 +1,6 @@
+
+private ["_n","_array","_card"];
+
 _n = _this select 0;
 
 _array = ["N","E","W","S","NW","NE","SE","SW"];

@@ -1,5 +1,7 @@
 if (btc_global_reputation >= 600) exitWith {};
 
+private ["_pos","_rep","_random"];
+
 _pos = _this select 0;
 
 _rep = (btc_global_reputation / 100);
@@ -20,7 +22,7 @@ if (btc_global_reputation < 300) then
 	if (_random > 4) then //GET WEAPONS
 	{
 		[_pos,300] spawn btc_fnc_civ_get_weapons;
-	};	
+	};
 };
 
 if (btc_debug) then

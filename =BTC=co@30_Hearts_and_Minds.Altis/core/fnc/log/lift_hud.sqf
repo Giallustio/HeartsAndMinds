@@ -1,4 +1,7 @@
 disableSerialization;
+
+private ["_ui","_radar","_obj_img","_obj_pic","_arrow","_obj_name","_array_hud","_can_lift","_arrow_up","_arrow_down","_complete","_incomplete","_array","_cargo_array","_cargo_pos","_cargo_x","_cargo_y","_rel_pos","_hud_x","_hud_y","_hud_x_1","_hud_y_1","_name_cargo","_pic_cargo","_cargo_z"];
+
 939996 cutRsc ["btc_log_hud","PLAIN"];
 _ui        = uiNamespace getVariable "btc_log_hud";
 _radar     = _ui displayCtrl 1001;
@@ -16,16 +19,18 @@ _complete   = "core\img\rsc\lift\objective_complete_ca.paa";
 _incomplete = "core\img\rsc\lift\objective_incomplete_ca.paa";
 
 while {(Alive player && vehicle player != player) && btc_log_hud} do {
-	private ["_cargo"];
-	_array = [vehicle player] call btc_fnc_log_get_liftable;
-	_cargo_array = nearestObjects [vehicle player, _array, 30];
+	private ["_cargo","_chopper"];
+	_chopper = vehicle player;
+	_array = [_chopper] call btc_fnc_log_get_liftable;
+	_cargo_array = nearestObjects [_chopper, _array, 30];
 	if (count _array == 0) then {_cargo_array = [];};
-	if (count _cargo_array > 0 && driver (_cargo_array select 0) == player) then {_cargo_array set [0,0];_cargo_array = _cargo_array - [0];};
+	_cargo_array = _cargo_array - [_chopper];
+	if (count _cargo_array > 0 && (typeOf (_cargo_array select 0)) isEqualTo "ACE_friesAnchorBar") then {_cargo_array deleteAt 0;};
 	if (count _cargo_array > 0) then {_cargo = _cargo_array select 0;} else {_cargo = objNull;};
 	if (({_cargo isKindOf _x} count _array) > 0) then {_can_lift = true;} else {_can_lift = false;};
 	if (!isNull _cargo) then {
 		_cargo_pos = getPosATL _cargo;
-		_rel_pos   = (vehicle player) worldToModel _cargo_pos;
+		_rel_pos   = (_chopper) worldToModel _cargo_pos;
 		_cargo_x   = _rel_pos select 0;
 		_cargo_y   = _rel_pos select 1;
 		_cargo_z   = _rel_pos select 2;

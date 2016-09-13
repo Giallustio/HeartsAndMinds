@@ -20,13 +20,13 @@ _houses = [];
 for [{_i = 25},{_i < _area},{_i = _i + 50}] do {
 	private "_hs";
 	_hs = [[(_pos select 0) + _i,(_pos select 1) + _i,0],50] call btc_fnc_getHouses;
-	_houses = _houses + _hs;
+	_houses append _hs;
 	_hs = [[(_pos select 0) + _i,(_pos select 1) - _i,0],50] call btc_fnc_getHouses;
-	_houses = _houses + _hs;
+	_houses append _hs;
 	_hs = [[(_pos select 0) - _i,(_pos select 1) - _i,0],50] call btc_fnc_getHouses;
-	_houses = _houses + _hs;
+	_houses append _hs;
 	_hs = [[(_pos select 0) - _i,(_pos select 1) + _i,0],50] call btc_fnc_getHouses;
-	_houses = _houses + _hs;
+	_houses append _hs;
 };
 
 
@@ -36,12 +36,12 @@ for "_i" from 0 to _n do
 {
 	private ["_house","_unit_type"];
 	if (count _houses == 0) exitWith {};
-	_house = _houses select (floor random count _houses);
-	
-	_unit_type = btc_civ_type_units select (floor random count btc_civ_type_units);
-	
+	_house = selectRandom _houses;
+
+	_unit_type = selectRandom btc_civ_type_units;
+
 	_group = createGroup civilian;
-	_group createUnit [_unit_type, getPos _house, [], 0, "NONE"];
+	_group createUnit [_unit_type, _house buildingPos 0, [], 0, "NONE"];
 	_group spawn btc_fnc_civ_addWP;
 	{_x call btc_fnc_civ_unit_create} foreach units _group;
 	_houses = _houses - [_house];

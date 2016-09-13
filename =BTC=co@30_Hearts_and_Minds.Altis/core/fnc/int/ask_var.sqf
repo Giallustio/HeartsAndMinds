@@ -9,7 +9,7 @@ _asker  = _this select 2;
 _data = [];
 
 switch (_id) do {
-	case 0 : {_data = _target getVariable ["active",true];};
+	case 0 : {_data = _target getVariable ["active",false];};
 	case 1 : {
 		private "_hd";
 		_hd = objNull;
@@ -21,6 +21,7 @@ switch (_id) do {
 	case 4 : {_data = _target getVariable ["tow",objNull];};
 	case 5 : {_data = btc_side_jip_data;};
 	case 6 : {_data = btc_fobs;};
+	case 7 : {_data = btc_construction_array;};
 };
 
 

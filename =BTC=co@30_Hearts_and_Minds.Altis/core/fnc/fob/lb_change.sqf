@@ -1,4 +1,6 @@
 
+private ["_idc","_fob"];
+
 _idc = 778;
 
 _fob = lbText [_idc, lbCurSel _idc];

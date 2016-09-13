@@ -58,4 +58,52 @@ switch _this do
 		["TaskFailed",["Side mission failed!","Checkpoints have not been destroyed"]] call bis_fnc_showNotification;
 		player setVariable ["task_9",nil];
 	};
+	case 10 :
+	{
+		private "_task";
+		_task = player getVariable "task_10";
+		_task setTaskState "FAILED";
+		["TaskFailed",["Side mission failed!","The patient has not been stabilized"]] call bis_fnc_showNotification;
+		player setVariable ["task_10",nil];
+	};
+	case 11 :
+	{
+		private "_task";
+		_task = player getVariable "task_11";
+		_task setTaskState "FAILED";
+		["TaskFailed",["Side mission failed!","The underwater generator has not been destroyed"]] call bis_fnc_showNotification;
+		player setVariable ["task_11",nil];
+	};
+	case 12 :
+	{
+		private "_task";
+		_task = player getVariable "task_12";
+		_task setTaskState "FAILED";
+		["TaskFailed",["Side mission failed!","The armed convoy has not been destroyed"]] call bis_fnc_showNotification;
+		player setVariable ["task_12",nil];
+	};
+	case 13 :
+	{
+		private "_task";
+		_task = player getVariable "task_13";
+		_task setTaskState "FAILED";
+		["TaskFailed",["Side mission failed!","The pilot has not been rescued"]] call bis_fnc_showNotification;
+		player setVariable ["task_13",nil];
+	};
+	case 14 :
+	{
+		private "_task";
+		_task = player getVariable "task_14";
+		_task setTaskState "FAILED";
+		["TaskFailed",["Side mission failed!","The officer has not been captured"]] call bis_fnc_showNotification;
+		player setVariable ["task_14",nil];
+	};
+	case 15 :
+	{
+		private "_task";
+		_task = player getVariable "task_15";
+		_task setTaskState "FAILED";
+		["TaskFailed",["Side mission failed!","The hostage has not been liberated"]] call bis_fnc_showNotification;
+		player setVariable ["task_15",nil];
+	};
 };

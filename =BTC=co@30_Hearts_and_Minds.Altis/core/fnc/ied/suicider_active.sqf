@@ -11,7 +11,8 @@ while {(count (waypoints group _this)) > 0} do { deleteWaypoint ((waypoints grou
 _trigger = createTrigger["EmptyDetector",getPos _this];
 _trigger setTriggerArea[5,5,0,false];
 _trigger setTriggerActivation[str(btc_player_side),"PRESENT",false];
-_trigger setTriggerStatements["this", "_spawn = thislist spawn btc_fnc_ied_allahu_akbar", ""]; 
+_trigger setTriggerStatements["this", "thisTrigger spawn btc_fnc_ied_allahu_akbar;", ""];
+_trigger setVariable ["suicider",_this];
 
 _trigger attachTo [_this,[0,0,0]];
 
