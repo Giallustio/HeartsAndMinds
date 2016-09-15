@@ -1,13 +1,10 @@
 
-private ["_group","_pos","_dist","_city","_wp"];
+private ["_group","_city","_wp","_marker"];
 
 _group = _this;
 _group setVariable ["no_cache",nil];
 diag_log format ["ADD GROUP = %1",_group];
-_pos = getPos leader _group;
-_dist = 999999;
-_city = objNull;
-{if (_x distance _pos < _dist) then {_city = _x;_dist = _x distance _pos;};} foreach btc_city_all;
+_city = [leader _group,btc_city_all,false] call btc_fnc_find_closecity;
 
 if (isNull _city) exitWith
 {

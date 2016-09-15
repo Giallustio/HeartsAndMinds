@@ -68,18 +68,32 @@ _cities_status = profileNamespace getVariable [format ["btc_hm_%1_cities",_name]
 _array_ho = profileNamespace getVariable [format ["btc_hm_%1_ho",_name],[]];
 
 {
-	private ["_pos","_hideout","_markers"];
+	private ["_pos","_hideout","_markers","_id","_city","_radius_x","_radius_y"];
 
 	_pos = (_x select 0);
+	_id = (_x select 4);
+	_city = btc_city_all select _id;
 
 	[_pos,(random 360),btc_composition_hideout] call btc_fnc_create_composition;
 
 	_hideout = nearestObject [_pos, "C_supplyCrate_F"];
 	clearWeaponCargoGlobal _hideout;clearItemCargoGlobal _hideout;clearMagazineCargoGlobal _hideout;
+
+	_city setpos _pos;
+	if (btc_debug) then	{deleteMarker format ["loc_%1",_id];};
+	deleteVehicle (_city getVariable ["trigger_player_side",objNull]);
+	_radius_x = btc_hideouts_radius;
+	_radius_y = btc_hideouts_radius;
+
+	[_pos,_radius_x,_radius_y,_city,_city getVariable "occupied",_city getVariable "name",_city getVariable "type",_id] call btc_fnc_city_trigger_player_side;
+
+	_city setVariable ["RadiusX",_radius_x];
+	_city setVariable ["RadiusY",_radius_y];
+
 	_hideout setVariable ["id",(_x select 1)];
 	_hideout setVariable ["rinf_time",(_x select 2)];
 	_hideout setVariable ["cap_time",(_x select 3)];
-	_hideout setVariable ["assigned_to", btc_city_all select (_x select 4)];
+	_hideout setVariable ["assigned_to", _city];
 
 	_hideout addEventHandler ["HandleDamage", btc_fnc_mil_hd_hideout];
 
@@ -107,7 +121,7 @@ _array_ho = profileNamespace getVariable [format ["btc_hm_%1_ho",_name],[]];
 	if (btc_debug_log) then {diag_log format ["btc_fnc_mil_create_hideout: _this = %1 ; POS %2 ID %3",_x,_pos,btc_hideouts_id];};
 
 	btc_hideouts_id = btc_hideouts_id + 1;
-	btc_hideouts = btc_hideouts + [_hideout];
+	btc_hideouts pushBack _hideout;
 } foreach _array_ho;
 
 _ho = profileNamespace getVariable [format ["btc_hm_%1_ho_sel",_name],0];

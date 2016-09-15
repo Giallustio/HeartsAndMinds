@@ -25,24 +25,7 @@ _city setVariable ["spawn_more",false];
 _city setVariable ["data_units",[]];
 _city setVariable ["occupied",_has_en];
 
-_trigger = createTrigger["EmptyDetector",getPos _city];
-_trigger setTriggerArea[(_radius_x+_radius_y) + btc_city_radius,(_radius_x+_radius_y) + btc_city_radius,0,false];
-_trigger setTriggerActivation[str(btc_player_side),"PRESENT",true];
-_trigger setTriggerStatements ["this && !btc_db_is_saving", format ["[%1] spawn btc_fnc_city_activate",_id], format ["[%1] spawn btc_fnc_city_de_activate",_id]];
-
 btc_city_all set [_id,_city];
-
-if (btc_debug) then	{//_debug
-	private ["_marker"];
-	_marker = createmarker [format ["loc_%1",_id],_position];
-	_marker setMarkerShape "ELLIPSE";
-	_marker setMarkerBrush "SolidBorder";
-	_marker setMarkerSize [(_radius_x+_radius_y) + btc_city_radius, (_radius_x+_radius_y) + btc_city_radius];
-	_marker setMarkerAlpha 0.3;
-	if (_has_en) then {_marker setmarkercolor "colorRed";} else {_marker setmarkercolor "colorGreen";};
-	_marker = createmarker [format ["locn_%1",_id],_position];
-	_marker setmarkertype "mil_dot";
-	_marker setmarkertext format ["loc_%3 %1 %2 - [%4]",_name,_type,_id,_has_en];
-};
+[_position,_radius_x,_radius_y,_city,_has_en,_name,_type,_id] call btc_fnc_city_trigger_player_side;
 
 _city

@@ -34,7 +34,7 @@ if (count (_pos nearRoads 200) > 0) then {
 	};
 };
 
-_veh = createVehicle [_veh_type, _Spos, [], 0, "NONE"];
+_veh = createVehicle [_veh_type, _Spos, [], 0, "FLY"];
 
 _group = createGroup civilian;
 (selectRandom btc_civ_type_units) createUnit [_Spos, _group, "this moveinDriver _veh; this assignAsDriver _veh;"];
