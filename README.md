@@ -1,7 +1,7 @@
 <p align="center">
-    <img src="https://data.bistudio.com/assets/img/badges/medal/MWFMP.png" width="180">
+    <img src="https://data.bistudio.com/assets/img/badges/medal/MWFMP.png" width="80">
     <img src="http://www.giallustio.altervista.org/alterpages/logo.png" width="180">
-    <img src="https://data.bistudio.com/assets/img/badges/medal/MWFMP.png" width="180">
+    <img src="https://data.bistudio.com/assets/img/badges/medal/MWFMP.png" width="80">
 </p>
 
 <p align="center">
