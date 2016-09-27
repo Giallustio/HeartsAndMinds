@@ -1,6 +1,6 @@
 <p align="center">
     <img src="https://data.bistudio.com/assets/img/badges/medal/MWFMP.png" width="85">
-    <img src="http://www.giallustio.altervista.org/alterpages/logo.png" width="200">
+    <img src="http://www.giallustio.altervista.org/alterpages/logo.png" width="210">
     <img src="https://data.bistudio.com/assets/img/badges/medal/MWFMP.png" width="85">
 </p>
 
