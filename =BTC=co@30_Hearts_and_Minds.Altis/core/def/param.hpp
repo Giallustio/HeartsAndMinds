@@ -44,15 +44,15 @@ class Params {
 	class btc_p_civ {
 	//paramsArray[6]
 		title = "			Civil type:";
-		values[]={0,1,2,3,4};
-		texts[]={"Civilian (A3)","Afghan (@Ericj_Taliban)","Afghan (@=BTC= Militia)","Russian (@RDS A2 Civilian Pack)","A2 civils (@CUP Units)"};
+		values[]={0,1,2,3,4,5};
+		texts[]={"Civilian (A3)","Afghan (@Ericj_Taliban)","Afghan (@=BTC= Militia)","Russian (@RDS A2 Civilian Pack)","A2 civils (@CUP Units)", "Eastern Europe civils (@Project Opfor)"};
 		default = 0;
 	};
 	class btc_p_civ_veh {
 	//paramsArray[7]
 		title = "			Civil vehicle type:";
-		values[]={0,1,2};
-		texts[]={"Vanilla (A3)","A2 vehicles (@RDS A2 Civilian Pack)","A2 vehicles (@CUP Vehicles)"};
+		values[]={0,1,2,3};
+		texts[]={"Vanilla (A3)","A2 vehicles (@RDS A2 Civilian Pack)","A2 vehicles (@CUP Vehicles)", "Eastern Europe civils (@Project Opfor)"};
 		default = 0;
 	};
 	class btc_p_IED_title {
