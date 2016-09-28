@@ -565,7 +565,7 @@ switch (true) do {
 		btc_type_mg			= ["I_HMG_01_F","I_HMG_01_high_F"];
 		btc_type_gl			= ["I_GMG_01_F","I_GMG_01_high_F"];
 	};
-	case (_p_en == 7) : {
+	case (_p_en == 7 && isClass(configFile >> "cfgVehicles" >> "LOP_AM_Infantry_Engineer")) : {
 		btc_hq				= btc_hq_green;
 		btc_enemy_side		= resistance;
 		btc_type_units		= ["LOP_AM_Infantry_Engineer","LOP_AM_Infantry_Corpsman","LOP_AM_Infantry_GL","LOP_AM_Infantry_Rifleman","LOP_AM_Infantry_Rifleman_2","LOP_AM_Infantry_Rifleman_3","LOP_AM_Infantry_Marksman","LOP_AM_Infantry_AT","LOP_AM_Infantry_AR","LOP_AM_Infantry_AR_Asst","LOP_AM_Infantry_SL"];
@@ -577,7 +577,7 @@ switch (true) do {
 		btc_type_mg			= ["LOP_AM_NSV_TriPod","LOP_AM_Kord","LOP_AM_Static_DSHKM","LOP_AM_Kord_High"];
 		btc_type_gl			= ["LOP_AM_AGS30_TriPod","LOP_AM_Static_SPG9"];
 	};
-	case (_p_en == 8) : {
+	case (_p_en == 8 && isClass(configFile >> "cfgVehicles" >> "LOP_ISTS_Infantry_Engineer")) : {
 		btc_hq = btc_hq_green;
 		btc_enemy_side		= resistance;
 		btc_type_units		= ["LOP_ISTS_Infantry_Engineer","LOP_ISTS_Infantry_Corpsman","LOP_ISTS_Infantry_GL","LOP_ISTS_Infantry_Rifleman","LOP_ISTS_Infantry_Rifleman_2","LOP_ISTS_Infantry_Rifleman_3","LOP_ISTS_Infantry_AT","LOP_ISTS_Infantry_Marksman","LOP_ISTS_Infantry_AR_Asst","LOP_ISTS_Infantry_AR"];
@@ -589,12 +589,12 @@ switch (true) do {
 		btc_type_mg			= ["LOP_ISTS_Static_DSHKM","LOP_ISTS_Kord","LOP_ISTS_Kord_High","LOP_ISTS_NSV_TriPod","LOP_ISTS_Static_ZU23"];
 		btc_type_gl			= ["LOP_ISTS_AGS30_TriPod","LOP_ISTS_Static_SPG9"];
     };
-	case (_p_en == 9) : {
+	case (_p_en == 9 && isClass(configFile >> "cfgVehicles" >> "LOP_UA_Infantry_AT_Asst")) : {
 		btc_hq				= btc_hq_green;
 		btc_enemy_side		= resistance;
 		btc_type_units		= ["LOP_UA_Infantry_AT_Asst","LOP_UA_Infantry_Corpsman","LOP_UA_Infantry_GL","LOP_UA_Infantry_AT","LOP_UA_Infantry_Rifleman","LOP_UA_Infantry_Rifleman_2","LOP_UA_Infantry_Rifleman_3","LOP_UA_Infantry_Marksman","LOP_UA_Infantry_MG_Asst","LOP_UA_Infantry_MG","LOP_UA_Officer","LOP_UA_Infantry_SL","LOP_UA_Infantry_TL"];
 		btc_type_divers		= ["I_diver_F","I_diver_exp_F","I_diver_TL_F"];
-		btc_type_crewmen	= "LOP_ISTS_Infantry_Engineer";
+		btc_type_crewmen	= "LOP_UA_Infantry_AT_Asst";
 		btc_type_vehicles	= ["LOP_UA_BMP1","LOP_UA_BMP2","LOP_UA_T72BA","LOP_UA_UAZ_AGS","LOP_UA_UAZ_DshKM","LOP_UA_ZSU234","LOP_UA_UAZ_SPG","LOP_UA_BM21"];
 		btc_type_boats		= ["I_Boat_Transport_01_F","I_G_Boat_Transport_01_F","I_C_Boat_Transport_01_F","I_C_Boat_Transport_02_F"];
 		btc_type_motorized	= ["LOP_UA_UAZ","LOP_UA_UAZ_Open","LOP_UA_Ural_open","LOP_UA_Ural","LOP_UA_Ural_fuel"];
