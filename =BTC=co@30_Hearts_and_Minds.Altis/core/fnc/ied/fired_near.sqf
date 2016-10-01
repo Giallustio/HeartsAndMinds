@@ -16,7 +16,7 @@ _bomb_check =
 
 _array = [];
 
-while {alive _this && !isNull _this && _this getVariable ["active",false]} do
+while {alive _this && !isNull _this} do
 {
 	_list = _pos nearObjects ["Default",_range];
 	if (count _list > 0) then

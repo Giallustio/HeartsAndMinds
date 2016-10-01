@@ -12,7 +12,7 @@ _ieds_check = + _ieds;
 while {_city getVariable ["active", false]} do {
 	{
 		private "_ied";
-		_ied = _x;
+		_ied = _x select 0;
 		if !(_ied getVariable ["active",false]) then {_ieds_check = _ieds_check - [_ied];};
 		if (!isNull _ied && {Alive _ied} && {_ied getVariable ["active",false]}) then
 		{
@@ -28,7 +28,9 @@ while {_city getVariable ["active", false]} do {
 _data = [];
 
 {
-	if (!isNull _x && {Alive _x}) then {_data pushBack [getPos _x,typeOf _x,getDir _x,_x getVariable ["active",true]];deleteVehicle _x;};
+	private "_ied";
+	_ied = _x select 0;
+	if (!isNull _ied && {Alive _ied}) then {_data pushBack [getPos _ied,_x select 1,getDir _ied,_ied getVariable ["active",true]];deleteVehicle _ied;};
 } foreach _ieds;
 
 _city setVariable ["ieds",_data];
