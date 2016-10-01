@@ -14,8 +14,10 @@ _wreck setDir _dir;
 
 if (_active) then {
 	_ied = btc_type_ieds_ace createVehicle [0,0,0];
-	_ied attachTo [_wreck, [0, 0, 0]];
-	_wreck spawn btc_fnc_ied_fired_near;
+	_ied setPosATL _pos;
+	_ied spawn btc_fnc_ied_fired_near;
+} else {
+	_ied = objNull;
 };
 
-[_wreck,_type]
+[_wreck,_type,_ied]
