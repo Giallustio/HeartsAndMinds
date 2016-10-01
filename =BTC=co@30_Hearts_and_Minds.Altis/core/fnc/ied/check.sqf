@@ -30,7 +30,7 @@ _data = [];
 {
 	private "_ied";
 	_ied = _x select 0;
-	if (!isNull _ied && {Alive _ied}) then {_data pushBack [getPos _ied,_x select 1,getDir _ied,_ied getVariable ["active",true]];deleteVehicle _ied;};
+	if (!isNull _ied && {Alive _ied}) then {_data pushBack [getPosATL _ied,_x select 1,getDir _ied,_ied getVariable ["active",true]];deleteVehicle _ied;};
 } foreach _ieds;
 
 _city setVariable ["ieds",_data];
