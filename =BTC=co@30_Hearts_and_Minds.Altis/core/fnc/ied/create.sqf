@@ -13,8 +13,7 @@ _wreck setPosATL _pos;
 _wreck setDir _dir;
 
 if (_active) then {
-	_ied = btc_type_ieds_ace createVehicle [0,0,0];
-	_ied setPosATL _pos;
+	_ied = createMine [selectRandom btc_type_ieds_ace,[_pos select 0, _pos select 1, -0.07],[],2];
 	[_wreck,_ied] spawn btc_fnc_ied_fired_near;
 } else {
 	_ied = objNull;
