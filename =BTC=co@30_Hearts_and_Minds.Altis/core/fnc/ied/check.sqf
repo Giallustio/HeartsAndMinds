@@ -17,7 +17,7 @@ while {_city getVariable ["active", false]} do {
 		if (_ied isEqualTo objNull) then {_ieds_check = _ieds_check - [_ied];};
 		if (!isNull _ied && {Alive _ied} && !(_ied isEqualTo objNull)) then
 		{
-			_list = _ied nearEntities ["allvehicles", 12];
+			_list = _ied nearEntities ["allvehicles", 10];
 			{
 				if (side _x == btc_player_side && {(speed _x > 5 || vehicle _x != _x)}) then {[_wreck,_ied] spawn btc_fnc_ied_boom;};
 			} foreach _list;
