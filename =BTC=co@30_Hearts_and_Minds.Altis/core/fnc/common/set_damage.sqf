@@ -26,8 +26,8 @@ _type = [
 if (ace_medical_level isEqualTo 1) then {
 	_unconsciousTime = 120 + round (random 600);
 	[_unit,true,_unconsciousTime,true] call ace_medical_fnc_setUnconscious;
-	for "_i" from 0 to 2 do {
-		[_unit, 0.7 + (random 0.15), selectRandom _selection, selectRandom _type] call ace_medical_fnc_addDamageToUnit;
+	for "_i" from 0 to 1 do {
+		[_unit, 0.1 + (random 0.6), selectRandom _selection, selectRandom _type] call ace_medical_fnc_addDamageToUnit;
 	};
 	[{
 		params ["_args","_id"];
@@ -44,5 +44,5 @@ if (ace_medical_level isEqualTo 1) then {
 	[_unit, 0.5] call ace_medical_fnc_adjustPainLevel;
 	[_unit,true,10,true] call ace_medical_fnc_setUnconscious;
 	[_unit] call ace_medical_fnc_setCardiacArrest;
-	[_unit, 0.4 + (random 0.45), selectRandom _selection, selectRandom _type] call ace_medical_fnc_addDamageToUnit;
+	[_unit, 0.05 + (random 0.6), selectRandom _selection, selectRandom _type] call ace_medical_fnc_addDamageToUnit;
 };
