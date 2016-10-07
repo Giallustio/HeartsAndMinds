@@ -1,7 +1,7 @@
 
 private ["_p_civ_veh","_p_db","_p_en","_hideout_n","_cache_info_def","_cache_info_ratio","_info_chance","_p_rep","_p_skill","_c_array","_tower","_array","_chopper","_p_civ","_btc_rearming_vehicles","_vehicles","_magazines","_p_city_radius","_magazines_static","_static","_btc_rearming_static"];
 
-btc_version = 1.15; diag_log format ["=BTC= HEARTS AND MINDS VERSION %1",(str(btc_version) + ".0")];
+btc_version = 1.15; diag_log format ["=BTC= HEARTS AND MINDS VERSION %1",(str(btc_version) + ".1")];
 
 //Param
 
@@ -192,7 +192,7 @@ switch (true) do {
 	case (_p_civ_veh == 1 && isClass(configFile >> "cfgVehicles" >> "RDS_Van_01_transport_F")):	{
 		btc_civ_type_veh    = ["RDS_Van_01_transport_F","RDS_Van_01_fuel_F","RDS_Van_01_box_F","RDS_Gaz24_Civ_03","RDS_Gaz24_Civ_01","RDS_Gaz24_Civ_02","RDS_Golf4_Civ_01","RDS_Ikarus_Civ_01","RDS_Ikarus_Civ_02","RDS_S1203_Civ_01","RDS_S1203_Civ_02","RDS_S1203_Civ_03","RDS_Octavia_Civ_01","RDS_SUV_01_F","RDS_Zetor6945_Base","RDS_Lada_Civ_01","RDS_Lada_Civ_04","RDS_Lada_Civ_03","RDS_Lada_Civ_05","RDS_Lada_Civ_02","RDS_Hatchback_01_F"];
 	};
-	case (_p_civ_veh == 2 && isClass(configFile >> "cfgVehicles" >> "RDS_Van_01_transport_F")):	{
+	case (_p_civ_veh == 2 && isClass(configFile >> "cfgVehicles" >> "CUP_C_SUV_CIV")):	{
 		btc_civ_type_veh    = ["CUP_C_SUV_CIV","CUP_C_LR_Transport_CTK","CUP_C_SUV_TK","CUP_C_UAZ_Unarmed_TK_CIV","CUP_C_UAZ_Open_TK_CIV"];
 		btc_civ_type_boats pushBack "CUP_C_Fishing_Boat_Chernarus";
 	};
