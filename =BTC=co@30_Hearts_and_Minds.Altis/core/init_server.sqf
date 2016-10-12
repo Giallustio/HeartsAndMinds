@@ -22,4 +22,6 @@ if (btc_db_load && {profileNamespace getVariable [format ["btc_hm_%1_db",worldNa
 	};
 };
 
+["Initialize"] call BIS_fnc_dynamicGroups;
+
 {[_x,30,false] spawn btc_fnc_eh_veh_add_respawn;} forEach btc_helo;
