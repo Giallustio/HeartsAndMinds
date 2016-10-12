@@ -44,7 +44,7 @@ switch (_this select 0) do
 	{
 		private "_task";
 		_task = player createSimpleTask [("Vehicle needs assistance near " + (_this select 2))];
-		_task setSimpleTaskDescription [format ["A vehicle damaged by an IED needs assistance near %1!",(_this select 2)],("Vehicle needs assistance near " + (_this select 2)),("Vehicle needs assistance near " + (_this select 2))];
+		_task setSimpleTaskDescription [format ["A vehicle damaged by an IED needs assistance near %1! Repair it!",(_this select 2)],("Vehicle needs assistance near " + (_this select 2)),("Vehicle needs assistance near " + (_this select 2))];
 		_task setSimpleTaskDestination (_this select 1);
 		_task setSimpleTaskType "repair";
 		player setVariable ["task_5",_task];
