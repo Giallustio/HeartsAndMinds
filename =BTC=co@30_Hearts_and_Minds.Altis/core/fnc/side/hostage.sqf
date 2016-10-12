@@ -39,7 +39,9 @@ _city setVariable ["spawn_more",true];
 //// Hostage
 _group_civ = createGroup civilian;
 _group_civ setVariable ["no_cache",true];
-(selectRandom btc_civ_type_units) createUnit [_pos, _group_civ, "_captive = this; [this,true] call ACE_captives_fnc_setHandcuffed;"];
+(selectRandom btc_civ_type_units) createUnit [_pos, _group_civ, "_captive = this;"];
+waitUntil {local _captive};
+[_captive,true] call ACE_captives_fnc_setHandcuffed;
 _captive setPos _pos;
 _captive call btc_fnc_civ_unit_create;
 

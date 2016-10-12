@@ -260,9 +260,9 @@ class Params {
 	};
 	class btc_p_city_radius {
 	//paramsArray[37]
-		title = "			Spawn city radius coefficient:";
+		title = "			Spawn city radius offset:";
 		values[]={0,1,2,3,4,5,6,7,8};
-		texts[]={"0 m","100 m","200 m","300 m (Default)","400 m","500 m (Takistan)","600 m","700 m","800 m"};
+		texts[]={"0 m","100 m","200 m","300 m (Default: Altis, Tanoa)","400 m","500 m (Takistan)","600 m","700 m","800 m"};
 		default = 3;
 	};
 	class btc_p_debug {
