@@ -19,10 +19,8 @@ if (_random == 0) then {
 		case (_n > 96)            : {_random = 4;};
 	};
 };
-_cities = [];
-{if (_x distance _city < _area) then {_cities = _cities + [_x];};} foreach btc_city_all;
-_useful = [];
-{if (!(_x getVariable ["active",false]) && _x getVariable ["occupied",false]) then {_useful = _useful + [getPos _x];};} foreach _cities;
+_cities = btc_city_all select {(_x distance _city < _area)};
+_useful = _cities select {(!(_x getVariable ["active",false]) && _x getVariable ["occupied",false])};
 
 /*
 if (count _useful == 0) then {
@@ -36,7 +34,7 @@ if (count _useful == 0) then {
 
 if (count _useful == 0) exitWith {true};
 
-_pos = _useful select (floor random count _useful);
+_pos = getpos(_useful select (floor random count _useful));
 
 _group = createGroup btc_enemy_side;
 _group setVariable ["city",_city];
@@ -64,7 +62,7 @@ switch (true) do {
 		private ["_veh_type","_newZone","_veh","_cargo"];
 		_newZone = [];
 		if (count (_pos nearRoads 150) > 0) then {
-			_newZone = getPos ((_pos nearRoads 150) select 0)
+			_newZone = getPos ((_pos nearRoads 150) select 0);
 		} else {
 			_newZone = [_pos, 0, 500, 13, 1, 60 * (pi / 180), 0] call BIS_fnc_findSafePos;
 		};

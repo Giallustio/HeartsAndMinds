@@ -36,7 +36,7 @@ if (!isNil {_group getVariable "getWeapons"}) then {_type_db = 5;};
 
 if (vehicle leader _group != leader _group) then {_type_db = 1;};
 
-if (_type_db == 1) then 
+if (_type_db == 1) then
 {
 	private ["_veh"];
 	_veh = vehicle leader _group;

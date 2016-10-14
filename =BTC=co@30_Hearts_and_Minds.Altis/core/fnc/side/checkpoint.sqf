@@ -2,9 +2,8 @@
 private ["_useful","_city","_pos","_road","_roads","_boxes","_marker","_markers","_statics","_tower_type","_tower","_direction","_type_barrel","_type_canister","_type_pallet","_type_box","_btc_composition_checkpoint"];
 
 //// Choose an occupied City \\\\
-_useful = [];
-{if (_x getVariable ["occupied",false] && {_x getVariable ["type",""] != "NameLocal"} && {_x getVariable ["type",""] != "Hill"} && (_x getVariable ["type",""] != "NameMarine")) then {_useful = _useful + [_x];};} foreach btc_city_all;
-if (count _useful == 0) exitWith {[] spawn btc_fnc_side_create;};
+_useful = btc_city_all select {(_x getVariable ["occupied",false] && {_x getVariable ["type",""] != "NameLocal"} && {_x getVariable ["type",""] != "Hill"} && (_x getVariable ["type",""] != "NameMarine"))};
+if (_useful isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
 _city = _useful select (floor random count _useful);
 _pos = getPos _city;
 
