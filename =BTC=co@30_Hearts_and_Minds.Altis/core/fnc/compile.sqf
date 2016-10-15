@@ -205,10 +205,6 @@ if (!isDedicated) then {
 	btc_fnc_fob_redeploy = compile preprocessFile "core\fnc\fob\redeploy.sqf";
 	btc_fnc_fob_dismantle = compile preprocessFile "core\fnc\fob\dismantle.sqf";
 
-	//IED
-	btc_fnc_ied_check_for = compile preprocessFile "core\fnc\ied\check_for.sqf";
-	btc_fnc_ied_disarm = compile preprocessFile "core\fnc\ied\disarm.sqf";
-
 	//INT
 	btc_fnc_int_add_actions = compile preprocessFile "core\fnc\int\add_actions.sqf";
 	btc_fnc_int_action_result = compile preprocessFile "core\fnc\int\action_result.sqf";

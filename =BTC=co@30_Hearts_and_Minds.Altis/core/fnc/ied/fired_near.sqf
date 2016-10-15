@@ -1,5 +1,5 @@
 
-private ["_pos","_range","_bomb","_bomb_check","_array","_list","_ied","_explosive","_caliber"];
+private ["_pos","_range","_bomb","_bomb_check","_array","_list","_ied","_explosive","_caliber","_wreck"];
 
 _wreck = _this select 0;
 _ied = _this select 1;
@@ -11,6 +11,7 @@ _bomb_check =
 {
 	_ied = _this select 0;
 	_bomb = _this select 1;
+	_wreck = _this select 2;
 	_bomb setVariable ["bullet_check",true];
 	waitUntil {!Alive _bomb};
 	if (Alive _ied) then {[_wreck,_ied] spawn btc_fnc_ied_boom;};
@@ -33,7 +34,7 @@ while {alive _ied && !isNull _ied} do
 				if !(_b in _array) then
 				{
 					_array pushBack _b;
-					[_ied,_b] spawn _bomb_check;
+					[_ied,_b,_wreck] spawn _bomb_check;
 				};
 			}
 			else

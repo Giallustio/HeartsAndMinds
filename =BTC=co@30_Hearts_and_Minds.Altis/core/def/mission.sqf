@@ -17,7 +17,7 @@ _p_civ_veh = (paramsArray select 7);
 
 //<< IED options >>
 btc_p_ied = (paramsArray select 9)/2;
-btc_p_engineer  = (paramsArray select 10);
+ace_explosives_RequireSpecialist  = (paramsArray select 10) isEqualTo 0;
 
 //<< Hideout/Cache options >>
 _hideout_n = (paramsArray select 12);
