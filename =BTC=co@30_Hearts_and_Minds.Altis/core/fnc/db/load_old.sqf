@@ -36,7 +36,7 @@ _cities_status = profileNamespace getVariable [format ["btc_hm_%1_cities",_name]
 	_city setVariable ["data_units",(_x select 4)];
 	_city setVariable ["has_ho",(_x select 5)];
 	_city setVariable ["ho_units_spawned",(_x select 6)];
-	_city setVariable ["ieds",(_x select 7)];
+	_city setVariable ["ieds",(_x select 7) apply {(toLower gettext(configfile >> "CfgVehicles" >> _x >> "model")) select [1]}];
 
 	if (btc_debug) then	{//_debug
 
