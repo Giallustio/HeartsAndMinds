@@ -32,7 +32,7 @@ If you don't want to complete a task, you can always abort it with the self inte
 player createDiaryRecord ["Documentation", ["FOB", "
 <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move1_ca.paa' width='20' height='20' /> <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\run_ca.paa' width='20' height='20' /> <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move2_ca.paa' width='20' height='20' /> <marker name='blufor_base'>FOB:</marker><br/>
  In this mission a FOB is a forward spawn point, to create a FOB approach the red box at the logistic point and require a blue container.<br/>
-- <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/>  <marker name='blufor_base'>Deploy:</marker> <br/>
+- <img image='\A3\Ui_f\data\Map\Markers\NATO\b_hq.paa' width='20' height='20'/>  <marker name='blufor_base'>Deploy:</marker> <br/>
 Move it where you want to deploy a new FOB and interact with it to set it up. Keep in mind that you can not deploy a FOB close to the main base (2.500m) and the terrain needs to be flat.<br/><br/>
 - <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/> <marker name='blufor_base'>Dismantle:</marker> <br/>
 You can dismantle a FOB by interacting with the flag on the HQ first floor.
