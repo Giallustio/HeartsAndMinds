@@ -41,9 +41,9 @@ You can dismantle a FOB by interacting with the flag on the HQ first floor.
 
 player createDiaryRecord ["Documentation", ["Sling loading", "
 =BTC= Lift will not replace the A3 sling loading, you can use both.<br/><br/>
-<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/> <img image='\A3\air_f_beta\Heli_Transport_01\Data\UI\Map_Heli_Transport_01_base_CA.paa' width='20' height='20'/> Lifting an object is pretty simple. Get in a chopper as pilot, hover above the object and use your self interaction menu to deploy ropes.<br/>
+<img image='\A3\Structures_F_Heli\VR\Helpers\Data\VR_Symbol_Heli_Slingloading_CA.paa' width='20' height='20'/> <img image='\A3\air_f_beta\Heli_Transport_01\Data\UI\Map_Heli_Transport_01_base_CA.paa' width='20' height='20'/> Lifting an object is pretty simple. Get in a chopper as pilot, hover above the object and use your self interaction menu to deploy ropes.<br/>
 When you are in the right position a new scroll wheel action will appear ('HOOK'). If you want you can open the HUD to facilitate the operation.<br/>
-<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/> To release an object open you self interaction menu and select 'CUT ROPES'
+<img image='\z\ace\addons\logistics_wirecutter\ui\wirecutter_ca.paa' width='20' height='20'/> To release an object open you self interaction menu and select 'CUT ROPES'
 	"]
 ];
 
@@ -54,11 +54,11 @@ player createDiaryRecord ["Documentation", ["Logistic point", "
 
 player createDiaryRecord ["Documentation", ["Logistic", "
 <marker name='blufor_base'>Cargo System:</marker><br/>
-- <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/> <marker name='blufor_base'>Load:</marker> You can load objects inside vehicles. Approach the object you want to load and interact with it.<br/>
+- <img image='\z\ace\addons\cargo\UI\Icon_load.paa' width='20' height='20'/> <marker name='blufor_base'>Load:</marker> You can load objects inside vehicles. Approach the object you want to load and interact with it.<br/>
 Select 'LOAD IN' option.<br/>
 Afer that interact with the vehicle and select 'LOAD object selected' option.<br/>
 The object has to be close to the vehicle.<br/><br/>
-- <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/> <marker name='blufor_base'>Unload:</marker> You can unload an object from a vehicle interacting with it. You can be inside the vehicle (personal interaction) or outside (object interaction).<br/>
+- <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\search_ca.paa' width='20' height='20'/> <marker name='blufor_base'>Unload:</marker> You can unload an object from a vehicle interacting with it. You can be inside the vehicle (personal interaction) or outside (object interaction).<br/>
 Select the option 'CHECK CARGO', then choose the object you want to unload from the list, and click 'UNLOAD'.<br/>
 If you are inside a chopper the object will be paradropped with a chute. If your height is too low, the object will crash down.<br/>
 Every vehicle has a 'CARGO CAPACITY' (CC in game), and every object has a 'REQUIRED CAPACITY' value (RC in game.)<br/>

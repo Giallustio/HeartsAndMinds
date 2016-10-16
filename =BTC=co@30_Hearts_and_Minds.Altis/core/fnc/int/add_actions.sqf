@@ -57,7 +57,7 @@ _action = ["Lift","Lift","\A3\ui_f\data\igui\cfg\simpleTasks\letters\L_ca.paa",{
 
 _action = ["Deploy_ropes","Deploy ropes","\A3\Structures_F_Heli\VR\Helpers\Data\VR_Symbol_Heli_Slingloading_CA.paa",{[] spawn btc_fnc_log_lift_deploy_ropes;},{!btc_ropes_deployed && {((driver vehicle player) isEqualTo player)} && {(getposATL player) select 2 > 4}}] call ace_interact_menu_fnc_createAction;
 [player, 1, ["ACE_SelfActions","Lift"], _action] call ace_interact_menu_fnc_addActionToObject;
-_action = ["Cut_ropes","Cut ropes","",{[] spawn btc_fnc_log_lift_destroy_ropes;},{btc_ropes_deployed && {((driver vehicle player) isEqualTo player)}}] call ace_interact_menu_fnc_createAction;
+_action = ["Cut_ropes","Cut ropes","\z\ace\addons\logistics_wirecutter\ui\wirecutter_ca.paa",{[] spawn btc_fnc_log_lift_destroy_ropes;},{btc_ropes_deployed && {((driver vehicle player) isEqualTo player)}}] call ace_interact_menu_fnc_createAction;
 [player, 1, ["ACE_SelfActions","Lift"], _action] call ace_interact_menu_fnc_addActionToObject;
 
 //Orders
