@@ -22,4 +22,9 @@ if (btc_db_load && {profileNamespace getVariable [format ["btc_hm_%1_db",worldNa
 	};
 };
 
+if (btc_p_auto_db > 0) then {
+	// Save 5 minutes before, so it saves on time.
+	[{[] spawn btc_fnc_db_save;}, [], btc_p_auto_db * 60 * 60 - 300] call CBA_fnc_waitAndExecute;
+};
+
 {[_x,30,false] spawn btc_fnc_eh_veh_add_respawn;} forEach btc_helo;
