@@ -24,7 +24,7 @@ switch (_this select 0) do
 	{
 		private "_task";
 		_task = player createSimpleTask [("Supply " + (_this select 2))];
-		_task setSimpleTaskDescription [format ["The citizens of %1 are starving to death, bring them some supplies!",(_this select 2)],("Supply " + (_this select 2)),("Supply " + (_this select 2))];
+		_task setSimpleTaskDescription [format ["The citizens of %1 are starving to death, bring them some supplies present at the logisitic point!",(_this select 2)],("Supply " + (_this select 2)),("Supply " + (_this select 2))];
 		_task setSimpleTaskDestination (_this select 1);
 		_task setSimpleTaskType "move";
 		player setVariable ["task_3",_task];
@@ -44,7 +44,7 @@ switch (_this select 0) do
 	{
 		private "_task";
 		_task = player createSimpleTask [("Vehicle needs assistance near " + (_this select 2))];
-		_task setSimpleTaskDescription [format ["A vehicle damaged by an IED needs assistance near %1!",(_this select 2)],("Vehicle needs assistance near " + (_this select 2)),("Vehicle needs assistance near " + (_this select 2))];
+		_task setSimpleTaskDescription [format ["A vehicle damaged by an IED needs assistance near %1! Repair it!",(_this select 2)],("Vehicle needs assistance near " + (_this select 2)),("Vehicle needs assistance near " + (_this select 2))];
 		_task setSimpleTaskDestination (_this select 1);
 		_task setSimpleTaskType "repair";
 		player setVariable ["task_5",_task];
@@ -84,7 +84,7 @@ switch (_this select 0) do
 	{
 		private "_task";
 		_task = player createSimpleTask [("Destroy checkpoints in " + (_this select 2))];
-		_task setSimpleTaskDescription [format ["Checkpoints has been located in %1. Local population is asking for your help to destroy ammo box in checkpoint!",(_this select 2)],("Destroy checkpoints in " + (_this select 2)),("Destroy checkpoints in " + (_this select 2))];
+		_task setSimpleTaskDescription [format ["Checkpoints has been located in %1. Local population is asking for your help to destroy ammo box in all checkpoints!",(_this select 2)],("Destroy checkpoints in " + (_this select 2)),("Destroy checkpoints in " + (_this select 2))];
 		_task setSimpleTaskDestination (_this select 1);
 		_task setSimpleTaskType "destroy";
 		player setVariable ["task_9",_task];
