@@ -41,7 +41,7 @@ if (btc_debug) then {
 	onMapSingleClick "if (vehicle player == player) then {player setpos _pos} else {vehicle player setpos _pos}";
 	player allowDamage false;
 
-	sleep 2;
+	waitUntil {!isNull (findDisplay 12)};
 	_eh = ((findDisplay 12) displayCtrl 51) ctrlAddEventHandler ["Draw", btc_fnc_marker_debug];
 	btc_marker_debug_cond = true;
 	[_eh] spawn {
