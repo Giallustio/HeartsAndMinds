@@ -215,7 +215,7 @@ diag_log format ["5: %1",(_x select 5)];
 {
 	private ["_veh","_cont","_weap","_mags","_items"];
 	_veh = (_x select 0) createVehicle (_x select 1);
-	_veh setPos (_x select 1);
+	_veh setPosASL (_x select 1);
 	_veh setDir (_x select 2);
 	if ((getPos _veh) select 2 < 0) then {_veh setVectorUp surfaceNormal position _veh;};
 	_veh setFuel (_x select 3);
