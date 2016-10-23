@@ -71,7 +71,7 @@ class Params {
 	};
 	class btc_p_engineer {
 	//paramsArray[10]
-		title = "			Everybody can disarm IED with the same chances:";
+		title = "			Everybody can disarm IED:";
 		values[]={0,1};
 		texts[]={"No","Yes"};
 		default = 0;

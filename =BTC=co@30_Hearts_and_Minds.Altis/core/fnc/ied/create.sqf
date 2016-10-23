@@ -13,7 +13,7 @@ _wreck setDir _dir;
 _wreck setVectorUp surfaceNormal _pos;
 
 if (_active) then {
-	_ied = createMine [selectRandom btc_type_ieds_ace,[_pos select 0, _pos select 1, -0.05],[],2];
+	_ied = createMine [selectRandom btc_type_ieds_ace,[_pos select 0, _pos select 1, -0.07],[],2];
 	[_wreck,_ied] spawn btc_fnc_ied_fired_near;
 } else {
 	_ied = objNull;
