@@ -87,6 +87,7 @@ To destroy an hideout just place a satchel near the ammo box and blow it off!
 
 player createDiaryRecord ["Documentation", ["IED", "
 <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/> Any object could be an IED,	approach it carefully. Turn On your mine detector (VMH3 or VMMH3) and search for a charge in a circle of 2 meter around.<br/>
+<img image='\z\ace\addons\explosives\UI\Defuse_ca.paa' width='20' height='20'/>
 If you are an engineer and have a defusal kit, you can disarm it.<br/>
 You can also blow them off with high caliber and explosive satchels.
 	"]
