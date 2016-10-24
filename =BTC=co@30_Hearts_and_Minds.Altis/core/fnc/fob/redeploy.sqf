@@ -1,9 +1,5 @@
-/*
-mapAnimAdd [1, 0.2, [0,0]]; mapAnimCommit;*/
 
 private ["_fobs","_idc","_fob","_marker","_pos","_text"];
-
-closeDialog 0;
 
 btc_int_ask_data = nil;
 
@@ -11,50 +7,38 @@ btc_int_ask_data = nil;
 
 waitUntil {!(isNil "btc_int_ask_data")};
 
-if (count btc_int_ask_data == 0) exitWith {hint "No FOBs deployed";};
+_fobs = +(btc_int_ask_data select 0);
+if (count _fobs == 0) exitWith {hint "No FOBs deployed";};
+_fobs pushBack "respawn_west";
 
-_fobs = btc_int_ask_data;
+_missionsData = _fobs apply {
+	_pos = getMarkerPos _x;
+	[_pos, player setPosATL [_pos select 0,_pos select 1,0.45], _x,"To the " + _x,"","",1,[]]
+};
 
-forceMap true;
+disableserialization;
 
-btc_fob_dlg = false;
+_parentDisplay     = [] call bis_fnc_displayMission;
+_mapCenter     = getmarkerpos "respawn_west";
+_ORBAT         = [];
+_markers   = [];
+_images    = [];
+_overcast  = overcast;
+_isNight   = !((dayTime > 6) && (dayTime < 20));
+_scale     = 1;
+_simul     = true;
 
-createDialog "btc_fob_redeploy";
-
-waitUntil {dialog};
-
-_idc = 778;
-
-{lbAdd [ _idc, _x];} foreach (_fobs select 0);
-
-lbSetCurSel [_idc, 0];
-/*
-while {!btc_fob_dlg} do {
-	if !(dialog) then {hint "Do not close the dialog with esc";createDialog "btc_fob_redeploy";{_index = lbAdd [ _idc, _x ];} foreach _fobs;lbSetCurSel [_idc, 0];};
-	sleep 0.1;
-};*/
-
-waitUntil {!dialog || btc_fob_dlg};
-
-if (!btc_fob_dlg) exitWith {forceMap false;};
-
-_fob = lbText [_idc, lbCurSel _idc];
-
-_marker = lbText [_idc, lbCurSel _idc];
-
-if (_marker == "Base") then {_marker = btc_respawn_marker;};
-
-forceMap false;
-
-closeDialog 0;
-
-_pos = getMarkerPos _marker;
-
-_text = format ["Moving to %1",_fob];
-
-titleText [_text, "BLACK OUT"];
-sleep 3;
-titleText [_text, "BLACK FADED"];
-player setPosATL [_pos select 0,_pos select 1,0.45];
-sleep 2;
-titleText ["", "BLACK IN"];
+[
+	_parentDisplay,
+	_mapCenter,
+	_missionsData,
+	_ORBAT,
+	_markers,
+	_images,
+	_overcast,
+	_isNight,
+	_scale,
+	_simul,
+	"Select a FOB to spawn",
+	true
+] call btc_fnc_strategicMapOpen;
