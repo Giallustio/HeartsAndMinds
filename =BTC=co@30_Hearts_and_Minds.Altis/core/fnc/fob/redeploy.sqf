@@ -42,3 +42,13 @@ _simul     = true;
 	"Select a FOB to spawn",
 	true
 ] call btc_fnc_strategicMapOpen;
+/*
+_nul = [] spawn {
+	waitUntil {!isNull (findDisplay 506)};
+
+	_display = findDisplay 506;
+	_background = _display displayCtrl 1000;
+
+	_background ctrlSetBackgroundColor [1,1,1,1];
+};
+*/

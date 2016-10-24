@@ -54,20 +54,20 @@ _parentDisplayDefault = switch false do {
 	case isnull (finddisplay 53): {finddisplay 53}; //--- ClientGetReady
 	default {[] call bis_fnc_displayMission}; //--- Mission
 };
-_parentDisplay = [_this,0,_parentDisplayDefault,[displaynull]] call (uinamespace getvariable "bis_fnc_param");
-_mapCenter = [_this,1,position player] call bis_fnc_param;
+_parentDisplay = _this param [0,_parentDisplayDefault,[displaynull]];
+_mapCenter = _this param [1,position player];
 _mapCenter = _mapCenter call bis_fnc_position;
-_missions = [_this,2,[],[[]]] call bis_fnc_param;
-_ORBAT = [_this,3,[],[[]]] call bis_fnc_param;
-_markers = [_this,4,[],[[]]] call bis_fnc_param;
-_images = [_this,5,[],[[]]] call bis_fnc_param;
-_overcast = ([_this,6,overcast,[0]] call bis_fnc_param) max 0 min 1;
-_isNight = [_this,7,false,[false]] call bis_fnc_param;
-_defaultScale = [_this,8,1,[0]] call bis_fnc_param;
-_simulationEnabled = [_this,9,false,[false]] call bis_fnc_param;
-_actionText = [_this,10,localize "str_a3_rscdisplaystrategicmap_missions",[""]] call bis_fnc_param;
-_showIconText = [_this,11,true,[true]] call bis_fnc_param;
-_missionIcon = [_this,12,"\A3\Ui_f\data\Map\GroupIcons\badge_rotate_%1_gs.paa",[""]] call bis_fnc_param;
+_missions = _this param [2,[],[[]]];
+_ORBAT = _this param [3,[],[[]]];
+_markers = _this param [4,[],[[]]];
+_images = _this param [5,[],[[]]];
+_overcast = (_this param [6,overcast,[0]]) max 0 min 1;
+_isNight = _this param [7,false,[false]];
+_defaultScale = _this param [8,1,[0]];
+_simulationEnabled = _this param [9,false,[false]];
+_actionText = _this param [10,localize "str_a3_rscdisplaystrategicmap_missions",[""]];
+_showIconText = _this param [11,true,[true]];
+_missionIcon = _this param [12,"\A3\Ui_f\data\Map\GroupIcons\badge_rotate_%1_gs.paa",[""]];
 
 BIS_fnc_strategicMapOpen_showIconText = _showIconText;
 BIS_fnc_strategicMapOpen_missionIcon = _missionIcon;
@@ -117,13 +117,13 @@ BIS_fnc_strategicMapOpen_ORBAT = [];
 _onClick = [];
 {
 	private ["_pos","_class","_parent","_tags","_tiers","_classParams","_text","_texture","_size","_color","_sizeLocal","_sizeParams","_sizeTexture"];
-	_pos = [_x,0,player] call bis_fnc_paramIn;
+	_pos = _x param [0,player];
 	_pos = _pos call bis_fnc_position;
 
-	_class = [_x,1,configfile >> "CfgORBAT",[configfile]] call bis_fnc_paramIn;
-	_parent = [_x,2,_class,[configfile]] call bis_fnc_paramIn;
-	_tags = [_x,3,[],[[]]] call bis_fnc_paramIn;
-	_tiers = [_x,4,-1,[0]] call bis_fnc_paramIn;
+	_class = _x param [1,configfile >> "CfgORBAT",[configfile]];
+	_parent = _x param [2,_class,[configfile]];
+	_tags = _x param [3,[],[[]]];
+	_tiers = _x param [4,-1,[0]];
 
 	_classParams = _class call bis_fnc_ORBATGetGroupParams;
 	_text = _classParams select ("text" call bis_fnc_ORBATGetGroupParams);
@@ -178,16 +178,16 @@ if (count _missions > 0) then {
 	_ctrlMissions lbsetcolor [_lbadd,[1,1,1,0.5]];
 	{
 		private ["_pos","_code","_title","_description","_player","_picture","_iconSize","_infoText","_codeParams"];
-		_pos = [_x,0,player] call bis_fnc_paramIn;
+		_pos = _x param [0,player];
 		_pos = _pos call bis_fnc_position;
 
-		_code = [_x,1,{},[{}]] call bis_fnc_paramIn;
-		_title = [_x,2,"ERROR: MISSING TITLE",[""]] call bis_fnc_paramIn;
-		_description = [_x,3,"",[""]] call bis_fnc_paramIn;
-		_player = [_x,4,"",[""]] call bis_fnc_paramIn;
-		_picture = [_x,5,"",[""]] call bis_fnc_paramIn;
-		_iconSize = [_x,6,1,[1]] call bis_fnc_paramIn;
-		_codeParams = [_x,7,[],[[]]] call bis_fnc_param;
+		_code = _x param [1,{},[{}]];
+		_title = _x param [2,"ERROR: MISSING TITLE",[""]];
+		_description = _x param [3,"",[""]];
+		_player = _x param [4,"",[""]];
+		_picture = _x param [5,"",[""]];
+		_iconSize = _x param [6,1,[1]];
+		_codeParams = _x param [7,[],[[]]];
 
 		_infoText = _title;
 		if (_player != "") then {_infoText = _infoText + format ["<br /><t size='0.2' color='#00000000'>-<br /></t><img size='1' image='%2' color='%3'/><t size='0.8'> %1</t>",_player,_playerIcon,_playerColor];};
@@ -232,14 +232,14 @@ if (count _missions > 0) then {
 BIS_fnc_strategicMapOpen_images = [];
 {
 	private ["_texture","_color","_pos","_w","_h","_dir","_text","_shadow"];
-	_texture = [_x,0,"#(argb,8,8,3)color(0,0,0,0)",[""]] call bis_fnc_paramIn;
-	_color = [_x,1,[1,1,1,1],[[]]] call bis_fnc_paramIn;
-	_pos = [_x,2,position player] call bis_fnc_paramIn;
-	_w = [_x,3,0,[0]] call bis_fnc_paramIn;
-	_h = [_x,4,0,[0]] call bis_fnc_paramIn;
-	_dir = [_x,5,0,[0]] call bis_fnc_paramIn;
-	_text = [_x,6,"",[""]] call bis_fnc_paramIn;
-	_shadow = [_x,7,false,[false]] call bis_fnc_paramIn;
+	_texture = _x param [0,"#(argb,8,8,3)color(0,0,0,0)",[""]];
+	_color = _x param [1,[1,1,1,1],[[]]];
+	_pos = _x param [2,position player];
+	_w = _x param [3,0,[0]];
+	_h = _x param [4,0,[0]];
+	_dir = _x param [5,0,[0]];
+	_text = _x param [6,"",[""]];
+	_shadow = _x param [7,false,[false]];
 
 	_pos = _pos call bis_fnc_position;
 	_color = _color call bis_fnc_colorConfigToRGBA;
