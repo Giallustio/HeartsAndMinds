@@ -13,7 +13,7 @@ _fobs pushBack "respawn_west";
 
 _missionsData = _fobs apply {
 	_pos = getMarkerPos _x;
-	[_pos, player setPosATL [_pos select 0,_pos select 1,0.45], _x,"To the " + _x,"","",1,[]]
+	[_pos, compile format ["player setPosATL [%1 select 0,%1 select 1,0.45]", _pos], _x,"To " + _x,"","",1,[]]
 };
 
 disableserialization;
