@@ -1,5 +1,5 @@
 
-private ["_chopper","_array","_cargo_array","_cargo"];
+private ["_chopper","_array","_cargo_array","_cargo","_bbr"];
 
 _chopper = vehicle player;
 _array = [vehicle player] call btc_fnc_log_get_liftable;
