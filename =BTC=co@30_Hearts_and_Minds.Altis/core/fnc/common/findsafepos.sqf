@@ -1,5 +1,5 @@
 
-private ["_return_pos","_check_pos","_random_area","_allow_water"];
+private ["_return_pos","_check_pos","_random_area","_allow_water","_mindist","_objdist"];
 
 _check_pos = _this select 0;
 _mindist = _this select 1;
