@@ -20,9 +20,6 @@ class CfgTaskTypes {
 	class Attack {
 		icon = \A3\ui_f\data\igui\cfg\simpleTasks\types\attack_ca.paa;
 	};
-	class Destroy {
-		icon = \A3\ui_f\data\igui\cfg\simpleTasks\types\destroy_ca.paa;
-	};
 	class Navigate {
 		icon = \A3\ui_f\data\igui\cfg\simpleTasks\types\navigate_ca.paa;
 	};
