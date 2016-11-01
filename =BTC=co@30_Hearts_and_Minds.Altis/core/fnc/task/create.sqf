@@ -1,153 +1,75 @@
 if (isDedicated) exitWith {};
 
+private ["_location","_destination"];
+
+if (count _this > 1) then {
+	_destination = _this select 1;
+	_location = _this select 2;
+} else {
+	_destination = objNull;
+	_location = "";
+};
+
 switch (_this select 0) do
 {
 	case 0 :
 	{
-		private "_task";
-		_task = player createSimpleTask ["Defeat the Oplitas"];
-		_task setSimpleTaskDescription ["Destroy all the hideouts of the Oplitas and defeat them once and for all","Defeat the Oplitas","Defeat the Oplitas"];
-		_task setSimpleTaskType "kill";
-		player setVariable ["task_0",_task];
-		["TaskAssigned",["New task assigned!","Defeat the Oplitas"]] call bis_fnc_showNotification;
+		[player,["task_0"],["Destroy all the hideouts of the Oplitas and defeat them once and for all","Defeat the Oplitas","Defeat the Oplitas"],_destination,true,2,true,"kill",true] call BIS_fnc_taskCreate;
 	};
 	case 1 :
 	{
-		private "_task";
-		_task = player createSimpleTask ["Destroy all the hideouts"];
-		_task setSimpleTaskDescription ["Destroy all the hideouts of the Oplitas and defeat them once and for all","Destroy all the hideouts","Destroy all the hideouts"];
-		_task setSimpleTaskType "destroy";
-		player setVariable ["task_1",_task];
-		["TaskAssigned",["New task assigned!","Destroy all the hideouts"]] call bis_fnc_showNotification;
+		[player,["task_1"],["Destroy all the hideouts of the Oplitas and defeat them once and for all","Destroy all the hideouts","Destroy all the hideouts"],_destination,true,1,true,"destroy",true] call BIS_fnc_taskCreate;
 	};
 	case 3 :
 	{
-		private "_task";
-		_task = player createSimpleTask [("Supply " + (_this select 2))];
-		_task setSimpleTaskDescription [format ["The citizens of %1 are starving to death, bring them some supplies present at the logisitic point!",(_this select 2)],("Supply " + (_this select 2)),("Supply " + (_this select 2))];
-		_task setSimpleTaskDestination (_this select 1);
-		_task setSimpleTaskType "move";
-		player setVariable ["task_3",_task];
-		["TaskAssigned",["New task assigned!",("Supply " + (_this select 2))]] call bis_fnc_showNotification;
+		[player,["task_3"],[format ["The citizens of %1 are starving to death, bring them some supplies present at the logisitic point!",_location],("Supply " + _location),("Supply " + _location)],_destination,true,3,true,"move",true] call BIS_fnc_taskCreate;
 	};
 	case 4 :
 	{
-		private "_task";
-		_task = player createSimpleTask [("Minefield near " + (_this select 2))];
-		_task setSimpleTaskDescription [format ["There is a minefield near %1, clear it!",(_this select 2)],("Minefield near " + (_this select 2)),("Minefield near " + (_this select 2))];
-		_task setSimpleTaskDestination (_this select 1);
-		_task setSimpleTaskType "search";
-		player setVariable ["task_4",_task];
-		["TaskAssigned",["New task assigned!",("Clear the minefield near " + (_this select 2))]] call bis_fnc_showNotification;
+		[player,["task_4"],[format ["There is a minefield near %1, clear it!",_location],("Minefield near " + _location),("Minefield near " + _location)],_destination,true,3,true,"search",true] call BIS_fnc_taskCreate;
 	};
 	case 5 :
 	{
-		private "_task";
-		_task = player createSimpleTask [("Vehicle needs assistance near " + (_this select 2))];
-		_task setSimpleTaskDescription [format ["A vehicle damaged by an IED needs assistance near %1! Repair it!",(_this select 2)],("Vehicle needs assistance near " + (_this select 2)),("Vehicle needs assistance near " + (_this select 2))];
-		_task setSimpleTaskDestination (_this select 1);
-		_task setSimpleTaskType "repair";
-		player setVariable ["task_5",_task];
-		["TaskAssigned",["New task assigned!",("Vehicle needs assistance near " + (_this select 2))]] call bis_fnc_showNotification;
+		[player,["task_5"],[format ["A vehicle damaged by an IED needs assistance near %1! Repair it!",_location],("Vehicle needs assistance near " + _location),("Vehicle needs assistance near " + _location)],_destination,true,3,true,"repair",true] call BIS_fnc_taskCreate;
 	};
 	case 6 :
 	{
-		private "_task";
-		_task = player createSimpleTask [("Free " + (_this select 2))];
-		_task setSimpleTaskDescription [format ["%1 has been conquered by the Oplitas! Local population is terrorised and is asking for your help!",(_this select 2)],("Free " + (_this select 2)),("Free " + (_this select 2))];
-		_task setSimpleTaskDestination (_this select 1);
-		_task setSimpleTaskType "attack";
-		player setVariable ["task_6",_task];
-		["TaskAssigned",["New task assigned!",("Free " + (_this select 2))]] call bis_fnc_showNotification;
+		[player,["task_6"],[format ["%1 has been conquered by the Oplitas! Local population is terrorised and is asking for your help!",_location],("Free " + _location),("Free " + _location)],_destination,true,3,true,"attack",true] call BIS_fnc_taskCreate;
 	};
 	case 7 :
 	{
-		private "_task";
-		_task = player createSimpleTask [("Destroy tower in " + (_this select 2))];
-		_task setSimpleTaskDescription [format ["A Oplitas radio tower has been located in %1. Local population is asking for your help to destroy it! (Use one M183 explosive satchel)",(_this select 2)],("Destroy tower in " + (_this select 2)),("Destroy tower in " + (_this select 2))];
-		_task setSimpleTaskDestination (_this select 1);
-		_task setSimpleTaskType "destroy";
-		player setVariable ["task_7",_task];
-		["TaskAssigned",["New task assigned!",("Destroy tower in " + (_this select 2))]] call bis_fnc_showNotification;
+		[player,["task_7"],[format ["A Oplitas radio tower has been located in %1. Local population is asking for your help to destroy it! (Use one M183 explosive satchel)",_location],("Destroy tower in " + _location),("Destroy tower in " + _location)],_destination,true,3,true,"destroy",true] call BIS_fnc_taskCreate;
 	};
 	case 8 :
 	{
-		private "_task";
-		_task = player createSimpleTask [("Medical emergency call in " + (_this select 2))];
-		_task setSimpleTaskDescription [format ["A civilian is calling for a medic in %1, treat and wait for patient stabilization ",(_this select 2)],("Medical emergency call in " + (_this select 2)),("Medical emergency call in " + (_this select 2))];
-		_task setSimpleTaskDestination (_this select 1);
-		_task setSimpleTaskType "heal";
-		player setVariable ["task_8",_task];
-		["TaskAssigned",["New task assigned!",("Medical emergency call in " + (_this select 2))]] call bis_fnc_showNotification;
+		[player,["task_8"],[format ["A civilian is calling for a medic in %1, treat and wait for patient stabilization ",_location],("Medical emergency call in " + _location),("Medical emergency call in " + _location)],_destination,true,3,true,"heal",true] call BIS_fnc_taskCreate;
 	};
 	case 9 :
 	{
-		private "_task";
-		_task = player createSimpleTask [("Destroy checkpoints in " + (_this select 2))];
-		_task setSimpleTaskDescription [format ["Checkpoints has been located in %1. Local population is asking for your help to destroy ammo box in all checkpoints!",(_this select 2)],("Destroy checkpoints in " + (_this select 2)),("Destroy checkpoints in " + (_this select 2))];
-		_task setSimpleTaskDestination (_this select 1);
-		_task setSimpleTaskType "destroy";
-		player setVariable ["task_9",_task];
-		["TaskAssigned",["New task assigned!",("Destroy checkpoints in " + (_this select 2))]] call bis_fnc_showNotification;
+		[player,["task_9"],[format ["Checkpoints has been located in %1. Local population is asking for your help to destroy ammo box in all checkpoints!",_location],("Destroy checkpoints in " + _location),("Destroy checkpoints in " + _location)],_destination,true,3,true,"destroy",true] call BIS_fnc_taskCreate;
 	};
 	case 10 :
 	{
-		private "_task";
-		_task = player createSimpleTask [("Medical emergency call in " + (_this select 2))];
-		_task setSimpleTaskDescription [format ["A civilian is calling for a medic in %1, treat and wait for patient stabilization ",(_this select 2)],("Medical emergency call in " + (_this select 2)),("Medical emergency call in " + (_this select 2))];
-		_task setSimpleTaskDestination (_this select 1);
-		_task setSimpleTaskType "heal";
-		player setVariable ["task_10",_task];
-		["TaskAssigned",["New task assigned!",("Medical emergency call in " + (_this select 2))]] call bis_fnc_showNotification;
+		[player,["task_10"],[format ["A civilian is calling for a medic in %1, treat and wait for patient stabilization ",_location],("Medical emergency call in " + _location),("Medical emergency call in " + _location)],_destination,true,3,true,"heal",true] call BIS_fnc_taskCreate;
 	};
 	case 11 :
 	{
-		private "_task";
-		_task = player createSimpleTask [("Destroy underwater generator in " + (_this select 2))];
-		_task setSimpleTaskDescription [format ["Underwater generator has been located in %1. Local population is asking for your help to destroy it!",(_this select 2)],("Destroy underwater generator in " + (_this select 2)),("Destroy underwater generator in " + (_this select 2))];
-		_task setSimpleTaskDestination (_this select 1);
-		_task setSimpleTaskType "destroy";
-		player setVariable ["task_11",_task];
-		["TaskAssigned",["New task assigned!",("Destroy underwater generator in " + (_this select 2))]] call bis_fnc_showNotification;
+		[player,["task_11"],[format ["Underwater generator has been located in %1. Local population is asking for your help to destroy it!",_location],("Destroy underwater generator in " + _location),("Destroy underwater generator in " + _location)],_destination,true,3,true,"destroy",true] call BIS_fnc_taskCreate;
 	};
 	case 12 :
 	{
-		private "_task";
-		_task = player createSimpleTask [("Destroy a convoy attacking " + (_this select 2))];
-		_task setSimpleTaskDescription [format ["An armed convoy is going to attack %1. Local population is asking for your help to destroy it before!",(_this select 2)],("Destroy a convoy attacking " + (_this select 2)),("Destroy a convoy attacking " + (_this select 2))];
-		_task setSimpleTaskDestination (_this select 1);
-		_task setSimpleTaskType "attack";
-		player setVariable ["task_12",_task];
-		["TaskAssigned",["New task assigned!",("Destroy a convoy attacking " + (_this select 2))]] call bis_fnc_showNotification;
+		[player,["task_12"],[format ["An armed convoy is going to attack %1. Local population is asking for your help to destroy it before!",_location],("Destroy a convoy attacking " + _location),("Destroy a convoy attacking " + _location)],_destination,true,3,true,"attack",true] call BIS_fnc_taskCreate;
 	};
 	case 13 :
 	{
-		private "_task";
-		_task = player createSimpleTask [("Rescue a pilot near " + (_this select 2))];
-		_task setSimpleTaskDescription [format ["A pilot crashed his helicopter near %1. He is asking for your help to rescue him back to base!",(_this select 2)],("Rescue a pilot near " + (_this select 2)),("Rescue a pilot near " + (_this select 2))];
-		_task setSimpleTaskDestination (_this select 1);
-		_task setSimpleTaskType "navigate";
-		player setVariable ["task_13",_task];
-		["TaskAssigned",["New task assigned!",("Rescue a pilot near " + (_this select 2))]] call bis_fnc_showNotification;
+		[player,["task_13"],[format ["A pilot crashed his helicopter near %1. He is asking for your help to rescue him back to base!",_location],("Rescue a pilot near " + _location),("Rescue a pilot near " + _location)],_destination,true,3,true,"navigate",true] call BIS_fnc_taskCreate;
 	};
 	case 14 :
 	{
-		private "_task";
-		_task = player createSimpleTask [("Capture officer in secret convoy")];
-		_task setSimpleTaskDescription [format ["Capture an officer travelling in a secret convoy and bring him at base. He is terrorising local population!",(_this select 2)],("Capture officer in secret convoy"),("Capture officer in secret convoy")];
-		_task setSimpleTaskDestination (_this select 1);
-		_task setSimpleTaskType "run";
-		player setVariable ["task_14",_task];
-		["TaskAssigned",["New task assigned!",("Capture officer in secret convoy")]] call bis_fnc_showNotification;
+		[player,["task_14"],[format ["Capture an officer travelling in a secret and fast convoy, then bring him at base. He is terrorising local population!",_location],("Capture officer in secret fast convoy"),("Capture officer in secret fast convoy")],_destination,true,3,true,"run",true] call BIS_fnc_taskCreate;
 	};
 	case 15 :
 	{
-		private "_task";
-		_task = player createSimpleTask [("Liberate hostage near " + (_this select 2))];
-		_task setSimpleTaskDescription [format ["Liberate a civilian hostage in %1. Local population is asking for your help!",(_this select 2)],("Liberate hostage near " + (_this select 2)),("Liberate hostage near " + (_this select 2))];
-		_task setSimpleTaskDestination (_this select 1);
-		_task setSimpleTaskType "exit";
-		player setVariable ["task_15",_task];
-		["TaskAssigned",["New task assigned!",("Liberate hostage near " + (_this select 2))]] call bis_fnc_showNotification;
+		[player,["task_15"],[format ["Liberate a civilian hostage in %1. Local population is asking for your help!",_location],("Liberate hostage near " + _location),("Liberate hostage near " + _location)],_destination,true,3,true,"exit",true] call BIS_fnc_taskCreate;
 	};
 };
