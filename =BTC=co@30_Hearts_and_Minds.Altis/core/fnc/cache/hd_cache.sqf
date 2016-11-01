@@ -1,5 +1,5 @@
 
-private ["_cache","_damage","_ammo","_explosive","_cache"];
+private ["_cache","_damage","_ammo","_explosive"];
 
 _cache = _this select 0;
 _damage = _this select 2;
@@ -23,18 +23,18 @@ if (isNil {_cache getVariable "btc_hd_cache"} && {_explosive} && {_damage > 0.6}
 	_marker setMarkerColor "ColorRed";
 	if (btc_debug_log) then	{
 		diag_log format ["CACHE DESTROYED: ID %1 POS %2",btc_cache_n,btc_cache_pos];
-	};	
+	};
 	btc_rep_bonus_cache spawn btc_fnc_rep_change;
-	
+
 	btc_cache_pos = [];
 	btc_cache_n = btc_cache_n + 1;
 	btc_cache_obj = objNull;
 	btc_cache_info = btc_info_cache_def;
 	{deleteMarker _x} foreach btc_cache_markers;
 	btc_cache_markers = [];
-	
+
 	//Notification
 	[[0],"btc_fnc_show_hint"] spawn BIS_fnc_MP;
-	
+
 	[]spawn {[] call btc_fnc_cache_find_pos;};
 } else {0};
