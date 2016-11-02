@@ -1,4 +1,9 @@
-[player,"hello",10,30,45,0,[['\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa',[0.3,0.8,0.5,1], getpos player, 1, 1, 0, "put me here", 1]],1] spawn BIS_fnc_establishingShot;
+[getMarkerPos "btc_base","h",20,30,240,0,[
+['\A3\ui_f\data\igui\cfg\simpleTasks\types\run_ca.paa',[1,0.7,0.5,1], getPos btc_gear_object, 1.0, 1.0, 0, "Arsenal/FOB", 1],
+['\A3\Ui_f\data\Logos\a_64_ca.paa',[1,0.7,0.5,1], [getPos btc_gear_object select 0,getPos btc_gear_object select 1,(getPos btc_gear_object select 2) + 2], 1.0, 1.0, 0, "", 1],
+['\A3\ui_f\data\igui\cfg\simpleTasks\types\repair_ca.paa',[1,0.7,0.5,1], [getPos btc_create_object select 0,getPos btc_create_object select 1,(getPos btc_create_object select 2) + 3], 1.0, 1.0, 0, "", 1],
+['\A3\ui_f\data\igui\cfg\simpleTasks\types\rearm_ca.paa',[1,0.7,0.5,1], getPos btc_create_object, 1.0, 1.0, 0, "Objects/Repair and ammo", 1]
+],0] spawn BIS_fnc_establishingShot;
 
 [] execVM "core\doc.sqf";
 
