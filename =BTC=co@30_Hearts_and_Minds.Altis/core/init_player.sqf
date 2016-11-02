@@ -1,3 +1,5 @@
+[player,"hello",10,30,45,0,[['\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa',[0.3,0.8,0.5,1], getpos player, 1, 1, 0, "put me here", 1]],1] spawn BIS_fnc_establishingShot;
+
 [] execVM "core\doc.sqf";
 
 [] spawn {
