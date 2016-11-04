@@ -1,4 +1,6 @@
 
+btc_gear_object addAction ["<t color='#ff1111'>Arsenal</t>", "['Open',true] spawn BIS_fnc_arsenal;"];
+
 private ["_action"];
 
 //Database

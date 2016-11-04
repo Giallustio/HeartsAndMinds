@@ -1,9 +1,5 @@
-[getMarkerPos "btc_base","h",20,30,240,0,[
-['\A3\ui_f\data\igui\cfg\simpleTasks\types\run_ca.paa',[1,0.7,0.5,1], getPos btc_gear_object, 1.0, 1.0, 0, "Arsenal/FOB", 1],
-['\A3\Ui_f\data\Logos\a_64_ca.paa',[1,0.7,0.5,1], [getPos btc_gear_object select 0,getPos btc_gear_object select 1,(getPos btc_gear_object select 2) + 2], 1.0, 1.0, 0, "", 1],
-['\A3\ui_f\data\igui\cfg\simpleTasks\types\repair_ca.paa',[1,0.7,0.5,1], [getPos btc_create_object select 0,getPos btc_create_object select 1,(getPos btc_create_object select 2) + 3], 1.0, 1.0, 0, "", 1],
-['\A3\ui_f\data\igui\cfg\simpleTasks\types\rearm_ca.paa',[1,0.7,0.5,1], getPos btc_create_object, 1.0, 1.0, 0, "Objects/Repair and ammo", 1]
-],0] spawn BIS_fnc_establishingShot;
+
+call btc_fnc_intro;
 
 [] execVM "core\doc.sqf";
 
@@ -41,7 +37,6 @@
 	if (player getVariable ["interpreter", false]) then {player createDiarySubject ["Diary log","Diary log"];};
 
 	removeAllWeapons player;
-	btc_gear_object addAction ["<t color='#ff1111'>Arsenal</t>", "['Open',true] spawn BIS_fnc_arsenal;"];
 };
 
 if (btc_debug) then {
