@@ -1,9 +1,11 @@
 
-call btc_fnc_intro;
+private ["_introShot"];
+
+_introShot = call btc_fnc_intro;
 
 [] execVM "core\doc.sqf";
 
-[] spawn {
+[_introShot] spawn {
 	waitUntil {!isNull player};
 
 	player addRating 9999;
@@ -32,11 +34,12 @@ call btc_fnc_intro;
 		};
 	};
 
-	{[_x] spawn btc_fnc_task_create} foreach [0,1];
-
 	if (player getVariable ["interpreter", false]) then {player createDiarySubject ["Diary log","Diary log"];};
 
 	removeAllWeapons player;
+
+	waitUntil {scriptDone (_this select 0)};
+	{[_x] spawn btc_fnc_task_create} foreach [0,1];
 };
 
 if (btc_debug) then {
