@@ -23,3 +23,7 @@ if (btc_db_load && {profileNamespace getVariable [format ["btc_hm_%1_db",worldNa
 };
 
 {[_x,30,false] spawn btc_fnc_eh_veh_add_respawn;} forEach btc_helo;
+
+if (false) then {
+	[true] spawn btc_fnc_side_create;
+};
