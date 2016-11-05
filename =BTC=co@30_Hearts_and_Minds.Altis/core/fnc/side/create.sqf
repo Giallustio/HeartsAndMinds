@@ -6,7 +6,7 @@ private ["_side","_cycle"];
 if (_this isEqualTo []) then {
 	_cycle = false;
 } else {
-	_cycle = true;
+	_cycle = _this select 0;
 };
 
 if (count btc_side_list_use == 0) then {btc_side_list_use = + btc_side_list;};
