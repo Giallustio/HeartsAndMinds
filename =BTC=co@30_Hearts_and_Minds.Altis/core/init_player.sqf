@@ -1,7 +1,7 @@
 
 [] execVM "core\doc.sqf";
 
-[_introShot] spawn {
+[] spawn {
 	waitUntil {!isNull player};
 
 	player addRating 9999;
