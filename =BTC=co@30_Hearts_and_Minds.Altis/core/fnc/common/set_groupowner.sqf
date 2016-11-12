@@ -1,14 +1,15 @@
 
-private ["_HC"];
+private ["_HC","_group"];
 
 _HC = owner ((entities "HeadlessClient_F") select 0);
+_group = _this select 0;
 
-(_this select 0) setgroupOwner _HC;
+_group setgroupOwner _HC;
 
-if (side (_this select 0) isEqualTo btc_enemy_side) then {
-	[(_this select 0),{
+if (side _group isEqualTo btc_enemy_side) then {
+	[_group,{
 		{
-			_x addEventHandler ["Killed",{_this call btc_fnc_mil_unit_killed}];
+			_x call btc_fnc_mil_add_eh;
 		} foreach units _this;
 	}] remoteExec ["call", _HC];
 };

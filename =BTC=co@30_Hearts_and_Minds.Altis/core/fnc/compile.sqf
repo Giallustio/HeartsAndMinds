@@ -130,6 +130,7 @@ if (isServer) then {
 if (isServer OR (!isDedicated && !hasInterface)) then {
 	//MIL
 	btc_fnc_mil_unit_killed = compile preprocessFile "core\fnc\mil\unit_killed.sqf";
+	btc_fnc_mil_add_eh = compile preprocessFile "core\fnc\mil\add_eh.sqf";
 };
 
 /////////////////////CLIENT AND SERVER\\\\\\\\\\\\\\\\\\\\\
