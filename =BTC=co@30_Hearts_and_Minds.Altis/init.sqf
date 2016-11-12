@@ -1,6 +1,9 @@
 enableSaving [false,false];
 //Server
 call compile preprocessFile "core\fnc\compile.sqf";
+
+if (!isDedicated) then {btc_intro_done = call btc_fnc_intro;};
+
 call compile preprocessFile "core\def\mission.sqf";
 call compile preprocessFile "define_mod.sqf";
 

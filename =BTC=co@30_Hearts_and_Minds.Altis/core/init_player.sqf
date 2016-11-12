@@ -1,8 +1,4 @@
 
-private ["_introShot"];
-
-_introShot = call btc_fnc_intro;
-
 [] execVM "core\doc.sqf";
 
 [_introShot] spawn {
@@ -38,7 +34,7 @@ _introShot = call btc_fnc_intro;
 
 	removeAllWeapons player;
 
-	waitUntil {scriptDone (_this select 0)};
+	waitUntil {scriptDone btc_intro_done};
 	{[_x] spawn btc_fnc_task_create} foreach [0,1];
 };
 
