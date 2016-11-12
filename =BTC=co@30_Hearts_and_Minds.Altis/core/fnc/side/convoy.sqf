@@ -88,6 +88,8 @@ _wp setWaypointSpeed "LIMITED";
 _wp setWaypointFormation "COLUMN";
 _wp setWaypointStatements ["true", "btc_side_failed = true"];
 
+{player commandChat "Convoy has left the starting point!"} remoteExec ["call", -2];
+
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({ canMove _x } count _vehs == 0) || (_group isEqualTo grpNull))};
 
 {deletemarker _x} foreach _markers;
