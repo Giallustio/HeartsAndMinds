@@ -10,7 +10,7 @@ _cap_to = btc_hideouts select {(time - (_x getVariable ["cap_time",time]) > btc_
 if (_cap_to isEqualTo []) exitWith {if (btc_debug_log) then {diag_log "btc_fnc_mil_check_cap: exit cap time";};};
 
 {
-	private ["_hd","_in_range"];
+	private ["_hd","_in_range","_closest"];
 	_hd = _x;
 	_in_range = btc_city_all select {(_hd distance _x < btc_hideout_range)};
 

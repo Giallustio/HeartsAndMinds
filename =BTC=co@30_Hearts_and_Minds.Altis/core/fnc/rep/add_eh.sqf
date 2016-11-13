@@ -1,6 +1,6 @@
 if (!isNil {_this getVariable "btc_rep_eh_added"}) exitWith {true};
 
-private ["_id_h","_id_d","_id_k"];
+private ["_id_d","_id_k"];
 
 _id_d = _this addEventHandler ["HandleDamage", btc_fnc_rep_hd];
 _id_k = _this addEventHandler ["Killed", btc_fnc_rep_killed];

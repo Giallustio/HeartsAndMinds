@@ -45,7 +45,7 @@ _group setVariable ["city",_city];
 
 btc_civ_veh_active pushBack _group;
 
-_veh setVariable ["driver", leader _group];
+_veh setVariable ["driver", _group];
 
 {_x call btc_fnc_civ_unit_create;_x setVariable ["traffic",_veh];} foreach units _group;
 

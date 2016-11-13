@@ -40,7 +40,7 @@ player createDiaryRecord ["Documentation", ["FOB", "
 - <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/>  <marker name='blufor_base'>Deploy:</marker> <br/>
 Move it where you want to deploy a new FOB and interact with it to set it up. Keep in mind that you can not deploy a FOB close to the main base (2.500m) and the terrain needs to be flat.<br/><br/>
 - <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/> <marker name='blufor_base'>Dismantle:</marker> <br/>
-You can dismantle a FOB by interacting with the flag on the HQ first floor.
+You can dismantle a FOB by interacting with the flag on the HQ roof.
 	"]
 ];
 
@@ -147,6 +147,6 @@ player createDiaryRecord ["Documentation", ["Interaction", "
 
 player createDiaryRecord ["Documentation", [
 	"Version",
-	format ["<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/> Version %1 <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/>",(str(btc_version) + ".1")]
+	format ["<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/> Version %1 <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/>",(str(btc_version) + ".2")]
 	]
 ];
