@@ -16,7 +16,7 @@ if (_has_headless) then {
 	if (leader group _x isEqualTo _x) then {
 		_text = format ["%1 (%2)", _typeof,group _x getVariable ["btc_patrol_id",group _x getVariable ["btc_traffic_id",""]]];
 	} else {
-		if (group _x isEqualTo grpNull) then {
+		if (_x isKindOf "car") then {
 			_text = "";
 		} else {
 			_text = format ["%1", _typeof];

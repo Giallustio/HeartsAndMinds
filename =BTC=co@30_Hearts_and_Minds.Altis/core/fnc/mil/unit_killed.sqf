@@ -18,5 +18,6 @@ if (!isDedicated && !hasInterface) then {
 		};
 	};
 };
-
+//{count units _x == 0} count allGroups;
+//(allGroups select {count units _x == 0}) apply {deleteGroup _x}
 //(_this select 0) spawn {sleep 0.5;{deleteVehicle _x} foreach (nearestObjects [_this, ["WeaponHolderSimulated"], 5]);};
