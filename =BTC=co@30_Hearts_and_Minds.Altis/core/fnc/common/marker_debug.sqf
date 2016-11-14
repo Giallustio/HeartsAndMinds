@@ -8,15 +8,19 @@ if (_has_headless) then {
 	_owners = btc_units_owners select 1;
 } else {
 	_units = allunits select {Alive _x};
+	_units append entities "Car";
 };
-// allMissionObjects "car"
 
 {
 	_typeof = typeOf _x;
-	if (leader group _x == _x) then {
+	if (leader group _x isEqualTo _x) then {
 		_text = format ["%1 (%2)", _typeof,group _x getVariable ["btc_patrol_id",group _x getVariable ["btc_traffic_id",""]]];
 	} else {
-		_text = format ["%1", _typeof];
+		if (group _x isEqualTo grpNull) then {
+			_text = "";
+		} else {
+			_text = format ["%1", _typeof];
+		};
 	};
 
 	_alpha = 1;
