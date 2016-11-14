@@ -4,7 +4,7 @@ private ["_HC","_group"];
 _HC = owner ((entities "HeadlessClient_F") select 0);
 _group = _this select 0;
 
-_group setgroupOwner _HC;
+if !(_group setgroupOwner _HC) exitWith {};
 
 if (side _group isEqualTo btc_enemy_side) then {
 	[_group,{
