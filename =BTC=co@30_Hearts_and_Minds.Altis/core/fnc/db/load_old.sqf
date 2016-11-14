@@ -140,7 +140,7 @@ btc_cache_pos = _array_cache select 0;
 btc_cache_n = _array_cache select 1;
 btc_cache_info = _array_cache select 2;
 
-btc_cache_obj = btc_cache_type createVehicle btc_cache_pos;
+btc_cache_obj = selectRandom btc_cache_type createVehicle btc_cache_pos;
 btc_cache_obj setPosATL (_array_cache select 0);
 clearWeaponCargoGlobal btc_cache_obj;clearItemCargoGlobal btc_cache_obj;clearMagazineCargoGlobal btc_cache_obj;
 btc_cache_obj addEventHandler ["HandleDamage", btc_fnc_cache_hd_cache];
