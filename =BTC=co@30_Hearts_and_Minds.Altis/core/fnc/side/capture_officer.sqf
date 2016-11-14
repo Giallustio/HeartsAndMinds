@@ -36,12 +36,12 @@ btc_side_jip_data = [14,getPos _city1,_city1 getVariable "name"];
 //// Create markers \\\\
 _marker1 = createmarker [format ["sm_2_%1",getPos _city1],getPos _city1];
 _marker1 setmarkertype "hd_flag";
-_marker1 setmarkertext "Start";
+_marker1 setmarkertext "Convoy Start";
 _marker1 setMarkerSize [0.6, 0.6];
 
 _marker2 = createmarker [format ["sm_2_%1",_pos2],_pos2];
 _marker2 setmarkertype "hd_flag";
-_marker2 setmarkertext "End";
+_marker2 setmarkertext "Convoy End";
 _marker2 setMarkerSize [0.6, 0.6];
 
 _area = createmarker [format ["sm_%1",_pos2],_pos2];
@@ -103,6 +103,8 @@ _trigger setTriggerArea[15,15,0,false];
 _trigger setTriggerActivation[str(btc_player_side),"PRESENT",true];
 _trigger setTriggerStatements["this", "_captive = thisTrigger getVariable 'captive'; doStop _captive; [_captive,true] call ace_captives_fnc_setSurrendered;", ""];
 _trigger attachTo [_captive,[0,0,0]];
+
+{player commandChat "Convoy has left the starting point!"} remoteExec ["call", -2];
 
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !(Alive _captive) || (_captive distance getpos btc_create_object_point < 100))};
 
