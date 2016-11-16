@@ -13,8 +13,8 @@ _array_hud = [_radar,_obj_img,_obj_pic,_arrow,_obj_name];
 {_x ctrlShow true;} foreach _array_hud;_obj_img ctrlShow false;
 _can_lift = false;
 
-_arrow_up   = "core\img\rsc\lift\arrow_up_ca.paa";
-_arrow_down = "core\img\rsc\lift\arrow_down_ca.paa";
+_arrow_up   = "\A3\ui_f\data\igui\cfg\actions\arrow_up_gs.paa";
+_arrow_down = "\A3\ui_f\data\igui\cfg\actions\arrow_down_gs.paa";
 _complete   = "core\img\rsc\lift\objective_complete_ca.paa";
 _incomplete = "core\img\rsc\lift\objective_incomplete_ca.paa";
 
