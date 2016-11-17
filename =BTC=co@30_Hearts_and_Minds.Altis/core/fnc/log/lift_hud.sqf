@@ -15,8 +15,8 @@ _can_lift = false;
 
 _arrow_up   = "\A3\ui_f\data\igui\cfg\actions\arrow_up_gs.paa";
 _arrow_down = "\A3\ui_f\data\igui\cfg\actions\arrow_down_gs.paa";
-_complete   = "core\img\rsc\lift\objective_complete_ca.paa";
-_incomplete = "core\img\rsc\lift\objective_incomplete_ca.paa";
+_complete   = "\A3\ui_f\data\map\markers\nato\b_unknown.paa";
+_incomplete = "\A3\ui_f\data\map\markers\nato\b_unknown.paa";
 
 while {(Alive player && vehicle player != player) && btc_log_hud} do {
 	private ["_cargo","_chopper"];
@@ -50,11 +50,40 @@ while {(Alive player && vehicle player != player) && btc_log_hud} do {
 		_name_cargo = getText (configFile >> "cfgVehicles" >> typeof _cargo >> "displayName");
 		_obj_pic ctrlSetText _pic_cargo;
 		if (btc_lifted) then {_obj_name ctrlSetText (format ["[%1 m] ",(round((getpos _cargo select 2) * 10))/10] + _name_cargo);} else {_obj_name ctrlSetText _name_cargo;};
-		if ((abs _cargo_z) > btc_lift_max_h) then {_arrow ctrlSetText _arrow_down;};
-		if ((abs _cargo_z) < btc_lift_min_h) then {_arrow ctrlSetText _arrow_up;};
-		if ((abs _cargo_z) > btc_lift_min_h && (abs _cargo_z) < btc_lift_max_h) then {_arrow ctrlSetText _complete;};
-		if !(_can_lift) then {_arrow ctrlSetText _incomplete;};
-	} else {_obj_img ctrlShow false;_obj_pic ctrlSetText "";_obj_name ctrlSetText "";_arrow ctrlSetText "";};
+
+		if ((abs _cargo_z) > (btc_lift_max_h + 3)) then {
+			_arrow ctrlSetText _arrow_down;
+			_arrow ctrlSetTextColor [1, 0, 0, 1];
+		} else {
+			if ((abs _cargo_z) > btc_lift_max_h) then {
+				_arrow ctrlSetText _arrow_down;
+				_arrow ctrlSetTextColor [1, 1, 0, 1];
+			};
+		};
+		if ((abs _cargo_z) < (btc_lift_min_h - 3)) then {
+			_arrow ctrlSetText _arrow_up;
+			_arrow ctrlSetTextColor [1, 0, 0, 1];
+		} else {
+			if ((abs _cargo_z) < btc_lift_min_h) then {
+				_arrow ctrlSetText _arrow_up;
+				_arrow ctrlSetTextColor [1, 1, 0, 1];
+			};
+		};
+		if ((abs _cargo_z) > btc_lift_min_h && (abs _cargo_z) < btc_lift_max_h) then {
+			_arrow ctrlSetText _complete;
+			_arrow ctrlSetTextColor [0, 1, 0, 1];
+		};
+		if !(_can_lift) then {
+			_arrow ctrlSetText _incomplete;
+			_arrow ctrlSetTextColor [1, 0, 0, 1];
+		};
+
+	} else {
+		_obj_img ctrlShow false;
+		_obj_pic ctrlSetText "";
+		_obj_name ctrlSetText "";
+		_arrow ctrlSetText "";
+	};
 	sleep 0.1;
 };
 
