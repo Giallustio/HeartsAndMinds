@@ -27,7 +27,9 @@ while {(Alive player && vehicle player != player) && btc_log_hud} do {
 	_cargo_array = _cargo_array - [_chopper];
 	if (count _cargo_array > 0 && (typeOf (_cargo_array select 0)) isEqualTo "ACE_friesAnchorBar") then {_cargo_array deleteAt 0;};
 	if (count _cargo_array > 0) then {_cargo = _cargo_array select 0;} else {_cargo = objNull;};
+
 	if (({_cargo isKindOf _x} count _array) > 0) then {_can_lift = true;} else {_can_lift = false;};
+
 	if (!isNull _cargo) then {
 		_cargo_pos = getPosATL _cargo;
 		_rel_pos   = (_chopper) worldToModel _cargo_pos;
@@ -36,13 +38,12 @@ while {(Alive player && vehicle player != player) && btc_log_hud} do {
 		_cargo_z   = _rel_pos select 2;
 		_obj_img ctrlShow true;
 		_hud_x   = _cargo_x / 100;
-		_hud_y   = 0;
 		switch (true) do {
 			case (_cargo_y < 0): {_hud_y = (abs _cargo_y) / 100};
 			case (_cargo_y > 0): {_hud_y = (0 - _cargo_y) / 100};
 		};
-		_hud_x_1 = (btc_lift_HUD_x + _hud_x) * safezoneW + safezoneX;;
-		_hud_y_1 = (btc_lift_HUD_y + _hud_y) * safezoneH + safezoneY;
+		_hud_x_1 = (btc_lift_HUD_x + _hud_x) * safezoneW + safezoneX;
+		_hud_y_1 = ((btc_lift_HUD_y + _hud_y) * safezoneH + safezoneY);
 		_obj_img ctrlsetposition [_hud_x_1, _hud_y_1];
 		_obj_img ctrlCommit 0;
 		_pic_cargo = "";

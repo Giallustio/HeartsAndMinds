@@ -18,8 +18,8 @@
 
 				x = 0.75 * safezoneW + safezoneX;
 				y = 0.75 * safezoneH + safezoneY;
-				w = 0.2 * safezoneW;
-				h = 0.2 * safezoneH;
+				w = 0.14 * safezoneW;
+				h = 0.14 * safezoneH * 16/9;
 
 				font = "PuristaMedium";
 				sizeEx = 0.03;
