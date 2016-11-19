@@ -36,7 +36,7 @@
 				x = 0.85 * safezoneW + safezoneX;
 				y = 0.85 * safezoneH + safezoneY;
 				w = 0.03 * safezoneW;
-				h = 0.03 * safezoneH;
+				h = 0.03 * safezoneH * (getresolution select 4);
 
 				font = "PuristaMedium";
 				sizeEx = 1;
@@ -50,7 +50,7 @@
 				idc = 1003;
 				style = 48;
 
-				x = 0.75 * safezoneW + safezoneX;
+				x = 0.82 * safezoneW + safezoneX;
 				y = 0.7 * safezoneH + safezoneY;
 				w = 0.05 * safezoneW;
 				h = 0.05 * safezoneH;
@@ -70,7 +70,7 @@
 				x = 0.95 * safezoneW + safezoneX;
 				y = 0.75 * safezoneH + safezoneY;
 				w = 0.05 * safezoneW;
-				h = 0.05 * safezoneH;
+				h = 0.05 * safezoneH * (getresolution select 4);
 
 				font = "PuristaMedium";
 				sizeEx = 0.03;
