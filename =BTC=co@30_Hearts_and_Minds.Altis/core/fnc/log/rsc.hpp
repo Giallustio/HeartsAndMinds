@@ -69,8 +69,8 @@
 
 				x = 0.95 * safezoneW + safezoneX;
 				y = 0.75 * safezoneH + safezoneY;
-				w = 0.05 * safezoneW;
-				h = 0.05 * safezoneH * (getresolution select 4);
+				w = 0.03 * safezoneW;
+				h = 0.03 * safezoneH * (getresolution select 4);
 
 				font = "PuristaMedium";
 				sizeEx = 0.03;
