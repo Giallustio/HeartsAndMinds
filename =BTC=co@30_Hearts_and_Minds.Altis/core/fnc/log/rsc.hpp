@@ -8,19 +8,19 @@
 		onLoad = "uiNamespace setVariable [""btc_log_hud"", _this select 0];";
 		controlsBackground[] = {};
 		objects[] = {};
-		class controls 
+		class controls
 		{
 			class Radar
 			{
 				type = 0;
 				idc = 1001;
 				style = 48;
-				
-				x = 0.75 * safezoneW + safezoneX;
+
+				x = 0.82 * safezoneW + safezoneX;
 				y = 0.75 * safezoneH + safezoneY;
-				w = 0.2 * safezoneW;
-				h = 0.2 * safezoneH;
-				
+				w = 0.14 * safezoneW;
+				h = 0.14 * safezoneH * (getresolution select 4);
+
 				font = "PuristaMedium";
 				sizeEx = 0.03;
 				colorBackground[] = {0, 0, 0, 0};
@@ -32,12 +32,12 @@
 				type = 0;
 				idc = 1002;
 				style = 48;
-				
+
 				x = 0.85 * safezoneW + safezoneX;
 				y = 0.85 * safezoneH + safezoneY;
 				w = 0.01 * safezoneW;
 				h = 0.01 * safezoneH;
-				
+
 				font = "PuristaMedium";
 				sizeEx = 0.04;
 				colorBackground[] = {0, 0, 0, 0};
@@ -49,8 +49,8 @@
 				type = 0;
 				idc = 1003;
 				style = 48;
-				
-				x = 0.75 * safezoneW + safezoneX;
+
+				x = 0.82 * safezoneW + safezoneX;
 				y = 0.7 * safezoneH + safezoneY;
 				w = 0.05 * safezoneW;
 				h = 0.05 * safezoneH;
@@ -66,12 +66,12 @@
 				type = 0;
 				idc = 1004;
 				style = 48;
-				
+
 				x = 0.95 * safezoneW + safezoneX;
 				y = 0.75 * safezoneH + safezoneY;
 				w = 0.05 * safezoneW;
 				h = 0.05 * safezoneH;
-				
+
 				font = "PuristaMedium";
 				sizeEx = 0.03;
 				colorBackground[] = {0, 0, 0, 0};
@@ -83,7 +83,7 @@
 				type = 0;
 				idc = 1005;
 				style = 0x00;
-				
+
 				x = 0.8 * safezoneW + safezoneX;
 				y = 0.65 * safezoneH + safezoneY;
 				w = 0.3 * safezoneW;
@@ -95,5 +95,5 @@
 				colorText[] = {1, 1, 1, 1};
 				text = "";
 			};
-		};   
+		};
 	};

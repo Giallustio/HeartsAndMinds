@@ -472,8 +472,8 @@ btc_ropes_deployed = false;
 btc_lift_min_h  = 7;
 btc_lift_max_h  = 12;
 btc_lift_radius = 3;
-btc_lift_HUD_x  = 0.825;// * safezoneW + safezoneX;
-btc_lift_HUD_y  = 0.825;// * safezoneH + safezoneY;
+btc_lift_HUD_x  = 0.89;// * safezoneW + safezoneX;
+btc_lift_HUD_y  = 0.87;// * safezoneH + safezoneY;
 
 //Mil
 btc_player_side           = west;
