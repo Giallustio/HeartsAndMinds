@@ -156,7 +156,7 @@ if (isServer) then {
 	btc_type_mines = ["APERSMine","APERSBoundingMine","APERSTripMine"];
 
 	//Vehs
-	btc_vehicles = [btc_veh_1,btc_veh_2,btc_veh_3,btc_veh_4,btc_veh_5,btc_veh_6,btc_veh_7,btc_veh_8,btc_veh_9,btc_veh_10,btc_veh_11,btc_veh_12,btc_veh_13,btc_veh_14];
+	btc_vehicles = [btc_veh_1,btc_veh_2,btc_veh_3,btc_veh_4,btc_veh_5,btc_veh_6,btc_veh_7,btc_veh_8,btc_veh_9,btc_veh_10,btc_veh_11,btc_veh_12,btc_veh_13,btc_veh_14,btc_veh_15];
 	btc_helo = [btc_helo_1];
 };
 
@@ -367,13 +367,14 @@ btc_log_obj_created = [];
 
 btc_log_main_cc =
 [
-	"Motorcycle",1,
-	"Car",3,
-	"Truck",10,
-	"Wheeled_APC",5,
-	"Tank",5,
+	"Helicopter",6,
 	"Ship",3,
-	"Helicopter",6
+	"Tank",5,
+	"Wheeled_APC",5,
+	"Truck",10,
+	"Truck_F",10,
+	"Motorcycle",1,
+	"Car",3
 ];
 btc_log_main_rc =
 [
@@ -387,12 +388,13 @@ btc_log_main_rc =
 	"Land_BagFence_Long_F",3,
 	"Wall_F",5,
 	"BagBunker_base_F",5,
-	"Car",35,
-	"Truck",50,
 	"Wheeled_APC",50,
 	"Tank",75,
+	"Truck",50,
+	"Truck_F",50,
 	"Ship",50,
-	"Helicopter",9999
+	"Helicopter",9999,
+	"Car",35
 ];
 btc_log_def_cc =
 [
@@ -425,12 +427,12 @@ btc_log_def_rc =
 
 btc_fnc_log_get_towable = {
 	_tower = _this select 0;
-	_array   = [];
 	switch (true) do {
+		case (_tower isKindOf "Wheeled_APC") : {_array = ["Car","Truck","Truck_F","Wheeled_APC"];};
+		case (_tower isKindOf "Truck") : {_array = ["Car","Truck","Truck_F","Wheeled_APC"];};
+		case (_tower isKindOf "Truck_F") : {_array = ["Car","Truck","Truck_F","Wheeled_APC"];};
 		case (_tower isKindOf "Car") : {_array = ["Car"];};
-		case (_tower isKindOf "Truck") : {_array = ["Car","Truck"];};
-		case (_tower isKindOf "Truck") : {_array = ["Car","Truck","Wheeled_APC"];};
-		case (_tower isKindOf "Wheeled_APC") : {_array = ["Car","Truck","Wheeled_APC"];};
+		default {_array   = [];};
 	};
 	_array
 };
@@ -461,9 +463,9 @@ btc_fnc_log_get_liftable = {
 			_MaxCargoMass = getNumber (configFile >> "CfgVehicles" >> typeOf _chopper >> "slingLoadMaxCargoMass");
 			switch (true) do {
 				case (_MaxCargoMass  <= 500) : {_array = ["Motorcycle","ReammoBox","ReammoBox_F","Quadbike_01_base_F","Strategic"];};
-				case (_MaxCargoMass  <= 4100) : {_array = (["Motorcycle","ReammoBox","ReammoBox_F","StaticWeapon","Car","Truck","Wheeled_APC","Air","Ship"]) + ((btc_construction_array select 1) select 3) + ((btc_construction_array select 1) select 4) + ((btc_construction_array select 1) select 5);};
-				case (_MaxCargoMass  <= 14000) : {_array = (["Motorcycle","ReammoBox","ReammoBox_F","StaticWeapon","Car","Truck","Wheeled_APC","Tracked_APC","APC_Tracked_01_base_F","APC_Tracked_02_base_F","Air","Ship"]) + ((btc_construction_array select 1) select 3) + ((btc_construction_array select 1) select 4) + ((btc_construction_array select 1) select 5);};
-				default {_array = (["Motorcycle","ReammoBox","ReammoBox_F","StaticWeapon","Car","Truck","Wheeled_APC","Tracked_APC","APC_Tracked_01_base_F","APC_Tracked_02_base_F","Air","Ship"]) + ((btc_construction_array select 1) select 3) + ((btc_construction_array select 1) select 4) + ((btc_construction_array select 1) select 5);};
+				case (_MaxCargoMass  <= 4100) : {_array = (["Motorcycle","ReammoBox","ReammoBox_F","StaticWeapon","Car","Truck_F","Truck","Wheeled_APC","Air","Ship"]) + ((btc_construction_array select 1) select 3) + ((btc_construction_array select 1) select 4) + ((btc_construction_array select 1) select 5);};
+				case (_MaxCargoMass  <= 14000) : {_array = (["Motorcycle","ReammoBox","ReammoBox_F","StaticWeapon","Car","Truck_F","Truck","Wheeled_APC","Tracked_APC","APC_Tracked_01_base_F","APC_Tracked_02_base_F","Air","Ship"]) + ((btc_construction_array select 1) select 3) + ((btc_construction_array select 1) select 4) + ((btc_construction_array select 1) select 5);};
+				default {_array = (["Motorcycle","ReammoBox","ReammoBox_F","StaticWeapon","Car","Truck","Truck_F","Wheeled_APC","Tracked_APC","APC_Tracked_01_base_F","APC_Tracked_02_base_F","Air","Ship"]) + ((btc_construction_array select 1) select 3) + ((btc_construction_array select 1) select 4) + ((btc_construction_array select 1) select 5);};
 			};
 		};
 	};
