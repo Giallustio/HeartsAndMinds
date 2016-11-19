@@ -16,15 +16,6 @@ if (_has_headless) then {
 
 {
 	_typeof = typeOf _x;
-	if (leader group _x isEqualTo _x) then {
-		_text = format ["%1 (%2)", _typeof,group _x getVariable ["btc_patrol_id",group _x getVariable ["btc_traffic_id",""]]];
-	} else {
-		if ((_x isKindOf "car") OR (_x isKindOf "tank") OR (_x isKindOf "ship")  OR (_x isKindOf "air")) then {
-			_text = "";
-		} else {
-			_text = format ["%1", _typeof];
-		};
-	};
 
 	_alpha = 1;
 	if (_has_headless) then {
@@ -38,6 +29,17 @@ if (_has_headless) then {
 		case (east) : {_color = [1,0,0,_alpha]};
 		case (independent) : {_color = [0,1,0,_alpha]};
 		default {_color = [1,1,1,_alpha]};
+	};
+
+	if (leader group _x isEqualTo _x) then {
+		_text = format ["%1 (%2)", _typeof,group _x getVariable ["btc_patrol_id",group _x getVariable ["btc_traffic_id",""]]];
+	} else {
+		if ((_x isKindOf "car") OR (_x isKindOf "tank") OR (_x isKindOf "ship")  OR (_x isKindOf "air")) then {
+			_text = "";
+			_color = [0.8,0.8,0.8,_alpha];
+		} else {
+			_text = format ["%1", _typeof];
+		};
 	};
 
 	(_this select 0) drawIcon [

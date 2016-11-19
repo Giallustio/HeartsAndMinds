@@ -1,7 +1,7 @@
 player createDiarySubject ["Documentation","Documentation"];
 
 player createDiaryRecord ["Documentation", ["Headless", "
-This mission support one Headless client.
+<img image='\a3\ui_f\data\map\vehicleicons\iconvirtual_ca.paa' width='20' height='20'/> This mission support one Headless client.
 	"]
 ];
 
