@@ -1,7 +1,7 @@
 
 private ["_p_civ_veh","_p_db","_p_en","_hideout_n","_cache_info_def","_cache_info_ratio","_info_chance","_p_rep","_p_skill","_c_array","_tower","_array","_chopper","_p_civ","_btc_rearming_vehicles","_vehicles","_magazines","_p_city_radius","_magazines_static","_static","_btc_rearming_static","_weapons_usefull"];
 
-btc_version = 1.15; diag_log format ["=BTC= HEARTS AND MINDS VERSION %1",(str(btc_version) + ".1")];
+btc_version = 1.15; diag_log format ["=BTC= HEARTS AND MINDS VERSION %1",(str(btc_version) + ".2")];
 
 //Param
 
@@ -474,8 +474,8 @@ btc_ropes_deployed = false;
 btc_lift_min_h  = 7;
 btc_lift_max_h  = 12;
 btc_lift_radius = 3;
-btc_lift_HUD_x  = 0.825;// * safezoneW + safezoneX;
-btc_lift_HUD_y  = 0.825;// * safezoneH + safezoneY;
+btc_lift_HUD_x  = 0.89;// * safezoneW + safezoneX;
+btc_lift_HUD_y  = 0.87;// * safezoneH + safezoneY;
 
 //Mil
 btc_player_side           = west;

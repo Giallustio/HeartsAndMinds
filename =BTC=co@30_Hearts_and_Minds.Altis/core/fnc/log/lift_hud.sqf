@@ -43,7 +43,7 @@ while {(Alive player && vehicle player != player) && btc_log_hud} do {
 			case (_cargo_y > 0): {_hud_y = (0 - _cargo_y) / 100};
 		};
 		_hud_x_1 = (btc_lift_HUD_x + _hud_x) * safezoneW + safezoneX;
-		_hud_y_1 = ((btc_lift_HUD_y + _hud_y) * safezoneH + safezoneY);
+		_hud_y_1 = (btc_lift_HUD_y + _hud_y) * safezoneH + safezoneY;
 		_obj_img ctrlsetposition [_hud_x_1, _hud_y_1];
 		_obj_img ctrlCommit 0;
 		_pic_cargo = "";

@@ -16,10 +16,10 @@
 				idc = 1001;
 				style = 48;
 
-				x = 0.75 * safezoneW + safezoneX;
+				x = 0.82 * safezoneW + safezoneX;
 				y = 0.75 * safezoneH + safezoneY;
 				w = 0.14 * safezoneW;
-				h = 0.14 * safezoneH * 16/9;
+				h = 0.14 * safezoneH * (getresolution select 4);
 
 				font = "PuristaMedium";
 				sizeEx = 0.03;
