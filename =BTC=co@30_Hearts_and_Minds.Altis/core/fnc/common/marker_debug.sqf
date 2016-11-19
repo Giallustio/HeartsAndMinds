@@ -9,6 +9,9 @@ if (_has_headless) then {
 } else {
 	_units = allunits select {Alive _x};
 	_units append entities "Car";
+	_units append entities "Tank";
+	_units append entities "Ship";
+	_units append entities "Air";
 };
 
 {
@@ -16,7 +19,7 @@ if (_has_headless) then {
 	if (leader group _x isEqualTo _x) then {
 		_text = format ["%1 (%2)", _typeof,group _x getVariable ["btc_patrol_id",group _x getVariable ["btc_traffic_id",""]]];
 	} else {
-		if (_x isKindOf "car") then {
+		if ((_x isKindOf "car") OR (_x isKindOf "tank") OR (_x isKindOf "ship")  OR (_x isKindOf "air")) then {
 			_text = "";
 		} else {
 			_text = format ["%1", _typeof];
