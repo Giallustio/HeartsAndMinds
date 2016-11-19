@@ -164,7 +164,7 @@ _fobs_loaded = [[],[]];
 	_pos = (_x select 1);
 	createmarker [(_x select 0), _pos];
 	(_x select 0) setMarkerSize [1,1];
-	(_x select 0) setMarkerType "hd_flag";
+	(_x select 0) setMarkerType "b_hq";
 	(_x select 0) setMarkerText (_x select 0);
 	(_x select 0) setMarkerColor "ColorBlue";
 	(_x select 0) setMarkerShape "ICON";
