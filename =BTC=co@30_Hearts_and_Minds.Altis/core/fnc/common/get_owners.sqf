@@ -6,6 +6,6 @@ _units append entities "Car";
 _units append entities "Tank";
 _units append entities "Ship";
 _units append entities "Air";
-_owners = _units apply {owner _x};
+_owners = _units apply {[_x,owner _x]};
 
-[[_units,_owners], {btc_units_owners = _this}] remoteExec ["call", (_this select 0), false];
+[_owners, {btc_units_owners = _this}] remoteExec ["call", (_this select 0), false];

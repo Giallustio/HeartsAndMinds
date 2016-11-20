@@ -49,6 +49,7 @@ _wp setWaypointStatements ["true", format ["_spawn = [group this,%1,%2] spawn bt
 if (btc_debug) then {
 	if (!isNil {_group getVariable "btc_traffic_id"}) then {
 		private "_marker";
+		deleteMarker format ["btc_traffic_%1", _group getVariable "btc_traffic_id"];
 		_marker = createmarker [format ["btc_traffic_%1", _group getVariable "btc_traffic_id"] , [(_pos select 0) + random 30,(_pos select 1) + random 30,0]];
 		format ["btc_traffic_%1", _group getVariable "btc_traffic_id"] setmarkertype "mil_dot";
 		format ["btc_traffic_%1", _group getVariable "btc_traffic_id"]  setMarkerText format ["P %1", _group getVariable "btc_traffic_id"];

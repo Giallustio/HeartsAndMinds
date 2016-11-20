@@ -4,8 +4,8 @@ private ["_units","_color","_text","_typeof","_has_headless","_owners","_alpha"]
 _has_headless = !((entities "HeadlessClient_F") isEqualTo []);
 
 if (_has_headless) then {
-	_units = btc_units_owners select 0;
-	_owners = btc_units_owners select 1;
+	_units = btc_units_owners apply {_x select 0};
+	_owners = btc_units_owners apply {_x select 1};
 } else {
 	_units = allunits select {Alive _x};
 	_units append entities "Car";
@@ -36,7 +36,7 @@ if (_has_headless) then {
 	} else {
 		if ((_x isKindOf "car") OR (_x isKindOf "tank") OR (_x isKindOf "ship")  OR (_x isKindOf "air")) then {
 			_text = "";
-			_color = [0.8,0.8,0.8,_alpha];
+			_color = [1,0,0.5,_alpha];
 		} else {
 			_text = format ["%1", _typeof];
 		};

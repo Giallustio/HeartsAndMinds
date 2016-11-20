@@ -59,6 +59,7 @@ if !((vehicle leader _group) isKindOf "Air") then {
 if (btc_debug) then {
 	if (!isNil {_group getVariable "btc_patrol_id"}) then {
 		private ["_marker"];
+		deleteMarker format ["Patrol_fant_%1", _group getVariable "btc_patrol_id"];
 		_marker = createmarker [format ["Patrol_fant_%1", _group getVariable "btc_patrol_id"] , [(_pos select 0) + random 30,(_pos select 1) + random 30,0]];
 		format ["Patrol_fant_%1", _group getVariable "btc_patrol_id"] setmarkertype "mil_dot";
 		format ["Patrol_fant_%1", _group getVariable "btc_patrol_id"]  setMarkerText format ["P %1", _group getVariable "btc_patrol_id"];
