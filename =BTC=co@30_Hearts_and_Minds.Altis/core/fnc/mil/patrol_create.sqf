@@ -93,7 +93,7 @@ switch (true) do {
 
 		_1 = _veh addEventHandler ["Fuel", {_this call btc_fnc_mil_patrol_eh}];
 		_veh setVariable ["eh", [_1/*,_2,_3,4,5*/]];
-		_veh setVariable ["crews", units _group];
+		_veh setVariable ["crews", _group];
 
 		_spawn = [_group,_area,_pos_iswater] spawn btc_fnc_mil_patrol_addWP;
 	};
