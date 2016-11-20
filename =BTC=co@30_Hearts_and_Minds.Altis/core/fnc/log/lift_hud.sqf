@@ -25,7 +25,7 @@ while {(Alive player && vehicle player != player) && btc_log_hud} do {
 	_cargo_array = nearestObjects [_chopper, _array, 30];
 	if (count _array == 0) then {_cargo_array = [];};
 	_cargo_array = _cargo_array - [_chopper];
-	if (count _cargo_array > 0 && (typeOf (_cargo_array select 0)) isEqualTo "ACE_friesAnchorBar") then {_cargo_array deleteAt 0;};
+	if (count _cargo_array > 0 && ((_cargo_array select 0) isKindOf "ACE_friesGantry") OR (typeof (_cargo_array select 0) isEqualTo "ACE_friesAnchorBar")) then {_cargo_array deleteAt 0;};
 	if (count _cargo_array > 0) then {_cargo = _cargo_array select 0;} else {_cargo = objNull;};
 	if (({_cargo isKindOf _x} count _array) > 0) then {_can_lift = true;} else {_can_lift = false;};
 	if (!isNull _cargo) then {
