@@ -13,7 +13,8 @@ if ({_x distance _city < (_area/2) || _x distance leader _group < (_area/2)} cou
 		(vehicle leader _group) call btc_fnc_mil_patrol_eh_remove;
 		deleteVehicle (vehicle leader _group);
 	};
-	{deleteVehicle _x;} foreach units _group;[_group] call btc_fnc_deletegroup;;
+	{deleteVehicle _x;} foreach units _group;
+	[_group] call btc_fnc_deletegroup;
 };
 
 _cities = btc_city_all select {((_x distance _city < _area) && ((!_isboat && {_x getVariable ["type",""] != "NameMarine"}) || (_isboat && {_x getVariable ["hasbeach",false]})))};
