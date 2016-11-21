@@ -20,7 +20,7 @@ while {_h < 0} do {
 
 _marker = createmarker [("FOB " + _name), getPos _flag];
 ("FOB " + _name) setMarkerSize [1,1];
-("FOB " + _name) setMarkerType "hd_flag";
+("FOB " + _name) setMarkerType "b_hq";
 ("FOB " + _name) setMarkerText (("FOB " + _name));
 ("FOB " + _name) setMarkerColor "ColorBlue";
 ("FOB " + _name) setMarkerShape "ICON";
