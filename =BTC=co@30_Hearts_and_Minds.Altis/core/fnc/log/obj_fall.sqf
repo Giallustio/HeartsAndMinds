@@ -1,17 +1,15 @@
 
-private ["_obj","_height","_fall","_xx","_yy"];
+private ["_obj","_fall","_pos"];
 
-_obj    = _this select 0;
-_xx = getPos _obj select 0;
-_yy = getPos _obj select 1;
-_height = (getPos _obj) select 2;
-_fall   = 0.09;
-while {((getPos _obj) select 2) > 0.1} do
-{
-	_fall = (_fall * 1.1);
-	_obj setPos [_xx, _yy, _height];
-	_height = _height - _fall;
-	//hint format ["%1 - %2", (getPos _obj) select 2,_height];
-	sleep 0.01;
-};
-_obj setPos [_xx, _yy, 0];
+_obj = _this select 0;
+_pos = getPos _obj;
+_fall = createVehicle ["Land_PenBlack_F", [_pos select 0, _pos select 1, (_pos select 2) + 0.7], [], 0, "FLY"];
+_obj attachTo [_fall,[0,0,0]];
+
+sleep 0.1;
+
+waitUntil {(Velocity _fall select 2) isEqualTo 0};
+
+detach _obj;
+_obj setPosASL getPosASL _fall;
+deleteVehicle _fall;
