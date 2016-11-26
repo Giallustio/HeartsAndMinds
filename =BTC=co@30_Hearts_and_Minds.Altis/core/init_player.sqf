@@ -4,6 +4,7 @@
 	waitUntil {!isNull player};
 
 	player addRating 9999;
+	["InitializePlayer", [player]] call BIS_fnc_dynamicGroups;
 
 	player addEventHandler ["Respawn", btc_fnc_eh_player_respawn];
 	player addEventHandler ["CuratorObjectPlaced", btc_fnc_eh_CuratorObjectPlaced];
