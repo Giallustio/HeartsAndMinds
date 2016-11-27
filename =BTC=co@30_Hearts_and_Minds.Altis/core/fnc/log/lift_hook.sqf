@@ -15,13 +15,20 @@ private ["_rope","_max_cargo","_mass"];
 
 {ropeDestroy _x;} foreach ropes _chopper;
 
-_bbr = boundingBoxReal _cargo;
-if (btc_debug) then {hint str(_bbr);};
+_bbr = getArray (configfile >> "CfgVehicles" >> typeof _cargo >> "slingLoadCargoMemoryPoints");
+if (_bbr isEqualTo [] OR !(vehicle player canSlingLoad _cargo)) then {
+	_bbr = boundingBoxReal _cargo;
+	ropeCreate [vehicle player, "slingload0", _cargo, [((_bbr select 0) select 0), ((_bbr select 1) select 1), 0], 10];
+	ropeCreate [vehicle player, "slingload0", _cargo, [((_bbr select 0) select 0), ((_bbr select 0) select 1), 0], 10];
+	ropeCreate [vehicle player, "slingload0", _cargo, [((_bbr select 1) select 0), ((_bbr select 0) select 1), 0], 10];
+	ropeCreate [vehicle player, "slingload0", _cargo, [((_bbr select 1) select 0), ((_bbr select 1) select 1), 0], 10];
+} else {
+	{
+		ropeCreate [vehicle player, "slingload0", _cargo, _x, 11];
+	} forEach _bbr;
+};
 
-ropeCreate [vehicle player, "slingload0", _cargo, [((_bbr select 0) select 0), ((_bbr select 1) select 1), 0], 10];
-ropeCreate [vehicle player, "slingload0", _cargo, [((_bbr select 0) select 0), ((_bbr select 0) select 1), 0], 10];
-ropeCreate [vehicle player, "slingload0", _cargo, [((_bbr select 1) select 0), ((_bbr select 0) select 1), 0], 10];
-ropeCreate [vehicle player, "slingload0", _cargo, [((_bbr select 1) select 0), ((_bbr select 1) select 1), 0], 10];
+if (btc_debug) then {hint str(_bbr);};
 
 _max_cargo  = getNumber (configFile >> "cfgVehicles" >> typeof _chopper >> "slingLoadMaxCargoMass");
 _mass = getMass _cargo;
