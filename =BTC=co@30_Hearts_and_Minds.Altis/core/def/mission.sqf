@@ -135,8 +135,15 @@ if (isServer) then {
 		["Land_PaperBox_open_empty_F",324.641,[-4.91895,-4.99585,-0.00143433]],
 		["Land_Pallet_MilBoxes_F",297.549,[-7.8623,-2.05115,-0.00143433]]
 	];
-	btc_type_campfire = ["MetalBarrel_burning_F","Campfire_burning_F"];
+	btc_type_campfire = ["MetalBarrel_burning_F","Campfire_burning_F","Land_Campfire_F","FirePlace_burning_F"];
 	btc_type_bigbox = ["Box_FIA_Ammo_F","Box_East_AmmoVeh_F","CargoNet_01_box_F","O_CargoNet_01_ammo_F"];
+	btc_type_seat = ["Land_WoodenLog_F","Land_CampingChair_V2_F","Land_CampingChair_V1_folded_F","Land_CampingChair_V1_F"];
+	btc_type_sleepingbag = ["Land_Sleeping_bag_F","Land_Sleeping_bag_blue_F","Land_Sleeping_bag_brown_F"];
+	btc_type_tent = ["Land_TentA_F","Land_TentDome_F"];
+	btc_type_tent = ["Land_IRMaskingCover_01_F","CamoNet_ghex_big_F","CamoNet_OPFOR_big_F","CamoNet_INDP_big_F","CamoNet_BLUFOR_big_F","CamoNet_OPFOR_open_F","CamoNet_ghex_open_F","CamoNet_BLUFOR_open_F","Land_IRMaskingCover_02_F","CamoNet_BLUFOR_F","CamoNet_ghex_F","CamoNet_OPFOR_F","CamoNet_INDP_F"];
+	btc_type_power
+	btc_type_box
+
 
 	//Side
 	btc_side_aborted = false;
