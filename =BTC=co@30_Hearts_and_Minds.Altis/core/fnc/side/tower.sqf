@@ -13,7 +13,7 @@ _roads = _pos nearRoads 100;
 _roads = _roads select {isOnRoad _x};
 if (_roads isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
 _road = selectRandom _roads;
-
+_pos = getPos _road;
 _direction = [_road] call btc_fnc_road_direction;
 
 btc_side_aborted = false;
