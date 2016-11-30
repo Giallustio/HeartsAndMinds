@@ -135,6 +135,8 @@ if (isServer) then {
 		["Land_PaperBox_open_empty_F",324.641,[-4.91895,-4.99585,-0.00143433]],
 		["Land_Pallet_MilBoxes_F",297.549,[-7.8623,-2.05115,-0.00143433]]
 	];
+	btc_type_campfire = ["MetalBarrel_burning_F","Campfire_burning_F"];
+	btc_type_bigbox = ["Box_FIA_Ammo_F","Box_East_AmmoVeh_F","CargoNet_01_box_F","O_CargoNet_01_ammo_F"];
 
 	//Side
 	btc_side_aborted = false;
