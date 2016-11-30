@@ -13,7 +13,7 @@ _roads = _pos nearRoads 100;
 _roads = _roads select {isOnRoad _x};
 if (_roads isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
 _road = selectRandom _roads;
-
+_pos = getPos _road;
 _direction = [_road] call btc_fnc_road_direction;
 
 btc_side_aborted = false;
@@ -45,8 +45,8 @@ _power_type = selectRandom btc_type_power;
 _cord_type = selectRandom btc_type_cord;
 _btc_composition_tower = [
 	[_tower_type,0,[0,0,0]],
-	[_cord_type,64.4626,[-1.08203,-0.804688,0]],
-	[_power_type,346.081,[-0.100098,-3.49414,0]]
+	[_cord_type,63,[-1.08203,-0.804688,0]],
+	[_power_type,346,[-0.100098,-3.49414,0]]
 ];
 
 //// Create tower with static at _pos \\\\
