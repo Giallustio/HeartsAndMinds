@@ -8,7 +8,7 @@ _btc_composition_hideout = [
 	[_type_bigbox,121.331,[0.675781,-1.52539,0]],
 	[selectRandom btc_type_bigbox,227.166,[2.66504,1.4126,0]],
 	[selectRandom btc_type_sleepingbag,135.477,[0.758789,-3.91309,0]],
-	["Land_JetEngineStarter_01_F",77.6499,[0.418945,3.51855,0]],
+	[selectRandom btc_type_power,77.6499,[0.418945,3.51855,0]],
 	[selectRandom btc_type_seat,171.123,[-2.08203,-3.39795,0]],
 	["Flag_Red_F",0,[0,0,0]],
 	[selectRandom btc_type_sleepingbag,161.515,[-0.726563,-4.76953,0]],
