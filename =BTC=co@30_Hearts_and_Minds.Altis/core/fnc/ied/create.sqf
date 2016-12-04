@@ -8,7 +8,7 @@ _active = _this select 3;
 
 if (btc_debug_log) then {diag_log format ["CREATE IED %1",_this];};
 _wreck = createSimpleObject [_type, _pos];
-_wreck setPosATL _pos;
+_wreck setPosATL [ _pos select 0, _pos select 1, 0];
 _wreck setDir _dir;
 _wreck setVectorUp surfaceNormal _pos;
 
