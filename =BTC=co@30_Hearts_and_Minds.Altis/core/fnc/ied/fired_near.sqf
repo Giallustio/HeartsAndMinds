@@ -1,7 +1,9 @@
 
-private ["_pos","_range","_bomb","_bomb_check","_array","_list","_ied","_explosive","_caliber"];
+private ["_pos","_range","_bomb","_bomb_check","_array","_list","_ied","_explosive","_caliber","_wreck"];
 
-_pos = getPos _this;
+_wreck = _this select 0;
+_ied = _this select 1;
+_pos = getPos _ied;
 _pos = [_pos select 0, _pos select 1, (_pos select 2) + 0.5];
 _range = 2;
 
@@ -9,14 +11,15 @@ _bomb_check =
 {
 	_ied = _this select 0;
 	_bomb = _this select 1;
+	_wreck = _this select 2;
 	_bomb setVariable ["bullet_check",true];
 	waitUntil {!Alive _bomb};
-	if (Alive _ied) then {_ied spawn btc_fnc_ied_boom;};
+	if (Alive _ied) then {[_wreck,_ied] spawn btc_fnc_ied_boom;};
 };
 
 _array = [];
 
-while {alive _this && !isNull _this && _this getVariable ["active",false]} do
+while {alive _ied && !isNull _ied} do
 {
 	_list = _pos nearObjects ["Default",_range];
 	if (count _list > 0) then
@@ -31,14 +34,14 @@ while {alive _this && !isNull _this && _this getVariable ["active",false]} do
 				if !(_b in _array) then
 				{
 					_array pushBack _b;
-					[_this,_b] spawn _bomb_check;
+					[_ied,_b,_wreck] spawn _bomb_check;
 				};
 			}
 			else
 			{
 				_explosive = (getNumber(configFile >> "cfgAmmo" >> _bullet >> "explosive") > 0);
 				_caliber = getNumber(configFile >> "CfgAmmo" >> _bullet >> "caliber");
-				if (_explosive || _caliber > 1.6) then {if (Alive _this) then {_this spawn btc_fnc_ied_boom;};};
+				if (_explosive || _caliber > 1.6) then {if (Alive _ied) then {[_wreck,_ied] spawn btc_fnc_ied_boom;};};
 			};
 		} foreach _list;
 	};

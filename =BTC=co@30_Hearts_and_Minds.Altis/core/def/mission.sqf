@@ -1,7 +1,7 @@
 
 private ["_p_civ_veh","_p_db","_p_en","_hideout_n","_cache_info_def","_cache_info_ratio","_info_chance","_p_rep","_p_skill","_c_array","_tower","_array","_chopper","_p_civ","_btc_rearming_vehicles","_vehicles","_magazines","_p_city_radius","_magazines_static","_static","_btc_rearming_static","_weapons_usefull"];
 
-btc_version = 1.15; diag_log format ["=BTC= HEARTS AND MINDS VERSION %1",(str(btc_version) + ".2")];
+btc_version = 1.151; diag_log format ["=BTC= HEARTS AND MINDS VERSION %1",(str(btc_version) + ".2")];
 
 //Param
 
@@ -17,7 +17,7 @@ _p_civ_veh = (paramsArray select 7);
 
 //<< IED options >>
 btc_p_ied = (paramsArray select 9)/2;
-btc_p_engineer  = (paramsArray select 10);
+ace_explosives_RequireSpecialist  = (paramsArray select 10) isEqualTo 0;
 
 //<< Hideout/Cache options >>
 _hideout_n = (paramsArray select 12);
@@ -216,8 +216,8 @@ btc_fob_id = 0;
 
 //IED
 btc_type_ieds = ["Land_GarbageContainer_closed_F","Land_GarbageContainer_open_F","Land_GarbageBarrel_01_F","Land_Pallets_F","Land_Portable_generator_F","Land_WoodenBox_F","Land_MetalBarrel_F","Land_BarrelTrash_grey_F","Land_Sacks_heap_F","Land_Bricks_V2_F","Land_Bricks_V3_F","Land_Bricks_V4_F","Land_GarbageBags_F","Land_GarbagePallet_F","Land_GarbageWashingMachine_F","Land_JunkPile_F","Land_Tyres_F","Land_Wreck_Skodovka_F","Land_Wreck_Car_F","Land_Wreck_Car3_F","Land_Wreck_Car2_F","Land_Wreck_Offroad_F","Land_Wreck_Offroad2_F","Land_WheelieBin_01_F","Land_GarbageHeap_04_F","Land_GarbageHeap_03_F","Land_GarbageHeap_01_F"];
-btc_ied_check_time = 10;
-btc_ied_disarm_time = 10;
+btc_model_ieds = btc_type_ieds apply {(toLower gettext(configfile >> "CfgVehicles" >> _x >> "model")) select [1]};
+btc_type_ieds_ace = ["IEDLandBig_F","IEDLandSmall_F"];
 
 //Int
 btc_int_radius_orders = 25;
