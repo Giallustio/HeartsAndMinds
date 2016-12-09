@@ -72,6 +72,7 @@ for "_i" from 1 to (1 + round random 2) do {
 	[_pos,_direction,_btc_composition_checkpoint] call btc_fnc_create_composition;
 
 	_boxe = nearestObject [_pos, _type_box];
+	_boxe setVariable ["ace_cookoff_enable", false, true];
 	_boxe spawn {
 		private ["_pos","_fx"];
 		_pos = getpos _this;
