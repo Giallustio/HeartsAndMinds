@@ -1,7 +1,7 @@
 
 private ["_type_bigbox","_btc_composition","_btc_composition_hideout"];
 
-_type_bigbox = selectRandom btc_type_bigbox;
+_type_bigbox = selectRandom ["Box_FIA_Ammo_F","C_supplyCrate_F","Box_East_AmmoVeh_F"];
 
 _btc_composition_hideout = [
 	[selectRandom btc_type_campfire,0,[-2.30957,-1.02979,0]],
