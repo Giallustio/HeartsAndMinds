@@ -11,13 +11,12 @@ btc_vehicles = btc_vehicles - [_veh];
 
 if (_marker != "") then {deleteMarker _marker;};
 deleteVehicle _veh;
-sleep 1;	
-_veh  = createVehicle [_type, _pos, [], 0, "NONE"];
+sleep 1;
+_veh  = createVehicle [_type, [_pos select 0, _pos select 1, 0], [], 0, "CAN_COLLIDE"];
 _veh setDir _dir;
-_veh setPos _pos;
 _veh setVariable ["btc_dont_delete",true];
 if(getNumber(configFile >> "CfgVehicles" >> typeof _veh >> "isUav")==1) then {
-	createVehicleCrew _veh;    
+	createVehicleCrew _veh;
 };
 
 btc_vehicles = btc_vehicles + [_veh];
