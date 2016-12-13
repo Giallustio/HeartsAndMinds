@@ -47,7 +47,12 @@ if (!isNull _cargo) then {
 	if (_cargo isKindOf "LandVehicle") then {_pic_cargo = getText (configFile >> "cfgVehicles" >> typeof _cargo >> "picture");} else {_pic_cargo = "";};
 	_name_cargo = getText (configFile >> "cfgVehicles" >> typeof _cargo >> "displayName");
 	_obj_pic ctrlSetText _pic_cargo;
-	if (btc_lifted) then {_obj_name ctrlSetText (format ["[%1 m] ",(round((getpos _cargo select 2) * 10))/10] + _name_cargo);} else {_obj_name ctrlSetText _name_cargo;};
+	if (btc_lifted) then {
+		_obj_name ctrlSetText (format ["[%1 m] ",(round((getpos _cargo select 2) * 10))/10] + _name_cargo);
+		_obj_img ctrlSetTextColor [0, 1, 0, 1];
+	} else {
+		_obj_name ctrlSetText _name_cargo;
+	};
 
 	if ((abs _cargo_z) > (btc_lift_max_h + 3)) then {
 		_arrow ctrlSetText _arrow_down;
