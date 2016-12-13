@@ -1,7 +1,7 @@
 
 disableSerialization;
 
-private ["_cargo","_chopper","_array","_cargo_array","_can_lift","_cargo_pos","_rel_pos","_cargo_x","_cargo_y","_cargo_z","_obj_img","_hud_x","_hud_y","_hud_x_1","_hud_y_1","_pic_cargo","_obj_name","_name_cargo","_arrow_down","_arrow_up","_arrow","_complete","_incomplete","_obj_pic"];
+private ["_cargo","_chopper","_array","_cargo_array","_can_lift","_cargo_pos","_rel_pos","_cargo_x","_cargo_y","_cargo_z","_obj_img","_hud_x","_hud_y","_hud_x_1","_hud_y_1","_pic_cargo","_obj_name","_name_cargo","_arrow_down","_arrow_up","_arrow","_complete","_incomplete","_obj_pic","_obj_alt"];
 
 if !((Alive player && vehicle player != player) && btc_log_hud) then {
 	[_this select 1] call CBA_fnc_removePerFrameHandler;
@@ -16,6 +16,7 @@ _obj_img	= _this select 0 select 4;
 _obj_pic	= _this select 0 select 5;
 _arrow		= _this select 0 select 6;
 _obj_name	= _this select 0 select 7;
+_obj_alt	= _this select 0 select 8;
 
 _chopper = vehicle player;
 _array = [_chopper] call btc_fnc_log_get_liftable;
@@ -47,11 +48,10 @@ if (!isNull _cargo) then {
 	if (_cargo isKindOf "LandVehicle") then {_pic_cargo = getText (configFile >> "cfgVehicles" >> typeof _cargo >> "picture");} else {_pic_cargo = "";};
 	_name_cargo = getText (configFile >> "cfgVehicles" >> typeof _cargo >> "displayName");
 	_obj_pic ctrlSetText _pic_cargo;
+	_obj_name ctrlSetText _name_cargo;
 	if (btc_lifted) then {
-		_obj_name ctrlSetText (format ["[%1 m] ",(round((getpos _cargo select 2) * 10))/10] + _name_cargo);
+		_obj_alt ctrlSetText (format ["%1 m",(round((getpos _cargo select 2) * 10))/10]);
 		_obj_img ctrlSetTextColor [0, 1, 0, 1];
-	} else {
-		_obj_name ctrlSetText _name_cargo;
 	};
 
 	if ((abs _cargo_z) > (btc_lift_max_h + 3)) then {

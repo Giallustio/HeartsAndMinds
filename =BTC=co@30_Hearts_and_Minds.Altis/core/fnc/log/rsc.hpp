@@ -52,8 +52,8 @@
 
 				x = 0.85 * safezoneW + safezoneX;
 				y = 0.85 * safezoneH + safezoneY;
-				w = 0.03 * safezoneW;
-				h = 0.03 * safezoneH * (getresolution select 4);
+				w = 0.025 * safezoneW;
+				h = 0.025 * safezoneH * (getresolution select 4);
 
 				font = "PuristaMedium";
 				sizeEx = 1;
@@ -67,10 +67,10 @@
 				idc = 1004;
 				style = 48;
 
-				x = 0.82 * safezoneW + safezoneX;
-				y = 0.7 * safezoneH + safezoneY;
-				w = 0.05 * safezoneW;
-				h = 0.05 * safezoneH;
+				x = 0.822 * safezoneW + safezoneX;
+				y = 0.75 * safezoneH + safezoneY;
+				w = 0.03 * safezoneW;
+				h = 0.03 * safezoneH;
 
 				font = "PuristaMedium";
 				sizeEx = 0.03;
@@ -101,8 +101,25 @@
 				idc = 1006;
 				style = 0x00;
 
-				x = 0.8 * safezoneW + safezoneX;
-				y = 0.65 * safezoneH + safezoneY;
+				x = 0.84 * safezoneW + safezoneX;
+				y = 0.68 * safezoneH + safezoneY;
+				w = 0.3 * safezoneW;
+				h = 0.1 * safezoneH;
+
+				font = "PuristaMedium";
+				sizeEx = 0.03;
+				colorBackground[] = {0, 0, 0, 0};
+				colorText[] = {1, 1, 1, 1};
+				text = "";
+			};
+			class Alt_Obj
+			{
+				type = 0;
+				idc = 1007;
+				style = 0x00;
+
+				x = 0.92 * safezoneW + safezoneX;
+				y = 0.935 * safezoneH + safezoneY;
 				w = 0.3 * safezoneW;
 				h = 0.1 * safezoneH;
 
