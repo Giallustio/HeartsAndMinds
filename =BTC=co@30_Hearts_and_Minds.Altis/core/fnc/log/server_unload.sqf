@@ -40,16 +40,10 @@ switch (true) do {
 	case ((_height < 20) && (_height >= 2)): {
 		_obj setPos [getpos _obj select 0,getpos _obj select 1,(getpos _obj select 2) -1];
 		sleep 0.1;
-		if (_obj isKindOf "Strategic") then {_obj_fall = [_obj] spawn btc_fnc_log_obj_fall;};
+		_obj_fall = [_obj] spawn btc_fnc_log_obj_fall;
 	};
 	case (_height < 2):	{
-		private ["_empty"];
-		_empty = (getPos _veh) findEmptyPosition [0, (sizeOf typeOf _veh + sizeOf _obj_type)/2 +2, _obj_type];
-		if (_empty isEqualTo []) then {
-			_obj_fall = [_obj] call btc_fnc_log_obj_fall;
-		} else {
-			_obj setPos _empty;//(_veh modelToWorld [0,-9,-0.2]);_obj setVelocity [0,0,0.1];
-		};
+		_obj_fall = [_obj] call btc_fnc_log_obj_fall;
 	};
 };
 
