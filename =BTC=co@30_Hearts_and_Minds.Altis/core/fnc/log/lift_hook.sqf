@@ -1,5 +1,5 @@
 
-private ["_chopper","_array","_cargo_array","_cargo","_bbr"];
+private ["_chopper","_array","_cargo_array","_cargo","_bbr","_rope_length"];
 
 _chopper = vehicle player;
 _array = [vehicle player] call btc_fnc_log_get_liftable;
@@ -18,10 +18,16 @@ private ["_rope","_max_cargo","_mass"];
 _bbr = boundingBoxReal _cargo;
 if (btc_debug) then {hint str(_bbr);};
 
-ropeCreate [vehicle player, "slingload0", _cargo, [((_bbr select 0) select 0), ((_bbr select 1) select 1), 0], 10];
-ropeCreate [vehicle player, "slingload0", _cargo, [((_bbr select 0) select 0), ((_bbr select 0) select 1), 0], 10];
-ropeCreate [vehicle player, "slingload0", _cargo, [((_bbr select 1) select 0), ((_bbr select 0) select 1), 0], 10];
-ropeCreate [vehicle player, "slingload0", _cargo, [((_bbr select 1) select 0), ((_bbr select 1) select 1), 0], 10];
+if (abs((_bbr select 0) select 0) < 5) then {
+	_rope_length = 10;
+} else {
+	_rope_length = 10 + abs((_bbr select 0) select 0);
+};
+
+ropeCreate [vehicle player, "slingload0", _cargo, [((_bbr select 0) select 0), ((_bbr select 1) select 1), 0], _rope_length];
+ropeCreate [vehicle player, "slingload0", _cargo, [((_bbr select 0) select 0), ((_bbr select 0) select 1), 0], _rope_length];
+ropeCreate [vehicle player, "slingload0", _cargo, [((_bbr select 1) select 0), ((_bbr select 0) select 1), 0], _rope_length];
+ropeCreate [vehicle player, "slingload0", _cargo, [((_bbr select 1) select 0), ((_bbr select 1) select 1), 0], _rope_length];
 
 _max_cargo  = getNumber (configFile >> "cfgVehicles" >> typeof _chopper >> "slingLoadMaxCargoMass");
 _mass = getMass _cargo;
