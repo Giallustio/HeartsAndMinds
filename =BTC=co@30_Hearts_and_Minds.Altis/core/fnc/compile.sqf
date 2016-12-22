@@ -22,7 +22,6 @@ if (isServer) then {
 	btc_fnc_findsafepos = compile preprocessFile "core\fnc\common\findsafepos.sqf";
 	btc_fnc_deleteTestObj = compile preprocessFile "core\fnc\common\deleteTestObj.sqf";
 	btc_fnc_find_closecity = compile preprocessFile "core\fnc\common\find_closecity.sqf";
-	btc_fnc_autosave = compile preprocessFile "core\fnc\common\autosave.sqf";
 
 	//CITY
 	btc_fnc_city_activate = compile preprocessFile "core\fnc\city\activate.sqf";
@@ -52,6 +51,7 @@ if (isServer) then {
 	//DB
 	btc_fnc_db_save = compile preprocessFile "core\fnc\db\save.sqf";
 	btc_fnc_db_delete = compile preprocessFile "core\fnc\db\delete.sqf";
+	btc_fnc_db_autosave = compile preprocessFile "core\fnc\db\autosave.sqf";
 
 	//EH
 	//btc_fnc_eh_helo_respawn = compile preprocessFile "core\fnc\eh\helo_respawn.sqf";
