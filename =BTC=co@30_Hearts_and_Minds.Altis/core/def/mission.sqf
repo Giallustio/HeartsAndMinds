@@ -611,6 +611,19 @@ switch (true) do {
 		btc_type_mg			= ["LOP_UA_Kord","LOP_UA_Kord_High","LOP_UA_NSV_TriPod"];
 		btc_type_gl			= ["LOP_UA_AGS30_TriPod"];
 	};
+	case (_p_en == 10) : {
+		btc_hq				= btc_hq_red;
+		btc_enemy_side		= east;
+		btc_type_units		= ["O_T_Soldier_A_F","O_T_Soldier_AAR_F","O_T_Soldier_AR_F","O_T_Medic_F","O_T_Engineer_F","O_T_Soldier_Exp_F","O_T_Soldier_GL_F","O_T_Soldier_M_F","O_V_Soldier_JTAC_ghex_F","O_V_Soldier_Exp_ghex_F","O_V_Soldier_M_ghex_F","O_V_Soldier_ghex_F","O_V_Soldier_Medic_ghex_F","O_V_Soldier_LAT_ghex_F","O_V_Soldier_TL_ghex_F","O_T_Recon_JTAC_F","O_T_Recon_M_F","O_T_Recon_Medic_F","O_T_Recon_LAT_F","O_T_ghillie_tna_F","O_T_ghilie_tna_F"]
+;
+		btc_type_divers		= ["O_T_Diver_F","O_T_Diver_TL_F","O_T_Diver_Exp_F"];
+		btc_type_crewmen	= "O_T_Crew_F";
+		btc_type_vehicles	= ["O_G_Offroad_01_F","O_G_Offroad_01_armed_F","O_T_LSV_02_armed_F","O_T_LSV_02_unarmed_F","O_T_MRAP_02_gmg_ghex_F","O_T_MRAP_02_hmg_ghex_F","O_T_MRAP_02_ghex_F"];
+		btc_type_boats		= ["O_T_Boat_Armed_01_hmg_F","O_T_Boat_Transport_01_F","0_SDV_01_F","I_G_Boat_Transport_01_F"];
+		btc_type_motorized	= ["O_G_Offroad_01_F","O_G_Offroad_01_armed_F","O_T_LSV_02_armed_F","O_T_LSV_02_unarmed_F","O_T_MRAP_02_gmg_ghex_F","O_T_MRAP_02_hmg_ghex_F","O_T_MRAP_02_ghex_F","O_T_Truck_03_transport_ghex_F","O_T_Truck_03_covered_ghex_F"];
+		btc_type_mg			= ["O_HMG_01_F","O_HMG_01_high_F"];
+		btc_type_gl			= ["O_GMG_01_F","O_GMG_01_high_F"];
+	};
 	default	{
 		btc_hq				= btc_hq_red;
 		btc_enemy_side		= east;
