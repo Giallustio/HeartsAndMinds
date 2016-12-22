@@ -1,5 +1,10 @@
 player createDiarySubject ["Documentation","Documentation"];
 
+player createDiaryRecord ["Documentation", ["Headless", "
+<img image='\a3\ui_f\data\map\vehicleicons\iconvirtual_ca.paa' width='20' height='20'/> This mission support one Headless client.
+	"]
+];
+
 player createDiaryRecord ["Documentation", ["Wounds", "
 <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/> <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\heal_ca.paa' width='20' height='20'/> Use the interaction menu to treat your wounds.<br/>
 Keep in mind that all the actions will be available, even if you do not need them. It is always recommended examine first.

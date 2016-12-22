@@ -13,7 +13,8 @@ if ({_x distance _city < (_area/2) || _x distance leader _group < (_area/2)} cou
 		(vehicle leader _group) call btc_fnc_mil_patrol_eh_remove;
 		deleteVehicle (vehicle leader _group);
 	};
-	{deleteVehicle _x;} foreach units _group;deleteGroup _group;
+	{deleteVehicle _x;} foreach units _group;
+	[_group] call btc_fnc_deletegroup;
 };
 
 _cities = btc_city_all select {((_x distance _city < _area) && ((!_isboat && {_x getVariable ["type",""] != "NameMarine"}) || (_isboat && {_x getVariable ["hasbeach",false]})))};
@@ -58,6 +59,7 @@ if !((vehicle leader _group) isKindOf "Air") then {
 if (btc_debug) then {
 	if (!isNil {_group getVariable "btc_patrol_id"}) then {
 		private ["_marker"];
+		deleteMarker format ["Patrol_fant_%1", _group getVariable "btc_patrol_id"];
 		_marker = createmarker [format ["Patrol_fant_%1", _group getVariable "btc_patrol_id"] , [(_pos select 0) + random 30,(_pos select 1) + random 30,0]];
 		format ["Patrol_fant_%1", _group getVariable "btc_patrol_id"] setmarkertype "mil_dot";
 		format ["Patrol_fant_%1", _group getVariable "btc_patrol_id"]  setMarkerText format ["P %1", _group getVariable "btc_patrol_id"];

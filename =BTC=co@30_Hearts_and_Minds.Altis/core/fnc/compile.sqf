@@ -21,7 +21,10 @@ if (isServer) then {
 	btc_fnc_road_direction = compile preprocessFile "core\fnc\common\road_direction.sqf";
 	btc_fnc_findsafepos = compile preprocessFile "core\fnc\common\findsafepos.sqf";
 	btc_fnc_deleteTestObj = compile preprocessFile "core\fnc\common\deleteTestObj.sqf";
+	btc_fnc_get_owners = compile preprocessFile "core\fnc\common\get_owners.sqf";
+	btc_fnc_set_groupowner = compile preprocessFile "core\fnc\common\set_groupowner.sqf";
 	btc_fnc_find_closecity = compile preprocessFile "core\fnc\common\find_closecity.sqf";
+	btc_fnc_deletegroup = compile preprocessFile "core\fnc\common\deletegroup.sqf";
 
 	//CITY
 	btc_fnc_city_activate = compile preprocessFile "core\fnc\city\activate.sqf";
@@ -91,7 +94,6 @@ if (isServer) then {
 	btc_fnc_mil_send = compile preprocessFile "core\fnc\mil\send.sqf";
 	btc_fnc_mil_set_skill = compile preprocessFile "core\fnc\mil\set_skill.sqf";
 	btc_fnc_mil_unit_create = compile preprocessFile "core\fnc\mil\unit_create.sqf";
-	btc_fnc_mil_unit_killed = compile preprocessFile "core\fnc\mil\unit_killed.sqf";
 	btc_fnc_mil_patrol_eh = compile preprocessFile "core\fnc\mil\patrol_eh.sqf";
 	btc_fnc_mil_patrol_eh_remove = compile preprocessFile "core\fnc\mil\patrol_eh_remove.sqf";
 	btc_fnc_mil_CuratorMilPlaced_s = compile preprocessFile "core\fnc\mil\CuratorMilPlaced_s.sqf";
@@ -126,6 +128,14 @@ if (isServer) then {
 	btc_fnc_log_getconfigmagazines = compile preprocessFile "core\fnc\log\getconfigmagazines.sqf";
 	btc_fnc_log_CuratorObjectPlaced_s = compile preprocessFile "core\fnc\log\CuratorObjectPlaced_s.sqf";
 };
+
+/////////////////////SERVER AND HEADLESS\\\\\\\\\\\\\\\\\\\\\
+if (isServer OR (!isDedicated && !hasInterface)) then {
+	//MIL
+	btc_fnc_mil_unit_killed = compile preprocessFile "core\fnc\mil\unit_killed.sqf";
+	btc_fnc_mil_add_eh = compile preprocessFile "core\fnc\mil\add_eh.sqf";
+};
+
 /////////////////////CLIENT AND SERVER\\\\\\\\\\\\\\\\\\\\\
 
 //COMMON
@@ -194,6 +204,7 @@ if (!isDedicated) then {
 	btc_fnc_get_cardinal = compile preprocessFile "core\fnc\common\get_cardinal.sqf";
 	btc_fnc_is_engineer = compile preprocessFile "core\fnc\common\is_engineer.sqf";
 	btc_fnc_marker_debug = compile preprocessFile "core\fnc\common\marker_debug.sqf";
+	btc_fnc_systemchat_debug = compile preprocessFile "core\fnc\common\systemchat_debug.sqf";
 	btc_fnc_show_hint = compile preprocessFile "core\fnc\common\show_hint.sqf";
 
 	//EH

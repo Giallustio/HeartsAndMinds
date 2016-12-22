@@ -102,3 +102,8 @@ switch (true) do {
 btc_patrol_active pushBack _group;
 
 {_x call btc_fnc_mil_unit_create} foreach units _group;
+
+//Check if HC is connected
+if !((entities "HeadlessClient_F") isEqualTo []) then {
+	[_group] call btc_fnc_set_groupowner;
+};

@@ -6,8 +6,6 @@ _id = _this select 0;
 _target = _this select 1;
 _asker  = _this select 2;
 
-_data = [];
-
 switch (_id) do {
 	case 0 : {_data = _target getVariable ["active",false];};
 	case 1 : {
@@ -24,5 +22,4 @@ switch (_id) do {
 	case 7 : {_data = btc_construction_array;};
 };
 
-
-[[_data],"btc_fnc_int_ans_var",_asker,false] spawn BIS_fnc_MP;
+[_data] remoteExec ["btc_fnc_int_ans_var", _asker, false];

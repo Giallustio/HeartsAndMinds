@@ -39,17 +39,15 @@
 };
 
 if (btc_debug) then {
+
+	private ["_eh"];
+
 	onMapSingleClick "if (vehicle player == player) then {player setpos _pos} else {vehicle player setpos _pos}";
 	player allowDamage false;
 
 	waitUntil {!isNull (findDisplay 12)};
 	_eh = ((findDisplay 12) displayCtrl 51) ctrlAddEventHandler ["Draw", btc_fnc_marker_debug];
+
 	btc_marker_debug_cond = true;
-	[_eh] spawn {
-		while {btc_marker_debug_cond} do {
-			player sideChat format ["UNITS:%1 - GROUPS:%2", count allunits, count allgroups];
-			sleep 1;
-		};
-		((findDisplay 12) displayCtrl 51) ctrlRemoveEventHandler ["Draw",_this select 0];
-	};
+	[_eh] spawn btc_fnc_systemchat_debug;
 };
