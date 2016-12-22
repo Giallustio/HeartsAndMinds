@@ -37,22 +37,22 @@ class Params {
 	class btc_p_en {
 	//paramsArray[5]
 		title = "			Enemy type:";
-		values[]={0,1,2,3,4,5,6};
-		texts[]={"Guerrilla (A3)","CAF (@CAF Aggressors)","AAF (A3)","RHS Insurgents (@RHS_AFRF)","Militia (@=BTC= Militia)","Militia (@IWAR: Irregular Warfare)","Syndikat (A3)"};
+		values[]={0,1,2,3,4,5,6,7,8,9};
+		texts[]={"Guerrilla (A3)","CAF (@CAF Aggressors)","AAF (A3)","RHS Insurgents (@RHS_AFRF)","Militia (@=BTC= Militia)","Militia (@IWAR: Irregular Warfare)","Syndikat (A3)","Middle East Militia (@Project Opfor)","ISTS (@Project Opfor)","Ultranationalists (@Project Opfor)"};
 		default = 0;
 	};
 	class btc_p_civ {
 	//paramsArray[6]
 		title = "			Civil type:";
-		values[]={0,1,2,3,4};
-		texts[]={"Civilian (A3)","Afghan (@Ericj_Taliban)","Afghan (@=BTC= Militia)","Russian (@RDS A2 Civilian Pack)","A2 civils (@CUP Units)"};
+		values[]={0,1,2,3,4,5};
+		texts[]={"Civilian (A3)","Afghan (@Ericj_Taliban)","Afghan (@=BTC= Militia)","Russian (@RDS A2 Civilian Pack)","A2 civils (@CUP Units)", "Eastern Europe civils (@Project Opfor)"};
 		default = 0;
 	};
 	class btc_p_civ_veh {
 	//paramsArray[7]
 		title = "			Civil vehicle type:";
-		values[]={0,1,2};
-		texts[]={"Vanilla (A3)","A2 vehicles (@RDS A2 Civilian Pack)","A2 vehicles (@CUP Vehicles)"};
+		values[]={0,1,2,3};
+		texts[]={"Vanilla (A3)","A2 vehicles (@RDS A2 Civilian Pack)","A2 vehicles (@CUP Vehicles)", "Eastern Europe civils (@Project Opfor)"};
 		default = 0;
 	};
 	class btc_p_IED_title {
