@@ -41,7 +41,7 @@ You can dismantle a FOB by interacting with the flag on the HQ roof.
 
 player createDiaryRecord ["Documentation", ["Sling loading", "
 =BTC= Lift will not replace the A3 sling loading, you can use both.<br/><br/>
-<img image='\A3\Structures_F_Heli\VR\Helpers\Data\VR_Symbol_Heli_Slingloading_CA.paa' width='20' height='20'/> <img image='\A3\air_f_beta\Heli_Transport_01\Data\UI\Map_Heli_Transport_01_base_CA.paa' width='20' height='20'/> Lifting an object is pretty simple. Get in a chopper as pilot, hover above the object and use your self interaction menu to deploy ropes.<br/>
+<img image='\A3\Structures_F_Heli\VR\Helpers\Data\VR_Symbol_Heli_Slingloading_CA.paa' width='20' height='20'/> <img image='\A3\air_f_beta\Heli_Transport_01\Data\UI\Map_Heli_Transport_01_base_CA.paa' width='20' height='20'/> Lifting an object is pretty simple. Get in a chopper as pilot, hover above the object and interact with the chopper to deploy ropes.<br/>
 When you are in the right position a new scroll wheel action will appear ('HOOK'). If you want you can open the HUD to facilitate the operation.<br/>
 <img image='\z\ace\addons\logistics_wirecutter\ui\wirecutter_ca.paa' width='20' height='20'/> To release an object open you self interaction menu and select 'CUT ROPES'
 	"]
