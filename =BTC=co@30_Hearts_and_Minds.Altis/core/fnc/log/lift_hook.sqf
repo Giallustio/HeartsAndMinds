@@ -1,5 +1,5 @@
 
-private ["_chopper","_array","_cargo_array","_cargo","_bbr"];
+private ["_chopper","_array","_cargo_array","_cargo","_bbr","_rope_length"];
 
 _chopper = vehicle player;
 _array = [vehicle player] call btc_fnc_log_get_liftable;
@@ -17,11 +17,18 @@ private ["_rope","_max_cargo","_mass"];
 
 _bbr = getArray (configfile >> "CfgVehicles" >> typeof _cargo >> "slingLoadCargoMemoryPoints");
 if (_bbr isEqualTo [] OR !(vehicle player canSlingLoad _cargo)) then {
+
 	_bbr = boundingBoxReal _cargo;
-	ropeCreate [vehicle player, "slingload0", _cargo, [((_bbr select 0) select 0), ((_bbr select 1) select 1), 0], 10];
-	ropeCreate [vehicle player, "slingload0", _cargo, [((_bbr select 0) select 0), ((_bbr select 0) select 1), 0], 10];
-	ropeCreate [vehicle player, "slingload0", _cargo, [((_bbr select 1) select 0), ((_bbr select 0) select 1), 0], 10];
-	ropeCreate [vehicle player, "slingload0", _cargo, [((_bbr select 1) select 0), ((_bbr select 1) select 1), 0], 10];
+	if (abs((_bbr select 0) select 0) < 5) then {
+		_rope_length = 10;
+	} else {
+		_rope_length = 10 + abs((_bbr select 0) select 0);
+	};
+
+	ropeCreate [vehicle player, "slingload0", _cargo, [((_bbr select 0) select 0), ((_bbr select 1) select 1), 0], _rope_length];
+	ropeCreate [vehicle player, "slingload0", _cargo, [((_bbr select 0) select 0), ((_bbr select 0) select 1), 0], _rope_length];
+	ropeCreate [vehicle player, "slingload0", _cargo, [((_bbr select 1) select 0), ((_bbr select 0) select 1), 0], _rope_length];
+	ropeCreate [vehicle player, "slingload0", _cargo, [((_bbr select 1) select 0), ((_bbr select 1) select 1), 0], _rope_length];
 } else {
 	{
 		ropeCreate [vehicle player, "slingload0", _cargo, _x, 11];
@@ -33,7 +40,10 @@ if (btc_debug) then {hint str(_bbr);};
 _max_cargo  = getNumber (configFile >> "cfgVehicles" >> typeof _chopper >> "slingLoadMaxCargoMass");
 _mass = getMass _cargo;
 
-waitUntil {local _cargo};
+if !(local _cargo) then {
+	[[_cargo, player],{(_this select 0) setOwner owner (_this select 1);}] remoteExec ["call", 2];
+	waitUntil {local _cargo};
+};
 
 if (_mass > _max_cargo) then {
 	private "_new_mass";
