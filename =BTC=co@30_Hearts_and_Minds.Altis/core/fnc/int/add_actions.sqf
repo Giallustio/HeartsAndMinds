@@ -35,10 +35,6 @@ _action = ["Load_selected", "Load selected", "\z\ace\addons\cargo\UI\Icon_load.p
 _action = ["check_cargo", "Check cargo", "\A3\ui_f\data\igui\cfg\simpleTasks\types\search_ca.paa", {(_this select 0) spawn btc_fnc_log_check_cargo;}, {true}] call ace_interact_menu_fnc_createAction;
 {[_x, 0, ["ACE_MainActions","Logistic"], _action] call ace_interact_menu_fnc_addActionToClass;} foreach btc_log_def_can_load;
 
-_action = ["check_cargo","Check cargo","\A3\ui_f\data\igui\cfg\simpleTasks\types\search_ca.paa",{(vehicle player) spawn btc_fnc_log_check_cargo;},{true}] call ace_interact_menu_fnc_createAction;
-["Helicopter", 1, ["ACE_SelfActions"], _action,true] call ace_interact_menu_fnc_addActionToClass;
-["LandVehicle", 1, ["ACE_SelfActions"], _action,true] call ace_interact_menu_fnc_addActionToClass;
-
 //FOB
 _action = ["Mount_FOB", "Mount FOB", "\A3\Ui_f\data\Map\Markers\NATO\b_hq.paa", {(_this select 0) spawn btc_fnc_fob_create}, {true}] call ace_interact_menu_fnc_createAction;
 [btc_fob_mat, 0, ["ACE_MainActions","Logistic"], _action] call ace_interact_menu_fnc_addActionToClass;
