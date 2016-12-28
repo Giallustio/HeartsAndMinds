@@ -35,6 +35,7 @@
 	removeAllWeapons player;
 
 	waitUntil {scriptDone btc_intro_done};
+	enableSaving [false,false];
 	{[_x] spawn btc_fnc_task_create} foreach [0,1];
 };
 
