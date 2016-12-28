@@ -1,4 +1,6 @@
 
+private ["_new","_class","_selected"];
+
 closeDialog 0;
 
 btc_log_create_obj = _this select 0;
@@ -16,7 +18,11 @@ call btc_fnc_log_create_load;
 //_class = lbText [72,lbCurSel 72];
 _class = lbData [72, lbCurSel 72];
 _selected = _class;
-_new = _class createVehicleLocal [getpos btc_log_create_obj select 0,getpos btc_log_create_obj select 1,0];
+if (getText (configFile >> "cfgVehicles" >> _selected >> "displayName") isEqualTo "") then {
+	_new = "Box_NATO_Ammo_F" createVehicleLocal [getpos btc_log_create_obj select 0,getpos btc_log_create_obj select 1,0];
+} else {
+	_new = _class createVehicleLocal [getpos btc_log_create_obj select 0,getpos btc_log_create_obj select 1,0];
+};
 while {dialog} do
 {
 	//if (_class != lbData [72, 1]) then
@@ -26,7 +32,11 @@ while {dialog} do
 		_class = lbData [72, lbCurSel 72];
 		//_class = lbText [72,lbCurSel 72];
 		_selected = _class;
-		_new = _class createVehicleLocal [getpos btc_log_create_obj select 0,getpos btc_log_create_obj select 1,0];
+		if (getText (configFile >> "cfgVehicles" >> _selected >> "displayName") isEqualTo "") then {
+			_new = "Box_NATO_Ammo_F" createVehicleLocal [getpos btc_log_create_obj select 0,getpos btc_log_create_obj select 1,0];
+		} else {
+			_new = _class createVehicleLocal [getpos btc_log_create_obj select 0,getpos btc_log_create_obj select 1,0];
+		};
 		_new setDir (getDir btc_log_create_obj);
 		_new setPos [getpos btc_log_create_obj select 0,getpos btc_log_create_obj select 1,0];
 	};

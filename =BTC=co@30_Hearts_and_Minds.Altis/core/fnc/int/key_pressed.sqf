@@ -1,19 +1,22 @@
+
+private ["_key","_shift","_ctrl"];
+
 _key   = _this select 1;
 _shift = _this select 2;
 _ctrl = _this select 3;
 
 //if (_key in (actionKeys "moveUp") && {player getVariable ["btc_rev_isDragging",false]}) then {player setVariable ["btc_rev_isDragging",false];};
 
-if (dialog || player getVariable ["btc_rev_isUnc",false] || player getVariable ["btc_int_busy",false]) exitWith {};// 
+if (dialog || player getVariable ["btc_rev_isUnc",false] || player getVariable ["btc_int_busy",false]) exitWith {};//
 btc_int_target = objNull;
 
 switch (true) do
 {
-	case (_key in (actionKeys "User1")) : 
+	case (_key in (actionKeys "User1")) :
 	{
 		btc_int_target = player;0 spawn btc_fnc_int_open_dlg;
 	};
-	case (_key in (actionKeys "User2") && {!(player getVariable ["btc_int_busy",false])} && {vehicle player == player}) : 
+	case (_key in (actionKeys "User2") && {!(player getVariable ["btc_int_busy",false])} && {vehicle player == player}) :
 	{
 		switch (true) do
 		{

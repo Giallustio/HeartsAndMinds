@@ -1,5 +1,5 @@
 
-private ["_veh","_type"];
+private ["_veh","_type","_action"];
 
 _veh = _this select 0;
 

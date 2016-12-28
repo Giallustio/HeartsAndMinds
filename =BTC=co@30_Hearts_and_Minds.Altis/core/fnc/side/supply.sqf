@@ -1,12 +1,11 @@
 
 private ["_useful","_city","_pos","_area","_marker"];
 
-_useful = [];
-{if (_x getVariable ["type",""] != "NameLocal" && {_x getVariable ["type",""] != "Hill"} && (_x getVariable ["type",""] != "NameMarine")) then {_useful = _useful + [_x];};} foreach btc_city_all;
+_useful = btc_city_all select {(_x getVariable ["type",""] != "NameLocal" && {_x getVariable ["type",""] != "Hill"} && (_x getVariable ["type",""] != "NameMarine"))} ;
 
-if (count _useful == 0) then {_useful = + btc_city_all;};
+if (_useful isEqualTo []) then {_useful = + btc_city_all;};
 
-_city = _useful select (floor random count _useful);
+_city = selectRandom _useful;
 
 _pos = [getPos _city, 100] call btc_fnc_randomize_pos;
 

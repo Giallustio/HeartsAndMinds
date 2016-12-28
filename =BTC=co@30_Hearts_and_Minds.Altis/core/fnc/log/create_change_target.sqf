@@ -1,3 +1,6 @@
+
+private ["_var","_main_class","_sub_class","_id","_category"];
+
 _var = lbText [71,lbCurSel 71];
 _main_class = btc_construction_array select 0;
 _sub_class  = btc_construction_array select 1;
@@ -9,6 +12,9 @@ for "_i" from 0 to ((count _category) - 1) do
 	private ["_class","_display","_index"];
 	_class = (_category select _i);
 	_display = getText (configFile >> "cfgVehicles" >> _class >> "displayName");
+	if (_display isEqualTo "") then {
+		_display = getText (configfile >> "CfgMagazines" >> _class >> "displayName");
+	};
 	//_lb = lbAdd [72,_display];
 	_index = lbAdd [72,_display];
 	lbSetData [72, _index, _class];

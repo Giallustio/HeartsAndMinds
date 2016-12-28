@@ -1,6 +1,7 @@
 
 btc_int_action_result = nil;
 _this spawn {
+	private ["_time","_title","_target","_pos","_radius","_ctrlProgressBar","_ctrlProgressBarTitle"];
 	_time = _this select 0;
 	_title = _this select 1;
 	_target = _this select 2;

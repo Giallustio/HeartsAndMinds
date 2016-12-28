@@ -25,13 +25,15 @@ _cargo = btc_int_ask_data;
 _text = ("Vehicle: " + getText (configFile >> "cfgVehicles" >> typeof _veh >> "displayName") + format ["  CC: %1/%2",[_veh,_cargo] call btc_fnc_log_check_cc,[_veh] call btc_fnc_log_get_cc]);
 
 (_ui displayCtrl 990) ctrlSetText _text;
-	
+
 {
 	private ["_index","_displayName"];
 	_displayName = getText (configFile >> "cfgVehicles" >> typeof _x >> "displayName");
+	if (_displayName isEqualTo "ace_rearm_dummy_obj") then {_displayName = getText (configfile >> "CfgMagazines" >> (_x getVariable "ace_rearm_magazineClass") >> "displayName");
+	};
 	_index = lbAdd [ 991, _displayName ];
 	lbSetData [ 991, _index, typeOf _x ];
-	lbSetTooltip [ 991, _index, _displayName ];	
+	lbSetTooltip [ 991, _index, _displayName ];
 } foreach _cargo;
 
 lbSetCurSel [ 991, 0 ];
