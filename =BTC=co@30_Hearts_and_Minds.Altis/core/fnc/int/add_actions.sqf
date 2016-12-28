@@ -45,12 +45,6 @@ _action = ["Place", "Place", "\A3\ui_f\data\map\markers\military\end_CA.paa", {(
 _action = ["check_cargo","Check cargo","\A3\ui_f\data\igui\cfg\simpleTasks\types\search_ca.paa",{(vehicle player) spawn btc_fnc_log_check_cargo;},{!(vehicle player isEqualto player)}] call ace_interact_menu_fnc_createAction;
 [player, 1, ["ACE_SelfActions","Logistic"], _action] call ace_interact_menu_fnc_addActionToObject;
 
-//Lift
-_action = ["Deploy_ropes","Deploy ropes","\A3\Structures_F_Heli\VR\Helpers\Data\VR_Symbol_Heli_Slingloading_CA.paa",{[] spawn btc_fnc_log_lift_deploy_ropes;},{!btc_ropes_deployed && {((driver vehicle player) isEqualTo player)} && {(getposATL player) select 2 > 4}}] call ace_interact_menu_fnc_createAction;
-["Helicopter", 1, ["ACE_SelfActions"], _action,true] call ace_interact_menu_fnc_addActionToClass;
-_action = ["Cut_ropes","Cut ropes","\z\ace\addons\logistics_wirecutter\ui\wirecutter_ca.paa",{[] spawn btc_fnc_log_lift_destroy_ropes;},{btc_ropes_deployed && {((driver vehicle player) isEqualTo player)}}] call ace_interact_menu_fnc_createAction;
-["Helicopter", 1, ["ACE_SelfActions"], _action,true] call ace_interact_menu_fnc_addActionToClass;
-
 //Orders
 _action = ["Civil_Orders","Civil Orders","\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa",{},{true}] call ace_interact_menu_fnc_createAction;
 [player, 1, ["ACE_SelfActions"], _action] call ace_interact_menu_fnc_addActionToObject;
