@@ -1,7 +1,8 @@
 
 private ["_color","_array"];
 
-_color = [0,0.25,0,1];
+_color = [1,0.5,0,1];
+
 _array = [
 ['\A3\ui_f\data\igui\cfg\simpleTasks\types\run_ca.paa',_color, getPos btc_gear_object, 1.1, 1.1, 0, "Arsenal/Re-deploy", 1],
 ['\A3\Ui_f\data\Logos\a_64_ca.paa',_color, [getPos btc_gear_object select 0,getPos btc_gear_object select 1,(getPos btc_gear_object select 2) + 2], 1.1, 1.1, 0, "", 1],
