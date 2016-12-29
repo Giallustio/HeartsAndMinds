@@ -14,7 +14,7 @@ if (isNil {_cache getVariable "btc_hd_cache"} && {_explosive} && {_damage > 0.6}
 	_pos = getposATL btc_cache_obj;
 	"Bo_GBU12_LGB_MI10" createVehicle _pos;
 	_pos spawn {sleep 2;"M_PG_AT" createVehicle _this;sleep 2;"M_Titan_AT" createVehicle _this;};
-	[_strength] call ace_hearing_fnc_earRinging;
+	[_pos] call btc_fnc_deaf_earringing;
 	deleteVehicle btc_cache_obj;
 	_marker = createmarker [format ["btc_cache_%1", btc_cache_n], btc_cache_pos];
 	_marker setmarkertype "hd_destroy";
