@@ -12,5 +12,5 @@ sleep 1.4;
 if (Alive _suicider && [_suicider] call ace_common_fnc_isAwake) then {
 	{deleteVehicle _x;} forEach attachedObjects _suicider;
 	"Bo_GBU12_LGB_MI10" createVehicle getPos _suicider;
-	playSound3d["A3\Missions_F_EPA\data\sounds\combat_deafness.wss", _suicider, false, (getPosASL _suicider), 5, 1, 100];
+	[_strength] call ace_hearing_fnc_earRinging;
 };
