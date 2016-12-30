@@ -26,7 +26,7 @@ btc_side_done = false;
 btc_side_failed = false;
 btc_side_assigned = true;publicVariable "btc_side_assigned";
 
-[[12,_pos1,_city1 getVariable "name"],"btc_fnc_task_create",true] spawn BIS_fnc_MP;
+[[12,_pos1,_city2 getVariable "name"],"btc_fnc_task_create",true] spawn BIS_fnc_MP;
 
 btc_side_jip_data = [12,_pos1,_city1 getVariable "name"];
 
@@ -87,6 +87,8 @@ _wp setWaypointCombatMode "RED";
 _wp setWaypointSpeed "LIMITED";
 _wp setWaypointFormation "COLUMN";
 _wp setWaypointStatements ["true", "btc_side_failed = true"];
+
+{player commandChat "Convoy has left the starting point!"} remoteExec ["call", -2];
 
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({ canMove _x } count _vehs == 0) || (_group isEqualTo grpNull))};
 

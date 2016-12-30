@@ -1,5 +1,5 @@
 
-private ["_chopper","_array","_cargo_array","_cargo"];
+private ["_chopper","_array","_cargo_array","_cargo","_bbr"];
 
 _chopper = vehicle player;
 _array = [vehicle player] call btc_fnc_log_get_liftable;
@@ -26,7 +26,10 @@ ropeCreate [vehicle player, "slingload0", _cargo, [((_bbr select 1) select 0), (
 _max_cargo  = getNumber (configFile >> "cfgVehicles" >> typeof _chopper >> "slingLoadMaxCargoMass");
 _mass = getMass _cargo;
 
-waitUntil {local _cargo};
+if !(local _cargo) then {
+	[[_cargo, player],{(_this select 0) setOwner owner (_this select 1);}] remoteExec ["call", 2];
+	waitUntil {local _cargo};
+};
 
 if (_mass > _max_cargo) then {
 	private "_new_mass";

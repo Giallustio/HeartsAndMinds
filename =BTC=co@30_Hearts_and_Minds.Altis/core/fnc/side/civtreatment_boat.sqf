@@ -42,7 +42,7 @@ _index = 1 + floor (random (_veh emptyPositions "cargo"));
 _unit assignAsCargoIndex [_veh, _index];
 _unit moveinCargo [_veh, _index];
 sleep 1;
-waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({_x distance _unit > 5000} count playableUnits == 0))};
+waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({_x distance _unit < 5000} count playableUnits > 0))};
 [_unit] call btc_fnc_set_damage;
 
 {_x call btc_fnc_civ_unit_create} foreach units _group;

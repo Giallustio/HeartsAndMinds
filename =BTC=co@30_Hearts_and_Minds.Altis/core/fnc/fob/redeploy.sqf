@@ -11,7 +11,7 @@ btc_int_ask_data = nil;
 
 waitUntil {!(isNil "btc_int_ask_data")};
 
-if (count btc_int_ask_data == 0) exitWith {hint "No FOBs deployed";};
+if (count (btc_int_ask_data select 0) == 0) exitWith {hint "No FOBs deployed";};
 
 _fobs = btc_int_ask_data;
 

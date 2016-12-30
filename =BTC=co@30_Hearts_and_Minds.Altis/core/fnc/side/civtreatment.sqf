@@ -17,7 +17,7 @@ if ( _r < 1)	then {
 	_vehpos = [_pos, 10] call btc_fnc_randomize_pos;
 } else {
 	_houses = [[(_pos select 0),(_pos select 1),0],200] call btc_fnc_getHouses;
-	_pos = getPos (selectRandom _houses);
+	_pos = selectRandom ((selectRandom _houses) buildingPos -1);
 	_vehpos = [(_pos select 0),(_pos select 1),(_pos select 2) + 0.1];
 };
 
@@ -73,7 +73,7 @@ _unit setUnitPos "DOWN";
 
 sleep 1;
 
-waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({_x distance _unit > 5000} count playableUnits == 0))};
+waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({_x distance _unit < 5000} count playableUnits > 0))};
 
 [_unit] call btc_fnc_set_damage;
 
