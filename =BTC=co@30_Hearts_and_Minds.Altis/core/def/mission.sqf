@@ -259,13 +259,14 @@ if (isServer) then {
 	_magazines_static = [];
 	{
 		_static = _x;
-		_magazines_static append (REARM_TURRET_PATHS apply ([_static,_x] call btc_fnc_log_getconfigmagazines));
+		{
+			_magazines_static append (([_static,_x] call btc_fnc_log_getconfigmagazines));
+		} forEach REARM_TURRET_PATHS;
 	} forEach _btc_rearming_static;
 	_magazines_static = _magazines_static - ["FakeWeapon"];
-	_magazines_static_clean = [];
 	{
-		_magazines_static_clean pushBackUnique _x;
-	} forEach _magazines_static;
+		_magazines_static pushBackUnique _x;
+	} forEach +_magazines_static;
 
 	btc_construction_array =
 	[
