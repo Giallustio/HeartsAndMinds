@@ -12,4 +12,6 @@ _array = [
 ];
 if (!isNil "btc_helo_1") then {_array pushBack ['\A3\ui_f\data\map\vehicleicons\iconhelicopter_ca.paa',[0.7,0,0,1], getPos btc_helo_1, 1.1, 1.1, 0, "Only Respawnable", 1];};
 
-[getMarkerPos "btc_base","Base overview. Loading ...",20,30,240,0,_array,0] spawn BIS_fnc_establishingShot;
+[getMarkerPos "btc_base","Base overview. Loading ...",20,30,240,0,_array,0] call BIS_fnc_establishingShot;
+
+enableSaving [false,false];

@@ -2,7 +2,7 @@ enableSaving [false,false];
 //Server
 call compile preprocessFile "core\fnc\compile.sqf";
 
-if (hasInterface) then {btc_intro_done = call btc_fnc_intro;};
+if (hasInterface) then {btc_intro_done = [] spawn btc_fnc_intro;};
 
 call compile preprocessFile "core\def\mission.sqf";
 call compile preprocessFile "define_mod.sqf";
