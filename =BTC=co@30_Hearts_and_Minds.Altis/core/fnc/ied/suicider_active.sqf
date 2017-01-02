@@ -20,9 +20,6 @@ _array = getpos _this nearEntities ["SoldierWB", 30];
 
 if (count _array == 0) exitWith {};
 
-_animP = (animationState _this) select [5,3];
-_this switchMove format ["amovp%1mstpsnonwnondnon",_animP];
-
 _expl1 = "DemoCharge_Remote_Ammo" createVehicle (position _this);
 _expl1 attachTo [_this, [-0.1,0.1,0.15],"Pelvis"];
 _expl1 setVectorDirAndUp [[0.5,0.5,0],[-0.5,0.5,0]];
