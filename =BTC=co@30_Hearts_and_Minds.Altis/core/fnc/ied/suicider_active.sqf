@@ -1,5 +1,5 @@
 
-private ["_trigger","_array","_expl1","_expl2","_expl3","_man","_cond","_animP"];
+private ["_trigger","_array","_expl1","_expl2","_expl3","_man","_cond"];
 
 [_this] joinSilent btc_hq;
 [_this] joinSilent GrpNull;
