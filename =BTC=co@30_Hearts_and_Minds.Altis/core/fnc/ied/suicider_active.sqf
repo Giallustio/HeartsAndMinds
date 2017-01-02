@@ -1,11 +1,10 @@
 
-private ["_trigger","_array","_expl1","_expl2","_expl3","_man","_cond"];
+private ["_trigger","_array","_expl1","_expl2","_expl3","_man","_cond","_animP"];
 
 [_this] joinSilent btc_hq;
 [_this] joinSilent GrpNull;
 
 _this call btc_fnc_rep_remove_eh;
-_this switchmove "";
 
 while {(count (waypoints group _this)) > 0} do { deleteWaypoint ((waypoints group _this) select 0); };
 
@@ -20,6 +19,9 @@ _trigger attachTo [_this,[0,0,0]];
 _array = getpos _this nearEntities ["SoldierWB", 30];
 
 if (count _array == 0) exitWith {};
+
+_animP = (animationState _this) select [5,3];
+_this switchMove format ["amovp%1mstpsnonwnondnon",_animP];
 
 _expl1 = "DemoCharge_Remote_Ammo" createVehicle (position _this);
 _expl1 attachTo [_this, [-0.1,0.1,0.15],"Pelvis"];

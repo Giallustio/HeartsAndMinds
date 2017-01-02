@@ -107,6 +107,7 @@ if (isServer) then {
 	btc_fnc_rep_hd = compile preprocessFile "core\fnc\rep\hd.sqf";
 	btc_fnc_rep_hh = compile preprocessFile "core\fnc\rep\hh.sqf";
 	btc_fnc_rep_killed = compile preprocessFile "core\fnc\rep\killed.sqf";
+	btc_fnc_rep_firednear = compile preprocessFile "core\fnc\rep\firednear.sqf";
 	btc_fnc_rep_remove_eh = compile preprocessFile "core\fnc\rep\remove_eh.sqf";
 
 	//SIDE
