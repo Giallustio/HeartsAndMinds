@@ -1,5 +1,5 @@
 
-private ["_useful","_city","_pos","_road","_roads","_marker","_statics","_tower_type","_tower","_direction","_area"];
+private ["_useful","_city","_pos","_road","_roads","_marker","_statics","_tower_type","_tower","_direction","_area","_power_type","_cord_type","_btc_composition","_btc_composition_tower"];
 
 _useful = btc_city_all select {(_x getVariable ["occupied",false] && {_x getVariable ["type",""] != "NameLocal"} && {_x getVariable ["type",""] != "Hill"} && (_x getVariable ["type",""] != "NameMarine"))};
 
@@ -39,15 +39,23 @@ _marker setmarkertype "hd_flag";
 _marker setmarkertext "Radio Tower";
 _marker setMarkerSize [0.6, 0.6];
 
+//// Randomise composition \\\\
 _tower_type = selectRandom btc_type_tower;
+_power_type = selectRandom btc_type_power;
+_cord_type = selectRandom btc_type_cord;
+_btc_composition_tower = [
+	[_tower_type,0,[0,0,0]],
+	[_cord_type,63,[-1.30664,0.939453,0]],
+	[_power_type,24,[-4.56885,-0.231445,0]]
+];
 
-_tower = createVehicle [_tower_type, _pos, [], 0, "NONE"];
-_tower setDir (_direction);
-_tower setPos (_pos);
-
+//// Create tower with static at _pos \\\\
 _statics = btc_type_gl + btc_type_mg;
 [[(_pos select 0) + (sin(_direction)*5), (_pos select 1) + (cos(_direction)*5), (_pos select 2)],_statics,_direction] call btc_fnc_mil_create_static;
 [[(_pos select 0) - (sin(_direction)*5), (_pos select 1) - (cos(_direction)*5), (_pos select 2)],_statics,_direction + 180] call btc_fnc_mil_create_static;
+
+_btc_composition = [_pos,_direction,_btc_composition_tower] call btc_fnc_create_composition;
+_tower = _btc_composition select ((_btc_composition apply {typeOf _x}) find _tower_type);
 
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !Alive _tower )};
 
@@ -56,11 +64,11 @@ waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !Alive _tower )};
 if (btc_side_aborted || btc_side_failed ) exitWith {
 	[7,"btc_fnc_task_fail",true] spawn BIS_fnc_MP;
 	btc_side_assigned = false;publicVariable "btc_side_assigned";
-	_tower spawn {
+	_btc_composition spawn {
 
-		waitUntil {sleep 5; ({_x distance _this < 300} count playableUnits == 0)};
+		waitUntil {sleep 5; ({_x distance (_this select 0) < 300} count playableUnits == 0)};
 
-		deleteVehicle _this;
+		{deleteVehicle _x} forEach _this;
 	};
 };
 
@@ -68,11 +76,11 @@ if (btc_side_aborted || btc_side_failed ) exitWith {
 
 [7,"btc_fnc_task_set_done",true] spawn BIS_fnc_MP;
 
-_tower spawn {
+_btc_composition spawn {
 
-	waitUntil {sleep 5; ({_x distance _this < 300} count playableUnits == 0)};
+	waitUntil {sleep 5; ({_x distance (_this select 0) < 300} count playableUnits == 0)};
 
-	deleteVehicle _this;
+	{deleteVehicle _x} forEach _this;
 };
 
 btc_side_assigned = false;publicVariable "btc_side_assigned";
