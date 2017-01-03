@@ -208,6 +208,7 @@ if (!isDedicated) then {
 	btc_fnc_marker_debug = compile preprocessFile "core\fnc\common\marker_debug.sqf";
 	btc_fnc_systemchat_debug = compile preprocessFile "core\fnc\common\systemchat_debug.sqf";
 	btc_fnc_show_hint = compile preprocessFile "core\fnc\common\show_hint.sqf";
+	btc_fnc_intro = compile preprocessFile "core\fnc\common\intro.sqf";
 
 	//EH
 	btc_fnc_eh_player_respawn = compile preprocessFile "core\fnc\eh\player_respawn.sqf";

@@ -1,3 +1,4 @@
+
 [] execVM "core\doc.sqf";
 
 [] spawn {
@@ -30,12 +31,12 @@
 		};
 	};
 
-	{[_x] spawn btc_fnc_task_create} foreach [0,1];
-
 	if (player getVariable ["interpreter", false]) then {player createDiarySubject ["Diary log","Diary log"];};
 
 	removeAllWeapons player;
-	btc_gear_object addAction ["<t color='#ff1111'>Arsenal</t>", "['Open',true] spawn BIS_fnc_arsenal;"];
+
+	waitUntil {scriptDone btc_intro_done};
+	{[_x] spawn btc_fnc_task_create} foreach [0,1];
 };
 
 if (btc_debug) then {
