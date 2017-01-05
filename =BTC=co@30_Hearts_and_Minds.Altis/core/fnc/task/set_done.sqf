@@ -19,11 +19,11 @@ switch _this do
 
 		sleep 1;
 
-		_task = player createSimpleTask ["Size the last enemies positions"];
-		_task setSimpleTaskDescription ["Size the last positions held by the enemies","Size the last enemies positions","Size the last enemies positions"];
+		_task = player createSimpleTask ["Seize the last enemies positions"];
+		_task setSimpleTaskDescription ["Seize the last positions held by the enemies","Seize the last enemies positions","Seize the last enemies positions"];
 		player setCurrentTask _task;
 		player setVariable ["task_2",_task];
-		["TaskAssigned",["New task assigned!","Size the last positions held by the enemies"]] call bis_fnc_showNotification;
+		["TaskAssigned",["New task assigned!","Seize the last positions held by the enemies"]] call bis_fnc_showNotification;
 	};
 	case 3 : {
 		private "_task";
