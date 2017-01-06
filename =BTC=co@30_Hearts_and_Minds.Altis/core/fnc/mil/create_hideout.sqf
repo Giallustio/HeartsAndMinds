@@ -1,5 +1,5 @@
 
-private ["_city","_pos","_radius","_hideout","_random_pos","_radius_x","_radius_y","_id"];
+private ["_city","_pos","_radius","_hideout","_random_pos","_radius_x","_radius_y","_id","_btc_composition_hideout"];
 
 _city = objNull;
 
@@ -38,9 +38,7 @@ _radius_y = btc_hideouts_radius;
 _city setVariable ["RadiusX",_radius_x];
 _city setVariable ["RadiusY",_radius_y];
 
-[_pos,(random 360),btc_composition_hideout] call btc_fnc_create_composition;
-
-_hideout = nearestObject [_pos, "C_supplyCrate_F"];
+_hideout = [_pos] call btc_fnc_mil_create_hideout_composition;
 clearWeaponCargoGlobal _hideout;clearItemCargoGlobal _hideout;clearMagazineCargoGlobal _hideout;
 _hideout setVariable ["id",btc_hideouts_id];
 _hideout setVariable ["rinf_time",time];

@@ -89,6 +89,7 @@ if (isServer) then {
 	btc_fnc_mil_hd_hideout = compile preprocessFile "core\fnc\mil\hd_hideout.sqf";
 	//btc_fnc_mil_eh_killed = compile preprocessFile "core\fnc\mil\eh_killed.sqf";
 	btc_fnc_mil_create_hideout = compile preprocessFile "core\fnc\mil\create_hideout.sqf";
+	btc_fnc_mil_create_hideout_composition = compile preprocessFile "core\fnc\mil\create_hideout_composition.sqf";
 	btc_fnc_mil_create_static = compile preprocessFile "core\fnc\mil\create_static.sqf";
 	btc_fnc_mil_patrol_create = compile preprocessFile "core\fnc\mil\patrol_create.sqf";
 	btc_fnc_mil_patrol_addWP = compile preprocessFile "core\fnc\mil\patrol_addWP.sqf";

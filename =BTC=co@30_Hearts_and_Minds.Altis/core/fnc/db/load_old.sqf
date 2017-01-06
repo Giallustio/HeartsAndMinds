@@ -76,9 +76,7 @@ _array_ho = profileNamespace getVariable [format ["btc_hm_%1_ho",_name],[]];
 	_id = (_x select 4);
 	_city = btc_city_all select _id;
 
-	[_pos,(random 360),btc_composition_hideout] call btc_fnc_create_composition;
-
-	_hideout = nearestObject [_pos, "C_supplyCrate_F"];
+	_hideout = [_pos] call btc_fnc_mil_create_hideout_composition;
 	clearWeaponCargoGlobal _hideout;clearItemCargoGlobal _hideout;clearMagazineCargoGlobal _hideout;
 
 	_city setpos _pos;
