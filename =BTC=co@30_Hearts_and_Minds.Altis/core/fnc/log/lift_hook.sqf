@@ -45,7 +45,7 @@ if !(local _cargo) then {
 	waitUntil {local _cargo};
 };
 
-if (_mass > _max_cargo) then {
+if ((_mass + 400) > _max_cargo) then {
 	private "_new_mass";
 	_cargo setVariable ["mass",_mass];
 	_new_mass = (_max_cargo - 1000);
