@@ -9,7 +9,7 @@ _can_lift = false;
 _cargo_array = nearestObjects [_chopper, _array, 30];
 _cargo = objNull;
 _cargo_array = _cargo_array - [_chopper];
-if (count _cargo_array > 0 && (typeOf (_cargo_array select 0)) isEqualTo "ACE_friesAnchorBar") then {_cargo_array deleteAt 0;};
+if (count _cargo_array > 0 && ((_cargo_array select 0) isKindOf "ACE_friesGantry") OR (typeof (_cargo_array select 0) isEqualTo "ACE_friesAnchorBar")) then {_cargo_array deleteAt 0;};
 if (count _cargo_array > 0) then {_cargo = _cargo_array select 0;_can_lift = true;} else {_can_lift = false;};
 
 if !(_can_lift) exitWith {false};
