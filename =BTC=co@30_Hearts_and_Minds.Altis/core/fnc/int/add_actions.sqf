@@ -43,15 +43,6 @@ _action = ["Dismantle_FOB", "Dismantle FOB", "", {(_this select 0) spawn btc_fnc
 _action = ["Place", "Place", "\A3\ui_f\data\map\markers\military\end_CA.paa", {(_this select 0) spawn btc_fnc_log_place}, {!btc_log_placing}] call ace_interact_menu_fnc_createAction;
 {[_x, 0, ["ACE_MainActions","Logistic"], _action] call ace_interact_menu_fnc_addActionToClass;} foreach btc_log_def_placeable;
 
-//Lift
-_action = ["Lift","Lift","\A3\ui_f\data\igui\cfg\simpleTasks\letters\L_ca.paa",{},{(typeOf vehicle player) isKindOf "Helicopter"}] call ace_interact_menu_fnc_createAction;
-[player, 1, ["ACE_SelfActions"], _action] call ace_interact_menu_fnc_addActionToObject;
-
-_action = ["Deploy_ropes","Deploy ropes","\A3\Structures_F_Heli\VR\Helpers\Data\VR_Symbol_Heli_Slingloading_CA.paa",{[] spawn btc_fnc_log_lift_deploy_ropes;},{!btc_ropes_deployed && {((driver vehicle player) isEqualTo player)} && {(getposATL player) select 2 > 4}}] call ace_interact_menu_fnc_createAction;
-[player, 1, ["ACE_SelfActions","Lift"], _action] call ace_interact_menu_fnc_addActionToObject;
-_action = ["Cut_ropes","Cut ropes","\z\ace\addons\logistics_wirecutter\ui\wirecutter_ca.paa",{[] spawn btc_fnc_log_lift_destroy_ropes;},{btc_ropes_deployed && {((driver vehicle player) isEqualTo player)}}] call ace_interact_menu_fnc_createAction;
-[player, 1, ["ACE_SelfActions","Lift"], _action] call ace_interact_menu_fnc_addActionToObject;
-
 //Orders
 _action = ["Civil_Orders","Civil Orders","\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa",{},{true}] call ace_interact_menu_fnc_createAction;
 [player, 1, ["ACE_SelfActions"], _action] call ace_interact_menu_fnc_addActionToObject;
