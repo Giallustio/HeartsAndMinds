@@ -1,5 +1,5 @@
 
-private ["_p_civ_veh","_p_db","_p_en","_hideout_n","_cache_info_def","_cache_info_ratio","_info_chance","_p_rep","_p_skill","_c_array","_tower","_array","_chopper","_p_civ","_btc_rearming_vehicles","_vehicles","_magazines","_p_city_radius","_magazines_static","_static","_btc_rearming_static","_weapons_usefull"];
+private ["_p_civ_veh","_p_db","_p_en","_hideout_n","_cache_info_def","_cache_info_ratio","_info_chance","_p_rep","_p_skill","_c_array","_tower","_array","_chopper","_p_civ","_btc_rearming_vehicles","_vehicles","_magazines","_p_city_radius","_magazines_static","_static","_btc_rearming_static","_magazines_clean","_weapons_usefull"];
 
 btc_version = 1.151; diag_log format ["=BTC= HEARTS AND MINDS VERSION %1",(str(btc_version) + ".3")];
 
@@ -236,13 +236,12 @@ btc_supplies_mat = "Land_Cargo20_red_F";
 if (isServer) then {
 	#define	REARM_TURRET_PATHS  [[-1], [0], [0,0], [0,1], [1], [2], [0,2]]
 
-	_btc_rearming_vehicles = (btc_vehicles + btc_helo) apply {typeOf _x};
+	_btc_rearming_vehicles = [];
 	{
-		_btc_rearming_vehicles = _btc_rearming_vehicles - [_x];
-		if (count (configFile >> "CfgVehicles" >> _x >> "Turrets") > 0) then {
-			_btc_rearming_vehicles pushBack _x;
+		if (count (configFile >> "CfgVehicles" >> typeOf _x >> "Turrets") > 0) then {
+			_btc_rearming_vehicles pushBackUnique typeOf _x;
 		};
-	} forEach _btc_rearming_vehicles;
+	} forEach (btc_vehicles + btc_helo);
 
 	_btc_rearming_static =
 	[
@@ -267,9 +266,8 @@ if (isServer) then {
 	} forEach _btc_rearming_static;
 	_magazines_static = _magazines_static - ["FakeWeapon"];
 	{
-		_magazines_static = _magazines_static - [_x];
-		_magazines_static pushBack _x;
-	} forEach _magazines_static;
+		_magazines_static pushBackUnique _x;
+	} forEach +_magazines_static;
 
 	btc_construction_array =
 	[
@@ -342,11 +340,11 @@ if (isServer) then {
 				{
 					_magazines append (([_vehicles,_x] call btc_fnc_log_getconfigmagazines));
 				} forEach REARM_TURRET_PATHS;
+				_magazines_clean = [];
 				{
-					_magazines = _magazines - [_x];
-					_magazines pushBack _x;
+					_magazines_clean pushBackUnique _x;
 				} forEach _magazines;
-				_magazines
+				_magazines_clean
 			})
 	];
 	publicVariable "btc_construction_array";
