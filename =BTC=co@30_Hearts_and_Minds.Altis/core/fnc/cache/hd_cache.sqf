@@ -15,7 +15,7 @@ if (isNil {_cache getVariable "btc_hd_cache"} && {_explosive} && {_damage > 0.6}
 	_pos = getposATL btc_cache_obj;
 	"Bo_GBU12_LGB_MI10" createVehicle _pos;
 	_pos spawn {sleep 2;"M_PG_AT" createVehicle _this;sleep 2;"M_Titan_AT" createVehicle _this;};
-	playSound3d["A3\Missions_F_EPA\data\sounds\combat_deafness.wss", btc_cache_obj, false, _pos, 1, 1];
+	[_pos] call btc_fnc_deaf_earringing;
 	deleteVehicle btc_cache_obj;
 	_marker = createmarker [format ["btc_cache_%1", btc_cache_n], btc_cache_pos];
 	_marker setmarkertype "hd_destroy";

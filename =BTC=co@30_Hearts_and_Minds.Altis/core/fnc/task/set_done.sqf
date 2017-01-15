@@ -19,7 +19,7 @@ switch _this do
 
 		sleep 1;
 
-		[player,["task_2"],["Size the last positions held by the enemies","Size the last enemies positions","Size the last enemies positions"],objNull,true,1,true,"move",true] call BIS_fnc_taskCreate;
+		[player,["task_2"],["Seize the last positions held by the enemies","Size the last enemies positions","Seize the last enemies positions"],objNull,true,1,true,"move",true] call BIS_fnc_taskCreate;
 	};
 	case 3 : {
 		private "_task";

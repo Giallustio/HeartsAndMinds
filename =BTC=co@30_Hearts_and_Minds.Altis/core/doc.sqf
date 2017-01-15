@@ -14,7 +14,6 @@ Keep in mind that all the actions will be available, even if you do not need the
 player createDiaryRecord ["Documentation", ["Deafness", "
 <img image='\z\ace\addons\hearing\UI\Icon_Module_Hearing_ca.paa' width='20' height='20'/> Use the earplugs to protext your ears and avoid combat deafness.<br/>
 You can put them on with your self interaction key.<br/><br/>
-Note: the playSound ['',true] command is bugged, so if you are deaf you will not hear any ring sound.
 	"]
 ];
 
