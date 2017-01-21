@@ -23,7 +23,7 @@ deTach _towed;
 
 _pos = getpos _towed;
 if ((_pos select 2) < -0.05) then {
-	_towed setpos [_pos select 0, _pos select 1, 0];
+	_towed setposasl [_pos select 0, _pos select 1, (_pos select 2) + (getPosASL _veh) select 2];
 } else {
 	_towed setVelocity [0, 0, 0.01];
 };
