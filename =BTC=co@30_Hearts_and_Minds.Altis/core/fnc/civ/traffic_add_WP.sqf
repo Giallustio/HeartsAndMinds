@@ -19,26 +19,27 @@ if ({_x distance _active_city < (_area/2) || _x distance leader _group < (_area/
 	{deleteVehicle _x;} foreach units _group;deleteGroup _group;
 };
 
-//Sometimes the waypoints is completed but too far do to water, island etc
+//Sometimes the waypoints is completed but too far do to obstacle (water for island etc)
 if ((leader _group) distance _end_city > 300) then {
 	_noaccess pushBack _end_city;
 	_tmp_area = _area - ((leader _group) distance _end_city) * 0.3 * count _noaccess;
-	if (btc_debug) then {systemChat format ["Traffic ID %1 , count %2, tmp_area %3, %4, %5", _group getVariable "btc_traffic_id", count _noaccess, _tmp_area];};
+	if (btc_debug) then {systemChat format ["Traffic ID %1 , count %2, tmp_area %3", _group getVariable "btc_traffic_id", count _noaccess, _tmp_area];};
 } else {
 	_tmp_area = _area;
 };
 
-//Find a useful end city from the start city
+//Find a useful end city from the start city depending of vehicle type
 if (_isboat) then {
 	_useful = btc_city_all select {_x getVariable ["hasbeach",false]};
 } else {
 	_useful = btc_city_all select {_x getVariable ["type",""] != "NameMarine"};
 };
 _cities =  _useful select {(_x distance _active_city < _tmp_area) && !(_x in _noaccess)};
+//Choose a city to have the _active_city (where the player is) between the traffic (eg. leader _group) and the _end_city :  leader _group  ----> _active_city  ----> _end_city
 _dirTo = (leader _group) getdir _active_city;
 _cities = _cities select {_ang = _active_city getdir _x; (abs(_ang - _dirTo) min (360 - abs(_ang - _dirTo)) < 45);};
 
-//Check if end city has been found, if not take the closer city
+//Check if _end_city has been found, if not take the closer city which is _useful
 if (_cities isEqualTo []) then {
 	_cities = [[[_active_city, leader _group] select (_active_city in _noaccess),_useful,false] call btc_fnc_find_closecity];
 	if (btc_debug) then {systemChat format ["_cities is [] ID:%1", _group getVariable "btc_traffic_id"];};
@@ -49,10 +50,11 @@ _group setVariable ["noaccess",_noaccess];
 _pos = getPos _end_city;
 
 if (_isboat) then {
-	_pos = [_pos, 0, ((_active_city getVariable ["RadiusX",0]) + (_active_city getVariable ["RadiusY",0])), 13, 2, 60 * (pi / 180), 0] call BIS_fnc_findSafePos;
+	_pos = (selectBestPlaces [_pos,(_active_city getVariable ["RadiusX",0]) + (_active_city getVariable ["RadiusY",0]), "sea",10,1]) select 0 select 0;
 	_pos = [_pos select 0, _pos select 1, 0];
 };
 
+//Add Waypoints
 private ["_wp","_wp_1"];
 
 while {(count (waypoints _group)) > 0} do {
