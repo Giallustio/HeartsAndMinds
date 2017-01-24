@@ -42,7 +42,6 @@ _cities = _cities select {_ang = _active_city getdir _x; (abs(_ang - _dirTo) min
 //Check if _end_city has been found, if not take the closer city which is _useful
 if (_cities isEqualTo []) then {
 	_cities = [[[_active_city, leader _group] select (_active_city in _noaccess),_useful,false] call btc_fnc_find_closecity];
-	if (btc_debug) then {systemChat format ["_cities is [] ID:%1", _group getVariable "btc_traffic_id"];};
 };
 _end_city = selectRandom _cities;
 _group setVariable ["end_city",_end_city];
