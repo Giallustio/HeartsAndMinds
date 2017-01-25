@@ -19,11 +19,7 @@ if (_useful isEqualTo []) then {
 	_pos = getPos(selectRandom _useful);
 };
 
-if (count (_pos nearRoads 200) > 0) then {
-	_Spos = getPos ((_pos nearRoads 200) select 0);
-	_pos_iswater = false;
-	_veh_type = selectRandom btc_civ_type_veh;
-} else {
+if ((_pos nearRoads 200) isEqualTo []) then {
 	_Spos = [_pos, 0, 500, 13, [0,1] select btc_p_sea, 60 * (pi / 180), 0] call BIS_fnc_findSafePos;
 	_Spos = [_Spos select 0, _Spos select 1, 0];
 	_pos_iswater = (surfaceIsWater _Spos);
@@ -32,6 +28,10 @@ if (count (_pos nearRoads 200) > 0) then {
 	} else {
 		_veh_type = selectRandom btc_civ_type_veh;
 	};
+} else {
+	_Spos = getPos (selectRandom (_pos nearRoads 200));
+	_pos_iswater = false;
+	_veh_type = selectRandom btc_civ_type_veh;
 };
 
 _veh = createVehicle [_veh_type, _Spos, [], 0, "FLY"];
