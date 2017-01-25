@@ -26,6 +26,7 @@ if ((leader _group) distance _end_city > 300) then {
 	if (btc_debug) then {systemChat format ["Patrol ID %1 , count %2, area %3", _group getVariable "btc_patrol_id", count _noaccess, _tmp_area];};
 } else {
 	_tmp_area = _area;
+	_noaccess = [];
 };
 
 //Find a useful end city from the start city depending of vehicle type
