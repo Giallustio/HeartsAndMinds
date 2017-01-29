@@ -14,7 +14,11 @@ while {(count (waypoints _group)) > 0} do {deleteWaypoint ((waypoints _group) se
 
 switch (_order) do {
 	case 1 : {doStop _unit;};
-	case 2 : {doStop _unit;_unit setUnitPos "DOWN";};
+	case 2 : {
+		doStop _unit;
+		_unit setUnitPos "DOWN";
+		[_unit, format ["AmovP%1MstpSnonWnonDnon_AmovPpneMstpSnonWnonDnon",((animationState _unit) select [5,3])], 1] call ace_common_fnc_doAnimation;
+	};
 	case 3 : {
 		private "_wp_pos";
 		_wp_pos = [getPos _unit, 200] call btc_fnc_randomize_pos;

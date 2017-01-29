@@ -64,11 +64,7 @@ switch (true) do {
 	};
 	case ((_random isEqualTo 2) || _pos_iswater) : {
 		private ["_veh_type","_newZone","_veh","_cargo"];
-		if (count (_pos nearRoads 150) > 0) then {
-			_newZone = getPos ((_pos nearRoads 150) select 0);
-			_pos_iswater = false;
-			_veh_type = selectRandom (btc_type_motorized + [selectRandom btc_civ_type_veh]);
-		} else {
+		if ((_pos nearRoads 150) isEqualTo []) then {
 			_newZone = [_pos,0,500,13,btc_p_sea] call btc_fnc_findsafepos;
 			_pos_iswater = surfaceIsWater _newZone;
 			if (_pos_iswater) then {
@@ -76,6 +72,10 @@ switch (true) do {
 			} else {
 				_veh_type = selectRandom (btc_type_motorized + [selectRandom btc_civ_type_veh]);
 			};
+		} else {
+			_newZone = getPos (selectRandom (_pos nearRoads 150));
+			_pos_iswater = false;
+			_veh_type = selectRandom (btc_type_motorized + [selectRandom btc_civ_type_veh]);
 		};
 
 		_needdiver = getText(configfile >> "CfgVehicles" >> _veh_type >> "simulation") isEqualTo "submarinex";

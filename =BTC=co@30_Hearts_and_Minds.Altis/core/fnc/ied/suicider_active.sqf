@@ -22,13 +22,16 @@ if (count _array == 0) exitWith {};
 
 _expl1 = "DemoCharge_Remote_Ammo" createVehicle (position _this);
 _expl1 attachTo [_this, [-0.1,0.1,0.15],"Pelvis"];
-_expl1 setVectorDirAndUp [[0.5,0.5,0],[-0.5,0.5,0]];
 _expl2 = "DemoCharge_Remote_Ammo" createVehicle (position _this);
 _expl2 attachTo [_this, [0,0.15,0.15],"Pelvis"];
-_expl2 setVectorDirAndUp [[1,0,0],[0,1,0]];
 _expl3 = "DemoCharge_Remote_Ammo" createVehicle (position _this);
 _expl3 attachTo [_this, [0.1,0.1,0.15],"Pelvis"];
-_expl3 setVectorDirAndUp [[0.5,-0.5,0],[0.5,0.5,0]];
+
+[[_expl1,_expl2,_expl3], {
+	(_this select 0) setVectorDirAndUp [[0.5,0.5,0],[-0.5,0.5,0]];
+	(_this select 1) setVectorDirAndUp [[1,0,0],[0,1,0]];
+	(_this select 2) setVectorDirAndUp [[0.5,-0.5,0],[0.5,0.5,0]];
+}] remoteExec ["call", 0, false];
 
 _man = _array select 0;
 
