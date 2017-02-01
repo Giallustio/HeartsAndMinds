@@ -101,10 +101,12 @@ if (_city getVariable ["spawn_more",false]) then {
 	for "_i" from 1 to (2 + round random 3) do {[_city,_radius,(4 + random 3),(random 1)] call btc_fnc_mil_create_group;};
 };
 
-if (btc_cache_pos distance _city < (_radius_x+_radius_y)) then {
-	if (count (btc_cache_pos nearEntities ["Man", 30]) > 3) exitWith {};
-	[btc_cache_pos,8,3,0.2] call btc_fnc_mil_create_group;
-	[btc_cache_pos,60,4,0.5] call btc_fnc_mil_create_group;
+if !(btc_cache_pos isEqualTo []) then {
+	if (btc_cache_pos distance _city < (_radius_x+_radius_y)) then {
+		if (count (btc_cache_pos nearEntities ["Man", 30]) > 3) exitWith {};
+		[btc_cache_pos,8,3,0.2] call btc_fnc_mil_create_group;
+		[btc_cache_pos,60,4,0.5] call btc_fnc_mil_create_group;
+	};
 };
 
 if (_has_ho && {!(_city getVariable ["ho_units_spawned",false])}) then {
