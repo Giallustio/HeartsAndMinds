@@ -638,6 +638,7 @@ btc_rep_bonus_mil_killed = 0.25;
 
 btc_rep_malus_civ_hd = - 10;
 btc_rep_malus_civ_killed = - 10;
+btc_rep_malus_civ_firenear = - 5;
 btc_rep_malus_player_respawn = - 10;
 btc_rep_malus_veh_killed = 25;
 
