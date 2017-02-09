@@ -51,6 +51,7 @@ _p_rep = (paramsArray select 34);
 ace_rearm_level = (paramsArray select 35);
 btc_p_sea  = if ((paramsArray select 36) isEqualTo 0) then {false} else {true};
 _p_city_radius = (paramsArray select 37) * 100;
+btc_side_mission_cycle = true;
 btc_p_debug  = (paramsArray select 38);
 
 //MED
