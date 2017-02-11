@@ -146,6 +146,7 @@ if (isServer OR (!isDedicated && !hasInterface)) then {
 
 //COMMON
 //btc_fnc_veh_track_marker = compile preprocessFile "core\fnc\common\veh_track_marker.sqf";
+btc_fnc_find_veh_with_turret = compile preprocessFile "core\fnc\common\find_veh_with_turret.sqf";
 
 //DB
 btc_fnc_db_add_veh = compile preprocessFile "core\fnc\db\add_veh.sqf";
