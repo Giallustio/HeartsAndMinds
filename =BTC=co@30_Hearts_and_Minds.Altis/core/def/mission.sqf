@@ -605,7 +605,7 @@ switch (true) do {
 	case (_p_en == 10) : {
 		btc_hq				= btc_hq_red;
 		btc_enemy_side		= east;
-		btc_type_units		= ["O_T_Soldier_A_F","O_T_Soldier_AAR_F","O_T_Soldier_AR_F","O_T_Medic_F","O_T_Engineer_F","O_T_Soldier_Exp_F","O_T_Soldier_GL_F","O_T_Soldier_M_F","O_V_Soldier_JTAC_ghex_F","O_V_Soldier_Exp_ghex_F","O_V_Soldier_M_ghex_F","O_V_Soldier_ghex_F","O_V_Soldier_Medic_ghex_F","O_V_Soldier_LAT_ghex_F","O_V_Soldier_TL_ghex_F","O_T_Recon_JTAC_F","O_T_Recon_M_F","O_T_Recon_Medic_F","O_T_Recon_LAT_F","O_T_ghillie_tna_F","O_T_ghilie_tna_F"]
+		btc_type_units		= ["O_T_Soldier_A_F","O_T_Soldier_AAR_F","O_T_Soldier_AR_F","O_T_Medic_F","O_T_Engineer_F","O_T_Soldier_Exp_F","O_T_Soldier_GL_F","O_T_Soldier_M_F","O_V_Soldier_JTAC_ghex_F","O_V_Soldier_Exp_ghex_F","O_V_Soldier_M_ghex_F","O_V_Soldier_ghex_F","O_V_Soldier_Medic_ghex_F","O_V_Soldier_LAT_ghex_F","O_V_Soldier_TL_ghex_F","O_T_Recon_JTAC_F","O_T_Recon_M_F","O_T_Recon_Medic_F","O_T_Recon_LAT_F","O_T_ghillie_tna_F"]
 ;
 		btc_type_divers		= ["O_T_Diver_F","O_T_Diver_TL_F","O_T_Diver_Exp_F"];
 		btc_type_crewmen	= "O_T_Crew_F";
