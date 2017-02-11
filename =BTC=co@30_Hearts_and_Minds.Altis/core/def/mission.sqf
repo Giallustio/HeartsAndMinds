@@ -629,6 +629,7 @@ switch (true) do {
 };
 private _veh_armed = [_allvehicles] call btc_fnc_find_veh_with_turret;
 btc_type_motorized_armed = _veh_armed select {getText(configFile >> "cfgvehicles" >> _x >> "faction") isEqualTo getText(configFile >> "cfgvehicles" >> btc_type_motorized select (count (btc_type_motorized) -1) >> "faction")};
+btc_type_motorized_armed = (btc_type_motorized_armed select {(_x find "UAV") isEqualTo -1}) select {(_x find "UGV")  isEqualTo -1};
 
 
 //Rep
