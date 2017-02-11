@@ -98,7 +98,15 @@ if (_has_en) then {
 
 if (_city getVariable ["spawn_more",false]) then {
 	_city setVariable ["spawn_more",false];
-	for "_i" from 1 to (2 + round random 3) do {[_city,_radius,(4 + random 3),(random 1)] call btc_fnc_mil_create_group;};
+	for "_i" from 1 to (2 + round random 3) do {
+		[_city,_radius,(4 + random 3),(random 1)] call btc_fnc_mil_create_group;
+	};
+	if (btc_p_veh_armed_spawn_more) then {
+		private _closest = [_city,btc_city_all select {!(_x getVariable ["active",false])},false] call btc_fnc_find_closecity;
+		for "_i" from 1 to (1 + round random 2) do {
+			[_closest,getpos _city,1,selectRandom btc_type_motorized_armed] spawn btc_fnc_mil_send;
+		};
+	};
 };
 
 if !(btc_cache_pos isEqualTo []) then {
@@ -133,7 +141,7 @@ if (_has_ho && {!(_city getVariable ["ho_units_spawned",false])}) then {
 			[[(_pos select 0) - 7,(_pos select 1) - 7,0],_statics,225] call btc_fnc_mil_create_static;
 		};
 	};
-	if (btc_p_veh_armed) then 	{
+	if (btc_p_veh_armed_ho) then 	{
 		_closest = [_city,btc_city_all select {!(_x getVariable ["active",false])},false] call btc_fnc_find_closecity;
 		for "_i" from 1 to (2 + round random 3) do {
 			[_closest,_pos,1,selectRandom btc_type_motorized_armed] spawn btc_fnc_mil_send;
