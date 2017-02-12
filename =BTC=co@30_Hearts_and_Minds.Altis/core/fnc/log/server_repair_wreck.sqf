@@ -16,7 +16,6 @@ _veh  = createVehicle [_type, [_pos select 0, _pos select 1, 0], [], 0, "CAN_COL
 _veh setDir _dir;
 _veh setVariable ["btc_dont_delete",true];
 
-if ((isNumber (configfile >> "CfgVehicles" >> typeof _veh >> "ace_fastroping_enabled")) && !(typeof _veh isEqualTo "RHS_UH1Y_d")) then {[_veh] call ace_fastroping_fnc_equipFRIES};
 if(getNumber(configFile >> "CfgVehicles" >> typeof _veh >> "isUav")==1) then {
 	createVehicleCrew _veh;
 };
