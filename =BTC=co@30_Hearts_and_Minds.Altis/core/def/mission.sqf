@@ -521,7 +521,7 @@ switch (true) do {
 	case (_p_en == 3 && isClass(configFile >> "cfgVehicles" >> "rhs_g_Soldier_F")) : {
 		btc_hq				= btc_hq_green;
 		btc_enemy_side		= resistance;
-		btc_type_units		= ["rhs_g_Soldier_F","rhs_g_medic_F","rhs_g_engineer_F","rhs_g_Soldier_exp_F","rhs_g_Soldier_GL_F","rhs_g_Soldier_AAT_F","rhs_g_Soldier_AR_F","rhs_g_Soldier_AAR_F","rhs_g_Soldier_M_F","rhs_g_uniform5_base","rhs_g_uniform1_base","rhs_g_uniform2_base","rhs_g_uniform3_base","rhs_g_uniform4_base","rhs_g_Soldier_F2","rhs_g_Soldier_F","rhs_g_Soldier_LAT_F","rhs_g_Soldier_lite_F","rhs_g_Soldier_AT_F","rhs_g_Soldier_TL_F","rhs_g_Soldier_SL_F"];
+		btc_type_units		= ["rhs_g_Soldier_F","rhs_g_medic_F","rhs_g_engineer_F","rhs_g_Soldier_exp_F","rhs_g_Soldier_GL_F","rhs_g_Soldier_AAT_F","rhs_g_Soldier_AR_F","rhs_g_Soldier_AAR_F","rhs_g_Soldier_M_F","rhs_g_uniform5_base","rhs_g_uniform1_base","rhs_g_uniform2_base","rhs_g_uniform3_base","rhs_g_uniform4_base","rhs_g_Soldier_F2","rhs_g_Soldier_F","rhs_g_Soldier_LAT_F","rhs_g_Soldier_lite_F","rhs_g_Soldier_AT_F","rhs_g_Soldier_AA_F","rhs_g_Soldier_TL_F","rhs_g_Soldier_SL_F"];
 		btc_type_divers		= ["I_diver_F","I_diver_exp_F","I_diver_TL_F"];
 		btc_type_crewmen	= "rhs_g_Crew_F";
 		btc_type_vehicles	= ["RHS_UAZ_MSV_01","rhs_uaz_open_MSV_01","rhs_btr60_msv","rhs_btr70_msv","rhs_bmd1_chdkz","rhs_bmd2_chdkz","RHS_Ural_MSV_01","RHS_Ural_Open_MSV_01","RHS_Ural_Open_Flat_MSV_01","RHS_Ural_Flat_MSV_01"];
@@ -640,7 +640,7 @@ btc_rep_malus_civ_hd = - 10;
 btc_rep_malus_civ_killed = - 10;
 btc_rep_malus_civ_firenear = - 5;
 btc_rep_malus_player_respawn = - 10;
-btc_rep_malus_veh_killed = 25;
+btc_rep_malus_veh_killed = - 25;
 
 //Side
 if (isNil "btc_side_assigned") then {btc_side_assigned = false;};
