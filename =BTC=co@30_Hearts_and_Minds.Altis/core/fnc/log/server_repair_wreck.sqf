@@ -18,9 +18,8 @@ _veh setDir _dir;
 {_veh setObjectTexture [ _foreachindex, _x ];} forEach _textures;
 _veh setVariable ["btc_dont_delete",true];
 
-if ((isNumber (configfile >> "CfgVehicles" >> typeof _veh >> "ace_fastroping_enabled")) && !(typeof _veh isEqualTo "RHS_UH1Y_d")) then {[_veh] call ace_fastroping_fnc_equipFRIES};
 if(getNumber(configFile >> "CfgVehicles" >> typeof _veh >> "isUav")==1) then {
 	createVehicleCrew _veh;
 };
 
-btc_vehicles pushBack _veh;
+_veh call btc_fnc_db_add_veh;
