@@ -19,4 +19,4 @@ if(getNumber(configFile >> "CfgVehicles" >> typeof _veh >> "isUav")==1) then {
 	createVehicleCrew _veh;
 };
 
-btc_vehicles = btc_vehicles + [_veh];
+_veh call btc_fnc_db_add_veh;

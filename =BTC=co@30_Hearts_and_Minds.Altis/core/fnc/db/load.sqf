@@ -221,8 +221,7 @@ diag_log format ["5: %1",(_x select 5)];
 	_veh setFuel (_x select 3);
 	_veh setDamage (_x select 4);
 	_veh setVariable ["btc_dont_delete",true];
-	btc_vehicles pushBack _veh;
-	_veh addEventHandler ["Killed", {_this call btc_fnc_eh_veh_killed}];
+	_veh call btc_fnc_db_add_veh;
 	{
 		private ["_type","_cargo_obj","_obj","_weap_obj","_mags_obj","_items_obj"];
 		//{_cargo pushBack [(typeOf _x),[getWeaponCargo _x,getMagazineCargo _x,getItemCargo _x]]} foreach (_x getVariable ["cargo",[]]);
