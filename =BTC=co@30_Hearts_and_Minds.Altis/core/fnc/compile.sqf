@@ -130,7 +130,7 @@ if (isServer) then {
 	//LOG
 	btc_fnc_log_getconfigmagazines = compile preprocessFile "core\fnc\log\getconfigmagazines.sqf";
 	btc_fnc_log_CuratorObjectPlaced_s = compile preprocessFile "core\fnc\log\CuratorObjectPlaced_s.sqf";
-	btc_fnc_log_garage = compile preprocessFile "core\fnc\common\garage.sqf";
+	btc_fnc_log_createVehicle = compile preprocessFile "core\fnc\log\createVehicle.sqf";
 
 	//DEAF
 	btc_fnc_deaf_earringing = compile preprocessFile "core\fnc\deaf\earringing.sqf";
@@ -238,6 +238,9 @@ if (!isDedicated) then {
 	btc_fnc_info_search_for_intel = compile preprocessFile "core\fnc\info\search_for_intel.sqf";
 	btc_fnc_info_troops = compile preprocessFile "core\fnc\info\troops.sqf";
 	btc_fnc_info_ask_reputation = compile preprocessFile "core\fnc\info\ask_reputation.sqf";
+
+	//LOG
+	btc_fnc_log_garage = compile preprocessFile "core\fnc\log\garage.sqf";
 
 	//TASK
 	btc_fnc_task_create = compile preprocessFileLineNumbers "core\fnc\task\create.sqf";
