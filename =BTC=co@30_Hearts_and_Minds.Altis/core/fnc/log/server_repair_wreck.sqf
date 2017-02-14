@@ -15,6 +15,7 @@ sleep 1;
 _veh  = createVehicle [_type, [_pos select 0, _pos select 1, 0], [], 0, "CAN_COLLIDE"];
 _veh setDir _dir;
 _veh setVariable ["btc_dont_delete",true];
+
 if(getNumber(configFile >> "CfgVehicles" >> typeof _veh >> "isUav")==1) then {
 	createVehicleCrew _veh;
 };

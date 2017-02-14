@@ -1,9 +1,11 @@
+
 [] execVM "core\doc.sqf";
 
 [] spawn {
 	waitUntil {!isNull player};
 
 	player addRating 9999;
+	["InitializePlayer", [player]] call BIS_fnc_dynamicGroups;
 
 	player addEventHandler ["Respawn", btc_fnc_eh_player_respawn];
 	player addEventHandler ["CuratorObjectPlaced", btc_fnc_eh_CuratorObjectPlaced];
@@ -29,26 +31,24 @@
 		};
 	};
 
-	{[_x] spawn btc_fnc_task_create} foreach [0,1];
-
 	if (player getVariable ["interpreter", false]) then {player createDiarySubject ["Diary log","Diary log"];};
 
 	removeAllWeapons player;
-	btc_gear_object addAction ["<t color='#ff1111'>Arsenal</t>", "['Open',true] spawn BIS_fnc_arsenal;"];
+
+	waitUntil {scriptDone btc_intro_done};
+	{[_x] spawn btc_fnc_task_create} foreach [0,1];
 };
 
 if (btc_debug) then {
+
+	private ["_eh"];
+
 	onMapSingleClick "if (vehicle player == player) then {player setpos _pos} else {vehicle player setpos _pos}";
 	player allowDamage false;
 
 	waitUntil {!isNull (findDisplay 12)};
 	_eh = ((findDisplay 12) displayCtrl 51) ctrlAddEventHandler ["Draw", btc_fnc_marker_debug];
+
 	btc_marker_debug_cond = true;
-	[_eh] spawn {
-		while {btc_marker_debug_cond} do {
-			player sideChat format ["UNITS:%1 - GROUPS:%2", count allunits, count allgroups];
-			sleep 1;
-		};
-		((findDisplay 12) displayCtrl 51) ctrlRemoveEventHandler ["Draw",_this select 0];
-	};
+	[_eh] spawn btc_fnc_systemchat_debug;
 };

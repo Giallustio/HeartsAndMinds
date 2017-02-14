@@ -113,7 +113,7 @@ _array_veh = [];
 	private ["_data","_cargo","_cont"];
 	_data = [];
 	_data pushBack (typeOf _x);
-	_data pushBack (getPos _x);
+	_data pushBack (getPosASL _x);
 	_data pushBack (getDir _x);
 	_data pushBack (fuel _x);
 	_data pushBack (damage _x);

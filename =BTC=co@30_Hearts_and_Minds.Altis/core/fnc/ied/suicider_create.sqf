@@ -31,6 +31,7 @@ _group spawn btc_fnc_civ_addWP;
 _group setVariable ["suicider",true];
 
 _suicider = leader _group;
+_suicider call btc_fnc_civ_unit_create;
 
 //Main check
 _suicider spawn

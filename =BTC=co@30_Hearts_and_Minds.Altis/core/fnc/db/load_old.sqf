@@ -36,7 +36,9 @@ _cities_status = profileNamespace getVariable [format ["btc_hm_%1_cities",_name]
 	_city setVariable ["data_units",(_x select 4)];
 	_city setVariable ["has_ho",(_x select 5)];
 	_city setVariable ["ho_units_spawned",(_x select 6)];
-	_city setVariable ["ieds",(_x select 7)];
+	_city setVariable ["ieds",(_x select 7) apply {
+		[_x select 0 ,(toLower gettext(configfile >> "CfgVehicles" >> (_x select 1) >> "model")) select [1],_x select 2 ,_x select 3]
+	}];
 
 	if (btc_debug) then	{//_debug
 
@@ -74,9 +76,7 @@ _array_ho = profileNamespace getVariable [format ["btc_hm_%1_ho",_name],[]];
 	_id = (_x select 4);
 	_city = btc_city_all select _id;
 
-	[_pos,(random 360),btc_composition_hideout] call btc_fnc_create_composition;
-
-	_hideout = nearestObject [_pos, "C_supplyCrate_F"];
+	_hideout = [_pos] call btc_fnc_mil_create_hideout_composition;
 	clearWeaponCargoGlobal _hideout;clearItemCargoGlobal _hideout;clearMagazineCargoGlobal _hideout;
 
 	_city setpos _pos;
@@ -140,7 +140,7 @@ btc_cache_pos = _array_cache select 0;
 btc_cache_n = _array_cache select 1;
 btc_cache_info = _array_cache select 2;
 
-btc_cache_obj = btc_cache_type createVehicle btc_cache_pos;
+btc_cache_obj = selectRandom btc_cache_type createVehicle btc_cache_pos;
 btc_cache_obj setPosATL (_array_cache select 0);
 clearWeaponCargoGlobal btc_cache_obj;clearItemCargoGlobal btc_cache_obj;clearMagazineCargoGlobal btc_cache_obj;
 btc_cache_obj addEventHandler ["HandleDamage", btc_fnc_cache_hd_cache];
@@ -178,7 +178,7 @@ _fobs_loaded = [[],[]];
 	_pos = (_x select 1);
 	createmarker [(_x select 0), _pos];
 	(_x select 0) setMarkerSize [1,1];
-	(_x select 0) setMarkerType "hd_flag";
+	(_x select 0) setMarkerType "b_hq";
 	(_x select 0) setMarkerText (_x select 0);
 	(_x select 0) setMarkerColor "ColorBlue";
 	(_x select 0) setMarkerShape "ICON";

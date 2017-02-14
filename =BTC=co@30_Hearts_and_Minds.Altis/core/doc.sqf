@@ -1,5 +1,10 @@
 player createDiarySubject ["Documentation","Documentation"];
 
+player createDiaryRecord ["Documentation", ["Headless", "
+<img image='\a3\ui_f\data\map\vehicleicons\iconvirtual_ca.paa' width='20' height='20'/> This mission automatically use one Headless client when available.
+	"]
+];
+
 player createDiaryRecord ["Documentation", ["Wounds", "
 <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/> <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\heal_ca.paa' width='20' height='20'/> Use the interaction menu to treat your wounds.<br/>
 Keep in mind that all the actions will be available, even if you do not need them. It is always recommended examine first.
@@ -7,7 +12,7 @@ Keep in mind that all the actions will be available, even if you do not need the
 ];
 
 player createDiaryRecord ["Documentation", ["Deafness", "
-<img image='\z\ace\addons\hearing\UI\Icon_Module_Hearing_ca.paa' width='20' height='20'/> Use the earplugs to protext your ears and avoid combat deafness.<br/>
+<img image='\z\ace\addons\hearing\UI\Icon_Module_Hearing_ca.paa' width='20' height='20'/> Use the earplugs to protect your ears and avoid combat deafness.<br/>
 You can put them on with your self interaction key.<br/><br/>
 	"]
 ];
@@ -31,7 +36,7 @@ If you don't want to complete a task, you can always abort it with the self inte
 player createDiaryRecord ["Documentation", ["FOB", "
 <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move1_ca.paa' width='20' height='20' /> <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\run_ca.paa' width='20' height='20' /> <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move2_ca.paa' width='20' height='20' /> <marker name='blufor_base'>FOB:</marker><br/>
  In this mission a FOB is a forward spawn point, to create a FOB approach the red box at the logistic point and require a blue container.<br/>
-- <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/>  <marker name='blufor_base'>Deploy:</marker> <br/>
+- <img image='\A3\Ui_f\data\Map\Markers\NATO\b_hq.paa' width='20' height='20'/>  <marker name='blufor_base'>Deploy:</marker> <br/>
 Move it where you want to deploy a new FOB and interact with it to set it up. Keep in mind that you can not deploy a FOB close to the main base (2.500m) and the terrain needs to be flat.<br/><br/>
 - <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/> <marker name='blufor_base'>Dismantle:</marker> <br/>
 You can dismantle a FOB by interacting with the flag on the HQ roof.
@@ -40,9 +45,9 @@ You can dismantle a FOB by interacting with the flag on the HQ roof.
 
 player createDiaryRecord ["Documentation", ["Sling loading", "
 =BTC= Lift will not replace the A3 sling loading, you can use both.<br/><br/>
-<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/> <img image='\A3\air_f_beta\Heli_Transport_01\Data\UI\Map_Heli_Transport_01_base_CA.paa' width='20' height='20'/> Lifting an object is pretty simple. Get in a chopper as pilot, hover above the object and use your self interaction menu to deploy ropes.<br/>
+<img image='\A3\Structures_F_Heli\VR\Helpers\Data\VR_Symbol_Heli_Slingloading_CA.paa' width='20' height='20'/> <img image='\A3\air_f_beta\Heli_Transport_01\Data\UI\Map_Heli_Transport_01_base_CA.paa' width='20' height='20'/> Lifting an object is pretty simple. Get in a chopper as pilot, hover above the object and interact with the chopper to deploy ropes.<br/>
 When you are in the right position a new scroll wheel action will appear ('HOOK'). If you want you can open the HUD to facilitate the operation.<br/>
-<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/> To release an object open you self interaction menu and select 'CUT ROPES'
+<img image='\z\ace\addons\logistics_wirecutter\ui\wirecutter_ca.paa' width='20' height='20'/> To release an object open you self interaction menu and select 'CUT ROPES'.
 	"]
 ];
 
@@ -53,11 +58,11 @@ player createDiaryRecord ["Documentation", ["Logistic point", "
 
 player createDiaryRecord ["Documentation", ["Logistic", "
 <marker name='blufor_base'>Cargo System:</marker><br/>
-- <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/> <marker name='blufor_base'>Load:</marker> You can load objects inside vehicles. Approach the object you want to load and interact with it.<br/>
+- <img image='\z\ace\addons\cargo\UI\Icon_load.paa' width='20' height='20'/> <marker name='blufor_base'>Load:</marker> You can load objects inside vehicles. Approach the object you want to load and interact with it.<br/>
 Select 'LOAD IN' option.<br/>
-Afer that interact with the vehicle and select 'LOAD object selected' option.<br/>
+After that interact with the vehicle and select 'LOAD object selected' option.<br/>
 The object has to be close to the vehicle.<br/><br/>
-- <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/> <marker name='blufor_base'>Unload:</marker> You can unload an object from a vehicle interacting with it. You can be inside the vehicle (personal interaction) or outside (object interaction).<br/>
+- <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\search_ca.paa' width='20' height='20'/> <marker name='blufor_base'>Unload:</marker> You can unload an object from a vehicle interacting with it. You can be inside the vehicle (personal interaction) or outside (object interaction).<br/>
 Select the option 'CHECK CARGO', then choose the object you want to unload from the list, and click 'UNLOAD'.<br/>
 If you are inside a chopper the object will be paradropped with a chute. If your height is too low, the object will crash down.<br/>
 Every vehicle has a 'CARGO CAPACITY' (CC in game), and every object has a 'REQUIRED CAPACITY' value (RC in game.)<br/>
@@ -80,13 +85,14 @@ If you notice a lot of activity in an area, probably there is an hideout closeby
 If you want to defeat the Oplitas you need to destroy all their hideouts.<br/>
 Here an example of an hideout:<br/><br/>
 <img image='core\img\hideout.jpg' width='256' height='256'/><br/><br/>
-To destroy an hideout just place a satchel near the ammo box and blow it off!
+To destroy an hideout just place a satchel near the ammo box close to the flag and blow it off!
 	"]
 ];
 
 player createDiaryRecord ["Documentation", ["IED", "
-<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/> Any object could be an IED,	approach it carefully and examine it with your interaction menu.<br/>
-If you have a defusal kit you can try to disarm it, remember that engineers have better chances to disarm an IED.<br/>
+<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/> Any object could be an IED,	approach it carefully. Turn On your mine detector (VMH3 or VMMH3) and search for a charge in a circle of 2 meter around.<br/>
+<img image='\z\ace\addons\explosives\UI\Defuse_ca.paa' width='20' height='20'/>
+If you are an engineer and have a defusal kit, you can disarm it.<br/>
 You can also blow them off with high caliber and explosive satchels.
 	"]
 ];
@@ -108,7 +114,7 @@ When you destroy an hideout or an ammo cache, all the markers related to it will
 player createDiaryRecord ["Documentation", ["Reputation", "
 <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\talk_ca.paa' width='20' height='20'/> Reputation can be ask to civilian<br/>
 Bad actions cause bad effetcs.<br/>
-<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='20' height='20'/> Helping the local population, fighting the Oplitas, disarming IED will rise your reputation; killing civilians, losing vehicles, respawns will decrease your repution. At the beginning you have a very low reputation level, so civilians won't help you revealing important information about Oplitas, they will likely lie instead.
+<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='20' height='20'/> Helping the local population, fighting the Oplitas, disarming IED will rise your reputation; killing civilians, firing near civilians for no reason, losing vehicles, respawns will decrease your repution. At the beginning you have a very low reputation level, so civilians won't help you revealing important information about Oplitas, they will likely lie instead.
 	"]
 ];
 
@@ -141,6 +147,6 @@ player createDiaryRecord ["Documentation", ["Interaction", "
 
 player createDiaryRecord ["Documentation", [
 	"Version",
-	format ["<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/> Version %1 <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/>",(str(btc_version) + ".5")]
+	format ["<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/> Version %1 <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/>",(str(btc_version) + ".0")]
 	]
 ];
