@@ -32,7 +32,7 @@ _city setVariable ["spawn_more",true];
 _heli_type = typeOf selectRandom ((btc_vehicles + btc_helo) select {_x isKindOf "air"});
 _heli = createVehicle [_heli_type, _pos, [], 0, "NONE"];
 _heli setVariable ["btc_dont_delete",true];
-_heli setVariable ["ace_cookoff_enable", false, true];
+_heli setVariable ["ace_cookoff_enableAmmoCookoff", false, true];
 _heli setDamage 1;
 _heli enableSimulation false;
 _heli setPos [getPosASL _heli select 0, getPosASL _heli select 1, 0 - 1.5];
