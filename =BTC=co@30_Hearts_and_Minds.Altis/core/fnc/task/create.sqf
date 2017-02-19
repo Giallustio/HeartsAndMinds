@@ -15,17 +15,17 @@ switch (_this select 0) do
 {
 	case 0 :
 	{
-		_description = ["Destroy all the hideouts of the Oplitas and defeat them once and for all","Defeat the Oplitas","Defeat the Oplitas"];
+		_description = ["Defeat the Oplitas once and for all","Defeat the Oplitas","Defeat the Oplitas"];
 		_type = "kill";
 	};
 	case 1 :
 	{
-		_description = ["Destroy all the hideouts of the Oplitas and defeat them once and for all","Destroy all the hideouts","Destroy all the hideouts"];
+		_description = ["Destroy all the hideouts of the Oplitas","Destroy all the hideouts","Destroy all the hideouts"];
 		_type = "destroy";
 	};
 	case 2 :
 	{
-		_description = ["Seize the last positions held by the enemies","Size the last enemies positions","Seize the last enemies positions"];
+		_description = ["Seize the last positions held by the enemies","Seize the last enemies positions","Seize the last enemies positions"];
 		_type = "move";
 	};
 	case 3 :
