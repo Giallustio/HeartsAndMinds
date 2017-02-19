@@ -81,6 +81,10 @@ if (btc_side_aborted || btc_side_failed || ({Alive _x} count _units isEqualTo 0)
 
 50 call btc_fnc_rep_change;
 
+{
+    deleteVehicle _x;
+} foreach _units;
+
 [13,"btc_fnc_task_set_done",true] spawn BIS_fnc_MP;
 
 btc_side_assigned = false;publicVariable "btc_side_assigned";
