@@ -1,5 +1,5 @@
 
-if (!isDedicated) exitWith {["task" + ([_this select 0] call BIS_fnc_taskState) + "Icon",[[[_this select 0] call BIS_fnc_taskType] call bis_fnc_taskTypeIcon, ([_this select 0] call BIS_fnc_taskDescription) select 1 select 0]] call bis_fnc_showNotification;};
+if (!isServer) exitWith {["task" + ([_this select 0] call BIS_fnc_taskState) + "Icon",[[[_this select 0] call BIS_fnc_taskType] call bis_fnc_taskTypeIcon, ([_this select 0] call BIS_fnc_taskDescription) select 1 select 0]] call bis_fnc_showNotification;};
 
 private ["_location","_destination","_description","_type"];
 
