@@ -3,6 +3,8 @@ if (!isServer) exitWith {["task" + ([_this select 0] call BIS_fnc_taskState) + "
 
 private ["_location","_destination","_description","_type"];
 
+if ((typeName (_this select 0)) isEqualTo "STRING") exitWith {};
+
 if (count _this > 1) then {
 	_destination = _this select 1;
 	_location = _this select 2;
