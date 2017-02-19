@@ -23,7 +23,7 @@
 	removeAllWeapons player;
 
 	waitUntil {scriptDone btc_intro_done};
-	{[_x] call btc_fnc_task_create} foreach (player call BIS_fnc_tasksUnit);
+	{[_x] call btc_fnc_task_create} foreach ((player call BIS_fnc_tasksUnit) select {[_x] call BIS_fnc_taskState isEqualTo "ASSIGNED"});
 };
 
 if (btc_debug) then {

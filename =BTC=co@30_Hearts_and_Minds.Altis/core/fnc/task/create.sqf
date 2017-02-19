@@ -1,5 +1,5 @@
 
-if (!isDedicated) exitWith {["task" + "CREATED" + "Icon",[[[_this select 0] call BIS_fnc_taskType] call bis_fnc_taskTypeIcon, ([_this select 0] call BIS_fnc_taskDescription) select 1 select 0]] call bis_fnc_showNotification;};
+if (!isDedicated) exitWith {["task" + ([_this select 0] call BIS_fnc_taskState) + "Icon",[[[_this select 0] call BIS_fnc_taskType] call bis_fnc_taskTypeIcon, ([_this select 0] call BIS_fnc_taskDescription) select 1 select 0]] call bis_fnc_showNotification;};
 
 private ["_location","_destination","_description","_type"];
 
@@ -95,4 +95,4 @@ switch (_this select 0) do
 	};
 };
 
-[btc_player_side,[str((_this select 0))],_description,_destination,true,2,true,_type,true] call BIS_fnc_taskCreate;
+[btc_player_side,[str(_this select 0)],_description,_destination,true,2,true,_type,true] call BIS_fnc_taskCreate;

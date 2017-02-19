@@ -1,7 +1,7 @@
 
 if (isServer) exitWith {
 	[str(_this), "SUCCEEDED",false] spawn BIS_fnc_taskSetState;
-	if (_this isEqualTo 1) then {[2] spawn btc_fnc_task_create};
+	if (_this isEqualTo 1) then {[2] call btc_fnc_task_create};
 };
 
 private ["_description"];
@@ -54,4 +54,4 @@ switch _this do
 		_description = ["Side mission Accomplished!","The hostage has been liberated!"];
 	};
 };
-["TaskSucceeded", _description] call bis_fnc_showNotification;
+["task" + "SUCCEEDED" + "Icon",[[[str(_this)] call BIS_fnc_taskType] call bis_fnc_taskTypeIcon, _description select 1]] call bis_fnc_showNotification;

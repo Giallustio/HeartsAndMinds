@@ -58,4 +58,4 @@ switch _this do
 		_description = ["Side mission failed!","The hostage has not been liberated"];
 	};
 };
-["TaskFailed",_description] call bis_fnc_showNotification;
+["task" + "FAILED" + "Icon",[[[str(_this)] call BIS_fnc_taskType] call bis_fnc_taskTypeIcon, _description select 1]] call bis_fnc_showNotification;
