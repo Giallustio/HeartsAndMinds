@@ -14,6 +14,9 @@ switch _this do
 	case 1 : {
 		_description = ["Misison accomplished!","All the hideouts have been destroyed!"];
 	};
+	case 2 : {
+		_description = ["Misison accomplished!","Oplitas has been finally defeated!    Misison accomplished!"];
+	};
 	case 3 : {
 		_description = ["Side mission Accomplished!","Supplies have been delivered"];
 	};

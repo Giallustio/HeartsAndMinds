@@ -26,7 +26,8 @@ btc_city_remaining = [];
 
 waitUntil {sleep 15; (btc_city_remaining isEqualTo [])};
 
-{{_x call btc_fnc_task_set_done} foreach [0,2];} remoteExec ["call", 0];
+{0 call btc_fnc_task_set_done;} remoteExec ["call", 0];
+2 call btc_fnc_task_set_done;
 
 //END
 [[],"btc_fnc_end_mission",true,true] spawn BIS_fnc_MP;
