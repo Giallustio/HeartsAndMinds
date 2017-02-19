@@ -18,25 +18,12 @@
 
 	call btc_fnc_int_add_actions;
 
-	//Side
-	if (btc_side_assigned) then	{
-		[] spawn {
-			btc_int_ask_data = nil;
-
-			[[5,nil,player],"btc_fnc_int_ask_var",false] spawn BIS_fnc_MP;
-
-			waitUntil {!(isNil "btc_int_ask_data")};
-
-			btc_int_ask_data spawn btc_fnc_task_create;
-		};
-	};
-
 	if (player getVariable ["interpreter", false]) then {player createDiarySubject ["Diary log","Diary log"];};
 
 	removeAllWeapons player;
 
 	waitUntil {scriptDone btc_intro_done};
-	{[_x] spawn btc_fnc_task_create} foreach [0,1];
+	{[_x] call btc_fnc_task_create} foreach (player call BIS_fnc_tasksUnit);
 };
 
 if (btc_debug) then {
