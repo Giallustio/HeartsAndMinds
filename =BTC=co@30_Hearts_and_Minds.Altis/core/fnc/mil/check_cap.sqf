@@ -7,20 +7,29 @@ btc_hideout_cap_checking = true;
 
 _cap_to = btc_hideouts select {(time - (_x getVariable ["cap_time",time]) > btc_hideout_cap_time)};
 
-if (_cap_to isEqualTo []) exitWith {if (btc_debug_log) then {diag_log "btc_fnc_mil_check_cap: exit cap time";};};
+if (_cap_to isEqualTo []) exitWith {
+	btc_hideout_cap_checking = false;
+	if (btc_debug_log) then {diag_log "btc_fnc_mil_check_cap: exit cap time";};
+};
 
 {
 	private ["_hd","_in_range","_closest"];
 	_hd = _x;
 	_in_range = btc_city_all select {(_hd distance _x < btc_hideout_range)};
 
-	if (_in_range isEqualTo []) exitWith {if (btc_debug_log) then {diag_log format ["btc_fnc_mil_check_cap: exit no in range = %1",_hd getVariable "id"];};};
+	if (_in_range isEqualTo []) exitWith {
+		btc_hideout_cap_checking = false;
+		if (btc_debug_log) then {diag_log format ["btc_fnc_mil_check_cap: exit no in range = %1",_hd getVariable "id"];};
+	};
 
 	_closest = [_hd,_in_range,true] call btc_fnc_find_closecity;
 
 	if (btc_debug_log) then {diag_log format ["btc_fnc_mil_check_cap: _in_range = %1",_in_range];};
 
-	if (isNull _closest) exitWith {if (btc_debug_log) then {diag_log format ["btc_fnc_mil_check_cap: exit null _closest = %1",_hd getVariable "id"];};};
+	if (isNull _closest) exitWith {
+		btc_hideout_cap_checking = false;
+		if (btc_debug_log) then {diag_log format ["btc_fnc_mil_check_cap: exit null _closest = %1",_hd getVariable "id"];};
+	};
 
 	if (btc_debug_log) then {diag_log format ["btc_fnc_mil_check_cap: SEND FROM = %1 TO %2 [int %3]",_hd getVariable "id",_closest getVariable ["name","error"],_closest getVariable ["initialized",false]];};
 
