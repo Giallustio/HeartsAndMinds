@@ -1,4 +1,7 @@
 //[_hd,_closest,1,"I_Truck_02_transport_F"] spawn btc_fnc_mil_send;
+/*
+	Send a group of units to a location then call btc_fnc_data_add_group. If player is around, initiate patrol around the destination, ifnot save in database and delete units.
+*/
 
 private ["_pos","_dest"];
 
@@ -32,7 +35,7 @@ switch (_this select 2) do {
 		_veh_type = (_this select 3);
 		if (_veh_type == "") then {_veh_type = selectRandom btc_type_motorized};
 
-		_return_pos = [_pos,0,500,13,false] call btc_fnc_findsafepos;
+		_return_pos = [_pos,10,500,13,false] call btc_fnc_findsafepos;
 
 		_veh = createVehicle [_veh_type, _return_pos, [], 0, "FLY"];
 		[_veh,_group,false,"",btc_type_crewmen] call BIS_fnc_spawnCrew;
@@ -49,7 +52,7 @@ switch (_this select 2) do {
 		_wp setWaypointType "MOVE";
 		_wp setWaypointCombatMode "RED";
 		_wp setWaypointBehaviour "AWARE";
-		_wp setWaypointSpeed "FULL";
+		_wp setWaypointSpeed "NORMAL";
 		_wp_1 = _group addWaypoint [_dest, 60];
 		_wp_1 setWaypointType "GET OUT";
 		_wp_3 = _group addWaypoint [_dest, 60];
@@ -58,4 +61,9 @@ switch (_this select 2) do {
 
 		{_x call btc_fnc_mil_unit_create} foreach units _group;
 	};
+};
+
+//Check if HC is connected
+if !((entities "HeadlessClient_F") isEqualTo []) then {
+	[_group] call btc_fnc_set_groupowner;
 };

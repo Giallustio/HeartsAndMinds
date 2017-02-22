@@ -1,7 +1,7 @@
 
-private ["_p_civ_veh","_p_db","_p_en","_hideout_n","_cache_info_def","_cache_info_ratio","_info_chance","_p_rep","_p_skill","_c_array","_tower","_array","_chopper","_p_civ","_btc_rearming_vehicles","_vehicles","_magazines","_p_city_radius","_magazines_static","_static","_btc_rearming_static","_magazines_clean","_weapons_usefull"];
+private ["_p_civ_veh","_p_db","_p_en","_hideout_n","_cache_info_def","_cache_info_ratio","_info_chance","_p_rep","_p_skill","_c_array","_tower","_array","_chopper","_p_civ","_btc_rearming_vehicles","_vehicles","_magazines","_p_city_radius","_magazines_static","_static","_btc_rearming_static","_magazines_clean","_weapons_usefull","_magazines_static_clean"];
 
-btc_version = 1.16; diag_log format ["=BTC= HEARTS AND MINDS VERSION %1",(str(btc_version) + ".0")];
+btc_version = 1.16; diag_log format ["=BTC= HEARTS AND MINDS VERSION %1",(str(btc_version) + ".1")];
 
 //Param
 
@@ -265,9 +265,10 @@ if (isServer) then {
 		} forEach REARM_TURRET_PATHS;
 	} forEach _btc_rearming_static;
 	_magazines_static = _magazines_static - ["FakeWeapon"];
+	_magazines_static_clean = [];
 	{
-		_magazines_static pushBackUnique _x;
-	} forEach +_magazines_static;
+		_magazines_static_clean pushBackUnique _x;
+	} forEach _magazines_static;
 
 	btc_construction_array =
 	[
@@ -304,7 +305,7 @@ if (isServer) then {
 				"Land_Mil_WallBig_Corner_F",
 				"Land_PortableLight_double_F"
 			],
-			_btc_rearming_static + _magazines_static,
+			_btc_rearming_static + _magazines_static_clean,
 			[
 				//"Ammobox"
 				"rhsusf_mags_crate",

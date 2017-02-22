@@ -1,115 +1,60 @@
-if (isDedicated) exitWith {};
+
+if (isServer) exitWith {
+	[str(_this), "SUCCEEDED",false] spawn BIS_fnc_taskSetState;
+	if (_this isEqualTo 1) then {[2] call btc_fnc_task_create};
+};
+
+private ["_description"];
 
 switch _this do
 {
 	case 0 : {
-		private "_task";
-		_task = player getVariable ("task_0" call bis_fnc_taskVar);
-		_task setTaskState "SUCCEEDED";
-		["TaskSucceeded",["Misison accomplished!","Oplitas has been finally defeated!    Misison accomplished!"]] call bis_fnc_showNotification;
-
-		_task = player getVariable ("task_2" call bis_fnc_taskVar);
-		_task setTaskState "SUCCEEDED";
+		_description = ["Misison accomplished!","Oplitas has been finally defeated!    Misison accomplished!"];
 	};
 	case 1 : {
-		private "_task";
-		_task = player getVariable ("task_1" call bis_fnc_taskVar);
-		_task setTaskState "SUCCEEDED";
-		["TaskSucceeded",["Misison accomplished!","All the hideouts have been destroyed!"]] call bis_fnc_showNotification;
-
-		sleep 1;
-
-		[player,["task_2"],["Seize the last positions held by the enemies","Size the last enemies positions","Seize the last enemies positions"],objNull,true,1,true,"move",true] call BIS_fnc_taskCreate;
+		_description = ["Misison accomplished!","All the hideouts have been destroyed!"];
+	};
+	case 2 : {
+		_description = ["Misison accomplished!","Oplitas has been finally defeated!    Misison accomplished!"];
 	};
 	case 3 : {
-		private "_task";
-		_task = player getVariable ("task_3" call bis_fnc_taskVar);
-		_task setTaskState "SUCCEEDED";
-		["TaskSucceeded",["Side mission Accomplished!","Supplies have been delivered"]] call bis_fnc_showNotification;
-		player setVariable ["task_3" call bis_fnc_taskVar,nil];
+		_description = ["Side mission Accomplished!","Supplies have been delivered"];
 	};
 	case 4 : {
-		private "_task";
-		_task = player getVariable ("task_4" call bis_fnc_taskVar);
-		_task setTaskState "SUCCEEDED";
-		["TaskSucceeded",["Side mission Accomplished!","The minefield has been cleared"]] call bis_fnc_showNotification;
-		player setVariable ["task_4" call bis_fnc_taskVar,nil];
+		_description = ["Side mission Accomplished!","The minefield has been cleared"];
 	};
 	case 5 : {
-		private "_task";
-		_task = player getVariable ("task_5" call bis_fnc_taskVar);
-		_task setTaskState "SUCCEEDED";
-		["TaskSucceeded",["Side mission Accomplished!","The vehicle has been repaired"]] call bis_fnc_showNotification;
-		player setVariable ["task_5" call bis_fnc_taskVar,nil];
+		_description = ["Side mission Accomplished!","The vehicle has been repaired"];
 	};
 	case 6 : {
-		private "_task";
-		_task = player getVariable ("task_6" call bis_fnc_taskVar);
-		_task setTaskState "SUCCEEDED";
-		["TaskSucceeded",["Side mission Accomplished!","The city has been cleared!"]] call bis_fnc_showNotification;
-		player setVariable ["task_6" call bis_fnc_taskVar,nil];
+		_description = ["Side mission Accomplished!","The city has been cleared!"];
 	};
 	case 7 : {
-		private "_task";
-		_task = player getVariable ("task_7" call bis_fnc_taskVar);
-		_task setTaskState "SUCCEEDED";
-		["TaskSucceeded",["Side mission Accomplished!","The tower has been destroyed!"]] call bis_fnc_showNotification;
-		player setVariable ["task_7" call bis_fnc_taskVar,nil];
+		_description = ["Side mission Accomplished!","The tower has been destroyed!"];
 	};
 	case 8 : {
-		private "_task";
-		_task = player getVariable ("task_8" call bis_fnc_taskVar);
-		_task setTaskState "SUCCEEDED";
-		["TaskSucceeded",["Side mission Accomplished!","The civilian has been stabilized!"]] call bis_fnc_showNotification;
-		player setVariable ["task_8" call bis_fnc_taskVar,nil];
+		_description = ["Side mission Accomplished!","The civilian has been stabilized!"];
 	};
 	case 9 : {
-		private "_task";
-		_task = player getVariable ("task_9" call bis_fnc_taskVar);
-		_task setTaskState "SUCCEEDED";
-		["TaskSucceeded",["Side mission Accomplished!","Checkpoints have been destroyed!"]] call bis_fnc_showNotification;
-		player setVariable ["task_9" call bis_fnc_taskVar,nil];
+		_description = ["Side mission Accomplished!","Checkpoints have been destroyed!"];
 	};
 	case 10 : {
-		private "_task";
-		_task = player getVariable ("task_10" call bis_fnc_taskVar);
-		_task setTaskState "SUCCEEDED";
-		["TaskSucceeded",["Side mission Accomplished!","The civilian has been stabilized!"]] call bis_fnc_showNotification;
-		player setVariable ["task_10" call bis_fnc_taskVar,nil];
+		_description = ["Side mission Accomplished!","The civilian has been stabilized!"];
 	};
 	case 11 : {
-		private "_task";
-		_task = player getVariable ("task_11" call bis_fnc_taskVar);
-		_task setTaskState "SUCCEEDED";
-		["TaskSucceeded",["Side mission Accomplished!","The underwater generator has been destroyed!"]] call bis_fnc_showNotification;
-		player setVariable ["task_11" call bis_fnc_taskVar,nil];
+		_description = ["Side mission Accomplished!","The underwater generator has been destroyed!"];
 	};
 	case 12 : {
-		private "_task";
-		_task = player getVariable ("task_12" call bis_fnc_taskVar);
-		_task setTaskState "SUCCEEDED";
-		["TaskSucceeded",["Side mission Accomplished!","The armed convoy has been destroyed!"]] call bis_fnc_showNotification;
-		player setVariable ["task_12" call bis_fnc_taskVar,nil];
+		_description = ["Side mission Accomplished!","The armed convoy has been destroyed!"];
 	};
 	case 13 : {
-		private "_task";
-		_task = player getVariable ("task_13" call bis_fnc_taskVar);
-		_task setTaskState "SUCCEEDED";
-		["TaskSucceeded",["Side mission Accomplished!","The pilot has been rescued!"]] call bis_fnc_showNotification;
-		player setVariable ["task_13" call bis_fnc_taskVar,nil];
+		_description = ["Side mission Accomplished!","The pilot has been rescued!"];
 	};
 	case 14 : {
-		private "_task";
-		_task = player getVariable ("task_14" call bis_fnc_taskVar);
-		_task setTaskState "SUCCEEDED";
-		["TaskSucceeded",["Side mission Accomplished!","The officer has been captured!"]] call bis_fnc_showNotification;
-		player setVariable ["task_14" call bis_fnc_taskVar,nil];
+		_description = ["Side mission Accomplished!","The officer has been captured!"];
 	};
 	case 15 : {
-		private "_task";
-		_task = player getVariable ("task_15" call bis_fnc_taskVar);
-		_task setTaskState "SUCCEEDED";
-		["TaskSucceeded",["Side mission Accomplished!","The hostage has been liberated!"]] call bis_fnc_showNotification;
-		player setVariable ["task_15" call bis_fnc_taskVar,nil];
+		_description = ["Side mission Accomplished!","The hostage has been liberated!"];
 	};
 };
+["task" + "SUCCEEDED" + "Icon",[[[str(_this)] call BIS_fnc_taskType] call bis_fnc_taskTypeIcon, _description select 1]] call bis_fnc_showNotification;

@@ -1,5 +1,7 @@
 call compile preprocessFile "core\fnc\city\init.sqf";
 
+{[_x] spawn btc_fnc_task_create} foreach [0,1];
+
 if (btc_db_load && {profileNamespace getVariable [format ["btc_hm_%1_db",worldName],false]}) then {
 	if (btc_version isEqualTo (profileNamespace getVariable [format ["btc_hm_%1_version",worldName],1.13])) then	{
 		call compile preprocessFile "core\fnc\db\load.sqf";
