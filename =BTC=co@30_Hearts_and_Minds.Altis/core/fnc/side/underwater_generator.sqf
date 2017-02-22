@@ -30,7 +30,7 @@ btc_side_done = false;
 btc_side_failed = false;
 btc_side_assigned = true;publicVariable "btc_side_assigned";
 
-[[11,_pos,_city getVariable "name"],"btc_fnc_task_create",true] spawn BIS_fnc_MP;
+[11,_pos,_city getVariable "name"] call btc_fnc_task_create;
 
 btc_side_jip_data = [11,_pos,_city getVariable "name"];
 
@@ -59,7 +59,7 @@ waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !Alive _generator )}
 {deletemarker _x} foreach [_area,_marker];
 
 if (btc_side_aborted || btc_side_failed ) exitWith {
-	[11,"btc_fnc_task_fail",true] spawn BIS_fnc_MP;
+	{11 call btc_fnc_task_fail} remoteExec ["call", 0];
 	btc_side_assigned = false;publicVariable "btc_side_assigned";
 	{_x spawn {
 
@@ -71,7 +71,7 @@ if (btc_side_aborted || btc_side_failed ) exitWith {
 
 80 call btc_fnc_rep_change;
 
-[11,"btc_fnc_task_set_done",true] spawn BIS_fnc_MP;
+{11 call btc_fnc_task_set_done} remoteExec ["call", 0];
 
 {_x spawn {
 
