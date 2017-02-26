@@ -41,9 +41,7 @@ switch (_this select 2) do {
 		[_veh,_group,false,"",btc_type_crewmen] call BIS_fnc_spawnCrew;
 		_cargo = (_veh emptyPositions "cargo") - 1;
 		for "_i" from 0 to _cargo do {
-			private "_unit_type";
-			_unit_type = selectRandom btc_type_units;
-			_unit_type createUnit [_pos, _group, "this moveinCargo _veh;this assignAsCargo _veh;"];
+			(selectRandom btc_type_units) createUnit [[0,0,0], _group, "this moveinCargo _veh;this assignAsCargo _veh;"];
 		};
 
 		_group selectLeader (driver _veh);
