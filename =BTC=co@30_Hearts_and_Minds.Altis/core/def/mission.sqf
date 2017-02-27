@@ -476,9 +476,7 @@ btc_lift_HUD_y  = 0.848;
 //Mil
 btc_player_side		= west;
 btc_respawn_marker	= "respawn_west";
-private _allvehicles = (("(configName _x) isKindOf 'AllVehicles'" configClasses (configFile >> "CfgVehicles")) apply {configName _x}) select {
-	((_x isKindOf "Air") || (_x isKindOf "Helicopter") || (_x isKindOf "Tank") || (_x isKindOf "Car"))
-};
+private _allclasse = ("(configName _x) isKindOf 'AllVehicles'" configClasses (configFile >> "CfgVehicles")) apply {configName _x};
 switch (true) do {
 	case (_p_en == 0) :	{
 		btc_hq 				= btc_hq_red;
@@ -628,7 +626,7 @@ switch (true) do {
 		btc_type_gl			= ["O_GMG_01_F","O_GMG_01_high_F"];
 	}
 };
-private _veh_armed = [_allvehicles] call btc_fnc_find_veh_with_turret;
+private _veh_armed = [_allclasse select {((_x isKindOf "Air") || (_x isKindOf "Helicopter") || (_x isKindOf "Tank") || (_x isKindOf "Car"))}] call btc_fnc_find_veh_with_turret;
 btc_type_motorized_armed = _veh_armed select {getText(configFile >> "cfgvehicles" >> _x >> "faction") isEqualTo getText(configFile >> "cfgvehicles" >> btc_type_motorized select (count (btc_type_motorized) -1) >> "faction")};
 btc_type_motorized_armed = (btc_type_motorized_armed select {(_x find "UAV") isEqualTo -1}) select {(_x find "UGV")  isEqualTo -1};
 
