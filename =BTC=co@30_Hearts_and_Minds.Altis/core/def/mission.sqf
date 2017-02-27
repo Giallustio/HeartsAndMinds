@@ -480,7 +480,7 @@ btc_lift_HUD_y  = 0.848;
 //Mil
 btc_player_side		= west;
 btc_respawn_marker	= "respawn_west";
-_allclasse = ("(configName _x) isKindOf 'AllVehicles'" configClasses (configFile >> "CfgVehicles")) apply {configName _x};
+private _allclasse = ("(configName _x) isKindOf 'AllVehicles'" configClasses (configFile >> "CfgVehicles")) apply {configName _x};
 switch (true) do {
 	case (_p_en == 0) :	{
 		btc_hq				= btc_hq_red;
