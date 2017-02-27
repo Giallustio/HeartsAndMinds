@@ -483,7 +483,7 @@ btc_respawn_marker	= "respawn_west";
 _allclasse = ("(configName _x) isKindOf 'AllVehicles'" configClasses (configFile >> "CfgVehicles")) apply {configName _x};
 switch (true) do {
 	case (_p_en == 0) :	{
-		btc_hq 				= btc_hq_red;
+		btc_hq				= btc_hq_red;
 		btc_enemy_side		= east;
 		btc_type_units		= ["O_G_Soldier_F","O_G_Soldier_TL_F","O_G_Soldier_AR_F","O_G_engineer_F","O_G_Soldier_exp_F","O_G_Soldier_GL_F","O_G_Soldier_LAT_F"];
 		btc_type_divers		= ["O_diver_F","O_diver_exp_F","O_diver_TL_F"];
@@ -603,10 +603,10 @@ switch (true) do {
 		btc_type_gl			= ["O_GMG_01_F","O_GMG_01_high_F"];
 	};
 	case (_p_en == 11 && isClass(configfile >> "CfgFactionClasses" >> "fow_usmc")) : {
-		_allclasse 			= _allclasse select {getText(configFile >> "cfgvehicles" >> _x >> "faction") isEqualTo "fow_usmc"};
+		_allclasse			= _allclasse select {getText(configFile >> "cfgvehicles" >> _x >> "faction") isEqualTo "fow_usmc"};
 		btc_hq				= btc_hq_green;
 		btc_enemy_side		= resistance;
-		btc_type_units		= _allclasse select {_x isKindOf "Man"};
+		btc_type_units		= (_allclasse select {_x isKindOf "Man"}) - ["fow_s_usmc_base","fow_s_usmc_01_private"];
 		btc_type_divers		= ["I_diver_F","I_diver_exp_F","I_diver_TL_F"];
 		btc_type_crewmen	= btc_type_units select 0;
 		btc_type_boats		= _allclasse select {_x isKindOf "Ship"};
@@ -615,10 +615,10 @@ switch (true) do {
 		btc_type_gl			= _allclasse select {_x isKindOf "StaticMGWeapon"};
 	};
 	case (_p_en == 12 && isClass(configfile >> "CfgFactionClasses" >> "fow_usa")) : {
-		_allclasse 			= _allclasse select {getText(configFile >> "cfgvehicles" >> _x >> "faction") isEqualTo "fow_usa"};
+		_allclasse			= _allclasse select {getText(configFile >> "cfgvehicles" >> _x >> "faction") isEqualTo "fow_usa"};
 		btc_hq				= btc_hq_green;
 		btc_enemy_side		= resistance;
-		btc_type_units		= _allclasse select {_x isKindOf "Man"};
+		btc_type_units		= (_allclasse select {_x isKindOf "Man"}) - ["fow_s_usa_base","fow_s_usa_01_private"];
 		btc_type_divers		= ["I_diver_F","I_diver_exp_F","I_diver_TL_F"];
 		btc_type_crewmen	= btc_type_units select 0;
 		btc_type_boats		= _allclasse select {_x isKindOf "Ship"};
@@ -627,10 +627,10 @@ switch (true) do {
 		btc_type_gl			= _allclasse select {_x isKindOf "StaticMGWeapon"};
 	};
 	case (_p_en == 13 && isClass(configfile >> "CfgFactionClasses" >> "fow_uk")) : {
-		_allclasse 			= _allclasse select {getText(configFile >> "cfgvehicles" >> _x >> "faction") isEqualTo "fow_uk"};
+		_allclasse			= _allclasse select {getText(configFile >> "cfgvehicles" >> _x >> "faction") isEqualTo "fow_uk"};
 		btc_hq				= btc_hq_green;
 		btc_enemy_side		= resistance;
-		btc_type_units		= _allclasse select {_x isKindOf "Man"};
+		btc_type_units		= (_allclasse select {_x isKindOf "Man"}) - ["fow_s_uk_base","fow_s_uk_01_private"];
 		btc_type_divers		= ["I_diver_F","I_diver_exp_F","I_diver_TL_F"];
 		btc_type_crewmen	= btc_type_units select 0;
 		btc_type_boats		= _allclasse select {_x isKindOf "Ship"};
