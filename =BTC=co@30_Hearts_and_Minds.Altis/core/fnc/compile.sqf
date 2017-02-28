@@ -197,6 +197,8 @@ btc_fnc_log_tow = compile preprocessFile "core\fnc\log\tow.sqf";
 btc_fnc_log_unhook = compile preprocessFile "core\fnc\log\unhook.sqf";
 btc_fnc_log_unload = compile preprocessFile "core\fnc\log\unload.sqf";
 
+//MIL
+btc_fnc_mil_classes = compile preprocessFile "core\fnc\mil\classes.sqf";
 
 //TASK
 btc_fnc_task_create = compile preprocessFileLineNumbers "core\fnc\task\create.sqf";

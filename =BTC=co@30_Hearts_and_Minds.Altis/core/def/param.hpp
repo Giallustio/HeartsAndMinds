@@ -43,10 +43,17 @@ class Params {
 	};
 	class btc_p_en {
 	//paramsArray[6]
+	/*// Get all faction from mod there are currently running
+	allfaction = (("true" configClasses (configFile >> "CfgFactionClasses")) apply {configName _x}) select {getNumber(configfile >> "CfgFactionClasses" >> _x >> "side") < 3 AND getNumber(configfile >> "CfgFactionClasses" >> _x >> "side") > -1};
+	texts = allfaction apply {getText(configfile >> "CfgFactionClasses" >> _x >> "displayName")};
+	values = [];
+	for "_i" from 0 to (count allfaction) - 1 do {
+		values pushBack _i;
+	};*/
 		title = "			Enemy type:";
-		values[]={0,1,2,3,4,5,6,7,8,9,10};
-		texts[]={"Guerrilla (A3)","CAF (@CAF Aggressors)","AAF (A3)","RHS Insurgents (@RHS_AFRF)","Militia (@=BTC= Militia)","Militia (@IWAR: Irregular Warfare)","Syndikat (A3)","Middle East Militia (@Project Opfor)","ISTS (@Project Opfor)","Ultranationalists (@Project Opfor)","CSAT Pacific (A3)"};
-		default = 0;
+		values[]={0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114};
+		texts[]={"Africa - Pirates","East Europe - Rebels","Middle East - Tribal","OTAN","CSAT","AAF","FIA","FIA","FIA","United States Marine Corps","United States Army","Chenarus Defense Force (CDF)","Russian Federation","ChDKZ (Chenarus)","NAPA (Chenarus)","Royal New Zealand Navy","Takistani Army","Takistani Militia","United States of America","Czech Republic","Germany","Takistani Locals","United Nations","Sahrani Liberation Army","Royal Army Corp of Sahrani","United Kingdom","ION PMC","USA (Army)","USA (USMC)","USA (Army - W)","USA (Army - D)","USA (USMC - W)","USA (USMC - D)","USA (USAF)","USA (Navy)","USA (SOCOM)","Wehrmacht","Imperial Japanese Army","US Army","US Marines Corps","UK","Taliban","Russia (MSV)","Russia (VDV)","","Russia (VMF)","Russia (VV)","Russia (TV)","Russia (VPVO)","Russia (VVS - Grey)","Russia (VVS - Camo)","Russia (RVA)","Armed Islamic Front","Syndikat","OTAN (Pacifique)","CTRG","Gendarmerie","CSAT (Pacifique)","Viper","Eastern Militia","Red Army","NKVD","Tank troops of USSR","USSR Airforce","Wehrmacht","Panzerwaffe","Luftwaffe","Tank Sturmtroopers","Sturmtroopers","Armia Krajowa (Polonais)","US Army","US Tank Troops","US Army Air Forces","Deutsches Afrikakorps","US North African Corps","US 2nd Ranger Battalion","40s Civilians","FFI","MKHL","ARR","RBAF","Afghan Militia","United Nations","Chernarussian Defence Forces","Afghan National Army and Police","Iraqi Armed Forces","United Armed Forces of Novorossiya","ChDKZ","Takistani Armed Forces","Sahrani Liberation Army","Royal Army Corps of Sahrani","Private Military Company","Islamic State","Islamic State","Chernarussian National Insurgents","Middle Eastern Militia","Middle Eastern Militia","African Militia","African Militia","Ultranationalists","Kurdish Peshmerga Forces","Kurdish Peshmerga Forces","Ukraine's Armed Forces","Boko Haram","Irish Republican Army","[Winter] Red Army","[Winter] Tank troops of USSR","[Winter] USSR Airforce","[Winter] Wehrmacht","[Winter] Panzerwaffe","[Winter] Luftwaffe","[Winter] US Army","[Winter] US Tank Troops","[Winter] US Airforce","[Winter] Sturmtroopers"};
+		default = 6;
 	};
 	class btc_p_civ {
 	//paramsArray[7]
