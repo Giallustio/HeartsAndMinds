@@ -1,10 +1,19 @@
-btc_lifted = true;
 
-_this attachTo [vehicle player,[0,0,-10]];
+private _cargo = _this select 0;
+private _chopper = _this select 1;
 
-btc_lift_action_unhook_fake = player addAction [("<t color=""#ED2744"">" + ("UnHook") + "</t>"),{btc_lifted = false;}, [], 9, true, false, "", "true"];
+private _bbr_local = (boundingBoxReal _cargo) select 0;
+private _support = "Box_East_Wps_F" createVehicle [0,0,0];
+_support setDir getDir _cargo;
+_support setPosASL getPosASL _cargo;
+_cargo attachTo [_support,[0,0, -(_bbr_local select 2)]];
 
-waitUntil {sleep 1; (!btc_lifted || !Alive player || isNull _this || vehicle player == player)};
+_chopper addEventHandler ["RopeBreak", {
+	btc_lifted = false;
+	{
+	  detach _x;
+	} forEach attachedObjects (_this select 2);
+	deleteVehicle (_this select 2);
+}];
 
-detach _this;
-player removeAction btc_lift_action_unhook_fake;
+_support
