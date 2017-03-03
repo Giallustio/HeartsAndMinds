@@ -489,10 +489,20 @@ values = [];
 for "_i" from 0 to (count allfaction) - 1 do {
 	values pushBack _i;
 };*/
-
 private _allfaction = ["caf_ag_afr_p","caf_ag_eeur_r","caf_ag_me_t","BLU_F","OPF_F","IND_F","IND_G_F","BLU_G_F","OPF_G_F","CUP_B_USMC","CUP_B_US_Army","CUP_B_CDF","CUP_O_RU","CUP_O_ChDKZ","CUP_I_NAPA","CUP_B_RNZN","CUP_O_TK","CUP_O_TK_MILITIA","CUP_B_US","CUP_B_CZ","CUP_B_GER","CUP_I_TK_GUE","CUP_I_UN","CUP_O_SLA","CUP_I_RACS","CUP_B_GB","CUP_I_PMC_ION","rhs_faction_usarmy","rhs_faction_usmc","rhs_faction_usarmy_wd","rhs_faction_usarmy_d","rhs_faction_usmc_wd","rhs_faction_usmc_d","rhs_faction_usaf","rhs_faction_usn","rhs_faction_socom","fow_wehrmacht","fow_ija","fow_usa","fow_usmc","fow_uk","Tban","rhs_faction_msv","rhs_faction_vdv","rhs_faction_vdv_45","rhs_faction_vmf","rhs_faction_vv","rhs_faction_tv","rhs_faction_vpvo","rhs_faction_vvs","rhs_faction_vvs_c","rhs_faction_rva","usml_aif","IND_C_F","BLU_T_F","BLU_CTRG_F","BLU_GEN_F","OPF_T_F","OPF_V_F","rhs_faction_insurgents","LIB_RKKA","LIB_NKVD","LIB_USSR_TANK_TROOPS","LIB_USSR_AIRFORCE","LIB_WEHRMACHT","LIB_PANZERWAFFE","LIB_LUFTWAFFE","SG_STURMPANZER","SG_STURM","LIB_GUER","LIB_US_ARMY","LIB_US_TANK_TROOPS","LIB_US_AIRFORCE","LIB_DAK","LIB_NAC","LIB_US_RANGERS","LIB_CIV","LIB_FFI","LIB_MKHL","LIB_ARR","LIB_RBAF","btc_am","LOP_UN","LOP_CDF","LOP_AA","LOP_IA","LOP_US","LOP_ChDKZ","LOP_TKA","LOP_SLA","LOP_RACS","LOP_PMC","LOP_ISTS","LOP_ISTS_OPF","LOP_NAPA","LOP_AM","LOP_AM_OPF","LOP_AFR","LOP_AFR_OPF","LOP_UA","LOP_PESH","LOP_PESH_IND","LOP_UKR","LOP_BH","LOP_IRA","LIB_RKKA_w","LIB_USSR_TANK_TROOPS_w","LIB_USSR_AIRFORCE_w","LIB_WEHRMACHT_w","LIB_PANZERWAFFE_w","LIB_LUFTWAFFE_w","LIB_US_ARMY_w","LIB_US_TANK_TROOPS_w","LIB_US_AIRFORCE_w","SG_STURM_w"]; //All factions
 _p_en = _allfaction select _p_en;	//Select faction selected from mission parameter
-[_p_en, _p_en_AA, _p_en_tank] call btc_fnc_mil_classes;	//Create classes from the corresponding faction
+private _allclasses = [[_p_en /*, "IND_F"*/], _p_en_AA, _p_en_tank] call btc_fnc_mil_classes;	//Create classes from the corresponding factions [_p_en , "IND_F"], can combine factions from the SAME side.
+
+//Save classe name to global variable
+btc_hq = _allclasses select 0;
+btc_enemy_side = _allclasses select 1;
+btc_type_units = _allclasses select 2;
+btc_type_divers = _allclasses select 3;
+btc_type_crewmen = _allclasses select 4;
+btc_type_boats = _allclasses select 5;
+btc_type_motorized = _allclasses select 6;
+btc_type_mg = _allclasses select 7;
+btc_type_gl = _allclasses select 8;
 
 //Sometimes you need to remove units: - ["Blabla","moreBlabla"];
 //Sometimes you need to add units: + ["Blabla","moreBlabla"];
