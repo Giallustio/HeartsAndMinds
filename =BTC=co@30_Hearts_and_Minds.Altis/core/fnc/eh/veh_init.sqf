@@ -1,9 +1,5 @@
 
-private ["_veh","_type"];
-
-_veh = _this select 0;
-
-_type = typeOf _veh;
+private _type = _this select 0;
 if (isNil "btc_actions_veh") then {btc_actions_veh = [];};
 if ((btc_actions_veh pushBackUnique _type) isEqualTo -1) exitWith {};
 
