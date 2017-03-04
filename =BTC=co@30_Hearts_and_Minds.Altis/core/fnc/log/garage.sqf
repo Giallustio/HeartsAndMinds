@@ -29,6 +29,6 @@ with uiNamespace do {
 		private _textures = getObjectTextures _x;
 		deleteVehicle _x;
 		[_type, _pos, _dir, _textures] remoteExec ["btc_fnc_log_createVehicle", 2];
-		[_type] remoteExec [["btc_fnc_eh_veh_init", -2];
+		[_type] remoteExec ["btc_fnc_eh_veh_init", -2];
 	} forEach _veh_list;
 };
