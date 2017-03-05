@@ -198,14 +198,10 @@ diag_log format ["5: %1",(_x select 5)];
 */
 {
 	private ["_veh","_cont","_weap","_mags","_items"];
-	_veh = (_x select 0) createVehicle (_x select 1);
-	_veh setPosASL (_x select 1);
-	_veh setDir (_x select 2);
+	_veh = [(_x select 0),(_x select 1),(_x select 2)] call btc_fnc_log_createVehicle;
 	if ((getPos _veh) select 2 < 0) then {_veh setVectorUp surfaceNormal position _veh;};
 	_veh setFuel (_x select 3);
 	_veh setDamage (_x select 4);
-	_veh setVariable ["btc_dont_delete",true];
-	_veh call btc_fnc_db_add_veh;
 	{
 		private ["_type","_cargo_obj","_obj","_weap_obj","_mags_obj","_items_obj"];
 		//{_cargo pushBack [(typeOf _x),[getWeaponCargo _x,getMagazineCargo _x,getItemCargo _x]]} foreach (_x getVariable ["cargo",[]]);
