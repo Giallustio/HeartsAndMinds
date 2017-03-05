@@ -9,7 +9,7 @@ if (count _cargo_array > 0 && ((_cargo_array select 0) isKindOf "ACE_friesGantry
 if (count _cargo_array > 0) then {_cargo = _cargo_array select 0;} else {_cargo = objNull;};
 if (isNull _cargo) exitWith {};
 
-private ["_rope","_max_cargo","_mass"];
+private ["_rope","_max_cargo","_mass","_support","_bbr_z"];
 
 {ropeDestroy _x;} foreach ropes _chopper;
 
@@ -17,27 +17,33 @@ _bbr = getArray (configfile >> "CfgVehicles" >> typeof _cargo >> "slingLoadCargo
 if (_bbr isEqualTo [] OR !(_chopper canSlingLoad _cargo)) then {
 
 	_bbr = boundingBoxReal _cargo;
-	if (!Alive _cargo) then {
-		_cargo = [_cargo, _chopper] call btc_fnc_log_lift_hook_fake;
-	};
-
 	if (abs((_bbr select 0) select 0) < 5) then {
 		_rope_length = 10;
 	} else {
 		_rope_length = 10 + abs((_bbr select 0) select 0);
 	};
 
-	ropeCreate [_chopper, "slingload0", _cargo, [((_bbr select 0) select 0), ((_bbr select 1) select 1), 0], _rope_length];
-	ropeCreate [_chopper, "slingload0", _cargo, [((_bbr select 0) select 0), ((_bbr select 0) select 1), 0], _rope_length];
-	ropeCreate [_chopper, "slingload0", _cargo, [((_bbr select 1) select 0), ((_bbr select 0) select 1), 0], _rope_length];
-	ropeCreate [_chopper, "slingload0", _cargo, [((_bbr select 1) select 0), ((_bbr select 1) select 1), 0], _rope_length];
+	if (!Alive _cargo) then {
+		_support = [_cargo, _chopper] call btc_fnc_log_lift_hook_fake;
+		_bbr = [(_bbr select 0) apply {_x/2}, (_bbr select 1) apply {_x/2}];
+		_bbr_z = _support distance _cargo;
+	} else {
+		_support = _cargo;
+		_bbr_z = 0;
+	};
+
+	ropeCreate [_chopper, "slingload0", _support, [((_bbr select 0) select 0), ((_bbr select 1) select 1), _bbr_z], _rope_length];
+	ropeCreate [_chopper, "slingload0", _support, [((_bbr select 0) select 0), ((_bbr select 0) select 1), _bbr_z], _rope_length];
+	ropeCreate [_chopper, "slingload0", _support, [((_bbr select 1) select 0), ((_bbr select 0) select 1), _bbr_z], _rope_length];
+	ropeCreate [_chopper, "slingload0", _support, [((_bbr select 1) select 0), ((_bbr select 1) select 1), _bbr_z], _rope_length];
 } else {
 	{
 		ropeCreate [_chopper, "slingload0", _cargo, _x, 11];
 	} forEach _bbr;
+	_rope_length = 10;
 };
 
-if (btc_debug) then {hint str(_bbr);};
+if (btc_debug) then {hint format ["boundingBoxReal : %1 rope length : %2", _bbr, _rope_length];};
 
 _max_cargo  = getNumber (configFile >> "cfgVehicles" >> typeof _chopper >> "slingLoadMaxCargoMass");
 _mass = getMass _cargo;
