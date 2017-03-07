@@ -20,4 +20,8 @@ _chopper addEventHandler ["RopeBreak", {
 	deleteVehicle (_this select 2);
 }];
 
+clearWeaponCargoGlobal _support1;
+clearItemCargoGlobal _support1;
+clearMagazineCargoGlobal _support1;
+
 _support1
