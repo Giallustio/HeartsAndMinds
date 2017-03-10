@@ -16,10 +16,20 @@ private _type_gl = [];
 //Get all vehicles
 private _allclasse = ("(configName _x) isKindOf 'AllVehicles'" configClasses (configFile >> "CfgVehicles")) apply {configName _x};
 
-_factions = _factions apply {if !isClass(configFile >> "CfgFactionClasses" >> _x) then {"IND_G_F";} else {_x};};
+//Check if faction existe
+_factions = _factions apply {if !isClass(configFile >> "CfgFactionClasses" >> _x) then {"IND_G_F"} else {_x};};
 
-_hq				= [btc_hq_red,btc_hq_blu,btc_hq_green] select getNumber(configfile >> "CfgFactionClasses" >> (_factions select 0) >> "side");
 _enemy_side		= [east,west,independent,civilian] select getNumber(configfile >> "CfgFactionClasses" >> (_factions select 0) >> "side");
+_hq				= [btc_hq_red,btc_hq_blu,btc_hq_green] select getNumber(configfile >> "CfgFactionClasses" >> (_factions select 0) >> "side");
+
+
+
+//Select only faction from the same side
+_factions = _factions select {([east,west,independent,civilian] select getNumber(configfile >> "CfgFactionClasses" >> _x >> "side")) isEqualTo _enemy_side};
+//Prevent selecting same side as player side
+if (_enemy_side isEqualTo btc_player_side) exitWith {
+	[["IND_G_F"], _this select 1, _this select 2] call btc_fnc_mil_classes;
+};
 
 {
 	private _faction = _x;
@@ -32,7 +42,6 @@ _enemy_side		= [east,west,independent,civilian] select getNumber(configfile >> "
 	if (_divers isEqualTo []) then {_divers = if (_hq isEqualTo btc_hq_red) then {["O_diver_F","O_diver_exp_F","O_diver_TL_F"]} else {["I_diver_F","I_diver_exp_F","I_diver_TL_F"]};};
 	_type_divers	append _divers;
 	_type_units		append ((_allclasse_f select {_x isKindOf "Man"}) - _divers);
-	_type_crewmen	= _type_units select 0;
 
 	//Vehicles
 	_type_boats		append _allclasse_f select {_x isKindOf "Ship"};
@@ -49,7 +58,6 @@ _enemy_side		= [east,west,independent,civilian] select getNumber(configfile >> "
 	if (_type_mg isEqualTo []) then {_type_mg = ["O_HMG_01_F","O_HMG_01_high_F"];};
 	_type_gl		append _allclasse_f select {_x isKindOf "StaticMGWeapon"};
 	if (_type_gl isEqualTo []) then {_type_mg = ["O_GMG_01_F","O_GMG_01_high_F"];};
-
 } forEach _factions;
 
 //Final filter unwanted units type
@@ -58,6 +66,7 @@ if !(_this select 1) then {
 	_type_units		= _type_units select {(_x find "AA") isEqualTo -1};
 };
 _type_units		= _type_units select {((_x find "_base") isEqualTo -1) && ((_x find "_unarmed_") isEqualTo -1) && ((_x find "_VR_") isEqualTo -1)};
+_type_crewmen	= _type_units select 0;
 _type_motorized = (_type_motorized select {(_x find "UAV") isEqualTo -1}) select {(_x find "UGV")  isEqualTo -1};
 _type_motorized_armed = (_type_motorized_armed select {(_x find "UAV") isEqualTo -1}) select {(_x find "UGV")  isEqualTo -1};
 

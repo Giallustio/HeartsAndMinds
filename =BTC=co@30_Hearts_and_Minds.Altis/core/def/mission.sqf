@@ -484,12 +484,28 @@ btc_player_side		= west;
 btc_respawn_marker	= "respawn_west";
 /*// Get all faction from mod there are currently running
 allfaction = (("true" configClasses (configFile >> "CfgFactionClasses")) apply {configName _x}) select {getNumber(configfile >> "CfgFactionClasses" >> _x >> "side") < 3 AND getNumber(configfile >> "CfgFactionClasses" >> _x >> "side") > -1};
-texts = allfaction apply {getText(configfile >> "CfgFactionClasses" >> _x >> "displayName")};
+allfaction = allfaction apply {
+	private _mod_folder = getText(configfile >> "CfgFactionClasses" >> _x >> "icon") select [if ((getText(configfile >> "CfgFactionClasses" >> _x >> "icon") select [0,1]) isEqualTo "\") then {1} else {0}];
+	private _mod = _mod_folder select [0, _mod_folder find "\"];
+	if (_mod isEqualTo "") then {
+		_mod = _x select [0, _x find "_"];
+	};
+	[
+		_mod
+		, _x
+	]
+};
+allfaction sort true;
+texts = allfaction apply {Format ["%3: %1 (Side: %2)", getText(configfile >> "CfgFactionClasses" >> _x select 1 >> "displayName"), [East,West,Independent,Civilian] select getNumber(configfile >> "CfgFactionClasses" >>  _x select 1 >> "side") , toUpper(_x select 0)]};
+allmod = [];
+{allmod pushBackUnique _x} forEach (allfaction apply {_x select 0});
+allfaction = allfaction apply {_x select 1};
 values = [];
 for "_i" from 0 to (count allfaction) - 1 do {
 	values pushBack _i;
-};*/
-private _allfaction = ["caf_ag_afr_p","caf_ag_eeur_r","caf_ag_me_t","BLU_F","OPF_F","IND_F","IND_G_F","BLU_G_F","OPF_G_F","CUP_B_USMC","CUP_B_US_Army","CUP_B_CDF","CUP_O_RU","CUP_O_ChDKZ","CUP_I_NAPA","CUP_B_RNZN","CUP_O_TK","CUP_O_TK_MILITIA","CUP_B_US","CUP_B_CZ","CUP_B_GER","CUP_I_TK_GUE","CUP_I_UN","CUP_O_SLA","CUP_I_RACS","CUP_B_GB","CUP_I_PMC_ION","rhs_faction_usarmy","rhs_faction_usmc","rhs_faction_usarmy_wd","rhs_faction_usarmy_d","rhs_faction_usmc_wd","rhs_faction_usmc_d","rhs_faction_usaf","rhs_faction_usn","rhs_faction_socom","fow_wehrmacht","fow_ija","fow_usa","fow_usmc","fow_uk","Tban","rhs_faction_msv","rhs_faction_vdv","rhs_faction_vdv_45","rhs_faction_vmf","rhs_faction_vv","rhs_faction_tv","rhs_faction_vpvo","rhs_faction_vvs","rhs_faction_vvs_c","rhs_faction_rva","usml_aif","IND_C_F","BLU_T_F","BLU_CTRG_F","BLU_GEN_F","OPF_T_F","OPF_V_F","rhs_faction_insurgents","LIB_RKKA","LIB_NKVD","LIB_USSR_TANK_TROOPS","LIB_USSR_AIRFORCE","LIB_WEHRMACHT","LIB_PANZERWAFFE","LIB_LUFTWAFFE","SG_STURMPANZER","SG_STURM","LIB_GUER","LIB_US_ARMY","LIB_US_TANK_TROOPS","LIB_US_AIRFORCE","LIB_DAK","LIB_NAC","LIB_US_RANGERS","LIB_CIV","LIB_FFI","LIB_MKHL","LIB_ARR","LIB_RBAF","btc_am","LOP_UN","LOP_CDF","LOP_AA","LOP_IA","LOP_US","LOP_ChDKZ","LOP_TKA","LOP_SLA","LOP_RACS","LOP_PMC","LOP_ISTS","LOP_ISTS_OPF","LOP_NAPA","LOP_AM","LOP_AM_OPF","LOP_AFR","LOP_AFR_OPF","LOP_UA","LOP_PESH","LOP_PESH_IND","LOP_UKR","LOP_BH","LOP_IRA","LIB_RKKA_w","LIB_USSR_TANK_TROOPS_w","LIB_USSR_AIRFORCE_w","LIB_WEHRMACHT_w","LIB_PANZERWAFFE_w","LIB_LUFTWAFFE_w","LIB_US_ARMY_w","LIB_US_TANK_TROOPS_w","LIB_US_AIRFORCE_w","SG_STURM_w"]; //All factions
+};
+copyToClipboard str [allmod,texts,allfaction,values];*/
+private _allfaction = ["BLU_CTRG_F","BLU_F","BLU_G_F","BLU_GEN_F","BLU_T_F","CAR","CUP_B_GB","CUP_B_US","CUP_I_UN","IND_C_F","IND_F","IND_G_F","OPF_F","OPF_G_F","OPF_T_F","OPF_V_F","usml_aif","btc_am","caf_ag_afr_p","caf_ag_eeur_r","caf_ag_me_t","CUP_B_CDF","CUP_B_CZ","CUP_B_GER","CUP_B_RNZN","CUP_B_US_Army","CUP_B_USMC","CUP_I_NAPA","CUP_I_PMC_ION","CUP_I_RACS","CUP_I_TK_GUE","CUP_O_ChDKZ","CUP_O_RU","CUP_O_SLA","CUP_O_TK","CUP_O_TK_MILITIA","fow_ija","fow_uk","fow_usa","fow_usmc","fow_wehrmacht","LIB_ARR","LIB_CIV","LIB_FFI","LIB_MKHL","LIB_RBAF","LOP_AA","LOP_AFR","LOP_AFR_OPF","LOP_AM","LOP_AM_OPF","LOP_BH","LOP_CDF","LOP_ChDKZ","LOP_IA","LOP_IRA","LOP_ISTS","LOP_ISTS_OPF","LOP_NAPA","LOP_PESH","LOP_PESH_IND","LOP_PMC","LOP_RACS","LOP_SLA","LOP_TKA","LOP_UA","LOP_UKR","LOP_UN","LOP_US","rhs_faction_insurgents","rhs_faction_msv","rhs_faction_rva","rhs_faction_tv","rhs_faction_vdv","rhs_faction_vdv_45","rhs_faction_vmf","rhs_faction_vpvo","rhs_faction_vv","rhs_faction_vvs","rhs_faction_vvs_c","rhsgref_faction_cdf_air","rhsgref_faction_cdf_air_b","rhsgref_faction_cdf_ground","rhsgref_faction_cdf_ground_b","rhsgref_faction_cdf_ng","rhsgref_faction_cdf_ng_b","rhsgref_faction_chdkz","rhsgref_faction_chdkz_g","rhsgref_faction_nationalist","rhsgref_faction_un","rhssaf_faction_airforce","rhssaf_faction_army","rhssaf_faction_un","rhs_faction_socom","rhs_faction_usaf","rhs_faction_usarmy","rhs_faction_usarmy_d","rhs_faction_usarmy_wd","rhs_faction_usmc","rhs_faction_usmc_d","rhs_faction_usmc_wd","rhs_faction_usn","Tban","LIB_DAK","LIB_GUER","LIB_LUFTWAFFE","LIB_LUFTWAFFE_w","LIB_NAC","LIB_NKVD","LIB_PANZERWAFFE","LIB_PANZERWAFFE_w","LIB_RKKA","LIB_RKKA_w","LIB_US_AIRFORCE","LIB_US_AIRFORCE_w","LIB_US_ARMY","LIB_US_ARMY_w","LIB_US_RANGERS","LIB_US_TANK_TROOPS","LIB_US_TANK_TROOPS_w","LIB_USSR_AIRFORCE","LIB_USSR_AIRFORCE_w","LIB_USSR_TANK_TROOPS","LIB_USSR_TANK_TROOPS_w","LIB_WEHRMACHT","LIB_WEHRMACHT_w","SG_STURM","SG_STURM_w","SG_STURMPANZER"]; //All factions
 _p_en = _allfaction select _p_en;	//Select faction selected from mission parameter
 private _allclasses = [[_p_en /*, "IND_F"*/], _p_en_AA, _p_en_tank] call btc_fnc_mil_classes;	//Create classes from the corresponding factions [_p_en , "IND_F"], can combine factions from the SAME side.
 
@@ -516,6 +532,10 @@ switch (_p_en) do {
 		btc_type_mg = btc_type_mg;
 		btc_type_g = btc_type_g;
 	};*/
+	case "IND_G_F" : {
+		btc_type_motorized		= btc_type_motorized + ["I_Truck_02_transport_F","I_Truck_02_covered_F"];
+		btc_type_units			= btc_type_units - ["I_G_Survivor_F"];
+	};
 	case "fow_usmc" : {
 		btc_type_units		= btc_type_units - ["fow_s_usmc_01_private"];
 	};
