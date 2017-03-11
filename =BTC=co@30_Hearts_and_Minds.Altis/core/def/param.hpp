@@ -51,15 +51,15 @@ class Params {
 	class btc_p_civ {
 	//paramsArray[7]
 		title = "			Civil type:";
-		values[]={0,1,2,3,4,5};
-		texts[]={"Civilian (A3)","Afghan (@Ericj_Taliban)","Afghan (@=BTC= Militia)","Russian (@RDS A2 Civilian Pack)","A2 civils (@CUP Units)", "Eastern Europe civils (@Project Opfor)"};
+		values[]={0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20};
+		texts[]={"A3: Civils (Side: CIV)","A3: Civilian (Special) (Side: CIV)","BTC: Afghan Civilians (Side: CIV)","CAF: African (Side: CIV)","CAF: Middle Eastern (Side: CIV)","CUP: Civilians (Chenarus) (Side: CIV)","CUP: Civilians (Russian) (Side: CIV)","CUP: Civilians (Sahrani) (Side: CIV)","CUP: Civilians (Takistan) (Side: CIV)","INTERACTIVE: Autre (interactif) (Side: CIV)","LIB: ACI (Side: CIV)","LIB: RAAF (Side: CIV)","LIB: RAF (Side: CIV)","PO_MAIN: African Civilians (Side: CIV)","PO_MAIN: Eastern European Civilians (Side: CIV)","PO_MAIN: Iranian Armed Forces (Side: CIV)","PO_MAIN: Middle Eastern Civilians (Side: CIV)","PO_MAIN: Ulster Volunteer Force (Side: CIV)","RDS_A2PORT_CMAN: Russians (Side: CIV)","TALIBAN_FIGHTERS: Afghan Civilians (Side: CIV)","VIRTUAL: Virtuel (Side: CIV)"};
 		default = 0;
 	};
 	class btc_p_civ_veh {
 	//paramsArray[8]
 		title = "			Civil vehicle type:";
-		values[]={0,1,2,3};
-		texts[]={"Vanilla (A3)","A2 vehicles (@RDS A2 Civilian Pack)","A2 vehicles (@CUP Vehicles)", "Eastern Europe civils (@Project Opfor)"};
+		values[]={0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20};
+		texts[]={"A3: Civils (Side: CIV)","A3: Civilian (Special) (Side: CIV)","BTC: Afghan Civilians (Side: CIV)","CAF: African (Side: CIV)","CAF: Middle Eastern (Side: CIV)","CUP: Civilians (Chenarus) (Side: CIV)","CUP: Civilians (Russian) (Side: CIV)","CUP: Civilians (Sahrani) (Side: CIV)","CUP: Civilians (Takistan) (Side: CIV)","INTERACTIVE: Autre (interactif) (Side: CIV)","LIB: ACI (Side: CIV)","LIB: RAAF (Side: CIV)","LIB: RAF (Side: CIV)","PO_MAIN: African Civilians (Side: CIV)","PO_MAIN: Eastern European Civilians (Side: CIV)","PO_MAIN: Iranian Armed Forces (Side: CIV)","PO_MAIN: Middle Eastern Civilians (Side: CIV)","PO_MAIN: Ulster Volunteer Force (Side: CIV)","RDS_A2PORT_CMAN: Russians (Side: CIV)","TALIBAN_FIGHTERS: Afghan Civilians (Side: CIV)","VIRTUAL: Virtuel (Side: CIV)"};
 		default = 0;
 	};
 	class btc_p_IED_title {

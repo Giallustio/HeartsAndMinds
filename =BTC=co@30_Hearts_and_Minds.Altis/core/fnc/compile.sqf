@@ -146,9 +146,13 @@ if (isServer OR (!isDedicated && !hasInterface)) then {
 
 //COMMON
 //btc_fnc_veh_track_marker = compile preprocessFile "core\fnc\common\veh_track_marker.sqf";
+btc_fnc_get_class = compile preprocessFile "core\fnc\common\get_class.sqf";
 
 //DB
 btc_fnc_db_add_veh = compile preprocessFile "core\fnc\db\add_veh.sqf";
+
+//CIV
+btc_fnc_civ_class = compile preprocessFile "core\fnc\civ\class.sqf";
 
 //EH
 btc_fnc_eh_unit_init = compile preprocessFile "core\fnc\eh\unit_init.sqf";
@@ -198,7 +202,7 @@ btc_fnc_log_unhook = compile preprocessFile "core\fnc\log\unhook.sqf";
 btc_fnc_log_unload = compile preprocessFile "core\fnc\log\unload.sqf";
 
 //MIL
-btc_fnc_mil_classes = compile preprocessFile "core\fnc\mil\classes.sqf";
+btc_fnc_mil_class = compile preprocessFile "core\fnc\mil\class.sqf";
 
 //TASK
 btc_fnc_task_create = compile preprocessFileLineNumbers "core\fnc\task\create.sqf";

@@ -159,48 +159,19 @@ if (isServer) then {
 btc_city_type = "Land_Ammobox_rounds_F";
 
 //Civ
-btc_civ_type_boats = ["C_Rubberboat","C_Boat_Civil_01_F","C_Boat_Civil_01_rescue_F","C_Boat_Civil_01_police_F","C_Boat_Transport_02_F","C_Scooter_Transport_01_F"];
-switch (true) do {
-	case (_p_civ == 0) :	{
-		btc_civ_type_units = ["C_man_1","C_man_1_1_F","C_man_1_2_F","C_man_1_3_F","C_man_polo_1_F","C_man_polo_1_F_afro","C_man_polo_1_F_euro","C_man_polo_1_F_asia","C_man_polo_2_F","C_man_polo_2_F_afro","C_man_polo_2_F_euro","C_man_polo_2_F_asia","C_man_polo_3_F","C_man_polo_3_F_afro","C_man_polo_3_F_euro","C_man_polo_3_F_asia","C_man_polo_4_F","C_man_polo_4_F_afro","C_man_polo_4_F_euro","C_man_polo_4_F_asia","C_man_polo_5_F","C_man_polo_5_F_afro","C_man_polo_5_F_euro","C_man_polo_5_F_asia","C_man_polo_6_F","C_man_polo_6_F_afro","C_man_polo_6_F_euro","C_man_polo_6_F_asia","C_man_p_fugitive_F","C_man_p_fugitive_F_afro","C_man_p_fugitive_F_euro","C_man_p_fugitive_F_asia","C_man_p_beggar_F","C_man_p_beggar_F_afro","C_man_p_beggar_F_euro","C_man_p_beggar_F_asia","C_man_w_worker_F","C_man_hunter_1_F","C_Orestes","C_Nikos","C_Man_casual_4_F","C_Man_casual_5_F","C_Man_casual_6_F","C_Man_sport_1_F","C_Man_sport_2_F","C_Man_sport_3_F","C_Man_casual_1_F","C_Man_casual_2_F","C_Man_casual_3_F"];
-	};
-	case (_p_civ == 1 && isClass(configFile >> "cfgVehicles" >> "Afghan_Civilian2")) :	{
-		btc_civ_type_units = ["Afghan_Civilian2","Afghan_Civilian2NH","Afghan_civilian3","Afghan_civilian3NH","Afghan_Civilian4","Afghan_Civilian5","Afghan_Civilian6","Afghan_Civilian6NH","Afghan_civilian1","Afghan_civilian1NH"];
-	};
-	case (_p_civ == 2 && isClass(configFile >> "cfgVehicles" >> "btc_ac_1")) :	{
-		btc_civ_type_units = ["btc_ac_1"];
-	};
-	case (_p_civ == 3 && isClass(configFile >> "cfgVehicles" >> "RDS_Assistant")) :	{
-		btc_civ_type_units = ["RDS_Assistant","RDS_Functionary2","RDS_Functionary1","RDS_Woodlander1","RDS_Woodlander3","RDS_Woodlander2","RDS_Woodlander4","RDS_Citizen2","RDS_Citizen3","RDS_Citizen1","RDS_Citizen4","RDS_SchoolTeacher","RDS_Doctor","RDS_Worker3","RDS_Worker1","RDS_Worker4","RDS_Worker2","RDS_Policeman","RDS_Priest","RDS_Profiteer2","RDS_Profiteer1","RDS_Profiteer3","RDS_Profiteer4","RDS_Villager4","RDS_Villager1","RDS_Villager2","RDS_Villager3"];
-	};
-	case (_p_civ == 4 && isClass(configFile >> "cfgVehicles" >> "CUP_C_C_Assistant_01")) :	{
-		btc_civ_type_units = ["CUP_C_C_Assistant_01","CUP_C_C_Citizen_02","CUP_C_C_Citizen_01","CUP_C_C_Citizen_04","CUP_C_C_Citizen_03","CUP_C_C_Functionary_01","CUP_C_C_Functionary_02","CUP_C_C_Worker_05","CUP_C_C_Mechanic_02","CUP_C_C_Mechanic_03","CUP_C_C_Mechanic_01","CUP_C_C_Priest_01","CUP_C_C_Profiteer_02","CUP_C_C_Profiteer_03","CUP_C_C_Profiteer_01","CUP_C_C_Profiteer_04","CUP_C_C_Rocker_01","CUP_C_C_Rocker_03","CUP_C_C_Rocker_02","CUP_C_C_Rocker_04","CUP_C_C_Schoolteacher_01","CUP_C_C_Villager_01","CUP_C_C_Villager_04","CUP_C_C_Villager_02","CUP_C_C_Villager_03","CUP_C_C_Woodlander_01","CUP_C_C_Woodlander_02","CUP_C_C_Woodlander_03","CUP_C_C_Woodlander_04","CUP_C_C_Worker_03","CUP_C_C_Worker_04","CUP_C_C_Worker_02","CUP_C_C_Worker_01"];
-	};
-	case (_p_civ == 5 && isClass(configFile >> "cfgVehicles" >> "LOP_CHR_Civ_Doctor_01")) :	{
-		btc_civ_type_units = ["LOP_CHR_Civ_Doctor_01","LOP_CHR_Civ_Functionary_01","LOP_CHR_Civ_Priest_01","LOP_CHR_Civ_Profiteer_01","LOP_CHR_Civ_Rocker_01","LOP_CHR_Civ_Villager_01","LOP_CHR_Civ_Woodlander_01","LOP_CHR_Civ_Worker_01"];
-	};
-	default	{
-		btc_civ_type_units = ["C_man_1","C_man_1_1_F","C_man_1_2_F","C_man_1_3_F","C_man_polo_1_F","C_man_polo_1_F_afro","C_man_polo_1_F_euro","C_man_polo_1_F_asia","C_man_polo_2_F","C_man_polo_2_F_afro","C_man_polo_2_F_euro","C_man_polo_2_F_asia","C_man_polo_3_F","C_man_polo_3_F_afro","C_man_polo_3_F_euro","C_man_polo_3_F_asia","C_man_polo_4_F","C_man_polo_4_F_afro","C_man_polo_4_F_euro","C_man_polo_4_F_asia","C_man_polo_5_F","C_man_polo_5_F_afro","C_man_polo_5_F_euro","C_man_polo_5_F_asia","C_man_polo_6_F","C_man_polo_6_F_afro","C_man_polo_6_F_euro","C_man_polo_6_F_asia","C_man_p_fugitive_F","C_man_p_fugitive_F_afro","C_man_p_fugitive_F_euro","C_man_p_fugitive_F_asia","C_man_p_beggar_F","C_man_p_beggar_F_afro","C_man_p_beggar_F_euro","C_man_p_beggar_F_asia","C_man_w_worker_F","C_man_hunter_1_F","C_Orestes","C_Nikos","C_Man_casual_4_F","C_Man_casual_5_F","C_Man_casual_6_F","C_Man_sport_1_F","C_Man_sport_2_F","C_Man_sport_3_F","C_Man_casual_1_F","C_Man_casual_2_F","C_Man_casual_3_F"];
-	}
-};
-switch (true) do {
-	case (_p_civ_veh == 0):	{
-		btc_civ_type_veh = ["C_Hatchback_01_F","C_SUV_01_F","C_Offroad_01_F","C_Van_01_transport_F","C_Van_01_box_F","C_Truck_02_transport_F","C_Truck_02_covered_F","C_Offroad_02_unarmed_F"];
-	};
-	case (_p_civ_veh == 1 && isClass(configFile >> "cfgVehicles" >> "RDS_Van_01_transport_F")):	{
-		btc_civ_type_veh = ["RDS_Van_01_transport_F","RDS_Van_01_fuel_F","RDS_Van_01_box_F","RDS_Gaz24_Civ_03","RDS_Gaz24_Civ_01","RDS_Gaz24_Civ_02","RDS_Golf4_Civ_01","RDS_Ikarus_Civ_01","RDS_Ikarus_Civ_02","RDS_S1203_Civ_01","RDS_S1203_Civ_02","RDS_S1203_Civ_03","RDS_Octavia_Civ_01","RDS_SUV_01_F","RDS_Zetor6945_Base","RDS_Lada_Civ_01","RDS_Lada_Civ_04","RDS_Lada_Civ_03","RDS_Lada_Civ_05","RDS_Lada_Civ_02","RDS_Hatchback_01_F"];
-	};
-	case (_p_civ_veh == 2 && isClass(configFile >> "cfgVehicles" >> "CUP_C_SUV_CIV")):	{
-		btc_civ_type_veh = ["CUP_C_SUV_CIV","CUP_C_LR_Transport_CTK","CUP_C_SUV_TK","CUP_C_UAZ_Unarmed_TK_CIV","CUP_C_UAZ_Open_TK_CIV"];
-		btc_civ_type_boats pushBack "CUP_C_Fishing_Boat_Chernarus";
-	};
-	case (_p_civ_veh == 3 && isClass(configFile >> "cfgVehicles" >> "LOP_CHR_Civ_Hatchback")):	{
-		btc_civ_type_veh = ["LOP_CHR_Civ_Hatchback","LOP_CHR_Civ_Landrover","LOP_CHR_Civ_Offroad","LOP_CHR_Civ_UAZ","LOP_CHR_Civ_UAZ_Open","LOP_CHR_Civ_Ural","LOP_CHR_Civ_Ural_open"];
-	};
-	default	{
-		btc_civ_type_veh = ["C_Hatchback_01_F","C_SUV_01_F","C_Offroad_01_F","C_Van_01_transport_F","C_Van_01_box_F","C_Truck_02_transport_F","C_Truck_02_covered_F","C_Offroad_02_unarmed_F"];
-	};
-};
+// Get all faction from mod there are currently running
+//copyToClipboard str (["CIV"] call btc_fnc_get_class);
+private _allfaction = ["CIV_F","CUP_C_Special","btc_ac","caf_ag_afr_civ","caf_ag_me_civ","CUP_C_CHERNARUS","CUP_C_RU","CUP_C_SAHRANI","CUP_C_TK","Interactive_F","LIB_ACI","LIB_RAAF","LIB_RAF","LOP_AFR_Civ","LOP_CHR_Civ","LOP_IRAN","LOP_TAK_Civ","LOP_UVF","rds_rus_civ","AFGCIV","Virtual_F"]; //All factions
+_p_civ = _allfaction select _p_civ;	//Select faction selected from mission parameter
+_p_civ_veh = _allfaction select _p_civ_veh;	//Select faction selected from mission parameter
+private _allclasse = [[_p_civ]] call btc_fnc_civ_class; //Create classes from the corresponding factions [_p_civ , "btc_ac"], can combine factions from the SAME side.
+
+//Save class name to global variable
+btc_civ_type_units = _allclasse select 0;
+_allclasse = [[_p_civ_veh]] call btc_fnc_civ_class;
+btc_civ_type_veh = _allclasse select 2;
+btc_civ_type_boats = _allclasse select 1;
+
 btc_civ_max_veh = 10;
 btc_w_civs = ["V_Rangemaster_belt","arifle_Mk20_F","30Rnd_556x45_Stanag","hgun_ACPC2_F","9Rnd_45ACP_Mag"];
 
@@ -482,43 +453,22 @@ btc_lift_HUD_y  = 0.848;
 //Mil
 btc_player_side		= west;
 btc_respawn_marker	= "respawn_west";
-/*// Get all faction from mod there are currently running
-allfaction = (("true" configClasses (configFile >> "CfgFactionClasses")) apply {configName _x}) select {getNumber(configfile >> "CfgFactionClasses" >> _x >> "side") < 3 AND getNumber(configfile >> "CfgFactionClasses" >> _x >> "side") > -1};
-allfaction = allfaction apply {
-	private _mod_folder = getText(configfile >> "CfgFactionClasses" >> _x >> "icon") select [if ((getText(configfile >> "CfgFactionClasses" >> _x >> "icon") select [0,1]) isEqualTo "\") then {1} else {0}];
-	private _mod = _mod_folder select [0, _mod_folder find "\"];
-	if (_mod isEqualTo "") then {
-		_mod = _x select [0, _x find "_"];
-	};
-	[
-		_mod
-		, _x
-	]
-};
-allfaction sort true;
-texts = allfaction apply {Format ["%3: %1 (Side: %2)", getText(configfile >> "CfgFactionClasses" >> _x select 1 >> "displayName"), [East,West,Independent,Civilian] select getNumber(configfile >> "CfgFactionClasses" >>  _x select 1 >> "side") , toUpper(_x select 0)]};
-allmod = [];
-{allmod pushBackUnique _x} forEach (allfaction apply {_x select 0});
-allfaction = allfaction apply {_x select 1};
-values = [];
-for "_i" from 0 to (count allfaction) - 1 do {
-	values pushBack _i;
-};
-copyToClipboard str [allmod,texts,allfaction,values];*/
+// Get all faction from mod there are currently running
+//copyToClipboard str (["EN"] call btc_fnc_get_class);
 private _allfaction = ["BLU_CTRG_F","BLU_F","BLU_G_F","BLU_GEN_F","BLU_T_F","CAR","CUP_B_GB","CUP_B_US","CUP_I_UN","IND_C_F","IND_F","IND_G_F","OPF_F","OPF_G_F","OPF_T_F","OPF_V_F","usml_aif","btc_am","caf_ag_afr_p","caf_ag_eeur_r","caf_ag_me_t","CUP_B_CDF","CUP_B_CZ","CUP_B_GER","CUP_B_RNZN","CUP_B_US_Army","CUP_B_USMC","CUP_I_NAPA","CUP_I_PMC_ION","CUP_I_RACS","CUP_I_TK_GUE","CUP_O_ChDKZ","CUP_O_RU","CUP_O_SLA","CUP_O_TK","CUP_O_TK_MILITIA","fow_ija","fow_uk","fow_usa","fow_usmc","fow_wehrmacht","LIB_ARR","LIB_CIV","LIB_FFI","LIB_MKHL","LIB_RBAF","LOP_AA","LOP_AFR","LOP_AFR_OPF","LOP_AM","LOP_AM_OPF","LOP_BH","LOP_CDF","LOP_ChDKZ","LOP_IA","LOP_IRA","LOP_ISTS","LOP_ISTS_OPF","LOP_NAPA","LOP_PESH","LOP_PESH_IND","LOP_PMC","LOP_RACS","LOP_SLA","LOP_TKA","LOP_UA","LOP_UKR","LOP_UN","LOP_US","rhs_faction_insurgents","rhs_faction_msv","rhs_faction_rva","rhs_faction_tv","rhs_faction_vdv","rhs_faction_vdv_45","rhs_faction_vmf","rhs_faction_vpvo","rhs_faction_vv","rhs_faction_vvs","rhs_faction_vvs_c","rhsgref_faction_cdf_air","rhsgref_faction_cdf_air_b","rhsgref_faction_cdf_ground","rhsgref_faction_cdf_ground_b","rhsgref_faction_cdf_ng","rhsgref_faction_cdf_ng_b","rhsgref_faction_chdkz","rhsgref_faction_chdkz_g","rhsgref_faction_nationalist","rhsgref_faction_un","rhssaf_faction_airforce","rhssaf_faction_army","rhssaf_faction_un","rhs_faction_socom","rhs_faction_usaf","rhs_faction_usarmy","rhs_faction_usarmy_d","rhs_faction_usarmy_wd","rhs_faction_usmc","rhs_faction_usmc_d","rhs_faction_usmc_wd","rhs_faction_usn","Tban","LIB_DAK","LIB_GUER","LIB_LUFTWAFFE","LIB_LUFTWAFFE_w","LIB_NAC","LIB_NKVD","LIB_PANZERWAFFE","LIB_PANZERWAFFE_w","LIB_RKKA","LIB_RKKA_w","LIB_US_AIRFORCE","LIB_US_AIRFORCE_w","LIB_US_ARMY","LIB_US_ARMY_w","LIB_US_RANGERS","LIB_US_TANK_TROOPS","LIB_US_TANK_TROOPS_w","LIB_USSR_AIRFORCE","LIB_USSR_AIRFORCE_w","LIB_USSR_TANK_TROOPS","LIB_USSR_TANK_TROOPS_w","LIB_WEHRMACHT","LIB_WEHRMACHT_w","SG_STURM","SG_STURM_w","SG_STURMPANZER"]; //All factions
 _p_en = _allfaction select _p_en;	//Select faction selected from mission parameter
-private _allclasses = [[_p_en /*, "IND_F"*/], _p_en_AA, _p_en_tank] call btc_fnc_mil_classes;	//Create classes from the corresponding factions [_p_en , "IND_F"], can combine factions from the SAME side.
+_allclasse = [[_p_en /*, "IND_F"*/], _p_en_AA, _p_en_tank] call btc_fnc_mil_class;	//Create classes from the corresponding factions [_p_en , "IND_F"], can combine factions from the SAME side.
 
-//Save classe name to global variable
-btc_hq = _allclasses select 0;
-btc_enemy_side = _allclasses select 1;
-btc_type_units = _allclasses select 2;
-btc_type_divers = _allclasses select 3;
-btc_type_crewmen = _allclasses select 4;
-btc_type_boats = _allclasses select 5;
-btc_type_motorized = _allclasses select 6;
-btc_type_mg = _allclasses select 7;
-btc_type_gl = _allclasses select 8;
+//Save class name to global variable
+btc_hq = _allclasse select 0;
+btc_enemy_side = _allclasse select 1;
+btc_type_units = _allclasse select 2;
+btc_type_divers = _allclasse select 3;
+btc_type_crewmen = _allclasse select 4;
+btc_type_boats = _allclasse select 5;
+btc_type_motorized = _allclasse select 6;
+btc_type_mg = _allclasse select 7;
+btc_type_gl = _allclasse select 8;
 
 //Sometimes you need to remove units: - ["Blabla","moreBlabla"];
 //Sometimes you need to add units: + ["Blabla","moreBlabla"];
