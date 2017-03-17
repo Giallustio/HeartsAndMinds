@@ -1,5 +1,5 @@
 
-private ["_useful","_city","_pos","_marker","_wrecks","_generator","_objects","_storagebladder","_area"];
+private ["_useful","_city","_pos","_marker","_wrecks","_generator","_objects","_storagebladder","_area","_group"];
 
 //// Choose a Marine location occupied \\\\
 _useful = btc_city_all select {((_x getVariable ["occupied",false]) && (_x getVariable ["type",""] == "NameMarine"))};
@@ -52,7 +52,13 @@ _marker setMarkerSize [0.6, 0.6];
 
 //// Create underwater generator \\\\
 _generator = (selectRandom btc_type_generator) createVehicle _pos;
-_storagebladder = (selectRandom btc_type_storagebladder) createVehicle [(_pos select 0) + 5, (_pos select 1), _pos select 2];
+_storagebladder = (selectRandom btc_type_storagebladder) createVehicle [(_pos select 0) + 5, _pos select 1, _pos select 2];
+
+_group = [_pos,8, 1 + round random 5,0.8] call btc_fnc_mil_create_group;
+[_pos,20, 2 + round random 4,0.5] call btc_fnc_mil_create_group;
+
+_pos = getPosASL _generator;
+leader _group setPosASL [_pos select 0, _pos select 1, (_pos select 2) + 1 + random 1];
 
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !Alive _generator )};
 
