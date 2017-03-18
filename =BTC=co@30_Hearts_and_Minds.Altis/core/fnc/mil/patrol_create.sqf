@@ -40,7 +40,7 @@ if (_useful getVariable ["hasbeach",false]) then {
 	_pos = getPos _useful;
 };
 
-_group = createGroup btc_enemy_side;
+_group = createGroup [btc_enemy_side, true];
 _group setVariable ["city",_city];
 _group setVariable ["no_cache",true];
 _group setVariable ["btc_patrol",true];
