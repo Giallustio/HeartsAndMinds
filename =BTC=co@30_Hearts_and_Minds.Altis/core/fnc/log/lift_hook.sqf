@@ -27,6 +27,7 @@ if (_bbr isEqualTo [] OR !(_chopper canSlingLoad _cargo)) then {
 		_support = [_cargo, _chopper] call btc_fnc_log_lift_hook_fake;
 		_bbr = [(_bbr select 0) apply {_x/2}, (_bbr select 1) apply {_x/2}];
 		_bbr_z = _support distance _cargo;
+		sleep 0.3;
 	} else {
 		_support = _cargo;
 		_bbr_z = 0;
