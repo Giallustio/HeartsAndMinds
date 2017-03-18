@@ -29,7 +29,7 @@ btc_side_done = false;
 btc_side_failed = false;
 btc_side_assigned = true;publicVariable "btc_side_assigned";
 
-[14,_pos,_city getVariable "name"] call btc_fnc_task_create;
+[14,_pos2,_city2 getVariable "name"] call btc_fnc_task_create;
 
 btc_side_jip_data = [14,getPos _city1,_city1 getVariable "name"];
 

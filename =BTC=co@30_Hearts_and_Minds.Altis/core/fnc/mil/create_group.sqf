@@ -42,7 +42,7 @@ switch (true) do {
 		} else {[_group,_rpos,_area,"SAFE",_pos_iswater] spawn btc_fnc_task_patrol;};
 	};
 	case (_wp > 0.3 && _wp < 0.75) : {
-		[_group,_rpos,(_area*2),"AWARE",_pos_iswater] spawn btc_fnc_task_patrol;
+		[_group,_rpos,_area,"AWARE",_pos_iswater] spawn btc_fnc_task_patrol;
 	};
 	case (_wp > 0.75) :	{
 		private ["_wpa"];
