@@ -238,7 +238,7 @@ btc_supplies_mat = "Land_Cargo20_red_F";
 if (isServer) then {
 	#define	REARM_TURRET_PATHS  [[-1], [0], [0,0], [0,1], [1], [2], [0,2]]
 
-	_btc_rearming_vehicles = [btc_vehicles + btc_helo] call btc_fnc_find_veh_with_turret;
+	_btc_rearming_vehicles = [btc_vehicles + btc_helo,[]] call btc_fnc_find_veh_with_turret;
 
 	_btc_rearming_static =
 	[
@@ -626,7 +626,7 @@ switch (true) do {
 		btc_type_gl			= ["O_GMG_01_F","O_GMG_01_high_F"];
 	}
 };
-private _veh_armed = [_allclasse select {((_x isKindOf "Air") || (_x isKindOf "Helicopter") || (_x isKindOf "Tank") || (_x isKindOf "Car"))}] call btc_fnc_find_veh_with_turret;
+private _veh_armed = [_allclasse select {((_x isKindOf "Air") || (_x isKindOf "Helicopter") || (_x isKindOf "Tank") || (_x isKindOf "Car"))},["168Rnd_CMFlare_Chaff_Magazine","Laserbatteries","SmokeLauncherMag"]] call btc_fnc_find_veh_with_turret;
 btc_type_motorized_armed = _veh_armed select {getText(configFile >> "cfgvehicles" >> _x >> "faction") isEqualTo getText(configFile >> "cfgvehicles" >> btc_type_motorized select (count (btc_type_motorized) -1) >> "faction")};
 btc_type_motorized_armed = (btc_type_motorized_armed select {(_x find "UAV") isEqualTo -1}) select {(_x find "UGV")  isEqualTo -1};
 
