@@ -126,6 +126,7 @@ if (isServer) then {
 	btc_fnc_side_rescue = compile preprocessFileLineNumbers "core\fnc\side\rescue.sqf";
 	btc_fnc_side_capture_officer = compile preprocessFileLineNumbers "core\fnc\side\capture_officer.sqf";
 	btc_fnc_side_hostage = compile preprocessFileLineNumbers "core\fnc\side\hostage.sqf";
+	btc_fnc_side_hack = compile preprocessFileLineNumbers "core\fnc\side\hack.sqf";
 
 	//LOG
 	btc_fnc_log_getconfigmagazines = compile preprocessFile "core\fnc\log\getconfigmagazines.sqf";
