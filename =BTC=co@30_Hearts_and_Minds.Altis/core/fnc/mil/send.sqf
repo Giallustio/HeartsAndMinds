@@ -12,10 +12,10 @@ switch (typeName (_this select 1)) do {
 	case "OBJECT": {_dest = getPos (_this select 1);};
 };
 
-
+private ["_group"];
 switch (_this select 2) do {
 	case 0 : {
-		private ["_group","_wp_0","_wp"];
+		private ["_wp_0","_wp"];
 		_group = [_pos,150,(3 + random 6),1] call btc_fnc_mil_create_group;
 		_group setVariable ["no_cache",true];
 		while {(count (waypoints _group)) > 0} do { deleteWaypoint ((waypoints _group) select 0); };
@@ -29,8 +29,8 @@ switch (_this select 2) do {
 		_wp setWaypointStatements ["true", "(group this) spawn btc_fnc_data_add_group;"];
 	};
 	case 1 : {
-		private ["_group","_veh_type","_return_pos","_veh","_gunner","_commander","_cargo","_wp","_wp_1","_wp_3"];
-		_group = createGroup btc_enemy_side;
+		private ["_veh_type","_return_pos","_veh","_gunner","_commander","_cargo","_wp","_wp_1","_wp_3"];
+		_group = createGroup [btc_enemy_side, true];
 		_group setVariable ["no_cache",true];
 		_veh_type = (_this select 3);
 		if (_veh_type == "") then {_veh_type = selectRandom btc_type_motorized};
@@ -67,3 +67,5 @@ switch (_this select 2) do {
 if !((entities "HeadlessClient_F") isEqualTo []) then {
 	[_group] call btc_fnc_set_groupowner;
 };
+
+_group
