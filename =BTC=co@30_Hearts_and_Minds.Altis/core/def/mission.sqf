@@ -57,9 +57,10 @@ btc_p_side_mission_cycle = false;
 btc_p_garage = false;
 btc_p_debug  = (paramsArray select 39);
 
-//MED
+//OPTION must be use for H&M
 if (ace_medical_maxReviveTime > 0) then {ace_medical_enableRevive = 1;ace_medical_preventInstaDeath = true};
 ace_medical_enableFor = 1;
+ace_cargo_enable = true;
 
 //btc_acre_mod = isClass(configFile >> "cfgPatches" >> "acre_main");
 //btc_tfr_mod = isClass(configFile >> "cfgPatches" >> "task_force_radio");
