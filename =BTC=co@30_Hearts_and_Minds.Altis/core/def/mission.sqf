@@ -57,9 +57,10 @@ btc_p_side_mission_cycle = false;
 btc_p_garage = false;
 btc_p_debug  = (paramsArray select 39);
 
-//MED
+//OPTION must be use for H&M
 if (ace_medical_maxReviveTime > 0) then {ace_medical_enableRevive = 1;ace_medical_preventInstaDeath = true};
 ace_medical_enableFor = 1;
+ace_cargo_enable = true;
 
 //btc_acre_mod = isClass(configFile >> "cfgPatches" >> "acre_main");
 //btc_tfr_mod = isClass(configFile >> "cfgPatches" >> "task_force_radio");
@@ -487,9 +488,9 @@ btc_lift_HUD_y  = 0.848;
 //Mil
 btc_player_side		= west;
 btc_respawn_marker	= "respawn_west";
+btc_hq = objNull;
 switch (true) do {
 	case (_p_en == 0) :	{
-		btc_hq 				= btc_hq_red;
 		btc_enemy_side		= east;
 		btc_type_units		= ["O_G_Soldier_F","O_G_Soldier_TL_F","O_G_Soldier_AR_F","O_G_engineer_F","O_G_Soldier_exp_F","O_G_Soldier_GL_F","O_G_Soldier_LAT_F"];
 		btc_type_divers		= ["O_diver_F","O_diver_exp_F","O_diver_TL_F"];
@@ -501,7 +502,6 @@ switch (true) do {
 		btc_type_gl			= ["O_GMG_01_F","O_GMG_01_high_F"];
 	};
 	case (_p_en == 1 && isClass(configFile >> "cfgVehicles" >> "CAF_AG_ME_T_AK47")) : {
-		btc_hq				= btc_hq_red;
 		btc_enemy_side		= east;
 		btc_type_units		= ["CAF_AG_ME_AK47","CAF_AG_ME_T_AK74","CAF_AG_ME_T_PKM","CAF_AG_ME_T_RPK74","CAF_AG_ME_T_RPG","CAF_AG_ME_T_GL"];
 		btc_type_divers		= ["O_diver_F","O_diver_exp_F","O_diver_TL_F"];
@@ -513,9 +513,7 @@ switch (true) do {
 		btc_type_gl			= ["O_GMG_01_F","O_GMG_01_high_F"];
 		btc_civ_type_units	= ["CAF_AG_ME_CIV","CAF_AG_ME_CIV_02","CAF_AG_ME_CIV_03","CAF_AG_ME_CIV_04"];
 	};
-	case (_p_en == 2) :
-	{
-		btc_hq				= btc_hq_green;
+	case (_p_en == 2) :	{
 		btc_enemy_side		= resistance;
 		btc_type_units		= ["I_Soldier_F","I_Soldier_TL_F","I_Soldier_AR_F","I_engineer_F","I_Soldier_exp_F","I_Soldier_GL_F","I_Soldier_LAT_F","I_Soldier_AT_F","I_Soldier_AA_F","I_Spotter_F","I_Sniper_F"];
 		btc_type_divers		= ["I_diver_F","I_diver_exp_F","I_diver_TL_F"];
@@ -527,7 +525,6 @@ switch (true) do {
 		btc_type_gl			= ["I_GMG_01_F","I_GMG_01_high_F"];
 	};
 	case (_p_en == 3 && isClass(configFile >> "cfgVehicles" >> "rhs_g_Soldier_F")) : {
-		btc_hq				= btc_hq_green;
 		btc_enemy_side		= resistance;
 		btc_type_units		= ["rhs_g_Soldier_F","rhs_g_medic_F","rhs_g_engineer_F","rhs_g_Soldier_exp_F","rhs_g_Soldier_GL_F","rhs_g_Soldier_AAT_F","rhs_g_Soldier_AR_F","rhs_g_Soldier_AAR_F","rhs_g_Soldier_M_F","rhs_g_uniform5_base","rhs_g_uniform1_base","rhs_g_uniform2_base","rhs_g_uniform3_base","rhs_g_uniform4_base","rhs_g_Soldier_F2","rhs_g_Soldier_F","rhs_g_Soldier_LAT_F","rhs_g_Soldier_lite_F","rhs_g_Soldier_AT_F","rhs_g_Soldier_AA_F","rhs_g_Soldier_TL_F","rhs_g_Soldier_SL_F"];
 		btc_type_divers		= ["I_diver_F","I_diver_exp_F","I_diver_TL_F"];
@@ -539,7 +536,6 @@ switch (true) do {
 		btc_type_gl			= ["I_GMG_01_F","I_GMG_01_high_F","RHS_AGS30_TriPod_INS"];
 	};
 	case (_p_en == 4 && isClass(configFile >> "cfgVehicles" >> "btc_am_mg")) : {
-		btc_hq				= btc_hq_red;
 		btc_enemy_side		= east;
 		btc_type_units		= ["btc_am_mg","btc_am_m","btc_am_medic","btc_am_r","btc_am_amg","btc_am_at","btc_am_gl","btc_afghan_1_2","btc_afghan_1_3","btc_afghan_1_4","btc_afghan_1_5","btc_am_tl"];
 		btc_type_divers		= ["O_diver_F","O_diver_exp_F","O_diver_TL_F"];
@@ -551,7 +547,6 @@ switch (true) do {
 		btc_type_gl			= ["O_GMG_01_F","O_GMG_01_high_F"];
 	};
 	case (_p_en == 5 && isClass(configFile >> "cfgVehicles" >> "aif_oficial")) : {
-		btc_hq				= btc_hq_green;
 		btc_enemy_side		= resistance;
 		btc_type_units		= ["aif_oficial","aif_oficial2","aif_oficial3","aif_support_MG","aif_specialist_Ex","aif_rifleman","aif_riflemanAK103","aif_riflemanM4","aif_support_AT","aif_riflemanGL","aif_TeamLeader","aif_sniper","aif_riflemanGLM4","aif_support_rpg26","aif_TeamLeader_G","aif_medic_G","aif_rifleman_G"];
 		btc_type_divers		= ["I_diver_F","I_diver_exp_F","I_diver_TL_F"];
@@ -563,7 +558,6 @@ switch (true) do {
 		btc_type_gl			= ["O_GMG_01_F","O_GMG_01_high_F","aif_Static_Mk19_TriPod"];
 	};
 	case (_p_en == 6) : {
-		btc_hq				= btc_hq_green;
 		btc_enemy_side		= resistance;
 		btc_type_units		= ["I_C_Soldier_Bandit_5_F","I_C_Soldier_Bandit_6_F","I_C_Soldier_Bandit_3_F","I_C_Soldier_Bandit_8_F","I_C_Soldier_Bandit_2_F","I_C_Soldier_Bandit_4_F","I_C_Soldier_Bandit_7_F","I_C_Soldier_Bandit_1_F","I_C_Soldier_Para_6_F","I_C_Soldier_Para_7_F","I_C_Soldier_Para_2_F","I_C_Soldier_Para_3_F","I_C_Soldier_Para_4_F","I_C_Soldier_Para_8_F","I_C_Soldier_Para_1_F","I_C_Soldier_Para_5_F"];
 		btc_type_divers		= ["I_diver_F","I_diver_exp_F","I_diver_TL_F"];
@@ -575,7 +569,6 @@ switch (true) do {
 		btc_type_gl			= ["I_GMG_01_F","I_GMG_01_high_F"];
 	};
 	case (_p_en == 7 && isClass(configFile >> "cfgVehicles" >> "LOP_AM_Infantry_Engineer")) : {
-		btc_hq				= btc_hq_green;
 		btc_enemy_side		= resistance;
 		btc_type_units		= ["LOP_AM_Infantry_Engineer","LOP_AM_Infantry_Corpsman","LOP_AM_Infantry_GL","LOP_AM_Infantry_Rifleman","LOP_AM_Infantry_Rifleman_2","LOP_AM_Infantry_Rifleman_3","LOP_AM_Infantry_Marksman","LOP_AM_Infantry_AT","LOP_AM_Infantry_AR","LOP_AM_Infantry_AR_Asst","LOP_AM_Infantry_SL"];
 		btc_type_divers		= ["I_diver_F","I_diver_exp_F","I_diver_TL_F"];
@@ -587,7 +580,6 @@ switch (true) do {
 		btc_type_gl			= ["LOP_AM_AGS30_TriPod","LOP_AM_Static_SPG9"];
 	};
 	case (_p_en == 8 && isClass(configFile >> "cfgVehicles" >> "LOP_ISTS_Infantry_Engineer")) : {
-		btc_hq = btc_hq_green;
 		btc_enemy_side		= resistance;
 		btc_type_units		= ["LOP_ISTS_Infantry_Engineer","LOP_ISTS_Infantry_Corpsman","LOP_ISTS_Infantry_GL","LOP_ISTS_Infantry_Rifleman","LOP_ISTS_Infantry_Rifleman_2","LOP_ISTS_Infantry_Rifleman_3","LOP_ISTS_Infantry_AT","LOP_ISTS_Infantry_Marksman","LOP_ISTS_Infantry_AR_Asst","LOP_ISTS_Infantry_AR"];
 		btc_type_divers		= ["I_diver_F","I_diver_exp_F","I_diver_TL_F"];
@@ -599,7 +591,6 @@ switch (true) do {
 		btc_type_gl			= ["LOP_ISTS_AGS30_TriPod","LOP_ISTS_Static_SPG9"];
     };
 	case (_p_en == 9 && isClass(configFile >> "cfgVehicles" >> "LOP_UA_Infantry_AT_Asst")) : {
-		btc_hq				= btc_hq_green;
 		btc_enemy_side		= resistance;
 		btc_type_units		= ["LOP_UA_Infantry_AT_Asst","LOP_UA_Infantry_Corpsman","LOP_UA_Infantry_GL","LOP_UA_Infantry_AT","LOP_UA_Infantry_Rifleman","LOP_UA_Infantry_Rifleman_2","LOP_UA_Infantry_Rifleman_3","LOP_UA_Infantry_Marksman","LOP_UA_Infantry_MG_Asst","LOP_UA_Infantry_MG","LOP_UA_Officer","LOP_UA_Infantry_SL","LOP_UA_Infantry_TL"];
 		btc_type_divers		= ["I_diver_F","I_diver_exp_F","I_diver_TL_F"];
@@ -611,7 +602,6 @@ switch (true) do {
 		btc_type_gl			= ["LOP_UA_AGS30_TriPod"];
 	};
 	case (_p_en == 10) : {
-		btc_hq				= btc_hq_red;
 		btc_enemy_side		= east;
 		btc_type_units		= ["O_T_Soldier_A_F","O_T_Soldier_AAR_F","O_T_Soldier_AR_F","O_T_Medic_F","O_T_Engineer_F","O_T_Soldier_Exp_F","O_T_Soldier_GL_F","O_T_Soldier_M_F","O_V_Soldier_JTAC_ghex_F","O_V_Soldier_Exp_ghex_F","O_V_Soldier_M_ghex_F","O_V_Soldier_ghex_F","O_V_Soldier_Medic_ghex_F","O_V_Soldier_LAT_ghex_F","O_V_Soldier_TL_ghex_F","O_T_Recon_JTAC_F","O_T_Recon_M_F","O_T_Recon_Medic_F","O_T_Recon_LAT_F","O_T_ghillie_tna_F"]
 ;
@@ -624,7 +614,6 @@ switch (true) do {
 		btc_type_gl			= ["O_GMG_01_F","O_GMG_01_high_F"];
 	};
 	default	{
-		btc_hq				= btc_hq_red;
 		btc_enemy_side		= east;
 		btc_type_units		= ["O_G_Soldier_F","O_G_Soldier_TL_F","O_G_Soldier_AR_F","O_G_engineer_F","O_G_Soldier_exp_F","O_G_Soldier_GL_F","O_G_Soldier_LAT_F"];
 		btc_type_divers		= ["O_diver_F","O_diver_exp_F","O_diver_TL_F"];
