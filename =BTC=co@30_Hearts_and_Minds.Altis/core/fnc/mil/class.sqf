@@ -35,7 +35,7 @@ if (_enemy_side isEqualTo btc_player_side) exitWith {
 	private _allclasse_f = _allclasse select {(toUpper getText(configFile >> "cfgvehicles" >> _x >> "faction")) isEqualTo _faction};
 
 	//Units
-	_divers	= _allclasse_f select {!((_x find "diver") isEqualTo -1)};
+	_divers	= _allclasse_f select {!(((toLower _x) find "diver") isEqualTo -1)};
 	if (_divers isEqualTo []) then {_divers = if (_enemy_side isEqualTo east) then {["O_diver_F","O_diver_exp_F","O_diver_TL_F"]} else {["I_diver_F","I_diver_exp_F","I_diver_TL_F"]};};
 	_type_divers	append _divers;
 	_type_units		append ((_allclasse_f select {_x isKindOf "Man"}) - _divers);
@@ -62,7 +62,7 @@ if !(_en_AA) then {
 	//Remove Anti-Air Units
 	_type_units		= _type_units select {(_x find "AA") isEqualTo -1};
 };
-_type_units		= _type_units select {((_x find "_base") isEqualTo -1) && ((_x find "_unarmed_") isEqualTo -1) && ((_x find "_VR_") isEqualTo -1)};
+_type_units		= _type_units select {((_x find "_Story") isEqualTo -1) && ((_x find "_base") isEqualTo -1) && ((_x find "_unarmed_") isEqualTo -1) && ((_x find "_VR_") isEqualTo -1)};
 _type_crewmen	= _type_units select 0;
 _type_motorized = (_type_motorized select {(_x find "UAV") isEqualTo -1}) select {(_x find "UGV")  isEqualTo -1};
 _type_motorized_armed = (_type_motorized_armed select {(_x find "UAV") isEqualTo -1}) select {(_x find "UGV")  isEqualTo -1};
