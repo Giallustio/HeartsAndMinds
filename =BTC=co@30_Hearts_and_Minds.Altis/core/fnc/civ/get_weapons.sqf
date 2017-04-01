@@ -21,8 +21,7 @@ _units = _units select {side _x isEqualTo civilian};
 
 	[_x] call btc_fnc_civ_add_weapons;
 
-	[_x] joinSilent btc_hq;
-	[_x] joinSilent GrpNull;
+	[_x] joinSilent createGroup [btc_enemy_side, true];
 
 	(group _x) setVariable ["getWeapons",true];
 
