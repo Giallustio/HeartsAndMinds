@@ -493,7 +493,6 @@ switch (_p_en) do {
 	case "IND_G_F" : {
 		btc_type_motorized		= btc_type_motorized + ["I_Truck_02_transport_F","I_Truck_02_covered_F"];
 		btc_type_units			= btc_type_units - ["I_G_Survivor_F"];
-		btc_type_crewmen		= "I_soldier_F";
 	};
 	case "FOW_USMC" : {
 		btc_type_units			= btc_type_units - ["fow_s_usmc_01_private"];
