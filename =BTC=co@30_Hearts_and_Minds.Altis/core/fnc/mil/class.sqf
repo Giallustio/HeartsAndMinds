@@ -14,7 +14,8 @@ private _type_mg = [];
 private _type_gl = [];
 
 //Get all vehicles
-private _allclasse = ("(configName _x) isKindOf 'AllVehicles'" configClasses (configFile >> "CfgVehicles")) apply {configName _x};
+private _allclass = ("(configName _x) isKindOf 'AllVehicles'" configClasses (configFile >> "CfgVehicles")) apply {configName _x};
+_allclass = _allclass select {getNumber(configfile >> "CfgVehicles" >> _x >> "scope") isEqualTo 2};
 
 //Check if faction existe
 _factions = _factions apply {if !isClass(configFile >> "CfgFactionClasses" >> _x) then {"IND_G_F"} else {_x};};
@@ -32,28 +33,28 @@ if (_enemy_side isEqualTo btc_player_side) exitWith {
 	private _faction = _x;
 
 	//Get all vehicles of the _faction selected
-	private _allclasse_f = _allclasse select {(toUpper getText(configFile >> "cfgvehicles" >> _x >> "faction")) isEqualTo _faction};
+	private _allclass_f = _allclass select {(toUpper getText(configFile >> "cfgvehicles" >> _x >> "faction")) isEqualTo _faction};
 
 	//Units
-	_divers	= _allclasse_f select {!(((toLower _x) find "diver") isEqualTo -1)};
+	_divers	= _allclass_f select {!(((toLower _x) find "diver") isEqualTo -1)};
 	if (_divers isEqualTo []) then {_divers = if (_enemy_side isEqualTo east) then {["O_diver_F","O_diver_exp_F","O_diver_TL_F"]} else {["I_diver_F","I_diver_exp_F","I_diver_TL_F"]};};
 	_type_divers	append _divers;
-	_type_units		append ((_allclasse_f select {_x isKindOf "Man"}) - _divers);
+	_type_units		append ((_allclass_f select {_x isKindOf "Man"}) - _divers);
 
 	//Vehicles
-	_type_boats		append _allclasse_f select {_x isKindOf "Ship"};
+	_type_boats		append _allclass_f select {_x isKindOf "Ship"};
 	if (_type_boats isEqualTo []) then {_type_boats append ["I_Boat_Armed_01_minigun_F","I_Boat_Transport_01_F","I_SDV_01_F","I_G_Boat_Transport_01_F"];};
 	_type_motorized	append (if (_en_tank) then {
-			_allclasse_f select {(_x isKindOf "Tank") || (_x isKindOf "Car") || (_x isKindOf "Truck") || (_x isKindOf "Truck_F")}
+			_allclass_f select {(_x isKindOf "Tank") || (_x isKindOf "Car") || (_x isKindOf "Truck") || (_x isKindOf "Truck_F")}
 		} else {
-			_allclasse_f select {(_x isKindOf "Car") || (_x isKindOf "Truck") || (_x isKindOf "Truck_F")}
+			_allclass_f select {(_x isKindOf "Car") || (_x isKindOf "Truck") || (_x isKindOf "Truck_F")}
 		});
-	_type_motorized_armed append (_allclasse_f select {((_x isKindOf "Air") || (_x isKindOf "Helicopter") || (_x isKindOf "Tank") || (_x isKindOf "Car"))}); //need call btc_fnc_find_veh_with_turret
+	_type_motorized_armed append (_allclass_f select {((_x isKindOf "Air") || (_x isKindOf "Helicopter") || (_x isKindOf "Tank") || (_x isKindOf "Car"))}); //need call btc_fnc_find_veh_with_turret
 
 	//Static
-	_type_mg		append _allclasse_f select {_x isKindOf "StaticGrenadeLauncher"};
+	_type_mg		append _allclass_f select {_x isKindOf "StaticGrenadeLauncher"};
 	if (_type_mg isEqualTo []) then {_type_mg = ["O_HMG_01_F","O_HMG_01_high_F"];};
-	_type_gl		append _allclasse_f select {_x isKindOf "StaticMGWeapon"};
+	_type_gl		append _allclass_f select {_x isKindOf "StaticMGWeapon"};
 	if (_type_gl isEqualTo []) then {_type_mg = ["O_GMG_01_F","O_GMG_01_high_F"];};
 } forEach _factions;
 

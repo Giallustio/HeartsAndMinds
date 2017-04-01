@@ -495,9 +495,6 @@ switch (_p_en) do {
 		btc_type_units			= btc_type_units - ["I_G_Survivor_F"];
 		btc_type_crewmen		= "I_soldier_F";
 	};
-	case "IND_F" : {
-		btc_type_units			= btc_type_units - ["I_Soldier_02_F","I_Soldier_03_F","I_Soldier_04_F"];
-	};
 	case "FOW_USMC" : {
 		btc_type_units			= btc_type_units - ["fow_s_usmc_01_private"];
 	};
