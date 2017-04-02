@@ -5,10 +5,10 @@
 private ["_veh"];
 
 _veh = _this select 0;
-/*if (btc_debug_log) then	{
-	diag_log format ["traffic eh: veh: %1 driver: %2 pos_veh: %3",_veh,(_veh getVariable ["driver",_veh]), getPos _veh];
+if (btc_debug_log) then	{
+	diag_log format ["EH TRAFFIC ID: %1 veh: %2 driver: %3 pos_veh: %4",(_veh getVariable ["driver",_veh]) getVariable "btc_traffic_id", _veh,_veh getVariable ["driver",_veh], getPos _veh];
 };
-*/
+
 _veh call btc_fnc_civ_traffic_eh_remove;
 
 [_veh,(_veh getVariable ["driver",grpNull])] spawn {
