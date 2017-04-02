@@ -13,7 +13,7 @@ _players = if (isMultiplayer) then {playableUnits} else {switchableUnits};
 //Remove if too far from player
 if ({_x distance _active_city < (_area/2) || _x distance leader _group < (_area/2)} count _players isEqualTo 0) exitWith {
 	if (btc_debug_log) then	{
-		diag_log format ["TRAFFIC REMOVE ID: %1 (%3) POS: %2",_group getVariable "btc_traffic_id",_pos,typeof vehicle leader _group];
+		diag_log format ["TRAFFIC REMOVE ID: %1 (%3) POS: %2",_group getVariable "btc_traffic_id",getpos leader _group,typeof vehicle leader _group];
 	};
 	if (vehicle leader _group != leader _group) then {
 		(vehicle leader _group) call btc_fnc_civ_traffic_eh_remove;
