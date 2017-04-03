@@ -475,8 +475,9 @@ btc_type_divers = _allclasse select 2;
 btc_type_crewmen = _allclasse select 3;
 btc_type_boats = _allclasse select 4;
 btc_type_motorized = _allclasse select 5;
-btc_type_mg = _allclasse select 6;
-btc_type_gl = _allclasse select 7;
+btc_type_motorized_armed = _allclasse select 6;
+btc_type_mg = _allclasse select 7;
+btc_type_gl = _allclasse select 8;
 
 //Sometimes you need to remove units: - ["Blabla","moreBlabla"];
 //Sometimes you need to add units: + ["Blabla","moreBlabla"];

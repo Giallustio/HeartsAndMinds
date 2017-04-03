@@ -42,7 +42,7 @@ if (_enemy_side isEqualTo btc_player_side) exitWith {
 	_type_units		append ((_allclass_f select {_x isKindOf "Man"}) - _divers);
 
 	//Vehicles
-	_type_boats		append _allclass_f select {_x isKindOf "Ship"};
+	_type_boats		append (_allclass_f select {_x isKindOf "Ship"});
 	if (_type_boats isEqualTo []) then {_type_boats append ["I_Boat_Armed_01_minigun_F","I_Boat_Transport_01_F","I_SDV_01_F","I_G_Boat_Transport_01_F"];};
 	_type_motorized	append (if (_en_tank) then {
 			_allclass_f select {(_x isKindOf "Tank") || (_x isKindOf "Car") || (_x isKindOf "Truck") || (_x isKindOf "Truck_F")}
@@ -52,9 +52,9 @@ if (_enemy_side isEqualTo btc_player_side) exitWith {
 	_type_motorized_armed append (_allclass_f select {((_x isKindOf "Air") || (_x isKindOf "Helicopter") || (_x isKindOf "Tank") || (_x isKindOf "Car"))}); //need call btc_fnc_find_veh_with_turret
 
 	//Static
-	_type_mg		append _allclass_f select {_x isKindOf "StaticGrenadeLauncher"};
+	_type_mg		append (_allclass_f select {_x isKindOf "StaticGrenadeLauncher"});
 	if (_type_mg isEqualTo []) then {_type_mg = ["O_HMG_01_F","O_HMG_01_high_F"];};
-	_type_gl		append _allclass_f select {_x isKindOf "StaticMGWeapon"};
+	_type_gl		append (_allclass_f select {_x isKindOf "StaticMGWeapon"});
 	if (_type_gl isEqualTo []) then {_type_mg = ["O_GMG_01_F","O_GMG_01_high_F"];};
 } forEach _factions;
 
@@ -68,4 +68,4 @@ _type_crewmen	= _type_units select 0;
 _type_motorized = (_type_motorized select {(_x find "UAV") isEqualTo -1}) select {(_x find "UGV")  isEqualTo -1};
 _type_motorized_armed = (_type_motorized_armed select {(_x find "UAV") isEqualTo -1}) select {(_x find "UGV")  isEqualTo -1};
 
-[_enemy_side,_type_units,_type_divers,_type_crewmen,_type_boats,_type_motorized,_type_mg,_type_gl,_type_motorized_armed]
+[_enemy_side,_type_units,_type_divers,_type_crewmen,_type_boats,_type_motorized,_type_motorized_armed,_type_mg,_type_gl]
