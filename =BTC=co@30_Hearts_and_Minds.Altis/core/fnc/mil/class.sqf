@@ -55,7 +55,7 @@ if (_enemy_side isEqualTo btc_player_side) exitWith {
 	_type_mg		append (_allclass_f select {_x isKindOf "StaticGrenadeLauncher"});
 	if (_type_mg isEqualTo []) then {_type_mg = ["O_HMG_01_F","O_HMG_01_high_F"];};
 	_type_gl		append (_allclass_f select {_x isKindOf "StaticMGWeapon"});
-	if (_type_gl isEqualTo []) then {_type_mg = ["O_GMG_01_F","O_GMG_01_high_F"];};
+	if (_type_gl isEqualTo []) then {_type_gl = ["O_GMG_01_F","O_GMG_01_high_F"];};
 } forEach _factions;
 
 //Final filter unwanted units type
