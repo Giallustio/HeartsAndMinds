@@ -54,13 +54,13 @@ waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({!isNull _x} count 
 {deletemarker _x} foreach [_area,_marker];
 
 if (btc_side_aborted || btc_side_failed) exitWith {
-	{4 call btc_fnc_task_fail} remoteExec ["call", 0];
+	4 remoteExec ["btc_fnc_task_fail", 0];
 	btc_side_assigned = false;publicVariable "btc_side_assigned";
 	{if (!isNull _x) then {deleteVehicle _x}} foreach _mines;
 };
 
 30 call btc_fnc_rep_change;
 
-{4 call btc_fnc_task_set_done} remoteExec ["call", 0];
+4 remoteExec ["btc_fnc_task_set_done", 0];
 
 btc_side_assigned = false;publicVariable "btc_side_assigned";

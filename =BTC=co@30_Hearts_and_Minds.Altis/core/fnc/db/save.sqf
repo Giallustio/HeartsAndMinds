@@ -8,7 +8,7 @@ call btc_fnc_db_delete;
 private ["_cities_status","_fobs","_name","_array_ho","_data","_array_cache","_array_veh","_array_obj","_cargo","_cont","_cache_markers"];
 
 hint "saving...";
-[[8],"btc_fnc_show_hint"] spawn BIS_fnc_MP;
+[8] remoteExec ["btc_fnc_show_hint", 0];
 
 btc_db_is_saving = true;
 _name = worldName;
@@ -152,6 +152,6 @@ profileNamespace setVariable [format ["btc_hm_%1_objs",_name],_array_obj];
 profileNamespace setVariable [format ["btc_hm_%1_db",_name],true];
 saveProfileNamespace;
 hint "saving...3";
-[[9],"btc_fnc_show_hint"] spawn BIS_fnc_MP;
+[9] remoteExec ["btc_fnc_show_hint", 0];
 
 btc_db_is_saving = false;

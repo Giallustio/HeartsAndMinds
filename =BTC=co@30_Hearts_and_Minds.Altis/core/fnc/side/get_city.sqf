@@ -23,12 +23,12 @@ waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !(_city getVariable 
 
 
 if (btc_side_aborted || btc_side_failed) exitWith {
-	{6 call btc_fnc_task_fail} remoteExec ["call", 0];
+	6 remoteExec ["btc_fnc_task_fail", 0];
 	btc_side_assigned = false;publicVariable "btc_side_assigned";
 };
 
 80 call btc_fnc_rep_change;
 
-{6 call btc_fnc_task_set_done} remoteExec ["call", 0];
+6 remoteExec ["btc_fnc_task_set_done", 0];
 
 btc_side_assigned = false;publicVariable "btc_side_assigned";
