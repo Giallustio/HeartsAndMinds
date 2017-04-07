@@ -97,7 +97,7 @@ switch (_this select 0) do
 	};
 	case 16 :
 	{
-		_description = [format ["Hack a prototype missile in %1. Defend your position until the process is done!",_location],("Hack missile near " + _location),("Hack missile near " + _location)];
+		_description = [format ["Hack a prototype missile with a terminal available in %1. Defend your position until the process is done!",_location],("Hack missile near " + _location),("Hack missile near " + _location)];
 		_type = "intel";
 	};
 };
