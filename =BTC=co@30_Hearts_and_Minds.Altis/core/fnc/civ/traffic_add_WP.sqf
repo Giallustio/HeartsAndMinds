@@ -12,6 +12,9 @@ _players = if (isMultiplayer) then {playableUnits} else {switchableUnits};
 
 //Remove if too far from player
 if ({_x distance _active_city < (_area/2) || _x distance leader _group < (_area/2)} count _players isEqualTo 0) exitWith {
+	if (btc_debug_log) then	{
+		diag_log format ["TRAFFIC REMOVE ID: %1 (%3) POS: %2",_group getVariable "btc_traffic_id",getpos leader _group,typeof vehicle leader _group];
+	};
 	if (vehicle leader _group != leader _group) then {
 		(vehicle leader _group) call btc_fnc_civ_traffic_eh_remove;
 		deleteVehicle (vehicle leader _group);
@@ -23,7 +26,7 @@ if ({_x distance _active_city < (_area/2) || _x distance leader _group < (_area/
 if ((leader _group) distance _end_city > 300) then {
 	_noaccess pushBack _end_city;
 	_tmp_area = _area - ((leader _group) distance _end_city) * 0.3 * count _noaccess;
-	if (btc_debug) then {systemChat format ["Traffic ID: %1 , count %2, tmp_area %3", _group getVariable "btc_traffic_id", count _noaccess, _tmp_area];};
+	if (btc_debug) then {systemChat format ["TRAFFIC ID: %1 , count %2, tmp_area %3", _group getVariable "btc_traffic_id", count _noaccess, _tmp_area];};
 } else {
 	_tmp_area = _area;
 	_noaccess = [];
@@ -65,7 +68,7 @@ if ((vehicle leader _group) isKindOf "Air" || (vehicle leader _group) isKindOf "
 _group setBehaviour "SAFE";
 _wp = _group addWaypoint [_pos, 0];
 _wp setWaypointType "MOVE";
-_wp setWaypointCompletionRadius 20;
+_wp setWaypointCompletionRadius 30;
 _wp setWaypointStatements ["true", format ["_spawn = [group this,%1,%2] spawn btc_fnc_civ_traffic_add_WP;",_area,_isboat]];
 
 if (btc_debug) then {
@@ -77,6 +80,6 @@ if (btc_debug) then {
 		format ["btc_traffic_%1", _group getVariable "btc_traffic_id"] setMarkerText format ["P %1", _group getVariable "btc_traffic_id"];
 		format ["btc_traffic_%1", _group getVariable "btc_traffic_id"] setmarkerColor "ColorOrange";
 		format ["btc_traffic_%1", _group getVariable "btc_traffic_id"] setMarkerSize [0.5, 0.5];
-		diag_log text format ["ID: %1 (%3) POS: %2",_group getVariable "btc_traffic_id",_pos,typeof vehicle leader _group];
+		diag_log text format ["TRAFFIC ID: %1 (%3) POS: %2",_group getVariable "btc_traffic_id",_pos,typeof vehicle leader _group];
 	};
 };
