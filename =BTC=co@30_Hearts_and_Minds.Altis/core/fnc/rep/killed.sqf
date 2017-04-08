@@ -10,8 +10,5 @@ if (isPlayer _killer) then {
 };
 
 if !(isNil {_unit getVariable ["traffic",objNull]}) then {
-	[getPos _unit,(_unit getVariable ["traffic",objNull])] spawn {
-		waitUntil {sleep 5; ({_x distance (_this select 0) < 300} count playableUnits == 0)};
-		deleteVehicle (_this select 1);
-	};
+	[[], [], [], [_unit getVariable ["traffic",objNull]]] call btc_fnc_delete;
 };
