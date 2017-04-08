@@ -40,6 +40,6 @@ if (_explosive && {_damage > 0.6}) then {
 	if (count btc_hideouts == 0) then {[] execVM "core\fnc\common\final_phase.sqf";};
 
 	//Notification
-	[[2,count btc_hideouts],"btc_fnc_show_hint"] spawn BIS_fnc_MP;
+	[2,count btc_hideouts] remoteExec ["btc_fnc_show_hint", 0];
 	if (btc_debug_log) then	{diag_log format ["btc_fnc_mil_hd_hideout: _this = %1 ; POS %2 ID %3",_this,getpos _hideout,_id];};
 } else {0};
