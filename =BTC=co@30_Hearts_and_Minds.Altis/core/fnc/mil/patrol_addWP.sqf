@@ -20,7 +20,7 @@ if ({_x distance _active_city < (_area/2) || _x distance leader _group < (_area/
 	[_group] call btc_fnc_deletegroup;
 };
 
-//Sometimes the waypoints is completed but too far do to obstacle (water for island etc)
+//Sometimes the waypoints is completed but too far due to obstacle (water for island etc)
 if ((leader _group) distance _end_city > 300) then {
 	_noaccess pushBack _end_city;
 	_tmp_area = _area - ((leader _group) distance _end_city)*0.3*count _noaccess;
