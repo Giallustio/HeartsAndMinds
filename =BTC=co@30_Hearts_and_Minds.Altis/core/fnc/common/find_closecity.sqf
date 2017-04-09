@@ -9,6 +9,7 @@ if (_this select 2) then {
 } else {
 	_btc_city_all_distance = _array;
 };
+if (_btc_city_all_distance isEqualTo []) exitWith {[]};
 
 _btc_city_all_distance = _btc_city_all_distance apply {[ _x distance _obj, _x]};
 _btc_city_all_distance sort true;

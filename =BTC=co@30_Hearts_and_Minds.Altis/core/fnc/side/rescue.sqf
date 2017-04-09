@@ -23,7 +23,7 @@ btc_side_done = false;
 btc_side_failed = false;
 btc_side_assigned = true;publicVariable "btc_side_assigned";
 
-[[13,getPos _city,_city getVariable "name"],"btc_fnc_task_create",true] spawn BIS_fnc_MP;
+[13,_pos,_city getVariable "name"] call btc_fnc_task_create;
 
 btc_side_jip_data = [13,getPos _city,_city getVariable "name"];
 
@@ -32,7 +32,7 @@ _city setVariable ["spawn_more",true];
 _heli_type = typeOf selectRandom ((btc_vehicles + btc_helo) select {_x isKindOf "air"});
 _heli = createVehicle [_heli_type, _pos, [], 0, "NONE"];
 _heli setVariable ["btc_dont_delete",true];
-_heli setVariable ["ace_cookoff_enable", false, true];
+_heli setVariable ["ace_cookoff_enableAmmoCookoff", false, true];
 _heli setDamage 1;
 _heli enableSimulation false;
 _heli setPos [getPosASL _heli select 0, getPosASL _heli select 1, 0 - 1.5];
@@ -75,12 +75,16 @@ waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({_x distance getpos
 };
 
 if (btc_side_aborted || btc_side_failed || ({Alive _x} count _units isEqualTo 0)) exitWith {
-	[13,"btc_fnc_task_fail",true] spawn BIS_fnc_MP;
+	{13 call btc_fnc_task_fail} remoteExec ["call", 0];
 	btc_side_assigned = false;publicVariable "btc_side_assigned";
 };
 
 50 call btc_fnc_rep_change;
 
-[13,"btc_fnc_task_set_done",true] spawn BIS_fnc_MP;
+{13 call btc_fnc_task_set_done} remoteExec ["call", 0];
+
+{
+    deleteVehicle _x;
+} foreach _units;
 
 btc_side_assigned = false;publicVariable "btc_side_assigned";

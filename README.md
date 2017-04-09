@@ -5,8 +5,8 @@
 </p>
 
 <p align="center">
-    <a href="https://github.com/Vdauphin/HeartsAndMinds/releases/tag/1.15.5">
-        <img src="https://img.shields.io/badge/Version-1.15.5-blue.svg?style=flat-square" alt="H&M Version">
+    <a href="https://github.com/Vdauphin/HeartsAndMinds/releases/tag/1.16.2">
+        <img src="https://img.shields.io/badge/Version-1.16.2-blue.svg?style=flat-square" alt="H&M Version">
     </a>
     <a href="https://github.com/Vdauphin/HeartsAndMinds/releases">
         <img src="https://img.shields.io/github/downloads/Vdauphin/HeartsAndMinds/total.svg?style=flat-square&label=Downloads" alt="H&M Downloads">
@@ -24,16 +24,16 @@ The mission has a lot of features:
 - Logistic system
 - Deep ACE3 support
 - Interaction system
-- IED/Suicide bomber system
+- Realistic IED/Suicide bomber system
 - Dynamic caching system
-- Civilian interaction
+- Civilian interaction/fleeing
 - Reputation system
-- More than 5 side mission
-- Full saving DataBase
-- Extend battlefield to sea
 - Rearm system
 - More than 12 side mission
 - Tanoa map
+- Full saving DataBase
+- Extend battlefield to sea
+- Headless support
 - Something I forgot for sure
 
 

@@ -26,7 +26,7 @@ btc_side_done = false;
 btc_side_failed = false;
 btc_side_assigned = true;publicVariable "btc_side_assigned";
 
-[[12,_pos1,_city2 getVariable "name"],"btc_fnc_task_create",true] spawn BIS_fnc_MP;
+[12,_pos2,_city2 getVariable "name"] call btc_fnc_task_create;
 
 btc_side_jip_data = [12,_pos1,_city1 getVariable "name"];
 
@@ -106,7 +106,7 @@ if (btc_side_aborted) exitWith {
 };
 
 if (btc_side_failed) exitWith {
-	[12,"btc_fnc_task_fail",true] spawn BIS_fnc_MP;
+	{12 call btc_fnc_task_fail} remoteExec ["call", 0];
 	btc_side_assigned = false;publicVariable "btc_side_assigned";
 	_group setVariable ["no_cache",false];
 	{
@@ -118,7 +118,7 @@ if (btc_side_failed) exitWith {
 
 50 call btc_fnc_rep_change;
 
-[12,"btc_fnc_task_set_done",true] spawn BIS_fnc_MP;
+{12 call btc_fnc_task_set_done} remoteExec ["call", 0];
 
 [_vehs,_group] spawn {
 	waitUntil {sleep 5; ({_x distance ((_this select 0) select 0) < 500} count playableUnits isEqualTo 0)};

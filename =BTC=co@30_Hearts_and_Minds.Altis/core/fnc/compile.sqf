@@ -130,6 +130,7 @@ if (isServer) then {
 	//LOG
 	btc_fnc_log_getconfigmagazines = compile preprocessFile "core\fnc\log\getconfigmagazines.sqf";
 	btc_fnc_log_CuratorObjectPlaced_s = compile preprocessFile "core\fnc\log\CuratorObjectPlaced_s.sqf";
+	btc_fnc_log_createVehicle = compile preprocessFile "core\fnc\log\createVehicle.sqf";
 
 	//DEAF
 	btc_fnc_deaf_earringing = compile preprocessFile "core\fnc\deaf\earringing.sqf";
@@ -147,9 +148,13 @@ if (isServer OR (!isDedicated && !hasInterface)) then {
 //COMMON
 //btc_fnc_veh_track_marker = compile preprocessFile "core\fnc\common\veh_track_marker.sqf";
 btc_fnc_find_veh_with_turret = compile preprocessFile "core\fnc\common\find_veh_with_turret.sqf";
+btc_fnc_get_class = compile preprocessFile "core\fnc\common\get_class.sqf";
 
 //DB
 btc_fnc_db_add_veh = compile preprocessFile "core\fnc\db\add_veh.sqf";
+
+//CIV
+btc_fnc_civ_class = compile preprocessFile "core\fnc\civ\class.sqf";
 
 //EH
 btc_fnc_eh_unit_init = compile preprocessFile "core\fnc\eh\unit_init.sqf";
@@ -198,6 +203,14 @@ btc_fnc_log_tow = compile preprocessFile "core\fnc\log\tow.sqf";
 btc_fnc_log_unhook = compile preprocessFile "core\fnc\log\unhook.sqf";
 btc_fnc_log_unload = compile preprocessFile "core\fnc\log\unload.sqf";
 
+//MIL
+btc_fnc_mil_class = compile preprocessFile "core\fnc\mil\class.sqf";
+
+//TASK
+btc_fnc_task_create = compile preprocessFileLineNumbers "core\fnc\task\create.sqf";
+btc_fnc_task_fail = compile preprocessFileLineNumbers "core\fnc\task\fail.sqf";
+btc_fnc_task_set_done = compile preprocessFileLineNumbers "core\fnc\task\set_done.sqf";
+
 //SIDE
 btc_fnc_side_abort = compile preprocessFileLineNumbers "core\fnc\side\abort.sqf";
 
@@ -238,6 +251,9 @@ if (!isDedicated) then {
 	btc_fnc_info_search_for_intel = compile preprocessFile "core\fnc\info\search_for_intel.sqf";
 	btc_fnc_info_troops = compile preprocessFile "core\fnc\info\troops.sqf";
 	btc_fnc_info_ask_reputation = compile preprocessFile "core\fnc\info\ask_reputation.sqf";
+
+	//LOG
+	btc_fnc_log_garage = compile preprocessFile "core\fnc\log\garage.sqf";
 
 	//TASK
 	btc_fnc_task_create = compile preprocessFileLineNumbers "core\fnc\task\create.sqf";

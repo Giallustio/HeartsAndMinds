@@ -36,7 +36,7 @@ if ((_pos nearRoads 200) isEqualTo []) then {
 
 _veh = createVehicle [_veh_type, _Spos, [], 0, "FLY"];
 
-_group = createGroup civilian;
+_group = createGroup [civilian, true];
 (selectRandom btc_civ_type_units) createUnit [_Spos, _group, "this moveinDriver _veh; this assignAsDriver _veh;"];
 _group setVariable ["no_cache",true];
 _group setVariable ["btc_patrol",true];
@@ -49,7 +49,7 @@ _veh setVariable ["driver", _group];
 
 {_x call btc_fnc_civ_unit_create;_x setVariable ["traffic",_veh];} foreach units _group;
 
-_1 = _veh addEventHandler ["HandleDamage", {_this call btc_fnc_civ_traffic_eh}];
+_1 = _veh addEventHandler ["HandleDamage", {if ((_this select 2) > 0.1) then {_this call btc_fnc_civ_traffic_eh}}];
 _2 = _veh addEventHandler ["Fuel", {_this call btc_fnc_civ_traffic_eh}];
 _3 = _veh addEventHandler ["GetOut", {_this call btc_fnc_civ_traffic_eh}];
 //_4 = (leader _group) addEventHandler ["HandleDamage", {_this call btc_fnc_civ_traffic_eh}];

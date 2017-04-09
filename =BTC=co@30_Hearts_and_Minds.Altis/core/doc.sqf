@@ -90,7 +90,7 @@ To destroy an hideout just place a satchel near the ammo box close to the flag a
 ];
 
 player createDiaryRecord ["Documentation", ["IED", "
-<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/> Any object could be an IED,	approach it carefully. Turn On your mine detector (VMH3 or VMMH3) and search for a charge in a circle of 2 meter around.<br/>
+<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/> Any object could be an IED, approach it carefully (DO NOT rotate while your are walking: prefer walk, stop, rotate, walk again etc). Turn On your mine detector (VMH3 or VMMH3) and search for a charge in a circle of 2 meter around.<br/>
 <img image='\z\ace\addons\explosives\UI\Defuse_ca.paa' width='20' height='20'/>
 If you are an engineer and have a defusal kit, you can disarm it.<br/>
 You can also blow them off with high caliber and explosive satchels.
@@ -147,6 +147,6 @@ player createDiaryRecord ["Documentation", ["Interaction", "
 
 player createDiaryRecord ["Documentation", [
 	"Version",
-	format ["<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/> Version %1 <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/>",(str(btc_version) + ".5")]
+	format ["<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/> Version %1 <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/>",(str(btc_version) + ".2")]
 	]
 ];

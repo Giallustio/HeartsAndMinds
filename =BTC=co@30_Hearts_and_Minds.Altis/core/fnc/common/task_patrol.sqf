@@ -1,9 +1,10 @@
 
-private ["_group","_pos","_area","_behav","_allowwater"];
+private ["_group","_pos","_max_area","_behav","_allowwater","_min_area"];
 
 _group = _this select 0;
 _pos = _this select 1;
-_area = _this select 2;
+_max_area = _this select 2;
+if (_max_area < 50) then {_min_area = 0;} else {_min_area = 50;};
 _behav = _this select 3;
 if (count _this > 4) then {
 	_allowwater = _this select 4;
@@ -13,16 +14,14 @@ if (count _this > 4) then {
 _group setBehaviour _behav;
 {_x setBehaviour _behav;} foreach units _group;
 
-private ["_prevPos"];
-_prevPos = _pos;
+private _prevPos = _pos;
 for "_i" from 0 to (2 + (floor (random 3))) do
 {
-	private ["_wp", "_newPos"];
-	_newPos = [_prevPos, 50, _area, 1, [0,1] select _allowwater, 60 * (pi / 180), 0, []] call BIS_fnc_findSafePos;
+	private _newPos = [_prevPos, _min_area, _max_area, 1, [0,1] select _allowwater, 60 * (pi / 180), 0, []] call BIS_fnc_findSafePos;
 
 	_prevPos = _newPos;
 
-	_wp = _group addWaypoint [_newPos, 0];
+	private _wp = _group addWaypoint [_newPos, 0];
 	_wp setWaypointType "MOVE";
 	_wp setWaypointCompletionRadius 20;
 	_wp setWaypointCombatMode "RED";
@@ -36,7 +35,6 @@ for "_i" from 0 to (2 + (floor (random 3))) do
 	};
 };
 
-private ["_wp"];
-_wp = _group addWaypoint [_pos, 0];
+private _wp = _group addWaypoint [_pos, 0];
 _wp setWaypointType "CYCLE";
 _wp setWaypointCompletionRadius 20;
