@@ -490,9 +490,11 @@ switch (_p_en) do {
 	};*/
 	case "IND_G_F" : {
 		btc_type_motorized		= btc_type_motorized + ["I_Truck_02_transport_F","I_Truck_02_covered_F"];
+		btc_type_motorized_armed= btc_type_motorized_armed + ["I_Heli_light_03_F"];
 	};
 	case "IND_C_F" : {
 		btc_type_motorized		= btc_type_motorized + ["I_G_Offroad_01_repair_F","I_G_Offroad_01_F","I_G_Quadbike_01_F","I_G_Van_01_fuel_F","I_Truck_02_transport_F","I_Truck_02_covered_F"];
+		btc_type_motorized_armed= btc_type_motorized_armed + ["I_Heli_light_03_F","I_G_Offroad_01_F"];
 		btc_type_units			= btc_type_units - ["I_C_Soldier_Camo_F"];
 	};
 	case "FOW_USMC" : {

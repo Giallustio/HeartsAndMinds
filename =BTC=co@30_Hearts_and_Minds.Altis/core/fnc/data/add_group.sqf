@@ -17,7 +17,7 @@ _city setVariable ["occupied",true];
 
 if (_city getVariable ["marker",""] != "") then {_marker = _city getVariable ["marker",""]; _marker setMarkerColor "ColorRed";_marker setMarkerAlpha 0.3;};
 
-[_group,_city,200, if (vehicle leader _group isEqualTo leader _group) then {random 1} else {0.3 + random 0.7}] call btc_fnc_mil_addWP;
+[_group,_city,300, if (vehicle leader _group isEqualTo leader _group) then {random 1} else {0.3 + random 0.7}] call btc_fnc_mil_addWP;
 
 if !(_city getVariable ["active",false]) then {
 	private ["_data_units","_data_group"];

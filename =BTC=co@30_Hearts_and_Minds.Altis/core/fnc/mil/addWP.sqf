@@ -40,6 +40,8 @@ switch (true) do {
 		_wpa setWaypointCombatMode "RED";
 		_wpa setWaypointBehaviour "AWARE";
 		_wpa setWaypointFormation "WEDGE";
+		_wpa setWaypointTimeout [18000, 36000, 54000];
+		_wpa setWaypointStatements ["true","(group this) spawn btc_fnc_data_add_group;"];
 	};
 };
 
