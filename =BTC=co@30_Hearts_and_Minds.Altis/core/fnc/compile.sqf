@@ -128,7 +128,6 @@ if (isServer) then {
 	btc_fnc_side_hostage = compile preprocessFileLineNumbers "core\fnc\side\hostage.sqf";
 
 	//LOG
-	btc_fnc_log_getconfigmagazines = compile preprocessFile "core\fnc\log\getconfigmagazines.sqf";
 	btc_fnc_log_CuratorObjectPlaced_s = compile preprocessFile "core\fnc\log\CuratorObjectPlaced_s.sqf";
 	btc_fnc_log_createVehicle = compile preprocessFile "core\fnc\log\createVehicle.sqf";
 
@@ -202,6 +201,7 @@ btc_fnc_log_set_mass = compile preprocessFile "core\fnc\log\set_mass.sqf";
 btc_fnc_log_tow = compile preprocessFile "core\fnc\log\tow.sqf";
 btc_fnc_log_unhook = compile preprocessFile "core\fnc\log\unhook.sqf";
 btc_fnc_log_unload = compile preprocessFile "core\fnc\log\unload.sqf";
+btc_fnc_log_getconfigmagazines = compile preprocessFile "core\fnc\log\getconfigmagazines.sqf";
 
 //MIL
 btc_fnc_mil_class = compile preprocessFile "core\fnc\mil\class.sqf";
