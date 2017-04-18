@@ -287,6 +287,7 @@ if (isServer) then {
 				//"Ammobox"
 				"rhsusf_mags_crate",
 				"Box_NATO_Ammo_F",
+				"Box_NATO_Ammo_F_empty",
 				"Box_NATO_Support_F",
 				"ACE_medicalSupplyCrate_advanced",
 				"ACE_medicalSupplyCrate",
