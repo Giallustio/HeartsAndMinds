@@ -1,5 +1,5 @@
 
-private ["_position","_type","_name","_radius_x","_radius_y","_has_en","_id","_city","_trigger"];
+private ["_position","_type","_name","_radius_x","_radius_y","_has_en","_id","_city"];
 
 _position = _this select 0;
 _type = _this select 1;
