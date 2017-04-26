@@ -59,7 +59,7 @@ for "_i" from 1 to (2 + round random 1) do {
 
 [_terminal, _launchsite modelToWorld [0,100,10]] remoteExec ["btc_fnc_log_place_create_camera", -2];
 
-{player commandChat "Defend the terminal until it is hacked!"} remoteExec ["call", -2];
+{player commandChat "Defend the terminal until the missile is hacked!"} remoteExec ["call", -2];
 
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({_x isEqualTo grpNull} count _groups > 0) || !(_city getVariable ["active", false]))};
 if (btc_side_aborted || btc_side_failed) exitWith {
