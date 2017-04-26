@@ -44,14 +44,12 @@ _veh setHit ["wheel_1_1_steering", 1];
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || (_veh getHit "wheel_1_1_steering" < 1) || !Alive _veh)};
 
 btc_side_assigned = false;publicVariable "btc_side_assigned";
+[[_area,_marker], [_veh], [], []] call btc_fnc_delete;
 
 if (btc_side_aborted || btc_side_failed || !Alive _veh) exitWith {
 	{5 call btc_fnc_task_fail} remoteExec ["call", 0];
-	[[_area,_marker], [], [], []] call btc_fnc_delete;
 };
 
 15 call btc_fnc_rep_change;
 
 {5 call btc_fnc_task_set_done} remoteExec ["call", 0];
-
-[[_area,_marker], [_veh], [], []] call btc_fnc_delete;

@@ -80,6 +80,7 @@ waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({_x distance _unit 
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !Alive _unit || {_unit call ace_medical_fnc_isInStableCondition && [_unit] call ace_common_fnc_isAwake})};
 
 btc_side_assigned = false;publicVariable "btc_side_assigned";
+[[_marker], [_veh], [_fx], [_group]] call btc_fnc_delete;
 
 if (btc_side_aborted || btc_side_failed || !Alive _unit) exitWith {
 	{8 call btc_fnc_task_fail} remoteExec ["call", 0];
@@ -89,6 +90,6 @@ if (btc_side_aborted || btc_side_failed || !Alive _unit) exitWith {
 
 {8 call btc_fnc_task_set_done} remoteExec ["call", 0];
 
-[[_marker], [_veh], [_fx], [_group]] call btc_fnc_delete;
+
 
 _unit setUnitPos "UP";

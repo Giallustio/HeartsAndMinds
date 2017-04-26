@@ -10,5 +10,5 @@ if (isPlayer _killer) then {
 };
 
 if !(isNil {_unit getVariable ["traffic",objNull]}) then {
-	[[], [], [], [_unit getVariable ["traffic",objNull]]] call btc_fnc_delete;
+	[[], [_unit getVariable ["traffic",objNull]], [], []] call btc_fnc_delete;
 };
