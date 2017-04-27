@@ -1,7 +1,5 @@
 
-private ["_killer"];
-
-_killer = (_this select 0) getVariable ["ace_medical_lastDamageSource", (_this select 1)];
+private _killer = (_this select 0) getVariable ["ace_medical_lastDamageSource", (_this select 1)];
 
 if (!isDedicated && !hasInterface) then {
 	[(_this select 0), _killer] remoteExec ["btc_fnc_mil_unit_killed",2];

@@ -61,6 +61,8 @@ if (isServer) then {
 	btc_fnc_eh_veh_add_respawn = compile preprocessFile "core\fnc\eh\veh_add_respawn.sqf";
 	btc_fnc_eh_veh_killed = compile preprocessFile "core\fnc\eh\veh_killed.sqf";
 	btc_fnc_eh_veh_respawn = compile preprocessFile "core\fnc\eh\veh_respawn.sqf";
+	btc_fnc_eh_explosives_defuse = compile preprocessFile "core\fnc\eh\explosives_defuse.sqf";
+	btc_fnc_eh_handledisconnect = compile preprocessFile "core\fnc\eh\handledisconnect.sqf";
 
 	//IED
 	btc_fnc_ied_boom = compile preprocessFile "core\fnc\ied\boom.sqf";
@@ -231,7 +233,7 @@ if (!isDedicated) then {
 	//EH
 	btc_fnc_eh_player_respawn = compile preprocessFile "core\fnc\eh\player_respawn.sqf";
 	btc_fnc_eh_CuratorObjectPlaced = compile preprocessFile "core\fnc\eh\CuratorObjectPlaced.sqf";
-
+	btc_fnc_eh_treatment = compile preprocessFile "core\fnc\eh\treatment.sqf";
 
 	//FOB
 	btc_fnc_fob_create = compile preprocessFile "core\fnc\fob\create.sqf";
