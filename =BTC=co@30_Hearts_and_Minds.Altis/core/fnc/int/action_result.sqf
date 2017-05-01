@@ -5,7 +5,7 @@ _this spawn {
 	_time = _this select 0;
 	_title = _this select 1;
 	_target = _this select 2;
-	_pos = getPosATL _target;
+	_pos = getPosASL _target;
 	_radius = 3;
 	if (_target isKindOf "Man") then {_radius = 1;};
 	if (_target isKindOf "Helicopter") then {_radius = 10;};
