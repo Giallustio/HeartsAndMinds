@@ -54,6 +54,8 @@ _p_rep = (paramsArray select 35);
 ace_rearm_level = (paramsArray select 36);
 btc_p_sea  = if ((paramsArray select 37) isEqualTo 0) then {false} else {true};
 _p_city_radius = (paramsArray select 38) * 100;
+btc_p_veh_armed_ho = false;
+btc_p_veh_armed_spawn_more = false;
 btc_p_trigger = if (false) then {"this && !btc_db_is_saving && (false in (thisList apply {_x isKindOf 'Plane'})) && (false in (thisList apply {(_x isKindOf 'Helicopter') && (speed _x > 190)}))"} else {"this && !btc_db_is_saving"};
 btc_p_side_mission_cycle = false;
 btc_p_garage = false;
@@ -213,12 +215,7 @@ btc_supplies_mat = "Land_Cargo20_red_F";
 if (isServer) then {
 	#define	REARM_TURRET_PATHS  [[-1], [0], [0,0], [0,1], [1], [2], [0,2]]
 
-	_btc_rearming_vehicles = [];
-	{
-		if (count (configFile >> "CfgVehicles" >> typeOf _x >> "Turrets") > 0) then {
-			_btc_rearming_vehicles pushBackUnique typeOf _x;
-		};
-	} forEach (btc_vehicles + btc_helo);
+	_btc_rearming_vehicles = [btc_vehicles + btc_helo,[]] call btc_fnc_find_veh_with_turret;
 
 	_btc_rearming_static =
 	[
@@ -494,9 +491,11 @@ switch (_p_en) do {
 	};*/
 	case "IND_G_F" : {
 		btc_type_motorized		= btc_type_motorized + ["I_Truck_02_transport_F","I_Truck_02_covered_F"];
+		btc_type_motorized_armed= btc_type_motorized_armed + ["I_Heli_light_03_F"];
 	};
 	case "IND_C_F" : {
 		btc_type_motorized		= btc_type_motorized + ["I_G_Offroad_01_repair_F","I_G_Offroad_01_F","I_G_Quadbike_01_F","I_G_Van_01_fuel_F","I_Truck_02_transport_F","I_Truck_02_covered_F"];
+		btc_type_motorized_armed= btc_type_motorized_armed + ["I_Heli_light_03_F","I_G_Offroad_01_F"];
 		btc_type_units			= btc_type_units - ["I_C_Soldier_Camo_F"];
 	};
 	case "FOW_USMC" : {

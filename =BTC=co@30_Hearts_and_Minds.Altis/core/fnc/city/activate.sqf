@@ -98,7 +98,15 @@ if (_has_en) then {
 
 if (_city getVariable ["spawn_more",false]) then {
 	_city setVariable ["spawn_more",false];
-	for "_i" from 1 to (2 + round random 3) do {[_city,_radius,(4 + random 3),(random 1)] call btc_fnc_mil_create_group;};
+	for "_i" from 1 to (2 + round random 3) do {
+		[_city,_radius,(4 + random 3),(random 1)] call btc_fnc_mil_create_group;
+	};
+	if (btc_p_veh_armed_spawn_more) then {
+		private _closest = [_city,btc_city_all select {!(_x getVariable ["active",false])},false] call btc_fnc_find_closecity;
+		for "_i" from 1 to (1 + round random 2) do {
+			[{_this call btc_fnc_mil_send}, [_closest,getpos _city,1,selectRandom btc_type_motorized_armed], _i * 2] call CBA_fnc_waitAndExecute;
+		};
+	};
 };
 
 if !(btc_cache_pos isEqualTo []) then {
@@ -106,6 +114,12 @@ if !(btc_cache_pos isEqualTo []) then {
 		if (count (btc_cache_pos nearEntities ["Man", 30]) > 3) exitWith {};
 		[btc_cache_pos,8,3,0.2] call btc_fnc_mil_create_group;
 		[btc_cache_pos,60,4,0.5] call btc_fnc_mil_create_group;
+		if (btc_p_veh_armed_spawn_more) then {
+			private _closest = [_city,btc_city_all select {!(_x getVariable ["active",false])},false] call btc_fnc_find_closecity;
+			for "_i" from 1 to (1 + round random 3) do {
+				[{_this call btc_fnc_mil_send}, [_closest,getpos _city,1,selectRandom btc_type_motorized_armed], _i * 2] call CBA_fnc_waitAndExecute;
+			};
+		};
 	};
 };
 
@@ -131,6 +145,12 @@ if (_has_ho && {!(_city getVariable ["ho_units_spawned",false])}) then {
 			_statics = btc_type_gl + btc_type_mg;
 			[[(_pos select 0) + 7,(_pos select 1) + 7,0],_statics,45] call btc_fnc_mil_create_static;
 			[[(_pos select 0) - 7,(_pos select 1) - 7,0],_statics,225] call btc_fnc_mil_create_static;
+		};
+	};
+	if (btc_p_veh_armed_ho) then 	{
+		_closest = [_city,btc_city_all select {!(_x getVariable ["active",false])},false] call btc_fnc_find_closecity;
+		for "_i" from 1 to (2 + round random 3) do {
+			[{_this call btc_fnc_mil_send}, [_closest,_pos,1,selectRandom btc_type_motorized_armed], _i * 2] call CBA_fnc_waitAndExecute;
 		};
 	};
 };
