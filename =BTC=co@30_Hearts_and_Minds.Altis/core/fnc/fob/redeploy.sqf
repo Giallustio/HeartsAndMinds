@@ -48,7 +48,7 @@ forceMap false;
 
 closeDialog 0;
 
-_pos = (_fobs select 1) select ((_fobs select 0) find _marker) buildingPos -1;
+_pos = ((_fobs select 1) select ((_fobs select 0) find _marker)) buildingPos -1;
 
 _text = format ["Moving to %1",_fob];
 
