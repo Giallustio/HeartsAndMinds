@@ -56,6 +56,7 @@ private _closest = [_city,btc_city_all select {!(_x getVariable ["active",false]
 for "_i" from 1 to (2 + round random 1) do {
 	_groups pushBack ([_closest, getpos _terminal,1,selectRandom btc_type_motorized] call btc_fnc_mil_send);
 };
+_groups apply {_x setBehaviour "CARELESS"};
 
 [_terminal, _launchsite modelToWorld [0,100,10]] remoteExec ["btc_fnc_log_place_create_camera", -2];
 
