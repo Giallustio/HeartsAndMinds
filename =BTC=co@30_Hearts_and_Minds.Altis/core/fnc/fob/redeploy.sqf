@@ -48,13 +48,13 @@ forceMap false;
 
 closeDialog 0;
 
-_pos = getMarkerPos _marker;
+_pos = ((_fobs select 1) select ((_fobs select 0) find _marker)) buildingPos -1;
 
 _text = format ["Moving to %1",_fob];
 
 titleText [_text, "BLACK OUT"];
 sleep 3;
 titleText [_text, "BLACK FADED"];
-player setPosATL [_pos select 0,_pos select 1,0.45];
+player setPosATL selectRandom (_pos select [0, [count _pos,4] select (count _pos >= 4)]);
 sleep 2;
 titleText ["", "BLACK IN"];
