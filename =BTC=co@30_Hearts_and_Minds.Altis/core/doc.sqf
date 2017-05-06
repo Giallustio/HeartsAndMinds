@@ -69,7 +69,7 @@ Every vehicle has a 'CARGO CAPACITY' (CC in game), and every object has a 'REQUI
 You can check those values in game with 'LOAD IN' and 'CHECK CARGO' options.<br/><br/><br/>
 <marker name='blufor_base'>Towing system:</marker><br/>
 To tow a vehicle interact with it and select the option 'HOOK'.<br/>After that place the tow vehicle in front of it and select 'TOW' in the interaction menu.<br/>
-If the two vehicles are too far away or the vehicle can't tow that load, the option will be disabled.<br/>
+If the two vehicles are too far away or the vehicle can't tow that load (Car can't tow truck or tank), the option will be disabled.<br/>
 To unhook interact with one of the two vehicles and select the option 'UNHOOK'.<br/><br/>
 
 <marker name='blufor_base'>Place option:</marker><br/>
