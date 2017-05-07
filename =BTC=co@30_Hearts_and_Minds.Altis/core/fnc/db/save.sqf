@@ -116,7 +116,7 @@ _array_veh = [];
 	_data pushBack (getPosASL _x);
 	_data pushBack (getDir _x);
 	_data pushBack (fuel _x);
-	_data pushBack (damage _x);
+	_data pushBack (getAllHitPointsDamage _x);
 	_cargo = [];
 	{_cargo pushBack [(typeOf _x),(_x getVariable ["ace_rearm_magazineClass",""]),[getWeaponCargo _x,getMagazineCargo _x,getItemCargo _x]]} foreach (_x getVariable ["cargo",[]]);
 	_data pushBack _cargo;
