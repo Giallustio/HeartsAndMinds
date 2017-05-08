@@ -1,4 +1,4 @@
-if (!isNil {_this getVariable "btc_rep_eh_added"}) exitWith {true};
+if !((_this getVariable ["btc_rep_eh_added",[]]) isEqualTo []) exitWith {true};
 
 private ["_id_d","_id_k","_id_f"];
 

@@ -35,9 +35,11 @@ if (isServer) then {
 
 	//CIV
 	btc_fnc_civ_add_weapons = compile preprocessFile "core\fnc\civ\add_weapons.sqf";
+	btc_fnc_civ_add_grenade = compile preprocessFile "core\fnc\civ\add_grenade.sqf";
 	btc_fnc_civ_addWP = compile preprocessFile "core\fnc\civ\addWP.sqf";
 	btc_fnc_civ_create = compile preprocessFile "core\fnc\civ\create.sqf";
 	btc_fnc_civ_get_weapons = compile preprocessFile "core\fnc\civ\get_weapons.sqf";
+	btc_fnc_civ_get_grenade = compile preprocessFile "core\fnc\civ\get_grenade.sqf";
 	btc_fnc_civ_populate = compile preprocessFile "core\fnc\civ\populate.sqf";
 	btc_fnc_civ_traffic_add_WP = compile preprocessFile "core\fnc\civ\traffic_add_WP.sqf";
 	btc_fnc_civ_traffic_create = compile preprocessFile "core\fnc\civ\traffic_create.sqf";
