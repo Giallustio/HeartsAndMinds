@@ -13,11 +13,11 @@ _rep = btc_int_ask_data;
 
 if ((round random 2) >= 1) then {
 	btc_int_ask_data = nil;
-	[6,nil,player] remoteExec ["btc_fnc_int_ask_var", 2];
+	[8,nil,player] remoteExec ["btc_fnc_int_ask_var", 2];
 
 	waitUntil {!(isNil "btc_int_ask_data")};
 
-	_ho_left = format ["%1 hideouts left.", btc_int_ask_data];
+	_ho_left = format ["I heard about %1 hideouts left.", btc_int_ask_data];
 } else {
 	_ho_left = "";
 };
