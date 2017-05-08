@@ -54,6 +54,8 @@ _2 = _veh addEventHandler ["Fuel", {_this call btc_fnc_civ_traffic_eh}];
 _3 = _veh addEventHandler ["GetOut", {_this call btc_fnc_civ_traffic_eh}];
 //_4 = (leader _group) addEventHandler ["HandleDamage", {_this call btc_fnc_civ_traffic_eh}];
 //_5 = (leader _group) addEventHandler ["Killed", {_this call btc_fnc_civ_traffic_eh}];
-
 _veh setVariable ["eh", [_1,_2,_3/*,4,5*/]];
+
+_veh addEventHandler ["HandleDamage", btc_fnc_rep_hd];
+
 [_group,_area,_pos_iswater] call btc_fnc_civ_traffic_add_WP;
