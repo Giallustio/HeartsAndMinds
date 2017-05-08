@@ -11,7 +11,7 @@ waitUntil {!(isNil "btc_int_ask_data")};
 
 _rep = btc_int_ask_data;
 
-if ((round random 2) >= 1) then {
+if ((round random 1) isEqualTo 1) then {
 	btc_int_ask_data = nil;
 	[8,nil,player] remoteExec ["btc_fnc_int_ask_var", 2];
 
