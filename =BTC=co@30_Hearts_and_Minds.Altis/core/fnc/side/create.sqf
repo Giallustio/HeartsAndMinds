@@ -33,6 +33,7 @@ switch (_side) do {
 	case 10 : {[] call btc_fnc_side_rescue;};
 	case 11 : {[] call btc_fnc_side_capture_officer;};
 	case 12 : {[] call btc_fnc_side_hostage;};
+	case 13 : {[] call btc_fnc_side_hack;};
 };
 
 if (_cycle) then {
