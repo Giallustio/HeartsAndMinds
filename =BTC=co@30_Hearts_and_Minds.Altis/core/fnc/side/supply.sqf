@@ -33,26 +33,15 @@ _marker setMarkerSize [0.6, 0.6];
 
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || count (nearestObjects [_pos, [btc_supplies_mat], 30]) > 0)};
 
-{deletemarker _x} foreach [_area,_marker];
+btc_side_assigned = false;publicVariable "btc_side_assigned";
 
 if (btc_side_aborted || btc_side_failed) exitWith {
 	{3 call btc_fnc_task_fail} remoteExec ["call", 0];
-	btc_side_assigned = false;publicVariable "btc_side_assigned";
+	[[_area,_marker], [], [], []] call btc_fnc_delete;
 };
 
 50 call btc_fnc_rep_change;
 
 {3 call btc_fnc_task_set_done} remoteExec ["call", 0];
 
-if (count (nearestObjects [_pos, [btc_supplies_mat], 30]) > 0) then {
-	_pos spawn {
-		private "_obj";
-		_obj = (nearestObjects [_this, [btc_supplies_mat], 30]) select 0;
-
-		waitUntil {sleep 5; ({_x distance _this < 300} count playableUnits == 0)};
-
-		deleteVehicle _obj;
-	};
-};
-
-btc_side_assigned = false;publicVariable "btc_side_assigned";
+[[_area,_marker], [(nearestObjects [_this, [btc_supplies_mat], 30]) select 0], [], []] call btc_fnc_delete;

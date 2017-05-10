@@ -160,7 +160,7 @@ if (count _ieds > 0) then {
 	_ieds_data = [];
 	{private ["_ied"];_ied = _x call btc_fnc_ied_create;_ieds_data pushBack _ied;} foreach _ieds;
 	_city = btc_city_all select (_this select 0);
-	[_city,_ieds_data] spawn btc_fnc_ied_check;
+	[_city,_ieds_data] call btc_fnc_ied_check;
 };
 
 //Suicider

@@ -5,23 +5,35 @@
 } foreach (_this select 0);
 
 {
-	[_x] spawn {
-		waitUntil {sleep 5; ({_x distance (_this select 0) < 1000} count playableUnits == 0)};
-		deleteVehicle (_this select 0);
-	};
+	private _object = _x;
+	[{
+		params ["_args", "_id"];
+		if ({_x distance _args < 1000} count playableUnits == 0) then {
+			[_id] call CBA_fnc_removePerFrameHandler;
+			deleteVehicle _args;
+		};
+	} , 5, _object] call CBA_fnc_addPerFrameHandler;
 } forEach (_this select 1);
 
 {
-	[_fx] spawn {
-		waitUntil {sleep 5; ({_x distance (_this select 0) < 1000} count playableUnits == 0)};
-		(_this select 0) call btc_fnc_deleteTestObj;
-	};
+	private _fx = _x;
+	[{
+		params ["_args", "_id"];
+		if ({_x distance _args < 1000} count playableUnits == 0) then {
+			[_id] call CBA_fnc_removePerFrameHandler;
+			_args call btc_fnc_deleteTestObj;
+		};
+	} , 5, _fx] call CBA_fnc_addPerFrameHandler;
 } forEach (_this select 2);
 
 {
-	[_x] spawn {
-		waitUntil {sleep 5; ({_x distance leader (_this select 0) < 1000} count playableUnits == 0)};
-		{deleteVehicle _x} foreach units (_this select 0);
-		[_this select 0] call btc_fnc_deletegroup;
-	};
+	private _group = _x;
+	[{
+		params ["_args", "_id"];
+		if ({_x distance leader _args < 1000} count playableUnits == 0) then {
+			[_id] call CBA_fnc_removePerFrameHandler;
+			{deleteVehicle _x} foreach units _args;
+			[_args] call btc_fnc_deletegroup;
+		};
+	} , 5, _group] call CBA_fnc_addPerFrameHandler;
 } forEach (_this select 3);

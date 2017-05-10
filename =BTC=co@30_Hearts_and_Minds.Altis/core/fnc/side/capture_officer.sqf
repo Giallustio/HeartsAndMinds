@@ -108,22 +108,14 @@ _trigger attachTo [_captive,[0,0,0]];
 
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !(Alive _captive) || (_captive distance getpos btc_create_object_point < 100))};
 
-{deletemarker _x} foreach _markers;
-
+btc_side_assigned = false;publicVariable "btc_side_assigned";
 if (btc_side_aborted || !(Alive _captive)) exitWith {
 	{14 call btc_fnc_task_fail} remoteExec ["call", 0];
-	btc_side_assigned = false;publicVariable "btc_side_assigned";
-	[_vehs + [_trigger],_group] spawn {
-		waitUntil {sleep 5; ({_x distance ((_this select 0) select 0) < 500} count playableUnits isEqualTo 0)};
-		{if (!isNull _x) then {deleteVehicle _x}} foreach units (_this select 1);
-		{if (!isNull _x) then {deleteVehicle _x}} foreach (_this select 0);
-		deleteGroup (_this select 1);
-	};
+	[_markers, _vehs + [_trigger], [], [_group]] call btc_fnc_delete;
 };
 
 if (btc_side_failed) exitWith {
 	[14,"btc_fnc_task_fail",true] spawn BIS_fnc_MP;
-	btc_side_assigned = false;publicVariable "btc_side_assigned";
 	deleteVehicle _trigger;
 	_group setVariable ["no_cache",false];
 	{
@@ -137,15 +129,4 @@ if (btc_side_failed) exitWith {
 
 {14 call btc_fnc_task_set_done} remoteExec ["call", 0];
 
-[_vehs + [_trigger],_group] spawn {
-	waitUntil {sleep 5; ({_x distance ((_this select 0) select 0) < 500} count playableUnits isEqualTo 0)};
-		{if (!isNull _x) then {deleteVehicle _x}} foreach ((units (_this select 1)) - leader (_this select 1));
-		{if (!isNull _x) then {deleteVehicle _x}} foreach (_this select 0);
-		deleteGroup (_this select 1);
-};
-[_captive] spawn {
-	waitUntil {sleep 5; ({_x distance (_this select 0) < 500} count playableUnits isEqualTo 0)};
-	if (!isNull (_this select 0)) then {deleteVehicle (_this select 0)};
-};
-
-btc_side_assigned = false;publicVariable "btc_side_assigned";
+[_markers, _vehs + [_trigger], [], [_group]] call btc_fnc_delete;
