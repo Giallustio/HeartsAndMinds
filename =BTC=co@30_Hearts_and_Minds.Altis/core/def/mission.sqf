@@ -399,17 +399,17 @@ btc_log_def_rc =
 ];
 
 btc_fnc_log_get_nottowable = {
-	//Return array of objects not towable by "car".
-	_tower = _this select 0;
+	private _tower = _this select 0;
 	switch (true) do {
-		case (_tower isKindOf "Tank") : {_array = ["Plane","Helicopter"];};
-		case (_tower isKindOf "Truck_F") : {_array = ["Plane","Helicopter"];};
-		case (_tower isKindOf "Truck") : {_array = ["Plane","Helicopter"];};
-		case (_tower isKindOf "Ship") : {_array = ["Car","Truck","Truck_F","Tank","Plane","Helicopter"];};
-		case (_tower isKindOf "Car") : {_array = ["Truck","Truck_F","Tank","Plane","Helicopter"];};
-		default {_array   = ["Car","Truck","Truck_F","Tank","Plane","Helicopter","Ship"];};
+		//The tower is a tank so it can't tow: plane and helicopter
+		case (_tower isKindOf "Tank") : {["Plane","Helicopter"];};
+		case (_tower isKindOf "Truck_F") : {["Plane","Helicopter"];};
+		case (_tower isKindOf "Truck") : {["Plane","Helicopter"];};
+		case (_tower isKindOf "Ship") : {["Car","Truck","Truck_F","Tank","Plane","Helicopter"];};
+		//The tower is a car so it can't tow: truck, tank, plane and helicopter
+		case (_tower isKindOf "Car") : {["Truck","Truck_F","Tank","Plane","Helicopter"];};
+		default {["Car","Truck","Truck_F","Tank","Plane","Helicopter","Ship"];};
 	};
-	_array
 };
 
 //Lift
