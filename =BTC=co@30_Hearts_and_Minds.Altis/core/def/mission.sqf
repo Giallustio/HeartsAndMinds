@@ -141,7 +141,7 @@ if (isServer) then {
 	btc_side_done = false;
 	btc_side_failed = false;
 	//Side 9 and 11 are not think for map with different islands. Start and end city can be on different islands.
-	btc_side_list = if (btc_p_sea) then {[0,1,2,3,4,5,6,7,8,9,10,11,12]} else {[0,1,2,3,4,5,6,9,10,11,12]};
+	btc_side_list = if (btc_p_sea) then {[0,1,2,3,4,5,6,7,8,9,10,11,12,13]} else {[0,1,2,3,4,5,6,9,10,11,12,13]};
 	btc_side_list_use = + btc_side_list;
 	btc_side_jip_data = [];
 	btc_type_tower = ["Land_Communication_F","Land_TTowerBig_1_F","Land_TTowerBig_2_F"];
@@ -399,17 +399,17 @@ btc_log_def_rc =
 ];
 
 btc_fnc_log_get_nottowable = {
-	//Return array of objects not towable by "car".
-	_tower = _this select 0;
+	private _tower = _this select 0;
 	switch (true) do {
-		case (_tower isKindOf "Tank") : {_array = ["Plane","Helicopter"];};
-		case (_tower isKindOf "Truck_F") : {_array = ["Plane","Helicopter"];};
-		case (_tower isKindOf "Truck") : {_array = ["Plane","Helicopter"];};
-		case (_tower isKindOf "Ship") : {_array = ["Car","Truck","Truck_F","Tank","Plane","Helicopter"];};
-		case (_tower isKindOf "Car") : {_array = ["Truck","Truck_F","Tank","Plane","Helicopter"];};
-		default {_array   = ["Car","Truck","Truck_F","Tank","Plane","Helicopter","Ship"];};
+		//The tower is a tank so it can't tow: plane and helicopter
+		case (_tower isKindOf "Tank") : {["Plane","Helicopter"];};
+		case (_tower isKindOf "Truck_F") : {["Plane","Helicopter"];};
+		case (_tower isKindOf "Truck") : {["Plane","Helicopter"];};
+		case (_tower isKindOf "Ship") : {["Car","Truck","Truck_F","Tank","Plane","Helicopter"];};
+		//The tower is a car so it can't tow: truck, tank, plane and helicopter
+		case (_tower isKindOf "Car") : {["Truck","Truck_F","Tank","Plane","Helicopter"];};
+		default {["Car","Truck","Truck_F","Tank","Plane","Helicopter","Ship"];};
 	};
-	_array
 };
 
 //Lift

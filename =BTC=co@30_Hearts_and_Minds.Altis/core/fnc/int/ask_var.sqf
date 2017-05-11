@@ -20,6 +20,7 @@ switch (_id) do {
 	case 5 : {_data = btc_side_jip_data;};
 	case 6 : {_data = btc_fobs;};
 	case 7 : {_data = btc_construction_array;};
+	case 8 : {_data = count btc_hideouts;};
 };
 
 [_data] remoteExec ["btc_fnc_int_ans_var", _asker, false];
