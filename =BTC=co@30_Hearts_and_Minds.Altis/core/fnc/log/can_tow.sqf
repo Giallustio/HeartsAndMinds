@@ -1,8 +1,9 @@
 
 private ["_tower","_towed","_array","_can_tow","_pos_towed","_pos_tower"];
 
+// _tower ----rope--- (hook)_towed
 _tower = _this select 0;
-_towed = _this select 1;
+_towed = _this select 1;//btc_log_vehicle_selected
 
 _array = [_tower] call btc_fnc_log_get_nottowable;
 

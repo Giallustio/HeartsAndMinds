@@ -25,6 +25,7 @@ if (isServer) then {
 	btc_fnc_set_groupowner = compile preprocessFile "core\fnc\common\set_groupowner.sqf";
 	btc_fnc_find_closecity = compile preprocessFile "core\fnc\common\find_closecity.sqf";
 	btc_fnc_deletegroup = compile preprocessFile "core\fnc\common\deletegroup.sqf";
+	btc_fnc_delete = compile preprocessFile "core\fnc\common\delete.sqf";
 
 	//CITY
 	btc_fnc_city_activate = compile preprocessFile "core\fnc\city\activate.sqf";
@@ -61,6 +62,8 @@ if (isServer) then {
 	btc_fnc_eh_veh_add_respawn = compile preprocessFile "core\fnc\eh\veh_add_respawn.sqf";
 	btc_fnc_eh_veh_killed = compile preprocessFile "core\fnc\eh\veh_killed.sqf";
 	btc_fnc_eh_veh_respawn = compile preprocessFile "core\fnc\eh\veh_respawn.sqf";
+	btc_fnc_eh_explosives_defuse = compile preprocessFile "core\fnc\eh\explosives_defuse.sqf";
+	btc_fnc_eh_handledisconnect = compile preprocessFile "core\fnc\eh\handledisconnect.sqf";
 
 	//IED
 	btc_fnc_ied_boom = compile preprocessFile "core\fnc\ied\boom.sqf";
@@ -126,9 +129,9 @@ if (isServer) then {
 	btc_fnc_side_rescue = compile preprocessFileLineNumbers "core\fnc\side\rescue.sqf";
 	btc_fnc_side_capture_officer = compile preprocessFileLineNumbers "core\fnc\side\capture_officer.sqf";
 	btc_fnc_side_hostage = compile preprocessFileLineNumbers "core\fnc\side\hostage.sqf";
+	btc_fnc_side_hack = compile preprocessFileLineNumbers "core\fnc\side\hack.sqf";
 
 	//LOG
-	btc_fnc_log_getconfigmagazines = compile preprocessFile "core\fnc\log\getconfigmagazines.sqf";
 	btc_fnc_log_CuratorObjectPlaced_s = compile preprocessFile "core\fnc\log\CuratorObjectPlaced_s.sqf";
 	btc_fnc_log_createVehicle = compile preprocessFile "core\fnc\log\createVehicle.sqf";
 
@@ -147,9 +150,14 @@ if (isServer OR (!isDedicated && !hasInterface)) then {
 
 //COMMON
 //btc_fnc_veh_track_marker = compile preprocessFile "core\fnc\common\veh_track_marker.sqf";
+btc_fnc_find_veh_with_turret = compile preprocessFile "core\fnc\common\find_veh_with_turret.sqf";
+btc_fnc_get_class = compile preprocessFile "core\fnc\common\get_class.sqf";
 
 //DB
 btc_fnc_db_add_veh = compile preprocessFile "core\fnc\db\add_veh.sqf";
+
+//CIV
+btc_fnc_civ_class = compile preprocessFile "core\fnc\civ\class.sqf";
 
 //EH
 btc_fnc_eh_unit_init = compile preprocessFile "core\fnc\eh\unit_init.sqf";
@@ -197,7 +205,10 @@ btc_fnc_log_set_mass = compile preprocessFile "core\fnc\log\set_mass.sqf";
 btc_fnc_log_tow = compile preprocessFile "core\fnc\log\tow.sqf";
 btc_fnc_log_unhook = compile preprocessFile "core\fnc\log\unhook.sqf";
 btc_fnc_log_unload = compile preprocessFile "core\fnc\log\unload.sqf";
+btc_fnc_log_getconfigmagazines = compile preprocessFile "core\fnc\log\getconfigmagazines.sqf";
 
+//MIL
+btc_fnc_mil_class = compile preprocessFile "core\fnc\mil\class.sqf";
 
 //TASK
 btc_fnc_task_create = compile preprocessFileLineNumbers "core\fnc\task\create.sqf";
@@ -225,7 +236,7 @@ if (!isDedicated) then {
 	//EH
 	btc_fnc_eh_player_respawn = compile preprocessFile "core\fnc\eh\player_respawn.sqf";
 	btc_fnc_eh_CuratorObjectPlaced = compile preprocessFile "core\fnc\eh\CuratorObjectPlaced.sqf";
-
+	btc_fnc_eh_treatment = compile preprocessFile "core\fnc\eh\treatment.sqf";
 
 	//FOB
 	btc_fnc_fob_create = compile preprocessFile "core\fnc\fob\create.sqf";

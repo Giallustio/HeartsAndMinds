@@ -4,7 +4,7 @@ private ["_group","_pos","_max_area","_behav","_allowwater","_min_area"];
 _group = _this select 0;
 _pos = _this select 1;
 _max_area = _this select 2;
-if (_max_area < 50) then {_min_area = 0;} else {_min_area = 50;};
+if (_max_area < 100) then {_min_area = 0;} else {_min_area = 100;};
 _behav = _this select 3;
 if (count _this > 4) then {
 	_allowwater = _this select 4;

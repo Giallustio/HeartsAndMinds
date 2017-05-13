@@ -4,9 +4,9 @@ private _pos = _this select 1;
 private _dir = _this select 2;
 private _textures = if (count _this > 3) then {_this select 3} else {[]};
 
-_veh  = createVehicle [_type, [_pos select 0, _pos select 1, 0], [], 0, "CAN_COLLIDE"];
-_veh setPosASL _pos;
+_veh  = _type createVehicle [0,0,0];
 _veh setDir _dir;
+_veh setPosASL _pos;
 
 {
 	_veh setObjectTextureGlobal [ _foreachindex, _x ];

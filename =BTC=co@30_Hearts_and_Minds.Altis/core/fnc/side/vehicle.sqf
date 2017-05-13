@@ -43,23 +43,13 @@ _veh setHit ["wheel_1_1_steering", 1];
 
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || (_veh getHit "wheel_1_1_steering" < 1) || !Alive _veh)};
 
-{deletemarker _x} foreach [_area,_marker];
+btc_side_assigned = false;publicVariable "btc_side_assigned";
+[[_area,_marker], [_veh], [], []] call btc_fnc_delete;
 
 if (btc_side_aborted || btc_side_failed || !Alive _veh) exitWith {
 	5 remoteExec ["btc_fnc_task_fail", 0];
-	btc_side_assigned = false;publicVariable "btc_side_assigned";
 };
 
 15 call btc_fnc_rep_change;
 
 5 remoteExec ["btc_fnc_task_set_done", 0];
-
-_veh spawn {
-
-	waitUntil {sleep 5; ({_x distance _this < 300} count playableUnits == 0)};
-
-	deleteVehicle _this;
-};
-
-
-btc_side_assigned = false;publicVariable "btc_side_assigned";

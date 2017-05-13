@@ -1,14 +1,13 @@
 
 btc_int_action_result = nil;
 _this spawn {
-	private ["_time","_title","_target","_pos","_radius","_ctrlProgressBar","_ctrlProgressBarTitle"];
+	private ["_time","_title","_target","_radius","_ctrlProgressBar","_ctrlProgressBarTitle"];
 	_time = _this select 0;
 	_title = _this select 1;
 	_target = _this select 2;
-	_pos = getPosATL _target;
-	_radius = 3;
-	if (_target isKindOf "Man") then {_radius = 1;};
-	if (_target isKindOf "Helicopter") then {_radius = 10;};
+	_radius = 7;
+	if (_target isKindOf "Man") then {_radius = 4;};
+	if (_target isKindOf "Helicopter") then {_radius = 20;};
 	if (count _this > 3) then {_radius = _this select 3;};
 	disableSerialization;
 	createDialog "btc_dlg_progressBar";
@@ -26,7 +25,7 @@ _this spawn {
 
 	_time = time + _time;
 	waitUntil {
-		!dialog || {!alive player} || {player getVariable ["ACE_isUnconscious",false]} || {time > _time} || {_target distance _pos > _radius}
+		!dialog || {!alive player} || {player getVariable ["ACE_isUnconscious",false]} || {time > _time} || {_target distance player > _radius}
 	};
 
 	closeDialog 0;
