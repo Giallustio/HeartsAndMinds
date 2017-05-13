@@ -64,6 +64,7 @@ if (isServer) then {
 	btc_fnc_eh_veh_respawn = compile preprocessFile "core\fnc\eh\veh_respawn.sqf";
 	btc_fnc_eh_explosives_defuse = compile preprocessFile "core\fnc\eh\explosives_defuse.sqf";
 	btc_fnc_eh_handledisconnect = compile preprocessFile "core\fnc\eh\handledisconnect.sqf";
+	btc_fnc_eh_buildingchanged = compile preprocessFile "core\fnc\eh\buildingchanged.sqf";
 
 	//IED
 	btc_fnc_ied_boom = compile preprocessFile "core\fnc\ied\boom.sqf";
