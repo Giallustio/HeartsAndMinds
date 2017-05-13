@@ -72,8 +72,8 @@ if (btc_side_aborted || btc_side_failed) exitWith {
 
 //// Launch the hacked missile \\\\
 private _altitude = 20;
-while {_altitude < 400} do {
-	_altitude = _altitude + 1.5;
+while {_altitude < 500} do {
+	_altitude = _altitude + 3;
 	(createVehicle ["DemoCharge_Remote_Ammo_Scripted", [_pos select 0, _pos select 1, _altitude], [], 0, "CAN_COLLIDE"]) setDamage 1;
 	sleep 0.1;
 };
