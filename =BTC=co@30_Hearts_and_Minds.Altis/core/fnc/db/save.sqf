@@ -148,6 +148,11 @@ _array_obj = [];
 } foreach btc_log_obj_created;
 profileNamespace setVariable [format ["btc_hm_%1_objs",_name],_array_obj];
 
+//Player Markers
+private _player_markers = allMapMarkers select {(_x select [0,15]) isEqualTo "_USER_DEFINED #"};
+private _markers_properties = _player_markers apply {[markerText _x,markerPos _x,markerColor _x,markerType _x,markerSize _x, markerAlpha _x, markerBrush _x, markerDir _x, markerShape _x]};
+profileNamespace setVariable [format ["btc_hm_%1_markers",_name],_markers_properties];
+
 //
 profileNamespace setVariable [format ["btc_hm_%1_db",_name],true];
 saveProfileNamespace;

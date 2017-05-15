@@ -338,3 +338,17 @@ _objs = profileNamespace getVariable [format ["btc_hm_%1_objs",_name],[]];
 		};
 	};
 } foreach _objs;
+
+//Player Markers
+private _markers_properties = profileNamespace getVariable [format ["btc_hm_%1_markers",_name],[]];
+{
+	private _marker = createMarker [format ["_USER_DEFINED #0/%1/1", _foreachindex], _x select 1];
+	_marker setMarkerText (_x select 0);
+	_marker setMarkerColor (_x select 2);
+	_marker setMarkerType (_x select 3);
+	_marker setMarkerSize (_x select 4);
+	_marker setmarkerAlpha (_x select 5);
+	_marker setmarkerBrush (_x select 6);
+	_marker setmarkerDir (_x select 7);
+	_marker setmarkerShape (_x select 8);
+} forEach _markers_properties;
