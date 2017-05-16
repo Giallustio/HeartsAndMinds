@@ -79,23 +79,15 @@ waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({_x distance _unit 
 
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !Alive _unit || {_unit call ace_medical_fnc_isInStableCondition && [_unit] call ace_common_fnc_isAwake})};
 
-{deletemarker _x} foreach [_marker];
-
-[_fx,_unit,_veh] spawn {
-	waitUntil {sleep 5; ({_x distance (_this select 1) < 300} count playableUnits == 0)};
-	(_this select 0) call btc_fnc_deleteTestObj;
-	{if (!isNull _x) then {deleteVehicle _x}} forEach _this;
-};
+btc_side_assigned = false;publicVariable "btc_side_assigned";
+[[_marker], [_veh], [_fx], [_group]] call btc_fnc_delete;
 
 if (btc_side_aborted || btc_side_failed || !Alive _unit) exitWith {
-	{8 call btc_fnc_task_fail} remoteExec ["call", 0];
-	btc_side_assigned = false;publicVariable "btc_side_assigned";
+	8 remoteExec ["btc_fnc_task_fail", 0];
 };
 
 10 call btc_fnc_rep_change;
 
-{8 call btc_fnc_task_set_done} remoteExec ["call", 0];
+8 remoteExec ["btc_fnc_task_set_done", 0];
 
 _unit setUnitPos "UP";
-
-btc_side_assigned = false;publicVariable "btc_side_assigned";

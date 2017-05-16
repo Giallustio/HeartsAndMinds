@@ -7,7 +7,7 @@ closeDialog 0;
 
 btc_int_ask_data = nil;
 
-[[6,nil,player],"btc_fnc_int_ask_var",false] spawn BIS_fnc_MP;
+[6,nil,player] remoteExec ["btc_fnc_int_ask_var", 2];
 
 waitUntil {!(isNil "btc_int_ask_data")};
 
@@ -48,13 +48,13 @@ forceMap false;
 
 closeDialog 0;
 
-_pos = getMarkerPos _marker;
+_pos = ((_fobs select 1) select ((_fobs select 0) find _marker)) buildingPos -1;
 
 _text = format ["Moving to %1",_fob];
 
 titleText [_text, "BLACK OUT"];
 sleep 3;
 titleText [_text, "BLACK FADED"];
-player setPosATL [_pos select 0,_pos select 1,0.45];
+player setPosATL selectRandom (_pos select [0, [count _pos,4] select (count _pos >= 4)]);
 sleep 2;
 titleText ["", "BLACK IN"];

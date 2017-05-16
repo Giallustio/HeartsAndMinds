@@ -217,7 +217,7 @@ switch (_this) do {
 			};
 		};
 		btc_int_ask_data = nil;
-		[[4,btc_int_target,player],"btc_fnc_int_ask_var",false] spawn BIS_fnc_MP;
+		[4,btc_int_target,player] remoteExec ["btc_fnc_int_ask_var", 2];
 
 		waitUntil {!(isNil "btc_int_ask_data")};
 

@@ -8,4 +8,4 @@ if (count _array == 0) exitWith {hint "No wreck";};
 
 if (damage (_array select 0) != 1) exitWith {hint "It is not a wreck!"};
 
-[[(_array select 0)],"btc_fnc_log_server_repair_wreck",false] spawn BIS_fnc_MP;
+[_array select 0] remoteExec ["btc_fnc_log_server_repair_wreck", 2];

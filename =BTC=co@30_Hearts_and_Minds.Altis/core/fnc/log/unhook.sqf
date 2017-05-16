@@ -11,7 +11,7 @@ if ((_pos select 2) < -0.05) then {
 };
 
 btc_int_ask_data = nil;
-[[4,_veh,player],"btc_fnc_int_ask_var",false] spawn BIS_fnc_MP;
+[4,_veh,player] remoteExec ["btc_fnc_int_ask_var", 2];
 
 waitUntil {!(isNil "btc_int_ask_data")};
 
@@ -28,5 +28,5 @@ if ((_pos select 2) < -0.05) then {
 	_towed setVelocity [0, 0, 0.01];
 };
 
-[[_towed,"tow",objNull],"btc_fnc_int_change_var",false] spawn BIS_fnc_MP;
-[[_veh,"tow",objNull],"btc_fnc_int_change_var",false] spawn BIS_fnc_MP;
+[_towed,"tow",objNull] remoteExec ["btc_fnc_int_change_var", 2];
+[_veh,"tow",objNull] remoteExec ["btc_fnc_int_change_var", 2];

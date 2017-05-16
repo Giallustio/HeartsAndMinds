@@ -95,6 +95,11 @@ switch (_this select 0) do
 		_description = [format ["Liberate a civilian hostage in %1. Local population is asking for your help!",_location],("Liberate hostage near " + _location),("Liberate hostage near " + _location)];
 		_type = "exit";
 	};
+	case 16 :
+	{
+		_description = [format ["Hack a prototype missile with a terminal available in %1. Defend your position until the process is done!",_location],("Hack missile near " + _location),("Hack missile near " + _location)];
+		_type = "intel";
+	};
 };
 
 [btc_player_side,[str(_this select 0)],_description,_destination,true,2,true,_type,true] call BIS_fnc_taskCreate;

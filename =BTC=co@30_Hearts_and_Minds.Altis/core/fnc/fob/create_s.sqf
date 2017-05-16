@@ -28,7 +28,8 @@ _marker = createmarker [("FOB " + _name), getPos _flag];
 (btc_fobs select 0) pushBack (("FOB " + _name));
 (btc_fobs select 1) pushBack _struc;
 _flag setVariable ["btc_fob",("FOB " + _name)];
-[[7,("FOB " + _name)],"btc_fnc_show_hint"] spawn BIS_fnc_MP;
+[7,("FOB " + _name)] remoteExec ["btc_fnc_show_hint", 0];
+
 /*
 //_flag setVariable ["BTC_mobile_west",format ["FOB_%1",BTC_fob_id],true];
 	BTC_fob_placed = BTC_fob_placed + [_flag];publicVariable "BTC_fob_placed";//Till nearestObjects will work again

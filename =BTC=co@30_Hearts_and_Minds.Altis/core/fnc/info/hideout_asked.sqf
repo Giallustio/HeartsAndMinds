@@ -9,7 +9,7 @@ _text = "";
 switch _is_real do {
 	case _is_real : {
 		btc_int_ask_data = nil;
-		[[1,[],player],"btc_fnc_int_ask_var",false] spawn BIS_fnc_MP;
+		[1,[],player] remoteExec ["btc_fnc_int_ask_var", 2];
 
 		waitUntil {!(isNil "btc_int_ask_data")};
 

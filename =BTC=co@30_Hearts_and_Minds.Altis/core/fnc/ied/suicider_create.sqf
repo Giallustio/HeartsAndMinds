@@ -1,5 +1,5 @@
 
-private ["_city","_area","_rpos","_unit_type","_group","_suicider","_cond"];
+private ["_city","_area","_rpos","_unit_type","_group","_suicider"];
 
 _city = _this select 0;
 _area = _this select 1;
@@ -34,13 +34,16 @@ _suicider = leader _group;
 _suicider call btc_fnc_civ_unit_create;
 
 //Main check
-_suicider spawn
-{
-	_cond = false;
+[{
+	params ["_args", "_id"];
+	_args params ["_suicider"];
 
-	while {Alive _this && !isNull _this && !_cond} do
-	{
-		sleep 5;
-		if (count (getpos _this nearEntities ["SoldierWB", 25]) > 0) then {_cond = true;_this spawn btc_fnc_ied_suicider_active};
+	if (Alive _suicider && !isNull _suicider) then {
+		if (count (getpos _suicider nearEntities ["SoldierWB", 25]) > 0) then {
+			[_id] call CBA_fnc_removePerFrameHandler;
+			_suicider call btc_fnc_ied_suicider_active;
+		};
+	} else {
+		[_id] call CBA_fnc_removePerFrameHandler;
 	};
-};
+} , 5, [_suicider]] call CBA_fnc_addPerFrameHandler;
