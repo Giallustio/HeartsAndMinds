@@ -1,7 +1,8 @@
 player createDiarySubject ["Documentation","Documentation"];
 
-player createDiaryRecord ["Documentation", ["Headless", "
-<img image='\a3\ui_f\data\map\vehicleicons\iconvirtual_ca.paa' width='20' height='20'/> This mission automatically use one Headless client when available.
+player createDiaryRecord ["Documentation", ["Headless & Data base", "
+<img image='\a3\ui_f\data\map\vehicleicons\iconvirtual_ca.paa' width='20' height='20'/> This mission automatically use one Headless client when available.<br/><br/>
+<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/> This mission has a data base system. Enemy units, towns, hideouts, cache, objects created by players or Zeus, vehicles, players markers (not lines) on global channel are saved. All admin can save mission progress at any time with his self interaction key.
 	"]
 ];
 
