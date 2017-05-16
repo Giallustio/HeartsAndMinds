@@ -17,4 +17,4 @@ profileNamespace setVariable [format ["btc_hm_%1_db",_name],nil];
 
 saveProfileNamespace;
 
-[[10],"btc_fnc_show_hint"] spawn BIS_fnc_MP;
+[10] remoteExec ["btc_fnc_show_hint", 0];

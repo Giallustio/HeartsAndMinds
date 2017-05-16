@@ -35,7 +35,7 @@ if (isNil {_cache getVariable "btc_hd_cache"} && {_explosive} && {_damage > 0.6}
 	btc_cache_markers = [];
 
 	//Notification
-	[[0],"btc_fnc_show_hint"] spawn BIS_fnc_MP;
+	[0] remoteExec ["btc_fnc_show_hint", 0];
 
 	[] spawn {[] call btc_fnc_cache_find_pos;};
 } else {0};

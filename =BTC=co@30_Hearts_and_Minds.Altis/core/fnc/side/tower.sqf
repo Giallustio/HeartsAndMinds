@@ -63,9 +63,9 @@ btc_side_assigned = false;publicVariable "btc_side_assigned";
 [[_area,_marker], _btc_composition, [], []] call btc_fnc_delete;
 
 if (btc_side_aborted || btc_side_failed ) exitWith {
-	{7 call btc_fnc_task_fail} remoteExec ["call", 0];
+	7 remoteExec ["btc_fnc_task_fail", 0];
 };
 
 80 call btc_fnc_rep_change;
 
-{7 call btc_fnc_task_set_done} remoteExec ["call", 0];
+7 remoteExec ["btc_fnc_task_set_done", 0];

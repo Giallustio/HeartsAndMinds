@@ -5,7 +5,8 @@ private ["_man","_rep","_chance","_info","_info_type","_random","_text","_ho_lef
 _man = _this select 0;
 
 btc_int_ask_data = nil;
-[[2,nil,player],"btc_fnc_int_ask_var",false] spawn BIS_fnc_MP;
+
+[2,nil,player] remoteExec ["btc_fnc_int_ask_var", 2];
 
 waitUntil {!(isNil "btc_int_ask_data")};
 

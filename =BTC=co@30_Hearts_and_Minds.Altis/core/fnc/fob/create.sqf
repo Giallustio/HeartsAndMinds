@@ -37,4 +37,4 @@ hint "Get back! Mounting FOB";
 
 closeDialog 0;
 
-[[_mat,_name],"btc_fnc_fob_create_s",false] spawn BIS_fnc_MP;
+[_mat,_name] remoteExec ["btc_fnc_fob_create_s", 2];

@@ -10,4 +10,4 @@ _marker setMarkerText format ["%1 wreck",getText (configFile >> "cfgVehicles" >>
 
 _vehicle setVariable ["marker",_marker];
 
-if (isServer) then {btc_rep_malus_veh_killed spawn btc_fnc_rep_change} else {[btc_rep_malus_veh_killed,"btc_fnc_rep_change",false] spawn BIS_fnc_MP;};
+if (isServer) then {btc_rep_malus_veh_killed spawn btc_fnc_rep_change} else {btc_rep_malus_veh_killed remoteExec ["btc_fnc_rep_change", 2];};

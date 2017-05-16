@@ -110,12 +110,12 @@ waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !(Alive _captive) ||
 
 btc_side_assigned = false;publicVariable "btc_side_assigned";
 if (btc_side_aborted || !(Alive _captive)) exitWith {
-	{14 call btc_fnc_task_fail} remoteExec ["call", 0];
+	14 remoteExec ["btc_fnc_task_fail", 0];
 	[_markers, _vehs + [_trigger], [], [_group]] call btc_fnc_delete;
 };
 
 if (btc_side_failed) exitWith {
-	[14,"btc_fnc_task_fail",true] spawn BIS_fnc_MP;
+	14 remoteExec ["btc_fnc_task_fail", 0];
 	deleteVehicle _trigger;
 	_group setVariable ["no_cache",false];
 	{
@@ -127,6 +127,6 @@ if (btc_side_failed) exitWith {
 
 50 call btc_fnc_rep_change;
 
-{14 call btc_fnc_task_set_done} remoteExec ["call", 0];
+14 remoteExec ["btc_fnc_task_set_done", 0];
 
-[_markers, _vehs + [_trigger], [], [_group]] call btc_fnc_delete;
+[_markers, _vehs + [_trigger,_captive], [], [_group]] call btc_fnc_delete;

@@ -75,16 +75,16 @@ if (!(_captive getVariable ["ace_captives_isHandcuffed", false])) then {
 	sleep 1;
 };
 
-deletemarker _marker;
 _group_civ setVariable ["no_cache",false];
 {_x setVariable ["no_cache",false];} foreach _group;
 btc_side_assigned = false;publicVariable "btc_side_assigned";
 
 if (btc_side_aborted || btc_side_failed || !(Alive _captive)) exitWith {
-	{15 call btc_fnc_task_fail} remoteExec ["call", 0];
-	[[], [_trigger,_mine], [], _group + [_group_civ]] call btc_fnc_delete;
+	15 remoteExec ["btc_fnc_task_fail", 0];
+	[[_marker], [_trigger,_mine], [], _group + [_group_civ]] call btc_fnc_delete;
 };
 
 40 call btc_fnc_rep_change;
 
-{15 call btc_fnc_task_set_done} remoteExec ["call", 0];
+[[_marker], [], [], []] call btc_fnc_delete;
+15 remoteExec ["btc_fnc_task_set_done", 0];

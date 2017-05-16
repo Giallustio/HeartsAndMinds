@@ -82,14 +82,12 @@ private _fx = createVehicle ["test_EmptyObjectForSmoke", [_pos select 0, _pos se
 _fx attachTo [_rocket,[0,0,0]];
 
 {btc_side_done = false} remoteExec ["call", 0];
+btc_side_assigned = false;publicVariable "btc_side_assigned";
+[[_marker], [_rocket, _terminal], [_fx], []] call btc_fnc_delete;
 if (btc_side_aborted || btc_side_failed || !(_city getVariable ["active", false])) exitWith {
 	16 remoteExec ["btc_fnc_task_fail", 0];
-	[[_marker], [_rocket, _terminal], [_fx], []] call btc_fnc_delete;
-	btc_side_assigned = false;publicVariable "btc_side_assigned";
 };
 
 80 call btc_fnc_rep_change;
 
 16 remoteExec ["btc_fnc_task_set_done", 0];
-[[_marker], [_rocket, _terminal], [_fx], []] call btc_fnc_delete;
-btc_side_assigned = false;publicVariable "btc_side_assigned";

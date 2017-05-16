@@ -53,12 +53,12 @@ waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({!isNull _x} count 
 
 btc_side_assigned = false;publicVariable "btc_side_assigned";
 if (btc_side_aborted || btc_side_failed) exitWith {
-	{4 call btc_fnc_task_fail} remoteExec ["call", 0];
+	4 remoteExec ["btc_fnc_task_fail", 0];
 	[[_area,_marker], _mines, [], []] call btc_fnc_delete;
 };
 
 30 call btc_fnc_rep_change;
 
-{4 call btc_fnc_task_set_done} remoteExec ["call", 0];
+4 remoteExec ["btc_fnc_task_set_done", 0];
 
 [[_area,_marker], [], [], []] call btc_fnc_delete;

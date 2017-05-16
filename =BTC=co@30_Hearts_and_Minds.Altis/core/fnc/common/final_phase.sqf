@@ -1,9 +1,9 @@
 
 private ["_radius_x","_radius_y","_marker"];
 
-[[6],"btc_fnc_show_hint"] spawn BIS_fnc_MP;
+[6] remoteExec ["btc_fnc_show_hint", 0];
 
-{1 call btc_fnc_task_set_done} remoteExec ["call", 0];
+1 remoteExec ["btc_fnc_task_set_done", 0];
 
 btc_final_phase = true;
 
@@ -26,8 +26,8 @@ btc_city_remaining = [];
 
 waitUntil {sleep 15; (btc_city_remaining isEqualTo [])};
 
-{0 call btc_fnc_task_set_done;} remoteExec ["call", 0];
+0 remoteExec ["btc_fnc_task_set_done", 0];
 2 call btc_fnc_task_set_done;
 
 //END
-[[],"btc_fnc_end_mission",true,true] spawn BIS_fnc_MP;
+[] remoteExec ["btc_fnc_end_mission", 0, true];
