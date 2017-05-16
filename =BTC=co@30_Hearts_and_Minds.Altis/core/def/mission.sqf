@@ -180,7 +180,7 @@ btc_civ_type_boats = _allclasse select 1;
 
 btc_civ_max_veh = 10;
 btc_w_civs = ["V_Rangemaster_belt","arifle_Mk20_F","30Rnd_556x45_Stanag","hgun_ACPC2_F","9Rnd_45ACP_Mag"];
-btc_g_civs = ["HandGrenade","MiniGrenade","ACE_M84","ACE_M14"];
+btc_g_civs = ["HandGrenade","MiniGrenade","ACE_M84","ACE_M84"];
 
 
 //Cache

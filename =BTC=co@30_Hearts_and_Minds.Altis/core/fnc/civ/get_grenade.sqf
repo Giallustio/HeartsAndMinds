@@ -6,7 +6,9 @@ _range = _this select 1;
 _units = [];
 if (count _this > 2) then {_units = _this select 2;} else {_units = _pos nearEntities [btc_civ_type_units, _range];};
 
-_units = _units select {side _x isEqualTo civilian};
+_units = (_units select {side _x isEqualTo civilian});
+
+if (_units isEqualTo []) exitWith {};
 
 {
 	if (btc_debug_log) then	{diag_log format ["fnc_civ_get_grenade %1 - %2",_x,side _x];};
