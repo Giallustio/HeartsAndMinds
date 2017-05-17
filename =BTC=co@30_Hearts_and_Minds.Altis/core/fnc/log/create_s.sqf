@@ -10,7 +10,7 @@ if (count _this > 1) then {
 if (getText (configFile >> "cfgVehicles" >> (_this select 0) >> "displayName") isEqualTo "") then {
 	_obj = [btc_create_object_point,(_this select 0)] call ace_rearm_fnc_createDummy;
 } else {
-	_obj = (_this select 0) createVehicle _pos;
+	_obj = (_this select 0) createVehicle [0,0,0];
 };
 _obj setPosASL _pos;
 

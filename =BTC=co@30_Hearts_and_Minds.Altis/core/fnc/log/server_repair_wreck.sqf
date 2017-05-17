@@ -14,7 +14,7 @@ deleteVehicle _veh;
 sleep 1;
 _veh  = createVehicle [_type, _pos, [], 0, "CAN_COLLIDE"];
 _veh setDir _dir;
-_veh setPosASL _pos;
+_veh setPosASL [_pos select 0, _pos select 1, 0.5 + (_pos select 2)];
 _veh setVariable ["btc_dont_delete",true];
 
 if(getNumber(configFile >> "CfgVehicles" >> typeof _veh >> "isUav")==1) then {
