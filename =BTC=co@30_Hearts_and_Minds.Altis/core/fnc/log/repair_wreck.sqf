@@ -2,7 +2,7 @@
 private ["_object","_array"];
 
 _object = _this select 0;
-_array = (nearestObjects [position _object, ["LandVehicle","Air"], 10]) select {!((_x isKindOf "ACE_friesGantry") OR (typeof _x isEqualTo "ACE_friesAnchorBar"))};
+_array = (nearestObjects [_object, ["LandVehicle","Air"], 10]) select {!((_x isKindOf "ACE_friesGantry") OR (typeof _x isEqualTo "ACE_friesAnchorBar"))};
 
 if (count _array == 0) exitWith {hint "No wreck";};
 
