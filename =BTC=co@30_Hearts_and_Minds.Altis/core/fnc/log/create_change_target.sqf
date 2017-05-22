@@ -11,11 +11,7 @@ for "_i" from 0 to ((count _category) - 1) do
 {
 	private ["_class","_display","_index"];
 	_class = (_category select _i);
-	if (_class isEqualTo "Box_NATO_Ammo_F_empty") then {
-		_display = getText (configFile >> "cfgVehicles" >> "Box_NATO_Ammo_F" >> "displayName") + " (Empty)" ;
-	} else {
-		_display = getText (configFile >> "cfgVehicles" >> _class >> "displayName");
-	};
+	_display = getText (configFile >> "cfgVehicles" >> _class >> "displayName");
 	if (_display isEqualTo "") then {
 		_display = getText (configfile >> "CfgMagazines" >> _class >> "displayName");
 	};
