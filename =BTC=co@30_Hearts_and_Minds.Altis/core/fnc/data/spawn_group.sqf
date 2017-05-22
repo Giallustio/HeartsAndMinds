@@ -13,8 +13,10 @@ for "_i" from 0 to (count _array_pos - 1) do {
 
 if (_type == 1) then {
 	private _veh = createVehicle [(_array_veh select 0), (_array_veh select 1), [], 0, "FLY"];
-	_veh setPosATL (_array_veh select 1);
-	_veh setDir (_array_veh select 2);
+	if !(_veh isKindOf "Plane") then {
+		_veh setPosATL (_array_veh select 1);
+		_veh setDir (_array_veh select 2);
+	};
 	_veh setFuel (_array_veh select 3);
 	{
 		private _assigned = false;
