@@ -7,6 +7,9 @@ _unit addEventHandler ["Fired", {
 	if ((_this select 1) isEqualTo "Throw") then {
 		(_this select 0) removeEventHandler ["Fired", _thisEventHandler];
 		[_this select 0] joinSilent createGroup [civilian, true];
-		[{(_this select 0) call btc_fnc_rep_add_eh}, [_this select 0], 5] call CBA_fnc_waitAndExecute;
+		[{
+			(_this select 0) call btc_fnc_rep_add_eh;
+			(group (_this select 0)) call btc_fnc_civ_addWP;
+		}, [_this select 0], 20] call CBA_fnc_waitAndExecute;
 	};
 }];
