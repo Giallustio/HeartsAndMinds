@@ -6,60 +6,62 @@ btc_version = 1.161; diag_log format ["=BTC= HEARTS AND MINDS VERSION %1",(str(b
 //Param
 
 //<< Time options >>
-btc_p_time = (paramsArray select 1);
-btc_p_acctime = (paramsArray select 2);
-_p_db = if ((paramsArray select 3) isEqualTo 0) then {false} else {true};
-btc_p_auto_db = (paramsArray select 4);
+btc_p_time = "btc_p_time" call BIS_fnc_getParamValue;
+btc_p_acctime = "btc_p_acctime" call BIS_fnc_getParamValue;
+_p_db = ("btc_p_load" call BIS_fnc_getParamValue) isEqualTo 1;
+btc_p_auto_db = "btc_p_auto_db" call BIS_fnc_getParamValue;
 
 //<< Faction options >>
-_p_en = (paramsArray select 6);
-_p_en_AA = false;
-_p_en_tank = false;
-_p_civ = (paramsArray select 7);
-_p_civ_veh = (paramsArray select 8);
+_p_en = "btc_p_en" call BIS_fnc_getParamValue;
+_p_en_AA = ("btc_p_AA" call BIS_fnc_getParamValue) isEqualTo 1;
+_p_en_tank = ("btc_p_tank" call BIS_fnc_getParamValue) isEqualTo 1;
+_p_civ = "btc_p_civ" call BIS_fnc_getParamValue;
+_p_civ_veh = "btc_p_civ_veh" call BIS_fnc_getParamValue;
 
 //<< IED options >>
-btc_p_ied = (paramsArray select 10)/2;
-ace_explosives_RequireSpecialist  = (paramsArray select 11) isEqualTo 0;
+btc_p_ied = ("btc_p_ied" call BIS_fnc_getParamValue)/2;
+ace_explosives_RequireSpecialist  = ("btc_p_engineer" call BIS_fnc_getParamValue) isEqualTo 0;
 
 //<< Hideout/Cache options >>
-_hideout_n = (paramsArray select 13);
-_cache_info_def = (paramsArray select 14);
-_cache_info_ratio = (paramsArray select 15);
-_info_chance = (paramsArray select 16);
+_hideout_n = "btc_p_hideout_n" call BIS_fnc_getParamValue;
+_cache_info_def = "btc_p_cache_info_def" call BIS_fnc_getParamValue;
+_cache_info_ratio = "btc_p_cache_info_ratio" call BIS_fnc_getParamValue;
+_info_chance = "btc_p_info_chance" call BIS_fnc_getParamValue;
 
 //<< Medical options >>
-btc_p_redeploy = if ((paramsArray select 18) isEqualTo 0) then {false} else {true};
-ace_medical_level = paramsArray select 19;
-ace_medical_enableAdvancedWounds = if ((paramsArray select 20) isEqualTo 0) then {false} else {true};
-ace_medical_maxReviveTime = paramsArray select 21;
+btc_p_redeploy = ("btc_p_redeploy" call BIS_fnc_getParamValue) isEqualTo 1;
+ace_medical_level = "btc_p_med_level" call BIS_fnc_getParamValue;
+ace_medical_enableAdvancedWounds = ("btc_p_adv_wounds" call BIS_fnc_getParamValue) isEqualTo 1;
+ace_medical_maxReviveTime = "btc_p_rev" call BIS_fnc_getParamValue;
 
 //<< Skill options >>
-btc_p_set_skill  = if ((paramsArray select 23) isEqualTo 0) then {false} else {true};
+btc_p_set_skill  = ("btc_p_skill_title" call BIS_fnc_getParamValue) isEqualTo 1;
 _p_skill = [
-	(paramsArray select 24)/10,//general
-	(paramsArray select 25)/10,//aimingAccuracy
-    (paramsArray select 26)/10,//aimingShake
-    (paramsArray select 27)/10,//aimingSpeed
-    (paramsArray select 28)/10,//endurance
-    (paramsArray select 29)/10,//spotDistance
-    (paramsArray select 30)/10,//spotTime
-    (paramsArray select 31)/10,//courage
-    (paramsArray select 32)/10,//reloadSpeed
-    (paramsArray select 33)/10//commanding
+	("btc_p_set_skill_general" call BIS_fnc_getParamValue)/10,//general
+	("btc_p_set_skill_aimingAccuracy" call BIS_fnc_getParamValue)/10,//aimingAccuracy
+    ("btc_p_set_skill_aimingShake" call BIS_fnc_getParamValue)/10,//aimingShake
+    ("btc_p_set_skill_aimingSpeed" call BIS_fnc_getParamValue)/10,//aimingSpeed
+    ("btc_p_set_skill_endurance" call BIS_fnc_getParamValue)/10,//endurance
+    ("btc_p_set_skill_spotDistance" call BIS_fnc_getParamValue)/10,//spotDistance
+    ("btc_p_set_skill_spotTime" call BIS_fnc_getParamValue)/10,//spotTime
+    ("btc_p_set_skill_courage" call BIS_fnc_getParamValue)/10,//courage
+    ("btc_p_set_skill_reloadSpeed" call BIS_fnc_getParamValue)/10,//reloadSpeed
+    ("btc_p_set_skill_commanding" call BIS_fnc_getParamValue)/10//commanding
 ];
 
+//<< Gameplay options >>
+btc_p_sea  = ("btc_p_sea" call BIS_fnc_getParamValue) isEqualTo 1;
+btc_p_veh_armed_ho = ("btc_p_veh_armed_ho" call BIS_fnc_getParamValue) isEqualTo 1;
+btc_p_veh_armed_spawn_more = ("btc_p_veh_armed_spawn_more" call BIS_fnc_getParamValue) isEqualTo 1;
+btc_p_side_mission_cycle = ("btc_p_side_mission_cycle" call BIS_fnc_getParamValue) isEqualTo 1;
+
 //<< Other options >>
-_p_rep = (paramsArray select 35);
-ace_rearm_level = (paramsArray select 36);
-btc_p_sea  = if ((paramsArray select 37) isEqualTo 0) then {false} else {true};
-_p_city_radius = (paramsArray select 38) * 100;
-btc_p_veh_armed_ho = false;
-btc_p_veh_armed_spawn_more = false;
-btc_p_trigger = if (false) then {"this && !btc_db_is_saving && (false in (thisList apply {_x isKindOf 'Plane'})) && (false in (thisList apply {(_x isKindOf 'Helicopter') && (speed _x > 190)}))"} else {"this && !btc_db_is_saving"};
-btc_p_side_mission_cycle = false;
-btc_p_garage = false;
-btc_p_debug  = (paramsArray select 39);
+_p_rep = "btc_p_rep" call BIS_fnc_getParamValue;
+ace_rearm_level = "btc_p_rearm" call BIS_fnc_getParamValue;
+btc_p_garage = ("btc_p_garage" call BIS_fnc_getParamValue) isEqualTo 1;
+_p_city_radius = ("btc_p_city_radius" call BIS_fnc_getParamValue) * 100;
+btc_p_trigger = if (("btc_p_trigger" call BIS_fnc_getParamValue) isEqualTo 1) then {"this && !btc_db_is_saving && (false in (thisList apply {_x isKindOf 'Plane'})) && (false in (thisList apply {(_x isKindOf 'Helicopter') && (speed _x > 190)}))"} else {"this && !btc_db_is_saving"};
+btc_p_debug  = "btc_p_debug" call BIS_fnc_getParamValue;
 
 //OPTION must be use for H&M
 if (ace_medical_maxReviveTime > 0) then {ace_medical_enableRevive = 1;ace_medical_preventInstaDeath = true};
@@ -160,9 +162,6 @@ if (isServer) then {
 	btc_vehicles = [btc_veh_1,btc_veh_2,btc_veh_3,btc_veh_4,btc_veh_5,btc_veh_6,btc_veh_7,btc_veh_8,btc_veh_9,btc_veh_10,btc_veh_11,btc_veh_12,btc_veh_13,btc_veh_14,btc_veh_15];
 	btc_helo = [btc_helo_1];
 };
-
-//City
-btc_city_type = "Land_Ammobox_rounds_F";
 
 //Civ
 // Get all faction from mod there are currently running
