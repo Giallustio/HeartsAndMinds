@@ -213,25 +213,23 @@ btc_info_hideout_radius = 4000;
 //Supplies
 btc_supplies_mat = "Land_Cargo20_red_F";
 
+//Player
+btc_player_side		= west;
+btc_respawn_marker	= "respawn_west";
+
 //Log
 if (isServer) then {
 	#define	REARM_TURRET_PATHS  [[-1], [0], [0,0], [0,1], [1], [2], [0,2]]
 
 	_btc_rearming_vehicles = [btc_vehicles + btc_helo,[]] call btc_fnc_find_veh_with_turret;
+	private _allclass = ("true" configClasses (configFile >> "CfgVehicles")) apply {configName _x};
+	_allclass = _allclass select {(getNumber(configfile >> "CfgVehicles" >> _x >> "scope") isEqualTo 2)};
 
 	_btc_rearming_static =
 	[
 		//"Static"
-		"B_static_AT_F",
-		"B_static_AA_F",
-		"B_GMG_01_A_F",
-		"B_GMG_01_high_F",
-		"B_GMG_01_F",
-		"B_HMG_01_A_F",
-		"B_HMG_01_high_F",
-		"B_HMG_01_F",
 		"B_Mortar_01_F"
-	];
+	]  + (_allclass select {((_x isKindOf "StaticGrenadeLauncher") || (_x isKindOf "StaticMGWeapon")) && (getNumber(configfile >> "CfgVehicles" >> _x >> "side") isEqualTo ([east,west,independent,civilian] find btc_player_side))});
 
 	_magazines_static = [];
 	{
@@ -279,25 +277,19 @@ if (isServer) then {
 				"Land_Mil_ConcreteWall_F",
 				"Land_Mil_WallBig_4m_F",
 				"Land_Mil_WallBig_Corner_F",
-				"Land_PortableLight_double_F"
+				"Land_PortableLight_double_F",
+				"B_Slingload_01_Medevac_F",
+				"B_Slingload_01_Fuel_F"
 			],
 			_btc_rearming_static + _magazines_static_clean,
 			[
 				//"Ammobox"
-				"rhsusf_mags_crate",
-				"Box_NATO_Ammo_F",
-				"Box_NATO_Ammo_F_empty",
-				"Box_NATO_Support_F",
-				"ACE_medicalSupplyCrate_advanced",
-				"ACE_medicalSupplyCrate",
-				"B_supplyCrate_F",
-				"B_CargoNet_01_ammo_F"
-			],
+
+			] + (_allclass select {_x isKindOf "ReammoBox_F" && !(_x isKindOf "Slingload_01_Base_F") && !(_x isKindOf "Pod_Heli_Transport_04_base_F")}),
 			[
 				//"Containers"
 				"Land_Cargo20_military_green_F",
 				"Land_Cargo40_military_green_F"
-
 			],
 			[
 				//"Supplies"
@@ -381,6 +373,8 @@ btc_log_def_cc =
 	btc_fob_mat,0,
 	"Land_Cargo20_military_green_F",20,
 	"Land_Cargo40_military_green_F",40,
+	"B_Slingload_01_Fuel_F",0,
+	"B_Slingload_01_Medevac_F",0,
 	//Trucks
 	"B_Truck_01_transport_F",10,
 	"B_Truck_01_covered_F",10,
@@ -397,7 +391,9 @@ btc_log_def_rc =
 	btc_supplies_mat,10,
 	btc_fob_mat,10,
 	"Land_Cargo20_military_green_F",20,
-	"Land_Cargo40_military_green_F",40
+	"Land_Cargo40_military_green_F",40,
+	"B_Slingload_01_Fuel_F",20,
+	"B_Slingload_01_Medevac_F",20
 ];
 
 btc_fnc_log_get_nottowable = {
@@ -459,8 +455,6 @@ btc_lift_HUD_x  = 0.874;
 btc_lift_HUD_y  = 0.848;
 
 //Mil
-btc_player_side		= west;
-btc_respawn_marker	= "respawn_west";
 btc_hq = objNull;
 // Get all faction from mod there are currently running
 //copyToClipboard str (["EN"] call btc_fnc_get_class);
