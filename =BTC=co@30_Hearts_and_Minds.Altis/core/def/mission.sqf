@@ -159,6 +159,35 @@ if (isServer) then {
 	//Vehs
 	btc_vehicles = [btc_veh_1,btc_veh_2,btc_veh_3,btc_veh_4,btc_veh_5,btc_veh_6,btc_veh_7,btc_veh_8,btc_veh_9,btc_veh_10,btc_veh_11,btc_veh_12,btc_veh_13,btc_veh_14,btc_veh_15];
 	btc_helo = [btc_helo_1];
+
+	// The two arrays below are prefixes of buildings and their multiplier.
+	// They will multiply the values of btc_rep_malus_building_destroyed and btc_rep_malus_building_damaged,
+	// if a building is not present here it will be multiplied by 1.0.
+	// Use 0.0 to disable reputation hit on a specific's building destruction.
+	// You can modify this for any other terrain, clearing the table will also make all buildings just have a 1.0 multiplier.
+	// If there's a hit in btc_buildings_multiplier, btc_buildings_categories_multipliers will NOT be run
+	btc_buildings_multipliers = [
+	// Specific buildings that need to have a custom modifier.
+	["Land_BellTower", 0.2 ], ["Land_WIP", 1.5], ["Land_u_Addon_01", 0.2], 
+	["Land_Airport_Tower", 10.0], ["Land_Mil_ControlTower", 10.0],
+	["Land_TentHangar", 7.0], ["Land_i_Shed_Ind", 1.5], ["Land_u_Shed_Ind", 1.5],
+	["Land_TTowerBig", 6.0], ["Land_TTowerSmall", 4.5], ["Land_cmp_Tower", 4.0]
+	];
+
+	// The multipliers are applied on top of each other, so "Chapel" and "Small" will both multiply the malus value
+	btc_buildings_categories_multipliers = [
+	["Shed", 0.75], ["Slum", 0.8], ["Small", 0.8], ["Big", 1.5], ["Villa", 2.0], ["Main", 3.0], ["Tower", 2.0],
+	["HouseBlock", 2.0], ["Panelak", 2.0], ["Tenement", 7.0],
+	["Barn", 1.5], ["School", 3.0], ["Office", 2.0], ["Shop", 1.5], ["Store", 1.5], ["Hospital", 12.0],
+	["Castle", 2.5], ["Chapel", 3.0], ["Minaret", 3.0], ["Mosque", 4.0], ["Church", 4.0], ["Kostel", 4.0],
+	["Lighthouse", 4.0],
+	["Airport", 4.0], ["Hangar", 1.75], ["ControlTower", 2.25], ["Terminal", 3.0],
+	["Hopper", 2.0], ["Tank", 4.0], ["Factory", 2.0], ["Transformer", 1.1],
+	["FuelStation", 5.0],
+	["Barracks", 1.75],
+	["spp", 3.0], ["Powerstation", 3.0],
+	["Pump", 2.5]
+	];
 };
 
 //City
@@ -517,6 +546,8 @@ btc_rep_malus_civ_killed = - 10;
 btc_rep_malus_civ_firenear = - 5;
 btc_rep_malus_player_respawn = - 10;
 btc_rep_malus_veh_killed = - 25;
+btc_rep_malus_building_damaged = - 2.5;
+btc_rep_malus_building_destroyed = - 5;
 
 //Side
 if (isNil "btc_side_assigned") then {btc_side_assigned = false;};
