@@ -35,7 +35,7 @@ ace_medical_enableAdvancedWounds = ("btc_p_adv_wounds" call BIS_fnc_getParamValu
 ace_medical_maxReviveTime = "btc_p_rev" call BIS_fnc_getParamValue;
 
 //<< Skill options >>
-btc_p_set_skill  = ("btc_p_skill_title" call BIS_fnc_getParamValue) isEqualTo 1;
+btc_p_set_skill  = ("btc_p_set_skill" call BIS_fnc_getParamValue) isEqualTo 1;
 _p_skill = [
 	("btc_p_set_skill_general" call BIS_fnc_getParamValue)/10,//general
 	("btc_p_set_skill_aimingAccuracy" call BIS_fnc_getParamValue)/10,//aimingAccuracy
