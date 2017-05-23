@@ -5,7 +5,7 @@ closeDialog 0;
 
 btc_log_create_obj = _this select 0;
 
-if ({!((_x isKindOf "Animal") || (_x isKindOf "Module_F"))} count (nearestObjects [getpos btc_log_create_obj,["All"],5]) > 1) exitWith {hint "Clear the area before create another object!"};
+if ({!((_x isKindOf "Animal") || (_x isKindOf "Module_F"))} count (nearestObjects [btc_log_create_obj,["All"],5]) > 1) exitWith {hint "Clear the area before create another object!"};
 
 disableSerialization;
 closeDialog 0;
@@ -19,9 +19,9 @@ call btc_fnc_log_create_load;
 _class = lbData [72, lbCurSel 72];
 _selected = _class;
 if (getText (configFile >> "cfgVehicles" >> _selected >> "displayName") isEqualTo "") then {
-	_new = "Box_NATO_Ammo_F" createVehicleLocal [getpos btc_log_create_obj select 0,getpos btc_log_create_obj select 1,0];
+	_new = "Box_NATO_Ammo_F" createVehicleLocal getPosASL btc_log_create_obj;
 } else {
-	_new = _class createVehicleLocal [getpos btc_log_create_obj select 0,getpos btc_log_create_obj select 1,0];
+	_new = _class createVehicleLocal getPosASL btc_log_create_obj;
 };
 while {dialog} do
 {
@@ -33,12 +33,12 @@ while {dialog} do
 		//_class = lbText [72,lbCurSel 72];
 		_selected = _class;
 		if (getText (configFile >> "cfgVehicles" >> _selected >> "displayName") isEqualTo "") then {
-			_new = "Box_NATO_Ammo_F" createVehicleLocal [getpos btc_log_create_obj select 0,getpos btc_log_create_obj select 1,0];
+			_new = "Box_NATO_Ammo_F" createVehicleLocal getPosASL btc_log_create_obj;
 		} else {
-			_new = _class createVehicleLocal [getpos btc_log_create_obj select 0,getpos btc_log_create_obj select 1,0];
+			_new = _class createVehicleLocal getPosASL btc_log_create_obj;
 		};
 		_new setDir (getDir btc_log_create_obj);
-		_new setPos [getpos btc_log_create_obj select 0,getpos btc_log_create_obj select 1,0];
+		_new setPosASL getPosASL btc_log_create_obj;
 	};
 	sleep 0.1;
 };
