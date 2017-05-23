@@ -276,7 +276,8 @@ if (isServer) then {
 				"Land_Mil_WallBig_4m_F",
 				"Land_Mil_WallBig_Corner_F",
 				"Land_PortableLight_double_F",
-				"B_Slingload_01_Medevac_F"
+				"B_Slingload_01_Medevac_F",
+				"B_Slingload_01_Fuel_F"
 			],
 			_btc_rearming_static + _magazines_static_clean,
 			[
@@ -299,8 +300,7 @@ if (isServer) then {
 			[
 				//"Vehicle logistic"
 				"ACE_Wheel",
-				"ACE_Track",
-				"B_Slingload_01_Fuel_F"
+				"ACE_Track"
 			]
 		] + (_btc_rearming_vehicles apply {
 				_vehicles = _x;
@@ -371,6 +371,8 @@ btc_log_def_cc =
 	btc_fob_mat,0,
 	"Land_Cargo20_military_green_F",20,
 	"Land_Cargo40_military_green_F",40,
+	"B_Slingload_01_Fuel_F",0,
+	"B_Slingload_01_Medevac_F",0,
 	//Trucks
 	"B_Truck_01_transport_F",10,
 	"B_Truck_01_covered_F",10,
@@ -387,7 +389,9 @@ btc_log_def_rc =
 	btc_supplies_mat,10,
 	btc_fob_mat,10,
 	"Land_Cargo20_military_green_F",20,
-	"Land_Cargo40_military_green_F",40
+	"Land_Cargo40_military_green_F",40,
+	"B_Slingload_01_Fuel_F",20,
+	"B_Slingload_01_Medevac_F",20
 ];
 
 btc_fnc_log_get_nottowable = {
