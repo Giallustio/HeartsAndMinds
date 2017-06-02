@@ -42,13 +42,13 @@ class Params {
 		default = 5;
 	};
 	class btc_p_AA {
-		title = "			Enemy use Anti-Air:";
+		title = "			Enemy uses Anti-Air:";
 		values[]={0,1};
 		texts[]={"Off","On"};
 		default = 0;
 	};
 	class btc_p_tank {
-		title = "			Enemy use Tank:";
+		title = "			Enemy uses Tank:";
 		values[]={0,1};
 		texts[]={"Off","On"};
 		default = 0;
