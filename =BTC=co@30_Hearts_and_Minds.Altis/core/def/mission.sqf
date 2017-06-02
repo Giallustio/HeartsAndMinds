@@ -168,7 +168,7 @@ if (isServer) then {
 	// If there's a hit in btc_buildings_multiplier, btc_buildings_categories_multipliers will NOT be run
 	btc_buildings_multipliers = [
 	// Specific buildings that need to have a custom modifier.
-	["Land_BellTower", 0.2 ], ["Land_WIP", 1.5], ["Land_u_Addon_01", 0.2], 
+	["Land_BellTower", 0.2 ], ["Land_WIP", 1.5], ["Land_u_Addon_01", 0.2],
 	["Land_Airport_Tower", 10.0], ["Land_Mil_ControlTower", 10.0],
 	["Land_TentHangar", 7.0], ["Land_i_Shed_Ind", 1.5], ["Land_u_Shed_Ind", 1.5],
 	["Land_TTowerBig", 6.0], ["Land_TTowerSmall", 4.5], ["Land_cmp_Tower", 4.0]
@@ -313,6 +313,7 @@ if (isServer) then {
 			_btc_rearming_static + _magazines_static_clean,
 			[
 				//"Ammobox"
+				"Land_WoodenBox_F"
 
 			] + (_allclass select {_x isKindOf "ReammoBox_F" && !(_x isKindOf "Slingload_01_Base_F") && !(_x isKindOf "Pod_Heli_Transport_04_base_F")}),
 			[
