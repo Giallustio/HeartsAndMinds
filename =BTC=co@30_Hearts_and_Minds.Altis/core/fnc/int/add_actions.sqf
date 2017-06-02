@@ -3,7 +3,7 @@ private ["_action"];
 
 //Database
 //_action = ["Database","Database","",{},{serverCommandAvailable "#logout"}] call ace_interact_menu_fnc_createAction;
-_action = ["Database","Database","",{},{serverCommandAvailable "#logout" || !isMultiplayer}] call ace_interact_menu_fnc_createAction;
+_action = ["Database","Database","\A3\ui_f\data\igui\cfg\simpleTasks\letters\D_ca.paa",{},{serverCommandAvailable "#logout" || !isMultiplayer}] call ace_interact_menu_fnc_createAction;
 [player, 1, ["ACE_SelfActions"], _action] call ace_interact_menu_fnc_addActionToObject;
 
 _action = ["request_save","Save","\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa",{call btc_fnc_db_request_save;},{true}] call ace_interact_menu_fnc_createAction;
