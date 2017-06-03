@@ -23,5 +23,7 @@ _chopper addEventHandler ["RopeBreak", {
 clearWeaponCargoGlobal _support1;
 clearItemCargoGlobal _support1;
 clearMagazineCargoGlobal _support1;
+_support1 setObjectTextureGlobal [0, "A3\Structures_F\Data\Windows\window_set.rvmat"];
+_support1 setObjectTextureGlobal [1, "A3\Structures_F\Data\Windows\window_set.rvmat"];
 
 _support1
