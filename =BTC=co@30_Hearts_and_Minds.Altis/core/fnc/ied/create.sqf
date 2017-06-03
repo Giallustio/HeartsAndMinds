@@ -1,5 +1,5 @@
 
-private ["_type","_pos","_dir","_active","_wreck"];
+private ["_type","_pos","_dir","_active","_wreck","_ied"];
 
 _pos = _this select 0;
 _type = _this select 1;

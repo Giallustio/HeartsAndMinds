@@ -23,5 +23,7 @@ _chopper addEventHandler ["RopeBreak", {
 clearWeaponCargoGlobal _support1;
 clearItemCargoGlobal _support1;
 clearMagazineCargoGlobal _support1;
+_support1 setObjectTextureGlobal [0, ""];
+_support1 setObjectTextureGlobal [1, ""];
 
 _support1
