@@ -337,6 +337,11 @@ _objs = profileNamespace getVariable [format ["btc_hm_%1_objs",_name],[]];
 			_obj addItemCargoGlobal[((_items select 0) select _i),((_items select 1) select _i)];
 		};
 	};
+	if ((_x select 0) isEqualTo "Land_Pod_Heli_Transport_04_medevac_F") then {
+		{
+			_obj setObjectTextureGlobal [ _foreachindex, _x ];
+		} forEach ["a3\air_f_heli\heli_transport_04\data\heli_transport_04_pod_ext01_black_co.paa","a3\air_f_heli\heli_transport_04\data\heli_transport_04_pod_ext02_black_co.paa"];
+	};
 } foreach _objs;
 
 //Player Markers
