@@ -45,6 +45,13 @@ if (!_is_init) then {
 
 
 _city setVariable ["active",true];
+
+if (count _ieds > 0) then {
+	private _ieds_data = _ieds apply {_x call btc_fnc_ied_create};
+	_city = btc_city_all select (_this select 0);
+	[_city,_ieds_data] spawn btc_fnc_ied_check;
+};
+
 if (count _data_units > 0) then {
 	//{_x spawn btc_fnc_data_spawn_group;sleep 0.5;} foreach _data_units;
 	{_x call btc_fnc_data_spawn_group;sleep 0.01;} foreach _data_units;
@@ -133,14 +140,6 @@ if (_has_ho && {!(_city getVariable ["ho_units_spawned",false])}) then {
 			[[(_pos select 0) - 7,(_pos select 1) - 7,0],_statics,225] call btc_fnc_mil_create_static;
 		};
 	};
-};
-
-if (count _ieds > 0) then {
-	private ["_ieds_data"];
-	_ieds_data = [];
-	{private ["_ied"];_ied = _x call btc_fnc_ied_create;_ieds_data pushBack _ied;} foreach _ieds;
-	_city = btc_city_all select (_this select 0);
-	[_city,_ieds_data] spawn btc_fnc_ied_check;
 };
 
 //Suicider
