@@ -4,7 +4,7 @@ private _malus = [btc_rep_malus_building_damaged, btc_rep_malus_building_destroy
 private _skipCategories = false;
 
 // Accept only static, terrain buildings, discard any dynamically created ones but keep already damaged buildings.
-if ((getObjectType _from != 1) && !(_from in btc_buildings_changed)) exitWith {systemChat "buildings ingnore"};
+if ((getObjectType _from != 1) && !(_from in btc_buildings_changed)) exitWith {};
 
 btc_buildings_changed pushBack _to;
 
