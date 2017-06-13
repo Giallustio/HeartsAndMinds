@@ -26,6 +26,8 @@ class RscTitles {
 
 #include "core\def\param.hpp"
 
+#include "core\fnc\mil\aiskill.hpp"
+
 #include "core\fnc\task\tasktypes.hpp"
 
 #include "core\def\functions.hpp"
