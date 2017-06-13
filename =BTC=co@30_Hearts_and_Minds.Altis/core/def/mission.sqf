@@ -190,6 +190,7 @@ if (isServer) then {
 	["spp", 3.0], ["Powerstation", 3.0],
 	["Pump", 2.5]
 	];
+	btc_buildings_changed = [];
 };
 
 //Civ
