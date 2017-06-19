@@ -115,7 +115,8 @@ When you destroy an hideout or an ammo cache, all the markers related to it will
 player createDiaryRecord ["Documentation", ["Reputation", "
 <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\talk_ca.paa' width='20' height='20'/> Reputation can be ask to civilian<br/>
 Bad actions cause bad effetcs.<br/>
-<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='20' height='20'/> Helping the local population, fighting the Oplitas, disarming IED will rise your reputation; killing civilians, firing near civilians for no reason, damaging/destroying buildings, losing vehicles, respawns will decrease your repution. At the beginning you have a very low reputation level, so civilians won't help you revealing important information about Oplitas, they will likely lie instead.
+<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='20' height='20'/> Helping the local population, fighting the Oplitas, disarming IED will rise your reputation; killing civilians, mutilate alive/dead civilian, firing near civilians for no reason, damaging/destroying buildings, losing vehicles, respawns will decrease your repution. At the beginning you have a very low reputation level, so civilians won't help you revealing important information about Oplitas, they will likely lie instead.<br/>
+Abort a side mission does not affect reputation.
 	"]
 ];
 
