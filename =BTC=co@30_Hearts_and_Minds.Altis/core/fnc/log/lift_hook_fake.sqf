@@ -17,12 +17,12 @@ _chopper addEventHandler ["RopeBreak", {
 	(_this select 0) removeEventHandler ["RopeBreak", _thisEventHandler];
 	btc_lifted = false;
 	{
-		private _pos = getPosATL _x;
 		detach _x;
+		_x setVectorUp surfaceNormal getPosATL _x;
+		private _pos = getPosATL _x;
 		if ((_pos select 2) < -0.05) then {
 			_x setPosATL [_pos select 0, _pos select 1, 0];
 		};
-		_x setVectorUp surfaceNormal _pos;
 	} forEach attachedObjects (_this select 2);
 	deleteVehicle (_this select 2);
 }];
