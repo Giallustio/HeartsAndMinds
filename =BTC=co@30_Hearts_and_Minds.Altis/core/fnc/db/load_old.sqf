@@ -203,7 +203,6 @@ diag_log format ["5: %1",(_x select 5)];
 	_veh setDir (_x select 2);
 	if ((getPos _veh) select 2 < 0) then {_veh setVectorUp surfaceNormal position _veh;};
 	_veh setFuel (_x select 3);
-	_veh setDamage (_x select 4);
 	_veh setVariable ["btc_dont_delete",true];
 	_veh call btc_fnc_db_add_veh;
 	{
@@ -256,6 +255,7 @@ diag_log format ["5: %1",(_x select 5)];
 			_veh addItemCargoGlobal[((_items select 0) select _i),((_items select 1) select _i)];
 		};
 	};
+	_veh setDamage (_x select 4);
 } foreach _vehs;
 
 //Objs
