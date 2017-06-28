@@ -257,7 +257,7 @@ diag_log format ["5: %1",(_x select 5)];
 				_veh addItemCargoGlobal[((_items select 0) select _i),((_items select 1) select _i)];
 			};
 		};
-		_veh setDamage (_x select 4);
+		_veh setDamage [(_x select 4), false];
 	} foreach _vehs;
 }, _vehs, 0.5] call CBA_fnc_waitAndExecute;
 
