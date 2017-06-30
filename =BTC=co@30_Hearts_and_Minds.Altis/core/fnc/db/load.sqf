@@ -252,9 +252,15 @@ diag_log format ["5: %1",(_x select 5)];
 				_veh addItemCargoGlobal[((_items select 0) select _i),((_items select 1) select _i)];
 			};
 		};
+
+		//Disable explosion effect during database loading
+		_veh setVariable ["ace_cookoff_enable", false];
+		_veh setVariable ["ace_cookoff_enableAmmoCookoff", false];
 		{
 			[_veh, _foreachindex, _x] call ace_repair_fnc_setHitPointDamage;
 		} forEach ((_x select 4) select 2);
+		_veh setVariable ["ace_cookoff_enable", nil];
+		_veh setVariable ["ace_cookoff_enableAmmoCookoff", nil];
 	} foreach _vehs;
 }, _vehs, 0.5] call CBA_fnc_waitAndExecute;
 
