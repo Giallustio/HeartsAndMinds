@@ -177,7 +177,6 @@ btc_fnc_log_lift_hook = compile preprocessFile "core\fnc\log\lift_hook.sqf";
 btc_fnc_log_lift_hook_fake = compile preprocessFile "core\fnc\log\lift_hook_fake.sqf";
 btc_fnc_log_lift_hud = compile preprocessFile "core\fnc\log\lift_hud.sqf";
 btc_fnc_log_lift_hud_loop = compile preprocessFile "core\fnc\log\lift_hud_loop.sqf";
-btc_fnc_log_lift_unhook = compile preprocessFile "core\fnc\log\lift_hook.sqf";
 btc_fnc_log_get_cc = compile preprocessFile "core\fnc\log\get_cc.sqf";
 btc_fnc_log_get_rc = compile preprocessFile "core\fnc\log\get_rc.sqf";
 btc_fnc_log_load = compile preprocessFile "core\fnc\log\load.sqf";
