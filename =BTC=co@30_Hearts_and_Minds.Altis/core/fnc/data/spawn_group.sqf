@@ -27,6 +27,7 @@ if (_type == 1) then {
 	} foreach units _group;
 };
 
+units _group joinSilent _group;
 (units _group) apply {_x enableSimulation true};
 
 //[waypointPosition _x,waypointType _x,waypointSpeed _x,waypointFormation _x,waypointCombatMode _x,waypointBehaviour _x]
