@@ -22,8 +22,6 @@ _factions = _factions apply {if !isClass(configFile >> "CfgFactionClasses" >> _x
 
 _enemy_side		= [east,west,independent,civilian] select getNumber(configfile >> "CfgFactionClasses" >> (_factions select 0) >> "side");
 
-//Select only faction from the same side
-_factions = _factions select {([east,west,independent,civilian] select getNumber(configfile >> "CfgFactionClasses" >> _x >> "side")) isEqualTo _enemy_side};
 //Prevent selecting same side as player side
 if (_enemy_side isEqualTo btc_player_side) exitWith {
 	[["IND_G_F"], _en_AA, _en_tank] call btc_fnc_mil_class;
