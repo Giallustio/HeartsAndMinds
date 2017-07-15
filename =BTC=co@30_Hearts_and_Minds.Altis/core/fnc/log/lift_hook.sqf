@@ -54,7 +54,6 @@ if ((_mass + 400) > _max_cargo) then {
 	_cargo setVariable ["mass",_mass];
 	private _new_mass = (_max_cargo - 1000);
 	if (_new_mass < 0) then {_new_mass = 50;};
-	_cargo setMass _new_mass;
 	[_cargo,_new_mass] remoteExec ["btc_fnc_log_set_mass", _cargo];
 };
 
