@@ -50,16 +50,15 @@ _max_cargo  = getNumber (configFile >> "cfgVehicles" >> typeof _chopper >> "slin
 _mass = getMass _cargo;
 
 [_cargo, player] remoteExec ["btc_fnc_set_owner", 2];
+btc_lifted = true;
+sleep 1;
 if ((_mass + 400) > _max_cargo) then {
-	_cargo setVariable ["mass",_mass];
 	private _new_mass = (_max_cargo - 1000);
 	if (_new_mass < 0) then {_new_mass = 50;};
 	[_cargo,_new_mass] remoteExec ["btc_fnc_log_set_mass", _cargo];
 };
 
 _chopper setVariable ["cargo",_cargo];
-
-btc_lifted = true;
 
 waitUntil {sleep 5; (!Alive player || !Alive _cargo || !btc_lifted || vehicle player == player)};
 
