@@ -59,9 +59,9 @@ if (_enemy_side isEqualTo btc_player_side) exitWith {
 //Final filter unwanted units type
 if !(_en_AA) then {
 	//Remove Anti-Air Units
-	_type_units		= _type_units select {(_x find "AA_") isEqualTo -1};
+	_type_units		= _type_units select {((_x find "AAA_") isEqualTo -1) && ((_x find "_AA_") isEqualTo -1)};
 };
-_type_units		= _type_units select {((_x find "_Pilot_") isEqualTo -1) && ((_x find "_Survivor_") isEqualTo -1) && ((_x find "_Story") isEqualTo -1) && ((_x find "_base") isEqualTo -1) && ((_x find "_unarmed_") isEqualTo -1) && ((_x find "_VR_") isEqualTo -1)};
+_type_units		= _type_units select {((_x find "pilot_") isEqualTo -1) && ((_x find "_Pilot_") isEqualTo -1) && ((_x find "_Survivor_") isEqualTo -1) && ((_x find "_Story") isEqualTo -1) && ((_x find "_base") isEqualTo -1) && ((_x find "_unarmed_") isEqualTo -1) && ((_x find "_VR_") isEqualTo -1)};
 _type_crewmen	= _type_units select 0;
 _type_motorized = (_type_motorized select {(_x find "UAV") isEqualTo -1}) select {(_x find "UGV")  isEqualTo -1};
 _type_motorized_armed = (_type_motorized_armed select {(_x find "UAV") isEqualTo -1}) select {(_x find "UGV")  isEqualTo -1};
