@@ -53,6 +53,7 @@ sleep 5 + random 10;
 switch (true) do {
 	case ((_random isEqualTo 1) && !_pos_iswater) : {
 		_n_units   = 4 + (round random 8);
+		_pos = [_pos,0,50,10,false] call btc_fnc_findsafepos;
 		_group createUnit [(btc_type_units select 0), _pos, [], 0, "NONE"];(leader _group) setpos _pos;
 		for "_i" from 1 to _n_units do {
 			private ["_unit_type"];
