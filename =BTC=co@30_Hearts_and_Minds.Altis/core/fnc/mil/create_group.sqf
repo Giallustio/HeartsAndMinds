@@ -34,7 +34,6 @@ switch (true) do {
 	case (_wp < 0.3) : {
 		private _structures = [_rpos,70] call btc_fnc_mil_getStructures;
 		if !(_structures isEqualTo []) then	{
-			systemChat "_structure found";
 			_structure = selectRandom _structures;
 			_n = count (_structure buildingPos -1);
 			if (_n > 8) then {
@@ -42,7 +41,6 @@ switch (true) do {
 			} else {
 				_n = floor(_n/2);
 			};
-			systemChat format ["_n = %1", _n];
 			private _groups = [];
 			for "_i" from 0 to _n do {
 				_groups pushBack createGroup btc_enemy_side;
@@ -70,7 +68,6 @@ switch (true) do {
 	};
 };
 if (_structure isEqualTo objNull) then {
-	systemChat "patrol";
 	for "_i" from 0 to _n do {
 		_unit_type = [selectRandom btc_type_units, selectRandom btc_type_divers ] select _pos_iswater;
 		[_group createUnit [_unit_type, _rpos, [], 0, "NONE"]] joinSilent _group;
@@ -78,7 +75,6 @@ if (_structure isEqualTo objNull) then {
 	};
 	//_group createUnit [btc_type_medic, _pos, [], 0, "NONE"];
 } else {
-	systemChat "in _structure";
 	[_group,_structure] spawn btc_fnc_house_addWP;
 	_group setVariable ["inHouse", typeOf _structure];
 };
