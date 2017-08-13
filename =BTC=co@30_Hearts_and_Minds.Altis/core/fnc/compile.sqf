@@ -105,6 +105,7 @@ if (isServer) then {
 	btc_fnc_mil_patrol_eh = compile preprocessFile "core\fnc\mil\patrol_eh.sqf";
 	btc_fnc_mil_patrol_eh_remove = compile preprocessFile "core\fnc\mil\patrol_eh_remove.sqf";
 	btc_fnc_mil_CuratorMilPlaced_s = compile preprocessFile "core\fnc\mil\CuratorMilPlaced_s.sqf";
+	btc_fnc_mil_getStructures = compile preprocessFile "core\fnc\mil\getStructures.sqf";
 
 	//REP
 	btc_fnc_rep_add_eh = compile preprocessFile "core\fnc\rep\add_eh.sqf";
