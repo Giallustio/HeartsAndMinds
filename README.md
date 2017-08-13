@@ -51,6 +51,7 @@ At the beginning you have a very low reputation level, so civilians won't help y
 
 <p align="center">
     <img src="https://user-images.githubusercontent.com/14364400/28997116-bfcec8a6-7a0d-11e7-911f-b52edb841ae3.png" width="400">
+    <img src="https://user-images.githubusercontent.com/14364400/29193966-d8306378-7e27-11e7-97cb-df76dfc08e53.png" width="400">
 </p>
 
 Any support or feedback is always welcome and appreciated!
