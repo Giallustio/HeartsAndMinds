@@ -85,6 +85,7 @@ for "_i" from 0 to _random do {
 	_pos1 = getPos _road;
 };
 
+units _group joinSilent _group;
 {_x call btc_fnc_mil_unit_create} foreach units _group;
 
 _group setBehaviour "SAFE";
