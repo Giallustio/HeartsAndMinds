@@ -280,74 +280,7 @@ diag_log format ["5: %1",(_x select 5)];
 //btc_log_obj_created = [];
 _objs = profileNamespace getVariable [format ["btc_hm_%1_objs",_name],[]];
 {
-	private ["_obj","_cont","_weap","_mags","_items"];
-	_obj = (_x select 0) createVehicle (_x select 1);
-	btc_log_obj_created pushBack _obj;
-	btc_curator addCuratorEditableObjects [[_obj], false];
-	_obj setDir (_x select 2);
-	_obj setPosASL (_x select 1);
-	if ((_x select 3) != "") then {_obj setVariable ["ace_rearm_magazineClass",(_x select 3),true]};
-	{
-		/*private "_l";
-		_l = _x createVehicle [0,0,0];
-		btc_log_obj_created = btc_log_obj_created + [_l];
-		btc_curator addCuratorEditableObjects [[_l], false];
-		[_l,_obj] call btc_fnc_log_server_load;*/
-		//NEW
-		private ["_type","_cargo_obj","_l","_weap_obj","_mags_obj","_items_obj"];
-		//{_cargo pushBack [(typeOf _x),[getWeaponCargo _x,getMagazineCargo _x,getItemCargo _x]]} foreach (_x getVariable ["cargo",[]]);
-		_type = _x select 0;
-		_cargo_obj = _x select 2;
-		_l = _type createVehicle [0,0,0];
-		if ((_x select 1) != "") then {_l setVariable ["ace_rearm_magazineClass",(_x select 1),true]};
-		btc_log_obj_created  pushBack _l;
-		btc_curator addCuratorEditableObjects [[_l], false];
-		clearWeaponCargoGlobal _l;clearItemCargoGlobal _l;clearMagazineCargoGlobal _l;
-		_weap_obj = _cargo_obj select 0;
-		if (count _weap_obj > 0) then {
-			for "_i" from 0 to ((count (_weap_obj select 0)) - 1) do {
-				_l addWeaponCargoGlobal[((_weap_obj select 0) select _i),((_weap_obj select 1) select _i)];
-			};
-		};
-		_mags_obj = _cargo_obj select 1;
-		if (count _mags_obj > 0) then {
-			for "_i" from 0 to ((count (_mags_obj select 0)) - 1) do {
-				_l addMagazineCargoGlobal[((_mags_obj select 0) select _i),((_mags_obj select 1) select _i)];
-			};
-		};
-		_items_obj = _cargo_obj select 2;
-		if (count _items_obj > 0) then {
-			for "_i" from 0 to ((count (_items_obj select 0)) - 1) do {
-				_l addItemCargoGlobal[((_items_obj select 0) select _i),((_items_obj select 1) select _i)];
-			};
-		};
-		[_l,_obj] call btc_fnc_log_server_load;
-	} foreach (_x select 4);
-	_cont = (_x select 5);
-	clearWeaponCargoGlobal _obj;clearItemCargoGlobal _obj;clearMagazineCargoGlobal _obj;
-	_weap = _cont select 0;
-	if (count _weap > 0) then {
-		for "_i" from 0 to ((count (_weap select 0)) - 1) do {
-			_obj addWeaponCargoGlobal[((_weap select 0) select _i),((_weap select 1) select _i)];
-		};
-	};
-	_mags = _cont select 1;
-	if (count _mags > 0) then {
-		for "_i" from 0 to ((count (_mags select 0)) - 1) do {
-			_obj addMagazineCargoGlobal[((_mags select 0) select _i),((_mags select 1) select _i)];
-		};
-	};
-	_items = _cont select 2;
-	if (count _items > 0) then {
-		for "_i" from 0 to ((count (_items select 0)) - 1) do {
-			_obj addItemCargoGlobal[((_items select 0) select _i),((_items select 1) select _i)];
-		};
-	};
-	if ((_x select 0) isEqualTo "Land_Pod_Heli_Transport_04_medevac_F") then {
-		{
-			_obj setObjectTextureGlobal [ _foreachindex, _x ];
-		} forEach ["a3\air_f_heli\heli_transport_04\data\heli_transport_04_pod_ext01_black_co.paa","a3\air_f_heli\heli_transport_04\data\heli_transport_04_pod_ext02_black_co.paa"];
-	};
+	[_x] call btc_fnc_db_loadObjectStatus;
 } foreach _objs;
 
 //Player Markers

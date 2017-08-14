@@ -242,6 +242,9 @@ btc_info_hideout_radius = 4000;
 //Supplies
 btc_supplies_mat = "Land_Cargo20_red_F";
 
+//Containers
+btc_containers_mat = ["Land_Cargo20_military_green_F", "Land_Cargo40_military_green_F"];
+
 //Player
 btc_player_side		= west;
 btc_respawn_marker	= "respawn_west";
@@ -318,9 +321,8 @@ if (isServer) then {
 			] + (_allclass select {_x isKindOf "ReammoBox_F" && !(_x isKindOf "Slingload_01_Base_F") && !(_x isKindOf "Pod_Heli_Transport_04_base_F")}),
 			[
 				//"Containers"
-				"Land_Cargo20_military_green_F",
-				"Land_Cargo40_military_green_F"
-			],
+
+			] + btc_containers_mat,
 			[
 				//"Supplies"
 				btc_supplies_mat
