@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-    <a href="https://github.com/Vdauphin/HeartsAndMinds/releases/tag/1.16.7">
+    <a href="https://github.com/Vdauphin/HeartsAndMinds/releases/tag/1.17">
         <img src="https://img.shields.io/badge/Version-1.17-blue.svg?style=flat-square" alt="H&M Version">
     </a>
     <a href="https://github.com/Vdauphin/HeartsAndMinds/releases">
