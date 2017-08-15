@@ -27,7 +27,7 @@ if ((round random 3) >= 2 || !_isInterrogate) then {
 //NO < 200 . FAKE < 600 . REAL > 600
 
 btc_int_ask_data = nil;
-[[2,nil,player],"btc_fnc_int_ask_var",false] spawn BIS_fnc_MP;
+[2,nil,player] remoteExec ["btc_fnc_int_ask_var", 2];
 
 waitUntil {!(isNil "btc_int_ask_data")};
 
@@ -62,7 +62,7 @@ switch (_info_type) do {
 			case "CACHE" : {
 				hint format ["%1: I'll show you some hint on the map", name _man];
 				sleep 2;
-				[[true,1],"btc_fnc_info_cache",false] spawn BIS_fnc_MP;
+				[true,1] remoteExec ["btc_fnc_info_cache", 2];
 			};
 		};
 	};
@@ -77,7 +77,7 @@ switch (_info_type) do {
 			case "CACHE" : {
 				hint format ["%1: I'll show you some hint on the map", name _man];
 				sleep 2;
-				[[false,1],"btc_fnc_info_cache",false] spawn BIS_fnc_MP;
+				[false,1] remoteExec ["btc_fnc_info_cache", 2];
 			};
 		};
 	};

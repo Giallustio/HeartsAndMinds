@@ -123,7 +123,7 @@ _array_ho = profileNamespace getVariable [format ["btc_hm_%1_ho",_name],[]];
 } foreach _array_ho;
 
 _ho = profileNamespace getVariable [format ["btc_hm_%1_ho_sel",_name],0];
-btc_hq setVariable ["info_hideout", btc_hideouts select _ho];
+btc_hq = btc_hideouts select _ho;
 
 if (count btc_hideouts == 0) then {[] execVM "core\fnc\common\final_phase.sqf";};
 
@@ -196,18 +196,13 @@ diag_log format ["4: %1",(_x select 4)];
 diag_log format ["5: %1",(_x select 5)];
 {diag_log format ["5: %1",_x];} foreach (_x select 5)} foreach _vehs;
 */
-
 [{
 	private _vehs = _this;
 	{
 		private ["_veh","_cont","_weap","_mags","_items"];
-		_veh = (_x select 0) createVehicle [0,0,0];
-		_veh setDir (_x select 2);
-		_veh setPosASL (_x select 1);
+		_veh = [(_x select 0),(_x select 1),(_x select 2)] call btc_fnc_log_createVehicle;
 		if ((getPos _veh) select 2 < 0) then {_veh setVectorUp surfaceNormal position _veh;};
 		_veh setFuel (_x select 3);
-		_veh setVariable ["btc_dont_delete",true];
-		_veh call btc_fnc_db_add_veh;
 		{
 			private ["_type","_cargo_obj","_obj","_weap_obj","_mags_obj","_items_obj"];
 			_type = _x select 0;
@@ -261,7 +256,9 @@ diag_log format ["5: %1",(_x select 5)];
 		//Disable explosion effect during database loading
 		_veh setVariable ["ace_cookoff_enable", false];
 		_veh setVariable ["ace_cookoff_enableAmmoCookoff", false];
-		_veh setDamage [(_x select 4), false];
+		{
+			[_veh, _foreachindex, _x] call ace_repair_fnc_setHitPointDamage;
+		} forEach ((_x select 4) select 2);
 		_veh setVariable ["ace_cookoff_enable", nil];
 		_veh setVariable ["ace_cookoff_enableAmmoCookoff", nil];
 	} foreach _vehs;
@@ -346,4 +343,23 @@ _objs = profileNamespace getVariable [format ["btc_hm_%1_objs",_name],[]];
 			_obj addItemCargoGlobal[((_items select 0) select _i),((_items select 1) select _i)];
 		};
 	};
+	if ((_x select 0) isEqualTo "Land_Pod_Heli_Transport_04_medevac_F") then {
+		{
+			_obj setObjectTextureGlobal [ _foreachindex, _x ];
+		} forEach ["a3\air_f_heli\heli_transport_04\data\heli_transport_04_pod_ext01_black_co.paa","a3\air_f_heli\heli_transport_04\data\heli_transport_04_pod_ext02_black_co.paa"];
+	};
 } foreach _objs;
+
+//Player Markers
+private _markers_properties = profileNamespace getVariable [format ["btc_hm_%1_markers",_name],[]];
+{
+	private _marker = createMarker [format ["_USER_DEFINED #0/%1/1", _foreachindex], _x select 1];
+	_marker setMarkerText (_x select 0);
+	_marker setMarkerColor (_x select 2);
+	_marker setMarkerType (_x select 3);
+	_marker setMarkerSize (_x select 4);
+	_marker setmarkerAlpha (_x select 5);
+	_marker setmarkerBrush (_x select 6);
+	_marker setmarkerDir (_x select 7);
+	_marker setmarkerShape (_x select 8);
+} forEach _markers_properties;

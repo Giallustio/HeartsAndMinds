@@ -1,5 +1,5 @@
 
-private ["_useful","_city","_pos","_marker","_wrecks","_generator","_objects","_storagebladder","_area"];
+private ["_useful","_city","_pos","_marker","_wrecks","_generator","_objects","_storagebladder","_area","_group"];
 
 //// Choose a Marine location occupied \\\\
 _useful = btc_city_all select {((_x getVariable ["occupied",false]) && (_x getVariable ["type",""] == "NameMarine"))};
@@ -52,32 +52,23 @@ _marker setMarkerSize [0.6, 0.6];
 
 //// Create underwater generator \\\\
 _generator = (selectRandom btc_type_generator) createVehicle _pos;
-_storagebladder = (selectRandom btc_type_storagebladder) createVehicle [(_pos select 0) + 5, (_pos select 1), _pos select 2];
+_storagebladder = (selectRandom btc_type_storagebladder) createVehicle [(_pos select 0) + 5, _pos select 1, _pos select 2];
+
+_group = [_pos,8, 1 + round random 5,0.8] call btc_fnc_mil_create_group;
+[_pos,20, 2 + round random 4,0.5] call btc_fnc_mil_create_group;
+
+_pos = getPosASL _generator;
+leader _group setPosASL [_pos select 0, _pos select 1, (_pos select 2) + 1 + random 1];
 
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !Alive _generator )};
 
-{deletemarker _x} foreach [_area,_marker];
+[[_area,_marker], [_generator,_storagebladder], [], []] call btc_fnc_delete;
+btc_side_assigned = false;publicVariable "btc_side_assigned";
 
 if (btc_side_aborted || btc_side_failed ) exitWith {
-	{11 call btc_fnc_task_fail} remoteExec ["call", 0];
-	btc_side_assigned = false;publicVariable "btc_side_assigned";
-	{_x spawn {
-
-		waitUntil {sleep 5; ({_x distance _this < 300} count playableUnits == 0)};
-
-		deleteVehicle _this;
-	};} forEach [_generator,_storagebladder];
+	11 remoteExec ["btc_fnc_task_fail", 0];
 };
 
 80 call btc_fnc_rep_change;
 
-{11 call btc_fnc_task_set_done} remoteExec ["call", 0];
-
-{_x spawn {
-
-	waitUntil {sleep 5; ({_x distance _this < 300} count playableUnits == 0)};
-
-	deleteVehicle _this;
-};} forEach [_generator,_storagebladder];
-
-btc_side_assigned = false;publicVariable "btc_side_assigned";
+11 remoteExec ["btc_fnc_task_set_done", 0];

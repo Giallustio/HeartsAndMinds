@@ -1,9 +1,5 @@
 
-private ["_veh","_type"];
-
-_veh = _this select 0;
-
-_type = typeOf _veh;
+private _type = _this select 0;
 if (isNil "btc_actions_veh") then {btc_actions_veh = [];};
 if ((btc_actions_veh pushBackUnique _type) isEqualTo -1) exitWith {};
 
@@ -52,6 +48,14 @@ switch true do {
 		[_type, 0, ["ACE_MainActions","Logistic"], _action] call ace_interact_menu_fnc_addActionToClass;
 		//Lift
 		_action = ["Deploy_ropes","Deploy ropes","\A3\Structures_F_Heli\VR\Helpers\Data\VR_Symbol_Heli_Slingloading_CA.paa",{[] spawn btc_fnc_log_lift_deploy_ropes;},{!btc_ropes_deployed && {((driver vehicle player) isEqualTo player)} && {(getposATL player) select 2 > 4}}] call ace_interact_menu_fnc_createAction;
+		[_type, 1, ["ACE_SelfActions"], _action,true] call ace_interact_menu_fnc_addActionToClass;
+		_action = ["Cut_ropes","Cut ropes","\z\ace\addons\logistics_wirecutter\ui\wirecutter_ca.paa",{[] spawn btc_fnc_log_lift_destroy_ropes;},{btc_ropes_deployed && {((driver vehicle player) isEqualTo player)}}] call ace_interact_menu_fnc_createAction;
+		[_type, 1, ["ACE_SelfActions"], _action,true] call ace_interact_menu_fnc_addActionToClass;
+	};
+	case (_type isKindOf "Ship") : {
+		private ["_action"];
+		//Lift
+		_action = ["Deploy_ropes","Deploy ropes","\A3\Structures_F_Heli\VR\Helpers\Data\VR_Symbol_Heli_Slingloading_CA.paa",{[] spawn btc_fnc_log_lift_deploy_ropes;},{!btc_ropes_deployed && {((driver vehicle player) isEqualTo player)}}] call ace_interact_menu_fnc_createAction;
 		[_type, 1, ["ACE_SelfActions"], _action,true] call ace_interact_menu_fnc_addActionToClass;
 		_action = ["Cut_ropes","Cut ropes","\z\ace\addons\logistics_wirecutter\ui\wirecutter_ca.paa",{[] spawn btc_fnc_log_lift_destroy_ropes;},{btc_ropes_deployed && {((driver vehicle player) isEqualTo player)}}] call ace_interact_menu_fnc_createAction;
 		[_type, 1, ["ACE_SelfActions"], _action,true] call ace_interact_menu_fnc_addActionToClass;

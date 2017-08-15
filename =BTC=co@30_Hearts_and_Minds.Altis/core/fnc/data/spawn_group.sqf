@@ -1,33 +1,25 @@
 
-private ["_type","_array_pos","_array_type","_side","_array_dam","_behaviour","_array_wp","_array_veh","_group"];
+params ["_type","_array_pos","_array_type","_side","_array_dam","_behaviour","_array_wp","_array_veh"];
 
-_type 		= _this select 0;
-_array_pos  = _this select 1;
-_array_type = _this select 2;
-_side		= _this select 3;
-_array_dam  = _this select 4;
-_behaviour  = _this select 5;
-_array_wp   = _this select 6;
-_array_veh  = _this select 7;
-
-_group = createGroup _side;
+private _group = createGroup _side;
 
 for "_i" from 0 to (count _array_pos - 1) do {
-	private ["_u"];
-	_u = _group createUnit [(_array_type select _i), (_array_pos select _i), [], 0, "NONE"];_u setPos (_array_pos select _i);
+	private _u = _group createUnit [(_array_type select _i), (_array_pos select _i), [], 0, "NONE"];
+	_u enableSimulation false;
+	_u setPosATL (_array_pos select _i);
 	if (btc_debug_log) then {diag_log format ["spawn group : pos %1 in %2 ", (_array_pos select _i),getpos _u];};
 	_u setDamage (_array_dam select _i);
 };
 
 if (_type == 1) then {
-	private ["_veh"];
-	_veh = createVehicle [(_array_veh select 0), (_array_veh select 1), [], 0, "FLY"];
-	_veh setPos (_array_veh select 1);
-	_veh setDir (_array_veh select 2);
+	private _veh = createVehicle [(_array_veh select 0), (_array_veh select 1), [], 0, "FLY"];
+	if !(_veh isKindOf "Plane") then {
+		_veh setPosATL (_array_veh select 1);
+		_veh setDir (_array_veh select 2);
+	};
 	_veh setFuel (_array_veh select 3);
 	{
-		private ["_assigned"];
-		_assigned = false;
+		private _assigned = false;
 		if (!_assigned && _veh emptyPositions "driver" > 0) then {_x moveInDriver _veh;_x assignAsDriver _veh;_assigned = true;};
 		if (!_assigned && _veh emptyPositions "gunner" > 0) then {_x moveinGunner _veh;_x assignAsGunner _veh;_assigned = true;};
 		if (!_assigned && _veh emptyPositions "commander" > 0) then {_x moveinCommander _veh;_x assignAsCommander _veh;_assigned = true;};
@@ -35,15 +27,18 @@ if (_type == 1) then {
 	} foreach units _group;
 };
 
+units _group joinSilent _group;
+(units _group) apply {_x enableSimulation true};
+
 //[waypointPosition _x,waypointType _x,waypointSpeed _x,waypointFormation _x,waypointCombatMode _x,waypointBehaviour _x]
 if (_side == civilian && {vehicle leader _group == leader _group}) then {
 	_group spawn btc_fnc_civ_addWP;
 } else {
 	if (count (_array_wp select 1) > 1) then {
 		{
-			private "_wp";
 			//diag_log text format ["TEST X %1",_x];
-			_wp = _group addWaypoint [(_x select 0), 0];
+			private _wp = _group addWaypoint [(_x select 0), 0];
+			_wp setWaypointCompletionRadius 20;
 			_wp setWaypointType (_x select 1);
 			_wp setWaypointSpeed (_x select 2);
 			_wp setWaypointFormation (_x select 3);
@@ -66,15 +61,13 @@ if (_type == 3) then {
 if (_type == 4) then {[[0,0,0],0,units _group] spawn btc_fnc_civ_get_weapons;};
 if (_type == 5) then {
 	_group spawn {
-		private ["_cond","_suicider"];
-
 		_this setVariable ["suicider",true];
 
-		_suicider = leader _this;
+		private _suicider = leader _this;
 
 		//Main check
 
-		_cond = false;
+		private _cond = false;
 
 		while {Alive _suicider && !isNull _suicider && !_cond} do {
 			sleep 5;

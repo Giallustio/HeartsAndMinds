@@ -87,28 +87,13 @@ for "_i" from 1 to (1 + round random 2) do {
 
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({Alive _x} count _boxes == 0))};
 
-{deletemarker _x} foreach _markers;
+btc_side_assigned = false;publicVariable "btc_side_assigned";
+[_markers, _boxes, [], []] call btc_fnc_delete;
 
-if (btc_side_aborted || btc_side_failed ) exitWith {
-	{9 call btc_fnc_task_fail} remoteExec ["call", 0];
-	btc_side_assigned = false;publicVariable "btc_side_assigned";
-	{
-		_x spawn {
-			waitUntil {sleep 5; ({_x distance _this < 300} count playableUnits == 0)};
-			deleteVehicle _this;
-		};
-	} forEach _boxes;
+if (btc_side_aborted || btc_side_failed) exitWith {
+	9 remoteExec ["btc_fnc_task_fail", 0];
 };
 
 80 call btc_fnc_rep_change;
 
-{9 call btc_fnc_task_set_done} remoteExec ["call", 0];
-
-{
-	_x spawn {
-		waitUntil {sleep 5; ({_x distance _this < 300} count playableUnits == 0)};
-		deleteVehicle _this;
-	};
-} forEach _boxes;
-
-btc_side_assigned = false;publicVariable "btc_side_assigned";
+9 remoteExec ["btc_fnc_task_set_done", 0];

@@ -8,7 +8,7 @@ if (isNull _veh) exitWith {};
 btc_log_veh_selected = _veh;
 
 btc_int_ask_data = nil;
-[[3,_veh,player],"btc_fnc_int_ask_var",false] spawn BIS_fnc_MP;
+[3,_veh,player] remoteExec ["btc_fnc_int_ask_var", 2];
 
 waitUntil {!(isNil "btc_int_ask_data")};
 closeDialog 0;

@@ -21,6 +21,6 @@ if (vehicle player != player && {_veh isKindOf "Air"}) then {
 waitUntil {!(isNil "btc_int_action_result")};
 
 if (btc_int_action_result) then {
-	[[_obj_type,_veh],"btc_fnc_log_server_unload",false] spawn BIS_fnc_MP;
+	[_obj_type,_veh] remoteExec ["btc_fnc_log_server_unload", 2];
 	hint format ["%1 has been unloaded from %2",_obj_name,getText (configFile >> "cfgVehicles" >> typeOf _veh >> "displayName")];
 } else {hint "Unloading aborted";};

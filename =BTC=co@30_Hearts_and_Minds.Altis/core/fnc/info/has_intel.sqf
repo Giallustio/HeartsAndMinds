@@ -11,8 +11,8 @@ if (_body getVariable ["intel",false] && !(_body getVariable ["btc_already_inter
 	if (isServer) then	{
 		[_asker] spawn btc_fnc_info_give_intel;
 	} else {
-		[[_asker],"btc_fnc_info_give_intel",false] spawn BIS_fnc_MP;
+		[_asker] remoteExec ["btc_fnc_info_give_intel", 2];
 	};
 } else {
-	[[3],"btc_fnc_show_hint",_asker] spawn BIS_fnc_MP;
+	[3] remoteExec ["btc_fnc_show_hint", _asker];
 };

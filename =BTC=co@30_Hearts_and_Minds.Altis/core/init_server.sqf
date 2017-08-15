@@ -22,23 +22,18 @@ if (btc_db_load && {profileNamespace getVariable [format ["btc_hm_%1_db",worldNa
 
 call btc_fnc_db_autosave;
 
-addMissionEventHandler ["HandleDisconnect",{
-	if ((_this select 0) in (entities "HeadlessClient_F")) then 	{
-		//Remove HC player when disconnect
-		deleteVehicle (_this select 0);
-	};
-}];
+addMissionEventHandler ["HandleDisconnect",btc_fnc_eh_handledisconnect];
 
-["ace_explosives_defuse", {
-	params ["_ied", "_unit"];
-	private _type_ied = typeOf _ied;
-	if ((_type_ied select [0, _type_ied find "_"]) in (btc_type_ieds_ace apply {_x select [0, _x find "_"]})) then {
-		btc_rep_bonus_disarm call btc_fnc_rep_change;
-	};
-}] call CBA_fnc_addEventHandler;
+addMissionEventHandler ["BuildingChanged",btc_fnc_eh_buildingchanged];
+
+["ace_explosives_defuse", btc_fnc_eh_explosives_defuse] call CBA_fnc_addEventHandler;
 
 ["Initialize"] call BIS_fnc_dynamicGroups;
 
 setTimeMultiplier btc_p_acctime;
 
 {[_x,30,false] spawn btc_fnc_eh_veh_add_respawn;} forEach btc_helo;
+
+if (btc_p_side_mission_cycle) then {
+	[true] spawn btc_fnc_side_create;
+};

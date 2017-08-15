@@ -1,7 +1,8 @@
 player createDiarySubject ["Documentation","Documentation"];
 
-player createDiaryRecord ["Documentation", ["Headless", "
-<img image='\a3\ui_f\data\map\vehicleicons\iconvirtual_ca.paa' width='20' height='20'/> This mission automatically use one Headless client when available.
+player createDiaryRecord ["Documentation", ["Headless & Data base", "
+<img image='\a3\ui_f\data\map\vehicleicons\iconvirtual_ca.paa' width='20' height='20'/> This mission automatically use one Headless client when available.<br/><br/>
+<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/> This mission has a data base system. Enemy units, towns, hideouts, cache, objects created by players or Zeus, vehicles, players markers (not lines) on global channel are saved. All admin can save mission progress at any time with his self interaction key.
 	"]
 ];
 
@@ -114,7 +115,8 @@ When you destroy an hideout or an ammo cache, all the markers related to it will
 player createDiaryRecord ["Documentation", ["Reputation", "
 <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\talk_ca.paa' width='20' height='20'/> Reputation can be ask to civilian<br/>
 Bad actions cause bad effetcs.<br/>
-<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='20' height='20'/> Helping the local population, fighting the Oplitas, disarming IED will rise your reputation; killing civilians, firing near civilians for no reason, losing vehicles, respawns will decrease your repution. At the beginning you have a very low reputation level, so civilians won't help you revealing important information about Oplitas, they will likely lie instead.
+<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='20' height='20'/> Helping the local population, fighting the Oplitas, disarming IED will rise your reputation; killing civilians, mutilate alive/dead civilian, firing near civilians for no reason, damaging/destroying buildings, losing vehicles, respawns will decrease your repution. At the beginning you have a very low reputation level, so civilians won't help you revealing important information about Oplitas, they will likely lie instead.<br/>
+Abort a side mission does not affect reputation.
 	"]
 ];
 
@@ -147,6 +149,6 @@ player createDiaryRecord ["Documentation", ["Interaction", "
 
 player createDiaryRecord ["Documentation", [
 	"Version",
-	format ["<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/> Version %1 <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/>",(str(btc_version) + ".7")]
+	format ["<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/> Version %1 <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/>",(str(btc_version) + ".0")]
 	]
 ];

@@ -1,7 +1,5 @@
 
-private ["_killer"];
-
-_killer = (_this select 0) getVariable ["ace_medical_lastDamageSource", (_this select 1)];
+private _killer = (_this select 0) getVariable ["ace_medical_lastDamageSource", (_this select 1)];
 
 if (!isDedicated && !hasInterface) then {
 	[(_this select 0), _killer] remoteExec ["btc_fnc_mil_unit_killed",2];
@@ -14,7 +12,7 @@ if (!isDedicated && !hasInterface) then {
 		if (isServer) then {
 			btc_rep_bonus_mil_killed call btc_fnc_rep_change;
 		} else {
-			[btc_rep_bonus_mil_killed,"btc_fnc_rep_change",false] spawn BIS_fnc_MP;
+			btc_rep_bonus_mil_killed remoteExec ["btc_fnc_rep_change", 2];
 		};
 	};
 };

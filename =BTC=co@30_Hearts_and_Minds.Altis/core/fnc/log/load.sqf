@@ -18,7 +18,7 @@ _cc = [_veh] call btc_fnc_log_get_cc;
 if (_rc > _cc) exitWith {hint format ["Can not load %1 in %2",_obj_name,_veh_name];};
 
 btc_int_ask_data = nil;
-[[3,_veh,player],"btc_fnc_int_ask_var",false] spawn BIS_fnc_MP;
+[3,_veh,player] remoteExec ["btc_fnc_int_ask_var", 2];
 
 waitUntil {!(isNil "btc_int_ask_data")};
 
@@ -34,7 +34,7 @@ waitUntil {!(isNil "btc_int_action_result")};
 
 if (btc_int_action_result) then {
 	//player setVariable ["btc_log_isDragging",false];
-	[[btc_log_object_selected,_veh],"btc_fnc_log_server_load",false] spawn BIS_fnc_MP;
+	[btc_log_object_selected,_veh] remoteExec ["btc_fnc_log_server_load", 2];
 	hint format ["%1 has been loaded in %2",_obj_name,_veh_name];
 } else {hint "Loading aborted";};
 btc_log_object_selected = objNull;

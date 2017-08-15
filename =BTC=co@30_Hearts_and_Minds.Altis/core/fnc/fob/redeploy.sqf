@@ -7,7 +7,7 @@ closeDialog 0;
 
 btc_int_ask_data = nil;
 
-[[6,nil,player],"btc_fnc_int_ask_var",false] spawn BIS_fnc_MP;
+[6,nil,player] remoteExec ["btc_fnc_int_ask_var", 2];
 
 waitUntil {!(isNil "btc_int_ask_data")};
 
