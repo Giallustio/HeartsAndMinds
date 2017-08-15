@@ -42,7 +42,7 @@ for "_i" from 1 to (5 + round random 5) do {
 	_mines pushBack _m;
 };
 
-waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({_x distance _pos > 100} count playableUnits == 0))};
+waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({_x distance _pos < 200} count playableUnits > 0))};
 
 _closest = [_city,btc_city_all select {!(_x getVariable ["active",false])},false] call btc_fnc_find_closecity;
 for "_i" from 1 to (round random 2) do {
