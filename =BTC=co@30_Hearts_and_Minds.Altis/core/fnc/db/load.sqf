@@ -257,7 +257,7 @@ diag_log format ["5: %1",(_x select 5)];
 		_veh setVariable ["ace_cookoff_enable", false];
 		_veh setVariable ["ace_cookoff_enableAmmoCookoff", false];
 		{
-			[_veh, _foreachindex, _x] call ace_repair_fnc_setHitPointDamage;
+			[_veh, _foreachindex, _x, false] call ace_repair_fnc_setHitPointDamage;
 		} forEach ((_x select 4) select 2);
 		_veh setVariable ["ace_cookoff_enable", nil];
 		_veh setVariable ["ace_cookoff_enableAmmoCookoff", nil];
