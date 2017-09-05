@@ -30,7 +30,7 @@ _action = ["Tool","Tool","\A3\ui_f\data\igui\cfg\simpleTasks\letters\T_ca.paa",{
 [btc_create_object, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToObject;
 _action = ["Copy", "Copy container", "\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa", {[btc_create_object_point] spawn btc_fnc_log_copy}, {true}, {}, [], [0,0,0.4], 5] call ace_interact_menu_fnc_createAction;
 [btc_create_object, 0, ["ACE_MainActions","Tool"], _action] call ace_interact_menu_fnc_addActionToObject;
-_action = ["Paste", "Paste container", "\A3\ui_f\data\igui\cfg\simpleTasks\types\upload_ca.paa", {[btc_copy_container, btc_create_object_point] call btc_fnc_log_paste}, {true}, {}, [], [0,0,0.4], 5] call ace_interact_menu_fnc_createAction;
+_action = ["Paste", "Paste container", "\A3\ui_f\data\igui\cfg\simpleTasks\types\upload_ca.paa", {[btc_copy_container, btc_create_object_point] call btc_fnc_log_paste}, {!isNil "btc_copy_container"}, {}, [], [0,0,0.4], 5] call ace_interact_menu_fnc_createAction;
 [btc_create_object, 0, ["ACE_MainActions","Tool"], _action] call ace_interact_menu_fnc_addActionToObject;
 
 
