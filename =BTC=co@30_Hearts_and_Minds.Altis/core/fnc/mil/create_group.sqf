@@ -28,6 +28,8 @@ if (_pos_iswater) then {
 _group = createGroup btc_enemy_side;
 [_group createUnit [_unit_type, _rpos, [], 0, "NONE"]] joinSilent _group;
 (leader _group) setpos _rpos;
+private _groups = [];
+_groups pushBack _group;
 private _structure = objNull;
 
 switch (true) do {
@@ -41,15 +43,10 @@ switch (true) do {
 			} else {
 				_n = floor(_n/2);
 			};
-			private _groups = [];
 			for "_i" from 0 to _n do {
-				_groups pushBack createGroup btc_enemy_side;
-				[(_groups select _i) createUnit [selectRandom btc_type_units, _rpos, [], 0, "NONE"]] joinSilent (_groups select _i);
-				((units (_groups select _i)) select 0) call btc_fnc_mil_unit_create;
-				(_groups select _i) setVariable ["inHouse", typeOf _structure];
+				[_group createUnit [selectRandom btc_type_units, _rpos, [], 0, "NONE"]] joinSilent _group;
 				sleep 0.5;
 			};
-			{[_x,_structure] spawn btc_fnc_house_addWP} foreach _groups;
 		} else {
 			private _houses = [_rpos,50] call btc_fnc_getHouses;
 			if !(_houses isEqualTo []) then	{
@@ -75,8 +72,13 @@ if (_structure isEqualTo objNull) then {
 	};
 	//_group createUnit [btc_type_medic, _pos, [], 0, "NONE"];
 } else {
-	[_group,_structure] spawn btc_fnc_house_addWP;
-	_group setVariable ["inHouse", typeOf _structure];
+	{
+		private _grp = createGroup btc_enemy_side;
+		[_x] joinSilent _grp;
+		_grp setVariable ["inHouse", typeOf _structure];
+		[_grp,_structure] spawn btc_fnc_house_addWP;
+		_groups pushBack _grp;
+	} forEach units _group;
 };
 
 //if ((position leader _group) distance [0,0,0] < 50) then {{_x setpos _rpos;} foreach units _group;};
@@ -85,4 +87,4 @@ if (_structure isEqualTo objNull) then {
 
 if (btc_debug_log) then {diag_log format ["btc_fnc_mil_create_group: _this = %1 ; POS %2 UNITS N %3",_this,_rpos,count units _group];};
 
-_group
+_groups
