@@ -11,6 +11,7 @@
 	player addEventHandler ["Respawn", btc_fnc_eh_player_respawn];
 	player addEventHandler ["CuratorObjectPlaced", btc_fnc_eh_CuratorObjectPlaced];
 	["ace_treatmentSucceded", btc_fnc_eh_treatment] call CBA_fnc_addEventHandler;
+	player addEventHandler ["WeaponAssembled", {if ((_this select 1) isKindOf "UAV_06_base_F") then {_this remoteExec ["btc_fnc_civ_addLeaflets", 2]};}];
 
 	call btc_fnc_int_add_actions;
 
