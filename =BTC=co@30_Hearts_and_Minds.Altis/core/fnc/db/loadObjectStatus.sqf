@@ -62,10 +62,5 @@ if (count _items > 0) then {
 		_obj addItemCargoGlobal[((_items select 0) select _i),((_items select 1) select _i)];
 	};
 };
-if ((_object_data select 0) isEqualTo "Land_Pod_Heli_Transport_04_medevac_F") then {
-	{
-		_obj setObjectTextureGlobal [ _foreachindex, _object_data ];
-	} forEach ["a3\air_f_heli\heli_transport_04\data\heli_transport_04_pod_ext01_black_co.paa","a3\air_f_heli\heli_transport_04\data\heli_transport_04_pod_ext02_black_co.paa"];
-};
 
 _obj

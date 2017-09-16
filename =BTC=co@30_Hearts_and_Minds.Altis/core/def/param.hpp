@@ -79,9 +79,9 @@ class Params {
 	};
 	class btc_p_engineer {
 		title = "			Everybody can disarm IED:";
-		values[]={0,1};
-		texts[]={"Off","On"};
-		default = 0;
+		values[]={-1,0,1};
+		texts[]={"Default","Off","On"};
+		default = -1;
 	};
 	class btc_p_hideout_cache_title {
 		title = "<< Hideout/Cache options >>";
@@ -127,21 +127,21 @@ class Params {
 	};
 	class btc_p_med_level {
 	   title = "			Medical Level";
-	   values[] = {1,2};
-	   texts[] = {"Basic","Advanced"};
-	   default = 1;
+	   values[] = {-1,1,2};
+	   texts[] = {"Default","Basic","Advanced"};
+	   default = -1;
 	};
 	class btc_p_adv_wounds {
 	   title = "			Advanced Wounds";
-	   values[] = {0,1};
-	   texts[] = {"Off","On"};
-	   default = 1;
+	   values[] = {-1,0,1};
+	   texts[] = {"Default","Off","On"};
+	   default = -1;
 	};
 	class btc_p_rev {
 		title = "			Revive time:";
-		values[]={0,60,120,180,240,300,600,900,1200,999999};
-		texts[]={"Off","60","120","180","240","300","600","900","1200","999999"};
-		default = 600;
+		values[]={-1,0,60,120,180,240,300,600,900,1200,999999};
+		texts[]={"Default","Off","60","120","180","240","300","600","900","1200","999999"};
+		default = -1;
 	};
 	class btc_p_skill_title {
 		title = "<< A3 Skill options >>";
@@ -259,9 +259,9 @@ class Params {
 	};
 	class btc_p_rearm {
 		title = "			Rearm Level:";
-		values[]={0,1,2};
-		texts[]={"Entire vehicle","Entire magazine","Amount based on caliber"};
-		default = 1;
+		values[]={-1,0,1,2};
+		texts[]={"Default","Entire vehicle","Entire magazine","Amount based on caliber"};
+		default = -1;
 	};
 	class btc_p_garage {
 		title = "			Activate garage for admin:";

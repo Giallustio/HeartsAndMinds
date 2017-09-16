@@ -259,6 +259,9 @@ diag_log format ["5: %1",(_x select 5)];
 		{
 			[_veh, _foreachindex, _x] call ace_repair_fnc_setHitPointDamage;
 		} forEach ((_x select 4) select 2);
+		if (((_x select 4) select 2) select {_x < 1} isEqualTo []) then {
+			_veh setDamage [1, false];
+		};
 		_veh setVariable ["ace_cookoff_enable", nil];
 		_veh setVariable ["ace_cookoff_enableAmmoCookoff", nil];
 	} foreach _vehs;
