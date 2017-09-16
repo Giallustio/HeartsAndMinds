@@ -1,7 +1,7 @@
 
 private ["_p_civ_veh","_p_db","_p_en","_hideout_n","_cache_info_def","_cache_info_ratio","_info_chance","_p_rep","_p_skill","_c_array","_tower","_array","_chopper","_p_civ","_btc_rearming_vehicles","_vehicles","_magazines","_p_city_radius","_magazines_static","_static","_btc_rearming_static","_magazines_clean","_weapons_usefull","_magazines_static_clean","_p_en_AA"];
 
-btc_version = 1.17; diag_log format ["=BTC= HEARTS AND MINDS VERSION %1",(str(btc_version) + ".0")];
+btc_version = 1.17; diag_log format ["=BTC= HEARTS AND MINDS VERSION %1",(str(btc_version) + ".1")];
 
 //Param
 
@@ -307,7 +307,7 @@ if (isServer) then {
 				"Land_Mil_WallBig_4m_F",
 				"Land_Mil_WallBig_Corner_F",
 				"Land_PortableLight_double_F",
-				"Land_Pod_Heli_Transport_04_medevac_F",
+				"Land_Pod_Heli_Transport_04_medevac_black_F",
 				"B_Slingload_01_Fuel_F"
 			],
 			_btc_rearming_static + _magazines_static_clean,
@@ -404,7 +404,7 @@ btc_log_def_cc =
 	"Land_Cargo20_military_green_F",20,
 	"Land_Cargo40_military_green_F",40,
 	"B_Slingload_01_Fuel_F",0,
-	"Land_Pod_Heli_Transport_04_medevac_F",0,
+	"Land_Pod_Heli_Transport_04_medevac_black_F",0,
 	//Trucks
 	"B_Truck_01_transport_F",10,
 	"B_Truck_01_covered_F",10,
@@ -423,7 +423,7 @@ btc_log_def_rc =
 	"Land_Cargo20_military_green_F",20,
 	"Land_Cargo40_military_green_F",40,
 	"B_Slingload_01_Fuel_F",20,
-	"Land_Pod_Heli_Transport_04_medevac_F",20
+	"Land_Pod_Heli_Transport_04_medevac_black_F",20
 ];
 
 btc_fnc_log_get_nottowable = {
