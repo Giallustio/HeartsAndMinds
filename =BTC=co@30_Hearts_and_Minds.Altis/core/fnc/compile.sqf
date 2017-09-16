@@ -250,6 +250,7 @@ if (!isDedicated) then {
 	btc_fnc_int_add_actions = compile preprocessFile "core\fnc\int\add_actions.sqf";
 	btc_fnc_int_action_result = compile preprocessFile "core\fnc\int\action_result.sqf";
 	btc_fnc_int_orders = compile preprocessFile "core\fnc\int\orders.sqf";
+	btc_fnc_int_shortcuts = compile preprocessFile "core\fnc\int\shortcuts.sqf";
 
 	//INFO
 	btc_fnc_info_ask = compile preprocessFile "core\fnc\info\ask.sqf";

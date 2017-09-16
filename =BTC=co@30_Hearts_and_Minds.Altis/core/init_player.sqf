@@ -13,6 +13,7 @@
 	["ace_treatmentSucceded", btc_fnc_eh_treatment] call CBA_fnc_addEventHandler;
 
 	call btc_fnc_int_add_actions;
+	call btc_fnc_int_shortcuts;
 
 	if (player getVariable ["interpreter", false]) then {player createDiarySubject ["Diary log","Diary log"];};
 
