@@ -1,4 +1,6 @@
-params ["_uav"];
+params ["_uav","_weapon"];
+
+if !(_weapon isEqualTo "Bomb_Leaflets") exitWith {};
 
 private _civilians = (allUnits select {side _x isEqualTo civilian}) select {_x distance _uav < 200};
 
