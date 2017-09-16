@@ -50,6 +50,7 @@ _group = [];
 	private ["_grp"];
 	_grp = createGroup btc_enemy_side;
 	_unit = _grp createUnit [selectRandom btc_type_units, _x, [], 0, "NONE"];
+	[_unit] joinSilent _grp;
 	_unit setPosATL _x;
 	_group pushBack _grp;
 	_grp setVariable ["no_cache",true];

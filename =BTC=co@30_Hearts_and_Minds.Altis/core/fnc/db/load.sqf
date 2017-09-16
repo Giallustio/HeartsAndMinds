@@ -259,6 +259,9 @@ diag_log format ["5: %1",(_x select 5)];
 		{
 			[_veh, _foreachindex, _x] call ace_repair_fnc_setHitPointDamage;
 		} forEach ((_x select 4) select 2);
+		if (((_x select 4) select 2) select {_x < 1} isEqualTo []) then {
+			_veh setDamage [1, false];
+		};
 		_veh setVariable ["ace_cookoff_enable", nil];
 		_veh setVariable ["ace_cookoff_enableAmmoCookoff", nil];
 	} foreach _vehs;
@@ -342,11 +345,6 @@ _objs = profileNamespace getVariable [format ["btc_hm_%1_objs",_name],[]];
 		for "_i" from 0 to ((count (_items select 0)) - 1) do {
 			_obj addItemCargoGlobal[((_items select 0) select _i),((_items select 1) select _i)];
 		};
-	};
-	if ((_x select 0) isEqualTo "Land_Pod_Heli_Transport_04_medevac_F") then {
-		{
-			_obj setObjectTextureGlobal [ _foreachindex, _x ];
-		} forEach ["a3\air_f_heli\heli_transport_04\data\heli_transport_04_pod_ext01_black_co.paa","a3\air_f_heli\heli_transport_04\data\heli_transport_04_pod_ext02_black_co.paa"];
 	};
 } foreach _objs;
 
