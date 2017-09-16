@@ -42,4 +42,4 @@ if (_order == 4) then {
 _unit setVariable ["order",nil];
 _unit setUnitPos "AUTO";
 _unit doMove getPos _unit;
-_group spawn btc_fnc_civ_addWP;
+[_group] spawn btc_fnc_civ_addWP;

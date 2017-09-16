@@ -32,7 +32,7 @@ units _group joinSilent _group;
 
 //[waypointPosition _x,waypointType _x,waypointSpeed _x,waypointFormation _x,waypointCombatMode _x,waypointBehaviour _x]
 if (_side == civilian && {vehicle leader _group == leader _group}) then {
-	_group spawn btc_fnc_civ_addWP;
+	[_group] spawn btc_fnc_civ_addWP;
 } else {
 	if (count (_array_wp select 1) > 1) then {
 		{
