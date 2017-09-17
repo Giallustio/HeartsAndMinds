@@ -58,6 +58,8 @@ if (isServer) then {
 	btc_fnc_db_save = compile preprocessFileLineNumbers "core\fnc\db\save.sqf";
 	btc_fnc_db_delete = compile preprocessFileLineNumbers "core\fnc\db\delete.sqf";
 	btc_fnc_db_autosave = compile preprocessFileLineNumbers "core\fnc\db\autosave.sqf";
+	btc_fnc_db_loadObjectStatus = compile preprocessFileLineNumbers "core\fnc\db\loadObjectStatus.sqf";
+	btc_fnc_db_saveObjectStatus = compile preprocessFileLineNumbers "core\fnc\db\saveObjectStatus.sqf";
 
 	//EH
 	//btc_fnc_eh_helo_respawn = compile preprocessFileLineNumbers "core\fnc\eh\helo_respawn.sqf";
@@ -209,6 +211,8 @@ btc_fnc_log_tow = compile preprocessFileLineNumbers "core\fnc\log\tow.sqf";
 btc_fnc_log_unhook = compile preprocessFileLineNumbers "core\fnc\log\unhook.sqf";
 btc_fnc_log_unload = compile preprocessFileLineNumbers "core\fnc\log\unload.sqf";
 btc_fnc_log_getconfigmagazines = compile preprocessFileLineNumbers "core\fnc\log\getconfigmagazines.sqf";
+btc_fnc_log_copy = compile preprocessFileLineNumbers "core\fnc\log\copy.sqf";
+btc_fnc_log_paste = compile preprocessFileLineNumbers "core\fnc\log\paste.sqf";
 
 //MIL
 btc_fnc_mil_class = compile preprocessFileLineNumbers "core\fnc\mil\class.sqf";
