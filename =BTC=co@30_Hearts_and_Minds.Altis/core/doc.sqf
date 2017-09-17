@@ -122,7 +122,8 @@ Abort a side mission does not affect reputation.
 
 player createDiaryRecord ["Documentation", ["Orders", "
 Any player can give orders to civilians.<br/>
-<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/> Open your self interaction menu and select 'ORDERS'.<br/>
+<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/>To do this, just open your self interaction menu and select 'ORDERS' or use one of the shortcuts. Shortcuts can changed under 'configure >> controls>> configure addons >> Hearts and Minds: Mission (drop down menu)'.<br/><br/>
+
 Your options are:<br/>
 - STOP<br/>
 - GET DOWN<br/>
