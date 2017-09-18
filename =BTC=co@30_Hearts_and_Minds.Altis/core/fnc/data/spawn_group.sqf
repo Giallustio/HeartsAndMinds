@@ -55,7 +55,7 @@ if (_type == 2) then {
 };
 if (_type == 3) then {
 	while {(count (waypoints _group)) > 0} do { deleteWaypoint ((waypoints _group) select 0); };
-	[_group, nearestObject[(units _group) select 0, _array_veh]] spawn btc_fnc_house_addWP;
+	[_group, nearestObject [(units _group) select 0, _array_veh]] spawn btc_fnc_house_addWP;
 	_group setVariable ["inHouse", _array_veh];
 };
 if (_type == 4) then {[[0,0,0],0,units _group] spawn btc_fnc_civ_get_weapons;};
