@@ -48,7 +48,8 @@ if (isServer) then {
 	btc_fnc_civ_traffic_eh_remove = compile preprocessFileLineNumbers "core\fnc\civ\traffic_eh_remove.sqf";
 	btc_fnc_civ_unit_create = compile preprocessFileLineNumbers "core\fnc\civ\unit_create.sqf";
 	btc_fnc_civ_CuratorCivPlaced_s = compile preprocessFileLineNumbers "core\fnc\civ\CuratorCivPlaced_s.sqf";
-	btc_fnc_civ_addLeaflets = compile preprocessFileLineNumbers "core\fnc\civ\addLeaflets.sqf";
+	btc_fnc_civ_add_leaflets = compile preprocessFileLineNumbers "core\fnc\civ\add_leaflets.sqf";
+	btc_fnc_civ_evacuate = compile preprocessFileLineNumbers "core\fnc\civ\evacuate.sqf";
 
 	//DATA
 	btc_fnc_data_add_group = compile preprocessFileLineNumbers "core\fnc\data\add_group.sqf";
@@ -68,7 +69,7 @@ if (isServer) then {
 	btc_fnc_eh_explosives_defuse = compile preprocessFileLineNumbers "core\fnc\eh\explosives_defuse.sqf";
 	btc_fnc_eh_handledisconnect = compile preprocessFileLineNumbers "core\fnc\eh\handledisconnect.sqf";
 	btc_fnc_eh_buildingchanged = compile preprocessFileLineNumbers "core\fnc\eh\buildingchanged.sqf";
-	btc_fnc_eh_scatter = compile preprocessFileLineNumbers "core\fnc\eh\scatter.sqf";
+	btc_fnc_eh_leaflets = compile preprocessFileLineNumbers "core\fnc\eh\leaflets.sqf";
 
 	//IED
 	btc_fnc_ied_boom = compile preprocessFileLineNumbers "core\fnc\ied\boom.sqf";
