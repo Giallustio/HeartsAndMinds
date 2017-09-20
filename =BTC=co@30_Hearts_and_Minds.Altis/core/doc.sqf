@@ -128,7 +128,9 @@ Your options are:<br/>
 - GET DOWN<br/>
 - GO AWAY<br/><br/>
 
-If you want to give an order just to one unit, interact with it (object interaction).
+If you want to give an order just to one unit, interact with it (object interaction).<br/>
+
+<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='20' height='20'/> You can also ask all civilians to evacuate to a religious building or a safe area by droping leaflets above a city with a drone.
 	"]
 ];
 
