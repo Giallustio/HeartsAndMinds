@@ -130,7 +130,7 @@ Your options are:<br/>
 
 If you want to give an order just to one unit, interact with it (object interaction).<br/>
 
-<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='20' height='20'/> You can also ask all civilians to evacuate to a religious building or a safe area by droping leaflets above a city with a drone.
+<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='20' height='20'/> You can also drop leaflets to ask all civilians in a circle of 200m to evacuate to a religious building or a safe area with a drone.
 	"]
 ];
 
