@@ -265,7 +265,9 @@ diag_log format ["5: %1",(_x select 5)];
 		_veh setVariable ["ace_cookoff_enable", nil];
 		_veh setVariable ["ace_cookoff_enableAmmoCookoff", nil];
 	} foreach _vehs;
-	btc_global_reputation = _global_reputation;
+	[{
+		btc_global_reputation = _this;
+	}, _global_reputation, 0.5] call CBA_fnc_waitAndExecute;
 }, [_vehs, _global_reputation], 0.5] call CBA_fnc_waitAndExecute;
 
 //Objs
