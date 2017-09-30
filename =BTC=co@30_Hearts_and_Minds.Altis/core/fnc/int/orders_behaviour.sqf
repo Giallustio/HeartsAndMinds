@@ -1,10 +1,7 @@
 
-private ["_unit","_order","_group","_wp_pos"];
+params ["_unit", "_order", "_wp_pos"];
 
-_unit = _this select 0;
-_order = _this select 1;
-_wp_pos = _this select 2;
-_group = group _unit;
+private _group = group _unit;
 
 if (_order == _unit getVariable ["order",0]) exitWith {};
 
@@ -20,8 +17,6 @@ switch (_order) do {
 		[_unit, format ["AmovP%1MstpSnonWnonDnon_AmovPpneMstpSnonWnonDnon",((animationState _unit) select [5,3])], 1] call ace_common_fnc_doAnimation;
 	};
 	case 3 : {
-		private "_wp_pos";
-		_wp_pos = [getPos _unit, 200] call btc_fnc_randomize_pos;
 		_unit setUnitPos "UP";
 		_unit doMove _wp_pos;
 	};
