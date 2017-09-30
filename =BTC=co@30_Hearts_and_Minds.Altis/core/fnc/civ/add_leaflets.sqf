@@ -9,4 +9,11 @@ if !("Bomb_Leaflets" in (_uav weaponsTurret [-1])) then {
 };
 if (needReload _uav == 1) then {reload _uav};
 
-_uav addEventHandler ["Fired", btc_fnc_eh_leaflets];
+if ((_uav getVariable ["btc_leaflets_eh_added" , -1]) isEqualTo -1) then {
+	private _id_f = _uav addEventHandler ["Fired", btc_fnc_eh_leaflets];
+	_uav setVariable ["btc_leaflets_eh_added" , _id_f];
+
+	if (btc_debug) then {
+		systemChat format ["Add leaflets EventHandler ID: %1", _id_f];
+	};
+};
