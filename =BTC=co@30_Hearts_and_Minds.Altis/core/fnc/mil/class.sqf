@@ -63,7 +63,7 @@ if !(_en_AA) then {
 		private _unit = _x;
 		private _weapons = getarray(configfile >> "CfgVehicles" >> _unit >> "weapons");
 
-		_isAA = _weapons apply {
+		private _isAA = _weapons apply {
 			private _weapon = _x;
 			private _magazines = getarray(configfile >> "CfgWeapons" >> _weapon >> "magazines");
 			private _ammo = "";
@@ -72,6 +72,7 @@ if !(_en_AA) then {
 			};
 			(getnumber(configfile >> "CfgAmmo" >> _ammo >> "aiAmmoUsageFlags") isEqualTo 256);
 		};
+		if (btc_debug_log) then {diag_log format ["btc_fnc_mil_class %1 Weapons: %2 isAA: %3", _unit, _weapons , _isAA];};
 		!(true in _isAA)
 	};
 };
