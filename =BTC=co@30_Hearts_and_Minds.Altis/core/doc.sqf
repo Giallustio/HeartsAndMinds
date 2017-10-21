@@ -59,7 +59,7 @@ player createDiaryRecord ["Documentation", ["Logistic point", "
 
 player createDiaryRecord ["Documentation", ["Logistic", "
 <marker name='blufor_base'>Cargo System:</marker><br/>
-- <img image='\z\ace\addons\cargo\UI\Icon_load.paa' width='20' height='20'/> <marker name='blufor_base'>Load:</marker> You can load objects inside vehicles. Approach the object you want to load and interact with it.<br/>
+- <img image='a3\ui_f\data\IGUI\Cfg\Actions\loadVehicle_ca.paa' width='20' height='20'/> <marker name='blufor_base'>Load:</marker> You can load objects inside vehicles. Approach the object you want to load and interact with it.<br/>
 Select 'LOAD IN' option.<br/>
 After that interact with the vehicle and select 'LOAD object selected' option.<br/>
 The object has to be close to the vehicle.<br/><br/>
