@@ -129,7 +129,9 @@ Your options are:<br/>
 - GET DOWN<br/>
 - GO AWAY<br/><br/>
 
-If you want to give an order just to one unit, interact with it (object interaction).
+If you want to give an order just to one unit, interact with it (object interaction).<br/>
+
+<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='20' height='20'/> You can also drop leaflets to ask all civilians in a circle of 200m to evacuate to a religious building (if not available a safe area) with a drone.
 	"]
 ];
 
@@ -150,6 +152,6 @@ player createDiaryRecord ["Documentation", ["Interaction", "
 
 player createDiaryRecord ["Documentation", [
 	"Version",
-	format ["<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/> Version %1 <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/>",(str(btc_version) + ".1")]
+	format ["<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/> Version %1 <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/>",(str(btc_version) + ".2")]
 	]
 ];

@@ -42,7 +42,7 @@ class Params {
 		default = 7;
 	};
 	class btc_p_AA {
-		title = "			Enemy uses Anti-Air:";
+		title = "			Anti-Air infantry:";
 		values[]={0,1};
 		texts[]={"Off","On"};
 		default = 0;
