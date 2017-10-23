@@ -31,7 +31,7 @@ switch true do {
 		[_type, 0, ["ACE_MainActions","Logistic"], _action] call ace_interact_menu_fnc_addActionToClass;
 		//Inside Vehicle
 		[_type, 1, ["ACE_SelfActions"], _action,true] call ace_interact_menu_fnc_addActionToClass;
-		_action = ["Load_selected", "Load selected", "\z\ace\addons\cargo\UI\Icon_load.paa", {(_this select 0) spawn btc_fnc_log_load;}, {!isNull btc_log_object_selected && {btc_log_object_selected distance (_this select 0) <= btc_log_max_distance_load}}] call ace_interact_menu_fnc_createAction;
+		_action = ["Load_selected", "Load selected", "a3\ui_f\data\IGUI\Cfg\Actions\loadVehicle_ca.paa", {(_this select 0) spawn btc_fnc_log_load;}, {!isNull btc_log_object_selected && {btc_log_object_selected distance (_this select 0) <= btc_log_max_distance_load}}] call ace_interact_menu_fnc_createAction;
 		[_type, 0, ["ACE_MainActions","Logistic"], _action] call ace_interact_menu_fnc_addActionToClass;
 	};
 	case (_type isKindOf "Helicopter") : {
@@ -44,7 +44,7 @@ switch true do {
 		[_type, 0, ["ACE_MainActions","Logistic"], _action] call ace_interact_menu_fnc_addActionToClass;
 		//Inside Vehicle
 		[_type, 1, ["ACE_SelfActions"], _action,true] call ace_interact_menu_fnc_addActionToClass;
-		_action = ["Load_selected", "Load selected", "\z\ace\addons\cargo\UI\Icon_load.paa", {(_this select 0) spawn btc_fnc_log_load;}, {!isNull btc_log_object_selected && {btc_log_object_selected distance (_this select 0) <= btc_log_max_distance_load}}] call ace_interact_menu_fnc_createAction;
+		_action = ["Load_selected", "Load selected", "a3\ui_f\data\IGUI\Cfg\Actions\loadVehicle_ca.paa", {(_this select 0) spawn btc_fnc_log_load;}, {!isNull btc_log_object_selected && {btc_log_object_selected distance (_this select 0) <= btc_log_max_distance_load}}] call ace_interact_menu_fnc_createAction;
 		[_type, 0, ["ACE_MainActions","Logistic"], _action] call ace_interact_menu_fnc_addActionToClass;
 		//Lift
 		_action = ["Deploy_ropes","Deploy ropes","\A3\Structures_F_Heli\VR\Helpers\Data\VR_Symbol_Heli_Slingloading_CA.paa",{[] spawn btc_fnc_log_lift_deploy_ropes;},{!btc_ropes_deployed && {((driver vehicle player) isEqualTo player)} && {(getposATL player) select 2 > 4}}] call ace_interact_menu_fnc_createAction;

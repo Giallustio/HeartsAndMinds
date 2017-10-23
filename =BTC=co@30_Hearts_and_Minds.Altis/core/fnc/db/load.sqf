@@ -150,9 +150,6 @@ call btc_fnc_cache_create;
 	btc_cache_markers pushBack _marker;
 } foreach (_array_cache select 3);
 
-//REP
-btc_global_reputation = profileNamespace getVariable [format ["btc_hm_%1_rep",_name],0];
-
 //FOB
 _fobs = profileNamespace getVariable [format ["btc_hm_%1_fobs",_name],[]];
 _fobs_loaded = [[],[]];
@@ -173,6 +170,9 @@ _fobs_loaded = [[],[]];
 	(_fobs_loaded select 1) pushBack _fob_structure;
 } foreach (_fobs select 0);
 btc_fobs = _fobs_loaded;
+
+//REP
+private _global_reputation = profileNamespace getVariable [format ["btc_hm_%1_rep",_name],0];
 
 //VEHICLES
 /*	_data pushBack (typeOf _x);
@@ -197,7 +197,7 @@ diag_log format ["5: %1",(_x select 5)];
 {diag_log format ["5: %1",_x];} foreach (_x select 5)} foreach _vehs;
 */
 [{
-	private _vehs = _this;
+	params ["_vehs", "_global_reputation"];
 	{
 		private ["_veh","_cont","_weap","_mags","_items"];
 		_veh = [(_x select 0),(_x select 1),(_x select 2)] call btc_fnc_log_createVehicle;
@@ -265,7 +265,10 @@ diag_log format ["5: %1",(_x select 5)];
 		_veh setVariable ["ace_cookoff_enable", nil];
 		_veh setVariable ["ace_cookoff_enableAmmoCookoff", nil];
 	} foreach _vehs;
-}, _vehs, 0.5] call CBA_fnc_waitAndExecute;
+	[{
+		btc_global_reputation = _this;
+	}, _global_reputation, 0.5] call CBA_fnc_waitAndExecute;
+}, [_vehs, _global_reputation], 0.5] call CBA_fnc_waitAndExecute;
 
 //Objs
 /*
