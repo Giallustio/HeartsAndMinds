@@ -9,13 +9,13 @@ private ["_description"];
 switch _this do
 {
 	case 0 : {
-		_description = ["Misison accomplished!","Oplitas has been finally defeated!    Misison accomplished!"];
+		_description = ["Mission accomplished!","Oplitas have been finally defeated!    Mission accomplished!"];
 	};
 	case 1 : {
-		_description = ["Misison accomplished!","All the hideouts have been destroyed!"];
+		_description = ["Mission accomplished!","All the hideouts have been destroyed!"];
 	};
 	case 2 : {
-		_description = ["Misison accomplished!","Oplitas has been finally defeated!    Misison accomplished!"];
+		_description = ["Mission accomplished!","Oplitas have been finally defeated!    Mission accomplished!"];
 	};
 	case 3 : {
 		_description = ["Side mission Accomplished!","Supplies have been delivered"];
