@@ -45,13 +45,8 @@ private _pylonConfigs = configProperties [configFile >> "CfgVehicles" >> (typeOf
 		private _maxRounds = getNumber (configFile >> "CfgMagazines" >> _pylonMagazine >> "count");
 		private _currentRounds = _vehicle ammoOnPylon _pylonIndex;
 
-		/*if (_currentRounds < _maxRounds) then {
-			// getPylonTurret expects 0 based index, and returns driver turret as [-1]
-			private _pylonTurret = [_vehicle, (_pylonIndex - 1)] call EFUNC(common,getPylonTurret);
-
-			_magazineInfo pushBack [_pylonMagazine, _pylonTurret, true, _pylonIndex, 1, 1, _maxRounds, [_currentRounds]];
-		};*/
-	_magazineInfo pushBack [_pylonMagazine, _pylonTurret, true, _pylonIndex, 1, 1, _maxRounds, [_currentRounds]];
+		private _pylonTurret = [_vehicle, (_pylonIndex - 1)] call ace_common_fnc_getPylonTurret;
+		_magazineInfo pushBack [_pylonMagazine, _pylonTurret, true, _pylonIndex, 1, 1, _maxRounds, [_currentRounds]];
 	};
 } forEach _pylonConfigs;
 
@@ -74,11 +69,6 @@ private _turrets = [_vehicle] call ace_rearm_fnc_getAllRearmTurrets;
 		private _currentRounds = [_vehicle, _turretPath, _magazineClass] call ace_rearm_fnc_getTurretMagazineAmmo;
 		private _currentMagazines = count _currentRounds;
 
-		/* If there is space for new magazines or if some magazines are not full, add the magazine
-		 * type to _magazineInfo. */
-		/*if ((_currentMagazines < _maxMagazines) || {({_x < _maxRoundsPerMag} count _currentRounds) > 0}) then {
-			_magazineInfo pushBack [_magazineClass, _turretPath, false, -1, _maxMagazines, _currentMagazines, _maxRoundsPerMag, _currentRounds];
-		};*/
 		_magazineInfo pushBack [_magazineClass, _turretPath, false, -1, _maxMagazines, _currentMagazines, _maxRoundsPerMag, _currentRounds];
 
 
