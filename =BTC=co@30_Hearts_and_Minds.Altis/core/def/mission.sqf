@@ -254,13 +254,8 @@ if (isServer) then {
 	private _btc_rearming_magazines = [];
 	{
 		private _vehicle_type = _x;
-		private _vehicles = (btc_vehicles + btc_helo) select {typeOf _x isEqualTo _vehicle_type};
-		private _magazines = [];
-		{
-			private _vehicle = _x;
-			_magazines append (([_vehicle] call btc_fnc_log_getRearmMagazines) apply {_x select 0});
-		} forEach _vehicles;
-
+		private _vehicle = ((btc_vehicles + btc_helo) select {typeOf _x isEqualTo _vehicle_type}) select 0;
+		private _magazines = [_vehicle] call btc_fnc_log_getRearmMagazines;
 		_btc_rearming_magazines pushBack _magazines;
 	} forEach _btc_rearming_vehicles;
 

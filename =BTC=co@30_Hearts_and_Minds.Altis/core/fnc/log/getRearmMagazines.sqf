@@ -1,27 +1,6 @@
 /*
  * Author: Tuupertunut
- * Returns information about every magazine that can be rearmed in the vehicle. Multiple mags of
- * same class in the same turret are grouped together for practical reasons.
- *
- * Arguments:
- * 0: Vehicle <OBJECT>
- *
- * Return Value:
- * Magazine info <ARRAY of ARRAYs>
- * Child arrays:
- *   0: Magazine class <STRING>
- *   1: Turret path <ARRAY>
- *   2: Is pylon magazine <BOOLEAN>
- *   3: Pylon index (-1 if not pylon) <NUMBER>
- *   4: Max magazines <NUMBER>
- *   5: Current magazines <NUMBER>
- *   6: Max rounds per magazine <NUMBER>
- *   7: Current rounds in magazines <ARRAY of NUMBERs>
- *
- * Example:
- * [tank] call ace_rearm_fnc_getNeedRearmMagazines
- *
- * Public: No
+ * Returns information about every magazine that can be rearmed in the vehicle.
  */
 
 params ["_vehicle"];
@@ -31,7 +10,6 @@ private _magazineInfo = [];
 // 1.70 pylons
 private _pylonConfigs = configProperties [configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "Components" >> "TransportPylonsComponent" >> "Pylons", "isClass _x"];
 {
-	private _pylonConfig = _x;
 
 	// Strangely, a 1-based index.
 	private _pylonIndex = _forEachIndex + 1;
@@ -41,38 +19,14 @@ private _pylonConfigs = configProperties [configFile >> "CfgVehicles" >> (typeOf
 
 	// Only care about pylons that have a magazine.
 	if (!(_pylonMagazine isEqualTo "")) then {
-
-		private _maxRounds = getNumber (configFile >> "CfgMagazines" >> _pylonMagazine >> "count");
-		private _currentRounds = _vehicle ammoOnPylon _pylonIndex;
-
-		private _pylonTurret = [_vehicle, (_pylonIndex - 1)] call ace_common_fnc_getPylonTurret;
-		_magazineInfo pushBack [_pylonMagazine, _pylonTurret, true, _pylonIndex, 1, 1, _maxRounds, [_currentRounds]];
+		_magazineInfo pushBack _pylonMagazine;
 	};
 } forEach _pylonConfigs;
 
 private _turrets = [_vehicle] call ace_rearm_fnc_getAllRearmTurrets;
 {
-	private _turretPath = _x;
-	private _magazines = [_vehicle, _turretPath] call ace_rearm_fnc_getTurretConfigMagazines;
-
-	// _magazines without duplicates
-	private _magazineClasses = _magazines arrayIntersect _magazines;
-
-	{
-		private _magazineClass = _x;
-
-		private _maxMagazines = [_vehicle, _turretPath, _magazineClass] call ace_rearm_fnc_getMaxMagazines;
-		private _maxRoundsPerMag = getNumber (configFile >> "CfgMagazines" >> _magazineClass >> "count");
-
-		/* Array of ammo counts in every magazine. Example: [200, 200, 152] means 2 mags with 200
-		 * rounds and 1 mag with 152 rounds. */
-		private _currentRounds = [_vehicle, _turretPath, _magazineClass] call ace_rearm_fnc_getTurretMagazineAmmo;
-		private _currentMagazines = count _currentRounds;
-
-		_magazineInfo pushBack [_magazineClass, _turretPath, false, -1, _maxMagazines, _currentMagazines, _maxRoundsPerMag, _currentRounds];
-
-
-	} forEach _magazineClasses;
+	_magazineInfo append ([_vehicle, _x] call ace_rearm_fnc_getTurretConfigMagazines);
 } forEach _turrets;
 
-_magazineInfo
+// _magazines without duplicates
+_magazineInfo arrayIntersect _magazineInfo
