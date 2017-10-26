@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project name="BTC Hearts and Minds: Mission">
+    <Package name="Documentation">
+        <Container name="Documentation: Title">
+            <Key ID="STR_BTC_HAM_DOC_TITLE">
+                <Original>Documentation</Original>
+                <English>Documentation</English>
+                <German>Dokumentation</German>
+            </Key>
+        </Container>
+        <Container name="Documentation: Headless and Data base">
+            <Key ID="STR_BTC_HAM_DOC_HEADLESS_TITLE">
+                <Original>Headless and Data base</Original>
+                <English>Headless and Data base</English>
+                <German>Headless Client und Datanbank</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_DOC_HEADLESS_TEXT">
+                <Original>&lt;img image='\a3\ui_f\data\map\vehicleicons\iconvirtual_ca.paa' width='20' height='20'/&gt; This mission automatically uses one Headless client when available.&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/&gt; This mission has a data base system. Enemy units, towns, hideouts, cache, objects created by players or Zeus, vehicles, players markers (not lines) on global channel are saved. All admin can save mission progress at any time with his self interaction key.</Original>
+                <English>&lt;img image='\a3\ui_f\data\map\vehicleicons\iconvirtual_ca.paa' width='20' height='20'/&gt; This mission automatically uses one Headless client when available.&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/&gt; This mission has a data base system. Enemy units, towns, hideouts, cache, objects created by players or Zeus, vehicles, players markers (not lines) on global channel are saved. All admin can save mission progress at any time with his self interaction key.</English>
+                <German>&lt;img image='\a3\ui_f\data\map\vehicleicons\iconvirtual_ca.paa' width='20' height='20'/&gt; Sollte ein Headless Client vorhanden sein, so wird dieser durch die Mission automatisch genutzt.&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/&gt; Diese Mission verfügt über ein eingenes Datenbanksystem, in welcher folgende Dinge gespeichert werden: feindliche Einheiten, Städte, Verstecke, feindliche Waffenlager, Fahrzeuge, vom Spieler oder vom Zeus erstelle Objecte und Marker (keine Linien) vom Spieler im Globalen-Channel. Jeder Admin kann zu jeder Zeit den Missionsfortschritt über das Eigen-Interaktionsmenü speichern.</German>
+            </Key>
+        </Container>
+        <Container name="Documentation: Wounds">
+            <Key ID="STR_BTC_HAM_DOC_WOUNDS_TITLE">
+                <Original>Wounds</Original>
+                <English>Wounds</English>
+                <German>Wunden</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_DOC_WOUNDS_TEXT">
+                <Original>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\heal_ca.paa' width='20' height='20'/&gt; Use the interaction menu to treat your wounds.&lt;br/&gt; Keep in mind that all the actions will be available, even if you do not need them. It is always recommended examine first.</Original>
+                <English>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\heal_ca.paa' width='20' height='20'/&gt; Use the interaction menu to treat your wounds.&lt;br/&gt; Keep in mind that all the actions will be available, even if you do not need them. It is always recommended examine first.</English>
+                <German>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\heal_ca.paa' width='20' height='20'/&gt; Mit Hilfe des Interactionsmenü können Sie ihre und die Wunden anderer versorgen.&lt;br/&gt; Denken Sie daran, dass Sie immer den vollen Zugriff auf alle Aktionen haben, egal ob Sie diese benötigen oder nicht. In jedem Fall wird empfohlen zuerst eine Diagnose zu erstellen, bevor man mit der Behandlung beginnt.</German>
+            </Key>
+        </Container>
+        <Container name="Documentation: Deafness">
+            <Key ID="STR_BTC_HAM_DOC_DEAFNESS_TITLE">
+                <Original>Deafness</Original>
+                <English>Deafness</English>
+                <German>Taubheit</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_DOC_DEAFNESS_TEXT">
+                <Original>&lt;img image='\z\ace\addons\hearing\UI\Icon_Module_Hearing_ca.paa' width='20' height='20'/&gt; Use the earplugs to protect your ears to avoid combat deafness.&lt;br/&gt; You can put them on with your self interaction key.&lt;br/&gt;&lt;br/&gt;</Original>
+                <English>&lt;img image='\z\ace\addons\hearing\UI\Icon_Module_Hearing_ca.paa' width='20' height='20'/&gt; Use the earplugs to protect your ears to avoid combat deafness.&lt;br/&gt; You can put them on with your self interaction key.&lt;br/&gt;&lt;br/&gt;</English>
+                <German>&lt;img image='\z\ace\addons\hearing\UI\Icon_Module_Hearing_ca.paa' width='20' height='20'/&gt; Nutzen Sie die Ohrstöpsel um sich vor Taubheit und Hörverlust zu schützen.&lt;br/&gt; Über das Eigen-Interaktionsmenü können Sie die Ohrstöpsel nutzen (sofern sich welche in Ihrem Inventar befinden).&lt;br/&gt;&lt;br/&gt;</German>
+            </Key>
+        </Container>
+        <Container name="Documentation: Vehicles">
+            <Key ID="STR_BTC_HAM_DOC_VEHICLES_TITLE">
+                <Original>Vehicles</Original>
+                <English>Vehicles</English>
+                <German>Fahrzeuge</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_DOC_VEHICLES_TEXT">
+                <Original>&lt;marker name='blufor_base'&gt;&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\destroy_ca.paa' width='20' height='20' color='#FFBF00'/&gt; Respawn:&lt;/marker&gt;&lt;br/&gt; When a vehicle is destroyed it will not respawn in base, you need to tow or lift it back to base and repair it near the logistic point (Interact with the red box). Helicopter wrecks can only be lifted. &lt;br/&gt; The Chinook is the only exception, it will respawn after 30 seconds. &lt;br/&gt;&lt;br/&gt; &lt;marker name='blufor_base'&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\rearm_ca.paa' width='20' height='20' color='#FFBF00'/&gt; Rearm:&lt;/marker&gt;&lt;br/&gt; You can also rearm them by spawning the corresponding caliber at logistic point (Interact with the red box, select the vehicle type and caliber). Carry the ammo created and interact with the vehicle to rearm. This only works if rearming is setting on entire magazine or amount based on caliber (not for entire vehicle setting).</Original>
+                <English>&lt;marker name='blufor_base'&gt;&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\destroy_ca.paa' width='20' height='20' color='#FFBF00'/&gt; Respawn:&lt;/marker&gt;&lt;br/&gt; When a vehicle is destroyed it will not respawn in base, you need to tow or lift it back to base and repair it near the logistic point (Interact with the red box). Helicopter wrecks can only be lifted. &lt;br/&gt; The Chinook is the only exception, it will respawn after 30 seconds. &lt;br/&gt;&lt;br/&gt; &lt;marker name='blufor_base'&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\rearm_ca.paa' width='20' height='20' color='#FFBF00'/&gt; Rearm:&lt;/marker&gt;&lt;br/&gt; You can also rearm them by spawning the corresponding caliber at logistic point (Interact with the red box, select the vehicle type and caliber). Carry the ammo created and interact with the vehicle to rearm. This only works if rearming is setting on entire magazine or amount based on caliber (not for entire vehicle setting).</English>
+                <German>&lt;marker name='blufor_base'&gt;&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\destroy_ca.paa' width='20' height='20' color='#FFBF00'/&gt; Respawn:&lt;/marker&gt;&lt;br/&gt; Wenn ein Fahrzeug zersört wurde, wird dies nicht Respawnen. Es muss durch Abschleppen oder Anheben(Sling-Load) zum Logisik-Punkt gebracht und dort repariert werden (mit der roten Box interagieren). Wracks von Hubschraubern können nur angehoben werden (Sling-Load). &lt;br/&gt; Die einzigste Ausnahme hierbei ist der Chinook. Er respawnt nach 30 Sekunden. &lt;br/&gt;&lt;br/&gt; &lt;marker name='blufor_base'&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\rearm_ca.paa' width='20' height='20' color='#FFBF00'/&gt; Aufmunitionieren:&lt;/marker&gt;&lt;br/&gt; Fahrzeuge können Aufmunitioniert werden, in dem man das entsprechende Kaliber am Logisik-Punk anfordert (mit der Roten Box interagieren: Fahzeug und Kaliber auswählen). Nun muss man nur noch die erstellte Munition zum Fahrzeug bringen und mit diesem interagieren um das aufmunitionieren zu beginnen.&lt;br/&gt;ANMERKUNG: Das funktioiert nur wenn die Aufmunitionierungseinstellung auf 'Gesamtes Magazin' oder 'Kalieberbasierte Anzahl' gestellt ist (get nicht für 'Gesamtes Fahrzeug').</German>
+            </Key>
+        </Container>
+        <Container name="Documentation: Side Mission">
+            <Key ID="STR_BTC_HAM_DOC_SIDEMISSION_TITLE">
+                <Original>Side Mission</Original>
+                <English>Side Mission</English>
+                <German>Nebenaufgaben</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_DOC_SIDEMISSION_TEXT">
+                <Original>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\whiteboard_ca.paa' width='20' height='20'/&gt; Side missions are really usefull to rise your reputation level.&lt;br/&gt; A side mission can be requested by the officer with his self interaction menu.&lt;br/&gt; If you don't want to complete a task, you can always abort it with the self interaction menu.</Original>
+                <English>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\whiteboard_ca.paa' width='20' height='20'/&gt; Side missions are really usefull to rise your reputation level.&lt;br/&gt; A side mission can be requested by the officer with his self interaction menu.&lt;br/&gt; If you don't want to complete a task, you can always abort it with the self interaction menu.</English>
+                <German>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\whiteboard_ca.paa' width='20' height='20'/&gt; Nebenaufgaben sind sehr nütlich um das Ansehen in der Bevölkerung zu erhöhen.&lt;br/&gt;Diese Aufgaben können vom Offizier über das Eigen-Interaktionsmenü angefordert werden.&lt;br/&gt;Kann man eine Mission aus verschiedenen Gründen nicht abgeschlossen werden, so kann der Offizier sie jederzeit über das Eigen-Interaktionsmenü abbrechen.</German>
+            </Key>
+        </Container>
+        <Container name="Documentation: FOB">
+            <Key ID="STR_BTC_HAM_DOC_FOB_TEXT">
+                <Original>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move1_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\run_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move2_ca.paa' width='20' height='20' /&gt; &lt;marker name='blufor_base'&gt;FOB:&lt;/marker&gt;&lt;br/&gt; In this mission a FOB is a forward spawn point, to create a FOB approach the red box at the logistic point and require a blue container.&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\Ui_f\data\Map\Markers\NATO\b_hq.paa' width='20' height='20'/&gt;  &lt;marker name='blufor_base'&gt;Deploy:&lt;/marker&gt; &lt;br/&gt; Move it where you want to deploy a new FOB and interact with it to set it up. Keep in mind that you can not deploy a FOB close to the main base (2.500m) and the terrain needs to be flat.&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Dismantle:&lt;/marker&gt; &lt;br/&gt; You can dismantle a FOB by interacting with the flag on the HQ roof.</Original>
+                <English>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move1_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\run_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move2_ca.paa' width='20' height='20' /&gt; &lt;marker name='blufor_base'&gt;FOB:&lt;/marker&gt;&lt;br/&gt; In this mission a FOB is a forward spawn point, to create a FOB approach the red box at the logistic point and require a blue container.&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\Ui_f\data\Map\Markers\NATO\b_hq.paa' width='20' height='20'/&gt;  &lt;marker name='blufor_base'&gt;Deploy:&lt;/marker&gt; &lt;br/&gt; Move it where you want to deploy a new FOB and interact with it to set it up. Keep in mind that you can not deploy a FOB close to the main base (2.500m) and the terrain needs to be flat.&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Dismantle:&lt;/marker&gt; &lt;br/&gt; You can dismantle a FOB by interacting with the flag on the HQ roof.</English>
+                <German>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move1_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\run_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move2_ca.paa' width='20' height='20' /&gt; &lt;marker name='blufor_base'&gt;FOB:&lt;/marker&gt;&lt;br/&gt; Eine FOB (Forward Operating Base / vorgeschobene Operationsbasis) dient in dieser Mission als Spawn-Punkt. Um eine FOB zu erstellen muss am Logistik-Punkt ein ensprechnender Frachtcontainer(Blau) angefordert werden&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\Ui_f\data\Map\Markers\NATO\b_hq.paa' width='20' height='20'/&gt;  &lt;marker name='blufor_base'&gt;Aufbau:&lt;/marker&gt; &lt;br/&gt; Der Aufbau kann nur statfinden, wenn man sich mindestens 2,5km von der Basis entfernt hat und das Gelände relativ flach ist. Um den Aufbau zu beginnen: einfach mit dem Frachtcontainer interagieren und 'FOB aufbauen' auswählen.&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Abbau:&lt;/marker&gt; &lt;br/&gt; Auf dem Dach der FOB kann man mit der Flagge interagieren um den Abbau zu beginnen.</German>
+            </Key>
+        </Container>
+        <Container name="Documentation: Sling loading">
+            <Key ID="STR_BTC_HAM_DOC_SLING_TITLE">
+                <Original>Sling loading</Original>
+                <English>Sling loading</English>
+                <German>Lasten heben (Hubschrauber)</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_DOC_SLING_TEXT">
+                <Original>=BTC= Lift will not replace the A3 sling loading, you can use both.&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\Structures_F_Heli\VR\Helpers\Data\VR_Symbol_Heli_Slingloading_CA.paa' width='20' height='20'/&gt; &lt;img image='\A3\air_f_beta\Heli_Transport_01\Data\UI\Map_Heli_Transport_01_base_CA.paa' width='20' height='20'/&gt; Lifting an object is pretty simple. Get in a chopper as pilot, hover above the object and interact with the chopper to deploy ropes.&lt;br/&gt; When you are in the right position a new scroll wheel action will appear ('HOOK'). If you want you can open the HUD to facilitate the operation.&lt;br/&gt; &lt;img image='\z\ace\addons\logistics_wirecutter\ui\wirecutter_ca.paa' width='20' height='20'/&gt; To release an object open you self interaction menu and select 'CUT ROPES'.</Original>
+                <English>=BTC= Lift will not replace the A3 sling loading, you can use both.&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\Structures_F_Heli\VR\Helpers\Data\VR_Symbol_Heli_Slingloading_CA.paa' width='20' height='20'/&gt; &lt;img image='\A3\air_f_beta\Heli_Transport_01\Data\UI\Map_Heli_Transport_01_base_CA.paa' width='20' height='20'/&gt; Lifting an object is pretty simple. Get in a chopper as pilot, hover above the object and interact with the chopper to deploy ropes.&lt;br/&gt; When you are in the right position a new scroll wheel action will appear ('HOOK'). If you want you can open the HUD to facilitate the operation.&lt;br/&gt; &lt;img image='\z\ace\addons\logistics_wirecutter\ui\wirecutter_ca.paa' width='20' height='20'/&gt; To release an object open you self interaction menu and select 'CUT ROPES'.</English>
+                <German>=BTC= Lift ersetzt nicht das A3 Sling-Load-System, du kannst beide nutzen.&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\Structures_F_Heli\VR\Helpers\Data\VR_Symbol_Heli_Slingloading_CA.paa' width='20' height='20'/&gt; &lt;img image='\A3\air_f_beta\Heli_Transport_01\Data\UI\Map_Heli_Transport_01_base_CA.paa' width='20' height='20'/&gt; Das heben von Lasten ist recht einfach. Nimm dir einen Hubschrauber, schwebe über dem Objekt und lass die Seile ab indem du mit dem Hubschrauber interagierst.&lt;br/&gt; Wenn du in der richtigen Postion bist, erscheint im Maus-Rad-Menü die Option 'HOOK' mit der du die Fracht einhacken kannst. Wenn du willst kannst du auch ein HUD öffnen, welches dir deine Arbeit erleichtert.&lt;br/&gt; &lt;img image='\z\ace\addons\logistics_wirecutter\ui\wirecutter_ca.paa' width='20' height='20'/&gt; Um ein eingehacktes Objekt abzulassen, wähle im Maus-Rad-Menü die Option 'CUT ROPES' aus.</German>
+            </Key>
+        </Container>
+        <Container name="Documentation: Logistic point">
+            <Key ID="STR_BTC_HAM_DOC_LOGISTICP_TITLE">
+                <Original>Logistic point</Original>
+                <English>Logistic point</English>
+                <German>Logistikpunkt</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_DOC_LOGISTICP_TEXT">
+                <Original>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\repair_ca.paa' width='20' height='20'/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\rearm_ca.paa' width='20' height='20'/&gt; At the logistic point you can require new objects (like ammo, fortifications, supplies for the side missions...) and repair destroyed vehicles.</Original>
+                <English>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\repair_ca.paa' width='20' height='20'/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\rearm_ca.paa' width='20' height='20'/&gt; At the logistic point you can require new objects (like ammo, fortifications, supplies for the side missions...) and repair destroyed vehicles.</English>
+                <German>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\repair_ca.paa' width='20' height='20'/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\rearm_ca.paa' width='20' height='20'/&gt; Am Logisik-Punk kann man neue Objekte (wie zB. Munition, Baumaterial, Nachschubgüter für Nebenaufgaben...) anfordern und zerstörte Fahrzeuge reparieren.</German>
+            </Key>
+        </Container>
+        <Container name="Documentation: Logistic">
+            <Key ID="STR_BTC_HAM_DOC_LOGISTIC_TITLE">
+                <Original>Logistic</Original>
+                <English>Logistic</English>
+                <German>Logistik</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_DOC_LOGISTIC_TEXT">
+                <Original>&lt;marker name='blufor_base'&gt;Cargo System:&lt;/marker&gt;&lt;br/&gt; - &lt;img image='a3\ui_f\data\IGUI\Cfg\Actions\loadVehicle_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Load:&lt;/marker&gt; You can load objects inside vehicles. Approach the object you want to load and interact with it.&lt;br/&gt; Select 'LOAD IN' option.&lt;br/&gt;  After that interact with the vehicle and select 'LOAD object selected' option.&lt;br/&gt; The object has to be close to the vehicle.&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\search_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Unload:&lt;/marker&gt; You can unload an object from a vehicle interacting with it. You can be inside the vehicle (personal interaction) or outside (object interaction).&lt;br/&gt; Select the option 'CHECK CARGO', then choose the object you want to unload from the list, and click 'UNLOAD'.&lt;br/&gt; If you are inside a chopper the object will be paradropped with a chute. If your height is too low, the object will crash down.&lt;br/&gt; Every vehicle has a 'CARGO CAPACITY' (CC in game), and every object has a 'REQUIRED CAPACITY' value (RC in game.)&lt;br/&gt; You can check those values in game with 'LOAD IN' and 'CHECK CARGO' options.&lt;br/&gt;&lt;br/&gt;&lt;br/&gt; &lt;marker name='blufor_base'&gt;Towing system:&lt;/marker&gt;&lt;br/&gt; To tow a vehicle interact with it and select the option 'HOOK'.&lt;br/&gt;After that place the tow vehicle in front of it and select 'TOW' in the interaction menu.&lt;br/&gt; If the two vehicles are too far away or the vehicle can't tow that load (Car can't tow truck or tank), the option will be disabled.&lt;br/&gt; To unhook interact with one of the two vehicles and select the option 'UNHOOK'.&lt;br/&gt;&lt;br/&gt; &lt;marker name='blufor_base'&gt;Place option:&lt;/marker&gt;&lt;br/&gt; With this option you can move heavy objects to build small outpost or base.&lt;br/&gt; When you select the option an hint will show all the keys required to move the object.</Original>
+                <English>&lt;marker name='blufor_base'&gt;Cargo System:&lt;/marker&gt;&lt;br/&gt; - &lt;img image='a3\ui_f\data\IGUI\Cfg\Actions\loadVehicle_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Load:&lt;/marker&gt; You can load objects inside vehicles. Approach the object you want to load and interact with it.&lt;br/&gt; Select 'LOAD IN' option.&lt;br/&gt; After that interact with the vehicle and select 'LOAD object selected' option.&lt;br/&gt; The object has to be close to the vehicle.&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\search_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Unload:&lt;/marker&gt; You can unload an object from a vehicle interacting with it. You can be inside the vehicle (personal interaction) or outside (object interaction).&lt;br/&gt; Select the option 'CHECK CARGO', then choose the object you want to unload from the list, and click 'UNLOAD'.&lt;br/&gt; If you are inside a chopper the object will be paradropped with a chute. If your height is too low, the object will crash down.&lt;br/&gt; Every vehicle has a 'CARGO CAPACITY' (CC in game), and every object has a 'REQUIRED CAPACITY' value (RC in game.)&lt;br/&gt; You can check those values in game with 'LOAD IN' and 'CHECK CARGO' options.&lt;br/&gt;&lt;br/&gt;&lt;br/&gt; &lt;marker name='blufor_base'&gt;Towing system:&lt;/marker&gt;&lt;br/&gt; To tow a vehicle interact with it and select the option 'HOOK'.&lt;br/&gt;After that place the tow vehicle in front of it and select 'TOW' in the interaction menu.&lt;br/&gt; If the two vehicles are too far away or the vehicle can't tow that load (Car can't tow truck or tank), the option will be disabled.&lt;br/&gt; To unhook interact with one of the two vehicles and select the option 'UNHOOK'.&lt;br/&gt;&lt;br/&gt; &lt;marker name='blufor_base'&gt;Place option:&lt;/marker&gt;&lt;br/&gt; With this option you can move heavy objects to build small outpost or base.&lt;br/&gt; When you select the option an hint will show all the keys required to move the object.</English>
+                <German>&lt;marker name='blufor_base'&gt;Fracht-System:&lt;/marker&gt;&lt;br/&gt; - &lt;img image='a3\ui_f\data\IGUI\Cfg\Actions\loadVehicle_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Beladen:&lt;/marker&gt; Man kann Objekte in Fahrzeuge einladen. Gehen Sie an das Obekt heran und interagieren sie damit.&lt;br/&gt; Wählen sie 'LOAD IN'aus.&lt;br/&gt; Als nächstes gehen Sie zum Fahrzeug und wählen 'LOAD object selected' aus.&lt;br/&gt; Denken Sie daran, dass das zu verladende Objekt sich in der Nähe des Fahrzeuges befinden muss.&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\search_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Abladen:&lt;/marker&gt; Man kann Objekte aus einen Fahrzeug entladen, indem man mit diesem interagiert. Das funktioniert von Innen (Eigen-Interaktionsmenü) und von Aussen (mit dem Objekt interagieren).&lt;br/&gt; Über den Menüpunkt 'CHECK CARGO' kann man das zu entladende Objekt aus einer Liste auswählen und mit einem Klick auf 'UNLOAD' ausladen.&lt;br/&gt; Wenn man sich beim Ausladen in einem Hubschrauber befindet, so wird das Objekt automatisch mit einem Fallschrim abgeworfen. Aber Achtung: Der Fallschirm öffnet sich erst ab einer bestimmten Flughöhe.&lt;br/&gt; Jedes Fahrzeug hat eine gewisse Ladekapazität ('CARGO CAPACITY' - CC im Spiel genannt) und jedes Objekt hat ein gewisses Ladevolumen ('REQUIRED CAPACITY' - RC im Spiel genannt).&lt;br/&gt; Diese Werte können im Spiel mit den Actionen 'LOAD IN' und 'CHECK CARGO' geprüft werden.&lt;br/&gt;&lt;br/&gt;&lt;br/&gt; &lt;marker name='blufor_base'&gt;Abschleppsystem:&lt;/marker&gt;&lt;br/&gt; Um ein Fahrzeug abzuschleppen muss man mit diesem interagieren und 'HOOK' auswählen.&lt;br/&gt;Als nächstes muss man das Zugfahrzeug vor das abzuschleppende Fahrzeug stellen und über das Interagtionsmenü die Option 'TOW' aktivieren.&lt;br/&gt; Zu beachten ist dabei, dass die beiden Fahrzeuge nicht zu weit von einander entfernt sein dürfen. Ebenso ist daruf zu achten, dass das Zugfahrzeug auch das andere Fahrzeug abschleppen kann (zB. Autos können keine Lkw/Panzer abschleppen).&lt;br/&gt; Um das Abschleppseil wieder zu entfernen muss man einen bei einem der beiden Fahrzeuge die Option 'UNHOOK' auswählen.&lt;br/&gt;&lt;br/&gt; &lt;marker name='blufor_base'&gt;Platzierung von Objekten:&lt;/marker&gt;&lt;br/&gt; Mit dieser Option können Sie schwere Objekte bewegen, um einen kleinen Außenposten oder eine Basis zu bauen.&lt;br/&gt; Wenn Sie die Option auswählen, zeigt ein Hinweis alle Tasten an, die zum Verschieben des Objekts erforderlich sind.</German>
+            </Key>
+        </Container>
+        <Container name="Documentation: Hideout">
+            <Key ID="STR_BTC_HAM_DOC_HIDEOUT_TITLE">
+                <Original>Hideout</Original>
+                <English>Hideout</English>
+                <German>Verstecke</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_DOC_HIDEOUT_TEXT">
+                <Original>The hideouts are a place where the Oplitas organize their movements.&lt;br/&gt;They send reinforcements from here and can attack the closest city.&lt;br/&gt;If you notice a lot of activity in an area, probably there is an hideout closeby.&lt;br/&gt;If you want to defeat the Oplitas, you need to destroy all their hideouts.&lt;br/&gt;Here an example of an hideout:&lt;br/&gt;&lt;br/&gt;&lt;img image='core\img\hideout.jpg' width='256' height='256'/&gt;&lt;br/&gt;&lt;br/&gt;To destroy an hideout just place a satchel near the ammo box, it's close to the flag, and blow it off!</Original>
+                <English>The hideouts are a place where the Oplitas organize their movements.&lt;br/&gt;They send reinforcements from here and can attack the closest city.&lt;br/&gt;If you notice a lot of activity in an area, probably there is an hideout closeby.&lt;br/&gt;If you want to defeat the Oplitas, you need to destroy all their hideouts.&lt;br/&gt;Here an example of an hideout:&lt;br/&gt;&lt;br/&gt;&lt;img image='core\img\hideout.jpg' width='256' height='256'/&gt;&lt;br/&gt;&lt;br/&gt;To destroy an hideout just place a satchel near the ammo box, it's close to the flag, and blow it off!</English>
+                <German>In den Verstecken planen und organisieren die Oplitas ihre Einstäze und Bewegungen.&lt;br/&gt;Von hier wird Verstärkung auf umliegende Gebiete verteilt. Ebenso ist ein Angriff auf die nächste Stadt von hier aus möglich.&lt;br/&gt;Sollten Sie eine erhöhte feindliche Aktivität in der Gegend festestellen, so befindet sich möglicherweise ein Versteck in der Nähe.&lt;br/&gt;Wenn Sie die Oplitas besiegen wollen, so müssen Sie alle Verstecke zerstören.&lt;br/&gt;Hier ein kleines Beispiel für ein Versteck:&lt;br/&gt;&lt;br/&gt;&lt;img image='core\img\hideout.jpg' width='256' height='256'/&gt;&lt;br/&gt;&lt;br/&gt;Das Versteck kann zerstört werden in dem man eine Sprengladung in der Nähe der Munitionskiste oder der Flagge zündet!</German>
+            </Key>
+        </Container>
+        <Container name="Documentation: IED">
+            <Key ID="STR_BTC_HAM_DOC_IED_TEXT">
+                <Original>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; Any object could be an IED, approach it carefully (DO NOT rotate while your are walking: prefer walk, stop, rotate, walk again etc). Turn On your mine detector (VMH3 or VMMH3) and search for a charge in a circle of 2 meter around.&lt;br/&gt; &lt;img image='\z\ace\addons\explosives\UI\Defuse_ca.paa' width='20' height='20'/&gt; If you are an engineer and have a defusal kit, you can disarm it.&lt;br/&gt; You can also blow them off with high caliber and explosive satchels.</Original>
+                <English>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; Any object could be an IED, approach it carefully (DO NOT rotate while your are walking: prefer walk, stop, rotate, walk again etc). Turn On your mine detector (VMH3 or VMMH3) and search for a charge in a circle of 2 meter around.&lt;br/&gt; &lt;img image='\z\ace\addons\explosives\UI\Defuse_ca.paa' width='20' height='20'/&gt; If you are an engineer and have a defusal kit, you can disarm it.&lt;br/&gt; You can also blow them off with high caliber and explosive satchels.</English>
+                <German>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; Jedes Objekt kann eine IED sein, seien sie ensprechen Vorsichtig und machen Sie keine hastigen Bewegungen (NICHT drehen wenn man läuft: besser gehen, stop, drehen, gehen und so weiter). Schalten Sie ihren Minendetektor (VMH3 oder VMMH3) ein und suchen sie in eim 2m Radius nach der Ladung.&lt;br/&gt; &lt;img image='\z\ace\addons\explosives\UI\Defuse_ca.paa' width='20' height='20'/&gt; Wenn Sie ein Ingenieur sind und ein Entschärfungskit dabei habe, können Sie die Sprengladung entschärfen.&lt;br/&gt; Es is ebenfalls möglich die IED mithilfe von hohen Kalibern oder Sprengladungen zu entfernen (kontrollierte Explosion).</German>
+            </Key>
+        </Container>
+        <Container name="Documentation: Intel">
+            <Key ID="STR_BTC_HAM_DOC_INTEL_TITLE">
+                <Original>Intel</Original>
+                <English>Intel</English>
+                <German>Informationen</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_DOC_INTEL_TEXT">
+                <Original>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\map_ca.paa' width='20' height='20'/&gt; Intel can be retrieved in the following ways:&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\search_ca.paa' width='13' height='13'/&gt; Searching dead bodies&lt;br/&gt; - &lt;img image='\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\instructor_ca.paa' width='13' height='13'/&gt; Interrogate prisoner&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='13' height='13'/&gt; Talking to civilians&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\talk_ca.paa' width='20' height='20'/&gt; Keep in mind that only the interpreter can talk to civilians and they can lie if your reputation level is low.&lt;br/&gt;&lt;br/&gt; When you find an intel from a dead body or interrogate a prisoner, a marker will appear in the map. Remember, prisoner have a random number of intel more or less interesting.&lt;br/&gt; There are two types of marker:&lt;br/&gt; - Red question mark (&lt;img image='\A3\ui_f\data\map\markers\handdrawn\unknown_CA.paa' width='13' height='13' color='#ff0000'/&gt;): ammo cache intel&lt;br/&gt; - Red esclamation mark (&lt;img image='\A3\ui_f\data\map\markers\handdrawn\warning_CA.paa' width='13' height='13' color='#ff0000'/&gt;): hideout intel&lt;br/&gt;&lt;br/&gt;&lt;br/&gt; When you destroy an hideout or an ammo cache, all the markers related to it will be deleted.</Original>
+                <English>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\map_ca.paa' width='20' height='20'/&gt; Intel can be retrieved in the following ways:&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\search_ca.paa' width='13' height='13'/&gt; Searching dead bodies&lt;br/&gt; - &lt;img image='\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\instructor_ca.paa' width='13' height='13'/&gt; Interrogate prisoner&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='13' height='13'/&gt; Talking to civilians&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\talk_ca.paa' width='20' height='20'/&gt; Keep in mind that only the interpreter can talk to civilians and they can lie if your reputation level is low.&lt;br/&gt;&lt;br/&gt; When you find an intel from a dead body or interrogate a prisoner, a marker will appear in the map. Remember, prisoner have a random number of intel more or less interesting.&lt;br/&gt; There are two types of marker:&lt;br/&gt; - Red question mark (&lt;img image='\A3\ui_f\data\map\markers\handdrawn\unknown_CA.paa' width='13' height='13' color='#ff0000'/&gt;): ammo cache intel&lt;br/&gt; - Red esclamation mark (&lt;img image='\A3\ui_f\data\map\markers\handdrawn\warning_CA.paa' width='13' height='13' color='#ff0000'/&gt;): hideout intel&lt;br/&gt;&lt;br/&gt;&lt;br/&gt; When you destroy an hideout or an ammo cache, all the markers related to it will be deleted.</English>
+                <German>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\map_ca.paa' width='20' height='20'/&gt;  Informationen kann man auf verschiedene Arten erhalten:&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\search_ca.paa' width='13' height='13'/&gt; Durchsuchen von toten Personen&lt;br/&gt; - &lt;img image='\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\instructor_ca.paa' width='13' height='13'/&gt; Verhören von Gefangenen&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='13' height='13'/&gt; Mit Zivilisten reden&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\talk_ca.paa' width='20' height='20'/&gt; Nur der Dolmetscher kann sich mit Zivilisten unterhalten. Wenn ihr Ansehen bei der Bevölkerunge niedrig ist, so kann es auch mal vorkommen das manche Zivilisten sie belügen.&lt;br/&gt;&lt;br/&gt; Wenn Sie Information erhalten, erscheint eine Markierung auf der Karte. Zur Erinnerung: Gefangene habe mal mehr und mal weniger interessante Informationen.&lt;br/&gt; Es gibt zwei Arten von Markierungen:&lt;br/&gt; - Ein rotes Fragezeichen (&lt;img image='\A3\ui_f\data\map\markers\handdrawn\unknown_CA.paa' width='13' height='13' color='#ff0000'/&gt;): Information über ein Waffenlager &lt;br/&gt; - Ein rotes Ausrufezeichen (&lt;img image='\A3\ui_f\data\map\markers\handdrawn\warning_CA.paa' width='13' height='13' color='#ff0000'/&gt;): Information über ein Versteck &lt;br/&gt;&lt;br/&gt;&lt;br/&gt; Wenn Sie ein Versteck oder ein Waffenlager zersört haben, so werden alle relevanten Markierungen automatisch gelöscht.</German>
+            </Key>
+        </Container>
+        <Container name="Documentation: Reputation">
+            <Key ID="STR_BTC_HAM_DOC_REPUTATION_TITLE">
+                <Original>Reputation</Original>
+                <English>Reputation</English>
+                <German>Ansehen</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_DOC_REPUTATION_TEXT">
+                <Original>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\talk_ca.paa' width='20' height='20'/&gt; Reputation can be ask to civilian&lt;br/&gt; Bad actions cause bad effetcs.&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='20' height='20'/&gt; Helping the local population by fighting the Oplitas and disarming IED's will rise your reputation; killing civilians, mutilating alive/dead civilians, firing near civilians for no reason, damaging/destroying buildings, losing vehicles, player respawns will decrease your repution. At the beginning you have a very low reputation level, so civilians won't help you in revealing important information about the Oplitas, they will likely lie instead.&lt;br/&gt; Aborting a side mission does not affect reputation.</Original>
+                <English>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\talk_ca.paa' width='20' height='20'/&gt; Reputation can be ask to civilian&lt;br/&gt; Bad actions cause bad effetcs.&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='20' height='20'/&gt; Helping the local population by fighting the Oplitas and disarming IED's will rise your reputation; killing civilians, mutilating alive/dead civilians, firing near civilians for no reason, damaging/destroying buildings, losing vehicles, player respawns will decrease your repution. At the beginning you have a very low reputation level, so civilians won't help you in revealing important information about the Oplitas, they will likely lie instead.&lt;br/&gt; Aborting a side mission does not affect reputation.</English>
+                <German>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\talk_ca.paa' width='20' height='20'/&gt; Ihr Ansehen bei der Bevölkerung können Sie bei Zivilisten erfragen&lt;br/&gt; Schlechte bzw. böse Handlungen habe zur Folge das ihr Ansehen sinkt.&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='20' height='20'/&gt; Das Unterstützen der lokalen Bevölkerung, das Entschärfen von IEDs und der aktive Kampf gegen die Oplitas wird sich positiv auf ihr Ansehen auswirken. Negative Aktionen wie zb. das Töten von Zivlisten, das Zerstören oder Beschädigen von Gebäuden, der Verlust von Fahrzeugen oder das Respawnen haben hingegen einen nicht so guten Effekt. Zu Beginn ist Ihr Ansehen nur recht gering, weshalb es sein kann das Zivlisten eher zruückhaltend mit Informationen sind. In manchen Fällen werden die Zivilisten Sie auch einfach belügen.&lt;br/&gt; Das Abbrechen von Nebenaufgaben hat keine Auswirkung auf Ihr Ansehen.</German>
+            </Key>
+        </Container>
+        <Container name="Documentation: Orders">
+            <Key ID="STR_BTC_HAM_DOC_ORDERS_TITLE">
+                <Original>Orders</Original>
+                <English>Orders</English>
+                <German>Befehle (Zivilisten)</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_DOC_ORDERS_TEXT">
+                <Original>Any player can give orders to civilians.&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; To do this, just open your self interaction menu and select 'ORDERS' or use one of the shortcuts. Shortcuts can changed under 'configure' &gt;&gt; 'controls' &gt;&gt; 'configure addons' &gt;&gt; 'Hearts and Minds: Mission' (drop down menu).&lt;br/&gt; Your options are:&lt;br/&gt; - STOP&lt;br/&gt; - GET DOWN&lt;br/&gt; - GO AWAY&lt;br/&gt;&lt;br/&gt; If you want to give an order to just one unit, interact with it (ace object interaction).</Original>
+                <English>Any player can give orders to civilians.&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; To do this, just open your self interaction menu and select 'ORDERS' or use one of the shortcuts. Shortcuts can changed under 'configure' &gt;&gt; 'controls' &gt;&gt; 'configure addons' &gt;&gt; 'Hearts and Minds: Mission' (drop down menu).&lt;br/&gt; Your options are:&lt;br/&gt; - STOP&lt;br/&gt; - GET DOWN&lt;br/&gt; - GO AWAY&lt;br/&gt;&lt;br/&gt; If you want to give an order to just one unit, interact with it (ace object interaction).</English>
+                <German>Jeder Spieler kann einem Zivlisten Anweisungen geben.&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; Dies geht recht einfach in dem man das Eigen-Interaktionsmenü öffnet und dann 'ORDERS' auswählt. Oder in dem man Kurztasten nutzt. Diese können unter 'Konfigurieren' &gt;&gt; 'Steuerung' &gt;&gt; 'Addons Einstellen' &gt;&gt; Hearts and Minds: Mission' (Drop-Down-Menü) geändert werden.&lt;br/&gt;&lt;br/&gt; Folgende Optionen stehen zur Verfügung:&lt;br/&gt; - HALT&lt;br/&gt; - AUF DEN BODEN&lt;br/&gt; - GEH WEG&lt;br/&gt;&lt;br/&gt; Wenn Sie einen Befehl an eine bestimmte Person geben wollen, so können Sie auch direkt mir dieser Interagieren (ACE Objekt-Interaction).</German>
+            </Key>
+        </Container>
+        <Container name="Documentation: Traffic">
+            <Key ID="STR_BTC_HAM_DOC_TRAFFIC_TITLE">
+                <Original>Traffic</Original>
+                <English>Traffic</English>
+                <German>Straßenverkehr</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_DOC_TRAFFIC_TEXT">
+                <Original>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='20' height='20'/&gt; &lt;img image='\A3\soft_f_gamma\van_01\Data\UI\map_van_01_box_CA.paa' width='20' height='20'/&gt; Civilians are travelling by vehicle across cities. If your reputation is higher than normal, you can ask for a lift to a location chosen on the map. If you bump into a Oplitas patrol, don't worry, the civilian driver will do their best to hide you in the car.&lt;br/&gt;</Original>
+                <English>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='20' height='20'/&gt; &lt;img image='\A3\soft_f_gamma\van_01\Data\UI\map_van_01_box_CA.paa' width='20' height='20'/&gt; Civilians are travelling by vehicle across cities. If your reputation is higher than normal, you can ask for a lift to a location chosen on the map. If you bump into a Oplitas patrol, don't worry, the civilian driver will do their best to hide you in the car.&lt;br/&gt;</English>
+                <German>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='20' height='20'/&gt; &lt;img image='\A3\soft_f_gamma\van_01\Data\UI\map_van_01_box_CA.paa' width='20' height='20'/&gt; Zivlisten sind mit Fahrzeugen in den Städten unterwegs. Wenn Sie ein hohes Ansehen in der Bevölkerung genießen, so sind Zivlisten auch gerne mal dazu bereit Sie mitzunehmen (nutzen sie die Karte um den Zivlisten zu zeigen wo sie hinwollen). Sollten Sie dabei durch Zufall auf Feinde stoßen, so wird der Zivilist sein Bestes geben um sie im Fahrzeug zu verstecken.&lt;br/&gt;</German>
+            </Key>
+        </Container>
+        <Container name="Documentation: Gear">
+            <Key ID="STR_BTC_HAM_DOC_GEAR_TITLE">
+                <Original>Gear (Arsenal)</Original>
+                <English>Gear (Arsenal)</English>
+                <German>Ausrüstung (Arsenal)</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_DOC_GEAR_TEXT">
+                <Original>&lt;img image='\A3\Ui_f\data\Logos\a_64_ca.paa' width='20' height='20'/&gt;You can choose your gear at the red box inside the base. Located at the spawn point.&lt;br/&gt;</Original>
+                <English>&lt;img image='\A3\Ui_f\data\Logos\a_64_ca.paa' width='20' height='20'/&gt;You can choose your gear at the red box inside the base. Located at the spawn point.&lt;br/&gt;</English>
+                <German>&lt;img image='\A3\Ui_f\data\Logos\a_64_ca.paa' width='20' height='20'/&gt;Sie können ihre Ausrüstung jederzeit an der roten Box in der Basis anpassen. Diese steht in der Nähe des Startpunktes&lt;br/&gt;</German>
+            </Key>
+        </Container>
+        <Container name="Documentation: Interaction">
+            <Key ID="STR_BTC_HAM_DOC_INTERACTION_TITLE">
+                <Original>Interaction</Original>
+                <English>Interaction</English>
+                <German>Interaktion</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_DOC_INTERACTION_TEXT">
+                <Original> &lt;img image='\z\ace\addons\interaction\UI\Icon_Module_Interaction_ca.paa' width='20' height='20'/&gt;Use ACE 3 interactions system.</Original>
+                <English> &lt;img image='\z\ace\addons\interaction\UI\Icon_Module_Interaction_ca.paa' width='20' height='20'/&gt;Use ACE 3 interactions system.</English>
+                <German> &lt;img image='\z\ace\addons\interaction\UI\Icon_Module_Interaction_ca.paa' width='20' height='20'/&gt;Nutzen Sie das Interactions-System von ACE 3.</German>
+            </Key>
+        </Container>
+        <Container name="Documentation: Version">
+            <Key ID="STR_BTC_HAM_DOC_VERSION_TITLE">
+                <Original>Version</Original>
+                <English>Version</English>
+                <German>Version</German>
+            </Key>
+        </Container>
+    </Package>
+    <Package name="Missions">
+        <Container name="Mission 1: Example">
+            <Key ID="STR_BTC_HAM_MISSION_1">
+                <Original>Example</Original>
+                <English>Example</English>
+                <German>Example</German>
+            </Key>
+        </Container>
+    </Package>
+    <Package name="Actions">
+        <Container name="Action: Example(ACE)">
+            <Key ID="STR_BTC_HAM_ACTION_EXAMPLE">
+                <Original>Example action</Original>
+                <English>Example action</English>
+                <German>Example action</German>
+            </Key>
+        </Container>
+    </Package>
+    <Package name="Conversations">
+        <Container name="Conversations: Example answer">
+            <Key ID="STR_BTC_HAM_CON_TITLE">
+                <Original>Example answer</Original>
+                <English>Example answer</English>
+                <German>Example answer</German>
+            </Key>
+        </Container>
+    </Package>
+</Project>
