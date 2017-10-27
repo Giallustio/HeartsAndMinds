@@ -37,6 +37,7 @@ _cities_status = profileNamespace getVariable [format ["btc_hm_%1_cities",_name]
 	_city setVariable ["has_ho",(_x select 5)];
 	_city setVariable ["ho_units_spawned",(_x select 6)];
 	_city setVariable ["ieds",(_x select 7)];
+	_city setVariable ["has_suicider",(_x select 8)];
 
 	if (btc_debug) then	{//_debug
 
