@@ -4,6 +4,7 @@ private ["_veh","_towed","_pos"];
 _veh = _this;
 
 deTach _veh;
+(ropes _veh) apply {ropeDestroy _x};
 
 _pos = getpos _veh;
 if ((_pos select 2) < -0.05) then {
@@ -20,6 +21,7 @@ if (isNull btc_int_ask_data) exitWith {hint "This vehicle is not attached to ano
 _towed = btc_int_ask_data;
 
 deTach _towed;
+(ropes _towed) apply {ropeDestroy _x};
 
 _pos = getpos _towed;
 if ((_pos select 2) < -0.05) then {
