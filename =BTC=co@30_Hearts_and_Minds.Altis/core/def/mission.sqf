@@ -251,6 +251,15 @@ if (isServer) then {
 	#define	REARM_TURRET_PATHS  [[-1], [0], [0,0], [0,1], [1], [2], [0,2]]
 
 	_btc_rearming_vehicles = [btc_vehicles + btc_helo,[]] call btc_fnc_find_veh_with_turret;
+	private _btc_rearming_magazines = [];
+	{
+		private _vehicle_type = _x;
+		private _vehicle = ((btc_vehicles + btc_helo) select {typeOf _x isEqualTo _vehicle_type}) select 0;
+		private _magazines = [_vehicle] call btc_fnc_log_getRearmMagazines;
+		_btc_rearming_magazines pushBack _magazines;
+	} forEach _btc_rearming_vehicles;
+
+
 	private _allclass = ("true" configClasses (configFile >> "CfgVehicles")) apply {configName _x};
 	_allclass = _allclass select {(getNumber(configfile >> "CfgVehicles" >> _x >> "scope") isEqualTo 2)};
 
@@ -334,18 +343,7 @@ if (isServer) then {
 				"ACE_Wheel",
 				"ACE_Track"
 			]
-		] + (_btc_rearming_vehicles apply {
-				_vehicles = _x;
-				_magazines = [];
-				{
-					_magazines append (([_vehicles,_x] call btc_fnc_log_getconfigmagazines));
-				} forEach REARM_TURRET_PATHS;
-				_magazines_clean = [];
-				{
-					_magazines_clean pushBackUnique _x;
-				} forEach _magazines;
-				_magazines_clean
-			})
+		] + _btc_rearming_magazines
 	];
 	publicVariable "btc_construction_array";
 };
