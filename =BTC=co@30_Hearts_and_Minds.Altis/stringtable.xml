@@ -220,13 +220,77 @@
         </Container>
     </Package>
     <Package name="Actions">
-        <Container name="Action: Example(ACE)">
-            <Key ID="STR_BTC_HAM_ACTION_EXAMPLE">
-                <Original>Example action</Original>
-                <English>Example action</English>
-                <German>Example action</German>
-            </Key>
-        </Container>
+      <Container name="Action(ACE): Database handling">
+          <Key ID="STR_BTC_HAM_ACTION_DATA_MAIN">
+              <Original>Database</Original>
+              <English>Database</English>
+              <German>Datenbank</German>
+          </Key>
+          <Key ID="STR_BTC_HAM_ACTION_DATA_SAVE">
+              <Original>Save</Original>
+              <English>Save</English>
+              <German>Sichern</German>
+          </Key>
+          <Key ID="STR_BTC_HAM_ACTION_DATA_DELETE">
+              <Original>Delete</Original>
+              <English>Delete</English>
+              <German>Löschen</German>
+          </Key>
+      </Container>
+      <Container name="Action(ACE): Intel">
+          <Key ID="STR_BTC_HAM_ACTION_INTEL_SEARCH">
+              <Original>Search for intel</Original>
+              <English>Search for intel</English>
+              <German>Nach Informationen suchen</German>
+          </Key>
+          <Key ID="STR_BTC_HAM_ACTION_INTEL_INTERROGATE">
+              <Original>Interrogate</Original>
+              <English>Interrogate</English>
+              <German>Verhören</German>
+          </Key>
+      </Container>
+      <Container name="Action(ACE): Log. Point">
+          <Key ID="STR_BTC_HAM_ACTION_LOGPOINT_">
+              <Original></Original>
+              <English></English>
+              <German></German>
+          </Key>
+      </Container>
+      <Container name="Action(ACE): Logistic">
+          <Key ID="STR_BTC_HAM_ACTION_LOGISTIC_">
+              <Original></Original>
+              <English></English>
+              <German></German>
+          </Key>
+      </Container>
+      <Container name="Action(ACE): FOB">
+          <Key ID="STR_BTC_HAM_ACTION_FOB_">
+              <Original></Original>
+              <English></English>
+              <German></German>
+          </Key>
+      </Container>
+      <Container name="Action(ACE): Orders">
+          <Key ID="STR_BTC_HAM_ACTION_ORDERS_">
+              <Original></Original>
+              <English></English>
+              <German></German>
+          </Key>
+      </Container>
+      <Container name="Action(ACE): Side missions">
+          <Key ID="STR_BTC_HAM_ACTION_SIDEMISSION_">
+              <Original></Original>
+              <English></English>
+              <German></German>
+          </Key>
+      </Container>
+      <Container name="Action(ACE): Re-deploy">
+          <Key ID="STR_BTC_HAM_ACTION_REDEPLOY_">
+              <Original></Original>
+              <English></English>
+              <German></German>
+          </Key>
+      </Container>
     </Package>
     <Package name="Conversations">
         <Container name="Conversations: Example answer">
