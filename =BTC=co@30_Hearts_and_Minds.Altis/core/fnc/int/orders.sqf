@@ -32,7 +32,7 @@ if (isNull _unit) then {
 				if (surfaceIsWater _pos) then {
 					hintSilent 'Selected area must be on land.';
 				} else {
-					[[_this select 1], 0, 4, _pos] remoteExec ["btc_fnc_int_orders_give", _this select 1];
+					[[_this select 4], 0, 4, _pos] remoteExec ["btc_fnc_int_orders_give", _this select 4];
 					["1", "onMapSingleClick"] call BIS_fnc_removeStackedEventHandler;
 				};
 			}, [_unit]] call BIS_fnc_addStackedEventHandler;
