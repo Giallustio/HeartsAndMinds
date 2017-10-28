@@ -27,12 +27,12 @@ switch (_this select 0) do
 	};
 	case 2 :
 	{
-		_description = ["Seize the last positions held by the enemies","Seize the last enemies positions","Seize the last enemies positions"];
+		_description = ["Seize the last positions held by Oplitas fighters","Seize the last Oplitas positions","Seize the last Oplitas fighters positions"];
 		_type = "move";
 	};
 	case 3 :
 	{
-		_description = [format ["The citizens of %1 are starving to death, bring them some supplies present at the logisitic point!",_location],("Supply " + _location),("Supply " + _location)];
+		_description = [format ["The citizens of %1 are on the brink starving to death, bring them some supplies present at the logisitic point!",_location],("Supply " + _location),("Supply " + _location)];
 		_type = "move";
 	};
 	case 4 :
@@ -47,12 +47,12 @@ switch (_this select 0) do
 	};
 	case 6 :
 	{
-		_description = [format ["%1 has been conquered by the Oplitas! Local population is terrorised and is asking for your help!",_location],("Free " + _location),("Free " + _location)];
+		_description = [format ["%1 has been conquered by the Oplitas! Local population is being terrorized, they are asking for help!",_location],("Free " + _location),("Free " + _location)];
 		_type = "attack";
 	};
 	case 7 :
 	{
-		_description = [format ["A Oplitas radio tower has been located in %1. Local population is asking for your help to destroy it! (Use one M183 explosive satchel)",_location],("Destroy tower in " + _location),("Destroy tower in " + _location)];
+		_description = [format ["A Oplitas communications tower has been located in %1. Local population is asking for your help to destroy it! (Use one M183 explosive satchel)",_location],("Destroy tower in " + _location),("Destroy tower in " + _location)];
 		_type = "destroy";
 	};
 	case 8 :
@@ -62,7 +62,7 @@ switch (_this select 0) do
 	};
 	case 9 :
 	{
-		_description = [format ["Checkpoints has been located in %1. Local population is asking for your help to destroy ammo box in all checkpoints!",_location],("Destroy checkpoints in " + _location),("Destroy checkpoints in " + _location)];
+		_description = [format ["Checkpoints have been located in %1. Local population is asking for your help to destroy ammo box in all checkpoints!",_location],("Destroy checkpoints in " + _location),("Destroy checkpoints in " + _location)];
 		_type = "destroy";
 	};
 	case 10 :
@@ -77,17 +77,17 @@ switch (_this select 0) do
 	};
 	case 12 :
 	{
-		_description = [format ["An armed convoy is going to attack %1. Local population is asking for your help to destroy it before!",_location],("Destroy a convoy attacking " + _location),("Destroy a convoy attacking " + _location)];
+		_description = [format ["An armed Oplitas convoy is going to attack %1. Local population is asking for your help to destroy it before it gets there!",_location],("Destroy Oplitas convoy attacking " + _location),("Destroy Oplitas convoy attacking " + _location)];
 		_type = "attack";
 	};
 	case 13 :
 	{
-		_description = [format ["A pilot crashed his helicopter near %1. He is asking for your help to rescue him back to base!",_location],("Rescue a pilot near " + _location),("Rescue a pilot near " + _location)];
+		_description = [format ["MAYDAY-MAYDAY, a pilot crashed his helicopter near %1. Command is asking for your help to rescue and bring him back to base!",_location],("Rescue downed pilot near " + _location),("Rescue downed pilot near " + _location)];
 		_type = "navigate";
 	};
 	case 14 :
 	{
-		_description = [format ["Capture an officer travelling in a secret and fast convoy, then bring him at base. He is terrorising local population!",_location],("Capture officer in secret fast convoy"),("Capture officer in secret fast convoy")];
+		_description = [format ["Capture an officer travelling in a concealed convoy, then bring him at base for interrogation. He is his responsible for terrorizing local population!",_location],("Capture commander in concealed convoy"),("Capture commander in concealed convoy")];
 		_type = "run";
 	};
 	case 15 :

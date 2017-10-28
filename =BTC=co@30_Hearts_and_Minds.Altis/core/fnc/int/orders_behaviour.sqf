@@ -48,5 +48,5 @@ _unit setBehaviour _behaviour;
 _unit doMove getPos _unit;
 
 if (_unit isEqualTo vehicle _unit) then {
-	_group spawn btc_fnc_civ_addWP;
+	[_group] spawn btc_fnc_civ_addWP;
 };
