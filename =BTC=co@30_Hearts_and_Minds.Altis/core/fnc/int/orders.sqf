@@ -12,7 +12,7 @@ player playActionNow _gesture;
 
 private _pos = getpos player;
 private _dir = getDir player;
-private _units = _pos nearEntities [["Car","Civilian_F"], btc_int_radius_orders];
+private _units = (_pos nearEntities [["Car","Civilian_F"], btc_int_radius_orders]) apply {driver _x};
 
 if (_units isEqualTo []) exitWith {true};
 

@@ -7,10 +7,14 @@ if (_order == _unit getVariable ["order",0]) exitWith {};
 
 _unit setVariable ["order",_order];
 
-while {(count (waypoints _group)) > 0} do {deleteWaypoint ((waypoints _group) select 0);};
+if (_unit isEqualTo vehicle _unit) then {
+	while {(count (waypoints _group)) > 0} do {deleteWaypoint ((waypoints _group) select 0);};
+};
+
+private _behaviour = behaviour _unit;
 
 switch (_order) do {
-	case 1 : {doStop _unit;};
+	case 1 : {_unit setBehaviour selectRandom ["CARELESS", _behaviour]; doStop _unit;};
 	case 2 : {
 		doStop _unit;
 		_unit setUnitPos "DOWN";
@@ -25,7 +29,11 @@ switch (_order) do {
 	};
 };
 
-waitUntil {sleep 3; ((!(_order == 4) && (isNull _unit || !Alive _unit || (count (getpos _unit nearEntities ["SoldierWB", 50]) == 0))) || (((getpos _unit) distance _wp_pos < 10)) && (_order == 4)) };
+if (_order isEqualTo 4) then {
+	waitUntil {sleep 3; (isNull _unit || !Alive _unit || ((getpos _unit) distance _wp_pos < 10))};
+} else {
+	waitUntil {sleep 3; (isNull _unit || !Alive _unit || (count (getpos _unit nearEntities ["SoldierWB", 50]) == 0))};
+};
 
 if (isNull _unit || !Alive _unit) exitWith {};
 
@@ -36,5 +44,9 @@ if (_order == 4) then {
 
 _unit setVariable ["order",nil];
 _unit setUnitPos "AUTO";
+_unit setBehaviour _behaviour;
 _unit doMove getPos _unit;
-_group spawn btc_fnc_civ_addWP;
+
+if (_unit isEqualTo vehicle _unit) then {
+	_group spawn btc_fnc_civ_addWP;
+};
