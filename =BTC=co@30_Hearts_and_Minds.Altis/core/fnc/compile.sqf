@@ -165,6 +165,9 @@ btc_fnc_civ_class = compile preprocessFile "core\fnc\civ\class.sqf";
 //EH
 btc_fnc_eh_unit_init = compile preprocessFile "core\fnc\eh\unit_init.sqf";
 
+//IED
+btc_fnc_ied_effects = compile preprocessFile "core\fnc\ied\ied_effects.sqf";
+
 //INT
 btc_fnc_int_change_var = compile preprocessFile "core\fnc\int\change_var.sqf";
 btc_fnc_int_orders_give = compile preprocessFile "core\fnc\int\orders_give.sqf";
