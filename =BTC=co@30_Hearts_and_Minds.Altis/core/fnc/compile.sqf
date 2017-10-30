@@ -165,8 +165,6 @@ btc_fnc_civ_class = compile preprocessFile "core\fnc\civ\class.sqf";
 //EH
 btc_fnc_eh_unit_init = compile preprocessFile "core\fnc\eh\unit_init.sqf";
 
-//IED
-btc_fnc_ied_effects = compile preprocessFile "core\fnc\ied\ied_effects.sqf";
 
 //INT
 btc_fnc_int_change_var = compile preprocessFile "core\fnc\int\change_var.sqf";
@@ -237,6 +235,14 @@ if (!isDedicated) then {
 	btc_fnc_systemchat_debug = compile preprocessFile "core\fnc\common\systemchat_debug.sqf";
 	btc_fnc_show_hint = compile preprocessFile "core\fnc\common\show_hint.sqf";
 	btc_fnc_intro = compile preprocessFile "core\fnc\common\intro.sqf";
+
+	//IED
+	btc_fnc_ied_effects = compile preprocessFile "core\fnc\ied\ied_effects.sqf";
+	btc_fnc_ied_effect_smoke = compile preprocessFile "core\fnc\ied\effect_smoke.sqf";
+	btc_fnc_ied_effect_color_smoke = compile preprocessFile "core\fnc\ied\effect_color_smoke.sqf";
+	btc_fnc_ied_effect_rocks = compile preprocessFile "core\fnc\ied\effect_rocks.sqf";
+	btc_fnc_ied_effect_blurEffect = compile preprocessFile "core\fnc\ied\effect_blurEffect.sqf";
+	btc_fnc_ied_effect_shock_wave = compile preprocessFile "core\fnc\ied\effect_shock_wave.sqf";
 
 	//EH
 	btc_fnc_eh_player_respawn = compile preprocessFile "core\fnc\eh\player_respawn.sqf";
