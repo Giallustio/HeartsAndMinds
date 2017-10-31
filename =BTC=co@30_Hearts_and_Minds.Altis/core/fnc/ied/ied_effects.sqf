@@ -3,7 +3,7 @@ params [
   ["_caller", player]
 ];
 
-[_pos,_caller] call btc_fnc_ied_effect_blurEffect;
-[_pos] call btc_fnc_ied_effect_smoke;
-[_pos] call btc_fnc_ied_effect_rocks;
-[_pos] call btc_fnc_ied_effect_shock_wave;
+[_pos,_caller] spawn btc_fnc_ied_effect_blurEffect;
+[_pos] spawn btc_fnc_ied_effect_smoke;
+[_pos] spawn btc_fnc_ied_effect_rocks;
+[_pos] spawn btc_fnc_ied_effect_shock_wave;
