@@ -250,45 +250,128 @@
           </Key>
       </Container>
       <Container name="Action(ACE): Log. Point">
-          <Key ID="STR_BTC_HAM_ACTION_LOGPOINT_">
-              <Original></Original>
-              <English></English>
-              <German></German>
+          <Key ID="STR_BTC_HAM_ACTION_LOC_MAIN">
+              <Original>Logistic</Original>
+              <English>Logistic</English>
+              <German>Logistik</German>
+          </Key>
+          <Key ID="STR_BTC_HAM_ACTION_LOGPOINT_REQOBJ">
+              <Original>Require object</Original>
+              <English>Require object</English>
+              <German>Nachschub anfordern</German>
+          </Key>
+          <Key ID="STR_BTC_HAM_ACTION_LOGPOINT_REPWRECK">
+              <Original>Repair wreck</Original>
+              <English>Repair wreck</English>
+              <German>Wrack reparieren</German>
+          </Key>
+          <Key ID="STR_BTC_HAM_ACTION_LOGPOINT_REQVEH">
+              <Original>Require vehicle</Original>
+              <English>Require vehicle</English>
+              <German>Fahrzeug anfordern</German>
           </Key>
       </Container>
       <Container name="Action(ACE): Logistic">
-          <Key ID="STR_BTC_HAM_ACTION_LOGISTIC_">
-              <Original></Original>
-              <English></English>
-              <German></German>
+          <Key ID="STR_BTC_HAM_ACTION_LOGISTIC_LOADIN">
+              <Original>Load in</Original>
+              <English>Load in</English>
+              <German>Einladen</German>
           </Key>
+          <Key ID="STR_BTC_HAM_ACTION_LOGISTIC_LOADSEL">
+              <Original>Load selected</Original>
+              <English>Load selected</English>
+              <German>Ausgewähltes einladen</German>
+          </Key>
+          <Key ID="STR_BTC_HAM_ACTION_LOGISTIC_CHECKCARGO">
+              <Original>Check cargo</Original>
+              <English>Check cargo</English>
+              <German>Fracht überprüfen</German>
+          </Key>
+
       </Container>
       <Container name="Action(ACE): FOB">
-          <Key ID="STR_BTC_HAM_ACTION_FOB_">
-              <Original></Original>
-              <English></English>
-              <German></German>
+          <Key ID="STR_BTC_HAM_ACTION_FOB_MOUNT">
+              <Original>Mount FOB</Original>
+              <English>Mount FOB</English>
+              <German>FOB aufbauen</German>
+          </Key>
+          <Key ID="STR_BTC_HAM_ACTION_FOB_DISMANTLE">
+              <Original>Dismantle FOB</Original>
+              <English>Dismantle FOB</English>
+              <German>FOB abbauen</German>
+          </Key>
+          <Key ID="STR_BTC_HAM_ACTION_FOB_PLACE">
+              <Original>Place</Original>
+              <English>Place</English>
+              <German>Platzieren</German>
           </Key>
       </Container>
       <Container name="Action(ACE): Orders">
-          <Key ID="STR_BTC_HAM_ACTION_ORDERS_">
-              <Original></Original>
-              <English></English>
-              <German></German>
+          <Key ID="STR_BTC_HAM_ACTION_ORDERS_MAIN">
+              <Original>Civil Orders</Original>
+              <English>Civil Orders</English>
+              <German>Befehle (Zivilisten)</German>
+          </Key>
+          <Key ID="STR_BTC_HAM_ACTION_ORDERS_STOP">
+              <Original>Stop</Original>
+              <English>Stop</English>
+              <German>Stopp</German>
+          </Key>
+          <Key ID="STR_BTC_HAM_ACTION_ORDERS_GETDOWN">
+              <Original>Get down</Original>
+              <English>Get down</English>
+              <German>Auf den Boden</German>
+          </Key>
+          <Key ID="STR_BTC_HAM_ACTION_ORDERS_GOAWAY">
+              <Original>Go away</Original>
+              <English>Go away</English>
+              <German>Geh weg</German>
+          </Key>
+          <Key ID="STR_BTC_HAM_ACTION_ORDERS_TAXI">
+              <Original>Taxi</Original>
+              <English>Taxi</English>
+              <German>Taxi</German>
+          </Key>
+          <Key ID="STR_BTC_HAM_ACTION_ORDERS_ASKINFO">
+              <Original>Ask info</Original>
+              <English>Ask info</English>
+              <German>Nach Informationen fragen</German>
+          </Key>
+          <Key ID="STR_BTC_HAM_ACTION_ORDERS_ASKREP">
+              <Original>Ask Reputation</Original>
+              <English>Ask Reputation</English>
+              <German>Nach dem Ansehen fragen</German>
           </Key>
       </Container>
       <Container name="Action(ACE): Side missions">
-          <Key ID="STR_BTC_HAM_ACTION_SIDEMISSION_">
-              <Original></Original>
-              <English></English>
-              <German></German>
+          <Key ID="STR_BTC_HAM_ACTION_SIDEMISSION_MAIN">
+              <Original>Side mission</Original>
+              <English>Side mission</English>
+              <German>Nebenmission</German>
+          </Key>
+          <Key ID="STR_BTC_HAM_ACTION_SIDEMISSION_ABORT">
+              <Original>Abort</Original>
+              <English>Abort</English>
+              <German>Abbrechen</German>
+          </Key>
+          <Key ID="STR_BTC_HAM_ACTION_SIDEMISSION_REQ">
+              <Original>Request</Original>
+              <English>Request</English>
+              <German>Anfordern</German>
           </Key>
       </Container>
       <Container name="Action(ACE): Re-deploy">
-          <Key ID="STR_BTC_HAM_ACTION_REDEPLOY_">
-              <Original></Original>
-              <English></English>
-              <German></German>
+          <Key ID="STR_BTC_HAM_ACTION_REDEPLOY_MAIN">
+              <Original>Re-deploy</Original>
+              <English>Re-deploy</English>
+              <German>Verlegen</German>
+          </Key>
+      </Container>
+      <Container name="Action(ACE): Arsenal">
+          <Key ID="STR_BTC_HAM_ACTION_ARSENAL_OPEN">
+              <Original>Arsenal</Original>
+              <English>Arsenal</English>
+              <German>Arsenal</German>
           </Key>
       </Container>
     </Package>
