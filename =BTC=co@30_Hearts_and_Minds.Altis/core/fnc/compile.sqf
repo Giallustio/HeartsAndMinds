@@ -214,8 +214,6 @@ btc_fnc_log_unload = compile preprocessFileLineNumbers "core\fnc\log\unload.sqf"
 btc_fnc_log_getconfigmagazines = compile preprocessFileLineNumbers "core\fnc\log\getconfigmagazines.sqf";
 btc_fnc_log_copy = compile preprocessFileLineNumbers "core\fnc\log\copy.sqf";
 btc_fnc_log_paste = compile preprocessFileLineNumbers "core\fnc\log\paste.sqf";
-btc_fnc_log_hitch_points = compile preprocessFileLineNumbers "core\fnc\log\hitch_points.sqf";
-btc_fnc_log_get_corner_points = compile preprocessFileLineNumbers "core\fnc\log\get_corner_points.sqf";
 
 //MIL
 btc_fnc_mil_class = compile preprocessFileLineNumbers "core\fnc\mil\class.sqf";
@@ -273,6 +271,8 @@ if (!isDedicated) then {
 
 	//LOG
 	btc_fnc_log_garage = compile preprocessFileLineNumbers "core\fnc\log\garage.sqf";
+	btc_fnc_log_hitch_points = compile preprocessFileLineNumbers "core\fnc\log\hitch_points.sqf";
+	btc_fnc_log_get_corner_points = compile preprocessFileLineNumbers "core\fnc\log\get_corner_points.sqf";
 
 	//TASK
 	btc_fnc_task_create = compile preprocessFileLineNumbers "core\fnc\task\create.sqf";
