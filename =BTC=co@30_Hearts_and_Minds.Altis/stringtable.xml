@@ -210,6 +210,301 @@
             </Key>
         </Container>
     </Package>
+    <Package name="Parameters">
+        <Container name="Parameters: Time">
+            <Key ID="STR_BTC_HAM_PARAM_TIME_TITLE">
+                <Original>&lt;&lt;&lt;&lt; Time options &gt;&gt;&gt;&gt;</Original>
+                <English>&lt;&lt;&lt;&lt; Time options &gt;&gt;&gt;&gt;</English>
+                <German>&lt;&lt;&lt;&lt; Zeiteinstellungen &gt;&gt;&gt;&gt;</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_TIME_START">
+                <Original>- Set the start time:</Original>
+                <English>- Set the start time:</English>
+                <German>- Legt die Startzeit fest:</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_TIME_MULTIP">
+                <Original>- Acceleration time multiplier:</Original>
+                <English>- Acceleration time multiplier:</English>
+                <German>- Zeit-Beschleunigungs-Multiplikator:</German>
+            </Key>
+        </Container>
+        <Container name="Parameters: Database">
+            <Key ID="STR_BTC_HAM_PARAM_DB_LOAD">
+                <Original>- Load the savegame (if available)</Original>
+                <English>- Load the savegame (if available)</English>
+                <German>- Spielstand wird geladen (wenn verfügbar)</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_DB_ASAVE">
+                <Original>- Auto savegame (can break player immersion)</Original>
+                <English>- Auto savegame (can break player immersion)</English>
+                <German>- Spielstand autom. sichern (kann die Immersion stören)</German>
+            </Key>
+        </Container>
+        <Container name="Parameters: Factions">
+            <Key ID="STR_BTC_HAM_PARAM_FAC_TITLE">
+                <Original>&lt;&lt;&lt;&lt; Faction options &gt;&gt;&gt;&gt;</Original>
+                <English>&lt;&lt;&lt;&lt; Faction options &gt;&gt;&gt;&gt;</English>
+                <German>&lt;&lt;&lt;&lt; Fraktion Einstellungen &gt;&gt;&gt;&gt;</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_FAC_ETYPE">
+                <Original>- Enemy type:</Original>
+                <English>- Enemy type:</English>
+                <German>- Feindliche Einheiten:</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_FAC_EAA">
+                <Original>- Anti-Air infantry:</Original>
+                <English>- Anti-Air infantry:</English>
+                <German>- feindl. Fliegerabwehrtruppen:</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_FAC_ETANK">
+                <Original>- Enemy uses Tank:</Original>
+                <English>- Enemy uses Tank:</English>
+                <German>- feindl. Panzer:</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_FAC_CTYPE">
+                <Original>- Civil type:</Original>
+                <English>- Civil type:</English>
+                <German>- Zivile Einheiten:</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_FAC_CTYPEVEH">
+                <Original>- Civil vehicle type:</Original>
+                <English>- Civil vehicle type:</English>
+                <German>- Fahrzeuge der Zivilen Einheite:</German>
+            </Key>
+        </Container>
+        <Container name="Parameters: IEDS">
+            <Key ID="STR_BTC_HAM_PARAM_IED_TITLE">
+                <Original>&lt;&lt;&lt;&lt; IED options &gt;&gt;&gt;&gt;</Original>
+                <English>&lt;&lt;&lt;&lt; IED options &gt;&gt;&gt;&gt;</English>
+                <German>&lt;&lt;&lt;&lt; IED Einstellungen &gt;&gt;&gt;&gt;</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_IED_RATIO">
+                <Original>- IEDs ratio:</Original>
+                <English>- IEDs ratio:</English>
+                <German>- IED Wahrscheinlichkeit:</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_IED_RATIO_LOW">
+                <Original>Low</Original>
+                <English>Low</English>
+                <German>Niedrig</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_IED_RATIO_NORMAL">
+                <Original>Normal</Original>
+                <English>Normal</English>
+                <German>Normal</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_IED_RATIO_HIGH">
+                <Original>High</Original>
+                <English>High</English>
+                <German>Hoch</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_IED_DISARM">
+                <Original>- Everybody can disarm IED:</Original>
+                <English>- Everybody can disarm IED:</English>
+                <German>- Jeder kann IEDs entschärfen:</German>
+            </Key>
+        </Container>
+        <Container name="Parameters: Hideout/Cache">
+            <Key ID="STR_BTC_HAM_PARAM_HIDE_TITLE">
+                <Original>&lt;&lt;&lt;&lt; Hideout/Cache options &gt;&gt;&gt;&gt;</Original>
+                <English>&lt;&lt;&lt;&lt; Hideout/Cache options &gt;&gt;&gt;&gt;</English>
+                <German>&lt;&lt;&lt;&lt; Verstecke/Waffenlager Einstellungen &gt;&gt;&gt;&gt;</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_HIDE_NUMBERS">
+                <Original>- Hideout numbers:</Original>
+                <English>- Hideout numbers:</English>
+                <German>- Anzahl der Verstecke:</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_HIDE_NUMBERS_RND">
+                <Original>Random</Original>
+                <English>Random</English>
+                <German>Zufällig</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_CACHE_DISTANCE">
+                <Original>- Info cache distance:</Original>
+                <English>- Info cache distance:</English>
+                <German>- Distanzangabe für ein Waffenlager(Startwert):</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_CACHE_RATIO">
+                <Original>- Cache info ratio:</Original>
+                <English>- Cache info ratio:</English>
+                <German>- Verkürzungschritt je gefundener Information:</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_CACHE_DEADINFO">
+                <Original>- Intel from dead bodies chance:</Original>
+                <English>- Intel from dead bodies chance:</English>
+                <German>- Chance auf Informationen von toten Gegnern:</German>
+            </Key>
+        </Container>
+        <Container name="Parameters: Medical">
+            <Key ID="STR_BTC_HAM_MEDI_TITLE">
+                <Original>&lt;&lt;&lt;&lt; Medical options &gt;&gt;&gt;&gt;</Original>
+                <English>&lt;&lt;&lt;&lt; Medical options &gt;&gt;&gt;&gt;</English>
+                <German>&lt;&lt;&lt;&lt; Sanitäts-Einstellungen &gt;&gt;&gt;&gt;</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_MEDI_REDEPLOY">
+                <Original>- Allow re-deploy?</Original>
+                <English>- Allow re-deploy?</English>
+                <German>- Verlegen erlauben?</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_MEDI_LEVEL">
+                <Original>- Medical Level</Original>
+                <English>- Medical Level</English>
+                <German>- Stufe des Sanitätssystem</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_MEDI_WOUNDS">
+                <Original>- Advanced Wounds</Original>
+                <English>- Advanced Wounds</English>
+                <German>- Erweiterte Wunden</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_MEDI_REVTIME">
+                <Original>- Revive time:</Original>
+                <English>- Revive time:</English>
+                <German>- Wiederbelebungszeit:</German>
+            </Key>
+        </Container>
+        <Container name="Parameters: AI Skill">
+            <Key ID="STR_BTC_HAM_PARAM_SKILL_TITLE">
+                <Original>&lt;&lt;&lt;&lt; A3 Skill options &gt;&gt;&gt;&gt;</Original>
+                <English>&lt;&lt;&lt;&lt; A3 Skill options &gt;&gt;&gt;&gt;</English>
+                <German>&lt;&lt;&lt;&lt; A3 Skill options &gt;&gt;&gt;&gt;</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_SKILL_ONOFF">
+                <Original>- Set skill?</Original>
+                <English>- Set skill?</English>
+                <German>- KI-Fertigkeiten festlegen?</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_SKILL_GEN">
+                <Original>- Set skill, general</Original>
+                <English>- Set skill, general</English>
+                <German>- KI-Fertigkeit, Allgemein</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_SKILL_AIMACC">
+                <Original>- Set skill, aimingAccuracy</Original>
+                <English>- Set skill, aimingAccuracy</English>
+                <German>- KI-Fertigkeit, Zielgenauigkeit</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_SKILL_AIMSKILL">
+                <Original>- Set skill, aimingShake</Original>
+                <English>- Set skill, aimingShake</English>
+                <German>- KI-Fertigkeit, Verwackeln beim Zielen</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_SKILL_AIMSPEED">
+                <Original>- Set skill, aimingSpeed</Original>
+                <English>- Set skill, aimingSpeed</English>
+                <German>- KI-Fertigkeit, Zielgeschwindigkeit</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_SKILL_ENDURANCE">
+                <Original>- Set skill, endurance</Original>
+                <English>- Set skill, endurance</English>
+                <German>- KI-Fertigkeit, Ausdauer</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_SKILL_SPOTDIST">
+                <Original>- Set skill, spotDistance</Original>
+                <English>- Set skill, spotDistance</English>
+                <German>- KI-Fertigkeit, Aufklärungsentfernung</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_SKILL_SPOTTIME">
+                <Original>- Set skill, spotTime</Original>
+                <English>- Set skill, spotTime</English>
+                <German>- KI-Fertigkeit, Aufklärungsgeschwindigkeit</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_SKILL_COURAGE">
+                <Original>- Set skill, courage</Original>
+                <English>- Set skill, courage</English>
+                <German>- KI-Fertigkeit, Mut</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_SKILL_RELOAD">
+                <Original>- Set skill, reloadSpeed</Original>
+                <English>- Set skill, reloadSpeed</English>
+                <German>- KI-Fertigkeit, Nachladegeschwindigkeit</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_SKILL_COMMANDING">
+                <Original>- Set skill, commanding</Original>
+                <English>- Set skill, commanding</English>
+                <German>- KI-Fertigkeit, Befehligen</German>
+            </Key>
+        </Container>
+        <Container name="Parameters: Gameplay">
+            <Key ID="STR_BTC_HAM_PARAM_GAMEPLAY_TITLE">
+                <Original>&lt;&lt;&lt;&lt; Gameplay options &gt;&gt;&gt;&gt;</Original>
+                <English>&lt;&lt;&lt;&lt; Gameplay options &gt;&gt;&gt;&gt;</English>
+                <German>&lt;&lt;&lt;&lt; Spieleinstellungen &gt;&gt;&gt;&gt;</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_GAMEPLAY_SEA">
+                <Original>- Extend battlefield to sea:</Original>
+                <English>- Extend battlefield to sea:</English>
+                <German>- Kämpfe aufs Wasser ausweiten:</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_GAMEPLAY_ARMEDHIDEOUT">
+                <Original>- Add armed vehicles in Hideout:</Original>
+                <English>- Add armed vehicles in Hideout:</English>
+                <German>- Gepanzerte Fahrzeuge bei den Verstecken:</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_GAMEPLAY_ARMEDOTHER">
+                <Original>- Add armed vehicles in Side mission/Cache:</Original>
+                <English>- Add armed vehicles in Side mission/Cache:</English>
+                <German>- Gepanzerte Fahrzeuge bei den Nebenmissionen/ Waffenlagern:</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_GAMEPLAY_SIDEM">
+                <Original>- Side mission cycle:</Original>
+                <English>- Side mission cycle:</English>
+                <German>- Autom. nächste Nebenmission starten:</German>
+            </Key>
+        </Container>
+        <Container name="Parameters: Other">
+            <Key ID="STR_BTC_HAM_PARAM_OTHER_TITLE">
+                <Original>&lt;&lt;&lt;&lt; Other options &gt;&gt;&gt;&gt;</Original>
+                <English>&lt;&lt;&lt;&lt; Other options &gt;&gt;&gt;&gt;</English>
+                <German>&lt;&lt;&lt;&lt; Sonstige Einstellungen &gt;&gt;&gt;&gt;</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_OTHER_REPSTART">
+                <Original>- Reputation at start:</Original>
+                <English>- Reputation at start:</English>
+                <German>- Ansehen zu Beginn:</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_OTHER_REPSTART_VLOW">
+                <Original>Very Low</Original>
+                <English>Very Low</English>
+                <German>Sehr Niedrig</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_OTHER_REARMLEVEL">
+                <Original>- Rearm Level:</Original>
+                <English>- Rearm Level:</English>
+                <German>- Aufmunitioniereinstellung:</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_OTHER_GARAGEADMIN">
+                <Original>- Activate garage for admin:</Original>
+                <English>- Activate garage for admin:</English>
+                <German>- Virtuelle Garage für den Admin:</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_OTHER_SPAWNRAD">
+                <Original>- Spawn city radius offset:</Original>
+                <English>- Spawn city radius offset:</English>
+                <German>- Radius zum Spawnen von Einheiten:</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_OTHER_SPAWNRAD_DEF">
+                <Original>300 m (Default: Altis, Tanoa)</Original>
+                <English>300 m (Default: Altis, Tanoa)</English>
+                <German>300 m (Standard: Altis, Tanoa)</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_OTHER_DISABLESPAWN">
+                <Original>- Disable city activation when a plane or helicopter (>190Km/h) is flying above:</Original>
+                <English>- Disable city activation when a plane or helicopter (>190Km/h) is flying above:</English>
+                <German>- Das Spawnen von Einheiten deaktivieren, wenn ein Flugzeug oder Helikopter (>190Km/h) drüber fliegt:</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_OTHER_DEBUG">
+                <Original>- Debug:</Original>
+                <English>- Debug:</English>
+                <German>- Debug:</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_OTHER_DEBUG_LOGONLY">
+                <Original>Log only</Original>
+                <English>Log only</English>
+                <German>Nur Logs</German>
+            </Key>
+        </Container>
+    </Package>
     <Package name="Missions">
         <Container name="Mission 1: Example">
             <Key ID="STR_BTC_HAM_MISSION_1">
