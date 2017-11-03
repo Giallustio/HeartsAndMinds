@@ -698,4 +698,73 @@
             </Key>
         </Container>
     </Package>
+    <Package name="Other">
+        <Container name="Other: FOB Actions">
+            <Key ID="STR_BTC_HAM_O_FOB_CREATE_H_AREA">
+                <Original>Area is not flat enough!</Original>
+                <English>Area is not flat enough!</English>
+                <German>Das Gebiet ist nicht Flach genug!</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_FOB_CREATE_H_DBASE">
+                <Original>Too close at the main base!</Original>
+                <English>Too close at the main base!</English>
+                <German>Zu Nahe an der Haupt-Basis!</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_FOB_CREATE_H_CAREA">
+                <Original>Clear the area before mounting the FOB, %1</Original>
+                <English>Clear the area before mounting the FOB, %1</English>
+                <German>Das Gebiet ist nicht leer, es sind noch folgende Fahrzeuge im Weg: %1</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_FOB_CREATE_H_ESC">
+                <Original>Do not close the dialog with esc</Original>
+                <English>Do not close the dialog with esc</English>
+                <German>Den Dialog nicht mir ESC schließen</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_FOB_CREATE_H_NAME">
+                <Original>Name your FOB!</Original>
+                <English>Name your FOB!</English>
+                <German>FOB benennen!</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_FOB_CREATE_H_NAMENOTA">
+                <Original>Name already in use!</Original>
+                <English>Name already in use!</English>
+                <German>Der Name wird bereits verwendet!</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_FOB_CREATE_H_WIP">
+                <Original>Get back! Mounting FOB</Original>
+                <English>Get back! Mounting FOB</English>
+                <German>Geh ein wenig zurück! Die FOB wird aufgebaut</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_FOB_DISMANTLE_H_PROC">
+                <Original>Dismantle, move out ...</Original>
+                <English>Dismantle, move out ...</English>
+                <German>Abbau im gange, geh ein wenig zurück...</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_FOB_REDEPLOY_H_NOFOB">
+                <Original>No FOBs deployed</Original>
+                <English>No FOBs deployed</English>
+                <German>Es sind keine FOBs aufgebaut</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_FOB_REDEPLOY_H_MOVING">
+                <Original>Moving to %1</Original>
+                <English>Moving to %1</English>
+                <German>Verlege zu %1</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_FOB_DLG_T_NAMEFOB">
+                <Original>Name the FOB:</Original>
+                <English>Name the FOB:</English>
+                <German>FOB Benennen:</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_FOB_DLG_T_APPLY">
+                <Original>Apply</Original>
+                <English>Apply</English>
+                <German>Bestätigen</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_FOB_DLG_T_SELECTFOB">
+                <Original>Select the FOB:</Original>
+                <English>Select the FOB:</English>
+                <German>FOB auswählen:</German>
+            </Key>
+        </Container>
+    </Package>
 </Project>
