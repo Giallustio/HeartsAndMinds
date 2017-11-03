@@ -1,5 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project name="BTC Hearts and Minds: Mission">
+    <Package name="Description">
+        <Container name="Description: Main">
+            <Key ID="STR_BTC_HAM_DESCR_NAME">
+                <Original>Hearts and Minds</Original>
+                <English>Hearts and Minds</English>
+                <German>Hearts and Minds</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_DESCR_AUTHOR">
+                <Original>Giallustio</Original>
+                <English>Giallustio</English>
+                <German>Giallustio</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_DESCR_MISSION">
+                <Original>www.blacktemplars.altervista.org</Original>
+                <English>www.blacktemplars.altervista.org</English>
+                <German>www.blacktemplars.altervista.org</German>
+            </Key>
+        </Container>
+    </Package>
     <Package name="Documentation">
         <Container name="Documentation: Title">
             <Key ID="STR_BTC_HAM_DOC_TITLE">
