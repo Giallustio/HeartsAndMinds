@@ -287,4 +287,6 @@ class Params {
 		texts[]={$STR_DISABLED,$STR_ENABLED, $STR_BTC_HAM_PARAM_OTHER_DEBUG_LOGONLY}; // texts[]={"Off","On","Log only"};
 		default = 0;
 	};
+	#define DEBUGCONSOLE_DEFAULT 0 // Debug Admin Console: 0 = off | 1 = on
+	#include "\a3\functions_f\Params\paramDebugConsole.hpp"
 };
