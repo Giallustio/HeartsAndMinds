@@ -14,7 +14,7 @@
 
 	call btc_fnc_int_add_actions;
 
-	if (player getVariable ["interpreter", false]) then {player createDiarySubject ["Diary log","Diary log"];};
+	if (player getVariable ["interpreter", false]) then {player createDiarySubject [(localize "STR_BTC_HAM_CON_INFO_ASKHIDEOUT_DIARYLOG"),(localize "STR_BTC_HAM_CON_INFO_ASKHIDEOUT_DIARYLOG")];}; //"Diary log"STR_BTC_HAM_CON_INFO_ASKHIDEOUT_DIARYLOG
 
 	removeAllWeapons player;
 
