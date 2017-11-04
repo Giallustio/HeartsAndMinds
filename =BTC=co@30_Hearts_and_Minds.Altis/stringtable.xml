@@ -237,26 +237,26 @@
                 <German>&lt;&lt;&lt;&lt; Zeiteinstellungen &gt;&gt;&gt;&gt;</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_TIME_START">
-                <Original>- Set the start time:</Original>
-                <English>- Set the start time:</English>
-                <German>- Legt die Startzeit fest:</German>
+                <Original>    Set the start time:</Original>
+                <English>    Set the start time:</English>
+                <German>    Legt die Startzeit fest:</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_TIME_MULTIP">
-                <Original>- Acceleration time multiplier:</Original>
-                <English>- Acceleration time multiplier:</English>
-                <German>- Zeit-Beschleunigungs-Multiplikator:</German>
+                <Original>    Acceleration time multiplier:</Original>
+                <English>    Acceleration time multiplier:</English>
+                <German>    Zeit-Beschleunigungs-Multiplikator:</German>
             </Key>
         </Container>
         <Container name="Parameters: Database">
             <Key ID="STR_BTC_HAM_PARAM_DB_LOAD">
-                <Original>- Load the savegame (if available)</Original>
-                <English>- Load the savegame (if available)</English>
-                <German>- Spielstand wird geladen (wenn verfügbar)</German>
+                <Original>    Load the savegame (if available)</Original>
+                <English>    Load the savegame (if available)</English>
+                <German>    Spielstand wird geladen (wenn verfügbar)</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_DB_ASAVE">
-                <Original>- Auto savegame (can break player immersion)</Original>
-                <English>- Auto savegame (can break player immersion)</English>
-                <German>- Spielstand autom. sichern (kann die Immersion stören)</German>
+                <Original>    Auto savegame (can break player immersion)</Original>
+                <English>    Auto savegame (can break player immersion)</English>
+                <German>    Spielstand autom. sichern (kann die Immersion stören)</German>
             </Key>
         </Container>
         <Container name="Parameters: Factions">
@@ -266,29 +266,29 @@
                 <German>&lt;&lt;&lt;&lt; Fraktion Einstellungen &gt;&gt;&gt;&gt;</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_FAC_ETYPE">
-                <Original>- Enemy type:</Original>
-                <English>- Enemy type:</English>
-                <German>- Feindliche Einheiten:</German>
+                <Original>    Enemy type:</Original>
+                <English>    Enemy type:</English>
+                <German>    Feindliche Einheiten:</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_FAC_EAA">
-                <Original>- Anti-Air infantry:</Original>
-                <English>- Anti-Air infantry:</English>
-                <German>- feindl. Fliegerabwehrtruppen:</German>
+                <Original>    Anti-Air infantry:</Original>
+                <English>    Anti-Air infantry:</English>
+                <German>    feindl. Fliegerabwehrtruppen:</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_FAC_ETANK">
-                <Original>- Enemy uses Tank:</Original>
-                <English>- Enemy uses Tank:</English>
-                <German>- feindl. Panzer:</German>
+                <Original>    Enemy uses Tank:</Original>
+                <English>    Enemy uses Tank:</English>
+                <German>    feindl. Panzer:</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_FAC_CTYPE">
-                <Original>- Civil type:</Original>
-                <English>- Civil type:</English>
-                <German>- Zivile Einheiten:</German>
+                <Original>    Civil type:</Original>
+                <English>    Civil type:</English>
+                <German>    Zivile Einheiten:</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_FAC_CTYPEVEH">
-                <Original>- Civil vehicle type:</Original>
-                <English>- Civil vehicle type:</English>
-                <German>- Fahrzeuge der Zivilen Einheite:</German>
+                <Original>    Civil vehicle type:</Original>
+                <English>    Civil vehicle type:</English>
+                <German>    Fahrzeuge der Zivilen Einheite:</German>
             </Key>
         </Container>
         <Container name="Parameters: IEDS">
@@ -298,9 +298,9 @@
                 <German>&lt;&lt;&lt;&lt; IED Einstellungen &gt;&gt;&gt;&gt;</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_IED_RATIO">
-                <Original>- IEDs ratio:</Original>
-                <English>- IEDs ratio:</English>
-                <German>- IED Wahrscheinlichkeit:</German>
+                <Original>    IEDs ratio:</Original>
+                <English>    IEDs ratio:</English>
+                <German>    IED Wahrscheinlichkeit:</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_IED_RATIO_LOW">
                 <Original>Low</Original>
@@ -318,9 +318,9 @@
                 <German>Hoch</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_IED_DISARM">
-                <Original>- Everybody can disarm IED:</Original>
-                <English>- Everybody can disarm IED:</English>
-                <German>- Jeder kann IEDs entschärfen:</German>
+                <Original>    Everybody can disarm IED:</Original>
+                <English>    Everybody can disarm IED:</English>
+                <German>    Jeder kann IEDs entschärfen:</German>
             </Key>
         </Container>
         <Container name="Parameters: Hideout/Cache">
@@ -330,9 +330,9 @@
                 <German>&lt;&lt;&lt;&lt; Verstecke/Waffenlager Einstellungen &gt;&gt;&gt;&gt;</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_HIDE_NUMBERS">
-                <Original>- Hideout numbers:</Original>
-                <English>- Hideout numbers:</English>
-                <German>- Anzahl der Verstecke:</German>
+                <Original>    Hideout numbers:</Original>
+                <English>    Hideout numbers:</English>
+                <German>    Anzahl der Verstecke:</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_HIDE_NUMBERS_RND">
                 <Original>Random</Original>
@@ -340,19 +340,19 @@
                 <German>Zufällig</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_CACHE_DISTANCE">
-                <Original>- Info cache distance:</Original>
-                <English>- Info cache distance:</English>
-                <German>- Distanzangabe für ein Waffenlager(Startwert):</German>
+                <Original>    Info cache distance:</Original>
+                <English>    Info cache distance:</English>
+                <German>    Distanzangabe für ein Waffenlager(Startwert):</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_CACHE_RATIO">
-                <Original>- Cache info ratio:</Original>
-                <English>- Cache info ratio:</English>
-                <German>- Verkürzungschritt je gefundener Information:</German>
+                <Original>    Cache info ratio:</Original>
+                <English>    Cache info ratio:</English>
+                <German>    Verkürzungschritt je gefundener Information:</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_CACHE_DEADINFO">
-                <Original>- Intel from dead bodies chance:</Original>
-                <English>- Intel from dead bodies chance:</English>
-                <German>- Chance auf Informationen von toten Gegnern:</German>
+                <Original>    Intel from dead bodies chance:</Original>
+                <English>    Intel from dead bodies chance:</English>
+                <German>    Chance auf Informationen von toten Gegnern:</German>
             </Key>
         </Container>
         <Container name="Parameters: Medical">
@@ -362,24 +362,24 @@
                 <German>&lt;&lt;&lt;&lt; Sanitäts-Einstellungen &gt;&gt;&gt;&gt;</German>
             </Key>
             <Key ID="STR_BTC_HAM_MEDI_REDEPLOY">
-                <Original>- Allow re-deploy?</Original>
-                <English>- Allow re-deploy?</English>
-                <German>- Verlegen erlauben?</German>
+                <Original>    Allow re-deploy?</Original>
+                <English>    Allow re-deploy?</English>
+                <German>    Verlegen erlauben?</German>
             </Key>
             <Key ID="STR_BTC_HAM_MEDI_LEVEL">
-                <Original>- Medical Level</Original>
-                <English>- Medical Level</English>
-                <German>- Stufe des Sanitätssystem</German>
+                <Original>    Medical Level</Original>
+                <English>    Medical Level</English>
+                <German>    Stufe des Sanitätssystem</German>
             </Key>
             <Key ID="STR_BTC_HAM_MEDI_WOUNDS">
-                <Original>- Advanced Wounds</Original>
-                <English>- Advanced Wounds</English>
-                <German>- Erweiterte Wunden</German>
+                <Original>    Advanced Wounds</Original>
+                <English>    Advanced Wounds</English>
+                <German>    Erweiterte Wunden</German>
             </Key>
             <Key ID="STR_BTC_HAM_MEDI_REVTIME">
-                <Original>- Revive time:</Original>
-                <English>- Revive time:</English>
-                <German>- Wiederbelebungszeit:</German>
+                <Original>    Revive time:</Original>
+                <English>    Revive time:</English>
+                <German>    Wiederbelebungszeit:</German>
             </Key>
         </Container>
         <Container name="Parameters: AI Skill">
@@ -389,59 +389,59 @@
                 <German>&lt;&lt;&lt;&lt; A3 Skill options &gt;&gt;&gt;&gt;</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_SKILL_ONOFF">
-                <Original>- Set skill?</Original>
-                <English>- Set skill?</English>
-                <German>- KI-Fertigkeiten festlegen?</German>
+                <Original>    Set skill?</Original>
+                <English>    Set skill?</English>
+                <German>    KI-Fertigkeiten festlegen?</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_SKILL_GEN">
-                <Original>- Set skill, general</Original>
-                <English>- Set skill, general</English>
-                <German>- KI-Fertigkeit, Allgemein</German>
+                <Original>    Set skill, general</Original>
+                <English>    Set skill, general</English>
+                <German>    KI-Fertigkeit, Allgemein</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_SKILL_AIMACC">
-                <Original>- Set skill, aimingAccuracy</Original>
-                <English>- Set skill, aimingAccuracy</English>
-                <German>- KI-Fertigkeit, Zielgenauigkeit</German>
+                <Original>    Set skill, aimingAccuracy</Original>
+                <English>    Set skill, aimingAccuracy</English>
+                <German>    KI-Fertigkeit, Zielgenauigkeit</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_SKILL_AIMSKILL">
-                <Original>- Set skill, aimingShake</Original>
-                <English>- Set skill, aimingShake</English>
-                <German>- KI-Fertigkeit, Verwackeln beim Zielen</German>
+                <Original>    Set skill, aimingShake</Original>
+                <English>    Set skill, aimingShake</English>
+                <German>    KI-Fertigkeit, Verwackeln beim Zielen</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_SKILL_AIMSPEED">
-                <Original>- Set skill, aimingSpeed</Original>
-                <English>- Set skill, aimingSpeed</English>
-                <German>- KI-Fertigkeit, Zielgeschwindigkeit</German>
+                <Original>    Set skill, aimingSpeed</Original>
+                <English>    Set skill, aimingSpeed</English>
+                <German>    KI-Fertigkeit, Zielgeschwindigkeit</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_SKILL_ENDURANCE">
-                <Original>- Set skill, endurance</Original>
-                <English>- Set skill, endurance</English>
-                <German>- KI-Fertigkeit, Ausdauer</German>
+                <Original>    Set skill, endurance</Original>
+                <English>    Set skill, endurance</English>
+                <German>    KI-Fertigkeit, Ausdauer</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_SKILL_SPOTDIST">
-                <Original>- Set skill, spotDistance</Original>
-                <English>- Set skill, spotDistance</English>
-                <German>- KI-Fertigkeit, Aufklärungsentfernung</German>
+                <Original>    Set skill, spotDistance</Original>
+                <English>    Set skill, spotDistance</English>
+                <German>    KI-Fertigkeit, Aufklärungsentfernung</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_SKILL_SPOTTIME">
-                <Original>- Set skill, spotTime</Original>
-                <English>- Set skill, spotTime</English>
-                <German>- KI-Fertigkeit, Aufklärungsgeschwindigkeit</German>
+                <Original>    Set skill, spotTime</Original>
+                <English>    Set skill, spotTime</English>
+                <German>    KI-Fertigkeit, Aufklärungsgeschwindigkeit</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_SKILL_COURAGE">
-                <Original>- Set skill, courage</Original>
-                <English>- Set skill, courage</English>
-                <German>- KI-Fertigkeit, Mut</German>
+                <Original>    Set skill, courage</Original>
+                <English>    Set skill, courage</English>
+                <German>    KI-Fertigkeit, Mut</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_SKILL_RELOAD">
-                <Original>- Set skill, reloadSpeed</Original>
-                <English>- Set skill, reloadSpeed</English>
-                <German>- KI-Fertigkeit, Nachladegeschwindigkeit</German>
+                <Original>    Set skill, reloadSpeed</Original>
+                <English>    Set skill, reloadSpeed</English>
+                <German>    KI-Fertigkeit, Nachladegeschwindigkeit</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_SKILL_COMMANDING">
-                <Original>- Set skill, commanding</Original>
-                <English>- Set skill, commanding</English>
-                <German>- KI-Fertigkeit, Befehligen</German>
+                <Original>    Set skill, commanding</Original>
+                <English>    Set skill, commanding</English>
+                <German>    KI-Fertigkeit, Befehligen</German>
             </Key>
         </Container>
         <Container name="Parameters: Gameplay">
@@ -451,24 +451,24 @@
                 <German>&lt;&lt;&lt;&lt; Spieleinstellungen &gt;&gt;&gt;&gt;</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_GAMEPLAY_SEA">
-                <Original>- Extend battlefield to sea:</Original>
-                <English>- Extend battlefield to sea:</English>
-                <German>- Kämpfe aufs Wasser ausweiten:</German>
+                <Original>    Extend battlefield to sea:</Original>
+                <English>    Extend battlefield to sea:</English>
+                <German>    Kämpfe aufs Wasser ausweiten:</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_GAMEPLAY_ARMEDHIDEOUT">
-                <Original>- Add armed vehicles in Hideout:</Original>
-                <English>- Add armed vehicles in Hideout:</English>
-                <German>- Gepanzerte Fahrzeuge bei den Verstecken:</German>
+                <Original>    Add armed vehicles in Hideout:</Original>
+                <English>    Add armed vehicles in Hideout:</English>
+                <German>    Gepanzerte Fahrzeuge bei den Verstecken:</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_GAMEPLAY_ARMEDOTHER">
-                <Original>- Add armed vehicles in Side mission/Cache:</Original>
-                <English>- Add armed vehicles in Side mission/Cache:</English>
-                <German>- Gepanzerte Fahrzeuge bei den Nebenmissionen/ Waffenlagern:</German>
+                <Original>    Add armed vehicles in Side mission/Cache:</Original>
+                <English>    Add armed vehicles in Side mission/Cache:</English>
+                <German>    Gepanzerte Fahrzeuge bei den Nebenmissionen/ Waffenlagern:</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_GAMEPLAY_SIDEM">
-                <Original>- Side mission cycle:</Original>
-                <English>- Side mission cycle:</English>
-                <German>- Autom. nächste Nebenmission starten:</German>
+                <Original>    Side mission cycle:</Original>
+                <English>    Side mission cycle:</English>
+                <German>    Autom. nächste Nebenmission starten:</German>
             </Key>
         </Container>
         <Container name="Parameters: Other">
@@ -478,9 +478,9 @@
                 <German>&lt;&lt;&lt;&lt; Sonstige Einstellungen &gt;&gt;&gt;&gt;</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_OTHER_REPSTART">
-                <Original>- Reputation at start:</Original>
-                <English>- Reputation at start:</English>
-                <German>- Ansehen zu Beginn:</German>
+                <Original>    Reputation at start:</Original>
+                <English>    Reputation at start:</English>
+                <German>    Ansehen zu Beginn:</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_OTHER_REPSTART_VLOW">
                 <Original>Very Low</Original>
@@ -488,19 +488,19 @@
                 <German>Sehr Niedrig</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_OTHER_REARMLEVEL">
-                <Original>- Rearm Level:</Original>
-                <English>- Rearm Level:</English>
-                <German>- Aufmunitioniereinstellung:</German>
+                <Original>    Rearm Level:</Original>
+                <English>    Rearm Level:</English>
+                <German>    Aufmunitioniereinstellung:</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_OTHER_GARAGEADMIN">
-                <Original>- Activate garage for admin:</Original>
-                <English>- Activate garage for admin:</English>
-                <German>- Virtuelle Garage für den Admin:</German>
+                <Original>    Activate garage for admin:</Original>
+                <English>    Activate garage for admin:</English>
+                <German>    Virtuelle Garage für den Admin:</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_OTHER_SPAWNRAD">
-                <Original>- Spawn city radius offset:</Original>
-                <English>- Spawn city radius offset:</English>
-                <German>- Radius zum Spawnen von Einheiten:</German>
+                <Original>    Spawn city radius offset:</Original>
+                <English>    Spawn city radius offset:</English>
+                <German>    Radius zum Spawnen von Einheiten:</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_OTHER_SPAWNRAD_DEF">
                 <Original>300 m (Default: Altis, Tanoa)</Original>
@@ -508,14 +508,14 @@
                 <German>300 m (Standard: Altis, Tanoa)</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_OTHER_DISABLESPAWN">
-                <Original>- Disable city activation when a plane or helicopter (>190Km/h) is flying above:</Original>
-                <English>- Disable city activation when a plane or helicopter (>190Km/h) is flying above:</English>
-                <German>- Das Spawnen von Einheiten deaktivieren, wenn ein Flugzeug oder Helikopter (>190Km/h) drüber fliegt:</German>
+                <Original>    Disable city activation when a plane or helicopter (&gt;190Km/h) is flying above:</Original>
+                <English>    Disable city activation when a plane or helicopter (&gt;190Km/h) is flying above:</English>
+                <German>    Das Spawnen von Einheiten deaktivieren, wenn ein Flugzeug oder Helikopter (&gt;190Km/h) drüber fliegt:</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_OTHER_DEBUG">
-                <Original>- Debug:</Original>
-                <English>- Debug:</English>
-                <German>- Debug:</German>
+                <Original>    Debug:</Original>
+                <English>    Debug:</English>
+                <German>    Debug:</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_OTHER_DEBUG_LOGONLY">
                 <Original>Log only</Original>
@@ -534,162 +534,273 @@
         </Container>
     </Package>
     <Package name="Actions">
-      <Container name="Action(ACE): Database handling">
-          <Key ID="STR_BTC_HAM_ACTION_DATA_MAIN">
-              <Original>Database</Original>
-              <English>Database</English>
-              <German>Datenbank</German>
-          </Key>
-          <Key ID="STR_BTC_HAM_ACTION_DATA_SAVE">
-              <Original>Save</Original>
-              <English>Save</English>
-              <German>Sichern</German>
-          </Key>
-          <Key ID="STR_BTC_HAM_ACTION_DATA_DELETE">
-              <Original>Delete</Original>
-              <English>Delete</English>
-              <German>Löschen</German>
-          </Key>
-      </Container>
-      <Container name="Action(ACE): Intel">
-          <Key ID="STR_BTC_HAM_ACTION_INTEL_SEARCH">
-              <Original>Search for intel</Original>
-              <English>Search for intel</English>
-              <German>Nach Informationen suchen</German>
-          </Key>
-          <Key ID="STR_BTC_HAM_ACTION_INTEL_INTERROGATE">
-              <Original>Interrogate</Original>
-              <English>Interrogate</English>
-              <German>Verhören</German>
-          </Key>
-      </Container>
-      <Container name="Action(ACE): Log. Point">
-          <Key ID="STR_BTC_HAM_ACTION_LOC_MAIN">
-              <Original>Logistic</Original>
-              <English>Logistic</English>
-              <German>Logistik</German>
-          </Key>
-          <Key ID="STR_BTC_HAM_ACTION_LOGPOINT_REQOBJ">
-              <Original>Require object</Original>
-              <English>Require object</English>
-              <German>Nachschub anfordern</German>
-          </Key>
-          <Key ID="STR_BTC_HAM_ACTION_LOGPOINT_REPWRECK">
-              <Original>Repair wreck</Original>
-              <English>Repair wreck</English>
-              <German>Wrack reparieren</German>
-          </Key>
-          <Key ID="STR_BTC_HAM_ACTION_LOGPOINT_REQVEH">
-              <Original>Require vehicle</Original>
-              <English>Require vehicle</English>
-              <German>Fahrzeug anfordern</German>
-          </Key>
-      </Container>
-      <Container name="Action(ACE): Logistic">
-          <Key ID="STR_BTC_HAM_ACTION_LOGISTIC_LOADIN">
-              <Original>Load in</Original>
-              <English>Load in</English>
-              <German>Einladen</German>
-          </Key>
-          <Key ID="STR_BTC_HAM_ACTION_LOGISTIC_LOADSEL">
-              <Original>Load selected</Original>
-              <English>Load selected</English>
-              <German>Ausgewähltes einladen</German>
-          </Key>
-          <Key ID="STR_BTC_HAM_ACTION_LOGISTIC_CHECKCARGO">
-              <Original>Check cargo</Original>
-              <English>Check cargo</English>
-              <German>Fracht überprüfen</German>
-          </Key>
-
-      </Container>
-      <Container name="Action(ACE): FOB">
-          <Key ID="STR_BTC_HAM_ACTION_FOB_MOUNT">
-              <Original>Mount FOB</Original>
-              <English>Mount FOB</English>
-              <German>FOB aufbauen</German>
-          </Key>
-          <Key ID="STR_BTC_HAM_ACTION_FOB_DISMANTLE">
-              <Original>Dismantle FOB</Original>
-              <English>Dismantle FOB</English>
-              <German>FOB abbauen</German>
-          </Key>
-          <Key ID="STR_BTC_HAM_ACTION_FOB_PLACE">
-              <Original>Place</Original>
-              <English>Place</English>
-              <German>Platzieren</German>
-          </Key>
-      </Container>
-      <Container name="Action(ACE): Orders">
-          <Key ID="STR_BTC_HAM_ACTION_ORDERS_MAIN">
-              <Original>Civil Orders</Original>
-              <English>Civil Orders</English>
-              <German>Befehle (Zivilisten)</German>
-          </Key>
-          <Key ID="STR_BTC_HAM_ACTION_ORDERS_STOP">
-              <Original>Stop</Original>
-              <English>Stop</English>
-              <German>Stopp</German>
-          </Key>
-          <Key ID="STR_BTC_HAM_ACTION_ORDERS_GETDOWN">
-              <Original>Get down</Original>
-              <English>Get down</English>
-              <German>Auf den Boden</German>
-          </Key>
-          <Key ID="STR_BTC_HAM_ACTION_ORDERS_GOAWAY">
-              <Original>Go away</Original>
-              <English>Go away</English>
-              <German>Geh weg</German>
-          </Key>
-          <Key ID="STR_BTC_HAM_ACTION_ORDERS_TAXI">
-              <Original>Taxi</Original>
-              <English>Taxi</English>
-              <German>Taxi</German>
-          </Key>
-          <Key ID="STR_BTC_HAM_ACTION_ORDERS_ASKINFO">
-              <Original>Ask info</Original>
-              <English>Ask info</English>
-              <German>Nach Informationen fragen</German>
-          </Key>
-          <Key ID="STR_BTC_HAM_ACTION_ORDERS_ASKREP">
-              <Original>Ask Reputation</Original>
-              <English>Ask Reputation</English>
-              <German>Nach dem Ansehen fragen</German>
-          </Key>
-      </Container>
-      <Container name="Action(ACE): Side missions">
-          <Key ID="STR_BTC_HAM_ACTION_SIDEMISSION_MAIN">
-              <Original>Side mission</Original>
-              <English>Side mission</English>
-              <German>Nebenmission</German>
-          </Key>
-          <Key ID="STR_BTC_HAM_ACTION_SIDEMISSION_ABORT">
-              <Original>Abort</Original>
-              <English>Abort</English>
-              <German>Abbrechen</German>
-          </Key>
-          <Key ID="STR_BTC_HAM_ACTION_SIDEMISSION_REQ">
-              <Original>Request</Original>
-              <English>Request</English>
-              <German>Anfordern</German>
-          </Key>
-      </Container>
-      <Container name="Action(ACE): Re-deploy">
-          <Key ID="STR_BTC_HAM_ACTION_REDEPLOY_MAIN">
-              <Original>Re-deploy</Original>
-              <English>Re-deploy</English>
-              <German>Verlegen</German>
-          </Key>
-      </Container>
-      <Container name="Action(ACE): Arsenal">
-          <Key ID="STR_BTC_HAM_ACTION_ARSENAL_OPEN">
-              <Original>Arsenal</Original>
-              <English>Arsenal</English>
-              <German>Arsenal</German>
-          </Key>
-      </Container>
+        <Container name="Action(ACE): Database handling">
+            <Key ID="STR_BTC_HAM_ACTION_DATA_MAIN">
+                <Original>Database</Original>
+                <English>Database</English>
+                <German>Datenbank</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_ACTION_DATA_SAVE">
+                <Original>Save</Original>
+                <English>Save</English>
+                <German>Sichern</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_ACTION_DATA_DELETE">
+                <Original>Delete</Original>
+                <English>Delete</English>
+                <German>Löschen</German>
+            </Key>
+        </Container>
+        <Container name="Action(ACE): Intel">
+            <Key ID="STR_BTC_HAM_ACTION_INTEL_SEARCH">
+                <Original>Search for intel</Original>
+                <English>Search for intel</English>
+                <German>Nach Informationen suchen</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_ACTION_INTEL_INTERROGATE">
+                <Original>Interrogate</Original>
+                <English>Interrogate</English>
+                <German>Verhören</German>
+            </Key>
+        </Container>
+        <Container name="Action(ACE): Log. Point">
+            <Key ID="STR_BTC_HAM_ACTION_LOC_MAIN">
+                <Original>Logistic</Original>
+                <English>Logistic</English>
+                <German>Logistik</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_ACTION_LOGPOINT_REQOBJ">
+                <Original>Require object</Original>
+                <English>Require object</English>
+                <German>Nachschub anfordern</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_ACTION_LOGPOINT_REPWRECK">
+                <Original>Repair wreck</Original>
+                <English>Repair wreck</English>
+                <German>Wrack reparieren</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_ACTION_LOGPOINT_REQVEH">
+                <Original>Require vehicle</Original>
+                <English>Require vehicle</English>
+                <German>Fahrzeug anfordern</German>
+            </Key>
+        </Container>
+        <Container name="Action(ACE): Logistic">
+            <Key ID="STR_BTC_HAM_ACTION_LOGISTIC_LOADIN">
+                <Original>Load in</Original>
+                <English>Load in</English>
+                <German>Einladen</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_ACTION_LOGISTIC_LOADSEL">
+                <Original>Load selected</Original>
+                <English>Load selected</English>
+                <German>Ausgewähltes einladen</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_ACTION_LOGISTIC_CHECKCARGO">
+                <Original>Check cargo</Original>
+                <English>Check cargo</English>
+                <German>Fracht überprüfen</German>
+            </Key>
+        </Container>
+        <Container name="Action(ACE): FOB">
+            <Key ID="STR_BTC_HAM_ACTION_FOB_MOUNT">
+                <Original>Mount FOB</Original>
+                <English>Mount FOB</English>
+                <German>FOB aufbauen</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_ACTION_FOB_DISMANTLE">
+                <Original>Dismantle FOB</Original>
+                <English>Dismantle FOB</English>
+                <German>FOB abbauen</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_ACTION_FOB_PLACE">
+                <Original>Place</Original>
+                <English>Place</English>
+                <German>Platzieren</German>
+            </Key>
+        </Container>
+        <Container name="Action(ACE): Orders">
+            <Key ID="STR_BTC_HAM_ACTION_ORDERS_MAIN">
+                <Original>Civil Orders</Original>
+                <English>Civil Orders</English>
+                <German>Befehle (Zivilisten)</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_ACTION_ORDERS_STOP">
+                <Original>Stop</Original>
+                <English>Stop</English>
+                <German>Stopp</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_ACTION_ORDERS_GETDOWN">
+                <Original>Get down</Original>
+                <English>Get down</English>
+                <German>Auf den Boden</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_ACTION_ORDERS_GOAWAY">
+                <Original>Go away</Original>
+                <English>Go away</English>
+                <German>Geh weg</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_ACTION_ORDERS_TAXI">
+                <Original>Taxi</Original>
+                <English>Taxi</English>
+                <German>Taxi</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_ACTION_ORDERS_ASKINFO">
+                <Original>Ask info</Original>
+                <English>Ask info</English>
+                <German>Nach Informationen fragen</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_ACTION_ORDERS_ASKREP">
+                <Original>Ask Reputation</Original>
+                <English>Ask Reputation</English>
+                <German>Nach dem Ansehen fragen</German>
+            </Key>
+        </Container>
+        <Container name="Action(ACE): Side missions">
+            <Key ID="STR_BTC_HAM_ACTION_SIDEMISSION_MAIN">
+                <Original>Side mission</Original>
+                <English>Side mission</English>
+                <German>Nebenmission</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_ACTION_SIDEMISSION_ABORT">
+                <Original>Abort</Original>
+                <English>Abort</English>
+                <German>Abbrechen</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_ACTION_SIDEMISSION_REQ">
+                <Original>Request</Original>
+                <English>Request</English>
+                <German>Anfordern</German>
+            </Key>
+        </Container>
+        <Container name="Action(ACE): Re-deploy">
+            <Key ID="STR_BTC_HAM_ACTION_REDEPLOY_MAIN">
+                <Original>Re-deploy</Original>
+                <English>Re-deploy</English>
+                <German>Verlegen</German>
+            </Key>
+        </Container>
+        <Container name="Action(ACE): Arsenal">
+            <Key ID="STR_BTC_HAM_ACTION_ARSENAL_OPEN">
+                <Original>Arsenal</Original>
+                <English>Arsenal</English>
+                <German>Arsenal</German>
+            </Key>
+        </Container>
     </Package>
     <Package name="Conversations">
+        <Container name="Conversations: Info">
+            <Key ID="STR_BTC_HAM_CON_INFO_ASKREP_NOINTER">
+                <Original>I can't understand what is saying</Original>
+                <English>I can't understand what is saying</English>
+                <German>Ich verstehe nicht was Sie sagen</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_CON_INFO_ASKREP_HIDEOUTS">
+                <Original>I heard about %1 hideouts left.</Original>
+                <English>I heard about %1 hideouts left.</English>
+                <German>Ich habe gehört, dass es noch %1 Verstecke gibt.</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_CON_INFO_ASKREP_VLOW">
+                <Original>very low</Original>
+                <English>very low</English>
+                <German>sehr niedrig</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_CON_INFO_ASKREP_LOW">
+                <Original>low</Original>
+                <English>low</English>
+                <German>niedrig</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_CON_INFO_ASKREP_NORMAL">
+                <Original>normal</Original>
+                <English>normal</English>
+                <German>normal</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_CON_INFO_ASKREP_HIGH">
+                <Original>high</Original>
+                <English>high</English>
+                <German>hoch</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_CON_INFO_ASKREP_ASK1">
+                <Original>Sir, your reputation is</Original>
+                <English>Sir, your reputation is</English>
+                <German>Mein Herr, Ihr Ansehen ist</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_CON_INFO_ASKREP_ASK2">
+                <Original>Hello ! Your reputation is</Original>
+                <English>Hello ! Your reputation is</English>
+                <German>Hallo ! Ihr Ansehen ist</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_CON_INFO_ASKREP_ASK3">
+                <Original>I am %1 and I think your reputation is</Original>
+                <English>I am %1 and I think your reputation is</English>
+                <German>Mein Name ist %1 und ich glaube ihr Ansehen ist</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_CON_INFO_ASK_WOUNDED1">
+                <Original>Help me!.</Original>
+                <English>Help me!.</English>
+                <German>Hilf mir!.</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_CON_INFO_ASK_WOUNDED2">
+                <Original>I am suffering!.</Original>
+                <English>I am suffering!.</English>
+                <German>Ich habe Schmerzen!.</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_CON_INFO_ASK_WOUNDED3">
+                <Original>Injure!</Original>
+                <English>Injure!</English>
+                <German>Ich bin Verletzt!</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_CON_INFO_ASK_WOUNDED4">
+                <Original>I have open wound!</Original>
+                <English>I have open wound!</English>
+                <German>I habe offene Wunden!</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_CON_INFO_ASK_ALLREADYANS">
+                <Original>%1: I already answered to your question!</Original>
+                <English>%1: I already answered to your question!</English>
+                <German>%1: Ich habe Ihnen bereits alles gesagt!</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_CON_INFO_ASK_NOINFO">
+                <Original>%1: I've no information for you</Original>
+                <English>%1: I've no information for you</English>
+                <German>%1: Ich habe keine Informationen für Sie.</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_CON_INFO_ASK_CACHEMAP">
+                <Original>%1: I'll show you some hint on the map</Original>
+                <English>%1: I'll show you some hint on the map</English>
+                <German>%1: Ich habe etwas auf der Karte markiert</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_CON_INFO_ASKHIDEOUT_TRUE">
+                <Original>%1: I saw a lot of militia activity towards %2, %3 meter from here. Probably there is an hideout!</Original>
+                <English>%1: I saw a lot of militia activity towards %2, %3 meter from here. Probably there is an hideout!</English>
+                <German>%1: Ich habe mehrer bewaffnete Personen in Richtung %2, ca. %3m entfernt, gesehen. Möglicherweise ist dort ein Versteck!</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_CON_INFO_ASKHIDEOUT_FALSE">
+                <Original>%1: There are no hideout around here!</Original>
+                <English>%1: There are no hideout around here!</English>
+                <German>%1: Hier in der Gegend gibt es keine Verstecke!</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_CON_INFO_ASKHIDEOUT_DIARYLOG">
+                <Original>Diary log</Original>
+                <English>Diary log</English>
+                <German>Gesprächsaufzeichnung</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_CON_INFO_SEARCH_BAR">
+                <Original>Searching for intel . . .</Original>
+                <English>Searching for intel . . .</English>
+                <German>Suche Information . . .</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_CON_INFO_TROOPS_TRUE">
+                <Original>%1: I saw some militia movement %2, %3 meter from here</Original>
+                <English>%1: I saw some militia movement %2, %3 meter from here</English>
+                <German>%1: Ich habe mehrer bewaffnete Personen in Richtung %2, ca. %3m entfernt, gesehen</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_CON_INFO_TROOPS_FALSE">
+                <Original>%1: I didn't see any militia movement in this area!</Original>
+                <English>%1: I didn't see any militia movement in this area!</English>
+                <German>%1: Ich habe keine bewaffneten Personen in der Nähe gesehen!</German>
+            </Key>
+        </Container>
         <Container name="Conversations: Example answer">
             <Key ID="STR_BTC_HAM_CON_TITLE">
                 <Original>Example answer</Original>
@@ -764,6 +875,13 @@
                 <Original>Select the FOB:</Original>
                 <English>Select the FOB:</English>
                 <German>FOB auswählen:</German>
+            </Key>
+        </Container>
+        <Container name="Other: EXAMPLE ">
+            <Key ID="STR_BTC_HAM_O_EXAMPLE_">
+                <Original>example</Original>
+                <English>example</English>
+                <German>example</German>
             </Key>
         </Container>
     </Package>
