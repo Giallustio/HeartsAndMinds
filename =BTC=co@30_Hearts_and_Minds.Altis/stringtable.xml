@@ -877,6 +877,75 @@
                 <German>FOB auswählen:</German>
             </Key>
         </Container>
+        <Container name="Other: Hints ">
+            <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_0">
+                <Original>Cache destroyed!</Original>
+                <English>Cache destroyed!</English>
+                <German>Waffenlager zerstört!</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_1">
+                <Original>Intel about an ammo cache found! Map updated</Original>
+                <English>Intel about an ammo cache found! Map updated</English>
+                <German>Informationen über ein Waffenlager gefunden! Karte aktualisiert</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_2">
+                <Original>Hideout destroyed! %1 remaining</Original>
+                <English>Hideout destroyed! %1 remaining</English>
+                <German>Versteck zerstört! Verbleiben noch %1</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_3">
+                <Original>This body does not have any intel</Original>
+                <English>This body does not have any intel</English>
+                <German>Keine Informationen gefunden</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_4">
+                <Original>Found intels about an ammo cache and an hideout! Map updated</Original>
+                <English>Found intels about an ammo cache and an hideout! Map updated</English>
+                <German>Informationen über ein Waffenlager und ein Versteck gefunden! Karte aktualisiert</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_5">
+                <Original>Intel about an hideout found! Map updated</Original>
+                <English>Intel about an hideout found! Map updated</English>
+                <German>Informationen über ein Versteck gefunden! Karte aktualisiert</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_6">
+                <Original>In the last hideout we found important intel about all the cities occupied by the Oplitas! Size the last positions held by the enemies and defeat them once and for all</Original>
+                <English>In the last hideout we found important intel about all the cities occupied by the Oplitas! Size the last positions held by the enemies and defeat them once and for all</English>
+                <German>In the last hideout we found important intel about all the cities occupied by the Oplitas! Size the last positions held by the enemies and defeat them once and for all</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_7">
+                <Original> has been deployed!</Original>
+                <English> has been deployed!</English>
+                <German> wurde bereitgestellt!</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_8">
+                <Original>Saving in progress...Please wait</Original>
+                <English>Saving in progress...Please wait</English>
+                <German>Es wird gespeichert...Bitte warten</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_9">
+                <Original>Game has been saved!</Original>
+                <English>Game has been saved!</English>
+                <German>Spiel wurde gespeichert!</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_10">
+                <Original>Database deleted!</Original>
+                <English>Database deleted!</English>
+                <German>Datenbank gelöscht!</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_11">
+                <Original>One checkpoint destroyed!</Original>
+                <English>One checkpoint destroyed!</English>
+                <German>Ein Kontrollpunkt wurde zerstört!</German>
+            </Key>
+        </Container>
+        <Container name="Other: Endmission ">
+            <Key ID="STR_BTC_HAM_O_COMMON_ENDMISSION">
+                <Original>All the hideouts are destroyed, finally the Oplitas has been defeated! Mission accomplished</Original>
+                <English>All the hideouts are destroyed, finally the Oplitas has been defeated! Mission accomplished</English>
+                <German>Alle Verstecke sind zerstört, nun sind die Oplitas besiegt! Mission erfüllt</German>
+            </Key>
+        </Container>
         <Container name="Other: EXAMPLE ">
             <Key ID="STR_BTC_HAM_O_EXAMPLE_">
                 <Original>example</Original>
