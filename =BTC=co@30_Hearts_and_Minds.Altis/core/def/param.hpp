@@ -79,8 +79,8 @@ class Params {
 	};
 	class btc_p_engineer {
 		title = $STR_BTC_HAM_PARAM_IED_DISARM; //Everybody can disarm IED:
-		values[]={0,1};
-		texts[]={$STR_DISABLED,$STR_ENABLED}; // texts[]={"Off","On"};
+		values[]={-1,0,1};
+		texts[]={$STR_BTC_HAM_O_BASIC_DEFAULT,$STR_DISABLED,$STR_ENABLED}; // texts[]={"Default","Off","On"};
 		default = 0;
 	};
 	class btc_p_hideout_cache_title {
