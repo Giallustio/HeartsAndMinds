@@ -29,23 +29,23 @@ if (isNull _unit) then {
 		_rep = btc_int_ask_data;
 
 		if (_rep >= 500) then {
-			hintSilent "Show me where you want to go with your map.";
+			hintSilent (localize "STR_BTC_HAM_CON_INT_ORDERS_SHOWMAP"); //Show me where you want to go with your map.
 			["1", "onMapSingleClick", {
 				if (surfaceIsWater _pos) then {
-					hintSilent 'Selected area must be on land.';
+					hintSilent (localize "STR_BTC_HAM_CON_INT_ORDERS_ONLAND"); //Selected area must be on land.
 				} else {
 					[(getpos (_this select 0)),4,_this select 1,_pos] remoteExec ["btc_fnc_int_orders_give", _this select 1];
 					["1", "onMapSingleClick"] call BIS_fnc_removeStackedEventHandler;
 				};
 			}, [player, _unit]] call BIS_fnc_addStackedEventHandler;
 		} else {
-			if (isNil {player getVariable "interpreter"}) exitWith {hint "I can't understand what is saying";};
+			if (isNil {player getVariable "interpreter"}) exitWith {hint (localize "STR_BTC_HAM_CON_INFO_ASKREP_NOINTER");}; //I can't understand what is saying
 			_ran = round random 3;
 			_info_type = switch (true) do {
-				case (_ran == 0) : {"I hate you ! Get out !"};
-				case (_ran == 1) : {"Get Out of my car ! You are not welcome."};
-				case (_ran == 2) : {"I am not a taxi driver !"};
-				case (_ran == 3) : {"No ! I go where I want ! "};
+				case (_ran == 0) : {(localize "STR_BTC_HAM_CON_INT_ORDERS_NEG1")}; //I hate you ! Get out !
+				case (_ran == 1) : {(localize "STR_BTC_HAM_CON_INT_ORDERS_NEG2")}; // Get Out of my car ! You are not welcome.
+				case (_ran == 2) : {(localize "STR_BTC_HAM_CON_INT_ORDERS_NEG3")}; // I am not a taxi driver !
+				case (_ran == 3) : {(localize "STR_BTC_HAM_CON_INT_ORDERS_NEG4")}; //No ! I go where I want !
 			};
 			_text = format ["%1", _info_type];
 			hint _text;
