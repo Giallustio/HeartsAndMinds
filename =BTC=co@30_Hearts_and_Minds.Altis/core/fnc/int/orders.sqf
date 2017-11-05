@@ -42,10 +42,10 @@ if (isNull _unit) then {
 			if (isNil {player getVariable "interpreter"}) exitWith {hint (localize "STR_BTC_HAM_CON_INFO_ASKREP_NOINTER");}; //I can't understand what is saying
 			_ran = round random 3;
 			_info_type = switch (true) do {
-				case (_ran == 0) : {(localize "STR_BTC_HAM_CON_INT_ORDERS_NEG1")}; //I hate you ! Get out !
-				case (_ran == 1) : {(localize "STR_BTC_HAM_CON_INT_ORDERS_NEG2")}; // Get Out of my car ! You are not welcome.
-				case (_ran == 2) : {(localize "STR_BTC_HAM_CON_INT_ORDERS_NEG3")}; // I am not a taxi driver !
-				case (_ran == 3) : {(localize "STR_BTC_HAM_CON_INT_ORDERS_NEG4")}; //No ! I go where I want !
+				case (_ran isEqualTo 0) : {(localize "STR_BTC_HAM_CON_INT_ORDERS_NEG1")}; //I hate you ! Get out !
+				case (_ran isEqualTo 1) : {(localize "STR_BTC_HAM_CON_INT_ORDERS_NEG2")}; // Get Out of my car ! You are not welcome.
+				case (_ran isEqualTo 2) : {(localize "STR_BTC_HAM_CON_INT_ORDERS_NEG3")}; // I am not a taxi driver !
+				case (_ran isEqualTo 3) : {(localize "STR_BTC_HAM_CON_INT_ORDERS_NEG4")}; //No ! I go where I want !
 			};
 			_text = format ["%1", _info_type];
 			hint _text;
