@@ -81,7 +81,7 @@ class Params {
 		title = $STR_BTC_HAM_PARAM_IED_DISARM; //Everybody can disarm IED:
 		values[]={0,1};
 		texts[]={$STR_DISABLED,$STR_ENABLED}; // texts[]={"Off","On"};
-		default = 1;
+		default = 0;
 	};
 	class btc_p_hideout_cache_title {
 		title = $STR_BTC_HAM_PARAM_HIDE_TITLE; // << Hideout/Cache options >>
@@ -255,7 +255,7 @@ class Params {
 		title = $STR_BTC_HAM_PARAM_OTHER_REPSTART; // Reputation at start:
 		values[]={0, 200, 500, 750};
 		texts[]={$STR_BTC_HAM_PARAM_OTHER_REPSTART_VLOW,$STR_BTC_HAM_PARAM_IED_RATIO_LOW,$STR_BTC_HAM_PARAM_IED_RATIO_NORMAL,$STR_BTC_HAM_PARAM_IED_RATIO_HIGH}; //texts[]={"Very Low","Low","Normal","High"};
-		default = 750;
+		default = 200;
 	};
 	class btc_p_rearm {
 		title = $STR_BTC_HAM_PARAM_OTHER_REARMLEVEL; // Rearm Level:
@@ -287,6 +287,4 @@ class Params {
 		texts[]={$STR_DISABLED,$STR_ENABLED, $STR_BTC_HAM_PARAM_OTHER_DEBUG_LOGONLY}; // texts[]={"Off","On","Log only"};
 		default = 0;
 	};
-	#define DEBUGCONSOLE_DEFAULT 0 // Debug Console for Admin: 0 = off | 1 = on
-	#include "\a3\functions_f\Params\paramDebugConsole.hpp"
 };
