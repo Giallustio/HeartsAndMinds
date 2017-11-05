@@ -81,7 +81,7 @@ class Params {
 		title = $STR_BTC_HAM_PARAM_IED_DISARM; //Everybody can disarm IED:
 		values[]={-1,0,1};
 		texts[]={$STR_BTC_HAM_O_BASIC_DEFAULT,$STR_DISABLED,$STR_ENABLED}; // texts[]={"Default","Off","On"};
-		default = 0;
+		default = -1;
 	};
 	class btc_p_hideout_cache_title {
 		title = $STR_BTC_HAM_PARAM_HIDE_TITLE; // << Hideout/Cache options >>
@@ -129,19 +129,19 @@ class Params {
 	   title = $STR_BTC_HAM_MEDI_LEVEL; // Medical Level
 	   values[] = {-1,1,2};
 	   texts[] = {$STR_BTC_HAM_O_BASIC_DEFAULT,$STR_ACE_Medical_MedicalSettings_basic,$STR_ACE_Medical_MedicalSettings_advanced}; // texts[]={"Default","Basic","Advanced"};
-	   default = 1;
+	   default = -1;
 	};
 	class btc_p_adv_wounds {
 	   title = $STR_BTC_HAM_MEDI_WOUNDS; // Advanced Wounds
 	   values[] = {-1,0,1};
 	   texts[] = {$STR_BTC_HAM_O_BASIC_DEFAULT,$STR_DISABLED,$STR_ENABLED}; // texts[]={"Default","Off","On"};
-	   default = 1;
+	   default = -1;
 	};
 	class btc_p_rev {
 		title = $STR_BTC_HAM_MEDI_REVTIME; // Revive time:
 		values[]={-1,0,60,120,180,240,300,600,900,1200,999999};
 		texts[]={$STR_BTC_HAM_O_BASIC_DEFAULT,$STR_DISABLED,"60","120","180","240","300","600","900","1200","999999"}; //texts[]={"Default","Off","60","120","180","240","300","600","900","1200","999999"};
-		default = 600;
+		default = -1;
 	};
 	class btc_p_skill_title {
 		title = $STR_BTC_HAM_PARAM_SKILL_TITLE; // << A3 Skill options >>
@@ -260,8 +260,8 @@ class Params {
 	class btc_p_rearm {
 		title = $STR_BTC_HAM_PARAM_OTHER_REARMLEVEL; // Rearm Level:
 		values[]={0,1,2};
-		texts[]={$STR_ACE_Rearm_RearmSettings_vehicle,$STR_ACE_Rearm_RearmSettings_magazine,$STR_ACE_Rearm_RearmSettings_caliber}; // texts[]={"Entire Vehicle","Entire Magazine","Amount based on caliber"};
-		default = 1;
+		texts[]={$STR_BTC_HAM_O_BASIC_DEFAULT,$STR_ACE_Rearm_RearmSettings_vehicle,$STR_ACE_Rearm_RearmSettings_magazine,$STR_ACE_Rearm_RearmSettings_caliber}; // texts[]={"Default","Entire Vehicle","Entire Magazine","Amount based on caliber"};
+		default = -1;
 	};
 	class btc_p_garage {
 		title = $STR_BTC_HAM_PARAM_OTHER_GARAGEADMIN; // Activate garage for admin:

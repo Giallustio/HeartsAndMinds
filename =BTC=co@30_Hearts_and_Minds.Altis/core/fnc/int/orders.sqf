@@ -1,11 +1,7 @@
 
-private ["_order","_unit","_gesture","_pos","_wp","_rep","_ran","_info_type"];
+params ["_order", ["_unit", objNull]];
 
-_order = _this select 0;
-_unit = objNull;
-if (count _this > 1) then {_unit = _this select 1;};
-
-_gesture = switch (_order) do {
+private _gesture = switch (_order) do {
 	case 1 : {"gestureFreeze"};
 	case 2 : {"gestureCover"};
 	case 3 : {"gestureGo"};
@@ -14,19 +10,21 @@ _gesture = switch (_order) do {
 
 player playActionNow _gesture;
 
-_pos = getpos player;
+private _pos = getpos player;
+private _dir = getDir player;
+private _units = (_pos nearEntities [["Car","Civilian_F"], btc_int_radius_orders]) apply {driver _x};
 
-if (count (_pos nearEntities [["Car","Civilian_F"], btc_int_radius_orders]) == 0) exitWith {true};
+if (_units isEqualTo []) exitWith {true};
 
 if (isNull _unit) then {
-	[_pos,_order] remoteExec ["btc_fnc_int_orders_give", 2];
+	[_units, _dir, _order] remoteExec ["btc_fnc_int_orders_give", 2];
 } else {
-	if (_order == 4) then {
+	if (_order isEqualTo 4) then {
 
 		btc_int_ask_data = nil;
 		[2,nil,player] remoteExec ["btc_fnc_int_ask_var", 2];
 		waitUntil {!(isNil "btc_int_ask_data")};
-		_rep = btc_int_ask_data;
+		private _rep = btc_int_ask_data;
 
 		if (_rep >= 500) then {
 			hintSilent (localize "STR_BTC_HAM_CON_INT_ORDERS_SHOWMAP"); //Show me where you want to go with your map.
@@ -34,10 +32,10 @@ if (isNull _unit) then {
 				if (surfaceIsWater _pos) then {
 					hintSilent (localize "STR_BTC_HAM_CON_INT_ORDERS_ONLAND"); //Selected area must be on land.
 				} else {
-					[(getpos (_this select 0)),4,_this select 1,_pos] remoteExec ["btc_fnc_int_orders_give", _this select 1];
+					[[_this select 4], 0, 4, _pos] remoteExec ["btc_fnc_int_orders_give", _this select 4];
 					["1", "onMapSingleClick"] call BIS_fnc_removeStackedEventHandler;
 				};
-			}, [player, _unit]] call BIS_fnc_addStackedEventHandler;
+			}, [_unit]] call BIS_fnc_addStackedEventHandler;
 		} else {
 			if (isNil {player getVariable "interpreter"}) exitWith {hint (localize "STR_BTC_HAM_CON_INFO_ASKREP_NOINTER");}; //I can't understand what is saying
 			_ran = round random 3;
@@ -51,6 +49,6 @@ if (isNull _unit) then {
 			hint _text;
 		};
 	} else {
-		[_pos,_order,_unit] remoteExec ["btc_fnc_int_orders_give", _unit];
+		[[_unit], _dir, _order] remoteExec ["btc_fnc_int_orders_give", _unit];
 	};
 };
