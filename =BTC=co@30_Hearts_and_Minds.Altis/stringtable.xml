@@ -1489,6 +1489,13 @@
                 <German>Alle Verstecke sind zerstört, nun sind die Oplitas besiegt! Mission erfüllt</German>
             </Key>
         </Container>
+        <Container name="Other: Wreck Marker ">
+            <Key ID="STR_BTC_HAM_O_EH_VEHKILLED_MRK">
+                <Original>%1 wreck</Original>
+                <English>%1 wreck</English>
+                <German>%1 Wrack</German>
+            </Key>
+        </Container>
     </Package>
     <Package name="Logistic">
         <Container name="Logistic: Basics ">
