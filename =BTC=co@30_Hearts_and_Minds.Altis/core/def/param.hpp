@@ -127,20 +127,20 @@ class Params {
 	};
 	class btc_p_med_level {
 	   title = $STR_BTC_HAM_MEDI_LEVEL; // Medical Level
-	   values[] = {1,2};
-	   texts[] = {$STR_ACE_Medical_MedicalSettings_basic,$STR_ACE_Medical_MedicalSettings_advanced}; // texts[]={"Basic","Advanced"};
+	   values[] = {-1,1,2};
+	   texts[] = {$STR_BTC_HAM_O_BASIC_DEFAULT,$STR_ACE_Medical_MedicalSettings_basic,$STR_ACE_Medical_MedicalSettings_advanced}; // texts[]={"Default","Basic","Advanced"};
 	   default = 1;
 	};
 	class btc_p_adv_wounds {
 	   title = $STR_BTC_HAM_MEDI_WOUNDS; // Advanced Wounds
-	   values[] = {0,1};
-	   texts[] = {$STR_DISABLED,$STR_ENABLED}; // texts[]={"Off","On"};
+	   values[] = {-1,0,1};
+	   texts[] = {$STR_BTC_HAM_O_BASIC_DEFAULT,$STR_DISABLED,$STR_ENABLED}; // texts[]={"Default","Off","On"};
 	   default = 1;
 	};
 	class btc_p_rev {
 		title = $STR_BTC_HAM_MEDI_REVTIME; // Revive time:
-		values[]={0,60,120,180,240,300,600,900,1200,999999};
-		texts[]={$STR_DISABLED,"60","120","180","240","300","600","900","1200","999999"};
+		values[]={-1,0,60,120,180,240,300,600,900,1200,999999};
+		texts[]={$STR_BTC_HAM_O_BASIC_DEFAULT,$STR_DISABLED,"60","120","180","240","300","600","900","1200","999999"}; //texts[]={"Default","Off","60","120","180","240","300","600","900","1200","999999"};
 		default = 600;
 	};
 	class btc_p_skill_title {

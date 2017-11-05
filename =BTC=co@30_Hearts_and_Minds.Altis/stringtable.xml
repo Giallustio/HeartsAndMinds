@@ -1496,6 +1496,13 @@
                 <German>%1 Wrack</German>
             </Key>
         </Container>
+        <Container name="Other: Basics">
+            <Key ID="STR_BTC_HAM_O_BASIC_DEFAULT">
+                <Original>Default</Original>
+                <English>Default</English>
+                <German>Standard</German>
+            </Key>
+        </Container>
     </Package>
     <Package name="Logistic">
         <Container name="Logistic: Basics ">
