@@ -92,4 +92,4 @@ _action = ["fob_redeploy", (localize "STR_BTC_HAM_ACTION_REDEPLOY_MAIN"), "\A3\u
 //Arsenal
 _action = ["arsenal_open", (localize "STR_BTC_HAM_ACTION_ARSENAL_OPEN"), "\A3\ui_f\data\igui\cfg\simpleTasks\letters\A_ca.paa", {['Open',true] spawn BIS_fnc_arsenal;}, {true}, {}, [], [0.4,0,0.4], 5] call ace_interact_menu_fnc_createAction;
 [btc_gear_object, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToObject;
-btc_gear_object addAction ["<t color='#ff1111'>Arsenal</t>", "['Open',true] spawn BIS_fnc_arsenal;"];
+btc_gear_object addAction [(localize "STR_BTC_HAM_ACTION_ARSENAL_OPEN_NOACE"), "['Open',true] spawn BIS_fnc_arsenal;"];
