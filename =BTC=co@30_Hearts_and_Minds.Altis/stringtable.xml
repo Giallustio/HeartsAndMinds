@@ -230,7 +230,7 @@
             <Key ID="STR_BTC_HAM_DOC_ORDERS_TEXT">
                 <Original>Any player can give orders to civilians.&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; To do this, just open your self interaction menu and select 'ORDERS' or use one of the shortcuts. Shortcuts can changed under 'configure' &gt;&gt; 'controls' &gt;&gt; 'configure addons' &gt;&gt; 'Hearts and Minds: Mission' (drop down menu).&lt;br/&gt; Your options are:&lt;br/&gt; - STOP&lt;br/&gt; - GET DOWN&lt;br/&gt; - GO AWAY&lt;br/&gt;&lt;br/&gt; If you want to give an order to just one unit, interact with it (ace object interaction).&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='20' height='20'/&gt; You can also drop leaflets to ask all civilians in a circle of 200m to evacuate to a religious building (if not available a safe area) with a drone.</Original>
                 <English>Any player can give orders to civilians.&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; To do this, just open your self interaction menu and select 'ORDERS' or use one of the shortcuts. Shortcuts can changed under 'configure' &gt;&gt; 'controls' &gt;&gt; 'configure addons' &gt;&gt; 'Hearts and Minds: Mission' (drop down menu).&lt;br/&gt; Your options are:&lt;br/&gt; - STOP&lt;br/&gt; - GET DOWN&lt;br/&gt; - GO AWAY&lt;br/&gt;&lt;br/&gt; If you want to give an order to just one unit, interact with it (ace object interaction).&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='20' height='20'/&gt; You can also drop leaflets to ask all civilians in a circle of 200m to evacuate to a religious building (if not available a safe area) with a drone.</English>
-                <German>Jeder Spieler kann einem Zivlisten Anweisungen geben.&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; Dies geht recht einfach in dem man das Eigen-Interaktionsmenü öffnet und dann 'BEFEHLE(ZIVILISTEN)' auswählt. Oder in dem man Kurztasten nutzt. Diese können unter 'Konfigurieren' &gt;&gt; 'Steuerung' &gt;&gt; 'Addons Einstellen' &gt;&gt; Hearts and Minds: Mission' (Drop-Down-Menü) geändert werden.&lt;br/&gt;&lt;br/&gt; Folgende Optionen stehen zur Verfügung:&lt;br/&gt; - STOPP!&lt;br/&gt; - AUF DEN BODEN!&lt;br/&gt; - GEH WEG!&lt;br/&gt;&lt;br/&gt; Wenn Sie einen Befehl an eine bestimmte Person geben wollen, so können Sie auch direkt mir dieser Interagieren (ACE Objekt-Interaction).&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='20' height='20'/&gt; Sie können mithilfe einer Drohne Broschüren abwerfen, um die Zivilisten im Umkreis von ca. 200 m aufzufordern, sich in dem nächsten religiösen Gebäude einzufinden (sollte kein Gebäude vorhanden sein, so wird ein sicherer Bereich festgelegt).</German>
+                <German>Jeder Spieler kann einem Zivlisten Anweisungen geben.&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; Dies geht recht einfach in dem man das Eigen-Interaktionsmenü öffnet und dann 'BEFEHLE(ZIVILISTEN)' auswählt. Oder in dem man Kurztasten nutzt. Diese können unter 'Konfigurieren' &gt;&gt; 'Steuerung' &gt;&gt; 'Modifikationen anpassen' &gt;&gt; Hearts and Minds: Mission' (Drop-Down-Menü) geändert werden.&lt;br/&gt;&lt;br/&gt; Folgende Optionen stehen zur Verfügung:&lt;br/&gt; - STOPP!&lt;br/&gt; - AUF DEN BODEN!&lt;br/&gt; - GEH WEG!&lt;br/&gt;&lt;br/&gt; Wenn Sie einen Befehl an eine bestimmte Person geben wollen, so können Sie auch direkt mir dieser Interagieren (ACE Objekt-Interaction).&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='20' height='20'/&gt; Sie können mithilfe einer Drohne Broschüren abwerfen, um die Zivilisten im Umkreis von ca. 200 m aufzufordern, sich in dem nächsten religiösen Gebäude einzufinden (sollte kein Gebäude vorhanden sein, so wird ein sicherer Bereich festgelegt).</German>
             </Key>
         </Container>
         <Container name="Documentation: Traffic">
@@ -1480,6 +1480,38 @@
                 <Original>One checkpoint destroyed!</Original>
                 <English>One checkpoint destroyed!</English>
                 <German>Ein Kontrollpunkt wurde zerstört!</German>
+            </Key>
+        </Container>
+        <Container name="Other: Shortcuts">
+            <Key ID="STR_BTC_HAM_O_SHORTC_STOP_TITLE">
+                <Original>Civil Order: Stop!</Original>
+                <English>Civil Order: Stop!</English>
+                <German>Befehle (Zivilisten): Stopp!</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_SHORTC_STOP_NOTE">
+                <Original>Order a civilian to stop</Original>
+                <English>Order a civilian to stop</English>
+                <German>Befiehlt den Zivilisten in der Umgebung stehen zu bleiben</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_SHORTC_GETDOWN_TITLE">
+                <Original>Civil Order: Get down!</Original>
+                <English>Civil Order: Get down!</English>
+                <German>Befehle (Zivilisten): Auf den Boden!</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_SHORTC_GETDOWN_NOTE">
+                <Original>Order a civilian to get down</Original>
+                <English>Order a civilian to get down</English>
+                <German>Befiehlt den Zivilisten in der Umgebung sich hinzulegen</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_SHORTC_GOAWAY_TITLE">
+                <Original>Civil Order: Go Away!</Original>
+                <English>Civil Order: Go Away!</English>
+                <German>Befehle (Zivilisten): Geh weg!</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_SHORTC_GOAWAY_NOTE">
+                <Original>Order a civilian to go away</Original>
+                <English>Order a civilian to go away</English>
+                <German>Befiehlt den Zivilisten in der Umgebung wegzugehen</German>
             </Key>
         </Container>
         <Container name="Other: Endmission ">
