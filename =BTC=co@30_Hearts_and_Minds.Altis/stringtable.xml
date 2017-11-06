@@ -1171,13 +1171,6 @@
                 <German>Verlegen</German>
             </Key>
         </Container>
-        <Container name="Action(ACE): Arsenal">
-            <Key ID="STR_BTC_HAM_ACTION_ARSENAL_OPEN">
-                <Original>Arsenal</Original>
-                <English>Arsenal</English>
-                <German>Arsenal</German>
-            </Key>
-        </Container>
         <Container name="Action : Arsenal">
             <Key ID="STR_BTC_HAM_ACTION_ARSENAL_OPEN_NOACE">
                 <Original>&lt;t color='#ff1111'&gt;Arsenal&lt;/t&gt;</Original>
