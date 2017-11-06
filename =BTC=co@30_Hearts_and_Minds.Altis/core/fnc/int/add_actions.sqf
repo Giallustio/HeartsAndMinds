@@ -25,13 +25,12 @@ _action = ["Repair_wreck", (localize "STR_BTC_HAM_ACTION_LOGPOINT_REPWRECK"), "\
 [btc_create_object, 0, ["ACE_MainActions","Logistic"], _action] call ace_interact_menu_fnc_addActionToObject;
 _action = ["Require_veh", (localize "STR_BTC_HAM_ACTION_LOGPOINT_REQVEH"), "\A3\ui_f\data\map\vehicleicons\iconCar_ca.paa", {[btc_create_object_point] spawn btc_fnc_log_garage}, {(serverCommandAvailable "#logout" || !isMultiplayer) and btc_p_garage}, {}, [], [0,0,0], 5] call ace_interact_menu_fnc_createAction;
 [btc_create_object, 0, ["ACE_MainActions","Logistic"], _action] call ace_interact_menu_fnc_addActionToObject;
-_action = ["Tool","Tool","\A3\ui_f\data\igui\cfg\simpleTasks\letters\T_ca.paa",{},{true}] call ace_interact_menu_fnc_createAction;
+_action = ["Tool",(localize "STR_BTC_HAM_ACTION_COPYPASTE_TOOL"),"\A3\ui_f\data\igui\cfg\simpleTasks\letters\T_ca.paa",{},{true}] call ace_interact_menu_fnc_createAction;
 [btc_create_object, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToObject;
-_action = ["Copy", "Copy container", "\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa", {[btc_create_object_point] spawn btc_fnc_log_copy}, {true}, {}, [], [0,0,0.4], 5] call ace_interact_menu_fnc_createAction;
+_action = ["Copy", (localize "STR_BTC_HAM_ACTION_COPYPASTE_COPY"), "\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa", {[btc_create_object_point] spawn btc_fnc_log_copy}, {true}, {}, [], [0,0,0.4], 5] call ace_interact_menu_fnc_createAction;
 [btc_create_object, 0, ["ACE_MainActions","Tool"], _action] call ace_interact_menu_fnc_addActionToObject;
-_action = ["Paste", "Paste container", "\A3\ui_f\data\igui\cfg\simpleTasks\types\upload_ca.paa", {[btc_copy_container, btc_create_object_point] call btc_fnc_log_paste}, {!isNil "btc_copy_container"}, {}, [], [0,0,0.4], 5] call ace_interact_menu_fnc_createAction;
+_action = ["Paste", (localize "STR_BTC_HAM_ACTION_COPYPASTE_PASTE"), "\A3\ui_f\data\igui\cfg\simpleTasks\types\upload_ca.paa", {[btc_copy_container, btc_create_object_point] call btc_fnc_log_paste}, {!isNil "btc_copy_container"}, {}, [], [0,0,0.4], 5] call ace_interact_menu_fnc_createAction;
 [btc_create_object, 0, ["ACE_MainActions","Tool"], _action] call ace_interact_menu_fnc_addActionToObject;
-
 
 //Logistic
 _action = ["Logistic",(localize "STR_BTC_HAM_ACTION_LOC_MAIN"),"\A3\ui_f\data\igui\cfg\simpleTasks\letters\L_ca.paa",{},{true}] call ace_interact_menu_fnc_createAction;

@@ -1205,6 +1205,23 @@
                 <German>Seile trennen</German>
             </Key>
         </Container>
+        <Container name="Action(ACE): Copy Paste">
+            <Key ID="STR_BTC_HAM_ACTION_COPYPASTE_TOOL">
+                <Original>Tools</Original>
+                <English>Tools</English>
+                <German>Werkzeuge</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_ACTION_COPYPASTE_COPY">
+                <Original>Copy container</Original>
+                <English>Copy container</English>
+                <German>Container kopieren</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_ACTION_COPYPASTE_PASTE">
+                <Original>Paste container</Original>
+                <English>Paste container</English>
+                <German>Container einfügen</German>
+            </Key>
+        </Container>
     </Package>
     <Package name="Conversations">
         <Container name="Conversations: Info">
@@ -1512,6 +1529,23 @@
                 <Original>Order a civilian to go away</Original>
                 <English>Order a civilian to go away</English>
                 <German>Befiehlt den Zivilisten in der Umgebung wegzugehen</German>
+            </Key>
+        </Container>
+        <Container name="Other: Copy Paste">
+            <Key ID="STR_BTC_HAM_O_PASTE_NOCOPIED">
+                <Original>No copied container!</Original>
+                <English>No copied container!</English>
+                <German>Kein kopierter Container gefunden!</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_COPY_NOCONTAINER">
+                <Original>No container around!</Original>
+                <English>No container around!</English>
+                <German>Kein Container gefunden!</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_COPY_SUCCSESS">
+                <Original>Container and cargo copied! Clear the area to paste.</Original>
+                <English>Container and cargo copied! Clear the area to paste.</English>
+                <German>Container und Inhalt kopiert! Bereich freimachen, um neuen einzufügen.</German>
             </Key>
         </Container>
         <Container name="Other: Endmission ">
