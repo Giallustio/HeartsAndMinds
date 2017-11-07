@@ -4,6 +4,7 @@ private ["_veh","_towed","_pos"];
 _veh = _this;
 
 deTach _veh;
+_veh removeEventHandler ["RopeBreak", _veh getVariable ["btc_eh", -1]];
 (ropes _veh) apply {ropeDestroy _x};
 
 _pos = getpos _veh;
@@ -21,6 +22,7 @@ if (isNull btc_int_ask_data) exitWith {hint "This vehicle is not attached to ano
 _towed = btc_int_ask_data;
 
 deTach _towed;
+_towed removeEventHandler ["RopeBreak", _towed getVariable ["btc_eh", -1]];
 (ropes _towed) apply {ropeDestroy _x};
 
 _pos = getpos _towed;

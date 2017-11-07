@@ -22,10 +22,12 @@ _model_front_selected = _tower worldToModel _pos_front;
 ropeCreate [_tower, _model_rear_tower, _tower, [(_model_front_selected select 0) - 0.4, _model_front_selected select 1, _model_front_selected select 2], _distance];
 ropeCreate [_tower, _model_rear_tower, _tower, [(_model_front_selected select 0) + 0.4, _model_front_selected select 1, _model_front_selected select 2], _distance];
 
-_tower addEventHandler ["RopeBreak", {
+private _eh = _tower addEventHandler ["RopeBreak", {
 	(_this select 0) removeEventHandler ["RopeBreak", _thisEventHandler];
+	(_this select 0) setVariable ["btc_eh", nil];
 	(_this select 0) spawn btc_fnc_log_unhook;
 }];
+_tower setVariable ["btc_eh", _eh];
 
 [_tower,"tow",btc_log_vehicle_selected] remoteExec ["btc_fnc_int_change_var", 2];
 [btc_log_vehicle_selected,"tow",_tower] remoteExec ["btc_fnc_int_change_var", 2];
