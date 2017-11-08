@@ -6,7 +6,7 @@ btc_int_ask_data = nil;
 
 waitUntil {!(isNil "btc_int_ask_data")};
 
-if (!isNull btc_int_ask_data) exitWith {hint "This vehicle is already attached to another!"};
+if (!isNull btc_int_ask_data) exitWith {hint (localize "STR_BTC_HAM_LOG_TOW_ALREADYTOWED");}; //This vehicle is already attached to another!
 
 private _relative_pos = _tower worldToModel getPosATL btc_log_vehicle_selected;
 

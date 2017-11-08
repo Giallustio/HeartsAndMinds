@@ -15,7 +15,7 @@ btc_int_ask_data = nil;
 
 waitUntil {!(isNil "btc_int_ask_data")};
 
-if (isNull btc_int_ask_data) exitWith {hint "This vehicle is not attached to another!"};
+if (isNull btc_int_ask_data) exitWith {hint (localize "STR_BTC_HAM_LOG_UNHOOK_NOROPE");}; //This vehicle is not attached to another!
 
 _towed = btc_int_ask_data;
 
