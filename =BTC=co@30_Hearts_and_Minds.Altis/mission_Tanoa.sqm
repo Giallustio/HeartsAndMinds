@@ -318,7 +318,7 @@ class Mission
 			dataType="Marker";
 			position[]={4253.5,6.159635e+026,3990.375};
 			name="btc_log_point";
-			text="Logistic Point";
+			text=$STR_BTC_HAM_MSQM_MRK_LOGPOINT;
 			type="mil_flag";
 			colorName="ColorGreen";
 			a=0.5;
@@ -850,7 +850,7 @@ class Mission
 					{
 						skill=0.60000002;
 						init="this setVariable [""side_mission"",true]";
-						description="Officer";
+						description=$STR_BTC_HAM_MSQM_OFFICER;
 						isPlayer=1;
 						isPlayable=1;
 					};
@@ -947,7 +947,7 @@ class Mission
 					{
 						skill=0.60000002;
 						init="this setVariable [""interpreter"",true]";
-						description="Interpreter";
+						description=$STR_BTC_HAM_MSQM_INTERPRETER;
 						isPlayable=1;
 					};
 					id=29;
@@ -1042,7 +1042,7 @@ class Mission
 					class Attributes
 					{
 						skill=0.60000002;
-						description="Engineer";
+						description=$STR_BTC_HAM_MSQM_ENGINEER;
 						isPlayable=1;
 					};
 					id=31;
