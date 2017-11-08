@@ -31,7 +31,7 @@ btc_side_jip_data = [15,getPos _city,_city getVariable "name"];
 //// Marker
 _marker = createmarker [format ["sm_2_%1",getPos _house],getPos _house];
 _marker setmarkertype "hd_flag";
-_marker setmarkertext "Hostage";
+_marker setmarkertext (localize "STR_BTC_HAM_SIDE_HOSTAGE_MRK"); //Hostage
 _marker setMarkerSize [0.6, 0.6];
 
 _city setVariable ["spawn_more",true];

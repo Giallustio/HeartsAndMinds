@@ -169,6 +169,7 @@ btc_fnc_civ_class = compile preprocessFileLineNumbers "core\fnc\civ\class.sqf";
 //EH
 btc_fnc_eh_unit_init = compile preprocessFileLineNumbers "core\fnc\eh\unit_init.sqf";
 
+
 //INT
 btc_fnc_int_change_var = compile preprocessFileLineNumbers "core\fnc\int\change_var.sqf";
 btc_fnc_int_orders_give = compile preprocessFileLineNumbers "core\fnc\int\orders_give.sqf";
@@ -243,6 +244,14 @@ if (!isDedicated) then {
 
 	//CIV
 	btc_fnc_civ_add_leaflets = compile preprocessFileLineNumbers "core\fnc\civ\add_leaflets.sqf";
+
+	//IED
+	btc_fnc_ied_effects = compile preprocessFile "core\fnc\ied\ied_effects.sqf";
+	btc_fnc_ied_effect_smoke = compile preprocessFile "core\fnc\ied\effect_smoke.sqf";
+	btc_fnc_ied_effect_color_smoke = compile preprocessFile "core\fnc\ied\effect_color_smoke.sqf";
+	btc_fnc_ied_effect_rocks = compile preprocessFile "core\fnc\ied\effect_rocks.sqf";
+	btc_fnc_ied_effect_blurEffect = compile preprocessFile "core\fnc\ied\effect_blurEffect.sqf";
+	btc_fnc_ied_effect_shock_wave = compile preprocessFile "core\fnc\ied\effect_shock_wave.sqf";
 
 	//EH
 	btc_fnc_eh_player_respawn = compile preprocessFileLineNumbers "core\fnc\eh\player_respawn.sqf";
