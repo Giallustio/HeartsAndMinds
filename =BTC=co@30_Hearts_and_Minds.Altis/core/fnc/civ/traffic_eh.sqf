@@ -9,8 +9,4 @@ if (btc_debug_log) then	{
 
 _veh call btc_fnc_civ_traffic_eh_remove;
 
-[_veh,(_veh getVariable ["driver",grpNull])] spawn {
-	waitUntil {sleep 5; ({_x distance (_this select 0) < 600} count playableUnits == 0)};
-	{deleteVehicle _x;} foreach ([_this select 0] + units (_this select 1));
-	deleteGroup (_this select 1);
-};
+[[], [_veh], [], [(_veh getVariable ["driver",grpNull])]] call btc_fnc_delete;

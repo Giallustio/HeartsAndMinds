@@ -36,7 +36,7 @@ _area setmarkercolor "colorBlue";
 
 _marker = createmarker [format ["sm_2_%1",_pos],_pos];
 _marker setmarkertype "hd_flag";
-_marker setmarkertext "Radio Tower";
+_marker setmarkertext (localize "STR_BTC_HAM_SIDE_TOWER_MRK"); //Radio Tower
 _marker setMarkerSize [0.6, 0.6];
 
 //// Randomise composition \\\\
@@ -59,28 +59,13 @@ _tower = _btc_composition select ((_btc_composition apply {typeOf _x}) find _tow
 
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !Alive _tower )};
 
-{deletemarker _x} foreach [_area,_marker];
+btc_side_assigned = false;publicVariable "btc_side_assigned";
+[[_area,_marker], _btc_composition, [], []] call btc_fnc_delete;
 
 if (btc_side_aborted || btc_side_failed ) exitWith {
-	{7 call btc_fnc_task_fail} remoteExec ["call", 0];
-	btc_side_assigned = false;publicVariable "btc_side_assigned";
-	_btc_composition spawn {
-
-		waitUntil {sleep 5; ({_x distance (_this select 0) < 300} count playableUnits == 0)};
-
-		{deleteVehicle _x} forEach _this;
-	};
+	7 remoteExec ["btc_fnc_task_fail", 0];
 };
 
 80 call btc_fnc_rep_change;
 
-{7 call btc_fnc_task_set_done} remoteExec ["call", 0];
-
-_btc_composition spawn {
-
-	waitUntil {sleep 5; ({_x distance (_this select 0) < 300} count playableUnits == 0)};
-
-	{deleteVehicle _x} forEach _this;
-};
-
-btc_side_assigned = false;publicVariable "btc_side_assigned";
+7 remoteExec ["btc_fnc_task_set_done", 0];

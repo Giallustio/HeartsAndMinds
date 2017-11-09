@@ -1,5 +1,5 @@
 
-private ["_group","_pos","_max_area","_behav","_allowwater","_min_area"];
+private ["_group","_pos","_max_area","_behav","_allowwater","_min_area","_waypointspeed"];
 
 _group = _this select 0;
 _pos = _this select 1;
@@ -13,6 +13,11 @@ if (count _this > 4) then {
 };
 _group setBehaviour _behav;
 {_x setBehaviour _behav;} foreach units _group;
+if ((vehicle leader _group) isKindOf "Air") then 	{
+	_waypointspeed = "NORMAL";
+} else {
+	_waypointspeed = "LIMITED";
+};
 
 private _prevPos = _pos;
 for "_i" from 0 to (2 + (floor (random 3))) do
@@ -28,7 +33,7 @@ for "_i" from 0 to (2 + (floor (random 3))) do
 	_wp setWaypointTimeout [5, 10, 20];
 	if (_i == 0) then
 	{
-		_wp setWaypointSpeed "LIMITED";
+		_wp setWaypointSpeed _waypointspeed;
 		_wp setWaypointFormation "STAG COLUMN";
 		_wp setWaypointCombatMode "RED";
 		_wp setWaypointBehaviour "SAFE";

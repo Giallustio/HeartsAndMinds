@@ -28,7 +28,7 @@ _area setmarkercolor "colorBlue";
 
 _marker = createmarker [format ["sm_2_%1",_pos],_pos];
 _marker setmarkertype "hd_flag";
-_marker setmarkertext "Mines";
+_marker setmarkertext (localize "STR_BTC_HAM_SIDE_MINES_MRK"); //Mines
 _marker setMarkerSize [0.6, 0.6];
 
 _mines = [];
@@ -42,7 +42,7 @@ for "_i" from 1 to (5 + round random 5) do {
 	_mines pushBack _m;
 };
 
-waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({_x distance _pos > 100} count playableUnits == 0))};
+waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({_x distance _pos < 200} count playableUnits > 0))};
 
 _closest = [_city,btc_city_all select {!(_x getVariable ["active",false])},false] call btc_fnc_find_closecity;
 for "_i" from 1 to (round random 2) do {
@@ -51,16 +51,14 @@ for "_i" from 1 to (round random 2) do {
 
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({!isNull _x} count _mines == 0))};
 
-{deletemarker _x} foreach [_area,_marker];
-
+btc_side_assigned = false;publicVariable "btc_side_assigned";
 if (btc_side_aborted || btc_side_failed) exitWith {
-	{4 call btc_fnc_task_fail} remoteExec ["call", 0];
-	btc_side_assigned = false;publicVariable "btc_side_assigned";
-	{if (!isNull _x) then {deleteVehicle _x}} foreach _mines;
+	4 remoteExec ["btc_fnc_task_fail", 0];
+	[[_area,_marker], _mines, [], []] call btc_fnc_delete;
 };
 
 30 call btc_fnc_rep_change;
 
-{4 call btc_fnc_task_set_done} remoteExec ["call", 0];
+4 remoteExec ["btc_fnc_task_set_done", 0];
 
-btc_side_assigned = false;publicVariable "btc_side_assigned";
+[[_area,_marker], [], [], []] call btc_fnc_delete;

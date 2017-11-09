@@ -1,5 +1,5 @@
 
-if (count (nearestObjects [getpos ( _this select 0 ),["All"],5]) > 1) exitWith {hint "Clear the area before create another object!"};
+if (count (nearestObjects [_this select 0,["All"],5]) > 1) exitWith {hint (localize "STR_BTC_HAM_LOG_BASICS_CLEARAREA")}; //Clear the area before create another object!
 
 disableSerialization;
 uiNamespace setVariable [ "current_garage", ( _this select 0 ) ];
@@ -19,7 +19,7 @@ with uiNamespace do {
 	private _logistic_point = uiNamespace getVariable "current_garage";
 	private _pad = uiNamespace getVariable "garage_pad";
 	deleteVehicle _pad;
-	private _veh_list = ( getPos _logistic_point ) nearEntities 5;
+	private _veh_list = _logistic_point nearEntities 5;
 	{
 		{deleteVehicle _x;} forEach crew _x;
 

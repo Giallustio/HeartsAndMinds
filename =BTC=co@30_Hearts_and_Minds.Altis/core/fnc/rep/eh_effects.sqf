@@ -23,6 +23,11 @@ if (btc_global_reputation < 300) then
 	{
 		[_pos,300] spawn btc_fnc_civ_get_weapons;
 	};
+} else {
+	if (_random > 1) then //GET GRENADE
+	{
+		[_pos,300] spawn btc_fnc_civ_get_grenade;
+	};
 };
 
 if (btc_debug) then

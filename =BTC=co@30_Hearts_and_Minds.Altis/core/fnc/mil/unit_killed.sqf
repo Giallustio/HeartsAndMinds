@@ -12,7 +12,7 @@ if (!isDedicated && !hasInterface) then {
 		if (isServer) then {
 			btc_rep_bonus_mil_killed call btc_fnc_rep_change;
 		} else {
-			[btc_rep_bonus_mil_killed,"btc_fnc_rep_change",false] spawn BIS_fnc_MP;
+			btc_rep_bonus_mil_killed remoteExec ["btc_fnc_rep_change", 2];
 		};
 	};
 };

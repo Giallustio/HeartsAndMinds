@@ -5,15 +5,18 @@
 	waitUntil {!isNull player};
 
 	player addRating 9999;
+	btc_player_respawn = getPosASL player;
 	["InitializePlayer", [player]] call BIS_fnc_dynamicGroups;
 
 	player addEventHandler ["Respawn", btc_fnc_eh_player_respawn];
 	player addEventHandler ["CuratorObjectPlaced", btc_fnc_eh_CuratorObjectPlaced];
 	["ace_treatmentSucceded", btc_fnc_eh_treatment] call CBA_fnc_addEventHandler;
+	player addEventHandler ["WeaponAssembled", btc_fnc_civ_add_leaflets];
 
 	call btc_fnc_int_add_actions;
+	call btc_fnc_int_shortcuts;
 
-	if (player getVariable ["interpreter", false]) then {player createDiarySubject ["Diary log","Diary log"];};
+	if (player getVariable ["interpreter", false]) then {player createDiarySubject [(localize "STR_BTC_HAM_CON_INFO_ASKHIDEOUT_DIARYLOG"),(localize "STR_BTC_HAM_CON_INFO_ASKHIDEOUT_DIARYLOG")];}; //"Diary log"STR_BTC_HAM_CON_INFO_ASKHIDEOUT_DIARYLOG
 
 	removeAllWeapons player;
 

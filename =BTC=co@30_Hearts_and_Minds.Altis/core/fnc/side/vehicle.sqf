@@ -29,7 +29,7 @@ _area setmarkercolor "colorBlue";
 
 _marker = createmarker [format ["sm_2_%1",_pos],_pos];
 _marker setmarkertype "hd_flag";
-_marker setmarkertext "Vehicle needs assistance";
+_marker setmarkertext (localize "STR_BTC_HAM_SIDE_VEHICLE_MRK"); // Vehicle needs assistance
 _marker setMarkerSize [0.6, 0.6];
 
 _veh_type = selectRandom btc_civ_type_veh;
@@ -43,23 +43,13 @@ _veh setHit ["wheel_1_1_steering", 1];
 
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || (_veh getHit "wheel_1_1_steering" < 1) || !Alive _veh)};
 
-{deletemarker _x} foreach [_area,_marker];
+btc_side_assigned = false;publicVariable "btc_side_assigned";
+[[_area,_marker], [_veh], [], []] call btc_fnc_delete;
 
 if (btc_side_aborted || btc_side_failed || !Alive _veh) exitWith {
-	{5 call btc_fnc_task_fail} remoteExec ["call", 0];
-	btc_side_assigned = false;publicVariable "btc_side_assigned";
+	5 remoteExec ["btc_fnc_task_fail", 0];
 };
 
 15 call btc_fnc_rep_change;
 
-{5 call btc_fnc_task_set_done} remoteExec ["call", 0];
-
-_veh spawn {
-
-	waitUntil {sleep 5; ({_x distance _this < 300} count playableUnits == 0)};
-
-	deleteVehicle _this;
-};
-
-
-btc_side_assigned = false;publicVariable "btc_side_assigned";
+5 remoteExec ["btc_fnc_task_set_done", 0];

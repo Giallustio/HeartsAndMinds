@@ -23,7 +23,7 @@ _marker setMarkerText format ["%1m", btc_cache_info];
 _marker setMarkerSize [0.5, 0.5];
 _marker setMarkerColor "ColorRed";
 
-if ((_this select 1) > 0) then {[[1],"btc_fnc_show_hint"] spawn BIS_fnc_MP;};
+if ((_this select 1) > 0) then {[1] remoteExec ["btc_fnc_show_hint", 0];};
 
 btc_cache_info = btc_cache_info - btc_info_cache_ratio;
 if (btc_cache_info < btc_info_cache_ratio) then {btc_cache_info = btc_info_cache_ratio;};

@@ -33,12 +33,12 @@ btc_side_jip_data = [12,_pos1,_city1 getVariable "name"];
 //// Create markers \\\\
 _marker1 = createmarker [format ["sm_2_%1",_pos1],_pos1];
 _marker1 setmarkertype "hd_flag";
-_marker1 setmarkertext "Convoy start";
+_marker1 setmarkertext (localize "STR_BTC_HAM_SIDE_CONVOY_MRKSTART"); //Convoy start
 _marker1 setMarkerSize [0.6, 0.6];
 
 _marker2 = createmarker [format ["sm_2_%1",_pos2],_pos2];
 _marker2 setmarkertype "hd_flag";
-_marker2 setmarkertext "Convoy end";
+_marker2 setmarkertext (localize "STR_BTC_HAM_SIDE_CONVOY_MRKEND"); //Convoy end
 _marker2 setMarkerSize [0.6, 0.6];
 
 _area = createmarker [format ["sm_%1",_pos2],_pos2];
@@ -77,6 +77,7 @@ for "_i" from 0 to (2 + round random 2) do {
 	_pos1 = getPos _road;
 };
 
+units _group joinSilent _group;
 {_x call btc_fnc_mil_unit_create} foreach units _group;
 
 _group setBehaviour "SAFE";
@@ -88,26 +89,19 @@ _wp setWaypointSpeed "LIMITED";
 _wp setWaypointFormation "COLUMN";
 _wp setWaypointStatements ["true", "btc_side_failed = true"];
 
-{player commandChat "Convoy has left the starting point!"} remoteExec ["call", -2];
+{player commandChat (localize "STR_BTC_HAM_SIDE_CONVOY_STARTCHAT")} remoteExec ["call", -2]; //Convoy has left the starting point!
 
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({ canMove _x } count _vehs == 0) || (_group isEqualTo grpNull))};
 
-{deletemarker _x} foreach _markers;
+btc_side_assigned = false;publicVariable "btc_side_assigned";
 
 if (btc_side_aborted) exitWith {
-	[12,"btc_fnc_task_fail",true] spawn BIS_fnc_MP;
-	btc_side_assigned = false;publicVariable "btc_side_assigned";
-	[_vehs,_group] spawn {
-		waitUntil {sleep 5; ({_x distance ((_this select 0) select 0) < 500} count playableUnits isEqualTo 0)};
-		{if (!isNull _x) then {deleteVehicle _x}} foreach units (_this select 1);
-		{if (!isNull _x) then {deleteVehicle _x}} foreach (_this select 0);
-		deleteGroup (_this select 1);
-	};
+	12 remoteExec ["btc_fnc_task_fail", 0];
+	[_markers, _vehs, [], [_group]] call btc_fnc_delete;
 };
 
 if (btc_side_failed) exitWith {
-	{12 call btc_fnc_task_fail} remoteExec ["call", 0];
-	btc_side_assigned = false;publicVariable "btc_side_assigned";
+	12 remoteExec ["btc_fnc_task_fail", 0];
 	_group setVariable ["no_cache",false];
 	{
 		_group = createGroup btc_enemy_side;
@@ -118,13 +112,6 @@ if (btc_side_failed) exitWith {
 
 50 call btc_fnc_rep_change;
 
-{12 call btc_fnc_task_set_done} remoteExec ["call", 0];
+12 remoteExec ["btc_fnc_task_set_done", 0];
 
-[_vehs,_group] spawn {
-	waitUntil {sleep 5; ({_x distance ((_this select 0) select 0) < 500} count playableUnits isEqualTo 0)};
-		{if (!isNull _x) then {deleteVehicle _x}} foreach units (_this select 1);
-		{if (!isNull _x) then {deleteVehicle _x}} foreach (_this select 0);
-		deleteGroup (_this select 1);
-};
-
-btc_side_assigned = false;publicVariable "btc_side_assigned";
+[_markers, _vehs, [], [_group]] call btc_fnc_delete;

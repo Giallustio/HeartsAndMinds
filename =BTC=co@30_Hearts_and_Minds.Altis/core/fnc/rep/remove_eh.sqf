@@ -11,5 +11,6 @@ _this removeEventHandler ["FiredNear", (_data select 2)];
 _this removeEventHandler ["HandleDamage", (_data select 3)];
 
 //, [_id_d,_id_k]];
+_this setVariable ["btc_rep_eh_added", []];
 
 true

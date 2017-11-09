@@ -24,7 +24,7 @@ btc_side_jip_data = [10,_vehpos,_city getVariable "name"];
 //// Create marker \\\\
 _marker = createmarker [format ["sm_2_%1",_vehpos],_vehpos];
 _marker setmarkertype "hd_flag";
-_marker setmarkertext "Civil need help";
+_marker setmarkertext (localize "STR_BTC_HAM_SIDE_CIVTREAT_MRK"); //Civil need help
 _marker setMarkerSize [0.6, 0.6];
 
 //// Create civ on _vehpos \\\\
@@ -49,24 +49,13 @@ waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({_x distance _unit 
 
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !Alive _unit || {_unit call ace_medical_fnc_isInStableCondition && [_unit] call ace_common_fnc_isAwake})};
 
-{deletemarker _x} foreach [_marker];
+btc_side_assigned = false;publicVariable "btc_side_assigned";
+[[_marker], [_veh], [], [_group]] call btc_fnc_delete;
 
 if (btc_side_aborted || btc_side_failed || !Alive _unit) exitWith {
-	{10 call btc_fnc_task_fail} remoteExec ["call", 0];
-	btc_side_assigned = false;publicVariable "btc_side_assigned";
-	{_x spawn {
-	waitUntil {sleep 5; ({_x distance _this < 300} count playableUnits == 0)};
-	deleteVehicle _this;
-	};} forEach [_unit,_veh];
+	10 remoteExec ["btc_fnc_task_fail", 0];
 };
 
 10 call btc_fnc_rep_change;
 
-{10 call btc_fnc_task_set_done} remoteExec ["call", 0];
-
-{_x spawn {
-	waitUntil {sleep 5; ({_x distance _this < 300} count playableUnits == 0)};
-	deleteVehicle _this;
-};} forEach [_unit,_veh];
-
-btc_side_assigned = false;publicVariable "btc_side_assigned";
+10 remoteExec ["btc_fnc_task_set_done", 0];
