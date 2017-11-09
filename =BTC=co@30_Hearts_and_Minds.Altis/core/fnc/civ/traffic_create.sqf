@@ -1,5 +1,5 @@
 
-private ["_city","_area","_cities","_useful","_veh_type","_group","_veh","_pos_iswater","_pos","_Spos","_1","_2","_3"];
+private ["_city","_area","_cities","_useful","_veh_type","_group","_veh","_pos_iswater","_pos","_Spos","_1","_2","_3","_4"];
 
 _city = _this select 0;
 _area = _this select 1;
@@ -52,10 +52,7 @@ _veh setVariable ["driver", _group];
 _1 = _veh addEventHandler ["HandleDamage", {if ((_this select 2) > 0.1) then {_this call btc_fnc_civ_traffic_eh}}];
 _2 = _veh addEventHandler ["Fuel", {_this call btc_fnc_civ_traffic_eh}];
 _3 = _veh addEventHandler ["GetOut", {_this call btc_fnc_civ_traffic_eh}];
-//_4 = (leader _group) addEventHandler ["HandleDamage", {_this call btc_fnc_civ_traffic_eh}];
-//_5 = (leader _group) addEventHandler ["Killed", {_this call btc_fnc_civ_traffic_eh}];
-_veh setVariable ["eh", [_1,_2,_3/*,4,5*/]];
-
-_veh addEventHandler ["HandleDamage", btc_fnc_rep_hd];
+_4 = _veh addEventHandler ["HandleDamage", btc_fnc_rep_hd];
+_veh setVariable ["eh", [_1,_2,_3,_4]];
 
 [_group,_area,_pos_iswater] call btc_fnc_civ_traffic_add_WP;

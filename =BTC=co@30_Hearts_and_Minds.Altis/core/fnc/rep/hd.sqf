@@ -7,7 +7,7 @@ _dam = _this select 2;
 _injurer = _this select 3;
 _ammo = _this select 4;
 
-if ((_part == "body") || (_part in ["wheel_1_1_steering","wheel_1_2_steering","wheel_2_1_steering","wheel_2_2_steering","palivo","engine","glass1","glass2","glass3","glass4","karoserie","palivo","fuel_hitpoint","engine_hitpoint","body_hitpoint"])) then {
+if (_part in ["body","wheel_1_1_steering","wheel_1_2_steering","wheel_2_1_steering","wheel_2_2_steering","palivo","engine","glass1","glass2","glass3","glass4","karoserie","palivo","fuel_hitpoint","engine_hitpoint","body_hitpoint"]) then {
 	if (isPlayer _injurer && {_dam > 0.3}) then	{
 		systemChat str([_part,_dam]);
 		btc_rep_malus_civ_hd call btc_fnc_rep_change;
