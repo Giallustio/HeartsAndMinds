@@ -284,11 +284,6 @@ if (!isDedicated) then {
 	btc_fnc_log_hitch_points = compile preprocessFileLineNumbers "core\fnc\log\hitch_points.sqf";
 	btc_fnc_log_get_corner_points = compile preprocessFileLineNumbers "core\fnc\log\get_corner_points.sqf";
 
-	//TASK
-	btc_fnc_task_create = compile preprocessFileLineNumbers "core\fnc\task\create.sqf";
-	btc_fnc_task_fail = compile preprocessFileLineNumbers "core\fnc\task\fail.sqf";
-	btc_fnc_task_set_done = compile preprocessFileLineNumbers "core\fnc\task\set_done.sqf";
-
 	//SIDE
 	btc_fnc_side_request = compile preprocessFileLineNumbers "core\fnc\side\request.sqf";
 };
