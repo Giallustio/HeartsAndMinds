@@ -43,10 +43,17 @@ switch !(_isInterrogate) do {
 if (_isInterrogate) then {_info_type = "REAL";};
 if (_info_type == "NO") exitWith {hint format ["%1: I've no information for you", name _man];};
 
+btc_int_ask_data = nil;
+[8,nil,player] remoteExec ["btc_fnc_int_ask_var", 2];
+
+waitUntil {!(isNil "btc_int_ask_data")};
+
+private _final_phase = btc_int_ask_data isEqualTo 0;
+
 _random = random 10;
 switch (true) do {
 	case (_random < 4) : {_info = "TROOPS";};
-	case (_random >= 4 && _random < 8) : {_info = "HIDEOUT";};
+	case (_random >= 4 && _random < 8) : {_info = ["HIDEOUT", "TROOPS"] select _final_phase;};
 	case (_random >= 8) : {_info = "CACHE";};
 };
 
