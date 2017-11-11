@@ -21,7 +21,7 @@ if (_explosive && {_damage > 0.6}) then {
 
 	_marker = createmarker [format ["btc_hideout_%1_destroyed", _id], getpos _hideout];
 	_marker setmarkertype "hd_destroy";
-	_marker setMarkerText format ["Hideout %1 destroyed", _id];
+	[_marker,{localize "STR_BTC_HAM_O_EH_HDHIDEOUT_MRK"},_id] remoteExec ["btc_fnc_set_markerText",0,true]; //Cached %1 destroyed
 	_marker setMarkerSize [1, 1];
 	_marker setMarkerColor "ColorRed";
 

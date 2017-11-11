@@ -25,6 +25,7 @@ btc_side_jip_data = [10,_vehpos,_city getVariable "name"];
 _marker = createmarker [format ["sm_2_%1",_vehpos],_vehpos];
 _marker setmarkertype "hd_flag";
 _marker setmarkertext (localize "STR_BTC_HAM_SIDE_CIVTREAT_MRK"); //Civil need help
+[_marker,{localize "STR_BTC_HAM_SIDE_CIVTREAT_MRK"}] remoteExec ["btc_fnc_set_markerText",0,true]; //Civil need help
 _marker setMarkerSize [0.6, 0.6];
 
 //// Create civ on _vehpos \\\\
