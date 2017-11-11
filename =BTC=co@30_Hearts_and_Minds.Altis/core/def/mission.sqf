@@ -1,7 +1,7 @@
 
 private ["_p_civ_veh","_p_db","_p_en","_hideout_n","_cache_info_def","_cache_info_ratio","_info_chance","_p_rep","_p_skill","_c_array","_tower","_array","_chopper","_p_civ","_btc_rearming_vehicles","_vehicles","_magazines","_p_city_radius","_magazines_static","_static","_btc_rearming_static","_magazines_clean","_weapons_usefull","_magazines_static_clean","_p_en_AA"];
 
-btc_version = 1.17; diag_log format ["=BTC= HEARTS AND MINDS VERSION %1",(str(btc_version) + ".3")];
+btc_version = 1.17; diag_log format ["=BTC= HEARTS AND MINDS VERSION %1",(str(btc_version) + ".4")];
 
 //Param
 
@@ -254,6 +254,15 @@ if (isServer) then {
 	#define	REARM_TURRET_PATHS  [[-1], [0], [0,0], [0,1], [1], [2], [0,2]]
 
 	_btc_rearming_vehicles = [btc_vehicles + btc_helo,[]] call btc_fnc_find_veh_with_turret;
+	private _btc_rearming_magazines = [];
+	{
+		private _vehicle_type = _x;
+		private _vehicle = ((btc_vehicles + btc_helo) select {typeOf _x isEqualTo _vehicle_type}) select 0;
+		private _magazines = [_vehicle] call btc_fnc_log_getRearmMagazines;
+		_btc_rearming_magazines pushBack _magazines;
+	} forEach _btc_rearming_vehicles;
+
+
 	private _allclass = ("true" configClasses (configFile >> "CfgVehicles")) apply {configName _x};
 	_allclass = _allclass select {(getNumber(configfile >> "CfgVehicles" >> _x >> "scope") isEqualTo 2)};
 
@@ -336,18 +345,7 @@ if (isServer) then {
 				"ACE_Wheel",
 				"ACE_Track"
 			]
-		] + (_btc_rearming_vehicles apply {
-				_vehicles = _x;
-				_magazines = [];
-				{
-					_magazines append (([_vehicles,_x] call btc_fnc_log_getconfigmagazines));
-				} forEach REARM_TURRET_PATHS;
-				_magazines_clean = [];
-				{
-					_magazines_clean pushBackUnique _x;
-				} forEach _magazines;
-				_magazines_clean
-			})
+		] + _btc_rearming_magazines
 	];
 	publicVariable "btc_construction_array";
 };
