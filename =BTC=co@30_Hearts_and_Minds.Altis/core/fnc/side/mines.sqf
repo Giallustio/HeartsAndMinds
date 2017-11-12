@@ -28,7 +28,6 @@ _area setmarkercolor "colorBlue";
 
 _marker = createmarker [format ["sm_2_%1",_pos],_pos];
 _marker setmarkertype "hd_flag";
-//_marker setmarkertext (localize "STR_BTC_HAM_SIDE_MINES_MRK"); //Mines
 [_marker,{localize "STR_BTC_HAM_SIDE_MINES_MRK"}] remoteExec ["btc_fnc_set_markerText",0,true]; //Mines
 _marker setMarkerSize [0.6, 0.6];
 

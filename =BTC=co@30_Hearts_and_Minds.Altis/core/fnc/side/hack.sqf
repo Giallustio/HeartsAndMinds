@@ -26,7 +26,6 @@ _city setVariable ["spawn_more",true];
 
 private _marker = createmarker [format ["sm_2_%1",_pos],_pos];
 _marker setmarkertype "hd_flag";
-//_marker setmarkertext (localize "STR_BTC_HAM_SIDE_HACK_MRK"); //Terminal
 [_marker,{localize "STR_BTC_HAM_SIDE_HACK_MRK"}] remoteExec ["btc_fnc_set_markerText",0,true]; //Terminal
 _marker setMarkerSize [0.6, 0.6];
 
