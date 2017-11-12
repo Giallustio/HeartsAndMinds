@@ -37,7 +37,7 @@ if (_explosive && {_damage > 0.6}) then {
 
 	if (btc_hq isEqualTo _hideout) then {btc_hq = objNull};
 
-	if (count btc_hideouts == 0) then {[] execVM "core\fnc\common\final_phase.sqf";};
+	if (count btc_hideouts == 0) then {[] spawn btc_fnc_final_phase;};
 
 	//Notification
 	[2,count btc_hideouts] remoteExec ["btc_fnc_show_hint", 0];
