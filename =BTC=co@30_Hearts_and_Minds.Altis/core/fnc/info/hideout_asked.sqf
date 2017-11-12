@@ -7,7 +7,7 @@ _is_real = _this select 1;
 _text = "";
 
 switch _is_real do {
-	case _is_real : {
+	case true : {
 		btc_int_ask_data = nil;
 		[1,[],player] remoteExec ["btc_fnc_int_ask_var", 2];
 
@@ -22,7 +22,7 @@ switch _is_real do {
 			_text = format ["%1: I saw a lot of militia activity towards %2, %3 meter from here. Probably there is an hideout!", _name,_card,round _dist];
 		} else {_text = format ["%1: There are no hideout around here!", _name];};
 	};
-	case (!_is_real) : {
+	case false : {
 		if ((random 1) > 0.5) then {
 			private ["_array","_dist","_dir"];
 			_array = ["N","E","W","S","NW","NE","SE","SW"];
