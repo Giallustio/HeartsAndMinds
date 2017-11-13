@@ -1,4 +1,4 @@
-selectRandom
+
 private ["_name","_is_real","_text"];
 
 _name = _this select 0;
