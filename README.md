@@ -32,7 +32,7 @@ A new formed group, known as "Oplitas", is against the NATO intervention and is 
 - 187 enemies factions and 15 civilians factions available
 - More than 14 side mission
 - Dynamic caching system
-- Full saving DataBase
+- Full saving Database
 - Easy map change
 - Extend battlefield to sea
 - Custom gameplay
