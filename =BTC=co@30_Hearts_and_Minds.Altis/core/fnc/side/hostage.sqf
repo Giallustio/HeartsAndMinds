@@ -31,7 +31,7 @@ btc_side_jip_data = [15,getPos _city,_city getVariable "name"];
 //// Marker
 _marker = createmarker [format ["sm_2_%1",getPos _house],getPos _house];
 _marker setmarkertype "hd_flag";
-[_marker,{localize "STR_BTC_HAM_SIDE_HOSTAGE_MRK"}] remoteExec ["btc_fnc_set_markerText",0,true]; //Hostage
+[_marker,"STR_BTC_HAM_SIDE_HOSTAGE_MRK"] remoteExec ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker]; //Hostage
 _marker setMarkerSize [0.6, 0.6];
 
 _city setVariable ["spawn_more",true];

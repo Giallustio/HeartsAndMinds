@@ -28,7 +28,7 @@ _area setmarkercolor "colorBlue";
 
 _marker = createmarker [format ["sm_2_%1",_pos],_pos];
 _marker setmarkertype "hd_flag";
-[_marker,{localize "STR_BTC_HAM_SIDE_SUPPLIES_MRK"}] remoteExec ["btc_fnc_set_markerText",0,true]; //Supplies
+[_marker,"STR_BTC_HAM_SIDE_SUPPLIES_MRK"] remoteExec ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker]; //Supplies
 _marker setMarkerSize [0.6, 0.6];
 
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || count (nearestObjects [_pos, [btc_supplies_mat], 30]) > 0)};

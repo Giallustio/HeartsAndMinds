@@ -19,7 +19,7 @@ if (isNil {_cache getVariable "btc_hd_cache"} && {_explosive} && {_damage > 0.6}
 	deleteVehicle btc_cache_obj;
 	_marker = createmarker [format ["btc_cache_%1", btc_cache_n], btc_cache_pos];
 	_marker setmarkertype "hd_destroy";
-	[_marker,{localize "STR_BTC_HAM_O_EH_HDCACHE_MRK"},btc_cache_n] remoteExec ["btc_fnc_set_markerText",0,true]; //Cached %1 destroyed
+	[_marker,"STR_BTC_HAM_O_EH_HDCACHE_MRK",btc_cache_n] remoteExec ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker]; //Cached %1 destroyed
 	// Vehicle needs assistance
 	_marker setMarkerSize [1, 1];
 	_marker setMarkerColor "ColorRed";

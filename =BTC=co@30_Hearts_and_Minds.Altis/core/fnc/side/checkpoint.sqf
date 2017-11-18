@@ -37,7 +37,7 @@ for "_i" from 1 to (1 + round random 2) do {
 	//// Create marker \\\\
 	_marker = createmarker [format ["sm_2_%1",_pos],_pos];
 	_marker setmarkertype "hd_flag";
-	[_marker,{localize "STR_BTC_HAM_SIDE_CHECKPOINT_MRK"}] remoteExec ["btc_fnc_set_markerText",0,true]; //Checkpoint
+	[_marker,"STR_BTC_HAM_SIDE_CHECKPOINT_MRK"] remoteExec ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker]; //Checkpoint
 	_marker setMarkerColor "ColorRed";
 	_marker setMarkerSize [0.6, 0.6];
 	_markers pushback _marker;
