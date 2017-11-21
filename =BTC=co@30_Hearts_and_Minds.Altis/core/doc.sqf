@@ -1,8 +1,8 @@
 player createDiarySubject ["Documentation","Documentation"];
 
-player createDiaryRecord ["Documentation", ["Headless & Data base", "
+player createDiaryRecord ["Documentation", ["Headless & Database", "
 <img image='\a3\ui_f\data\map\vehicleicons\iconvirtual_ca.paa' width='20' height='20'/> This mission automatically uses one Headless client when available.<br/><br/>
-<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/> This mission has a data base system. Enemy units, towns, hideouts, cache, objects created by players or Zeus, vehicles, players markers (not lines) on global channel are saved. All admin can save mission progress at any time with his self interaction key.
+<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/> This mission has a database system. Enemy units, towns, hideouts, cache, objects created by players or Zeus, vehicles, players markers (not lines) on global channel are saved. All admin can save mission progress at any time with his self interaction key.
 	"]
 ];
 
@@ -28,7 +28,7 @@ You can also rearm them by spawning the corresponding caliber at logistic point 
 ];
 
 player createDiaryRecord ["Documentation", ["Side Mission", "
-<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\whiteboard_ca.paa' width='20' height='20'/> Side missions are really usefull to rise your reputation level.<br/>
+<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\whiteboard_ca.paa' width='20' height='20'/> Side missions are really useful to raise your reputation level.<br/>
 A side mission can be requested by the officer with his self interaction menu.<br/>
 If you don't want to complete a task, you can always abort it with the self interaction menu.
 	"]
@@ -91,7 +91,7 @@ To destroy an hideout just place a satchel near the ammo box, it's close to the 
 ];
 
 player createDiaryRecord ["Documentation", ["IED", "
-<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/> Any object could be an IED, approach it carefully (DO NOT rotate while your are walking: prefer walk, stop, rotate, walk again etc). Turn On your mine detector (VMH3 or VMMH3) and search for a charge in a circle of 2 meter around.<br/>
+<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/> Any object could be an IED, approach it carefully (DO NOT rotate while you are walking: prefer walk, stop, rotate, walk again etc). Turn On your mine detector (VMH3 or VMMH3) and search for a charge in a circle of 2 meter around.<br/>
 <img image='\z\ace\addons\explosives\UI\Defuse_ca.paa' width='20' height='20'/>
 If you are an engineer and have a defusal kit, you can disarm it.<br/>
 You can also blow them off with high caliber and explosive satchels.
@@ -107,15 +107,15 @@ player createDiaryRecord ["Documentation", ["Intel", "
 When you find an intel from a dead body or interrogate a prisoner, a marker will appear in the map. Remember, prisoner have a random number of intel more or less interesting.<br/>
 There are two types of marker:<br/>
 - Red question mark (<img image='\A3\ui_f\data\map\markers\handdrawn\unknown_CA.paa' width='13' height='13' color='#ff0000'/>): ammo cache intel<br/>
-- Red esclamation mark (<img image='\A3\ui_f\data\map\markers\handdrawn\warning_CA.paa' width='13' height='13' color='#ff0000'/>): hideout intel<br/><br/><br/>
+- Red exclamation mark (<img image='\A3\ui_f\data\map\markers\handdrawn\warning_CA.paa' width='13' height='13' color='#ff0000'/>): hideout intel<br/><br/><br/>
 When you destroy an hideout or an ammo cache, all the markers related to it will be deleted.
 	"]
 ];
 
 player createDiaryRecord ["Documentation", ["Reputation", "
 <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\talk_ca.paa' width='20' height='20'/> Reputation can be ask to civilian<br/>
-Bad actions cause bad effetcs.<br/>
-<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='20' height='20'/> Helping the local population by fighting the Oplitas and disarming IED's will rise your reputation; killing civilians, mutilating alive/dead civilians, firing near civilians for no reason, damaging/destroying buildings, losing vehicles, player respawns will decrease your repution. At the beginning you have a very low reputation level, so civilians won't help you in revealing important information about the Oplitas, they will likely lie instead.<br/>
+Bad actions cause bad effects.<br/>
+<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='20' height='20'/> Helping the local population by fighting the Oplitas and disarming IEDs will rise your reputation; killing civilians, mutilating alive/dead civilians, firing near civilians for no reason, damaging/destroying buildings, losing vehicles, player respawns will decrease your reputation. At the beginning you have a very low reputation level, so civilians won't help you in revealing important information about the Oplitas, they will likely lie instead.<br/>
 Aborting a side mission does not affect reputation.
 	"]
 ];
