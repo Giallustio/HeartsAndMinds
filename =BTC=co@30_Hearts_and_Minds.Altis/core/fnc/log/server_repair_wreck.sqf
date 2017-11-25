@@ -10,7 +10,7 @@ _marker = _veh getVariable ["marker",""];
 
 btc_vehicles = btc_vehicles - [_veh];
 
-if (_marker != "") then {deleteMarker _marker;};
+if (_marker != "") then {deleteMarker _marker; remoteExec ["", _marker];};
 deleteVehicle _veh;
 sleep 1;
 _veh = [_type,[_pos select 0, _pos select 1, 0.5 + (_pos select 2)],_dir,_textures] call btc_fnc_log_createVehicle;
