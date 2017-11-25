@@ -33,12 +33,12 @@ btc_side_jip_data = [12,_pos1,_city1 getVariable "name"];
 //// Create markers \\\\
 _marker1 = createmarker [format ["sm_2_%1",_pos1],_pos1];
 _marker1 setmarkertype "hd_flag";
-[_marker1,"STR_BTC_HAM_SIDE_CONVOY_MRKSTART"] remoteExec ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker]; //Convoy start
+[_marker1,"STR_BTC_HAM_SIDE_CONVOY_MRKSTART"] remoteExec ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker1]; //Convoy start
 _marker1 setMarkerSize [0.6, 0.6];
 
 _marker2 = createmarker [format ["sm_2_%1",_pos2],_pos2];
 _marker2 setmarkertype "hd_flag";
-[_marker2,"STR_BTC_HAM_SIDE_CONVOY_MRKEND"] remoteExec ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker]; //Convoy end
+[_marker2,"STR_BTC_HAM_SIDE_CONVOY_MRKEND"] remoteExec ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker2]; //Convoy end
 _marker2 setMarkerSize [0.6, 0.6];
 
 _area = createmarker [format ["sm_%1",_pos2],_pos2];
