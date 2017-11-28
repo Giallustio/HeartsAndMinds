@@ -1474,9 +1474,9 @@
                 <German>In the last hideout we found important intel about all the cities occupied by the Oplitas! Size the last positions held by the enemies and defeat them once and for all</German>
             </Key>
             <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_7">
-                <Original> has been deployed!</Original>
-                <English> has been deployed!</English>
-                <German> wurde bereitgestellt!</German>
+                <Original>%1 has been deployed!</Original>
+                <English>%1 has been deployed!</English>
+                <German>%1 wurde bereitgestellt!</German>
             </Key>
             <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_8">
                 <Original>Saving in progress...Please wait</Original>
