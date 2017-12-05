@@ -259,7 +259,7 @@ class Params {
 	};
 	class btc_p_rearm { // Rearm Level:
 		title = __EVAL(format ["      %1",(localize "STR_BTC_HAM_PARAM_OTHER_REARMLEVEL")]);
-		values[]={0,1,2};
+		values[]={-1,0,1,2};
 		texts[]={$STR_BTC_HAM_O_BASIC_DEFAULT,$STR_ACE_Rearm_RearmSettings_vehicle,$STR_ACE_Rearm_RearmSettings_magazine,$STR_ACE_Rearm_RearmSettings_caliber}; // texts[]={"Default","Entire Vehicle","Entire Magazine","Amount based on caliber"};
 		default = -1;
 	};
