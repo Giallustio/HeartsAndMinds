@@ -1,11 +1,11 @@
 
-params ["_btc_id", ["_destination", objNull], ["_location", ""]];
+params ["_task_id", ["_destination", objNull], ["_location", ""]];
 
-if !((typeName _btc_id) isEqualTo "STRING") then {_btc_id = str(_btc_id);};
+if !((typeName _task_id) isEqualTo "STRING") then {_task_id = str(_task_id);};
 
 private ["_description","_type"];
 
-switch (_btc_id) do {
+switch (_task_id) do {
 	case "0" : {
 		_description = [(localize "STR_BTC_HAM_MISSION_DEFEAT_DESC"),(localize "STR_BTC_HAM_MISSION_DEFEAT_TITLE"),(localize "STR_BTC_HAM_MISSION_DEFEAT_TITLE")]; //"Defeat the Oplitas once and for all","Defeat the Oplitas","Defeat the Oplitas"
 		_type = "kill";
@@ -77,10 +77,10 @@ switch (_btc_id) do {
 };
 
 if (!isServer) exitWith {
-	[[_btc_id], btc_player_side, _description, _destination, true, 2, true, false, _type] spawn {
+	[[_task_id], btc_player_side, _description, _destination, true, 2, true, false, _type] spawn {
 		waitUntil {(_this select 0) call BIS_fnc_taskExists;};
 		_this call BIS_fnc_setTask;
 	};
 };
 
-[btc_player_side,[_btc_id],_description,_destination,true,2,false,_type,true] call BIS_fnc_taskCreate;
+[btc_player_side,[_task_id],_description,_destination,true,2,false,_type,true] call BIS_fnc_taskCreate;
