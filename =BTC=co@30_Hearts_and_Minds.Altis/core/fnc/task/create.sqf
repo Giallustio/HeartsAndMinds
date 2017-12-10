@@ -1,7 +1,7 @@
 
 params ["_task_id", ["_destination", objNull], ["_location", ""]];
 
-if !((typeName _task_id) isEqualTo "STRING") then {_task_id = str(_task_id);};
+if !( _task_id isEqualType "") then {_task_id = str(_task_id);};
 
 private ["_description","_type"];
 
