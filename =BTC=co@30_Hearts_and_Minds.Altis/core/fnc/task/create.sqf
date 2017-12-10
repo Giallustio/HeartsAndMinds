@@ -77,10 +77,12 @@ switch (_task_id) do {
 };
 
 if (!isServer) exitWith {
-	[[_task_id], btc_player_side, _description, _destination, true, 2, true, false, _type] spawn {
-		waitUntil {(_this select 0) call BIS_fnc_taskExists;};
+	[[_task_id], btc_player_side, _description, _destination, true, 2, false, false] spawn {
+
+		waitUntil {(_this select 0) call BIS_fnc_taskState isEqualTo "ASSIGNED";};
 		_this call BIS_fnc_setTask;
+		(_this select 0) call BIS_fnc_taskHint;
 	};
 };
 
-[btc_player_side,[_task_id],_description,_destination,true,2,false,_type,true] call BIS_fnc_taskCreate;
+[btc_player_side,[_task_id],_description,_destination,true,2,false,_type,false] call BIS_fnc_taskCreate;
