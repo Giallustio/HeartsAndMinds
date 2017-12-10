@@ -1,5 +1,5 @@
 
-[] execVM "core\doc.sqf";
+call compile preprocessFile "core\doc.sqf";
 
 [] spawn {
 	waitUntil {!isNull player};

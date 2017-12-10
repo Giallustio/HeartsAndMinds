@@ -93,7 +93,7 @@ if ((random 1) > _ratio) then
 else
 {
 	//INF
-	_group = [_start_pos,50,(8 + random 6),1] call btc_fnc_mil_create_group;
+	_group = ([_start_pos,50,(8 + random 6),1] call btc_fnc_mil_create_group) select 0;
 	_group setVariable ["no_cache",true];
 	while {(count (waypoints _group)) > 0} do { deleteWaypoint ((waypoints _group) select 0); };
 	_wp = _group addWaypoint [_pos, 60];

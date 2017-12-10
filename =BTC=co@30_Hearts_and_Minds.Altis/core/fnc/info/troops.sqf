@@ -1,4 +1,4 @@
-selectRandom
+
 private ["_name","_is_real","_text"];
 
 _name = _this select 0;
@@ -8,7 +8,7 @@ _text = "";
 
 switch _is_real do
 {
-	case _is_real : {
+	case true : {
 		private ["_array"];
 		_array = (position player) nearEntities [btc_type_units, 2500];
 		if (count _array > 0) then {
@@ -22,7 +22,7 @@ switch _is_real do
 			_text = format [(localize "STR_BTC_HAM_CON_INFO_TROOPS_FALSE"), _name]; //%1: I didn't see any militia movement in this area!
 		};
 	};
-	case (!_is_real) : {
+	case false : {
 		if ((random 1) > 0.5) then {
 			private ["_array","_dist","_dir"];
 			_array = ["N","E","W","S","NW","NE","SE","SW"];
