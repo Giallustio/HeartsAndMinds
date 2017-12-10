@@ -26,6 +26,7 @@ if (isServer) then {
 	btc_fnc_find_closecity = compile preprocessFileLineNumbers "core\fnc\common\find_closecity.sqf";
 	btc_fnc_deletegroup = compile preprocessFileLineNumbers "core\fnc\common\deletegroup.sqf";
 	btc_fnc_delete = compile preprocessFileLineNumbers "core\fnc\common\delete.sqf";
+	btc_fnc_final_phase = compile preprocessFileLineNumbers "core\fnc\common\final_phase.sqf";
 
 	//CITY
 	btc_fnc_city_activate = compile preprocessFileLineNumbers "core\fnc\city\activate.sqf";
@@ -247,12 +248,12 @@ if (!isDedicated) then {
 	btc_fnc_civ_add_leaflets = compile preprocessFileLineNumbers "core\fnc\civ\add_leaflets.sqf";
 
 	//IED
-	btc_fnc_ied_effects = compile preprocessFile "core\fnc\ied\ied_effects.sqf";
-	btc_fnc_ied_effect_smoke = compile preprocessFile "core\fnc\ied\effect_smoke.sqf";
-	btc_fnc_ied_effect_color_smoke = compile preprocessFile "core\fnc\ied\effect_color_smoke.sqf";
-	btc_fnc_ied_effect_rocks = compile preprocessFile "core\fnc\ied\effect_rocks.sqf";
-	btc_fnc_ied_effect_blurEffect = compile preprocessFile "core\fnc\ied\effect_blurEffect.sqf";
-	btc_fnc_ied_effect_shock_wave = compile preprocessFile "core\fnc\ied\effect_shock_wave.sqf";
+	btc_fnc_ied_effects = compile preprocessFileLineNumbers "core\fnc\ied\ied_effects.sqf";
+	btc_fnc_ied_effect_smoke = compile preprocessFileLineNumbers "core\fnc\ied\effect_smoke.sqf";
+	btc_fnc_ied_effect_color_smoke = compile preprocessFileLineNumbers "core\fnc\ied\effect_color_smoke.sqf";
+	btc_fnc_ied_effect_rocks = compile preprocessFileLineNumbers "core\fnc\ied\effect_rocks.sqf";
+	btc_fnc_ied_effect_blurEffect = compile preprocessFileLineNumbers "core\fnc\ied\effect_blurEffect.sqf";
+	btc_fnc_ied_effect_shock_wave = compile preprocessFileLineNumbers "core\fnc\ied\effect_shock_wave.sqf";
 
 	//EH
 	btc_fnc_eh_player_respawn = compile preprocessFileLineNumbers "core\fnc\eh\player_respawn.sqf";

@@ -27,7 +27,7 @@ switch (_type) do {
 		hint (localize "STR_BTC_HAM_O_COMMON_SHOWHINTS_6"); //In the last hideout we found important intel about all the cities occupied by the Oplitas! Size the last positions held by the enemies and defeat them once and for all
 	};
 	case 7 : {
-		hint ((_this select 1) + (localize "STR_BTC_HAM_O_COMMON_SHOWHINTS_7")); // has been deployed!
+		hint format [(localize "STR_BTC_HAM_O_COMMON_SHOWHINTS_7"),(_this select 1)]; // has been deployed!
 	};
 	case 8 : {
 		hint (localize "STR_BTC_HAM_O_COMMON_SHOWHINTS_8"); //Saving in progress...Please wait
