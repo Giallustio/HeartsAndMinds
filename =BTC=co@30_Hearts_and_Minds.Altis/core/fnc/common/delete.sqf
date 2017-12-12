@@ -2,6 +2,8 @@
 
 {
 	deletemarker _x;
+	//remove JIP remoteExec
+	remoteExec ["", _x];
 } foreach (_this select 0);
 
 {

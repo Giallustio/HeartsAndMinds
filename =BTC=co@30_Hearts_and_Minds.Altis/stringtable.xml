@@ -1555,11 +1555,21 @@
                 <German>Alle Verstecke sind zerstört, nun sind die Oplitas besiegt! Mission erfüllt</German>
             </Key>
         </Container>
-        <Container name="Other: Wreck Marker ">
+        <Container name="Other: Markers ">
             <Key ID="STR_BTC_HAM_O_EH_VEHKILLED_MRK">
                 <Original>%1 wreck</Original>
                 <English>%1 wreck</English>
                 <German>%1 Wrack</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_EH_HDHIDEOUT_MRK">
+                <Original>Hideout %1 destroyed</Original>
+                <English>Hideout %1 destroyed</English>
+                <German>Versteck %1 wurde zerstört</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_EH_HDCACHE_MRK">
+                <Original>Cached %1 destroyed</Original>
+                <English>Cached %1 destroyed</English>
+                <German>Waffenlager %1 wurde zerstört</German>
             </Key>
         </Container>
         <Container name="Other: Basics">

@@ -33,3 +33,4 @@ class RscTitles {
 #include "core\def\functions.hpp"
 
 #include "core\fnc\eh\extended_InitPost_EH.hpp"
+#include "core\fnc\eh\extended_PreInit_EH.hpp"

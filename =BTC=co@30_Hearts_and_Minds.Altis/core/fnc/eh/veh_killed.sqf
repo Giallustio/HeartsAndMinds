@@ -6,7 +6,7 @@ _vehicle = _this select 0;
 _marker = createmarker [format ["m_%1",_vehicle],getPos _vehicle];
 _marker setMarkerType "mil_box";
 _marker setMarkerColor "ColorRed";
-_marker setMarkerText format [(localize "STR_BTC_HAM_O_EH_VEHKILLED_MRK"),getText (configFile >> "cfgVehicles" >> typeof _vehicle >> "displayName")]; // %1 wreck
+[_marker,"STR_BTC_HAM_O_EH_VEHKILLED_MRK",(getText (configFile >> "cfgVehicles" >> typeof _vehicle >> "displayName"))] remoteExec ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker]; // %1 wreck
 
 _vehicle setVariable ["marker",_marker];
 
