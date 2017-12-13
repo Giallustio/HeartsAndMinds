@@ -14,9 +14,9 @@ class Extended_InitPost_EventHandlers {
             init = "[typeof (_this select 0)] call btc_fnc_eh_veh_init";
         };
     };
-    class Civilian {
+    class CAManBase {
         class btc_remove_action {
-            init = "[_this select 0] call btc_fnc_eh_civ_removeAction";
+            init = "if (side(_this select 0) isEqualTo civilian) then {[_this select 0] call btc_fnc_eh_civ_removeAction};";
         };
     };
 	/*class CAManBase {
