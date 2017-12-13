@@ -8,7 +8,7 @@ _units = [];
 _wp_pos = [0,0,0];
 
 switch (count _this) do {
-	case 2 : {_units = _pos nearEntities [["Car","Civilian_F"], btc_int_radius_orders];};
+	case 2 : {_units = _pos nearEntities [["Car","Civilian_F"] + btc_civ_type_units, btc_int_radius_orders];};
 	case 3 : {_units = [_this select 2];};
 	case 4 : {
 		_units = [_this select 2];
