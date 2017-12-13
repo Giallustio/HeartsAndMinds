@@ -16,7 +16,7 @@ player playActionNow _gesture;
 
 _pos = getpos player;
 
-if (count (_pos nearEntities [["Car","Civilian_F"], btc_int_radius_orders]) == 0) exitWith {true};
+if (count (_pos nearEntities [["Car","Civilian_F"] + btc_civ_type_units, btc_int_radius_orders]) == 0) exitWith {true};
 
 if (isNull _unit) then {
 	[_pos,_order] remoteExec ["btc_fnc_int_orders_give", 2];
