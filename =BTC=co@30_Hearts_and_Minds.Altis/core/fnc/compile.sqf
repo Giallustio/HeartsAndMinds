@@ -261,7 +261,6 @@ if (!isDedicated) then {
 	btc_fnc_eh_CuratorObjectPlaced = compile preprocessFileLineNumbers "core\fnc\eh\CuratorObjectPlaced.sqf";
 	btc_fnc_eh_treatment = compile preprocessFileLineNumbers "core\fnc\eh\treatment.sqf";
 	btc_fnc_eh_leaflets = compile preprocessFileLineNumbers "core\fnc\eh\leaflets.sqf";
-	btc_fnc_eh_civ_removeAction = compile preprocessFileLineNumbers "core\fnc\eh\civ_removeAction.sqf";
 
 	//FOB
 	btc_fnc_fob_create = compile preprocessFileLineNumbers "core\fnc\fob\create.sqf";
