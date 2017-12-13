@@ -54,11 +54,11 @@ _action = ["Place", (localize "STR_BTC_HAM_ACTION_FOB_PLACE"), "\A3\ui_f\data\ma
 _action = ["Civil_Orders",(localize "STR_BTC_HAM_ACTION_ORDERS_MAIN"),"\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa",{},{true}] call ace_interact_menu_fnc_createAction;
 [player, 1, ["ACE_SelfActions"], _action] call ace_interact_menu_fnc_addActionToObject;
 
-_action = ["Civil_Stop",(localize "STR_BTC_HAM_ACTION_ORDERS_STOP"),"\A3\ui_f\data\igui\cfg\simpleTasks\types\talk_ca.paa",{[1] call btc_fnc_int_orders;},{(vehicle player isEqualTo player)}] call ace_interact_menu_fnc_createAction;
+_action = ["Civil_Stop",(localize "STR_BTC_HAM_ACTION_ORDERS_STOP"),"\A3\ui_f\data\igui\cfg\simpleTasks\types\talk3_ca.paa",{[1] call btc_fnc_int_orders;},{(vehicle player isEqualTo player)}] call ace_interact_menu_fnc_createAction;
 [player, 1, ["ACE_SelfActions","Civil_Orders"], _action] call ace_interact_menu_fnc_addActionToObject;
-_action = ["Civil_Get_down",(localize "STR_BTC_HAM_ACTION_ORDERS_GETDOWN"),"\A3\ui_f\data\igui\cfg\simpleTasks\types\talk_ca.paa",{[2] call btc_fnc_int_orders;},{(vehicle player isEqualTo player)}] call ace_interact_menu_fnc_createAction;
+_action = ["Civil_Get_down",(localize "STR_BTC_HAM_ACTION_ORDERS_GETDOWN"),"\A3\ui_f\data\igui\cfg\simpleTasks\types\talk2_ca.paa",{[2] call btc_fnc_int_orders;},{(vehicle player isEqualTo player)}] call ace_interact_menu_fnc_createAction;
 [player, 1, ["ACE_SelfActions","Civil_Orders"], _action] call ace_interact_menu_fnc_addActionToObject;
-_action = ["Civil_Go_away",(localize "STR_BTC_HAM_ACTION_ORDERS_GOAWAY"),"\A3\ui_f\data\igui\cfg\simpleTasks\types\talk_ca.paa",{[3] call btc_fnc_int_orders;},{(vehicle player isEqualTo player)}] call ace_interact_menu_fnc_createAction;
+_action = ["Civil_Go_away",(localize "STR_BTC_HAM_ACTION_ORDERS_GOAWAY"),"\A3\ui_f\data\igui\cfg\simpleTasks\types\talk1_ca.paa",{[3] call btc_fnc_int_orders;},{(vehicle player isEqualTo player)}] call ace_interact_menu_fnc_createAction;
 [player, 1, ["ACE_SelfActions","Civil_Orders"], _action] call ace_interact_menu_fnc_addActionToObject;
 
 { //Actions attachted to AI

@@ -21,7 +21,7 @@ if (_explosive && {_damage > 0.6}) then {
 
 	_marker = createmarker [format ["btc_hideout_%1_destroyed", _id], getpos _hideout];
 	_marker setmarkertype "hd_destroy";
-	_marker setMarkerText format ["Hideout %1 destroyed", _id];
+	[_marker,"STR_BTC_HAM_O_EH_HDHIDEOUT_MRK",_id] remoteExec ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker]; //Cached %1 destroyed
 	_marker setMarkerSize [1, 1];
 	_marker setMarkerColor "ColorRed";
 
@@ -37,7 +37,7 @@ if (_explosive && {_damage > 0.6}) then {
 
 	if (btc_hq isEqualTo _hideout) then {btc_hq = objNull};
 
-	if (count btc_hideouts == 0) then {[] execVM "core\fnc\common\final_phase.sqf";};
+	if (count btc_hideouts == 0) then {[] spawn btc_fnc_final_phase;};
 
 	//Notification
 	[2,count btc_hideouts] remoteExec ["btc_fnc_show_hint", 0];

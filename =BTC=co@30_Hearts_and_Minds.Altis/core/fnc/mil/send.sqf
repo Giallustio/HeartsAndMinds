@@ -16,7 +16,7 @@ private ["_group"];
 switch (_this select 2) do {
 	case 0 : {
 		private ["_wp_0","_wp"];
-		_group = [_pos,150,(3 + random 6),1] call btc_fnc_mil_create_group;
+		_group = ([_pos,150,(3 + random 6),1] call btc_fnc_mil_create_group) select 0;
 		_group setVariable ["no_cache",true];
 		while {(count (waypoints _group)) > 0} do { deleteWaypoint ((waypoints _group) select 0); };
 		_wp_0 = _group addWaypoint [_dest, 60];
