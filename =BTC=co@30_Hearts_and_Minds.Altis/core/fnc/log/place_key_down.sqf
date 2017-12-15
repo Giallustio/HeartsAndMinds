@@ -9,7 +9,7 @@ private _turbo = if (_shift) then {1} else {0};
 if (_key isEqualTo 16) then {
 	//check for max height
 	if !(btc_log_placing_h > btc_log_placing_max_h) then {
-		//add/remove value
+		//increase height
 		btc_log_placing_h = btc_log_placing_h + 0.1 + (_turbo/2);
 		//placing
 		btc_log_placing_obj attachTo [player,[0,btc_log_placing_d,btc_log_placing_h]];
@@ -21,7 +21,7 @@ if (_key isEqualTo 16) then {
 if (_key isEqualTo 44) then {
 	//check for min height
 	if !(btc_log_placing_h < - 2) then {
-		//add/remove value
+		//decrease heigth
 		btc_log_placing_h = btc_log_placing_h - 0.1 - (_turbo/2);
 		//placing
 		btc_log_placing_obj attachTo [player,[0,btc_log_placing_d,btc_log_placing_h]];
@@ -31,34 +31,34 @@ if (_key isEqualTo 44) then {
 };
 //yaw [+] (Key 45: X)
 if (_key isEqualTo 45) then {
-	//add value
+	//rotating clockwise
 	btc_log_placing_dir = btc_log_placing_dir + 0.5 + _turbo;
 	//set var
 	_keyPressed = true;
 };
 //yaw [-] (Key 46: C)
 if (_key isEqualTo 46) then {
-	//remove value
+	//rotating counterclockwise
 	btc_log_placing_dir = btc_log_placing_dir - 0.5 - _turbo;
 	//set var
 	_keyPressed = true;
 };
 //roll [+] (Key 33: F)
 if (_key isEqualTo 33) then {
-	//add value
+	//tilting clockwise
 	btc_log_rotating_dir = btc_log_rotating_dir + 0.5 + _turbo;
 	//set var
 	_keyPressed = true;
 };
 //roll [-] (Key 19: R)
 if (_key isEqualTo 19) then {
-	//remove value
+	//tilting counterclockwise
 	btc_log_rotating_dir = btc_log_rotating_dir - 0.5 - _turbo;
 	//set var
 	_keyPressed = true;
 };
 
-//set object position
+//set object position (rotation and tilting)
 if (_keyPressed) then {
 	btc_log_placing_obj setVectorDirAndUp [
 		 [
