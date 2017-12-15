@@ -3,13 +3,13 @@ btc_log_placing_obj = _this;
 [btc_log_placing_obj,player] remoteExec ["btc_fnc_set_owner", 2];
 
 hint composeText [
-	(localize "STR_BTC_HAM_LOG_PLACE_HINT1"), //Q/Z to raise/lower the object
+	localize "STR_BTC_HAM_LOG_PLACE_HINT1", //Q/Z to raise/lower the object
 	lineBreak,
-	(localize "STR_BTC_HAM_LOG_PLACE_HINT2"), //X/C to rotate the object
+	localize "STR_BTC_HAM_LOG_PLACE_HINT2", //X/C to rotate the object
 	lineBreak,
-	(localize "STR_BTC_HAM_LOG_PLACE_HINT3"), //F/R to tilt the object
+	localize "STR_BTC_HAM_LOG_PLACE_HINT3", //F/R to tilt the object
 	lineBreak,
-	(localize "STR_BTC_HAM_LOG_PLACE_HINT4") //SHIFT to increase the movement
+	localize "STR_BTC_HAM_LOG_PLACE_HINT4" //SHIFT to increase the movement
 ];
 
 btc_log_placing = true;
@@ -21,7 +21,7 @@ btc_log_ptich_dir = 0;
 [player, "DefaultAction", {true}, {btc_log_placing = false;}] call ace_common_fnc_addActionEventHandler;
 
 //show mouse hint for release
-[(localize "STR_BTC_HAM_LOG_PLACE_RELEASE"),""] call ace_interaction_fnc_showMouseHint; //Release
+[localize "STR_BTC_HAM_LOG_PLACE_RELEASE",""] call ace_interaction_fnc_showMouseHint; //Release
 
 //add actions to keys
 btc_log_place_EH_keydown = (findDisplay 46) displayAddEventHandler ["KeyDown", btc_fnc_log_place_key_down];
@@ -47,6 +47,11 @@ btc_log_placing_obj setDir btc_log_rotating_dir;
 
 		btc_log_placing_obj enableSimulation true;
 		detach btc_log_placing_obj;
+
+		//save to DB
+		[btc_log_placing_obj] call btc_fnc_db_saveObjectStatus;
+		//btc_log_obj_created pushBack btc_log_placing_obj;
+
 		player forceWalk false;
 
 		btc_log_placing_obj = objNull;
