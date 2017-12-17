@@ -24,7 +24,7 @@ btc_side_done = false;
 btc_side_failed = false;
 btc_side_assigned = true;publicVariable "btc_side_assigned";
 
-[15,_pos,_city getVariable "name"] call btc_fnc_task_create;
+[15,_pos,_city getVariable "name"] remoteExec ["btc_fnc_task_create", 0];
 
 btc_side_jip_data = [15,getPos _city,_city getVariable "name"];
 
