@@ -20,7 +20,7 @@ if (btc_debug_log) then {
 	if !(_objects isEqualTo []) then {
 		_object = _objects select 0;
 		if (_object in nearestTerrainObjects [_object, ["HIDE", "ROCK", "ROCKS"], 1]) then {
-			diag_log format ["FIND POS OUTSIDE ROCK: POS %1 Still inside rock", _rposASL];
+			diag_log format ["FIND POS OUTSIDE ROCK: POS %1 Still inside rock", _rpos];
 			if (btc_debug) then {
 				systemChat "FIND POS OUTSIDE ROCK: Still inside rock";
 				private _marker = createmarker [format ["btc_inrock_%1", _rpos], _rpos];
