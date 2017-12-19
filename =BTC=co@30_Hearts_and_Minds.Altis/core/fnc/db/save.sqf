@@ -124,7 +124,7 @@ _array_veh = [];
 	_data pushBack _cont;
 	_array_veh pushBack _data;
 	//diag_log format ["VEH %1 DATA %2",_x,_data];
-} foreach btc_vehicles;
+} foreach (btc_vehicles - [objNull]);
 profileNamespace setVariable [format ["btc_hm_%1_vehs",_name],_array_veh];
 
 //Objects status
