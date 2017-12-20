@@ -67,6 +67,7 @@ btc_p_debug  = "btc_p_debug" call BIS_fnc_getParamValue;
 if (ace_medical_maxReviveTime > 0) then {ace_medical_enableRevive = 1;ace_medical_preventInstaDeath = true};
 ace_medical_enableFor = 1;
 ace_cargo_enable = false;
+ace_respawn_savePreDeathGear = true;
 
 //btc_acre_mod = isClass(configFile >> "cfgPatches" >> "acre_main");
 //btc_tfr_mod = isClass(configFile >> "cfgPatches" >> "task_force_radio");
