@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={8330.0225,187.05653,10023.455};
-		dir[]={0.053734943,-0.82017767,0.5696947};
-		up[]={0.077020578,0.57209378,0.81656778};
-		aside[]={0.99564278,3.8654252e-007,-0.093911856};
+		pos[]={8297.6123,93.258369,10061.557};
+		dir[]={0.58210856,-0.81064433,0.064327784};
+		up[]={0.80575699,0.58552009,0.089042641};
+		aside[]={0.10984567,4.5113848e-007,-0.99401075};
 	};
 };
 binarizationWanted=0;
@@ -178,24 +178,6 @@ class CustomAttributes
 		name="Multiplayer";
 		class Attribute0
 		{
-			property="RespawnTemplates";
-			expression="true";
-			class Value
-			{
-				class data
-				{
-					class type
-					{
-						type[]=
-						{
-							"ARRAY"
-						};
-					};
-				};
-			};
-		};
-		class Attribute1
-		{
 			property="RespawnButton";
 			expression="true";
 			class Value
@@ -210,6 +192,24 @@ class CustomAttributes
 						};
 					};
 					value=1;
+				};
+			};
+		};
+		class Attribute1
+		{
+			property="RespawnTemplates";
+			expression="true";
+			class Value
+			{
+				class data
+				{
+					class type
+					{
+						type[]=
+						{
+							"ARRAY"
+						};
+					};
 				};
 			};
 		};
@@ -1290,18 +1290,79 @@ class Mission
 					class PositionInfo
 					{
 						position[]={8306.8721,76.060417,10067.928};
-						angles[]={6.2418771,2.3351603,0};
+						angles[]={6.2418733,2.3351631,0};
 					};
 					side="West";
 					flags=6;
 					class Attributes
 					{
 						skill=0.60000002;
-						description="Engineer";
+						description="Advanced engineer";
 						isPlayable=1;
 					};
 					id=31;
 					type="B_engineer_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="ace_isEngineer";
+							expression="if (_value != -1) then {_this setVariable ['ace_isEngineer',_value, true];}";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=2;
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male02ENG";
+								};
+							};
+						};
+						class Attribute2
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=0.99000001;
+								};
+							};
+						};
+						nAttributes=3;
+					};
 				};
 			};
 			class Attributes
