@@ -125,24 +125,6 @@ class Params {
 		texts[]={"Off","On"};
 		default = 1;
 	};
-	class btc_p_med_level {
-	   title = "			Medical Level";
-	   values[] = {1,2};
-	   texts[] = {"Basic","Advanced"};
-	   default = 1;
-	};
-	class btc_p_adv_wounds {
-	   title = "			Advanced Wounds";
-	   values[] = {0,1};
-	   texts[] = {"Off","On"};
-	   default = 1;
-	};
-	class btc_p_rev {
-		title = "			Revive time:";
-		values[]={0,60,120,180,240,300,600,900,1200,999999};
-		texts[]={"Off","60","120","180","240","300","600","900","1200","999999"};
-		default = 600;
-	};
 	class btc_p_skill_title {
 		title = "<< A3 Skill options >>";
 		values[]={0};
@@ -256,12 +238,6 @@ class Params {
 		values[]={0, 200, 500, 750};
 		texts[]={"Very Low","Low","Normal","High"};
 		default = 200;
-	};
-	class btc_p_rearm {
-		title = "			Rearm Level:";
-		values[]={0,1,2};
-		texts[]={"Entire vehicle","Entire magazine","Amount based on caliber"};
-		default = 1;
 	};
 	class btc_p_garage {
 		title = "			Activate garage for admin:";
