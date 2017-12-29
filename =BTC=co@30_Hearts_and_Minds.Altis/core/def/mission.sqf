@@ -1,7 +1,7 @@
 
 private ["_p_civ_veh","_p_db","_p_en","_hideout_n","_cache_info_def","_cache_info_ratio","_info_chance","_p_rep","_p_skill","_c_array","_tower","_array","_chopper","_p_civ","_btc_rearming_vehicles","_vehicles","_magazines","_p_city_radius","_magazines_static","_static","_btc_rearming_static","_magazines_clean","_weapons_usefull","_magazines_static_clean","_p_en_AA"];
 
-btc_version = 1.17; diag_log format ["=BTC= HEARTS AND MINDS VERSION %1",(str(btc_version) + ".5")];
+btc_version = 1.17; diag_log format ["=BTC= HEARTS AND MINDS VERSION %1",(str(btc_version) + ".6")];
 
 //Param
 
@@ -30,9 +30,6 @@ _info_chance = "btc_p_info_chance" call BIS_fnc_getParamValue;
 
 //<< Medical options >>
 btc_p_redeploy = ("btc_p_redeploy" call BIS_fnc_getParamValue) isEqualTo 1;
-if !("btc_p_med_level" call BIS_fnc_getParamValue < 0) then {ace_medical_level = "btc_p_med_level" call BIS_fnc_getParamValue;};
-if !("btc_p_adv_wounds" call BIS_fnc_getParamValue < 0) then {ace_medical_enableAdvancedWounds = ("btc_p_adv_wounds" call BIS_fnc_getParamValue) isEqualTo 1;};
-if !("btc_p_rev" call BIS_fnc_getParamValue < 0) then {ace_medical_maxReviveTime = "btc_p_rev" call BIS_fnc_getParamValue;};
 
 //<< Skill options >>
 btc_p_set_skill  = ("btc_p_set_skill" call BIS_fnc_getParamValue) isEqualTo 1;
@@ -57,16 +54,10 @@ btc_p_side_mission_cycle = ("btc_p_side_mission_cycle" call BIS_fnc_getParamValu
 
 //<< Other options >>
 _p_rep = "btc_p_rep" call BIS_fnc_getParamValue;
-if !("btc_p_rearm" call BIS_fnc_getParamValue < 0) then {ace_rearm_level = "btc_p_rearm" call BIS_fnc_getParamValue;};
 btc_p_garage = ("btc_p_garage" call BIS_fnc_getParamValue) isEqualTo 1;
 _p_city_radius = ("btc_p_city_radius" call BIS_fnc_getParamValue) * 100;
 btc_p_trigger = if (("btc_p_trigger" call BIS_fnc_getParamValue) isEqualTo 1) then {"this && !btc_db_is_saving && (false in (thisList apply {_x isKindOf 'Plane'})) && (false in (thisList apply {(_x isKindOf 'Helicopter') && (speed _x > 190)}))"} else {"this && !btc_db_is_saving"};
 btc_p_debug  = "btc_p_debug" call BIS_fnc_getParamValue;
-
-//OPTION must be use for H&M
-if (ace_medical_maxReviveTime > 0) then {ace_medical_enableRevive = 1;ace_medical_preventInstaDeath = true};
-ace_medical_enableFor = 1;
-ace_cargo_enable = false;
 
 //btc_acre_mod = isClass(configFile >> "cfgPatches" >> "acre_main");
 //btc_tfr_mod = isClass(configFile >> "cfgPatches" >> "task_force_radio");

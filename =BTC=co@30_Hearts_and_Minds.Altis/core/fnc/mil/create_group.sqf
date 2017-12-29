@@ -16,18 +16,19 @@ switch (typeName _city) do {
 
 _rpos = [_pos, _area, btc_p_sea] call btc_fnc_randomize_pos;
 
-_pos_iswater = (surfaceIsWater _rpos);
+_pos_iswater = surfaceIsWater _rpos;
 if (_pos_iswater) then {
 	_unit_type = selectRandom btc_type_divers;
 } else {
 	_unit_type = selectRandom btc_type_units;
-	_newpos = _rpos findEmptyPosition [0, 40];
+	_newpos = _rpos findEmptyPosition [0, 40, _unit_type];
 	if !(_newpos isEqualTo []) then {_rpos = _newpos;};
+	_rpos = [_rpos] call btc_fnc_findPosOutsideRock;
 };
 
 _group = createGroup btc_enemy_side;
 [_group createUnit [_unit_type, _rpos, [], 0, "NONE"]] joinSilent _group;
-(leader _group) setpos _rpos;
+(leader _group) setPos _rpos;
 private _groups = [];
 _groups pushBack _group;
 private _structure = objNull;

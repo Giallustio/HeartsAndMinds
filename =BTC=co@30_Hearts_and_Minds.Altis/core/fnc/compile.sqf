@@ -27,6 +27,7 @@ if (isServer) then {
 	btc_fnc_deletegroup = compile preprocessFileLineNumbers "core\fnc\common\deletegroup.sqf";
 	btc_fnc_delete = compile preprocessFileLineNumbers "core\fnc\common\delete.sqf";
 	btc_fnc_final_phase = compile preprocessFileLineNumbers "core\fnc\common\final_phase.sqf";
+	btc_fnc_findPosOutsideRock = compile preprocessFileLineNumbers "core\fnc\common\findposoutsiderock.sqf";
 
 	//CITY
 	btc_fnc_city_activate = compile preprocessFileLineNumbers "core\fnc\city\activate.sqf";

@@ -125,24 +125,6 @@ class Params {
 		texts[]={$STR_DISABLED,$STR_ENABLED}; // texts[]={"Off","On"};
 		default = 1;
 	};
-	class btc_p_med_level { // Medical Level
-		 title = __EVAL(format ["      %1",(localize "STR_BTC_HAM_MEDI_LEVEL")]);
-	   values[] = {-1,1,2};
-	   texts[] = {$STR_BTC_HAM_O_BASIC_DEFAULT,$STR_ACE_Medical_MedicalSettings_basic,$STR_ACE_Medical_MedicalSettings_advanced}; // texts[]={"Default","Basic","Advanced"};
-	   default = -1;
-	};
-	class btc_p_adv_wounds { // Advanced Wounds
-		 title = __EVAL(format ["      %1",(localize "STR_BTC_HAM_MEDI_WOUNDS")]);
-	   values[] = {-1,0,1};
-	   texts[] = {$STR_BTC_HAM_O_BASIC_DEFAULT,$STR_DISABLED,$STR_ENABLED}; // texts[]={"Default","Off","On"};
-	   default = -1;
-	};
-	class btc_p_rev { // Revive time:
-		title = __EVAL(format ["      %1",(localize "STR_BTC_HAM_MEDI_REVTIME")]);
-		values[]={-1,0,60,120,180,240,300,600,900,1200,999999};
-		texts[]={$STR_BTC_HAM_O_BASIC_DEFAULT,$STR_DISABLED,"60","120","180","240","300","600","900","1200","999999"}; //texts[]={"Default","Off","60","120","180","240","300","600","900","1200","999999"};
-		default = -1;
-	};
 	class btc_p_skill_title { // << A3 Skill options >>
 		title = $STR_BTC_HAM_PARAM_SKILL_TITLE;
 		values[]={0};
@@ -256,12 +238,6 @@ class Params {
 		values[]={0, 200, 500, 750};
 		texts[]={$STR_BTC_HAM_PARAM_OTHER_REPSTART_VLOW,$STR_BTC_HAM_PARAM_IED_RATIO_LOW,$STR_BTC_HAM_PARAM_IED_RATIO_NORMAL,$STR_BTC_HAM_PARAM_IED_RATIO_HIGH}; //texts[]={"Very Low","Low","Normal","High"};
 		default = 200;
-	};
-	class btc_p_rearm { // Rearm Level:
-		title = __EVAL(format ["      %1",(localize "STR_BTC_HAM_PARAM_OTHER_REARMLEVEL")]);
-		values[]={-1,0,1,2};
-		texts[]={$STR_BTC_HAM_O_BASIC_DEFAULT,$STR_ACE_Rearm_RearmSettings_vehicle,$STR_ACE_Rearm_RearmSettings_magazine,$STR_ACE_Rearm_RearmSettings_caliber}; // texts[]={"Default","Entire Vehicle","Entire Magazine","Amount based on caliber"};
-		default = -1;
 	};
 	class btc_p_garage { // Activate garage for admin:
 		title = __EVAL(format ["      %1",(localize "STR_BTC_HAM_PARAM_OTHER_GARAGEADMIN")]);

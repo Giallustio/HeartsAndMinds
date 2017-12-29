@@ -54,6 +54,6 @@ player createDiaryRecord [_MainCategory, [(localize "STR_BTC_HAM_DOC_INTERACTION
 
 //Version
 player createDiaryRecord [_MainCategory, [(localize "STR_BTC_HAM_DOC_VERSION_TITLE"),
-	format ["<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/> Version %1 <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/>",(str(btc_version) + ".5")]
+	format ["<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/> Version %1 <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/>",(str(btc_version) + ".6")]
 	]
 ];
