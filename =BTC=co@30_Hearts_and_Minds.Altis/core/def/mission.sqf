@@ -1,7 +1,7 @@
 
 private ["_p_civ_veh","_p_db","_p_en","_hideout_n","_cache_info_def","_cache_info_ratio","_info_chance","_p_rep","_p_skill","_c_array","_tower","_array","_chopper","_p_civ","_btc_rearming_vehicles","_vehicles","_magazines","_p_city_radius","_magazines_static","_static","_btc_rearming_static","_magazines_clean","_weapons_usefull","_magazines_static_clean","_p_en_AA"];
 
-btc_version = 1.17; diag_log format ["=BTC= HEARTS AND MINDS VERSION %1",(str(btc_version) + ".6")];
+btc_version = 1.17; diag_log format ["=BTC= HEARTS AND MINDS VERSION %1",(str(btc_version) + ".7")];
 
 //Param
 
@@ -20,7 +20,6 @@ _p_civ_veh = "btc_p_civ_veh" call BIS_fnc_getParamValue;
 
 //<< IED options >>
 btc_p_ied = ("btc_p_ied" call BIS_fnc_getParamValue)/2;
-if !("btc_p_engineer" call BIS_fnc_getParamValue < 0) then {ace_explosives_RequireSpecialist  = ("btc_p_engineer" call BIS_fnc_getParamValue) isEqualTo 0;};
 
 //<< Hideout/Cache options >>
 _hideout_n = "btc_p_hideout_n" call BIS_fnc_getParamValue;
