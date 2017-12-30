@@ -230,7 +230,7 @@ btc_info_cache_ratio = _cache_info_ratio;
 btc_info_hideout_radius = 4000;
 
 //Supplies
-btc_supplies_mat = "Land_Cargo20_red_F";
+btc_supplies_mat = "Land_Cargo20_IDAP_F";
 
 //Containers
 btc_containers_mat = ["Land_Cargo20_military_green_F", "Land_Cargo40_military_green_F"];
