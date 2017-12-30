@@ -20,7 +20,6 @@ _p_civ_veh = "btc_p_civ_veh" call BIS_fnc_getParamValue;
 
 //<< IED options >>
 btc_p_ied = ("btc_p_ied" call BIS_fnc_getParamValue)/2;
-ace_explosives_RequireSpecialist  = ("btc_p_engineer" call BIS_fnc_getParamValue) isEqualTo 0;
 
 //<< Hideout/Cache options >>
 _hideout_n = "btc_p_hideout_n" call BIS_fnc_getParamValue;

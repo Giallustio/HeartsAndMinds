@@ -77,12 +77,6 @@ class Params {
 		texts[]={"Off","Low","Normal","High"};
 		default = 2;
 	};
-	class btc_p_engineer {
-		title = "			Everybody can disarm IED:";
-		values[]={0,1};
-		texts[]={"Off","On"};
-		default = 0;
-	};
 	class btc_p_hideout_cache_title {
 		title = "<< Hideout/Cache options >>";
 		values[]={0};
