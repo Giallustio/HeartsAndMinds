@@ -29,4 +29,16 @@ class CfgTaskTypes {
 	class Exit {
 		icon = \A3\ui_f\data\igui\cfg\simpleTasks\types\exit_ca.paa;
 	};
+	class Container {
+		icon = \A3\ui_f\data\igui\cfg\simpleTasks\types\container_ca.paa;
+	};
+	class Mine  {
+		icon = \A3\ui_f\data\igui\cfg\simpleTasks\types\mine_ca.paa;
+	};
+	class Heli  {
+		icon = \A3\ui_f\data\igui\cfg\simpleTasks\types\heli_ca.paa;
+	};
+	class Defend  {
+		icon = \A3\ui_f\data\igui\cfg\simpleTasks\types\defend_ca.paa;
+	};
 };

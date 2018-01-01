@@ -20,11 +20,11 @@ switch (_task_id) do {
 	};
 	case "3" : {
 		_description = [format [(localize "STR_BTC_HAM_SIDE_SUPPLIES_DESC"),_location],(format [(localize "STR_BTC_HAM_SIDE_SUPPLIES_TITLE"),_location]),(format [(localize "STR_BTC_HAM_SIDE_SUPPLIES_TITLE"),_location])]; //The citizens of %1 are on the brink starving to death, bring them some supplies present at the logisitic point!",_location],("Supply " + _location),("Supply " + _location)
-		_type = "move";
+		_type = "container";
 	};
 	case "4" : {
 		_description = [format [(localize "STR_BTC_HAM_SIDE_MINES_DESC"),_location],(format [(localize "STR_BTC_HAM_SIDE_MINES_TITLE"),_location]),(format [(localize "STR_BTC_HAM_SIDE_MINES_TITLE"),_location])]; //There is a minefield near %1, clear it!",_location],("Minefield near " + _location),("Minefield near " + _location)
-		_type = "search";
+		_type = "mine";
 	};
 	case "5" : {
 		_description = [format [(localize "STR_BTC_HAM_SIDE_VEHICLE_DESC"),_location],(format [(localize "STR_BTC_HAM_SIDE_VEHICLE_TITLE"),_location]),(format [(localize "STR_BTC_HAM_SIDE_VEHICLE_TITLE"),_location])]; //"A vehicle damaged by an IED needs assistance near %1! Repair it!",_location],("Vehicle needs assistance near " + _location),("Vehicle needs assistance near " + _location)
@@ -60,7 +60,7 @@ switch (_task_id) do {
 	};
 	case "13" : {
 		_description = [format [(localize "STR_BTC_HAM_SIDE_RESC_DESC"),_location],(format [(localize "STR_BTC_HAM_SIDE_RESC_TITLE"),_location]),(format [(localize "STR_BTC_HAM_SIDE_RESC_TITLE"),_location])]; //"MAYDAY-MAYDAY, a pilot crashed his helicopter near %1. Command is asking for your help to rescue and bring him back to base!",_location],("Rescue downed pilot near " + _location),("Rescue downed pilot near " + _location)
-		_type = "navigate";
+		_type = "heli";
 	};
 	case "14" : {
 		_description = [format [(localize "STR_BTC_HAM_SIDE_CAPOFF_DESC"),_location],((localize "STR_BTC_HAM_SIDE_CAPOFF_TITLE")),((localize "STR_BTC_HAM_SIDE_CAPOFF_TITLE"))]; //"Capture an officer travelling in a concealed convoy, then bring him at base for interrogation. He is his responsible for terrorizing local population!",_location],("Capture commander in concealed convoy"),("Capture commander in concealed convoy")
@@ -72,7 +72,7 @@ switch (_task_id) do {
 	};
 	case "16" : {
 		_description = [format [(localize "STR_BTC_HAM_SIDE_HACK_DESC"),_location],(format [(localize "STR_BTC_HAM_SIDE_HACK_TITLE"),_location]),(format [(localize "STR_BTC_HAM_SIDE_HACK_TITLE"),_location])]; //"Hack a prototype missile with a terminal available in %1. Defend your position until the process is done!",_location],("Hack missile near " + _location),("Hack missile near " + _location)
-		_type = "intel";
+		_type = "defend";
 	};
 };
 
