@@ -124,6 +124,7 @@ if (btc_side_failed) exitWith {
 		(crew _x) joinSilent _group;
 		_group call btc_fnc_data_add_group;
 	} forEach _vehs;
+	[_markers, [_trigger], [], []] call btc_fnc_delete;
 };
 
 50 call btc_fnc_rep_change;
