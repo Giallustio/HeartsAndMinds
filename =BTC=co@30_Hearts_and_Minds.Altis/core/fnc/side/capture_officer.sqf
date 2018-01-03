@@ -117,7 +117,6 @@ if (btc_side_aborted || !(Alive _captive)) exitWith {
 
 if (btc_side_failed) exitWith {
 	14 remoteExec ["btc_fnc_task_fail", 0];
-	deleteVehicle _trigger;
 	_group setVariable ["no_cache",false];
 	{
 		_group = createGroup btc_enemy_side;
