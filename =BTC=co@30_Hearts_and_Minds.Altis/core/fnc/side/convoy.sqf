@@ -26,19 +26,19 @@ btc_side_done = false;
 btc_side_failed = false;
 btc_side_assigned = true;publicVariable "btc_side_assigned";
 
-[12,_pos2,_city2 getVariable "name"] call btc_fnc_task_create;
+[12,_pos2,_city2 getVariable "name"] remoteExec ["btc_fnc_task_create", 0];
 
 btc_side_jip_data = [12,_pos1,_city1 getVariable "name"];
 
 //// Create markers \\\\
 _marker1 = createmarker [format ["sm_2_%1",_pos1],_pos1];
 _marker1 setmarkertype "hd_flag";
-_marker1 setmarkertext "Convoy start";
+[_marker1,"STR_BTC_HAM_SIDE_CONVOY_MRKSTART"] remoteExec ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker1]; //Convoy start
 _marker1 setMarkerSize [0.6, 0.6];
 
 _marker2 = createmarker [format ["sm_2_%1",_pos2],_pos2];
 _marker2 setmarkertype "hd_flag";
-_marker2 setmarkertext "Convoy end";
+[_marker2,"STR_BTC_HAM_SIDE_CONVOY_MRKEND"] remoteExec ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker2]; //Convoy end
 _marker2 setMarkerSize [0.6, 0.6];
 
 _area = createmarker [format ["sm_%1",_pos2],_pos2];
@@ -89,7 +89,7 @@ _wp setWaypointSpeed "LIMITED";
 _wp setWaypointFormation "COLUMN";
 _wp setWaypointStatements ["true", "btc_side_failed = true"];
 
-{player commandChat "Convoy has left the starting point!"} remoteExec ["call", -2];
+{player commandChat (localize "STR_BTC_HAM_SIDE_CONVOY_STARTCHAT")} remoteExec ["call", -2]; //Convoy has left the starting point!
 
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({ canMove _x } count _vehs == 0) || (_group isEqualTo grpNull))};
 

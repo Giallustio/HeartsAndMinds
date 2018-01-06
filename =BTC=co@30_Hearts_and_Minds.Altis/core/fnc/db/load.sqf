@@ -126,7 +126,7 @@ _array_ho = profileNamespace getVariable [format ["btc_hm_%1_ho",_name],[]];
 _ho = profileNamespace getVariable [format ["btc_hm_%1_ho_sel",_name],0];
 btc_hq = btc_hideouts select _ho;
 
-if (count btc_hideouts == 0) then {[] execVM "core\fnc\common\final_phase.sqf";};
+if (count btc_hideouts == 0) then {[] spawn btc_fnc_final_phase;};
 
 //CACHE
 

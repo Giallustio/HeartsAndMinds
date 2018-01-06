@@ -18,7 +18,7 @@ btc_side_done = false;
 btc_side_failed = false;
 btc_side_assigned = true;publicVariable "btc_side_assigned";
 
-[16,_pos,_city getVariable "name"] call btc_fnc_task_create;
+[16,_pos,_city getVariable "name"] remoteExec ["btc_fnc_task_create", 0];
 
 btc_side_jip_data = [16,_pos,_city getVariable "name"];
 
@@ -26,23 +26,22 @@ _city setVariable ["spawn_more",true];
 
 private _marker = createmarker [format ["sm_2_%1",_pos],_pos];
 _marker setmarkertype "hd_flag";
-_marker setmarkertext "Terminal";
+[_marker,"STR_BTC_HAM_SIDE_HACK_MRK"] remoteExec ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker]; //Terminal
 _marker setMarkerSize [0.6, 0.6];
 
 //// Create terminal \\\\
 private _terminal = createVehicle ["Land_DataTerminal_01_F", _pos, [], 0, "CAN_COLLIDE"];
-{btc_side_done = false} remoteExec ["call", 0];
 _pos = [[_pos, 100] call btc_fnc_randomize_pos, 50, 500, 30, 0, 60 * (pi / 180), 0] call BIS_fnc_findSafePos;
 private _launchsite = createVehicle ["Land_PenBlack_F", _pos, [], 0, "FLY"];
 
 //// Add interaction on Terminal \\\\
 [[_terminal],{
-	private _action = ["Open","Start Hacking","\A3\ui_f\data\igui\cfg\simpleTasks\types\intel_ca.paa",{
+	private _action = ["Open",(localize "STR_BTC_HAM_SIDE_HACK_ACEACTION"),"\A3\ui_f\data\igui\cfg\simpleTasks\types\intel_ca.paa",{ //Start Hacking
 		[_this select 0,3] call BIS_fnc_dataTerminalAnimate;
 		{btc_side_done = true} remoteExec ["call", 0];
-	},{!btc_side_done}] call ace_interact_menu_fnc_createAction;
+	},{isNil "btc_side_done"}] call ace_interact_menu_fnc_createAction;
 	[_this select 0, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToObject;
-}] remoteExec ["call", -2];
+}] remoteExec ["call", -2, _terminal];
 
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || btc_side_done)};
 if (btc_side_aborted || btc_side_failed) exitWith {
@@ -60,10 +59,11 @@ _groups apply {_x setBehaviour "CARELESS"};
 
 [_terminal, _launchsite modelToWorld [0,100,10]] remoteExec ["btc_fnc_log_place_create_camera", -2];
 
-{player commandChat "Defend the terminal until the missile is hacked!"} remoteExec ["call", -2];
+{player commandChat (localize "STR_BTC_HAM_SIDE_HACK_STARTCHAT")} remoteExec ["call", -2]; //Defend the terminal until the missile is hacked!
 
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({_x isEqualTo grpNull} count _groups > 0) || !(_city getVariable ["active", false]))};
 if (btc_side_aborted || btc_side_failed) exitWith {
+	{btc_side_done = Nil} remoteExec ["call", -2];
 	16 remoteExec ["btc_fnc_task_fail", 0];
 	[[_marker], [_terminal], [], []] call btc_fnc_delete;
 	btc_side_assigned = false;publicVariable "btc_side_assigned";
@@ -81,7 +81,7 @@ private _rocket = createVehicle ["ace_rearm_Missile_AGM_02_F", [_pos select 0, _
 private _fx = createVehicle ["test_EmptyObjectForSmoke", [_pos select 0, _pos select 1, _altitude], [], 0, "CAN_COLLIDE"];
 _fx attachTo [_rocket,[0,0,0]];
 
-{btc_side_done = false} remoteExec ["call", 0];
+{btc_side_done = Nil} remoteExec ["call", -2];
 btc_side_assigned = false;publicVariable "btc_side_assigned";
 [[_marker], [_rocket, _terminal], [_fx], []] call btc_fnc_delete;
 if (btc_side_aborted || btc_side_failed || !(_city getVariable ["active", false])) exitWith {

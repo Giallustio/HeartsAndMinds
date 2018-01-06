@@ -1,4 +1,4 @@
-selectRandom
+
 private ["_name","_is_real","_text"];
 
 _name = _this select 0;
@@ -8,7 +8,7 @@ _text = "";
 
 switch _is_real do
 {
-	case _is_real : {
+	case true : {
 		private ["_array"];
 		_array = (position player) nearEntities [btc_type_units, 2500];
 		if (count _array > 0) then {
@@ -17,20 +17,20 @@ switch _is_real do
 			_dist = (player distance _man) + ((random 150) - (random 150));
 			_dir = player getDir _man;
 			_card = [_dir] call btc_fnc_get_cardinal;
-			_text = format ["%1: I saw some militia movement %2, %3 meter from here", _name,_card,round _dist];
+			_text = format [(localize "STR_BTC_HAM_CON_INFO_TROOPS_TRUE"), _name,_card,round _dist]; //%1: I saw some militia movement %2, %3 meter from here
 		} else {
-			_text = format ["%1: I didn't see any militia movement in this area!", _name];
+			_text = format [(localize "STR_BTC_HAM_CON_INFO_TROOPS_FALSE"), _name]; //%1: I didn't see any militia movement in this area!
 		};
 	};
-	case (!_is_real) : {
+	case false : {
 		if ((random 1) > 0.5) then {
 			private ["_array","_dist","_dir"];
 			_array = ["N","E","W","S","NW","NE","SE","SW"];
 			_dir = selectRandom _array;
 			_dist = (500 + (random 1000));
-			_text = format ["%1: I saw some militia movement %2, %3 meter from here", _name,_dir,round _dist];
+			_text = format [(localize "STR_BTC_HAM_CON_INFO_TROOPS_TRUE"), _name,_dir,round _dist]; //%1: I saw some militia movement %2, %3 meter from here
 		} else {
-			_text = format ["%1: I didn't see any militia movement in this area!", _name];
+			_text = format [(localize "STR_BTC_HAM_CON_INFO_TROOPS_FALSE"), _name]; //%1: I didn't see any militia movement in this area!
 		};
 	};
 };
@@ -38,4 +38,4 @@ switch _is_real do
 if (btc_debug) then {_text = _text + " - " + str(_is_real)};
 
 hint _text;
-player createDiaryRecord ["Diary log", [str(mapGridPosition player) + " - " + _name, _text]];
+player createDiaryRecord [(localize "STR_BTC_HAM_CON_INFO_ASKHIDEOUT_DIARYLOG"), [str(mapGridPosition player) + " - " + _name, _text]]; //Diary log

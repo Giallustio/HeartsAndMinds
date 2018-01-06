@@ -15,7 +15,7 @@ if (btc_db_load && {profileNamespace getVariable [format ["btc_hm_%1_db",worldNa
 	_date set [3, btc_p_time];
 	setDate _date;
 
-	[] execVM "core\fnc\cache\init.sqf";
+	call compile preprocessFile "core\fnc\cache\init.sqf";
 
 	[] spawn {{waitUntil {!isNull _x}; _x call btc_fnc_db_add_veh;} foreach btc_vehicles;};
 };

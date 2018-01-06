@@ -24,14 +24,14 @@ btc_side_done = false;
 btc_side_failed = false;
 btc_side_assigned = true;publicVariable "btc_side_assigned";
 
-[15,_pos,_city getVariable "name"] call btc_fnc_task_create;
+[15,_pos,_city getVariable "name"] remoteExec ["btc_fnc_task_create", 0];
 
 btc_side_jip_data = [15,getPos _city,_city getVariable "name"];
 
 //// Marker
 _marker = createmarker [format ["sm_2_%1",getPos _house],getPos _house];
 _marker setmarkertype "hd_flag";
-_marker setmarkertext "Hostage";
+[_marker,"STR_BTC_HAM_SIDE_HOSTAGE_MRK"] remoteExec ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker]; //Hostage
 _marker setMarkerSize [0.6, 0.6];
 
 _city setVariable ["spawn_more",true];

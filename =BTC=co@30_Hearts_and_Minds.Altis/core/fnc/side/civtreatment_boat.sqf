@@ -17,14 +17,14 @@ btc_side_done = false;
 btc_side_failed = false;
 btc_side_assigned = true;publicVariable "btc_side_assigned";
 
-[10,_pos,_city getVariable "name"] call btc_fnc_task_create;
+[10,_pos,_city getVariable "name"] remoteExec ["btc_fnc_task_create", 0];
 
 btc_side_jip_data = [10,_vehpos,_city getVariable "name"];
 
 //// Create marker \\\\
 _marker = createmarker [format ["sm_2_%1",_vehpos],_vehpos];
 _marker setmarkertype "hd_flag";
-_marker setmarkertext "Civil need help";
+[_marker,"STR_BTC_HAM_SIDE_CIVTREAT_MRK"] remoteExec ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker]; //Civil need help
 _marker setMarkerSize [0.6, 0.6];
 
 //// Create civ on _vehpos \\\\

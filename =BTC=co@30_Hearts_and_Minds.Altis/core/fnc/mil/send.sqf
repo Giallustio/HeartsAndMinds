@@ -16,7 +16,7 @@ private ["_group"];
 switch (_this select 2) do {
 	case 0 : {
 		private ["_wp_0","_wp"];
-		_group = [_pos,150,(3 + random 6),1] call btc_fnc_mil_create_group;
+		_group = ([_pos,150,(3 + random 6),1] call btc_fnc_mil_create_group) select 0;
 		_group setVariable ["no_cache",true];
 		while {(count (waypoints _group)) > 0} do { deleteWaypoint ((waypoints _group) select 0); };
 		_wp_0 = _group addWaypoint [_dest, 60];
@@ -52,7 +52,7 @@ switch (_this select 2) do {
 		_wp setWaypointBehaviour "AWARE";
 		_wp setWaypointSpeed "NORMAL";
 		_wp_1 = _group addWaypoint [_dest, 60];
-		_wp_1 setWaypointType "GET OUT";
+		_wp_1 setWaypointType "GETOUT";
 		_wp_3 = _group addWaypoint [_dest, 60];
 		_wp_3 setWaypointType "SENTRY";
 		_wp setWaypointStatements ["true","(group this) spawn btc_fnc_data_add_group;"];
