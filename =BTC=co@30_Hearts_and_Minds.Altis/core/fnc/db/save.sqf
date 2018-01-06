@@ -45,6 +45,7 @@ _cities_status = [];
 	_city_status pushBack (_x getVariable ["has_ho",false]);
 	_city_status pushBack (_x getVariable ["ho_units_spawned",false]);
 	_city_status pushBack (_x getVariable ["ieds",[]]);
+	_city_status pushBack (_x getVariable ["has_suicider",false]);
 
 	_cities_status pushBack _city_status;
 	//diag_log format ["SAVE: %1 - %2",(_x getVariable "id"),(_x getVariable "occupied")];
