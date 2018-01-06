@@ -27,6 +27,7 @@ if (isServer) then {
 	btc_fnc_deletegroup = compile preprocessFileLineNumbers "core\fnc\common\deletegroup.sqf";
 	btc_fnc_delete = compile preprocessFileLineNumbers "core\fnc\common\delete.sqf";
 	btc_fnc_final_phase = compile preprocessFileLineNumbers "core\fnc\common\final_phase.sqf";
+	btc_fnc_findPosOutsideRock = compile preprocessFileLineNumbers "core\fnc\common\findposoutsiderock.sqf";
 
 	//CITY
 	btc_fnc_city_activate = compile preprocessFileLineNumbers "core\fnc\city\activate.sqf";
@@ -285,11 +286,6 @@ if (!isDedicated) then {
 	btc_fnc_log_garage = compile preprocessFileLineNumbers "core\fnc\log\garage.sqf";
 	btc_fnc_log_hitch_points = compile preprocessFileLineNumbers "core\fnc\log\hitch_points.sqf";
 	btc_fnc_log_get_corner_points = compile preprocessFileLineNumbers "core\fnc\log\get_corner_points.sqf";
-
-	//TASK
-	btc_fnc_task_create = compile preprocessFileLineNumbers "core\fnc\task\create.sqf";
-	btc_fnc_task_fail = compile preprocessFileLineNumbers "core\fnc\task\fail.sqf";
-	btc_fnc_task_set_done = compile preprocessFileLineNumbers "core\fnc\task\set_done.sqf";
 
 	//SIDE
 	btc_fnc_side_request = compile preprocessFileLineNumbers "core\fnc\side\request.sqf";

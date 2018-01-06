@@ -26,11 +26,6 @@
                 <English>Interpreter</English>
                 <German>Dolmetscher</German>
             </Key>
-            <Key ID="STR_BTC_HAM_MSQM_ENGINEER">
-                <Original>Engineer</Original>
-                <English>Engineer</English>
-                <German>Pionier (EOD)</German>
-            </Key>
             <Key ID="STR_BTC_HAM_MSQM_OFFICER">
                 <Original>Officer</Original>
                 <English>Officer</English>
@@ -365,11 +360,6 @@
                 <English>High</English>
                 <German>Hoch</German>
             </Key>
-            <Key ID="STR_BTC_HAM_PARAM_IED_DISARM">
-                <Original>Everybody can disarm IED:</Original>
-                <English>Everybody can disarm IED:</English>
-                <German>Jeder kann IEDs entschärfen:</German>
-            </Key>
         </Container>
         <Container name="Parameters: Hideout/Cache">
             <Key ID="STR_BTC_HAM_PARAM_HIDE_TITLE">
@@ -413,21 +403,6 @@
                 <Original>Allow re-deploy?</Original>
                 <English>Allow re-deploy?</English>
                 <German>Verlegen erlauben?</German>
-            </Key>
-            <Key ID="STR_BTC_HAM_MEDI_LEVEL">
-                <Original>Medical Level</Original>
-                <English>Medical Level</English>
-                <German>Stufe des Sanitätssystem</German>
-            </Key>
-            <Key ID="STR_BTC_HAM_MEDI_WOUNDS">
-                <Original>Advanced Wounds</Original>
-                <English>Advanced Wounds</English>
-                <German>Erweiterte Wunden</German>
-            </Key>
-            <Key ID="STR_BTC_HAM_MEDI_REVTIME">
-                <Original>Revive time:</Original>
-                <English>Revive time:</English>
-                <German>Wiederbelebungszeit:</German>
             </Key>
         </Container>
         <Container name="Parameters: AI Skill">
@@ -534,11 +509,6 @@
                 <Original>Very Low</Original>
                 <English>Very Low</English>
                 <German>Sehr Niedrig</German>
-            </Key>
-            <Key ID="STR_BTC_HAM_PARAM_OTHER_REARMLEVEL">
-                <Original>Rearm Level:</Original>
-                <English>Rearm Level:</English>
-                <German>Aufmunitioniereinstellung:</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_OTHER_GARAGEADMIN">
                 <Original>Activate garage for admin:</Original>
@@ -1570,13 +1540,6 @@
                 <Original>Cached %1 destroyed</Original>
                 <English>Cached %1 destroyed</English>
                 <German>Waffenlager %1 wurde zerstört</German>
-            </Key>
-        </Container>
-        <Container name="Other: Basics">
-            <Key ID="STR_BTC_HAM_O_BASIC_DEFAULT">
-                <Original>Default</Original>
-                <English>Default</English>
-                <German>Standard</German>
             </Key>
         </Container>
     </Package>

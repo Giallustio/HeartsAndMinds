@@ -40,6 +40,15 @@ for "_i" from 0 to (2 + (floor (random 3))) do
 	};
 };
 
+if (_allowwater) then {
+	private _nearestLocation = nearestLocation [_pos, ""];
+	private _wp = _group addWaypoint [locationPosition _nearestLocation, 0];
+	_wp setWaypointType "MOVE";
+	_wp setWaypointCompletionRadius 20;
+	_wp setWaypointCombatMode "RED";
+	_wp setWaypointTimeout [20, 30, 60];
+};
+
 private _wp = _group addWaypoint [_pos, 0];
 _wp setWaypointType "CYCLE";
 _wp setWaypointCompletionRadius 20;
