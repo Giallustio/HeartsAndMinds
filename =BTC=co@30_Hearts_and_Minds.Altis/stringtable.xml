@@ -1619,6 +1619,11 @@
                 <German>X/C um das Objekt zu drehen</German>
             </Key>
             <Key ID="STR_BTC_HAM_LOG_PLACE_HINT3">
+                <Original>F/R to tilt the object</Original>
+                <English>F/R to tilt the object</English>
+                <German>F/R um das Object zu neigen</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_LOG_PLACE_HINT4">
                 <Original>SHIFT to increase the movement</Original>
                 <English>SHIFT to increase the movement</English>
                 <German>SHIFT um die Bewegung des Objektes zu beschleunigen</German>
