@@ -31,7 +31,11 @@ class RscTitles {
 
 #include "core\fnc\task\tasktypes.hpp"
 
-#include "core\def\functions.hpp"
+class CfgFunctions {
+    #include "core\def\functions.hpp"
+    // add your own functions below
+    
+};
 
 #include "core\fnc\eh\extended_InitPost_EH.hpp"
 #include "core\fnc\eh\extended_PreInit_EH.hpp"
