@@ -2,10 +2,9 @@
 private ["_p_civ_veh","_p_db","_p_en","_hideout_n","_cache_info_def","_cache_info_ratio","_info_chance","_p_rep","_p_skill","_c_array","_tower","_array","_chopper","_p_civ","_btc_rearming_vehicles","_vehicles","_magazines","_p_city_radius","_magazines_static","_static","_btc_rearming_static","_magazines_clean","_weapons_usefull","_magazines_static_clean","_p_en_AA"];
 
 btc_version = 1.172;
-diag_log format ["=BTC= HEARTS AND MINDS VERSION %1",(str(btc_version) + ".7")];
+diag_log format ["=BTC= HEARTS AND MINDS VERSION %1", str(btc_version) + ".7"];
 
 //Param
-
 //<< Time options >>
 btc_p_time = "btc_p_time" call BIS_fnc_getParamValue;
 btc_p_acctime = "btc_p_acctime" call BIS_fnc_getParamValue;
@@ -36,14 +35,14 @@ btc_p_set_skill  = ("btc_p_set_skill" call BIS_fnc_getParamValue) isEqualTo 1;
 _p_skill = [
 	("btc_p_set_skill_general" call BIS_fnc_getParamValue)/10,//general
 	("btc_p_set_skill_aimingAccuracy" call BIS_fnc_getParamValue)/10,//aimingAccuracy
-    ("btc_p_set_skill_aimingShake" call BIS_fnc_getParamValue)/10,//aimingShake
-    ("btc_p_set_skill_aimingSpeed" call BIS_fnc_getParamValue)/10,//aimingSpeed
-    ("btc_p_set_skill_endurance" call BIS_fnc_getParamValue)/10,//endurance
-    ("btc_p_set_skill_spotDistance" call BIS_fnc_getParamValue)/10,//spotDistance
-    ("btc_p_set_skill_spotTime" call BIS_fnc_getParamValue)/10,//spotTime
-    ("btc_p_set_skill_courage" call BIS_fnc_getParamValue)/10,//courage
-    ("btc_p_set_skill_reloadSpeed" call BIS_fnc_getParamValue)/10,//reloadSpeed
-    ("btc_p_set_skill_commanding" call BIS_fnc_getParamValue)/10//commanding
+	("btc_p_set_skill_aimingShake" call BIS_fnc_getParamValue)/10,//aimingShake
+	("btc_p_set_skill_aimingSpeed" call BIS_fnc_getParamValue)/10,//aimingSpeed
+	("btc_p_set_skill_endurance" call BIS_fnc_getParamValue)/10,//endurance
+	("btc_p_set_skill_spotDistance" call BIS_fnc_getParamValue)/10,//spotDistance
+	("btc_p_set_skill_spotTime" call BIS_fnc_getParamValue)/10,//spotTime
+	("btc_p_set_skill_courage" call BIS_fnc_getParamValue)/10,//courage
+	("btc_p_set_skill_reloadSpeed" call BIS_fnc_getParamValue)/10,//reloadSpeed
+	("btc_p_set_skill_commanding" call BIS_fnc_getParamValue)/10//commanding
 ];
 
 //<< Gameplay options >>
@@ -58,9 +57,6 @@ btc_p_garage = ("btc_p_garage" call BIS_fnc_getParamValue) isEqualTo 1;
 _p_city_radius = ("btc_p_city_radius" call BIS_fnc_getParamValue) * 100;
 btc_p_trigger = if (("btc_p_trigger" call BIS_fnc_getParamValue) isEqualTo 1) then {"this && !btc_db_is_saving && (false in (thisList apply {_x isKindOf 'Plane'})) && (false in (thisList apply {(_x isKindOf 'Helicopter') && (speed _x > 190)}))"} else {"this && !btc_db_is_saving"};
 btc_p_debug  = "btc_p_debug" call BIS_fnc_getParamValue;
-
-//btc_acre_mod = isClass(configFile >> "cfgPatches" >> "acre_main");
-//btc_tfr_mod = isClass(configFile >> "cfgPatches" >> "task_force_radio");
 
 switch (btc_p_debug) do {
 	case 0 : {btc_debug_log = false;btc_debug = false;};
@@ -90,7 +86,7 @@ if (isServer) then {
 	btc_hideouts_radius = 400;
 	btc_hideout_n = _hideout_n;
 	if (btc_hideout_n == 99) then {
-		btc_hideout_n = (round random 5);
+		btc_hideout_n = round random 5;
 	};
 	btc_hideout_safezone = 4000;
 	btc_hideout_range = 3500;
@@ -103,12 +99,12 @@ if (isServer) then {
 	btc_ied_suic_spawned = - btc_ied_suic_time;
 
 	//FOB
-	btc_fobs = [[],[]];
+	btc_fobs = [[], []];
 
 
 	//Log
 	btc_log_id_repo = 10;
-	btc_log_cargo_repo = "Land_HBarrierBig_F" createVehicle [- 5000,- 5000,0];
+	btc_log_cargo_repo = "Land_HBarrierBig_F" createVehicle [- 5000, - 5000, 0];
 
 	//Patrol
 	btc_patrol_max = 8;
@@ -133,8 +129,8 @@ if (isServer) then {
 	btc_side_assigned = false;
 	btc_side_done = false;
 	btc_side_failed = false;
-	//Side 9 and 11 are not think for map with different islands. Start and end city can be on different islands.
-	btc_side_list = if (btc_p_sea) then {[0,1,2,3,4,5,6,7,8,9,10,11,12,13]} else {[0,1,2,3,4,5,6,9,10,11,12,13]};
+	btc_side_list = [0, 1, 2, 3, 4, 5, 6, 9, 10, 11, 12, 13];	// On ground (Side 9 and 11 are not think for map with different islands. Start and end city can be on different islands.)
+	if (btc_p_sea) then {btc_side_list append [7, 8]};			// On sea
 	btc_side_list_use = + btc_side_list;
 	btc_side_jip_data = [];
 	btc_type_tower = ["Land_Communication_F","Land_TTowerBig_1_F","Land_TTowerBig_2_F"];
@@ -149,7 +145,7 @@ if (isServer) then {
 	btc_type_power = ["WaterPump_01_sand_F","WaterPump_01_forest_F","Land_PressureWasher_01_F","Land_DieselGroundPowerUnit_01_F","Land_JetEngineStarter_01_F","Land_PowerGenerator_F","Land_PortableGenerator_01_F"];
 	btc_type_cord = ["Land_ExtensionCord_F"];
 
-	//Vehs
+	//BTC Vehicles in missions.sqm
 	btc_vehicles = [btc_veh_1,btc_veh_2,btc_veh_3,btc_veh_4,btc_veh_5,btc_veh_6,btc_veh_7,btc_veh_8,btc_veh_9,btc_veh_10,btc_veh_11,btc_veh_12,btc_veh_13,btc_veh_14,btc_veh_15];
 	btc_helo = [btc_helo_1];
 
@@ -225,7 +221,7 @@ btc_int_search_intel_time = 4;
 
 //Info
 btc_info_intel_chance = _info_chance;
-btc_info_intel_type = [80,95];//cache - hd - both
+btc_info_intel_type = [80, 95];//cache - hd - both
 btc_info_cache_def = _cache_info_def;
 btc_info_cache_ratio = _cache_info_ratio;
 btc_info_hideout_radius = 4000;
