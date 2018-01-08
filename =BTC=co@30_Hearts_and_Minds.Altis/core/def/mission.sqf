@@ -514,15 +514,6 @@ switch (_p_en) do {
 		btc_type_motorized_armed= btc_type_motorized_armed + ["I_Heli_light_03_F","I_G_Offroad_01_F"];
 		btc_type_units			= btc_type_units - ["I_C_Soldier_Camo_F"];
 	};
-	case "FOW_USMC" : {
-		btc_type_units			= btc_type_units - ["fow_s_usmc_01_private"];
-	};
-	case "FOW_USA" : {
-		btc_type_units			= btc_type_units - ["fow_s_usa_01_private"];
-	};
-	case "FOW_UK" : {
-		btc_type_units			= btc_type_units - ["fow_s_uk_01_private"];
-	};
 };
 
 //Rep
