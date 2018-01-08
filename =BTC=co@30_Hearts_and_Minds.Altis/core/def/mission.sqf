@@ -1,5 +1,5 @@
 
-private ["_p_civ_veh","_p_db","_p_en","_hideout_n","_cache_info_def","_cache_info_ratio","_info_chance","_p_rep","_p_skill","_c_array","_tower","_p_civ","_btc_rearming_vehicles","_vehicles","_magazines","_p_city_radius","_magazines_static","_static","_btc_rearming_static","_magazines_clean","_weapons_usefull","_magazines_static_clean","_p_en_AA"];
+private ["_p_civ_veh","_p_db","_p_en","_hideout_n","_cache_info_def","_cache_info_ratio","_info_chance","_p_rep","_p_skill","_c_array","_tower","_p_civ","_rearming_vehicles","_vehicles","_magazines","_p_city_radius","_magazines_static","_static","_rearming_static","_magazines_clean","_weapons_usefull","_magazines_static_clean","_p_en_AA"];
 
 btc_version = 1.172;
 diag_log format ["=BTC= HEARTS AND MINDS VERSION %1.7", btc_version];
@@ -240,20 +240,20 @@ btc_respawn_marker	= "respawn_west";
 if (isServer) then {
 	#define	REARM_TURRET_PATHS  [[-1], [0], [0,0], [0,1], [1], [2], [0,2]]
 
-	_btc_rearming_vehicles = [btc_vehicles + btc_helo,[]] call btc_fnc_find_veh_with_turret;
-	private _btc_rearming_magazines = [];
+	_rearming_vehicles = [btc_vehicles + btc_helo,[]] call btc_fnc_find_veh_with_turret;
+	private _rearming_magazines = [];
 	{
 		private _vehicle_type = _x;
 		private _vehicle = ((btc_vehicles + btc_helo) select {typeOf _x isEqualTo _vehicle_type}) select 0;
 		private _magazines = [_vehicle] call btc_fnc_log_getRearmMagazines;
-		_btc_rearming_magazines pushBack _magazines;
-	} forEach _btc_rearming_vehicles;
+		_rearming_magazines pushBack _magazines;
+	} forEach _rearming_vehicles;
 
 
 	private _allclass = ("true" configClasses (configFile >> "CfgVehicles")) apply {configName _x};
 	_allclass = _allclass select {(getNumber(configfile >> "CfgVehicles" >> _x >> "scope") isEqualTo 2)};
 
-	_btc_rearming_static =
+	_rearming_static =
 	[
 		//"Static"
 		"B_Mortar_01_F"
@@ -265,7 +265,7 @@ if (isServer) then {
 		{
 			_magazines_static append (([_static,_x] call btc_fnc_log_getconfigmagazines));
 		} forEach REARM_TURRET_PATHS;
-	} forEach _btc_rearming_static;
+	} forEach _rearming_static;
 	_magazines_static = _magazines_static - ["FakeWeapon"];
 	_magazines_static_clean = [];
 	{
@@ -282,7 +282,7 @@ if (isServer) then {
 			"Supplies",
 			"FOB",
 			"Vehicle Logistic"
-		] + (_btc_rearming_vehicles apply {getText (configFile >> "cfgVehicles" >> _x >> "displayName")}),
+		] + (_rearming_vehicles apply {getText (configFile >> "cfgVehicles" >> _x >> "displayName")}),
 		[
 			[
 				//"Fortifications"
@@ -309,7 +309,7 @@ if (isServer) then {
 				"Land_Pod_Heli_Transport_04_medevac_black_F",
 				"B_Slingload_01_Fuel_F"
 			],
-			_btc_rearming_static + _magazines_static_clean,
+			_rearming_static + _magazines_static_clean,
 			[
 				//"Ammobox"
 				"Land_WoodenBox_F"
@@ -332,7 +332,7 @@ if (isServer) then {
 				"ACE_Wheel",
 				"ACE_Track"
 			]
-		] + _btc_rearming_magazines
+		] + _rearming_magazines
 	];
 	publicVariable "btc_construction_array";
 };
