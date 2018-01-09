@@ -1,5 +1,5 @@
 
-private _useful = btc_city_all select {((_x getVariable ["type",""] != "NameLocal") && {_x getVariable ["type",""] != "Hill"} && (_x getVariable ["type",""] != "NameMarine"))};
+private _useful = btc_city_all select {(_x getVariable ["type",""] != "NameLocal") && {_x getVariable ["type",""] != "Hill"} && (_x getVariable ["type",""] != "NameMarine")};
 
 if (_useful isEqualTo []) then {_useful = + btc_city_all;};
 
@@ -11,21 +11,25 @@ btc_side_done = false;
 btc_side_failed = false;
 btc_side_assigned = true;publicVariable "btc_side_assigned";
 
-[4, _pos,_city getVariable "name"] remoteExec ["btc_fnc_task_create", 0];
+[4, _pos, _city getVariable "name"] remoteExec ["btc_fnc_task_create", 0];
 
 btc_side_jip_data = [4,_pos,_city getVariable "name"];
+
+private _distance_between_fences = 8.1;
+private _number_of_fences = 3 + floor random 4;
+private _area_size = _distance_between_fences * _number_of_fences;
+private _offset = _area_size + _distance_between_fences/2;
 
 private _area = createmarker [format ["sm_%1", _pos], _pos];
 _area setMarkerShape "RECTANGLE";
 _area setMarkerBrush "SolidBorder";
-private _area_size = 60;
-_area setMarkerSize [_area_size, _area_size];
+_area setMarkerSize [_offset, _offset];
 _area setMarkerAlpha 0.3;
 _area setmarkercolor "colorBlue";
 
-private _marker = createmarker [format ["sm_2_%1",_pos],_pos];
+private _marker = createmarker [format ["sm_2_%1", _pos], _pos];
 _marker setmarkertype "hd_flag";
-[_marker,"STR_BTC_HAM_SIDE_MINES_MRK"] remoteExec ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker]; //Mines
+[_marker, "STR_BTC_HAM_SIDE_MINES_MRK"] remoteExec ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker]; //Mines
 _marker setMarkerSize [0.6, 0.6];
 
 //// Randomise composition \\\\
@@ -47,96 +51,40 @@ private _signs = _allclass select {_x isKindOf "Land_Sign_Mines_F"};
 private _bloods = _allclass select {_x isKindOf "Blood_01_Base_F"};
 private _medicals = _allclass select {_x isKindOf "MedicalGarbage_01_Base_F"};
 
-
-
-
-
-
+private _offset_door = - 60 + _offset;
 private _composition_pattern = [
-	[selectRandom _bloods,81,[56.0991,5.71729,0]],
-	[_fence,180,[-0.100586,59.6567,0]],
-	[_fence,89,[59.9312,0.149414,0]],
-	[_fence,0,[0.0664063,-60.0156,0]],
-	[_fence,89,[-60.0195,-0.0229492,0]],
-	[_fence,180,[7.91162,59.6299,0]],
-	[_fence,180,[-8.0874,59.7124,0]],
-	[_fence,89,[59.9341,-7.6,0]],
-	[_fence,89,[-60.0166,-8.01172,0]],
-	[_fence,0,[8.05518,-60.0176,0]],
-	[_fence,0,[-7.94678,-60.0425,0]],
-	[_fence,89,[-60.0454,7.99023,0]],
-	[_cone,0,[60.3545,5.86768,0]],
-	[selectRandom _signs,270.59,[60.3721,7.92432,0]],
-	[_cone,0,[60.3755,9.47217,0]],
-	[selectRandom _signs,91,[-59.6802,-13.3745,0]],
-	[selectRandom _portable_light,101,[61.1982,3.28906,-4.76837e-007]],
-	[_fence,180,[15.9023,59.5737,0]],
-	[selectRandom _portable_light,37,[60.7373,11.856,0]],
-	[_fence,89,[59.9214,15.2153,0]],
-	[_fence,180,[-16.1187,59.7456,0]],
-	[_fence,89,[59.9521,-15.8672,0]],
-	[_fence,89,[-59.9985,-16.0396,0]],
-	[_fence,0,[-15.9355,-60.0405,0]],
-	[_fence,0,[16.084,-60,0]],
-	[_fence,89,[-60.0488,15.9761,0]],
-	[selectRandom _bloods,131,[61.9722,5.49609,0]],
-	[_fence,0,[62.1094,3.81641,0]],
-	[selectRandom _body_bags,332,[62.4473,0.76416,0]],
-	[selectRandom _signs,0,[-18.8491,-60.0767,0]],
-	[selectRandom _bloods,94,[62.3799,8.66309,0]],
-	[_fence,0,[62.2251,11.064,0]],
-	[_fence,180,[23.9307,59.5342,0]],
-	[_fence,89,[59.9019,23.2441,0]],
-	[_fence,180,[-24.1079,59.8008,0]],
-	[_fence,89,[59.9541,-23.8569,0]],
-	[_fence,89,[-59.9966,-24.0293,0]],
-	[_fence,0,[24.0728,-60.002,0]],
-	[_fence,0,[-23.9644,-60.0581,0]],
-	[_fence,89,[-60.0684,24.0049,0]],
-	[selectRandom _signs,92,[-59.7461,24.9878,0]],
-	[selectRandom _bloods,0,[65.3276,1.97803,0]],
-	[selectRandom _medicals,0,[65.4448,1.52734,0]],
-	[selectRandom _first_aid_kits,0,[65.6187,0.109863,0]],
-	[selectRandom btc_type_power,223,[63.9292,14.8687,0]],
-	[selectRandom (btc_type_barrel + btc_type_canister),0,[66.4707,0.0717773,0]],
-	[_fence,180,[31.9204,59.4849,0]],
-	[_fence,89,[59.9033,31.2363,0]],
-	[_fence,89,[59.9731,-31.8613,0]],
-	[_fence,180,[-32.1099,59.8413,0]],
-	[_fence,89,[-59.9775,-32.0337,0]],
-	[_fence,0,[-31.9531,-60.0562,0]],
-	[_fence,0,[32.0781,-59.9858,0]],
-	[_fence,89,[-60.0669,31.9971,0]],
-	[_fence,89,[59.8833,39.2388,0]],
-	[_fence,180,[39.9248,59.4414,0]],
-	[selectRandom _signs,0,[39.7676,-59.7939,0]],
-	[_fence,89,[59.9727,-39.8521,0]],
-	[_fence,180,[-40.0981,59.8965,0]],
-	[_fence,89,[-59.978,-40.0244,0]],
-	[_fence,0,[40.0669,-59.9878,0]],
-	[_fence,0,[-39.9585,-60.0723,0]],
-	[_fence,89,[-60.0869,39.9995,0]],
-	[selectRandom _signs,89.7217,[-59.5522,-43.2207,0]],
-	[_fence,89,[59.8828,47.2271,0]],
-	[_fence,180,[47.9146,59.3901,0]],
-	[_fence,89,[59.9937,-47.8809,0]],
-	[_fence,89,[-59.957,-48.0532,0]],
-	[_fence,0,[-47.9473,-60.0703,0]],
-	[_fence,180,[-48.1284,59.9307,0]],
-	[_fence,0,[48.0957,-59.9702,0]],
-	[_fence,89,[-60.0874,47.9878,0]],
-	[_fence,89,[59.9077,55.2588,0]],
-	[_fence,180,[55.9414,59.3506,0]],
-	[_fence,89,[59.9932,-55.8696,0]],
-	[_fence,89,[-59.9575,-56.042,0]],
-	[_fence,0,[56.0845,-59.9722,0]],
-	[_fence,0,[-55.9761,-60.0879,0]],
-	[_fence,180,[-56.1167,59.9863,0]],
-	[_fence,89,[-60.1089,56.0181,0]],
-	[selectRandom _signs,353,[59.5278,-59.5898,0]]
+	[selectRandom _bloods,81,[56.0991 + _offset_door,5.71729,0]],
+	[_cone,0,[60.3545 + _offset_door,5.86768,0]],
+	[_cone,0,[60.3755 + _offset_door,9.47217,0]],
+	[selectRandom _portable_light,101,[61.1982 + _offset_door,3.28906,0]],
+	[selectRandom _portable_light,37,[60.7373 + _offset_door,11.856,0]],
+	[selectRandom _bloods,131,[61.9722 + _offset_door,5.49609,0]],
+	[selectRandom _body_bags,332,[62.4473 + _offset_door,0.76416,0]],
+	[selectRandom _bloods,94,[62.3799 + _offset_door,8.66309,0]],
+	[selectRandom _bloods,0,[65.3276 + _offset_door,1.97803,0]],
+	[selectRandom _medicals,0,[65.4448 + _offset_door,1.52734,0]],
+	[selectRandom _first_aid_kits,0,[65.6187 + _offset_door,0.109863,0]],
+	[selectRandom btc_type_power,223,[63.9292 + _offset_door,14.8687,0]],
+	[selectRandom (btc_type_barrel + btc_type_canister),0,[66.4707 + _offset_door,0.0717773,0]]
 ];
-private _composition_objects = [_pos, selectRandom [0, 90, 180, 270], _composition_pattern] call btc_fnc_create_composition;
 
+for "_i" from -_number_of_fences to _number_of_fences do {
+	_composition_pattern pushBack [_fence, 0, [_i * _distance_between_fences, _offset, 0]];
+	_composition_pattern pushBack [_fence, 0, [_i * _distance_between_fences, -_offset, 0]];
+	if !(_i isEqualTo 1) then {
+		_composition_pattern pushBack [_fence, 90, [ _offset, _i * _distance_between_fences, 0]];
+	};
+	_composition_pattern pushBack [_fence, 90, [ -_offset, _i * _distance_between_fences, 0]];
+
+	if (random 1 > 0.7) then {
+		_composition_pattern pushBack [selectRandom _signs, 180, [_i * _distance_between_fences, _offset - 1, 0]];
+		_composition_pattern pushBack [selectRandom _signs, 0, [_i * _distance_between_fences, -_offset + 1, 0]];
+		_composition_pattern pushBack [selectRandom _signs, 270, [ _offset - 1, _i * _distance_between_fences, 0]];
+		_composition_pattern pushBack [selectRandom _signs, 90, [ -_offset + 1, _i * _distance_between_fences, 0]];
+	};
+};
+
+private _composition_objects = [_pos, selectRandom [0, 90, 180, 270], _composition_pattern] call btc_fnc_create_composition;
 
 private _mines = [];
 for "_i" from 1 to (5 + round random 5) do {
