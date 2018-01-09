@@ -46,7 +46,6 @@ private _body_bags = _allclass select {(
 private _signs = _allclass select {(_x isKindOf "Land_Sign_Mines_F")};
 private _bloods = _allclass select {(_x isKindOf "Blood_01_Base_F")};
 private _medicals = _allclass select {(_x isKindOf "MedicalGarbage_01_Base_F")};
-//private _signs = ["Land_SignM_WarningMilAreaSmall_english_F", "Land_Sign_MinesTall_Greek_F", "Land_Sign_Mines_F", "Land_Sign_WarningUnexplodedAmmo_F", "Land_Sign_MinesTall_Greek_F", "Land_Sign_MinesTall_F", "TapeSign_F", "Land_Sign_MinesTall_English_F"];
 private _composition_pattern = [
 	[selectRandom _bloods,81,[56.0991,5.71729,0]],
 	[_fence,180,[-0.100586,59.6567,0]],
