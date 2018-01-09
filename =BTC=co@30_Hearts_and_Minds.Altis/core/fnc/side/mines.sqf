@@ -37,15 +37,21 @@ private _portable_light = ["Land_PortableLight_double_F", "Land_PortableLight_si
 private _first_aid_kits = ["Land_FirstAidKit_01_open_F", "Land_FirstAidKit_01_closed_F"];
 
 private _allclass = ("true" configClasses (configFile >> "CfgVehicles")) apply {configName _x};
-_allclass = _allclass select {(getNumber(configfile >> "CfgVehicles" >> _x >> "scope") isEqualTo 2)};
-private _body_bags = _allclass select {(
+_allclass = _allclass select {getNumber(configfile >> "CfgVehicles" >> _x >> "scope") isEqualTo 2};
+private _body_bags = _allclass select {
 	(_x isKindOf "Land_Bodybag_01_base_F") ||
 	(_x isKindOf "Land_Bodybag_01_empty_base_F") ||
 	(_x isKindOf "Land_Bodybag_01_folded_base_F")
-)};
-private _signs = _allclass select {(_x isKindOf "Land_Sign_Mines_F")};
-private _bloods = _allclass select {(_x isKindOf "Blood_01_Base_F")};
-private _medicals = _allclass select {(_x isKindOf "MedicalGarbage_01_Base_F")};
+};
+private _signs = _allclass select {_x isKindOf "Land_Sign_Mines_F"};
+private _bloods = _allclass select {_x isKindOf "Blood_01_Base_F"};
+private _medicals = _allclass select {_x isKindOf "MedicalGarbage_01_Base_F"};
+
+
+
+
+
+
 private _composition_pattern = [
 	[selectRandom _bloods,81,[56.0991,5.71729,0]],
 	[_fence,180,[-0.100586,59.6567,0]],
