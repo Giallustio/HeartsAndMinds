@@ -72,6 +72,9 @@ if (!isMultiplayer) then {btc_debug_log = true;btc_debug = true;};
 if (isServer) then {
 	btc_final_phase = false;
 
+	private _allclass = ("true" configClasses (configFile >> "CfgVehicles")) apply {configName _x};
+	_allclass = _allclass select {getNumber(configfile >> "CfgVehicles" >> _x >> "scope") isEqualTo 2};
+
 	//City
 	btc_city_radius = _p_city_radius;
 	btc_city_blacklist = [];//NAME FROM CFG
@@ -147,6 +150,18 @@ if (isServer) then {
 	btc_type_mines = ["APERSMine","APERSBoundingMine","APERSTripMine"];
 	btc_type_power = ["WaterPump_01_sand_F","WaterPump_01_forest_F","Land_PressureWasher_01_F","Land_DieselGroundPowerUnit_01_F","Land_JetEngineStarter_01_F","Land_PowerGenerator_F","Land_PortableGenerator_01_F"];
 	btc_type_cord = ["Land_ExtensionCord_F"];
+	btc_type_cones = ["Land_RoadCone_01_F", "RoadCone_F"];
+	btc_type_fences = ["Land_PlasticNetFence_01_long_F", "RoadBarrier_F", "TapeSign_F"];
+	btc_type_portable_light = ["Land_PortableLight_double_F", "Land_PortableLight_single_F"];
+	btc_type_first_aid_kits = ["Land_FirstAidKit_01_open_F", "Land_FirstAidKit_01_closed_F"];
+	btc_type_body_bags = _allclass select {
+		(_x isKindOf "Land_Bodybag_01_base_F") ||
+		(_x isKindOf "Land_Bodybag_01_empty_base_F") ||
+		(_x isKindOf "Land_Bodybag_01_folded_base_F")
+	};
+	btc_type_signs = _allclass select {_x isKindOf "Land_Sign_Mines_F"};
+	btc_type_bloods = _allclass select {_x isKindOf "Blood_01_Base_F"};
+	btc_type_medicals = _allclass select {_x isKindOf "MedicalGarbage_01_Base_F"};
 
 	//Vehs
 	btc_vehicles = [btc_veh_1,btc_veh_2,btc_veh_3,btc_veh_4,btc_veh_5,btc_veh_6,btc_veh_7,btc_veh_8,btc_veh_9,btc_veh_10,btc_veh_11,btc_veh_12,btc_veh_13,btc_veh_14,btc_veh_15];
@@ -243,6 +258,9 @@ btc_respawn_marker	= "respawn_west";
 if (isServer) then {
 	#define	REARM_TURRET_PATHS  [[-1], [0], [0,0], [0,1], [1], [2], [0,2]]
 
+	private _allclass = ("true" configClasses (configFile >> "CfgVehicles")) apply {configName _x};
+	_allclass = _allclass select {getNumber(configfile >> "CfgVehicles" >> _x >> "scope") isEqualTo 2};
+
 	_btc_rearming_vehicles = [btc_vehicles + btc_helo,[]] call btc_fnc_find_veh_with_turret;
 	private _btc_rearming_magazines = [];
 	{
@@ -251,10 +269,6 @@ if (isServer) then {
 		private _magazines = [_vehicle] call btc_fnc_log_getRearmMagazines;
 		_btc_rearming_magazines pushBack _magazines;
 	} forEach _btc_rearming_vehicles;
-
-
-	private _allclass = ("true" configClasses (configFile >> "CfgVehicles")) apply {configName _x};
-	_allclass = _allclass select {(getNumber(configfile >> "CfgVehicles" >> _x >> "scope") isEqualTo 2)};
 
 	_btc_rearming_static =
 	[

@@ -13,7 +13,7 @@ btc_side_assigned = true;publicVariable "btc_side_assigned";
 
 [4, _pos, _city getVariable "name"] remoteExec ["btc_fnc_task_create", 0];
 
-btc_side_jip_data = [4,_pos,_city getVariable "name"];
+btc_side_jip_data = [4, _pos, _city getVariable "name"];
 
 private _distance_between_fences = 8.1;
 private _number_of_fences = 3 + floor random 4;
@@ -33,54 +33,45 @@ _marker setmarkertype "hd_flag";
 _marker setMarkerSize [0.6, 0.6];
 
 //// Randomise composition \\\\
-private _cone = selectRandom ["Land_RoadCone_01_F", "RoadCone_F"];
-private _fences = ["Land_PlasticNetFence_01_long_F", "RoadBarrier_F", "TapeSign_F"];
+private _cone = selectRandom btc_type_cones;
+private _fences = + btc_type_fences;
 _fences pushBack _cone;
 private _fence = selectRandom _fences;
-private _portable_light = ["Land_PortableLight_double_F", "Land_PortableLight_single_F"];
-private _first_aid_kits = ["Land_FirstAidKit_01_open_F", "Land_FirstAidKit_01_closed_F"];
-
-private _allclass = ("true" configClasses (configFile >> "CfgVehicles")) apply {configName _x};
-_allclass = _allclass select {getNumber(configfile >> "CfgVehicles" >> _x >> "scope") isEqualTo 2};
-private _body_bags = _allclass select {
-	(_x isKindOf "Land_Bodybag_01_base_F") ||
-	(_x isKindOf "Land_Bodybag_01_empty_base_F") ||
-	(_x isKindOf "Land_Bodybag_01_folded_base_F")
-};
-private _signs = _allclass select {_x isKindOf "Land_Sign_Mines_F"};
-private _bloods = _allclass select {_x isKindOf "Blood_01_Base_F"};
-private _medicals = _allclass select {_x isKindOf "MedicalGarbage_01_Base_F"};
 
 private _offset_door = - 60 + _offset;
 private _composition_pattern = [
-	[selectRandom _bloods,81,[56.0991 + _offset_door,5.71729,0]],
+	[selectRandom btc_type_bloods,81,[56.0991 + _offset_door,5.71729,0]],
 	[_cone,0,[60.3545 + _offset_door,5.86768,0]],
 	[_cone,0,[60.3755 + _offset_door,9.47217,0]],
-	[selectRandom _portable_light,101,[61.1982 + _offset_door,3.28906,0]],
-	[selectRandom _portable_light,37,[60.7373 + _offset_door,11.856,0]],
-	[selectRandom _bloods,131,[61.9722 + _offset_door,5.49609,0]],
-	[selectRandom _body_bags,332,[62.4473 + _offset_door,0.76416,0]],
-	[selectRandom _bloods,94,[62.3799 + _offset_door,8.66309,0]],
-	[selectRandom _bloods,0,[65.3276 + _offset_door,1.97803,0]],
-	[selectRandom _medicals,0,[65.4448 + _offset_door,1.52734,0]],
-	[selectRandom _first_aid_kits,0,[65.6187 + _offset_door,0.109863,0]],
+	[selectRandom btc_type_portable_light,101,[61.1982 + _offset_door,3.28906,0]],
+	[selectRandom btc_type_portable_light,37,[60.7373 + _offset_door,11.856,0]],
+	[selectRandom btc_type_bloods,131,[61.9722 + _offset_door,5.49609,0]],
+	[selectRandom btc_type_body_bags,332,[62.4473 + _offset_door,0.76416,0]],
+	[selectRandom btc_type_bloods,94,[62.3799 + _offset_door,8.66309,0]],
+	[selectRandom btc_type_bloods,0,[65.3276 + _offset_door,1.97803,0]],
+	[selectRandom btc_type_medicals,0,[65.4448 + _offset_door,1.52734,0]],
+	[selectRandom btc_type_first_aid_kits,0,[65.6187 + _offset_door,0.109863,0]],
 	[selectRandom btc_type_power,223,[63.9292 + _offset_door,14.8687,0]],
 	[selectRandom (btc_type_barrel + btc_type_canister),0,[66.4707 + _offset_door,0.0717773,0]]
 ];
 
 for "_i" from -_number_of_fences to _number_of_fences do {
-	_composition_pattern pushBack [_fence, 0, [_i * _distance_between_fences, _offset, 0]];
-	_composition_pattern pushBack [_fence, 0, [_i * _distance_between_fences, -_offset, 0]];
+	_composition_pattern append [
+		[_fence, 0, [_i * _distance_between_fences, -_offset, 0]],
+		[_fence, 0, [_i * _distance_between_fences, _offset, 0]],
+		[_fence, 90, [ -_offset, _i * _distance_between_fences, 0]]
+	];
 	if !(_i isEqualTo 1) then {
 		_composition_pattern pushBack [_fence, 90, [ _offset, _i * _distance_between_fences, 0]];
 	};
-	_composition_pattern pushBack [_fence, 90, [ -_offset, _i * _distance_between_fences, 0]];
 
 	if (random 1 > 0.7) then {
-		_composition_pattern pushBack [selectRandom _signs, 180, [_i * _distance_between_fences, _offset - 1, 0]];
-		_composition_pattern pushBack [selectRandom _signs, 0, [_i * _distance_between_fences, -_offset + 1, 0]];
-		_composition_pattern pushBack [selectRandom _signs, 270, [ _offset - 1, _i * _distance_between_fences, 0]];
-		_composition_pattern pushBack [selectRandom _signs, 90, [ -_offset + 1, _i * _distance_between_fences, 0]];
+		_composition_pattern append [
+			[selectRandom btc_type_signs, 180, [_i * _distance_between_fences, _offset - 1, 0]],
+			[selectRandom btc_type_signs, 0, [_i * _distance_between_fences, -_offset + 1, 0]],
+			[selectRandom btc_type_signs, 270, [ _offset - 1, _i * _distance_between_fences, 0]],
+			[selectRandom btc_type_signs, 90, [ -_offset + 1, _i * _distance_between_fences, 0]]
+		];
 	};
 };
 
@@ -93,15 +84,15 @@ for "_i" from 1 to (5 + round random 5) do {
 	private _m_pos = [_pos, _area_size - 10] call btc_fnc_randomize_pos;
 	_mines pushBack createMine [_type, _m_pos, [], 0];
 
-	if (selectRandom [true, false]) then {
+	if (random 1 > 0.8) then {
 		_m_pos = [_pos, _area_size - 10] call btc_fnc_randomize_pos;
-		private _s = createVehicle [selectRandom _signs, _m_pos, [], 10, "CAN_COLLIDE"];
+		private _s = createVehicle [selectRandom btc_type_signs, _m_pos, [], 10, "CAN_COLLIDE"];
 		_s setDir random 360;
 		_composition_objects pushBack _s;
 	};
 };
 
-waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({_x distance _pos < 200} count playableUnits > 0))};
+waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({_x distance _pos < 100} count playableUnits > 0))};
 
 private _closest = [_city,btc_city_all select {!(_x getVariable ["active",false])}, false] call btc_fnc_find_closecity;
 for "_i" from 1 to (round random 2) do {
