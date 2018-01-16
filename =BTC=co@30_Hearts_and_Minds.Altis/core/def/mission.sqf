@@ -148,7 +148,7 @@ if (isServer) then {
 	btc_type_power = ["WaterPump_01_sand_F","WaterPump_01_forest_F","Land_PressureWasher_01_F","Land_DieselGroundPowerUnit_01_F","Land_JetEngineStarter_01_F","Land_PowerGenerator_F","Land_PortableGenerator_01_F"];
 	btc_type_cord = ["Land_ExtensionCord_F"];
 	btc_type_cones = ["Land_RoadCone_01_F", "RoadCone_F"];
-	btc_type_fences = ["Land_PlasticNetFence_01_long_F", "RoadBarrier_F", "TapeSign_F"];
+	btc_type_fences = ["Land_PlasticNetFence_01_long_F", "Land_PlasticNetFence_01_long_d_F", "RoadBarrier_F", "TapeSign_F"];
 	btc_type_portable_light = ["Land_PortableLight_double_F", "Land_PortableLight_single_F"];
 	btc_type_first_aid_kits = ["Land_FirstAidKit_01_open_F", "Land_FirstAidKit_01_closed_F"];
 	btc_type_body_bags = _allclass select {
