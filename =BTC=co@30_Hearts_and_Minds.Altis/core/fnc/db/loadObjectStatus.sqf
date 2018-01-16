@@ -1,12 +1,26 @@
-
 params ["_object_data"];
+_object_data params ["_type","_posWorld","_dir","_magClass","_cargo","_inventory","_vectorPos"];
 
-private _obj = (_object_data select 0) createVehicle (_object_data select 1);
+//create object
+private _obj = _type createVehicle _posWorld;
 btc_log_obj_created pushBack _obj;
+
+//give the curator controll of the object
 btc_curator addCuratorEditableObjects [[_obj], false];
-_obj setDir (_object_data select 2);
-_obj setPosASL (_object_data select 1);
-if ((_object_data select 3) != "") then {_obj setVariable ["ace_rearm_magazineClass",(_object_data select 3),true]};
+
+//set direction
+_obj setDir _dir;
+
+//set the position of the object
+_obj setPosWorld _posWorld;
+
+//set the vector postion
+_obj setVectorDirAndUp _vectorPos;
+
+//set ace magazine classes
+if !(_magClass isEqualTo "") then {_obj setVariable ["ace_rearm_magazineClass",_magClass,true]};
+
+//handle cargo
 {
 	/*private "_l";
 	_l = _x createVehicle [0,0,0];
@@ -41,22 +55,21 @@ if ((_object_data select 3) != "") then {_obj setVariable ["ace_rearm_magazineCl
 		};
 	};
 	[_l,_obj] call btc_fnc_log_server_load;
-} foreach (_object_data select 4);
-private _cont = (_object_data select 5);
+} foreach _cargo;
+
+//set inventory content for weapons, magazines and items
+_inventory params ["_weap","_mags","_items"];
 clearWeaponCargoGlobal _obj;clearItemCargoGlobal _obj;clearMagazineCargoGlobal _obj;
-private _weap = _cont select 0;
 if (count _weap > 0) then {
 	for "_i" from 0 to ((count (_weap select 0)) - 1) do {
 		_obj addWeaponCargoGlobal[((_weap select 0) select _i),((_weap select 1) select _i)];
 	};
 };
-private _mags = _cont select 1;
 if (count _mags > 0) then {
 	for "_i" from 0 to ((count (_mags select 0)) - 1) do {
 		_obj addMagazineCargoGlobal[((_mags select 0) select _i),((_mags select 1) select _i)];
 	};
 };
-private _items = _cont select 2;
 if (count _items > 0) then {
 	for "_i" from 0 to ((count (_items select 0)) - 1) do {
 		_obj addItemCargoGlobal[((_items select 0) select _i),((_items select 1) select _i)];
