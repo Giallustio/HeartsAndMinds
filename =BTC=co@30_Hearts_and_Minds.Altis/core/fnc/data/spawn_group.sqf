@@ -4,7 +4,7 @@ params ["_type","_array_pos","_array_type","_side","_array_dam","_behaviour","_a
 private _group = createGroup _side;
 
 for "_i" from 0 to (count _array_pos - 1) do {
-	private _u = _group createUnit [(_array_type select _i), (_array_pos select _i), [], 0, "NONE"];
+	private _u = _group createUnit [_array_type select _i, _array_pos select _i, [], 0, "NONE"];
 	_u enableSimulation false;
 	_u setPosATL (_array_pos select _i);
 	if (btc_debug_log) then {diag_log format ["spawn group : pos %1 in %2 ", (_array_pos select _i),getpos _u];};
@@ -12,7 +12,7 @@ for "_i" from 0 to (count _array_pos - 1) do {
 };
 
 if (_type == 1) then {
-	private _veh = createVehicle [(_array_veh select 0), (_array_veh select 1), [], 0, "FLY"];
+	private _veh = createVehicle [_array_veh select 0, (_array_veh select 1), [], 0, "FLY"];
 	if !(_veh isKindOf "Plane") then {
 		_veh setPosATL (_array_veh select 1);
 		_veh setDir (_array_veh select 2);
@@ -79,22 +79,8 @@ if (_type == 6) then {
 	_group setVariable ["btc_data_inhouse", _array_veh];
 };
 if (_type == 7) then {
-	_group spawn {
-		_this setVariable ["btc_ied_drone",true];
-
-		private _driver_drone = leader _this;
-
-		//Main check
-
-		private _cond = false;
-
-		while {Alive _driver_drone && !isNull _driver_drone && !_cond} do {
-			sleep 5;
-			if (count (getpos _driver_drone nearEntities ["SoldierWB", 200]) > 0) then {_cond = true;_driver_drone spawn btc_fnc_ied_drone_active};
-		};
-	};
+	[objNull, 100, _array_pos select 0, _group] call btc_fnc_ied_drone_create;
 };
-
 
 _group setBehaviour (_behaviour select 0);
 _group setCombatMode (_behaviour select 1);

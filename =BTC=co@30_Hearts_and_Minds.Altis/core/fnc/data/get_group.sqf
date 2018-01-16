@@ -40,7 +40,7 @@ if (!isNil {_group getVariable "btc_terrorist"}) then {_type_db = 4;};
 if (!isNil {_group getVariable "getWeapons"}) then {_type_db = 5;};
 */
 
-if (vehicle leader _group != leader _group) then {_type_db = 1;};
+if ((vehicle leader _group != leader _group) && !(_type_db isEqualTo 7)) then {_type_db = 1;};
 
 if (_type_db == 1) then
 {
@@ -51,9 +51,12 @@ if (_type_db == 1) then
 	_dir = getdir _veh;
 	_fuel = fuel _veh;
 	_array_veh = [_type,_pos,_dir,_fuel];
-	deletevehicle _veh;
 };
 _data = [_type_db,_array_pos,_array_type,_side,_array_dam,_behaviour,[_index_wp,_array_wp],_array_veh];
+
+if ((_type_db == 1) && (_type_db == 7)) then {
+	deletevehicle vehicle leader _group;
+};
 {deletevehicle _x} foreach _units;deleteGroup _group;
 
 _data
