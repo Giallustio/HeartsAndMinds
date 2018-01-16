@@ -78,6 +78,23 @@ if (_type == 6) then {
 	[_group, _array_veh select 0] spawn btc_fnc_civ_addWP;
 	_group setVariable ["btc_data_inhouse", _array_veh];
 };
+if (_type == 7) then {
+	_group spawn {
+		_this setVariable ["btc_ied_drone",true];
+
+		private _driver_drone = leader _this;
+
+		//Main check
+
+		private _cond = false;
+
+		while {Alive _driver_drone && !isNull _driver_drone && !_cond} do {
+			sleep 5;
+			if (count (getpos _driver_drone nearEntities ["SoldierWB", 200]) > 0) then {_cond = true;_driver_drone spawn btc_fnc_ied_drone_active};
+		};
+	};
+};
+
 
 _group setBehaviour (_behaviour select 0);
 _group setCombatMode (_behaviour select 1);

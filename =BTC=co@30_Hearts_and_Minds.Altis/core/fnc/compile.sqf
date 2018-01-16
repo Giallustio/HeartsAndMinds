@@ -82,6 +82,9 @@ if (isServer) then {
 	btc_fnc_ied_suicider_active = compile preprocessFileLineNumbers "core\fnc\ied\suicider_active.sqf";
 	btc_fnc_ied_suicider_create = compile preprocessFileLineNumbers "core\fnc\ied\suicider_create.sqf";
 	btc_fnc_ied_allahu_akbar = compile preprocessFileLineNumbers "core\fnc\ied\allahu_akbar.sqf";
+	btc_fnc_ied_drone_active = compile preprocessFileLineNumbers "core\fnc\ied\drone_active.sqf";
+	btc_fnc_ied_drone_create = compile preprocessFileLineNumbers "core\fnc\ied\drone_create.sqf";
+	btc_fnc_ied_fire = compile preprocessFileLineNumbers "core\fnc\ied\fire.sqf";
 
 	//INFO
 	btc_fnc_info_cache = compile preprocessFileLineNumbers "core\fnc\info\cache.sqf";
