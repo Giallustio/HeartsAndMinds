@@ -14,7 +14,8 @@ private _drone = createVehicle ["C_IDAP_UAV_06_antimine_F", _rpos, [], 0, "FLY"]
 createVehicleCrew _drone;
 [driver _drone] joinSilent _group;
 
-[_group,_rpos,_area,"SAFE", false] call btc_fnc_task_patrol;
+_drone flyInHeight 10;
+[_group,_rpos,_area,"SAFE", true] call btc_fnc_task_patrol;
 
 _group setVariable ["btc_ied_drone", true];
 
