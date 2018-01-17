@@ -1,4 +1,10 @@
 
-private _driver_drone = _this getVariable "btc_ied_drone";
+if (btc_debug) then {
+	systemChat "FIRE";
+};
+
+params ["_trigger"];
+
+private _driver_drone = _trigger getVariable "btc_ied_drone";
 
 _driver_drone forceWeaponFire ["BombDemine_01_F", "BombDemine_01_F"];

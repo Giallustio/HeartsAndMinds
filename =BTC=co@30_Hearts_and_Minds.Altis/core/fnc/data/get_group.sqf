@@ -54,7 +54,7 @@ if (_type_db == 1) then
 };
 _data = [_type_db,_array_pos,_array_type,_side,_array_dam,_behaviour,[_index_wp,_array_wp],_array_veh];
 
-if ((_type_db == 1) && (_type_db == 7)) then {
+if ((_type_db == 1) || (_type_db == 7)) then {
 	deletevehicle vehicle leader _group;
 };
 {deletevehicle _x} foreach _units;deleteGroup _group;
