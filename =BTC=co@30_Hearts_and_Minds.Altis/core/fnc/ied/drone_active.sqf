@@ -24,7 +24,7 @@ if (btc_debug_log) then {diag_log format ["btc_fnc_ied_drone_active: _driver_dro
 		private _array = _driver_drone nearEntities ["SoldierWB", 200];
 		if (!(_array isEqualTo [])) then {
 				if (btc_debug) then {
-					hint str((_array select 0) distance (vehicle _driver_drone));
+					hint format ["Distance with UAV IED : %1", (_array select 0) distance (vehicle _driver_drone)];
 				};
 				(vehicle _driver_drone) doMove (ASLtoAGL getPosASL (_array select 0));
 		};

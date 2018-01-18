@@ -1,8 +1,4 @@
 
-if (btc_debug) then {
-	systemChat "FIRE";
-};
-
 params ["_trigger"];
 
 private _driver_drone = _trigger getVariable "btc_ied_drone";
