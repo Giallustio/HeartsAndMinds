@@ -19,7 +19,7 @@ A new formed group, known as "Oplitas", is against the NATO intervention and is 
 
 ### The mission has a lot of features:
 
-- **Dedicate server support only**
+- **Dedicated server support only**
 - Dynamic battlefield
 - Rearm system
 - Repair wreck system
