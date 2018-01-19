@@ -16,22 +16,4 @@ if (btc_debug_log) then {diag_log format ["btc_fnc_ied_drone_active: _driver_dro
 (group _driver_drone) setBehaviour "CARELESS";
 (group _driver_drone) setSpeedMode "LIMITED";
 
-[{
-	params ["_args", "_id"];
-	_args params ["_driver_drone", "_trigger"];
-
-	if (Alive _driver_drone) then {
-		private _array = _driver_drone nearEntities ["SoldierWB", 200];
-		if (!(_array isEqualTo [])) then {
-				if (btc_debug) then {
-					hint format ["Distance with UAV IED : %1", (_array select 0) distance (vehicle _driver_drone)];
-				};
-				(vehicle _driver_drone) doMove (ASLtoAGL getPosASL (_array select 0));
-		};
-	} else {
-		[_id] call CBA_fnc_removePerFrameHandler;
-		deleteVehicle _trigger;
-		group _driver_drone setVariable ["btc_ied_drone",false];
-		if (btc_debug_log) then {diag_log format ["btc_fnc_ied_drone_active: _driver_drone = %1; POS %2 END LOOP",_driver_drone,getpos _driver_drone];};
-	};
-} , 0.5, [_driver_drone, _trigger]] call CBA_fnc_addPerFrameHandler;
+_trigger
