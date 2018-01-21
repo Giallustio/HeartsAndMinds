@@ -11,12 +11,12 @@ private _selection = [
 ];
 private _type = [
 	"bullet",
-	"grenade",
+	"grenade"/*,
 	"explosive",
-	"shell"
+	"shell"*/
 ];
 
-for "_i" from 0 to floor random 4 do {
-	[_unit, random [0.2, 0.25, 0.3], selectRandom _selection, selectRandom _type] call ace_medical_fnc_addDamageToUnit;
+for "_i" from 0 to (1 + floor random 2) do {
+	[_unit, 0.2, selectRandom _selection, selectRandom _type] call ace_medical_fnc_addDamageToUnit;
 	sleep 1;
 };
