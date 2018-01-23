@@ -25,7 +25,7 @@ A new formed group, known as "Oplitas", is against the NATO intervention and is 
 - Repair wreck system
 - Logistic system
 - Interaction system
-- Realistic IED/Suicide bomber system
+- Realistic IED/Suicide/Drone bomber system
 - Civilian interaction/fleeing
 - Reputation system
 - Deep ACE3 support
