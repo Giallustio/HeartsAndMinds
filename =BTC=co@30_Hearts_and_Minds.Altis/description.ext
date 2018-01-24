@@ -8,7 +8,6 @@ enabledebugconsole = 1;
 #include "core\def\dlg_def.hpp"
 
 #include "core\fnc\fob\dlg.hpp"
-#include "core\fnc\int\progress_bar.hpp"
 #include "core\fnc\log\dlg.hpp"
 //#include "core\fnc\rev\dlg.hpp"
 
@@ -34,7 +33,7 @@ class RscTitles {
 class CfgFunctions {
     #include "core\def\functions.hpp"
     // add your own functions below
-    
+
 };
 
 #include "core\fnc\eh\extended_InitPost_EH.hpp"
