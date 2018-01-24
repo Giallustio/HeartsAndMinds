@@ -362,7 +362,6 @@
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_IED_DRONE">
                 <Original>Drone bomber:</Original>
-                <English>Drone bomber:</English>
             </Key>
         </Container>
         <Container name="Parameters: Hideout/Cache">
