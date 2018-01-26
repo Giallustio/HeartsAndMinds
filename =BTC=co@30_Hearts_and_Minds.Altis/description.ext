@@ -9,7 +9,6 @@ enabledebugconsole = 1;
 
 #include "core\fnc\fob\dlg.hpp"
 #include "core\fnc\log\dlg.hpp"
-//#include "core\fnc\rev\dlg.hpp"
 
 class RscTitles {
     class Default {
@@ -18,7 +17,6 @@ class RscTitles {
         fadeout = 0;
         duration = 0;
     };
-	//#include "core\fnc\rev\rsc.hpp"
 	#include "core\fnc\log\rsc.hpp"
 };
 
@@ -33,7 +31,6 @@ class RscTitles {
 class CfgFunctions {
     #include "core\def\functions.hpp"
     // add your own functions below
-
 };
 
 #include "core\fnc\eh\extended_InitPost_EH.hpp"

@@ -1,4 +1,4 @@
-class btc_dlg_RscText 
+class btc_dlg_RscText
 {
 	x = 0;
 	y = 0;
@@ -15,28 +15,8 @@ class btc_dlg_RscText
 	colorBackground[] = {0, 0, 0, 0};
 	linespacing = 1;
 };
-class btc_dlg_RscStructuredText
-{
-	type = 13;
-	style = 0;
-	x = 0;
-	y = 0;
-	h = 0.035;
-	w = 0.1;
-	text = "";
-	size = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
-	colorText[] = {1, 1, 1, 1.0};
-	shadow = 1;
-	
-	class Attributes 
-	{
-		font = "PuristaMedium";
-		color = "#ffffff";
-		align = "left";
-		shadow = 1;
-	};
-};
-class btc_dlg_shortcutButton 
+
+class btc_dlg_shortcutButton
 {
 	idc = -1;
 	style = 0;
@@ -60,21 +40,21 @@ class btc_dlg_shortcutButton
 	textureNoShortcut = "#(argb,8,8,3)color(0,0,0,0)";
 	periodFocus = 1.2;
 	periodOver = 0.8;
-	
+
 	class HitZone {
 		left = 0.0;
 		top = 0.0;
 		right = 0.0;
 		bottom = 0.0;
 	};
-	
+
 	class ShortcutPos {
 		left = 0;
 		top = "(			(		(		((safezoneW / safezoneH) min 1.2) / 1.2) / 20) - 		(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)) / 2";
 		w = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1) * (3/4)";
 		h = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
 	};
-	
+
 	class TextPos {
 		left = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1) * (3/4)";
 		top = "(			(		(		((safezoneW / safezoneH) min 1.2) / 1.2) / 20) - 		(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)) / 2";
@@ -91,21 +71,21 @@ class btc_dlg_shortcutButton
 	soundClick[] = {"\A3\ui_f\data\sound\onclick", 0.07, 1};
 	soundEscape[] = {"\A3\ui_f\data\sound\onescape", 0.09, 1};
 	action = "";
-	
+
 	class Attributes {
 		font = "PuristaMedium";
 		color = "#E5E5E5";
 		align = "left";
 		shadow = "true";
 	};
-	
+
 	class AttributesImage {
 		font = "PuristaMedium";
 		color = "#E5E5E5";
 		align = "left";
 	};
 };
-class btc_dlg_button : btc_dlg_shortcutButton 
+class btc_dlg_button : btc_dlg_shortcutButton
 {
 	idc = -1;
 	type = 16;
@@ -133,21 +113,21 @@ class btc_dlg_button : btc_dlg_shortcutButton
 	periodOver = 1.2;
 	size = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
 	sizeEx = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
-	
+
 	class TextPos {
 		left = "0.25 * 			(			((safezoneW / safezoneH) min 1.2) / 40)";
 		top = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) - 		(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)) / 2";
 		right = 0.005;
 		bottom = 0.0;
 	};
-	
+
 	class Attributes {
 		font = "PuristaLight";
 		color = "#E5E5E5";
 		align = "left";
 		shadow = "false";
 	};
-	
+
 	class ShortcutPos {
 		left = "(6.25 * 			(			((safezoneW / safezoneH) min 1.2) / 40)) - 0.0225 - 0.005";
 		top = 0.005;
@@ -156,7 +136,7 @@ class btc_dlg_button : btc_dlg_shortcutButton
 	};
 };
 class btc_dlg_RscListBox
-{ 
+{
 	type = 5;
 	style = "0x10";
 	idc=-1;
@@ -198,9 +178,9 @@ class btc_dlg_RscListBox
         soundSelect[] = {"\A3\ui_f\data\sound\RscListbox\soundSelect",0.09,1};
 		shadow = 1;
 		width = 0.2;
-	};	
+	};
 };
-class btc_dlg_comboBox 
+class btc_dlg_comboBox
 {
 	style = 16;
 	type = 4;
@@ -237,16 +217,6 @@ class btc_dlg_comboBox
 	soundCollapse[] = { "", 0, 1 };
 	maxHistoryDelay = 0;
 };
-class btc_dlg_RscProgress 
-{ 
-	type = 8; 
-	style = 0;
-	colorFrame[] = {0,0,0,1};
-	colorBar[] = {1,1,1,1};
-	texture = "#(argb,8,8,3)color(1,1,1,1)";
-	w = 1;
-	h = 0.03; 
-};
 class btc_dlg_RscEdit
 {
 	type = 2;
@@ -256,7 +226,7 @@ class btc_dlg_RscEdit
 	sizeEx = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
 	autocomplete = "";
 	htmlControl = true;
-	lineSpacing = 1; 
+	lineSpacing = 1;
 	colorBackground[] = {0, 0, 0, 0.65};
 	colorText[] = {0.95, 0.95, 0.95, 1};
 	colorDisabled[] = {1, 1, 1, 0.25};

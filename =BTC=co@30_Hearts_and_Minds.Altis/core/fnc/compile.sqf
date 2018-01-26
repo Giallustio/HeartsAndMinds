@@ -65,7 +65,6 @@ if (isServer) then {
 	btc_fnc_db_saveObjectStatus = compile preprocessFileLineNumbers "core\fnc\db\saveObjectStatus.sqf";
 
 	//EH
-	//btc_fnc_eh_helo_respawn = compile preprocessFileLineNumbers "core\fnc\eh\helo_respawn.sqf";
 	btc_fnc_eh_veh_add_respawn = compile preprocessFileLineNumbers "core\fnc\eh\veh_add_respawn.sqf";
 	btc_fnc_eh_veh_killed = compile preprocessFileLineNumbers "core\fnc\eh\veh_killed.sqf";
 	btc_fnc_eh_veh_respawn = compile preprocessFileLineNumbers "core\fnc\eh\veh_respawn.sqf";
@@ -159,7 +158,6 @@ if (isServer OR (!isDedicated && !hasInterface)) then {
 /////////////////////CLIENT AND SERVER\\\\\\\\\\\\\\\\\\\\\
 
 //COMMON
-//btc_fnc_veh_track_marker = compile preprocessFileLineNumbers "core\fnc\common\veh_track_marker.sqf";
 btc_fnc_find_veh_with_turret = compile preprocessFileLineNumbers "core\fnc\common\find_veh_with_turret.sqf";
 btc_fnc_get_class = compile preprocessFileLineNumbers "core\fnc\common\get_class.sqf";
 
@@ -239,7 +237,6 @@ if (!isDedicated) then {
 	//COMMON
 	btc_fnc_end_mission = compile preprocessFileLineNumbers "core\fnc\common\end_mission.sqf";
 	btc_fnc_get_cardinal = compile preprocessFileLineNumbers "core\fnc\common\get_cardinal.sqf";
-	btc_fnc_is_engineer = compile preprocessFileLineNumbers "core\fnc\common\is_engineer.sqf";
 	btc_fnc_marker_debug = compile preprocessFileLineNumbers "core\fnc\common\marker_debug.sqf";
 	btc_fnc_systemchat_debug = compile preprocessFileLineNumbers "core\fnc\common\systemchat_debug.sqf";
 	btc_fnc_show_hint = compile preprocessFileLineNumbers "core\fnc\common\show_hint.sqf";

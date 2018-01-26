@@ -2,14 +2,11 @@
 params ["_totalTime", "_args", "_onFinish", "_onFail", ["_localizedTitle", ""]];
 _args params ["_target"];
 
-private _get_radius = {
-	params ["_target", ["_radius", 7]];
-	if (_target isKindOf "Man") then {_radius = 4;};
-	if (_target isKindOf "Helicopter") then {_radius = 20;};
-	_radius
-};
+private _radius = 7;
+if (_target isKindOf "Man") then {_radius = 4;};
+if (_target isKindOf "Helicopter") then {_radius = 20;};
 
-_args pushBack ([_target] call _get_radius);
+_args pushBack _radius;
 
 _condition = {
 	params ["_args"];
