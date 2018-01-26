@@ -1,34 +1,17 @@
 
-btc_int_action_result = nil;
-_this spawn {
-	private ["_time","_title","_target","_radius","_ctrlProgressBar","_ctrlProgressBarTitle"];
-	_time = _this select 0;
-	_title = _this select 1;
-	_target = _this select 2;
-	_radius = 7;
-	if (_target isKindOf "Man") then {_radius = 4;};
-	if (_target isKindOf "Helicopter") then {_radius = 20;};
-	if (count _this > 3) then {_radius = _this select 3;};
-	disableSerialization;
-	createDialog "btc_dlg_progressBar";
-	_ctrlProgressBar = uiNamespace getVariable "btc_dlg_ctrlProgressBar";
-	_ctrlProgressBarTitle = uiNamespace getVariable "btc_dlg_title";
-	_ctrlProgressBar ctrlSetPosition [
-		safezoneX + 0.1 * safezoneW,
-		safezoneY + 0.1 * safezoneH,
-		0.8 * safezoneW,
-		0.01 * safezoneH
-	];
-	_ctrlProgressBar ctrlCommit (_time / accTime);
-	_ctrlProgressBarTitle ctrlSetText _title;
+params ["_totalTime", "_args", "_onFinish", "_onFail", ["_localizedTitle", ""]];
+_args params ["_target"];
 
+private _radius = 7;
+if (_target isKindOf "Man") then {_radius = 4;};
+if (_target isKindOf "Helicopter") then {_radius = 20;};
 
-	_time = time + _time;
-	waitUntil {
-		!dialog || {!alive player} || {player getVariable ["ACE_isUnconscious",false]} || {time > _time} || {_target distance player > _radius}
-	};
+_args pushBack _radius;
 
-	closeDialog 0;
-
-	if (time > _time) then {btc_int_action_result = true} else {btc_int_action_result = false};
+_condition = {
+	params ["_args"];
+	_args params ["_target", "_player"];
+	_target distance _player < (_args select ((count _args) - 1))
 };
+
+[_totalTime, _args, _onFinish, _onFail, _localizedTitle, _condition, ["isnotinside"]] call ace_common_fnc_progressBar;
