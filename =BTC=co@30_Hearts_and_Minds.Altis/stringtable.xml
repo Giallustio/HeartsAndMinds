@@ -300,6 +300,15 @@
                 <Original>High</Original>
                 <German>Hoch</German>
             </Key>
+            <Key ID="STR_BTC_HAM_PARAM_IED_SPOT">
+                <Original>IEDs spotting difficulty</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_IED_SPOT_VERYEASY">
+                <Original>Very easy</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_IED_SPOT_EASY">
+                <Original>Easy</Original>
+            </Key>
         </Container>
         <Container name="Parameters: Hideout/Cache">
             <Key ID="STR_BTC_HAM_PARAM_HIDE_TITLE">

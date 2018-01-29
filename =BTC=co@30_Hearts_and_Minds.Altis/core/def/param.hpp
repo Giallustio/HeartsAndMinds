@@ -77,6 +77,12 @@ class Params {
 		texts[]={$STR_DISABLED,$STR_BTC_HAM_PARAM_IED_RATIO_LOW,$STR_BTC_HAM_PARAM_IED_RATIO_NORMAL,$STR_BTC_HAM_PARAM_IED_RATIO_HIGH}; //texts[]={"Off","Low","Normal","High"};
 		default = 2;
 	};
+	class btc_p_ied_spot { // IEDs spotting difficulty:
+		title = __EVAL(format ["      %1",(localize "STR_BTC_HAM_PARAM_IED_SPOT")]);
+		values[]={0, 1, 2};
+		texts[]={$STR_BTC_HAM_PARAM_IED_SPOT_VERYEASY,$STR_BTC_HAM_PARAM_IED_SPOT_EASY,$STR_BTC_HAM_PARAM_IED_RATIO_NORMAL}; //texts[]={"Very easy","Easy","Normal"};
+		default = 2;
+	};
 	class btc_p_hideout_cache_title { // << Hideout/Cache options >>
 		title = $STR_BTC_HAM_PARAM_HIDE_TITLE;
 		values[]={0};
