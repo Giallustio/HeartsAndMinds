@@ -29,7 +29,7 @@ A new formed group, known as "Oplitas", is against the NATO intervention and is 
 - Civilian interaction/fleeing
 - Reputation system
 - Deep ACE3 support
-- 187 enemies factions and 15 civilians factions available
+- More than 227 enemies and 20 civilians factions available
 - More than 14 side mission
 - Dynamic caching system
 - Full saving Database
