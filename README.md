@@ -19,17 +19,17 @@ A new formed group, known as "Oplitas", is against the NATO intervention and is 
 
 ### The mission has a lot of features:
 
-
+- **Dedicated server support only**
 - Dynamic battlefield
 - Rearm system
 - Repair wreck system
 - Logistic system
 - Interaction system
-- Realistic IED/Suicide bomber system
+- Realistic IED/Suicide/Drone bomber system
 - Civilian interaction/fleeing
 - Reputation system
 - Deep ACE3 support
-- 187 enemies factions and 15 civilians factions available
+- More than 227 enemies and 20 civilians factions available
 - More than 14 side mission
 - Dynamic caching system
 - Full saving Database
@@ -37,7 +37,6 @@ A new formed group, known as "Oplitas", is against the NATO intervention and is 
 - Extend battlefield to sea
 - Custom gameplay
 - Headless support
-- Dedicate server support only
 - Something I forgot for sure
 
 

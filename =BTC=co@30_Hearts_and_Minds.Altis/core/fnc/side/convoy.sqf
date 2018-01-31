@@ -94,7 +94,6 @@ _wp setWaypointStatements ["true", "btc_side_failed = true"];
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({ canMove _x } count _vehs == 0) || (_group isEqualTo grpNull))};
 
 btc_side_assigned = false;publicVariable "btc_side_assigned";
-
 if (btc_side_aborted) exitWith {
 	12 remoteExec ["btc_fnc_task_fail", 0];
 	[_markers, _vehs, [], [_group]] call btc_fnc_delete;
@@ -108,6 +107,7 @@ if (btc_side_failed) exitWith {
 		(crew _x) joinSilent _group;
 		_group call btc_fnc_data_add_group;
 	} forEach _vehs;
+	[_markers, [], [], []] call btc_fnc_delete;
 };
 
 50 call btc_fnc_rep_change;

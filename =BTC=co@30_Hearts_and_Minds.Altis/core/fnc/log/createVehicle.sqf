@@ -4,7 +4,7 @@ private _pos = _this select 1;
 private _dir = _this select 2;
 private _textures = if (count _this > 3) then {_this select 3} else {[]};
 
-_veh  = _type createVehicle [0,0,0];
+_veh  = createVehicle [_type, ASLToATL _pos, [], 0, "CAN_COLLIDE"];
 _veh setDir _dir;
 _veh setPosASL _pos;
 

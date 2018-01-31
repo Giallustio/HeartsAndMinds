@@ -1,6 +1,6 @@
 ## Before reporting
 
-If you have found an issue with Hearts and Minds please make sure that Hearts and Minds really is the cause of the problem. To do this try to reproduce the issue with using only `@CBA_A3`, `@ace` and `@RHSUSAF` on a stable and unchanged Hearts and minds available [here](https://github.com/Vdauphin/HeartsAndMinds/releases).
+If you have found an issue with Hearts and Minds please make sure that Hearts and Minds really is the cause of the problem. To do this try to reproduce the issue with using only `@CBA_A3`, `@ace` and `@RHSUSAF` on a stable and unchanged Hearts and minds available [here](https://github.com/Vdauphin/HeartsAndMinds/releases) on a dedicated server.
 
 **Arma 3 Version:** `x.xx` (stable / rc / dev)
 **CBA Version:** `3.x.x` (stable / dev + commit hash)
@@ -23,7 +23,7 @@ If you have found an issue with Hearts and Minds please make sure that Hearts an
 - Add screenshots by drag and drop it here.
 
 **Add mission file:**
-- Zip your .pbo mission file and drag and drop it here.
+- Zip your .pbo mission file, drag and drop it here.
 
 **RPT log file:**
 - Add a link ([gist](https://gist.github.com) or [pastebin](http://pastebin.com)) to the client and server RPT file (you can also change the file extension to a .txt file and drag and drop it here). An instruction to find your RPT files can be found [here](https://community.bistudio.com/wiki/Crash_Files#Arma_3).
