@@ -9,7 +9,8 @@ _cargo_array = _cargo_array select {
 	!(
 	_x isKindOf "ACE_friesGantry" ||
 	(typeof _x) isEqualTo "ACE_friesAnchorBar" ||
-	_x isKindOf "ace_fastroping_helper")
+	_x isKindOf "ace_fastroping_helper"
+	)
 };
 if (_cargo_array isEqualTo []) exitWith {};
 _cargo = _cargo_array select 0;
@@ -19,7 +20,14 @@ private ["_rope","_max_cargo","_mass","_support","_bbr_z"];
 {ropeDestroy _x;} foreach ropes _chopper;
 
 _bbr = getArray (configfile >> "CfgVehicles" >> typeof _cargo >> "slingLoadCargoMemoryPoints");
-if (_bbr isEqualTo [] OR !(_chopper canSlingLoad _cargo)) then {
+private _ropes_check = [];
+if !(_bbr isEqualTo []) then {
+	{
+		_ropes_check pushBack (ropeCreate [_chopper, "slingload0", _cargo, _x, 11]);
+	} forEach _bbr;
+	_rope_length = 10;
+};
+if ((_bbr isEqualTo []) OR (_ropes_check isEqualTo [])) then {
 
 	_bbr = boundingBoxReal _cargo;
 	if (abs((_bbr select 0) select 0) < 5) then {
@@ -38,15 +46,10 @@ if (_bbr isEqualTo [] OR !(_chopper canSlingLoad _cargo)) then {
 		_bbr_z = 0;
 	};
 
-	ropeCreate [_chopper, "slingload0", _support, [((_bbr select 0) select 0), ((_bbr select 1) select 1), _bbr_z], _rope_length];
-	ropeCreate [_chopper, "slingload0", _support, [((_bbr select 0) select 0), ((_bbr select 0) select 1), _bbr_z], _rope_length];
-	ropeCreate [_chopper, "slingload0", _support, [((_bbr select 1) select 0), ((_bbr select 0) select 1), _bbr_z], _rope_length];
-	ropeCreate [_chopper, "slingload0", _support, [((_bbr select 1) select 0), ((_bbr select 1) select 1), _bbr_z], _rope_length];
-} else {
-	{
-		ropeCreate [_chopper, "slingload0", _cargo, _x, 11];
-	} forEach _bbr;
-	_rope_length = 10;
+	ropeCreate [_chopper, "slingload0", _support, [(_bbr select 0) select 0, (_bbr select 1) select 1, _bbr_z], _rope_length];
+	ropeCreate [_chopper, "slingload0", _support, [(_bbr select 0) select 0, (_bbr select 0) select 1, _bbr_z], _rope_length];
+	ropeCreate [_chopper, "slingload0", _support, [(_bbr select 1) select 0, (_bbr select 0) select 1, _bbr_z], _rope_length];
+	ropeCreate [_chopper, "slingload0", _support, [(_bbr select 1) select 0, (_bbr select 1) select 1, _bbr_z], _rope_length];
 };
 
 if (btc_debug) then {hint format ["boundingBoxReal : %1 rope length : %2", _bbr, _rope_length];};
@@ -58,7 +61,7 @@ _mass = getMass _cargo;
 btc_lifted = true;
 sleep 1;
 if ((_mass + 400) > _max_cargo) then {
-	private _new_mass = (_max_cargo - 1000);
+	private _new_mass = _max_cargo - 1000;
 	if (_new_mass < 0) then {_new_mass = 50;};
 	[_cargo,_new_mass] remoteExec ["btc_fnc_log_set_mass", _cargo];
 };
