@@ -168,7 +168,11 @@ if !(_city getVariable ["has_suicider",false]) then {
 	if ((time - btc_ied_suic_spawned) > btc_ied_suic_time && {random 1000 > btc_global_reputation}) then {
 		btc_ied_suic_spawned = time;
 		_city setVariable ["has_suicider",true];
-		[_city,_radius] call btc_fnc_ied_suicider_create;
+		if (selectRandom [false, false, btc_p_ied_drone]) then {
+			[_city,_radius] call btc_fnc_ied_drone_create;
+		} else {
+			[_city,_radius] call btc_fnc_ied_suicider_create;
+		};
 	};
 };
 
