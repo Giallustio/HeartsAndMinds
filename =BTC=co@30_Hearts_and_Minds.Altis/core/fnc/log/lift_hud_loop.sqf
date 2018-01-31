@@ -41,10 +41,7 @@ if (!isNull _cargo) then {
 	_cargo_z   = ((getPosATL _chopper) select 2) - (_cargo_pos select 2);
 	_obj_img ctrlShow true;
 	_hud_x   = _cargo_x / 100;
-	switch (true) do {
-		case (_cargo_y < 0): {_hud_y = (abs _cargo_y) / 100};
-		case (_cargo_y > 0): {_hud_y = (0 - _cargo_y) / 100};
-	};
+	_hud_y   = - _cargo_y / 100;
 	_hud_x_1 = (btc_lift_HUD_x + _hud_x) * safezoneW + safezoneX;
 	_hud_y_1 = (btc_lift_HUD_y + _hud_y) * safezoneH + safezoneY;
 	_obj_img ctrlsetposition [_hud_x_1, _hud_y_1];
