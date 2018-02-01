@@ -1,5 +1,5 @@
 
-params ["_cargo", "_chopper"]
+params ["_cargo", "_chopper"];
 
 private _simulation = createVehicle ["Box_T_NATO_WpsSpecial_F", getPosATL _cargo , [], 0, "CAN_COLLIDE"];
 _simulation enableSimulation false;

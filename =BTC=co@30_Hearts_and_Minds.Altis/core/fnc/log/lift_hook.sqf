@@ -37,13 +37,13 @@ if ((_bbr isEqualTo []) OR (_ropes_check isEqualTo [])) then {
 		"_frontCorner2"
 	];
 
+	private _support = _cargo;
+	private _bbr_z = 0;
 	if (!Alive _cargo) then {
-		private _support = [_cargo, _chopper] call btc_fnc_log_lift_hook_fake;
-		private _bbr_z = _support distance _cargo;
+		_support = [_cargo, _chopper] call btc_fnc_log_lift_hook_fake;
+		diag_log str([_support,_cargo]);
+		_bbr_z = _support distance _cargo;
 		sleep 0.3;
-	} else {
-		private _support = _cargo;
-		_bbr_z = 0;
 	};
 
 	ropeCreate [_chopper, "slingload0", _support, [_rearCorner select 0, _rearCorner select 1, _bbr_z], _rope_length];
