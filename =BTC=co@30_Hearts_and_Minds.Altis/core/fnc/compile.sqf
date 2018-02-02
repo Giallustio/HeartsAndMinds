@@ -262,6 +262,7 @@ if (!isDedicated) then {
 
 	//LOG
 	btc_fnc_log_garage = compile preprocessFile "core\fnc\log\garage.sqf";
+	btc_fnc_log_get_corner_points = compile preprocessFileLineNumbers "core\fnc\log\get_corner_points.sqf";
 
 	//TASK
 	btc_fnc_task_create = compile preprocessFileLineNumbers "core\fnc\task\create.sqf";

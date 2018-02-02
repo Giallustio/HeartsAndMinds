@@ -35,10 +35,15 @@ if ((_bbr isEqualTo []) OR (_ropes_check isEqualTo [])) then {
 	} else {
 		_rope_length = 10 + abs((_bbr select 0) select 0);
 	};
+	([_cargo] call btc_fnc_log_get_corner_points) params [
+		"_rearCorner",
+		"_rearCorner2",
+		"_frontCorner",
+		"_frontCorner2"
+	];
 
 	if (!Alive _cargo) then {
 		_support = [_cargo, _chopper] call btc_fnc_log_lift_hook_fake;
-		_bbr = [(_bbr select 0) apply {_x/2}, (_bbr select 1) apply {_x/2}];
 		_bbr_z = _support distance _cargo;
 		sleep 0.3;
 	} else {
@@ -46,10 +51,10 @@ if ((_bbr isEqualTo []) OR (_ropes_check isEqualTo [])) then {
 		_bbr_z = 0;
 	};
 
-	ropeCreate [_chopper, "slingload0", _support, [(_bbr select 0) select 0, (_bbr select 1) select 1, _bbr_z], _rope_length];
-	ropeCreate [_chopper, "slingload0", _support, [(_bbr select 0) select 0, (_bbr select 0) select 1, _bbr_z], _rope_length];
-	ropeCreate [_chopper, "slingload0", _support, [(_bbr select 1) select 0, (_bbr select 0) select 1, _bbr_z], _rope_length];
-	ropeCreate [_chopper, "slingload0", _support, [(_bbr select 1) select 0, (_bbr select 1) select 1, _bbr_z], _rope_length];
+	ropeCreate [_chopper, "slingload0", _support, [_rearCorner select 0, _rearCorner select 1, _bbr_z], _rope_length];
+	ropeCreate [_chopper, "slingload0", _support, [_rearCorner2 select 0, _rearCorner2 select 1, _bbr_z], _rope_length];
+	ropeCreate [_chopper, "slingload0", _support, [_frontCorner select 0, _frontCorner select 1, _bbr_z], _rope_length];
+	ropeCreate [_chopper, "slingload0", _support, [_frontCorner2 select 0, _frontCorner2 select 1, _bbr_z], _rope_length];
 };
 
 if (btc_debug) then {hint format ["boundingBoxReal : %1 rope length : %2", _bbr, _rope_length];};
