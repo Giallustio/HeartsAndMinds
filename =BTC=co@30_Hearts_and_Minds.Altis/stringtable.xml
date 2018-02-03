@@ -951,10 +951,16 @@
                 <German>Verlegen</German>
             </Key>
         </Container>
-        <Container name="Action : Arsenal">
-            <Key ID="STR_BTC_HAM_ACTION_ARSENAL_OPEN_NOACE">
-                <Original>&lt;t color='#ff1111'&gt;Arsenal&lt;/t&gt;</Original>
-                <German>&lt;t color='#ff1111'&gt;Arsenal&lt;/t&gt;</German>
+        <Container name="Action : Arsenal (BIS)">
+            <Key ID="STR_BTC_HAM_ACTION_ARSENAL_OPEN_BIS">
+                <Original>&lt;t color='#ff1111'&gt;Arsenal (BIS)&lt;/t&gt;</Original>
+                <German>&lt;t color='#ff1111'&gt;Arsenal (BIS)&lt;/t&gt;</German>
+            </Key>
+        </Container>
+        <Container name="Action : Arsenal (ACE)">
+            <Key ID="STR_BTC_HAM_ACTION_ARSENAL_OPEN_ACE">
+                <Original>&lt;t color='#ff1111'&gt;Arsenal (ACE)&lt;/t&gt;</Original>
+                <German>&lt;t color='#ff1111'&gt;Arsenal (ACE)&lt;/t&gt;</German>
             </Key>
         </Container>
         <Container name="Action(ACE): Veh. Init">
