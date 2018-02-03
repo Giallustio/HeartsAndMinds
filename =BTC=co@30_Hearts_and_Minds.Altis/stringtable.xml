@@ -426,6 +426,30 @@
                 <Original>&lt;&lt; Other options &gt;&gt;</Original>
                 <German>&lt;&lt; Sonstige Einstellungen &gt;&gt;</German>
             </Key>
+            <Key ID="STR_BTC_HAM_PARAM_OTHER_ARSENALTYPE">
+                <Original>Type of the arsenal:</Original>
+                <German>Art des Arsenals:</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_OTHER_ARSENALTYPE_BIS">
+                <Original>BIS - Vanilla</Original>
+                <German>BIS - Vanilla</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_OTHER_ARSENALTYPE_ACE">
+                <Original>ACE 3</Original>
+                <German>ACE 3</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_OTHER_ARSENALTYPE_BA">
+                <Original>BIS - Vanilla and ACE 3</Original>
+                <German>BIS - Vanilla und ACE 3</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_OTHER_ARSENALTYPE_ACE_PLUS">
+                <Original>ACE 3 (scroll wheel action)</Original>
+                <German>ACE 3 (Maus-Rad-Menü)</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_OTHER_ARSENALTYPE_BA_PLUS">
+                <Original>BIS - Vanilla und ACE 3 (scroll wheel action)</Original>
+                <German>BIS - Vanilla und ACE 3 (Maus-Rad-Menü)</German>
+            </Key>
             <Key ID="STR_BTC_HAM_PARAM_OTHER_REPSTART">
                 <Original>Reputation at start:</Original>
                 <German>Ansehen zu Beginn:</German>
