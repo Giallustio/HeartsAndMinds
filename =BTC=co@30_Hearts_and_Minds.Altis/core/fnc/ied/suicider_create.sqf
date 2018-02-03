@@ -47,3 +47,5 @@ _suicider call btc_fnc_civ_unit_create;
 		[_id] call CBA_fnc_removePerFrameHandler;
 	};
 } , 5, [_suicider]] call CBA_fnc_addPerFrameHandler;
+
+leader _group

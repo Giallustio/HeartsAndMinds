@@ -54,7 +54,13 @@ if (count _ieds > 0) then {
 
 if (count _data_units > 0) then {
 	//{_x spawn btc_fnc_data_spawn_group;sleep 0.5;} foreach _data_units;
-	{_x call btc_fnc_data_spawn_group;sleep 0.01;} foreach _data_units;
+	{
+		(_x call btc_fnc_data_spawn_group) params ["_leader", "_type"];
+		if (_type in [5, 7]) then {
+			_leader addEventHandler ["killed", format ["[%1] call btc_fnc_eh_suicider", _this select 0]];
+		};
+		sleep 0.01;
+	} foreach _data_units;
 } else {
 	private ["_ratio"];
 	//spawn bad guys "NameVillage","NameCity","NameCityCapital","NameLocal"
@@ -168,11 +174,12 @@ if !(_city getVariable ["has_suicider",false]) then {
 	if ((time - btc_ied_suic_spawned) > btc_ied_suic_time && {random 1000 > btc_global_reputation}) then {
 		btc_ied_suic_spawned = time;
 		_city setVariable ["has_suicider",true];
-		if (selectRandom [false, false, btc_p_ied_drone]) then {
+		private _suicider = if (selectRandom [false, false, btc_p_ied_drone]) then {
 			[_city,_radius] call btc_fnc_ied_drone_create;
 		} else {
 			[_city,_radius] call btc_fnc_ied_suicider_create;
 		};
+		_suicider addEventHandler ["killed", format ["[%1] call btc_fnc_eh_suicider", _this select 0]];
 	};
 };
 
