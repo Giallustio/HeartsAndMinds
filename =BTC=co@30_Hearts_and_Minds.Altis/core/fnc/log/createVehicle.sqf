@@ -1,5 +1,5 @@
 
-params ["_type", "_pos", "_dir", ["_customization", []]];
+params ["_type", "_pos", "_dir", ["_customization", [false, false]]];
 
 _veh  = createVehicle [_type, ASLToATL _pos, [], 0, "CAN_COLLIDE"];
 _veh setDir _dir;
