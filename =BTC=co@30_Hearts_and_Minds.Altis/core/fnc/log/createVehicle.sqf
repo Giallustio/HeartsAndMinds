@@ -4,7 +4,6 @@ params ["_type", "_pos", "_dir", ["_customization", []]];
 _veh  = createVehicle [_type, ASLToATL _pos, [], 0, "CAN_COLLIDE"];
 _veh setDir _dir;
 _veh setPosASL _pos;
-
 [_veh, _customization select 0, _customization select 1] call BIS_fnc_initVehicle;
 
 _veh setVariable ["btc_dont_delete",true];
