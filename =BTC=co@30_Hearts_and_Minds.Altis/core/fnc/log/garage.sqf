@@ -26,9 +26,9 @@ with uiNamespace do {
 		private _type = typeOf _x;
 		private _pos = getPosASL _x;
 		private _dir = getDir _x;
-		private _textures = getObjectTextures _x;
+		private _customization = [_x] call BIS_fnc_getVehicleCustomization;
 		deleteVehicle _x;
-		[_type, _pos, _dir, _textures] remoteExec ["btc_fnc_log_createVehicle", 2];
+		[_type, _pos, _dir, _customization] remoteExec ["btc_fnc_log_createVehicle", 2];
 		[_type] remoteExec ["btc_fnc_eh_veh_init", -2];
 	} forEach _veh_list;
 };

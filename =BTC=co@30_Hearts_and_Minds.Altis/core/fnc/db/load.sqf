@@ -201,7 +201,7 @@ diag_log format ["5: %1",(_x select 5)];
 	params ["_vehs", "_global_reputation"];
 	{
 		private ["_veh","_cont","_weap","_mags","_items"];
-		_veh = [(_x select 0),(_x select 1),(_x select 2)] call btc_fnc_log_createVehicle;
+		_veh = [(_x select 0),(_x select 1),(_x select 2), _x select 7] call btc_fnc_log_createVehicle;
 		if ((getPos _veh) select 2 < 0) then {_veh setVectorUp surfaceNormal position _veh;};
 		_veh setFuel (_x select 3);
 		{

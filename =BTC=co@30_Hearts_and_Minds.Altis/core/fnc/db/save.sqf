@@ -123,6 +123,7 @@ _array_veh = [];
 	_data pushBack _cargo;
 	_cont = [getWeaponCargo _x,getMagazineCargo _x,getItemCargo _x];
 	_data pushBack _cont;
+	_data pushback ([_x] call BIS_fnc_getVehicleCustomization);
 	_array_veh pushBack _data;
 	//diag_log format ["VEH %1 DATA %2",_x,_data];
 } foreach (btc_vehicles - [objNull]);
