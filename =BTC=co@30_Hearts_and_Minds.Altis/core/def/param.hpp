@@ -242,7 +242,7 @@ class Params {
 	class btc_p_arsenalType { // Type of the arsenal:
 		title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_OTHER_ARSENALTYPE"]);
 		values[]={0,1,2,3,4};
-		texts[]={$STR_BTC_HAM_PARAM_OTHER_ARSENALTYPE_BIS,$STR_BTC_HAM_PARAM_OTHER_ARSENALTYPE_BA,$STR_BTC_HAM_PARAM_OTHER_ARSENALTYPE_BA_PLUS,$STR_BTC_HAM_PARAM_OTHER_ARSENALTYPE_ACE,$STR_BTC_HAM_PARAM_OTHER_ARSENALTYPE_ACE_PLUS}; //texts[]={"BIS - Vanilla","BIS - Vanilla and ACE 3","BIS - Vanilla und ACE 3 (scroll wheel action)","ACE 3","ACE 3 (scroll wheel action)"};
+		texts[]={$STR_BTC_HAM_PARAM_OTHER_ARSENALTYPE_BIS,$STR_BTC_HAM_PARAM_OTHER_ARSENALTYPE_BA,$STR_BTC_HAM_PARAM_OTHER_ARSENALTYPE_BA_PLUS,$STR_BTC_HAM_PARAM_OTHER_ARSENALTYPE_ACE,$STR_BTC_HAM_PARAM_OTHER_ARSENALTYPE_ACE_PLUS}; //texts[]={"BIS - Vanilla","BIS - Vanilla and ACE 3","BIS - Vanilla and ACE 3 (scroll wheel action)","ACE 3","ACE 3 (scroll wheel action)"};
 		default = 2;
 	};
 	class btc_p_rep { // Reputation at start:
