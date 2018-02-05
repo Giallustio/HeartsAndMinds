@@ -98,6 +98,6 @@ _action = ["fob_redeploy", localize "STR_BTC_HAM_ACTION_REDEPLOY_MAIN", "\A3\ui_
 if (btc_p_arsenalType < 3) then {
     btc_gear_object addAction [localize "STR_BTC_HAM_ACTION_ARSENAL_OPEN_BIS", "['Open',true] spawn BIS_fnc_arsenal;"];
 };
-if (btc_p_arsenalType isEqualTo 2 || btc_p_arsenalType isEqualTo 4) then {
+if (btc_p_arsenalType in [2, 4]) then {
     btc_gear_object addAction [localize "STR_BTC_HAM_ACTION_ARSENAL_OPEN_ACE", "[player, player, true] call ace_arsenal_fnc_openBox;"];
 };
