@@ -48,3 +48,5 @@ _drone flyInHeight 10;
 		if (btc_debug_log) then {diag_log format ["btc_fnc_ied_drone_active: _driver_drone = %1; POS %2 END LOOP", _driver_drone, getpos _driver_drone];};
 	};
 }, 5, [driver _drone, _rpos, _area, []]] call CBA_fnc_addPerFrameHandler;
+
+leader _group
