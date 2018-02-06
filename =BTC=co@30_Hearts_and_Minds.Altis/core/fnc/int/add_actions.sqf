@@ -95,5 +95,9 @@ _action = ["fob_redeploy", localize "STR_BTC_HAM_ACTION_REDEPLOY_MAIN", "\A3\ui_
 [btc_gear_object, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToObject;
 
 //Arsenal
-btc_gear_object addAction [localize "STR_BTC_HAM_ACTION_ARSENAL_OPEN_ACE", "[player, player, true] call ace_arsenal_fnc_openBox;"];
-btc_gear_object addAction [localize "STR_BTC_HAM_ACTION_ARSENAL_OPEN_BIS", "['Open',true] spawn BIS_fnc_arsenal;"];
+if (btc_p_arsenalType < 3) then {
+    btc_gear_object addAction [localize "STR_BTC_HAM_ACTION_ARSENAL_OPEN_BIS", "['Open',true] spawn BIS_fnc_arsenal;"];
+};
+if (btc_p_arsenalType in [2, 4]) then {
+    btc_gear_object addAction [localize "STR_BTC_HAM_ACTION_ARSENAL_OPEN_ACE", "[player, player, true] call ace_arsenal_fnc_openBox;"];
+};

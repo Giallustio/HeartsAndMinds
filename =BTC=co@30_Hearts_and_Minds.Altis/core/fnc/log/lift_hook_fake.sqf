@@ -1,8 +1,7 @@
 
-private _cargo = _this select 0;
-private _chopper = _this select 1;
+params ["_cargo", "_chopper"];
 
-private _simulation = createVehicle ["Box_T_NATO_WpsSpecial_F", getPos _cargo , [], 0, "CAN_COLLIDE"];
+private _simulation = createVehicle ["Box_T_NATO_WpsSpecial_F", getPosATL _cargo , [], 0, "CAN_COLLIDE"];
 _simulation enableSimulation false;
 private _pos = getPosATL _cargo;
 if ((_pos select 2) < -0.05) then {_pos = [_pos select 0, _pos select 1, (_pos select 2) - ((getPosATL _cargo) select 2)]};
@@ -11,7 +10,6 @@ _simulation setDir getDir _cargo;
 _simulation setVectorUp vectorUp _cargo;
 
 _cargo attachTo [_simulation, [0,0, 0.2 + abs(((_cargo modelToWorld [0,0,0]) select 2) - ((_simulation  modelToWorld [0,0,0]) select 2))]];
-
 
 _chopper addEventHandler ["RopeBreak", {
 	(_this select 0) removeEventHandler ["RopeBreak", _thisEventHandler];

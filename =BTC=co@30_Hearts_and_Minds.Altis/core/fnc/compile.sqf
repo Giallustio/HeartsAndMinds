@@ -71,6 +71,7 @@ if (isServer) then {
 	btc_fnc_eh_explosives_defuse = compile preprocessFileLineNumbers "core\fnc\eh\explosives_defuse.sqf";
 	btc_fnc_eh_handledisconnect = compile preprocessFileLineNumbers "core\fnc\eh\handledisconnect.sqf";
 	btc_fnc_eh_buildingchanged = compile preprocessFileLineNumbers "core\fnc\eh\buildingchanged.sqf";
+	btc_fnc_eh_suicider = compile preprocessFileLineNumbers "core\fnc\eh\suicider.sqf";
 
 	//IED
 	btc_fnc_ied_boom = compile preprocessFileLineNumbers "core\fnc\ied\boom.sqf";
@@ -286,6 +287,11 @@ if (!isDedicated) then {
 	btc_fnc_log_garage = compile preprocessFileLineNumbers "core\fnc\log\garage.sqf";
 	btc_fnc_log_hitch_points = compile preprocessFileLineNumbers "core\fnc\log\hitch_points.sqf";
 	btc_fnc_log_get_corner_points = compile preprocessFileLineNumbers "core\fnc\log\get_corner_points.sqf";
+
+	//TASK
+	btc_fnc_task_create = compile preprocessFileLineNumbers "core\fnc\task\create.sqf";
+	btc_fnc_task_fail = compile preprocessFileLineNumbers "core\fnc\task\fail.sqf";
+	btc_fnc_task_set_done = compile preprocessFileLineNumbers "core\fnc\task\set_done.sqf";
 
 	//SIDE
 	btc_fnc_side_request = compile preprocessFileLineNumbers "core\fnc\side\request.sqf";

@@ -1,7 +1,7 @@
 
 private ["_p_civ_veh","_p_db","_p_en","_hideout_n","_cache_info_def","_cache_info_ratio","_info_chance","_p_rep","_p_skill","_c_array","_tower","_p_civ","_rearming_vehicles","_vehicles","_magazines","_p_city_radius","_magazines_static","_static","_rearming_static","_magazines_clean","_weapons_usefull","_magazines_static_clean","_p_en_AA","_p_ied_spot"];
 
-btc_version = 1.172;
+btc_version = 1.173;
 diag_log format ["=BTC= HEARTS AND MINDS VERSION %1.7", btc_version];
 
 //Param
@@ -54,6 +54,7 @@ btc_p_veh_armed_spawn_more = ("btc_p_veh_armed_spawn_more" call BIS_fnc_getParam
 btc_p_side_mission_cycle = ("btc_p_side_mission_cycle" call BIS_fnc_getParamValue) isEqualTo 1;
 
 //<< Other options >>
+btc_p_arsenalType = "btc_p_arsenalType" call BIS_fnc_getParamValue;
 _p_rep = "btc_p_rep" call BIS_fnc_getParamValue;
 btc_p_garage = ("btc_p_garage" call BIS_fnc_getParamValue) isEqualTo 1;
 _p_city_radius = ("btc_p_city_radius" call BIS_fnc_getParamValue) * 100;
