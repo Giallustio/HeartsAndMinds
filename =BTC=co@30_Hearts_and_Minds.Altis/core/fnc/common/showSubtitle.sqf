@@ -10,7 +10,7 @@
    - added optional color for 'speaker' and 'content'
    - changed postion
 	 - added optional font selection
-	 - added background handling
+	 - added background handling (WIP)
 
 	Parameters:
 		_this select 0: STRING - Name of the person speaking
@@ -19,9 +19,6 @@
     _this select 3: HEX color for speaker (#RGB or #ARGB): - (Optional- default: "#d4cd00")
     _this select 4: HEX color for content (#RGB or #ARGB): - (Optional- default: "#FFFFFF")
 		_this select 5: STRING - Font (https://community.bistudio.com/wiki/FXY_File_Format#Available_Fonts)
-
-	Returns:
-	SCRIPT - Script controlling the displayed subtitle.
 
   Examples:
 	["Some Guy","How do yo do?"] spawn btc_fnc_showSubtitle;
