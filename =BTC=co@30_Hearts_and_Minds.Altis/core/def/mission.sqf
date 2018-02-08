@@ -54,6 +54,7 @@ btc_p_veh_armed_spawn_more = ("btc_p_veh_armed_spawn_more" call BIS_fnc_getParam
 btc_p_side_mission_cycle = ("btc_p_side_mission_cycle" call BIS_fnc_getParamValue) isEqualTo 1;
 
 //<< Other options >>
+btc_p_subtitles = if (("btc_p_subtitles" call BIS_fnc_getParamValue) isEqualTo 1) then {true} else {false};
 btc_p_arsenalType = "btc_p_arsenalType" call BIS_fnc_getParamValue;
 _p_rep = "btc_p_rep" call BIS_fnc_getParamValue;
 btc_p_garage = ("btc_p_garage" call BIS_fnc_getParamValue) isEqualTo 1;

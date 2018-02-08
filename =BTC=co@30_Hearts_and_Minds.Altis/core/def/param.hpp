@@ -239,6 +239,12 @@ class Params {
 		texts[]={""};
 		default = 0;
 	};
+	class btc_p_subtitles { // Subtitles for conversations: //TODO: locaization
+		title = "Subtitles for conversations:";
+		values[]={0,1};
+		texts[]={$STR_DISABLED,$STR_ENABLED};
+		default = 1;
+	};	
 	class btc_p_arsenalType { // Type of the arsenal:
 		title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_OTHER_ARSENALTYPE"]);
 		values[]={0,1,2,3,4};
