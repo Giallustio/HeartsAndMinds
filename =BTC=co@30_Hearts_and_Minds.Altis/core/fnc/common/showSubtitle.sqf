@@ -43,7 +43,7 @@ params [
 ];
 
 //if subtitles are deactivated in mission parameters use a hint
-if !(btc_p_subtitles) exitWith {hint _text;};
+if !(btc_p_subtitles) exitWith {hint format ["%1: %2",_from,_text];};
 
 disableSerialization;
 
