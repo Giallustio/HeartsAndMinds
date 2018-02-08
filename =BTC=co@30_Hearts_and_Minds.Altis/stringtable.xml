@@ -1059,8 +1059,8 @@
                 <German>Hallo ! Ihr Ansehen ist</German>
             </Key>
             <Key ID="STR_BTC_HAM_CON_INFO_ASKREP_ASK3">
-                <Original>I am %1 and I think your reputation is</Original>
-                <German>Mein Name ist %1 und ich glaube ihr Ansehen ist</German>
+                <Original>I think your reputation is</Original>
+                <German>Ich glaube ihr Ansehen ist</German>
             </Key>
             <Key ID="STR_BTC_HAM_CON_INFO_ASK_WOUNDED1">
                 <Original>Help me!.</Original>
