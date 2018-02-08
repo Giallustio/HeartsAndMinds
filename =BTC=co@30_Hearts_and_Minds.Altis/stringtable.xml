@@ -1120,6 +1120,18 @@
                 <Original>Show me where you want to go with your map.</Original>
                 <German>Zeig mir auf der Karte wo du hin willst.</German>
             </Key>
+            <Key ID="STR_BTC_HAM_CON_INT_ORDERS_TAXI_OK1">
+                <Original>No problem. I'd love to do that.</Original>
+                <German>Kein Problem. Das mache ich doch gerne.</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_CON_INT_ORDERS_TAXI_OK2">
+                <Original>The ride should not take long. Let's go.</Original>
+                <German>Die Fahrt sollten nicht lang dauern. Also los.</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_CON_INT_ORDERS_TAXI_OK3">
+                <Original>After what you've done for us, it's an honor to drive you. Let's go.</Original>
+                <German>Nach dem was Sie alles für uns getan haben, ist es mir eine Ehre Sie zu fahren. Los geht´s.</German>
+            </Key>
             <Key ID="STR_BTC_HAM_CON_INT_ORDERS_ONLAND">
                 <Original>Selected area must be on land.</Original>
                 <German>Der Zielort muss an Land sein.</German>
