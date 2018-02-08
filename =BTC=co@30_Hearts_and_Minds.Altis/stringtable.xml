@@ -426,6 +426,10 @@
                 <Original>&lt;&lt; Other options &gt;&gt;</Original>
                 <German>&lt;&lt; Sonstige Einstellungen &gt;&gt;</German>
             </Key>
+            <Key ID="STR_BTC_HAM_PARAM_OTHER_SUBTITLES">
+                <Original>Subtitles for conversations:</Original>
+                <German>Untertitel für Gespräche:</German>
+            </Key>
             <Key ID="STR_BTC_HAM_PARAM_OTHER_ARSENALTYPE">
                 <Original>Type of the arsenal:</Original>
                 <German>Art des Arsenals:</German>
