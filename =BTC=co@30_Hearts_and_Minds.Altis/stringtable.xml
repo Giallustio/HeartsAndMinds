@@ -1231,8 +1231,8 @@
                 <German>%1 wurde bereitgestellt!</German>
             </Key>
             <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_8">
-                <Original>Saving in progress...Please wait</Original>
-                <German>Es wird gespeichert...Bitte warten</German>
+                <Original>Saving in progress... Please wait</Original>
+                <German>Es wird gespeichert... Bitte warten</German>
             </Key>
             <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_9">
                 <Original>Game has been saved!</Original>
