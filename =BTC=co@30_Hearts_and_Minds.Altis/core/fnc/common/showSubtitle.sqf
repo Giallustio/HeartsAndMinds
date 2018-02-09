@@ -3,27 +3,27 @@
   Modified: kuemmel
 
 	Description:
-	Displays a subtitle at the bottom of the screen.
+		Displays a subtitle at the bottom of the screen.
 
   CHANGED:
-   - added optional line break
-   - added optional color for 'speaker' and 'content'
-   - changed postion
-	 - added optional font selection
-	 - added background handling (WIP)
+		- added optional line break
+		- added optional color for 'speaker' and 'content'
+		- changed postion
+		- added optional font selection
+		- added background handling (WIP)
 
 	Parameters:
 		_this select 0: STRING - Name of the person speaking
 		_this select 1: STRING - Contents of the subtitle
-    _this select 2: BOOL   - Add a line break (Optional - default: false)
-    _this select 3: HEX color for speaker (#RGB or #ARGB): - (Optional- default: "#d4cd00")
-    _this select 4: HEX color for content (#RGB or #ARGB): - (Optional- default: "#FFFFFF")
+		_this select 2: BOOL   - Add a line break (Optional - default: false)
+		_this select 3: HEX color for speaker (#RGB or #ARGB): - (Optional- default: "#d4cd00")
+		_this select 4: HEX color for content (#RGB or #ARGB): - (Optional- default: "#FFFFFF")
 		_this select 5: STRING - Font (https://community.bistudio.com/wiki/FXY_File_Format#Available_Fonts)
 
   Examples:
-	["Some Guy","How do yo do?"] spawn btc_fnc_showSubtitle;
-  ["Darth Vader","Come to the dark side. We have cookies!", false, "#ed2939"] spawn btc_fnc_showSubtitle;
-	["Luke Skywalker","Whhhhhhyyyyyyyy", true, "#1768d3", nil, "PuristaBold"] spawn btc_fnc_showSubtitle;
+		["Some Guy","How do yo do?"] spawn btc_fnc_showSubtitle;
+		["Darth Vader","Come to the dark side. We have cookies!", false, "#ed2939"] spawn btc_fnc_showSubtitle;
+		["Luke Skywalker","Whhhhhhyyyyyyyy", true, "#1768d3", nil, "PuristaBold"] spawn btc_fnc_showSubtitle;
 */
 
 #define WAIT 		10
@@ -36,14 +36,11 @@
 params [
 	["_from", "", [""]],
 	["_text", "", [""]],
-  ["_lineBreak", false , [false]],
-  ["_colorFrom", "#d4cd00" , [""]], //default color: gold
-  ["_colorText", "#FFFFFF" , [""]], //default color: white
+	["_lineBreak", false , [false]],
+	["_colorFrom", "#d4cd00" , [""]], //default color: gold
+	["_colorText", "#FFFFFF" , [""]], //default color: white
 	["_fontText", "RobotoCondensedBold", [""]]
 ];
-
-//if subtitles are deactivated in mission parameters use a hint
-if !(btc_p_subtitles) exitWith {hint format ["%1: %2",_from,_text];};
 
 disableSerialization;
 
@@ -62,16 +59,17 @@ _ctrl ctrlCommit 0;
 
 // Show subtitle
 _ctrl ctrlSetStructuredText parseText format [
-	if (_from == "") then {
-		"<t align='center' shadow='1' color='%5' size='%3' font=%6>%2</t>"
-	} else {
-    if (_lineBreak) then {
-        "<t align='center' shadow='1' color='%4' size='%3' font=%6>%1: <br /></t><t align='center' color='%5' shadow='1' size='%3' font=%6>%2</t>"
+    if (_from == "") then {
+        "<t align='center' shadow='1' color='%5' size='%3' font=%6>%2</t>"
     } else {
-        "<t align='center' shadow='1' color='%4' size='%3' font=%6>%1: </t><t align='center' color='%5' shadow='1' size='%3' font=%6>%2</t>"
-    };
-	},
-	toUpper _from, _text,	(safezoneH * 0.65) max 1, _colorFrom, _colorText,_fontText];
+        if (_lineBreak) then {
+            "<t align='center' shadow='1' color='%4' size='%3' font=%6>%1: <br /></t><t align='center' color='%5' shadow='1' size='%3' font=%6>%2</t>"
+        } else {
+            "<t align='center' shadow='1' color='%4' size='%3' font=%6>%1: </t><t align='center' color='%5' shadow='1' size='%3' font=%6>%2</t>"
+        };
+    },
+    toUpper _from, _text,	(safezoneH * 0.65) max 1, _colorFrom, _colorText,_fontText
+];
 
 private _textHeight = ctrlTextHeight _ctrl;
 _ctrl ctrlSetPosition [POS_X,POS_Y - _textHeight,POS_W,_textHeight];
