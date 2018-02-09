@@ -1,29 +1,29 @@
 /*
-	Author: Thomas Ryan, updated by Karel Moricky
-  Modified: kuemmel
+    Author: Thomas Ryan, updated by Karel Moricky
+        Modified: kuemmel
 
-	Description:
-		Displays a subtitle at the bottom of the screen.
+    Description:
+        Displays a subtitle at the bottom of the screen.
 
-  CHANGED:
-		- added optional line break
-		- added optional color for 'speaker' and 'content'
-		- changed postion
-		- added optional font selection
-		- added background handling (WIP)
+    CHANGED:
+        - added optional line break
+        - added optional color for 'speaker' and 'content'
+        - changed postion
+        - added optional font selection
+        - added background handling (WIP)
 
-	Parameters:
-		_this select 0: STRING - Name of the person speaking
-		_this select 1: STRING - Contents of the subtitle
-		_this select 2: BOOL   - Add a line break (Optional - default: false)
-		_this select 3: HEX color for speaker (#RGB or #ARGB): - (Optional- default: "#d4cd00")
-		_this select 4: HEX color for content (#RGB or #ARGB): - (Optional- default: "#FFFFFF")
-		_this select 5: STRING - Font (https://community.bistudio.com/wiki/FXY_File_Format#Available_Fonts)
+    Parameters:
+        _this select 0: STRING - Name of the person speaking
+        _this select 1: STRING - Contents of the subtitle
+        _this select 2: BOOL   - Add a line break (Optional - default: false)
+        _this select 3: HEX color for speaker (#RGB or #ARGB): - (Optional- default: "#d4cd00")
+        _this select 4: HEX color for content (#RGB or #ARGB): - (Optional- default: "#FFFFFF")
+        _this select 5: STRING - Font (https://community.bistudio.com/wiki/FXY_File_Format#Available_Fonts)
 
-  Examples:
-		["Some Guy","How do yo do?"] spawn btc_fnc_showSubtitle;
-		["Darth Vader","Come to the dark side. We have cookies!", false, "#ed2939"] spawn btc_fnc_showSubtitle;
-		["Luke Skywalker","Whhhhhhyyyyyyyy", true, "#1768d3", nil, "PuristaBold"] spawn btc_fnc_showSubtitle;
+    Examples:
+        ["Some Guy","How do yo do?"] spawn btc_fnc_showSubtitle;
+        ["Darth Vader","Come to the dark side. We have cookies!", false, "#ed2939"] spawn btc_fnc_showSubtitle;
+        ["Luke Skywalker","Whhhhhhyyyyyyyy", true, "#1768d3", nil, "PuristaBold"] spawn btc_fnc_showSubtitle;
 */
 
 #define WAIT 		10
