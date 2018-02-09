@@ -17,7 +17,7 @@ switch _is_real do {
 		if ((random 1) > 0.5) then {
 			private _array = ["N","E","W","S","NW","NE","SE","SW"];
 			private _dir = selectRandom _array;
-			private _dist = (500 + (random 1000));
+			private _dist = 500 + (random 1000);
 			_text = format [(localize "STR_BTC_HAM_CON_INFO_TROOPS_TRUE"), _dir,round _dist]; //I saw some militia movement %2, %3 meter from here
 		} else {
 			_text = localize "STR_BTC_HAM_CON_INFO_TROOPS_FALSE"; //I didn't see any militia movement in this area!
@@ -28,4 +28,4 @@ switch _is_real do {
 if (btc_debug) then {_text = _text + " - " + str(_is_real)};
 
 [_name, _text] spawn btc_fnc_showSubtitle;
-player createDiaryRecord [(localize "STR_BTC_HAM_CON_INFO_ASKHIDEOUT_DIARYLOG"), [str(mapGridPosition player) + " - " + _name, _text]]; //Diary log
+player createDiaryRecord [localize "STR_BTC_HAM_CON_INFO_ASKHIDEOUT_DIARYLOG", [str(mapGridPosition player) + " - " + _name, _text]]; //Diary log

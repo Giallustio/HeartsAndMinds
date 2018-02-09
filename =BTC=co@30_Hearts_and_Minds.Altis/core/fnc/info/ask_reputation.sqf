@@ -17,7 +17,7 @@ if ((round random 1) isEqualTo 1) then {
 
 	waitUntil {!(isNil "btc_int_ask_data")};
 
-	_ho_left = format [(localize "STR_BTC_HAM_CON_INFO_ASKREP_HIDEOUTS"), btc_int_ask_data]; //I heard about %1 hideouts left.
+	_ho_left = format [localize "STR_BTC_HAM_CON_INFO_ASKREP_HIDEOUTS", btc_int_ask_data]; //I heard about %1 hideouts left.
 } else {
 	_ho_left = "";
 };
@@ -30,9 +30,9 @@ private _info_type = switch (true) do {
 };
 
 private _text = selectRandom [
-	(localize "STR_BTC_HAM_CON_INFO_ASKREP_ASK1"),
-	(localize "STR_BTC_HAM_CON_INFO_ASKREP_ASK2"),
-	(localize "STR_BTC_HAM_CON_INFO_ASKREP_ASK3")
+	localize "STR_BTC_HAM_CON_INFO_ASKREP_ASK1", //Sir, your reputation is
+	localize "STR_BTC_HAM_CON_INFO_ASKREP_ASK2", //Hello ! Your reputation is
+	localize "STR_BTC_HAM_CON_INFO_ASKREP_ASK3"  //I think your reputation is
 ];
 
 [name _man,format ["%1 %2. %3", _text, _info_type, _ho_left]] spawn btc_fnc_showSubtitle;
