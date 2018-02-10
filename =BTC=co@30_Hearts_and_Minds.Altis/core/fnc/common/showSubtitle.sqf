@@ -8,7 +8,7 @@
     CHANGED:
         - added optional line break
         - added optional color for 'speaker' and 'content'
-        - changed postion
+        - changed position
         - added optional font selection
         - added background handling (WIP)
 
