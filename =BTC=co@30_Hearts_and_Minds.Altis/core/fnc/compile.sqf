@@ -246,6 +246,7 @@ if (!isDedicated) then {
 	btc_fnc_show_hint = compile preprocessFileLineNumbers "core\fnc\common\show_hint.sqf";
 	btc_fnc_intro = compile preprocessFileLineNumbers "core\fnc\common\intro.sqf";
 	btc_fnc_set_markerTextLocal = compile preprocessFileLineNumbers "core\fnc\common\set_markerTextLocal.sqf";
+	btc_fnc_showSubtitle = compile preprocessFileLineNumbers "core\fnc\common\showSubtitle.sqf";
 
 	//CIV
 	btc_fnc_civ_add_leaflets = compile preprocessFileLineNumbers "core\fnc\civ\add_leaflets.sqf";

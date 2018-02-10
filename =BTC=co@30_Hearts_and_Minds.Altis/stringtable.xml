@@ -1059,16 +1059,16 @@
                 <German>Hallo ! Ihr Ansehen ist</German>
             </Key>
             <Key ID="STR_BTC_HAM_CON_INFO_ASKREP_ASK3">
-                <Original>I am %1 and I think your reputation is</Original>
-                <German>Mein Name ist %1 und ich glaube ihr Ansehen ist</German>
+                <Original>I think your reputation is</Original>
+                <German>Ich glaube ihr Ansehen ist</German>
             </Key>
             <Key ID="STR_BTC_HAM_CON_INFO_ASK_WOUNDED1">
-                <Original>Help me!.</Original>
-                <German>Hilf mir!.</German>
+                <Original>Help me!</Original>
+                <German>Hilf mir!</German>
             </Key>
             <Key ID="STR_BTC_HAM_CON_INFO_ASK_WOUNDED2">
-                <Original>I am suffering!.</Original>
-                <German>Ich habe Schmerzen!.</German>
+                <Original>I am suffering!</Original>
+                <German>Ich habe Schmerzen!</German>
             </Key>
             <Key ID="STR_BTC_HAM_CON_INFO_ASK_WOUNDED3">
                 <Original>Injure!</Original>
@@ -1079,24 +1079,24 @@
                 <German>I habe offene Wunden!</German>
             </Key>
             <Key ID="STR_BTC_HAM_CON_INFO_ASK_ALLREADYANS">
-                <Original>%1: I already answered to your question!</Original>
-                <German>%1: Ich habe Ihnen bereits alles gesagt!</German>
+                <Original>I already answered to your question!</Original>
+                <German>Ich habe Ihnen bereits alles gesagt!</German>
             </Key>
             <Key ID="STR_BTC_HAM_CON_INFO_ASK_NOINFO">
-                <Original>%1: I've no information for you</Original>
-                <German>%1: Ich habe keine Informationen für Sie.</German>
+                <Original>I've no information for you</Original>
+                <German>Ich habe keine Informationen für Sie.</German>
             </Key>
             <Key ID="STR_BTC_HAM_CON_INFO_ASK_CACHEMAP">
-                <Original>%1: I'll show you some hint on the map</Original>
-                <German>%1: Ich habe etwas auf der Karte markiert</German>
+                <Original>I'll show you some hint on the map</Original>
+                <German>Ich habe etwas auf der Karte markiert</German>
             </Key>
             <Key ID="STR_BTC_HAM_CON_INFO_ASKHIDEOUT_TRUE">
-                <Original>%1: I saw a lot of militia activity towards %2, %3 meter from here. Probably there is an hideout!</Original>
-                <German>%1: Ich habe mehrer bewaffnete Personen in Richtung %2, ca. %3m entfernt, gesehen. Möglicherweise ist dort ein Versteck!</German>
+                <Original>I saw a lot of militia activity towards %1, %2 meter from here. Probably there is an hideout!</Original>
+                <German>Ich habe mehrer bewaffnete Personen in Richtung %1, ca. %2m entfernt, gesehen. Möglicherweise ist dort ein Versteck!</German>
             </Key>
             <Key ID="STR_BTC_HAM_CON_INFO_ASKHIDEOUT_FALSE">
-                <Original>%1: There are no hideout around here!</Original>
-                <German>%1: Hier in der Gegend gibt es keine Verstecke!</German>
+                <Original>There are no hideout around here!</Original>
+                <German>Hier in der Gegend gibt es keine Verstecke!</German>
             </Key>
             <Key ID="STR_BTC_HAM_CON_INFO_ASKHIDEOUT_DIARYLOG">
                 <Original>Diary log</Original>
@@ -1107,18 +1107,30 @@
                 <German>Suche Information . . .</German>
             </Key>
             <Key ID="STR_BTC_HAM_CON_INFO_TROOPS_TRUE">
-                <Original>%1: I saw some militia movement %2, %3 meter from here</Original>
-                <German>%1: Ich habe mehrer bewaffnete Personen in Richtung %2, ca. %3m entfernt, gesehen</German>
+                <Original>I saw some militia movement %1, %2 meter from here</Original>
+                <German>Ich habe mehrer bewaffnete Personen in Richtung %1, ca. %2m entfernt, gesehen</German>
             </Key>
             <Key ID="STR_BTC_HAM_CON_INFO_TROOPS_FALSE">
-                <Original>%1: I didn't see any militia movement in this area!</Original>
-                <German>%1: Ich habe keine bewaffneten Personen in der Nähe gesehen!</German>
+                <Original>I didn't see any militia movement in this area!</Original>
+                <German>Ich habe keine bewaffneten Personen in der Nähe gesehen!</German>
             </Key>
         </Container>
         <Container name="Conversations: Orders">
             <Key ID="STR_BTC_HAM_CON_INT_ORDERS_SHOWMAP">
                 <Original>Show me where you want to go with your map.</Original>
                 <German>Zeig mir auf der Karte wo du hin willst.</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_CON_INT_ORDERS_TAXI_OK1">
+                <Original>No problem. I'd love to do that.</Original>
+                <German>Kein Problem. Das mache ich doch gerne.</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_CON_INT_ORDERS_TAXI_OK2">
+                <Original>The ride should not take long. Let's go.</Original>
+                <German>Die Fahrt sollten nicht lang dauern. Also los.</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_CON_INT_ORDERS_TAXI_OK3">
+                <Original>After what you've done for us, it's an honor to drive you. Let's go.</Original>
+                <German>Nach dem was Sie alles für uns getan haben, ist es mir eine Ehre Sie zu fahren. Los geht´s.</German>
             </Key>
             <Key ID="STR_BTC_HAM_CON_INT_ORDERS_ONLAND">
                 <Original>Selected area must be on land.</Original>
