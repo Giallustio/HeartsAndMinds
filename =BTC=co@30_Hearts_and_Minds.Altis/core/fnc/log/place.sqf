@@ -61,5 +61,8 @@ btc_log_placing_obj setDir btc_log_placing_dir;
 		//remove mouse hint
 		call ace_interaction_fnc_hideMouseHint;
 
+		// remove drop action
+		[player, "DefaultAction", _actionEH, -1] call ace_common_fnc_removeActionEventHandler;
+
 	};
 }, 0.5, [_this, _actionEH, _place_EH_keydown]] call CBA_fnc_addPerFrameHandler;
