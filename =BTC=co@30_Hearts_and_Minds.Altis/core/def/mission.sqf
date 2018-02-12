@@ -2,7 +2,7 @@
 private ["_p_civ_veh","_p_db","_p_en","_hideout_n","_cache_info_def","_cache_info_ratio","_info_chance","_p_rep","_p_skill","_c_array","_tower","_p_civ","_rearming_vehicles","_vehicles","_magazines","_p_city_radius","_magazines_static","_static","_rearming_static","_magazines_clean","_weapons_usefull","_magazines_static_clean","_p_en_AA","_p_ied_spot"];
 
 btc_version = 1.173;
-diag_log format ["=BTC= HEARTS AND MINDS VERSION %1.7", btc_version];
+diag_log format ["=BTC= HEARTS AND MINDS VERSION %1.8", btc_version];
 
 //Param
 //<< Time options >>
