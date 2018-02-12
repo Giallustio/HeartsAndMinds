@@ -15,7 +15,7 @@ call compile preprocessFile "core\doc.sqf";
 	call btc_fnc_int_add_actions;
 	call btc_fnc_int_shortcuts;
 
-	if (player getVariable ["interpreter", false]) then {player createDiarySubject [(localize "STR_BTC_HAM_CON_INFO_ASKHIDEOUT_DIARYLOG"),(localize "STR_BTC_HAM_CON_INFO_ASKHIDEOUT_DIARYLOG")];}; //"Diary log"STR_BTC_HAM_CON_INFO_ASKHIDEOUT_DIARYLOG
+	if (player getVariable ["interpreter", false]) then {player createDiarySubject [localize "STR_BTC_HAM_CON_INFO_ASKHIDEOUT_DIARYLOG", localize "STR_BTC_HAM_CON_INFO_ASKHIDEOUT_DIARYLOG"];};
 
 	removeAllWeapons player;
 
