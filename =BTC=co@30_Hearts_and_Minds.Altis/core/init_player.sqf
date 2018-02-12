@@ -1,8 +1,7 @@
 
 call compile preprocessFile "core\doc.sqf";
 
-[] spawn {
-	waitUntil {!isNull player};
+[{!isNull player}, {
 
 	player addRating 9999;
 	btc_player_respawn = getPosASL player;
@@ -20,19 +19,18 @@ call compile preprocessFile "core\doc.sqf";
 
 	removeAllWeapons player;
 
-	waitUntil {scriptDone btc_intro_done};
-	{[_x] call btc_fnc_task_create} foreach ((player call BIS_fnc_tasksUnit) select {[_x] call BIS_fnc_taskState isEqualTo "ASSIGNED"});
-};
+	[{scriptDone btc_intro_done}, {
+		{[_x] call btc_fnc_task_create} foreach ((player call BIS_fnc_tasksUnit) select {[_x] call BIS_fnc_taskState isEqualTo "ASSIGNED"});
+	}] call CBA_fnc_waitUntilAndExecute;
+}] call CBA_fnc_waitUntilAndExecute;
 
 if (btc_debug) then {
-
-	private ["_eh"];
 
 	onMapSingleClick "if (vehicle player == player) then {player setpos _pos} else {vehicle player setpos _pos}";
 	player allowDamage false;
 
 	waitUntil {!isNull (findDisplay 12)};
-	_eh = ((findDisplay 12) displayCtrl 51) ctrlAddEventHandler ["Draw", btc_fnc_marker_debug];
+	private _eh = ((findDisplay 12) displayCtrl 51) ctrlAddEventHandler ["Draw", btc_fnc_marker_debug];
 
 	btc_marker_debug_cond = true;
 	[_eh] spawn btc_fnc_systemchat_debug;
