@@ -21,9 +21,9 @@
         _this select 5: STRING - Font (https://community.bistudio.com/wiki/FXY_File_Format#Available_Fonts)
 
     Examples:
-        ["Some Guy","How do yo do?"] spawn btc_fnc_showSubtitle;
-        ["Darth Vader","Come to the dark side. We have cookies!", false, "#ed2939"] spawn btc_fnc_showSubtitle;
-        ["Luke Skywalker","Whhhhhhyyyyyyyy", true, "#1768d3", nil, "PuristaBold"] spawn btc_fnc_showSubtitle;
+        ["Some Guy","How do yo do?"] call btc_fnc_showSubtitle;
+        ["Darth Vader","Come to the dark side. We have cookies!", false, "#ed2939"] call btc_fnc_showSubtitle;
+        ["Luke Skywalker","Whhhhhhyyyyyyyy", true, "#1768d3", nil, "PuristaBold"] call btc_fnc_showSubtitle;
 */
 
 #define WAIT 		10
@@ -75,8 +75,9 @@ private _textHeight = ctrlTextHeight _ctrl;
 _ctrl ctrlSetPosition [POS_X,POS_Y - _textHeight,POS_W,_textHeight];
 _ctrl ctrlcommit 0;
 
-sleep WAIT;
-
-// Hide subtitle
-_ctrl ctrlSetFade 1;
-_ctrl ctrlCommit 0.5;
+[{
+    params ["_ctrl"];
+    // Hide subtitle
+    _ctrl ctrlSetFade 1;
+    _ctrl ctrlCommit 0.5;
+}, [_ctrl], WAIT] call CBA_fnc_waitAndExecute;
