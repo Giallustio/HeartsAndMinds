@@ -59,16 +59,16 @@ disableSerialization;
 
     // Show subtitle
     _ctrl ctrlSetStructuredText parseText format [
-    		if (_from == "") then {
-    				"<t align='center' shadow='1' color='%5' size='%3' font=%6>%2</t>"
-    		} else {
-    				if (_lineBreak) then {
-    						"<t align='center' shadow='1' color='%4' size='%3' font=%6>%1: <br /></t><t align='center' color='%5' shadow='1' size='%3' font=%6>%2</t>"
-    				} else {
-    						"<t align='center' shadow='1' color='%4' size='%3' font=%6>%1: </t><t align='center' color='%5' shadow='1' size='%3' font=%6>%2</t>"
-    				};
-    		},
-    		toUpper _from, _text,	(safezoneH * 0.65) max 1, _colorFrom, _colorText,_fontText
+        if (_from == "") then {
+            "<t align='center' shadow='1' color='%5' size='%3' font=%6>%2</t>"
+        } else {
+            if (_lineBreak) then {
+                "<t align='center' shadow='1' color='%4' size='%3' font=%6>%1: <br /></t><t align='center' color='%5' shadow='1' size='%3' font=%6>%2</t>"
+            } else {
+                "<t align='center' shadow='1' color='%4' size='%3' font=%6>%1: </t><t align='center' color='%5' shadow='1' size='%3' font=%6>%2</t>"
+            };
+        },
+        toUpper _from, _text,	(safezoneH * 0.65) max 1, _colorFrom, _colorText,_fontText
     ];
 
     private _textHeight = ctrlTextHeight _ctrl;
@@ -76,10 +76,9 @@ disableSerialization;
     _ctrl ctrlcommit 0;
 
     [{
-    		params ["_ctrl"];
-    		// Hide subtitle
-    		_ctrl ctrlSetFade 1;
-    		_ctrl ctrlCommit 0.5;
+        params ["_ctrl"];
+        // Hide subtitle
+        _ctrl ctrlSetFade 1;
+        _ctrl ctrlCommit 0.5;
     }, [_ctrl], WAIT] call CBA_fnc_waitAndExecute;
-
 }, _this] call CBA_fnc_waitUntilAndExecute;
