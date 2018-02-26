@@ -33,5 +33,22 @@ class CfgFunctions {
     // add your own functions below
 };
 
-#include "core\fnc\eh\extended_InitPost_EH.hpp"
-#include "core\fnc\eh\extended_PreInit_EH.hpp"
+// CBA XEH
+class Extended_PreInit_EventHandlers {
+    #include "core\fnc\eh\xeh_PreInit_EH.hpp"
+};
+
+class Extended_InitPost_EventHandlers {
+    class LandVehicle {
+        #include "core\fnc\eh\xeh_InitPost_EH_Vehicle.hpp"
+    };
+    class Air {
+        #include "core\fnc\eh\xeh_InitPost_EH_Vehicle.hpp"
+    };
+    class Ship {
+        #include "core\fnc\eh\xeh_InitPost_EH_Vehicle.hpp"
+    };
+    class CAManBase {
+        //#include "core\fnc\eh\xeh_InitPost_EH_CAManBase.hpp"
+	};
+};
