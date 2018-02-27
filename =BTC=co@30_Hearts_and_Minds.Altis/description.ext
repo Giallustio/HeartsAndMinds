@@ -17,7 +17,7 @@ class RscTitles {
         fadeout = 0;
         duration = 0;
     };
-	#include "core\fnc\log\rsc.hpp"
+    #include "core\fnc\log\rsc.hpp"
 };
 
 #include "core\sounds\sounds.hpp"
@@ -50,5 +50,5 @@ class Extended_InitPost_EventHandlers {
     };
     class CAManBase {
         //#include "core\fnc\eh\xeh_InitPost_EH_CAManBase.hpp"
-	};
+    };
 };
