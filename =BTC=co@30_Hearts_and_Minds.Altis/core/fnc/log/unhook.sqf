@@ -16,7 +16,7 @@ _veh removeEventHandler ["RopeBreak", _veh getVariable ["btc_eh", -1]];
 
 _pos = getpos _veh;
 if ((_pos select 2) < -0.05) then {
-	_veh setpos [_pos select 0, _pos select 1, 0];
+    _veh setpos [_pos select 0, _pos select 1, 0];
 };
 
 _towed = btc_int_ask_data;
@@ -27,9 +27,9 @@ _towed removeEventHandler ["RopeBreak", _towed getVariable ["btc_eh", -1]];
 
 _pos = getpos _towed;
 if ((_pos select 2) < -0.05) then {
-	_towed setposasl [_pos select 0, _pos select 1, ((getPosASL _veh) select 2) - (_pos select 2)];
+    _towed setposasl [_pos select 0, _pos select 1, ((getPosASL _veh) select 2) - (_pos select 2)];
 } else {
-	_towed setVelocity [0, 0, 0.01];
+    _towed setVelocity [0, 0, 0.01];
 };
 
 [_towed,"tow",objNull] remoteExec ["btc_fnc_int_change_var", 2];

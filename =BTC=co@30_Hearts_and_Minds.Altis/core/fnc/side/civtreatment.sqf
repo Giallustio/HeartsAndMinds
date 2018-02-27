@@ -9,16 +9,16 @@ _pos = getPos _city;
 
 //// Choose spawn in house or on road \\\\
 _r = random 2;
-if ( _r < 1)	then {
-	_roads = _pos nearRoads 200;
-	_roads = _roads select {isOnRoad _x};
-	if (_roads isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
-	_pos = getPos (selectRandom _roads);
-	_vehpos = [_pos, 10] call btc_fnc_randomize_pos;
+if ( _r < 1)    then {
+    _roads = _pos nearRoads 200;
+    _roads = _roads select {isOnRoad _x};
+    if (_roads isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
+    _pos = getPos (selectRandom _roads);
+    _vehpos = [_pos, 10] call btc_fnc_randomize_pos;
 } else {
-	_houses = [[(_pos select 0),(_pos select 1),0],200] call btc_fnc_getHouses;
-	_pos = selectRandom ((selectRandom _houses) buildingPos -1);
-	_vehpos = [(_pos select 0),(_pos select 1),(_pos select 2) + 0.1];
+    _houses = [[(_pos select 0),(_pos select 1),0],200] call btc_fnc_getHouses;
+    _pos = selectRandom ((selectRandom _houses) buildingPos -1);
+    _vehpos = [(_pos select 0),(_pos select 1),(_pos select 2) + 0.1];
 };
 
 btc_side_aborted = false;
@@ -38,25 +38,25 @@ _marker setMarkerSize [0.6, 0.6];
 
 //// Create civ on _pos \\\\
 if ( _r < 1) then {
-	_veh_type = selectRandom btc_civ_type_veh;
-	_veh = createVehicle [_veh_type, _vehpos, [], 0, "NONE"];
-	_veh setDir (random 360);
-	_veh setDamage 0.7;
-	//// Random wheel hit \\\\
-	if (_r < 0.5) then {
-		_veh setHit ["wheel_1_2_steering", 1];
-	} else {
-		_veh setHit ["wheel_2_1_steering", 1];
-	};
-	_veh setHit ["wheel_1_1_steering", 1];
-	//// Add smoke effect on car \\\\
-	_fx = "test_EmptyObjectForSmoke" createVehicle (getposATL _veh);
-	_fx attachTo [_veh,[0,0,0]];
+    _veh_type = selectRandom btc_civ_type_veh;
+    _veh = createVehicle [_veh_type, _vehpos, [], 0, "NONE"];
+    _veh setDir (random 360);
+    _veh setDamage 0.7;
+    //// Random wheel hit \\\\
+    if (_r < 0.5) then {
+        _veh setHit ["wheel_1_2_steering", 1];
+    } else {
+        _veh setHit ["wheel_2_1_steering", 1];
+    };
+    _veh setHit ["wheel_1_1_steering", 1];
+    //// Add smoke effect on car \\\\
+    _fx = "test_EmptyObjectForSmoke" createVehicle (getposATL _veh);
+    _fx attachTo [_veh,[0,0,0]];
 } else {
-	_phone_type = selectRandom btc_type_phone;
-	_veh = createVehicle [_phone_type, _vehpos, [], 0, "NONE"];
-	_veh setDir (random 360);
-	_fx = objNull;
+    _phone_type = selectRandom btc_type_phone;
+    _veh = createVehicle [_phone_type, _vehpos, [], 0, "NONE"];
+    _veh setDir (random 360);
+    _fx = objNull;
 };
 
 _unit_type = selectRandom btc_civ_type_units;
@@ -83,7 +83,7 @@ btc_side_assigned = false;publicVariable "btc_side_assigned";
 [[_marker], [_veh], [_fx], [_group]] call btc_fnc_delete;
 
 if (btc_side_aborted || btc_side_failed || !Alive _unit) exitWith {
-	8 remoteExec ["btc_fnc_task_fail", 0];
+    8 remoteExec ["btc_fnc_task_fail", 0];
 };
 
 10 call btc_fnc_rep_change;

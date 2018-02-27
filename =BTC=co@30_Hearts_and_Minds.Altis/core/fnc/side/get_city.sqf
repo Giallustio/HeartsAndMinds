@@ -24,7 +24,7 @@ waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !(_city getVariable 
 btc_side_assigned = false;publicVariable "btc_side_assigned";
 
 if (btc_side_aborted || btc_side_failed) exitWith {
-	6 remoteExec ["btc_fnc_task_fail", 0];
+    6 remoteExec ["btc_fnc_task_fail", 0];
 };
 
 80 call btc_fnc_rep_change;

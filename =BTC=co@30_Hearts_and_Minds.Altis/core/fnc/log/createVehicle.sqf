@@ -9,7 +9,7 @@ _veh setPosASL _pos;
 _veh setVariable ["btc_dont_delete",true];
 
 if (getNumber(configFile >> "CfgVehicles" >> typeof _veh >> "isUav") isEqualTo 1) then {
-	createVehicleCrew _veh;
+    createVehicleCrew _veh;
 };
 
 _veh call btc_fnc_db_add_veh;
