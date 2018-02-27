@@ -1,0 +1,7 @@
+* text=auto
+
+*.sqm binary
+*.png binary
+*.jpg binary
+*.paa binary
+*.7z binary
