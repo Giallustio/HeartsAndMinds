@@ -9,7 +9,7 @@ _explosive = (getNumber(configFile >> "cfgAmmo" >> _ammo >> "explosive") > 0);
 
 if (isNil {_cache getVariable "btc_hd_cache"} && {_explosive} && {_damage > 0.6}) then {
     _cache setVariable ["btc_hd_cache",true];
-    {detach _x; _x setVariable ["no_cache",false];} forEach attachedObjects _cache;
+    {detach _x; deleteVehicle _x;} forEach attachedObjects _cache;
     //Effects
     private ["_pos","_marker"];
     _pos = getposATL btc_cache_obj;
