@@ -27,15 +27,15 @@ private _rc_tot = [_veh,_cargo] call btc_fnc_log_check_cc;
 if ((_rc_tot + _rc) > _cc) exitWith {hint format [localize "STR_BTC_HAM_LOG_LOAD_NOSPACE", _obj_name,_veh_name];};
 
 private _onFinish = {
-	params ["_args"];
-	_args params ["_veh", "_player", "_obj_name", "_veh_name"];
-	[btc_log_object_selected, _veh] remoteExec ["btc_fnc_log_server_load", 2];
-	hint format [localize "STR_BTC_HAM_LOG_LOAD_FIN", _obj_name, _veh_name];
-	btc_log_object_selected = objNull;
+    params ["_args"];
+    _args params ["_veh", "_player", "_obj_name", "_veh_name"];
+    [btc_log_object_selected, _veh] remoteExec ["btc_fnc_log_server_load", 2];
+    hint format [localize "STR_BTC_HAM_LOG_LOAD_FIN", _obj_name, _veh_name];
+    btc_log_object_selected = objNull;
 };
 private _onFail = {
-	hint (localize "STR_BTC_HAM_LOG_LOAD_ABORT");
-	btc_log_object_selected = objNull;
+    hint (localize "STR_BTC_HAM_LOG_LOAD_ABORT");
+    btc_log_object_selected = objNull;
 };
 
 [5, [_veh, player, _obj_name, _veh_name], _onFinish, _onFail, format [localize "STR_BTC_HAM_LOG_LOAD_BAR", _obj_name, _veh_name]] call btc_fnc_int_action_result;

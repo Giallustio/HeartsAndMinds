@@ -3,6 +3,6 @@
 hint (localize "STR_BTC_HAM_O_COMMON_ENDMISSION"); //All the hideouts are destroyed, finally the Oplitas has been defeated! Mission accomplished
 while {true} do
 {
-	hintSilent (localize "STR_BTC_HAM_O_COMMON_ENDMISSION");  //All the hideouts are destroyed, finally the Oplitas has been defeated! Mission accomplished
-	sleep 1;
+    hintSilent (localize "STR_BTC_HAM_O_COMMON_ENDMISSION");  //All the hideouts are destroyed, finally the Oplitas has been defeated! Mission accomplished
+    sleep 1;
 };

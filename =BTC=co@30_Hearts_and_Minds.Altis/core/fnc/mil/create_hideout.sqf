@@ -4,20 +4,20 @@ private ["_city","_pos","_radius","_hideout","_random_pos","_radius_x","_radius_
 _city = objNull;
 
 if (count _this > 0) then {_city = _this;} else {
-	private ["_useful","_id"];
-	//"NameVillage","NameCity","NameCityCapital","NameLocal","Hill"
-	_useful = btc_city_all select {(
-			!(_x getVariable ["active",false]) &&
-			{_x distance (getMarkerPos btc_respawn_marker) > btc_hideout_safezone} &&
-			{!(_x getVariable ["has_ho",false])} &&
-			(
-				_x getVariable ["type",""] == "NameLocal" ||
-				{_x getVariable ["type",""] == "Hill"} ||
-				{_x getVariable ["type",""] == "NameVillage"} ||
-				{_x getVariable ["type",""] == "Airport"}
-			)
-		)};
-	_city = selectRandom _useful;
+    private ["_useful","_id"];
+    //"NameVillage","NameCity","NameCityCapital","NameLocal","Hill"
+    _useful = btc_city_all select {(
+            !(_x getVariable ["active",false]) &&
+            {_x distance (getMarkerPos btc_respawn_marker) > btc_hideout_safezone} &&
+            {!(_x getVariable ["has_ho",false])} &&
+            (
+                _x getVariable ["type",""] == "NameLocal" ||
+                {_x getVariable ["type",""] == "Hill"} ||
+                {_x getVariable ["type",""] == "NameVillage"} ||
+                {_x getVariable ["type",""] == "Airport"}
+            )
+        )};
+    _city = selectRandom _useful;
 };
 
 _radius = (((_city getVariable ["RadiusX",0]) + (_city getVariable ["RadiusY",0]))/2);
@@ -28,7 +28,7 @@ if (count _pos == 0) then {_pos = getPos _city;};
 
 _city setpos _pos;
 _id = _city getVariable ["id",0];
-if (btc_debug) then	{deleteMarker format ["loc_%1",_id];};
+if (btc_debug) then    {deleteMarker format ["loc_%1",_id];};
 deleteVehicle (_city getVariable ["trigger_player_side",objNull]);
 _radius_x = btc_hideouts_radius;
 _radius_y = btc_hideouts_radius;
@@ -54,12 +54,12 @@ _city setVariable ["ho_pos",_pos];
 _city setVariable ["ho_units_spawned",false];
 
 if (btc_debug) then {
-	//Marker _pos = getpos _x;
-	createmarker [format ["btc_hideout_%1", _pos], _pos];
-	format ["btc_hideout_%1", _pos] setmarkertype "mil_unknown";
-	format ["btc_hideout_%1", _pos] setMarkerText format ["Hideout %1", btc_hideouts_id];
-	format ["btc_hideout_%1", _pos] setMarkerSize [0.8, 0.8];
-	(format ["loc_%1",_city getVariable "id"]) setMarkerColor "ColorRed";
+    //Marker _pos = getpos _x;
+    createmarker [format ["btc_hideout_%1", _pos], _pos];
+    format ["btc_hideout_%1", _pos] setmarkertype "mil_unknown";
+    format ["btc_hideout_%1", _pos] setMarkerText format ["Hideout %1", btc_hideouts_id];
+    format ["btc_hideout_%1", _pos] setMarkerSize [0.8, 0.8];
+    (format ["loc_%1",_city getVariable "id"]) setMarkerColor "ColorRed";
 };
 
 if (btc_debug_log) then {diag_log format ["btc_fnc_mil_create_hideout: _this = %1 ; POS %2 ID %3",_this,_pos,btc_hideouts_id];};
