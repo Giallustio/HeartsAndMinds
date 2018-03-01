@@ -9,11 +9,11 @@ if (btc_db_load && {profileNamespace getVariable [format ["btc_hm_%1_db",worldNa
 		call compile preprocessFileLineNumbers "core\fnc\db\load_old.sqf";
 	};
 } else {
-	for "_i" from 1 to btc_hideout_n do {[] call btc_fnc_mil_create_hideout;};
+    for "_i" from 1 to btc_hideout_n do {[] call btc_fnc_mil_create_hideout;};
 
-	private _date = date;
-	_date set [3, btc_p_time];
-	setDate _date;
+    private _date = date;
+    _date set [3, btc_p_time];
+    setDate _date;
 
 	call compile preprocessFileLineNumbers "core\fnc\cache\init.sqf";
 
@@ -37,5 +37,5 @@ if (btc_p_arsenalType > 0) then {[btc_gear_object,true] call ace_arsenal_fnc_ini
 {[_x,30,false] spawn btc_fnc_eh_veh_add_respawn;} forEach btc_helo;
 
 if (btc_p_side_mission_cycle) then {
-	[true] spawn btc_fnc_side_create;
+    [true] spawn btc_fnc_side_create;
 };

@@ -2,16 +2,16 @@
 params ["_city", "_area"];
 
 if (btc_debug_log) then {
-	diag_log format ["btc_fnc_ied_suicider_create:  _name = %1 _area %2",_city getVariable ["name","name"],_area];
+    diag_log format ["btc_fnc_ied_suicider_create:  _name = %1 _area %2",_city getVariable ["name","name"],_area];
 };
 
 _pos = [];
 
 switch (typeName _city) do
 {
-	case "ARRAY" :{_pos = _city;};
-	case "STRING":{_pos = getMarkerPos _city;};
-	case "OBJECT":{_pos = position _city;};
+    case "ARRAY" :{_pos = _city;};
+    case "STRING":{_pos = getMarkerPos _city;};
+    case "OBJECT":{_pos = position _city;};
 };
 
 private _rpos = [_pos, _area] call btc_fnc_randomize_pos;
@@ -31,17 +31,17 @@ _suicider call btc_fnc_civ_unit_create;
 
 //Main check
 [{
-	params ["_args", "_id"];
-	_args params ["_suicider"];
+    params ["_args", "_id"];
+    _args params ["_suicider"];
 
-	if (Alive _suicider && !isNull _suicider) then {
-		if (count (getpos _suicider nearEntities ["SoldierWB", 25]) > 0) then {
-			[_id] call CBA_fnc_removePerFrameHandler;
-			_suicider call btc_fnc_ied_suicider_active;
-		};
-	} else {
-		[_id] call CBA_fnc_removePerFrameHandler;
-	};
+    if (Alive _suicider && !isNull _suicider) then {
+        if (count (getpos _suicider nearEntities ["SoldierWB", 25]) > 0) then {
+            [_id] call CBA_fnc_removePerFrameHandler;
+            _suicider call btc_fnc_ied_suicider_active;
+        };
+    } else {
+        [_id] call CBA_fnc_removePerFrameHandler;
+    };
 } , 5, [_suicider]] call CBA_fnc_addPerFrameHandler;
 
 leader _group

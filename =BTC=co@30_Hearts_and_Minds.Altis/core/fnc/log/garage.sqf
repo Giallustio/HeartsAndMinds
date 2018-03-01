@@ -13,24 +13,24 @@ uiNamespace setVariable [ "garage_pad", _veh];
 missionNamespace setVariable [ "BIS_fnc_arsenal_fullGarage", [ true, 0, false, [false]] call bis_fnc_param];
 with missionNamespace do { BIS_fnc_garage_center = _veh };
 with uiNamespace do {
-	private _displayMission = [] call (uiNamespace getVariable "bis_fnc_displayMission");
-	if !(isNull findDisplay 312) then { _displayMission = findDisplay 312; };
-	_displayMission createDisplay "RscDisplayGarage";
-	uiNamespace setVariable [ "running_garage", true];
-	waitUntil { sleep 0.25; isNull (uiNamespace getVariable ["BIS_fnc_arsenal_cam", objNull])};
-	private _logistic_point = uiNamespace getVariable "current_garage";
-	private _pad = uiNamespace getVariable "garage_pad";
-	deleteVehicle _pad;
-	private _veh_list = _logistic_point nearEntities 5;
-	{
-		{deleteVehicle _x;} forEach crew _x;
+    private _displayMission = [] call (uiNamespace getVariable "bis_fnc_displayMission");
+    if !(isNull findDisplay 312) then { _displayMission = findDisplay 312; };
+    _displayMission createDisplay "RscDisplayGarage";
+    uiNamespace setVariable [ "running_garage", true];
+    waitUntil { sleep 0.25; isNull (uiNamespace getVariable ["BIS_fnc_arsenal_cam", objNull])};
+    private _logistic_point = uiNamespace getVariable "current_garage";
+    private _pad = uiNamespace getVariable "garage_pad";
+    deleteVehicle _pad;
+    private _veh_list = _logistic_point nearEntities 5;
+    {
+        {deleteVehicle _x;} forEach crew _x;
 
-		private _type = typeOf _x;
-		private _pos = getPosASL _x;
-		private _dir = getDir _x;
-		private _customization = [_x] call BIS_fnc_getVehicleCustomization;
-		deleteVehicle _x;
-		[_type, _pos, _dir, _customization] remoteExec ["btc_fnc_log_createVehicle", 2];
-		[_type] remoteExec ["btc_fnc_eh_veh_init", -2];
-	} forEach _veh_list;
+        private _type = typeOf _x;
+        private _pos = getPosASL _x;
+        private _dir = getDir _x;
+        private _customization = [_x] call BIS_fnc_getVehicleCustomization;
+        deleteVehicle _x;
+        [_type, _pos, _dir, _customization] remoteExec ["btc_fnc_log_createVehicle", 2];
+        [_type] remoteExec ["btc_fnc_eh_veh_init", -2];
+    } forEach _veh_list;
 };

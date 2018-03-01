@@ -7,11 +7,11 @@ if (_is_real) then {
     waitUntil {!(isNil "btc_int_ask_data")};
 
     if (!isNull btc_int_ask_data) then {
-    	private _hideout = btc_int_ask_data;
-    	private _dist = (player distance _hideout) + ((random 500) - (random 500));
-    	private _dir = player getDir _hideout;
-    	private _card = [_dir] call btc_fnc_get_cardinal;
-    	_text = format [localize "STR_BTC_HAM_CON_INFO_ASKHIDEOUT_TRUE", _card,round _dist]; //I saw a lot of militia activity towards %2, %3 meter from here. Probably there is an hideout!
+        private _hideout = btc_int_ask_data;
+        private _dist = (player distance _hideout) + ((random 500) - (random 500));
+        private _dir = player getDir _hideout;
+        private _card = [_dir] call btc_fnc_get_cardinal;
+        _text = format [localize "STR_BTC_HAM_CON_INFO_ASKHIDEOUT_TRUE", _card,round _dist]; //I saw a lot of militia activity towards %2, %3 meter from here. Probably there is an hideout!
     } else {
         _text = localize "STR_BTC_HAM_CON_INFO_ASKHIDEOUT_FALSE"; //There are no hideout around here!
     };

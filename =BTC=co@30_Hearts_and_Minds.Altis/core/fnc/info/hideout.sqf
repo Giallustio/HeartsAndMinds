@@ -6,13 +6,13 @@ private ["_ho","_pos","_marker","_array"];
 _ho = btc_hq;
 
 if (isNull _ho) then {
-	_ho = selectRandom btc_hideouts;
-	btc_hq =_ho;
+    _ho = selectRandom btc_hideouts;
+    btc_hq =_ho;
 };
 
 _pos = [
-	(((getPos _ho) select 0) + (random btc_info_hideout_radius - random btc_info_hideout_radius)),
-	(((getPos _ho) select 1) + (random btc_info_hideout_radius - random btc_info_hideout_radius))
+    (((getPos _ho) select 0) + (random btc_info_hideout_radius - random btc_info_hideout_radius)),
+    (((getPos _ho) select 1) + (random btc_info_hideout_radius - random btc_info_hideout_radius))
 ];
 
 _marker = createmarker [format ["%1", _pos], _pos];
