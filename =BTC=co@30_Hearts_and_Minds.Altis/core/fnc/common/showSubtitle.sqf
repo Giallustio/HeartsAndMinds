@@ -26,20 +26,20 @@
         ["Luke Skywalker","Whhhhhhyyyyyyyy", true, "#1768d3", nil, "PuristaBold"] spawn btc_fnc_showSubtitle;
 */
 
-#define WAIT 		10
-#define POS_W		(0.4 * safeZoneW)
-#define POS_H		(safeZoneH)
-#define POS_X		(0.5 - POS_W / 2)
-#define POS_Y		(safeZoneY + (6/8) * safeZoneH)
-#define POS_Y_CAM	(safeZoneY + (31/32) * safeZoneH)
+#define WAIT         10
+#define POS_W        (0.4 * safeZoneW)
+#define POS_H        (safeZoneH)
+#define POS_X        (0.5 - POS_W / 2)
+#define POS_Y        (safeZoneY + (6/8) * safeZoneH)
+#define POS_Y_CAM    (safeZoneY + (31/32) * safeZoneH)
 
 params [
-	["_from", "", [""]],
-	["_text", "", [""]],
-	["_lineBreak", false , [false]],
-	["_colorFrom", "#d4cd00" , [""]], //default color: gold
-	["_colorText", "#FFFFFF" , [""]], //default color: white
-	["_fontText", "RobotoCondensedBold", [""]]
+    ["_from", "", [""]],
+    ["_text", "", [""]],
+    ["_lineBreak", false , [false]],
+    ["_colorFrom", "#d4cd00" , [""]], //default color: gold
+    ["_colorText", "#FFFFFF" , [""]], //default color: white
+    ["_fontText", "RobotoCondensedBold", [""]]
 ];
 
 disableSerialization;
@@ -68,7 +68,7 @@ _ctrl ctrlSetStructuredText parseText format [
             "<t align='center' shadow='1' color='%4' size='%3' font=%6>%1: </t><t align='center' color='%5' shadow='1' size='%3' font=%6>%2</t>"
         };
     },
-    toUpper _from, _text,	(safezoneH * 0.65) max 1, _colorFrom, _colorText,_fontText
+    toUpper _from, _text,    (safezoneH * 0.65) max 1, _colorFrom, _colorText,_fontText
 ];
 
 private _textHeight = ctrlTextHeight _ctrl;

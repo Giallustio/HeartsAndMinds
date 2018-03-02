@@ -22,4 +22,4 @@ for "_i" from 0 to ((count _color)-1) step 1 do {
 };
 
 sleep .07;
-{ deletevehicle _x; false	} count _smokes;
+{ deletevehicle _x; false    } count _smokes;
