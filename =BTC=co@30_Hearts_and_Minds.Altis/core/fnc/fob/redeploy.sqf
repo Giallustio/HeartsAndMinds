@@ -11,7 +11,7 @@ btc_int_ask_data = nil;
 
 waitUntil {!(isNil "btc_int_ask_data")};
 
-if (count (btc_int_ask_data select 0) == 0) exitWith {hint "No FOBs deployed";};
+if (count (btc_int_ask_data select 0) == 0) exitWith {hint (localize "STR_BTC_HAM_O_FOB_REDEPLOY_H_NOFOB");}; //"No FOBs deployed"
 
 _fobs = btc_int_ask_data;
 
@@ -30,8 +30,8 @@ _idc = 778;
 lbSetCurSel [_idc, 0];
 /*
 while {!btc_fob_dlg} do {
-	if !(dialog) then {hint "Do not close the dialog with esc";createDialog "btc_fob_redeploy";{_index = lbAdd [ _idc, _x ];} foreach _fobs;lbSetCurSel [_idc, 0];};
-	sleep 0.1;
+    if !(dialog) then {hint "Do not close the dialog with esc";createDialog "btc_fob_redeploy";{_index = lbAdd [ _idc, _x ];} foreach _fobs;lbSetCurSel [_idc, 0];};
+    sleep 0.1;
 };*/
 
 waitUntil {!dialog || btc_fob_dlg};
@@ -50,7 +50,7 @@ closeDialog 0;
 
 _pos = ((_fobs select 1) select ((_fobs select 0) find _marker)) buildingPos -1;
 
-_text = format ["Moving to %1",_fob];
+_text = format [(localize "STR_BTC_HAM_O_FOB_REDEPLOY_H_MOVING"),_fob]; //"Moving to %1"
 
 titleText [_text, "BLACK OUT"];
 sleep 3;

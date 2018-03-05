@@ -1,16 +1,14 @@
 
 loadScreen = "core\img\btc.paa";
-author = Giallustio;
-onLoadName = Hearts and Minds;
-onLoadMission = www.blacktemplars.altervista.org;
+author = $STR_BTC_HAM_DESCR_AUTHOR;
+onLoadName = $STR_BTC_HAM_DESCR_NAME;
+onLoadMission = $STR_BTC_HAM_DESCR_MISSION;
 enabledebugconsole = 1;
 
 #include "core\def\dlg_def.hpp"
 
 #include "core\fnc\fob\dlg.hpp"
-#include "core\fnc\int\progress_bar.hpp"
 #include "core\fnc\log\dlg.hpp"
-//#include "core\fnc\rev\dlg.hpp"
 
 class RscTitles {
     class Default {
@@ -19,8 +17,7 @@ class RscTitles {
         fadeout = 0;
         duration = 0;
     };
-	//#include "core\fnc\rev\rsc.hpp"
-	#include "core\fnc\log\rsc.hpp"
+    #include "core\fnc\log\rsc.hpp"
 };
 
 #include "core\sounds\sounds.hpp"
@@ -31,6 +28,10 @@ class RscTitles {
 
 #include "core\fnc\task\tasktypes.hpp"
 
-#include "core\def\functions.hpp"
+class CfgFunctions {
+    #include "core\def\functions.hpp"
+    // add your own functions below
+};
 
 #include "core\fnc\eh\extended_InitPost_EH.hpp"
+#include "core\fnc\eh\extended_PreInit_EH.hpp"

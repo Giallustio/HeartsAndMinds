@@ -1,0 +1,1465 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project name="BTC Hearts and Minds: Mission">
+    <Package name="Description">
+        <Container name="Description: Main">
+            <Key ID="STR_BTC_HAM_DESCR_NAME">
+                <Original>Hearts and Minds</Original>
+                <German>Hearts and Minds</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_DESCR_AUTHOR">
+                <Original>Giallustio</Original>
+                <German>Giallustio</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_DESCR_MISSION">
+                <Original>www.blacktemplars.altervista.org</Original>
+                <German>www.blacktemplars.altervista.org</German>
+            </Key>
+        </Container>
+    </Package>
+    <Package name="Mission.sqm">
+        <Container name="Mission: Roles">
+            <Key ID="STR_BTC_HAM_MSQM_INTERPRETER">
+                <Original>Interpreter</Original>
+                <German>Dolmetscher</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_MSQM_OFFICER">
+                <Original>Officer</Original>
+                <German>Offizier</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_MSQM_MRK_LOGPOINT">
+                <Original>Logistic Point</Original>
+                <German>Logistikpunkt</German>
+            </Key>
+        </Container>
+    </Package>
+    <Package name="Intro">
+        <Container name="Intro">
+            <Key ID="STR_BTC_HAM_INTRO_ARSENAL_REDEPLOY">
+                <Original>Arsenal/Re-deploy</Original>
+                <German>Arsenal/Verlegen</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_INTRO_LOGPOINT">
+                <Original>Rearm/Repair and Objects</Original>
+                <German>Aufmunitionieren und Reparieren von Fahrzeugen</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_INTRO_ONLYRESPAWN">
+                <Original>Only Respawnable</Original>
+                <German>Respawnt bei Zertörung</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_INTRO_LOADINGTXT">
+                <Original>Base overview. Loading ...</Original>
+                <German>Basisübersicht. Lade ...</German>
+            </Key>
+        </Container>
+    </Package>
+    <Package name="Documentation">
+        <Container name="Documentation: Title">
+            <Key ID="STR_BTC_HAM_DOC_TITLE">
+                <Original>Documentation</Original>
+                <German>Dokumentation</German>
+            </Key>
+        </Container>
+        <Container name="Documentation: Headless and Database">
+            <Key ID="STR_BTC_HAM_DOC_HEADLESS_TITLE">
+                <Original>Headless and Database</Original>
+                <German>Headless Client und Datanbank</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_DOC_HEADLESS_TEXT">
+                <Original>&lt;img image='\a3\ui_f\data\map\vehicleicons\iconvirtual_ca.paa' width='20' height='20'/&gt; This mission automatically uses one Headless client when available.&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/&gt; This mission has a database system. Enemy units, towns, hideouts, cache, objects created by players or Zeus, vehicles, players markers (not lines) on global/camp channel are saved. All admin can save mission progress at any time with his self interaction key.</Original>
+                <German>&lt;img image='\a3\ui_f\data\map\vehicleicons\iconvirtual_ca.paa' width='20' height='20'/&gt; Sollte ein Headless Client vorhanden sein, so wird dieser durch die Mission automatisch genutzt.&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/&gt; Diese Mission verfügt über ein eingenes Datenbanksystem, in welcher folgende Dinge gespeichert werden: feindliche Einheiten, Städte, Verstecke, feindliche Waffenlager, Fahrzeuge, vom Spieler oder vom Zeus erstelle Objecte und Marker (keine Linien) vom Spieler im Globalen-Channel. Jeder Admin kann zu jeder Zeit den Missionsfortschritt über das Eigen-Interaktionsmenü speichern.</German>
+            </Key>
+        </Container>
+        <Container name="Documentation: Wounds">
+            <Key ID="STR_BTC_HAM_DOC_WOUNDS_TITLE">
+                <Original>Wounds</Original>
+                <German>Wunden</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_DOC_WOUNDS_TEXT">
+                <Original>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\heal_ca.paa' width='20' height='20'/&gt; Use the interaction menu to treat your wounds.&lt;br/&gt; Keep in mind that all the actions will be available, even if you do not need them. It is always recommended examine first.</Original>
+                <German>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\heal_ca.paa' width='20' height='20'/&gt; Mit Hilfe des Interactionsmenü können Sie ihre und die Wunden anderer versorgen.&lt;br/&gt; Denken Sie daran, dass Sie immer den vollen Zugriff auf alle Aktionen haben, egal ob Sie diese benötigen oder nicht. In jedem Fall wird empfohlen zuerst eine Diagnose zu erstellen, bevor man mit der Behandlung beginnt.</German>
+            </Key>
+        </Container>
+        <Container name="Documentation: Deafness">
+            <Key ID="STR_BTC_HAM_DOC_DEAFNESS_TITLE">
+                <Original>Deafness</Original>
+                <German>Taubheit</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_DOC_DEAFNESS_TEXT">
+                <Original>&lt;img image='\z\ace\addons\hearing\UI\Icon_Module_Hearing_ca.paa' width='20' height='20'/&gt; Use the earplugs to protect your ears to avoid combat deafness.&lt;br/&gt; You can put them on with your self interaction key.&lt;br/&gt;&lt;br/&gt;</Original>
+                <German>&lt;img image='\z\ace\addons\hearing\UI\Icon_Module_Hearing_ca.paa' width='20' height='20'/&gt; Nutzen Sie die Ohrstöpsel um sich vor Taubheit und Hörverlust zu schützen.&lt;br/&gt; Über das Eigen-Interaktionsmenü können Sie die Ohrstöpsel nutzen (sofern sich welche in Ihrem Inventar befinden).&lt;br/&gt;&lt;br/&gt;</German>
+            </Key>
+        </Container>
+        <Container name="Documentation: Vehicles">
+            <Key ID="STR_BTC_HAM_DOC_VEHICLES_TITLE">
+                <Original>Vehicles</Original>
+                <German>Fahrzeuge</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_DOC_VEHICLES_TEXT">
+                <Original>&lt;marker name='blufor_base'&gt;&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\destroy_ca.paa' width='20' height='20' color='#FFBF00'/&gt; Respawn:&lt;/marker&gt;&lt;br/&gt; When a vehicle is destroyed it will not respawn in base, you need to tow or lift it back to base and repair it near the logistic point (Interact with the red box). Helicopter wrecks can only be lifted. &lt;br/&gt; The Chinook is the only exception, it will respawn after 30 seconds. &lt;br/&gt;&lt;br/&gt; &lt;marker name='blufor_base'&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\rearm_ca.paa' width='20' height='20' color='#FFBF00'/&gt; Rearm:&lt;/marker&gt;&lt;br/&gt; You can also rearm them by spawning the corresponding caliber at logistic point (Interact with the red box, select the vehicle type and caliber). Carry the ammo created and interact with the vehicle to rearm. This only works if rearming is setting on entire magazine or amount based on caliber (not for entire vehicle setting).</Original>
+                <German>&lt;marker name='blufor_base'&gt;&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\destroy_ca.paa' width='20' height='20' color='#FFBF00'/&gt; Respawn:&lt;/marker&gt;&lt;br/&gt; Wenn ein Fahrzeug zersört wurde, wird dies nicht Respawnen. Es muss durch Abschleppen oder Anheben(Sling-Load) zum Logisik-Punkt gebracht und dort repariert werden (mit der roten Box interagieren). Wracks von Hubschraubern können nur angehoben werden (Sling-Load). &lt;br/&gt; Die einzigste Ausnahme hierbei ist der Chinook. Er respawnt nach 30 Sekunden. &lt;br/&gt;&lt;br/&gt; &lt;marker name='blufor_base'&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\rearm_ca.paa' width='20' height='20' color='#FFBF00'/&gt; Aufmunitionieren:&lt;/marker&gt;&lt;br/&gt; Fahrzeuge können Aufmunitioniert werden, in dem man das entsprechende Kaliber am Logisik-Punk anfordert (mit der Roten Box interagieren: Fahzeug und Kaliber auswählen). Nun muss man nur noch die erstellte Munition zum Fahrzeug bringen und mit diesem interagieren um das aufmunitionieren zu beginnen.&lt;br/&gt;ANMERKUNG: Das funktioiert nur wenn die Aufmunitionierungseinstellung auf 'Gesamtes Magazin' oder 'Kalieberbasierte Anzahl' gestellt ist (get nicht für 'Gesamtes Fahrzeug').</German>
+            </Key>
+        </Container>
+        <Container name="Documentation: Side Mission">
+            <Key ID="STR_BTC_HAM_DOC_SIDEMISSION_TITLE">
+                <Original>Side Mission</Original>
+                <German>Nebenaufgaben</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_DOC_SIDEMISSION_TEXT">
+                <Original>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\whiteboard_ca.paa' width='20' height='20'/&gt; Side missions are really useful to raise your reputation level.&lt;br/&gt; A side mission can be requested by the officer with his self interaction menu.&lt;br/&gt; If you don't want to complete a task, you can always abort it with the self interaction menu.</Original>
+                <German>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\whiteboard_ca.paa' width='20' height='20'/&gt; Nebenaufgaben sind sehr nütlich um das Ansehen in der Bevölkerung zu erhöhen.&lt;br/&gt;Diese Aufgaben können vom Offizier über das Eigen-Interaktionsmenü angefordert werden.&lt;br/&gt;Kann man eine Mission aus verschiedenen Gründen nicht abgeschlossen werden, so kann der Offizier sie jederzeit über das Eigen-Interaktionsmenü abbrechen.</German>
+            </Key>
+        </Container>
+        <Container name="Documentation: FOB">
+            <Key ID="STR_BTC_HAM_DOC_FOB_TEXT">
+                <Original>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move1_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\run_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move2_ca.paa' width='20' height='20' /&gt; &lt;marker name='blufor_base'&gt;FOB:&lt;/marker&gt;&lt;br/&gt; In this mission a FOB is a forward spawn point, to create a FOB approach the red box at the logistic point and require a blue container.&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\Ui_f\data\Map\Markers\NATO\b_hq.paa' width='20' height='20'/&gt;  &lt;marker name='blufor_base'&gt;Deploy:&lt;/marker&gt; &lt;br/&gt; Move it where you want to deploy a new FOB and interact with it to set it up. Keep in mind that you can not deploy a FOB close to the main base (2.500m) and the terrain needs to be flat.&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Dismantle:&lt;/marker&gt; &lt;br/&gt; You can dismantle a FOB by interacting with the flag on the HQ roof.</Original>
+                <German>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move1_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\run_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move2_ca.paa' width='20' height='20' /&gt; &lt;marker name='blufor_base'&gt;FOB:&lt;/marker&gt;&lt;br/&gt; Eine FOB (Forward Operating Base / vorgeschobene Operationsbasis) dient in dieser Mission als Spawn-Punkt. Um eine FOB zu erstellen muss am Logistikpunkt ein ensprechnender Frachtcontainer(Blau) angefordert werden&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\Ui_f\data\Map\Markers\NATO\b_hq.paa' width='20' height='20'/&gt;  &lt;marker name='blufor_base'&gt;Aufbau:&lt;/marker&gt; &lt;br/&gt; Der Aufbau kann nur statfinden, wenn man sich mindestens 2,5km von der Basis entfernt hat und das Gelände relativ flach ist. Um den Aufbau zu beginnen: einfach mit dem Frachtcontainer interagieren und 'FOB aufbauen' auswählen.&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Abbau:&lt;/marker&gt; &lt;br/&gt; Auf dem Dach der FOB kann man mit der Flagge interagieren um den Abbau zu beginnen.</German>
+            </Key>
+        </Container>
+        <Container name="Documentation: Sling loading">
+            <Key ID="STR_BTC_HAM_DOC_SLING_TITLE">
+                <Original>Sling loading</Original>
+                <German>Lasten heben (Hubschrauber)</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_DOC_SLING_TEXT">
+                <Original>=BTC= Lift will not replace the A3 sling loading, you can use both.&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\container_ca.paa' width='20' height='20'/&gt; &lt;img image='\A3\air_f_beta\Heli_Transport_01\Data\UI\Map_Heli_Transport_01_base_CA.paa' width='20' height='20'/&gt; Lifting an object is pretty simple. Get in a chopper as pilot, hover above the object and interact with the chopper to deploy ropes.&lt;br/&gt; When you are in the right position a new scroll wheel action will appear ('HOOK'). If you want you can open the HUD to facilitate the operation.&lt;br/&gt; &lt;img image='\z\ace\addons\logistics_wirecutter\ui\wirecutter_ca.paa' width='20' height='20'/&gt; To release an object open you self interaction menu and select 'CUT ROPES'.</Original>
+                <German>=BTC= Lift ersetzt nicht das A3 Sling-Load-System, du kannst beide nutzen.&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\container_ca.paa' width='20' height='20'/&gt; &lt;img image='\A3\air_f_beta\Heli_Transport_01\Data\UI\Map_Heli_Transport_01_base_CA.paa' width='20' height='20'/&gt; Das heben von Lasten ist recht einfach. Nimm dir einen Hubschrauber, schwebe über dem Objekt und lass die Seile ab indem du mit dem Hubschrauber interagierst.&lt;br/&gt; Wenn du in der richtigen Postion bist, erscheint im Maus-Rad-Menü die Option 'EINHACKEN' mit der du die Fracht einhacken kannst. Wenn du willst kannst du auch ein HUD öffnen, welches dir deine Arbeit erleichtert.&lt;br/&gt; &lt;img image='\z\ace\addons\logistics_wirecutter\ui\wirecutter_ca.paa' width='20' height='20'/&gt; Um ein eingehacktes Objekt abzulassen, wähle im Maus-Rad-Menü die Option 'SEILE TRENNEN' aus.</German>
+            </Key>
+        </Container>
+        <Container name="Documentation: Logistic point">
+            <Key ID="STR_BTC_HAM_DOC_LOGISTICP_TITLE">
+                <Original>Logistic point</Original>
+                <German>Logistikpunkt</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_DOC_LOGISTICP_TEXT">
+                <Original>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\repair_ca.paa' width='20' height='20'/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\rearm_ca.paa' width='20' height='20'/&gt; At the logistic point you can require new objects (like ammo, fortifications, supplies for the side missions...) and repair destroyed vehicles.</Original>
+                <German>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\repair_ca.paa' width='20' height='20'/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\rearm_ca.paa' width='20' height='20'/&gt; Am Logistikpunkt kann man neue Objekte (wie zB. Munition, Baumaterial, Nachschubgüter für Nebenaufgaben...) anfordern und zerstörte Fahrzeuge reparieren.</German>
+            </Key>
+        </Container>
+        <Container name="Documentation: Logistic">
+            <Key ID="STR_BTC_HAM_DOC_LOGISTIC_TITLE">
+                <Original>Logistic</Original>
+                <German>Logistik</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_DOC_LOGISTIC_TEXT">
+                <Original>&lt;marker name='blufor_base'&gt;Cargo System:&lt;/marker&gt;&lt;br/&gt; - &lt;img image='a3\ui_f\data\IGUI\Cfg\Actions\loadVehicle_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Load:&lt;/marker&gt; You can load objects inside vehicles. Approach the object you want to load and interact with it.&lt;br/&gt; Select 'LOAD IN' option.&lt;br/&gt;  After that interact with the vehicle and select 'LOAD object selected' option.&lt;br/&gt; The object has to be close to the vehicle.&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\search_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Unload:&lt;/marker&gt; You can unload an object from a vehicle interacting with it. You can be inside the vehicle (personal interaction) or outside (object interaction).&lt;br/&gt; Select the option 'CHECK CARGO', then choose the object you want to unload from the list, and click 'UNLOAD'.&lt;br/&gt; If you are inside a chopper the object will be paradropped with a chute. If your height is too low, the object will crash down.&lt;br/&gt; Every vehicle has a 'CARGO CAPACITY' (CC in game), and every object has a 'REQUIRED CAPACITY' value (RC in game.)&lt;br/&gt; You can check those values in game with 'LOAD IN' and 'CHECK CARGO' options.&lt;br/&gt;&lt;br/&gt;&lt;br/&gt; &lt;marker name='blufor_base'&gt;Towing system:&lt;/marker&gt;&lt;br/&gt; To tow a vehicle interact with it and select the option 'HOOK'.&lt;br/&gt;After that place the tow vehicle in front of it and select 'TOW' in the interaction menu.&lt;br/&gt; If the two vehicles are too far away or the vehicle can't tow that load (Car can't tow truck or tank), the option will be disabled.&lt;br/&gt; To unhook interact with one of the two vehicles and select the option 'UNHOOK'.&lt;br/&gt;&lt;br/&gt; &lt;marker name='blufor_base'&gt;Place option:&lt;/marker&gt;&lt;br/&gt; With this option you can move heavy objects to build small outpost or base.&lt;br/&gt; When you select the option an hint will show all the keys required to move the object.</Original>
+                <German>&lt;marker name='blufor_base'&gt;Fracht-System:&lt;/marker&gt;&lt;br/&gt; - &lt;img image='a3\ui_f\data\IGUI\Cfg\Actions\loadVehicle_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Beladen:&lt;/marker&gt; Man kann Objekte in Fahrzeuge einladen. Gehen Sie an das Obekt heran und interagieren sie damit.&lt;br/&gt; Wählen sie 'EINLADEN'aus.&lt;br/&gt; Als nächstes gehen Sie zum Fahrzeug und wählen 'AUSGEWÄHLTES EINLADEN' aus.&lt;br/&gt; Denken Sie daran, dass das zu verladende Objekt sich in der Nähe des Fahrzeuges befinden muss.&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\search_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Abladen:&lt;/marker&gt; Man kann Objekte aus einen Fahrzeug entladen, indem man mit diesem interagiert. Das funktioniert von Innen (Eigen-Interaktionsmenü) und von Aussen (mit dem Objekt interagieren).&lt;br/&gt; Über den Menüpunkt 'FRACHT ÜBERPRÜFEN' kann man das zu entladende Objekt aus einer Liste auswählen und mit einem Klick auf 'ENTLADEN' ausladen.&lt;br/&gt; Wenn man sich beim Ausladen in einem Hubschrauber befindet, so wird das Objekt automatisch mit einem Fallschrim abgeworfen. Aber Achtung: Der Fallschirm öffnet sich erst ab einer bestimmten Flughöhe.&lt;br/&gt; Jedes Fahrzeug hat eine gewisse Ladekapazität ('Frachtkapazität' - CC im Spiel genannt) und jedes Objekt hat ein gewisses Ladevolumen ('benötigte Kapazität' - RC im Spiel genannt).&lt;br/&gt; Diese Werte können im Spiel mit den Actionen 'EINLADEN' und 'FRACHT ÜBERPRÜFEN' geprüft werden.&lt;br/&gt;&lt;br/&gt;&lt;br/&gt; &lt;marker name='blufor_base'&gt;Abschleppsystem:&lt;/marker&gt;&lt;br/&gt; Um ein Fahrzeug abzuschleppen muss man mit diesem interagieren und 'EINHACKEN' auswählen.&lt;br/&gt;Als nächstes muss man das Zugfahrzeug vor das abzuschleppende Fahrzeug stellen und über das Interagtionsmenü die Option 'ABSCHLEPPEN' aktivieren.&lt;br/&gt; Zu beachten ist dabei, dass die beiden Fahrzeuge nicht zu weit von einander entfernt sein dürfen. Ebenso ist daruf zu achten, dass das Zugfahrzeug auch das andere Fahrzeug abschleppen kann (zB. Autos können keine Lkw/Panzer abschleppen).&lt;br/&gt; Um das Abschleppseil wieder zu entfernen muss man einen bei einem der beiden Fahrzeuge die Option 'AUSHACKEN' auswählen.&lt;br/&gt;&lt;br/&gt; &lt;marker name='blufor_base'&gt;Platzierung von Objekten:&lt;/marker&gt;&lt;br/&gt; Mit dieser Option können Sie schwere Objekte bewegen, um einen kleinen Außenposten oder eine Basis zu bauen.&lt;br/&gt; Wenn Sie die Option auswählen, zeigt ein Hinweis alle Tasten an, die zum Verschieben des Objekts erforderlich sind.</German>
+            </Key>
+        </Container>
+        <Container name="Documentation: Hideout">
+            <Key ID="STR_BTC_HAM_DOC_HIDEOUT_TITLE">
+                <Original>Hideout</Original>
+                <German>Verstecke</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_DOC_HIDEOUT_TEXT">
+                <Original>The hideouts are a place where the Oplitas organize their movements.&lt;br/&gt;They send reinforcements from here and can attack the closest city.&lt;br/&gt;If you notice a lot of activity in an area, probably there is an hideout closeby.&lt;br/&gt;If you want to defeat the Oplitas, you need to destroy all their hideouts.&lt;br/&gt;Here an example of an hideout:&lt;br/&gt;&lt;br/&gt;&lt;img image='core\img\hideout.jpg' width='256' height='256'/&gt;&lt;br/&gt;&lt;br/&gt;To destroy an hideout just place a satchel near the ammo box, it's close to the flag, and blow it off!</Original>
+                <German>In den Verstecken planen und organisieren die Oplitas ihre Einstäze und Bewegungen.&lt;br/&gt;Von hier wird Verstärkung auf umliegende Gebiete verteilt. Ebenso ist ein Angriff auf die nächste Stadt von hier aus möglich.&lt;br/&gt;Sollten Sie eine erhöhte feindliche Aktivität in der Gegend festestellen, so befindet sich möglicherweise ein Versteck in der Nähe.&lt;br/&gt;Wenn Sie die Oplitas besiegen wollen, so müssen Sie alle Verstecke zerstören.&lt;br/&gt;Hier ein kleines Beispiel für ein Versteck:&lt;br/&gt;&lt;br/&gt;&lt;img image='core\img\hideout.jpg' width='256' height='256'/&gt;&lt;br/&gt;&lt;br/&gt;Das Versteck kann zerstört werden in dem man eine Sprengladung in der Nähe der Munitionskiste oder der Flagge zündet!</German>
+            </Key>
+        </Container>
+        <Container name="Documentation: IED">
+            <Key ID="STR_BTC_HAM_DOC_IED_TEXT">
+                <Original>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; Any object could be an IED, approach it carefully (DO NOT rotate while you are walking: prefer walk, stop, rotate, walk again etc). Turn On your mine detector (VMH3 or VMMH3) and search for a charge in a circle of 2 meter around.&lt;br/&gt; &lt;img image='\z\ace\addons\explosives\UI\Defuse_ca.paa' width='20' height='20'/&gt; If you are an engineer and have a defusal kit, you can disarm it.&lt;br/&gt; You can also blow them off with high caliber and explosive satchels.</Original>
+                <German>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; Jedes Objekt kann eine IED sein, seien sie ensprechen Vorsichtig und machen Sie keine hastigen Bewegungen (NICHT drehen wenn man läuft: besser gehen, stop, drehen, gehen und so weiter). Schalten Sie ihren Minendetektor (VMH3 oder VMMH3) ein und suchen sie in eim 2m Radius nach der Ladung.&lt;br/&gt; &lt;img image='\z\ace\addons\explosives\UI\Defuse_ca.paa' width='20' height='20'/&gt; Wenn Sie ein Ingenieur sind und ein Entschärfungskit dabei habe, können Sie die Sprengladung entschärfen.&lt;br/&gt; Es is ebenfalls möglich die IED mithilfe von hohen Kalibern oder Sprengladungen zu entfernen (kontrollierte Explosion).</German>
+            </Key>
+        </Container>
+        <Container name="Documentation: Intel">
+            <Key ID="STR_BTC_HAM_DOC_INTEL_TITLE">
+                <Original>Intel</Original>
+                <German>Informationen</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_DOC_INTEL_TEXT">
+                <Original>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\map_ca.paa' width='20' height='20'/&gt; Intel can be retrieved in the following ways:&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\search_ca.paa' width='13' height='13'/&gt; Searching dead bodies&lt;br/&gt; - &lt;img image='\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\instructor_ca.paa' width='13' height='13'/&gt; Interrogate prisoner&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='13' height='13'/&gt; Talking to civilians&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\talk_ca.paa' width='20' height='20'/&gt; Keep in mind that only the interpreter can talk to civilians and they can lie if your reputation level is low.&lt;br/&gt;&lt;br/&gt; When you find an intel from a dead body or interrogate a prisoner, a marker will appear in the map. Remember, prisoner have a random number of intel more or less interesting.&lt;br/&gt; There are two types of marker:&lt;br/&gt; - Red question mark (&lt;img image='\A3\ui_f\data\map\markers\handdrawn\unknown_CA.paa' width='13' height='13' color='#ff0000'/&gt;): ammo cache intel&lt;br/&gt; - Red exclamation mark (&lt;img image='\A3\ui_f\data\map\markers\handdrawn\warning_CA.paa' width='13' height='13' color='#ff0000'/&gt;): hideout intel&lt;br/&gt;&lt;br/&gt;&lt;br/&gt; When you destroy an hideout or an ammo cache, all the markers related to it will be deleted.</Original>
+                <German>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\map_ca.paa' width='20' height='20'/&gt;  Informationen kann man auf verschiedene Arten erhalten:&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\search_ca.paa' width='13' height='13'/&gt; Durchsuchen von toten Personen&lt;br/&gt; - &lt;img image='\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\instructor_ca.paa' width='13' height='13'/&gt; Verhören von Gefangenen&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='13' height='13'/&gt; Mit Zivilisten reden&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\talk_ca.paa' width='20' height='20'/&gt; Nur der Dolmetscher kann sich mit Zivilisten unterhalten. Wenn ihr Ansehen bei der Bevölkerunge niedrig ist, so kann es auch mal vorkommen das manche Zivilisten sie belügen.&lt;br/&gt;&lt;br/&gt; Wenn Sie Information erhalten, erscheint eine Markierung auf der Karte. Zur Erinnerung: Gefangene habe mal mehr und mal weniger interessante Informationen.&lt;br/&gt; Es gibt zwei Arten von Markierungen:&lt;br/&gt; - Ein rotes Fragezeichen (&lt;img image='\A3\ui_f\data\map\markers\handdrawn\unknown_CA.paa' width='13' height='13' color='#ff0000'/&gt;): Information über ein Waffenlager &lt;br/&gt; - Ein rotes Ausrufezeichen (&lt;img image='\A3\ui_f\data\map\markers\handdrawn\warning_CA.paa' width='13' height='13' color='#ff0000'/&gt;): Information über ein Versteck &lt;br/&gt;&lt;br/&gt;&lt;br/&gt; Wenn Sie ein Versteck oder ein Waffenlager zersört haben, so werden alle relevanten Markierungen automatisch gelöscht.</German>
+            </Key>
+        </Container>
+        <Container name="Documentation: Reputation">
+            <Key ID="STR_BTC_HAM_DOC_REPUTATION_TITLE">
+                <Original>Reputation</Original>
+                <German>Ansehen</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_DOC_REPUTATION_TEXT">
+                <Original>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\talk_ca.paa' width='20' height='20'/&gt; Reputation can be ask to civilian&lt;br/&gt; Bad actions cause bad effects.&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='20' height='20'/&gt; Helping the local population by fighting the Oplitas and disarming IED's will rise your reputation; killing civilians, mutilating alive/dead civilians, firing near civilians for no reason, firing to civilian car, damaging/destroying buildings, losing vehicles, player respawns will decrease your repution. At the beginning you have a very low reputation level, so civilians won't help you in revealing important information about the Oplitas, they will likely lie instead.&lt;br/&gt; Aborting a side mission does not affect reputation.</Original>
+                <German>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\talk_ca.paa' width='20' height='20'/&gt; Ihr Ansehen bei der Bevölkerung können Sie bei Zivilisten erfragen &lt;br/&gt; Schlechte bzw. böse Handlungen habe zur Folge das ihr Ansehen sinkt. &lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='20' height='20'/&gt; Das Unterstützen der lokalen Bevölkerung, das Entschärfen von IEDs und der aktive Kampf gegen die Oplitas wird sich positiv auf ihr Ansehen auswirken. Negative Aktionen wie zb. das Töten oder verstümmeln von Zivlisten, das grundlose Abfeueren einer Waffe in der Nähe von Zivilisten, das Zerstören oder Beschädigen von Gebäuden, der Angriff auf zivile Fahrzeuge, der Verlust von Fahrzeugen im Allgemeinen oder das Respawnen haben hingegen einen nicht so guten Effekt. Zu Beginn ist Ihr Ansehen nur recht gering, weshalb es sein kann das Zivlisten eher zruückhaltend mit Informationen sind. In manchen Fällen werden die Zivilisten Sie auch einfach belügen.&lt;br/&gt; Das Abbrechen von Nebenaufgaben hat keine Auswirkung auf Ihr Ansehen.</German>
+            </Key>
+        </Container>
+        <Container name="Documentation: Orders">
+            <Key ID="STR_BTC_HAM_DOC_ORDERS_TITLE">
+                <Original>Orders</Original>
+                <German>Befehle (Zivilisten)</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_DOC_ORDERS_TEXT">
+                <Original>Any player can give orders to civilians.&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; To do this, just open your self interaction menu and select 'ORDERS' or use one of the shortcuts. Shortcuts can changed under 'configure' &gt;&gt; 'controls' &gt;&gt; 'configure addons' &gt;&gt; 'Hearts and Minds: Mission' (drop down menu).&lt;br/&gt; Your options are:&lt;br/&gt; - STOP&lt;br/&gt; - GET DOWN&lt;br/&gt; - GO AWAY&lt;br/&gt;&lt;br/&gt; If you want to give an order to just one unit, interact with it (ace object interaction).&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='20' height='20'/&gt; You can also drop leaflets to ask all civilians in a circle of 200m to evacuate to a religious building (if not available a safe area) with a drone.</Original>
+                <German>Jeder Spieler kann einem Zivlisten Anweisungen geben.&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; Dies geht recht einfach in dem man das Eigen-Interaktionsmenü öffnet und dann 'BEFEHLE(ZIVILISTEN)' auswählt. Oder in dem man Kurztasten nutzt. Diese können unter 'Konfigurieren' &gt;&gt; 'Steuerung' &gt;&gt; 'Modifikationen anpassen' &gt;&gt; Hearts and Minds: Mission' (Drop-Down-Menü) geändert werden.&lt;br/&gt;&lt;br/&gt; Folgende Optionen stehen zur Verfügung:&lt;br/&gt; - STOPP!&lt;br/&gt; - AUF DEN BODEN!&lt;br/&gt; - GEH WEG!&lt;br/&gt;&lt;br/&gt; Wenn Sie einen Befehl an eine bestimmte Person geben wollen, so können Sie auch direkt mir dieser Interagieren (ACE Objekt-Interaction).&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='20' height='20'/&gt; Sie können mithilfe einer Drohne Broschüren abwerfen, um die Zivilisten im Umkreis von ca. 200 m aufzufordern, sich in dem nächsten religiösen Gebäude einzufinden (sollte kein Gebäude vorhanden sein, so wird ein sicherer Bereich festgelegt).</German>
+            </Key>
+        </Container>
+        <Container name="Documentation: Traffic">
+            <Key ID="STR_BTC_HAM_DOC_TRAFFIC_TITLE">
+                <Original>Traffic</Original>
+                <German>Straßenverkehr</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_DOC_TRAFFIC_TEXT">
+                <Original>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='20' height='20'/&gt; &lt;img image='\A3\soft_f_gamma\van_01\Data\UI\map_van_01_box_CA.paa' width='20' height='20'/&gt; Civilians are travelling by vehicle across cities. If your reputation is higher than normal, you can ask for a lift to a location chosen on the map. If you bump into a Oplitas patrol, don't worry, the civilian driver will do their best to hide you in the car.&lt;br/&gt;</Original>
+                <German>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='20' height='20'/&gt; &lt;img image='\A3\soft_f_gamma\van_01\Data\UI\map_van_01_box_CA.paa' width='20' height='20'/&gt; Zivlisten sind mit Fahrzeugen in den Städten unterwegs. Wenn Sie ein hohes Ansehen in der Bevölkerung genießen, so sind Zivlisten auch gerne mal dazu bereit Sie mitzunehmen (nutzen sie die Karte um den Zivlisten zu zeigen wo sie hinwollen). Sollten Sie dabei durch Zufall auf Feinde stoßen, so wird der Zivilist sein Bestes geben um sie im Fahrzeug zu verstecken.&lt;br/&gt;</German>
+            </Key>
+        </Container>
+        <Container name="Documentation: Gear">
+            <Key ID="STR_BTC_HAM_DOC_GEAR_TITLE">
+                <Original>Gear (Arsenal)</Original>
+                <German>Ausrüstung (Arsenal)</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_DOC_GEAR_TEXT">
+                <Original>&lt;img image='\A3\Ui_f\data\Logos\a_64_ca.paa' width='20' height='20'/&gt;You can choose your gear at the red box inside the base. Located at the spawn point.&lt;br/&gt;</Original>
+                <German>&lt;img image='\A3\Ui_f\data\Logos\a_64_ca.paa' width='20' height='20'/&gt;Sie können ihre Ausrüstung jederzeit an der roten Box in der Basis anpassen. Diese steht in der Nähe des Startpunktes&lt;br/&gt;</German>
+            </Key>
+        </Container>
+        <Container name="Documentation: Interaction">
+            <Key ID="STR_BTC_HAM_DOC_INTERACTION_TITLE">
+                <Original>Interaction</Original>
+                <German>Interaktion</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_DOC_INTERACTION_TEXT">
+                <Original> &lt;img image='\z\ace\addons\interaction\UI\Icon_Module_Interaction_ca.paa' width='20' height='20'/&gt;Use ACE 3 interactions system.</Original>
+                <German> &lt;img image='\z\ace\addons\interaction\UI\Icon_Module_Interaction_ca.paa' width='20' height='20'/&gt;Nutzen Sie das Interactions-System von ACE 3.</German>
+            </Key>
+        </Container>
+        <Container name="Documentation: Version">
+            <Key ID="STR_BTC_HAM_DOC_VERSION_TITLE">
+                <Original>Version</Original>
+                <German>Version</German>
+            </Key>
+        </Container>
+    </Package>
+    <Package name="Parameters">
+        <Container name="Parameters: Time">
+            <Key ID="STR_BTC_HAM_PARAM_TIME_TITLE">
+                <Original>&lt;&lt; Time options &gt;&gt;</Original>
+                <German>&lt;&lt; Zeiteinstellungen &gt;&gt;</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_TIME_START">
+                <Original>Set the start time:</Original>
+                <German>Legt die Startzeit fest:</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_TIME_MULTIP">
+                <Original>Acceleration time multiplier:</Original>
+                <German>Zeit-Beschleunigungs-Multiplikator:</German>
+            </Key>
+        </Container>
+        <Container name="Parameters: Database">
+            <Key ID="STR_BTC_HAM_PARAM_DB_LOAD">
+                <Original>Load the savegame (if available)</Original>
+                <German>Spielstand wird geladen (wenn verfügbar)</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_DB_ASAVE">
+                <Original>Auto savegame (can break player immersion)</Original>
+                <German>Spielstand autom. sichern (kann die Immersion stören)</German>
+            </Key>
+        </Container>
+        <Container name="Parameters: Factions">
+            <Key ID="STR_BTC_HAM_PARAM_FAC_TITLE">
+                <Original>&lt;&lt; Faction options &gt;&gt;</Original>
+                <German>&lt;&lt; Fraktion Einstellungen &gt;&gt;</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_FAC_ETYPE">
+                <Original>Enemy type:</Original>
+                <German>Feindliche Einheiten:</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_FAC_EAA">
+                <Original>Anti-Air infantry:</Original>
+                <German>feindl. Fliegerabwehrtruppen:</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_FAC_ETANK">
+                <Original>Enemy uses Tank:</Original>
+                <German>feindl. Panzer:</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_FAC_CTYPE">
+                <Original>Civil type:</Original>
+                <German>Zivile Einheiten:</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_FAC_CTYPEVEH">
+                <Original>Civil vehicle type:</Original>
+                <German>Fahrzeuge der Zivilen Einheite:</German>
+            </Key>
+        </Container>
+        <Container name="Parameters: IEDS">
+            <Key ID="STR_BTC_HAM_PARAM_IED_TITLE">
+                <Original>&lt;&lt; IED options &gt;&gt;</Original>
+                <German>&lt;&lt; IED Einstellungen &gt;&gt;</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_IED_RATIO">
+                <Original>IEDs ratio:</Original>
+                <German>IED Wahrscheinlichkeit:</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_IED_RATIO_LOW">
+                <Original>Low</Original>
+                <German>Niedrig</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_IED_RATIO_NORMAL">
+                <Original>Normal</Original>
+                <German>Normal</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_IED_RATIO_HIGH">
+                <Original>High</Original>
+                <German>Hoch</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_IED_SPOT">
+                <Original>IEDs spotting difficulty</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_IED_SPOT_VERYEASY">
+                <Original>Very easy</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_IED_SPOT_EASY">
+                <Original>Easy</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_IED_DRONE">
+                <Original>Drone bomber:</Original>
+            </Key>
+        </Container>
+        <Container name="Parameters: Hideout/Cache">
+            <Key ID="STR_BTC_HAM_PARAM_HIDE_TITLE">
+                <Original>&lt;&lt; Hideout/Cache options &gt;&gt;</Original>
+                <German>&lt;&lt; Verstecke/Waffenlager Einstellungen &gt;&gt;</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_HIDE_NUMBERS">
+                <Original>Hideout numbers:</Original>
+                <German>Anzahl der Verstecke:</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_HIDE_NUMBERS_RND">
+                <Original>Random</Original>
+                <German>Zufällig</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_CACHE_DISTANCE">
+                <Original>Info cache distance:</Original>
+                <German>Distanzangabe für ein Waffenlager(Startwert):</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_CACHE_RATIO">
+                <Original>Cache info ratio:</Original>
+                <German>Verkürzungschritt je gefundener Information:</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_CACHE_DEADINFO">
+                <Original>Intel from dead bodies chance:</Original>
+                <German>Chance auf Informationen von toten Gegnern:</German>
+            </Key>
+        </Container>
+        <Container name="Parameters: Medical">
+            <Key ID="STR_BTC_HAM_MEDI_TITLE">
+                <Original>&lt;&lt; Medical options &gt;&gt;</Original>
+                <German>&lt;&lt; Sanitäts-Einstellungen &gt;&gt;</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_MEDI_REDEPLOY">
+                <Original>Allow re-deploy?</Original>
+                <German>Verlegen erlauben?</German>
+            </Key>
+        </Container>
+        <Container name="Parameters: AI Skill">
+            <Key ID="STR_BTC_HAM_PARAM_SKILL_TITLE">
+                <Original>&lt;&lt; A3 Skill options &gt;&gt;</Original>
+                <German>&lt;&lt; A3 Skill options &gt;&gt;</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_SKILL_ONOFF">
+                <Original>Set skill?</Original>
+                <German>KI-Fertigkeiten festlegen?</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_SKILL_GEN">
+                <Original>Set skill, general</Original>
+                <German>KI-Fertigkeit, Allgemein</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_SKILL_AIMACC">
+                <Original>Set skill, aimingAccuracy</Original>
+                <German>KI-Fertigkeit, Zielgenauigkeit</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_SKILL_AIMSKILL">
+                <Original>Set skill, aimingShake</Original>
+                <German>KI-Fertigkeit, Verwackeln beim Zielen</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_SKILL_AIMSPEED">
+                <Original>Set skill, aimingSpeed</Original>
+                <German>KI-Fertigkeit, Zielgeschwindigkeit</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_SKILL_ENDURANCE">
+                <Original>Set skill, endurance</Original>
+                <German>KI-Fertigkeit, Ausdauer</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_SKILL_SPOTDIST">
+                <Original>Set skill, spotDistance</Original>
+                <German>KI-Fertigkeit, Aufklärungsentfernung</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_SKILL_SPOTTIME">
+                <Original>Set skill, spotTime</Original>
+                <German>KI-Fertigkeit, Aufklärungsgeschwindigkeit</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_SKILL_COURAGE">
+                <Original>Set skill, courage</Original>
+                <German>KI-Fertigkeit, Mut</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_SKILL_RELOAD">
+                <Original>Set skill, reloadSpeed</Original>
+                <German>KI-Fertigkeit, Nachladegeschwindigkeit</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_SKILL_COMMANDING">
+                <Original>Set skill, commanding</Original>
+                <German>KI-Fertigkeit, Befehligen</German>
+            </Key>
+        </Container>
+        <Container name="Parameters: Gameplay">
+            <Key ID="STR_BTC_HAM_PARAM_GAMEPLAY_TITLE">
+                <Original>&lt;&lt; Gameplay options &gt;&gt;</Original>
+                <German>&lt;&lt; Spieleinstellungen &gt;&gt;</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_GAMEPLAY_SEA">
+                <Original>Extend battlefield to sea:</Original>
+                <German>Kämpfe aufs Wasser ausweiten:</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_GAMEPLAY_ARMEDHIDEOUT">
+                <Original>Add armed vehicles in Hideout:</Original>
+                <German>Gepanzerte Fahrzeuge bei den Verstecken:</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_GAMEPLAY_ARMEDOTHER">
+                <Original>Add armed vehicles in Side mission/Cache:</Original>
+                <German>Gepanzerte Fahrzeuge bei den Nebenmissionen/ Waffenlagern:</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_GAMEPLAY_SIDEM">
+                <Original>Side mission cycle:</Original>
+                <German>Autom. nächste Nebenmission starten:</German>
+            </Key>
+        </Container>
+        <Container name="Parameters: Other">
+            <Key ID="STR_BTC_HAM_PARAM_OTHER_TITLE">
+                <Original>&lt;&lt; Other options &gt;&gt;</Original>
+                <German>&lt;&lt; Sonstige Einstellungen &gt;&gt;</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_OTHER_ARSENALTYPE">
+                <Original>Type of the arsenal:</Original>
+                <German>Art des Arsenals:</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_OTHER_ARSENALTYPE_BIS">
+                <Original>BIS - Vanilla</Original>
+                <German>BIS - Vanilla</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_OTHER_ARSENALTYPE_ACE">
+                <Original>ACE 3</Original>
+                <German>ACE 3</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_OTHER_ARSENALTYPE_BA">
+                <Original>BIS - Vanilla and ACE 3</Original>
+                <German>BIS - Vanilla und ACE 3</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_OTHER_ARSENALTYPE_ACE_PLUS">
+                <Original>ACE 3 (scroll wheel action)</Original>
+                <German>ACE 3 (Maus-Rad-Menü)</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_OTHER_ARSENALTYPE_BA_PLUS">
+                <Original>BIS - Vanilla and ACE 3 (scroll wheel action)</Original>
+                <German>BIS - Vanilla und ACE 3 (Maus-Rad-Menü)</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_OTHER_REPSTART">
+                <Original>Reputation at start:</Original>
+                <German>Ansehen zu Beginn:</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_OTHER_REPSTART_VLOW">
+                <Original>Very Low</Original>
+                <German>Sehr Niedrig</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_OTHER_GARAGEADMIN">
+                <Original>Activate garage for admin:</Original>
+                <German>Virtuelle Garage für den Admin:</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_OTHER_SPAWNRAD">
+                <Original>Spawn city radius offset:</Original>
+                <German>Radius zum Spawnen von Einheiten:</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_OTHER_SPAWNRAD_DEF">
+                <Original>300 m (Default: Altis, Tanoa)</Original>
+                <German>300 m (Standard: Altis, Tanoa)</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_OTHER_DISABLESPAWN">
+                <Original>Disable city activation when a plane or helicopter (&gt;190Km/h) is flying above:</Original>
+                <German>Das Spawnen von Einheiten deaktivieren, wenn ein Flugzeug oder Helikopter (&gt;190Km/h) drüber fliegt:</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_OTHER_DEBUG">
+                <Original>Debug:</Original>
+                <German>Debug:</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_OTHER_DEBUG_LOGONLY">
+                <Original>Log only</Original>
+                <German>Nur Logs</German>
+            </Key>
+        </Container>
+    </Package>
+    <Package name="Missions">
+        <Container name="Mission: Basics">
+            <Key ID="STR_BTC_HAM_MISSION_BASIC_WIN_TITLE">
+                <Original>Mission accomplished!</Original>
+                <German>Mission erfolgreich!</German>
+            </Key>
+        </Container>
+        <Container name="Mission: Defeat the Oplitas">
+            <Key ID="STR_BTC_HAM_MISSION_DEFEAT_TITLE">
+                <Original>Defeat the Oplitas</Original>
+                <German>Besiege die Oplitas</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_MISSION_DEFEAT_DESC">
+                <Original>Defeat the Oplitas once and for all</Original>
+                <German>Besiegen Sie die Oplitas ein für allemal</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_MISSION_DEFEAT_WIN_TEXT">
+                <Original>Oplitas have been finally defeated!    Mission accomplished!</Original>
+                <German>Die Oplitas wurde endgültig besiegt!    Mission erfüllt!</German>
+            </Key>
+        </Container>
+        <Container name="Mission: Destroy all the hideouts">
+            <Key ID="STR_BTC_HAM_MISSION_DESTORY_TITLE">
+                <Original>Destroy all the hideouts</Original>
+                <German>Alle Verstecke zerstören</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_MISSION_DESTORY_DESC">
+                <Original>Destroy all the hideouts of the Oplitas</Original>
+                <German>Zerstören Sie sämtliche Verstecke der Oplitas</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_MISSION_DESTORY_WIN_TEXT">
+                <Original>All the hideouts have been destroyed!</Original>
+                <German>Alle Verstecke wurden zerstört!</German>
+            </Key>
+        </Container>
+        <Container name="Mission: Seize the last positions">
+            <Key ID="STR_BTC_HAM_MISSION_SEIZE_TITLE">
+                <Original>Seize the last Oplitas positions</Original>
+                <German>Erobern Sie die letzten Stellungen</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_MISSION_SEIZE_MRK">
+                <Original>Seize the last Oplitas fighters positions</Original>
+                <German>Erobern Sie die letzten Positionen der Oplitas-Kämpfer</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_MISSION_SEIZE_DESC">
+                <Original>Seize the last positions held by Oplitas fighters</Original>
+                <German>Erobern Sie die letzten Stellungen der Oplitas-Kämpfer zurück.</German>
+            </Key>
+        </Container>
+    </Package>
+    <Package name="Side Missions">
+        <Container name="Basics">
+            <Key ID="STR_BTC_HAM_SIDE_BASIC_WIN_TITLE">
+                <Original>Side mission Accomplished!</Original>
+                <German>Nebenmission erfolgreich!</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_BASIC_LOSE_TITLE">
+                <Original>Side mission failed!</Original>
+                <German>Nebenmission fehlschlagen!</German>
+            </Key>
+        </Container>
+        <Container name="Capture officer">
+            <Key ID="STR_BTC_HAM_SIDE_CAPOFF_TITLE">
+                <Original>Capture commander in concealed convoy</Original>
+                <German>Offizier gefangen nehmen</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_CAPOFF_DESC">
+                <Original>Capture an officer travelling in a concealed convoy, then bring him to the base for interrogation. He is his responsible for terrorizing local population!</Original>
+                <German>Ein feindlicher Offizier ist in einem getarnten Konvoi unterwegs. Finden und bringen Sie ihn in die Basis für weitere Befragungen. Er ist einer der Hauptverantwortlichen für die Terrorisierung der lokalen Bevölkerung!</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_CAPOFF_FAILED_TEXT">
+                <Original>The officer was not captured</Original>
+                <German>Der Offizier wurde nicht gefangen genommen</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_CAPOFF_WIN_TEXT">
+                <Original>The officer has been captured!</Original>
+                <German>Der Offizier wurde erfolgreich gefangen genommen!</German>
+            </Key>
+        </Container>
+        <Container name="Checkpoint">
+            <Key ID="STR_BTC_HAM_SIDE_CHECKPOINT_MRK">
+                <Original>Checkpoint</Original>
+                <German>Kontrollpunkt</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_CHECKPOINT_TITLE">
+                <Original>Destroy checkpoints in %1</Original>
+                <German>Kontrollpunkte zerstören in %1</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_CHECKPOINT_DESC">
+                <Original>Checkpoints have been located in %1. Local population is asking for your help to destroy ammo box in all checkpoints!</Original>
+                <German>Kontrollpunkt wurden in der Nähe von %1 gesichtet. Die lokale Bevölkerung bittet Sie darum, alle Munitionskisten und den jeweiligen Kontrollpunkt zu beseitigen!</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_CHECKPOINT_FAILED_TEXT">
+                <Original>Checkpoints were not destroyed</Original>
+                <German>Die Kontrollpunkte wurden nicht zerstört</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_CHECKPOINT_WIN_TEXT">
+                <Original>Checkpoints have been destroyed!</Original>
+                <German>Die Kontrollpunkte wurden zerstört!</German>
+            </Key>
+        </Container>
+        <Container name="Civ treatment boat">
+            <Key ID="STR_BTC_HAM_SIDE_CIVTREATBOAT_TITLE">
+                <Original>Medical emergency call on sea</Original>
+                <German>Medizinischer Notruf auf hoher See</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_CIVTREATBOAT_DESC">
+                <Original>A civilian is calling for a medic in %1, treat and wait for patient stabilization.</Original>
+                <German>Ein Zivilist aus %1 hat einen Notruf abgesetzt. Behandeln Sie ihn umd warten Sie darauf das sein Zustand sich stabilisiert.</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_CIVTREATBOAT_FAILED_TEXT">
+                <Original>The patient was not stabilized</Original>
+                <German>Der Patient wurde nicht rechtzeitig stabilisiert</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_CIVTREATBOAT_WIN_TEXT">
+                <Original>The civilian has been stabilized!</Original>
+                <German>Der Patient wurde erfolgreich behandelt!</German>
+            </Key>
+        </Container>
+        <Container name="Civ treatment">
+          <Key ID="STR_BTC_HAM_SIDE_CIVTREAT_MRK">
+              <Original>Civil need help</Original>
+              <German>Zivilist braucht Hilfe</German>
+          </Key>
+          <Key ID="STR_BTC_HAM_SIDE_CIVTREAT_TITLE">
+              <Original>Medical emergency call in %1</Original>
+              <German>Medizinischer Notruf aus %1</German>
+          </Key>
+          <Key ID="STR_BTC_HAM_SIDE_CIVTREAT_DESC">
+              <Original>A civilian is calling for a medic in %1, treat and wait for patient stabilization </Original>
+              <German>Ein Zivilist aus %1 hat einen Notruf abgesetzt. Behandeln Sie ihn umd warten Sie darauf das sein Zustand sich stabilisiert </German>
+          </Key>
+          <Key ID="STR_BTC_HAM_SIDE_CIVTREAT_FAILED_TEXT">
+              <Original>The patient was not stabilized</Original>
+              <German>Der Patient wurde nicht rechtzeitig stabilisiert</German>
+          </Key>
+          <Key ID="STR_BTC_HAM_SIDE_CIVTREAT_WIN_TEXT">
+              <Original>The civilian has been stabilized!</Original>
+              <German>Der Patient wurde erfolgreich behandelt!</German>
+          </Key>
+        </Container>
+        <Container name="Convoy">
+          <Key ID="STR_BTC_HAM_SIDE_CONVOY_STARTCHAT">
+              <Original>Convoy has left the starting point!</Original>
+              <German>Der Konvoi ist losgefahren!</German>
+          </Key>
+          <Key ID="STR_BTC_HAM_SIDE_CONVOY_MRKSTART">
+              <Original>Convoy Start</Original>
+              <German>Konvoi Start</German>
+          </Key>
+          <Key ID="STR_BTC_HAM_SIDE_CONVOY_MRKEND">
+              <Original>Convoy End</Original>
+              <German>Konvoi Ende</German>
+          </Key>
+          <Key ID="STR_BTC_HAM_SIDE_CONVOY_TITLE">
+              <Original>Destroy Oplitas convoy attacking %1</Original>
+              <German>Bewaffneter Konvoi unterwegs nach %1</German>
+          </Key>
+          <Key ID="STR_BTC_HAM_SIDE_CONVOY_DESC">
+              <Original>An armed Oplitas convoy is going to attack %1. Local population is asking for your help to destroy it before it gets there!</Original>
+              <German>Ein bewaffneter Konvoi der Oplitas will %1 angreifen. Schützen Sie die Bevölkerung in dem Sie den Konvoi zerstören bevor er dort ankommt</German>
+          </Key>
+          <Key ID="STR_BTC_HAM_SIDE_CONVOY_FAILED_TEXT">
+              <Original>The armed convoy was not destroyed</Original>
+              <German></German>
+          </Key>
+          <Key ID="STR_BTC_HAM_SIDE_CONVOY_WIN_TEXT">
+              <Original>The armed convoy has been destroyed!</Original>
+              <German>Der bewaffnete Konvoi ist zerstört worden!</German>
+          </Key>
+        </Container>
+        <Container name="Hack">
+            <Key ID="STR_BTC_HAM_SIDE_HACK_STARTCHAT">
+                <Original>Defend the terminal until the missile is hacked!</Original>
+                <German>Verteidigt das Terminal, bis die Rakete gehackt erfolgreich gehackt ist!</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_HACK_MRK">
+                <Original>Terminal</Original>
+                <German>Terminal</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_HACK_ACEACTION">
+                <Original>Start Hacking</Original>
+                <German>Hack starten</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_HACK_TITLE">
+                <Original>Hack missile near %1</Original>
+                <German>Rakete hacken in der Nähe von %1</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_HACK_DESC">
+                <Original>Hack a prototype missile with a terminal available in %1. Defend your position until the process is done!</Original>
+                <German>Hacke eine Prototyp-Rakete mit einem in %1 verfügbaren Terminal. Verteidige deine Position, bis der Prozess abgeschlossen ist!</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_HACK_FAILED_TEXT">
+                <Original>The missile was not hacked</Original>
+                <German>Die Rakete wurde nicht gehackt</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_HACK_WIN_TEXT">
+                <Original>The missile has been hacked!</Original>
+                <German>Die Rakete wurde erfolgreich gehackt!</German>
+            </Key>
+        </Container>
+        <Container name="Hostage">
+            <Key ID="STR_BTC_HAM_SIDE_HOSTAGE_MRK">
+                <Original>Hostage</Original>
+                <German>Geisel</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_HOSTAGE_TITLE">
+                <Original>Liberate hostage near %1</Original>
+                <German>Geisel befreien: %1</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_HOSTAGE_DESC">
+                <Original>Liberate a civilian hostage in %1. The Local population is asking for your help!</Original>
+                <German>Befreien Sie eine Geisel in %1 aus den Händen der Terroristen. Die lokale Bevölkerung bittet um Ihre Hilfe!</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_HOSTAGE_FAILED_TEXT">
+                <Original>The hostage was not liberated</Original>
+                <German>Die Geisel wurde nicht befreit</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_HOSTAGE_WIN_TEXT">
+                <Original>The hostage has been liberated!</Original>
+                <German>Die Geisel wurde befreit!</German>
+            </Key>
+        </Container>
+        <Container name="Mines">
+            <Key ID="STR_BTC_HAM_SIDE_MINES_MRK">
+                <Original>Mines</Original>
+                <German>Minen</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_MINES_TITLE">
+                <Original>Minefield near %1</Original>
+                <German>Minenfeld in der Nähe von %1</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_MINES_DESC">
+                <Original>There is a minefield near %1, clear it!</Original>
+                <German>Es gibt ein Minenfeld in der Nähe von %1, räumen Sie es!</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_MINES_FAILED_TEXT">
+                <Original>The minefield was not cleared</Original>
+                <German>Das Minenfeld wurde nicht geräumt</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_MINES_WIN_TEXT">
+                <Original>The minefield has been cleared</Original>
+                <German>Alle Minen wurden entschärft</German>
+            </Key>
+        </Container>
+        <Container name="Rescue">
+            <Key ID="STR_BTC_HAM_SIDE_RESC_TITLE">
+                <Original>Rescue downed pilot near %1</Original>
+                <German>Abgestürzter Piloten in der Nähe %1</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_RESC_DESC">
+                <Original>MAYDAY-MAYDAY, a pilot crashed his helicopter near %1. Command is asking for your help to rescue and bring him back to base!</Original>
+                <German>MAYDAY-MAYDAY, ein Pilot stürzte mit seinem Helikopter in der Nähe von %1 ab. Sie haben den Befehl ihn zu retten und sicher zur Basis zurückzubringen!</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_RESC_FAILED_TEXT">
+                <Original>The pilot was not rescued</Original>
+                <German>Der Pilot wurde nicht gerettet</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_RESC_WIN_TEXT">
+                <Original>The pilot has been rescued!</Original>
+                <German>Der Pilot wurde gerettet!</German>
+            </Key>
+        </Container>
+        <Container name="Supply">
+            <Key ID="STR_BTC_HAM_SIDE_SUPPLIES_MRK">
+                <Original>Supplies</Original>
+                <German>Nachschub</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_SUPPLIES_TITLE">
+                <Original>Supply %1</Original>
+                <German>Versorgung nach %1 bringen</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_SUPPLIES_DESC">
+                <Original>The citizens of %1 are on the brink starving to death, bring them some supplies present at the logistic point!</Original>
+                <German>Die Bürger von %1 sind am verhungern. Bingen Sie ihnen Vorräte. Die Vorräte(Supplies) können beim Logistikpunkt angefordert werden.</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_SUPPLIES_FAILED_TEXT">
+                <Original>Supplies were not delivered</Original>
+                <German>Die Lieferungen haben ihr Ziel nicht erreicht</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_SUPPLIES_WIN_TEXT">
+                <Original>Supplies have been delivered</Original>
+                <German>Lieferungen wurden geliefert</German>
+            </Key>
+        </Container>
+        <Container name="Tower">
+            <Key ID="STR_BTC_HAM_SIDE_TOWER_MRK">
+                <Original>Radio Tower</Original>
+                <German>Funkturm</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_TOWER_TITLE">
+                <Original>Destroy tower in %1</Original>
+                <German>Funkturm zerstören: %1</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_TOWER_DESC">
+                <Original>A Oplitas communications tower has been located in %1. Local population is asking for your help to destroy it! (Use one M183 explosive satchel)</Original>
+                <German>Ein Funkturm der Oplitas befindet sich in %1. Die lokale Bevölkerung bittet darum diesen zu zerstören! (Nutzen Sie die M183 Sprengladungen)</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_TOWER_FAILED_TEXT">
+                <Original>The tower was not destroyed</Original>
+                <German>Der Funkturm wurde nicht zerstört</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_TOWER_WIN_TEXT">
+                <Original>The tower has been destroyed!</Original>
+                <German>Der Funkturm wurde zerstört!</German>
+            </Key>
+        </Container>
+        <Container name="Underwater generator">
+            <Key ID="STR_BTC_HAM_SIDE_UNDERWATER_MRK">
+                <Original>Generator</Original>
+                <German>Generator</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_UNDERWATER_TITLE">
+                <Original>Destroy underwater generator in %1</Original>
+                <German>Zerstöre den Unterwassergenerator in %1</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_UNDERWATER_DESC">
+                <Original>An Underwater generator has been located in %1. Local population is asking for your help to destroy it!</Original>
+                <German>Ein Unterwassergenerator wurde in der Nähe von %1 aufgeklärt. Die zivile Bevölkerung bittet um die Zerstörung des Aggregats!</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_UNDERWATER_FAILED_TEXT">
+                <Original>The underwater generator was not destroyed</Original>
+                <German>Der Unterwassergenerator wurde nicht zerstört</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_UNDERWATER_WIN_TEXT">
+                <Original>The underwater generator has been destroyed!</Original>
+                <German>Der Generator wurde zerstört!</German>
+            </Key>
+        </Container>
+        <Container name="Vehicle">
+            <Key ID="STR_BTC_HAM_SIDE_VEHICLE_MRK">
+                <Original>Vehicle needs assistance</Original>
+                <German>Fahrzeug braucht Unterstützung</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_VEHICLE_TITLE">
+                <Original>Vehicle needs assistance near %1</Original>
+                <German>Fahrzeug braucht Unterstützung in der Nähe von %1</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_VEHICLE_DESC">
+                <Original>A vehicle damaged by an IED needs assistance near %1! Repair it!</Original>
+                <German>Ein Fahrzeug wurde durch eine IED beschädigt und braucht nun Unterstützung in der Nähe von %1! Repariere Sie es!</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_VEHICLE_FAILED_TEXT">
+                <Original>The vehicle was not repaired</Original>
+                <German>Das Fahrzeug wurde nicht repariert</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_VEHICLE_WIN_TEXT">
+                <Original>The vehicle has been repaired</Original>
+                <German>Die Reparatur war erfolgreich</German>
+            </Key>
+        </Container>
+        <Container name="Conquer">
+            <Key ID="STR_BTC_HAM_SIDE_CONQUER_TITLE">
+                <Original>Free %1</Original>
+                <German>Befreie %1</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_CONQUER_DESC">
+                <Original>%1 has been conquered by the Oplitas! The Local population is being terrorized, they are asking for help!</Original>
+                <German>%1 wurde von der Oplitas erobert! Die lokale Bevölkerung wird terrorisiert, greifen Sie ein!</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_CONQUER_FAILED_TEXT">
+                <Original>The city was not conquered</Original>
+                <German>Die Stadt wurde nicht erobert</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_CONQUER_WIN_TEXT">
+                <Original>The city has been cleared!</Original>
+                <German>Die Stadt wurde erfolgreich gesichert!</German>
+            </Key>
+        </Container>
+    </Package>
+    <Package name="Actions">
+        <Container name="Action(ACE): Database handling">
+            <Key ID="STR_BTC_HAM_ACTION_DATA_MAIN">
+                <Original>Database</Original>
+                <German>Datenbank</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_ACTION_DATA_SAVE">
+                <Original>Save</Original>
+                <German>Sichern</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_ACTION_DATA_DELETE">
+                <Original>Delete</Original>
+                <German>Löschen</German>
+            </Key>
+        </Container>
+        <Container name="Action(ACE): Intel">
+            <Key ID="STR_BTC_HAM_ACTION_INTEL_SEARCH">
+                <Original>Search for intel</Original>
+                <German>Nach Informationen suchen</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_ACTION_INTEL_INTERROGATE">
+                <Original>Interrogate</Original>
+                <German>Verhören</German>
+            </Key>
+        </Container>
+        <Container name="Action(ACE): Log. Point">
+            <Key ID="STR_BTC_HAM_ACTION_LOC_MAIN">
+                <Original>Logistic</Original>
+                <German>Logistik</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_ACTION_LOGPOINT_REQOBJ">
+                <Original>Require object</Original>
+                <German>Nachschub anfordern</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_ACTION_LOGPOINT_REPWRECK">
+                <Original>Repair wreck</Original>
+                <German>Wrack reparieren</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_ACTION_LOGPOINT_REQVEH">
+                <Original>Require vehicle</Original>
+                <German>Fahrzeug anfordern</German>
+            </Key>
+        </Container>
+        <Container name="Action(ACE): Logistic">
+            <Key ID="STR_BTC_HAM_ACTION_LOGISTIC_LOADIN">
+                <Original>Load in</Original>
+                <German>Einladen</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_ACTION_LOGISTIC_LOADSEL">
+                <Original>Load selected</Original>
+                <German>Ausgewähltes einladen</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_ACTION_LOGISTIC_CHECKCARGO">
+                <Original>Check cargo</Original>
+                <German>Fracht überprüfen</German>
+            </Key>
+        </Container>
+        <Container name="Action(ACE): FOB">
+            <Key ID="STR_BTC_HAM_ACTION_FOB_MOUNT">
+                <Original>Mount FOB</Original>
+                <German>FOB aufbauen</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_ACTION_FOB_DISMANTLE">
+                <Original>Dismantle FOB</Original>
+                <German>FOB abbauen</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_ACTION_FOB_PLACE">
+                <Original>Place</Original>
+                <German>Platzieren</German>
+            </Key>
+        </Container>
+        <Container name="Action(ACE): Orders">
+            <Key ID="STR_BTC_HAM_ACTION_ORDERS_MAIN">
+                <Original>Civil Orders</Original>
+                <German>Befehle (Zivilisten)</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_ACTION_ORDERS_STOP">
+                <Original>Stop!</Original>
+                <German>Stopp!</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_ACTION_ORDERS_GETDOWN">
+                <Original>Get down!</Original>
+                <German>Auf den Boden!</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_ACTION_ORDERS_GOAWAY">
+                <Original>Go away!</Original>
+                <German>Geh weg!</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_ACTION_ORDERS_TAXI">
+                <Original>Taxi</Original>
+                <German>Taxi</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_ACTION_ORDERS_ASKINFO">
+                <Original>Ask info</Original>
+                <German>Nach Informationen fragen</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_ACTION_ORDERS_ASKREP">
+                <Original>Ask Reputation</Original>
+                <German>Nach dem Ansehen fragen</German>
+            </Key>
+        </Container>
+        <Container name="Action(ACE): Side missions">
+            <Key ID="STR_BTC_HAM_ACTION_SIDEMISSION_MAIN">
+                <Original>Side mission</Original>
+                <German>Nebenmission</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_ACTION_SIDEMISSION_ABORT">
+                <Original>Abort</Original>
+                <German>Abbrechen</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_ACTION_SIDEMISSION_REQ">
+                <Original>Request</Original>
+                <German>Anfordern</German>
+            </Key>
+        </Container>
+        <Container name="Action(ACE): Re-deploy">
+            <Key ID="STR_BTC_HAM_ACTION_REDEPLOY_MAIN">
+                <Original>Re-deploy</Original>
+                <German>Verlegen</German>
+            </Key>
+        </Container>
+        <Container name="Action : Arsenal (BIS)">
+            <Key ID="STR_BTC_HAM_ACTION_ARSENAL_OPEN_BIS">
+                <Original>&lt;t color='#ff1111'&gt;Arsenal (BIS)&lt;/t&gt;</Original>
+                <German>&lt;t color='#ff1111'&gt;Arsenal (BIS)&lt;/t&gt;</German>
+            </Key>
+        </Container>
+        <Container name="Action : Arsenal (ACE)">
+            <Key ID="STR_BTC_HAM_ACTION_ARSENAL_OPEN_ACE">
+                <Original>&lt;t color='#ff1111'&gt;Arsenal (ACE)&lt;/t&gt;</Original>
+                <German>&lt;t color='#ff1111'&gt;Arsenal (ACE)&lt;/t&gt;</German>
+            </Key>
+        </Container>
+        <Container name="Action(ACE): Veh. Init">
+            <Key ID="STR_BTC_HAM_ACTION_VEHINIT_TOW">
+                <Original>Tow</Original>
+                <German>Abschleppen</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_ACTION_VEHINIT_HOOK">
+                <Original>Hook</Original>
+                <German>Einhacken</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_ACTION_VEHINIT_UHOOK">
+                <Original>Unhook</Original>
+                <German>Aushaken</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_ACTION_VEHINIT_DEPLOYROPES">
+                <Original>Deploy ropes</Original>
+                <German>Seile auswerfen</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_ACTION_VEHINIT_CUTROPES">
+                <Original>Cut ropes</Original>
+                <German>Seile trennen</German>
+            </Key>
+        </Container>
+        <Container name="Action(ACE): Copy Paste">
+            <Key ID="STR_BTC_HAM_ACTION_COPYPASTE_TOOL">
+                <Original>Tools</Original>
+                <German>Werkzeuge</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_ACTION_COPYPASTE_COPY">
+                <Original>Copy container</Original>
+                <German>Container kopieren</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_ACTION_COPYPASTE_PASTE">
+                <Original>Paste container</Original>
+                <German>Container einfügen</German>
+            </Key>
+        </Container>
+    </Package>
+    <Package name="Conversations">
+        <Container name="Conversations: Info">
+            <Key ID="STR_BTC_HAM_CON_INFO_ASKREP_NOINTER">
+                <Original>I can't understand what is saying</Original>
+                <German>Ich verstehe nicht was Sie sagen</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_CON_INFO_ASKREP_HIDEOUTS">
+                <Original>I heard about %1 hideouts left.</Original>
+                <German>Ich habe gehört, dass es noch %1 Verstecke gibt.</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_CON_INFO_ASKREP_VLOW">
+                <Original>very low</Original>
+                <German>sehr niedrig</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_CON_INFO_ASKREP_LOW">
+                <Original>low</Original>
+                <German>niedrig</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_CON_INFO_ASKREP_NORMAL">
+                <Original>normal</Original>
+                <German>normal</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_CON_INFO_ASKREP_HIGH">
+                <Original>high</Original>
+                <German>hoch</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_CON_INFO_ASKREP_ASK1">
+                <Original>Sir, your reputation is</Original>
+                <German>Mein Herr, Ihr Ansehen ist</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_CON_INFO_ASKREP_ASK2">
+                <Original>Hello ! Your reputation is</Original>
+                <German>Hallo ! Ihr Ansehen ist</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_CON_INFO_ASKREP_ASK3">
+                <Original>I think your reputation is</Original>
+                <German>Ich glaube ihr Ansehen ist</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_CON_INFO_ASK_WOUNDED1">
+                <Original>Help me!</Original>
+                <German>Hilf mir!</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_CON_INFO_ASK_WOUNDED2">
+                <Original>I am suffering!</Original>
+                <German>Ich habe Schmerzen!</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_CON_INFO_ASK_WOUNDED3">
+                <Original>Injure!</Original>
+                <German>Ich bin Verletzt!</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_CON_INFO_ASK_WOUNDED4">
+                <Original>I have open wound!</Original>
+                <German>I habe offene Wunden!</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_CON_INFO_ASK_ALLREADYANS">
+                <Original>I already answered to your question!</Original>
+                <German>Ich habe Ihnen bereits alles gesagt!</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_CON_INFO_ASK_NOINFO">
+                <Original>I've no information for you</Original>
+                <German>Ich habe keine Informationen für Sie.</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_CON_INFO_ASK_CACHEMAP">
+                <Original>I'll show you some hint on the map</Original>
+                <German>Ich habe etwas auf der Karte markiert</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_CON_INFO_ASKHIDEOUT_TRUE">
+                <Original>I saw a lot of militia activity towards %1, %2 meter from here. Probably there is an hideout!</Original>
+                <German>Ich habe mehrer bewaffnete Personen in Richtung %1, ca. %2m entfernt, gesehen. Möglicherweise ist dort ein Versteck!</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_CON_INFO_ASKHIDEOUT_FALSE">
+                <Original>There are no hideout around here!</Original>
+                <German>Hier in der Gegend gibt es keine Verstecke!</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_CON_INFO_ASKHIDEOUT_DIARYLOG">
+                <Original>Diary log</Original>
+                <German>Gesprächsaufzeichnung</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_CON_INFO_SEARCH_BAR">
+                <Original>Searching for intel . . .</Original>
+                <German>Suche Information . . .</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_CON_INFO_TROOPS_TRUE">
+                <Original>I saw some militia movement %1, %2 meter from here</Original>
+                <German>Ich habe mehrer bewaffnete Personen in Richtung %1, ca. %2m entfernt, gesehen</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_CON_INFO_TROOPS_FALSE">
+                <Original>I didn't see any militia movement in this area!</Original>
+                <German>Ich habe keine bewaffneten Personen in der Nähe gesehen!</German>
+            </Key>
+        </Container>
+        <Container name="Conversations: Orders">
+            <Key ID="STR_BTC_HAM_CON_INT_ORDERS_SHOWMAP">
+                <Original>Show me where you want to go with your map.</Original>
+                <German>Zeig mir auf der Karte wo du hin willst.</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_CON_INT_ORDERS_TAXI_OK1">
+                <Original>No problem. I'd love to do that.</Original>
+                <German>Kein Problem. Das mache ich doch gerne.</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_CON_INT_ORDERS_TAXI_OK2">
+                <Original>The ride should not take long. Let's go.</Original>
+                <German>Die Fahrt sollten nicht lang dauern. Also los.</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_CON_INT_ORDERS_TAXI_OK3">
+                <Original>After what you've done for us, it's an honor to drive you. Let's go.</Original>
+                <German>Nach dem was Sie alles für uns getan haben, ist es mir eine Ehre Sie zu fahren. Los geht´s.</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_CON_INT_ORDERS_ONLAND">
+                <Original>Selected area must be on land.</Original>
+                <German>Der Zielort muss an Land sein.</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_CON_INT_ORDERS_NEG1">
+                <Original>I hate you! Get out!</Original>
+                <German>Ich hasse dich! Raus hier!</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_CON_INT_ORDERS_NEG2">
+                <Original>Get Out of my car ! You are not welcome.</Original>
+                <German>Raus aus meinem Auto! Du bist hier nicht willkommen.</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_CON_INT_ORDERS_NEG3">
+                <Original>I am not a taxi driver!</Original>
+                <German>Ich bin kein Taxifahrer!</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_CON_INT_ORDERS_NEG4">
+                <Original>No! I go where I want!</Original>
+                <German>Nein! Ich gehe wohin ich will!</German>
+            </Key>
+        </Container>
+    </Package>
+    <Package name="Other">
+        <Container name="Other: FOB Actions">
+            <Key ID="STR_BTC_HAM_O_FOB_CREATE_H_AREA">
+                <Original>Area is not flat enough!</Original>
+                <German>Das Gebiet ist nicht Flach genug!</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_FOB_CREATE_H_DBASE">
+                <Original>Too close at the main base!</Original>
+                <German>Zu Nahe an der Haupt-Basis!</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_FOB_CREATE_H_CAREA">
+                <Original>Clear the area before mounting the FOB, %1</Original>
+                <German>Das Gebiet ist nicht leer, es sind noch folgende Fahrzeuge im Weg: %1</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_FOB_CREATE_H_ESC">
+                <Original>Do not close the dialog with esc</Original>
+                <German>Den Dialog nicht mir ESC schließen</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_FOB_CREATE_H_NAME">
+                <Original>Name your FOB!</Original>
+                <German>FOB benennen!</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_FOB_CREATE_H_NAMENOTA">
+                <Original>Name already in use!</Original>
+                <German>Der Name wird bereits verwendet!</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_FOB_CREATE_H_WIP">
+                <Original>Get back! Mounting FOB</Original>
+                <German>Geh ein wenig zurück! Die FOB wird aufgebaut</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_FOB_DISMANTLE_H_PROC">
+                <Original>Dismantle, move out ...</Original>
+                <German>Abbau im gange, geh ein wenig zurück...</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_FOB_REDEPLOY_H_NOFOB">
+                <Original>No FOBs deployed</Original>
+                <German>Es sind keine FOBs aufgebaut</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_FOB_REDEPLOY_H_MOVING">
+                <Original>Moving to %1</Original>
+                <German>Verlege zu %1</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_FOB_DLG_T_NAMEFOB">
+                <Original>Name the FOB:</Original>
+                <German>FOB Benennen:</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_FOB_DLG_T_APPLY">
+                <Original>Apply</Original>
+                <German>Bestätigen</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_FOB_DLG_T_SELECTFOB">
+                <Original>Select the FOB:</Original>
+                <German>FOB auswählen:</German>
+            </Key>
+        </Container>
+        <Container name="Other: Hints ">
+            <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_0">
+                <Original>Cache destroyed!</Original>
+                <German>Waffenlager zerstört!</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_1">
+                <Original>Intel about an ammo cache found! Map updated</Original>
+                <German>Informationen über ein Waffenlager gefunden! Karte aktualisiert</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_2">
+                <Original>Hideout destroyed! %1 remaining</Original>
+                <German>Versteck zerstört! Verbleiben noch %1</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_3">
+                <Original>This body does not have any intel</Original>
+                <German>Keine Informationen gefunden</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_4">
+                <Original>Found intels about an ammo cache and an hideout! Map updated</Original>
+                <German>Informationen über ein Waffenlager und ein Versteck gefunden! Karte aktualisiert</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_5">
+                <Original>Intel about an hideout found! Map updated</Original>
+                <German>Informationen über ein Versteck gefunden! Karte aktualisiert</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_6">
+                <Original>In the last hideout we found important intel about all the cities occupied by the Oplitas! Size the last positions held by the enemies and defeat them once and for all</Original>
+                <German>In the last hideout we found important intel about all the cities occupied by the Oplitas! Size the last positions held by the enemies and defeat them once and for all</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_7">
+                <Original>%1 has been deployed!</Original>
+                <German>%1 wurde bereitgestellt!</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_8">
+                <Original>Saving in progress... Please wait</Original>
+                <German>Es wird gespeichert... Bitte warten</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_9">
+                <Original>Game has been saved!</Original>
+                <German>Spiel wurde gespeichert!</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_10">
+                <Original>Database deleted!</Original>
+                <German>Datenbank gelöscht!</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_11">
+                <Original>One checkpoint destroyed!</Original>
+                <German>Ein Kontrollpunkt wurde zerstört!</German>
+            </Key>
+        </Container>
+        <Container name="Other: Shortcuts">
+            <Key ID="STR_BTC_HAM_O_SHORTC_STOP_TITLE">
+                <Original>Civil Order: Stop!</Original>
+                <German>Befehle (Zivilisten): Stopp!</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_SHORTC_STOP_NOTE">
+                <Original>Order a civilian to stop</Original>
+                <German>Befiehlt den Zivilisten in der Umgebung stehen zu bleiben</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_SHORTC_GETDOWN_TITLE">
+                <Original>Civil Order: Get down!</Original>
+                <German>Befehle (Zivilisten): Auf den Boden!</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_SHORTC_GETDOWN_NOTE">
+                <Original>Order a civilian to get down</Original>
+                <German>Befiehlt den Zivilisten in der Umgebung sich hinzulegen</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_SHORTC_GOAWAY_TITLE">
+                <Original>Civil Order: Go Away!</Original>
+                <German>Befehle (Zivilisten): Geh weg!</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_SHORTC_GOAWAY_NOTE">
+                <Original>Order a civilian to go away</Original>
+                <German>Befiehlt den Zivilisten in der Umgebung wegzugehen</German>
+            </Key>
+        </Container>
+        <Container name="Other: Copy Paste">
+            <Key ID="STR_BTC_HAM_O_PASTE_NOCOPIED">
+                <Original>No copied container!</Original>
+                <German>Kein kopierter Container gefunden!</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_COPY_NOCONTAINER">
+                <Original>No container around!</Original>
+                <German>Kein Container gefunden!</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_COPY_SUCCSESS">
+                <Original>Container and cargo copied! Clear the area to paste.</Original>
+                <German>Container und Inhalt kopiert! Bereich freimachen, um neuen einzufügen.</German>
+            </Key>
+        </Container>
+        <Container name="Other: Endmission ">
+            <Key ID="STR_BTC_HAM_O_COMMON_ENDMISSION">
+                <Original>All the hideouts are destroyed, finally the Oplitas has been defeated! Mission accomplished</Original>
+                <German>Alle Verstecke sind zerstört, nun sind die Oplitas besiegt! Mission erfüllt</German>
+            </Key>
+        </Container>
+        <Container name="Other: Markers ">
+            <Key ID="STR_BTC_HAM_O_EH_VEHKILLED_MRK">
+                <Original>%1 wreck</Original>
+                <German>%1 Wrack</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_EH_HDHIDEOUT_MRK">
+                <Original>Hideout %1 destroyed</Original>
+                <German>Versteck %1 wurde zerstört</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_EH_HDCACHE_MRK">
+                <Original>Cached %1 destroyed</Original>
+                <German>Waffenlager %1 wurde zerstört</German>
+            </Key>
+        </Container>
+    </Package>
+    <Package name="Logistic">
+        <Container name="Logistic: Basics ">
+            <Key ID="STR_BTC_HAM_LOG_BASICS_CLEARAREA">
+                <Original>Clear the area before creating another object!</Original>
+                <German>Der Bereich muss sauber sein, bevor Sie etwas neues anfordern!</German>
+            </Key>
+        </Container>
+        <Container name="Logistic: Hook ">
+            <Key ID="STR_BTC_HAM_LOG_HOOK_HINFO">
+                <Original>Interact with a vehicle to tow it! (This vehicle can't tow %1)</Original>
+                <German>Interagieren Sie mit dem Zug-Fahrzeug, um es abzuschleppen! (Folgende Fahrzeuge können nicht gezogen werden: %1)</German>
+            </Key>
+        </Container>
+        <Container name="Logistic: Lift deploy ropes ">
+            <Key ID="STR_BTC_HAM_LOG_LDR_ACTIONHUD">
+                <Original>Hud On\Off</Original>
+                <German>Hud An\Aus</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_LOG_LDR_ACTIONHOOK">
+                <Original>Hook</Original>
+                <German>Einhacken</German>
+            </Key>
+        </Container>
+        <Container name="Logistic: Load ">
+            <Key ID="STR_BTC_HAM_LOG_LOAD_TOOFAR">
+                <Original>%1 is too far from %2!</Original>
+                <German>%1 ist zu weit von %2 entfernt!</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_LOG_LOAD_TOOFAST">
+                <Original>%1 is moving!</Original>
+                <German>%1 is in Bewegung!</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_LOG_LOAD_TOOBIG">
+                <Original>Can not load %1 in %2</Original>
+                <German>Der Laderaum von %2 ist zu klein für %1</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_LOG_LOAD_NOSPACE">
+                <Original>There is no enough space for %1 in %2</Original>
+                <German>Es ist nicht mehr genug Platz im Laderaum von %1 vorhanden</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_LOG_LOAD_BAR">
+                <Original>Loading %1 in %2. . .</Original>
+                <German>%1 wird verladen in %2 . . .</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_LOG_LOAD_FIN">
+                <Original>%1 has been loaded in %2</Original>
+                <German>%1 wurde in %2 eingeladen</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_LOG_LOAD_ABORT">
+                <Original>Loading aborted</Original>
+                <German>Ladevorgang abgebrochen</German>
+            </Key>
+        </Container>
+        <Container name="Logistic: Place ">
+            <Key ID="STR_BTC_HAM_LOG_PLACE_HINT1">
+                <Original>Q/Z to raise/lower the object</Original>
+                <German>Q/Y zum Heben/Senken des Objekts</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_LOG_PLACE_HINT2">
+                <Original>X/C to rotate the object</Original>
+                <German>X/C um das Objekt zu drehen</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_LOG_PLACE_HINT3">
+                <Original>F/R to tilt the object</Original>
+                <German>F/R um das Object zu neigen</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_LOG_PLACE_HINT4">
+                <Original>SHIFT to increase the movement</Original>
+                <German>SHIFT um die Bewegung des Objektes zu beschleunigen</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_LOG_PLACE_RELEASE">
+                <Original>Release</Original>
+                <German>Loslassen</German>
+            </Key>
+        </Container>
+        <Container name="Logistic: Repair wreck ">
+            <Key ID="STR_BTC_HAM_LOG_RWRECK_NOWRECK">
+                <Original>No wreck found</Original>
+                <German>Kein Wrack gefunden</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_LOG_RWRECK_NOTWRECK">
+                <Original>It is not a wreck!</Original>
+                <German>Das ist kein Wrack!</German>
+            </Key>
+        </Container>
+        <Container name="Logistic: Select ">
+            <Key ID="STR_BTC_HAM_LOG_SEL_HINT">
+                <Original>%1 selected &lt;br/&gt;CR: %2&lt;br/&gt; Interact with a vehicle to load it in!</Original>
+                <German>%1 ausgewählt &lt;br/&gt;CR: %2&lt;br/&gt; Interagieren Sie mit dem Fahrzeug, in welches die Fracht eingeladen werden soll!</German>
+            </Key>
+        </Container>
+        <Container name="Logistic: Tow ">
+            <Key ID="STR_BTC_HAM_LOG_TOW_ALREADYTOWED">
+                <Original>This vehicle is already attached to another!</Original>
+                <German>Dieses Fahrzeug zieht bereits ein anderes Fahrzeug!</German>
+            </Key>
+        </Container>
+        <Container name="Logistic: Check Cargo ">
+            <Key ID="STR_BTC_HAM_LOG_CHECKC_VEHICLE">
+                <Original>Vehicle: %1  | CC: %2/%3</Original>
+                <German>Fahrzeug: %1  | CC: %2/%3</German>
+            </Key>
+        </Container>
+        <Container name="Logistic: Unhook ">
+            <Key ID="STR_BTC_HAM_LOG_UNHOOK_NOROPE">
+                <Original>This vehicle is not attached to another!</Original>
+                <German>Das Fahrzeug schleppt kein anderes Fahrzeug ab!</German>
+            </Key>
+        </Container>
+        <Container name="Logistic: Unload ">
+            <Key ID="STR_BTC_HAM_LOG_UNLOAD_BAR">
+                <Original>Unloading %1. . .</Original>
+                <German>%1 wird abgeladen. . .</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_LOG_UNLOAD_FIN">
+                <Original>%1 has been unloaded from %2</Original>
+                <German>%1 wurde von %2 abgeladen</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_LOG_UNLOAD_ABORT">
+                <Original>Unloading aborted</Original>
+                <German>Abladen abgebrochen</German>
+            </Key>
+        </Container>
+        <Container name="Logistic: dlg (Dialog) ">
+            <Key ID="STR_BTC_HAM_LOG_DLG_CARGO">
+                <Original>Cargo</Original>
+                <German>Frachtraum</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_LOG_DLG_UNLOAD">
+                <Original>Unload</Original>
+                <German>Entladen</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_LOG_DLG_APPLY">
+                <Original>Apply</Original>
+                <German>Bestätigen</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_LOG_DLG_CLOSE">
+                <Original>Close</Original>
+                <German>Schließen</German>
+            </Key>
+        </Container>
+    </Package>
+</Project>

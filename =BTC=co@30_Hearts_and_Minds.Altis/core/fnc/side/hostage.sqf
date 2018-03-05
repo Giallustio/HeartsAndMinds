@@ -24,14 +24,14 @@ btc_side_done = false;
 btc_side_failed = false;
 btc_side_assigned = true;publicVariable "btc_side_assigned";
 
-[15,_pos,_city getVariable "name"] call btc_fnc_task_create;
+[15,_pos,_city getVariable "name"] remoteExec ["btc_fnc_task_create", 0];
 
 btc_side_jip_data = [15,getPos _city,_city getVariable "name"];
 
 //// Marker
 _marker = createmarker [format ["sm_2_%1",getPos _house],getPos _house];
 _marker setmarkertype "hd_flag";
-_marker setmarkertext "Hostage";
+[_marker,"STR_BTC_HAM_SIDE_HOSTAGE_MRK"] remoteExec ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker]; //Hostage
 _marker setMarkerSize [0.6, 0.6];
 
 _city setVariable ["spawn_more",true];
@@ -47,14 +47,14 @@ _captive call btc_fnc_civ_unit_create;
 
 _group = [];
 {
-	private ["_grp"];
-	_grp = createGroup btc_enemy_side;
-	_unit = _grp createUnit [selectRandom btc_type_units, _x, [], 0, "NONE"];
-	[_unit] joinSilent _grp;
-	_unit setPosATL _x;
-	_group pushBack _grp;
-	_grp setVariable ["no_cache",true];
-	_unit call btc_fnc_mil_unit_create;
+    private ["_grp"];
+    _grp = createGroup btc_enemy_side;
+    _unit = _grp createUnit [selectRandom btc_type_units, _x, [], 0, "NONE"];
+    [_unit] joinSilent _grp;
+    _unit setPosATL _x;
+    _group pushBack _grp;
+    _grp setVariable ["no_cache",true];
+    _unit call btc_fnc_mil_unit_create;
 } forEach (_buildingPos - [_pos]);
 
 _trigger = createTrigger["EmptyDetector",_pos];
@@ -64,17 +64,17 @@ _trigger setTriggerActivation[str(btc_player_side),"PRESENT",true];
 _trigger setTriggerStatements["this", "private _group = thisTrigger getVariable 'group'; {_x setCombatMode 'RED';} foreach _group;", "private _group = thisTrigger getVariable 'group'; {_x setCombatMode 'WHITE';} foreach _group;"];
 
 if (random 1 > 0.5) then {
-	sleep 5;
-	_mine = createMine [selectRandom btc_type_mines, getposATL _captive, [], 0];
+    sleep 5;
+    _mine = createMine [selectRandom btc_type_mines, getposATL _captive, [], 0];
 } else {
-	_mine = objNull;
+    _mine = objNull;
 };
 
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !(_captive getVariable ["ace_captives_isHandcuffed", false]) || !Alive _captive)};
 
 if (!(_captive getVariable ["ace_captives_isHandcuffed", false])) then {
-	_mine setDamage 1;
-	sleep 1;
+    _mine setDamage 1;
+    sleep 1;
 };
 
 _group_civ setVariable ["no_cache",false];
@@ -82,8 +82,8 @@ _group_civ setVariable ["no_cache",false];
 btc_side_assigned = false;publicVariable "btc_side_assigned";
 
 if (btc_side_aborted || btc_side_failed || !(Alive _captive)) exitWith {
-	15 remoteExec ["btc_fnc_task_fail", 0];
-	[[_marker], [_trigger,_mine], [], _group + [_group_civ]] call btc_fnc_delete;
+    15 remoteExec ["btc_fnc_task_fail", 0];
+    [[_marker], [_trigger,_mine], [], _group + [_group_civ]] call btc_fnc_delete;
 };
 
 40 call btc_fnc_rep_change;
