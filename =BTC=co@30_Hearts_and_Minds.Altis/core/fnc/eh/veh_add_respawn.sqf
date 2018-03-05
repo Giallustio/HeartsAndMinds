@@ -12,13 +12,3 @@ _vehicle setVariable ["data_respawn",[_type,_pos,_dir,_time,_has_marker]];
 
 if ((isNumber (configfile >> "CfgVehicles" >> typeof _vehicle >> "ace_fastroping_enabled")) && !(typeof _vehicle isEqualTo "RHS_UH1Y_d")) then {[_vehicle] call ace_fastroping_fnc_equipFRIES};
 _vehicle addMPEventHandler ["MPKilled", {if (isServer) then {_this call btc_fnc_eh_veh_respawn};}];
-/*
-waitUntil {sleep 10; (!Alive _vehicle)};
-
-sleep _time;
-deleteVehicle _vehicle;
-
-_veh = _type createVehicle _pos;
-_veh setDir _dir;
-_veh setPos _pos;
-if (_has_marker) then {_veh spawn btc_fnc_veh_track_marker;};*/

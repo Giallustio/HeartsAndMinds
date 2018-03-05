@@ -15,7 +15,7 @@ btc_side_done = false;
 btc_side_failed = false;
 btc_side_assigned = true;publicVariable "btc_side_assigned";
 
-[3,_pos,_city getVariable "name"] call btc_fnc_task_create;
+[3,_pos,_city getVariable "name"] remoteExec ["btc_fnc_task_create", 0];
 
 btc_side_jip_data = [3,_pos,_city getVariable "name"];
 
@@ -28,7 +28,7 @@ _area setmarkercolor "colorBlue";
 
 _marker = createmarker [format ["sm_2_%1",_pos],_pos];
 _marker setmarkertype "hd_flag";
-_marker setmarkertext "Supplies";
+[_marker,"STR_BTC_HAM_SIDE_SUPPLIES_MRK"] remoteExec ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker]; //Supplies
 _marker setMarkerSize [0.6, 0.6];
 
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || count (nearestObjects [_pos, [btc_supplies_mat], 30]) > 0)};
@@ -36,8 +36,8 @@ waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || count (nearestObject
 btc_side_assigned = false;publicVariable "btc_side_assigned";
 
 if (btc_side_aborted || btc_side_failed) exitWith {
-	3 remoteExec ["btc_fnc_task_fail", 0];
-	[[_area,_marker], [], [], []] call btc_fnc_delete;
+    3 remoteExec ["btc_fnc_task_fail", 0];
+    [[_area,_marker], [], [], []] call btc_fnc_delete;
 };
 
 50 call btc_fnc_rep_change;

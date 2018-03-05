@@ -15,14 +15,14 @@ _objects = _objects select {((getPos _x select 2 < -3) && (((str(_x) find "car")
 _wrecks = _objects select {((str(_x) find "rock") isEqualTo -1)};
 
 if (_wrecks isEqualTo []) then {
-	if (_objects isEqualTo []) then {
-		_pos = [getPos _city, 0, 100, 13, 2, 60 * (pi / 180), 0] call BIS_fnc_findSafePos;
-		_pos = [_pos select 0, _pos select 1, (getTerrainHeightASL [_pos select 0, _pos select 1])];
-	} else {
-		_pos = getpos (selectRandom _objects);
-	};
+    if (_objects isEqualTo []) then {
+        _pos = [getPos _city, 0, 100, 13, 2, 60 * (pi / 180), 0] call BIS_fnc_findSafePos;
+        _pos = [_pos select 0, _pos select 1, (getTerrainHeightASL [_pos select 0, _pos select 1])];
+    } else {
+        _pos = getpos (selectRandom _objects);
+    };
 } else {
-	_pos = getpos (selectRandom _wrecks);
+    _pos = getpos (selectRandom _wrecks);
 };
 
 btc_side_aborted = false;
@@ -30,7 +30,7 @@ btc_side_done = false;
 btc_side_failed = false;
 btc_side_assigned = true;publicVariable "btc_side_assigned";
 
-[11,_pos,_city getVariable "name"] call btc_fnc_task_create;
+[11,_pos,_city getVariable "name"] remoteExec ["btc_fnc_task_create", 0];
 
 btc_side_jip_data = [11,_pos,_city getVariable "name"];
 
@@ -46,7 +46,7 @@ _area setmarkercolor "colorBlue";
 
 _marker = createmarker [format ["sm_2_%1",_pos],_pos];
 _marker setmarkertype "hd_flag";
-_marker setmarkertext "Generator";
+[_marker,"STR_BTC_HAM_SIDE_UNDERWATER_MRK"] remoteExec ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker]; //Generator
 _marker setMarkerSize [0.6, 0.6];
 
 
@@ -58,7 +58,7 @@ _group = [_pos,8, 1 + round random 5,0.8] call btc_fnc_mil_create_group;
 [_pos,20, 2 + round random 4,0.5] call btc_fnc_mil_create_group;
 
 _pos = getPosASL _generator;
-leader _group setPosASL [_pos select 0, _pos select 1, (_pos select 2) + 1 + random 1];
+(leader (_group select 0)) setPosASL [_pos select 0, _pos select 1, (_pos select 2) + 1 + random 1];
 
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !Alive _generator )};
 
@@ -66,7 +66,7 @@ waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !Alive _generator )}
 btc_side_assigned = false;publicVariable "btc_side_assigned";
 
 if (btc_side_aborted || btc_side_failed ) exitWith {
-	11 remoteExec ["btc_fnc_task_fail", 0];
+    11 remoteExec ["btc_fnc_task_fail", 0];
 };
 
 80 call btc_fnc_rep_change;

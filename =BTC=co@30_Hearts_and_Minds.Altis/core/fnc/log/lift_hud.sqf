@@ -10,7 +10,7 @@ _obj_img   = _ui displayCtrl 1003;
 _obj_pic   = _ui displayCtrl 1004;
 _arrow     = _ui displayCtrl 1005;
 _obj_name  = _ui displayCtrl 1006;
-_obj_alt	= _ui displayCtrl 1007;
+_obj_alt    = _ui displayCtrl 1007;
 _array_hud = [_radar_background,_radar,_obj_img,_obj_pic,_arrow,_obj_name,_obj_alt];
 {_x ctrlShow true;} foreach _array_hud;_obj_img ctrlShow false;
 

@@ -31,12 +31,12 @@ _dropped attachTo [_chute,[0,0,-0.6]];
 sleep 1;
 
 if ((Velocity _dropped select 2) > -2) then {
-	detach _dropped;
-	deleteVehicle _chute;
-	_chute = createVehicle [_chute_type, [getPosATL _dropped select 0,getPosATL _dropped select 1,(getPosATL _dropped select 2) + 5], [], 0, "CAN_COLLIDE"];
-	{_chute disableCollisionWith _x;} foreach [_veh,_dropped];
+    detach _dropped;
+    deleteVehicle _chute;
+    _chute = createVehicle [_chute_type, [getPosATL _dropped select 0,getPosATL _dropped select 1,(getPosATL _dropped select 2) + 5], [], 0, "CAN_COLLIDE"];
+    {_chute disableCollisionWith _x;} foreach [_veh,_dropped];
 
-	_dropped attachTo [_chute,[0,0,0]];
+    _dropped attachTo [_chute,[0,0,0]];
 };
 
 waitUntil {_pos = getPosASL _chute; sleep 1; (_chute isEqualTo objNull)};
