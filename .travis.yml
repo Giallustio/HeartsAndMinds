@@ -1,7 +1,6 @@
 branches:
   only:
    - master_daily
-   - add-validation
 language: python
 python:
 - '3.5'
