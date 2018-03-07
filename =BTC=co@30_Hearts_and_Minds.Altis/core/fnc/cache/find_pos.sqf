@@ -23,9 +23,9 @@ _pos = [getPos _city, (_xx + _y)] call btc_fnc_randomize_pos;
 _houses = [_pos,50] call btc_fnc_getHouses;
 
 if (count _houses == 0) then {
-	[] call btc_fnc_cache_find_pos;
+    [] call btc_fnc_cache_find_pos;
 } else {
-	//private ["_isAct","_cache"];
-	_house = selectRandom _houses;
-	_house spawn btc_fnc_cache_spawn;
+    //private ["_isAct","_cache"];
+    _house = selectRandom _houses;
+    _house spawn btc_fnc_cache_spawn;
 };

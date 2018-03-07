@@ -3,13 +3,13 @@ btc_log_placing_obj = _this;
 [btc_log_placing_obj, player] remoteExec ["btc_fnc_set_owner", 2];
 
 hint composeText [
-	localize "STR_BTC_HAM_LOG_PLACE_HINT1", //Q/Z to raise/lower the object
-	lineBreak,
-	localize "STR_BTC_HAM_LOG_PLACE_HINT2", //X/C to rotate the object
-	lineBreak,
-	localize "STR_BTC_HAM_LOG_PLACE_HINT3", //F/R to tilt the object
-	lineBreak,
-	localize "STR_BTC_HAM_LOG_PLACE_HINT4" //SHIFT to increase the movement
+    localize "STR_BTC_HAM_LOG_PLACE_HINT1", //Q/Z to raise/lower the object
+    lineBreak,
+    localize "STR_BTC_HAM_LOG_PLACE_HINT2", //X/C to rotate the object
+    lineBreak,
+    localize "STR_BTC_HAM_LOG_PLACE_HINT3", //F/R to tilt the object
+    lineBreak,
+    localize "STR_BTC_HAM_LOG_PLACE_HINT4" //SHIFT to increase the movement
 ];
 
 btc_log_placing = true;
@@ -41,28 +41,28 @@ btc_log_placing_obj attachTo [player,[0, btc_log_placing_d, btc_log_placing_h]];
 btc_log_placing_obj setDir btc_log_placing_dir;
 
 [{
-	params ["_arguments", "_idPFH"];
-	if (!Alive player || player getVariable ["ACE_isUnconscious", false] || !btc_log_placing) then {
-		_arguments params ["_placing_obj", "_actionEH", "_place_EH_keydown"];
+    params ["_arguments", "_idPFH"];
+    if (!Alive player || player getVariable ["ACE_isUnconscious", false] || !btc_log_placing) then {
+        _arguments params ["_placing_obj", "_actionEH", "_place_EH_keydown"];
 
-		//remove PFH
-		[_idPFH] call CBA_fnc_removePerFrameHandler;
+        //remove PFH
+        [_idPFH] call CBA_fnc_removePerFrameHandler;
 
-		_placing_obj enableSimulation true;
-		detach _placing_obj;
+        _placing_obj enableSimulation true;
+        detach _placing_obj;
 
-		player forceWalk false;
+        player forceWalk false;
 
-		btc_log_placing_obj = objNull;
-		(findDisplay 46) displayRemoveEventHandler ["KeyDown", _place_EH_keydown];
+        btc_log_placing_obj = objNull;
+        (findDisplay 46) displayRemoveEventHandler ["KeyDown", _place_EH_keydown];
 
-		hintSilent "";
+        hintSilent "";
 
-		//remove mouse hint
-		call ace_interaction_fnc_hideMouseHint;
+        //remove mouse hint
+        call ace_interaction_fnc_hideMouseHint;
 
-		// remove drop action
-		[player, "DefaultAction", _actionEH, -1] call ace_common_fnc_removeActionEventHandler;
+        // remove drop action
+        [player, "DefaultAction", _actionEH, -1] call ace_common_fnc_removeActionEventHandler;
 
-	};
+    };
 }, 0.5, [_this, _actionEH, _place_EH_keydown]] call CBA_fnc_addPerFrameHandler;
