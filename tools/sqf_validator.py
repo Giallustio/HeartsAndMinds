@@ -153,7 +153,7 @@ def main():
     args = parser.parse_args()
 
     # Allow running from root directory as well as from inside the tools directory
-    rootDir = "../=BTC=co@30_Hearts_and_Minds.Altis"
+    rootDir = "./=BTC=co@30_Hearts_and_Minds.Altis"
     if (os.path.exists("addons")):
         rootDir = "addons"
 
