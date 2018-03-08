@@ -1,8 +1,5 @@
-
-private ["_city"];
-
-_city = btc_city_all select (_this select 0);
-_city setVariable ["occupied",false];
+private _city = btc_city_all select (_this select 0);
+_city setVariable ["occupied", false];
 
 if (_city getVariable ["marker",""] != "") then {(_city getVariable ["marker",""]) setMarkerColor "ColorGreen";};
 
