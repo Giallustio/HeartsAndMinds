@@ -1,5 +1,3 @@
-private ["_n_pos","_max_pos"];
-
 private _n_pos = 0;
 while {format ["%1", _this buildingPos _n_pos] != "[0,0,0]" } do {_n_pos = _n_pos + 1};
 private _max_pos = _n_pos;
