@@ -13,10 +13,10 @@ _ang = abs (_dirTo - _atan);
 if ((_ang > 120) && (_ang < 240)) then {_can_see = true;};
 if (_can_see) then
 {
-	_eyeu = eyepos _unit;
-	_eyet = eyepos _target;
-	_terr = terrainintersectasl [_eyeu, _eyet];
-	_int = lineintersects [_eyeu, _eyet];
-	if (_int || _terr) then {_can_see = false;};
+    _eyeu = eyepos _unit;
+    _eyet = eyepos _target;
+    _terr = terrainintersectasl [_eyeu, _eyet];
+    _int = lineintersects [_eyeu, _eyet];
+    if (_int || _terr) then {_can_see = false;};
 };
 _can_see

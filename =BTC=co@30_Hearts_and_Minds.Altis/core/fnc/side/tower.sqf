@@ -21,7 +21,7 @@ btc_side_done = false;
 btc_side_failed = false;
 btc_side_assigned = true;publicVariable "btc_side_assigned";
 
-[7,_pos,_city getVariable "name"] call btc_fnc_task_create;
+[7,_pos,_city getVariable "name"] remoteExec ["btc_fnc_task_create", 0];
 
 btc_side_jip_data = [7,_pos,_city getVariable "name"];
 
@@ -36,7 +36,7 @@ _area setmarkercolor "colorBlue";
 
 _marker = createmarker [format ["sm_2_%1",_pos],_pos];
 _marker setmarkertype "hd_flag";
-_marker setmarkertext "Radio Tower";
+[_marker,"STR_BTC_HAM_SIDE_TOWER_MRK"] remoteExec ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker]; //Radio Tower
 _marker setMarkerSize [0.6, 0.6];
 
 //// Randomise composition \\\\
@@ -44,9 +44,9 @@ _tower_type = selectRandom btc_type_tower;
 _power_type = selectRandom btc_type_power;
 _cord_type = selectRandom btc_type_cord;
 _btc_composition_tower = [
-	[_tower_type,0,[0,0,0]],
-	[_cord_type,63,[-1.30664,0.939453,0]],
-	[_power_type,24,[-4.56885,-0.231445,0]]
+    [_tower_type,0,[0,0,0]],
+    [_cord_type,63,[-1.30664,0.939453,0]],
+    [_power_type,24,[-4.56885,-0.231445,0]]
 ];
 
 //// Create tower with static at _pos \\\\
@@ -63,7 +63,7 @@ btc_side_assigned = false;publicVariable "btc_side_assigned";
 [[_area,_marker], _btc_composition, [], []] call btc_fnc_delete;
 
 if (btc_side_aborted || btc_side_failed ) exitWith {
-	7 remoteExec ["btc_fnc_task_fail", 0];
+    7 remoteExec ["btc_fnc_task_fail", 0];
 };
 
 80 call btc_fnc_rep_change;

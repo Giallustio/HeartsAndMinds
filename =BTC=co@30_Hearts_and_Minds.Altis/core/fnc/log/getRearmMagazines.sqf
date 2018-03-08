@@ -11,21 +11,21 @@ private _magazineInfo = [];
 private _pylonConfigs = configProperties [configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "Components" >> "TransportPylonsComponent" >> "Pylons", "isClass _x"];
 {
 
-	// Strangely, a 1-based index.
-	private _pylonIndex = _forEachIndex + 1;
+    // Strangely, a 1-based index.
+    private _pylonIndex = _forEachIndex + 1;
 
-	// Retrieving pylon magazine by index. If the pylon is empty, it is marked with "".
-	private _pylonMagazine = (getPylonMagazines _vehicle) select (_pylonIndex - 1);
+    // Retrieving pylon magazine by index. If the pylon is empty, it is marked with "".
+    private _pylonMagazine = (getPylonMagazines _vehicle) select (_pylonIndex - 1);
 
-	// Only care about pylons that have a magazine.
-	if (!(_pylonMagazine isEqualTo "")) then {
-		_magazineInfo pushBack _pylonMagazine;
-	};
+    // Only care about pylons that have a magazine.
+    if (!(_pylonMagazine isEqualTo "")) then {
+        _magazineInfo pushBack _pylonMagazine;
+    };
 } forEach _pylonConfigs;
 
 private _turrets = [_vehicle] call ace_rearm_fnc_getAllRearmTurrets;
 {
-	_magazineInfo append ([_vehicle, _x] call ace_rearm_fnc_getTurretConfigMagazines);
+    _magazineInfo append ([_vehicle, _x] call ace_rearm_fnc_getTurretConfigMagazines);
 } forEach _turrets;
 
 // _magazines without duplicates

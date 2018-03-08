@@ -6,11 +6,11 @@ params ["_vehicle"];
 private _widthFactor = 0.75;
 private _lengthFactor = 0.75;
 if(_vehicle isKindOf "Air") then {
-	_widthFactor = 0.3;
+    _widthFactor = 0.3;
 };
 if(_vehicle isKindOf "Helicopter") then {
-	_widthFactor = 0.2;
-	_lengthFactor = 0.45;
+    _widthFactor = 0.2;
+    _lengthFactor = 0.45;
 };
 
 private _centerOfMass = getCenterOfMass _vehicle;

@@ -9,14 +9,14 @@ _category = _sub_class select _id;
 lbClear 72;
 for "_i" from 0 to ((count _category) - 1) do
 {
-	private ["_class","_display","_index"];
-	_class = (_category select _i);
-	_display = getText (configFile >> "cfgVehicles" >> _class >> "displayName");
-	if (_display isEqualTo "") then {
-		_display = getText (configfile >> "CfgMagazines" >> _class >> "displayName");
-	};
-	//_lb = lbAdd [72,_display];
-	_index = lbAdd [72,_display];
-	lbSetData [72, _index, _class];
-	if (_i == 0) then {lbSetCurSel [72,_index];};
+    private ["_class","_display","_index"];
+    _class = (_category select _i);
+    _display = getText (configFile >> "cfgVehicles" >> _class >> "displayName");
+    if (_display isEqualTo "") then {
+        _display = getText (configfile >> "CfgMagazines" >> _class >> "displayName");
+    };
+    //_lb = lbAdd [72,_display];
+    _index = lbAdd [72,_display];
+    lbSetData [72, _index, _class];
+    if (_i == 0) then {lbSetCurSel [72,_index];};
 };

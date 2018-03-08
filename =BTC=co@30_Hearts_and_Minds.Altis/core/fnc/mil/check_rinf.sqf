@@ -4,18 +4,18 @@ private ["_city","_pos","_hideout"];
 _city = objNull;
 
 if (count _this > 0) then {_city = _this;} else {
-	private ["_useful","_id"];
-	//"NameVillage","NameCity","NameCityCapital","NameLocal","Hill","Airport"
-	_useful = btc_city_all select {(
-			!(_x getVariable ["active",false]) && {_x distance (getMarkerPos btc_respawn_marker) > btc_hideout_safezone} &&
-			{!(_x getVariable ["has_ho",false])} &&
-			(
-				_x getVariable ["type",""] == "NameLocal" ||
-				{_x getVariable ["type",""] == "Hill"} || {_x getVariable ["type",""] == "NameVillage" || {_x getVariable ["type",""] == "Airport"}
-			)
-		)
-	};
-	_city = selectRandom _useful;
+    private ["_useful","_id"];
+    //"NameVillage","NameCity","NameCityCapital","NameLocal","Hill","Airport"
+    _useful = btc_city_all select {(
+            !(_x getVariable ["active",false]) && {_x distance (getMarkerPos btc_respawn_marker) > btc_hideout_safezone} &&
+            {!(_x getVariable ["has_ho",false])} &&
+            (
+                _x getVariable ["type",""] == "NameLocal" ||
+                {_x getVariable ["type",""] == "Hill"} || {_x getVariable ["type",""] == "NameVillage" || {_x getVariable ["type",""] == "Airport"}
+            )
+        )
+    };
+    _city = selectRandom _useful;
 };
 
 _pos = [getPos _city, 300] call btc_fnc_randomize_pos;
@@ -37,12 +37,12 @@ _city setVariable ["ho_pos",_pos];
 _city setVariable ["ho_units_spawned",false];
 
 if (btc_debug) then {
-	//Marker
-	private ["_marker"];
-	_marker = createmarker [format ["btc_hideout_%1", _pos], _pos];
-	format ["btc_hideout_%1", _pos] setmarkertypelocal "mil_unknown";
-	format ["btc_hideout_%1", _pos] setMarkerTextLocal format ["Hideout %1", btc_hideouts_id];
-	format ["btc_hideout_%1", _pos] setMarkerSizeLocal [0.8, 0.8];
+    //Marker
+    private ["_marker"];
+    _marker = createmarker [format ["btc_hideout_%1", _pos], _pos];
+    format ["btc_hideout_%1", _pos] setmarkertypelocal "mil_unknown";
+    format ["btc_hideout_%1", _pos] setMarkerTextLocal format ["Hideout %1", btc_hideouts_id];
+    format ["btc_hideout_%1", _pos] setMarkerSizeLocal [0.8, 0.8];
 
 };
 
