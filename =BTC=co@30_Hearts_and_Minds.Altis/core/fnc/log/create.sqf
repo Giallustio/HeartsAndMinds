@@ -19,27 +19,27 @@ call btc_fnc_log_create_load;
 _class = lbData [72, lbCurSel 72];
 _selected = _class;
 if (getText (configFile >> "cfgVehicles" >> _selected >> "displayName") isEqualTo "") then {
-	_new = "Box_NATO_Ammo_F" createVehicleLocal getPosASL btc_log_create_obj;
+    _new = "Box_NATO_Ammo_F" createVehicleLocal getPosASL btc_log_create_obj;
 } else {
-	_new = _class createVehicleLocal getPosASL btc_log_create_obj;
+    _new = _class createVehicleLocal getPosASL btc_log_create_obj;
 };
 while {dialog} do
 {
-	//if (_class != lbData [72, 1]) then
-	if (_class != lbData [72, lbCurSel 72]) then
-	{
-		deleteVehicle _new; sleep 0.1;
-		_class = lbData [72, lbCurSel 72];
-		//_class = lbText [72,lbCurSel 72];
-		_selected = _class;
-		if (getText (configFile >> "cfgVehicles" >> _selected >> "displayName") isEqualTo "") then {
-			_new = "Box_NATO_Ammo_F" createVehicleLocal getPosASL btc_log_create_obj;
-		} else {
-			_new = _class createVehicleLocal getPosASL btc_log_create_obj;
-		};
-		_new setDir (getDir btc_log_create_obj);
-		_new setPosASL getPosASL btc_log_create_obj;
-	};
-	sleep 0.1;
+    //if (_class != lbData [72, 1]) then
+    if (_class != lbData [72, lbCurSel 72]) then
+    {
+        deleteVehicle _new; sleep 0.1;
+        _class = lbData [72, lbCurSel 72];
+        //_class = lbText [72,lbCurSel 72];
+        _selected = _class;
+        if (getText (configFile >> "cfgVehicles" >> _selected >> "displayName") isEqualTo "") then {
+            _new = "Box_NATO_Ammo_F" createVehicleLocal getPosASL btc_log_create_obj;
+        } else {
+            _new = _class createVehicleLocal getPosASL btc_log_create_obj;
+        };
+        _new setDir (getDir btc_log_create_obj);
+        _new setPosASL getPosASL btc_log_create_obj;
+    };
+    sleep 0.1;
 };
 deleteVehicle _new;

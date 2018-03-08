@@ -57,24 +57,24 @@ _group setVariable ["no_cache",true];
 _vehs = [];
 _veh_types = btc_type_motorized select {!(_x isKindOf "air")};
 for "_i" from 0 to (2 + round random 2) do {
-	private ["_veh"];
-	_veh_type = selectRandom _veh_types;
-	_crewmen = btc_type_crewmen;
-	_veh = createVehicle [_veh_type, _pos1, [], 0, "FLY"];
-	_veh setDir ([_road] call btc_fnc_road_direction);
-	_vehs pushBack _veh;
+    private ["_veh"];
+    _veh_type = selectRandom _veh_types;
+    _crewmen = btc_type_crewmen;
+    _veh = createVehicle [_veh_type, _pos1, [], 0, "FLY"];
+    _veh setDir ([_road] call btc_fnc_road_direction);
+    _vehs pushBack _veh;
 
-	[_veh,_group,false,"",_crewmen] call BIS_fnc_spawnCrew;
-	_cargo = (_veh emptyPositions "cargo") - 1;
-	if (_cargo > 0) then {
-		for "_i" from 0 to _cargo do {
-			private ["_unit_type"];
-			_unit_type = selectRandom btc_type_units;
-			_unit_type createUnit [_pos1, _group, "this moveinCargo _veh;this assignAsCargo _veh;"];
-		};
-	};
-	_road = (roadsConnectedTo _road) select 0;
-	_pos1 = getPos _road;
+    [_veh,_group,false,"",_crewmen] call BIS_fnc_spawnCrew;
+    _cargo = (_veh emptyPositions "cargo") - 1;
+    if (_cargo > 0) then {
+        for "_i" from 0 to _cargo do {
+            private ["_unit_type"];
+            _unit_type = selectRandom btc_type_units;
+            _unit_type createUnit [_pos1, _group, "this moveinCargo _veh;this assignAsCargo _veh;"];
+        };
+    };
+    _road = (roadsConnectedTo _road) select 0;
+    _pos1 = getPos _road;
 };
 
 units _group joinSilent _group;
@@ -95,19 +95,19 @@ waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({ canMove _x } coun
 
 btc_side_assigned = false;publicVariable "btc_side_assigned";
 if (btc_side_aborted) exitWith {
-	12 remoteExec ["btc_fnc_task_fail", 0];
-	[_markers, _vehs, [], [_group]] call btc_fnc_delete;
+    12 remoteExec ["btc_fnc_task_fail", 0];
+    [_markers, _vehs, [], [_group]] call btc_fnc_delete;
 };
 
 if (btc_side_failed) exitWith {
-	12 remoteExec ["btc_fnc_task_fail", 0];
-	_group setVariable ["no_cache",false];
-	{
-		_group = createGroup btc_enemy_side;
-		(crew _x) joinSilent _group;
-		_group call btc_fnc_data_add_group;
-	} forEach _vehs;
-	[_markers, [], [], []] call btc_fnc_delete;
+    12 remoteExec ["btc_fnc_task_fail", 0];
+    _group setVariable ["no_cache",false];
+    {
+        _group = createGroup btc_enemy_side;
+        (crew _x) joinSilent _group;
+        _group call btc_fnc_data_add_group;
+    } forEach _vehs;
+    [_markers, [], [], []] call btc_fnc_delete;
 };
 
 50 call btc_fnc_rep_change;

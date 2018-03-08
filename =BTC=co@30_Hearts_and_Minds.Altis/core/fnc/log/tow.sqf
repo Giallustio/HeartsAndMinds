@@ -23,9 +23,9 @@ ropeCreate [_tower, _model_rear_tower, _tower, [(_model_front_selected select 0)
 ropeCreate [_tower, _model_rear_tower, _tower, [(_model_front_selected select 0) + 0.4, _model_front_selected select 1, _model_front_selected select 2], _distance];
 
 private _eh = _tower addEventHandler ["RopeBreak", {
-	(_this select 0) removeEventHandler ["RopeBreak", _thisEventHandler];
-	(_this select 0) setVariable ["btc_eh", nil];
-	(_this select 0) spawn btc_fnc_log_unhook;
+    (_this select 0) removeEventHandler ["RopeBreak", _thisEventHandler];
+    (_this select 0) setVariable ["btc_eh", nil];
+    (_this select 0) spawn btc_fnc_log_unhook;
 }];
 _tower setVariable ["btc_eh", _eh];
 

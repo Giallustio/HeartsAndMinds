@@ -15,14 +15,14 @@ _objects = _objects select {((getPos _x select 2 < -3) && (((str(_x) find "car")
 _wrecks = _objects select {((str(_x) find "rock") isEqualTo -1)};
 
 if (_wrecks isEqualTo []) then {
-	if (_objects isEqualTo []) then {
-		_pos = [getPos _city, 0, 100, 13, 2, 60 * (pi / 180), 0] call BIS_fnc_findSafePos;
-		_pos = [_pos select 0, _pos select 1, (getTerrainHeightASL [_pos select 0, _pos select 1])];
-	} else {
-		_pos = getpos (selectRandom _objects);
-	};
+    if (_objects isEqualTo []) then {
+        _pos = [getPos _city, 0, 100, 13, 2, 60 * (pi / 180), 0] call BIS_fnc_findSafePos;
+        _pos = [_pos select 0, _pos select 1, (getTerrainHeightASL [_pos select 0, _pos select 1])];
+    } else {
+        _pos = getpos (selectRandom _objects);
+    };
 } else {
-	_pos = getpos (selectRandom _wrecks);
+    _pos = getpos (selectRandom _wrecks);
 };
 
 btc_side_aborted = false;
@@ -66,7 +66,7 @@ waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !Alive _generator )}
 btc_side_assigned = false;publicVariable "btc_side_assigned";
 
 if (btc_side_aborted || btc_side_failed ) exitWith {
-	11 remoteExec ["btc_fnc_task_fail", 0];
+    11 remoteExec ["btc_fnc_task_fail", 0];
 };
 
 80 call btc_fnc_rep_change;

@@ -9,10 +9,10 @@ _can_lift = false;
 _cargo_array = nearestObjects [_chopper, _array, 30];
 _cargo_array = _cargo_array - [_chopper];
 _cargo_array = _cargo_array select {
-	!(
-	_x isKindOf "ACE_friesGantry" ||
-	(typeof _x) isEqualTo "ACE_friesAnchorBar" ||
-	_x isKindOf "ace_fastroping_helper")
+    !(
+    _x isKindOf "ACE_friesGantry" ||
+    (typeof _x) isEqualTo "ACE_friesAnchorBar" ||
+    _x isKindOf "ace_fastroping_helper")
 };
 if (_cargo_array isEqualTo []) then {_can_lift = false;} else {_cargo = _cargo_array select 0;_can_lift = true;};
 
@@ -29,6 +29,6 @@ _cargo_y   = _rel_pos select 1;
 _cargo_z   = ((getPosATL _chopper) select 2) - (_cargo_pos select 2);//hintSilent format ["%1 - %2 - %3",_cargo_x,_cargo_y,_cargo_z];
 
 if (((abs _cargo_z) < btc_lift_max_h) && ((abs _cargo_z) > btc_lift_min_h) && ((abs _cargo_x) < btc_lift_radius) && ((abs _cargo_y) < btc_lift_radius)) then
-	{_can_lift = true;} else {_can_lift = false;};
-	//hintSilent format ["%1 - %2", _cargo,_cargo_array];
+    {_can_lift = true;} else {_can_lift = false;};
+    //hintSilent format ["%1 - %2", _cargo,_cargo_array];
 _can_lift
