@@ -1,4 +1,4 @@
-params ["_position", "_radius_x", "_radius_y", "_city", "_has_en", "_name", "_type", "_id"]
+params ["_position", "_radius_x", "_radius_y", "_city", "_has_en", "_name", "_type", "_id"];
 
 private _trigger = createTrigger["EmptyDetector", _position];
 _trigger setTriggerArea[(_radius_x+_radius_y) + btc_city_radius, (_radius_x + _radius_y) + btc_city_radius, 0, false];
