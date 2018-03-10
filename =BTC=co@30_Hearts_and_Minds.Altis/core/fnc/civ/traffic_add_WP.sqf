@@ -1,5 +1,5 @@
 
-params ["_group", "_area", "_isboat"]
+params ["_group", "_area", "_isboat"];
 
 private _active_city = _group getVariable ["city", objNull];
 private _end_city = _group getVariable ["end_city", leader _group];

@@ -30,7 +30,7 @@ for "_i" from 0 to _n do
     if (count _houses == 0) exitWith {};
     private _house = selectRandom _houses;
 
-    private_unit_type = selectRandom btc_civ_type_units;
+    private _unit_type = selectRandom btc_civ_type_units;
 
     _group = createGroup civilian;
     _group createUnit [_unit_type, _house buildingPos 0, [], 0, "NONE"];
