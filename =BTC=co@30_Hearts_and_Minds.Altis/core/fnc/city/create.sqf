@@ -1,5 +1,4 @@
-
-params ["_position","_type","_name","_radius_x","_radius_y","_has_en"];
+params ["_position", "_type", "_name", "_radius_x", "_radius_y", "_has_en"];
 
 private _id = count btc_city_all;
 
@@ -16,11 +15,12 @@ _city setVariable ["type", _type];
 _city setVariable ["spawn_more", false];
 _city setVariable ["data_units", []];
 _city setVariable ["occupied", _has_en];
+
 if (btc_p_sea) then {
-    _city setVariable ["hasbeach", ((selectBestPlaces [_position, 0.8*(_radius_x+_radius_y), "sea", 10, 1]) select 0 select 1) isEqualTo 1];
+    _city setVariable ["hasbeach", ((selectBestPlaces [_position, 0.8 * (_radius_x + _radius_y), "sea", 10, 1]) select 0 select 1) isEqualTo 1];
 };
 
-btc_city_all set [_id,_city];
-[_position,_radius_x,_radius_y,_city,_has_en,_name,_type,_id] call btc_fnc_city_trigger_player_side;
+btc_city_all set [_id, _city];
+[_position, _radius_x, _radius_y, _city, _has_en, _name, _type, _id] call btc_fnc_city_trigger_player_side;
 
 _city
