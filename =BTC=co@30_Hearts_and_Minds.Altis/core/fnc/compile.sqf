@@ -11,9 +11,7 @@ if (isServer) then {
     btc_fnc_clean_up = compile preprocessFileLineNumbers "core\fnc\common\clean_up.sqf";
     btc_fnc_create_composition = compile preprocessFileLineNumbers "core\fnc\common\create_composition.sqf";
     btc_fnc_create_attachto = compile preprocessFileLineNumbers "core\fnc\common\create_attachto.sqf";
-    btc_fnc_getHouses = compile preprocessFileLineNumbers "core\fnc\common\getHouses.sqf";
     btc_fnc_house_addWP = compile preprocessFileLineNumbers "core\fnc\common\house_addWP.sqf";
-    btc_fnc_house_addWP_loop = compile preprocessFileLineNumbers "core\fnc\common\house_addWP_loop.sqf";
     btc_fnc_set_owner = compile preprocessFileLineNumbers "core\fnc\common\set_owner.sqf";
     btc_fnc_task_patrol = compile preprocessFileLineNumbers "core\fnc\common\task_patrol.sqf";
     btc_fnc_set_damage = compile preprocessFileLineNumbers "core\fnc\common\set_damage.sqf";
@@ -163,6 +161,8 @@ if (isServer OR (!isDedicated && !hasInterface)) then {
 btc_fnc_find_veh_with_turret = compile preprocessFileLineNumbers "core\fnc\common\find_veh_with_turret.sqf";
 btc_fnc_get_class = compile preprocessFileLineNumbers "core\fnc\common\get_class.sqf";
 btc_fnc_randomize_pos = compile preprocessFileLineNumbers "core\fnc\common\randomize_pos.sqf";
+btc_fnc_getHouses = compile preprocessFileLineNumbers "core\fnc\common\getHouses.sqf";
+btc_fnc_house_addWP_loop = compile preprocessFileLineNumbers "core\fnc\common\house_addWP_loop.sqf";
 
 //DB
 btc_fnc_db_add_veh = compile preprocessFileLineNumbers "core\fnc\db\add_veh.sqf";
