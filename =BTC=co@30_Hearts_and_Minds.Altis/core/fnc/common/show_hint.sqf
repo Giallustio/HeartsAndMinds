@@ -40,6 +40,9 @@ switch (_type) do {
         hint localize "STR_BTC_HAM_O_COMMON_SHOWHINTS_11"; //One checkpoint destroyed!
     };
     case 12 : {
-        hint localize "STR_BTC_HAM_SIDE_CONVOY_STARTCHAT"; //One checkpoint destroyed!
+        hint localize "STR_BTC_HAM_SIDE_CONVOY_STARTCHAT"; //Convoy has left the starting point!
+    };
+    case 13 : {
+        hint localize "STR_BTC_HAM_SIDE_HACK_STARTCHAT"; //Defend the terminal until the missile is hacked!
     };
 };

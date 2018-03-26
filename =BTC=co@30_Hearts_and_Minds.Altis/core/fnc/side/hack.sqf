@@ -59,7 +59,7 @@ _groups apply {_x setBehaviour "CARELESS"};
 
 [_terminal, _launchsite modelToWorld [0,100,10]] remoteExec ["btc_fnc_log_place_create_camera", -2];
 
-{player commandChat (localize "STR_BTC_HAM_SIDE_HACK_STARTCHAT")} remoteExec ["call", -2]; //Defend the terminal until the missile is hacked!
+[13] remoteExec ["btc_fnc_show_hint", -2];
 
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({_x isEqualTo grpNull} count _groups > 0) || !(_city getVariable ["active", false]))};
 if (btc_side_aborted || btc_side_failed) exitWith {
