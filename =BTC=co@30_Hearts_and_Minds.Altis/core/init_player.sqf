@@ -1,5 +1,5 @@
 
-call compile preprocessFile "core\doc.sqf";
+call compile preprocessFileLineNumbers "core\doc.sqf";
 
 [{!isNull player}, {
 

@@ -4,7 +4,7 @@ params ["_position", ["_position_evac", []]];
 private _civilians = (allUnits select {side _x isEqualTo civilian}) select {_x distance _position < 200};
 
 if (_position_evac isEqualTo []) then {
-    private _safe = (nearestTerrainObjects [_position, ["CHURCH","CHAPEL"], 400]);
+    private _safe = (nearestTerrainObjects [_position, ["CHURCH", "CHAPEL"], 400]);
     if (_safe isEqualTo []) then {
         _position_evac = [_position, 0, 500, 30, 0, 60 * (pi / 180), 0] call BIS_fnc_findSafePos;
     } else {

@@ -1,5 +1,4 @@
-
-private _unit = _this select 0;
+params ["_unit"];
 
 _unit addMagazines [selectRandom btc_g_civs, 1];
 

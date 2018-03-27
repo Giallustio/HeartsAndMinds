@@ -1,5 +1,4 @@
-
-params ["_player","_uav"];
+params ["_player", "_uav"];
 
 if !(_uav isKindOf "UAV_06_base_F") exitWith {};
 
@@ -11,7 +10,7 @@ if (needReload _uav == 1) then {reload _uav};
 
 if ((_uav getVariable ["btc_leaflets_eh_added" , -1]) isEqualTo -1) then {
     private _id_f = _uav addEventHandler ["Fired", btc_fnc_eh_leaflets];
-    _uav setVariable ["btc_leaflets_eh_added" , _id_f];
+    _uav setVariable ["btc_leaflets_eh_added", _id_f];
 
     if (btc_debug) then {
         systemChat format ["Add leaflets EventHandler ID: %1", _id_f];

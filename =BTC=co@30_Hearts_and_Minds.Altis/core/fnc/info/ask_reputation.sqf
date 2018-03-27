@@ -1,6 +1,6 @@
 params ["_man"];
 
-if (isNil {player getVariable "interpreter"}) exitWith {[name _man,localize "STR_BTC_HAM_CON_INFO_ASKREP_NOINTER"] spawn btc_fnc_showSubtitle;}; //I can't understand what is saying
+if (isNil {player getVariable "interpreter"}) exitWith {[name _man,localize "STR_BTC_HAM_CON_INFO_ASKREP_NOINTER"] call btc_fnc_showSubtitle;}; //I can't understand what is saying
 
 btc_int_ask_data = nil;
 
@@ -35,4 +35,4 @@ private _text = selectRandom [
     localize "STR_BTC_HAM_CON_INFO_ASKREP_ASK3"  //I think your reputation is
 ];
 
-[name _man,format ["%1 %2. %3", _text, _info_type, _ho_left]] spawn btc_fnc_showSubtitle;
+[name _man,format ["%1 %2. %3", _text, _info_type, _ho_left]] call btc_fnc_showSubtitle;
