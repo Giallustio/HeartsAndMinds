@@ -38,7 +38,8 @@ private _launchsite = createVehicle ["Land_PenBlack_F", _pos, [], 0, "FLY"];
 [[_terminal],{
     private _action = ["Open",(localize "STR_BTC_HAM_SIDE_HACK_ACEACTION"),"\A3\ui_f\data\igui\cfg\simpleTasks\types\intel_ca.paa",{ //Start Hacking
         [_this select 0,3] call BIS_fnc_dataTerminalAnimate;
-        {btc_side_done = true} remoteExec ["call", 0];
+        btc_side_done = true;
+        publicVariable "btc_side_done";
     },{isNil "btc_side_done"}] call ace_interact_menu_fnc_createAction;
     [_this select 0, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToObject;
 }] remoteExec ["call", -2, _terminal];
@@ -63,7 +64,8 @@ _groups apply {_x setBehaviour "CARELESS"};
 
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({_x isEqualTo grpNull} count _groups > 0) || !(_city getVariable ["active", false]))};
 if (btc_side_aborted || btc_side_failed) exitWith {
-    {btc_side_done = Nil} remoteExec ["call", -2];
+    btc_side_done = Nil;
+    publicVariable "btc_side_done";
     16 remoteExec ["btc_fnc_task_fail", 0];
     [[_marker], [_terminal], [], []] call btc_fnc_delete;
     btc_side_assigned = false;publicVariable "btc_side_assigned";
@@ -81,7 +83,8 @@ private _rocket = createVehicle ["ace_rearm_Missile_AGM_02_F", [_pos select 0, _
 private _fx = createVehicle ["test_EmptyObjectForSmoke", [_pos select 0, _pos select 1, _altitude], [], 0, "CAN_COLLIDE"];
 _fx attachTo [_rocket,[0,0,0]];
 
-{btc_side_done = Nil} remoteExec ["call", -2];
+btc_side_done = Nil;
+publicVariable "btc_side_done";
 btc_side_assigned = false;publicVariable "btc_side_assigned";
 [[_marker], [_rocket, _terminal], [_fx], []] call btc_fnc_delete;
 if (btc_side_aborted || btc_side_failed || !(_city getVariable ["active", false])) exitWith {
