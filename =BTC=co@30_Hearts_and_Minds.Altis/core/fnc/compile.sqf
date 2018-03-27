@@ -277,6 +277,8 @@ if (!isDedicated) then {
     btc_fnc_int_action_result = compile preprocessFileLineNumbers "core\fnc\int\action_result.sqf";
     btc_fnc_int_orders = compile preprocessFileLineNumbers "core\fnc\int\orders.sqf";
     btc_fnc_int_shortcuts = compile preprocessFileLineNumbers "core\fnc\int\shortcuts.sqf";
+    btc_fnc_int_terminal = compile preprocessFileLineNumbers "core\fnc\int\terminal.sqf";
+
 
     //INFO
     btc_fnc_info_ask = compile preprocessFileLineNumbers "core\fnc\info\ask.sqf";

@@ -35,14 +35,7 @@ _pos = [[_pos, 100] call btc_fnc_randomize_pos, 50, 500, 30, 0, 60 * (pi / 180),
 private _launchsite = createVehicle ["Land_PenBlack_F", _pos, [], 0, "FLY"];
 
 //// Add interaction on Terminal \\\\
-[[_terminal],{
-    private _action = ["Open",(localize "STR_BTC_HAM_SIDE_HACK_ACEACTION"),"\A3\ui_f\data\igui\cfg\simpleTasks\types\intel_ca.paa",{ //Start Hacking
-        [_this select 0,3] call BIS_fnc_dataTerminalAnimate;
-        btc_side_done = true;
-        publicVariable "btc_side_done";
-    },{isNil "btc_side_done"}] call ace_interact_menu_fnc_createAction;
-    [_this select 0, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToObject;
-}] remoteExec ["call", -2, _terminal];
+[_terminal] remoteExec ["btc_fnc_int_terminal", -2, _terminal];
 
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || btc_side_done)};
 if (btc_side_aborted || btc_side_failed) exitWith {
