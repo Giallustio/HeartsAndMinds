@@ -1,4 +1,3 @@
-
 params ["_id"];
 
 if (btc_debug) then {
