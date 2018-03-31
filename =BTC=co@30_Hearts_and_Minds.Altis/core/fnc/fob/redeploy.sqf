@@ -22,9 +22,7 @@ createDialog "btc_fob_redeploy";
 waitUntil {dialog};
 
 private _idc = 778;
-
 {lbAdd [ _idc, _x];} foreach (_fobs select 0);
-
 lbSetCurSel [_idc, 0];
 
 waitUntil {!dialog || btc_fob_dlg};
@@ -32,17 +30,14 @@ waitUntil {!dialog || btc_fob_dlg};
 if (!btc_fob_dlg) exitWith {forceMap false;};
 
 private _fob = lbText [_idc, lbCurSel _idc];
-
 private _marker = lbText [_idc, lbCurSel _idc];
 
 if (_marker isEqualTo "Base") then {_marker = btc_respawn_marker;};
 
 forceMap false;
-
 closeDialog 0;
 
 private _pos = ((_fobs select 1) select ((_fobs select 0) find _marker)) buildingPos -1;
-
 private _text = format [localize "STR_BTC_HAM_O_FOB_REDEPLOY_H_MOVING", _fob]; //"Moving to %1"
 
 titleText [_text, "BLACK OUT"];

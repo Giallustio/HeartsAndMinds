@@ -9,7 +9,7 @@ private _flag  = createVehicle [btc_fob_flag, _pos, [], 0, "NONE"];
 private _h = - 10;
 while {_h < 0} do {
     _h = _h + 0.1;
-    _struc setpos [_pos select 0, _pos select 1, _h];
+    _struc setPos [_pos select 0, _pos select 1, _h];
     sleep 0.1;
 };
 {

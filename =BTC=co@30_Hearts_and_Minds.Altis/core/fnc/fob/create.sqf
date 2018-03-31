@@ -8,7 +8,7 @@ if (_mat distance (getMarkerPos "btc_base") < 2000) exitWith {hint localize "STR
 
 //"Clear the area before mounting the FOB, %1"
 if ({!(_x isKindOf "ace_fastroping_helper")} count (nearestObjects [position _mat, ["LandVehicle", "Air"], 10]) > 0) exitWith {
-    hint format [(localize "STR_BTC_HAM_O_FOB_CREATE_H_CAREA", (nearestObjects [position _mat, ["LandVehicle", "Air"], 10]) apply {typeof _x}]
+    hint format [localize "STR_BTC_HAM_O_FOB_CREATE_H_CAREA", (nearestObjects [position _mat, ["LandVehicle", "Air"], 10]) apply {typeof _x}]
 };
 
 closeDialog 0;
@@ -21,8 +21,8 @@ waitUntil {dialog};
 
 while {!btc_fob_dlg} do {
     if !(dialog) then {
-            hint localize "STR_BTC_HAM_O_FOB_CREATE_H_ESC"; //"Do not close the dialog with esc"
-            createDialog "btc_fob_create";
+        hint localize "STR_BTC_HAM_O_FOB_CREATE_H_ESC"; //"Do not close the dialog with esc"
+        createDialog "btc_fob_create";
     };
     sleep 0.1;
 };
