@@ -22,7 +22,6 @@ if (btc_debug) then {hint "saving...2";};
 //City status
 private _cities_status = [];
 {
-    //[151,false,false,true,false,false,[]]
     private _city_status = [];
     _city_status pushBack (_x getVariable "id");
 
@@ -56,31 +55,31 @@ private _array_ho = [];
     private _ho_markers = [];
     {
         private _marker = [];
-        _marker pushback (getMarkerPos _x);
-        _marker pushback (markerText _x);
-        _ho_markers pushback _marker;
+        _marker pushBack (getMarkerPos _x);
+        _marker pushBack (markerText _x);
+        _ho_markers pushBack _marker;
     } foreach (_x getVariable ["markers", []]);
-    _data pushback _ho_markers;
+    _data pushBack _ho_markers;
     if (btc_debug_log) then {diag_log format ["HO %1 DATA %2", _x, _data];};
     _array_ho pushBack _data;
 } foreach btc_hideouts;
 profileNamespace setVariable [format ["btc_hm_%1_ho", _name], _array_ho];
 
-profileNamespace setVariable [format ["btc_hm_%1_ho_sel", _name], btc_hq getVariable ["id",0]];
+profileNamespace setVariable [format ["btc_hm_%1_ho_sel", _name], btc_hq getVariable ["id", 0]];
 
 //CACHE
 private _array_cache = [];
-_array_cache pushback (getposATL btc_cache_obj);
-_array_cache pushback btc_cache_n;
-_array_cache pushback btc_cache_info;
+_array_cache pushBack (getposATL btc_cache_obj);
+_array_cache pushBack btc_cache_n;
+_array_cache pushBack btc_cache_info;
 private _cache_markers = [];
 {
     private _data = [];
-    _data pushback (getMarkerPos _x);
-    _data pushback (markerText _x);
+    _data pushBack (getMarkerPos _x);
+    _data pushBack (markerText _x);
     _cache_markers pushBack _data;
 } foreach btc_cache_markers;
-_array_cache pushback _cache_markers;
+_array_cache pushBack _cache_markers;
 profileNamespace setVariable [format ["btc_hm_%1_cache", _name], _array_cache];
 
 //REPUTATION
@@ -105,11 +104,13 @@ private _array_veh = [];
     _data pushBack (fuel _x);
     _data pushBack (getAllHitPointsDamage _x);
     private _cargo = [];
-    {_cargo pushBack [typeOf _x, _x getVariable ["ace_rearm_magazineClass", ""], [getWeaponCargo _x,getMagazineCargo _x,getItemCargo _x]]} foreach (_x getVariable ["cargo", []]);
+    {
+        _cargo pushBack [typeOf _x, _x getVariable ["ace_rearm_magazineClass", ""], [getWeaponCargo _x, getMagazineCargo _x, getItemCargo _x]]
+    } foreach (_x getVariable ["cargo", []]);
     _data pushBack _cargo;
     private _cont = [getWeaponCargo _x, getMagazineCargo _x, getItemCargo _x];
     _data pushBack _cont;
-    _data pushback ([_x] call BIS_fnc_getVehicleCustomization);
+    _data pushBack ([_x] call BIS_fnc_getVehicleCustomization);
     _array_veh pushBack _data;
     if (btc_debug_log) then {diag_log format ["VEH %1 DATA %2", _x, _data]};
 } foreach (btc_vehicles - [objNull]);

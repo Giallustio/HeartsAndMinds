@@ -22,7 +22,11 @@ private _cities_status = profileNamespace getVariable [format ["btc_hm_%1_cities
 
     if (btc_debug) then    {//_debug
 
-        if (_city getVariable ["occupied",false]) then {(_city getVariable ["marker", ""]) setmarkercolor "colorRed";} else {(_city getVariable ["marker", ""]) setmarkercolor "colorGreen";};
+        if (_city getVariable ["occupied",false]) then {
+            (_city getVariable ["marker", ""]) setmarkercolor "colorRed";
+        } else {
+            (_city getVariable ["marker", ""]) setmarkercolor "colorGreen";
+        };
         (_city getVariable ["marker", ""]) setmarkertext format ["loc_%3 %1 %2 - [%4]", _city getVariable "name", _city getVariable "type", _id, _occupied];
 
         diag_log format ["ID: %1", _id];
@@ -40,11 +44,13 @@ private _array_ho = profileNamespace getVariable [format ["btc_hm_%1_ho", _name]
     private _city = btc_city_all select _id;
 
     private _hideout = [_pos] call btc_fnc_mil_create_hideout_composition;
-    clearWeaponCargoGlobal _hideout;clearItemCargoGlobal _hideout;clearMagazineCargoGlobal _hideout;
+    clearWeaponCargoGlobal _hideout;
+    clearItemCargoGlobal _hideout;
+    clearMagazineCargoGlobal _hideout;
 
     _city setpos _pos;
     if (btc_debug) then    {deleteMarker format ["loc_%1", _id];};
-    deleteVehicle (_city getVariable ["trigger_player_side",objNull]);
+    deleteVehicle (_city getVariable ["trigger_player_side", objNull]);
     private _radius_x = btc_hideouts_radius;
     private _radius_y = btc_hideouts_radius;
 
@@ -91,7 +97,7 @@ private _array_ho = profileNamespace getVariable [format ["btc_hm_%1_ho", _name]
 private _ho = profileNamespace getVariable [format ["btc_hm_%1_ho_sel", _name], 0];
 btc_hq = btc_hideouts select _ho;
 
-if (count btc_hideouts == 0) then {[] spawn btc_fnc_final_phase;};
+if (btc_hideouts isEqualTo []) then {[] spawn btc_fnc_final_phase;};
 
 //CACHE
 
@@ -157,51 +163,8 @@ private _vehs = profileNamespace getVariable [format ["btc_hm_%1_vehs", _name], 
         private _veh = [_veh_type, _veh_pos, _veh_dir, _customization] call btc_fnc_log_createVehicle;
         if ((getPos _veh) select 2 < 0) then {_veh setVectorUp surfaceNormal position _veh;};
         _veh setFuel _veh_fuel;
-        {
-            _x params ["_type", "_rearm_magazineClass", "_cargo_obj"];
 
-            private _obj = _type createVehicle [0, 0, 0];
-            if (_rearm_magazineClass != "") then {_obj setVariable ["ace_rearm_magazineClass", _rearm_magazineClass, true]};
-            btc_log_obj_created pushBack _obj;
-            btc_curator addCuratorEditableObjects [[_obj], false];
-
-            clearWeaponCargoGlobal _obj;clearItemCargoGlobal _obj;clearMagazineCargoGlobal _obj;
-            _cargo_obj params ["_weap_obj", "_mags_obj", "_items_obj"];
-            if (count _weap_obj > 0) then {
-                for "_i" from 0 to ((count (_weap_obj select 0)) - 1) do {
-                    _obj addWeaponCargoGlobal [(_weap_obj select 0) select _i, (_weap_obj select 1) select _i];
-                };
-            };
-            if (count _mags_obj > 0) then {
-                for "_i" from 0 to ((count (_mags_obj select 0)) - 1) do {
-                    _obj addMagazineCargoGlobal [(_mags_obj select 0) select _i, (_mags_obj select 1) select _i];
-                };
-            };
-            if (count _items_obj > 0) then {
-                for "_i" from 0 to ((count (_items_obj select 0)) - 1) do {
-                    _obj addItemCargoGlobal [(_items_obj select 0) select _i, (_items_obj select 1) select _i];
-                };
-            };
-            [_obj, _veh] call btc_fnc_log_server_load;
-        } foreach _veh_cargo;
-
-        clearWeaponCargoGlobal _veh;clearItemCargoGlobal _veh;clearMagazineCargoGlobal _veh;
-        _veh_cont params ["_weap", "_mags", "_items"];
-        if (count _weap > 0) then {
-            for "_i" from 0 to ((count (_weap select 0)) - 1) do {
-                _veh addWeaponCargoGlobal[(_weap select 0) select _i, (_weap select 1) select _i];
-            };
-        };
-        if (count _mags > 0) then {
-            for "_i" from 0 to ((count (_mags select 0)) - 1) do {
-                _veh addMagazineCargoGlobal[(_mags select 0) select _i, (_mags select 1) select _i];
-            };
-        };
-        if (count _items > 0) then {
-            for "_i" from 0 to ((count (_items select 0)) - 1) do {
-                _veh addItemCargoGlobal[(_items select 0) select _i, (_items select 1) select _i];
-            };
-        };
+        ["_veh", "_veh_cargo", "_veh_cont"] call btc_fnc_db_loadCargo;
 
         //Disable explosion effect during database loading
         {
