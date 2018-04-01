@@ -55,6 +55,7 @@ btc_p_side_mission_cycle = ("btc_p_side_mission_cycle" call BIS_fnc_getParamValu
 
 //<< Other options >>
 btc_p_arsenalType = "btc_p_arsenalType" call BIS_fnc_getParamValue;
+btc_p_arsenalRestrict = "btc_p_arsenalRestrict" call BIS_fnc_getParamValue;
 _p_rep = "btc_p_rep" call BIS_fnc_getParamValue;
 btc_p_garage = ("btc_p_garage" call BIS_fnc_getParamValue) isEqualTo 1;
 _p_city_radius = ("btc_p_city_radius" call BIS_fnc_getParamValue) * 100;
