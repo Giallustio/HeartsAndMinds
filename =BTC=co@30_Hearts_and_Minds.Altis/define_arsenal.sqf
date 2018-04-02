@@ -1,59 +1,30 @@
 /*
-    Here you can define w
+    Here you can specify which equipment should be added or removed from the arsenal.
+    Please take care that there are different categories (weapons, magazines, items, backpacks) for different pieces of equipment into which you have to classify the classnames.
+    In all cases, you need the classname of an object.
 
+    Attention: The function of these lists depends on the setting in the mission parameter (Restrict arsenal).
+        - "Full": here you have only the registered items in the arsenal available.
+        - "Remove only": here all registered items are removed from the arsenal. This only works for the ACE3 arsenal!
 
+    Example(s):
+        private _weapons = [
+            "arifle_MX_F",          //Classname for the rifle MX
+            "arifle_MX_SW_F",       //Classname for the rifle MX LSW
+            "arifle_MXC_F"          //Classname for the rifle MXC
+        ];
+
+        private _items = [
+            "G_Shades_Black",
+            "G_Shades_Blue",
+            "G_Shades_Green"
+        ];
 */
-private _weapons = [
-    "arifle_MX_F",
-    "arifle_MX_SW_F",
-    "arifle_MXC_F"
-];
+private _weapons = [];
 private _magazines = [];
-private _items = [
-    "H_HelmetB",
-    "H_HelmetB_camo",
-    "H_HelmetB_paint",
-    "H_HelmetB_light",
-    "H_HelmetSpecB",
-    "H_Booniehat_mcamo",
-    "H_Booniehat_khk_hs",
-    "H_MilCap_mcamo",
-    "G_Combat",
-    "G_Lowprofile",
-    "G_Shades_Black",
-    "G_Shades_Blue",
-    "G_Shades_Green",
-    "G_Shades_Red",
-    "G_Sport_Blackred",
-    "G_Sport_Blackyellow",
-    "G_Squares_Tinted",
-    "G_Tactical_Black",
-    "G_Tactical_Clear",
-    "G_Bandanna_blk",
-    "U_B_CombatUniform_mcam",
-    "U_B_CombatUniform_mcam_tshirt",
-    "U_B_CombatUniform_mcam_vest",
-    "U_B_HeliPilotCoveralls",
-    "U_B_CTRG_1",
-    "U_B_CTRG_2",
-    "U_B_CTRG_3",
-    "V_BandollierB_khk",
-    "V_BandollierB_blk",
-    "V_PlateCarrier1_rgr",
-    "V_PlateCarrier2_rgr",
-    "V_PlateCarrierGL_rgr",
-    "V_PlateCarrierSpec_rgr",
-    "V_PlateCarrierL_CTRG",
-    "V_PlateCarrierH_CTRG"
-];
-private _backpacks = [
-    "B_AssaultPack_rgr",
-	"B_AssaultPack_mcamo",
-	"B_Kitbag_rgr",
-	"B_Kitbag_mcamo",
-	"B_TacticalPack_blk",
-	"B_TacticalPack_mcamo"
-];
+private _items = [];
+private _backpacks = [];
+
 
 // --- DO NOT EDIT BLOW ---
 private _box = btc_gear_object;
@@ -61,36 +32,36 @@ private _box = btc_gear_object;
 if (btc_p_arsenalType < 3) then {
     if (btc_p_arsenalRestrict isEqualTo 1) then {
         //add
-        [_box, _weapons, true, false] call BIS_fnc_addVirtualWeaponCargo;
-        [_box, _magazines, true, false] call BIS_fnc_addVirtualMagazineCargo;
-        [_box, _items, true, false] call BIS_fnc_addVirtualItemCargo;
-        [_box, _addBackpacks, true, false] call BIS_fnc_addVirtualBackpackCargo;
+        [_box, _weapons, false, false] call BIS_fnc_addVirtualWeaponCargo;
+        [_box, _magazines, false, false] call BIS_fnc_addVirtualMagazineCargo;
+        [_box, _items, false, false] call BIS_fnc_addVirtualItemCargo;
+        [_box, _backpacks, false, false] call BIS_fnc_addVirtualBackpackCargo;
     };
 
     /* DO NOT WORK FOR BIS ARSENAL
     if (btc_p_arsenalRestrict isEqualTo 2) then {
         //remove
-        [_box, _weapons, true] call BIS_fnc_removeVirtualWeaponCargo;
-        [_box, _magazines, true] call BIS_fnc_removeVirtualMagazineCargo;
-        [_box, _items, true] call BIS_fnc_removeVirtualItemCargo;
-        [_box, _removeBackpacks, true] call BIS_fnc_removeVirtualBackpackCargo;
+        [_box, _weapons, false] call BIS_fnc_removeVirtualWeaponCargo;
+        [_box, _magazines, false] call BIS_fnc_removeVirtualMagazineCargo;
+        [_box, _items, false] call BIS_fnc_removeVirtualItemCargo;
+        [_box, _backpacks, false] call BIS_fnc_removeVirtualBackpackCargo;
     };
     */
 };
 
 //ACE Arsenal
-if (btc_p_arsenalType in [2, 4]) then {
+if (btc_p_arsenalType > 0) then {
     //add
     if (btc_p_arsenalRestrict isEqualTo 1) then {
         private _aceAdd = [];
         {{_aceAdd pushback _x; false} count _x; false} count [_weapons,_magazines,_items,_backpacks];
-        [_box, _aceAdd,true] call ace_arsenal_fnc_addVirtualItems;
+        [_box, _aceAdd] call ace_arsenal_fnc_addVirtualItems;
     };
 
     //remove
     if (btc_p_arsenalRestrict isEqualTo 2) then {
         private _aceRemove = [];
         {{_aceRemove pushback _x; false} count _x; false} count [_weapons,_magazines,_items,_backpacks];
-        [_box, _aceRemove,true] call ace_arsenal_fnc_removeVirtualItems;
+        [_box, _aceRemove] call ace_arsenal_fnc_removeVirtualItems;
     };
 };
