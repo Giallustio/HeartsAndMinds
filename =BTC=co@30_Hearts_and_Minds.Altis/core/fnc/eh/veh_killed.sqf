@@ -8,7 +8,7 @@ _marker setMarkerColor "ColorRed";
 _vehicle setVariable ["marker", _marker];
 
 if (isServer) then {
-	btc_rep_malus_veh_killed spawn btc_fnc_rep_change;
+    btc_rep_malus_veh_killed spawn btc_fnc_rep_change;
 } else {
-	btc_rep_malus_veh_killed remoteExec ["btc_fnc_rep_change", 2];
+    btc_rep_malus_veh_killed remoteExec ["btc_fnc_rep_change", 2];
 };
