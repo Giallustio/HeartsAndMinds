@@ -8,7 +8,7 @@ btc_int_ask_data = nil;
 waitUntil {!(isNil "btc_int_ask_data")};
 
 if ((btc_int_ask_data select 0) isEqualTo []) exitWith {
-	hint localize "STR_BTC_HAM_O_FOB_REDEPLOY_H_NOFOB"; //"No FOBs deployed"
+    hint localize "STR_BTC_HAM_O_FOB_REDEPLOY_H_NOFOB"; //"No FOBs deployed"
 };
 
 private _fobs = btc_int_ask_data;
