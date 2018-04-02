@@ -450,6 +450,18 @@
                 <Original>BIS - Vanilla and ACE 3 (scroll wheel action)</Original>
                 <German>BIS - Vanilla und ACE 3 (Maus-Rad-Menü)</German>
             </Key>
+            <Key ID="STR_BTC_HAM_PARAM_OTHER_ARSENALRESTR">
+                <Original>Restrict arsenal:</Original>
+                <German>Arsenal beschränken:</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_OTHER_ARSENALRESTR_FULL">
+                <Original>Full</Original>
+                <German>Komplett</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_OTHER_ARSENALRESTR_REMOVEONLY">
+                <Original>Remove only (works only with ACE3-Arsenal)</Original>
+                <German>Nur entfernen (funktioniert nur beim ACE3-Arsenal)</German>
+            </Key>
             <Key ID="STR_BTC_HAM_PARAM_OTHER_REPSTART">
                 <Original>Reputation at start:</Original>
                 <German>Ansehen zu Beginn:</German>

@@ -246,9 +246,9 @@ class Params {
         default = 2;
     };
     class btc_p_arsenalRestrict { // Restricted arsenal:
-        title = "Restricted arsenal:";
+        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_OTHER_ARSENALRESTR"]);
         values[]={0,1,2};
-        texts[] = {$STR_DISABLED,"Full","Remove only"};
+        texts[] = {$STR_DISABLED,$STR_BTC_HAM_PARAM_OTHER_ARSENALRESTR_FULL,$STR_BTC_HAM_PARAM_OTHER_ARSENALRESTR_REMOVEONLY};
         default = 1;
     };
     class btc_p_rep { // Reputation at start:
