@@ -19,6 +19,8 @@ call compile preprocessFileLineNumbers "core\doc.sqf";
 
     removeAllWeapons player;
 
+    if !(btc_p_arsenalRestrict isEqualTo 0) then {call btc_fnc_log_arsenalData;};
+
     [{scriptDone btc_intro_done}, {
         {[_x] call btc_fnc_task_create} foreach ((player call BIS_fnc_tasksUnit) select {[_x] call BIS_fnc_taskState isEqualTo "ASSIGNED"});
     }] call CBA_fnc_waitUntilAndExecute;
