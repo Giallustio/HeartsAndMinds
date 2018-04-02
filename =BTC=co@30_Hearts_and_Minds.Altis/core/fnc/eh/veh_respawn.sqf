@@ -6,12 +6,14 @@ _data = _vehicle getVariable ["data_respawn",[]];
 
 [_vehicle,_data] spawn {
     params ["_vehicle","_data"];
-    private _time = (_data select 3);
+    _data params ["_type", "_pos", "_dir", "_time", "_has_marker", ["_customization", [false, false]]];
+
     sleep _time;
     deleteVehicle _vehicle;
     sleep 1;
-    private _veh = (_data select 0) createVehicle (_data select 1);
-    _veh setDir (_data select 2);
-    _veh setPosASL (_data select 1);
-    [_veh,_time,(_data select 4)] spawn btc_fnc_eh_veh_add_respawn;
+    private _veh = _type createVehicle _pos;
+    [_veh, _customization select 0, _customization select 1] call BIS_fnc_initVehicle;
+    _veh setDir _dir;
+    _veh setPosASL _pos;
+    [_veh,_time, _has_marker] spawn btc_fnc_eh_veh_add_respawn;
 };
