@@ -105,7 +105,7 @@ _trigger setTriggerActivation[str(btc_player_side),"PRESENT",true];
 _trigger setTriggerStatements["this", "_captive = thisTrigger getVariable 'captive'; doStop _captive; [_captive,true] call ace_captives_fnc_setSurrendered;", ""];
 _trigger attachTo [_captive,[0,0,0]];
 
-{player commandChat (localize "STR_BTC_HAM_SIDE_CONVOY_STARTCHAT")} remoteExec ["call", -2]; //Convoy has left the starting point!
+[12] remoteExec ["btc_fnc_show_hint", -2];
 
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !(Alive _captive) || (_captive distance getpos btc_create_object_point < 100))};
 
