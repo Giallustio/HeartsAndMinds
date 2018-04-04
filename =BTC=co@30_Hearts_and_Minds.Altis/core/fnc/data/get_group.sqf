@@ -15,7 +15,7 @@ private _index_wp       = 0;
 {
     private _pos = getPosATL _x;
     if (surfaceIsWater _pos) then {
-        _array_pos pushBack getpos _x;
+        _array_pos pushBack getPos _x;
     } else {
         _array_pos pushBack _pos;
     };
@@ -45,8 +45,8 @@ if ((vehicle leader _group != leader _group) && !(_type_db isEqualTo 7)) then {_
 if (_type_db isEqualTo 1) then {
     private _veh = vehicle leader _group;
     private _type = typeOf _veh;
-    private _pos = getposATL _veh;
-    private _dir = getdir _veh;
+    private _pos = getPosATL _veh;
+    private _dir = getDir _veh;
     private _fuel = fuel _veh;
     _array_veh = [_type, _pos, _dir, _fuel];
 };

@@ -8,7 +8,7 @@ for "_i" from 0 to (count _array_pos - 1) do {
     _u setPosATL (_array_pos select _i);
     _u setDamage (_array_dam select _i);
 
-    if (btc_debug_log) then {diag_log format ["spawn group : pos %1 in %2 ", _array_pos select _i, getpos _u];};
+    if (btc_debug_log) then {diag_log format ["spawn group : pos %1 in %2 ", _array_pos select _i, getPos _u];};
 };
 
 if (_type isEqualTo 1) then {
@@ -58,7 +58,7 @@ if !(_side isEqualTo civilian && {vehicle leader _group isEqualTo leader _group}
             _wp setWaypointCombatMode (_x select 4);
             _wp setWaypointBehaviour (_x select 5);
         } foreach (_array_wp select 1);
-        _group setcurrentWaypoint [_group, _array_wp select 0];
+        _group setCurrentWaypoint [_group, _array_wp select 0];
     };
 };
 if (_type isEqualTo 2) then {
