@@ -20,9 +20,9 @@ private _cities_status = profileNamespace getVariable [format ["btc_hm_%1_cities
     _city setVariable ["ieds", _ieds];
     _city setVariable ["has_suicider", _has_suicider];
 
-    if (btc_debug) then    {//_debug
+    if (btc_debug) then {//_debug
 
-        if (_city getVariable ["occupied",false]) then {
+        if (_city getVariable ["occupied", false]) then {
             (_city getVariable ["marker", ""]) setmarkercolor "colorRed";
         } else {
             (_city getVariable ["marker", ""]) setmarkercolor "colorGreen";
@@ -33,7 +33,7 @@ private _cities_status = profileNamespace getVariable [format ["btc_hm_%1_cities
         diag_log format ["data_city: %1", _x];
         diag_log format ["LOAD: %1 - %2", _id, _occupied];
     };
-} foreach _cities_status;
+} forEach _cities_status;
 
 //HIDEOUT
 private _array_ho = profileNamespace getVariable [format ["btc_hm_%1_ho", _name], []];
@@ -49,7 +49,7 @@ private _array_ho = profileNamespace getVariable [format ["btc_hm_%1_ho", _name]
     clearMagazineCargoGlobal _hideout;
 
     _city setpos _pos;
-    if (btc_debug) then    {deleteMarker format ["loc_%1", _id];};
+    if (btc_debug) then {deleteMarker format ["loc_%1", _id];};
     deleteVehicle (_city getVariable ["trigger_player_side", objNull]);
     private _radius_x = btc_hideouts_radius;
     private _radius_y = btc_hideouts_radius;
@@ -76,23 +76,23 @@ private _array_ho = profileNamespace getVariable [format ["btc_hm_%1_ho", _name]
         _marker setMarkerSize [0.5, 0.5];
         _marker setMarkerColor "ColorRed";
         _markers pushBack _marker;
-    } foreach _markers_saved;
+    } forEach _markers_saved;
 
     _hideout setVariable ["markers", _markers];
 
     if (btc_debug) then {
         //Marker
-        createmarker [format ["btc_hideout_%1", _pos], _pos];
-        format ["btc_hideout_%1", _pos] setmarkertype "mil_unknown";
-        format ["btc_hideout_%1", _pos] setMarkerText format ["Hideout %1", btc_hideouts_id];
-        format ["btc_hideout_%1", _pos] setMarkerSize [0.8, 0.8];
+        private _marker = createmarker [format ["btc_hideout_%1", _pos], _pos];
+        _marker setmarkertype "mil_unknown";
+        _marker setMarkerText format ["Hideout %1", btc_hideouts_id];
+        _marker setMarkerSize [0.8, 0.8];
     };
 
     if (btc_debug_log) then {diag_log format ["btc_fnc_mil_create_hideout: _this = %1 ; POS %2 ID %3", _x, _pos, btc_hideouts_id];};
 
     btc_hideouts_id = btc_hideouts_id + 1;
     btc_hideouts pushBack _hideout;
-} foreach _array_ho;
+} forEach _array_ho;
 
 private _ho = profileNamespace getVariable [format ["btc_hm_%1_ho_sel", _name], 0];
 btc_hq = btc_hideouts select _ho;
@@ -115,13 +115,13 @@ call btc_fnc_cache_create;
 {
     _x params ["_pos", "_marker_name"];
 
-    private _marker = createmarker [format ["%1", _pos], _pos];
-    _marker setmarkertype "hd_unknown";
+    private _marker = createMarker [format ["%1", _pos], _pos];
+    _marker setMarkerType "hd_unknown";
     _marker setMarkerText _marker_name;
     _marker setMarkerSize [0.5, 0.5];
     _marker setMarkerColor "ColorRed";
     btc_cache_markers pushBack _marker;
-} foreach (_array_cache select 3);
+} forEach (_array_cache select 3);
 
 //FOB
 private _fobs = profileNamespace getVariable [format ["btc_hm_%1_fobs", _name], []];
@@ -130,7 +130,7 @@ private _fobs_loaded = [[], []];
 {
     _x params ["_fob_name", "_pos"];
 
-    createmarker [_fob_name, _pos];
+    createMarker [_fob_name, _pos];
     _fob_name setMarkerSize [1, 1];
     _fob_name setMarkerType "b_hq";
     _fob_name setMarkerText _fob_name;
@@ -141,14 +141,14 @@ private _fobs_loaded = [[], []];
     _flag setVariable ["btc_fob", _fob_name];
     (_fobs_loaded select 0) pushBack _fob_name;
     (_fobs_loaded select 1) pushBack _fob_structure;
-} foreach (_fobs select 0);
+} forEach (_fobs select 0);
 btc_fobs = _fobs_loaded;
 
 //REP
 private _global_reputation = profileNamespace getVariable [format ["btc_hm_%1_rep", _name], 0];
 
 //VEHICLES
-{deleteVehicle _x} foreach btc_vehicles;
+{deleteVehicle _x} forEach btc_vehicles;
 btc_vehicles = [];
 
 private _vehs = profileNamespace getVariable [format ["btc_hm_%1_vehs", _name], []];
@@ -164,18 +164,18 @@ private _vehs = profileNamespace getVariable [format ["btc_hm_%1_vehs", _name], 
         if ((getPos _veh) select 2 < 0) then {_veh setVectorUp surfaceNormal position _veh;};
         _veh setFuel _veh_fuel;
 
-        ["_veh", "_veh_cargo", "_veh_cont"] call btc_fnc_db_loadCargo;
+        [_veh, _veh_cargo, _veh_cont] call btc_fnc_db_loadCargo;
 
         //Disable explosion effect during database loading
         {
-            [_veh, _foreachindex, _x, false] call ace_repair_fnc_setHitPointDamage;
+            [_veh, _forEachindex, _x, false] call ace_repair_fnc_setHitPointDamage;
         } forEach (_veh_AllHitPointsDamage select 2);
         if ((_veh_AllHitPointsDamage select 2) select {_x < 1} isEqualTo []) then {
             _veh setVariable ["ace_cookoff_enable", false, true];
             _veh setVariable ["ace_cookoff_enableAmmoCookoff", false, true];
             _veh setDamage [1, false];
         };
-    } foreach _vehs;
+    } forEach _vehs;
     [{
         btc_global_reputation = _this;
     }, _global_reputation, 0.5] call CBA_fnc_waitAndExecute;
@@ -185,14 +185,14 @@ private _vehs = profileNamespace getVariable [format ["btc_hm_%1_vehs", _name], 
 private _objs = profileNamespace getVariable [format ["btc_hm_%1_objs", _name], []];
 {
     [_x] call btc_fnc_db_loadObjectStatus;
-} foreach _objs;
+} forEach _objs;
 
 //Player Markers
 private _markers_properties = profileNamespace getVariable [format ["btc_hm_%1_markers", _name], []];
 {
     _x params ["_markerText", "_markerPos", "_markerColor", "_markerType", "_markerSize", "_markerAlpha", "_markerBrush", "_markerDir", "_markerShape"];
 
-    private _marker = createMarker [format ["_USER_DEFINED #0/%1/1", _foreachindex], _markerPos];
+    private _marker = createMarker [format ["_USER_DEFINED #0/%1/1", _forEachindex], _markerPos];
     _marker setMarkerText _markerText;
     _marker setMarkerColor _markerColor;
     _marker setMarkerType _markerType;

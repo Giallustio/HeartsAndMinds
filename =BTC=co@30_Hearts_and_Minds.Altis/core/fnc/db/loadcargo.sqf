@@ -35,7 +35,7 @@ params ["_obj", "_cargo", "_inventory"];
         };
     };
     [_l, _obj] call btc_fnc_log_server_load;
-} foreach _cargo;
+} forEach _cargo;
 
 //set inventory content for weapons, magazines and items
 _inventory params ["_weap", "_mags", "_items"];
