@@ -248,8 +248,8 @@ class Params {
     class btc_p_arsenalRestrict { // Restricted arsenal:
         title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_OTHER_ARSENALRESTR"]);
         values[]={0,1,2};
-        texts[] = {$STR_DISABLED,$STR_BTC_HAM_PARAM_OTHER_ARSENALRESTR_FULL,$STR_BTC_HAM_PARAM_OTHER_ARSENALRESTR_REMOVEONLY};
-        default = 1;
+        texts[] = {$STR_DISABLED,$STR_BTC_HAM_PARAM_OTHER_ARSENALRESTR_FULL,$STR_BTC_HAM_PARAM_OTHER_ARSENALRESTR_REMOVEONLY}; //texts[]={"Off","Full","Remove only (works only with ACE3-Arsenal)"};
+        default = 0;
     };
     class btc_p_rep { // Reputation at start:
         title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_OTHER_REPSTART"]);
