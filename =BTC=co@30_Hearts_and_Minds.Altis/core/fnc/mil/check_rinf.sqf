@@ -11,7 +11,7 @@ if (count _this > 0) then {_city = _this;} else {
             {!(_x getVariable ["has_ho",false])} &&
             (
                 _x getVariable ["type",""] == "NameLocal" ||
-                {_x getVariable ["type",""] == "Hill"} || {_x getVariable ["type",""] == "NameVillage" || {_x getVariable ["type",""] == "Airport"}
+                {_x getVariable ["type",""] == "Hill"} || {_x getVariable ["type",""] == "NameVillage"} || {_x getVariable ["type",""] == "Airport"}
             )
         )
     };
