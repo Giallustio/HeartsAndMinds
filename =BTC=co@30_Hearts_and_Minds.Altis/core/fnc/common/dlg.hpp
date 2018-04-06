@@ -1,5 +1,4 @@
-class btc_dlg_RscText
-{
+class btc_dlg_RscText {
     x = 0;
     y = 0;
     h = 0.037;
@@ -16,8 +15,7 @@ class btc_dlg_RscText
     linespacing = 1;
 };
 
-class btc_dlg_shortcutButton
-{
+class btc_dlg_shortcutButton {
     idc = -1;
     style = 0;
     default = 0;
@@ -85,8 +83,7 @@ class btc_dlg_shortcutButton
         align = "left";
     };
 };
-class btc_dlg_button : btc_dlg_shortcutButton
-{
+class btc_dlg_button : btc_dlg_shortcutButton {
     idc = -1;
     type = 16;
     style = "0x02 + 0xC0";
@@ -135,8 +132,7 @@ class btc_dlg_button : btc_dlg_shortcutButton
         h = 0.03;
     };
 };
-class btc_dlg_RscListBox
-{
+class btc_dlg_RscListBox {
     type = 5;
     style = "0x10";
     idc=-1;
@@ -180,8 +176,7 @@ class btc_dlg_RscListBox
         width = 0.2;
     };
 };
-class btc_dlg_comboBox
-{
+class btc_dlg_comboBox {
     style = 16;
     type = 4;
     x = 0;
@@ -217,8 +212,7 @@ class btc_dlg_comboBox
     soundCollapse[] = { "", 0, 1 };
     maxHistoryDelay = 0;
 };
-class btc_dlg_RscEdit
-{
+class btc_dlg_RscEdit {
     type = 2;
     style = 16;
     font = "PuristaMedium";

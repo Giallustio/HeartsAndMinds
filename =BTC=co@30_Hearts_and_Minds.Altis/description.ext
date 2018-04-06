@@ -5,7 +5,7 @@ onLoadName = $STR_BTC_HAM_DESCR_NAME;
 onLoadMission = $STR_BTC_HAM_DESCR_MISSION;
 enabledebugconsole = 1;
 
-#include "core\def\dlg_def.hpp"
+#include "core\fnc\common\dlg.hpp"
 
 #include "core\fnc\fob\dlg.hpp"
 #include "core\fnc\log\dlg.hpp"
@@ -29,7 +29,7 @@ class RscTitles {
 #include "core\fnc\task\tasktypes.hpp"
 
 class CfgFunctions {
-    #include "core\def\functions.hpp"
+    #include "core\fnc\eh\functions.hpp"
     // add your own functions below
 };
 
@@ -47,8 +47,5 @@ class Extended_InitPost_EventHandlers {
     };
     class Ship {
         #include "core\fnc\eh\xeh_InitPost_EH_Vehicle.hpp"
-    };
-    class CAManBase {
-        //#include "core\fnc\eh\xeh_InitPost_EH_CAManBase.hpp"
     };
 };
