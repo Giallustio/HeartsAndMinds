@@ -8,7 +8,7 @@ if !((_object_placed isKindOf "AllVehicles") || (_object_placed isKindOf "Module
     [_object_placed] remoteExec ["btc_fnc_log_CuratorObjectPlaced_s", 2];
 
     if (btc_debug_log) then {diag_log format ["CURATOR OBJECT %1", _object_placed];};
-    if (btc_debug) then {hint str_object_placed;};
+    if (btc_debug) then {hint str _object_placed;};
 };
 
 if (_object_placed isKindOf "Man") then {
