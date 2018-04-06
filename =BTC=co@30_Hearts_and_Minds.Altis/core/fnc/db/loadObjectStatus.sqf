@@ -13,4 +13,4 @@ _obj setVectorDirAndUp _vectorPos;
 
 if !(_magClass isEqualTo "") then {_obj setVariable ["ace_rearm_magazineClass", _magClass, true]};
 
-["_obj", "_cargo", "_inventory"] call btc_fnc_db_loadCargo;
+[_obj, _cargo, _inventory] call btc_fnc_db_loadCargo;
