@@ -23,11 +23,11 @@ private _cities_status = profileNamespace getVariable [format ["btc_hm_%1_cities
     if (btc_debug) then {//_debug
 
         if (_city getVariable ["occupied", false]) then {
-            (_city getVariable ["marker", ""]) setmarkercolor "colorRed";
+            (_city getVariable ["marker", ""]) setMarkerColor "colorRed";
         } else {
-            (_city getVariable ["marker", ""]) setmarkercolor "colorGreen";
+            (_city getVariable ["marker", ""]) setMarkerColor "colorGreen";
         };
-        (_city getVariable ["marker", ""]) setmarkertext format ["loc_%3 %1 %2 - [%4]", _city getVariable "name", _city getVariable "type", _id, _occupied];
+        (_city getVariable ["marker", ""]) setMarkerText format ["loc_%3 %1 %2 - [%4]", _city getVariable "name", _city getVariable "type", _id, _occupied];
 
         diag_log format ["ID: %1", _id];
         diag_log format ["data_city: %1", _x];
@@ -70,8 +70,8 @@ private _array_ho = profileNamespace getVariable [format ["btc_hm_%1_ho", _name]
     {
         _x params ["_pos", "_marker_name"];
 
-        private _marker = createmarker [format ["%1", _pos], _pos];
-        _marker setmarkertype "hd_warning";
+        private _marker = createMarker [format ["%1", _pos], _pos];
+        _marker setMarkertype "hd_warning";
         _marker setMarkerText _marker_name;
         _marker setMarkerSize [0.5, 0.5];
         _marker setMarkerColor "ColorRed";
@@ -82,8 +82,8 @@ private _array_ho = profileNamespace getVariable [format ["btc_hm_%1_ho", _name]
 
     if (btc_debug) then {
         //Marker
-        private _marker = createmarker [format ["btc_hideout_%1", _pos], _pos];
-        _marker setmarkertype "mil_unknown";
+        private _marker = createMarker [format ["btc_hideout_%1", _pos], _pos];
+        _marker setMarkertype "mil_unknown";
         _marker setMarkerText format ["Hideout %1", btc_hideouts_id];
         _marker setMarkerSize [0.8, 0.8];
     };
@@ -196,8 +196,8 @@ private _markers_properties = profileNamespace getVariable [format ["btc_hm_%1_m
     _marker setMarkerColor _markerColor;
     _marker setMarkerType _markerType;
     _marker setMarkerSize _markerSize;
-    _marker setmarkerAlpha _markerAlpha;
-    _marker setmarkerBrush _markerBrush;
-    _marker setmarkerDir _markerDir;
-    _marker setmarkerShape _markerShape;
+    _marker setMarkerAlpha _markerAlpha;
+    _marker setMarkerBrush _markerBrush;
+    _marker setMarkerDir _markerDir;
+    _marker setMarkerShape _markerShape;
 } forEach _markers_properties;
