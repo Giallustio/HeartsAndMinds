@@ -1,14 +1,12 @@
-
 params ["_city", "_area"];
 
 if (btc_debug_log) then {
-    diag_log format ["btc_fnc_ied_suicider_create:  _name = %1 _area %2",_city getVariable ["name","name"],_area];
+    diag_log format ["btc_fnc_ied_suicider_create: _name = %1 _area %2", _city getVariable ["name", "name"], _area];
 };
 
 _pos = [];
 
-switch (typeName _city) do
-{
+switch (typeName _city) do {
     case "ARRAY" :{_pos = _city;};
     case "STRING":{_pos = getMarkerPos _city;};
     case "OBJECT":{_pos = position _city;};
@@ -20,11 +18,11 @@ private _unit_type = selectRandom btc_civ_type_units;
 
 private _group = createGroup civilian;
 _group createUnit [_unit_type, _rpos, [], 0, "NONE"];
-(leader _group) setpos _rpos;
+(leader _group) setPos _rpos;
 
 [_group] spawn btc_fnc_civ_addWP;
 
-_group setVariable ["suicider",true];
+_group setVariable ["suicider", true];
 
 private _suicider = leader _group;
 _suicider call btc_fnc_civ_unit_create;
