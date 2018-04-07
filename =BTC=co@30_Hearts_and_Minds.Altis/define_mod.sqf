@@ -1,5 +1,9 @@
 btc_custom_loc = [
-//EXAMPLE: [[13132.8,3315.07,0.00128174],"NameVillage","Mountain 1",800,800,true]
+/*
+    DESCRIPTION: [POS(Array),TYPE(String),NAME(String),RADIUS X(Number),RADIUS X(Number),IS OCCUPIED(Bool)]
+    Possible types: "NameVillage","NameCity","NameCityCapital","NameLocal","Hill","Airport","NameMarine"
+    EXAMPLE: [[13132.8,3315.07,0.00128174],"NameVillage","Mountain 1",800,800,true]
+*/
 ];
 
 /*
@@ -24,17 +28,9 @@ btc_custom_loc = [
             "G_Shades_Green"
         ];
 */
-private _weapons = [
-    "arifle_MX_F",
-    "arifle_MX_SW_F",
-    "arifle_MXC_F"
-];
+private _weapons = [];
 private _magazines = [];
-private _items = [
-    "G_Shades_Black",
-    "G_Shades_Blue",
-    "G_Shades_Green"
-];
+private _items = [];
 private _backpacks = [];
 
 btc_custom_arsenal = [_weapons, _magazines, _items, _backpacks];
