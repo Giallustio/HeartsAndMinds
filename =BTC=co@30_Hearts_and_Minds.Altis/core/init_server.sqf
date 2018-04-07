@@ -32,8 +32,8 @@ addMissionEventHandler ["BuildingChanged",btc_fnc_eh_buildingchanged];
 
 setTimeMultiplier btc_p_acctime;
 
-if (btc_p_arsenalType > 0) then {[btc_gear_object, !(btc_p_arsenalRestrict isEqualTo 1), true] call ace_arsenal_fnc_initBox;};
-if (btc_p_arsenalType < 3) then {["AmmoboxInit", [btc_gear_object, !(btc_p_arsenalRestrict isEqualTo 1), {true}]] spawn BIS_fnc_arsenal;};
+if (btc_p_arsenal_Type > 0) then {[btc_gear_object, !(btc_p_arsenal_Restrict isEqualTo 1), true] call ace_arsenal_fnc_initBox;};
+if (btc_p_arsenal_Type < 3) then {["AmmoboxInit", [btc_gear_object, !(btc_p_arsenal_Restrict isEqualTo 1), {true}]] spawn BIS_fnc_arsenal;};
 
 
 {[_x,30,false] spawn btc_fnc_eh_veh_add_respawn;} forEach btc_helo;
