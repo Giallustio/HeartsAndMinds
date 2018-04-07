@@ -99,7 +99,7 @@ if !(btc_p_arsenal_Restrict isEqualTo 0) then {call btc_fnc_log_arsenalData;};
 //BIS
 if (btc_p_arsenal_Type < 3) then {
     [{!(((_this select 0) getVariable [ "bis_fnc_arsenal_action", -1]) isEqualTo -1)}, {
-        (_this select 0) setUserActionText [((_this select 0) getVariable "bis_fnc_arsenal_action"), localize "STR_BTC_HAM_ACTION_ARSENAL_OPEN_BIS"];
+        (_this select 0) setUserActionText [(_this select 0) getVariable "bis_fnc_arsenal_action", _this select 1];
     }, [btc_gear_object, localize "STR_BTC_HAM_ACTION_ARSENAL_OPEN_BIS"]] call CBA_fnc_waitUntilAndExecute;
 };
 //ACE
