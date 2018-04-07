@@ -1,7 +1,7 @@
 params ["_wreck", "_ied"];
 
-private _pos = getPos _ied;
-_pos = [_pos select 0, _pos select 1, (_pos select 2) + 0.5];
+(getPos _ied) params ["_x", "_y", "_z"];
+private _pos = [_x, _y, _z + 0.5];
 private _range = 2;
 
 _array = [];
@@ -11,7 +11,7 @@ _array = [];
 
     if (Alive _ied && !isNull _ied) then {
         private _list = _pos nearObjects ["Default", _range];
-        if (count _list > 0) then {
+        if !(_list isEqualTo []) then {
             {
                 private _b = _x;
                 private _bullet = typeOf _b;
@@ -22,8 +22,8 @@ _array = [];
                         [{!Alive _b}, {
                             params ["_wreck","_ied"];
 
-                            if (Alive _ied) then {[_wreck,_ied] call btc_fnc_ied_boom;};
-                        }, [_wreck,_ied]] call CBA_fnc_waitUntilAndExecute;
+                            if (Alive _ied) then {[_wreck, _ied] call btc_fnc_ied_boom;};
+                        }, [_wreck, _ied]] call CBA_fnc_waitUntilAndExecute;
                     };
                 } else {
                     private _explosive = getNumber(configFile >> "cfgAmmo" >> _bullet >> "explosive") > 0;

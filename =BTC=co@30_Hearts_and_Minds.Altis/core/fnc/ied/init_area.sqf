@@ -1,4 +1,4 @@
-params ["_city","_area","_n"];
+params ["_city", "_area", "_n"];
 
 private _pos = getPos _city;
 private _array = _city getVariable ["ieds", []];
@@ -16,7 +16,7 @@ for "_i" from 1 to _n do {
 
     if (random 1 > 0.3) then {
         private _roads = _sel_pos nearRoads _area;
-        if (count _roads > 0) then {
+        if !(_roads isEqualTo []) then {
             private _obj = selectRandom _roads;
             if (random 1 > 0.5) then {
                 _sel_pos = _obj modelToWorld [3.5, 0, 0];
@@ -25,9 +25,9 @@ for "_i" from 1 to _n do {
             };
         };
     } else {
-        if (isOnRoad _sel_pos) then    {
+        if (isOnRoad _sel_pos) then {
             private _roads = _sel_pos nearRoads 15;
-            if (count _roads > 0) then {
+            if !(_roads isEqualTo []) then {
                 private _obj = objNull;
                 private _dist = 100;
                 {
@@ -56,7 +56,9 @@ for "_i" from 1 to _n do {
         _marker setMarkerSize [0.8, 0.8];
     };
 
-    if (btc_debug_log) then {diag_log format ["btc_fnc_ied_create_in_area: _this = %1 ; POS %2 ; N %3(%4)", _this, _sel_pos, _i, _n];};
+    if (btc_debug_log) then {
+        diag_log format ["btc_fnc_ied_create_in_area: _this = %1 ; POS %2 ; N %3(%4)", _this, _sel_pos, _i, _n];
+    };
 
     _array pushBack [_sel_pos, _type_ied, _dir, _active];
 };
@@ -74,7 +76,7 @@ for "_i" from 1 to _n do {
 
     if (random 1 > 0.3) then {
         private _roads = _sel_pos nearRoads _area;
-        if (count _roads > 0) then     {
+        if !(_roads isEqualTo []) then     {
             private _obj = selectRandom _roads;
             if (random 1 > 0.5) then {
                 _sel_pos = _obj modelToWorld [3, 0, 0];
@@ -93,7 +95,9 @@ for "_i" from 1 to _n do {
         _marker setMarkerSize [0.8, 0.8];
     };
 
-    if (btc_debug_log) then    {diag_log format ["btc_fnc_ied_create_in_area: _this = %1 ; POS %2 ; N %3(%4)", _this, _sel_pos, _i, _n];};
+    if (btc_debug_log) then {
+        diag_log format ["btc_fnc_ied_create_in_area: _this = %1 ; POS %2 ; N %3(%4)", _this, _sel_pos, _i, _n];
+    };
 
     _array pushBack [_sel_pos, _type_ied, _dir, _active];
 };

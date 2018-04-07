@@ -1,4 +1,4 @@
-params ["_pos", "_type", "_dir","_active"];
+params ["_pos", "_type", "_dir", "_active"];
 
 if (btc_debug_log) then {diag_log format ["CREATE IED %1", _this];};
 

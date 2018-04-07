@@ -25,8 +25,8 @@ private _color = [
 ];
 
 private _rndVar = [
-    [0, [1.5 + random 2, 1.5 + random 2, 5], [1+random 5, 1+random 5, 10], 0, 0.25, [0.05, 0.05, 0.05, 0.1], 0, 0],
-    [0, [1.5 + random 2, 1.5 + random 2, 5], [1+random 5, 1+random 5, 6], 0, 0.25, [0.05, 0.05, 0.05, 0.1], 0, 0],
+    [0, [1.5 + random 2, 1.5 + random 2, 5], [1 + random 5, 1 + random 5, 10], 0, 0.25, [0.05, 0.05, 0.05, 0.1], 0, 0],
+    [0, [1.5 + random 2, 1.5 + random 2, 5], [1 + random 5, 1 + random 5, 6], 0, 0.25, [0.05, 0.05, 0.05, 0.1], 0, 0],
     [0, [1 + random 3, 1 + random 3, 5], [1, 1, 4], 0, 0.25, [0.05, 0.05, 0.05, 0.1], 0, 0]
 ];
 
@@ -37,7 +37,7 @@ for "_i" from 0 to 6 step 1 do {
       private _smoke = "#particlesource" createVehicleLocal _posASL;
       _smoke setPosASL _posASL;
       _smoke setParticleCircle [0, [0, 0, 0]];
-      _smoke setParticleRandom [0, [1.5 + random 2, 1.5 + random 2, 8], [1+random 5, 1+random 5, 15], 0, 0.25, [0.05, 0.05, 0.05, 0.1], 0, 0];
+      _smoke setParticleRandom [0, [1.5 + random 2, 1.5 + random 2, 8], [1 + random 5, 1 + random 5, 15], 0, 0.25, [0.05, 0.05, 0.05, 0.1], 0, 0];
       _smoke setParticleParams [["\A3\data_f\cl_fireD", 1, 0, 1], "", "Billboard", 1, 8, [0, 0, 0], [0, 0, 0], 0, 10, 7.85, .375, [6 + random 4, 6 + random 4, 10 + random 4], _color select _i, [0.08], 1, 0, "", "", _posASL];
       _smoke setDropInterval .01;
 
@@ -67,4 +67,4 @@ for "_i" from 0 to 6 step 1 do {
     };
 };
 sleep 2;
-{deletevehicle _x; false} count _smokes;
+{deletevehicle _x} forEach _smokes;

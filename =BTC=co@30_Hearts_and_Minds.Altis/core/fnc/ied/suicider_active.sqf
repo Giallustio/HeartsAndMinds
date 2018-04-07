@@ -4,15 +4,15 @@ params ["_suicider"];
 
 _suicider call btc_fnc_rep_remove_eh;
 
-while {!((waypoints group _suicider)) isEqualTo [])} do {deleteWaypoint ((waypoints group _suicider) select 0);};
+while {!((waypoints group _suicider) isEqualTo [])} do {deleteWaypoint ((waypoints group _suicider) select 0);};
 
 private _trigger = createTrigger ["EmptyDetector", getPos _suicider];
 _trigger setTriggerArea [5, 5, 0, false];
-_trigger setTriggerActivation [str(btc_player_side), "PRESENT", false];
+_trigger setTriggerActivation [str btc_player_side, "PRESENT", false];
 _trigger setTriggerStatements ["this", "thisTrigger call btc_fnc_ied_allahu_akbar;", ""];
 _trigger setVariable ["suicider", _suicider];
 
-_trigger attachTo [_suicider,[0, 0, 0]];
+_trigger attachTo [_suicider, [0, 0, 0]];
 
 private _array = getPos _suicider nearEntities ["SoldierWB", 30];
 
@@ -25,13 +25,7 @@ _expl2 attachTo [_suicider, [0, 0.15, 0.15], "Pelvis"];
 private _expl3 = "DemoCharge_Remote_Ammo" createVehicle (position _suicider);
 _expl3 attachTo [_suicider, [0.1, 0.1, 0.15], "Pelvis"];
 
-[[_expl1, _expl2, _expl3], {
-    params ["_expl1", "_expl2", "_expl3"];
-
-    _expl1 setVectorDirAndUp [[0.5, 0.5, 0],[-0.5, 0.5, 0]];
-    _expl2 setVectorDirAndUp [[1, 0, 0],[0, 1, 0]];
-    _expl3 setVectorDirAndUp [[0.5, -0.5, 0],[0.5, 0.5, 0]];
-}] remoteExec ["call", 0, false];
+[_expl1, _expl2, _expl3] remoteExec ["btc_fnc_ied_belt", 0];
 
 (group _suicider) setBehaviour "CARELESS";
 (group _suicider) setSpeedMode "FULL";

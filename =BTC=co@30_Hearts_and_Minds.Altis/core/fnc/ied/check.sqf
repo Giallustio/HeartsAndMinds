@@ -3,7 +3,7 @@ params ["_city", "_ieds"];
 if (btc_debug) then {systemChat format ["START IED CHECK CITY ID %1", _city getVariable "id"];};
 if (btc_debug_log) then {diag_log format ["START IED CHECK CITY ID %1", _city getVariable "id"];};
 
-private _ieds_check = (+ _ieds) select {!((_x select 2) isEqualTo objNull)};
+private _ieds_check = _ieds select {!((_x select 2) isEqualTo objNull)};
 
 [{
     params ["_args", "_id"];
@@ -15,7 +15,7 @@ private _ieds_check = (+ _ieds) select {!((_x select 2) isEqualTo objNull)};
 
             if (!isNull _ied && {Alive _ied}) then {
                 {
-                    if (side _x == btc_player_side && {(speed _x > 5 || vehicle _x != _x)}) then {
+                    if (side _x isEqualTo btc_player_side && {speed _x > 5 || vehicle _x != _x}) then {
                         [_wreck, _ied] spawn btc_fnc_ied_boom;
                     };
                 } forEach (_ied nearEntities ["allvehicles", 10]);
@@ -38,7 +38,7 @@ private _ieds_check = (+ _ieds) select {!((_x select 2) isEqualTo objNull)};
             };
         } forEach _ieds;
 
-        _city setVariable ["ieds",_data];
+        _city setVariable ["ieds", _data];
 
         if (btc_debug) then {systemChat format ["END IED CHECK CITY ID %1", _city getVariable "id"];};
         if (btc_debug_log) then {diag_log format ["END IED CHECK CITY ID %1", _city getVariable "id"];};
