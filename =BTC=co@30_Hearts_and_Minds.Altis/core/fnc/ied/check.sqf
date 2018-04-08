@@ -11,7 +11,7 @@ private _ieds_check = _ieds select {!((_x select 2) isEqualTo objNull)};
 
     if (_city getVariable ["active", false]) then {
         {
-            params ["_wreck", "_type", "_ied"];
+            _x params ["_wreck", "_type", "_ied"];
 
             if (!isNull _ied && {Alive _ied}) then {
                 {
@@ -28,7 +28,7 @@ private _ieds_check = _ieds select {!((_x select 2) isEqualTo objNull)};
 
         private _data = [];
         {
-            params ["_wreck", "_type", "_ied"];
+            _x params ["_wreck", "_type", "_ied"];
 
             if (!isNull _wreck && {Alive _wreck}) then {
                 _data pushBack [getPosATL _wreck, _type, getDir _wreck, !(_ied isEqualTo objNull)];
