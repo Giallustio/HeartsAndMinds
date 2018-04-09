@@ -1,7 +1,7 @@
 - FIX/Add: here write the line will be used in the changelog (@Author1, @Author2 ...).
 
 **When merged this pull request will:**
-- Describe what this pull request will do
+- Describe what this pull request will do.
 - Each change in a separate line.
 - Include documentation if applicable ([/core/doc.sqf](https://github.com/Vdauphin/HeartsAndMinds/blob/master_stable/%3DBTC%3Dco%4030_Hearts_and_Minds.Altis/core/doc.sqf)).
 - Choose the correct branch by reading [this](https://github.com/Vdauphin/HeartsAndMinds/wiki/For-developer-and-tester#branches).
