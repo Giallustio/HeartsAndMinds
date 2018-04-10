@@ -455,8 +455,8 @@
                 <German>BIS - Vanilla und ACE 3 (Maus-Rad-Menü)</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_ARSENAL_ARSENALRESTR">
-                <Original>Restrict arsenal:</Original>
-                <German>Arsenal beschränken:</German>
+                <Original>Restrict arsenal (See /define_mod.sqf):</Original>
+                <German>Arsenal beschränken (Siehe /define_mod.sqf):</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_ARSENAL_ARSENALRESTR_FULL">
                 <Original>Full</Original>

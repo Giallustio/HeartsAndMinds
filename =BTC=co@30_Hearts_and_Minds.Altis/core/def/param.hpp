@@ -233,7 +233,7 @@ class Params {
         texts[] = {$STR_DISABLED,$STR_ENABLED};
         default = 0;
     };
-    class btc_p_arsenal_title { // << Other options >>
+    class btc_p_arsenal_title { // << Arsenal options >>
         title = $STR_BTC_HAM_PARAM_ARSENAL_TITLE;
         values[]={0};
         texts[]={""};
@@ -245,7 +245,7 @@ class Params {
         texts[]={$STR_BTC_HAM_PARAM_ARSENAL_ARSENALTYPE_BIS,$STR_BTC_HAM_PARAM_ARSENAL_ARSENALTYPE_BA,$STR_BTC_HAM_PARAM_ARSENAL_ARSENALTYPE_BA_PLUS,$STR_BTC_HAM_PARAM_ARSENAL_ARSENALTYPE_ACE,$STR_BTC_HAM_PARAM_ARSENAL_ARSENALTYPE_ACE_PLUS}; //texts[]={"BIS - Vanilla","BIS - Vanilla and ACE 3","BIS - Vanilla and ACE 3 (scroll wheel action)","ACE 3","ACE 3 (scroll wheel action)"};
         default = 2;
     };
-    class btc_p_arsenal_Restrict { // Restricted arsenal:
+    class btc_p_arsenal_Restrict { // Restricted arsenal (See /define_mod.sqf):
         title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_ARSENAL_ARSENALRESTR"]);
         values[]={0,1,2};
         texts[] = {$STR_DISABLED,$STR_BTC_HAM_PARAM_ARSENAL_ARSENALRESTR_FULL,$STR_BTC_HAM_PARAM_ARSENAL_ARSENALRESTR_REMOVEONLY}; //texts[]={"Off","Full","Remove only (works only with ACE3-Arsenal)"};
