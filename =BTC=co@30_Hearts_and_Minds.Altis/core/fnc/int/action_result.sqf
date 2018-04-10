@@ -1,4 +1,3 @@
-
 params ["_totalTime", "_args", "_onFinish", "_onFail", ["_localizedTitle", ""]];
 _args params ["_target"];
 
@@ -11,6 +10,7 @@ _args pushBack _radius;
 _condition = {
     params ["_args"];
     _args params ["_target", "_player"];
+
     _target distance _player < (_args select ((count _args) - 1))
 };
 

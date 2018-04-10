@@ -1,7 +1,6 @@
-
 params ["_units", "_dir", "_order", ["_wp_pos", []]];
 
-_units = _units select {(isNil {group _x getVariable "suicider"}) && ((side _x) == civilian)};
+_units = _units select {!(group _x getVariable ["suicider", false]) && ((side _x) isEqualTo civilian)};
 
 {
     private _wp_pos_i = if ((_order isEqualTo 3) && (_wp_pos isEqualTo [])) then {
@@ -10,6 +9,6 @@ _units = _units select {(isNil {group _x getVariable "suicider"}) && ((side _x) 
         _wp_pos
     };
     [_x, _order, _wp_pos_i] spawn btc_fnc_int_orders_behaviour;
-} foreach _units;
+} forEach _units;
 
 true
