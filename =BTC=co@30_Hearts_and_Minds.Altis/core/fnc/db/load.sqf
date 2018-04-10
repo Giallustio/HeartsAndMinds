@@ -48,7 +48,7 @@ private _array_ho = profileNamespace getVariable [format ["btc_hm_%1_ho", _name]
     clearItemCargoGlobal _hideout;
     clearMagazineCargoGlobal _hideout;
 
-    _city setpos _pos;
+    _city setPos _pos;
     if (btc_debug) then {deleteMarker format ["loc_%1", _id];};
     deleteVehicle (_city getVariable ["trigger_player_side", objNull]);
     private _radius_x = btc_hideouts_radius;
@@ -71,7 +71,7 @@ private _array_ho = profileNamespace getVariable [format ["btc_hm_%1_ho", _name]
         _x params ["_pos", "_marker_name"];
 
         private _marker = createMarker [format ["%1", _pos], _pos];
-        _marker setMarkertype "hd_warning";
+        _marker setMarkerType "hd_warning";
         _marker setMarkerText _marker_name;
         _marker setMarkerSize [0.5, 0.5];
         _marker setMarkerColor "ColorRed";
@@ -83,7 +83,7 @@ private _array_ho = profileNamespace getVariable [format ["btc_hm_%1_ho", _name]
     if (btc_debug) then {
         //Marker
         private _marker = createMarker [format ["btc_hideout_%1", _pos], _pos];
-        _marker setMarkertype "mil_unknown";
+        _marker setMarkerType "mil_unknown";
         _marker setMarkerText format ["Hideout %1", btc_hideouts_id];
         _marker setMarkerSize [0.8, 0.8];
     };
