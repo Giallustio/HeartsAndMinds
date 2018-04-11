@@ -26,14 +26,14 @@ if (_arsenalType > 0) then {
     //add
     if (_arsenalRestrict isEqualTo 1) then {
         private _aceAdd = [];
-        {_aceAdd append _x;} count [_weapons, _magazines, _items, _backpacks];
+        {_aceAdd append _x;} forEach [_weapons, _magazines, _items, _backpacks];
         [_box, _aceAdd] call ace_arsenal_fnc_addVirtualItems;
     };
 
     //remove
     if (_arsenalRestrict isEqualTo 2) then {
         private _aceRemove = [];
-        {_aceRemove append _x;} count [_weapons, _magazines, _items, _backpacks];
+        {_aceRemove append _x;} forEach [_weapons, _magazines, _items, _backpacks];
         [_box, _aceRemove] call ace_arsenal_fnc_removeVirtualItems;
     };
 };
