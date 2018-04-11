@@ -1,5 +1,8 @@
 
-if (isServer) exitWith {[str(_this), "FAILED",false] spawn BIS_fnc_taskSetState;};
+if (isServer) exitWith {
+    btc_side_jip_data = [];
+    [str(_this), "FAILED",false] spawn BIS_fnc_taskSetState;
+};
 
 private ["_description"];
 

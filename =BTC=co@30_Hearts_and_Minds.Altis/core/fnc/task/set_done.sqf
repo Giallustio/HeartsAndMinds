@@ -1,5 +1,6 @@
 
 if (isServer) exitWith {
+    btc_side_jip_data = [];
     [str(_this), "SUCCEEDED",false] spawn BIS_fnc_taskSetState;
     if (_this isEqualTo 1) then {[2] remoteExec ["btc_fnc_task_create", 0]};
 };
