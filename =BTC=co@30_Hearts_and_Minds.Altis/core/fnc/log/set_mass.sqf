@@ -1,4 +1,3 @@
-
-params ["_obj","_mass"];
+params ["_obj", "_mass"];
 
 _obj setMass _mass;

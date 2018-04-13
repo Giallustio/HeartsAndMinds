@@ -15,18 +15,15 @@
  * Public: No
  */
 
-private ["_target","_turretPath","_cfg"];
+params ["_target", "_turretPath"];
 
-_target = _this select 0;
-_turretPath = _this select 1;
+_cfg = configFile >> "CfgVehicles" >> _target >> "Turrets";
 
-_cfg = configFile >> "CfgVehicles" >> (_target) >> "Turrets";
-
-if (count _turretPath == 1) then {
+if (count _turretPath isEqualTo 1) then {
     _turretPath params ["_subPath"];
 
-    if (_subPath == -1) exitWith {
-        _cfg = configFile >> "CfgVehicles" >> (_target);
+    if (_subPath isEqualTo -1) exitWith {
+        _cfg = configFile >> "CfgVehicles" >> _target;
     };
 
     if (count _cfg > _subPath) then {

@@ -6,6 +6,6 @@ private _pos = getPosASL _this;
 deleteVehicle _this;
 deleteVehicle ((btc_fobs select 1) deleteAt _element);
 
-[btc_fob_mat,_pos] call btc_fnc_log_create_s;
+[btc_fob_mat, _pos, surfaceNormal _pos] call btc_fnc_log_create_s;
 
 deleteMarker ((btc_fobs select 0) deleteAt _element);

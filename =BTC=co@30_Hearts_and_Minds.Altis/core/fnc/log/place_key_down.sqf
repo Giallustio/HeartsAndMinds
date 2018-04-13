@@ -1,7 +1,7 @@
 /*
     DIK_KeyCodes:    https://community.bistudio.com/wiki/DIK_KeyCodes
 */
-params ["_display","_key","_shift","_ctrl","_alt",["_keyPressed",false]];
+params ["_display", "_key", "_shift", "_ctrl", "_alt", ["_keyPressed", false]];
 
 private _turbo = if (_shift) then {1} else {0};
 
@@ -12,7 +12,7 @@ if (_key isEqualTo 16) then {
         //increase height
         btc_log_placing_h = btc_log_placing_h + 0.1 + (_turbo/2);
         //placing
-        btc_log_placing_obj attachTo [player,[0,btc_log_placing_d,btc_log_placing_h]];
+        btc_log_placing_obj attachTo [player, [0, btc_log_placing_d, btc_log_placing_h]];
     };
     //set var
     _keyPressed = true;
@@ -24,7 +24,7 @@ if (_key isEqualTo 44) then {
         //decrease heigth
         btc_log_placing_h = btc_log_placing_h - 0.1 - (_turbo/2);
         //placing
-        btc_log_placing_obj attachTo [player,[0,btc_log_placing_d,btc_log_placing_h]];
+        btc_log_placing_obj attachTo [player, [0, btc_log_placing_d, btc_log_placing_h]];
     };
     //set var
     _keyPressed = true;
