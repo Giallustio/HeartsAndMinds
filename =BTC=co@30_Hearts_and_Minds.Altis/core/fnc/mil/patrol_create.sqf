@@ -69,7 +69,7 @@ switch (true) do {
             _veh_type = selectRandom (btc_type_motorized + [selectRandom btc_civ_type_veh]);
         };
 
-        private _needdiver = getText(configfile >> "CfgVehicles" >> _veh_type >> "simulation") isEqualTo "submarinex";
+        private _needdiver = getText(configFile >> "CfgVehicles" >> _veh_type >> "simulation") isEqualTo "submarinex";
         private _crewmen = "";
         if (_needdiver) then {
             _crewmen = btc_type_divers select 0
@@ -78,7 +78,7 @@ switch (true) do {
         };
 
         private _veh = createVehicle [_veh_type, _newZone, [], 0, "FLY"];
-        [_veh, _group, false,"", _crewmen] call BIS_fnc_spawnCrew;
+        [_veh, _group, false, "", _crewmen] call BIS_fnc_spawnCrew;
         _group selectLeader (driver _veh);
         private _cargo = (_veh emptyPositions "cargo") - 1;
         if (_cargo > 0) then {

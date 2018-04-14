@@ -29,7 +29,7 @@ private _structure = objNull;
 switch (true) do {
     case (_wp < 0.3) : {
         private _structures = [_rpos, 70] call btc_fnc_mil_getStructures;
-        if !(_structures isEqualTo []) then    {
+        if !(_structures isEqualTo []) then {
             _structure = selectRandom _structures;
             _n = count (_structure buildingPos -1);
             if (_n > 8) then {
@@ -43,7 +43,7 @@ switch (true) do {
             };
         } else {
             private _houses = [_rpos, 50] call btc_fnc_getHouses;
-            if !(_houses isEqualTo []) then    {
+            if !(_houses isEqualTo []) then {
                 _structure = selectRandom _houses;
             } else {
                 [_group, _rpos, _area, "SAFE", _pos_iswater] spawn btc_fnc_task_patrol;
@@ -53,7 +53,7 @@ switch (true) do {
     case (_wp > 0.3 && _wp < 0.75) : {
         [_group, _rpos, _area, "AWARE", _pos_iswater] spawn btc_fnc_task_patrol;
     };
-    case (_wp > 0.75) :    {
+    case (_wp > 0.75) : {
         private _wpa = _group addWaypoint [_rpos, 0];
         _wpa setWaypointType "SENTRY";
         _wpa setWaypointCombatMode "RED";

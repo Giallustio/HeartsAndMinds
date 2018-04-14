@@ -26,14 +26,16 @@ if (_explosive && {_damage > 0.6}) then {
 
     private _array = _hideout getVariable ["markers", []];
 
-    {deleteMarker _x} foreach _array;
+    {deleteMarker _x} forEach _array;
 
     if (btc_hq isEqualTo _hideout) then {btc_hq = objNull};
-    if (count btc_hideouts isEqualTo 0) then {[] spawn btc_fnc_final_phase;};
+    if (btc_hideouts isEqualTo []) then {[] spawn btc_fnc_final_phase;};
 
     //Notification
     [2, count btc_hideouts] remoteExec ["btc_fnc_show_hint", 0];
-    if (btc_debug_log) then {diag_log format ["btc_fnc_mil_hd_hideout: _this = %1 ; POS %2 ID %3", _this, getPos _hideout, _id];};
+    if (btc_debug_log) then {
+        diag_log format ["btc_fnc_mil_hd_hideout: _this = %1 ; POS %2 ID %3", _this, getPos _hideout, _id];
+    };
 } else {
     0
 };

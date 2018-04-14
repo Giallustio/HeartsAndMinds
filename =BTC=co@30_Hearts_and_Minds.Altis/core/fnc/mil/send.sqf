@@ -25,7 +25,7 @@ switch (_typeOf_patrol) do {
         _group = createGroup [btc_enemy_side, true];
         _group setVariable ["no_cache", true];
 
-        if (_veh_type == "") then {_veh_type = selectRandom btc_type_motorized};
+        if (_veh_type isEqualTo "") then {_veh_type = selectRandom btc_type_motorized};
 
         private _return_pos = [_pos, 10, 500, 13, false] call btc_fnc_findsafepos;
 
@@ -49,7 +49,7 @@ switch (_typeOf_patrol) do {
         _wp_3 setWaypointType "SENTRY";
         _wp setWaypointStatements ["true", "(group this) spawn btc_fnc_data_add_group;"];
 
-        {_x call btc_fnc_mil_unit_create} foreach units _group;
+        {_x call btc_fnc_mil_unit_create} forEach units _group;
     };
 };
 

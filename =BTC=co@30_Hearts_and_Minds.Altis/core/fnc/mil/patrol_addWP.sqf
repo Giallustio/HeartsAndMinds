@@ -43,7 +43,7 @@ _group setVariable ["noaccess", _noaccess];
 private _pos = getPos _end_city;
 
 if (_isboat) then {
-    ((selectBestPlaces [_pos, (_active_city getVariable ["RadiusX", 0]) + (_active_city getVariable ["RadiusY", 0]), "sea",10,1]) select 0 select 0) params ["_x", "_y"];
+    ((selectBestPlaces [_pos, (_active_city getVariable ["RadiusX", 0]) + (_active_city getVariable ["RadiusY", 0]), "sea", 10, 1]) select 0 select 0) params ["_x", "_y"];
     _pos = [_x, _y, 0];
 };
 

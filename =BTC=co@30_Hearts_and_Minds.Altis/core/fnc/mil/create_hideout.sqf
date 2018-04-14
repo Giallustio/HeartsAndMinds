@@ -6,10 +6,10 @@ if (_city isEqualTo objNull) then {
             {_x distance (getMarkerPos btc_respawn_marker) > btc_hideout_safezone} &&
             {!(_x getVariable ["has_ho", false])} &&
             (
-                _x getVariable ["type",""] == "NameLocal" ||
-                {_x getVariable ["type",""] == "Hill"} ||
-                {_x getVariable ["type",""] == "NameVillage"} ||
-                {_x getVariable ["type",""] == "Airport"}
+                _x getVariable ["type", ""] isEqualTo "NameLocal" ||
+                {_x getVariable ["type", ""] isEqualTo "Hill"} ||
+                {_x getVariable ["type", ""] isEqualTo "NameVillage"} ||
+                {_x getVariable ["type", ""] isEqualTo "Airport"}
             )
         )};
     _city = selectRandom _useful;
@@ -34,7 +34,9 @@ _city setVariable ["RadiusX", _radius_x];
 _city setVariable ["RadiusY", _radius_y];
 
 private _hideout = [_pos] call btc_fnc_mil_create_hideout_composition;
-clearWeaponCargoGlobal _hideout;clearItemCargoGlobal _hideout;clearMagazineCargoGlobal _hideout;
+clearWeaponCargoGlobal _hideout;
+clearItemCargoGlobal _hideout;
+clearMagazineCargoGlobal _hideout;
 _hideout setVariable ["id", btc_hideouts_id];
 _hideout setVariable ["rinf_time", time];
 _hideout setVariable ["cap_time", time - btc_hideout_cap_time];
