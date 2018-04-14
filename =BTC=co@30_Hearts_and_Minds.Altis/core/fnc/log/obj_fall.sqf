@@ -10,7 +10,7 @@ _obj attachTo [_fall, [0, 0, abs(((_obj modelToWorld [0, 0, 0]) select 2) - ((_f
 
 sleep 0.1;
 
-waitUntil {(Velocity _fall select 2) isEqualTo 0};
+waitUntil {(velocity _fall select 2) isEqualTo 0};
 
 detach _obj;
 deleteVehicle _fall;

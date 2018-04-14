@@ -68,4 +68,3 @@ btc_log_placing_obj setDir btc_log_placing_dir;
 
     };
 }, 0.5, [_placing_obj, _actionEH, _place_EH_keydown]] call CBA_fnc_addPerFrameHandler;
-

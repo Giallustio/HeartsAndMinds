@@ -9,7 +9,7 @@ closeDialog 0;
 
 private _obj_name = getText (configFile >> "cfgVehicles" >> _obj_type >> "displayName");
 if (_obj_name isEqualTo "ace_rearm_dummy_obj") then {
-	_obj_name = "Ammo";
+    _obj_name = "Ammo";
 };
 
 private _totalTime = 5;

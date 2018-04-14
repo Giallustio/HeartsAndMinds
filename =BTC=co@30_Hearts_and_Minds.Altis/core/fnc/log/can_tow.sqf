@@ -14,10 +14,10 @@ if (btc_debug) then {
         btc_arrow_1 = "Sign_Arrow_F" createVehicleLocal [0, 0, 0];
         btc_arrow_2 = "Sign_Arrow_F" createVehicleLocal [0, 0, 0];
     };
-    btc_arrow_1 setPosASL  AGLtoASL (_tower modelToWorldVisual _model_rear);
-    btc_arrow_2 setPosASL  AGLtoASL (_towed modelToWorldVisual _model_front);
+    btc_arrow_1 setPosASL AGLtoASL (_tower modelToWorldVisual _model_rear);
+    btc_arrow_2 setPosASL AGLtoASL (_towed modelToWorldVisual _model_front);
 };
 
-private _can_tow = ((_distance > 1.3) && (_distance < 5));
+private _can_tow = (_distance > 1.3) && (_distance < 5);
 
 _can_tow

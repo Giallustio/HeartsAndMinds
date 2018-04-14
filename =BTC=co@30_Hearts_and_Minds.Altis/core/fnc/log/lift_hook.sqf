@@ -1,4 +1,3 @@
-
 private _chopper = vehicle player;
 private _array = [_chopper] call btc_fnc_log_get_liftable;
 private _cargo_array = nearestObjects [_chopper, _array, 30];
@@ -13,7 +12,7 @@ _cargo_array = _cargo_array select {
 if (_cargo_array isEqualTo []) exitWith {};
 private _cargo = _cargo_array select 0;
 
-{ropeDestroy _x;} foreach ropes _chopper;
+{ropeDestroy _x;} forEach ropes _chopper;
 
 private _bbr = getArray (configFile >> "CfgVehicles" >> typeOf _cargo >> "slingLoadCargoMemoryPoints");
 private _ropes_check = [];

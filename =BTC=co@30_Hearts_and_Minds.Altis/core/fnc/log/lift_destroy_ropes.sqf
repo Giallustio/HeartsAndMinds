@@ -8,7 +8,9 @@ player removeAction btc_lift_action;
 player removeAction btc_lift_action_hud;
 
 if !(ropes _heli isEqualTo []) then {
-	{ropeDestroy _x;} forEach ropes _heli;
+    {
+        ropeDestroy _x;
+    } forEach ropes _heli;
 };
 
 _heli setVariable ["cargo", nil];

@@ -9,8 +9,8 @@ private _marker = _veh getVariable ["marker", ""];
 btc_vehicles = btc_vehicles - [_veh];
 
 if (_marker != "") then {
-	deleteMarker _marker;
-	remoteExec ["", _marker];
+    deleteMarker _marker;
+    remoteExec ["", _marker];
 };
 deleteVehicle _veh;
 sleep 1;

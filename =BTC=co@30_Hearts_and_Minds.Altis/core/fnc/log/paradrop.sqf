@@ -15,7 +15,7 @@ _dropped enableCollisionWith _veh;
 
 (getPosATL _dropped) params ["_x", "_y", "_z"];
 private _chute = createVehicle [_chute_type, [_x, _y, _z + 5], [], 0, "FLY"];
-{_chute disableCollisionWith _x;} foreach [_veh, _dropped];
+{_chute disableCollisionWith _x;} forEach [_veh, _dropped];
 
 _chute setPosATL getPosATL _dropped;
 private _smoke = "SmokeshellGreen" createVehicle [0, 0, 0];
@@ -31,16 +31,16 @@ if ((velocity _dropped select 2) > -2) then {
     deleteVehicle _chute;
     (getPosATL _dropped) params ["_x", "_y", "_z"];
     _chute = createVehicle [_chute_type, [_x, _y, _z + 5], [], 0, "CAN_COLLIDE"];
-    {_chute disableCollisionWith _x;} foreach [_veh, _dropped];
+    {_chute disableCollisionWith _x;} forEach [_veh, _dropped];
 
     _dropped attachTo [_chute, [0, 0, 0]];
 };
 
 private _pos = getPosASL _chute;
 waitUntil {
-	_pos = getPosASL _chute;
-	sleep 1;
-	(_chute isEqualTo objNull)
+    _pos = getPosASL _chute;
+    sleep 1;
+    (_chute isEqualTo objNull)
 };
 detach _dropped;
 _dropped setPosASL _pos;

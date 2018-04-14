@@ -3,14 +3,14 @@ params ["_veh"];
 private _veh_name = getText (configFile >> "cfgVehicles" >> typeOf _veh >> "displayName");
 private _obj_name = getText (configFile >> "cfgVehicles" >> typeOf btc_log_object_selected >> "displayName");
 if (_obj_name isEqualTo "ace_rearm_dummy_obj") then {
-	_obj_name = getText (configfile >> "CfgMagazines" >> (btc_log_object_selected getVariable "ace_rearm_magazineClass") >> "displayName");
+    _obj_name = getText (configFile >> "CfgMagazines" >> (btc_log_object_selected getVariable "ace_rearm_magazineClass") >> "displayName");
 };
 
 if (btc_log_object_selected distance _veh > btc_log_max_distance_load) exitWith {
-	hint format [localize "STR_BTC_HAM_LOG_LOAD_TOOFAR", _veh_name, _obj_name];
+    hint format [localize "STR_BTC_HAM_LOG_LOAD_TOOFAR", _veh_name, _obj_name];
 };
 if (speed _veh > 3) exitWith {
-	hint format [localize "STR_BTC_HAM_LOG_LOAD_TOOFAST", _veh_name];
+    hint format [localize "STR_BTC_HAM_LOG_LOAD_TOOFAST", _veh_name];
 };
 
 private _rc = [btc_log_object_selected] call btc_fnc_log_get_rc;

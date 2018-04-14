@@ -24,10 +24,8 @@ private _new = if (getText (configFile >> "cfgVehicles" >> _selected >> "display
     _class createVehicleLocal getPosASL btc_log_create_obj;
 };
 
-while {dialog} do
-{
-    if (_class != lbData [72, lbCurSel 72]) then
-    {
+while {dialog} do {
+    if (_class != lbData [72, lbCurSel 72]) then {
         deleteVehicle _new;
         sleep 0.1;
         _class = lbData [72, lbCurSel 72];

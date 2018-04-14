@@ -11,7 +11,7 @@ private _found = false;
             _found = true;
         };
     };
-} foreach _cargo;
+} forEach _cargo;
 
 if (isNull _obj) exitWith {hint "null";};
 

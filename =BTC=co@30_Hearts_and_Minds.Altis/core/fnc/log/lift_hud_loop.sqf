@@ -3,8 +3,6 @@ _ui params ["_arrow_up", "_arrow_down", "_complete", "_incomplete", "_obj_img", 
 
 disableSerialization;
 
-private ["_cargo", "_chopper", "_array", "_cargo_array", "_can_lift", "_cargo_pos", "_rel_pos", "_cargo_x", "_cargo_y", "_cargo_z", "_obj_img", "_hud_x", "_hud_y", "_hud_x_1", "_hud_y_1", "_pic_cargo", "_obj_name", "_name_cargo", "_arrow_down", "_arrow_up", "_arrow", "_complete", "_incomplete", "_obj_pic", "_obj_alt"];
-
 if !((alive player && vehicle player != player) && btc_log_hud) then {
     [_PFH_id] call CBA_fnc_removePerFrameHandler;
     939996 cutRsc ["Default", "PLAIN"];

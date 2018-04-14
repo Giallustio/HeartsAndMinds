@@ -17,7 +17,7 @@
 
 params ["_target", "_turretPath"];
 
-_cfg = configFile >> "CfgVehicles" >> _target >> "Turrets";
+private _cfg = configFile >> "CfgVehicles" >> _target >> "Turrets";
 
 if (count _turretPath isEqualTo 1) then {
     _turretPath params ["_subPath"];

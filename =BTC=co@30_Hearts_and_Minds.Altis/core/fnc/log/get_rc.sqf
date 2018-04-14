@@ -1,7 +1,7 @@
 params ["_obj"];
 
 private _type = typeOf _obj;
-private _rc   = 0;
+private _rc = 0;
 private _cond = false;
 for "_i" from 0 to (count btc_log_def_rc - 1) do {
     if (typeName (btc_log_def_rc select _i) isEqualTo "STRING" && !_cond) then {

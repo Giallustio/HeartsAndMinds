@@ -1,4 +1,3 @@
-
 private _var = lbText [71, lbCurSel 71];
 btc_construction_array params ["_main_class", "_sub_class"];
 private _id = _main_class find _var;

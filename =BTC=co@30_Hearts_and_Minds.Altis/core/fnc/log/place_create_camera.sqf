@@ -10,8 +10,8 @@ private _y = -180;
 private _p = 50;
 private _r = 0;
 _cam setVectorDirAndUp [
-    [ sin _y * cos _p,cos _y * cos _p,sin _p],
-    [ [ sin _r,-sin _p,cos _r * cos _p],-_y] call BIS_fnc_rotateVector2D
+    [ sin _y * cos _p, cos _y * cos _p, sin _p],
+    [[ sin _r,-sin _p, cos _r * cos _p], -_y] call BIS_fnc_rotateVector2D
 ];
 
 btc_log_place_camera = _cam;
