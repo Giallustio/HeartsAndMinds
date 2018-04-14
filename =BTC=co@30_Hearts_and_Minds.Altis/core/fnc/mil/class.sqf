@@ -1,7 +1,5 @@
+params ["_factions", "_en_AA", "_en_tank"];
 
-private _factions = _this select 0;
-private _en_AA = _this select 1;
-private _en_tank = _this select 2;
 private _enemy_side = [];
 private _type_units = [];
 private _type_divers = [];
@@ -50,16 +48,16 @@ if (_enemy_side isEqualTo btc_player_side) exitWith {
     _type_motorized_armed append ([(_allclass_f select {((_x isKindOf "Air") || (_x isKindOf "Helicopter") || (_x isKindOf "Tank") || (_x isKindOf "Car"))}),["168Rnd_CMFlare_Chaff_Magazine","Laserbatteries","SmokeLauncherMag"]] call btc_fnc_find_veh_with_turret);
 
     //Static
-    _type_mg        append (_allclass_f select {_x isKindOf "StaticGrenadeLauncher"});
+    _type_mg append (_allclass_f select {_x isKindOf "StaticGrenadeLauncher"});
     if (_type_mg isEqualTo []) then {_type_mg = ["O_HMG_01_F","O_HMG_01_high_F"];};
-    _type_gl        append (_allclass_f select {_x isKindOf "StaticMGWeapon"});
+    _type_gl append (_allclass_f select {_x isKindOf "StaticMGWeapon"});
     if (_type_gl isEqualTo []) then {_type_gl = ["O_GMG_01_F","O_GMG_01_high_F"];};
 } forEach _factions;
 
 //Final filter unwanted units type
 if !(_en_AA) then {
     //Remove Anti-Air Units
-    _type_units        = _type_units select {
+    _type_units = _type_units select {
         private _unit = _x;
         private _weapons = getarray(configfile >> "CfgVehicles" >> _unit >> "weapons");
 
@@ -76,9 +74,9 @@ if !(_en_AA) then {
         !(true in _isAA)
     };
 };
-_type_units        = _type_units select {((_x find "pilot_") isEqualTo -1) && ((_x find "_Pilot_") isEqualTo -1) && ((_x find "_Survivor_") isEqualTo -1) && ((_x find "_Story") isEqualTo -1) && ((_x find "_base") isEqualTo -1) && ((_x find "_unarmed_") isEqualTo -1) && ((_x find "_VR_") isEqualTo -1)};
-_type_crewmen    = _type_units select 0;
-_type_motorized = (_type_motorized select {(_x find "UAV") isEqualTo -1}) select {(_x find "UGV")  isEqualTo -1};
+_type_units = _type_units select {((_x find "pilot_") isEqualTo -1) && ((_x find "_Pilot_") isEqualTo -1) && ((_x find "_Survivor_") isEqualTo -1) && ((_x find "_Story") isEqualTo -1) && ((_x find "_base") isEqualTo -1) && ((_x find "_unarmed_") isEqualTo -1) && ((_x find "_VR_") isEqualTo -1)};
+_type_crewmen = _type_units select 0;
+_type_motorized = (_type_motorized select {(_x find "UAV") isEqualTo -1}) select {(_x find "UGV") isEqualTo -1};
 _type_motorized_armed = (_type_motorized_armed select {(_x find "UAV") isEqualTo -1}) select {(_x find "UGV")  isEqualTo -1};
 
-[_enemy_side,_type_units,_type_divers,_type_crewmen,_type_boats,_type_motorized,_type_motorized_armed,_type_mg,_type_gl]
+[_enemy_side, _type_units, _type_divers, _type_crewmen, _type_boats, _type_motorized, _type_motorized_armed, _type_mg, _type_gl]
