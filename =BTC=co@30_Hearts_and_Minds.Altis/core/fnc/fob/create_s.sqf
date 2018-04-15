@@ -14,7 +14,7 @@ while {_h < 0} do {
 };
 {
     _x setPos _pos;
-} foreach [_flag, _struc];
+} forEach [_flag, _struc];
 
 private _FOB_name = "FOB " + _name;
 private _marker = createMarker [_FOB_name, getPos _flag];

@@ -1,8 +1,7 @@
 
 closeDialog 0;
 
-btc_int_ask_data = Nil;
-
+btc_int_ask_data = nil;
 [6, Nil, player] remoteExec ["btc_fnc_int_ask_var", 2];
 
 waitUntil {!(isNil "btc_int_ask_data")};
@@ -22,7 +21,7 @@ createDialog "btc_fob_redeploy";
 waitUntil {dialog};
 
 private _idc = 778;
-{lbAdd [ _idc, _x];} foreach (_fobs select 0);
+{lbAdd [ _idc, _x];} forEach (_fobs select 0);
 lbSetCurSel [_idc, 0];
 
 waitUntil {!dialog || btc_fob_dlg};
