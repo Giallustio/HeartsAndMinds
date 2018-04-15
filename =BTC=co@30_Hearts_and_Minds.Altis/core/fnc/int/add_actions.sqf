@@ -95,9 +95,15 @@ _action = ["fob_redeploy", localize "STR_BTC_HAM_ACTION_REDEPLOY_MAIN", "\A3\ui_
 [btc_gear_object, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToObject;
 
 //Arsenal
-if (btc_p_arsenalType < 3) then {
-    btc_gear_object addAction [localize "STR_BTC_HAM_ACTION_ARSENAL_OPEN_BIS", "['Open',true] spawn BIS_fnc_arsenal;"];
+//BIS
+if (btc_p_arsenal_Type < 3) then {
+    btc_gear_object addAction [localize "STR_BTC_HAM_ACTION_ARSENAL_OPEN_BIS", "['Open', [!(btc_p_arsenal_Restrict isEqualTo 1), _this select 0]] call bis_fnc_arsenal;"];
 };
-if (btc_p_arsenalType in [2, 4]) then {
-    btc_gear_object addAction [localize "STR_BTC_HAM_ACTION_ARSENAL_OPEN_ACE", "[player, player, true] call ace_arsenal_fnc_openBox;"];
+//ACE
+if (btc_p_arsenal_Type > 0) then {
+    [btc_gear_object, !(btc_p_arsenal_Restrict isEqualTo 1), false] call ace_arsenal_fnc_initBox;
+    if (btc_p_arsenal_Type in [2, 4]) then {
+        btc_gear_object addAction [localize "STR_BTC_HAM_ACTION_ARSENAL_OPEN_ACE", "[btc_gear_object, player] call ace_arsenal_fnc_openBox;"];
+    };
 };
+if !(btc_p_arsenal_Restrict isEqualTo 0) then {[btc_gear_object, btc_p_arsenal_Type, btc_p_arsenal_Restrict, btc_custom_arsenal] call btc_fnc_log_arsenalData;};
