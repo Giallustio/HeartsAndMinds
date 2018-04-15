@@ -62,7 +62,7 @@ switch (_task_id) do {
         _type = "heli";
     };
     case "14" : {
-        _description = [format [localize "STR_BTC_HAM_SIDE_CAPOFF_DESC", _location], (localize "STR_BTC_HAM_SIDE_CAPOFF_TITLE", (localize "STR_BTC_HAM_SIDE_CAPOFF_TITLE")]; //"Capture an officer travelling in a concealed convoy, then bring him at base for interrogation. He is his responsible for terrorizing local population!", _location], "Capture commander in concealed convoy", "Capture commander in concealed convoy")
+        _description = [format [localize "STR_BTC_HAM_SIDE_CAPOFF_DESC", _location], localize "STR_BTC_HAM_SIDE_CAPOFF_TITLE", localize "STR_BTC_HAM_SIDE_CAPOFF_TITLE"]; //"Capture an officer travelling in a concealed convoy, then bring him at base for interrogation. He is his responsible for terrorizing local population!", _location], "Capture commander in concealed convoy", "Capture commander in concealed convoy")
         _type = "run";
     };
     case "15" :    {
