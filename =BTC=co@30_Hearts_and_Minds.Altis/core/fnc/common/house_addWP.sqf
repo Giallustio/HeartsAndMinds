@@ -1,7 +1,6 @@
+params ["_group", "_house"];
 
-params ["_group","_house"];
-
-private _allpositions = [_group,_house] call btc_fnc_house_addWP_loop;
+private _allpositions = [_group, _house] call btc_fnc_house_addWP_loop;
 
 private _wp = _group addWaypoint [_allpositions select 0, 0.2];
 _wp setWaypointType "CYCLE";
