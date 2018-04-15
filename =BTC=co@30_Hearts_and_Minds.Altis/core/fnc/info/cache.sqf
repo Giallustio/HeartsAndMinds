@@ -26,4 +26,4 @@ if (_showHint > 0) then {[1] remoteExec ["btc_fnc_show_hint", 0];};
 btc_cache_info = btc_cache_info - btc_info_cache_ratio;
 if (btc_cache_info < btc_info_cache_ratio) then {btc_cache_info = btc_info_cache_ratio;};
 
-btc_cache_markers = btc_cache_markers + [_marker];
+btc_cache_markers pushBack _marker;

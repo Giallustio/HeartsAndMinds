@@ -24,5 +24,5 @@ switch (true) do {
     };
 };
 
-if (_id == 0) exitWith {};
+if (_id isEqualTo 0) exitWith {};
 [_id] remoteExec ["btc_fnc_show_hint", 0];

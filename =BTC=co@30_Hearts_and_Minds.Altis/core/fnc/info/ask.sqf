@@ -33,7 +33,7 @@ waitUntil {!(isNil "btc_int_ask_data")};
 
 private _rep = btc_int_ask_data;
 
-private _chance = (random 300) + (random _rep + (_rep/2));
+private _chance = (random 300) + (random _rep) + _rep/2;
 private _info = "";
 private _info_type = "";
 switch !(_isInterrogate) do {
@@ -42,7 +42,7 @@ switch !(_isInterrogate) do {
     case (_chance >= 600) : {_info_type = "REAL";};
 };
 if (_isInterrogate) then {_info_type = "REAL";};
-if (_info_type == "NO") exitWith {
+if (_info_type isEqualTo "NO") exitWith {
     [name _man, localize "STR_BTC_HAM_CON_INFO_ASK_NOINFO"] call btc_fnc_showSubtitle; //I've no information for you
 };
 
@@ -71,7 +71,7 @@ switch (_info_type) do {
             case "CACHE" : {
                 [name _man, localize "STR_BTC_HAM_CON_INFO_ASK_CACHEMAP"] call btc_fnc_showSubtitle; //I'll show you some hint on the map
                 sleep 2;
-                [true,1] remoteExec ["btc_fnc_info_cache", 2];
+                [true, 1] remoteExec ["btc_fnc_info_cache", 2];
             };
         };
     };
@@ -86,7 +86,7 @@ switch (_info_type) do {
             case "CACHE" : {
                 [name _man, localize "STR_BTC_HAM_CON_INFO_ASK_CACHEMAP"] call btc_fnc_showSubtitle; //I'll show you some hint on the map
                 sleep 2;
-                [false,1] remoteExec ["btc_fnc_info_cache", 2];
+                [false, 1] remoteExec ["btc_fnc_info_cache", 2];
             };
         };
     };
