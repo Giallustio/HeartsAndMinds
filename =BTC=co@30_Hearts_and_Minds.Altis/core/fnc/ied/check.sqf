@@ -13,7 +13,7 @@ private _ieds_check = _ieds select {!((_x select 2) isEqualTo objNull)};
         {
             _x params ["_wreck", "_type", "_ied"];
 
-            if (!isNull _ied && {Alive _ied}) then {
+            if (!isNull _ied && {alive _ied}) then {
                 {
                     if (side _x isEqualTo btc_player_side && {speed _x > 5 || vehicle _x != _x}) then {
                         [_wreck, _ied] spawn btc_fnc_ied_boom;
@@ -30,7 +30,7 @@ private _ieds_check = _ieds select {!((_x select 2) isEqualTo objNull)};
         {
             _x params ["_wreck", "_type", "_ied"];
 
-            if (!isNull _wreck && {Alive _wreck}) then {
+            if (!isNull _wreck && {alive _wreck}) then {
                 _data pushBack [getPosATL _wreck, _type, getDir _wreck, !(_ied isEqualTo objNull)];
 
                 deleteVehicle _ied;
