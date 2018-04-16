@@ -1,6 +1,6 @@
-params ["_search_civ_faction"];
+params ["_get_civ_faction"];
 
-private _faction_list = if (_search_civ_faction isEqualTo "CIV") then {[3]} else {[0, 1, 2]};
+private _faction_list = if (_get_civ_faction isEqualTo "CIV") then {[3]} else {[0, 1, 2]};
 
 //Get all vehicles/Units
 private _allvehicles = ("(configName _x) isKindOf 'AllVehicles'" configClasses (configFile >> "CfgVehicles")) apply {configName _x};
