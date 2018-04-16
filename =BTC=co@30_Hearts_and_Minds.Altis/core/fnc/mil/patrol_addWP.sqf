@@ -40,15 +40,14 @@ if (_cities isEqualTo []) then {
 private _end_city = selectRandom _cities;
 _group setVariable ["end_city", _end_city];
 _group setVariable ["noaccess", _noaccess];
-private _pos = getPos _end_city;
 
+private _pos = getPos _end_city;
 if (_isboat) then {
     ((selectBestPlaces [_pos, (_active_city getVariable ["RadiusX", 0]) + (_active_city getVariable ["RadiusY", 0]), "sea", 10, 1]) select 0 select 0) params ["_x", "_y"];
     _pos = [_x, _y, 0];
 };
 
 //Add Waypoints
-
 while {!((waypoints _group) isEqualTo [])} do {deleteWaypoint ((waypoints _group) select 0);};
 
 if ((vehicle leader _group) isKindOf "Air" || (vehicle leader _group) isKindOf "LandVehicle") then {

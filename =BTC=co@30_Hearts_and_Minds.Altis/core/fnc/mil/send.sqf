@@ -3,7 +3,7 @@
 */
 params ["_start", "_dest", "_typeOf_patrol", ["_veh_type", ""]];
 
-_pos = getPos _start;
+private _pos = getPos _start;
 
 private _group = grpNull;
 switch (_typeOf_patrol) do {

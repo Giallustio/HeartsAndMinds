@@ -44,7 +44,7 @@ switch (true) do {
         private _n_units   = 4 + (round random 8);
         _pos = [_pos, 0, 50, 10, false] call btc_fnc_findsafepos;
         [_group createUnit [btc_type_units select 0, _pos, [], 0, "NONE"]] joinSilent _group;
-        (leader _group) setpos _pos;
+        (leader _group) setPos _pos;
         for "_i" from 1 to _n_units do {
             private _unit_type = selectRandom btc_type_units;
             [_group createUnit [_unit_type, _pos, [], 0, "NONE"]] joinSilent _group;
@@ -89,7 +89,7 @@ switch (true) do {
         };
         units _group joinSilent _group;
 
-        private _1 = _veh addEventHandler ["Fuel", {_this call btc_fnc_mil_patrol_eh}];
+        private _1 = _veh addEventHandler ["Fuel", btc_fnc_mil_patrol_eh];
         _veh setVariable ["eh", [_1/*, _2, _3,4, 5*/]];
         _veh setVariable ["crews", _group];
 

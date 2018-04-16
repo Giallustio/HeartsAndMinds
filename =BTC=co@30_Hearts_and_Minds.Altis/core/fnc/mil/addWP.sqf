@@ -3,13 +3,10 @@ params ["_group", "_city", "_area", "_wp"];
 private _pos = position _city;
 private _rpos = [_pos, _area] call btc_fnc_randomize_pos;
 
-private _in_house = false;
-
 switch (true) do {
     case (_wp < 0.3) : {
         private _houses = [_city, _area] call btc_fnc_getHouses;
         if !(_houses isEqualTo []) then {
-            _in_house = true;
             private _house = selectRandom _houses;
             [_group, _house] spawn btc_fnc_house_addWP;
             _group setVariable ["inHouse", typeOf _house];
