@@ -20,7 +20,9 @@ if (btc_debug_log) then {
 if (_start_pos isEqualTo []) then {
     {
         private _city = _x;
-        if (_pos distance _city > 300 && {_pos distance _city < 2500} && {{_x distance _city < 500} count _players isEqualTo 0}) then {_start_pos = getPos _city;};
+        if (_pos distance _city > 300 && {_pos distance _city < 2500} && {{_x distance _city < 500} count _players isEqualTo 0}) then {
+            _start_pos = getPos _city;
+        };
     } forEach btc_city_all;
 };
 if (btc_debug_log) then {diag_log format ["fnc_rep_call_militia = _start_pos : %1 (CITIES)", _start_pos];};

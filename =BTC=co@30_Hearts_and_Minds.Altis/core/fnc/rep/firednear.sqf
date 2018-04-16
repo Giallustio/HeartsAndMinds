@@ -11,9 +11,9 @@ if (!(side _civ isEqualTo civilian) || (random 3 < 1)) exitWith {};
 
 if (side _gunner isEqualTo btc_player_side) then {
     if ((_gunner findNearestEnemy getPos _civ) distance _civ > 300)  then {
-        if (abs((_gunner getdir _civ) - getDir _gunner) < 300/_distance) then {
+        if (abs((_gunner getDir _civ) - getDir _gunner) < 300/_distance) then {
             btc_rep_malus_civ_firenear call btc_fnc_rep_change;
-            [getpos _civ] call btc_fnc_rep_eh_effects;
+            [getPos _civ] call btc_fnc_rep_eh_effects;
 
             if (btc_debug_log) then {
                 diag_log format ["REP Firenear = GREP %1 THIS = %2", btc_global_reputation, _this];
