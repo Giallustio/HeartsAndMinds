@@ -2,7 +2,7 @@ params ["_task_id"];
 
 if (isServer) exitWith {
     btc_side_jip_data = [];
-    [str(_task_id), "SUCCEEDED", false] spawn BIS_fnc_taskSetState;
+    [str _task_id, "SUCCEEDED", false] spawn BIS_fnc_taskSetState;
     if (_task_id isEqualTo 1) then {[2] remoteExec ["btc_fnc_task_create", 0]};
 };
 
@@ -60,4 +60,4 @@ switch _task_id do {
         _description = [localize "STR_BTC_HAM_SIDE_BASIC_WIN_TITLE", localize "STR_BTC_HAM_SIDE_HACK_WIN_TEXT"]; //"Side mission Accomplished!","The missile has been hacked!"
     };
 };
-["task" + "SUCCEEDED" + "Icon",[[[str(_task_id)] call BIS_fnc_taskType] call BIS_fnc_taskTypeIcon, _description select 1]] call BIS_fnc_showNotification;
+["task" + "SUCCEEDED" + "Icon",[[[str _task_id] call BIS_fnc_taskType] call BIS_fnc_taskTypeIcon, _description select 1]] call BIS_fnc_showNotification;

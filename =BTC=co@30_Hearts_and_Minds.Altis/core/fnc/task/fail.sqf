@@ -2,7 +2,7 @@ params ["_task_id"];
 
 if (isServer) exitWith {
     btc_side_jip_data = [];
-    [str(_task_id), "FAILED", false] spawn BIS_fnc_taskSetState;
+    [str _task_id, "FAILED", false] spawn BIS_fnc_taskSetState;
 };
 
 private _description = [];
@@ -50,4 +50,4 @@ switch _task_id do {
         _description = [localize "STR_BTC_HAM_SIDE_BASIC_LOSE_TITLE", localize "STR_BTC_HAM_SIDE_HACK_FAILED_TEXT"]; //"Side mission failed!","The missile was not hacked"
     };
 };
-["task" + "FAILED" + "Icon",[[[str(_task_id)] call BIS_fnc_taskType] call BIS_fnc_taskTypeIcon, _description select 1]] call BIS_fnc_showNotification;
+["task" + "FAILED" + "Icon",[[[str _task_id] call BIS_fnc_taskType] call BIS_fnc_taskTypeIcon, _description select 1]] call BIS_fnc_showNotification;
