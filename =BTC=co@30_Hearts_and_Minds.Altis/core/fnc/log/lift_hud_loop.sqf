@@ -38,8 +38,8 @@ if (!isNull _cargo) then {
         _pic_cargo = getText (configFile >> "cfgVehicles" >> typeOf _cargo >> "picture");
     };
     private _name_cargo = getText (configFile >> "cfgVehicles" >> typeOf _cargo >> "displayName");
-    private _obj_pic ctrlSetText _pic_cargo;
-    private _obj_name ctrlSetText _name_cargo;
+    _obj_pic ctrlSetText _pic_cargo;
+    _obj_name ctrlSetText _name_cargo;
     if (btc_lifted) then {
         _obj_alt ctrlSetText (format ["%1 m", (round((getPos _cargo select 2) * 10))/10]);
         _obj_img ctrlSetTextColor [0, 1, 0, 1];

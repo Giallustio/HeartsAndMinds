@@ -1,6 +1,6 @@
 params ["_copy_container", "_create_object_point"];
 
-if ({!((_x isKindOf "Animal") || (_x isKindOf "Module_F") || (_x isKindOf "WeaponHolder"))} count (nearestObjects [_create_object_point,["All"], 5]) > 1) exitWith {
+if ({!((_x isKindOf "Animal") || (_x isKindOf "Module_F") || (_x isKindOf "WeaponHolder"))} count (nearestObjects [_create_object_point, ["All"], 5]) > 1) exitWith {
     hint localize "STR_BTC_HAM_LOG_BASICS_CLEARAREA"; //Clear the area before create another object!
 };
 

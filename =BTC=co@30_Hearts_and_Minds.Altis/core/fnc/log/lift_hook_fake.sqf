@@ -3,7 +3,7 @@ params ["_cargo", "_chopper"];
 private _simulation = createVehicle ["Box_T_NATO_WpsSpecial_F", getPosATL _cargo , [], 0, "CAN_COLLIDE"];
 _simulation enableSimulation false;
 (getPosATL _cargo) params ["_x", "_y", "_z"];
-_simulation setPosATL [_x, _y, [_z, 0] select {_z < -0.05}];
+_simulation setPosATL [_x, _y, [_z, 0] select (_z < -0.05)];
 _simulation setDir getDir _cargo;
 _simulation setVectorUp vectorUp _cargo;
 

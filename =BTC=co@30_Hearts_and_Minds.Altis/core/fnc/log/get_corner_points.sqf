@@ -15,7 +15,7 @@ if(_vehicle isKindOf "Helicopter") then {
 
 (getCenterOfMass _vehicle) params ["_centerOfMass_x", "_centerOfMass_y", "_centerOfMass_z"];
 (boundingBoxReal _vehicle) params ["_p1","_p2"];
-([0,1] apply {abs ((_p2 select _x) - (_p1 select _x))}) params ["_maxWidth", "_maxLength"];
+([0, 1] apply {abs ((_p2 select _x) - (_p1 select _x))}) params ["_maxWidth", "_maxLength"];
 
 private _widthOffset = ((_maxWidth / 2) - abs _centerOfMass_x) * _widthFactor;
 private _lengthOffset = ((_maxLength / 2) - abs _centerOfMass_y) * _lengthFactor;

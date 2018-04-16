@@ -210,7 +210,6 @@ btc_fnc_log_select = compile preprocessFileLineNumbers "core\fnc\log\select.sqf"
 btc_fnc_log_server_load = compile preprocessFileLineNumbers "core\fnc\log\server_load.sqf";
 btc_fnc_log_server_repair_wreck = compile preprocessFileLineNumbers "core\fnc\log\server_repair_wreck.sqf";
 btc_fnc_log_server_unload = compile preprocessFileLineNumbers "core\fnc\log\server_unload.sqf";
-btc_fnc_log_set_mass = compile preprocessFileLineNumbers "core\fnc\log\set_mass.sqf";
 btc_fnc_log_tow = compile preprocessFileLineNumbers "core\fnc\log\tow.sqf";
 btc_fnc_log_unhook = compile preprocessFileLineNumbers "core\fnc\log\unhook.sqf";
 btc_fnc_log_unload = compile preprocessFileLineNumbers "core\fnc\log\unload.sqf";

@@ -62,11 +62,11 @@ sleep 1;
 if ((_mass + 400) > _max_cargo) then {
     private _new_mass = _max_cargo - 1000;
     if (_new_mass < 0) then {_new_mass = 50;};
-    [_cargo, _new_mass] remoteExec ["btc_fnc_log_set_mass", _cargo];
+    [_cargo, _new_mass] remoteExec ["setMass", _cargo];
 };
 
 _chopper setVariable ["cargo", _cargo];
 
 waitUntil {sleep 5; (!alive player || !alive _cargo || !btc_lifted || vehicle player isEqualTo player)};
 
-[_cargo, _mass] remoteExec ["btc_fnc_log_set_mass", _cargo];
+[_cargo, _mass] remoteExec ["setMass", _cargo];
