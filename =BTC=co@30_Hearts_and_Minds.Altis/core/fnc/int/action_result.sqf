@@ -7,7 +7,7 @@ if (_target isKindOf "Helicopter") then {_radius = 20;};
 
 _args pushBack _radius;
 
-_condition = {
+private _condition = {
     params ["_args"];
     _args params ["_target", "_player"];
 

@@ -1,4 +1,4 @@
-params ["_id","_target","_asker"];
+params ["_id", "_target", "_asker"];
 
 private _data = switch (_id) do {
     case 0 : {_target getVariable ["active", false];};
@@ -8,7 +8,7 @@ private _data = switch (_id) do {
             if (_x distance _asker < 3000) then {
                 _hd = _x;
             };
-        } foreach btc_hideouts;
+        } forEach btc_hideouts;
         _hd;
     };
     case 2 : {btc_global_reputation;};
