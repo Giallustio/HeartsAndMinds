@@ -2,7 +2,7 @@ if (btc_hideout_cap_checking) exitWith {};
 
 btc_hideout_cap_checking = true;
 
-private _cap_to = btc_hideouts select {(time - (_x getVariable ["cap_time", time]) > btc_hideout_cap_time)};
+private _cap_to = btc_hideouts select {time - (_x getVariable ["cap_time", time]) > btc_hideout_cap_time};
 
 if (_cap_to isEqualTo []) exitWith {
     btc_hideout_cap_checking = false;
@@ -36,7 +36,7 @@ if (_cap_to isEqualTo []) exitWith {
     };
 
     if (btc_debug_log) then {
-        diag_log format ["btc_fnc_mil_check_cap: SEND FROM = %1 TO %2 [int %3]", _hd getVariable "id", _closest getVariable ["name","error"], _closest getVariable ["initialized", false]];
+        diag_log format ["btc_fnc_mil_check_cap: SEND FROM = %1 TO %2 [int %3]", _hd getVariable "id", _closest getVariable ["name", "error"], _closest getVariable ["initialized", false]];
     };
 
     _hd setVariable ["cap_time", time];

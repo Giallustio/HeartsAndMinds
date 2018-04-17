@@ -15,8 +15,8 @@ if (_random isEqualTo 0) then {
         case (_n > 96)            : {_random = 4;};
     };
 };
-private _cities = btc_city_all select {(_x distance _city < _area)};
-private _usefuls = _cities select {(!(_x getVariable ["active", false]) && _x getVariable ["occupied", false])};
+private _cities = btc_city_all select {_x distance _city < _area};
+private _usefuls = _cities select {!(_x getVariable ["active", false]) && _x getVariable ["occupied", false]};
 
 if (_usefuls isEqualTo []) exitWith {true};
 

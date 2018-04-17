@@ -6,7 +6,9 @@ if (_explosive && {_damage > 0.6}) then {
     private _id = _hideout getVariable "id";
 
     for "_i" from 0 to (count btc_hideouts - 1) do {
-        if ((btc_hideouts select _i) getVariable "id" isEqualTo _id) then {btc_hideouts set [_i, 0];};
+        if ((btc_hideouts select _i) getVariable "id" isEqualTo _id) then {
+            btc_hideouts set [_i, 0];
+        };
     };
     btc_hideouts = btc_hideouts - [0];
 
