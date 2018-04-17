@@ -7,7 +7,7 @@ _simulation setPosATL [_x, _y, [_z, 0] select (_z < -0.05)];
 _simulation setDir getDir _cargo;
 _simulation setVectorUp vectorUp _cargo;
 
-_cargo attachTo [_simulation, [0, 0, 0.2 + abs(((_cargo modelToWorld [0, 0, 0]) select 2) - ((_simulation  modelToWorld [0, 0, 0]) select 2))]];
+_cargo attachTo [_simulation, [0, 0, 0.2 + abs(((_cargo modelToWorld [0, 0, 0]) select 2) - ((_simulation modelToWorld [0, 0, 0]) select 2))]];
 
 _chopper addEventHandler ["RopeBreak", {
     params ["_object1", "_rope", "_object2"];

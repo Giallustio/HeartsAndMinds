@@ -1,4 +1,4 @@
-if (!(vehicle player isKindOf "Helicopter" || (vehicle player isKindOf "Ship")) || !isNull ((vehicle player) getVariable ["cargo",objNull])) exitWith {false};
+if (!(vehicle player isKindOf "Helicopter" || (vehicle player isKindOf "Ship")) || !isNull ((vehicle player) getVariable ["cargo", objNull])) exitWith {false};
 
 private _array = [vehicle player] call btc_fnc_log_get_liftable;
 if (_array isEqualTo []) exitWith {false};

@@ -6,7 +6,7 @@ _fall setDir getDir _obj;
 _fall setPosASL getPosASL _obj;
 _fall setObjectTextureGlobal [0, ""];
 _fall setObjectTextureGlobal [1, ""];
-_obj attachTo [_fall, [0, 0, abs(((_obj modelToWorld [0, 0, 0]) select 2) - ((_fall  modelToWorld [0, 0, 0]) select 2))]];
+_obj attachTo [_fall, [0, 0, abs(((_obj modelToWorld [0, 0, 0]) select 2) - ((_fall modelToWorld [0, 0, 0]) select 2))]];
 
 sleep 0.1;
 

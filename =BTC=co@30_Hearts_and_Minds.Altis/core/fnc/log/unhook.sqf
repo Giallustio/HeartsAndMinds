@@ -13,7 +13,7 @@ _veh removeEventHandler ["RopeBreak", _veh getVariable ["btc_eh", -1]];
 
 (getPos _veh) params ["_x", "_y", "_z"];
 if (_z < -0.05) then {
-    _veh setpos [_x, _y, 0];
+    _veh setPos [_x, _y, 0];
 };
 
 private _towed = btc_int_ask_data;

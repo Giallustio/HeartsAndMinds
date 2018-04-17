@@ -1,10 +1,9 @@
-params ["_veh","_dropped","_chute_type"];
+params ["_veh", "_dropped", "_chute_type"];
 
 private _type_dropped = typeOf _dropped;
 private _offset = [0, -(sizeOf typeOf _veh + sizeOf _type_dropped)/2, -5];
 
 _dropped disableCollisionWith _veh;
-
 _dropped setPos (_veh modelToWorld _offset);
 
 sleep 0.1;
