@@ -173,6 +173,9 @@ btc_fnc_db_add_veh = compile preprocessFileLineNumbers "core\fnc\db\add_veh.sqf"
 btc_fnc_civ_class = compile preprocessFileLineNumbers "core\fnc\civ\class.sqf";
 btc_fnc_civ_addWP = compile preprocessFileLineNumbers "core\fnc\civ\addWP.sqf";
 
+//IED
+btc_fnc_ied_belt = compile preprocessFileLineNumbers "core\fnc\ied\belt.sqf";
+
 //INT
 btc_fnc_int_orders_give = compile preprocessFileLineNumbers "core\fnc\int\orders_give.sqf";
 btc_fnc_int_orders_behaviour = compile preprocessFileLineNumbers "core\fnc\int\orders_behaviour.sqf";
