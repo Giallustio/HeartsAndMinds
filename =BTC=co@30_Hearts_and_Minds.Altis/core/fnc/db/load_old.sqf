@@ -20,7 +20,7 @@ private _cities_status = profileNamespace getVariable [format ["btc_hm_%1_cities
     _city setVariable ["ieds", _ieds];
     _city setVariable ["has_suicider", _has_suicider];
 
-    if (btc_debug) then    {//_debug
+    if (btc_debug) then {//_debug
 
         if (_city getVariable ["occupied",false]) then {(_city getVariable ["marker", ""]) setmarkercolor "colorRed";} else {(_city getVariable ["marker", ""]) setmarkercolor "colorGreen";};
         (_city getVariable ["marker", ""]) setmarkertext format ["loc_%3 %1 %2 - [%4]", _city getVariable "name", _city getVariable "type", _id, _occupied];
@@ -29,7 +29,7 @@ private _cities_status = profileNamespace getVariable [format ["btc_hm_%1_cities
         diag_log format ["data_city: %1", _x];
         diag_log format ["LOAD: %1 - %2", _id, _occupied];
     };
-} foreach _cities_status;
+} forEach _cities_status;
 
 //HIDEOUT
 private _array_ho = profileNamespace getVariable [format ["btc_hm_%1_ho", _name], []];
@@ -70,7 +70,7 @@ private _array_ho = profileNamespace getVariable [format ["btc_hm_%1_ho", _name]
         _marker setMarkerSize [0.5, 0.5];
         _marker setMarkerColor "ColorRed";
         _markers pushBack _marker;
-    } foreach _markers_saved;
+    } forEach _markers_saved;
 
     _hideout setVariable ["markers", _markers];
 
@@ -86,7 +86,7 @@ private _array_ho = profileNamespace getVariable [format ["btc_hm_%1_ho", _name]
 
     btc_hideouts_id = btc_hideouts_id + 1;
     btc_hideouts pushBack _hideout;
-} foreach _array_ho;
+} forEach _array_ho;
 
 private _ho = profileNamespace getVariable [format ["btc_hm_%1_ho_sel", _name], 0];
 btc_hq = btc_hideouts select _ho;
@@ -115,7 +115,7 @@ call btc_fnc_cache_create;
     _marker setMarkerSize [0.5, 0.5];
     _marker setMarkerColor "ColorRed";
     btc_cache_markers pushBack _marker;
-} foreach (_array_cache select 3);
+} forEach (_array_cache select 3);
 
 //FOB
 private _fobs = profileNamespace getVariable [format ["btc_hm_%1_fobs", _name], []];
@@ -135,14 +135,14 @@ private _fobs_loaded = [[], []];
     _flag setVariable ["btc_fob", _fob_name];
     (_fobs_loaded select 0) pushBack _fob_name;
     (_fobs_loaded select 1) pushBack _fob_structure;
-} foreach (_fobs select 0);
+} forEach (_fobs select 0);
 btc_fobs = _fobs_loaded;
 
 //REP
 private _global_reputation = profileNamespace getVariable [format ["btc_hm_%1_rep", _name], 0];
 
 //VEHICLES
-{deleteVehicle _x} foreach btc_vehicles;
+{deleteVehicle _x} forEach btc_vehicles;
 btc_vehicles = [];
 
 private _vehs = profileNamespace getVariable [format ["btc_hm_%1_vehs", _name], []];
@@ -183,7 +183,7 @@ private _vehs = profileNamespace getVariable [format ["btc_hm_%1_vehs", _name], 
                 };
             };
             [_obj, _veh] call btc_fnc_log_server_load;
-        } foreach _veh_cargo;
+        } forEach _veh_cargo;
 
         clearWeaponCargoGlobal _veh;clearItemCargoGlobal _veh;clearMagazineCargoGlobal _veh;
         _veh_cont params ["_weap", "_mags", "_items"];
@@ -205,14 +205,14 @@ private _vehs = profileNamespace getVariable [format ["btc_hm_%1_vehs", _name], 
 
         //Disable explosion effect during database loading
         {
-            [_veh, _foreachindex, _x, false] call ace_repair_fnc_setHitPointDamage;
+            [_veh, _forEachindex, _x, false] call ace_repair_fnc_setHitPointDamage;
         } forEach (_veh_AllHitPointsDamage select 2);
         if ((_veh_AllHitPointsDamage select 2) select {_x < 1} isEqualTo []) then {
             _veh setVariable ["ace_cookoff_enable", false, true];
             _veh setVariable ["ace_cookoff_enableAmmoCookoff", false, true];
             _veh setDamage [1, false];
         };
-    } foreach _vehs;
+    } forEach _vehs;
     [{
         btc_global_reputation = _this;
     }, _global_reputation, 0.5] call CBA_fnc_waitAndExecute;
@@ -222,14 +222,14 @@ private _vehs = profileNamespace getVariable [format ["btc_hm_%1_vehs", _name], 
 private _objs = profileNamespace getVariable [format ["btc_hm_%1_objs", _name], []];
 {
     [_x] call btc_fnc_db_loadObjectStatus;
-} foreach _objs;
+} forEach _objs;
 
 //Player Markers
 private _markers_properties = profileNamespace getVariable [format ["btc_hm_%1_markers", _name], []];
 {
     _x params ["_markerText", "_markerPos", "_markerColor", "_markerType", "_markerSize", "_markerAlpha", "_markerBrush", "_markerDir", "_markerShape"];
 
-    private _marker = createMarker [format ["_USER_DEFINED #0/%1/1", _foreachindex], _markerPos];
+    private _marker = createMarker [format ["_USER_DEFINED #0/%1/1", _forEachindex], _markerPos];
     _marker setMarkerText _markerText;
     _marker setMarkerColor _markerColor;
     _marker setMarkerType _markerType;

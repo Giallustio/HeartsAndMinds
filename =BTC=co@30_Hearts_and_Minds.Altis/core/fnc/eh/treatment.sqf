@@ -1,5 +1,6 @@
+params ["_caller", "_target", "_selectionName", "_className"];
 
-if (isPlayer (_this select 1)) exitWith {};
-if ((Alive (_this select 1)) && (side (_this select 1) isEqualTo civilian) && !((_this select 3) isEqualTo "Diagnose")) then {
-    _this remoteExec ["btc_fnc_rep_hh",2];
+if (isPlayer _target) exitWith {};
+if ((Alive _target) && (side _target isEqualTo civilian) && !(_className isEqualTo "Diagnose")) then {
+    _this remoteExec ["btc_fnc_rep_hh", 2];
 };

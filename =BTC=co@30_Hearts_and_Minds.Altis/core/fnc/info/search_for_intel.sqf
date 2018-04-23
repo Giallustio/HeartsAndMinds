@@ -1,9 +1,9 @@
-
 params ["_target"];
 
 private _onFinish = {
     params ["_args"];
     _args params ["_target", "_player"];
+
     [_target, _player] remoteExec ["btc_fnc_info_has_intel", 2];
 };
 

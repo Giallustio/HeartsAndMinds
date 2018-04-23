@@ -1,8 +1,6 @@
+params ["_civ", "_vehicle", "_distance", "_weapon", "_muzzle", "_mode", "_ammo", "_gunner"];
 
-private ["_civ","_gunner"];
-
-_civ = _this select 0;
-_gunner = _this select 7;
+if (_ammo isKindOf "SmokeShell") exitWith {};
 
 //Remove the eventHandler to prevent spamming
 _civ removeEventHandler ["FiredNear", _thisEventHandler];

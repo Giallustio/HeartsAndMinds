@@ -233,29 +233,41 @@ class Params {
         texts[] = {$STR_DISABLED,$STR_ENABLED};
         default = 0;
     };
+    class btc_p_arsenal_title { // << Arsenal options >>
+        title = $STR_BTC_HAM_PARAM_ARSENAL_TITLE;
+        values[]={0};
+        texts[]={""};
+        default = 0;
+    };
+    class btc_p_arsenal_Type { // Type of the arsenal:
+        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_ARSENAL_ARSENALTYPE"]);
+        values[]={0,1,2,3,4};
+        texts[]={$STR_BTC_HAM_PARAM_ARSENAL_ARSENALTYPE_BIS,$STR_BTC_HAM_PARAM_ARSENAL_ARSENALTYPE_BA,$STR_BTC_HAM_PARAM_ARSENAL_ARSENALTYPE_BA_PLUS,$STR_BTC_HAM_PARAM_ARSENAL_ARSENALTYPE_ACE,$STR_BTC_HAM_PARAM_ARSENAL_ARSENALTYPE_ACE_PLUS}; //texts[]={"BIS - Vanilla","BIS - Vanilla and ACE 3","BIS - Vanilla and ACE 3 (scroll wheel action)","ACE 3","ACE 3 (scroll wheel action)"};
+        default = 2;
+    };
+    class btc_p_arsenal_Restrict { // Restricted arsenal (See /define_mod.sqf):
+        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_ARSENAL_ARSENALRESTR"]);
+        values[]={0,1,2};
+        texts[] = {$STR_DISABLED,$STR_BTC_HAM_PARAM_ARSENAL_ARSENALRESTR_FULL,$STR_BTC_HAM_PARAM_ARSENAL_ARSENALRESTR_REMOVEONLY}; //texts[]={"Off","Full","Remove only (works only with ACE3-Arsenal)"};
+        default = 0;
+    };
+    class btc_p_garage { // Activate garage for admin:
+        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_ARSENAL_GARAGEADMIN"]);
+        values[]={0,1};
+        texts[]={$STR_DISABLED,$STR_ENABLED};
+        default = 0;
+    };
     class btc_p_main_title { // << Other options >>
         title = $STR_BTC_HAM_PARAM_OTHER_TITLE;
         values[]={0};
         texts[]={""};
         default = 0;
     };
-    class btc_p_arsenalType { // Type of the arsenal:
-        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_OTHER_ARSENALTYPE"]);
-        values[]={0,1,2,3,4};
-        texts[]={$STR_BTC_HAM_PARAM_OTHER_ARSENALTYPE_BIS,$STR_BTC_HAM_PARAM_OTHER_ARSENALTYPE_BA,$STR_BTC_HAM_PARAM_OTHER_ARSENALTYPE_BA_PLUS,$STR_BTC_HAM_PARAM_OTHER_ARSENALTYPE_ACE,$STR_BTC_HAM_PARAM_OTHER_ARSENALTYPE_ACE_PLUS}; //texts[]={"BIS - Vanilla","BIS - Vanilla and ACE 3","BIS - Vanilla and ACE 3 (scroll wheel action)","ACE 3","ACE 3 (scroll wheel action)"};
-        default = 2;
-    };
     class btc_p_rep { // Reputation at start:
         title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_OTHER_REPSTART"]);
         values[]={0, 200, 500, 750};
         texts[]={$STR_BTC_HAM_PARAM_OTHER_REPSTART_VLOW,$STR_BTC_HAM_PARAM_IED_RATIO_LOW,$STR_BTC_HAM_PARAM_IED_RATIO_NORMAL,$STR_BTC_HAM_PARAM_IED_RATIO_HIGH}; //texts[]={"Very Low","Low","Normal","High"};
         default = 200;
-    };
-    class btc_p_garage { // Activate garage for admin:
-        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_OTHER_GARAGEADMIN"]);
-        values[]={0,1};
-        texts[]={$STR_DISABLED,$STR_ENABLED};
-        default = 0;
     };
     class btc_p_city_radius { // Spawn city radius offset:
         title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_OTHER_SPAWNRAD"]);

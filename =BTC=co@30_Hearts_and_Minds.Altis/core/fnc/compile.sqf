@@ -11,10 +11,7 @@ if (isServer) then {
     btc_fnc_clean_up = compile preprocessFileLineNumbers "core\fnc\common\clean_up.sqf";
     btc_fnc_create_composition = compile preprocessFileLineNumbers "core\fnc\common\create_composition.sqf";
     btc_fnc_create_attachto = compile preprocessFileLineNumbers "core\fnc\common\create_attachto.sqf";
-    btc_fnc_getHouses = compile preprocessFileLineNumbers "core\fnc\common\getHouses.sqf";
     btc_fnc_house_addWP = compile preprocessFileLineNumbers "core\fnc\common\house_addWP.sqf";
-    btc_fnc_house_addWP_loop = compile preprocessFileLineNumbers "core\fnc\common\house_addWP_loop.sqf";
-    btc_fnc_randomize_pos = compile preprocessFileLineNumbers "core\fnc\common\randomize_pos.sqf";
     btc_fnc_set_owner = compile preprocessFileLineNumbers "core\fnc\common\set_owner.sqf";
     btc_fnc_task_patrol = compile preprocessFileLineNumbers "core\fnc\common\task_patrol.sqf";
     btc_fnc_set_damage = compile preprocessFileLineNumbers "core\fnc\common\set_damage.sqf";
@@ -28,6 +25,7 @@ if (isServer) then {
     btc_fnc_delete = compile preprocessFileLineNumbers "core\fnc\common\delete.sqf";
     btc_fnc_final_phase = compile preprocessFileLineNumbers "core\fnc\common\final_phase.sqf";
     btc_fnc_findPosOutsideRock = compile preprocessFileLineNumbers "core\fnc\common\findposoutsiderock.sqf";
+    btc_fnc_set_groupsowner = compile preprocessFileLineNumbers "core\fnc\common\set_groupsowner.sqf";
 
     //CITY
     btc_fnc_city_activate = compile preprocessFileLineNumbers "core\fnc\city\activate.sqf";
@@ -39,7 +37,6 @@ if (isServer) then {
     //CIV
     btc_fnc_civ_add_weapons = compile preprocessFileLineNumbers "core\fnc\civ\add_weapons.sqf";
     btc_fnc_civ_add_grenade = compile preprocessFileLineNumbers "core\fnc\civ\add_grenade.sqf";
-    btc_fnc_civ_addWP = compile preprocessFileLineNumbers "core\fnc\civ\addWP.sqf";
     btc_fnc_civ_create = compile preprocessFileLineNumbers "core\fnc\civ\create.sqf";
     btc_fnc_civ_get_weapons = compile preprocessFileLineNumbers "core\fnc\civ\get_weapons.sqf";
     btc_fnc_civ_get_grenade = compile preprocessFileLineNumbers "core\fnc\civ\get_grenade.sqf";
@@ -63,6 +60,7 @@ if (isServer) then {
     btc_fnc_db_autosave = compile preprocessFileLineNumbers "core\fnc\db\autosave.sqf";
     btc_fnc_db_loadObjectStatus = compile preprocessFileLineNumbers "core\fnc\db\loadObjectStatus.sqf";
     btc_fnc_db_saveObjectStatus = compile preprocessFileLineNumbers "core\fnc\db\saveObjectStatus.sqf";
+    btc_fnc_db_loadCargo = compile preprocessFileLineNumbers "core\fnc\db\loadcargo.sqf";
 
     //EH
     btc_fnc_eh_veh_add_respawn = compile preprocessFileLineNumbers "core\fnc\eh\veh_add_respawn.sqf";
@@ -164,19 +162,21 @@ if (isServer OR (!isDedicated && !hasInterface)) then {
 //COMMON
 btc_fnc_find_veh_with_turret = compile preprocessFileLineNumbers "core\fnc\common\find_veh_with_turret.sqf";
 btc_fnc_get_class = compile preprocessFileLineNumbers "core\fnc\common\get_class.sqf";
+btc_fnc_randomize_pos = compile preprocessFileLineNumbers "core\fnc\common\randomize_pos.sqf";
+btc_fnc_getHouses = compile preprocessFileLineNumbers "core\fnc\common\getHouses.sqf";
+btc_fnc_house_addWP_loop = compile preprocessFileLineNumbers "core\fnc\common\house_addWP_loop.sqf";
 
 //DB
 btc_fnc_db_add_veh = compile preprocessFileLineNumbers "core\fnc\db\add_veh.sqf";
 
 //CIV
 btc_fnc_civ_class = compile preprocessFileLineNumbers "core\fnc\civ\class.sqf";
+btc_fnc_civ_addWP = compile preprocessFileLineNumbers "core\fnc\civ\addWP.sqf";
 
-//EH
-btc_fnc_eh_unit_init = compile preprocessFileLineNumbers "core\fnc\eh\unit_init.sqf";
-
+//IED
+btc_fnc_ied_belt = compile preprocessFileLineNumbers "core\fnc\ied\belt.sqf";
 
 //INT
-btc_fnc_int_change_var = compile preprocessFileLineNumbers "core\fnc\int\change_var.sqf";
 btc_fnc_int_orders_give = compile preprocessFileLineNumbers "core\fnc\int\orders_give.sqf";
 btc_fnc_int_orders_behaviour = compile preprocessFileLineNumbers "core\fnc\int\orders_behaviour.sqf";
 btc_fnc_int_ans_var = compile preprocessFileLineNumbers "core\fnc\int\ans_var.sqf";
@@ -276,6 +276,8 @@ if (!isDedicated) then {
     btc_fnc_int_action_result = compile preprocessFileLineNumbers "core\fnc\int\action_result.sqf";
     btc_fnc_int_orders = compile preprocessFileLineNumbers "core\fnc\int\orders.sqf";
     btc_fnc_int_shortcuts = compile preprocessFileLineNumbers "core\fnc\int\shortcuts.sqf";
+    btc_fnc_int_terminal = compile preprocessFileLineNumbers "core\fnc\int\terminal.sqf";
+
 
     //INFO
     btc_fnc_info_ask = compile preprocessFileLineNumbers "core\fnc\info\ask.sqf";
@@ -288,6 +290,7 @@ if (!isDedicated) then {
     btc_fnc_log_garage = compile preprocessFileLineNumbers "core\fnc\log\garage.sqf";
     btc_fnc_log_hitch_points = compile preprocessFileLineNumbers "core\fnc\log\hitch_points.sqf";
     btc_fnc_log_get_corner_points = compile preprocessFileLineNumbers "core\fnc\log\get_corner_points.sqf";
+    btc_fnc_log_arsenalData = compile preprocessFileLineNumbers "core\fnc\log\arsenalData.sqf";
 
     //TASK
     btc_fnc_task_create = compile preprocessFileLineNumbers "core\fnc\task\create.sqf";
