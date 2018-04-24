@@ -1,5 +1,6 @@
+params ["_headless"];
 
-if ((_this select 0) in (entities "HeadlessClient_F")) then     {
+if (_headless in (entities "HeadlessClient_F")) then {
     //Remove HC player when disconnect
-    deleteVehicle (_this select 0);
+    deleteVehicle _headless;
 };

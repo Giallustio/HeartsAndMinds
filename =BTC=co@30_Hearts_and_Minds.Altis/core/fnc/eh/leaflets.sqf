@@ -1,5 +1,4 @@
-
-params ["_uav","_weapon"];
+params ["_uav", "_weapon"];
 
 if (btc_debug) then {
     systemChat format ["UAV: %1 fired with %2", typeOf _uav, _weapon];

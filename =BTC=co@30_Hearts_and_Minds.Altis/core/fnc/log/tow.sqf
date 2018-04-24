@@ -30,5 +30,5 @@ private _eh = _tower addEventHandler ["RopeBreak", {
 }];
 _tower setVariable ["btc_eh", _eh];
 
-[_tower, "tow", btc_log_vehicle_selected] remoteExec ["btc_fnc_int_change_var", 2];
-[btc_log_vehicle_selected, "tow", _tower] remoteExec ["btc_fnc_int_change_var", 2];
+[_tower, ["tow", btc_log_vehicle_selected]] remoteExec ["setVariable", 2];
+[btc_log_vehicle_selected, ["tow", _tower]] remoteExec ["setVariable", 2];

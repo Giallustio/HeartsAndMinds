@@ -29,5 +29,5 @@ if (_z < -0.05) then {
     _towed setVelocity [0, 0, 0.01];
 };
 
-[_towed, "tow", objNull] remoteExec ["btc_fnc_int_change_var", 2];
-[_veh, "tow", objNull] remoteExec ["btc_fnc_int_change_var", 2];
+[_towed, ["tow", objNull]] remoteExec ["setVariable", 2];
+[_veh, ["tow", objNull]] remoteExec ["setVariable", 2];

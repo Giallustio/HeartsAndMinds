@@ -425,34 +425,56 @@
                 <German>Autom. nächste Nebenmission starten:</German>
             </Key>
         </Container>
+        <Container name="Parameters: Arsenal">
+            <Key ID="STR_BTC_HAM_PARAM_ARSENAL_TITLE">
+                <Original>&lt;&lt; Arsenal options &gt;&gt;</Original>
+                <German>&lt;&lt; Arsenal Einstellungen &gt;&gt;</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_ARSENAL_ARSENALTYPE">
+                <Original>Type of the arsenal:</Original>
+                <German>Art des Arsenals:</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_ARSENAL_ARSENALTYPE_BIS">
+                <Original>BIS - Vanilla</Original>
+                <German>BIS - Vanilla</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_ARSENAL_ARSENALTYPE_ACE">
+                <Original>ACE 3</Original>
+                <German>ACE 3</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_ARSENAL_ARSENALTYPE_BA">
+                <Original>BIS - Vanilla and ACE 3</Original>
+                <German>BIS - Vanilla und ACE 3</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_ARSENAL_ARSENALTYPE_ACE_PLUS">
+                <Original>ACE 3 (scroll wheel action)</Original>
+                <German>ACE 3 (Maus-Rad-Menü)</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_ARSENAL_ARSENALTYPE_BA_PLUS">
+                <Original>BIS - Vanilla and ACE 3 (scroll wheel action)</Original>
+                <German>BIS - Vanilla und ACE 3 (Maus-Rad-Menü)</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_ARSENAL_ARSENALRESTR">
+                <Original>Restrict arsenal (See /define_mod.sqf):</Original>
+                <German>Arsenal beschränken (Siehe /define_mod.sqf):</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_ARSENAL_ARSENALRESTR_FULL">
+                <Original>Full</Original>
+                <German>Komplett</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_ARSENAL_ARSENALRESTR_REMOVEONLY">
+                <Original>Remove only (works only with ACE3-Arsenal)</Original>
+                <German>Nur entfernen (funktioniert nur beim ACE3-Arsenal)</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_ARSENAL_GARAGEADMIN">
+                <Original>Activate garage for admin:</Original>
+                <German>Virtuelle Garage für den Admin:</German>
+            </Key>
+        </Container>
         <Container name="Parameters: Other">
             <Key ID="STR_BTC_HAM_PARAM_OTHER_TITLE">
                 <Original>&lt;&lt; Other options &gt;&gt;</Original>
                 <German>&lt;&lt; Sonstige Einstellungen &gt;&gt;</German>
-            </Key>
-            <Key ID="STR_BTC_HAM_PARAM_OTHER_ARSENALTYPE">
-                <Original>Type of the arsenal:</Original>
-                <German>Art des Arsenals:</German>
-            </Key>
-            <Key ID="STR_BTC_HAM_PARAM_OTHER_ARSENALTYPE_BIS">
-                <Original>BIS - Vanilla</Original>
-                <German>BIS - Vanilla</German>
-            </Key>
-            <Key ID="STR_BTC_HAM_PARAM_OTHER_ARSENALTYPE_ACE">
-                <Original>ACE 3</Original>
-                <German>ACE 3</German>
-            </Key>
-            <Key ID="STR_BTC_HAM_PARAM_OTHER_ARSENALTYPE_BA">
-                <Original>BIS - Vanilla and ACE 3</Original>
-                <German>BIS - Vanilla und ACE 3</German>
-            </Key>
-            <Key ID="STR_BTC_HAM_PARAM_OTHER_ARSENALTYPE_ACE_PLUS">
-                <Original>ACE 3 (scroll wheel action)</Original>
-                <German>ACE 3 (Maus-Rad-Menü)</German>
-            </Key>
-            <Key ID="STR_BTC_HAM_PARAM_OTHER_ARSENALTYPE_BA_PLUS">
-                <Original>BIS - Vanilla and ACE 3 (scroll wheel action)</Original>
-                <German>BIS - Vanilla und ACE 3 (Maus-Rad-Menü)</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_OTHER_REPSTART">
                 <Original>Reputation at start:</Original>
@@ -461,10 +483,6 @@
             <Key ID="STR_BTC_HAM_PARAM_OTHER_REPSTART_VLOW">
                 <Original>Very Low</Original>
                 <German>Sehr Niedrig</German>
-            </Key>
-            <Key ID="STR_BTC_HAM_PARAM_OTHER_GARAGEADMIN">
-                <Original>Activate garage for admin:</Original>
-                <German>Virtuelle Garage für den Admin:</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_OTHER_SPAWNRAD">
                 <Original>Spawn city radius offset:</Original>
