@@ -1,8 +1,8 @@
-params ["_pos", "_range"];
+params ["_pos", "_range", ["_units", []]];
 
-private _units = [];
-
-if (count _this > 2) then {_units = _this select 2;} else {_units = _pos nearEntities [btc_civ_type_units, _range];};
+if (_units isEqualTo []) then {
+    _units = _pos nearEntities [btc_civ_type_units, _range];
+};
 
 _units = (_units select {side _x isEqualTo civilian});
 

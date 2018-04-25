@@ -1,4 +1,3 @@
-
 params ["_city", "_area", "_n"];
 
 private _pos = [];
@@ -23,11 +22,11 @@ for [{_i = 25}, {_i < _area}, {_i = _i + 50}] do {
 };
 
 
-if (count _houses == 0) exitWith {};
+if (_houses isEqualTo []) exitWith {};
 
 for "_i" from 0 to _n do
 {
-    if (count _houses == 0) exitWith {};
+    if (_houses isEqualTo []) exitWith {};
     private _house = selectRandom _houses;
 
     private _unit_type = selectRandom btc_civ_type_units;

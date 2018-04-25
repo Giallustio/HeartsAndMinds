@@ -1,6 +1,3 @@
-//diag_log format ["EH CHECK TRAFFIC %1",_this];
-
-//if (count _this > 4 && {!((_this select 1) isEqualTo "engine")}) exitWith {};
 params ["_veh"];
 
 if (btc_debug_log) then    {
@@ -9,4 +6,4 @@ if (btc_debug_log) then    {
 
 _veh call btc_fnc_civ_traffic_eh_remove;
 
-[[], [_veh], [], [(_veh getVariable ["driver", grpNull])]] call btc_fnc_delete;
+[[], [_veh], [], [_veh getVariable ["driver", grpNull]]] call btc_fnc_delete;
