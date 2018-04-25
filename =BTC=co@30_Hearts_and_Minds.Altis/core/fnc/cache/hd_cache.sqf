@@ -9,7 +9,7 @@ if (isNil {_cache getVariable "btc_hd_cache"} && {_explosive} && {_damage > 0.6}
     //Effects
     private _pos = getposATL btc_cache_obj;
     "Bo_GBU12_LGB_MI10" createVehicle _pos;
-    _pos spawn {
+    [_pos] spawn {
         params ["_pos"];
 
         sleep 2;

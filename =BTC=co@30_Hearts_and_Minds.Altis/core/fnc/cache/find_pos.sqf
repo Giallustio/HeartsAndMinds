@@ -7,7 +7,7 @@ private _id = floor random count _useful;
 private _city = _useful select _id;
 
 if (_city getVariable ["type", ""] isEqualTo "NameLocal" || _city getVariable ["type", ""] isEqualTo "Hill" || _city getVariable ["type", ""] isEqualTo "NameMarine") exitWith {
-	[] call btc_fnc_cache_find_pos;
+    [] call btc_fnc_cache_find_pos;
 };
 
 btc_cache_cities set [_id, 0];
