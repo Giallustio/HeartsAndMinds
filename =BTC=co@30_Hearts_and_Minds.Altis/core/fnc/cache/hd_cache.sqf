@@ -10,10 +10,12 @@ if (isNil {_cache getVariable "btc_hd_cache"} && {_explosive} && {_damage > 0.6}
     private _pos = getposATL btc_cache_obj;
     "Bo_GBU12_LGB_MI10" createVehicle _pos;
     _pos spawn {
+        params ["_pos"];
+
         sleep 2;
-        "M_PG_AT" createVehicle _this;
+        "M_PG_AT" createVehicle _pos;
         sleep 2;
-        "M_Titan_AT" createVehicle _this;
+        "M_Titan_AT" createVehicle _pos;
     };
     [_pos] call btc_fnc_deaf_earringing;
     deleteVehicle btc_cache_obj;
