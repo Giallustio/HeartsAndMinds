@@ -1,7 +1,7 @@
 params ["_id"];
 
 if (btc_debug) then {
-    hint ("Activate " + str(_id));
+    hint ("Activate " + str _id);
 };
 
 private _city = btc_city_all select _id;
@@ -47,13 +47,13 @@ if (!_is_init) then {
 
 _city setVariable ["active", true];
 
-if (count _ieds > 0) then {
+if !(_ieds isEqualTo []) then {
     private _ieds_data = _ieds apply {_x call btc_fnc_ied_create};
     _city = btc_city_all select _id;
     [_city, _ieds_data] call btc_fnc_ied_check;
 };
 
-if (count _data_units > 0) then {
+if !(_data_units isEqualTo []) then {
     {
         (_x call btc_fnc_data_spawn_group) params ["_leader", "_type"];
         if (_type in [5, 7]) then {
