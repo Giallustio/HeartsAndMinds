@@ -11,4 +11,4 @@ params ["_vehicle"];
 private _rearHitchPoint = ((_rearCorner vectorDiff _rearCorner2) vectorMultiply 0.5) vectorAdd  _rearCorner2;
 private _frontHitchPoint = ((_frontCorner vectorDiff _frontCorner2) vectorMultiply 0.5) vectorAdd  _frontCorner2;
 
-[_frontHitchPoint,_rearHitchPoint];
+[_frontHitchPoint, _rearHitchPoint];

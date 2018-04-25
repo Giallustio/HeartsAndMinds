@@ -1,4 +1,3 @@
-
 private _chopper = vehicle player;
 private _array = [_chopper] call btc_fnc_log_get_liftable;
 private _cargo_array = nearestObjects [_chopper, _array, 30];
@@ -6,16 +5,16 @@ _cargo_array = _cargo_array - [_chopper];
 _cargo_array = _cargo_array select {
     !(
     _x isKindOf "ACE_friesGantry" ||
-    (typeof _x) isEqualTo "ACE_friesAnchorBar" ||
+    (typeOf _x) isEqualTo "ACE_friesAnchorBar" ||
     _x isKindOf "ace_fastroping_helper"
     )
 };
 if (_cargo_array isEqualTo []) exitWith {};
 private _cargo = _cargo_array select 0;
 
-{ropeDestroy _x;} foreach ropes _chopper;
+{ropeDestroy _x;} forEach ropes _chopper;
 
-private _bbr = getArray (configfile >> "CfgVehicles" >> typeof _cargo >> "slingLoadCargoMemoryPoints");
+private _bbr = getArray (configFile >> "CfgVehicles" >> typeOf _cargo >> "slingLoadCargoMemoryPoints");
 private _ropes_check = [];
 if !(_bbr isEqualTo []) then {
     {
@@ -39,9 +38,9 @@ if ((_bbr isEqualTo []) OR (_ropes_check isEqualTo [])) then {
 
     private _support = _cargo;
     private _bbr_z = 0;
-    if (!Alive _cargo) then {
+    if (!alive _cargo) then {
         _support = [_cargo, _chopper] call btc_fnc_log_lift_hook_fake;
-        diag_log str([_support,_cargo]);
+        diag_log str([_support, _cargo]);
         _bbr_z = _support distance _cargo;
         sleep 0.3;
     };
@@ -54,7 +53,7 @@ if ((_bbr isEqualTo []) OR (_ropes_check isEqualTo [])) then {
 
 if (btc_debug) then {hint format ["boundingBoxReal : %1 rope length : %2", _bbr, _rope_length];};
 
-private _max_cargo  = getNumber (configFile >> "cfgVehicles" >> typeof _chopper >> "slingLoadMaxCargoMass");
+private _max_cargo  = getNumber (configFile >> "cfgVehicles" >> typeOf _chopper >> "slingLoadMaxCargoMass");
 private _mass = getMass _cargo;
 
 [_cargo, player] remoteExec ["btc_fnc_set_owner", 2];
@@ -63,11 +62,11 @@ sleep 1;
 if ((_mass + 400) > _max_cargo) then {
     private _new_mass = _max_cargo - 1000;
     if (_new_mass < 0) then {_new_mass = 50;};
-    [_cargo,_new_mass] remoteExec ["btc_fnc_log_set_mass", _cargo];
+    [_cargo, _new_mass] remoteExec ["setMass", _cargo];
 };
 
-_chopper setVariable ["cargo",_cargo];
+_chopper setVariable ["cargo", _cargo];
 
-waitUntil {sleep 5; (!Alive player || !Alive _cargo || !btc_lifted || vehicle player == player)};
+waitUntil {sleep 5; (!alive player || !alive _cargo || !btc_lifted || vehicle player isEqualTo player)};
 
-[_cargo,_mass] remoteExec ["btc_fnc_log_set_mass", _cargo];
+[_cargo, _mass] remoteExec ["setMass", _cargo];
