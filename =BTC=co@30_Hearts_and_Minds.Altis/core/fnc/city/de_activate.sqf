@@ -29,7 +29,7 @@ private _data_units = [];
         private _data_group = _x call btc_fnc_data_get_group;
         _data_units set [count _data_units, _data_group];
 
-        if (btc_debug_log) then {diag_log format ["data_units = %1",_data_units];};
+        if (btc_debug_log) then {diag_log format ["data_units = %1", _data_units];};
     };
 } forEach allGroups;
 
@@ -37,7 +37,7 @@ _city setVariable ["data_units", _data_units];
 _city setVariable ["active", false];
 
 if (!btc_hideout_cap_checking) then {
-	[] spawn btc_fnc_mil_check_cap;
+    [] spawn btc_fnc_mil_check_cap;
 };
 
 call btc_fnc_clean_up;
