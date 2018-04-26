@@ -1,11 +1,15 @@
 {
     private _obj = _x;
-    if (({_x distance _obj < 150} count playableUnits) == 0) then {deleteVehicle _obj};
-} foreach ((allMissionObjects "groundweaponholder") select {!(_x getVariable ["no_cache",false])});
+    if (({_x distance _obj < 150} count playableUnits) isEqualTo 0) then {
+        deleteVehicle _obj
+    };
+} forEach ((allMissionObjects "groundweaponholder") select {!(_x getVariable ["no_cache", false])});
 {
     private _dead = _x;
-    if (({_x distance _dead < 300} count playableUnits) == 0 && isNil {_dead getVariable "btc_dont_delete"}) then {deleteVehicle _dead};
-} foreach alldead;
+    if (({_x distance _dead < 300} count playableUnits) isEqualTo 0 && _dead getVariable ["btc_dont_delete", false]) then {
+        deleteVehicle _dead
+    };
+} forEach allDead;
 {
-    if ({Alive _x} count units _x == 0) then {deleteGroup _x;};
-} foreach allGroups;
+    if ({alive _x} count units _x isEqualTo 0) then {deleteGroup _x;};
+} forEach allGroups;
