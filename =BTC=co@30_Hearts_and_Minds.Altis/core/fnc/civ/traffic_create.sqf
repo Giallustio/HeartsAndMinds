@@ -2,7 +2,7 @@ params ["_city", "_area"];
 
 if (isNil "btc_traffic_id") then {btc_traffic_id = 0;};
 
-private _cities = btc_city_all select {(_x distance _city < _area)};
+private _cities = btc_city_all select {_x distance _city < _area};
 private _useful = _cities select {!(_x getVariable ["active", false])};
 
 private _pos = [0, 0, 0];
@@ -56,9 +56,14 @@ _veh setVariable ["driver", _group];
     _x setVariable ["traffic", _veh];
 } forEach units _group;
 
-private _handleDamageEh = _veh addEventHandler ["HandleDamage", {if ((_this select 2) > 0.1) then {_this call btc_fnc_civ_traffic_eh}}];
-private _fuelEh = _veh addEventHandler ["Fuel", {_this call btc_fnc_civ_traffic_eh}];
-private _getOutEh = _veh addEventHandler ["GetOut", {_this call btc_fnc_civ_traffic_eh}];
+private _handleDamageEh = _veh addEventHandler ["HandleDamage", {
+    params ["_veh", "_selection", "_damage"];
+
+    if (_damage < 0.1) exitWith {};
+    [_veh] call btc_fnc_civ_traffic_eh;
+}];
+private _fuelEh = _veh addEventHandler ["Fuel", btc_fnc_civ_traffic_eh];
+private _getOutEh = _veh addEventHandler ["GetOut", btc_fnc_civ_traffic_eh];
 private _handleDamageRepEh = _veh addEventHandler ["HandleDamage", btc_fnc_rep_hd];
 _veh setVariable ["eh", [_handleDamageEh, _fuelEh, _getOutEh, _handleDamageRepEh]];
 

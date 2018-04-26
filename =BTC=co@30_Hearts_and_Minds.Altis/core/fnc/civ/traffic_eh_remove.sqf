@@ -1,6 +1,6 @@
 params ["_veh"];
 
-if (isNil {_veh getVariable "eh"}) exitWith {true};
+if (_veh getVariable ["eh", []] isEqualTo []) exitWith {true};
 
 private _ehs = _veh getVariable "eh";
 _veh removeEventHandler ["HandleDamage", _ehs select 0];

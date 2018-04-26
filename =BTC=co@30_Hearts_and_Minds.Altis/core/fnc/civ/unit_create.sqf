@@ -1,6 +1,6 @@
 params ["_unit"];
 
-if !(isNil {_unit getVariable "btc_init"}) exitWith {true};
+if (_unit getVariable ["btc_init", false]) exitWith {true};
 
 _unit setVariable ["btc_init", true];
 
