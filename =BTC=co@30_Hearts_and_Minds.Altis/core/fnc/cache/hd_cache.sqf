@@ -4,7 +4,10 @@ private _explosive = (getNumber(configFile >> "cfgAmmo" >> _ammo >> "explosive")
 
 if (isNil {_cache getVariable "btc_hd_cache"} && {_explosive} && {_damage > 0.6}) then {
     _cache setVariable ["btc_hd_cache", true];
-    {detach _x; deleteVehicle _x;} forEach attachedObjects _cache;
+    {
+        detach _x;
+        deleteVehicle _x;
+    } forEach attachedObjects _cache;
 
     //Effects
     private _pos = getposATL btc_cache_obj;
@@ -45,4 +48,6 @@ if (isNil {_cache getVariable "btc_hd_cache"} && {_explosive} && {_damage > 0.6}
     [0] remoteExec ["btc_fnc_show_hint", 0];
 
     [] spawn {[] call btc_fnc_cache_find_pos;};
-} else {0};
+} else {
+    0
+};
