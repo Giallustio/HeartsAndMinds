@@ -1,7 +1,9 @@
-if !(isNil {_this getVariable "btc_init"}) exitWith {true};
+params ["_unit"];
 
-_this setVariable ["btc_init", true];
+if (_unit getVariable ["btc_init", false]) exitWith {true};
 
-_this call btc_fnc_rep_add_eh;
+_unit setVariable ["btc_init", true];
+
+_unit call btc_fnc_rep_add_eh;
 
 true

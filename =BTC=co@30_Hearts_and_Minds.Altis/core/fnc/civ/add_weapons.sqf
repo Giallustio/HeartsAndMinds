@@ -8,8 +8,8 @@ private _hgun = false;
     };
 } forEach playableUnits;
 
-private _weapon = [(btc_w_civs select 1), (btc_w_civs select 3)] select _hgun;
-private _magazine = [(btc_w_civs select 2), (btc_w_civs select 4)] select _hgun;
+private _weapon = [btc_w_civs select 1, btc_w_civs select 3] select _hgun;
+private _magazine = [btc_w_civs select 2, btc_w_civs select 4] select _hgun;
 
 (uniformContainer _unit) addMagazineCargo [_magazine, 10];
 _unit addWeapon _weapon;
