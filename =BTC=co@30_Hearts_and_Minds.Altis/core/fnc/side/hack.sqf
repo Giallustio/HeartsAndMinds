@@ -2,7 +2,7 @@
 //http://killzonekid.com/arma-scripting-tutorials-uav-r2t-and-pip/
 //http://killzonekid.com/arma-scripting-tutorials-scripted-charges/
 
-private _useful = btc_city_all select {(_x getVariable ["occupied",false] && {_x getVariable ["type",""] != "NameLocal"} && {_x getVariable ["type",""] != "Hill"} && (_x getVariable ["type",""] != "NameMarine"))};
+private _useful = btc_city_all select {(_x getVariable ["occupied", false] && {_x getVariable ["type", ""] != "NameLocal"} && {_x getVariable ["type", ""] != "Hill"} && (_x getVariable ["type", ""] != "NameMarine"))};
 
 if (_useful isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
 
@@ -16,17 +16,17 @@ _pos = selectRandom (_house buildingPos -1);
 btc_side_aborted = false;
 btc_side_done = false;
 btc_side_failed = false;
-btc_side_assigned = true;publicVariable "btc_side_assigned";
+btc_side_assigned = true;
+publicVariable "btc_side_assigned";
 
-[16,_pos,_city getVariable "name"] remoteExec ["btc_fnc_task_create", 0];
-
-btc_side_jip_data = [16,_pos,_city getVariable "name"];
+btc_side_jip_data = [16, _pos, _city getVariable "name"];
+btc_side_jip_data remoteExec ["btc_fnc_task_create", 0];
 
 _city setVariable ["spawn_more",true];
 
-private _marker = createmarker [format ["sm_2_%1",_pos],_pos];
+private _marker = createmarker [format ["sm_2_%1", _pos], _pos];
 _marker setmarkertype "hd_flag";
-[_marker,"STR_BTC_HAM_SIDE_HACK_MRK"] remoteExec ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker]; //Terminal
+[_marker, "STR_BTC_HAM_SIDE_HACK_MRK"] remoteExec ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker]; //Terminal
 _marker setMarkerSize [0.6, 0.6];
 
 //// Create terminal \\\\
@@ -41,11 +41,12 @@ waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || btc_side_done)};
 if (btc_side_aborted || btc_side_failed) exitWith {
     16 remoteExec ["btc_fnc_task_fail", 0];
     [[_marker], [_terminal], [], []] call btc_fnc_delete;
-    btc_side_assigned = false;publicVariable "btc_side_assigned";
+    btc_side_assigned = false;
+    publicVariable "btc_side_assigned";
 };
 
 private _groups = [];
-private _closest = [_city,btc_city_all select {!(_x getVariable ["active",false])},false] call btc_fnc_find_closecity;
+private _closest = [_city,btc_city_all select {!(_x getVariable ["active", false])}, false] call btc_fnc_find_closecity;
 for "_i" from 1 to (2 + round random 1) do {
     _groups pushBack ([_closest, getpos _terminal,1,selectRandom btc_type_motorized] call btc_fnc_mil_send);
 };
@@ -57,11 +58,12 @@ _groups apply {_x setBehaviour "CARELESS"};
 
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({_x isEqualTo grpNull} count _groups > 0) || !(_city getVariable ["active", false]))};
 if (btc_side_aborted || btc_side_failed) exitWith {
-    btc_side_done = Nil;
+    btc_side_done = nil;
     publicVariable "btc_side_done";
     16 remoteExec ["btc_fnc_task_fail", 0];
     [[_marker], [_terminal], [], []] call btc_fnc_delete;
-    btc_side_assigned = false;publicVariable "btc_side_assigned";
+    btc_side_assigned = false;
+    publicVariable "btc_side_assigned";
 };
 
 
@@ -74,11 +76,12 @@ while {_altitude < 500} do {
 };
 private _rocket = createVehicle ["ace_rearm_Missile_AGM_02_F", [_pos select 0, _pos select 1, _altitude], [], 0, "CAN_COLLIDE"];
 private _fx = createVehicle ["test_EmptyObjectForSmoke", [_pos select 0, _pos select 1, _altitude], [], 0, "CAN_COLLIDE"];
-_fx attachTo [_rocket,[0,0,0]];
+_fx attachTo [_rocket,[0, 0, 0]];
 
-btc_side_done = Nil;
+btc_side_done = nil;
 publicVariable "btc_side_done";
-btc_side_assigned = false;publicVariable "btc_side_assigned";
+btc_side_assigned = false;
+publicVariable "btc_side_assigned";
 [[_marker], [_rocket, _terminal], [_fx], []] call btc_fnc_delete;
 if (btc_side_aborted || btc_side_failed || !(_city getVariable ["active", false])) exitWith {
     16 remoteExec ["btc_fnc_task_fail", 0];
