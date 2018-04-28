@@ -1,26 +1,24 @@
-
-private ["_useful", "_city", "_pos", "_captive", "_group_civ", "_group", "_house", "_houses", "_marker", "_wp", "_unit", "_buildingPos", "_pos_number", "_mine"];
-
 //// Choose an occupied City \\\\
-_useful = btc_city_all select {(_x getVariable ["occupied", false] && {_x getVariable ["type", ""] != "NameLocal"} && {_x getVariable ["type", ""] != "Hill"} && (_x getVariable ["type", ""] != "NameMarine"))};
+private _useful = btc_city_all select {(_x getVariable ["occupied", false] && !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])};
 
 if (_useful isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
 
-_city = selectRandom _useful;
+private _city = selectRandom _useful;
 
 //// Randomise position \\\\
-_houses = [getPos _city,100] call btc_fnc_getHouses;
+private _houses = [getPos _city,100] call btc_fnc_getHouses;
 if (_houses isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
 _houses = _houses apply {[count (_x buildingPos -1), _x]};
 _houses sort false;
+private _house = objNull;
 if (count _houses > 3) then {
     _house = (selectRandom _houses select [0,3]) select 1;
 } else {
     _house = _houses select 0 select 1;
 };
-_buildingPos = _house buildingPos -1;
-_pos_number = count _buildingPos - 1;
-_pos = _buildingPos select (_pos_number - round random 1);
+private _buildingPos = _house buildingPos -1;
+private _pos_number = count _buildingPos - 1;
+private _pos = _buildingPos select (_pos_number - round random 1);
 
 //// Data side mission
 btc_side_aborted = false;
@@ -33,7 +31,7 @@ btc_side_jip_data = [15, getPos _city, _city getVariable "name"];
 btc_side_jip_data remoteExec ["btc_fnc_task_create", 0];
 
 //// Marker
-_marker = createMarker [format ["sm_2_%1", getPos _house], getPos _house];
+private _marker = createMarker [format ["sm_2_%1", getPos _house], getPos _house];
 _marker setMarkerType "hd_flag";
 [_marker, "STR_BTC_HAM_SIDE_HOSTAGE_MRK"] remoteExec ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker]; //Hostage
 _marker setMarkerSize [0.6, 0.6];
@@ -41,18 +39,17 @@ _marker setMarkerSize [0.6, 0.6];
 _city setVariable ["spawn_more", true];
 
 //// Hostage
-_group_civ = createGroup civilian;
+private _group_civ = createGroup civilian;
 _group_civ setVariable ["no_cache", true];
-(selectRandom btc_civ_type_units) createUnit [_pos, _group_civ, "_captive = this;"];
-waitUntil {local _captive};
+private _captive = _group_civ createUnit [selectRandom btc_civ_type_units, _pos, [], 0, "CAN_COLLIDE"];
 [_captive, true] call ACE_captives_fnc_setHandcuffed;
 _captive setPosATL _pos;
 _captive call btc_fnc_civ_unit_create;
 
-_group = [];
+private _group = [];
 {
     private _grp = createGroup btc_enemy_side;
-    _unit = _grp createUnit [selectRandom btc_type_units, _x, [], 0, "NONE"];
+    private _unit = _grp createUnit [selectRandom btc_type_units, _x, [], 0, "NONE"];
     [_unit] joinSilent _grp;
     _unit setPosATL _x;
     _group pushBack _grp;

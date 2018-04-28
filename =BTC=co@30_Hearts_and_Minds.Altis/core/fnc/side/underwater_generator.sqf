@@ -1,5 +1,5 @@
 //// Choose a Marine location occupied \\\\
-private _useful = btc_city_all select {((_x getVariable ["occupied", false]) && (_x getVariable ["type", ""] isEqualTo "NameMarine"))};
+private _useful = btc_city_all select {(_x getVariable ["occupied", false]) && (_x getVariable ["type", ""] isEqualTo "NameMarine")};
 if (_useful isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
 
 private _city = selectRandom _useful;
@@ -7,9 +7,9 @@ private _city = selectRandom _useful;
 //// Choose a random position \\\\
 private _objects = nearestobjects [getPos _city,[], 200];
 
-_objects = _objects select {(!((str(_x) find "wreck") isEqualTo -1) || !((str(_x) find "broken") isEqualTo -1) || !((str(_x) find "rock") isEqualTo -1))};
-_objects = _objects select {((getPos _x select 2 < -3) && (((str(_x) find "car") isEqualTo -1) || ((str(_x) find "uaz") isEqualTo -1)))};
-private _wrecks = _objects select {((str(_x) find "rock") isEqualTo -1)};
+_objects = _objects select {!((str (_x) find "wreck") isEqualTo -1) || !((str (_x) find "broken") isEqualTo -1) || !((str (_x) find "rock") isEqualTo -1)};
+_objects = _objects select {(getPos _x select 2 < -3) && (((str (_x) find "car") isEqualTo -1) || ((str (_x) find "uaz") isEqualTo -1))};
+private _wrecks = _objects select {(str (_x) find "rock") isEqualTo -1};
 
 private _pos = [];
 if (_wrecks isEqualTo []) then {
@@ -50,13 +50,14 @@ _marker setMarkerSize [0.6, 0.6];
 
 //// Create underwater generator \\\\
 private _generator = (selectRandom btc_type_generator) createVehicle _pos;
-private _storagebladder = (selectRandom btc_type_storagebladder) createVehicle [(_pos select 0) + 5, _pos select 1, _pos select 2];
+_pos params ["_x", "_y", "_z"];
+private _storagebladder = (selectRandom btc_type_storagebladder) createVehicle [_x + 5, _y, _z];
 
 private _group = [_pos, 8, 1 + round random 5,0.8] call btc_fnc_mil_create_group;
 [_pos, 20, 2 + round random 4, 0.5] call btc_fnc_mil_create_group;
 
 _pos = getPosASL _generator;
-(leader (_group select 0)) setPosASL [_pos select 0, _pos select 1, (_pos select 2) + 1 + random 1];
+(leader (_group select 0)) setPosASL [_x, _y, _z + 1 + random 1];
 
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !Alive _generator )};
 

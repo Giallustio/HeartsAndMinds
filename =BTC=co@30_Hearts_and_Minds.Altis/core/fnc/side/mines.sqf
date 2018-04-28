@@ -1,4 +1,4 @@
-private _useful = btc_city_all select {(_x getVariable ["type", ""] != "NameLocal") && {_x getVariable ["type", ""] != "Hill"} && (_x getVariable ["type", ""] != "NameMarine")};
+private _useful = btc_city_all select {!((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])};
 if (_useful isEqualTo []) then {_useful = + btc_city_all;};
 
 private _city = selectRandom _useful;

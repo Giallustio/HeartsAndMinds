@@ -2,12 +2,11 @@
 //http://killzonekid.com/arma-scripting-tutorials-uav-r2t-and-pip/
 //http://killzonekid.com/arma-scripting-tutorials-scripted-charges/
 
-private _useful = btc_city_all select {(_x getVariable ["occupied", false] && {_x getVariable ["type", ""] != "NameLocal"} && {_x getVariable ["type", ""] != "Hill"} && (_x getVariable ["type", ""] != "NameMarine"))};
+private _useful = btc_city_all select {_x getVariable ["occupied", false] && !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])};
 
 if (_useful isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
 
 private _city = selectRandom _useful;
-
 private _pos = [getPos _city, 100] call btc_fnc_randomize_pos;
 private _house = selectRandom ([_pos,100] call btc_fnc_getHouses);
 if (isNil "_house") exitWith {[] spawn btc_fnc_side_create;};
@@ -50,7 +49,10 @@ private _closest = [_city,btc_city_all select {!(_x getVariable ["active", false
 for "_i" from 1 to (2 + round random 1) do {
     _groups pushBack ([_closest, getpos _terminal,1,selectRandom btc_type_motorized] call btc_fnc_mil_send);
 };
-_groups apply {_x setBehaviour "CARELESS"};
+
+{
+  _x setBehaviour "CARELESS"
+} forEach _groups;
 
 [_terminal, _launchsite modelToWorld [0,100,10]] remoteExec ["btc_fnc_log_place_create_camera", -2];
 
@@ -68,15 +70,16 @@ if (btc_side_aborted || btc_side_failed) exitWith {
 
 
 //// Launch the hacked missile \\\\
+_pos params ["_x", "_y"];
 private _altitude = 20;
 while {_altitude < 500} do {
     _altitude = _altitude + 3;
-    (createVehicle ["DemoCharge_Remote_Ammo_Scripted", [_pos select 0, _pos select 1, _altitude], [], 0, "CAN_COLLIDE"]) setDamage 1;
+    (createVehicle ["DemoCharge_Remote_Ammo_Scripted", [_x, _y, _altitude], [], 0, "CAN_COLLIDE"]) setDamage 1;
     sleep 0.1;
 };
-private _rocket = createVehicle ["ace_rearm_Missile_AGM_02_F", [_pos select 0, _pos select 1, _altitude], [], 0, "CAN_COLLIDE"];
-private _fx = createVehicle ["test_EmptyObjectForSmoke", [_pos select 0, _pos select 1, _altitude], [], 0, "CAN_COLLIDE"];
-_fx attachTo [_rocket,[0, 0, 0]];
+private _rocket = createVehicle ["ace_rearm_Missile_AGM_02_F", [_x, _y, _altitude], [], 0, "CAN_COLLIDE"];
+private _fx = createVehicle ["test_EmptyObjectForSmoke", [_x, _y, _altitude], [], 0, "CAN_COLLIDE"];
+_fx attachTo [_rocket, [0, 0, 0]];
 
 btc_side_done = nil;
 publicVariable "btc_side_done";

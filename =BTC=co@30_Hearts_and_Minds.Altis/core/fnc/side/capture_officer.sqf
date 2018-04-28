@@ -3,20 +3,20 @@
 */
 
 //// Choose two Cities \\\\
-private _usefuls = btc_city_all select {((_x getVariable ["type", ""] != "NameLocal") && {_x getVariable ["type", ""] != "Hill"} && (_x getVariable ["type", ""] != "NameMarine") && !(_x getVariable ["occupied", false]))};
+private _usefuls = btc_city_all select {!((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"]) && !(_x getVariable ["occupied", false])};
 if (_usefuls isEqualTo []) then {_usefuls = + btc_city_all;};
 private _city2 = selectRandom _usefuls;
 
 private _area = (getNumber (configFile >> "CfgWorlds" >> worldName >> "MapSize"))/4;
-private _cities = btc_city_all select {(_x distance _city2 > _area)};
-_usefuls = _cities select {((_x getVariable ["type", ""] != "NameLocal") && {_x getVariable ["type", ""] != "Hill"} && (_x getVariable ["type", ""] != "NameMarine") && (_x getVariable ["occupied", false]))};
+private _cities = btc_city_all select {_x distance _city2 > _area};
+_usefuls = _cities select {!((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"]) && (_x getVariable ["occupied", false])};
 if (_usefuls isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
 private _city1 = selectRandom _usefuls;
 
 //// Find roads \\\\
 private _radius_x = _city1 getVariable ["RadiusX",0];
 private _roads = _city1 nearRoads (_radius_x * 2);
-_roads = _roads select {(_x distance _city1 > _radius_x ) && isOnRoad _x};
+_roads = _roads select {(_x distance _city1 > _radius_x) && isOnRoad _x};
 if (_roads isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
 private _road = selectRandom _roads;
 private _pos1 = getPos _road;
@@ -67,7 +67,7 @@ for "_i" from 0 to _random do {
     _vehs pushBack _veh;
 
     [_veh, _group, false, "", _crewmen] call BIS_fnc_spawnCrew;
-    if (_i == _random_veh) then {
+    if (_i isEqualTo _random_veh) then {
         (selectRandom btc_type_units) createUnit [_pos1, _group, "this moveinCargo _veh;this assignAsCargo _veh; removeAllWeapons this; _captive = this; _group selectLeader this;"]
     };
     _cargo = (_veh emptyPositions "cargo") - 1;

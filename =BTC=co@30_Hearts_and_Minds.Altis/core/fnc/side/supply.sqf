@@ -1,11 +1,9 @@
-private _useful = btc_city_all select {(_x getVariable ["type", ""] != "NameLocal" && {_x getVariable ["type", ""] != "Hill"} && (_x getVariable ["type", ""] != "NameMarine"))} ;
+private _useful = btc_city_all select {!((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])} ;
 
 if (_useful isEqualTo []) then {_useful = + btc_city_all;};
 
 private _city = selectRandom _useful;
-
 private _pos = [getPos _city, 100] call btc_fnc_randomize_pos;
-
 _pos = [_pos, 0, 300, 20, 0, 60 * (pi / 180), 0] call BIS_fnc_findSafePos;
 
 btc_side_aborted = false;
