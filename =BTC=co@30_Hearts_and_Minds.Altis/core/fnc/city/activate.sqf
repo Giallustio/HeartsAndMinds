@@ -1,7 +1,7 @@
 params ["_id"];
 
 if (btc_debug) then {
-    hint ("Activate " + str(_id));
+    hint ("Activate " + str _id);
 };
 
 private _city = btc_city_all select _id;
@@ -32,28 +32,35 @@ if (!_is_init) then {
         });
 
     private _ratio_ied = _ratio;
-    if (_has_en) then {_ratio_ied = _ratio_ied * 1.5;} else {_ratio_ied = _ratio_ied * 0.75;};
-    if (_has_ho) then {_ratio_ied = _ratio_ied * 2;};
+    if (_has_en) then {
+        _ratio_ied = _ratio_ied * 1.5;
+    } else {
+        _ratio_ied = _ratio_ied * 0.75;
+    };
+    if (_has_ho) then {
+        _ratio_ied = _ratio_ied * 2;
+    };
+
     if (btc_debug_log) then {
         diag_log format ["_ratio_ied %1 - p %2", _ratio_ied, _ratio_ied * btc_p_ied];
     };
+
     _ratio_ied = _ratio_ied * btc_p_ied;
     if (_ratio_ied > 0) then {[_city, _radius, (_ratio_ied / 2) + (random _ratio_ied)] call btc_fnc_ied_init_area};
 
     _ieds = _city getVariable ["ieds", []];
-
     _city setVariable ["initialized", true];
 };
 
 _city setVariable ["active", true];
 
-if (count _ieds > 0) then {
+if !(_ieds isEqualTo []) then {
     private _ieds_data = _ieds apply {_x call btc_fnc_ied_create};
     _city = btc_city_all select _id;
     [_city, _ieds_data] call btc_fnc_ied_check;
 };
 
-if (count _data_units > 0) then {
+if !(_data_units isEqualTo []) then {
     {
         (_x call btc_fnc_data_spawn_group) params ["_leader", "_type"];
         if (_type in [5, 7]) then {
@@ -99,7 +106,7 @@ if (count _data_units > 0) then {
 if (_has_en) then {
     private _trigger = createTrigger["EmptyDetector", getPos _city];
     _trigger setTriggerArea[_radius_x + _radius_y, _radius_x + _radius_y, 0, false];
-    _trigger setTriggerActivation[str(btc_enemy_side), "NOT PRESENT", false];
+    _trigger setTriggerActivation[str btc_enemy_side, "NOT PRESENT", false];
     _trigger setTriggerStatements ["this", format ["[%1] spawn btc_fnc_city_set_clear", _id], ""];
     _city setVariable ["trigger", _trigger];
 };
@@ -185,8 +192,9 @@ if (_number_patrol_active < btc_patrol_max) then {
     private _d = _n - _av;
     _r = if (_d > 0) then {_n - _d;} else {_n;};
     for "_i" from 1 to _r do {
-        [1 + round random 1, _city, (_radius_x + _radius_y) + btc_patrol_area] spawn btc_fnc_mil_patrol_create;
+        [1 + round random 1, _city, _radius_x + _radius_y + btc_patrol_area] spawn btc_fnc_mil_patrol_create;
     };
+
     if (btc_debug_log) then {diag_log format ["btc_fnc_city_activate: (patrol) _n = %1 _av %2 _d %3 _r %4", _n, _av, _d, _r];};
 };
 
@@ -201,7 +209,8 @@ if (_number_civ_veh_active < btc_civ_max_veh) then {
     private _d = _n - _av;
     _r = if (_d > 0) then {_n - _d;} else {_n;};
     for "_i" from 1 to _r do {
-        [_city, (_radius_x+_radius_y) + btc_patrol_area] spawn btc_fnc_civ_traffic_create;
+        [_city, _radius_x+_radius_y + btc_patrol_area] spawn btc_fnc_civ_traffic_create;
     };
+
     if (btc_debug_log) then {diag_log format ["btc_fnc_city_activate: (traffic) _n = %1 _av %2 _d %3 _r %4", _n, _av, _d, _r];};
 };
