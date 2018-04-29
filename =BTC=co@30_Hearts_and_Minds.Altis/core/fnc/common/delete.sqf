@@ -18,7 +18,7 @@ params [
 
         if ({_x distance _args < 1000} count playableUnits isEqualTo 0) then {
             [_id] call CBA_fnc_removePerFrameHandler;
-            deleteVehicle _args;
+            [_args] call CBA_fnc_deleteEntity;
         };
     } , 5, _object] call CBA_fnc_addPerFrameHandler;
 } forEach _objects;
@@ -42,8 +42,7 @@ params [
 
         if ({_x distance leader _args < 1000} count playableUnits isEqualTo 0) then {
             [_id] call CBA_fnc_removePerFrameHandler;
-            {deleteVehicle _x} forEach units _args;
-            [_args] call btc_fnc_deletegroup;
+            [_args] call CBA_fnc_deleteEntity;
         };
     } , 5, _group] call CBA_fnc_addPerFrameHandler;
 } forEach _groups;
