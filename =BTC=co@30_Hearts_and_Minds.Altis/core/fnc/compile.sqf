@@ -13,7 +13,6 @@ if (isServer) then {
     btc_fnc_create_attachto = compile preprocessFileLineNumbers "core\fnc\common\create_attachto.sqf";
     btc_fnc_house_addWP = compile preprocessFileLineNumbers "core\fnc\common\house_addWP.sqf";
     btc_fnc_set_owner = compile preprocessFileLineNumbers "core\fnc\common\set_owner.sqf";
-    btc_fnc_task_patrol = compile preprocessFileLineNumbers "core\fnc\common\task_patrol.sqf";
     btc_fnc_set_damage = compile preprocessFileLineNumbers "core\fnc\common\set_damage.sqf";
     btc_fnc_road_direction = compile preprocessFileLineNumbers "core\fnc\common\road_direction.sqf";
     btc_fnc_findsafepos = compile preprocessFileLineNumbers "core\fnc\common\findsafepos.sqf";

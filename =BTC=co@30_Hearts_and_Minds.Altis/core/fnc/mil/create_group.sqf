@@ -46,12 +46,12 @@ switch (true) do {
             if !(_houses isEqualTo []) then {
                 _structure = selectRandom _houses;
             } else {
-                [_group, _rpos, _area, "SAFE", _pos_iswater] spawn btc_fnc_task_patrol;
+                [_group, _rpos, _area, 2 + floor (random 4), "MOVE", "SAFE", "RED", ["LIMITED", "NORMAL"] select ((vehicle leader _group) isKindOf "Air"), "STAG COLUMN", "", [5, 10, 20]] call CBA_fnc_taskPatrol;
             };
         };
     };
     case (_wp > 0.3 && _wp < 0.75) : {
-        [_group, _rpos, _area, "AWARE", _pos_iswater] spawn btc_fnc_task_patrol;
+        [_group, _rpos, _area, 2 + floor (random 4), "MOVE", "SAFE", "RED", ["LIMITED", "NORMAL"] select ((vehicle leader _group) isKindOf "Air"), "STAG COLUMN", "", [5, 10, 20]] call CBA_fnc_taskPatrol;
     };
     case (_wp > 0.75) : {
         [_group, _rpos, 0, "SENTRY", "AWARE", "RED"] call CBA_fnc_addWaypoint;
