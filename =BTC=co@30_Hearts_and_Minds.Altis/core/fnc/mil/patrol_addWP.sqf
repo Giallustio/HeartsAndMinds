@@ -58,7 +58,7 @@ _group setBehaviour "SAFE";
 if !((vehicle leader _group) isKindOf "Air") then {
     [_group, _pos, 0, "MOVE", "UNCHANGED", "RED", "LIMITED", "STAG COLUMN", "", [0, 0, 0], 20] call CBA_fnc_addWaypoint;
     for "_i" from 0 to (2 + (floor (random 3))) do {
-        private _newPos = [(_pos select 0) + (random 150 - random 150), (_pos select 1) + (random 150 - random 150), 0];
+        private _newPos = [_pos, 150] call CBA_fnc_randPos;
 
         [_group, _newPos, 0, "MOVE", "UNCHANGED", "RED", "UNCHANGED", "NO CHANGE", "", [0, 0, 0], 20] call CBA_fnc_addWaypoint;
     };
