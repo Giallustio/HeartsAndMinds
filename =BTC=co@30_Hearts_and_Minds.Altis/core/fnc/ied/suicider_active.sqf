@@ -4,7 +4,7 @@ params ["_suicider"];
 
 _suicider call btc_fnc_rep_remove_eh;
 
-while {!((waypoints group _suicider) isEqualTo [])} do {deleteWaypoint ((waypoints group _suicider) select 0);};
+[group _suicider] call CBA_fnc_clearWaypoints;
 
 private _trigger = createTrigger ["EmptyDetector", getPos _suicider];
 _trigger setTriggerArea [5, 5, 0, false];

@@ -18,13 +18,7 @@ switch (true) do {
         [_group, _rpos, _area, "AWARE"] call btc_fnc_task_patrol;
     };
     case (_wp > 0.75) : {
-        private _wpa = _group addWaypoint [_rpos, 0];
-        _wpa setWaypointType "SENTRY";
-        _wpa setWaypointCombatMode "RED";
-        _wpa setWaypointBehaviour "AWARE";
-        _wpa setWaypointFormation "WEDGE";
-        _wpa setWaypointTimeout [18000, 36000, 54000];
-        _wpa setWaypointStatements ["true", "(group this) spawn btc_fnc_data_add_group;"];
+        [_group, _rpos, 0, "SENTRY", "AWARE", "RED", "UNCHANGED", "WEDGE", "(group this) spawn btc_fnc_data_add_group;", [18000, 36000, 54000]] call CBA_fnc_addWaypoint;
     };
 };
 

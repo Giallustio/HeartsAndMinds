@@ -54,10 +54,7 @@ switch (true) do {
         [_group, _rpos, _area, "AWARE", _pos_iswater] spawn btc_fnc_task_patrol;
     };
     case (_wp > 0.75) : {
-        private _wpa = _group addWaypoint [_rpos, 0];
-        _wpa setWaypointType "SENTRY";
-        _wpa setWaypointCombatMode "RED";
-        _wpa setWaypointBehaviour "AWARE";
+        [_group, _rpos, 0, "SENTRY", "AWARE", "RED"] call CBA_fnc_addWaypoint;
     };
 };
 if (_structure isEqualTo objNull) then {

@@ -7,7 +7,7 @@ params ["_group"];
 
 if (btc_debug_log) then {diag_log format ["ADD GROUP = %1", _group];};
 _group setVariable ["no_cache", Nil];
-while {!((waypoints _group) isEqualTo [])} do {deleteWaypoint ((waypoints _group) select 0);};
+[_group] call CBA_fnc_clearWaypoints;
 
 private _city = [leader _group, btc_city_all, false] call btc_fnc_find_closecity;
 _city setVariable ["occupied", true];

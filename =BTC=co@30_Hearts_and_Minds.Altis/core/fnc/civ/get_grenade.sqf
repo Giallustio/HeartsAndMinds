@@ -20,7 +20,5 @@ if (_units isEqualTo []) exitWith {};
     (group _x) setVariable ["getWeapons", true];
 
     (group _x) setBehaviour "AWARE";
-    private _wp = (group _x) addWaypoint [_pos, 10];
-    _wp setWaypointType "GUARD";
-    _wp setWaypointCombatMode "RED";
+    [group _x, _pos, 10, "GUARD", "UNCHANGED", "RED"] call CBA_fnc_addWaypoint;
 } forEach [selectRandom _units];

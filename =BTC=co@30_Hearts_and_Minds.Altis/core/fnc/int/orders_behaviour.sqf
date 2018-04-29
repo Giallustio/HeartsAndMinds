@@ -7,7 +7,7 @@ if (_order isEqualTo (_unit getVariable ["order", 0])) exitWith {};
 _unit setVariable ["order", _order];
 
 if (_unit isEqualTo vehicle _unit) then {
-    while {!((waypoints _group) isEqualTo [])} do {deleteWaypoint ((waypoints _group) select 0);};
+    [_group] call CBA_fnc_clearWaypoints;
 };
 
 private _behaviour = behaviour _unit;

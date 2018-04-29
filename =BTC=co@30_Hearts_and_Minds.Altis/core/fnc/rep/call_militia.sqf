@@ -77,16 +77,9 @@ if ((random 1) > _ratio) then {
     units _group joinSilent _group;
     _group selectLeader (driver _veh);
 
-    private _wp = _group addWaypoint [_pos, 60];
-    _wp setWaypointType "MOVE";
-    _wp setWaypointCombatMode "RED";
-    _wp setWaypointBehaviour "AWARE";
-    _wp setWaypointSpeed "FULL";
-    _wp setWaypointStatements ["true", "(group this) spawn btc_fnc_data_add_group;"];
-    private _wp_1 = _group addWaypoint [_pos, 60];
-    _wp_1 setWaypointType "UNLOAD";
-    private _wp_2 = _group addWaypoint [_pos, 60];
-    _wp_2 setWaypointType "SAD";
+    [_group, _pos, 60, "MOVE", "AWARE", "RED", "FULL", "NO CHANGE", "(group this) spawn btc_fnc_data_add_group;"] call CBA_fnc_addWaypoint;
+    [_group, _pos, 60, "UNLOAD"] call CBA_fnc_addWaypoint;
+    [_group, _pos, 60, "SAD"] call CBA_fnc_addWaypoint;
 
     if (btc_debug_log) then {
         diag_log format ["fnc_rep_call_militia = MOT %1/%2 POS %3", _group, _veh_type, _pos];
@@ -96,16 +89,9 @@ if ((random 1) > _ratio) then {
     private _group = ([_start_pos, 50, 8 + random 6, 1] call btc_fnc_mil_create_group) select 0;
     _group setVariable ["no_cache", true];
 
-    while {!((waypoints _group) isEqualTo [])} do {deleteWaypoint ((waypoints _group) select 0);};
-    private _wp = _group addWaypoint [_pos, 60];
-    _wp setWaypointType "MOVE";
-    _wp setWaypointCombatMode "RED";
-    _wp setWaypointBehaviour "AWARE";
-    _wp setWaypointSpeed "FULL";
-    _wp setWaypointFormation "WEDGE";
-    _wp setWaypointStatements ["true", "(group this) spawn btc_fnc_data_add_group;"];
-    private _wp_2 = _group addWaypoint [_pos, 60];
-    _wp_2 setWaypointType "SAD";
+    [_group] call CBA_fnc_clearWaypoints;
+    [_group, _pos, 60, "MOVE", "AWARE", "RED", "FULL", "WEDGE", "(group this) spawn btc_fnc_data_add_group;"] call CBA_fnc_addWaypoint;
+    [_group, _pos, 60, "SAD"] call CBA_fnc_addWaypoint;
 
     if (btc_debug_log) then {
         diag_log format ["fnc_rep_call_militia = INF %1", _group];

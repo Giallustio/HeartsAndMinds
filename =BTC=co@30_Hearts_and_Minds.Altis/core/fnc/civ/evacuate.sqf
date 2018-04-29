@@ -18,7 +18,7 @@ if (_position_evac isEqualTo []) then {
 
 {
     private _group = group _x;
-    while {!((waypoints _group) isEqualTo [])} do {deleteWaypoint ((waypoints _group) select 0);};
+    [_group] call CBA_fnc_clearWaypoints;
 
     [_group, _position_evac, 20] spawn btc_fnc_civ_addWP;
 } forEach _civilians;

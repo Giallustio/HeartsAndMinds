@@ -11,29 +11,16 @@ for "_i" from 0 to (2 + (floor (random 3))) do {
     private _newPos = [_prevPos, _min_area, _max_area, 1, [0, 1] select _allowwater, 60 * (pi / 180), 0, []] call BIS_fnc_findSafePos;
 
     _prevPos = _newPos;
-
-    private _wp = _group addWaypoint [_newPos, 0];
-    _wp setWaypointType "MOVE";
-    _wp setWaypointCompletionRadius 20;
-    _wp setWaypointCombatMode "RED";
-    _wp setWaypointTimeout [5, 10, 20];
     if (_i isEqualTo 0) then {
-        _wp setWaypointSpeed _waypointspeed;
-        _wp setWaypointFormation "STAG COLUMN";
-        _wp setWaypointCombatMode "RED";
-        _wp setWaypointBehaviour "SAFE";
+        [_group, _newPos, 0, "MOVE", "SAFE", "RED", _waypointspeed, "STAG COLUMN", "", [5, 10, 20], 20] call CBA_fnc_addWaypoint;
+    } else {
+        [_group, _newPos, 0, "MOVE", "UNCHANGED", "RED", "UNCHANGED", "NO CHANGE", "", [5, 10, 20], 20] call CBA_fnc_addWaypoint;
     };
 };
 
 if (_allowwater) then {
     private _nearestLocation = nearestLocation [_pos, ""];
-    private _wp = _group addWaypoint [locationPosition _nearestLocation, 0];
-    _wp setWaypointType "MOVE";
-    _wp setWaypointCompletionRadius 20;
-    _wp setWaypointCombatMode "RED";
-    _wp setWaypointTimeout [20, 30, 60];
+    [_group, locationPosition _nearestLocation, 0, "MOVE", "UNCHANGED", "RED", "UNCHANGED", "NO CHANGE", "", [20, 30, 60]] call CBA_fnc_addWaypoint;
 };
 
-private _wp = _group addWaypoint [_pos, 0];
-_wp setWaypointType "CYCLE";
-_wp setWaypointCompletionRadius 20;
+[_group, _pos, 0, "CYCLE", "UNCHANGED", "NO CHANGE", "UNCHANGED", "NO CHANGE", "", [20, 30, 60], 20] call CBA_fnc_addWaypoint;

@@ -10,16 +10,10 @@ switch (_typeOf_patrol) do {
     case 0 : {
         _group = ([_pos, 150, 3 + random 6, 1] call btc_fnc_mil_create_group) select 0;
         _group setVariable ["no_cache", true];
-        while {!((waypoints _group) isEqualTo [])} do {deleteWaypoint ((waypoints _group) select 0);};
+        [_group] call CBA_fnc_clearWaypoints;
 
-        private _wp_0 = _group addWaypoint [_dest, 60];
-        private _wp = _group addWaypoint [_dest, 60];
-        _wp setWaypointType "MOVE";
-        _wp setWaypointCombatMode "RED";
-        _wp setWaypointBehaviour "AWARE";
-        _wp setWaypointSpeed "FULL";
-        _wp setWaypointFormation "COLUMN";
-        _wp setWaypointStatements ["true", "(group this) spawn btc_fnc_data_add_group;"];
+        [_group, _dest, 60] call CBA_fnc_addWaypoint;
+        [_group, _dest, 60, "MOVE", "AWARE", "RED", "FULL", "COLUMN", "(group this) spawn btc_fnc_data_add_group;"] call CBA_fnc_addWaypoint;
     };
     case 1 : {
         _group = createGroup [btc_enemy_side, true];
@@ -38,16 +32,9 @@ switch (_typeOf_patrol) do {
 
         _group selectLeader (driver _veh);
 
-        private _wp = _group addWaypoint [_dest, 60];
-        _wp setWaypointType "MOVE";
-        _wp setWaypointCombatMode "RED";
-        _wp setWaypointBehaviour "AWARE";
-        _wp setWaypointSpeed "NORMAL";
-        private _wp_1 = _group addWaypoint [_dest, 60];
-        _wp_1 setWaypointType "GETOUT";
-        private _wp_3 = _group addWaypoint [_dest, 60];
-        _wp_3 setWaypointType "SENTRY";
-        _wp setWaypointStatements ["true", "(group this) spawn btc_fnc_data_add_group;"];
+        [_group, _dest, 60, "MOVE", "AWARE", "RED", "NORMAL", "NO CHANGE", "(group this) spawn btc_fnc_data_add_group;"] call CBA_fnc_addWaypoint;
+        [_group, _dest, 60, "GETOUT"] call CBA_fnc_addWaypoint;
+        [_group, _dest, 60, "SENTRY"] call CBA_fnc_addWaypoint;
 
         {_x call btc_fnc_mil_unit_create} forEach units _group;
     };

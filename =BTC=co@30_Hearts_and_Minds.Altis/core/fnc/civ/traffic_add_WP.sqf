@@ -59,19 +59,14 @@ if (_isboat) then {
 };
 
 //Add Waypoints
-while {!((waypoints _group) isEqualTo [])} do {
-    deleteWaypoint ((waypoints _group) select 0);
-};
+[_group] call CBA_fnc_clearWaypoints;
 
 if ((vehicle leader _group) isKindOf "Air" || (vehicle leader _group) isKindOf "LandVehicle") then {
     (vehicle leader _group) setFuel 1;
 };
 _group setBehaviour "SAFE";
 
-private _wp = _group addWaypoint [_pos, 0];
-_wp setWaypointType "MOVE";
-_wp setWaypointCompletionRadius 30;
-_wp setWaypointStatements ["true", format ["_spawn = [group this, %1, %2] spawn btc_fnc_civ_traffic_add_WP;", _area, _isboat]];
+[_group, _pos, 0, "MOVE", "UNCHANGED", "NO CHANGE", "UNCHANGED", "NO CHANGE", format ["_spawn = [group this, %1, %2] spawn btc_fnc_civ_traffic_add_WP;", _area, _isboat], [0, 0, 0], 30] call CBA_fnc_addWaypoint;
 
 if (btc_debug) then {
     if (!isNil {_group getVariable "btc_traffic_id"}) then {
