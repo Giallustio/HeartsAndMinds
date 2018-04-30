@@ -216,7 +216,6 @@ btc_fnc_log_server_unload = compile preprocessFileLineNumbers "core\fnc\log\serv
 btc_fnc_log_tow = compile preprocessFileLineNumbers "core\fnc\log\tow.sqf";
 btc_fnc_log_unhook = compile preprocessFileLineNumbers "core\fnc\log\unhook.sqf";
 btc_fnc_log_unload = compile preprocessFileLineNumbers "core\fnc\log\unload.sqf";
-btc_fnc_log_getconfigmagazines = compile preprocessFileLineNumbers "core\fnc\log\getconfigmagazines.sqf";
 btc_fnc_log_copy = compile preprocessFileLineNumbers "core\fnc\log\copy.sqf";
 btc_fnc_log_paste = compile preprocessFileLineNumbers "core\fnc\log\paste.sqf";
 
