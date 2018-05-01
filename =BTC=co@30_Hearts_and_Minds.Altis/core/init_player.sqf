@@ -1,4 +1,3 @@
-
 call compile preprocessFileLineNumbers "core\doc.sqf";
 
 [{!isNull player}, {
@@ -15,18 +14,20 @@ call compile preprocessFileLineNumbers "core\doc.sqf";
     call btc_fnc_int_add_actions;
     call btc_fnc_int_shortcuts;
 
-    if (player getVariable ["interpreter", false]) then {player createDiarySubject [localize "STR_BTC_HAM_CON_INFO_ASKHIDEOUT_DIARYLOG", localize "STR_BTC_HAM_CON_INFO_ASKHIDEOUT_DIARYLOG"];};
+    if (player getVariable ["interpreter", false]) then {
+        player createDiarySubject [localize "STR_BTC_HAM_CON_INFO_ASKHIDEOUT_DIARYLOG", localize "STR_BTC_HAM_CON_INFO_ASKHIDEOUT_DIARYLOG"];
+    };
 
     removeAllWeapons player;
 
-    [{scriptDone btc_intro_done}, {
+    [{scriptDone _intro_done;}, {
         private _standard_tasks = (player call BIS_fnc_tasksUnit) select {
-                    ([_x] call BIS_fnc_taskState isEqualTo "ASSIGNED") &&
-                    (_x in ["0", "1", "2"])
+                    [_x] call BIS_fnc_taskState isEqualTo "ASSIGNED" &&
+                    _x in ["0", "1", "2"]
                 };
         {
             [_x] call btc_fnc_task_create
-        } foreach _standard_tasks;
+        } forEach _standard_tasks;
 
         btc_int_ask_data = nil;
         [5, nil, player] remoteExec ["btc_fnc_int_ask_var", 2];
@@ -42,7 +43,7 @@ call compile preprocessFileLineNumbers "core\doc.sqf";
 
 if (btc_debug) then {
 
-    onMapSingleClick "if (vehicle player == player) then {player setpos _pos} else {vehicle player setpos _pos}";
+    onMapSingleClick "if (vehicle player isEqualTo player) then {player setPos _pos} else {vehicle player setPos _pos}";
     player allowDamage false;
 
     waitUntil {!isNull (findDisplay 12)};
