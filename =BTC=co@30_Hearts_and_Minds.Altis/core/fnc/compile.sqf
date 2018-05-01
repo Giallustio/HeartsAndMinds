@@ -5,12 +5,12 @@ if (isServer) then {
     btc_fnc_cache_hd_cache = compile preprocessFileLineNumbers "core\fnc\cache\hd_cache.sqf";
     btc_fnc_cache_spawn = compile preprocessFileLineNumbers "core\fnc\cache\spawn.sqf";
     btc_fnc_cache_create = compile preprocessFileLineNumbers "core\fnc\cache\create.sqf";
+    btc_fnc_cache_create_attachto = compile preprocessFileLineNumbers "core\fnc\cache\create_attachto.sqf";
 
     //COMMON
     btc_fnc_check_los = compile preprocessFileLineNumbers "core\fnc\common\check_los.sqf";
     btc_fnc_clean_up = compile preprocessFileLineNumbers "core\fnc\common\clean_up.sqf";
     btc_fnc_create_composition = compile preprocessFileLineNumbers "core\fnc\common\create_composition.sqf";
-    btc_fnc_create_attachto = compile preprocessFileLineNumbers "core\fnc\common\create_attachto.sqf";
     btc_fnc_house_addWP = compile preprocessFileLineNumbers "core\fnc\common\house_addWP.sqf";
     btc_fnc_set_owner = compile preprocessFileLineNumbers "core\fnc\common\set_owner.sqf";
     btc_fnc_set_damage = compile preprocessFileLineNumbers "core\fnc\common\set_damage.sqf";
@@ -109,6 +109,8 @@ if (isServer) then {
     btc_fnc_mil_patrol_eh_remove = compile preprocessFileLineNumbers "core\fnc\mil\patrol_eh_remove.sqf";
     btc_fnc_mil_CuratorMilPlaced_s = compile preprocessFileLineNumbers "core\fnc\mil\CuratorMilPlaced_s.sqf";
     btc_fnc_mil_getStructures = compile preprocessFileLineNumbers "core\fnc\mil\getStructures.sqf";
+    btc_fnc_mil_createVehicle = compile preprocessFileLineNumbers "core\fnc\mil\createVehicle.sqf";
+    btc_fnc_mil_createUnits = compile preprocessFileLineNumbers "core\fnc\mil\createUnits.sqf";
 
     //REP
     btc_fnc_rep_add_eh = compile preprocessFileLineNumbers "core\fnc\rep\add_eh.sqf";

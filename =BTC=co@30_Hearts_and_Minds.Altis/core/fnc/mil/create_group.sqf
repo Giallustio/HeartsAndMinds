@@ -37,10 +37,7 @@ switch (true) do {
             } else {
                 _n = floor(_n/2);
             };
-            for "_i" from 0 to _n do {
-                [_group createUnit [selectRandom btc_type_units, _rpos, [], 0, "NONE"]] joinSilent _group;
-                sleep 0.5;
-            };
+            [_group, _rpos, _n] call btc_fnc_mil_createUnits;
         } else {
             private _houses = [_rpos, 50] call btc_fnc_getHouses;
             if !(_houses isEqualTo []) then {
@@ -58,11 +55,7 @@ switch (true) do {
     };
 };
 if (_structure isEqualTo objNull) then {
-    for "_i" from 0 to _n do {
-        private _unit_type = [selectRandom btc_type_units, selectRandom btc_type_divers] select _pos_iswater;
-        [_group createUnit [_unit_type, _rpos, [], 0, "NONE"]] joinSilent _group;
-        sleep 0.5;
-    };
+    [_group, _rpos, _n, _pos_iswater] call btc_fnc_mil_createUnits;
 } else {
     {
         private _grp = createGroup btc_enemy_side;
@@ -73,7 +66,7 @@ if (_structure isEqualTo objNull) then {
     } forEach units _group;
 };
 
-{_x call btc_fnc_mil_unit_create;} foreach units _group;
+{_x call btc_fnc_mil_unit_create;} forEach units _group;
 
 if (btc_debug_log) then {diag_log format ["btc_fnc_mil_create_group: _this = %1 ; POS %2 UNITS N %3", _this, _rpos, count units _group];};
 

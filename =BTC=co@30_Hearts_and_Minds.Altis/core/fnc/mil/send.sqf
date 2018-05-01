@@ -23,20 +23,12 @@ switch (_typeOf_patrol) do {
 
         private _return_pos = [_pos, 10, 500, 13, false] call btc_fnc_findsafepos;
 
-        private _veh = createVehicle [_veh_type, _return_pos, [], 0, "FLY"];
-        [_veh, _group, false, "", btc_type_crewmen] call BIS_fnc_spawnCrew;
-        private _cargo = (_veh emptyPositions "cargo") - 1;
-        for "_i" from 0 to _cargo do {
-            (selectRandom btc_type_units) createUnit [[0, 0, 0], _group, "this moveinCargo _veh;this assignAsCargo _veh;"];
-        };
-
-        _group selectLeader (driver _veh);
+        private _veh = [_group, _return_pos, _veh_type] call btc_fnc_mil_createVehicle;
 
         [_group, _dest, 60, "MOVE", "AWARE", "RED", "NORMAL", "NO CHANGE", "(group this) spawn btc_fnc_data_add_group;"] call CBA_fnc_addWaypoint;
         [_group, _dest, 60, "GETOUT"] call CBA_fnc_addWaypoint;
         [_group, _dest, 60, "SENTRY"] call CBA_fnc_addWaypoint;
 
-        {_x call btc_fnc_mil_unit_create} forEach units _group;
     };
 };
 
