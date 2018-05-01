@@ -20,8 +20,8 @@ btc_side_jip_data = [10, _vehpos, _city getVariable "name"];
 btc_side_jip_data remoteExec ["btc_fnc_task_create", 0];
 
 //// Create marker \\\\
-private _marker = createmarker [format ["sm_2_%1", _vehpos], _vehpos];
-_marker setmarkertype "hd_flag";
+private _marker = createMarker [format ["sm_2_%1", _vehpos], _vehpos];
+_marker setMarkerType "hd_flag";
 [_marker, "STR_BTC_HAM_SIDE_CIVTREAT_MRK"] remoteExec ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker]; //Civil need help
 _marker setMarkerSize [0.6, 0.6];
 

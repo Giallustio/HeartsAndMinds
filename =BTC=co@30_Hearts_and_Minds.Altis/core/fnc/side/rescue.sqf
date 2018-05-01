@@ -55,16 +55,16 @@ private _triggers = [];
     _x setUnitPos "DOWN";
     _units pushBack _x;
     //// Create trigger \\\\
-    private _trigger = createTrigger["EmptyDetector", getPos _city];
+    private _trigger = createTrigger ["EmptyDetector", getPos _city];
     _trigger setVariable ["unit", _x];
-    _trigger setTriggerArea[50,50, 0, false];
+    _trigger setTriggerArea [50, 50, 0, false];
     _trigger setTriggerActivation [str btc_player_side, "PRESENT", false];
     _trigger setTriggerStatements ["this", "_unit = thisTrigger getVariable 'unit'; [_unit] join (thisList select 0); _unit setUnitPos 'UP';", ""];
     _trigger attachTo [_x, [0, 0, 0]];
     _triggers pushBack _trigger;
 } forEach units _group;
 
-waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({_x distance getpos btc_create_object_point > 100} count _units isEqualTo 0) || ({Alive _x} count _units isEqualTo 0))};
+waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({_x distance getPos btc_create_object_point > 100} count _units isEqualTo 0) || ({Alive _x} count _units isEqualTo 0))};
 
 btc_side_assigned = false;
 publicVariable "btc_side_assigned";

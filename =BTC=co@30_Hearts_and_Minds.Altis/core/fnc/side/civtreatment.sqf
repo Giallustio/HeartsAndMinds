@@ -1,7 +1,7 @@
 //// Choose a clear City \\\\
 private _useful = btc_city_all select {!(_x getVariable ["occupied", false]) && !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])};
 if (_useful isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
-private _city = selectRandom  _useful;
+private _city = selectRandom _useful;
 private _pos = getPos _city;
 
 //// Choose spawn in house or on road \\\\
@@ -37,7 +37,7 @@ _marker setMarkerSize [0.6, 0.6];
 //// Create civ on _pos \\\\
 private _veh = objNull;
 private _fx = objNull;
-if ( _r < 1) then {
+if (_r < 1) then {
     private _veh_type = selectRandom btc_civ_type_veh;
     _veh = createVehicle [_veh_type, _vehpos, [], 0, "NONE"];
     _veh setDir (random 360);

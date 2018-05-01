@@ -4,7 +4,7 @@ if (_usefuls isEqualTo []) then {_usefuls = + btc_city_all;};
 private _city2 = selectRandom _usefuls;
 
 private _area = (getNumber (configFile >> "CfgWorlds" >> worldName >> "MapSize"))/4;
-private _cities = btc_city_all select {(_x distance _city2 > _area)};
+private _cities = btc_city_all select {_x distance _city2 > _area};
 _usefuls = _cities select {!((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"]) && (_x getVariable ["occupied", false])};
 if (_usefuls isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
 private _city1 = selectRandom _usefuls;
@@ -64,8 +64,7 @@ for "_i" from 0 to (2 + round random 2) do {
     private _cargo = (_veh emptyPositions "cargo") - 1;
     if (_cargo > 0) then {
         for "_i" from 0 to _cargo do {
-            private _unit_type = selectRandom btc_type_units;
-            _unit_type createUnit [_pos1, _group, "this moveinCargo _veh;this assignAsCargo _veh;"];
+            _group createUnit [selectRandom btc_type_units, _pos1, [], 0, "CARGO"];
         };
     };
     _road = (roadsConnectedTo _road) select 0;

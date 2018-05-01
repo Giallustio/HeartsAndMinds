@@ -9,7 +9,7 @@ _pos = [_pos, 0, 300, 20, 0, 60 * (pi / 180), 0] call BIS_fnc_findSafePos;
 btc_side_aborted = false;
 btc_side_done = false;
 btc_side_failed = false;
-btc_side_assigned = true; 
+btc_side_assigned = true;
 publicVariable "btc_side_assigned";
 
 btc_side_jip_data = [3, _pos, _city getVariable "name"];
@@ -22,14 +22,14 @@ _area setMarkerSize [30, 30];
 _area setMarkerAlpha 0.3;
 _area setmarkercolor "colorBlue";
 
-private _marker = createmarker [format ["sm_2_%1", _pos], _pos];
-_marker setmarkertype "hd_flag";
+private _marker = createMarker [format ["sm_2_%1", _pos], _pos];
+_marker setMarkerType "hd_flag";
 [_marker, "STR_BTC_HAM_SIDE_SUPPLIES_MRK"] remoteExec ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker]; //Supplies
 _marker setMarkerSize [0.6, 0.6];
 
-waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || count (nearestObjects [_pos, [btc_supplies_mat], 30]) > 0)};
+waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !((nearestObjects [_pos, [btc_supplies_mat], 30]) isEqualTo []))};
 
-btc_side_assigned = false; 
+btc_side_assigned = false;
 publicVariable "btc_side_assigned";
 
 if (btc_side_aborted || btc_side_failed) exitWith {

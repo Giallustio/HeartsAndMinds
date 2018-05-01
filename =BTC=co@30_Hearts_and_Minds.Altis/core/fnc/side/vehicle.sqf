@@ -22,8 +22,8 @@ _area setMarkerSize [30, 30];
 _area setMarkerAlpha 0.3;
 _area setmarkercolor "colorBlue";
 
-private _marker = createmarker [format ["sm_2_%1", _pos], _pos];
-_marker setmarkertype "hd_flag";
+private _marker = createMarker [format ["sm_2_%1", _pos], _pos];
+_marker setMarkerType "hd_flag";
 [_marker, "STR_BTC_HAM_SIDE_VEHICLE_MRK"] remoteExec ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker]; // Vehicle needs assistance
 _marker setMarkerSize [0.6, 0.6];
 

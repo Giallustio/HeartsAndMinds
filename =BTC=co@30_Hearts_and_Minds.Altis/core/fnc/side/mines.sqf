@@ -25,8 +25,8 @@ _area setMarkerSize [_offset, _offset];
 _area setMarkerAlpha 0.3;
 _area setmarkercolor "colorBlue";
 
-private _marker = createmarker [format ["sm_2_%1", _pos], _pos];
-_marker setmarkertype "hd_flag";
+private _marker = createMarker [format ["sm_2_%1", _pos], _pos];
+_marker setMarkerType "hd_flag";
 [_marker, "STR_BTC_HAM_SIDE_MINES_MRK"] remoteExec ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker]; //Mines
 _marker setMarkerSize [0.6, 0.6];
 
@@ -60,14 +60,14 @@ for "_i" from -_number_of_fences to _number_of_fences do {
         [_fence, 90, [ -_offset, _i * _distance_between_fences, 0]]
     ];
     if !(_i isEqualTo 1) then {
-        _composition_pattern pushBack [_fence, 90, [ _offset, _i * _distance_between_fences, 0]];
+        _composition_pattern pushBack [_fence, 90, [_offset, _i * _distance_between_fences, 0]];
     };
 
     if (random 1 > 0.7) then {
         _composition_pattern append [
             [selectRandom btc_type_signs, 180, [_i * _distance_between_fences, _offset - 1, 0]],
             [selectRandom btc_type_signs, 0, [_i * _distance_between_fences, -_offset + 1, 0]],
-            [selectRandom btc_type_signs, 270, [ _offset - 1, _i * _distance_between_fences, 0]],
+            [selectRandom btc_type_signs, 270, [_offset - 1, _i * _distance_between_fences, 0]],
             [selectRandom btc_type_signs, 90, [ -_offset + 1, _i * _distance_between_fences, 0]]
         ];
     };
@@ -97,7 +97,7 @@ for "_i" from 1 to (round random 2) do {
     [_closest, _pos, 1, selectRandom btc_type_motorized] spawn btc_fnc_mil_send;
 };
 
-waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({!isNull _x} count _mines == 0))};
+waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({!isNull _x} count _mines isEqualTo 0))};
 
 btc_side_assigned = false;
 publicVariable "btc_side_assigned";

@@ -1,12 +1,12 @@
 //// Choose an occupied City \\\\
-private _useful = btc_city_all select {(_x getVariable ["occupied", false] && !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])};
+private _useful = btc_city_all select {_x getVariable ["occupied", false] && !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])};
 
 if (_useful isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
 
 private _city = selectRandom _useful;
 
 //// Randomise position \\\\
-private _houses = [getPos _city,100] call btc_fnc_getHouses;
+private _houses = [getPos _city, 100] call btc_fnc_getHouses;
 if (_houses isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
 _houses = _houses apply {[count (_x buildingPos -1), _x]};
 _houses sort false;
@@ -27,7 +27,7 @@ btc_side_failed = false;
 btc_side_assigned = true;
 publicVariable "btc_side_assigned";
 
-btc_side_jip_data = [15, getPos _city, _city getVariable "name"];
+btc_side_jip_data = [15, _pos, _city getVariable "name"];
 btc_side_jip_data remoteExec ["btc_fnc_task_create", 0];
 
 //// Marker
@@ -42,6 +42,7 @@ _city setVariable ["spawn_more", true];
 private _group_civ = createGroup civilian;
 _group_civ setVariable ["no_cache", true];
 private _captive = _group_civ createUnit [selectRandom btc_civ_type_units, _pos, [], 0, "CAN_COLLIDE"];
+waitUntil {local _captive};
 [_captive, true] call ACE_captives_fnc_setHandcuffed;
 _captive setPosATL _pos;
 _captive call btc_fnc_civ_unit_create;
@@ -57,11 +58,11 @@ private _group = [];
     _unit call btc_fnc_mil_unit_create;
 } forEach (_buildingPos - [_pos]);
 
-_trigger = createTrigger["EmptyDetector", _pos];
+_trigger = createTrigger ["EmptyDetector", _pos];
 _trigger setVariable ["group", _group];
-_trigger setTriggerArea[20,20,0, false];
-_trigger setTriggerActivation[str(btc_player_side), "PRESENT", true];
-_trigger setTriggerStatements["this", "private _group = thisTrigger getVariable 'group'; {_x setCombatMode 'RED';} forEach _group;", "private _group = thisTrigger getVariable 'group'; {_x setCombatMode 'WHITE';} forEach _group;"];
+_trigger setTriggerArea [20, 20, 0, false];
+_trigger setTriggerActivation [str btc_player_side, "PRESENT", true];
+_trigger setTriggerStatements ["this", "private _group = thisTrigger getVariable 'group'; {_x setCombatMode 'RED';} forEach _group;", "private _group = thisTrigger getVariable 'group'; {_x setCombatMode 'WHITE';} forEach _group;"];
 
 private _mine = objNull;
 if (random 1 > 0.5) then {

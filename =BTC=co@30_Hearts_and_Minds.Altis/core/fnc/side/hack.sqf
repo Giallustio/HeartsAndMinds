@@ -8,7 +8,7 @@ if (_useful isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
 
 private _city = selectRandom _useful;
 private _pos = [getPos _city, 100] call btc_fnc_randomize_pos;
-private _house = selectRandom ([_pos,100] call btc_fnc_getHouses);
+private _house = selectRandom ([_pos, 100] call btc_fnc_getHouses);
 if (isNil "_house") exitWith {[] spawn btc_fnc_side_create;};
 _pos = selectRandom (_house buildingPos -1);
 
@@ -23,8 +23,8 @@ btc_side_jip_data remoteExec ["btc_fnc_task_create", 0];
 
 _city setVariable ["spawn_more",true];
 
-private _marker = createmarker [format ["sm_2_%1", _pos], _pos];
-_marker setmarkertype "hd_flag";
+private _marker = createMarker [format ["sm_2_%1", _pos], _pos];
+_marker setMarkerType "hd_flag";
 [_marker, "STR_BTC_HAM_SIDE_HACK_MRK"] remoteExec ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker]; //Terminal
 _marker setMarkerSize [0.6, 0.6];
 
@@ -45,16 +45,16 @@ if (btc_side_aborted || btc_side_failed) exitWith {
 };
 
 private _groups = [];
-private _closest = [_city,btc_city_all select {!(_x getVariable ["active", false])}, false] call btc_fnc_find_closecity;
+private _closest = [_city, btc_city_all select {!(_x getVariable ["active", false])}, false] call btc_fnc_find_closecity;
 for "_i" from 1 to (2 + round random 1) do {
-    _groups pushBack ([_closest, getpos _terminal,1,selectRandom btc_type_motorized] call btc_fnc_mil_send);
+    _groups pushBack ([_closest, getPos _terminal, 1, selectRandom btc_type_motorized] call btc_fnc_mil_send);
 };
 
 {
   _x setBehaviour "CARELESS"
 } forEach _groups;
 
-[_terminal, _launchsite modelToWorld [0,100,10]] remoteExec ["btc_fnc_log_place_create_camera", -2];
+[_terminal, _launchsite modelToWorld [0, 100, 10]] remoteExec ["btc_fnc_log_place_create_camera", -2];
 
 [13] remoteExec ["btc_fnc_show_hint", -2];
 

@@ -57,8 +57,9 @@ _group setVariable ["no_cache", true];
 
 private _vehs = [];
 private _veh_types = btc_civ_type_veh select {!(_x isKindOf "air")};
-private _random = (1+ round random 1);
+private _random = 1 + round random 1;
 private _random_veh = round random _random;
+private _captive = objNull;
 for "_i" from 0 to _random do {
     private _veh_type = selectRandom _veh_types;
     private _crewmen = btc_type_crewmen;
@@ -68,14 +69,14 @@ for "_i" from 0 to _random do {
 
     [_veh, _group, false, "", _crewmen] call BIS_fnc_spawnCrew;
     if (_i isEqualTo _random_veh) then {
-        (selectRandom btc_type_units) createUnit [_pos1, _group, "this moveinCargo _veh;this assignAsCargo _veh; removeAllWeapons this; _captive = this; _group selectLeader this;"]
+        _captive = _group createUnit [selectRandom btc_type_units, _pos1, [], 0, "CARGO"];
+        removeAllWeapons _captive;
+        _group selectLeader _captive;
     };
     _cargo = (_veh emptyPositions "cargo") - 1;
     if (_cargo > 0) then {
         for "_i" from 0 to _cargo do {
-            private ["_unit_type"];
-            _unit_type = selectRandom btc_type_units;
-            _unit_type createUnit [_pos1, _group, "this moveinCargo _veh;this assignAsCargo _veh;"];
+            _group createUnit [selectRandom btc_type_units, _pos1, [], 0, "CARGO"];
         };
     };
     _road = (roadsConnectedTo _road) select 0;
@@ -95,7 +96,7 @@ _wp setWaypointFormation "COLUMN";
 _wp setWaypointStatements ["true", "btc_side_failed = true"];
 
 //// Create trigger \\\\
-_trigger = createTrigger["EmptyDetector", getPos _city1];
+_trigger = createTrigger ["EmptyDetector", getPos _city1];
 _trigger setVariable ["captive", _captive];
 _trigger setTriggerArea [15, 15, 0, false];
 _trigger setTriggerActivation [str btc_player_side, "PRESENT", true];
@@ -104,7 +105,7 @@ _trigger attachTo [_captive, [0, 0, 0]];
 
 [12] remoteExec ["btc_fnc_show_hint", -2];
 
-waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !(Alive _captive) || (_captive distance getpos btc_create_object_point < 100))};
+waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !(Alive _captive) || (_captive distance getPos btc_create_object_point < 100))};
 
 btc_side_assigned = false;
 publicVariable "btc_side_assigned";
