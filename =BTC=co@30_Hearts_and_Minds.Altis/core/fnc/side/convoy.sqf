@@ -62,10 +62,8 @@ for "_i" from 0 to (2 + round random 2) do {
 
     [_veh, _group, false, "", _crewmen] call BIS_fnc_spawnCrew;
     private _cargo = (_veh emptyPositions "cargo") - 1;
-    if (_cargo > 0) then {
-        for "_i" from 0 to _cargo do {
-            _group createUnit [selectRandom btc_type_units, _pos1, [], 0, "CARGO"];
-        };
+    for "_i" from 0 to _cargo do {
+        _group createUnit [selectRandom btc_type_units, _pos1, [], 0, "CARGO"];
     };
     _road = (roadsConnectedTo _road) select 0;
     _pos1 = getPos _road;
