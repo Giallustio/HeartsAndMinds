@@ -23,9 +23,7 @@ if (btc_db_load && {profileNamespace getVariable [format ["btc_hm_%1_db", worldN
 
 call btc_fnc_db_autosave;
 
-addMissionEventHandler ["HandleDisconnect", btc_fnc_eh_handledisconnect];
-addMissionEventHandler ["BuildingChanged", btc_fnc_eh_buildingchanged];
-["ace_explosives_defuse", btc_fnc_eh_explosives_defuse] call CBA_fnc_addEventHandler;
+call btc_fnc_eh_server;
 
 ["Initialize"] call BIS_fnc_dynamicGroups;
 

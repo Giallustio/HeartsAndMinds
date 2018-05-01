@@ -6,10 +6,7 @@ call compile preprocessFileLineNumbers "core\doc.sqf";
     btc_player_respawn = getPosASL player;
     ["InitializePlayer", [player]] call BIS_fnc_dynamicGroups;
 
-    player addEventHandler ["Respawn", btc_fnc_eh_player_respawn];
-    player addEventHandler ["CuratorObjectPlaced", btc_fnc_eh_CuratorObjectPlaced];
-    ["ace_treatmentSucceded", btc_fnc_eh_treatment] call CBA_fnc_addEventHandler;
-    player addEventHandler ["WeaponAssembled", btc_fnc_civ_add_leaflets];
+    [player] call btc_fnc_eh_player;
 
     call btc_fnc_int_add_actions;
     call btc_fnc_int_shortcuts;
@@ -43,7 +40,7 @@ call compile preprocessFileLineNumbers "core\doc.sqf";
 
 if (btc_debug) then {
 
-    onMapSingleClick "if (vehicle player isEqualTo player) then {player setPos _pos} else {vehicle player setPos _pos}";
+    onMapSingleClick "vehicle player setPos _pos";
     player allowDamage false;
 
     waitUntil {!isNull (findDisplay 12)};
