@@ -1,7 +1,7 @@
 params ["_object", "_holder", "_pos_type"];
 
 private _bbr = (boundingBoxReal _object) params ["_p1", "_p2"];
-private _height_box = abs ((_p2 select 2) - (_p1 select 2)) + ((boundingCenter  _object) select 2);
+private _height_box = abs ((_p2 select 2) - (_p1 select 2)) + ((boundingCenter _object) select 2);
 private _maxWidth_box = abs ((_p2 select 0) - (_p1 select 0));
 private _height_weapon = (boundingBoxReal _holder select 1 select 2) - (boundingCenter _holder select 2);
 
@@ -42,4 +42,4 @@ switch (_pos_type) do {
     };
 };
 
-_holder setVectorDirAndUp [[ sin _y * cos _p, cos _y * cos _p, sin _p],[[ sin _r, -sin _p, cos _r * cos _p], -_y] call BIS_fnc_rotateVector2D];
+_holder setVectorDirAndUp [[ sin _y * cos _p, cos _y * cos _p, sin _p], [[ sin _r, -sin _p, cos _r * cos _p], -_y] call BIS_fnc_rotateVector2D];
