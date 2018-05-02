@@ -1,4 +1,3 @@
-
 params ["_position", ["_position_evac", []]];
 
 private _civilians = (allUnits select {side _x isEqualTo civilian}) select {_x distance _position < 200};
@@ -19,7 +18,7 @@ if (_position_evac isEqualTo []) then {
 
 {
     private _group = group _x;
-    while {(count (waypoints _group)) > 0} do {deleteWaypoint ((waypoints _group) select 0);};
+    while {!((waypoints _group) isEqualTo [])} do {deleteWaypoint ((waypoints _group) select 0);};
 
     [_group, _position_evac, 20] spawn btc_fnc_civ_addWP;
 } forEach _civilians;

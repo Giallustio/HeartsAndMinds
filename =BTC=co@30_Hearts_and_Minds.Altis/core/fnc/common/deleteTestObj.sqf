@@ -1,11 +1,13 @@
+params ["_testObj"];
 
-_this addMPEventHandler ["MPKilled", {
-        _this = _this select 0;
-        {
-            deleteVehicle _x;
-        } forEach (_this getVariable ["effects", []]);
-        if (isServer) then {
-            deleteVehicle _this;
-        };
-    }];
-_this setDamage 1;
+_testObj addMPEventHandler ["MPKilled", {
+    params ["_testObj"];
+
+    {
+        deleteVehicle _x;
+    } forEach (_testObj getVariable ["effects", []]);
+    if (isServer) then {
+        deleteVehicle _testObj;
+    };
+}];
+_testObj setDamage 1;

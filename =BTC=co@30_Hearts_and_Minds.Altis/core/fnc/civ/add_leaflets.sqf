@@ -6,7 +6,7 @@ _uav addMagazine "1Rnd_Leaflets_West_F";
 if !("Bomb_Leaflets" in (_uav weaponsTurret [-1])) then {
     _uav addWeapon "Bomb_Leaflets";
 };
-if (needReload _uav == 1) then {reload _uav};
+if (needReload _uav isEqualTo 1) then {reload _uav};
 
 if ((_uav getVariable ["btc_leaflets_eh_added" , -1]) isEqualTo -1) then {
     private _id_f = _uav addEventHandler ["Fired", btc_fnc_eh_leaflets];

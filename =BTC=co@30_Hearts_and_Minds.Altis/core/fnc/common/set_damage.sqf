@@ -1,4 +1,3 @@
-
 params ["_unit"];
 
 private _selection = [

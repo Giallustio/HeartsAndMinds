@@ -1,13 +1,14 @@
+params ["_display"];
 
-private ["_units","_color","_text","_typeof","_has_headless","_owners","_alpha"];
+private _has_headless = !((entities "HeadlessClient_F") isEqualTo []);
 
-_has_headless = !((entities "HeadlessClient_F") isEqualTo []);
-
+private _units = "";
+private _owners = "";
 if (_has_headless) then {
     _units = btc_units_owners apply {_x select 0};
     _owners = btc_units_owners apply {_x select 1};
 } else {
-    _units = allunits select {Alive _x};
+    _units = allUnits select {alive _x};
     _units append entities "Car";
     _units append entities "Tank";
     _units append entities "Ship";
@@ -15,36 +16,38 @@ if (_has_headless) then {
 };
 
 {
-    _typeof = typeOf _x;
+    private _typeof = typeOf _x;
 
-    _alpha = 1;
+    private _alpha = 1;
     if (_has_headless) then {
-        if !((_owners select _foreachindex) isEqualTo 2) then    {
+        if !((_owners select _forEachindex) isEqualTo 2) then {
             _alpha = 0.3;
         };
     };
 
+    private _color = [];
     switch (side _x) do {
-        case (west) : {_color = [0,0,1,_alpha]};
-        case (east) : {_color = [1,0,0,_alpha]};
-        case (independent) : {_color = [0,1,0,_alpha]};
-        default {_color = [1,1,1,_alpha]};
+        case (west) : {_color = [0, 0, 1, _alpha]};
+        case (east) : {_color = [1, 0, 0, _alpha]};
+        case (independent) : {_color = [0, 1, 0, _alpha]};
+        default {_color = [1, 1, 1, _alpha]};
     };
 
+    private _text = "";
     if (leader group _x isEqualTo _x) then {
-        _text = format ["%1 (%2)", _typeof,group _x getVariable ["btc_patrol_id",group _x getVariable ["btc_traffic_id",""]]];
+        _text = format ["%1 (%2)", _typeof, group _x getVariable ["btc_patrol_id", group _x getVariable ["btc_traffic_id", ""]]];
     } else {
-        if ((_x isKindOf "car") OR (_x isKindOf "tank") OR (_x isKindOf "ship")  OR (_x isKindOf "air")) then {
+        if ((_x isKindOf "car") OR (_x isKindOf "tank") OR (_x isKindOf "ship") OR (_x isKindOf "air")) then {
             _text = "";
-            _color = [1,0,0.5,_alpha];
+            _color = [1, 0, 0.5, _alpha];
         } else {
             _text = format ["%1", _typeof];
         };
     };
 
-    (_this select 0) drawIcon [
+    _display drawIcon [
         getText (configFile/"CfgVehicles"/ _typeof /"Icon"),
-        _color ,
+        _color,
         visiblePosition _x,
         20,
         20,
@@ -53,4 +56,4 @@ if (_has_headless) then {
         0,
         0.05
     ];
-} foreach _units;
+} forEach _units;

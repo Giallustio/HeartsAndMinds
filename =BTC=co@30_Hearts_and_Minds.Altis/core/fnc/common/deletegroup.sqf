@@ -1,8 +1,9 @@
+params ["_group"];
 
 //Check group locality
-if (local (_this select 0)) then {
-    deleteGroup (_this select 0);
+if (local _group) then {
+    deleteGroup _group;
 } else {
     //DeleteGroup where is local
-    (_this select 0) remoteExec ["deleteGroup", groupOwner (_this select 0)];
+    _group remoteExec ["deleteGroup", groupOwner _group];
 };
