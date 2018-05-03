@@ -1,4 +1,4 @@
-enableSaving [false,false];
+enableSaving [false, false];
 
 if (hasInterface) then {btc_intro_done = [] spawn btc_fnc_intro;};
 
