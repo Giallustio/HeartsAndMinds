@@ -60,7 +60,7 @@ if (_enemy_side isEqualTo btc_player_side) exitWith {
             _allclass_f select {(_x isKindOf "Car") || (_x isKindOf "Truck") || (_x isKindOf "Truck_F")}
         }
     );
-    _type_motorized_armed append ([(_allclass_f select {((_x isKindOf "Air") || (_x isKindOf "Helicopter") || (_x isKindOf "Tank") || (_x isKindOf "Car"))}), ["168Rnd_CMFlare_Chaff_Magazine", "Laserbatteries", "SmokeLauncherMag"]] call btc_fnc_find_veh_with_turret);
+    _type_motorized_armed append (([_allclass_f select {((_x isKindOf "Air") || (_x isKindOf "Helicopter") || (_x isKindOf "Tank") || (_x isKindOf "Car"))}] call btc_fnc_find_veh_with_turret) select 0);
 
     //Static
     _type_mg append (_allclass_f select {_x isKindOf "StaticGrenadeLauncher"});

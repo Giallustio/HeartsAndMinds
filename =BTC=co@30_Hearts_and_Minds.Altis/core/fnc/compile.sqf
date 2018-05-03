@@ -12,7 +12,6 @@ if (isServer) then {
     btc_fnc_create_composition = compile preprocessFileLineNumbers "core\fnc\common\create_composition.sqf";
     btc_fnc_create_attachto = compile preprocessFileLineNumbers "core\fnc\common\create_attachto.sqf";
     btc_fnc_house_addWP = compile preprocessFileLineNumbers "core\fnc\common\house_addWP.sqf";
-    btc_fnc_set_owner = compile preprocessFileLineNumbers "core\fnc\common\set_owner.sqf";
     btc_fnc_task_patrol = compile preprocessFileLineNumbers "core\fnc\common\task_patrol.sqf";
     btc_fnc_set_damage = compile preprocessFileLineNumbers "core\fnc\common\set_damage.sqf";
     btc_fnc_road_direction = compile preprocessFileLineNumbers "core\fnc\common\road_direction.sqf";
@@ -215,7 +214,6 @@ btc_fnc_log_server_unload = compile preprocessFileLineNumbers "core\fnc\log\serv
 btc_fnc_log_tow = compile preprocessFileLineNumbers "core\fnc\log\tow.sqf";
 btc_fnc_log_unhook = compile preprocessFileLineNumbers "core\fnc\log\unhook.sqf";
 btc_fnc_log_unload = compile preprocessFileLineNumbers "core\fnc\log\unload.sqf";
-btc_fnc_log_getconfigmagazines = compile preprocessFileLineNumbers "core\fnc\log\getconfigmagazines.sqf";
 btc_fnc_log_copy = compile preprocessFileLineNumbers "core\fnc\log\copy.sqf";
 btc_fnc_log_paste = compile preprocessFileLineNumbers "core\fnc\log\paste.sqf";
 
