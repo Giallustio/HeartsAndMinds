@@ -12,7 +12,6 @@ if (isServer) then {
     btc_fnc_clean_up = compile preprocessFileLineNumbers "core\fnc\common\clean_up.sqf";
     btc_fnc_create_composition = compile preprocessFileLineNumbers "core\fnc\common\create_composition.sqf";
     btc_fnc_house_addWP = compile preprocessFileLineNumbers "core\fnc\common\house_addWP.sqf";
-    btc_fnc_set_owner = compile preprocessFileLineNumbers "core\fnc\common\set_owner.sqf";
     btc_fnc_set_damage = compile preprocessFileLineNumbers "core\fnc\common\set_damage.sqf";
     btc_fnc_road_direction = compile preprocessFileLineNumbers "core\fnc\common\road_direction.sqf";
     btc_fnc_findsafepos = compile preprocessFileLineNumbers "core\fnc\common\findsafepos.sqf";
@@ -67,6 +66,7 @@ if (isServer) then {
     btc_fnc_eh_handledisconnect = compile preprocessFileLineNumbers "core\fnc\eh\handledisconnect.sqf";
     btc_fnc_eh_buildingchanged = compile preprocessFileLineNumbers "core\fnc\eh\buildingchanged.sqf";
     btc_fnc_eh_suicider = compile preprocessFileLineNumbers "core\fnc\eh\suicider.sqf";
+    btc_fnc_eh_server = compile preprocessFileLineNumbers "core\fnc\eh\server.sqf";
 
     //IED
     btc_fnc_ied_boom = compile preprocessFileLineNumbers "core\fnc\ied\boom.sqf";
@@ -215,7 +215,6 @@ btc_fnc_log_server_unload = compile preprocessFileLineNumbers "core\fnc\log\serv
 btc_fnc_log_tow = compile preprocessFileLineNumbers "core\fnc\log\tow.sqf";
 btc_fnc_log_unhook = compile preprocessFileLineNumbers "core\fnc\log\unhook.sqf";
 btc_fnc_log_unload = compile preprocessFileLineNumbers "core\fnc\log\unload.sqf";
-btc_fnc_log_getconfigmagazines = compile preprocessFileLineNumbers "core\fnc\log\getconfigmagazines.sqf";
 btc_fnc_log_copy = compile preprocessFileLineNumbers "core\fnc\log\copy.sqf";
 btc_fnc_log_paste = compile preprocessFileLineNumbers "core\fnc\log\paste.sqf";
 
@@ -262,6 +261,7 @@ if (!isDedicated) then {
     btc_fnc_eh_CuratorObjectPlaced = compile preprocessFileLineNumbers "core\fnc\eh\CuratorObjectPlaced.sqf";
     btc_fnc_eh_treatment = compile preprocessFileLineNumbers "core\fnc\eh\treatment.sqf";
     btc_fnc_eh_leaflets = compile preprocessFileLineNumbers "core\fnc\eh\leaflets.sqf";
+    btc_fnc_eh_player = compile preprocessFileLineNumbers "core\fnc\eh\player.sqf";
 
     //FOB
     btc_fnc_fob_create = compile preprocessFileLineNumbers "core\fnc\fob\create.sqf";

@@ -1,1 +1,5 @@
-if (isServer) then {btc_side_aborted = true;} else {[] remoteExec ["btc_fnc_side_abort", 2];};
+if (isServer) then {
+    btc_side_aborted = true;
+} else {
+    [] remoteExec ["btc_fnc_side_abort", 2];
+};
