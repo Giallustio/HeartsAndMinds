@@ -12,6 +12,7 @@ private _needdiver = getText (configFile >> "CfgVehicles" >> _veh_type >> "simul
 private _veh = createVehicle [_veh_type, _pos, [], 0, "FLY"];
 [_veh, _group, false, "", [_type_crewmen, _type_divers select 0] select _needdiver] call BIS_fnc_spawnCrew;
 _group selectLeader (driver _veh);
+units _group joinSilent _group;
 
 private _cargo = (_veh emptyPositions "cargo") - 1;
 [_group, _pos, _cargo, _needdiver, _type_units, _type_divers] call btc_fnc_mil_createUnits;

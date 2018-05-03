@@ -57,25 +57,7 @@ if ((random 1) > _ratio) then {
     //MOT
     private _group = createGroup btc_enemy_side;
     _group setVariable ["no_cache", true];
-    private _veh_type = selectRandom btc_type_motorized;
-    private _veh = createVehicle [_veh_type, _start_pos, [], 0, "FLY"];
-    private _gunner = _veh emptyPositions "gunner";
-    private _commander = _veh emptyPositions "commander";
-    private _cargo = (_veh emptyPositions "cargo") - 1;
-    btc_type_crewmen createUnit [_start_pos, _group, "this moveinDriver _veh;this assignAsDriver _veh;"];
-    if (_gunner > 0) then {
-        btc_type_crewmen createUnit [_start_pos, _group, "this moveinGunner _veh;this assignAsGunner _veh;"];
-    };
-    if (_commander > 0) then {
-        btc_type_crewmen createUnit [_start_pos, _group, "this moveinCommander _veh;this assignAsCommander _veh;"];
-    };
-    for "_i" from 0 to _cargo do {
-        private _unit_type = selectRandom btc_type_units;
-        _unit_type createUnit [_start_pos, _group, "this moveinCargo _veh;this assignAsCargo _veh;"];
-    };
-
-    units _group joinSilent _group;
-    _group selectLeader (driver _veh);
+    private _veh = [_group, _start_pos] call btc_fnc_mil_createVehicle;
 
     [_group, _pos, 60, "MOVE", "AWARE", "RED", "FULL", "NO CHANGE", "(group this) spawn btc_fnc_data_add_group;"] call CBA_fnc_addWaypoint;
     [_group, _pos, 60, "UNLOAD"] call CBA_fnc_addWaypoint;
