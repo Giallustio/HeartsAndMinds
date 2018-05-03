@@ -5,8 +5,7 @@ _static setDir _dir;
 _static setPos _pos;
 
 private _group = createGroup btc_enemy_side;
-private _unit_type = selectRandom btc_type_units;
-private _gunner = _group createUnit [_unit_type, _pos, [], 0, "NONE"];
+private _gunner = _group createUnit [selectRandom btc_type_units, _pos, [], 0, "NONE"];
 [_gunner] joinSilent _group;
 _gunner moveInGunner _static;
 _gunner setBehaviour "COMBAT";

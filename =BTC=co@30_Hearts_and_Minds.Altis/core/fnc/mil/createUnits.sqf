@@ -13,7 +13,10 @@ for "_i" from 0 to _number do {
     } else {
         selectRandom _type_units;
     };
-    [_group createUnit [_unit_type, _pos, [], 0, "CARGO"]] joinSilent _group;
+
+    private _unit = _group createUnit [_unit_type, _pos, [], 0, "CARGO"];
+    [_unit] joinSilent _group;
+    _unit call btc_fnc_mil_unit_create;
 
     if (canSuspend) then {
         sleep 1;

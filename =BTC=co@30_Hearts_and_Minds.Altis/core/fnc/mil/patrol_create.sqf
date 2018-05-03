@@ -35,13 +35,10 @@ sleep 5 + random 10;
 
 switch (true) do {
     case ((_random isEqualTo 1) && !_pos_iswater) : {
-        private _n_units   = 4 + (round random 8);
+        private _n_units = 5 + (round random 8);
         _pos = [_pos, 0, 50, 10, false] call btc_fnc_findsafepos;
 
-        [_group createUnit [btc_type_units select 0, _pos, [], 0, "NONE"]] joinSilent _group;
-        (leader _group) setPos _pos;
         [_group, _pos, _n_units] call btc_fnc_mil_createUnits;
-        {_x call btc_fnc_mil_unit_create} forEach units _group;
     };
     case ((_random isEqualTo 2) || _pos_iswater) : {
         private _newZone = _pos;
@@ -65,7 +62,6 @@ switch (true) do {
         private _1 = _veh addEventHandler ["Fuel", btc_fnc_mil_patrol_eh];
         _veh setVariable ["eh", [_1/*, _2, _3,4, 5*/]];
         _veh setVariable ["crews", _group];
-
     };
 };
 

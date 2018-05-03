@@ -20,8 +20,6 @@ if (_pos_iswater) then {
 };
 
 private _group = createGroup btc_enemy_side;
-[_group createUnit [_unit_type, _rpos, [], 0, "NONE"]] joinSilent _group;
-(leader _group) setPos _rpos;
 private _groups = [];
 _groups pushBack _group;
 private _structure = objNull;
@@ -39,11 +37,12 @@ switch (true) do {
             };
             [_group, _rpos, _n] call btc_fnc_mil_createUnits;
         } else {
+            [_group, _rpos, 0] call btc_fnc_mil_createUnits;
             private _houses = [_rpos, 50] call btc_fnc_getHouses;
-            if !(_houses isEqualTo []) then {
-                _structure = selectRandom _houses;
-            } else {
+            if (_houses isEqualTo []) then {
                 [_group, _rpos, _area, 2 + floor (random 4), "MOVE", "SAFE", "RED", ["LIMITED", "NORMAL"] select ((vehicle leader _group) isKindOf "Air"), "STAG COLUMN", "", [5, 10, 20]] call CBA_fnc_taskPatrol;
+            } else {
+                _structure = selectRandom _houses;
             };
         };
     };
@@ -65,8 +64,6 @@ if (_structure isEqualTo objNull) then {
         _groups pushBack _grp;
     } forEach units _group;
 };
-
-{_x call btc_fnc_mil_unit_create;} forEach units _group;
 
 if (btc_debug_log) then {diag_log format ["btc_fnc_mil_create_group: _this = %1 ; POS %2 UNITS N %3", _this, _rpos, count units _group];};
 

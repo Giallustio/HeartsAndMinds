@@ -12,7 +12,6 @@ switch (_typeOf_patrol) do {
         _group setVariable ["no_cache", true];
         [_group] call CBA_fnc_clearWaypoints;
 
-        [_group, _dest, 60] call CBA_fnc_addWaypoint;
         [_group, _dest, 60, "MOVE", "AWARE", "RED", "FULL", "COLUMN", "(group this) spawn btc_fnc_data_add_group;"] call CBA_fnc_addWaypoint;
     };
     case 1 : {

@@ -63,11 +63,6 @@ for "_i" from 0 to (1 + round random 1) do {
     _veh setDir ([_road] call btc_fnc_road_direction);
     _vehs pushBack _veh;
 
-
-    _cargo = (_veh emptyPositions "cargo") - 1;
-    for "_i" from 0 to _cargo do {
-        _group createUnit [selectRandom btc_type_units, _pos1, [], 0, "CARGO"];
-    };
     _road = (roadsConnectedTo _road) select 0;
     _pos1 = getPos _road;
 };
