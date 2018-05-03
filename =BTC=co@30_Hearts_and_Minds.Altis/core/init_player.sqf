@@ -17,7 +17,7 @@ call compile preprocessFileLineNumbers "core\doc.sqf";
 
     removeAllWeapons player;
 
-    [{scriptDone _intro_done;}, {
+    [{scriptDone btc_intro_done;}, {
         private _standard_tasks = (player call BIS_fnc_tasksUnit) select {
                     [_x] call BIS_fnc_taskState isEqualTo "ASSIGNED" &&
                     _x in ["0", "1", "2"]
