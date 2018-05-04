@@ -27,6 +27,14 @@ _expl3 attachTo [_suicider, [0.1, 0.1, 0.15], "Pelvis"];
 
 [_expl1, _expl2, _expl3] remoteExec ["btc_fnc_ied_belt", 0];
 
+_suicider addEventHandler ["Killed", {
+    params ["_unit", "_killer"];
+
+    if !(isPlayer _killer) then {
+       [_unit] call btc_fnc_detachObjects;
+    };
+}];
+
 (group _suicider) setBehaviour "CARELESS";
 (group _suicider) setSpeedMode "FULL";
 
