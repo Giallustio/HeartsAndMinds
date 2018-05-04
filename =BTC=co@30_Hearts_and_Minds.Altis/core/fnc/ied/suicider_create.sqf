@@ -9,14 +9,10 @@ _pos = position _city;
 private _rpos = [_pos, _area] call btc_fnc_randomize_pos;
 
 private _group = createGroup civilian;
-_group createUnit [selectRandom btc_civ_type_units, _rpos, [], 0, "NONE"];
-private _suicider = leader _group;
-_suicider setPos _rpos;
+private _suicider = _group createUnit [selectRandom btc_civ_type_units, _rpos, [], 0, "CAN_COLLIDE"];
 
 [_group] spawn btc_fnc_civ_addWP;
-
 _group setVariable ["suicider", true];
-
 
 _suicider call btc_fnc_civ_unit_create;
 
