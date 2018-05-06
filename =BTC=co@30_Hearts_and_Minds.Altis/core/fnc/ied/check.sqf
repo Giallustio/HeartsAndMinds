@@ -43,4 +43,4 @@ private _ieds_check = _ieds select {!((_x select 2) isEqualTo objNull)};
         if (btc_debug) then {systemChat format ["END IED CHECK CITY ID %1", _city getVariable "id"];};
         if (btc_debug_log) then {diag_log format ["END IED CHECK CITY ID %1", _city getVariable "id"];};
     };
-} , 1, [_city, _ieds, _ieds_check]] call CBA_fnc_addPerFrameHandler;
+}, 1, [_city, _ieds, _ieds_check]] call CBA_fnc_addPerFrameHandler;

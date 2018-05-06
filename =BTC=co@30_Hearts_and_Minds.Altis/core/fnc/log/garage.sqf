@@ -27,13 +27,12 @@ with uiNamespace do {
     deleteVehicle _pad;
     private _veh_list = _logistic_point nearEntities 5;
     {
-        {deleteVehicle _x;} forEach crew _x;
-
         private _type = typeOf _x;
         private _pos = getPosASL _x;
         private _dir = getDir _x;
         private _customization = [_x] call BIS_fnc_getVehicleCustomization;
-        deleteVehicle _x;
+
+        [_x] call CBA_fnc_deleteEntity;
         [_type, _pos, _dir, _customization] remoteExec ["btc_fnc_log_createVehicle", 2];
         [_type] remoteExec ["btc_fnc_eh_veh_init", -2];
     } forEach _veh_list;

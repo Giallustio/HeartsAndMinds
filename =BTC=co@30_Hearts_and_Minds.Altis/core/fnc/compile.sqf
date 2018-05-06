@@ -15,7 +15,6 @@ if (isServer) then {
     btc_fnc_set_damage = compile preprocessFileLineNumbers "core\fnc\common\set_damage.sqf";
     btc_fnc_road_direction = compile preprocessFileLineNumbers "core\fnc\common\road_direction.sqf";
     btc_fnc_findsafepos = compile preprocessFileLineNumbers "core\fnc\common\findsafepos.sqf";
-    btc_fnc_deleteTestObj = compile preprocessFileLineNumbers "core\fnc\common\deleteTestObj.sqf";
     btc_fnc_get_owners = compile preprocessFileLineNumbers "core\fnc\common\get_owners.sqf";
     btc_fnc_set_groupowner = compile preprocessFileLineNumbers "core\fnc\common\set_groupowner.sqf";
     btc_fnc_find_closecity = compile preprocessFileLineNumbers "core\fnc\common\find_closecity.sqf";
@@ -23,7 +22,6 @@ if (isServer) then {
     btc_fnc_final_phase = compile preprocessFileLineNumbers "core\fnc\common\final_phase.sqf";
     btc_fnc_findPosOutsideRock = compile preprocessFileLineNumbers "core\fnc\common\findposoutsiderock.sqf";
     btc_fnc_set_groupsowner = compile preprocessFileLineNumbers "core\fnc\common\set_groupsowner.sqf";
-    btc_fnc_detachObjects = compile preprocessFileLineNumbers "core\fnc\common\detachObjects.sqf";
 
     //CITY
     btc_fnc_city_activate = compile preprocessFileLineNumbers "core\fnc\city\activate.sqf";

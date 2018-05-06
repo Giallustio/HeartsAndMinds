@@ -78,7 +78,7 @@ for "_i" from 1 to (1 + round random 2) do {
         private _fx = "test_EmptyObjectForSmoke" createVehicle _pos;
         _fx setPos _pos;
         sleep 120;
-        _fx call btc_fnc_deleteTestObj;
+        [_fx] call CBA_fnc_deleteEntity;
     };
     _boxes pushBack _boxe;
 };
@@ -87,7 +87,7 @@ waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({Alive _x} count _b
 
 btc_side_assigned = false;
 publicVariable "btc_side_assigned";
-[_markers, _boxes, [], []] call btc_fnc_delete;
+[_markers, _boxes, []] call btc_fnc_delete;
 
 if (btc_side_aborted || btc_side_failed) exitWith {
     9 remoteExec ["btc_fnc_task_fail", 0];
