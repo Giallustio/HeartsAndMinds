@@ -80,7 +80,7 @@ if (btc_debug) then {
         private _marker = createMarker [format ["btc_traffic_%1", _group getVariable "btc_traffic_id"], [(_pos select 0) + random 30, (_pos select 1) + random 30, 0]];
         _marker setMarkerType "mil_dot";
         _marker setMarkerText format ["P %1", _group getVariable "btc_traffic_id"];
-        _marker setMarkerColor "ColorOrange";
+        _marker setMarkerColor "ColorWhite";
         _marker setMarkerSize [0.5, 0.5];
         diag_log text format ["TRAFFIC ID: %1 (%3) POS: %2", _group getVariable "btc_traffic_id", _pos, typeOf vehicle leader _group];
     };
