@@ -17,7 +17,7 @@ if ((leader _group) distance _end_city > 300) then {
     _noaccess pushBack _end_city;
     _tmp_area = _area - ((leader _group) distance _end_city)*0.3*count _noaccess;
     if (btc_debug) then {
-        systemChat format ["Patrol ID: %1 , count %2, area %3", _group getVariable "btc_patrol_id", count _noaccess, _tmp_area];
+        [format ["ID: %1 , count %2, area %3", _group getVariable "btc_patrol_id", count _noaccess, _tmp_area], __FILE__, [btc_debug, false]] call btc_fnc_debug_message;
     };
 } else {
     _tmp_area = _area;

@@ -10,7 +10,9 @@ if !((_object_placed isKindOf "AllVehicles") || (_object_placed isKindOf "Module
     if (btc_debug_log) then {
         [format ["OBJECT %1", _object_placed], __FILE__, [false]] call btc_fnc_debug_message;
     };
-    if (btc_debug) then {hint str _object_placed;};
+    if (btc_debug) then {
+        [str _object_placed, __FILE__, [btc_debug, false]] call btc_fnc_debug_message;
+    };
 };
 
 if (_object_placed isKindOf "Man") then {
@@ -26,5 +28,7 @@ if (_object_placed isKindOf "Man") then {
     if (btc_debug_log) then {
         [format ["MAN %1", _object_placed], __FILE__, [false]] call btc_fnc_debug_message;
     };
-    if (btc_debug) then {hint str _object_placed;};
+    if (btc_debug) then {
+        [str _object_placed, __FILE__, [btc_debug, false]] call btc_fnc_debug_message;
+    };
 };

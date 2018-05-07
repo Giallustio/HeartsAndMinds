@@ -1,7 +1,9 @@
 
 call btc_fnc_db_delete;
 
-if (btc_debug) then {hint "saving...1";};
+if (btc_debug) then {
+    ["...1", __FILE__, [btc_debug, false, true]] call btc_fnc_debug_message;
+};
 [8] remoteExec ["btc_fnc_show_hint", 0];
 
 btc_db_is_saving = true;
@@ -17,7 +19,9 @@ for "_i" from 0 to (count btc_city_all - 1) do {
     private _s = [_i] spawn btc_fnc_city_de_activate;
     waitUntil {scriptDone _s};
 };
-if (btc_debug) then {hint "saving...2";};
+if (btc_debug) then {
+    ["...2", __FILE__, [btc_debug, false, true]] call btc_fnc_debug_message;
+};
 
 //City status
 private _cities_status = [];
@@ -142,7 +146,9 @@ profileNamespace setVariable [format ["btc_hm_%1_markers", _name], _markers_prop
 //End
 profileNamespace setVariable [format ["btc_hm_%1_db", _name], true];
 saveProfileNamespace;
-if (btc_debug) then {hint "saving...3";};
+if (btc_debug) then {
+    ["...3", __FILE__, [btc_debug, false, true]] call btc_fnc_debug_message;
+};
 [9] remoteExec ["btc_fnc_show_hint", 0];
 
 btc_db_is_saving = false;
