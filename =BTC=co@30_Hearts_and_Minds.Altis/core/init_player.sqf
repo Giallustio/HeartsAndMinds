@@ -44,8 +44,8 @@ if (btc_debug) then {
     player allowDamage false;
 
     waitUntil {!isNull (findDisplay 12)};
-    private _eh = ((findDisplay 12) displayCtrl 51) ctrlAddEventHandler ["Draw", btc_fnc_marker_debug];
+    private _eh = ((findDisplay 12) displayCtrl 51) ctrlAddEventHandler ["Draw", btc_fnc_debug_marker];
 
     btc_marker_debug_cond = true;
-    [_eh] spawn btc_fnc_systemchat_debug;
+    [_eh] spawn btc_fnc_debug_systemchat;
 };

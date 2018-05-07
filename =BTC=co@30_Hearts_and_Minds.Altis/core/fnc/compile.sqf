@@ -238,12 +238,15 @@ if (!isDedicated) then {
     //COMMON
     btc_fnc_end_mission = compile preprocessFileLineNumbers "core\fnc\common\end_mission.sqf";
     btc_fnc_get_cardinal = compile preprocessFileLineNumbers "core\fnc\common\get_cardinal.sqf";
-    btc_fnc_marker_debug = compile preprocessFileLineNumbers "core\fnc\common\marker_debug.sqf";
-    btc_fnc_systemchat_debug = compile preprocessFileLineNumbers "core\fnc\common\systemchat_debug.sqf";
     btc_fnc_show_hint = compile preprocessFileLineNumbers "core\fnc\common\show_hint.sqf";
     btc_fnc_intro = compile preprocessFileLineNumbers "core\fnc\common\intro.sqf";
     btc_fnc_set_markerTextLocal = compile preprocessFileLineNumbers "core\fnc\common\set_markerTextLocal.sqf";
     btc_fnc_showSubtitle = compile preprocessFileLineNumbers "core\fnc\common\showSubtitle.sqf";
+
+    //DEBUG
+    btc_fnc_debug_marker = compile preprocessFileLineNumbers "core\fnc\debug\marker.sqf";
+    btc_fnc_debug_systemchat = compile preprocessFileLineNumbers "core\fnc\debug\systemchat.sqf";
+    btc_fnc_debug_message = compile preprocessFileLineNumbers "core\fnc\debug\message.sqf";
 
     //CIV
     btc_fnc_civ_add_leaflets = compile preprocessFileLineNumbers "core\fnc\civ\add_leaflets.sqf";
