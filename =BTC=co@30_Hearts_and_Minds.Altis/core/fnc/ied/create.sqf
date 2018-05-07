@@ -1,6 +1,8 @@
 params ["_pos", "_type", "_dir", "_active"];
 
-if (btc_debug_log) then {diag_log format ["CREATE IED %1", _this];};
+if (btc_debug_log) then {
+    [format ["%1", _this], __FILE__, [false]] call btc_fnc_debug_message;
+};
 
 private _wreck = createSimpleObject [_type, _pos];
 _wreck setPosATL [_pos select 0, _pos select 1, 0];

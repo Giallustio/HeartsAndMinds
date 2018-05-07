@@ -40,7 +40,6 @@ if ((_bbr isEqualTo []) OR (_ropes_check isEqualTo [])) then {
     private _bbr_z = 0;
     if (!alive _cargo) then {
         _support = [_cargo, _chopper] call btc_fnc_log_lift_hook_fake;
-        diag_log str([_support, _cargo]);
         _bbr_z = _support distance _cargo;
         sleep 0.3;
     };

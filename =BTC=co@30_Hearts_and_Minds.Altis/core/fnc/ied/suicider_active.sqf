@@ -30,7 +30,9 @@ _expl3 attachTo [_suicider, [0.1, 0.1, 0.15], "Pelvis"];
 (group _suicider) setBehaviour "CARELESS";
 (group _suicider) setSpeedMode "FULL";
 
-if (btc_debug_log) then {diag_log format ["btc_fnc_ied_suicider_active: _this = %1; POS %2 START LOOP", _suicider, getPos _suicider];};
+if (btc_debug_log) then {
+    [format ["_this = %1; POS %2 START LOOP", _suicider, getPos _suicider], __FILE__, [false]] call btc_fnc_debug_message;
+};
 
 [{
     params ["_args", "_id"];
@@ -45,6 +47,8 @@ if (btc_debug_log) then {diag_log format ["btc_fnc_ied_suicider_active: _this = 
         [_id] call CBA_fnc_removePerFrameHandler;
         deleteVehicle _trigger;
         group _suicider setVariable ["suicider", false];
-        if (btc_debug_log) then {diag_log format ["btc_fnc_ied_suicider_active: _suicider = %1; POS %2 END LOOP", _suicider, getPos _suicider];};
+        if (btc_debug_log) then {
+            [format ["_suicider = %1; POS %2 END LOOP", _suicider, getPos _suicider], __FILE__, [false]] call btc_fnc_debug_message;
+        };
     };
 } , 0.5, [_suicider, _trigger]] call CBA_fnc_addPerFrameHandler;

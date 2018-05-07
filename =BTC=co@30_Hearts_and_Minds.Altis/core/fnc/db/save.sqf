@@ -38,7 +38,9 @@ private _cities_status = [];
     _city_status pushBack (_x getVariable ["has_suicider", false]);
 
     _cities_status pushBack _city_status;
-    if (btc_debug_log) then {diag_log format ["SAVE: %1 - %2", _x getVariable "id", _x getVariable "occupied"];};
+    if (btc_debug_log) then {
+        [format ["%1 - %2", _x getVariable "id", _x getVariable "occupied"], __FILE__, [false]] call btc_fnc_debug_message;
+    };
 } forEach btc_city_all;
 profileNamespace setVariable [format ["btc_hm_%1_cities", _name], _cities_status];
 
@@ -60,7 +62,9 @@ private _array_ho = [];
         _ho_markers pushBack _marker;
     } forEach (_x getVariable ["markers", []]);
     _data pushBack _ho_markers;
-    if (btc_debug_log) then {diag_log format ["HO %1 DATA %2", _x, _data];};
+    if (btc_debug_log) then {
+        [format ["HO %1 DATA %2", _x, _data], __FILE__, [false]] call btc_fnc_debug_message;
+    };
     _array_ho pushBack _data;
 } forEach btc_hideouts;
 profileNamespace setVariable [format ["btc_hm_%1_ho", _name], _array_ho];
@@ -112,7 +116,9 @@ private _array_veh = [];
     _data pushBack _cont;
     _data pushBack ([_x] call BIS_fnc_getVehicleCustomization);
     _array_veh pushBack _data;
-    if (btc_debug_log) then {diag_log format ["VEH %1 DATA %2", _x, _data]};
+    if (btc_debug_log) then {
+        [format ["VEH %1 DATA %2", _x, _data], __FILE__, [false]] call btc_fnc_debug_message;
+    };
 } forEach (btc_vehicles - [objNull]);
 profileNamespace setVariable [format ["btc_hm_%1_vehs", _name], _array_veh];
 

@@ -9,7 +9,7 @@ private _players = [switchableUnits, playableUnits] select isMultiplayer;
 //Remove if too far from player
 if ({_x distance _active_city < _area/2 || _x distance leader _group < _area/2} count _players isEqualTo 0) exitWith {
     if (btc_debug_log) then    {
-        diag_log format ["TRAFFIC REMOVE ID: %1 (%3) POS: %2", _group getVariable "btc_traffic_id", getpos leader _group, typeOf vehicle leader _group];
+        [format ["TRAFFIC REMOVE ID: %1 (%3) POS: %2", _group getVariable "btc_traffic_id", getpos leader _group, typeOf vehicle leader _group], __FILE__, [false]] call btc_fnc_debug_message;
     };
     vehicle leader _group setFuel 0;
 };
@@ -82,6 +82,10 @@ if (btc_debug) then {
         _marker setMarkerText format ["P %1", _group getVariable "btc_traffic_id"];
         _marker setMarkerColor "ColorWhite";
         _marker setMarkerSize [0.5, 0.5];
-        diag_log text format ["TRAFFIC ID: %1 (%3) POS: %2", _group getVariable "btc_traffic_id", _pos, typeOf vehicle leader _group];
+    };
+};
+if (btc_debug_log) then {
+    if (!isNil {_group getVariable "btc_traffic_id"}) then {
+        [format ["ID: %1 (%3) POS: %2", _group getVariable "btc_traffic_id", _pos, typeOf vehicle leader _group], __FILE__, [false]] call btc_fnc_debug_message;
     };
 };

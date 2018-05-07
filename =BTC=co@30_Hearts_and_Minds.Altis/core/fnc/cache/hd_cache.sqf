@@ -32,7 +32,7 @@ if (isNil {_cache getVariable "btc_hd_cache"} && {_explosive} && {_damage > 0.6}
     _marker setMarkerColor "ColorRed";
 
     if (btc_debug_log) then    {
-        diag_log format ["CACHE DESTROYED: ID %1 POS %2", btc_cache_n, btc_cache_pos];
+        [format ["CACHE DESTROYED: ID %1 POS %2", btc_cache_n, btc_cache_pos], __FILE__, [false]] call btc_fnc_debug_message;
     };
 
     btc_rep_bonus_cache spawn btc_fnc_rep_change;

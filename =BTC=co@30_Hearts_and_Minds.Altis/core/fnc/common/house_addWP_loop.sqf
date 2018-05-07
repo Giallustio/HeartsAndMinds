@@ -4,7 +4,7 @@ private _allpositions = _house buildingPos -1;
 private _copyallpositions = +_allpositions;
 
 if (btc_debug_log) then {
-    diag_log format ["setWaypoint : count all pos %1 in %2 ", count _allpositions, _house];
+	[format ["count all pos %1 in %2 ", count _allpositions, _house], __FILE__, [false]] call btc_fnc_debug_message;
 };
 {
     private _index = _copyallpositions find selectRandom _copyallpositions;

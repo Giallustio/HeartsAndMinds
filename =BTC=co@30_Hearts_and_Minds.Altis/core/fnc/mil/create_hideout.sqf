@@ -59,7 +59,7 @@ if (btc_debug) then {
 };
 
 if (btc_debug_log) then {
-    diag_log format ["btc_fnc_mil_create_hideout: _this = %1 ; POS %2 ID %3", _this, _pos, btc_hideouts_id];
+    [format ["_this = %1 ; POS %2 ID %3", _this, _pos, btc_hideouts_id], __FILE__, [false]] call btc_fnc_debug_message;
 };
 
 btc_hideouts_id = btc_hideouts_id + 1;

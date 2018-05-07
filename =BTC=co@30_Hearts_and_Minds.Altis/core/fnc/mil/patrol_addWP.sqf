@@ -87,6 +87,10 @@ if (btc_debug) then {
         _marker setMarkerText format ["P %1", _group getVariable "btc_patrol_id"];
         _marker setMarkerColor "ColorRed";
         _marker setMarkerSize [0.5, 0.5];
-        diag_log text format ["ID: %1 (%3) POS: %2", _group getVariable "btc_patrol_id", _pos, typeOf vehicle leader _group];
+    };
+};
+if (btc_debug_log) then {
+    if (!isNil {_group getVariable "btc_patrol_id"}) then {
+        [format ["ID: %1 (%3) POS: %2", _group getVariable "btc_patrol_id", _pos, typeOf vehicle leader _group], __FILE__, [false]] call btc_fnc_debug_message;
     };
 };

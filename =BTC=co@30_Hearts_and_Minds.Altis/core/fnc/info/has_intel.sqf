@@ -1,6 +1,8 @@
 params ["_body", "_asker"];
 
-if (btc_debug_log) then {diag_log format ["getVariable intel has_intel: %1", _body getVariable "intel"];};
+if (btc_debug_log) then {
+    [format ["%1", _body getVariable "intel"], __FILE__, [false]] call btc_fnc_debug_message;
+};
 
 if (_body getVariable ["intel", false] && !(_body getVariable ["btc_already_interrogated", false])) then {
     _body setVariable ["intel", false];
