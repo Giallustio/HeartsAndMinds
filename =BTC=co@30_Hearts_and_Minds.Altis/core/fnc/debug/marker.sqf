@@ -1,28 +1,15 @@
 params ["_display"];
 
-private _has_headless = !((entities "HeadlessClient_F") isEqualTo []);
+private _units = btc_units_owners apply {_x select 0};
+private _owners = btc_units_owners apply {_x select 1};
 
-private _units = "";
-private _owners = "";
-if (_has_headless) then {
-    _units = btc_units_owners apply {_x select 0};
-    _owners = btc_units_owners apply {_x select 1};
-} else {
-    _units = allUnits select {alive _x};
-    _units append entities "Car";
-    _units append entities "Tank";
-    _units append entities "Ship";
-    _units append entities "Air";
-};
 
 {
     private _typeof = typeOf _x;
 
     private _alpha = 1;
-    if (_has_headless) then {
-        if !((_owners select _forEachindex) isEqualTo 2) then {
-            _alpha = 0.3;
-        };
+    if !((_owners select _forEachindex) isEqualTo 2) then {
+        _alpha = 0.3;
     };
 
     private _color = [];

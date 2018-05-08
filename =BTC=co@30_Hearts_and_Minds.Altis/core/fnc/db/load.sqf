@@ -160,7 +160,7 @@ private _vehs = profileNamespace getVariable [format ["btc_hm_%1_vehs", _name], 
         _x params ["_veh_type", "_veh_pos", "_veh_dir", "_veh_fuel", "_veh_AllHitPointsDamage", "_veh_cargo", "_veh_cont", "_customization"];
 
         if (btc_debug_log) then {
-            [format ["btc_fnc_db_load: _veh = %1;", _x], __FILE__, [false]] call btc_fnc_debug_message;
+            [format ["_veh = %1;", _x], __FILE__, [false]] call btc_fnc_debug_message;
         };
 
         private _veh = [_veh_type, _veh_pos, _veh_dir, _customization] call btc_fnc_log_createVehicle;

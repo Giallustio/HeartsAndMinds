@@ -30,7 +30,7 @@ private _data_units = [];
         _data_units set [count _data_units, _data_group];
 
         if (btc_debug_log) then {
-            [format ["data_units = %1", _data_units], __FILE__, [false]] call btc_fnc_debug_message;
+            [format ["data units = %1", _data_units], __FILE__, [false]] call btc_fnc_debug_message;
         };
     };
 } forEach allGroups;

@@ -26,7 +26,7 @@ if (isServer) then {
     btc_fnc_set_groupsowner = compile preprocessFileLineNumbers "core\fnc\common\set_groupsowner.sqf";
 
     //DEBUG
-    btc_fnc_debug_get_owners = compile preprocessFileLineNumbers "core\fnc\debug\get_owners.sqf";
+    btc_fnc_debug_getUnits = compile preprocessFileLineNumbers "core\fnc\debug\getUnits.sqf";
     btc_fnc_debug_getFrames = compile preprocessFileLineNumbers "core\fnc\debug\getframes.sqf";
 
     //CITY
@@ -168,6 +168,9 @@ btc_fnc_randomize_pos = compile preprocessFileLineNumbers "core\fnc\common\rando
 btc_fnc_getHouses = compile preprocessFileLineNumbers "core\fnc\common\getHouses.sqf";
 btc_fnc_house_addWP_loop = compile preprocessFileLineNumbers "core\fnc\common\house_addWP_loop.sqf";
 
+//DEBUG
+btc_fnc_debug_message = compile preprocessFileLineNumbers "core\fnc\debug\message.sqf";
+
 //DB
 btc_fnc_db_add_veh = compile preprocessFileLineNumbers "core\fnc\db\add_veh.sqf";
 
@@ -249,7 +252,6 @@ if (!isDedicated) then {
     //DEBUG
     btc_fnc_debug_marker = compile preprocessFileLineNumbers "core\fnc\debug\marker.sqf";
     btc_fnc_debug_units = compile preprocessFileLineNumbers "core\fnc\debug\units.sqf";
-    btc_fnc_debug_message = compile preprocessFileLineNumbers "core\fnc\debug\message.sqf";
     btc_fnc_debug_fps = compile preprocessFileLineNumbers "core\fnc\debug\fps.sqf";
     btc_fnc_debug_graph = compile preprocessFileLineNumbers "core\fnc\debug\graph.sqf";
 

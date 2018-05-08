@@ -6,7 +6,7 @@
 params ["_group"];
 
 if (btc_debug_log) then {
-    [format ["ADD GROUP = %1", _group], __FILE__, [false]] call btc_fnc_debug_message;
+    [format ["%1", _group], __FILE__, [false]] call btc_fnc_debug_message;
 };
 _group setVariable ["no_cache", Nil];
 while {!((waypoints _group) isEqualTo [])} do {deleteWaypoint ((waypoints _group) select 0);};
