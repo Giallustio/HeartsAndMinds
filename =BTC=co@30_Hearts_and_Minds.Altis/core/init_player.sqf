@@ -48,4 +48,5 @@ if (btc_debug) then {
 
     btc_marker_debug_cond = true;
     [_eh] spawn btc_fnc_debug_systemchat;
+    73001 cutRsc ["TER_fpscounter", "PLAIN"];
 };

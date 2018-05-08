@@ -247,6 +247,7 @@ if (!isDedicated) then {
     btc_fnc_debug_marker = compile preprocessFileLineNumbers "core\fnc\debug\marker.sqf";
     btc_fnc_debug_systemchat = compile preprocessFileLineNumbers "core\fnc\debug\systemchat.sqf";
     btc_fnc_debug_message = compile preprocessFileLineNumbers "core\fnc\debug\message.sqf";
+    btc_fnc_debug_fps = compile preprocessFileLineNumbers "core\fnc\debug\fps.sqf";
 
     //CIV
     btc_fnc_civ_add_leaflets = compile preprocessFileLineNumbers "core\fnc\civ\add_leaflets.sqf";
