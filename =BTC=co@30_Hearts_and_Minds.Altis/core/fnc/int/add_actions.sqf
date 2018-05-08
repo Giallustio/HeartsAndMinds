@@ -90,6 +90,13 @@ _action = ["side_mission_abort", localize "STR_BTC_HAM_ACTION_SIDEMISSION_ABORT"
 _action = ["side_mission_request", localize "STR_BTC_HAM_ACTION_SIDEMISSION_REQ", "\A3\ui_f\data\igui\cfg\simpleTasks\types\default_ca.paa", {[] spawn btc_fnc_side_request}, {player getVariable ["side_mission", false] && {!btc_side_assigned}}] call ace_interact_menu_fnc_createAction;
 [player, 1, ["ACE_SelfActions", "side_mission"], _action] call ace_interact_menu_fnc_addActionToObject;
 
+if (btc_debug) then {
+    _action = ["Debug_graph", "Disable debug graph", "", {btc_debug_graph = !btc_debug_graph}, {btc_debug_graph}] call ace_interact_menu_fnc_createAction;
+    [player, 1, ["ACE_SelfActions"], _action] call ace_interact_menu_fnc_addActionToObject;
+    _action = ["Debug_graph", "Enable debug graph", "", {btc_debug_graph = true; 73001 cutRsc ["TER_fpscounter", "PLAIN"];}, {!btc_debug_graph}] call ace_interact_menu_fnc_createAction;
+    [player, 1, ["ACE_SelfActions"], _action] call ace_interact_menu_fnc_addActionToObject;
+};
+
 //Re-deploy
 _action = ["fob_redeploy", localize "STR_BTC_HAM_ACTION_REDEPLOY_MAIN", "\A3\ui_f\data\igui\cfg\simpleTasks\types\run_ca.paa", {[] spawn btc_fnc_fob_redeploy}, {btc_p_redeploy}, {}, [], [0.4, 0, 0.4], 5] call ace_interact_menu_fnc_createAction;
 [btc_gear_object, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToObject;

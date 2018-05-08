@@ -196,9 +196,9 @@ if (_number_patrol_active < btc_patrol_max) then {
     };
 
     if (btc_debug_log) then {
-        [format ["btc_fnc_city_activate: (patrol) _n = %1 _av %2 _d %3 _r %4", _n, _av, _d, _r], __FILE__, [false]] call btc_fnc_debug_message;
+        [format ["(patrol) _n = %1 _av %2 _d %3 _r %4", _n, _av, _d, _r], __FILE__, [false]] call btc_fnc_debug_message;
     };
-
+};
 //Traffic
 btc_civ_veh_active = btc_civ_veh_active - [grpNull];
 private _number_civ_veh_active = count btc_civ_veh_active;
@@ -214,5 +214,6 @@ if (_number_civ_veh_active < btc_civ_max_veh) then {
     };
 
     if (btc_debug_log) then {
-        [format ["btc_fnc_city_activate: (traffic) _n = %1 _av %2 _d %3 _r %4", _n, _av, _d, _r], __FILE__, [false]] call btc_fnc_debug_message;
+        [format ["(traffic) _n = %1 _av %2 _d %3 _r %4", _n, _av, _d, _r], __FILE__, [false]] call btc_fnc_debug_message;
+    };
 };

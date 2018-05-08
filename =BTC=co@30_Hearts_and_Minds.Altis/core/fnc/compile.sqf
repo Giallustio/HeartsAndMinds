@@ -17,7 +17,6 @@ if (isServer) then {
     btc_fnc_road_direction = compile preprocessFileLineNumbers "core\fnc\common\road_direction.sqf";
     btc_fnc_findsafepos = compile preprocessFileLineNumbers "core\fnc\common\findsafepos.sqf";
     btc_fnc_deleteTestObj = compile preprocessFileLineNumbers "core\fnc\common\deleteTestObj.sqf";
-    btc_fnc_get_owners = compile preprocessFileLineNumbers "core\fnc\common\get_owners.sqf";
     btc_fnc_set_groupowner = compile preprocessFileLineNumbers "core\fnc\common\set_groupowner.sqf";
     btc_fnc_find_closecity = compile preprocessFileLineNumbers "core\fnc\common\find_closecity.sqf";
     btc_fnc_deletegroup = compile preprocessFileLineNumbers "core\fnc\common\deletegroup.sqf";
@@ -25,6 +24,10 @@ if (isServer) then {
     btc_fnc_final_phase = compile preprocessFileLineNumbers "core\fnc\common\final_phase.sqf";
     btc_fnc_findPosOutsideRock = compile preprocessFileLineNumbers "core\fnc\common\findposoutsiderock.sqf";
     btc_fnc_set_groupsowner = compile preprocessFileLineNumbers "core\fnc\common\set_groupsowner.sqf";
+
+    //DEBUG
+    btc_fnc_debug_get_owners = compile preprocessFileLineNumbers "core\fnc\debug\get_owners.sqf";
+    btc_fnc_debug_getFrames = compile preprocessFileLineNumbers "core\fnc\debug\getframes.sqf";
 
     //CITY
     btc_fnc_city_activate = compile preprocessFileLineNumbers "core\fnc\city\activate.sqf";
@@ -245,9 +248,10 @@ if (!isDedicated) then {
 
     //DEBUG
     btc_fnc_debug_marker = compile preprocessFileLineNumbers "core\fnc\debug\marker.sqf";
-    btc_fnc_debug_systemchat = compile preprocessFileLineNumbers "core\fnc\debug\systemchat.sqf";
+    btc_fnc_debug_units = compile preprocessFileLineNumbers "core\fnc\debug\units.sqf";
     btc_fnc_debug_message = compile preprocessFileLineNumbers "core\fnc\debug\message.sqf";
     btc_fnc_debug_fps = compile preprocessFileLineNumbers "core\fnc\debug\fps.sqf";
+    btc_fnc_debug_graph = compile preprocessFileLineNumbers "core\fnc\debug\graph.sqf";
 
     //CIV
     btc_fnc_civ_add_leaflets = compile preprocessFileLineNumbers "core\fnc\civ\add_leaflets.sqf";
