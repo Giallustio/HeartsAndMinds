@@ -8,7 +8,7 @@ if (isNull _display || !btc_debug_graph) exitWith {
 
 remoteExecCall ["btc_fnc_debug_getFrames", 2];
 private _frames = btc_debug_frames;
-_TXTfps ctrlSetText format ["FPS: %1", _frames];
+_TXTfps ctrlSetText format ["SERVER FPS: %1", _frames];
 
 private _newBar = _display ctrlCreate ["RscVProgress", -1, _GRPframes];
 {

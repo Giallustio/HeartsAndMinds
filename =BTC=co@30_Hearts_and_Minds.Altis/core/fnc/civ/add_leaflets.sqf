@@ -13,6 +13,6 @@ if ((_uav getVariable ["btc_leaflets_eh_added" , -1]) isEqualTo -1) then {
     _uav setVariable ["btc_leaflets_eh_added", _id_f];
 
     if (btc_debug) then {
-    	[format ["Add leaflets EventHandler ID: %1", _id_f], __FILE__, [btc_debug, false]] call btc_fnc_debug_message;
+        [format ["Add leaflets EventHandler ID: %1", _id_f], __FILE__, [btc_debug, false]] call btc_fnc_debug_message;
     };
 };

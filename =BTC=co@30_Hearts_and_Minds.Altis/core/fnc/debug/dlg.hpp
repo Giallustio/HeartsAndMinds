@@ -24,11 +24,11 @@ class TER_fpscounter
         class TXT_fps: RscText
         {
             idc = 1000;
-            text = "FPS: 60";
+            text = "FPS SERVER: 60";
             colorText[] = {1,0.64,0,1};
             x = 0.5525 * safezoneW + safezoneX;
             y = 0.71 * safezoneH + safezoneY;
-            w = 0.0590625 * safezoneW;
+            w = 0.08 * safezoneW;
             h = 0.028 * safezoneH;
         };
         class RscText_1001: RscText
@@ -44,7 +44,7 @@ class TER_fpscounter
         {
             idc = 1002;
             text = "UNITS:0 NOT-ON-SERVER:0 | GROUPS:0 | Patrol:0 Traffic:0";
-            x = (0.5525 + 0.04)  * safezoneW + safezoneX;
+            x = (0.5525 + 0.085)  * safezoneW + safezoneX;
             y = 0.71 * safezoneH + safezoneY;
             w = (0.0590625 + 0.4) * safezoneW;
             h = 0.028 * safezoneH;
