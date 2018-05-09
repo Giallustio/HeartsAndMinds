@@ -25,6 +25,7 @@ if (btc_debug) then    {//_debug
     _marker setMarkerAlpha 0.3;
     //_marker setmarkertype "mil_dot";
     if (_has_en) then {_marker setmarkercolor "colorRed";} else {_marker setmarkercolor "colorGreen";};
+    _city setVariable ["marker", _marker];
     //_marker setmarkeralpha 0.5;
     _marke = createmarker [format ["locn_%1",_id],_position];
     _marke setmarkertype "mil_dot";
