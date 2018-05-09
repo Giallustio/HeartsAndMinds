@@ -57,7 +57,7 @@ for "_i" from 1 to _n do {
     };
 
     if (btc_debug_log) then {
-        [format ["_this = %1 ; POS %2 ; N %3(%4)", _this, _sel_pos, _i, _n], __FILE__, [false]] call btc_fnc_debug_message;
+        [format ["_this = %1  POS %2  N %3(%4)", _this, _sel_pos, _i, _n], __FILE__, [false]] call btc_fnc_debug_message;
     };
 
     _array pushBack [_sel_pos, _type_ied, _dir, _active];

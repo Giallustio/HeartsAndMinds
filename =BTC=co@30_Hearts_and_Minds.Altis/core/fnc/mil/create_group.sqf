@@ -79,7 +79,7 @@ if (_structure isEqualTo objNull) then {
 {_x call btc_fnc_mil_unit_create;} foreach units _group;
 
 if (btc_debug_log) then {
-    [format ["btc_fnc_mil_create_group: _this = %1 ; POS %2 UNITS N %3", _this, _rpos, count units _group], __FILE__, [false]] call btc_fnc_debug_message;
+    [format ["_this = %1 ; POS %2 UNITS N %3", _this, _rpos, count units _group], __FILE__, [false]] call btc_fnc_debug_message;
 };
 
 _groups

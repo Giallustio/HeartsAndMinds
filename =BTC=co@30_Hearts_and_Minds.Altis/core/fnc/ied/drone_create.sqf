@@ -45,7 +45,7 @@ _drone flyInHeight 10;
         deleteVehicle (_trigger deleteAt 0);
         _group setVariable ["btc_ied_drone", false];
         if (btc_debug_log) then {
-            [format ["_driver_drone = %1; POS %2 END LOOP", _driver_drone, getPos _driver_drone], __FILE__, [false]] call btc_fnc_debug_message;
+            [format ["_driver_drone = %1 POS %2 END LOOP", _driver_drone, getPos _driver_drone], __FILE__, [false]] call btc_fnc_debug_message;
         };
     };
 }, 5, [driver _drone, _rpos, _area, []]] call CBA_fnc_addPerFrameHandler;

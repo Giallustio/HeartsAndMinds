@@ -43,7 +43,7 @@ private _cities_status = [];
 
     _cities_status pushBack _city_status;
     if (btc_debug_log) then {
-        [format ["%1 - %2", _x getVariable "id", _x getVariable "occupied"], __FILE__, [false]] call btc_fnc_debug_message;
+        [format ["ID %1 - IsOccupied %2", _x getVariable "id", _x getVariable "occupied"], __FILE__, [false]] call btc_fnc_debug_message;
     };
 } forEach btc_city_all;
 profileNamespace setVariable [format ["btc_hm_%1_cities", _name], _cities_status];

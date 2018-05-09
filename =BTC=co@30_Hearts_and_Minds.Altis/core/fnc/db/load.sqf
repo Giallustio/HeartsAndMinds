@@ -29,9 +29,8 @@ private _cities_status = profileNamespace getVariable [format ["btc_hm_%1_cities
         (_city getVariable ["marker", ""]) setMarkerText format ["loc_%3 %1 %2 - [%4]", _city getVariable "name", _city getVariable "type", _id, _occupied];
     };
     if (btc_debug_log) then {
-        [format ["ID: %1", _id], __FILE__, [false]] call btc_fnc_debug_message;
+        [format ["ID: %1 - IsOccupied %2", _id, _occupied], __FILE__, [false]] call btc_fnc_debug_message;
         [format ["data_city: %1", _x], __FILE__, [false]] call btc_fnc_debug_message;
-        [format ["LOAD: %1 - %2", _id, _occupied], __FILE__, [false]] call btc_fnc_debug_message;
     };
 } forEach _cities_status;
 
@@ -89,7 +88,7 @@ private _array_ho = profileNamespace getVariable [format ["btc_hm_%1_ho", _name]
     };
 
     if (btc_debug_log) then {
-        [format ["_this = %1 ; POS %2 ID %3", _x, _pos, btc_hideouts_id], __FILE__, [false]] call btc_fnc_debug_message;
+        [format ["_this = %1 - POS %2 ID %3", _x, _pos, btc_hideouts_id], __FILE__, [false]] call btc_fnc_debug_message;
     };
 
     btc_hideouts_id = btc_hideouts_id + 1;
@@ -160,7 +159,7 @@ private _vehs = profileNamespace getVariable [format ["btc_hm_%1_vehs", _name], 
         _x params ["_veh_type", "_veh_pos", "_veh_dir", "_veh_fuel", "_veh_AllHitPointsDamage", "_veh_cargo", "_veh_cont", "_customization"];
 
         if (btc_debug_log) then {
-            [format ["_veh = %1;", _x], __FILE__, [false]] call btc_fnc_debug_message;
+            [format ["_veh = %1", _x], __FILE__, [false]] call btc_fnc_debug_message;
         };
 
         private _veh = [_veh_type, _veh_pos, _veh_dir, _customization] call btc_fnc_log_createVehicle;

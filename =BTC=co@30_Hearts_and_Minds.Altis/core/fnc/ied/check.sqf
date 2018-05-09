@@ -1,10 +1,10 @@
 params ["_city", "_ieds"];
 
 if (btc_debug) then {
-    [format ["START IED CHECK CITY ID %1", _city getVariable "id"], __FILE__, [btc_debug, false]] call btc_fnc_debug_message;
+    [format ["START CITY ID %1", _city getVariable "id"], __FILE__, [btc_debug, false]] call btc_fnc_debug_message;
 };
 if (btc_debug_log) then {
-    [format ["START IED CHECK CITY ID %1", _city getVariable "id"], __FILE__, [false]] call btc_fnc_debug_message;
+    [format ["START CITY ID %1", _city getVariable "id"], __FILE__, [false]] call btc_fnc_debug_message;
 };
 
 private _ieds_check = _ieds select {!((_x select 2) isEqualTo objNull)};
@@ -45,10 +45,10 @@ private _ieds_check = _ieds select {!((_x select 2) isEqualTo objNull)};
         _city setVariable ["ieds", _data];
 
         if (btc_debug) then {
-            [format ["END IED CHECK CITY ID %1", _city getVariable "id"], __FILE__, [btc_debug, false]] call btc_fnc_debug_message;
+            [format ["END CITY ID %1", _city getVariable "id"], __FILE__, [btc_debug, false]] call btc_fnc_debug_message;
         };
         if (btc_debug_log) then {
-            [format ["END IED CHECK CITY ID %1", _city getVariable "id"], __FILE__, [false]] call btc_fnc_debug_message;
+            [format ["END CITY ID %1", _city getVariable "id"], __FILE__, [false]] call btc_fnc_debug_message;
         };
     };
 } , 1, [_city, _ieds, _ieds_check]] call CBA_fnc_addPerFrameHandler;
