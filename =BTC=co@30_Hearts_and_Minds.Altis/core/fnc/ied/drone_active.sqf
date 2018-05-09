@@ -1,6 +1,6 @@
 params ["_driver_drone"];
 
-while {!((waypoints group _driver_drone) isEqualTo [])} do {deleteWaypoint ((waypoints group _driver_drone) select 0);};
+[group _driver_drone] call CBA_fnc_clearWaypoints;
 
 private _trigger = createTrigger ["EmptyDetector", getPos _driver_drone];
 _trigger setTriggerArea [10, 10, 0, false, -60];

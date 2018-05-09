@@ -2,17 +2,11 @@ params ["_isReal", "_showHint"];
 
 if (isNull btc_cache_obj) exitWith {};
 
-private _pos = [
-    (btc_cache_pos select 0) + (random btc_cache_info - random btc_cache_info),
-    (btc_cache_pos select 1) + (random btc_cache_info - random btc_cache_info)
-];
+private _pos = [btc_cache_pos, btc_cache_info] call CBA_fnc_randPos;
 
 if !(_isReal) then {
     private _axis = getNumber (configfile >> "CfgWorlds" >> worldName >> "mapSize") / 2;
-    _pos = [
-        _axis + (random (btc_cache_info + _axis)),
-        _axis + (random (btc_cache_info + _axis))
-    ];
+    _pos = [[_axis, _axis, 0], btc_cache_info + _axis] call CBA_fnc_randPos;
 };
 
 private _marker = createMarker [format ["%1", _pos], _pos];

@@ -20,8 +20,6 @@ if (_pos_iswater) then {
 };
 
 private _group = createGroup btc_enemy_side;
-[_group createUnit [_unit_type, _rpos, [], 0, "NONE"]] joinSilent _group;
-(leader _group) setPos _rpos;
 private _groups = [];
 _groups pushBack _group;
 private _structure = objNull;
@@ -37,35 +35,26 @@ switch (true) do {
             } else {
                 _n = floor(_n/2);
             };
-            for "_i" from 0 to _n do {
-                [_group createUnit [selectRandom btc_type_units, _rpos, [], 0, "NONE"]] joinSilent _group;
-                sleep 0.5;
-            };
+            [_group, _rpos, _n] call btc_fnc_mil_createUnits;
         } else {
+            [_group, _rpos, 0] call btc_fnc_mil_createUnits;
             private _houses = [_rpos, 50] call btc_fnc_getHouses;
-            if !(_houses isEqualTo []) then {
-                _structure = selectRandom _houses;
+            if (_houses isEqualTo []) then {
+                [_group, _rpos, _area, 2 + floor (random 4), "MOVE", "SAFE", "RED", ["LIMITED", "NORMAL"] select ((vehicle leader _group) isKindOf "Air"), "STAG COLUMN", "", [5, 10, 20]] call CBA_fnc_taskPatrol;
             } else {
-                [_group, _rpos, _area, "SAFE", _pos_iswater] spawn btc_fnc_task_patrol;
+                _structure = selectRandom _houses;
             };
         };
     };
     case (_wp > 0.3 && _wp < 0.75) : {
-        [_group, _rpos, _area, "AWARE", _pos_iswater] spawn btc_fnc_task_patrol;
+        [_group, _rpos, _area, 2 + floor (random 4), "MOVE", "SAFE", "RED", ["LIMITED", "NORMAL"] select ((vehicle leader _group) isKindOf "Air"), "STAG COLUMN", "", [5, 10, 20]] call CBA_fnc_taskPatrol;
     };
     case (_wp > 0.75) : {
-        private _wpa = _group addWaypoint [_rpos, 0];
-        _wpa setWaypointType "SENTRY";
-        _wpa setWaypointCombatMode "RED";
-        _wpa setWaypointBehaviour "AWARE";
+        [_group, _rpos, 0, "SENTRY", "AWARE", "RED"] call CBA_fnc_addWaypoint;
     };
 };
 if (_structure isEqualTo objNull) then {
-    for "_i" from 0 to _n do {
-        private _unit_type = [selectRandom btc_type_units, selectRandom btc_type_divers] select _pos_iswater;
-        [_group createUnit [_unit_type, _rpos, [], 0, "NONE"]] joinSilent _group;
-        sleep 0.5;
-    };
+    [_group, _rpos, _n, _pos_iswater] call btc_fnc_mil_createUnits;
 } else {
     {
         private _grp = createGroup btc_enemy_side;
@@ -75,8 +64,6 @@ if (_structure isEqualTo objNull) then {
         _groups pushBack _grp;
     } forEach units _group;
 };
-
-{_x call btc_fnc_mil_unit_create;} foreach units _group;
 
 if (btc_debug_log) then {
     [format ["_this = %1 ; POS %2 UNITS N %3", _this, _rpos, count units _group], __FILE__, [false]] call btc_fnc_debug_message;

@@ -25,8 +25,5 @@ _units = _units select {side _x isEqualTo civilian};
     (group _x) setVariable ["getWeapons", true];
 
     (group _x) setBehaviour "AWARE";
-    private _wp = (group _x) addWaypoint [getpos _x, 0];
-    _wp setWaypointType "GUARD";
-    _wp setWaypointCombatMode "RED";
-
+    [group _x, getPos _x, 10, "GUARD", "UNCHANGED", "RED"] call CBA_fnc_addWaypoint;
 } forEach _units;

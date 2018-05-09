@@ -19,7 +19,7 @@ private _cc = [_veh] call btc_fnc_log_get_cc;
 if (_rc > _cc) exitWith {hint format [localize "STR_BTC_HAM_LOG_LOAD_TOOBIG", _obj_name, _veh_name];};
 
 btc_int_ask_data = nil;
-[3, _veh, player] remoteExec ["btc_fnc_int_ask_var", 2];
+[3, _veh] remoteExecCall ["btc_fnc_int_ask_var", 2];
 
 waitUntil {!(isNil "btc_int_ask_data")};
 

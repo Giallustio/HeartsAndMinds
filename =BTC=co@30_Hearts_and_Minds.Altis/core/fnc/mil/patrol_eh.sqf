@@ -9,4 +9,4 @@ if (btc_debug) then {
 
 _veh call btc_fnc_mil_patrol_eh_remove;
 
-[[], [_veh], [], [_veh getVariable ["crews", grpNull]]] call btc_fnc_delete;
+[[], [_veh], [_veh getVariable ["crews", grpNull]]] call btc_fnc_delete;

@@ -8,4 +8,4 @@ if (btc_debug) then {
 };
 
 _veh call btc_fnc_civ_traffic_eh_remove;
-[[], [_veh], [], [_veh getVariable ["driver", grpNull]]] call btc_fnc_delete;
+[[], [_veh], [_veh getVariable ["driver", grpNull]]] call btc_fnc_delete;

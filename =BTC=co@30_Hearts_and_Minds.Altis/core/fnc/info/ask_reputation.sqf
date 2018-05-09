@@ -5,7 +5,7 @@ if !(player getVariable ["interpreter", false]) exitWith {
 };
 
 btc_int_ask_data = nil;
-[2, nil, player] remoteExec ["btc_fnc_int_ask_var", 2];
+[2] remoteExecCall ["btc_fnc_int_ask_var", 2];
 
 waitUntil {!(isNil "btc_int_ask_data")};
 
@@ -14,7 +14,7 @@ private _rep = btc_int_ask_data;
 private _ho_left = "";
 if ((round random 1) isEqualTo 1) then {
     btc_int_ask_data = nil;
-    [8, nil, player] remoteExec ["btc_fnc_int_ask_var", 2];
+    [8] remoteExecCall ["btc_fnc_int_ask_var", 2];
 
     waitUntil {!(isNil "btc_int_ask_data")};
 

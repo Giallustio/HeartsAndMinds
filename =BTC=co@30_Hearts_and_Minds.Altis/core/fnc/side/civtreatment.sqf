@@ -63,8 +63,7 @@ private _unit_type = selectRandom btc_civ_type_units;
 private _group = createGroup civilian;
 _group setVariable ["no_cache", true];
 _group setVariable ["btc_patrol", true];
-private _unit =_group createUnit [_unit_type, _pos, [], 0, "NONE"];
-(leader _group) setPos _pos;
+private _unit =_group createUnit [_unit_type, _pos, [], 0, "CAN_COLLIDE"];
 _unit setBehaviour "CARELESS";
 _unit setDir (random 360);
 _unit setPosATL _pos;
@@ -81,7 +80,7 @@ waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !Alive _unit || {_un
 
 btc_side_assigned = false;
 publicVariable "btc_side_assigned";
-[[_marker], [_veh], [_fx], [_group]] call btc_fnc_delete;
+[[_marker], [_veh, _fx], [_group]] call btc_fnc_delete;
 
 if (btc_side_aborted || btc_side_failed || !Alive _unit) exitWith {
     8 remoteExec ["btc_fnc_task_fail", 0];

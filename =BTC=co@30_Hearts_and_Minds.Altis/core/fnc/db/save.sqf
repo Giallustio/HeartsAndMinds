@@ -1,19 +1,11 @@
-
-call btc_fnc_db_delete;
-
 if (btc_debug) then {
     ["...1", __FILE__, [btc_debug, false, true]] call btc_fnc_debug_message;
 };
+
 [8] remoteExec ["btc_fnc_show_hint", 0];
 
 btc_db_is_saving = true;
 private _name = worldName;
-
-//Version
-profileNamespace setVariable [format ["btc_hm_%1_version", _name], btc_version];
-
-//World Date
-profileNamespace setVariable [format ["btc_hm_%1_date", _name], date];
 
 for "_i" from 0 to (count btc_city_all - 1) do {
     private _s = [_i] spawn btc_fnc_city_de_activate;
@@ -22,6 +14,14 @@ for "_i" from 0 to (count btc_city_all - 1) do {
 if (btc_debug) then {
     ["...2", __FILE__, [btc_debug, false, true]] call btc_fnc_debug_message;
 };
+
+call btc_fnc_db_delete;
+
+//Version
+profileNamespace setVariable [format ["btc_hm_%1_version", _name], btc_version];
+
+//World Date
+profileNamespace setVariable [format ["btc_hm_%1_date", _name], date];
 
 //City status
 private _cities_status = [];

@@ -27,7 +27,7 @@ private _data_units = [];
 {
     if (((leader _x) distance _city) < _radius && {side _x != btc_player_side} && !(_x getVariable ["no_cache", false])) then {
         private _data_group = _x call btc_fnc_data_get_group;
-        _data_units set [count _data_units, _data_group];
+        _data_units pushBack _data_group;
 
         if (btc_debug_log) then {
             [format ["data units = %1", _data_units], __FILE__, [false]] call btc_fnc_debug_message;

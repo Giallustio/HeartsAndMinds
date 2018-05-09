@@ -39,7 +39,7 @@ private _launchsite = createVehicle ["Land_PenBlack_F", _pos, [], 0, "FLY"];
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || btc_side_done)};
 if (btc_side_aborted || btc_side_failed) exitWith {
     16 remoteExec ["btc_fnc_task_fail", 0];
-    [[_marker], [_terminal], [], []] call btc_fnc_delete;
+    [[_marker], [_terminal], []] call btc_fnc_delete;
     btc_side_assigned = false;
     publicVariable "btc_side_assigned";
 };
@@ -63,7 +63,7 @@ if (btc_side_aborted || btc_side_failed) exitWith {
     btc_side_done = nil;
     publicVariable "btc_side_done";
     16 remoteExec ["btc_fnc_task_fail", 0];
-    [[_marker], [_terminal], [], []] call btc_fnc_delete;
+    [[_marker], [_terminal], []] call btc_fnc_delete;
     btc_side_assigned = false;
     publicVariable "btc_side_assigned";
 };
@@ -85,7 +85,7 @@ btc_side_done = nil;
 publicVariable "btc_side_done";
 btc_side_assigned = false;
 publicVariable "btc_side_assigned";
-[[_marker], [_rocket, _terminal], [_fx], []] call btc_fnc_delete;
+[[_marker], [_rocket, _terminal, _fx], []] call btc_fnc_delete;
 if (btc_side_aborted || btc_side_failed || !(_city getVariable ["active", false])) exitWith {
     16 remoteExec ["btc_fnc_task_fail", 0];
 };

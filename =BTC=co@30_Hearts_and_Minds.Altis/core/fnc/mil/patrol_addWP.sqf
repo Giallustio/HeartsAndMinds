@@ -48,34 +48,23 @@ if (_isboat) then {
 };
 
 //Add Waypoints
-while {!((waypoints _group) isEqualTo [])} do {deleteWaypoint ((waypoints _group) select 0);};
+[_group] call CBA_fnc_clearWaypoints;
 
 if ((vehicle leader _group) isKindOf "Air" || (vehicle leader _group) isKindOf "LandVehicle") then {
     (vehicle leader _group) setFuel 1;
 };
 _group setBehaviour "SAFE";
-private _wp = _group addWaypoint [_pos, 0];
-_wp setWaypointType "MOVE";
-_wp setWaypointCompletionRadius 20;
-_wp setWaypointCombatMode "RED";
-_wp setWaypointSpeed "LIMITED";
-_wp setWaypointFormation "STAG COLUMN";
 
 if !((vehicle leader _group) isKindOf "Air") then {
+    [_group, _pos, 0, "MOVE", "UNCHANGED", "RED", "LIMITED", "STAG COLUMN", "", [0, 0, 0], 20] call CBA_fnc_addWaypoint;
     for "_i" from 0 to (2 + (floor (random 3))) do {
-        private _newPos = [(_pos select 0) + (random 150 - random 150), (_pos select 1) + (random 150 - random 150), 0];
+        private _newPos = [_pos, 150] call CBA_fnc_randPos;
 
-        _wp = _group addWaypoint [_newPos, 0];
-        _wp setWaypointType "MOVE";
-        _wp setWaypointCompletionRadius 20;
-        _wp setWaypointCombatMode "RED";
+        [_group, _newPos, 0, "MOVE", "UNCHANGED", "RED", "UNCHANGED", "NO CHANGE", "", [0, 0, 0], 20] call CBA_fnc_addWaypoint;
     };
-    private _wp_1 = _group addWaypoint [_pos, 0];
-    _wp_1 setWaypointType "MOVE";
-    _wp_1 setWaypointCompletionRadius 20;
-    _wp_1 setWaypointStatements ["true", format ["_spawn = [group this, %1, %2] spawn btc_fnc_mil_patrol_addWP;", _area, _isboat]];
+    [_group, _pos, 0, "MOVE", "UNCHANGED", "NO CHANGE", "UNCHANGED", "NO CHANGE", format ["_spawn = [group this, %1, %2] spawn btc_fnc_mil_patrol_addWP;", _area, _isboat], [0, 0, 0], 20] call CBA_fnc_addWaypoint;
 } else {
-    _wp setWaypointStatements ["true", format ["_spawn = [group this, %1, %2] spawn btc_fnc_mil_patrol_addWP;", _area, _isboat]];
+    [_group, _pos, 0, "MOVE", "UNCHANGED", "RED", "LIMITED", "STAG COLUMN", format ["_spawn = [group this, %1, %2] spawn btc_fnc_mil_patrol_addWP;", _area, _isboat], [0, 0, 0], 20] call CBA_fnc_addWaypoint;
 };
 
 if (btc_debug) then {

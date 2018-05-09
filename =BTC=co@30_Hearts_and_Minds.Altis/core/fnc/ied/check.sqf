@@ -51,4 +51,4 @@ private _ieds_check = _ieds select {!((_x select 2) isEqualTo objNull)};
             [format ["END CITY ID %1", _city getVariable "id"], __FILE__, [false]] call btc_fnc_debug_message;
         };
     };
-} , 1, [_city, _ieds, _ieds_check]] call CBA_fnc_addPerFrameHandler;
+}, 1, [_city, _ieds, _ieds_check]] call CBA_fnc_addPerFrameHandler;

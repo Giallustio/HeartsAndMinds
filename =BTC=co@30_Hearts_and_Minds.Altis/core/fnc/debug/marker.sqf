@@ -3,7 +3,6 @@ params ["_display"];
 private _units = btc_units_owners apply {_x select 0};
 private _owners = btc_units_owners apply {_x select 1};
 
-
 {
     private _typeof = typeOf _x;
 

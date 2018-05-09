@@ -1,7 +1,7 @@
 params ["_tower"];
 
 btc_int_ask_data = nil;
-[4, _tower, player] remoteExec ["btc_fnc_int_ask_var", 2];
+[4, _tower] remoteExecCall ["btc_fnc_int_ask_var", 2];
 
 waitUntil {!(isNil "btc_int_ask_data")};
 

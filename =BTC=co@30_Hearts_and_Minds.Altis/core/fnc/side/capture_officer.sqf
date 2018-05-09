@@ -57,41 +57,21 @@ _group setVariable ["no_cache", true];
 
 private _vehs = [];
 private _veh_types = btc_civ_type_veh select {!(_x isKindOf "air")};
-private _random = 1 + round random 1;
-private _random_veh = round random _random;
-private _captive = objNull;
-for "_i" from 0 to _random do {
-    private _veh_type = selectRandom _veh_types;
-    private _crewmen = btc_type_crewmen;
-    private _veh = createVehicle [_veh_type, _pos1, [], 0, "FLY"];
+for "_i" from 0 to (1 + round random 1) do {
+    private _veh = [_group, _pos1, selectRandom _veh_types] call btc_fnc_mil_createVehicle;
+
     _veh setDir ([_road] call btc_fnc_road_direction);
     _vehs pushBack _veh;
 
-    [_veh, _group, false, "", _crewmen] call BIS_fnc_spawnCrew;
-    if (_i isEqualTo _random_veh) then {
-        _captive = _group createUnit [selectRandom btc_type_units, _pos1, [], 0, "CARGO"];
-        removeAllWeapons _captive;
-        _group selectLeader _captive;
-    };
-    _cargo = (_veh emptyPositions "cargo") - 1;
-    for "_i" from 0 to _cargo do {
-        _group createUnit [selectRandom btc_type_units, _pos1, [], 0, "CARGO"];
-    };
     _road = (roadsConnectedTo _road) select 0;
     _pos1 = getPos _road;
 };
 
-units _group joinSilent _group;
-{_x call btc_fnc_mil_unit_create} forEach units _group;
+private _captive = selectRandom units _group;
+removeAllWeapons _captive;
+_group selectLeader _captive;
 
-_group setBehaviour "SAFE";
-_wp = _group addWaypoint [_pos2, 0];
-_wp setWaypointType "MOVE";
-_wp setWaypointCompletionRadius _radius_x/1.5;
-_wp setWaypointCombatMode "RED";
-_wp setWaypointSpeed "LIMITED";
-_wp setWaypointFormation "COLUMN";
-_wp setWaypointStatements ["true", "btc_side_failed = true"];
+[_group, _pos2, 0, "MOVE", "SAFE", "RED", "LIMITED", "COLUMN", "btc_side_failed = true", [0, 0, 0], _radius_x/1.5] call CBA_fnc_addWaypoint;
 
 //// Create trigger \\\\
 _trigger = createTrigger ["EmptyDetector", getPos _city1];
@@ -109,7 +89,7 @@ btc_side_assigned = false;
 publicVariable "btc_side_assigned";
 if (btc_side_aborted || !(Alive _captive)) exitWith {
     14 remoteExec ["btc_fnc_task_fail", 0];
-    [_markers, _vehs + [_trigger], [], [_group]] call btc_fnc_delete;
+    [_markers, _vehs + [_trigger], [_group]] call btc_fnc_delete;
 };
 
 if (btc_side_failed) exitWith {
@@ -120,11 +100,11 @@ if (btc_side_failed) exitWith {
         (crew _x) joinSilent _group;
         _group call btc_fnc_data_add_group;
     } forEach _vehs;
-    [_markers, [_trigger], [], []] call btc_fnc_delete;
+    [_markers, [_trigger], []] call btc_fnc_delete;
 };
 
 50 call btc_fnc_rep_change;
 
 14 remoteExec ["btc_fnc_task_set_done", 0];
 
-[_markers, _vehs + [_trigger, _captive], [], [_group]] call btc_fnc_delete;
+[_markers, _vehs + [_trigger, _captive], [_group]] call btc_fnc_delete;

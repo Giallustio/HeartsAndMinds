@@ -27,7 +27,7 @@ if ((round random 3) >= 2 || !_isInterrogate) then {
 //NO < 200 . FAKE < 600 . REAL > 600
 
 btc_int_ask_data = nil;
-[2, nil, player] remoteExec ["btc_fnc_int_ask_var", 2];
+[2] remoteExecCall ["btc_fnc_int_ask_var", 2];
 
 waitUntil {!(isNil "btc_int_ask_data")};
 
@@ -47,7 +47,7 @@ if (_info_type isEqualTo "NO") exitWith {
 };
 
 btc_int_ask_data = nil;
-[8, nil, player] remoteExec ["btc_fnc_int_ask_var", 2];
+[8] remoteExecCall ["btc_fnc_int_ask_var", 2];
 
 waitUntil {!(isNil "btc_int_ask_data")};
 

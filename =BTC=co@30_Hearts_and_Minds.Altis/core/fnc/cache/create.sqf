@@ -17,7 +17,7 @@ for "_i" from 1 to (1 + round random 3) do {
 
     private _pos_type = selectRandom _pos_type_array;
     _pos_type_array = _pos_type_array - [_pos_type];
-    [btc_cache_obj, _holder, _pos_type] call btc_fnc_create_attachto;
+    [btc_cache_obj, _holder, _pos_type] call btc_fnc_cache_create_attachto;
 };
 
 if (btc_debug_log) then {

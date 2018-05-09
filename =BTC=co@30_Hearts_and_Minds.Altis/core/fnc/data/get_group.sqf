@@ -22,12 +22,12 @@ private _index_wp       = 0;
 
     _array_type pushBack typeOf _x;
     _array_dam pushBack getDammage _x;
-} foreach _units;
+} forEach _units;
 
 _index_wp = (currentWaypoint _group) + 1;
 {
     _array_wp append [[waypointPosition _x, waypointType _x, waypointSpeed _x, waypointFormation _x, waypointCombatMode _x, waypointBehaviour _x]];
-} foreach waypoints _group;
+} forEach waypoints _group;
 
 
 if (_group getVariable ["stop", false]) then {_type_db = 2;};
@@ -50,12 +50,7 @@ if (_type_db isEqualTo 1) then {
     private _fuel = fuel _veh;
     _array_veh = [_type, _pos, _dir, _fuel];
 };
-_data = [_type_db, _array_pos, _array_type, _side, _array_dam, _behaviour, [_index_wp, _array_wp], _array_veh];
 
-if ((_type_db isEqualTo 1) || (_type_db isEqualTo 7)) then {
-    deletevehicle vehicle leader _group;
-};
-{deletevehicle _x} foreach _units;
-deleteGroup _group;
+[vehicle leader _group, _group] call CBA_fnc_deleteEntity;
 
-_data
+[_type_db, _array_pos, _array_type, _side, _array_dam, _behaviour, [_index_wp, _array_wp], _array_veh]

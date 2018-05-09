@@ -42,8 +42,8 @@ disableSerialization;
         ["_from", "", [""]],
         ["_text", "", [""]],
         ["_lineBreak", false , [false]],
-        ["_colorFrom", "#d4cd00" , [""]], //default color: gold
-        ["_colorText", "#FFFFFF" , [""]], //default color: white
+        ["_colorFrom", "#d4cd00", [""]], //default color: gold
+        ["_colorText", "#FFFFFF", [""]], //default color: white
         ["_fontText", "RobotoCondensedBold", [""]]
     ];
 
@@ -53,7 +53,7 @@ disableSerialization;
 
     _ctrl ctrlSetBackgroundColor (["Subtitles","Background"] call bis_fnc_displayColorGet);
     //_ctrl ctrlSetBackgroundColor [0, 0, 0, 0.5]; //optional? - for better readability
-    _ctrl ctrlSetTextColor (["Subtitles","Text"] call bis_fnc_displayColorGet);
+    _ctrl ctrlSetTextColor (["Subtitles", "Text"] call bis_fnc_displayColorGet);
     _ctrl ctrlSetPosition [POS_X, POS_Y, POS_W, POS_H];
     _ctrl ctrlCommit 0;
 

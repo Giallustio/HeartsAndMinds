@@ -42,7 +42,7 @@ if (_type isEqualTo 1) then {
             _x assignAsCargo _veh;
             _assigned = true;
         };
-    } foreach units _group;
+    } forEach units _group;
 };
 
 units _group joinSilent _group;
@@ -52,24 +52,18 @@ units _group joinSilent _group;
 if !(_side isEqualTo civilian && {vehicle leader _group isEqualTo leader _group}) then {
     if (count (_array_wp select 1) > 1) then {
         {
-            private _wp = _group addWaypoint [_x select 0, 0];
-            _wp setWaypointCompletionRadius 20;
-            _wp setWaypointType (_x select 1);
-            _wp setWaypointSpeed (_x select 2);
-            _wp setWaypointFormation (_x select 3);
-            _wp setWaypointCombatMode (_x select 4);
-            _wp setWaypointBehaviour (_x select 5);
-        } foreach (_array_wp select 1);
+            [_group, _x select 0, 0, _x select 1, _x select 5, _x select 4, _x select 2, _x select 3, "", [0, 0, 0], 20] call CBA_fnc_addWaypoint;
+        } forEach (_array_wp select 1);
         _group setCurrentWaypoint [_group, _array_wp select 0];
     };
 };
 if (_type isEqualTo 2) then {
-    while {!((waypoints _group) isEqualTo [])} do {deleteWaypoint ((waypoints _group) select 0);};
-    {doStop _x;} foreach units _group;
+    [_group] call CBA_fnc_clearWaypoints;
+    {doStop _x;} forEach units _group;
     _group setVariable ["stop", true];
 };
 if (_type isEqualTo 3) then {
-    while {!((waypoints _group) isEqualTo [])} do {deleteWaypoint ((waypoints _group) select 0);};
+    [_group] call CBA_fnc_clearWaypoints;
     [_group, nearestObject [(units _group) select 0, _array_veh]] spawn btc_fnc_house_addWP;
     _group setVariable ["inHouse", _array_veh];
 };
@@ -94,7 +88,7 @@ if (_type isEqualTo 5) then {
     };
 };
 if (_type isEqualTo 6) then {
-    while {!((waypoints _group) isEqualTo [])} do {deleteWaypoint ((waypoints _group) select 0);};
+    [_group] call CBA_fnc_clearWaypoints;
     [_group, _array_veh select 0] spawn btc_fnc_civ_addWP;
     _group setVariable ["btc_data_inhouse", _array_veh];
 };
@@ -106,7 +100,7 @@ _group setBehaviour (_behaviour select 0);
 _group setCombatMode (_behaviour select 1);
 _group setFormation (_behaviour select 2);
 
-if (_side isEqualTo btc_enemy_side) then {{_x call btc_fnc_mil_unit_create} foreach units _group;};
-if (_side isEqualTo civilian) then {{_x call btc_fnc_civ_unit_create} foreach units _group;};
+if (_side isEqualTo btc_enemy_side) then {{_x call btc_fnc_mil_unit_create} forEach units _group;};
+if (_side isEqualTo civilian) then {{_x call btc_fnc_civ_unit_create} forEach units _group;};
 
 [leader _group, _type]
