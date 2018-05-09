@@ -1,12 +1,12 @@
 
-private _useful = btc_city_all select {(_x getVariable ["occupied", false] && {_x getVariable ["type", ""] != "NameLocal"} && {_x getVariable ["type", ""] != "Hill"} && {_x getVariable ["type", ""] != "NameMarine"})};
+private _useful = btc_city_all select {_x getVariable ["occupied", false] && {!(_x getVariable ["type", ""] in ["NameLocal", "Hill", "NameMarine"])}};
 
 if (_useful isEqualTo []) then {_useful = btc_city_all;};
 
 private _id = floor random count _useful;
 private _city = _useful select _id;
 
-if (_city getVariable ["type", ""] isEqualTo "NameLocal" || _city getVariable ["type", ""] isEqualTo "Hill" || _city getVariable ["type", ""] isEqualTo "NameMarine") exitWith {
+if (_city getVariable ["type", ""] in ["NameLocal", "Hill", "NameMarine"]) exitWith {
     [] call btc_fnc_cache_find_pos;
 };
 
