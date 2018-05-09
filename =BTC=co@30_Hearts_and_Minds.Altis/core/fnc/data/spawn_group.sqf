@@ -8,7 +8,9 @@ for "_i" from 0 to (count _array_pos - 1) do {
     _u setPosATL (_array_pos select _i);
     _u setDamage (_array_dam select _i);
 
-    if (btc_debug_log) then {diag_log format ["spawn group : pos %1 in %2 ", _array_pos select _i, getPos _u];};
+    if (btc_debug_log) then {
+        [format ["pos %1 in %2 ", _array_pos select _i, getPos _u], __FILE__, [false]] call btc_fnc_debug_message;
+    };
 };
 
 if (_type isEqualTo 1) then {

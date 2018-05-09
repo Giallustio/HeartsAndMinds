@@ -1,7 +1,7 @@
 params ["_city", "_area"];
 
 if (btc_debug_log) then {
-    diag_log format ["btc_fnc_ied_suicider_create: _name = %1 _area %2", _city getVariable ["name", "name"], _area];
+    [format ["_name = %1 _area %2", _city getVariable ["name", "name"], _area], __FILE__, [false]] call btc_fnc_debug_message;
 };
 
 _pos = position _city;

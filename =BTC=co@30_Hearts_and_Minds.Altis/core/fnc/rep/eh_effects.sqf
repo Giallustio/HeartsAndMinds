@@ -22,6 +22,6 @@ if (btc_global_reputation < 300) then {
     };
 };
 
-if (btc_debug) then {
-    diag_log format ["REP = %1 - RANDOM = %2 - RINF TIME = %3 - MILITIA/WEAPONS = %4/%5", _rep, _random, time > (btc_rep_militia_called + btc_rep_militia_call_time), _random > 3, _random > 4];
+if (btc_debug_log) then {
+    [format ["REP = %1 - RANDOM = %2 - RINF TIME = %3 - MILITIA/WEAPONS = %4/%5", _rep, _random, time > (btc_rep_militia_called + btc_rep_militia_call_time), _random > 3, _random > 4], __FILE__, [false]] call btc_fnc_debug_message;
 };

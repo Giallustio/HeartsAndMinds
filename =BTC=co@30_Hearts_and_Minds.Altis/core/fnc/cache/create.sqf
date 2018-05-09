@@ -21,11 +21,11 @@ for "_i" from 1 to (1 + round random 3) do {
 };
 
 if (btc_debug_log) then {
-    diag_log format ["CACHE SPAWNED: ID %1 POS %2", btc_cache_n, btc_cache_pos];
+    [format ["ID %1 POS %2", btc_cache_n, btc_cache_pos], __FILE__, [false]] call btc_fnc_debug_message;
 };
 
 if (btc_debug) then {
-    systemChat format ["Cache spawned in %1", btc_cache_pos];
+    [format ["in %1", btc_cache_pos], __FILE__, [btc_debug, false]] call btc_fnc_debug_message;
     //Marker
     private _marker = createMarker [format ["%1", btc_cache_pos], btc_cache_pos];
     _marker setMarkerType "mil_unknown";

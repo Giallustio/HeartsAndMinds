@@ -73,6 +73,8 @@ switch (btc_p_debug) do {
     case 1 : {
         btc_debug_log = true;
         btc_debug = true;
+        btc_debug_graph = false;
+        btc_debug_frames = 0;
     };
     case 2 : {
         btc_debug_log = true;
@@ -83,6 +85,8 @@ switch (btc_p_debug) do {
 if (!isMultiplayer) then {
     btc_debug_log = true;
     btc_debug = true;
+    btc_debug_graph = false;
+    btc_debug_frames = 0;
 };
 
 if (isServer) then {
