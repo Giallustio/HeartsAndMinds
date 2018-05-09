@@ -1,9 +1,10 @@
-params ["_id", "_target", "_asker"];
+params ["_id", ["_target", objNull], ["_varName", "btc_int_ask_data"]];
 
 private _data = switch (_id) do {
     case 0 : {_target getVariable ["active", false];};
     case 1 : {
         private _hd = objNull;
+        private _asker = allPlayers select {owner _x isEqualTo remoteExecutedOwner};
         {
             if (_x distance _asker < 3000) then {
                 _hd = _x;
@@ -21,4 +22,4 @@ private _data = switch (_id) do {
     case 9 : {[_target] call btc_fnc_db_saveObjectStatus;};
 };
 
-[_data] remoteExec ["btc_fnc_int_ans_var", _asker, false];
+missionNamespace setVariable [_varName, _data, remoteExecutedOwner];

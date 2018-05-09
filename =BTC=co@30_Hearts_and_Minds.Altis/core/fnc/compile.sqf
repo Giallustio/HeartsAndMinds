@@ -183,7 +183,6 @@ btc_fnc_ied_belt = compile preprocessFileLineNumbers "core\fnc\ied\belt.sqf";
 //INT
 btc_fnc_int_orders_give = compile preprocessFileLineNumbers "core\fnc\int\orders_give.sqf";
 btc_fnc_int_orders_behaviour = compile preprocessFileLineNumbers "core\fnc\int\orders_behaviour.sqf";
-btc_fnc_int_ans_var = compile preprocessFileLineNumbers "core\fnc\int\ans_var.sqf";
 btc_fnc_int_ask_var = compile preprocessFileLineNumbers "core\fnc\int\ask_var.sqf";
 
 //LOG
