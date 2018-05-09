@@ -14,5 +14,5 @@ _gunner setCombatMode "RED";
 _gunner call btc_fnc_mil_unit_create;
 
 if (btc_debug_log) then {
-    diag_log format ["btc_fnc_mil_create_static: _this = %1 ; POS %2 _type %3", _this, _pos, typeOf _static];
+    [format ["_this = %1 ; POS %2 _type %3", _this, _pos, typeOf _static], __FILE__, [false]] call btc_fnc_debug_message;
 };

@@ -3,7 +3,7 @@ params ["_random", "_city", "_area"];
 if (isNil "btc_patrol_id") then {btc_patrol_id = 0;};
 
 if (btc_debug_log) then {
-    diag_log format ["btc_fnc_mil_patrol_create: _random = %1 _city %2 _area %3 btc_patrol_active = %4", _random, _city, _area, count btc_patrol_active];
+    [format ["_random = %1 _city %2 _area %3 btc_patrol_active = %4", _random, _city, _area, count btc_patrol_active], __FILE__, [false]] call btc_fnc_debug_message;
 };
 
 if (_random isEqualTo 0) then {

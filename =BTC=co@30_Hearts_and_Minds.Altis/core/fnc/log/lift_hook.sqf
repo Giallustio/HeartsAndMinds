@@ -40,7 +40,6 @@ if ((_bbr isEqualTo []) OR (_ropes_check isEqualTo [])) then {
     private _bbr_z = 0;
     if (!alive _cargo) then {
         _support = [_cargo, _chopper] call btc_fnc_log_lift_hook_fake;
-        diag_log str([_support, _cargo]);
         _bbr_z = _support distance _cargo;
         sleep 0.3;
     };
@@ -51,7 +50,9 @@ if ((_bbr isEqualTo []) OR (_ropes_check isEqualTo [])) then {
     ropeCreate [_chopper, "slingload0", _support, [_frontCorner2 select 0, _frontCorner2 select 1, _bbr_z], _rope_length];
 };
 
-if (btc_debug) then {hint format ["boundingBoxReal : %1 rope length : %2", _bbr, _rope_length];};
+if (btc_debug) then {
+    [format ["boundingBoxReal : %1 rope length : %2", _bbr, _rope_length], __FILE__, [btc_debug, false]] call btc_fnc_debug_message;
+};
 
 private _max_cargo  = getNumber (configFile >> "cfgVehicles" >> typeOf _chopper >> "slingLoadMaxCargoMass");
 private _mass = getMass _cargo;

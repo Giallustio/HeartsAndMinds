@@ -57,7 +57,7 @@ for "_i" from 1 to _n do {
     };
 
     if (btc_debug_log) then {
-        diag_log format ["btc_fnc_ied_create_in_area: _this = %1 ; POS %2 ; N %3(%4)", _this, _sel_pos, _i, _n];
+        [format ["_this = %1  POS %2  N %3(%4)", _this, _sel_pos, _i, _n], __FILE__, [false]] call btc_fnc_debug_message;
     };
 
     _array pushBack [_sel_pos, _type_ied, _dir, _active];
@@ -96,7 +96,7 @@ for "_i" from 1 to _n do {
     };
 
     if (btc_debug_log) then {
-        diag_log format ["btc_fnc_ied_create_in_area: _this = %1 ; POS %2 ; N %3(%4)", _this, _sel_pos, _i, _n];
+         [format ["_this = %1 ; POS %2 ; N %3(%4)", _this, _sel_pos, _i, _n], __FILE__, [false]] call btc_fnc_debug_message;
     };
 
     _array pushBack [_sel_pos, _type_ied, _dir, _active];

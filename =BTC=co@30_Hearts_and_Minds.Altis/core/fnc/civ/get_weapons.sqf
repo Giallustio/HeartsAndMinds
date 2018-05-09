@@ -12,7 +12,9 @@ _units = _units select {side _x isEqualTo civilian};
 }] remoteExec ["call", 0, false];
 
 {
-    if (btc_debug_log) then {diag_log format ["fnc_civ_get_weapons %1 - %2", _x, side _x];};
+    if (btc_debug_log) then {
+        [format ["%1 - %2", _x, side _x], __FILE__, [false]] call btc_fnc_debug_message;
+    };
 
     _x call btc_fnc_rep_remove_eh;
 

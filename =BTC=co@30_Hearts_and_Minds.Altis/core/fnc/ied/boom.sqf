@@ -1,6 +1,8 @@
 params ["_wreck", "_ied"];
 
-if (btc_debug_log) then {diag_log format ["IED BOOM %1 - POS %2", [_wreck, _ied], getPos _wreck]};
+if (btc_debug_log) then {
+    [format ["%1 - POS %2", [_wreck, _ied], getPos _wreck], __FILE__, [false]] call btc_fnc_debug_message;
+};
 
 private _pos = getPos _ied;
 deleteVehicle _ied;

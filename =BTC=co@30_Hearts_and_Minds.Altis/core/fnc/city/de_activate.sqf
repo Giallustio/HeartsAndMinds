@@ -29,7 +29,9 @@ private _data_units = [];
         private _data_group = _x call btc_fnc_data_get_group;
         _data_units pushBack _data_group;
 
-        if (btc_debug_log) then {diag_log format ["data_units = %1", _data_units];};
+        if (btc_debug_log) then {
+            [format ["data units = %1", _data_units], __FILE__, [false]] call btc_fnc_debug_message;
+        };
     };
 } forEach allGroups;
 

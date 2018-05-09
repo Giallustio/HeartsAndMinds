@@ -65,6 +65,8 @@ if (_structure isEqualTo objNull) then {
     } forEach units _group;
 };
 
-if (btc_debug_log) then {diag_log format ["btc_fnc_mil_create_group: _this = %1 ; POS %2 UNITS N %3", _this, _rpos, count units _group];};
+if (btc_debug_log) then {
+    [format ["_this = %1 ; POS %2 UNITS N %3", _this, _rpos, count units _group], __FILE__, [false]] call btc_fnc_debug_message;
+};
 
 _groups

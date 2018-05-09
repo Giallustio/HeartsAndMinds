@@ -8,6 +8,7 @@ enabledebugconsole = 1;
 #include "core\fnc\common\dlg.hpp"
 #include "core\fnc\fob\dlg.hpp"
 #include "core\fnc\log\dlg.hpp"
+#include "core\fnc\debug\defines.hpp"
 
 class RscTitles {
     class Default {
@@ -17,6 +18,7 @@ class RscTitles {
         duration = 0;
     };
     #include "core\fnc\log\rsc.hpp"
+    #include "core\fnc\debug\dlg.hpp"
 };
 
 #include "core\sounds\sounds.hpp"

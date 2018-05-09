@@ -20,9 +20,9 @@ if (btc_debug_log) then {
     if !(_objects isEqualTo []) then {
         _object = _objects select 0;
         if (_object in nearestTerrainObjects [_object, ["HIDE", "ROCK", "ROCKS"], 1]) then {
-            diag_log format ["FIND POS OUTSIDE ROCK: POS %1 Still inside rock", _rpos];
+            [format ["POS %1 Still inside rock", _rpos], __FILE__, [false]] call btc_fnc_debug_message;
             if (btc_debug) then {
-                systemChat "FIND POS OUTSIDE ROCK: Still inside rock";
+                ["Still inside rock", __FILE__, [btc_debug, false]] call btc_fnc_debug_message;
                 private _marker = createMarker [format ["btc_inrock_%1", _rpos], _rpos];
                 _marker setMarkerType "mil_unknown";
                 _marker setMarkerText "In rock";

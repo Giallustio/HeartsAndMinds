@@ -16,7 +16,7 @@ if (side _gunner isEqualTo btc_player_side) then {
             [getPos _civ] call btc_fnc_rep_eh_effects;
 
             if (btc_debug_log) then {
-                diag_log format ["REP Firenear = GREP %1 THIS = %2", btc_global_reputation, _this];
+                [format ["GREP %1 THIS = %2", btc_global_reputation, _this], __FILE__, [false]] call btc_fnc_debug_message;
             };
         };
     };

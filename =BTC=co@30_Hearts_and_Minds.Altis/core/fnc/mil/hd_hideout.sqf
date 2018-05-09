@@ -36,7 +36,7 @@ if (_explosive && {_damage > 0.6}) then {
     //Notification
     [2, count btc_hideouts] remoteExec ["btc_fnc_show_hint", 0];
     if (btc_debug_log) then {
-        diag_log format ["btc_fnc_mil_hd_hideout: _this = %1 ; POS %2 ID %3", _this, getPos _hideout, _id];
+        [format ["_this = %1 ; POS %2 ID %3", _this, getPos _hideout, _id], __FILE__, [false]] call btc_fnc_debug_message;
     };
 } else {
     0

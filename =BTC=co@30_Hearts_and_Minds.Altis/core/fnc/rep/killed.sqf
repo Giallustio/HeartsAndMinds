@@ -7,7 +7,7 @@ if (isPlayer _killer) then {
     };
 
     if (btc_debug_log) then {
-        diag_log format ["REP KILLED = GREP %1 THIS = %2", btc_global_reputation, _this];
+        [format ["GREP %1 THIS = %2", btc_global_reputation, _this], __FILE__, [false]] call btc_fnc_debug_message;
     };
 };
 

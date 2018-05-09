@@ -14,7 +14,7 @@ private _start_pos = [];
 } forEach btc_hideouts;
 
 if (btc_debug_log) then {
-    diag_log format ["fnc_rep_call_militia = _start_pos : %1 (HIDEOUTS)", _start_pos];
+    [format ["_start_pos : %1 (HIDEOUTS)", _start_pos], __FILE__, [false]] call btc_fnc_debug_message;
 };
 
 if (_start_pos isEqualTo []) then {
@@ -25,7 +25,9 @@ if (_start_pos isEqualTo []) then {
         };
     } forEach btc_city_all;
 };
-if (btc_debug_log) then {diag_log format ["fnc_rep_call_militia = _start_pos : %1 (CITIES)", _start_pos];};
+if (btc_debug_log) then {
+    [format ["_start_pos : %1 (CITIES)", _start_pos], __FILE__, [false]] call btc_fnc_debug_message;
+};
 
 if (_start_pos isEqualTo []) then {
     _pos params ["_x", "_y"];
@@ -44,13 +46,13 @@ if (_start_pos isEqualTo []) then {
 };
 
 if (btc_debug_log) then {
-    diag_log format ["fnc_rep_call_militia = _start_pos : %1 (ULTIMA RATIO)", _start_pos];
+    [format ["_start_pos : %1 (ULTIMA RATIO)", _start_pos], __FILE__, [false]] call btc_fnc_debug_message;
 };
 
 private _ratio = if (_pos distance _start_pos > 1000) then {0.2} else {0.6};
 
 if (btc_debug_log) then {
-    diag_log format ["fnc_rep_call_militia = POS : %1 STARTPOS : %2 - RATIO = %3", _pos, _start_pos, _ratio];
+    [format ["POS : %1 STARTPOS : %2 - RATIO = %3", _pos, _start_pos, _ratio], __FILE__, [false]] call btc_fnc_debug_message;
 };
 
 if ((random 1) > _ratio) then {
@@ -64,7 +66,7 @@ if ((random 1) > _ratio) then {
     [_group, _pos, 60, "SAD"] call CBA_fnc_addWaypoint;
 
     if (btc_debug_log) then {
-        diag_log format ["fnc_rep_call_militia = MOT %1/%2 POS %3", _group, _veh_type, _pos];
+        [format ["MOT %1/%2 POS %3", _group, _veh_type, _pos], __FILE__, [false]] call btc_fnc_debug_message;
     };
 } else {
     //INF
@@ -76,6 +78,6 @@ if ((random 1) > _ratio) then {
     [_group, _pos, 60, "SAD"] call CBA_fnc_addWaypoint;
 
     if (btc_debug_log) then {
-        diag_log format ["fnc_rep_call_militia = INF %1", _group];
+        [format ["INF %1", _group], __FILE__, [false]] call btc_fnc_debug_message;
     };
 };

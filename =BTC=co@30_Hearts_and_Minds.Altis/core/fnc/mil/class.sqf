@@ -89,7 +89,9 @@ if !(_en_AA) then {
             };
             (getNumber(configFile >> "CfgAmmo" >> _ammo >> "aiAmmoUsageFlags") isEqualTo 256);
         };
-        if (btc_debug_log) then {diag_log format ["btc_fnc_mil_class %1 Weapons: %2 isAA: %3", _unit, _weapons, _isAA];};
+        if (btc_debug_log) then {
+            [format ["%1 Weapons: %2 isAA: %3", _unit, _weapons, _isAA], __FILE__, [false]] call btc_fnc_debug_message;
+        };
         !(true in _isAA)
     };
 };
