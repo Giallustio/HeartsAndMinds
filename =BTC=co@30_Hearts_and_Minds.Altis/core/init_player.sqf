@@ -16,7 +16,7 @@ call compile preprocessFileLineNumbers "core\doc.sqf";
     };
 
     if (btc_p_loadout) then {
-        player setUnitLoadout (player call btc_fnc_log_loadout);
+        player setUnitLoadout (player call btc_fnc_arsenal_loadout);
     } else {
         removeAllWeapons player;
     };
