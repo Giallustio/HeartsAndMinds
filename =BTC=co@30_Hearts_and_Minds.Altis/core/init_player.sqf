@@ -15,7 +15,11 @@ call compile preprocessFileLineNumbers "core\doc.sqf";
         player createDiarySubject [localize "STR_BTC_HAM_CON_INFO_ASKHIDEOUT_DIARYLOG", localize "STR_BTC_HAM_CON_INFO_ASKHIDEOUT_DIARYLOG"];
     };
 
-    removeAllWeapons player;
+    if (btc_p_loadout) then {
+        player setUnitLoadout (player call btc_fnc_log_loadout);
+    } else {
+        removeAllWeapons player;
+    };
 
     [{scriptDone btc_intro_done;}, {
         private _standard_tasks = (player call BIS_fnc_tasksUnit) select {

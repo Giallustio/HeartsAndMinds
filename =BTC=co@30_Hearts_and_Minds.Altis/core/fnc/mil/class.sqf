@@ -76,24 +76,7 @@ if (_enemy_side isEqualTo btc_player_side) exitWith {
 //Final filter unwanted units type
 if !(_en_AA) then {
     //Remove Anti-Air Units
-    _type_units = _type_units select {
-        private _unit = _x;
-        private _weapons = getArray(configFile >> "CfgVehicles" >> _unit >> "weapons");
-
-        private _isAA = _weapons apply {
-            private _weapon = _x;
-            private _magazines = getArray(configFile >> "CfgWeapons" >> _weapon >> "magazines");
-            private _ammo = "";
-            if !(_magazines isEqualTo []) then {
-                _ammo = getText(configFile >> "CfgMagazines" >> _magazines select 0 >> "ammo");
-            };
-            (getNumber(configFile >> "CfgAmmo" >> _ammo >> "aiAmmoUsageFlags") isEqualTo 256);
-        };
-        if (btc_debug_log) then {
-            [format ["%1 Weapons: %2 isAA: %3", _unit, _weapons, _isAA], __FILE__, [false]] call btc_fnc_debug_message;
-        };
-        !(true in _isAA)
-    };
+    _type_units = _type_units select {!(_x call btc_fnc_mil_ammoUsage)};
 };
 _type_units = _type_units select {((_x find "pilot_") isEqualTo -1) && ((_x find "_Pilot_") isEqualTo -1) && ((_x find "_Survivor_") isEqualTo -1) && ((_x find "_Story") isEqualTo -1) && ((_x find "_base") isEqualTo -1) && ((_x find "_unarmed_") isEqualTo -1) && ((_x find "_VR_") isEqualTo -1)};
 _type_crewmen = _type_units select 0;
