@@ -301,6 +301,7 @@ if (!isDedicated) then {
     btc_fnc_arsenal_data = compile preprocessFileLineNumbers "core\fnc\arsenal\data.sqf";
     btc_fnc_arsenal_garage = compile preprocessFileLineNumbers "core\fnc\arsenal\garage.sqf";
     btc_fnc_arsenal_loadout = compile preprocessFileLineNumbers "core\fnc\arsenal\loadout.sqf";
+    btc_fnc_arsenal_trait = compile preprocessFileLineNumbers "core\fnc\arsenal\trait.sqf";
 
     //TASK
     btc_fnc_task_create = compile preprocessFileLineNumbers "core\fnc\task\create.sqf";
