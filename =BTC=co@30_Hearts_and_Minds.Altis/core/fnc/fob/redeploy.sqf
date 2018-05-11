@@ -2,7 +2,7 @@
 closeDialog 0;
 
 btc_int_ask_data = nil;
-[6] remoteExecCall ["btc_fnc_int_ask_var", 2];
+["btc_fobs"] remoteExecCall ["btc_fnc_int_ask_var", 2];
 
 waitUntil {!(isNil "btc_int_ask_data")};
 
