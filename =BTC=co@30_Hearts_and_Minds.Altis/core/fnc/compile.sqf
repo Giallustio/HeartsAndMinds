@@ -188,8 +188,6 @@ btc_fnc_int_ask_var = compile preprocessFileLineNumbers "core\fnc\int\ask_var.sq
 
 //LOG
 btc_fnc_log_can_tow = compile preprocessFileLineNumbers "core\fnc\log\can_tow.sqf";
-btc_fnc_log_check_cargo = compile preprocessFileLineNumbers "core\fnc\log\check_cargo.sqf";
-btc_fnc_log_check_cc = compile preprocessFileLineNumbers "core\fnc\log\check_cc.sqf";
 btc_fnc_log_create = compile preprocessFileLineNumbers "core\fnc\log\create.sqf";
 btc_fnc_log_create_apply = compile preprocessFileLineNumbers "core\fnc\log\create_apply.sqf";
 btc_fnc_log_create_load = compile preprocessFileLineNumbers "core\fnc\log\create_load.sqf";
@@ -205,21 +203,15 @@ btc_fnc_log_lift_hud = compile preprocessFileLineNumbers "core\fnc\log\lift_hud.
 btc_fnc_log_lift_hud_loop = compile preprocessFileLineNumbers "core\fnc\log\lift_hud_loop.sqf";
 btc_fnc_log_get_cc = compile preprocessFileLineNumbers "core\fnc\log\get_cc.sqf";
 btc_fnc_log_get_rc = compile preprocessFileLineNumbers "core\fnc\log\get_rc.sqf";
-btc_fnc_log_load = compile preprocessFileLineNumbers "core\fnc\log\load.sqf";
-btc_fnc_log_obj_fall = compile preprocessFileLineNumbers "core\fnc\log\obj_fall.sqf";
-btc_fnc_log_paradrop = compile preprocessFileLineNumbers "core\fnc\log\paradrop.sqf";
 btc_fnc_log_place = compile preprocessFileLineNumbers "core\fnc\log\place.sqf";
 btc_fnc_log_place_create_camera = compile preprocessFileLineNumbers "core\fnc\log\place_create_camera.sqf";
 btc_fnc_log_place_destroy_camera = compile preprocessFileLineNumbers "core\fnc\log\place_destroy_camera.sqf";
 btc_fnc_log_place_key_down = compile preprocessFileLineNumbers "core\fnc\log\place_key_down.sqf";
 btc_fnc_log_repair_wreck = compile preprocessFileLineNumbers "core\fnc\log\repair_wreck.sqf";
-btc_fnc_log_select = compile preprocessFileLineNumbers "core\fnc\log\select.sqf";
 btc_fnc_log_server_load = compile preprocessFileLineNumbers "core\fnc\log\server_load.sqf";
 btc_fnc_log_server_repair_wreck = compile preprocessFileLineNumbers "core\fnc\log\server_repair_wreck.sqf";
-btc_fnc_log_server_unload = compile preprocessFileLineNumbers "core\fnc\log\server_unload.sqf";
 btc_fnc_log_tow = compile preprocessFileLineNumbers "core\fnc\log\tow.sqf";
 btc_fnc_log_unhook = compile preprocessFileLineNumbers "core\fnc\log\unhook.sqf";
-btc_fnc_log_unload = compile preprocessFileLineNumbers "core\fnc\log\unload.sqf";
 btc_fnc_log_copy = compile preprocessFileLineNumbers "core\fnc\log\copy.sqf";
 btc_fnc_log_paste = compile preprocessFileLineNumbers "core\fnc\log\paste.sqf";
 

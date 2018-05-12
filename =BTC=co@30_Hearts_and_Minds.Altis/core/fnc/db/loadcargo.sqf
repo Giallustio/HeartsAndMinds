@@ -34,7 +34,7 @@ params ["_obj", "_cargo", "_inventory"];
             _l addItemCargoGlobal [(_items_obj select 0) select _i, (_items_obj select 1) select _i];
         };
     };
-    [_l, _obj] call btc_fnc_log_server_load;
+    [_l, _obj] call ace_cargo_fnc_loadItem;
 } forEach _cargo;
 
 //set inventory content for weapons, magazines and items
