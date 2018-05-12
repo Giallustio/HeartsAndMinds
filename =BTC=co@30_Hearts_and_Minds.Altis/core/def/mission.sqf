@@ -394,24 +394,11 @@ btc_log_main_rc = [
     "Car", 35
 ];
 btc_log_def_cc = [
-    "B_Quadbike_01_F", 2,
-    "B_UGV_01_rcws_F", 4,
-    "B_UGV_01_F", 4,
     "Land_CargoBox_V1_F", 0,
     btc_supplies_mat, 0,
     btc_fob_mat, 0,
     "Land_Cargo20_military_green_F", 20,
-    "Land_Cargo40_military_green_F", 40,
-    "B_Slingload_01_Fuel_F", 0,
-    "Land_Pod_Heli_Transport_04_medevac_black_F", 0,
-    //Trucks
-    "B_Truck_01_transport_F", 10,
-    "B_Truck_01_covered_F", 10,
-    "I_Truck_02_covered_F", 10,
-    "O_Truck_02_covered_F", 10,
-    "I_Truck_02_transport_F", 10,
-    "O_Truck_02_transport_F", 10,
-    "O_Truck_02_transport_F", 10
+    "Land_Cargo40_military_green_F", 40
 ];
 btc_log_def_rc = [
     "Land_BagBunker_Small_F", 5,
