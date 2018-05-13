@@ -1,5 +1,5 @@
 
-if !(btc_hideouts isEqualTo []) exitWith {};
+if (btc_hideouts isEqualTo []) exitWith {};
 
 private _ho = btc_hq;
 
