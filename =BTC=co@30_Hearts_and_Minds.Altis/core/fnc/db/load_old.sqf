@@ -182,7 +182,7 @@ private _vehs = profileNamespace getVariable [format ["btc_hm_%1_vehs", _name], 
                     _obj addItemCargoGlobal [(_items_obj select 0) select _i, (_items_obj select 1) select _i];
                 };
             };
-            [_obj, _veh] call btc_fnc_log_server_load;
+            [_obj, _veh] call ace_cargo_fnc_loadItem;
         } forEach _veh_cargo;
 
         clearWeaponCargoGlobal _veh;clearItemCargoGlobal _veh;clearMagazineCargoGlobal _veh;

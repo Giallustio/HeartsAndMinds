@@ -208,7 +208,6 @@ btc_fnc_log_place_create_camera = compile preprocessFileLineNumbers "core\fnc\lo
 btc_fnc_log_place_destroy_camera = compile preprocessFileLineNumbers "core\fnc\log\place_destroy_camera.sqf";
 btc_fnc_log_place_key_down = compile preprocessFileLineNumbers "core\fnc\log\place_key_down.sqf";
 btc_fnc_log_repair_wreck = compile preprocessFileLineNumbers "core\fnc\log\repair_wreck.sqf";
-btc_fnc_log_server_load = compile preprocessFileLineNumbers "core\fnc\log\server_load.sqf";
 btc_fnc_log_server_repair_wreck = compile preprocessFileLineNumbers "core\fnc\log\server_repair_wreck.sqf";
 btc_fnc_log_tow = compile preprocessFileLineNumbers "core\fnc\log\tow.sqf";
 btc_fnc_log_unhook = compile preprocessFileLineNumbers "core\fnc\log\unhook.sqf";
