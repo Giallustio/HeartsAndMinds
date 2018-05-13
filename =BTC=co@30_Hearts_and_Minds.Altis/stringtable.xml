@@ -1427,60 +1427,16 @@
                 <German>Das ist kein Wrack!</German>
             </Key>
         </Container>
-        <Container name="Logistic: Select ">
-            <Key ID="STR_BTC_HAM_LOG_SEL_HINT">
-                <Original>%1 selected &lt;br/&gt;CR: %2&lt;br/&gt; Interact with a vehicle to load it in!</Original>
-                <German>%1 ausgewählt &lt;br/&gt;CR: %2&lt;br/&gt; Interagieren Sie mit dem Fahrzeug, in welches die Fracht eingeladen werden soll!</German>
-            </Key>
-        </Container>
         <Container name="Logistic: Tow ">
             <Key ID="STR_BTC_HAM_LOG_TOW_ALREADYTOWED">
                 <Original>This vehicle is already attached to another!</Original>
                 <German>Dieses Fahrzeug zieht bereits ein anderes Fahrzeug!</German>
             </Key>
         </Container>
-        <Container name="Logistic: Check Cargo ">
-            <Key ID="STR_BTC_HAM_LOG_CHECKC_VEHICLE">
-                <Original>Vehicle: %1  | CC: %2/%3</Original>
-                <German>Fahrzeug: %1  | CC: %2/%3</German>
-            </Key>
-        </Container>
         <Container name="Logistic: Unhook ">
             <Key ID="STR_BTC_HAM_LOG_UNHOOK_NOROPE">
                 <Original>This vehicle is not attached to another!</Original>
                 <German>Das Fahrzeug schleppt kein anderes Fahrzeug ab!</German>
-            </Key>
-        </Container>
-        <Container name="Logistic: Unload ">
-            <Key ID="STR_BTC_HAM_LOG_UNLOAD_BAR">
-                <Original>Unloading %1. . .</Original>
-                <German>%1 wird abgeladen. . .</German>
-            </Key>
-            <Key ID="STR_BTC_HAM_LOG_UNLOAD_FIN">
-                <Original>%1 has been unloaded from %2</Original>
-                <German>%1 wurde von %2 abgeladen</German>
-            </Key>
-            <Key ID="STR_BTC_HAM_LOG_UNLOAD_ABORT">
-                <Original>Unloading aborted</Original>
-                <German>Abladen abgebrochen</German>
-            </Key>
-        </Container>
-        <Container name="Logistic: dlg (Dialog) ">
-            <Key ID="STR_BTC_HAM_LOG_DLG_CARGO">
-                <Original>Cargo</Original>
-                <German>Frachtraum</German>
-            </Key>
-            <Key ID="STR_BTC_HAM_LOG_DLG_UNLOAD">
-                <Original>Unload</Original>
-                <German>Entladen</German>
-            </Key>
-            <Key ID="STR_BTC_HAM_LOG_DLG_APPLY">
-                <Original>Apply</Original>
-                <German>Bestätigen</German>
-            </Key>
-            <Key ID="STR_BTC_HAM_LOG_DLG_CLOSE">
-                <Original>Close</Original>
-                <German>Schließen</German>
             </Key>
         </Container>
     </Package>

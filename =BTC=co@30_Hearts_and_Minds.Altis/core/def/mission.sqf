@@ -128,10 +128,6 @@ if (isServer) then {
     //FOB
     btc_fobs = [[], []];
 
-    //Log
-    btc_log_id_repo = 10;
-    btc_log_cargo_repo = "Land_HBarrierBig_F" createVehicle [- 5000, - 5000, 0];
-
     //Patrol
     btc_patrol_max = 8;
     btc_patrol_active = [];
