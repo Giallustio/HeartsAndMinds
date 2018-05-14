@@ -50,7 +50,7 @@ if (_r < 1) then {
     };
     _veh setHit ["wheel_1_1_steering", 1];
     //// Add smoke effect on car \\\\
-    _fx = "test_EmptyObjectForSmoke" createVehicle (getposATL _veh);
+    _fx = "test_EmptyObjectForSmoke" createVehicle (getPosATL _veh);
     _fx attachTo [_veh, [0, 0, 0]];
 } else {
     _phone_type = selectRandom btc_type_phone;

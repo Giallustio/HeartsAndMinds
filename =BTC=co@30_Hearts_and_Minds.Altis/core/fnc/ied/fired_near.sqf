@@ -39,4 +39,4 @@ _array = [];
     } else {
         [_id] call CBA_fnc_removePerFrameHandler;
     };
-} , 0.01, [_ied, _wreck, _pos, _range, _array]] call CBA_fnc_addPerFrameHandler;
+}, 0.01, [_ied, _wreck, _pos, _range, _array]] call CBA_fnc_addPerFrameHandler;

@@ -22,13 +22,13 @@ _suicider call btc_fnc_civ_unit_create;
     _args params ["_suicider"];
 
     if (Alive _suicider && !isNull _suicider) then {
-        if (count (getpos _suicider nearEntities ["SoldierWB", 25]) > 0) then {
+        if (count (getPos _suicider nearEntities ["SoldierWB", 25]) > 0) then {
             [_id] call CBA_fnc_removePerFrameHandler;
             _suicider call btc_fnc_ied_suicider_active;
         };
     } else {
         [_id] call CBA_fnc_removePerFrameHandler;
     };
-} , 5, [_suicider]] call CBA_fnc_addPerFrameHandler;
+}, 5, [_suicider]] call CBA_fnc_addPerFrameHandler;
 
 _suicider

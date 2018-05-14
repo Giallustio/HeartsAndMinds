@@ -67,7 +67,7 @@ _trigger setTriggerStatements ["this", "private _group = thisTrigger getVariable
 private _mine = objNull;
 if (random 1 > 0.5) then {
     sleep 5;
-    _mine = createMine [selectRandom btc_type_mines, getposATL _captive, [], 0];
+    _mine = createMine [selectRandom btc_type_mines, getPosATL _captive, [], 0];
 };
 
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !(_captive getVariable ["ace_captives_isHandcuffed", false]) || !Alive _captive)};
