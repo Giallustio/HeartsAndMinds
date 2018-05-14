@@ -3,7 +3,6 @@ call compile preprocessFileLineNumbers "core\doc.sqf";
 [{!isNull player}, {
 
     player addRating 9999;
-    btc_player_respawn = getPosASL player;
     ["InitializePlayer", [player]] call BIS_fnc_dynamicGroups;
 
     [player] call btc_fnc_eh_player;
