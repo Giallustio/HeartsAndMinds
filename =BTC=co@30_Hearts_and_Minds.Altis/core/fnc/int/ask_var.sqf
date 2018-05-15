@@ -13,7 +13,6 @@ private _data = switch (_id) do {
         _hd;
     };
     case 2 : {btc_global_reputation;};
-    case 3 : {_target getVariable ["cargo", []];};
     case 4 : {_target getVariable ["tow", objNull];};
     case 5 : {btc_side_jip_data;};
     case 6 : {btc_fobs;};

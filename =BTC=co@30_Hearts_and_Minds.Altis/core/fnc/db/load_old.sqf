@@ -160,10 +160,13 @@ private _vehs = profileNamespace getVariable [format ["btc_hm_%1_vehs", _name], 
         {
             _x params ["_type", "_rearm_magazineClass", "_cargo_obj"];
 
-            private _obj = _type createVehicle [0, 0, 0];
+            private _l = createVehicle [_type, getPosATL _obj, [], 0, "CAN_COLLIDE"];
+            [_l] call btc_fnc_log_init;
+            private _isloaded = [_l, _obj] call ace_cargo_fnc_loadItem;
+            if (btc_debug_log) then {
+                [format ["Object loaded: %1 in veh/container %2 IsLoaded: %3", _l, _obj, _isloaded], __FILE__, [false]] call btc_fnc_debug_message;
+            };
             if (_rearm_magazineClass != "") then {_obj setVariable ["ace_rearm_magazineClass", _rearm_magazineClass, true]};
-            btc_log_obj_created pushBack _obj;
-            btc_curator addCuratorEditableObjects [[_obj], false];
 
             clearWeaponCargoGlobal _obj;clearItemCargoGlobal _obj;clearMagazineCargoGlobal _obj;
             _cargo_obj params ["_weap_obj", "_mags_obj", "_items_obj"];
@@ -182,7 +185,6 @@ private _vehs = profileNamespace getVariable [format ["btc_hm_%1_vehs", _name], 
                     _obj addItemCargoGlobal [(_items_obj select 0) select _i, (_items_obj select 1) select _i];
                 };
             };
-            [_obj, _veh] call ace_cargo_fnc_loadItem;
         } forEach _veh_cargo;
 
         clearWeaponCargoGlobal _veh;clearItemCargoGlobal _veh;clearMagazineCargoGlobal _veh;
