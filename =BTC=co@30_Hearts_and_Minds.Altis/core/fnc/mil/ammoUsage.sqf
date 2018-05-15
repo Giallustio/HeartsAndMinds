@@ -11,7 +11,7 @@ private _isAmmoUsage = _weapons apply {
     };
     private _aiAmmoUsage = getText(configFile >> "CfgAmmo" >> _ammo >> "aiAmmoUsageFlags");
     if (_aiAmmoUsage isEqualTo "") then {
-    	_aiAmmoUsage = str getNumber(configFile >> "CfgAmmo" >> _ammo >> "aiAmmoUsageFlags");
+        _aiAmmoUsage = str getNumber(configFile >> "CfgAmmo" >> _ammo >> "aiAmmoUsageFlags");
     };
     _aiAmmoUsage isEqualTo _aiAmmoUsageFlags;
 };
