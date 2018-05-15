@@ -26,7 +26,7 @@ call compile preprocessFileLineNumbers "core\doc.sqf";
         } forEach _standard_tasks;
 
         btc_int_ask_data = nil;
-        [5] remoteExecCall ["btc_fnc_int_ask_var", 2];
+        ["btc_side_jip_data"] remoteExecCall ["btc_fnc_int_ask_var", 2];
 
         [{!(isNil "btc_int_ask_data")}, {
             private _side_jip_data = btc_int_ask_data;

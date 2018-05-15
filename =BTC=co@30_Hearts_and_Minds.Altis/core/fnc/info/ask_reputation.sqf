@@ -5,7 +5,7 @@ if !(player getVariable ["interpreter", false]) exitWith {
 };
 
 btc_int_ask_data = nil;
-[2] remoteExecCall ["btc_fnc_int_ask_var", 2];
+["btc_global_reputation"] remoteExecCall ["btc_fnc_int_ask_var", 2];
 
 waitUntil {!(isNil "btc_int_ask_data")};
 
