@@ -399,12 +399,12 @@ btc_log_def_cc = [
 btc_log_def_rc = [
     "Land_BagBunker_Small_F", 5,
     "Land_CargoBox_V1_F", 9999,
-    btc_supplies_mat, 20,
-    btc_fob_mat, 20,
-    "Land_Cargo20_military_green_F", 20,
-    "Land_Cargo40_military_green_F", 40,
+    btc_supplies_mat, 8,
+    btc_fob_mat, 8,
+    "Land_Cargo20_military_green_F", 8,
+    "Land_Cargo40_military_green_F", 16,
     "B_Slingload_01_Fuel_F", 20,
-    "Land_Pod_Heli_Transport_04_medevac_black_F", 20
+    "Land_Pod_Heli_Transport_04_medevac_black_F", 8
 ];
 
 btc_fnc_log_get_nottowable = {
