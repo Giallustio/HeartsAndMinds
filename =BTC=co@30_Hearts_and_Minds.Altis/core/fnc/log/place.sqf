@@ -2,7 +2,7 @@ params ["_placing_obj"];
 
 btc_log_placing_obj = _placing_obj;
 
-[btc_log_placing_obj, player] remoteExec ["btc_fnc_set_owner", 2];
+[btc_log_placing_obj, clientOwner] remoteExecCall ["setOwner", 2];
 
 hint composeText [
     localize "STR_BTC_HAM_LOG_PLACE_HINT1", //Q/Z to raise/lower the object
