@@ -57,7 +57,7 @@ if (btc_debug) then {
 private _max_cargo  = getNumber (configFile >> "cfgVehicles" >> typeOf _chopper >> "slingLoadMaxCargoMass");
 private _mass = getMass _cargo;
 
-[_cargo, player] remoteExec ["btc_fnc_set_owner", 2];
+[_cargo, clientOwner] remoteExecCall ["setOwner", 2];
 btc_lifted = true;
 sleep 1;
 if ((_mass + 400) > _max_cargo) then {

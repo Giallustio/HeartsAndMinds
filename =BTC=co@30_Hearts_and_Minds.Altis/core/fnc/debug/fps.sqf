@@ -6,7 +6,7 @@ if (isNull _display || !btc_debug_graph) exitWith {
     _display closeDisplay 1;
 };
 
-remoteExecCall ["btc_fnc_debug_getFrames", 2];
+[11, objNull, "btc_debug_frames"] remoteExecCall ["btc_fnc_int_ask_var", 2];
 private _frames = btc_debug_frames;
 _TXTfps ctrlSetText format ["SERVER FPS: %1", _frames];
 

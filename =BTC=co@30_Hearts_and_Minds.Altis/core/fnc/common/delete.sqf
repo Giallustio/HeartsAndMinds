@@ -15,7 +15,7 @@ params [
     [{
         params ["_args", "_id"];
 
-        if ({_x distance _args < 1000} count playableUnits isEqualTo 0) then {
+        if (playableUnits select {_x distance _args < 1000} isEqualTo []) then {
             [_id] call CBA_fnc_removePerFrameHandler;
             [_args] call CBA_fnc_deleteEntity;
         };
@@ -27,7 +27,7 @@ params [
     [{
         params ["_args", "_id"];
 
-        if ({_x distance leader _args < 1000} count playableUnits isEqualTo 0) then {
+        if (playableUnits select {_x distance leader _args < 1000} isEqualTo []) then {
             [_id] call CBA_fnc_removePerFrameHandler;
             [_args] call CBA_fnc_deleteEntity;
         };

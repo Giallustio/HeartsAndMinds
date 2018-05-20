@@ -38,61 +38,7 @@ private _cities_status = profileNamespace getVariable [format ["btc_hm_%1_cities
 private _array_ho = profileNamespace getVariable [format ["btc_hm_%1_ho", _name], []];
 
 {
-    _x params ["_pos", "_id_hideout","_rinf_time", "_cap_time", "_id", "_markers_saved"];
-
-    private _city = btc_city_all select _id;
-
-    private _hideout = [_pos] call btc_fnc_mil_create_hideout_composition;
-    clearWeaponCargoGlobal _hideout;
-    clearItemCargoGlobal _hideout;
-    clearMagazineCargoGlobal _hideout;
-
-    _city setPos _pos;
-    if (btc_debug) then {deleteMarker format ["loc_%1", _id];};
-    deleteVehicle (_city getVariable ["trigger_player_side", objNull]);
-    private _radius_x = btc_hideouts_radius;
-    private _radius_y = btc_hideouts_radius;
-
-    [_pos, _radius_x, _radius_y, _city, _city getVariable "occupied", _city getVariable "name", _city getVariable "type", _id] call btc_fnc_city_trigger_player_side;
-
-    _city setVariable ["RadiusX", _radius_x];
-    _city setVariable ["RadiusY", _radius_y];
-
-    _hideout setVariable ["id", _id_hideout];
-    _hideout setVariable ["rinf_time", _rinf_time];
-    _hideout setVariable ["cap_time", _cap_time];
-    _hideout setVariable ["assigned_to", _city];
-
-    _hideout addEventHandler ["HandleDamage", btc_fnc_mil_hd_hideout];
-
-    private _markers = [];
-    {
-        _x params ["_pos", "_marker_name"];
-
-        private _marker = createMarker [format ["%1", _pos], _pos];
-        _marker setMarkerType "hd_warning";
-        _marker setMarkerText _marker_name;
-        _marker setMarkerSize [0.5, 0.5];
-        _marker setMarkerColor "ColorRed";
-        _markers pushBack _marker;
-    } forEach _markers_saved;
-
-    _hideout setVariable ["markers", _markers];
-
-    if (btc_debug) then {
-        //Marker
-        private _marker = createMarker [format ["btc_hideout_%1", _pos], _pos];
-        _marker setMarkerType "mil_unknown";
-        _marker setMarkerText format ["Hideout %1", btc_hideouts_id];
-        _marker setMarkerSize [0.8, 0.8];
-    };
-
-    if (btc_debug_log) then {
-        [format ["_this = %1 - POS %2 ID %3", _x, _pos, btc_hideouts_id], __FILE__, [false]] call btc_fnc_debug_message;
-    };
-
-    btc_hideouts_id = btc_hideouts_id + 1;
-    btc_hideouts pushBack _hideout;
+    _x call btc_fnc_mil_create_hideout;
 } forEach _array_ho;
 
 private _ho = profileNamespace getVariable [format ["btc_hm_%1_ho_sel", _name], 0];
