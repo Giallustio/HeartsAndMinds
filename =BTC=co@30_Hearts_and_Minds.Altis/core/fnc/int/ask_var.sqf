@@ -8,9 +8,8 @@ private _data = switch (_id) do {
     case 0 : {_target getVariable ["active", false];};
     case 1 : {
         private _hd = objNull;
-        private _asker = allPlayers select {owner _x isEqualTo remoteExecutedOwner};
         {
-            if (_x distance _asker < 3000) then {
+            if (_x distance _target < 3000) then {
                 _hd = _x;
             };
         } forEach btc_hideouts;
