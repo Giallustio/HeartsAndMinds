@@ -86,7 +86,7 @@ publicVariable "btc_side_assigned";
 
 if (btc_side_aborted || btc_side_failed || !(Alive _captive)) exitWith {
     15 remoteExec ["btc_fnc_task_fail", 0];
-    [[_marker], [_trigger, _mine], [], _group + [_group_civ]] call btc_fnc_delete;
+    [[_marker], [_trigger, _mine], _group + [_group_civ]] call btc_fnc_delete;
 };
 
 40 call btc_fnc_rep_change;
