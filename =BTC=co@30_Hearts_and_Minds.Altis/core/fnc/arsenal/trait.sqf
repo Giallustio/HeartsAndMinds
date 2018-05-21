@@ -30,15 +30,13 @@ switch (true) do {
 
 if (btc_debug || btc_debug_log) then {
     [
-        format ["IsMedic basic: %1 IsMedic Adv: %2 IsAdvEngineer: %3 IsExplosiveSpecialist: %4 IsAT: %5 IsAA: %6 (Color: %7 IsDay: %8)",
+        format ["IsMedic basic: %1 IsMedic Adv: %2 IsAdvEngineer: %3 IsExplosiveSpecialist: %4 IsAT: %5 IsAA: %6",
             (_player getUnitTrait "medic") && (ace_medical_level isEqualTo 1),
             (_player getUnitTrait "medic") && (ace_medical_level isEqualTo 2),
             _player getVariable ["ace_isEngineer", 0],
             _player getUnitTrait "explosiveSpecialist",
             [typeOf _player, "128 + 512"] call btc_fnc_mil_ammoUsage,
-            [typeOf _player] call btc_fnc_mil_ammoUsage,
-            _color,
-            _isDay
+            [typeOf _player] call btc_fnc_mil_ammoUsage
             ], __FILE__, [btc_debug, btc_debug_log]
     ] call btc_fnc_debug_message;
 };

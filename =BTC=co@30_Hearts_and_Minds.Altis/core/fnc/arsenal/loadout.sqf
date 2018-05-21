@@ -1,23 +1,15 @@
 params [
     ["_type", 0], // 0 - Rifleman, 1 - Medic Adv, 2 - Medic Basic, 3 - Repair, 4 - Engineer, 5 - Anti-Tank, 6 - Anti Air
     ["_color", [[0, 1] select (worldName in ["Tanoa"]), 2] select (sunOrMoon isEqualTo 0)], //0 - Desert, 1 - Tropic, 2 - Black
-    ["_isDay", sunOrMoon isEqualTo 1]
+    ["_isDay", 0],
+    ["_arsenal_loadout", btc_arsenal_loadout]
 ];
+_arsenal_loadout params ["_uniforms", "_vests", "_helmets", "_hoods", "_laserdesignators", "_night_visions", "_weapons", "_pistols", "_launcher_AT", "_launcher_AA", "_backpacks", "_backpacks_big", "_radio"];
 
-//Array of colored item: 0 - Desert, 1 - Tropic, 2 - Black
-private _uniforms = ["U_B_CombatUniform_mcam", "U_B_CTRG_Soldier_F", "U_B_CTRG_1"];
-private _vests = ["V_PlateCarrierH_CTRG", "V_PlateCarrier2_rgr_noflag_F", "V_PlateCarrierH_CTRG"];
-private _helmets = ["H_HelmetSpecB_paint2", "H_HelmetB_Enh_tna_F", "H_HelmetSpecB_blk"];
-private _hoods = ["G_Balaclava_combat", "G_Balaclava_TI_G_tna_F", "G_Balaclava_combat"];
-private _Laserdesignators = ["Laserdesignator", "Laserdesignator_03", "Laserdesignator_01_khk_F"];
-private _night_visions = ["NVGoggles", "NVGoggles_INDEP", "NVGoggles_OPFOR"];
-private _weapons = ["arifle_MXC_F", "arifle_MXC_khk_F", "arifle_MXC_Black_F"];
-private _pistols = ["hgun_P07_F", "hgun_P07_khk_F", "hgun_P07_F"];
-private _launcher_AT = ["launch_B_Titan_short_F", "launch_B_Titan_short_tna_F", "launch_O_Titan_short_F"];
-private _launcher_AA = ["launch_B_Titan_F", "launch_B_Titan_tna_F", "launch_O_Titan_F"];
-private _backpacks = ["B_AssaultPack_Kerry", "B_AssaultPack_Kerry", "B_AssaultPack_blk"];
-private _backpacks_big = ["B_Kitbag_mcamo", "B_Kitbag_rgr", "B_Kitbag_rgr"];
-private _radio = ["tf_anprc152", "ACRE_PRC148"] select (isClass(configFile >> "cfgPatches" >> "acre_main"));
+if (_isDay isEqualType 0) then {
+    (date call BIS_fnc_sunriseSunsetTime) params ["_sunrise", "_sunset"];
+    _isDay = (_sunrise < dayTime) && (_sunset > dayTime + 1);
+};
 
 //Item inside Uniform
 private _cargo_uniform = [["acc_flashlight", 1], ["ACE_EarPlugs", 1], ["ACE_CableTie",5], ["optic_ACO_grn_smg", 1], ["ACE_MapTools", 1], ["ACE_RangeTable_82mm", 1], ["ACE_morphine", 3], ["ACE_epinephrine", 3], ["ACE_fieldDressing", 3], [["ACE_fieldDressing", 7], ["ACE_packingBandage", 3], ["ACE_tourniquet", 4]] select (ace_medical_level isEqualTo 2), [["", _radio] select (isClass(configFile >> "cfgPatches" >> "acre_main")), 1]];
@@ -40,7 +32,7 @@ private _cargos = [
     [_backpacks select _color, [[_launcherMagazines param [1, _launcherMagazine], 1, _launcherCount], [_launcherMagazine, 1, _launcherCount]]],
     [_backpacks_big select _color, [[_launcherMagazine, 2, _launcherCount]]]
 ];
-private _binocular_array = [_Laserdesignators, "", "", "", ["Laserbatteries", 1], [], ""];
+private _binocular_array = [_laserdesignators select _color, "", "", "", ["Laserbatteries", 1], [], ""];
 private _launcher_array = [_launcher, "", "", "", [_launcherMagazine, _launcherCount], [], ""];
 
 if (_isDay) then {
