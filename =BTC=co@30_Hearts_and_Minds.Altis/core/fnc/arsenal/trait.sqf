@@ -37,7 +37,7 @@ if (btc_debug || btc_debug_log) then {
             _player getUnitTrait "explosiveSpecialist",
             [typeOf _player, "128 + 512"] call btc_fnc_mil_ammoUsage,
             [typeOf _player] call btc_fnc_mil_ammoUsage
-            ], __FILE__, [btc_debug, btc_debug_log]
+        ], __FILE__, [btc_debug, btc_debug_log]
     ] call btc_fnc_debug_message;
 };
 

@@ -54,4 +54,4 @@ private _launcher_AA = ["launch_B_Titan_F", "launch_B_Titan_tna_F", "launch_O_Ti
 private _backpacks = ["B_AssaultPack_Kerry", "B_AssaultPack_Kerry", "B_AssaultPack_blk"];
 private _backpacks_big = ["B_Kitbag_mcamo", "B_Kitbag_rgr", "B_Kitbag_rgr"];
 
-btc_arsenal_loadout = [_uniforms, _vests, _helmets, _hoods, _laserdesignators, _night_visions, _weapons, _pistols, _launcher_AT, _launcher_AA, _backpacks, _backpacks_big, _radio];
+btc_arsenal_loadout = [_uniforms, _vests, _helmets, _hoods, _laserdesignators, _night_visions, _weapons, _pistols, _launcher_AT, _launcher_AA, _backpacks, _backpacks_big, [_radio, _radio, _radio]];
