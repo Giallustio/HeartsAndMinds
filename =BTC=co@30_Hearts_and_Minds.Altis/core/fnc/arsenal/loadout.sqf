@@ -1,6 +1,6 @@
 params [
     ["_type", 0], // 0 - Rifleman, 1 - Medic Adv, 2 - Medic Basic, 3 - Repair, 4 - Engineer, 5 - Anti-Tank, 6 - Anti Air
-    ["_color", [[0, 1] select (worldName in ["Tanoa"]), 2] select (sunOrMoon isEqualTo 0)], //0 - Desert, 1 - Tropic, 2 - Black
+    ["_color", [[0, 1] select (worldName in ["Tanoa", "chernarus", "lingor3", "sara"]), 2] select (sunOrMoon isEqualTo 0)], //0 - Desert, 1 - Tropic, 2 - Black
     ["_isDay", 0],
     ["_arsenal_loadout", btc_arsenal_loadout]
 ];
