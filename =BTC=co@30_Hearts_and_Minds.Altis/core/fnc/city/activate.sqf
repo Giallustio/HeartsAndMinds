@@ -85,7 +85,7 @@ if !(_data_units isEqualTo []) then {
         //Find a better way to randomize city occupation
         private _n = random 3;
         private _groups = ceil ((1 + _n) * _ratio);
-        for "_i" from 1 to (_groups) do {[_city, _radius, random _ratio, random 1] call btc_fnc_mil_create_group;};
+        for "_i" from 1 to (_groups) do {[_city, _radius, 1 + random _ratio, random 1] call btc_fnc_mil_create_group;};
     };
 
     //Spawn civilians
