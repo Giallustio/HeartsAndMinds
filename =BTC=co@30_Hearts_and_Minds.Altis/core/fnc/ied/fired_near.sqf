@@ -26,8 +26,9 @@ _array = [];
                         }, [_wreck, _ied]] call CBA_fnc_waitUntilAndExecute;
                     };
                 } else {
-                    private _explosive = getNumber(configFile >> "cfgAmmo" >> _bullet >> "explosive") > 0;
-                    private _caliber = getNumber(configFile >> "CfgAmmo" >> _bullet >> "caliber");
+                    private _cfgAmmo = configFile >> "cfgAmmo";
+                    private _explosive = getNumber(_cfgAmmo >> _bullet >> "explosive") > 0;
+                    private _caliber = getNumber(_cfgAmmo >> _bullet >> "caliber");
                     if (_explosive || _caliber > 1.6) then {
                         if (Alive _ied) then {
                             [_wreck, _ied] call btc_fnc_ied_boom;

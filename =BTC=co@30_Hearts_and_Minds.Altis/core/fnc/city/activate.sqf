@@ -29,7 +29,7 @@ if (!_is_init) then {
         case "NameCityCapital" : {random 6};
         case "Airport" : {0};
         case "NameMarine" : {0};
-        });
+    });
 
     private _ratio_ied = _ratio;
     if (_has_en) then {
@@ -79,7 +79,7 @@ if !(_data_units isEqualTo []) then {
         case "Airport" : {4};
         case "NameMarine" : {0.6};
         default {0.1};
-        });
+    });
 
     if (_has_en) then {
         //Find a better way to randomize city occupation
@@ -97,7 +97,7 @@ if !(_data_units isEqualTo []) then {
             case "NameCityCapital" : {6};
             case "Airport" : {1.5};
             default {1};
-            });
+        });
         private _n = 3 * _factor;
         [_city, _radius/3, _n] call btc_fnc_civ_populate;
     };

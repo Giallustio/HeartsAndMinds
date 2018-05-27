@@ -34,10 +34,11 @@ if (!isNull _cargo) then {
     _obj_img ctrlSetPosition [_hud_x_1, _hud_y_1];
     _obj_img ctrlCommit 0;
     private _pic_cargo = "";
+    private _cfgVehicles_cargo = configFile >> "CfgVehicles" >> typeOf _cargo;
     if (_cargo isKindOf "LandVehicle") then {
-        _pic_cargo = getText (configFile >> "cfgVehicles" >> typeOf _cargo >> "picture");
+        _pic_cargo = getText (_cfgVehicles_cargo >> "picture");
     };
-    private _name_cargo = getText (configFile >> "cfgVehicles" >> typeOf _cargo >> "displayName");
+    private _name_cargo = getText (_cfgVehicles_cargo >> "displayName");
     _obj_pic ctrlSetText _pic_cargo;
     _obj_name ctrlSetText _name_cargo;
     if (btc_lifted) then {

@@ -12,19 +12,21 @@ private _type_mg = [];
 private _type_gl = [];
 
 //Get all vehicles
-private _allclass = ("(configName _x) isKindOf 'AllVehicles'" configClasses (configFile >> "CfgVehicles")) apply {configName _x};
-_allclass = _allclass select {getNumber(configFile >> "CfgVehicles" >> _x >> "scope") isEqualTo 2};
+private _cfgVehicles = configFile >> "CfgVehicles";
+private _allclass = ("(configName _x) isKindOf 'AllVehicles'" configClasses _cfgVehicles) apply {configName _x};
+_allclass = _allclass select {getNumber(_cfgVehicles >> _x >> "scope") isEqualTo 2};
 
 //Check if faction existe
+private _cfgFactionClasses = configFile >> "CfgFactionClasses";
 _factions = _factions apply {
-    if !isClass(configFile >> "CfgFactionClasses" >> _x) then {
+    if !isClass(_cfgFactionClasses >> _x) then {
         "IND_G_F"
     } else {
         _x
     };
 };
 
-_enemy_side = [east, west, independent, civilian] select getNumber(configFile >> "CfgFactionClasses" >> _factions select 0 >> "side");
+_enemy_side = [east, west, independent, civilian] select getNumber(_cfgFactionClasses >> _factions select 0 >> "side");
 
 //Prevent selecting same side as player side
 if (_enemy_side isEqualTo btc_player_side) exitWith {
@@ -43,8 +45,9 @@ if (_enemy_side isEqualTo btc_player_side) exitWith {
         _divers = if (_enemy_side isEqualTo east) then {
             ["O_diver_F", "O_diver_exp_F", "O_diver_TL_F"]
         } else {
-            ["I_diver_F", "I_diver_exp_F", "I_diver_TL_F"]};
+            ["I_diver_F", "I_diver_exp_F", "I_diver_TL_F"]
         };
+    };
     _type_divers append _divers;
     _type_units append ((_allclass_f select {_x isKindOf "Man"}) - _divers);
 

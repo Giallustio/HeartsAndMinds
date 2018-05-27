@@ -5,7 +5,7 @@ if (_units isEqualTo []) then {
 };
 
 _units = _units select {side _x isEqualTo civilian};
-[[_units,_units apply {format ["amovp%1mstpsnonwnondnon", ((animationState _x) select [5, 3])]}], {
+[[_units, _units apply {format ["amovp%1mstpsnonwnondnon", ((animationState _x) select [5, 3])]}], {
     {
         _x switchMove (_this select 1 select _forEachIndex);
     } forEach (_this select 0);

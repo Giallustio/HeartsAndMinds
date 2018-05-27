@@ -5,11 +5,13 @@ private _type_boats = [];
 private _type_veh = [];
 
 //Get all vehicles
-private _allClass = ("(configName _x) isKindOf 'AllVehicles'" configClasses (configFile >> "CfgVehicles")) apply {configName _x};
-_allClass = _allClass select {getNumber(configfile >> "CfgVehicles" >> _x >> "scope") isEqualTo 2};
+private _cfgVehicles = configFile >> "CfgVehicles";
+private _allClass = ("(configName _x) isKindOf 'AllVehicles'" configClasses _cfgVehicles) apply {configName _x};
+_allClass = _allClass select {getNumber(_cfgVehicles >> _x >> "scope") isEqualTo 2};
 
 //Check if faction existe
-_factions = _factions apply {if !(isClass(configFile >> "CfgFactionClasses" >> _x)) then {
+private _cfgFactionClasses = configFile >> "CfgFactionClasses";
+_factions = _factions apply {if !(isClass(_cfgFactionClasses >> _x)) then {
         "CIV_F"
     } else {
         _x
@@ -20,7 +22,7 @@ _factions = _factions apply {if !(isClass(configFile >> "CfgFactionClasses" >> _
     private _faction = _x;
 
     //Get all vehicles of the _faction selected
-    private _allClass_f = _allClass select {(toUpper getText(configFile >> "CfgVehicles" >> _x >> "faction")) isEqualTo _faction};
+    private _allClass_f = _allClass select {(toUpper getText(_cfgVehicles >> _x >> "faction")) isEqualTo _faction};
 
     //Units
     _type_units append (_allClass_f select {_x isKindOf "Man"});
