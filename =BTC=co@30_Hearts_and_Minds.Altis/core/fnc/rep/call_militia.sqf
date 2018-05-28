@@ -8,7 +8,7 @@ private _players = if (isMultiplayer) then {playableUnits} else {switchableunits
 private _start_pos = [];
 {
     private _hideout = _x;
-    if (_pos distance _hideout < 2000 && {{_x distance _hideout < 500} count _players isEqualTo 0}) then {
+    if (_pos distance _hideout < 2000 && {_players select {_x distance _hideout < 500} isEqualTo []}) then {
         _start_pos = getPos _hideout;
     };
 } forEach btc_hideouts;
@@ -20,7 +20,7 @@ if (btc_debug_log) then {
 if (_start_pos isEqualTo []) then {
     {
         private _city = _x;
-        if (_pos distance _city > 300 && {_pos distance _city < 2500} && {{_x distance _city < 500} count _players isEqualTo 0}) then {
+        if (_pos distance _city > 300 && {_pos distance _city < 2500} && {_players select {_x distance _city < 500} isEqualTo []}) then {
             _start_pos = getPos _city;
         };
     } forEach btc_city_all;

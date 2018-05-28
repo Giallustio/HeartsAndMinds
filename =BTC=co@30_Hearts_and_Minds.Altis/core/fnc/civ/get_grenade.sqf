@@ -4,7 +4,7 @@ if (_units isEqualTo []) then {
     _units = _pos nearEntities [btc_civ_type_units, _range];
 };
 
-_units = (_units select {side _x isEqualTo civilian});
+_units = _units select {side _x isEqualTo civilian};
 
 if (_units isEqualTo []) exitWith {};
 

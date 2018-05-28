@@ -78,7 +78,7 @@ class Params {
         default = 2;
     };
     class btc_p_ied_spot { // IEDs spotting difficulty:
-        title = __EVAL(format ["      %1",(localize "STR_BTC_HAM_PARAM_IED_SPOT")]);
+        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_IED_SPOT"]);
         values[]={0, 1, 2};
         texts[]={$STR_BTC_HAM_PARAM_IED_SPOT_VERYEASY,$STR_BTC_HAM_PARAM_IED_SPOT_EASY,$STR_BTC_HAM_PARAM_IED_RATIO_NORMAL}; //texts[]={"Very easy","Easy","Normal"};
         default = 2;

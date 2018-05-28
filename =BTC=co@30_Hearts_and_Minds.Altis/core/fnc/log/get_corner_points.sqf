@@ -5,10 +5,10 @@ params ["_vehicle"];
 // Correct width and length factor for air
 private _widthFactor = 0.75;
 private _lengthFactor = 0.75;
-if(_vehicle isKindOf "Air") then {
+if (_vehicle isKindOf "Air") then {
     _widthFactor = 0.3;
 };
-if(_vehicle isKindOf "Helicopter") then {
+if (_vehicle isKindOf "Helicopter") then {
     _widthFactor = 0.2;
     _lengthFactor = 0.45;
 };

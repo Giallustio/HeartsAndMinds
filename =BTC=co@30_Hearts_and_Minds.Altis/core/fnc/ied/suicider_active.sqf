@@ -39,7 +39,7 @@ _suicider addEventHandler ["Killed", {
 (group _suicider) setSpeedMode "FULL";
 
 if (btc_debug_log) then {
-    [format ["_this = %1 POS %2 START LOOP", _suicider, getPos _suicider], __FILE__, [false]] call btc_fnc_debug_message;
+    [format ["_suicider = %1 POS %2 START LOOP", _suicider, getPos _suicider], __FILE__, [false]] call btc_fnc_debug_message;
 };
 
 [{
@@ -59,4 +59,4 @@ if (btc_debug_log) then {
             [format ["_suicider = %1 POS %2 END LOOP", _suicider, getPos _suicider], __FILE__, [false]] call btc_fnc_debug_message;
         };
     };
-} , 0.5, [_suicider, _trigger]] call CBA_fnc_addPerFrameHandler;
+}, 0.5, [_suicider, _trigger]] call CBA_fnc_addPerFrameHandler;

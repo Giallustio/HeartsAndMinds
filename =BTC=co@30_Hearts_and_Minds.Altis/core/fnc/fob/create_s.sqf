@@ -19,7 +19,7 @@ while {_h < 0} do {
 private _FOB_name = "FOB " + _name;
 private _marker = createMarker [_FOB_name, getPos _flag];
 
-_FOB_name setMarkerSize [1,1];
+_FOB_name setMarkerSize [1, 1];
 _FOB_name setMarkerType "b_hq";
 _FOB_name setMarkerText _FOB_name;
 _FOB_name setMarkerColor "ColorBlue";

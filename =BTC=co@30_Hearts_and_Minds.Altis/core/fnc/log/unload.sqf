@@ -21,7 +21,7 @@ private _onFinish = {
     params ["_args"];
     _args params ["_veh", "_player", "_obj_type", "_obj_name"];
 
-    [_obj_type,_veh] remoteExec ["btc_fnc_log_server_unload", 2];
+    [_obj_type, _veh] remoteExec ["btc_fnc_log_server_unload", 2];
     hint format [localize "STR_BTC_HAM_LOG_UNLOAD_FIN", _obj_name, getText (configFile >> "cfgVehicles" >> typeOf _veh >> "displayName")];
 };
 private _onFail = {

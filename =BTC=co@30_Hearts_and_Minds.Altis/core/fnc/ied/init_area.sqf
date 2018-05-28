@@ -35,7 +35,7 @@ for "_i" from 1 to _n do {
                         _dist = _x distance _sel_pos;
                         _obj = _x;
                     };
-                } foreach _roads;
+                } forEach _roads;
 
                 if (isNull _obj) exitWith {};
                 if (random 1 > 0.5) then {

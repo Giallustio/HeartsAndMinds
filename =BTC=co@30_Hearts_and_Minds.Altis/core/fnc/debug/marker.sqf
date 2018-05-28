@@ -3,6 +3,7 @@ params ["_display"];
 private _units = btc_units_owners apply {_x select 0};
 private _owners = btc_units_owners apply {_x select 1};
 
+private _cfgVehicles = configFile >> "CfgVehicles";
 {
     private _typeof = typeOf _x;
 
@@ -32,7 +33,7 @@ private _owners = btc_units_owners apply {_x select 1};
     };
 
     _display drawIcon [
-        getText (configFile/"CfgVehicles"/ _typeof /"Icon"),
+        getText (_cfgVehicles >> _typeof >> "Icon"),
         _color,
         visiblePosition _x,
         20,

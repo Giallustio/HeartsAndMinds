@@ -80,7 +80,7 @@ if (_type isEqualTo 5) then {
 
         while {Alive _suicider && !isNull _suicider && !_cond} do {
             sleep 5;
-            if !((getpos _suicider nearEntities ["SoldierWB", 25]) isEqualTo []) then {
+            if !((getPos _suicider nearEntities ["SoldierWB", 25]) isEqualTo []) then {
                 _cond = true;
                 _suicider spawn btc_fnc_ied_suicider_active
             };
