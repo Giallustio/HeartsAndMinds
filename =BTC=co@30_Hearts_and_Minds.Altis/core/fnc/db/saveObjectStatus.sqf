@@ -2,7 +2,7 @@ params ["_object"];
 
 private _data = [];
 
-if !(_object getVariable ["loaded", false] || !Alive _object || isNull _object) then {
+if !(!alive _object || isNull _object) then {
 
     _data pushBack (typeOf _object);
     _data pushBack (getPosWorld _object);

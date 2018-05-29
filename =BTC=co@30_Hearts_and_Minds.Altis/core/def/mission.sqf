@@ -402,7 +402,6 @@ btc_log_def_rc = [
     btc_supplies_mat, 8,
     btc_fob_mat, 8,
     "Land_Cargo20_military_green_F", 8,
-    "Land_Cargo40_military_green_F", 16,
     "B_Slingload_01_Fuel_F", 20,
     "Land_Pod_Heli_Transport_04_medevac_black_F", 8
 ];
