@@ -11,7 +11,7 @@ if ({_x distance _active_city < (_area/2) || _x distance leader _group < (_area/
     if (vehicle leader _group != leader _group) then {
         vehicle leader _group setFuel 0;
     } else {
-        [[], [], [], [_group]] call btc_fnc_delete;
+        [[], [], [_group]] call btc_fnc_delete;
     };
 };
 
