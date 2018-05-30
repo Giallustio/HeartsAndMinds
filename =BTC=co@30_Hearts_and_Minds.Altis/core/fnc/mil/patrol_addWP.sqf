@@ -12,7 +12,11 @@ _players = if (isMultiplayer) then {playableUnits} else {switchableUnits};
 
 //Remove if too far from player
 if ({_x distance _active_city < (_area/2) || _x distance leader _group < (_area/2)} count _players isEqualTo 0) exitWith {
-    vehicle leader _group setFuel 0;
+    if (vehicle leader _group != leader _group) then {
+        vehicle leader _group setFuel 0;
+    } else {
+        [[], [], [], [_group]] call btc_fnc_delete;
+    };
 };
 
 //Sometimes the waypoints is completed but too far due to obstacle (water for island etc)
