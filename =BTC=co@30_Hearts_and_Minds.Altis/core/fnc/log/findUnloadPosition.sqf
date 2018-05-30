@@ -1,0 +1,127 @@
+/*
+ * Author: PabstMirror, ViperMaul
+ * Find a safe place near a vehicle to unload something.
+ * Handles Normal Terrain, In Water or On Buildings (Pier, StaticShip).
+ *
+ * Arguments:
+ * 0: Source Vehicle <OBJECT>
+ * 1: Cargo <OBJECT> or <STRING>
+ * 2: Unloader (player) <OBJECT> (default: objNull)
+ * 3: Max Distance (meters) <NUMBER> (default: 10)
+ * 4: Check Vehicle is Stable <BOOL> (default: true)
+ *
+ * Return Value:
+ * Unload PositionAGL (can Be [] if no valid pos found) <ARRAY>
+ *
+ * Example:
+ * [theCar, "CAManBase", player, 10, true] call ace_common_fnc_findUnloadPosition
+ *
+ * Public: No
+ */
+
+//Number of tests run (effects performance in worst case scenarior where nothing is found VERSUES reliably finding a pos):
+#define MAX_TESTS 75
+
+//Manual collision tests (count and radius):
+#define COL_TEST_COUNT 12
+
+params ["_vehicle", "_cargo", ["_theUnloader", objNull], ["_maxDistance", 10], ["_checkVehicleIsStable", true]];
+
+scopeName "main";
+
+if (_checkVehicleIsStable) then {
+    if (((vectorMagnitude (velocity _vehicle)) > 1.5) || {(!(_vehicle isKindOf "Ship")) && {(!isTouchingGround _vehicle) && {((getPos _vehicle) select 2) > 1.5}}}) then {
+        [] breakOut "main";
+    };
+};
+
+private _radiusOfItem = 1;
+if (_cargo isKindOf "CAManBase") then {
+    _radiusOfItem = 1.1;
+} else {
+    //`sizeOf` is unreliable, and does not work with object types that don't exist on map, so estimate size based on cargo size
+    private _typeOfCargo = if (_cargo isEqualType "") then {_cargo} else {typeOf _cargo};
+    private _itemSize = if (isNumber (configFile >> "CfgVehicles" >> _typeOfCargo >> "ace_cargo_size")) then {
+        getNumber (configFile >> "CfgVehicles" >> _typeOfCargo >> "ace_cargo_size");
+    } else {
+        if (["ace_cargo"] call ace_common_fnc_isModLoaded) then {
+            [_cargo] call ace_cargo_fnc_getSizeItem;
+        } else {
+            _radiusOfItem;
+        };
+    };
+    if (_itemSize != -1) then {
+        _radiusOfItem = (_itemSize ^ 0.35) max 0.75;
+    };
+};
+if (btc_debug) then {
+    [format ["_radiusOfItem = %1", _radiusOfItem], __FILE__, [btc_debug, false]] call btc_fnc_debug_message;
+};
+if (isNull _theUnloader) then {_theUnloader = _vehicle;};
+
+//Ideal unload pos is halfway between unloader and vehicle (at the unloader's height)
+private _originASL = ((getPosASL _theUnloader) vectorAdd (getPosASL _vehicle)) vectorMultiply 0.5;
+_originASL set [2, (getPosASL _theUnloader) select 2];
+private _originAGL = ASLtoAGL _originASL;
+
+//Do a manual search for empty pos (handles underwater, buildings or piers)
+private _rangeToCheck = 0;
+while {_rangeToCheck < _maxDistance} do {
+    private _roundDistance = random _rangeToCheck;
+    private _roundAngle = random 360;
+    private _roundAGL = _originAGL vectorAdd [(cos _roundAngle) * _roundDistance, (sin _roundAngle) * _roundDistance, 0];
+
+    private _roundPointIsValid = false;
+    if (((AGLtoASL _roundAGL) select 2) > 0) then {
+        //Shoot a ray down, and make sure we hit something solid like a building or the ground:
+        private _belowRoundArray = lineIntersectsSurfaces [(AGLtoASL _roundAGL) vectorAdd [0,0,0.5], (AGLtoASL _roundAGL) vectorAdd [0,0,-1]];
+        if (!(_belowRoundArray isEqualTo [])) then {
+            private _aboveBuilding = (_belowRoundArray select 0) select 2;
+            //Point is above something: Terrain(null) or Building
+            if ((isNull _aboveBuilding) || {_aboveBuilding isKindOf "Building"}) then {
+                //Get the real intersection point:
+                _roundAGL = ASLtoAGL ((_belowRoundArray select 0) select 0);
+                _roundPointIsValid = true;
+            };
+        };
+    } else {
+        //Underwater, just unload anywhere
+        _roundPointIsValid = true;
+    };
+
+    //Make sure point is valid and do a fast check for people in the way (which sometimes aren't caught by line scaning)
+    if (_roundPointIsValid && {(_roundAGL nearEntities ["Man", _radiusOfItem]) isEqualTo []}) then {
+        for "_index" from 0 to (COL_TEST_COUNT -1) do {
+            //Scan for colisions with objects with lineIntersectsSurfaces
+            private _angle = _index * (360 / COL_TEST_COUNT);
+            private _point1ASL = (AGLtoASL _roundAGL) vectorAdd [_radiusOfItem * cos _angle, _radiusOfItem * sin _angle, 0.1];
+            private _point2ASL = (AGLtoASL _roundAGL) vectorAdd [-_radiusOfItem * cos _angle, -_radiusOfItem * sin _angle, (_radiusOfItem + 0.5)];
+            private _testIntersections = lineIntersectsSurfaces [_point1ASL, _point2ASL];
+            if (((count _testIntersections) == 1) && {isNull ((_testIntersections select 0) select 2)}) then {
+                private _hitGroundASL = (_testIntersections select 0) select 0;
+                private _hitHeightOffset = ((AGLtoASL _roundAGL) select 2) - (_hitGroundASL select 2);
+                private _hit2dOffset = _roundAGL distance2D _hitGroundASL;
+                private _slope = _hitHeightOffset atan2 _hit2dOffset;
+                if (_slope < 25) then { //Ignore ground hit if slope is reasonable
+                    _testIntersections = [];
+                };
+            };
+            if (!(_testIntersections isEqualTo [])) exitWith {
+                _roundPointIsValid = false;
+            };
+            _point1ASL = (AGLtoASL _roundAGL) vectorAdd [_radiusOfItem * cos _angle, _radiusOfItem * sin _angle, 0.5];
+            _point2ASL = (AGLtoASL _roundAGL) vectorAdd [-_radiusOfItem * cos _angle, -_radiusOfItem * sin _angle, 1];
+            _testIntersections = lineIntersectsSurfaces [_point1ASL, _point2ASL];
+            if (!(_testIntersections isEqualTo [])) exitWith {
+                _roundPointIsValid = false;
+            };
+        };
+        if (_roundPointIsValid) then {
+            //Raise it slightly so we don't sink through the floor:
+            (_roundAGL vectorAdd [0,0,0.05]) breakOut "main";
+        };
+    };
+    _rangeToCheck = _rangeToCheck + (_maxDistance / MAX_TESTS);
+};
+
+[] //return empty array

@@ -258,6 +258,7 @@ if (!isDedicated) then {
     btc_fnc_eh_treatment = compile preprocessFileLineNumbers "core\fnc\eh\treatment.sqf";
     btc_fnc_eh_leaflets = compile preprocessFileLineNumbers "core\fnc\eh\leaflets.sqf";
     btc_fnc_eh_player = compile preprocessFileLineNumbers "core\fnc\eh\player.sqf";
+    btc_fnc_eh_unLoad = compile preprocessFileLineNumbers "core\fnc\eh\unload.sqf";
 
     //FOB
     btc_fnc_fob_create = compile preprocessFileLineNumbers "core\fnc\fob\create.sqf";
@@ -285,6 +286,7 @@ if (!isDedicated) then {
     btc_fnc_log_hitch_points = compile preprocessFileLineNumbers "core\fnc\log\hitch_points.sqf";
     btc_fnc_log_get_corner_points = compile preprocessFileLineNumbers "core\fnc\log\get_corner_points.sqf";
     btc_fnc_log_arsenalData = compile preprocessFileLineNumbers "core\fnc\log\arsenalData.sqf";
+    btc_fnc_log_findUnloadPosition = compile preprocessFileLineNumbers "core\fnc\log\findunloadposition.sqf";
 
     //TASK
     btc_fnc_task_create = compile preprocessFileLineNumbers "core\fnc\task\create.sqf";
