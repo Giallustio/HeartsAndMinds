@@ -19,7 +19,7 @@ params [
             [_id] call CBA_fnc_removePerFrameHandler;
             [_args] call CBA_fnc_deleteEntity;
         };
-    } , 5, _object] call CBA_fnc_addPerFrameHandler;
+    }, 5, _object] call CBA_fnc_addPerFrameHandler;
 } forEach _objects;
 
 {
@@ -31,5 +31,5 @@ params [
             [_id] call CBA_fnc_removePerFrameHandler;
             [_args] call CBA_fnc_deleteEntity;
         };
-    } , 5, _group] call CBA_fnc_addPerFrameHandler;
+    }, 5, _group] call CBA_fnc_addPerFrameHandler;
 } forEach _groups;

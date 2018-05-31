@@ -6,9 +6,15 @@ private _noaccess = _group getVariable ["noaccess", []];
 
 private _players = if (isMultiplayer) then {playableUnits} else {switchableUnits};
 
+if (btc_debug) then {
+    if (!isNil {_group getVariable "btc_patrol_id"}) then {
+        deleteMarker format ["Patrol_fant_%1", _group getVariable "btc_patrol_id"];
+    };
+};
+
 //Remove if too far from player
 if ({_x distance _active_city < (_area/2) || _x distance leader _group < (_area/2)} count _players isEqualTo 0) exitWith {
-    vehicle leader _group setFuel 0;
+    [_group] call btc_fnc_mil_patrol_eh;
 };
 
 //Sometimes the waypoints is completed but too far due to obstacle (water for island etc)
@@ -69,8 +75,6 @@ if !((vehicle leader _group) isKindOf "Air") then {
 
 if (btc_debug) then {
     if (!isNil {_group getVariable "btc_patrol_id"}) then {
-        deleteMarker format ["Patrol_fant_%1", _group getVariable "btc_patrol_id"];
-
         private _marker = createMarker [format ["Patrol_fant_%1", _group getVariable "btc_patrol_id"] , [(_pos select 0) + random 30, (_pos select 1) + random 30, 0]];
         _marker setMarkerType "mil_dot";
         _marker setMarkerText format ["P %1", _group getVariable "btc_patrol_id"];

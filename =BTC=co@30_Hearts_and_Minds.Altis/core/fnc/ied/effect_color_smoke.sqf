@@ -24,7 +24,7 @@ _smoke setParticleRandom [0, [0, 0, -.5], [2, 2, .5], 0, 1, [0, 0, 0, 0.1], 0, 0
 _smoke setParticleParams [["\A3\data_f\cl_fireD", 1, 0, 1], "", "Billboard", 1, 10.5, [0, 0, .7], [0, 0, 0], 0, 10, 7.85, 0.375, [_size, 2*_size], _color, [0.08], 1, 0, "", "", _thingToFling];
 _smoke setDropInterval 0.005;
 
-_thingToFling setVelocity [(random _horizontal) - (_horizontal/2), (random _horizontal) - (_horizontal/2), 5 + (random _upwards)];
+_thingToFling setVelocity [(random _horizontal) - _horizontal/2, (random _horizontal) - _horizontal/2, 5 + (random _upwards)];
 _thingToFling allowDamage false;
 private _sleepTime = random 0.5;
 private _currentTime = 0;

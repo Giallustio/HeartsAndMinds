@@ -1,11 +1,6 @@
 params ["_order", ["_unit", objNull]];
 
-private _gesture = switch (_order) do {
-    case 1 : {"gestureFreeze"};
-    case 2 : {"gestureCover"};
-    case 3 : {"gestureGo"};
-    case 4 : {"gestureGo"};
-};
+private _gesture = ["", "gestureFreeze", "gestureCover", "gestureGo", "gestureGo"] select _order;
 
 player playActionNow _gesture;
 

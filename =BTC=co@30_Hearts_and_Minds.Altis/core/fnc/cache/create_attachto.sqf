@@ -34,7 +34,7 @@ switch (_pos_type) do {
         _p = random [-10, 0, 10];
         _r = 255;
     };
-    default    {
+    default {
         _holder attachTo [_object, [0, 0, _height_box + _height_weapon]];
         _y = random 180;
         _p = 0;

@@ -9,16 +9,16 @@ if (_random <= 3) exitWith {};
 
 if (time > (btc_rep_militia_called + btc_rep_militia_call_time)) then {
     if (_random > 3) then { //CALL MILITIA
-        [_pos] spawn btc_fnc_rep_call_militia;
+        [_pos] call btc_fnc_rep_call_militia;
     };
 };
 if (btc_global_reputation < 300) then {
     if (_random > 4) then { //GET WEAPONS
-        [_pos, 300] spawn btc_fnc_civ_get_weapons;
+        [_pos, 300] call btc_fnc_civ_get_weapons;
     };
 } else {
     if (_random > 1) then { //GET GRENADE
-        [_pos, 300] spawn btc_fnc_civ_get_grenade;
+        [_pos, 300] call btc_fnc_civ_get_grenade;
     };
 };
 

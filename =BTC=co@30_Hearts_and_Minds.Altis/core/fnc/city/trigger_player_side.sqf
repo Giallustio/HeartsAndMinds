@@ -12,12 +12,12 @@ if (btc_debug) then {//_debug
     _marker setMarkerBrush "SolidBorder";
     _marker setMarkerSize [_radius_x + _radius_y + btc_city_radius, _radius_x + _radius_y + btc_city_radius];
     _marker setMarkerAlpha 0.3;
-
     if (_has_en) then {
         _marker setMarkerColor "colorRed";
     } else {
         _marker setMarkerColor "colorGreen";
     };
+    _city setVariable ["marker", _marker];
 
     private _marke = createMarker [format ["locn_%1", _id], _position];
     _marke setMarkerType "mil_dot";

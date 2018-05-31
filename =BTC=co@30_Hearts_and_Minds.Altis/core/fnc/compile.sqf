@@ -94,7 +94,6 @@ if (isServer) then {
     btc_fnc_mil_check_cap = compile preprocessFileLineNumbers "core\fnc\mil\check_cap.sqf";
     btc_fnc_mil_create_group = compile preprocessFileLineNumbers "core\fnc\mil\create_group.sqf";
     btc_fnc_mil_hd_hideout = compile preprocessFileLineNumbers "core\fnc\mil\hd_hideout.sqf";
-    //btc_fnc_mil_eh_killed = compile preprocessFileLineNumbers "core\fnc\mil\eh_killed.sqf";
     btc_fnc_mil_create_hideout = compile preprocessFileLineNumbers "core\fnc\mil\create_hideout.sqf";
     btc_fnc_mil_create_hideout_composition = compile preprocessFileLineNumbers "core\fnc\mil\create_hideout_composition.sqf";
     btc_fnc_mil_create_static = compile preprocessFileLineNumbers "core\fnc\mil\create_static.sqf";
@@ -212,6 +211,7 @@ btc_fnc_log_paste = compile preprocessFileLineNumbers "core\fnc\log\paste.sqf";
 
 //MIL
 btc_fnc_mil_class = compile preprocessFileLineNumbers "core\fnc\mil\class.sqf";
+btc_fnc_mil_ammoUsage = compile preprocessFileLineNumbers "core\fnc\mil\ammoUsage.sqf";
 
 //TASK
 btc_fnc_task_create = compile preprocessFileLineNumbers "core\fnc\task\create.sqf";
@@ -282,11 +282,15 @@ if (!isDedicated) then {
     btc_fnc_info_ask_reputation = compile preprocessFileLineNumbers "core\fnc\info\ask_reputation.sqf";
 
     //LOG
-    btc_fnc_log_garage = compile preprocessFileLineNumbers "core\fnc\log\garage.sqf";
     btc_fnc_log_hitch_points = compile preprocessFileLineNumbers "core\fnc\log\hitch_points.sqf";
     btc_fnc_log_get_corner_points = compile preprocessFileLineNumbers "core\fnc\log\get_corner_points.sqf";
-    btc_fnc_log_arsenalData = compile preprocessFileLineNumbers "core\fnc\log\arsenalData.sqf";
     btc_fnc_log_findUnloadPosition = compile preprocessFileLineNumbers "core\fnc\log\findunloadposition.sqf";
+
+    //ARSENAL
+    btc_fnc_arsenal_data = compile preprocessFileLineNumbers "core\fnc\arsenal\data.sqf";
+    btc_fnc_arsenal_garage = compile preprocessFileLineNumbers "core\fnc\arsenal\garage.sqf";
+    btc_fnc_arsenal_loadout = compile preprocessFileLineNumbers "core\fnc\arsenal\loadout.sqf";
+    btc_fnc_arsenal_trait = compile preprocessFileLineNumbers "core\fnc\arsenal\trait.sqf";
 
     //TASK
     btc_fnc_task_create = compile preprocessFileLineNumbers "core\fnc\task\create.sqf";

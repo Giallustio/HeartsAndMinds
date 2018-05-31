@@ -29,7 +29,7 @@ if (!_is_init) then {
         case "NameCityCapital" : {random 6};
         case "Airport" : {0};
         case "NameMarine" : {0};
-        });
+    });
 
     private _ratio_ied = _ratio;
     if (_has_en) then {
@@ -79,13 +79,13 @@ if !(_data_units isEqualTo []) then {
         case "Airport" : {4};
         case "NameMarine" : {0.6};
         default {0.1};
-        });
+    });
 
     if (_has_en) then {
         //Find a better way to randomize city occupation
         private _n = random 3;
         private _groups = ceil ((1 + _n) * _ratio);
-        for "_i" from 1 to (_groups) do {[_city, _radius, random _ratio, random 1] call btc_fnc_mil_create_group;};
+        for "_i" from 1 to (_groups) do {[_city, _radius, 1 + random _ratio, random 1] call btc_fnc_mil_create_group;};
     };
 
     //Spawn civilians
@@ -97,7 +97,7 @@ if !(_data_units isEqualTo []) then {
             case "NameCityCapital" : {6};
             case "Airport" : {1.5};
             default {1};
-            });
+        });
         private _n = 3 * _factor;
         [_city, _radius/3, _n] call btc_fnc_civ_populate;
     };
@@ -140,7 +140,7 @@ if !(btc_cache_pos isEqualTo []) then {
 
 if (_has_ho && {!(_city getVariable ["ho_units_spawned", false])}) then {
     _city setVariable ["ho_units_spawned", true];
-    private _pos = _city getVariable ["ho_pos", getpos _city];
+    private _pos = _city getVariable ["ho_pos", getPos _city];
     [_pos, 20, 10 + random 6, 0.8] call btc_fnc_mil_create_group;
     [_pos, 120, 1 + random 2, 0.5] call btc_fnc_mil_create_group;
     [_pos, 120, 1 + random 2, 0.5] call btc_fnc_mil_create_group;

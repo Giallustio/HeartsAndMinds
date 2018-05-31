@@ -19,8 +19,8 @@ switch (_order) do {
     };
     case 2 : {
         doStop _unit;
+        [_unit, "", 2] call ace_common_fnc_doAnimation;
         _unit setUnitPos "DOWN";
-        [_unit, format ["AmovP%1MstpSnonWnonDnon_AmovPpneMstpSnonWnonDnon", (animationState _unit) select [5, 3]], 1] call ace_common_fnc_doAnimation;
     };
     case 3 : {
         _unit setUnitPos "UP";

@@ -47,6 +47,7 @@ switch (true) do {
         };
     };
     case (_wp > 0.3 && _wp < 0.75) : {
+        [_group, _rpos, 0, _pos_iswater] call btc_fnc_mil_createUnits;
         [_group, _rpos, _area, 2 + floor (random 4), "MOVE", "SAFE", "RED", ["LIMITED", "NORMAL"] select ((vehicle leader _group) isKindOf "Air"), "STAG COLUMN", "", [5, 10, 20]] call CBA_fnc_taskPatrol;
     };
     case (_wp > 0.75) : {
@@ -54,13 +55,13 @@ switch (true) do {
     };
 };
 if (_structure isEqualTo objNull) then {
-    [_group, _rpos, _n, _pos_iswater] call btc_fnc_mil_createUnits;
+    [_group, _rpos, _n - count units _group, _pos_iswater] call btc_fnc_mil_createUnits;
 } else {
     {
         private _grp = createGroup btc_enemy_side;
         [_x] joinSilent _grp;
         _grp setVariable ["inHouse", typeOf _structure];
-        [_grp, _structure] spawn btc_fnc_house_addWP;
+        [_grp, _structure] call btc_fnc_house_addWP;
         _groups pushBack _grp;
     } forEach units _group;
 };
