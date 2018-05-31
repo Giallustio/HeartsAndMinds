@@ -1,5 +1,7 @@
 params ["_item", "_vehicle", ["_unloader", objNull]];
 
+if (isNumber (configFile >> "CfgVehicles" >> typeOf _item >> "ace_cargo_size") && {getNumber (configFile >> "CfgVehicles" >> typeOf _item >> "ace_cargo_size") != -1}) exitWith {};
+
 private _emptyPosAGL = [_vehicle, _item, _unloader] call btc_fnc_log_findUnloadPosition;
 
 if (btc_debug) then {
