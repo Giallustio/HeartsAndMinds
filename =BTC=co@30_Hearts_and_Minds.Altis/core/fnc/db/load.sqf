@@ -71,24 +71,12 @@ call btc_fnc_cache_create;
 
 //FOB
 private _fobs = profileNamespace getVariable [format ["btc_hm_%1_fobs", _name], []];
-private _fobs_loaded = [[], []];
 
 {
     _x params ["_fob_name", "_pos"];
 
-    createMarker [_fob_name, _pos];
-    _fob_name setMarkerSize [1, 1];
-    _fob_name setMarkerType "b_hq";
-    _fob_name setMarkerText _fob_name;
-    _fob_name setMarkerColor "ColorBlue";
-    _fob_name setMarkerShape "ICON";
-    private _fob_structure = createVehicle [btc_fob_structure, _pos, [], 0, "NONE"];
-    private _flag = createVehicle [btc_fob_flag, _pos, [], 0, "NONE"];
-    _flag setVariable ["btc_fob", _fob_name];
-    (_fobs_loaded select 0) pushBack _fob_name;
-    (_fobs_loaded select 1) pushBack _fob_structure;
+    [_pos, _fob_name, false] call btc_fnc_fob_create_s;
 } forEach (_fobs select 0);
-btc_fobs = _fobs_loaded;
 
 //REP
 private _global_reputation = profileNamespace getVariable [format ["btc_hm_%1_rep", _name], 0];

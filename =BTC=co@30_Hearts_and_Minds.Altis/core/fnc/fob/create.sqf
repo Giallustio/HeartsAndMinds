@@ -35,10 +35,11 @@ if (ctrlText 777 == "") exitWith {
 
 private _name = ctrlText 777;
 
-private _name_to_check = "FOB " + (toUpper _name);
+private _FOB_name = "FOB " + _name;
+private _name_to_check = toUpper _FOB_name;
 private _array_markers = allMapMarkers apply {toUpper _x};
 
-if (_array_markers find _name_to_check >= 0) exitWith {
+if (_name_to_check in _array_markers) exitWith {
     closeDialog 0;
     hint localize "STR_BTC_HAM_O_FOB_CREATE_H_NAMENOTA"; //"Name already in use!"
     _mat spawn btc_fnc_fob_create;
@@ -48,4 +49,6 @@ hint localize "STR_BTC_HAM_O_FOB_CREATE_H_WIP";//"Get back! Mounting FOB"
 
 closeDialog 0;
 
-[_mat, _name] remoteExec ["btc_fnc_fob_create_s", 2];
+private _pos = getPos _mat;
+deleteVehicle _mat;
+[_pos, "FOB " + _name] remoteExecCall ["btc_fnc_fob_create_s", 2];
