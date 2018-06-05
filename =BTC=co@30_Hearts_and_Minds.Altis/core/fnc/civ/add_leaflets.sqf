@@ -4,8 +4,9 @@ params ["_player","_uav"];
 if !(_uav isKindOf "UAV_06_base_F") exitWith {};
 
 _uav addMagazine "1Rnd_Leaflets_West_F";
-if !("Bomb_Leaflets" in (_uav weaponsTurret [-1])) then {
+if !("Bomb_Leaflets" in (_uav weaponsTurret [[0, -1] select (_uav isKindOf "UAV_06_base_F")])) then {
     _uav addWeapon "Bomb_Leaflets";
+    _uav selectWeaponTurret ["Bomb_Leaflets", [[0, -1] select (_uav isKindOf "UAV_06_base_F")]];
 };
 if (needReload _uav == 1) then {reload _uav};
 
