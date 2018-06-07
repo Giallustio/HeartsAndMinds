@@ -114,7 +114,7 @@ private _array_veh = [];
     private _cargo = [];
     {
         _cargo pushBack [typeOf _x, _x getVariable ["ace_rearm_magazineClass", ""], [getWeaponCargo _x, getMagazineCargo _x, getItemCargo _x]]
-    } forEach (_x getVariable ["cargo", []]);
+    } forEach (_x getVariable ["ace_cargo_loaded", []]);
     _data pushBack _cargo;
     private _cont = [getWeaponCargo _x, getMagazineCargo _x, getItemCargo _x];
     _data pushBack _cont;
@@ -133,7 +133,7 @@ private _array_obj = [];
     if !(_data isEqualTo []) then {
         _array_obj pushBack _data;
     };
-} forEach btc_log_obj_created;
+} forEach (btc_log_obj_created select {!(isObjectHidden _x)});
 profileNamespace setVariable [format ["btc_hm_%1_objs", _name], _array_obj];
 
 //Player Markers

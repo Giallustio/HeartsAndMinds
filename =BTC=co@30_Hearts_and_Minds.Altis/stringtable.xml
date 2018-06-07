@@ -141,8 +141,8 @@
                 <German>Logistik</German>
             </Key>
             <Key ID="STR_BTC_HAM_DOC_LOGISTIC_TEXT">
-                <Original>&lt;marker name='blufor_base'&gt;Cargo System:&lt;/marker&gt;&lt;br/&gt; - &lt;img image='a3\ui_f\data\IGUI\Cfg\Actions\loadVehicle_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Load:&lt;/marker&gt; You can load objects inside vehicles. Approach the object you want to load and interact with it.&lt;br/&gt; Select 'LOAD IN' option.&lt;br/&gt;  After that interact with the vehicle and select 'LOAD object selected' option.&lt;br/&gt; The object has to be close to the vehicle.&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\search_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Unload:&lt;/marker&gt; You can unload an object from a vehicle interacting with it. You can be inside the vehicle (personal interaction) or outside (object interaction).&lt;br/&gt; Select the option 'CHECK CARGO', then choose the object you want to unload from the list, and click 'UNLOAD'.&lt;br/&gt; If you are inside a chopper the object will be paradropped with a chute. If your height is too low, the object will crash down.&lt;br/&gt; Every vehicle has a 'CARGO CAPACITY' (CC in game), and every object has a 'REQUIRED CAPACITY' value (RC in game.)&lt;br/&gt; You can check those values in game with 'LOAD IN' and 'CHECK CARGO' options.&lt;br/&gt;&lt;br/&gt;&lt;br/&gt; &lt;marker name='blufor_base'&gt;Towing system:&lt;/marker&gt;&lt;br/&gt; To tow a vehicle interact with it and select the option 'HOOK'.&lt;br/&gt;After that place the tow vehicle in front of it and select 'TOW' in the interaction menu.&lt;br/&gt; If the two vehicles are too far away or the vehicle can't tow that load (Car can't tow truck or tank), the option will be disabled.&lt;br/&gt; To unhook interact with one of the two vehicles and select the option 'UNHOOK'.&lt;br/&gt;&lt;br/&gt; &lt;marker name='blufor_base'&gt;Place option:&lt;/marker&gt;&lt;br/&gt; With this option you can move heavy objects to build small outpost or base.&lt;br/&gt; When you select the option an hint will show all the keys required to move the object.</Original>
-                <German>&lt;marker name='blufor_base'&gt;Fracht-System:&lt;/marker&gt;&lt;br/&gt; - &lt;img image='a3\ui_f\data\IGUI\Cfg\Actions\loadVehicle_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Beladen:&lt;/marker&gt; Man kann Objekte in Fahrzeuge einladen. Gehen Sie an das Obekt heran und interagieren sie damit.&lt;br/&gt; Wählen sie 'EINLADEN'aus.&lt;br/&gt; Als nächstes gehen Sie zum Fahrzeug und wählen 'AUSGEWÄHLTES EINLADEN' aus.&lt;br/&gt; Denken Sie daran, dass das zu verladende Objekt sich in der Nähe des Fahrzeuges befinden muss.&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\search_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Abladen:&lt;/marker&gt; Man kann Objekte aus einen Fahrzeug entladen, indem man mit diesem interagiert. Das funktioniert von Innen (Eigen-Interaktionsmenü) und von Aussen (mit dem Objekt interagieren).&lt;br/&gt; Über den Menüpunkt 'FRACHT ÜBERPRÜFEN' kann man das zu entladende Objekt aus einer Liste auswählen und mit einem Klick auf 'ENTLADEN' ausladen.&lt;br/&gt; Wenn man sich beim Ausladen in einem Hubschrauber befindet, so wird das Objekt automatisch mit einem Fallschrim abgeworfen. Aber Achtung: Der Fallschirm öffnet sich erst ab einer bestimmten Flughöhe.&lt;br/&gt; Jedes Fahrzeug hat eine gewisse Ladekapazität ('Frachtkapazität' - CC im Spiel genannt) und jedes Objekt hat ein gewisses Ladevolumen ('benötigte Kapazität' - RC im Spiel genannt).&lt;br/&gt; Diese Werte können im Spiel mit den Actionen 'EINLADEN' und 'FRACHT ÜBERPRÜFEN' geprüft werden.&lt;br/&gt;&lt;br/&gt;&lt;br/&gt; &lt;marker name='blufor_base'&gt;Abschleppsystem:&lt;/marker&gt;&lt;br/&gt; Um ein Fahrzeug abzuschleppen muss man mit diesem interagieren und 'EINHACKEN' auswählen.&lt;br/&gt;Als nächstes muss man das Zugfahrzeug vor das abzuschleppende Fahrzeug stellen und über das Interagtionsmenü die Option 'ABSCHLEPPEN' aktivieren.&lt;br/&gt; Zu beachten ist dabei, dass die beiden Fahrzeuge nicht zu weit von einander entfernt sein dürfen. Ebenso ist daruf zu achten, dass das Zugfahrzeug auch das andere Fahrzeug abschleppen kann (zB. Autos können keine Lkw/Panzer abschleppen).&lt;br/&gt; Um das Abschleppseil wieder zu entfernen muss man einen bei einem der beiden Fahrzeuge die Option 'AUSHACKEN' auswählen.&lt;br/&gt;&lt;br/&gt; &lt;marker name='blufor_base'&gt;Platzierung von Objekten:&lt;/marker&gt;&lt;br/&gt; Mit dieser Option können Sie schwere Objekte bewegen, um einen kleinen Außenposten oder eine Basis zu bauen.&lt;br/&gt; Wenn Sie die Option auswählen, zeigt ein Hinweis alle Tasten an, die zum Verschieben des Objekts erforderlich sind.</German>
+                <Original>&lt;marker name='blufor_base'&gt;Cargo System:&lt;/marker&gt;&lt;br/&gt; See ACE3 documentation. &lt;br/&gt;&lt;br/&gt; &lt;marker name='blufor_base'&gt;Towing system:&lt;/marker&gt;&lt;br/&gt; To tow a vehicle interact with it and select the option 'HOOK'.&lt;br/&gt;After that place the tow vehicle in front of it and select 'TOW' in the interaction menu.&lt;br/&gt; If the two vehicles are too far away or the vehicle can't tow that load (Car can't tow truck or tank), the option will be disabled.&lt;br/&gt; To unhook interact with one of the two vehicles and select the option 'UNHOOK'.&lt;br/&gt;&lt;br/&gt; &lt;marker name='blufor_base'&gt;Place option:&lt;/marker&gt;&lt;br/&gt; With this option you can move heavy objects to build small outpost or base.&lt;br/&gt; When you select the option an hint will show all the keys required to move the object.</Original>
+                <German>&lt;marker name='blufor_base'&gt;Fracht-System:&lt;/marker&gt;&lt;br/&gt;Siehe ACE3 Dokumentation. &lt;br/&gt;&lt;br/&gt; &lt;marker name='blufor_base'&gt;Abschleppsystem:&lt;/marker&gt;&lt;br/&gt; Um ein Fahrzeug abzuschleppen muss man mit diesem interagieren und 'EINHACKEN' auswählen.&lt;br/&gt;Als nächstes muss man das Zugfahrzeug vor das abzuschleppende Fahrzeug stellen und über das Interagtionsmenü die Option 'ABSCHLEPPEN' aktivieren.&lt;br/&gt; Zu beachten ist dabei, dass die beiden Fahrzeuge nicht zu weit von einander entfernt sein dürfen. Ebenso ist daruf zu achten, dass das Zugfahrzeug auch das andere Fahrzeug abschleppen kann (zB. Autos können keine Lkw/Panzer abschleppen).&lt;br/&gt; Um das Abschleppseil wieder zu entfernen muss man einen bei einem der beiden Fahrzeuge die Option 'AUSHACKEN' auswählen.&lt;br/&gt;&lt;br/&gt; &lt;marker name='blufor_base'&gt;Platzierung von Objekten:&lt;/marker&gt;&lt;br/&gt; Mit dieser Option können Sie schwere Objekte bewegen, um einen kleinen Außenposten oder eine Basis zu bauen.&lt;br/&gt; Wenn Sie die Option auswählen, zeigt ein Hinweis alle Tasten an, die zum Verschieben des Objekts erforderlich sind.</German>
             </Key>
         </Container>
         <Container name="Documentation: Hideout">
@@ -919,20 +919,6 @@
                 <German>Fahrzeug anfordern</German>
             </Key>
         </Container>
-        <Container name="Action(ACE): Logistic">
-            <Key ID="STR_BTC_HAM_ACTION_LOGISTIC_LOADIN">
-                <Original>Load in</Original>
-                <German>Einladen</German>
-            </Key>
-            <Key ID="STR_BTC_HAM_ACTION_LOGISTIC_LOADSEL">
-                <Original>Load selected</Original>
-                <German>Ausgewähltes einladen</German>
-            </Key>
-            <Key ID="STR_BTC_HAM_ACTION_LOGISTIC_CHECKCARGO">
-                <Original>Check cargo</Original>
-                <German>Fracht überprüfen</German>
-            </Key>
-        </Container>
         <Container name="Action(ACE): FOB">
             <Key ID="STR_BTC_HAM_ACTION_FOB_MOUNT">
                 <Original>Mount FOB</Original>
@@ -1427,60 +1413,16 @@
                 <German>Das ist kein Wrack!</German>
             </Key>
         </Container>
-        <Container name="Logistic: Select ">
-            <Key ID="STR_BTC_HAM_LOG_SEL_HINT">
-                <Original>%1 selected &lt;br/&gt;CR: %2&lt;br/&gt; Interact with a vehicle to load it in!</Original>
-                <German>%1 ausgewählt &lt;br/&gt;CR: %2&lt;br/&gt; Interagieren Sie mit dem Fahrzeug, in welches die Fracht eingeladen werden soll!</German>
-            </Key>
-        </Container>
         <Container name="Logistic: Tow ">
             <Key ID="STR_BTC_HAM_LOG_TOW_ALREADYTOWED">
                 <Original>This vehicle is already attached to another!</Original>
                 <German>Dieses Fahrzeug zieht bereits ein anderes Fahrzeug!</German>
             </Key>
         </Container>
-        <Container name="Logistic: Check Cargo ">
-            <Key ID="STR_BTC_HAM_LOG_CHECKC_VEHICLE">
-                <Original>Vehicle: %1  | CC: %2/%3</Original>
-                <German>Fahrzeug: %1  | CC: %2/%3</German>
-            </Key>
-        </Container>
         <Container name="Logistic: Unhook ">
             <Key ID="STR_BTC_HAM_LOG_UNHOOK_NOROPE">
                 <Original>This vehicle is not attached to another!</Original>
                 <German>Das Fahrzeug schleppt kein anderes Fahrzeug ab!</German>
-            </Key>
-        </Container>
-        <Container name="Logistic: Unload ">
-            <Key ID="STR_BTC_HAM_LOG_UNLOAD_BAR">
-                <Original>Unloading %1. . .</Original>
-                <German>%1 wird abgeladen. . .</German>
-            </Key>
-            <Key ID="STR_BTC_HAM_LOG_UNLOAD_FIN">
-                <Original>%1 has been unloaded from %2</Original>
-                <German>%1 wurde von %2 abgeladen</German>
-            </Key>
-            <Key ID="STR_BTC_HAM_LOG_UNLOAD_ABORT">
-                <Original>Unloading aborted</Original>
-                <German>Abladen abgebrochen</German>
-            </Key>
-        </Container>
-        <Container name="Logistic: dlg (Dialog) ">
-            <Key ID="STR_BTC_HAM_LOG_DLG_CARGO">
-                <Original>Cargo</Original>
-                <German>Frachtraum</German>
-            </Key>
-            <Key ID="STR_BTC_HAM_LOG_DLG_UNLOAD">
-                <Original>Unload</Original>
-                <German>Entladen</German>
-            </Key>
-            <Key ID="STR_BTC_HAM_LOG_DLG_APPLY">
-                <Original>Apply</Original>
-                <German>Bestätigen</German>
-            </Key>
-            <Key ID="STR_BTC_HAM_LOG_DLG_CLOSE">
-                <Original>Close</Original>
-                <German>Schließen</German>
             </Key>
         </Container>
     </Package>

@@ -6,4 +6,4 @@ if ({!((_x isKindOf "Animal") || (_x isKindOf "Module_F") || (_x isKindOf "Weapo
 
 if (isNil "_copy_container") exitWith {hint localize "STR_BTC_HAM_O_PASTE_NOCOPIED"}; //No copied container!
 
-[_copy_container] remoteExec ["btc_fnc_db_loadObjectStatus", 2];
+[_copy_container] remoteExecCall ["btc_fnc_db_loadObjectStatus", 2];
