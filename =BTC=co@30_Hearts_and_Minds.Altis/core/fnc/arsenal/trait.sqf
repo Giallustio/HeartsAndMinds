@@ -1,30 +1,31 @@
 params [
-    ["_player", objNull]
+    ["_player", objNull, [objNull]]
 ];
 
 // 0 - Rifleman, 1 - Medic Adv, 2 - Medic Basic, 3 - Repair, 4 - Engineer, 5 - Anti-Tank
-private _type = 0;
+// https://community.bistudio.com/wiki/CfgAmmo_Config_Reference#aiAmmoUsageFlags
+private _type_ammoUsageAllowed = [0, ["64"]];
 switch (true) do {
     case ((_player getUnitTrait "medic") && (ace_medical_level isEqualTo 1)): {
-        _type = 1;
+        _type_ammoUsageAllowed = [1, ["64"]];
     };
     case ((_player getUnitTrait "medic") && (ace_medical_level isEqualTo 2)): {
-        _type = 2;
+        _type_ammoUsageAllowed = [2, ["64"]];
     };
     case (_player getVariable ["ace_isEngineer", 0] in [1, 2]): {
-        _type = 3;
+        _type_ammoUsageAllowed = [3, ["64"]];
     };
     case (_player getUnitTrait "explosiveSpecialist"): {
-        _type = 4;
+        _type_ammoUsageAllowed = [4, ["64", "16"]];
     };
     case ([typeOf _player, "128 + 512"] call btc_fnc_mil_ammoUsage): {
-        _type = 5;
+        _type_ammoUsageAllowed = [5, ["64", "128 + 512"]];
     };
     case ([typeOf _player] call btc_fnc_mil_ammoUsage): {
-        _type = 6;
+        _type_ammoUsageAllowed = [6, ["64", "256"]];
     };
     default {
-        _type = 0;
+        _type_ammoUsageAllowed = [0, ["64"]];
     };
 };
 
@@ -41,4 +42,4 @@ if (btc_debug || btc_debug_log) then {
     ] call btc_fnc_debug_message;
 };
 
-_type
+_type_ammoUsageAllowed
