@@ -1,5 +1,10 @@
-params ["_box", "_arsenalType", "_arsenalRestrict", "_arsenalData"];
-_arsenalData params [["_weapons", []], ["_magazines", []], ["_items", []], ["_backpacks", []]];
+params [
+    ["_box", objNull, [objNull]],
+    ["_arsenalType", 0, [0]],
+    ["_arsenalRestrict", 0, [0]],
+    ["_arsenalData", [], [[]]]
+];
+_arsenalData params [["_weapons", [], [[]]], ["_magazines", [], [[]]], ["_items", [], [[]]], ["_backpacks", [], [[]]]];
 
 //BIS Arsenal
 if (_arsenalType < 3) then {

@@ -44,6 +44,6 @@ _factions = _factions apply {if !(isClass(_cfgFactionClasses >> _x)) then {
 
 //Final filter unwanted units type
 _type_units = _type_units select {((_x find "_Driver_") isEqualTo -1) && ((_x find "_base") isEqualTo -1) && ((_x find "_unarmed_") isEqualTo -1) && ((_x find "_VR_") isEqualTo -1) && ((_x find "_pilot_") isEqualTo -1)};
-_type_veh = _type_veh select {((_x find "UAV") isEqualTo -1) && ((_x find "UGV") isEqualTo -1) && ((_x find "_Kart_") isEqualTo -1)};
+_type_veh = _type_veh select {!(getNumber (_cfgVehicles >> _x >> "isUav") isEqualTo 1) && ((_x find "_Kart_") isEqualTo -1)};
 
 [_type_units, _type_boats, _type_veh]
