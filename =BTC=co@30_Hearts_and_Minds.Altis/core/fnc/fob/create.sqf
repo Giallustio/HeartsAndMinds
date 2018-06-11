@@ -49,6 +49,11 @@ hint localize "STR_BTC_HAM_O_FOB_CREATE_H_WIP";//"Get back! Mounting FOB"
 
 closeDialog 0;
 
-private _pos = getPos _mat;
-deleteVehicle _mat;
-[_pos, "FOB " + _name] remoteExecCall ["btc_fnc_fob_create_s", 2];
+[{
+    params ["_pos", "_mat", "_name"];
+
+    deleteVehicle _mat;
+    private _FOB_name = "FOB " + _name;
+    [_pos, _FOB_name] remoteExecCall ["btc_fnc_fob_create_s", 2];
+    [7, _FOB_name] remoteExecCall ["btc_fnc_show_hint", [0, -2] select isDedicated];
+}, [getPos _mat, _mat, _name], 5] call CBA_fnc_waitAndExecute;
