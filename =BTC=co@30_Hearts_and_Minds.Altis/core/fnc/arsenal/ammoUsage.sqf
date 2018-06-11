@@ -10,22 +10,23 @@ private _cfgAmmo = configFile >> "CfgAmmo";
 _weapons select {
     private _weapon = _x;
     private _magazines = getArray (_cfgWeapons >> _weapon >> "magazines");
-    private _ammo = "";
 
-    if !(_magazines isEqualTo []) then {
-        _ammo = getText (_cfgMagazines >> _magazines select 0 >> "ammo");
-    };
+    private _aiAmmoUsage_magazines = _magazines apply {
+        private _ammo = getText (_cfgMagazines >> _x >> "ammo");
 
-    private _aiAmmoUsage = getText (_cfgAmmo >> _ammo >> "aiAmmoUsageFlags");
-    if (_aiAmmoUsage isEqualTo "") then {
-        _aiAmmoUsage = str getNumber (_cfgAmmo >> _ammo >> "aiAmmoUsageFlags");
+        private _aiAmmoUsage = getText (_cfgAmmo >> _ammo >> "aiAmmoUsageFlags");
+        if (_aiAmmoUsage isEqualTo "") then {
+            _aiAmmoUsage = str getNumber (_cfgAmmo >> _ammo >> "aiAmmoUsageFlags");
+        };
+
+        _aiAmmoUsage;
     };
 
     if (btc_debug_log) then {
-        if (_aiAmmoUsage isEqualTo "") then {
-            [format ["Weapons: %1 isAmmoUsage: %2", _weapons, _aiAmmoUsage], __FILE__, [false]] call btc_fnc_debug_message;
+        if ("" in _aiAmmoUsage_magazines) then {
+            [format ["Weapons: %1 AiAmmoUsage Magazines: %2", _weapons, _aiAmmoUsage_magazines], __FILE__, [false]] call btc_fnc_debug_message;
         };
     };
 
-    _aiAmmoUsage isEqualTo _aiAmmoUsageFlags;
+    _aiAmmoUsageFlags in _aiAmmoUsage_magazines;
 };
