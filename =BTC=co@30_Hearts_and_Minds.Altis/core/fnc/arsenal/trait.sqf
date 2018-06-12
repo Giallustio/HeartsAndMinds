@@ -34,7 +34,7 @@ switch (true) do {
         _type_ammoUsageAllowed = [0, ["64", "64 + 128", "128 + 512"], 0];
     };
 };
-mmg_01_hex_f
+
 if (btc_debug || btc_debug_log) then {
     [
         format ["IsMedic basic: %1 IsMedic Adv: %2 IsAdvEngineer: %3 IsExplosiveSpecialist: %4 IsAT: %5 IsAA: %6",
