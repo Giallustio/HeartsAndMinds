@@ -7,7 +7,9 @@ call compile preprocessFileLineNumbers "core\doc.sqf";
 
     [player] call btc_fnc_eh_player;
 
-    [player] call btc_fnc_arsenal_weaponsFilter;
+    if (btc_p_arsenal_Restrict isEqualTo 3) then {
+        [player call btc_fnc_arsenal_trait] call btc_fnc_arsenal_weaponsFilter;
+    };
     call btc_fnc_int_add_actions;
     call btc_fnc_int_shortcuts;
 
