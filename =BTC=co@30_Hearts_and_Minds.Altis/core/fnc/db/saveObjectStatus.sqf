@@ -2,7 +2,7 @@ params ["_object"];
 
 private _data = [];
 
-if !(_object getVariable ["loaded", false] || !Alive _object || isNull _object) then {
+if !(!alive _object || isNull _object) then {
 
     _data pushBack (typeOf _object);
     _data pushBack (getPosWorld _object);
@@ -12,7 +12,7 @@ if !(_object getVariable ["loaded", false] || !Alive _object || isNull _object) 
     private _cargo = [];
     {
         _cargo pushBack [typeOf _x, _x getVariable ["ace_rearm_magazineClass", ""], [getWeaponCargo _x, getMagazineCargo _x, getItemCargo _x]];
-    } forEach (_object getVariable ["cargo", []]);
+    } forEach (_object getVariable ["ace_cargo_loaded", []]);
     _data pushBack _cargo;
     //Inventory
     private _cont = [getWeaponCargo _object, getMagazineCargo _object, getItemCargo _object];

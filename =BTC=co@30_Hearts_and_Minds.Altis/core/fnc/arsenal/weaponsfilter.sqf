@@ -1,7 +1,7 @@
 params [
     ["_player", objNull, [objNull]],
     ["_custom_arsenal", btc_custom_arsenal, [[]]],
-    ["_arsenalRestrict", btc_custom_arsenal, [0]],
+    ["_arsenalRestrict", btc_p_arsenal_Restrict, [0]]
 ];
 
 ([_player] call btc_fnc_arsenal_trait) params ["_type", "_ammo_usageAllowed"];

@@ -1,5 +1,5 @@
 btc_version = 1.18;
-diag_log format ["=BTC= HEARTS AND MINDS VERSION %1.1", btc_version];
+diag_log format ["=BTC= HEARTS AND MINDS VERSION %1.2", btc_version];
 
 //Param
 //<< Time options >>
@@ -128,10 +128,6 @@ if (isServer) then {
 
     //FOB
     btc_fobs = [[], []];
-
-    //Log
-    btc_log_id_repo = 10;
-    btc_log_cargo_repo = "Land_HBarrierBig_F" createVehicle [- 5000, - 5000, 0];
 
     //Patrol
     btc_patrol_max = 8;
@@ -355,7 +351,6 @@ if (isServer) then {
 };
 
 private _c_array = btc_construction_array select 1;
-btc_log_def_draggable = (_c_array select 1) + (_c_array select 2);
 btc_log_def_loadable = (_c_array select 0) + (_c_array select 1) + (_c_array select 2) + (_c_array select 3) + (_c_array select 4) + (_c_array select 5) + (_c_array select 6) + ["ace_rearm_defaultCarriedObject", "ace_rearm_Bo_Mk82", "ace_rearm_Bomb_04_F", "ace_rearm_Bo_GBU12_LGB", "ace_rearm_Bomb_03_F", "ace_rearm_Missile_AA_03_F", "ace_rearm_Missile_AGM_02_F", "ace_rearm_Missile_AGM_01_F", "ace_rearm_Rocket_03_AP_F", "ace_rearm_R_80mm_HE", "ace_rearm_R_60mm_HE", "ace_rearm_Rocket_04_HE_F", "ace_rearm_R_Hydra_HE", "ace_rearm_Missile_AA_04_F", "ace_rearm_M_PG_AT", "ace_rearm_R_230mm_HE", "ace_rearm_Rocket_03_HE_F", "ace_rearm_Rocket_04_AP_F", "ace_rearm_R_230mm_fly"];
 btc_log_def_can_load = (_c_array select 3);
 btc_log_def_placeable = (_c_array select 0) + (_c_array select 3) + (_c_array select 4) + (_c_array select 5);
@@ -396,34 +391,20 @@ btc_log_main_rc = [
     "Car", 35
 ];
 btc_log_def_cc = [
-    "B_Quadbike_01_F", 2,
-    "B_UGV_01_rcws_F", 4,
-    "B_UGV_01_F", 4,
     "Land_CargoBox_V1_F", 0,
     btc_supplies_mat, 0,
     btc_fob_mat, 0,
     "Land_Cargo20_military_green_F", 20,
-    "Land_Cargo40_military_green_F", 40,
-    "B_Slingload_01_Fuel_F", 0,
-    "Land_Pod_Heli_Transport_04_medevac_black_F", 0,
-    //Trucks
-    "B_Truck_01_transport_F", 10,
-    "B_Truck_01_covered_F", 10,
-    "I_Truck_02_covered_F", 10,
-    "O_Truck_02_covered_F", 10,
-    "I_Truck_02_transport_F", 10,
-    "O_Truck_02_transport_F", 10,
-    "O_Truck_02_transport_F", 10
+    "Land_Cargo40_military_green_F", 40
 ];
 btc_log_def_rc = [
     "Land_BagBunker_Small_F", 5,
     "Land_CargoBox_V1_F", 9999,
-    btc_supplies_mat, 10,
-    btc_fob_mat, 10,
-    "Land_Cargo20_military_green_F", 20,
-    "Land_Cargo40_military_green_F", 40,
+    btc_supplies_mat, 8,
+    btc_fob_mat, 8,
+    "Land_Cargo20_military_green_F", 8,
     "B_Slingload_01_Fuel_F", 20,
-    "Land_Pod_Heli_Transport_04_medevac_black_F", 20
+    "Land_Pod_Heli_Transport_04_medevac_black_F", 8
 ];
 
 btc_fnc_log_get_nottowable = {

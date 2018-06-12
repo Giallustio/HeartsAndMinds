@@ -8,5 +8,4 @@ if (getText (configFile >> "cfgVehicles" >> _obj >> "displayName") isEqualTo "")
 _obj setVectorUp _vector;
 _obj setPosASL _pos;
 
-btc_log_obj_created pushBack _obj;
-btc_curator addCuratorEditableObjects [[_obj], false];
+[_obj] call btc_fnc_log_init;
