@@ -1,10 +1,10 @@
 params [
-    ["_trait", [0, ["64", "64 + 128", "128 + 512"], 0], [[]]],
+    ["_trait", [0, [["AssaultRifle", ""], ["RocketLauncher", ""]]], [[]]],
     ["_custom_arsenal", btc_custom_arsenal, [[]]],
     ["_arsenalRestrict", btc_p_arsenal_Restrict, [0]],
     ["_type_units", btc_type_units, [[]]]
 ];
-_trait params ["_type", "_ammo_usageAllowed", "_canlock"];
+_trait params ["_type", "_itemType_ammo_usageAllowed"];
 
 private _weapons = ("true" configClasses (configFile >> "CfgWeapons") select {
     getNumber (_x >> "scope") isEqualTo 2 &&
@@ -13,8 +13,8 @@ private _weapons = ("true" configClasses (configFile >> "CfgWeapons") select {
 
 private _allowedWeapons = [];
 {
-    _allowedWeapons append ([_weapons, _x, _canlock] call btc_fnc_arsenal_ammoUsage);
-} forEach _ammo_usageAllowed;
+    _allowedWeapons append ([_weapons, _x] call btc_fnc_arsenal_ammoUsage);
+} forEach _itemType_ammo_usageAllowed;
 
 private _enemyWeapons = [];
 {
