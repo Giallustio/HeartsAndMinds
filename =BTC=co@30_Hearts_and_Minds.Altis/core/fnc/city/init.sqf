@@ -38,7 +38,7 @@ for "_i" from 0 to (count _locations - 1) do {
 
         /*
         //if you want a safe area
-        if (_position distance getMarkerPos "YOUR_MARKER_AREA" < 500) exitWith {};
+        if ((getMarkerPos "YOUR_MARKER_AREA") inArea [_position, 500, 500, 0, false]) exitWith {};
         */
 
         [_position, _type, _name, _radius_x, _radius_y, random 1 > 0.45] call btc_fnc_city_create;

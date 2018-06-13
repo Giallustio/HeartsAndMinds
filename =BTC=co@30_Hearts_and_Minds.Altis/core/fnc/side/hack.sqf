@@ -58,7 +58,7 @@ for "_i" from 1 to (2 + round random 1) do {
 
 [13] remoteExec ["btc_fnc_show_hint", -2];
 
-waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({_x isEqualTo grpNull} count _groups > 0) || !(_city getVariable ["active", false]))};
+waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || (grpNull in _groups) || !(_city getVariable ["active", false]))};
 if (btc_side_aborted || btc_side_failed) exitWith {
     btc_side_done = nil;
     publicVariable "btc_side_done";

@@ -23,9 +23,10 @@ if (_has_en) then {
     _city setVariable ["trigger", objNull];
 };
 
+private _pos_city = getPosWorld _city;
 private _data_units = [];
 {
-    if (((leader _x) distance _city) < _radius && {side _x != btc_player_side} && !(_x getVariable ["no_cache", false])) then {
+    if ((leader _x) inArea [_pos_city, _radius, _radius, 0, false] && {side _x != btc_player_side} && {!(_x getVariable ["no_cache", false])}) then {
         private _data_group = _x call btc_fnc_data_get_group;
         _data_units pushBack _data_group;
 

@@ -15,7 +15,7 @@ _cargo_array = _cargo_array select {!(
 if (_cargo_array isEqualTo []) exitWith {false};
 private _cargo = _cargo_array select 0;
 
-private _can_lift = ({_cargo isKindOf _x} count _array) > 0 && speed _cargo < 5;
+private _can_lift = (_array findif {_cargo isKindOf _x} != -1) && speed _cargo < 5;
 
 if !(_can_lift) exitWith {false};
 

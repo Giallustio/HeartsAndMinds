@@ -90,14 +90,14 @@ for "_i" from 1 to (5 + round random 5) do {
     };
 };
 
-waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({_x distance _pos < 100} count playableUnits > 0))};
+waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !(playableUnits inAreaArray [_pos, 100, 100] isEqualTo []))};
 
 private _closest = [_city,btc_city_all select {!(_x getVariable ["active", false])}, false] call btc_fnc_find_closecity;
 for "_i" from 1 to (round random 2) do {
     [_closest, _pos, 1, selectRandom btc_type_motorized] spawn btc_fnc_mil_send;
 };
 
-waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({!isNull _x} count _mines isEqualTo 0))};
+waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || (_mines select {!isNull _x} isEqualTo []))};
 
 btc_side_assigned = false;
 publicVariable "btc_side_assigned";

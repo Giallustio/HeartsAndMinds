@@ -31,7 +31,7 @@ for "_i" from 1 to _n do {
                 private _obj = objNull;
                 private _dist = 100;
                 {
-                    if (_x distance _sel_pos < _dist) then {
+                    if (_x inArea [_sel_pos, _dist, _dist, 0, false]) then {
                         _dist = _x distance _sel_pos;
                         _obj = _x;
                     };
