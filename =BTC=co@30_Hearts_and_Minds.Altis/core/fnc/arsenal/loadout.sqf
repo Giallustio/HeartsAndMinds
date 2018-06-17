@@ -17,7 +17,7 @@ private _cargo_uniform = [["acc_flashlight", 1], ["ACE_EarPlugs", 1], ["ACE_Cabl
 _cargo_uniform append ([[["ACE_fieldDressing", 7]], [["ACE_packingBandage", 3], ["ACE_tourniquet", 4]]] select (ace_medical_level isEqualTo 2)) select 0;
 
 //Choose appropriats weapon/optics depends on _type
-switch (_type) do {
+private _array = switch (_type) do {
     case 7: {
         [_weapon_sniper, ["ACE_optic_Hamr_2D", "ACE_optic_LRPS_2D"]];
     };
@@ -27,7 +27,8 @@ switch (_type) do {
     default {
         [_weapon];
     };
-} params ["_weapon", ["_optics", ["ACE_optic_Hamr_2D", "ACE_optic_Arco_2D"], [[]]]];
+};
+_array params ["_weapon", ["_optics", ["ACE_optic_Hamr_2D", "ACE_optic_Arco_2D"], [[]]]];
 private _bipod_item = ["", _bipod] select (_type in [7, 8]);
 
 //Generate magazines and boulets count
