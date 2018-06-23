@@ -16,9 +16,10 @@ private _allowedWeapons = [];
     _allowedWeapons append ([_weapons, _x] call btc_fnc_arsenal_ammoUsage);
 } forEach _itemType_ammo_usageAllowed;
 
+private _cfgVehicles = configFile >> "CfgVehicles";
 private _enemyWeapons = [];
 {
-    _enemyWeapons append getArray (configFile >> "CfgVehicles" >> _x >> "weapons");
+    _enemyWeapons append getArray (_cfgVehicles >> _x >> "weapons");
 } forEach _type_units;
 _allowedWeapons = _allowedWeapons - _enemyWeapons;
 

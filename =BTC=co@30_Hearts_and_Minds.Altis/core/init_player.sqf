@@ -7,8 +7,9 @@ call compile preprocessFileLineNumbers "core\doc.sqf";
 
     [player] call btc_fnc_eh_player;
 
+    private _arsenal_trait = player call btc_fnc_arsenal_trait;
     if (btc_p_arsenal_Restrict isEqualTo 3) then {
-        [player call btc_fnc_arsenal_trait] call btc_fnc_arsenal_weaponsFilter;
+        [_arsenal_trait] call btc_fnc_arsenal_weaponsFilter;
     };
     call btc_fnc_int_add_actions;
     call btc_fnc_int_shortcuts;
@@ -18,7 +19,7 @@ call compile preprocessFileLineNumbers "core\doc.sqf";
     };
 
     if (btc_p_loadout) then {
-        player setUnitLoadout ([(player call btc_fnc_arsenal_trait) select 0] call btc_fnc_arsenal_loadout);
+        player setUnitLoadout ([_arsenal_trait select 0] call btc_fnc_arsenal_loadout);
     } else {
         removeAllWeapons player;
     };

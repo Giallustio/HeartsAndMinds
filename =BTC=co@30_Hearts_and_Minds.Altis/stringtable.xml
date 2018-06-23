@@ -466,6 +466,9 @@
                 <Original>Remove only (works only with ACE3-Arsenal)</Original>
                 <German>Nur entfernen (funktioniert nur beim ACE3-Arsenal)</German>
             </Key>
+            <Key ID="STR_BTC_HAM_PARAM_ARSENAL_ARSENALRESTR_FILTER">
+                <Original>Filter on player role (works only with ACE3-Arsenal)</Original>
+            </Key>
             <Key ID="STR_BTC_HAM_PARAM_ARSENAL_GARAGEADMIN">
                 <Original>Activate garage for admin:</Original>
                 <German>Virtuelle Garage für den Admin:</German>
