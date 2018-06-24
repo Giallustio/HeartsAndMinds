@@ -21,7 +21,7 @@ _city setVariable ["spawn_more",true];
 _statics = btc_type_gl + btc_type_mg;
 private _radius_x = _city getVariable ["RadiusX", 0];
 private _radius_y = _city getVariable ["RadiusY", 0];
-private _radius = (_radius_x + _radius_y)/2;
+private _radius = (_radius_x + _radius_y)/4;
 
 _boxes = [];
 _markers = [];
