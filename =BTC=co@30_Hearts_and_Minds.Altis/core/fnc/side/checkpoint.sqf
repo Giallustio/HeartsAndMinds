@@ -19,14 +19,17 @@ btc_side_jip_data = [9,_pos,_city getVariable "name"];
 _city setVariable ["spawn_more",true];
 
 _statics = btc_type_gl + btc_type_mg;
+private _radius_x = _city getVariable ["RadiusX", 0];
+private _radius_y = _city getVariable ["RadiusY", 0];
+private _radius = (_radius_x + _radius_y)/2;
 
 _boxes = [];
 _markers = [];
 for "_i" from 1 to (1 + round random 2) do {
     private ["_boxe"];
     //// Choose a road \\\\
-    _pos = [getPos _city, 300] call btc_fnc_randomize_pos;
-    _roads = _pos nearRoads 300;
+    _pos = [getPos _city, _radius] call btc_fnc_randomize_pos;
+    _roads = _pos nearRoads 200;
     _roads = _roads select {isOnRoad _x};
     if (_roads isEqualTo []) exitWith {_boxes pushBack objNull};
     _road = selectRandom _roads;
