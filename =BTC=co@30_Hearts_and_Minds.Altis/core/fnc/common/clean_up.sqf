@@ -1,4 +1,4 @@
-private _toRemove = ((allMissionObjects "groundweaponholder") select {!(_x getVariable ["no_cache", false])}) select {
+private _toRemove = (((allMissionObjects "groundweaponholder") + (entities "WeaponHolderSimulated")) select {!(_x getVariable ["no_cache", false])}) select {
     private _obj = _x;
 
     playableUnits select {_x distance _obj < 150} isEqualTo []
