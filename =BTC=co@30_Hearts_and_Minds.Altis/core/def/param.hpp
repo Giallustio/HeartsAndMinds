@@ -243,13 +243,13 @@ class Params {
         title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_ARSENAL_ARSENALTYPE"]);
         values[]={0,1,2,3,4};
         texts[]={$STR_BTC_HAM_PARAM_ARSENAL_ARSENALTYPE_BIS,$STR_BTC_HAM_PARAM_ARSENAL_ARSENALTYPE_BA,$STR_BTC_HAM_PARAM_ARSENAL_ARSENALTYPE_BA_PLUS,$STR_BTC_HAM_PARAM_ARSENAL_ARSENALTYPE_ACE,$STR_BTC_HAM_PARAM_ARSENAL_ARSENALTYPE_ACE_PLUS}; //texts[]={"BIS - Vanilla","BIS - Vanilla and ACE 3","BIS - Vanilla and ACE 3 (scroll wheel action)","ACE 3","ACE 3 (scroll wheel action)"};
-        default = 2;
+        default = 4;
     };
     class btc_p_arsenal_Restrict { // Restricted arsenal (See /define_mod.sqf):
         title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_ARSENAL_ARSENALRESTR"]);
-        values[]={0,1,2};
-        texts[] = {$STR_DISABLED,$STR_BTC_HAM_PARAM_ARSENAL_ARSENALRESTR_FULL,$STR_BTC_HAM_PARAM_ARSENAL_ARSENALRESTR_REMOVEONLY}; //texts[]={"Off","Full","Remove only (works only with ACE3-Arsenal)"};
-        default = 0;
+        values[]={0,1,2,3};
+        texts[] = {$STR_DISABLED,$STR_BTC_HAM_PARAM_ARSENAL_ARSENALRESTR_FULL,$STR_BTC_HAM_PARAM_ARSENAL_ARSENALRESTR_REMOVEONLY,$STR_BTC_HAM_PARAM_ARSENAL_ARSENALRESTR_FILTER}; //texts[]={"Off","Full","Remove only (works only with ACE3-Arsenal)","Filter on player role (works only with ACE3-Arsenal)"};
+        default = 3;
     };
     class btc_p_garage { // Activate garage for admin:
         title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_ARSENAL_GARAGEADMIN"]);

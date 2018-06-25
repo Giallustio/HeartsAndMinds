@@ -40,7 +40,7 @@ if (_enemy_side isEqualTo btc_player_side) exitWith {
     private _allclass_f = _allclass select {(toUpper getText (_cfgVehicles >> _x >> "faction")) isEqualTo _faction};
 
     //Units
-    _divers = _allclass_f select {[_x, "64 + 32"] call btc_fnc_mil_ammoUsage};
+    _divers = _allclass_f select {[_x, ["AssaultRifle", "64 + 32"]] call btc_fnc_mil_ammoUsage};
     if (_divers isEqualTo []) then {
         _divers = if (_enemy_side isEqualTo east) then {
             ["O_diver_F", "O_diver_exp_F", "O_diver_TL_F"]
@@ -79,7 +79,7 @@ if (_enemy_side isEqualTo btc_player_side) exitWith {
 //Final filter unwanted units type
 if !(_en_AA) then {
     //Remove Anti-Air Units
-    _type_units = _type_units select {!(_x call btc_fnc_mil_ammoUsage)};
+    _type_units = _type_units select {!([_x, ["MissileLauncher", "256"]] call btc_fnc_mil_ammoUsage)};
 };
 _type_units = _type_units select {((_x find "pilot_") isEqualTo -1) && ((_x find "_Pilot_") isEqualTo -1) && ((_x find "_Survivor_") isEqualTo -1) && ((_x find "_Story") isEqualTo -1) && ((_x find "_base") isEqualTo -1) && ((_x find "_unarmed_") isEqualTo -1) && ((_x find "_VR_") isEqualTo -1)};
 _type_crewmen = _type_units select 0;
