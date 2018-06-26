@@ -9,8 +9,7 @@ _toRemove append (allDead select {
 
     (playableUnits select {_x distance _dead < 300}) isEqualTo [] && !(_dead getVariable ["btc_dont_delete", false])
 });
-_toRemove call CBA_fnc_deleteEntity;
 
-{
-    deleteGroup _x;
-} forEach (allGroups select {units _x select {alive _x} isEqualTo []});
+_toRemove append (allGroups select {units _x select {alive _x} isEqualTo []});
+
+_toRemove call CBA_fnc_deleteEntity;

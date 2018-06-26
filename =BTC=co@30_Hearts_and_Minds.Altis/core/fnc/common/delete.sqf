@@ -29,8 +29,7 @@ params [
 
         if (playableUnits select {_x distance leader _args < 1000} isEqualTo []) then {
             [_id] call CBA_fnc_removePerFrameHandler;
-            (units _args) call CBA_fnc_deleteEntity;
-            deleteGroup _args;
+            _args call CBA_fnc_deleteEntity;
         };
     }, 5, _group] call CBA_fnc_addPerFrameHandler;
 } forEach _groups;
