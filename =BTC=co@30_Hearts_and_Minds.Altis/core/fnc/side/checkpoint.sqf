@@ -83,7 +83,7 @@ for "_i" from 1 to (1 + round random 2) do {
     _boxes pushBack _boxe;
 };
 
-waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({Alive _x} count _boxes isEqualTo 0))};
+waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || (_boxes select {Alive _x} isEqualTo []))};
 
 btc_side_assigned = false;
 publicVariable "btc_side_assigned";

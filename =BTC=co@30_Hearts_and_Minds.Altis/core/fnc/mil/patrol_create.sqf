@@ -9,7 +9,7 @@ if (btc_debug_log) then {
 if (_random isEqualTo 0) then {
     _random = selectRandom [1, 2];
 };
-private _cities = btc_city_all select {_x distance _city < _area};
+private _cities = btc_city_all inAreaArray [getPosWorld _city, _area, _area];
 private _usefuls = _cities select {!(_x getVariable ["active", false]) && _x getVariable ["occupied", false]};
 
 if (_usefuls isEqualTo []) exitWith {true};

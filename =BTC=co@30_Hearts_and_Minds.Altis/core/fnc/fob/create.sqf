@@ -4,10 +4,10 @@ params ["_mat"];
 if (((position _mat) isFlatEmpty [1, 0, 0.9, 1, 0, false, _mat]) isEqualTo []) exitWith {hint localize "STR_BTC_HAM_O_FOB_CREATE_H_AREA";};
 
 //"Too close at the main base!"
-if (_mat distance (getMarkerPos "btc_base") < 2000) exitWith {hint localize "STR_BTC_HAM_O_FOB_CREATE_H_DBASE";};
+if (_mat inArea [getMarkerPos "btc_base", 2000, 2000, 0, false]) exitWith {hint localize "STR_BTC_HAM_O_FOB_CREATE_H_DBASE";};
 
 //"Clear the area before mounting the FOB, %1"
-if ({!(_x isKindOf "ace_fastroping_helper")} count (nearestObjects [position _mat, ["LandVehicle", "Air"], 10]) > 0) exitWith {
+if ((nearestObjects [position _mat, ["LandVehicle", "Air"], 10]) findif {!(_x isKindOf "ace_fastroping_helper")} != -1) exitWith {
     hint format [localize "STR_BTC_HAM_O_FOB_CREATE_H_CAREA", (nearestObjects [position _mat, ["LandVehicle", "Air"], 10]) apply {typeOf _x}]
 };
 

@@ -13,7 +13,7 @@ if (btc_debug) then {
 };
 
 //Remove if too far from player
-if ({_x distance _active_city < (_area/2) || _x distance leader _group < (_area/2)} count _players isEqualTo 0) exitWith {
+if (_players inAreaArray [getPosWorld _active_city, _area/2, _area/2] isEqualTo [] && {_players inAreaArray [getPosWorld leader _group, _area/2, _area/2] isEqualTo []}) exitWith {
     [_group] call btc_fnc_mil_patrol_eh;
 };
 
@@ -37,7 +37,8 @@ if (_isboat) then {
 } else {
     _useful = btc_city_all select {_x getVariable ["type", ""] != "NameMarine"};
 };
-private _cities =  _useful select {(_x distance _active_city < _tmp_area) && !(_x in _noaccess)};
+private _cities = _useful inAreaArray [getPosWorld _active_city, _tmp_area, _tmp_area];
+private _cities = _cities select {!(_x in _noaccess)};
 
 //Check if end city has been found, if not take the closer city
 if (_cities isEqualTo []) then {

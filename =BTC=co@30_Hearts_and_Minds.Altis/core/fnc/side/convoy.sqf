@@ -67,7 +67,7 @@ for "_i" from 0 to (2 + round random 2) do {
 
 [12] remoteExec ["btc_fnc_show_hint", -2];
 
-waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({ canMove _x } count _vehs isEqualTo 0) || (_group isEqualTo grpNull))};
+waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || (_vehs select {canMove _x} isEqualTo []) || (_group isEqualTo grpNull))};
 
 btc_side_assigned = false;
 publicVariable "btc_side_assigned";

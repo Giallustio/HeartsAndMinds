@@ -40,7 +40,7 @@ private _index = 1 + floor (random (_veh emptyPositions "cargo"));
 _unit assignAsCargoIndex [_veh, _index];
 _unit moveinCargo [_veh, _index];
 sleep 1;
-waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({_x distance _unit < 5000} count playableUnits > 0))};
+waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !(playableUnits inAreaArray [getPosWorld _unit, 5000, 5000] isEqualTo []))};
 [_unit] call btc_fnc_set_damage;
 _unit setVariable ["ace_medical_ai_treatmentoverat", CBA_missionTime + 10000]; //Disable AI to self healing
 

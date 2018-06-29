@@ -7,7 +7,7 @@ private _noaccess = _group getVariable ["noaccess", []];
 private _players = [switchableUnits, playableUnits] select isMultiplayer;
 
 //Remove if too far from player
-if ({_x distance _active_city < _area/2 || _x distance leader _group < _area/2} count _players isEqualTo 0) exitWith {
+if (_players inAreaArray [getPosWorld _active_city, _area/2, _area/2] isEqualTo [] && {_players inAreaArray [getPosWorld leader _group, _area/2, _area/2] isEqualTo []}) exitWith {
     if (btc_debug_log) then    {
         [format ["REMOVE ID: %1 (%3) POS: %2", _group getVariable "btc_traffic_id", getPos leader _group, typeOf vehicle leader _group], __FILE__, [false]] call btc_fnc_debug_message;
     };
@@ -37,7 +37,8 @@ if (_isboat) then {
     _useful = btc_city_all select {_x getVariable ["type", ""] != "NameMarine"};
 };
 
-private _cities = _useful select {(_x distance _active_city < _tmp_area) && !(_x in _noaccess)};
+private _cities = _useful inAreaArray [getPosWorld _active_city, _tmp_area, _tmp_area];
+_cities = _cities select {!(_x in _noaccess)};
 //Choose a city to have the _active_city (where the player is) between the traffic (eg. leader _group) and the _end_city :  leader _group  ----> _active_city  ----> _end_city
 private _dirTo = (leader _group) getDir _active_city;
 _cities = _cities select {
