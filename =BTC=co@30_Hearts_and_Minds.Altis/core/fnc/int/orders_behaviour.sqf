@@ -32,7 +32,7 @@ switch (_order) do {
 };
 
 if (_order isEqualTo 4) then {
-    waitUntil {sleep 3; (isNull _unit || !alive _unit || ((getPos _unit) distance _wp_pos < 10))};
+    waitUntil {sleep 3; (isNull _unit || !alive _unit || (_unit inArea [_wp_pos, 10, 10, 0, false]))};
 } else {
     waitUntil {sleep 3; (isNull _unit || !alive _unit || (count (getPos _unit nearEntities ["SoldierWB", 50]) isEqualTo 0))};
 };

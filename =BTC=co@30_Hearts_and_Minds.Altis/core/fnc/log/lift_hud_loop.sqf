@@ -20,7 +20,7 @@ _cargo_array = _cargo_array select {!(
 )};
 
 _cargo_array params [["_cargo", objNull]];
-private _can_lift = ({_cargo isKindOf _x} count _array) > 0;
+private _can_lift = _array findif {_cargo isKindOf _x} != -1;
 
 if (!isNull _cargo) then {
     _cargo_pos = getPosATL _cargo;

@@ -2,7 +2,7 @@ params ["_city", "_area"];
 
 if (isNil "btc_traffic_id") then {btc_traffic_id = 0;};
 
-private _cities = btc_city_all select {_x distance _city < _area};
+private _cities = btc_city_all inAreaArray [getPosWorld _city, _area, _area];
 private _useful = _cities select {!(_x getVariable ["active", false])};
 
 private _pos = [0, 0, 0];
@@ -11,7 +11,7 @@ private _Spos = [0, 0, 0];
 if (_useful isEqualTo []) then {
     while {_useful isEqualTo []} do {
         _pos = [getPos _city, _area, btc_p_sea] call btc_fnc_randomize_pos;
-        if ({_x distance _pos < 500} count playableUnits isEqualTo 0) then {_useful pushBack _pos;};
+        if (playableUnits inAreaArray [_pos, 500, 500] isEqualTo []) then {_useful pushBack _pos;};
     };
     _pos = selectRandom _useful;
 } else {

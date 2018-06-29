@@ -15,7 +15,7 @@ params [
     [{
         params ["_args", "_id"];
 
-        if (playableUnits select {_x distance _args < 1000} isEqualTo []) then {
+        if (playableUnits inAreaArray [getPosWorld _args, 1000, 1000] isEqualTo []) then {
             [_id] call CBA_fnc_removePerFrameHandler;
             _args call CBA_fnc_deleteEntity;
         };
@@ -27,7 +27,7 @@ params [
     [{
         params ["_args", "_id"];
 
-        if (playableUnits select {_x distance leader _args < 1000} isEqualTo []) then {
+        if (playableUnits inAreaArray [getPosWorld leader _args, 1000, 1000] isEqualTo []) then {
             [_id] call CBA_fnc_removePerFrameHandler;
             _args call CBA_fnc_deleteEntity;
         };
