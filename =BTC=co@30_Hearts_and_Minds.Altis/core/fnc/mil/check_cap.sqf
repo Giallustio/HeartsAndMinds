@@ -13,7 +13,7 @@ if (_cap_to isEqualTo []) exitWith {
 
 {
     private _hd = _x;
-    private _in_range = btc_city_all select {_hd distance _x < btc_hideout_range};
+    private _in_range = btc_city_all inAreaArray [getPosWorld _hd, btc_hideout_range, btc_hideout_range];
 
     if (_in_range isEqualTo []) exitWith {
         btc_hideout_cap_checking = false;

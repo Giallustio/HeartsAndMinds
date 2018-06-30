@@ -8,7 +8,7 @@ private _players = if (isMultiplayer) then {playableUnits} else {switchableunits
 private _start_pos = [];
 {
     private _hideout = _x;
-    if (_pos distance _hideout < 2000 && {_players select {_x distance _hideout < 500} isEqualTo []}) then {
+    if (_hideout inArea [_pos, 2000, 2000, 0, false] && {_players inAreaArray [getPosWorld _hideout, 500, 500] isEqualTo []}) then {
         _start_pos = getPos _hideout;
     };
 } forEach btc_hideouts;
@@ -20,7 +20,7 @@ if (btc_debug_log) then {
 if (_start_pos isEqualTo []) then {
     {
         private _city = _x;
-        if (_pos distance _city > 300 && {_pos distance _city < 2500} && {_players select {_x distance _city < 500} isEqualTo []}) then {
+        if (_pos distance _city > 300 && {_city inArea [_pos, 2500, 2500, 0, false]} && {_players inAreaArray [getPosWorld _city, 500, 500] isEqualTo []}) then {
             _start_pos = getPos _city;
         };
     } forEach btc_city_all;
@@ -66,7 +66,7 @@ if ((random 1) > _ratio) then {
     [_group, _pos, 60, "SAD"] call CBA_fnc_addWaypoint;
 
     if (btc_debug_log) then {
-        [format ["MOT %1/%2 POS %3", _group, _veh_type, _pos], __FILE__, [false]] call btc_fnc_debug_message;
+        [format ["MOT %1/%2 POS %3", _group, typeOf _veh, _pos], __FILE__, [false]] call btc_fnc_debug_message;
     };
 } else {
     //INF

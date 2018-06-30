@@ -1,18 +1,15 @@
-params ["_pos", "_type", ["_dir", 0]];
-
-private _static = (selectRandom _type) createVehicle _pos;
-_static setDir _dir;
-_static setPos _pos;
+params [
+    ["_pos", [0, 0, 0], [[]]],
+    ["_statics_type", btc_type_mg, [[]]],
+    ["_dir", 0, [0]]
+];
 
 private _group = createGroup btc_enemy_side;
-private _gunner = _group createUnit [selectRandom btc_type_units, _pos, [], 0, "NONE"];
-[_gunner] joinSilent _group;
-_gunner moveInGunner _static;
-_gunner setBehaviour "COMBAT";
-_gunner setCombatMode "RED";
+private _static = [_group, _pos, selectRandom _statics_type, _dir] call btc_fnc_mil_createVehicle;
 
-_gunner call btc_fnc_mil_unit_create;
+_group setBehaviour "COMBAT";
+_group setCombatMode "RED";
 
 if (btc_debug_log) then {
-    [format ["_this = %1 ; POS %2 _type %3", _this, _pos, typeOf _static], __FILE__, [false]] call btc_fnc_debug_message;
+    [format ["POS %1 _type %2", _pos, typeOf _static], __FILE__, [false]] call btc_fnc_debug_message;
 };

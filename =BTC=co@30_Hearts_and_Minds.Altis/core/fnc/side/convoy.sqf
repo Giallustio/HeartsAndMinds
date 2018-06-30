@@ -54,9 +54,8 @@ _group setVariable ["no_cache", true];
 private _vehs = [];
 private _veh_types = btc_type_motorized select {!(_x isKindOf "air")};
 for "_i" from 0 to (2 + round random 2) do {
-    private _veh = [_group, _pos1, selectRandom _veh_types] call btc_fnc_mil_createVehicle;
+    private _veh = [_group, _pos1, selectRandom _veh_types, [_road] call btc_fnc_road_direction] call btc_fnc_mil_createVehicle;
 
-    _veh setDir ([_road] call btc_fnc_road_direction);
     _vehs pushBack _veh;
 
     _road = (roadsConnectedTo _road) select 0;
@@ -67,7 +66,7 @@ for "_i" from 0 to (2 + round random 2) do {
 
 [12] remoteExec ["btc_fnc_show_hint", -2];
 
-waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({ canMove _x } count _vehs isEqualTo 0) || (_group isEqualTo grpNull))};
+waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || (_vehs select {canMove _x} isEqualTo []) || (_group isEqualTo grpNull))};
 
 btc_side_assigned = false;
 publicVariable "btc_side_assigned";

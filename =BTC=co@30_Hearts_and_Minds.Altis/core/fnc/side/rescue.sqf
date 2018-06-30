@@ -64,13 +64,13 @@ private _triggers = [];
     _triggers pushBack _trigger;
 } forEach units _group;
 
-waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({_x distance getPos btc_create_object_point > 100} count _units isEqualTo 0) || ({Alive _x} count _units isEqualTo 0))};
+waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || (_units select {_x distance btc_create_object_point > 100} isEqualTo []) || (_units select {alive _x} isEqualTo []))};
 
 btc_side_assigned = false;
 publicVariable "btc_side_assigned";
 [[], [_heli, _fx] + _triggers, [_group]] call btc_fnc_delete;
 
-if (btc_side_aborted || btc_side_failed || ({Alive _x} count _units isEqualTo 0)) exitWith {
+if (btc_side_aborted || btc_side_failed || (_units select {alive _x} isEqualTo [])) exitWith {
     13 remoteExec ["btc_fnc_task_fail", 0];
 };
 

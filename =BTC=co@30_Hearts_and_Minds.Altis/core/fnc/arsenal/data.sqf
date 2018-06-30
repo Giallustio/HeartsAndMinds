@@ -1,5 +1,10 @@
-params ["_box", "_arsenalType", "_arsenalRestrict", "_arsenalData"];
-_arsenalData params [["_weapons", []], ["_magazines", []], ["_items", []], ["_backpacks", []]];
+params [
+    ["_box", objNull, [objNull]],
+    ["_arsenalType", 0, [0]],
+    ["_arsenalRestrict", 0, [0]],
+    ["_arsenalData", [], [[]]]
+];
+_arsenalData params [["_weapons", [], [[]]], ["_magazines", [], [[]]], ["_items", [], [[]]], ["_backpacks", [], [[]]]];
 
 //BIS Arsenal
 if (_arsenalType < 3) then {
@@ -12,7 +17,7 @@ if (_arsenalType < 3) then {
     };
 
     // DO NOT WORK FOR BIS ARSENAL
-    if (_arsenalRestrict isEqualTo 2) then {
+    if (_arsenalRestrict in [2, 3]) then {
         //remove
         [_box, _weapons, false] call BIS_fnc_removeVirtualWeaponCargo;
         [_box, _magazines, false] call BIS_fnc_removeVirtualMagazineCargo;
@@ -31,7 +36,7 @@ if (_arsenalType > 0) then {
     };
 
     //remove
-    if (_arsenalRestrict isEqualTo 2) then {
+    if (_arsenalRestrict in [2, 3]) then {
         private _aceRemove = [];
         {_aceRemove append _x;} forEach [_weapons, _magazines, _items, _backpacks];
         [_box, _aceRemove] call ace_arsenal_fnc_removeVirtualItems;

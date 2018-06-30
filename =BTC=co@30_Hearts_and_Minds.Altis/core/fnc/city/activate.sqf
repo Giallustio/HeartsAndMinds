@@ -125,7 +125,7 @@ if (_city getVariable ["spawn_more", false]) then {
 };
 
 if !(btc_cache_pos isEqualTo []) then {
-    if (btc_cache_pos distance _city < (_radius_x + _radius_y)) then {
+    if (_city inArea [btc_cache_pos, _radius_x + _radius_y, _radius_x + _radius_y, 0, false]) then {
         if (count (btc_cache_pos nearEntities ["Man", 30]) > 3) exitWith {};
         [btc_cache_pos, 8, 3, 0.2] call btc_fnc_mil_create_group;
         [btc_cache_pos, 60, 4, 0.5] call btc_fnc_mil_create_group;

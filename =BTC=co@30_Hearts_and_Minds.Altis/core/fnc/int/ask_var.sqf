@@ -9,7 +9,7 @@ private _data = switch (_id) do {
     case 1 : {
         private _hd = objNull;
         {
-            if (_x distance _target < 3000) then {
+            if (_x inArea [getPosWorld _target, 3000, 3000, 0, false]) then {
                 _hd = _x;
             };
         } forEach btc_hideouts;

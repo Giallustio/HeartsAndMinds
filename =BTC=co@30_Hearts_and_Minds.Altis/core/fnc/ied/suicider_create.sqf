@@ -22,7 +22,7 @@ _suicider call btc_fnc_civ_unit_create;
     _args params ["_suicider"];
 
     if (Alive _suicider && !isNull _suicider) then {
-        if (count (getPos _suicider nearEntities ["SoldierWB", 25]) > 0) then {
+        if !((getPos _suicider nearEntities ["SoldierWB", 25]) isEqualTo []) then {
             [_id] call CBA_fnc_removePerFrameHandler;
             _suicider call btc_fnc_ied_suicider_active;
         };
