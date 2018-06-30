@@ -18,7 +18,7 @@ call compile preprocessFileLineNumbers "core\doc.sqf";
         player createDiarySubject [localize "STR_BTC_HAM_CON_INFO_ASKHIDEOUT_DIARYLOG", localize "STR_BTC_HAM_CON_INFO_ASKHIDEOUT_DIARYLOG"];
     };
 
-    if (btc_p_loadout) then {
+    if (btc_p_autoloadout) then {
         player setUnitLoadout ([_arsenal_trait select 0] call btc_fnc_arsenal_loadout);
     } else {
         removeAllWeapons player;

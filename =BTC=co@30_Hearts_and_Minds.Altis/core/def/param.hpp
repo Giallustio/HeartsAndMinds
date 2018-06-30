@@ -251,6 +251,12 @@ class Params {
         texts[] = {$STR_DISABLED,$STR_BTC_HAM_PARAM_ARSENAL_ARSENALRESTR_FULL,$STR_BTC_HAM_PARAM_ARSENAL_ARSENALRESTR_REMOVEONLY,$STR_BTC_HAM_PARAM_ARSENAL_ARSENALRESTR_FILTER}; //texts[]={"Off","Full","Remove only (works only with ACE3-Arsenal)","Filter on player role (works only with ACE3-Arsenal)"};
         default = 3;
     };
+    class btc_p_autoloadout { // Automatic loadout:
+        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_ARSENAL_AUTOLOADOUT"]);
+        values[]={0,1};
+        texts[]={$STR_DISABLED,$STR_ENABLED};
+        default = 1;
+    };
     class btc_p_garage { // Activate garage for admin:
         title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_ARSENAL_GARAGEADMIN"]);
         values[]={0,1};
