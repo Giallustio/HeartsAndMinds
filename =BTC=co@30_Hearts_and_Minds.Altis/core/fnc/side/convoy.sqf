@@ -54,9 +54,8 @@ _group setVariable ["no_cache", true];
 private _vehs = [];
 private _veh_types = btc_type_motorized select {!(_x isKindOf "air")};
 for "_i" from 0 to (2 + round random 2) do {
-    private _veh = [_group, _pos1, selectRandom _veh_types] call btc_fnc_mil_createVehicle;
+    private _veh = [_group, _pos1, selectRandom _veh_types, [_road] call btc_fnc_road_direction] call btc_fnc_mil_createVehicle;
 
-    _veh setDir ([_road] call btc_fnc_road_direction);
     _vehs pushBack _veh;
 
     _road = (roadsConnectedTo _road) select 0;
