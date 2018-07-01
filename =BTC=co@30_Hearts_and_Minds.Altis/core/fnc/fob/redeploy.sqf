@@ -9,24 +9,34 @@ waitUntil {!(isNil "btc_int_ask_data")};
 
 _fobs = +(btc_int_ask_data select 0);
 if (count _fobs == 0) exitWith {hint "No FOBs deployed";};
-_fobs pushBack "respawn_west";
+_fobs pushBack btc_respawn_marker;
 
-_missionsData = _fobs apply {
-	_pos = getMarkerPos _x;
-	[_pos, compile format ["player setPosATL [%1 select 0,%1 select 1,0.45]", _pos], _x,"To " + _x,"","",1,[]]
+private _missionsData = _fobs apply {
+	private _pos = getMarkerPos _x;
+	[
+		_pos,
+		compile format ["player setPosATL [%1 select 0,%1 select 1,0.45]",		_pos],
+		_x,
+		"To " + _x,
+		"",
+		"",
+		1,
+		[]
+	]
 };
 
 disableserialization;
+(date call BIS_fnc_sunriseSunsetTime) params ["_sunrise", "_sunset"];
 
-_parentDisplay     = [] call bis_fnc_displayMission;
-_mapCenter     = getmarkerpos "respawn_west";
-_ORBAT         = [];
-_markers   = [];
-_images    = [];
-_overcast  = overcast;
-_isNight   = !((dayTime > 6) && (dayTime < 20));
-_scale     = 1;
-_simul     = true;
+private _parentDisplay = [] call bis_fnc_displayMission;
+private _mapCenter = getMarkerPos btc_respawn_marker;
+private _ORBAT  = [];
+private _markers = [];
+private _images = [];
+private _overcast = overcast;
+private _isNight = !((_sunrise < dayTime) && (_sunset > dayTime));
+private _scale = 1;
+private _simul = true;
 
 [
 	_parentDisplay,
