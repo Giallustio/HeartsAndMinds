@@ -1,37 +1,54 @@
+params ["_city", "_ieds"];
 
-private ["_city","_ieds","_ieds_check","_data"];
-
-_city = _this select 0;
-_ieds = _this select 1;
-
-if (btc_debug) then {systemChat format ["START IED CHECK CITY ID %1",_city getVariable "id"];};
-if (btc_debug_log) then {diag_log format ["START IED CHECK CITY ID %1",_city getVariable "id"];};
-
-_ieds_check = + _ieds;
-
-while {_city getVariable ["active", false]} do {
-	{
-		private "_ied";
-		_ied = _x;
-		if !(_ied getVariable ["active",false]) then {_ieds_check = _ieds_check - [_ied];};
-		if (!isNull _ied && {Alive _ied} && {_ied getVariable ["active",false]}) then
-		{
-			_list = _ied nearEntities ["allvehicles", 12];
-			{
-				if (side _x == btc_player_side && {(speed _x > 5 || vehicle _x != _x)}) then {_ied spawn btc_fnc_ied_boom;};
-			} foreach _list;
-		};
-	} foreach _ieds_check;
-	sleep 1;
+if (btc_debug) then {
+    [format ["START CITY ID %1", _city getVariable "id"], __FILE__, [btc_debug, false]] call btc_fnc_debug_message;
+};
+if (btc_debug_log) then {
+    [format ["START CITY ID %1", _city getVariable "id"], __FILE__, [false]] call btc_fnc_debug_message;
 };
 
-_data = [];
+private _ieds_check = _ieds select {!((_x select 2) isEqualTo objNull)};
 
-{
-	if (!isNull _x && {Alive _x}) then {_data pushBack [getPos _x,typeOf _x,getDir _x,_x getVariable ["active",true]];deleteVehicle _x;};
-} foreach _ieds;
+[{
+    params ["_args", "_id"];
+    _args params ["_city", "_ieds", "_ieds_check"];
 
-_city setVariable ["ieds",_data];
+    if (_city getVariable ["active", false]) then {
+        {
+            _x params ["_wreck", "_type", "_ied"];
 
-if (btc_debug) then {systemChat format ["END IED CHECK CITY ID %1",_city getVariable "id"];};
-if (btc_debug_log) then {diag_log format ["END IED CHECK CITY ID %1",_city getVariable "id"];};
+            if (!isNull _ied && {alive _ied}) then {
+                {
+                    if (side _x isEqualTo btc_player_side && {speed _x > 5 || vehicle _x != _x}) then {
+                        [_wreck, _ied] spawn btc_fnc_ied_boom;
+                    };
+                } forEach (_ied nearEntities ["allvehicles", 10]);
+            } else {
+                _ieds_check = _ieds_check - [_ied];
+            };
+        } forEach _ieds_check;
+    } else {
+        [_id] call CBA_fnc_removePerFrameHandler;
+
+        private _data = [];
+        {
+            _x params ["_wreck", "_type", "_ied"];
+
+            if (!isNull _wreck && {alive _wreck}) then {
+                _data pushBack [getPosATL _wreck, _type, getDir _wreck, !(_ied isEqualTo objNull)];
+
+                deleteVehicle _ied;
+                deleteVehicle _wreck;
+            };
+        } forEach _ieds;
+
+        _city setVariable ["ieds", _data];
+
+        if (btc_debug) then {
+            [format ["END CITY ID %1", _city getVariable "id"], __FILE__, [btc_debug, false]] call btc_fnc_debug_message;
+        };
+        if (btc_debug_log) then {
+            [format ["END CITY ID %1", _city getVariable "id"], __FILE__, [false]] call btc_fnc_debug_message;
+        };
+    };
+}, 1, [_city, _ieds, _ieds_check]] call CBA_fnc_addPerFrameHandler;

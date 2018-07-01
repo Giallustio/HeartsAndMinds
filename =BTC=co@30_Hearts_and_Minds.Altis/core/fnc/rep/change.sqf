@@ -1,3 +1,8 @@
-if (btc_debug_log) then	{diag_log format ["fnc_rep_change = GLOBAL %1 - CHANGE %2",btc_global_reputation,_this];};
-btc_global_reputation = btc_global_reputation + _this;//publicVariable "btc_global_reputation";
+params ["_reputation"];
+
+if (btc_debug_log) then {
+    [format ["GLOBAL %1 - CHANGE %2", btc_global_reputation, _reputation], __FILE__, [false]] call btc_fnc_debug_message;
+};
+btc_global_reputation = btc_global_reputation + _reputation;
+
 true

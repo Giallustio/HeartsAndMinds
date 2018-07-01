@@ -1,9 +1,13 @@
+params ["_wreck", "_ied"];
 
-private ["_pos","_pos_ASL"];
+if (btc_debug_log) then {
+    [format ["%1 - POS %2", [_wreck, _ied], getPos _wreck], __FILE__, [false]] call btc_fnc_debug_message;
+};
 
-if (btc_debug_log) then {diag_log format ["IED BOOM %1 - POS %2",_this,getPos _this]};
-_pos = getPos _this;
-_pos_ASL = getPosASL _this;
-deleteVehicle _this;
+private _pos = getPos _ied;
+deleteVehicle _ied;
 "Bo_GBU12_LGB_MI10" createVehicle _pos;
-playSound3d["A3\Missions_F_EPA\data\sounds\combat_deafness.wss", objNull, false, _pos_ASL, 1, 1];
+deleteVehicle _wreck;
+
+[_pos] call btc_fnc_deaf_earringing;
+[_pos] remoteExec ["btc_fnc_ied_effects", [0, -2] select isDedicated];

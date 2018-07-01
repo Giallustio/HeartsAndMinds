@@ -1,42 +1,46 @@
+params ["_id"];
 
-private ["_city","_radius_x","_radius_y","_radius","_has_en","_trigger","_data_units"];
+private _city = btc_city_all select _id;
 
-_city = btc_city_all select (_this select 0);
+if !(_city getVariable ["active", false]) exitWith {};
 
-if !(_city getVariable ["active",false]) exitWith {};
+waitUntil {!(_city getVariable ["activating", false])};
 
-waitUntil {!(_city getVariable ["activating",false])};
-
-hint ("DE-Activate " + str(_this));
-
-//Save all and delete
-_radius_x = _city getVariable ["RadiusX",0];
-_radius_y = _city getVariable ["RadiusY",0];
-_radius = (_radius_x+_radius_y);
-
-_has_en = _city getVariable ["occupied",false];
-
-if (_has_en) then {
-	_trigger = _city getVariable ["trigger",objNull];
-	deleteVehicle _trigger;
-	_city setVariable ["trigger",objNull];
+if (btc_debug) then {
+    hint ("DE-Activate " + str _this);
 };
 
-_data_units = [];
+//Save all and delete
+private _radius_x = _city getVariable ["RadiusX", 0];
+private _radius_y = _city getVariable ["RadiusY", 0];
+private _radius = _radius_x + _radius_y;
+
+private _has_en = _city getVariable ["occupied", false];
+
+if (_has_en) then {
+    private _trigger = _city getVariable ["trigger", objNull];
+    deleteVehicle _trigger;
+    _city setVariable ["trigger", objNull];
+};
+
+private _pos_city = getPosWorld _city;
+private _data_units = [];
 {
-	if (((leader _x) distance _city) < _radius && {side _x != btc_player_side} && !(_x getVariable ["no_cache", false])) then {
-		private ["_data_group"];
-		_data_group = _x call btc_fnc_data_get_group;
-		_data_units set [count _data_units, _data_group];
-		if (btc_debug_log) then {diag_log format ["data_units = %1",_data_units];};
-	};
-} foreach allGroups;
+    if ((leader _x) inArea [_pos_city, _radius, _radius, 0, false] && {side _x != btc_player_side} && {!(_x getVariable ["no_cache", false])}) then {
+        private _data_group = _x call btc_fnc_data_get_group;
+        _data_units pushBack _data_group;
 
-_city setVariable ["data_units",_data_units];
+        if (btc_debug_log) then {
+            [format ["data units = %1", _data_units], __FILE__, [false]] call btc_fnc_debug_message;
+        };
+    };
+} forEach allGroups;
 
+_city setVariable ["data_units", _data_units];
+_city setVariable ["active", false];
 
-_city setVariable ["active",false];
-
-if (!btc_hideout_cap_checking) then {[] spawn btc_fnc_mil_check_cap};
+if (!btc_hideout_cap_checking) then {
+    [] spawn btc_fnc_mil_check_cap;
+};
 
 call btc_fnc_clean_up;

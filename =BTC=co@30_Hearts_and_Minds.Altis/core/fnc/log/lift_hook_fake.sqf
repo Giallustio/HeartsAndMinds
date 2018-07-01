@@ -1,10 +1,35 @@
-btc_lifted = true;
+params ["_cargo", "_chopper"];
 
-_this attachTo [vehicle player,[0,0,-10]];
+private _simulation = createVehicle ["Box_T_NATO_WpsSpecial_F", getPosATL _cargo , [], 0, "CAN_COLLIDE"];
+_simulation enableSimulation false;
+(getPosATL _cargo) params ["_x", "_y", "_z"];
+_simulation setPosATL [_x, _y, [_z, 0] select (_z < -0.05)];
+_simulation setDir getDir _cargo;
+_simulation setVectorUp vectorUp _cargo;
 
-btc_lift_action_unhook_fake = player addAction [("<t color=""#ED2744"">" + ("UnHook") + "</t>"),{btc_lifted = false;}, [], 9, true, false, "", "true"];
+_cargo attachTo [_simulation, [0, 0, 0.2 + abs(((_cargo modelToWorld [0, 0, 0]) select 2) - ((_simulation modelToWorld [0, 0, 0]) select 2))]];
 
-waitUntil {sleep 1; (!btc_lifted || !Alive player || isNull _this || vehicle player == player)};
+_chopper addEventHandler ["RopeBreak", {
+    params ["_object1", "_rope", "_object2"];
 
-detach _this;
-player removeAction btc_lift_action_unhook_fake;
+    _object1 removeEventHandler ["RopeBreak", _thisEventHandler];
+    btc_lifted = false;
+    {
+        detach _x;
+        _x setVectorUp surfaceNormal getPosATL _x;
+        (getPosATL _x) params ["_xx", "_yy", "_zz"];
+        if (_zz < -0.05) then {
+            _x setPosATL [_xx, _yy, 0];
+        };
+    } forEach attachedObjects _object2;
+    deleteVehicle _object2;
+}];
+
+_simulation enableSimulation true;
+clearWeaponCargoGlobal _simulation;
+clearItemCargoGlobal _simulation;
+clearMagazineCargoGlobal _simulation;
+_simulation setObjectTextureGlobal [0, ""];
+_simulation setObjectTextureGlobal [1, ""];
+
+_simulation

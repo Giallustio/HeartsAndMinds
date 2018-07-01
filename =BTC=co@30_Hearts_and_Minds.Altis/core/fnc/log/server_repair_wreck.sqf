@@ -1,25 +1,19 @@
+params ["_veh"];
 
-private ["_veh","_type","_pos","_dir","_marker"];
-
-_veh = _this select 0;
-_type = typeOf _veh;
-_pos = getPos _veh;
-_dir = getDir _veh;
-_marker = _veh getVariable ["marker",""];
+private _type = typeOf _veh;
+(getPosASL _veh) params ["_x", "_y", "_z"];
+private _dir = getDir _veh;
+private _customization = [_veh] call BIS_fnc_getVehicleCustomization;
+private _marker = _veh getVariable ["marker", ""];
 
 btc_vehicles = btc_vehicles - [_veh];
 
-if (_marker != "") then {deleteMarker _marker;};
+if (_marker != "") then {
+    deleteMarker _marker;
+    remoteExec ["", _marker];
+};
 deleteVehicle _veh;
 sleep 1;
-_veh  = createVehicle [_type, _pos, [], 0, "NONE"];
-_veh setDir _dir;
-_veh setPos _pos;
-_veh setVariable ["btc_dont_delete",true];
+_veh = [_type, [_x, _y, 0.5 + _z], _dir, _customization] call btc_fnc_log_createVehicle;
 
-if (isNumber (configfile >> "CfgVehicles" >> typeof _veh >> "ace_fastroping_enabled")) then {[_veh] call ace_fastroping_fnc_equipFRIES};
-if(getNumber(configFile >> "CfgVehicles" >> typeof _veh >> "isUav")==1) then {
-	createVehicleCrew _veh;
-};
-
-btc_vehicles = btc_vehicles + [_veh];
+_veh

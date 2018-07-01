@@ -1,65 +1,50 @@
+private _locations = configfile >> "cfgworlds" >> worldname >> "names";
 
-private ["_locations","_cities"];
+private _cities = ["NameVillage", "NameCity", "NameCityCapital", "NameLocal", "Hill", "Airport"];
 
-_locations = configfile >> "cfgworlds" >> worldname >> "names";
-
-_cities = ["NameVillage","NameCity","NameCityCapital","NameLocal","Hill","Airport"];
 if (btc_p_sea) then {_cities pushBack "NameMarine";};
+
 btc_city_all = [];
+
 for "_i" from 0 to (count _locations - 1) do {
-	private ["_current","_type"];
-	_current = _locations select _i;
+    private _current = _locations select _i;
 
-	_type = gettext(_current >> "type");
-	if (_type in _cities) then {
-		private ["_id","_city","_position","_name","_position","_radius_x","_radius_y","_has_en","_trigger","_new_position","_area"];
-		_id = count btc_city_all;
-		_position = getarray(_current >> "position");
-		if (surfaceIsWater _position) then {
-			if !(_type isEqualTo "NameMarine") then {
-				_area = 50;
-				for "_i" from 0 to 3 do {
-					_new_position = [_position, 0, _area, 0.5, 0, -1, 0] call BIS_fnc_findSafePos;
-					if (count _new_position == 2) exitWith {_position = _new_position;};
-					_area = _area * 2;
-				};
-			};
-		};
-		_name = getText(_current >> "name");
-		_radius_x = getNumber(_current >> "RadiusA");
-		_radius_y = getNumber(_current >> "RadiusB");
+    private _type = getText(_current >> "type");
 
-		if (btc_city_blacklist find _name >= 0) exitWith {};
+    if (_type in _cities) then {
+        private _position = getArray(_current >> "position");
+        if (surfaceIsWater _position) then {
+            if !(_type isEqualTo "NameMarine") then {
+                private _church = nearestTerrainObjects [_position, ["CHURCH"], 470];
+                if (_church isEqualTo []) then {
+                    private _area = 50;
+                    for "_i" from 0 to 3 do {
+                        private _new_position = [_position, 0, _area, 0.5, 0, -1, 0] call BIS_fnc_findSafePos;
+                        if (count _new_position isEqualTo 2) exitWith {
+                            _position = _new_position;
+                        };
+                        _area = _area * 2;
+                    };
+                } else {
+                    _position = getPos (_church select 0);
+                };
+            };
+        };
+        private _name = getText(_current >> "name");
+        private _radius_x = getNumber(_current >> "RadiusA");
+        private _radius_y = getNumber(_current >> "RadiusB");
 
-	/*
-		//if you want a safe area
-		if (_position distance getMarkerPos "YOUR_MARKER_AREA" < 500) exitWith {};
-	*/
+        if (btc_city_blacklist find _name >= 0) exitWith {};
 
-		_city = "Land_Ammobox_rounds_F" createVehicle _position;
-		_city hideObjectGlobal true;
-		_city allowDamage false;
-		_city enableSimulation false;
-		_city setVariable ["activating",false];
-		_city setVariable ["initialized",false];
-		_city setVariable ["id",_id];
-		_city setVariable ["name",_name];
-		_city setVariable ["RadiusX",_radius_x];
-		_city setVariable ["RadiusY",_radius_y];
-		_city setVariable ["active",false];
-		_city setVariable ["type",_type];
-		_city setVariable ["spawn_more",false];
-		_city setVariable ["data_units",[]];
-		_has_en = (random 1 > 0.45);
-		_city setVariable ["occupied",_has_en];
-		if (btc_p_sea) then {
-			_city setVariable ["hasbeach", (((selectBestPlaces [_position,0.8*(_radius_x+_radius_y), "sea",10,1]) select 0 select 1) isEqualTo 1)];
-		};
-		btc_city_all set [_id,_city];
-		[_position,_radius_x,_radius_y,_city,_has_en,_name,_type,_id] call btc_fnc_city_trigger_player_side;
-	};
+        /*
+        //if you want a safe area
+        if ((getMarkerPos "YOUR_MARKER_AREA") inArea [_position, 500, 500, 0, false]) exitWith {};
+        */
+
+        [_position, _type, _name, _radius_x, _radius_y, random 1 > 0.45] call btc_fnc_city_create;
+    };
 };
 
 if !(isNil "btc_custom_loc") then {
-	{_x call btc_fnc_city_create} foreach btc_custom_loc;
+    {_x call btc_fnc_city_create} forEach btc_custom_loc;
 };

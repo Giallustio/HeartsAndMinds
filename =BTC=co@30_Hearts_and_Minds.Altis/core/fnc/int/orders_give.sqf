@@ -1,21 +1,14 @@
+params ["_units", "_dir", "_order", ["_wp_pos", []]];
 
-private ["_pos","_order","_units","_wp_pos"];
+_units = _units select {!(group _x getVariable ["suicider", false]) && ((side _x) isEqualTo civilian)};
 
-_pos = _this select 0;
-_order = _this select 1;
+{
+    private _wp_pos_i = if ((_order isEqualTo 3) && (_wp_pos isEqualTo [])) then {
+        [getPos _x, 200, _dir, 40] call CBA_fnc_randPos
+    } else {
+        _wp_pos
+    };
+    [_x, _order, _wp_pos_i] spawn btc_fnc_int_orders_behaviour;
+} forEach _units;
 
-_units = [];
-_wp_pos = [0,0,0];
-
-switch (count _this) do {
-	case 2 : {_units = _pos nearEntities [["Car","Civilian_F"], btc_int_radius_orders];};
-	case 3 : {_units = [_this select 2];};
-	case 4 : {
-		_units = [_this select 2];
-		_wp_pos = (_this select 3);
-	};
-};
-
-if (count _units == 0) exitWith {};
-
-{if ((isNil {group _x getVariable "suicider"}) && ((side _x) == civilian)) then {[_x,_order,_wp_pos] spawn btc_fnc_int_orders_behaviour;};} foreach _units;
+true

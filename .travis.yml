@@ -1,0 +1,8 @@
+branches:
+  only:
+   - master_daily
+language: python
+python:
+- '3.5'
+script:
+- python3 tools/sqf_validator.py

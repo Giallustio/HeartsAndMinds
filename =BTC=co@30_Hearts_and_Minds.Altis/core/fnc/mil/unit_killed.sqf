@@ -1,12 +1,19 @@
+params ["_unit", "_killer", "_instigator", "_useEffects"];
 
-private ["_killer"];
+private _killer = _unit getVariable ["ace_medical_lastDamageSource", _killer];
 
-if (random 100 > btc_info_intel_chance) then {(_this select 0) setVariable ["intel",true];};
+if (!isDedicated && !hasInterface) then {
+    [_unit, _killer] remoteExec ["btc_fnc_mil_unit_killed", 2];
+} else {
+    if (random 100 > btc_info_intel_chance) then {
+        _unit setVariable ["intel", true];
+    };
 
-_killer = (_this select 0) getVariable ["ace_medical_lastDamageSource", (_this select 0)];
-
-if (isPlayer _killer) then {
-	if (isServer) then {btc_rep_bonus_mil_killed call btc_fnc_rep_change;} else {[btc_rep_bonus_mil_killed,"btc_fnc_rep_change",false] spawn BIS_fnc_MP;};
+    if (isPlayer _killer) then {
+        if (isServer) then {
+            btc_rep_bonus_mil_killed call btc_fnc_rep_change;
+        } else {
+            btc_rep_bonus_mil_killed remoteExec ["btc_fnc_rep_change", 2];
+        };
+    };
 };
-
-//(_this select 0) spawn {sleep 0.5;{deleteVehicle _x} foreach (nearestObjects [_this, ["WeaponHolderSimulated"], 5]);};

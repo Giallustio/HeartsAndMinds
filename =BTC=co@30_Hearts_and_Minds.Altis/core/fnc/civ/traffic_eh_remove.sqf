@@ -1,8 +1,9 @@
-//diag_log format ["EH REMOVE TRAFFIC %1 - %2",_this,_this getVariable "eh"];
-if (isNil {_this getVariable "eh"}) exitWith {true};
+params ["_veh"];
 
-private "_data";
-_data = _this getVariable "eh";
-_this removeEventHandler ["HandleDamage", (_data select 0)];
-_this removeEventHandler ["Fuel", (_data select 1)];
-_this removeEventHandler ["GetOut", (_data select 2)];
+if (_veh getVariable ["eh", []] isEqualTo []) exitWith {true};
+
+private _ehs = _veh getVariable "eh";
+_veh removeEventHandler ["HandleDamage", _ehs select 0];
+_veh removeEventHandler ["Fuel", _ehs select 1];
+_veh removeEventHandler ["GetOut", _ehs select 2];
+_veh removeEventHandler ["HandleDamage", _ehs select 3];

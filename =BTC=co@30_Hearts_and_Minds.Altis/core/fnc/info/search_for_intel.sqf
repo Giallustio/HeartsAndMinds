@@ -1,8 +1,10 @@
+params ["_target"];
 
-[btc_int_search_intel_time,"Searching for intel . . .",_this] call btc_fnc_int_action_result;
+private _onFinish = {
+    params ["_args"];
+    _args params ["_target", "_player"];
 
-waitUntil {!(isNil "btc_int_action_result")};
-
-if (btc_int_action_result) then {
-	[[_this,player],"btc_fnc_info_has_intel",false] spawn BIS_fnc_MP;
+    [_target, _player] remoteExec ["btc_fnc_info_has_intel", 2];
 };
+
+[btc_int_search_intel_time, [_target, player], _onFinish, {}, localize "STR_BTC_HAM_CON_INFO_SEARCH_BAR"] call btc_fnc_int_action_result;

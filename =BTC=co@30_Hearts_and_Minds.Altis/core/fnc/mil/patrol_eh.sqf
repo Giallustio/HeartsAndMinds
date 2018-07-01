@@ -1,15 +1,16 @@
-//diag_log format ["EH CHECK TRAFFIC %1",_this];
+params ["_veh"];
 
-//if (count _this > 4 && {!((_this select 1) isEqualTo "engine")}) exitWith {};
+if (btc_debug_log) then {
+    [format ["%1", _veh], __FILE__, [false]] call btc_fnc_debug_message;
+};
 
-private ["_veh"];
+if (_veh isEqualType objNull) then {
+    if (btc_debug) then {
+        deleteMarker format ["Patrol_fant_%1", (_veh getVariable ["crews", grpNull]) getVariable "btc_patrol_id"];
+    };
 
-_veh = _this select 0;
-//hint "traffic eh";diag_log text format ["traffic eh: %1",_veh];
-_veh call btc_fnc_mil_patrol_eh_remove;
-
-[_veh,(_veh getVariable ["crews",[_veh]])] spawn {
-	waitUntil {sleep 5; ({_x distance (_this select 0) < 1000} count playableUnits == 0)};
-	{deleteVehicle _x;} foreach ((_this select 1) + [_this select 0]);
-	if (isNull (_this select 0)) exitWith {};//Just to be sure
+    _veh call btc_fnc_mil_patrol_eh_remove;
+    [[], [_veh], [_veh getVariable ["crews", grpNull]]] call btc_fnc_delete;
+} else {
+    [[], [vehicle leader _veh], [_veh]] call btc_fnc_delete;
 };

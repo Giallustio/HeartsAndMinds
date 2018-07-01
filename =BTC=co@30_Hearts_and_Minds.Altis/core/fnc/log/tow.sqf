@@ -1,26 +1,34 @@
-
-private ["_tower","_ground0","_ground1","_h0","_h1","_rel","_normg","_normh","_boundt","_boundb"];
-
-_tower = _this;
+params ["_tower"];
 
 btc_int_ask_data = nil;
-[[4,_tower,player],"btc_fnc_int_ask_var",false] spawn BIS_fnc_MP;
+[4, _tower] remoteExecCall ["btc_fnc_int_ask_var", 2];
 
 waitUntil {!(isNil "btc_int_ask_data")};
 
-if (!isNull btc_int_ask_data) exitWith {hint "This vehicle is already attached to another!"};
+if (!isNull btc_int_ask_data) exitWith {hint localize "STR_BTC_HAM_LOG_TOW_ALREADYTOWED";}; //This vehicle is already attached to another!
 
-_boundt = boundingBoxReal _tower;
-_boundb = boundingBoxReal btc_log_vehicle_selected;
-_ground0 = (_boundt select 0) select 2;
-_ground1 = (_boundt select 1) select 2;
-_h0 = (_boundb select 0) select 2;
-_h1 = (_boundb select 1) select 2;
-_normg = abs(_ground1 - _ground0);
-_normh = abs(_h1 - _h0);
-_rel = _ground0 - _h0 - (_normh - _normg)/2;
+private _model_rear_tower = ([_tower] call btc_fnc_log_hitch_points) select 1;
+private _model_front_selected = ([btc_log_vehicle_selected] call btc_fnc_log_hitch_points) select 0;
+private _relative_pos = - (_model_front_selected select 1) + (_model_rear_tower select 1) - ((btc_log_vehicle_selected modelToWorld _model_front_selected) distance (_tower modelToWorld _model_rear_tower));
 
-btc_log_vehicle_selected attachTo [_tower, [0,-(sizeOf typeOf _tower)/1.5,_rel]];
+btc_log_vehicle_selected attachTo [_tower, [0, _relative_pos,  0.2 + ((btc_log_vehicle_selected modelToWorld [0, 0, 0]) select 2) - ((_tower modelToWorld [0, 0, 0]) select 2)]];
 
-[[_tower,"tow",btc_log_vehicle_selected],"btc_fnc_int_change_var",false] spawn BIS_fnc_MP;
-[[btc_log_vehicle_selected,"tow",_tower],"btc_fnc_int_change_var",false] spawn BIS_fnc_MP;
+private _pos_rear = _tower modelToWorld _model_rear_tower;
+private _pos_front = btc_log_vehicle_selected modelToWorld _model_front_selected;
+private _distance = 0.3 + (_pos_front distance _pos_rear);
+(_tower worldToModel _pos_front) params ["_model_front_selected_x", "_model_front_selected_y", "_model_front_selected_z"];
+
+ropeCreate [_tower, _model_rear_tower, _tower, [_model_front_selected_x - 0.4, _model_front_selected_y, _model_front_selected_z], _distance];
+ropeCreate [_tower, _model_rear_tower, _tower, [_model_front_selected_x + 0.4, _model_front_selected_y, _model_front_selected_z], _distance];
+
+private _eh = _tower addEventHandler ["RopeBreak", {
+    params ["_rope"];
+
+    _rope removeEventHandler ["RopeBreak", _thisEventHandler];
+    _rope setVariable ["btc_eh", nil];
+    _rope spawn btc_fnc_log_unhook;
+}];
+_tower setVariable ["btc_eh", _eh];
+
+[_tower, ["tow", btc_log_vehicle_selected]] remoteExec ["setVariable", 2];
+[btc_log_vehicle_selected, ["tow", _tower]] remoteExec ["setVariable", 2];

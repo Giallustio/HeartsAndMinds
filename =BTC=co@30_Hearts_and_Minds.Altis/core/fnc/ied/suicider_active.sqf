@@ -1,56 +1,62 @@
+params ["_suicider"];
 
-private ["_trigger","_array","_expl1","_expl2","_expl3","_man","_cond"];
+[_suicider] joinSilent createGroup [btc_enemy_side, true];
 
-[_this] joinSilent btc_hq;
-[_this] joinSilent GrpNull;
+_suicider call btc_fnc_rep_remove_eh;
 
-_this call btc_fnc_rep_remove_eh;
+[group _suicider] call CBA_fnc_clearWaypoints;
 
-while {(count (waypoints group _this)) > 0} do { deleteWaypoint ((waypoints group _this) select 0); };
+private _trigger = createTrigger ["EmptyDetector", getPos _suicider];
+_trigger setTriggerArea [5, 5, 0, false];
+_trigger setTriggerActivation [str btc_player_side, "PRESENT", false];
+_trigger setTriggerStatements ["this", "thisTrigger call btc_fnc_ied_allahu_akbar;", ""];
+_trigger setVariable ["suicider", _suicider];
 
-_trigger = createTrigger["EmptyDetector",getPos _this];
-_trigger setTriggerArea[5,5,0,false];
-_trigger setTriggerActivation[str(btc_player_side),"PRESENT",false];
-_trigger setTriggerStatements["this", "thisTrigger spawn btc_fnc_ied_allahu_akbar;", ""];
-_trigger setVariable ["suicider",_this];
+_trigger attachTo [_suicider, [0, 0, 0]];
 
-_trigger attachTo [_this,[0,0,0]];
+private _array = getPos _suicider nearEntities ["SoldierWB", 30];
 
-_array = getpos _this nearEntities ["SoldierWB", 30];
+if (_array isEqualTo []) exitWith {};
 
-if (count _array == 0) exitWith {};
+private _expl1 = "DemoCharge_Remote_Ammo" createVehicle (position _suicider);
+_expl1 attachTo [_suicider, [-0.1, 0.1, 0.15], "Pelvis"];
+private _expl2 = "DemoCharge_Remote_Ammo" createVehicle (position _suicider);
+_expl2 attachTo [_suicider, [0, 0.15, 0.15], "Pelvis"];
+private _expl3 = "DemoCharge_Remote_Ammo" createVehicle (position _suicider);
+_expl3 attachTo [_suicider, [0.1, 0.1, 0.15], "Pelvis"];
 
-_expl1 = "DemoCharge_Remote_Ammo" createVehicle (position _this);
-_expl1 attachTo [_this, [-0.1,0.1,0.15],"Pelvis"];
-_expl1 setVectorDirAndUp [[0.5,0.5,0],[-0.5,0.5,0]];
-_expl2 = "DemoCharge_Remote_Ammo" createVehicle (position _this);
-_expl2 attachTo [_this, [0,0.15,0.15],"Pelvis"];
-_expl2 setVectorDirAndUp [[1,0,0],[0,1,0]];
-_expl3 = "DemoCharge_Remote_Ammo" createVehicle (position _this);
-_expl3 attachTo [_this, [0.1,0.1,0.15],"Pelvis"];
-_expl3 setVectorDirAndUp [[0.5,-0.5,0],[0.5,0.5,0]];
+[_expl1, _expl2, _expl3] remoteExec ["btc_fnc_ied_belt", 0];
 
-_man = _array select 0;
+_suicider addEventHandler ["Killed", {
+    params ["_unit", "_killer"];
 
-_cond = true;
-(group _this) setBehaviour "CARELESS";
-(group _this) setSpeedMode "FULL";
+    if !(isPlayer _killer) then {
+        [attachedObjects _unit] call CBA_fnc_deleteEntity;
+    };
+}];
 
-if (btc_debug_log) then {diag_log format ["btc_fnc_ied_suicider_active: _this = %1; POS %2 START LOOP",_this,getpos _this];};
+(group _suicider) setBehaviour "CARELESS";
+(group _suicider) setSpeedMode "FULL";
 
-while {Alive _this && _cond} do {
-	_this doMove (position _man);//hint format ["MOVING %1",_man];
-	//_trigger setPos getPos _this;
-	if (!Alive _man || _man distance _this > 30) then
-	{
-		private ["_array"];
-		_array = getpos _this nearEntities ["SoldierWB", 30];
-		if (count _array == 0) then {_cond = false;} else {_man = _array select 0;};
-	};
-	sleep 0.5;
+if (btc_debug_log) then {
+    [format ["_suicider = %1 POS %2 START LOOP", _suicider, getPos _suicider], __FILE__, [false]] call btc_fnc_debug_message;
 };
-if (btc_debug_log) then {diag_log format ["btc_fnc_ied_suicider_active: _this = %1; POS %2 END LOOP",_this,getpos _this];};
 
-sleep 3;
+[{
+    params ["_args", "_id"];
+    _args params ["_suicider", "_trigger"];
 
-if (Alive _this) then {group _this setVariable ["suicider",true];deleteVehicle _trigger;};
+    if (Alive _suicider) then {
+        private _array = _suicider nearEntities ["SoldierWB", 30];
+        if !(_array isEqualTo []) then {
+            _suicider doMove (position (_array select 0));
+        };
+    } else {
+        [_id] call CBA_fnc_removePerFrameHandler;
+        deleteVehicle _trigger;
+        group _suicider setVariable ["suicider", false];
+        if (btc_debug_log) then {
+            [format ["_suicider = %1 POS %2 END LOOP", _suicider, getPos _suicider], __FILE__, [false]] call btc_fnc_debug_message;
+        };
+    };
+}, 0.5, [_suicider, _trigger]] call CBA_fnc_addPerFrameHandler;

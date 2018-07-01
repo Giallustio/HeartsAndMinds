@@ -1,32 +1,33 @@
-
-private ["_veh","_towed","_pos"];
-
-_veh = _this;
-
-deTach _veh;
-
-_pos = getpos _veh;
-if ((_pos select 2) < -0.05) then {
-	_veh setpos [_pos select 0, _pos select 1, 0];
-};
+params ["_veh"];
 
 btc_int_ask_data = nil;
-[[4,_veh,player],"btc_fnc_int_ask_var",false] spawn BIS_fnc_MP;
+[4, _veh] remoteExecCall ["btc_fnc_int_ask_var", 2];
 
 waitUntil {!(isNil "btc_int_ask_data")};
 
-if (isNull btc_int_ask_data) exitWith {hint "This vehicle is not attached to another!"};
+if (isNull btc_int_ask_data) exitWith {hint localize "STR_BTC_HAM_LOG_UNHOOK_NOROPE";}; //This vehicle is not attached to another!
 
-_towed = btc_int_ask_data;
+deTach _veh;
+_veh removeEventHandler ["RopeBreak", _veh getVariable ["btc_eh", -1]];
+(ropes _veh) apply {ropeDestroy _x};
 
-deTach _towed;
-
-_pos = getpos _towed;
-if ((_pos select 2) < -0.05) then {
-	_towed setpos [_pos select 0, _pos select 1, 0];
-} else {
-	_towed setVelocity [0, 0, 0.01];
+(getPos _veh) params ["_x", "_y", "_z"];
+if (_z < -0.05) then {
+    _veh setPos [_x, _y, 0];
 };
 
-[[_towed,"tow",objNull],"btc_fnc_int_change_var",false] spawn BIS_fnc_MP;
-[[_veh,"tow",objNull],"btc_fnc_int_change_var",false] spawn BIS_fnc_MP;
+private _towed = btc_int_ask_data;
+
+deTach _towed;
+_towed removeEventHandler ["RopeBreak", _towed getVariable ["btc_eh", -1]];
+(ropes _towed) apply {ropeDestroy _x};
+
+(getPos _towed) params ["_x", "_y", "_z"];
+if (_z < -0.05) then {
+    _towed setPosASL [_x, _y, ((getPosASL _veh) select 2) - _z];
+} else {
+    _towed setVelocity [0, 0, 0.01];
+};
+
+[_towed, ["tow", objNull]] remoteExec ["setVariable", 2];
+[_veh, ["tow", objNull]] remoteExec ["setVariable", 2];

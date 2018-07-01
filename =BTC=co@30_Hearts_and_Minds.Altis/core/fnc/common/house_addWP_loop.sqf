@@ -1,16 +1,14 @@
+params ["_group", "_house"];
 
-private ["_group","_house","_wp","_allpositions"];
+private _allpositions = (_house buildingPos -1) call BIS_fnc_arrayShuffle;
 
-_group = _this select 0;
-_house = _this select 1;
-
-_allpositions = _house buildingPos -1;
-if (btc_debug_log) then {diag_log format ["setWaypoint : count all pos %1 in %2 ", count _allpositions,_house];};
+if (btc_debug_log) then {
+    [format ["count all pos %1 in %2 ", count _allpositions, _house], __FILE__, [false]] call btc_fnc_debug_message;
+};
 {
-	_wp = _group addWaypoint [getPos _house, 0];
-	_wp setWaypointType "MOVE";
-	_wp setWaypointCompletionRadius 0;
-	_wp waypointAttachObject _house;
-	_wp setWaypointHousePosition _foreachindex;
-	_wp setWaypointTimeout [15, 20, 30];
+    private _wp = [_group, _x, 0.2, "MOVE", "UNCHANGED", "NO CHANGE", "UNCHANGED", "NO CHANGE", "", [15, 20, 30]] call CBA_fnc_addWaypoint;
+    _wp waypointAttachObject _house;
+    _wp setWaypointHousePosition _forEachIndex;
 } forEach _allpositions;
+
+_allpositions

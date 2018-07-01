@@ -1,18 +1,11 @@
+params ["_obj", ["_pos", getPosASL btc_create_object_point], ["_vector", vectorUp btc_create_object_point]];
 
-private ["_obj","_pos"];
-
-if (count _this > 1) then {
-	_pos = _this select 1;
+if (getText (configFile >> "cfgVehicles" >> _obj >> "displayName") isEqualTo "") then {
+    _obj = [btc_create_object_point, _obj] call ace_rearm_fnc_createDummy;
 } else {
-	_pos = getpos btc_create_object_point;
+    _obj = _obj createVehicle [0, 0, 0];
 };
+_obj setVectorUp _vector;
+_obj setPosASL _pos;
 
-if (getText (configFile >> "cfgVehicles" >> (_this select 0) >> "displayName") isEqualTo "") then {
-	_obj = [btc_create_object_point,(_this select 0)] call ace_rearm_fnc_createDummy;
-	_obj setPos _pos;
-} else {
-	_obj = (_this select 0) createVehicle [_pos select 0,_pos select 1,0];
-};
-
-btc_log_obj_created = btc_log_obj_created + [_obj];
-btc_curator addCuratorEditableObjects [[_obj], false];
+[_obj] call btc_fnc_log_init;
