@@ -4,15 +4,16 @@ btc_int_ask_data = nil;
 waitUntil {!(isNil "btc_int_ask_data")};
 
 _fobs = + btc_int_ask_data;
-if ((_fobs select 0) isEqualTo []) exitWith {
+private _fobs_marker = _fobs select 0;
+if (_fobs_marker isEqualTo []) exitWith {
     hint localize "STR_BTC_HAM_O_FOB_REDEPLOY_H_NOFOB"; //"No FOBs deployed"
 };
 
 private _respawn_position = [];
 {
     private _positions = ((_fobs select 1) select _forEachIndex) buildingPos -1;
-    _respawn_position pushBack selectRandom (_positions select [0, [count _positions, 4] select (count _positions >= 4)]);
-} forEach (_fobs select 0);
+    _respawn_position pushBack selectRandom (_positions select {_x select 2 < 1});
+} forEach _fobs_marker;
 
 private _missionsData = [];
 {
@@ -22,11 +23,11 @@ private _missionsData = [];
         _x,
         format [localize "STR_BTC_HAM_O_FOB_REDEPLOY_H_MOVING", _x], //"Moving to %1"
         "",
-        "",
+        getText (configfile >> "CfgVehicles" >> typeOf ((_fobs select 1) select _forEachIndex) >> "editorPreview"),
         1,
         []
     ]
-} forEach (_fobs select 0);
+} forEach _fobs_marker;
 
 disableserialization;
 (date call BIS_fnc_sunriseSunsetTime) params ["_sunrise", "_sunset"];
@@ -43,7 +44,7 @@ private _simul = true;
 
 {
     _x setMarkerAlphaLocal 0;
-} foreach (_fobs select 0);
+} foreach _fobs_marker;
 
 private _display = [
     _parentDisplay,
@@ -56,7 +57,7 @@ private _display = [
     _isNight,
     _scale,
     _simul,
-    "Select a FOB to spawn",
+    localize "$STR_BTC_HAM_O_FOB_REDEPLOY_LABEL",
     true
 ] call btc_fnc_strategicMapOpen;
 
@@ -68,6 +69,6 @@ _display displayaddeventhandler [
                 _x setMarkerAlphaLocal 1;
             } foreach %1;
         ",
-        _fobs select 0
+        _fobs_marker
     ]
 ];
