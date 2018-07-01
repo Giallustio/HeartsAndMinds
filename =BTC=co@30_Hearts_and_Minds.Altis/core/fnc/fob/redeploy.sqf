@@ -3,27 +3,26 @@ btc_int_ask_data = nil;
 
 waitUntil {!(isNil "btc_int_ask_data")};
 
-_fobs = + btc_int_ask_data;
-private _fobs_marker = _fobs select 0;
+private _fobs_marker = btc_int_ask_data select 0;
+private _fobs_structure = btc_int_ask_data select 1;
 if (_fobs_marker isEqualTo []) exitWith {
     hint localize "STR_BTC_HAM_O_FOB_REDEPLOY_H_NOFOB"; //"No FOBs deployed"
 };
 
-private _respawn_position = [];
-{
-    private _positions = ((_fobs select 1) select _forEachIndex) buildingPos -1;
-    _respawn_position pushBack selectRandom (_positions select {_x select 2 < 1});
-} forEach _fobs_marker;
+ private _respawn_positions = _fobs_structure apply {
+    private _positions = _x buildingPos -1;
+    selectRandom (_positions select {_x select 2 < 1});
+};
 
 private _missionsData = [];
 {
     _missionsData pushBack [
         getMarkerPos _x,
-        compile format ["player setPosATL %1", _respawn_position select _forEachIndex],
+        compile format ["player setPosATL %1", _respawn_positions select _forEachIndex],
         _x,
         format [localize "STR_BTC_HAM_O_FOB_REDEPLOY_H_MOVING", _x], //"Moving to %1"
         "",
-        getText (configfile >> "CfgVehicles" >> typeOf ((_fobs select 1) select _forEachIndex) >> "editorPreview"),
+        getText (configfile >> "CfgVehicles" >> typeOf (_fobs_structure select _forEachIndex) >> "editorPreview"),
         1,
         []
     ]
