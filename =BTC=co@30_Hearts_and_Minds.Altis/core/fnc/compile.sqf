@@ -265,7 +265,6 @@ if (!isDedicated) then {
 
     //FOB
     btc_fnc_fob_create = compile preprocessFileLineNumbers "core\fnc\fob\create.sqf";
-    btc_fnc_fob_lb_change = compile preprocessFileLineNumbers "core\fnc\fob\lb_change.sqf";
     btc_fnc_fob_redeploy = compile preprocessFileLineNumbers "core\fnc\fob\redeploy.sqf";
     btc_fnc_fob_dismantle = compile preprocessFileLineNumbers "core\fnc\fob\dismantle.sqf";
 
