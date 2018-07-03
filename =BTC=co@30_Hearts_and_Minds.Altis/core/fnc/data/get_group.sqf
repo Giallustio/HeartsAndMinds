@@ -50,7 +50,6 @@ if (_type_db isEqualTo 1) then {
     private _fuel = fuel _veh;
     _array_veh = [_type, _pos, _dir, _fuel];
 };
-
 [vehicle leader _group, _group] call CBA_fnc_deleteEntity;
 
 [_type_db, _array_pos, _array_type, _side, _array_dam, _behaviour, [_index_wp, _array_wp], _array_veh]

@@ -43,7 +43,9 @@ if (_cap_to isEqualTo []) exitWith {
 
     if (_closest getVariable ["initialized", false]) then {
         for "_i" from 0 to (2 + (round random 3)) do {
-            [_hd, _closest, 0] call btc_fnc_mil_send;
+            [{
+                _this call btc_fnc_mil_send;
+            }, [_hd, _closest, 0], _i * 2 + 1] call CBA_fnc_waitAndExecute;
         };
     } else {
         _closest setVariable ["occupied", true];

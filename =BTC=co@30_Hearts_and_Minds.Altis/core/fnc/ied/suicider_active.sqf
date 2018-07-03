@@ -31,7 +31,7 @@ _suicider addEventHandler ["Killed", {
     params ["_unit", "_killer"];
 
     if !(isPlayer _killer) then {
-        [attachedObjects _unit] call CBA_fnc_deleteEntity;
+        (attachedObjects _unit) call CBA_fnc_deleteEntity;
     };
 }];
 

@@ -17,7 +17,7 @@ params [
 
         if (playableUnits inAreaArray [getPosWorld _args, 1000, 1000] isEqualTo []) then {
             [_id] call CBA_fnc_removePerFrameHandler;
-            [_args] call CBA_fnc_deleteEntity;
+            _args call CBA_fnc_deleteEntity;
         };
     }, 5, _object] call CBA_fnc_addPerFrameHandler;
 } forEach _objects;
@@ -29,7 +29,7 @@ params [
 
         if (playableUnits inAreaArray [getPosWorld leader _args, 1000, 1000] isEqualTo []) then {
             [_id] call CBA_fnc_removePerFrameHandler;
-            [_args] call CBA_fnc_deleteEntity;
+            _args call CBA_fnc_deleteEntity;
         };
     }, 5, _group] call CBA_fnc_addPerFrameHandler;
 } forEach _groups;

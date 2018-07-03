@@ -4,7 +4,6 @@ private _toRemove = (((allMissionObjects "groundweaponholder") + (entities "Weap
     playableUnits inAreaArray [getPosWorld _obj, 150, 150] isEqualTo []
 };
 
-
 _toRemove append (allDead select {
     private _dead = _x;
 
@@ -13,4 +12,4 @@ _toRemove append (allDead select {
 
 _toRemove append (allGroups select {units _x select {alive _x} isEqualTo []});
 
-[_toRemove] call CBA_fnc_deleteEntity;
+_toRemove call CBA_fnc_deleteEntity;

@@ -78,7 +78,7 @@ for "_i" from 1 to (1 + round random 2) do {
         private _fx = "test_EmptyObjectForSmoke" createVehicle _pos;
         _fx setPos _pos;
         sleep 120;
-        [_fx] call CBA_fnc_deleteEntity;
+        _fx call CBA_fnc_deleteEntity;
     };
     _boxes pushBack _boxe;
 };
