@@ -1410,16 +1410,6 @@
                 <Spanish>Nombra el FOB:</Spanish>
                 <German>FOB Benennen:</German>
             </Key>
-            <Key ID="STR_BTC_HAM_O_FOB_DLG_T_APPLY">
-                <Original>Apply</Original>
-                <Spanish>Aplicar</Spanish>
-                <German>Bestätigen</German>
-            </Key>
-            <Key ID="STR_BTC_HAM_O_FOB_DLG_T_SELECTFOB">
-                <Original>Select the FOB:</Original>
-                <Spanish>Selecciona el FOB:</Spanish>
-                <German>FOB auswählen:</German>
-            </Key>
         </Container>
         <Container name="Other: Hints ">
             <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_0">
