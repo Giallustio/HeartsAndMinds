@@ -1402,6 +1402,9 @@
                 <Spanish>Moviéndose a %1</Spanish>
                 <German>Verlege zu %1</German>
             </Key>
+            <Key ID="STR_BTC_HAM_O_FOB_REDEPLOY_LABEL">
+                <Original>Select a FOB</Original>
+            </Key>
             <Key ID="STR_BTC_HAM_O_FOB_DLG_T_NAMEFOB">
                 <Original>Name the FOB:</Original>
                 <Spanish>Nombra el FOB:</Spanish>
