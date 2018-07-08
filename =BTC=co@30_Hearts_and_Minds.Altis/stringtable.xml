@@ -26,11 +26,6 @@
                 <Spanish>Interprete</Spanish>
                 <German>Dolmetscher</German>
             </Key>
-            <Key ID="STR_BTC_HAM_MSQM_OFFICER">
-                <Original>Officer</Original>
-                <Spanish>Oficial</Spanish>
-                <German>Offizier</German>
-            </Key>
             <Key ID="STR_BTC_HAM_MSQM_MRK_LOGPOINT">
                 <Original>Logistic Point</Original>
                 <Spanish>Punto de Logística</Spanish>
@@ -63,13 +58,6 @@
         </Container>
     </Package>
     <Package name="Documentation">
-        <Container name="Documentation: Title">
-            <Key ID="STR_BTC_HAM_DOC_TITLE">
-                <Original>Documentation</Original>
-                <Spanish>Documentación</Spanish>
-                <German>Dokumentation</German>
-            </Key>
-        </Container>
         <Container name="Documentation: Headless and Database">
             <Key ID="STR_BTC_HAM_DOC_HEADLESS_TITLE">
                 <Original>Headless and Database</Original>
@@ -138,11 +126,6 @@
             </Key>
         </Container>
         <Container name="Documentation: Sling loading">
-            <Key ID="STR_BTC_HAM_DOC_SLING_TITLE">
-                <Original>Sling loading</Original>
-                <Spanish>Carga con cuerdas</Spanish>
-                <German>Lasten heben (Hubschrauber)</German>
-            </Key>
             <Key ID="STR_BTC_HAM_DOC_SLING_TEXT">
                 <Original>=BTC= Lift will not replace the A3 sling loading, you can use both.&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\container_ca.paa' width='20' height='20'/&gt; &lt;img image='\A3\air_f_beta\Heli_Transport_01\Data\UI\Map_Heli_Transport_01_base_CA.paa' width='20' height='20'/&gt; Lifting an object is pretty simple. Get in a chopper as pilot, hover above the object and interact with the chopper to deploy ropes.&lt;br/&gt; When you are in the right position a new scroll wheel action will appear ('HOOK'). If you want you can open the HUD to facilitate the operation.&lt;br/&gt; &lt;img image='\z\ace\addons\logistics_wirecutter\ui\wirecutter_ca.paa' width='20' height='20'/&gt; To release an object open you self interaction menu and select 'CUT ROPES'.</Original>
                 <Spanish>=BTC= Lift will not replace the A3 sling loading, you can use both.&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\container_ca.paa' width='20' height='20'/&gt; &lt;img image='\A3\air_f_beta\Heli_Transport_01\Data\UI\Map_Heli_Transport_01_base_CA.paa' width='20' height='20'/&gt; Levantar un objeto es muy sencillo. Métete en un helicóptero como piloto, sobrevuela el objeto e interactúa con el helicóptero para desplegar las cuerdas.&lt;br/&gt; Cuando esté en la posición correcta, aparecerá una nueva acción de la rueda de desplazamiento ('HOOK'). Si lo desea puede abrir el HUD para facilitar la operación.&lt;br/&gt; &lt;img image='\z\ace\addons\logistics_wirecutter\ui\wirecutter_ca.paa' width='20' height='20'/&gt; Para liberar un objeto, abra el menú de autointeracción y seleccione 'CORTAR CUERDAS'.</Spanish>
@@ -173,11 +156,6 @@
             </Key>
         </Container>
         <Container name="Documentation: Hideout">
-            <Key ID="STR_BTC_HAM_DOC_HIDEOUT_TITLE">
-                <Original>Hideout</Original>
-                <Spanish>Escondites</Spanish>
-                <German>Verstecke</German>
-            </Key>
             <Key ID="STR_BTC_HAM_DOC_HIDEOUT_TEXT">
                 <Original>The hideouts are a place where the Oplitas organize their movements.&lt;br/&gt;They send reinforcements from here and can attack the closest city.&lt;br/&gt;If you notice a lot of activity in an area, probably there is an hideout closeby.&lt;br/&gt;If you want to defeat the Oplitas, you need to destroy all their hideouts.&lt;br/&gt;Here an example of an hideout:&lt;br/&gt;&lt;br/&gt;&lt;img image='core\img\hideout.jpg' width='256' height='256'/&gt;&lt;br/&gt;&lt;br/&gt;To destroy an hideout just place a satchel near the ammo box, it's close to the flag, and blow it off!</Original>
                 <Spanish>Los escondites son un lugar donde los Oplitas organizan sus movimientos.&lt;br/&gt;Enviarán refuerzos desde aquí y podrán atacar la ciudad más cercana.&lt;br/&gt;Si usted nota mucha actividad en un área, probablemente hay un escondite cerca.Si quieres derrotar a los Oplitas, tienes que destruir todos sus escondites.&lt;br/&gt;Aquí un ejemplo de un escondite:&lt;br/&gt;&lt;br/&gt;&lt;img image='core\img\hideout.jpg' width='256' height='256'/&gt;&lt;br/&gt;&lt;br/&gt;Para destruir un escondite sólo tienes que colocar una explosivo tipo satchel cerca de la caja de municiones, cerca de la bandera, y volarla!</Spanish>
@@ -192,11 +170,6 @@
             </Key>
         </Container>
         <Container name="Documentation: Intel">
-            <Key ID="STR_BTC_HAM_DOC_INTEL_TITLE">
-                <Original>Intel</Original>
-                <Spanish>Intel</Spanish>
-                <German>Informationen</German>
-            </Key>
             <Key ID="STR_BTC_HAM_DOC_INTEL_TEXT">
                 <Original>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\map_ca.paa' width='20' height='20'/&gt; Intel can be retrieved in the following ways:&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\search_ca.paa' width='13' height='13'/&gt; Searching dead bodies&lt;br/&gt; - &lt;img image='\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\instructor_ca.paa' width='13' height='13'/&gt; Interrogate prisoner&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='13' height='13'/&gt; Talking to civilians&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\talk_ca.paa' width='20' height='20'/&gt; Keep in mind that only the interpreter can talk to civilians and they can lie if your reputation level is low.&lt;br/&gt;&lt;br/&gt; When you find an intel from a dead body or interrogate a prisoner, a marker will appear in the map. Remember, prisoner have a random number of intel more or less interesting.&lt;br/&gt; There are two types of marker:&lt;br/&gt; - Red question mark (&lt;img image='\A3\ui_f\data\map\markers\handdrawn\unknown_CA.paa' width='13' height='13' color='#ff0000'/&gt;): ammo cache intel&lt;br/&gt; - Red exclamation mark (&lt;img image='\A3\ui_f\data\map\markers\handdrawn\warning_CA.paa' width='13' height='13' color='#ff0000'/&gt;): hideout intel&lt;br/&gt;&lt;br/&gt;&lt;br/&gt; When you destroy an hideout or an ammo cache, all the markers related to it will be deleted.</Original>
                 <Spanish>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\map_ca.paa' width='20' height='20'/&gt; La Inteligencia se puede recuperar de las siguientes maneras:&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\search_ca.paa' width='13' height='13'/&gt; Registrando cadáveres&lt;br/&gt; - &lt;img image='\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\instructor_ca.paa' width='13' height='13'/&gt; Interrogando prisioneros&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='13' height='13'/&gt; Conversando con Civiles&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\talk_ca.paa' width='20' height='20'/&gt; Tenga en cuenta que sólo el intérprete puede hablar con civiles y ellos pueden mentir si su nivel de reputación es bajo.&lt;br/&gt;&lt;br/&gt; Cuando encuentres una información de un cadáver o interrogues a un prisionero, aparecerá un marcador en el mapa. Recuerda, los prisioneros tienen un número aleatorio de información más o menos interesante.&lt;br/&gt; Hay 2 tipos de marcas:&lt;br/&gt; - Signo de interrogacion rojo (&lt;img image='\A3\ui_f\data\map\markers\handdrawn\unknown_CA.paa' width='13' height='13' color='#ff0000'/&gt;): intel sobre cache de municion&lt;br/&gt; - Signo de exclamacion rojo (&lt;img image='\A3\ui_f\data\map\markers\handdrawn\warning_CA.paa' width='13' height='13' color='#ff0000'/&gt;): intel sobre escondite&lt;br/&gt;&lt;br/&gt;&lt;br/&gt; Cuando destruyes un escondite o una caché de munición, todos los marcadores relacionados con él se borrarán.</Spanish>
@@ -216,11 +189,6 @@
             </Key>
         </Container>
         <Container name="Documentation: Orders">
-            <Key ID="STR_BTC_HAM_DOC_ORDERS_TITLE">
-                <Original>Orders</Original>
-                <Spanish>Ordenes</Spanish>
-                <German>Befehle (Zivilisten)</German>
-            </Key>
             <Key ID="STR_BTC_HAM_DOC_ORDERS_TEXT">
                 <Original>Any player can give orders to civilians.&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; To do this, just open your self interaction menu and select 'ORDERS' or use one of the shortcuts. Shortcuts can changed under 'configure' &gt;&gt; 'controls' &gt;&gt; 'configure addons' &gt;&gt; 'Hearts and Minds: Mission' (drop down menu).&lt;br/&gt; Your options are:&lt;br/&gt; - STOP&lt;br/&gt; - GET DOWN&lt;br/&gt; - GO AWAY&lt;br/&gt;&lt;br/&gt; If you want to give an order to just one unit, interact with it (ace object interaction).&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='20' height='20'/&gt; You can also drop leaflets to ask all civilians in a circle of 200m to evacuate to a religious building (if not available a safe area) with a drone.</Original>
                 <Spanish>Cualquier jugador puede dar órdenes a civiles.&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; Para ello, sólo tienes que abrir el menú de auto-interacción y seleccionar `ORDENES' o utilizar uno de los accesos directos. Los accesos directos pueden cambiarse en 'configuración'. &gt;&gt; 'controls' &gt;&gt; 'configure addons' &gt;&gt; 'Hearts and Minds: Mission' (menu desplegable).&lt;br/&gt; Tus opciones son:&lt;br/&gt; - ALTO&lt;br/&gt; - AGACHATE&lt;br/&gt; - FUERA DE AQUI&lt;br/&gt;&lt;br/&gt; Si quieres dar una orden a una sola unidad, interactúa con ella (ace object interaction).&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='20' height='20'/&gt; También puede tirar panfletos para pedir a todos los civiles en un círculo de 200 metros que evacuen a un edificio religioso (si no está disponible un área segura) con un drone</Spanish>
@@ -263,27 +231,12 @@
                 <German> &lt;img image='\z\ace\addons\interaction\UI\Icon_Module_Interaction_ca.paa' width='20' height='20'/&gt;Nutzen Sie das Interactions-System von ACE 3.</German>
             </Key>
         </Container>
-        <Container name="Documentation: Version">
-            <Key ID="STR_BTC_HAM_DOC_VERSION_TITLE">
-                <Original>Version</Original>
-                <Spanish>Version</Spanish>
-                <German>Version</German>
-            </Key>
-        </Container>
     </Package>
     <Package name="Parameters">
         <Container name="Parameters: Time">
             <Key ID="STR_BTC_HAM_PARAM_TIME_TITLE">
                 <Original>&lt;&lt; Time options &gt;&gt;</Original>
                 <German>&lt;&lt; Zeiteinstellungen &gt;&gt;</German>
-            </Key>
-            <Key ID="STR_BTC_HAM_PARAM_TIME_START">
-                <Original>Set the start time:</Original>
-                <German>Legt die Startzeit fest:</German>
-            </Key>
-            <Key ID="STR_BTC_HAM_PARAM_TIME_MULTIP">
-                <Original>Acceleration time multiplier:</Original>
-                <German>Zeit-Beschleunigungs-Multiplikator:</German>
             </Key>
         </Container>
         <Container name="Parameters: Database">
@@ -331,18 +284,6 @@
                 <Original>IEDs ratio:</Original>
                 <German>IED Wahrscheinlichkeit:</German>
             </Key>
-            <Key ID="STR_BTC_HAM_PARAM_IED_RATIO_LOW">
-                <Original>Low</Original>
-                <German>Niedrig</German>
-            </Key>
-            <Key ID="STR_BTC_HAM_PARAM_IED_RATIO_NORMAL">
-                <Original>Normal</Original>
-                <German>Normal</German>
-            </Key>
-            <Key ID="STR_BTC_HAM_PARAM_IED_RATIO_HIGH">
-                <Original>High</Original>
-                <German>Hoch</German>
-            </Key>
             <Key ID="STR_BTC_HAM_PARAM_IED_SPOT">
                 <Original>IEDs spotting difficulty</Original>
                 <German>IED Erkennung</German>
@@ -368,10 +309,6 @@
             <Key ID="STR_BTC_HAM_PARAM_HIDE_NUMBERS">
                 <Original>Hideout numbers:</Original>
                 <German>Anzahl der Verstecke:</German>
-            </Key>
-            <Key ID="STR_BTC_HAM_PARAM_HIDE_NUMBERS_RND">
-                <Original>Random</Original>
-                <German>Zufällig</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_CACHE_DISTANCE">
                 <Original>Info cache distance:</Original>
@@ -401,49 +338,37 @@
                 <Original>&lt;&lt; A3 Skill options &gt;&gt;</Original>
                 <German>&lt;&lt; A3 Skill options &gt;&gt;</German>
             </Key>
-            <Key ID="STR_BTC_HAM_PARAM_SKILL_ONOFF">
-                <Original>Set skill?</Original>
-                <German>KI-Fertigkeiten festlegen?</German>
-            </Key>
-            <Key ID="STR_BTC_HAM_PARAM_SKILL_GEN">
-                <Original>Set skill, general</Original>
-                <German>KI-Fertigkeit, Allgemein</German>
-            </Key>
             <Key ID="STR_BTC_HAM_PARAM_SKILL_AIMACC">
-                <Original>Set skill, aimingAccuracy</Original>
-                <German>KI-Fertigkeit, Zielgenauigkeit</German>
+                <Original>AimingAccuracy</Original>
+                <German>Zielgenauigkeit</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_SKILL_AIMSKILL">
-                <Original>Set skill, aimingShake</Original>
-                <German>KI-Fertigkeit, Verwackeln beim Zielen</German>
+                <Original>AimingShake</Original>
+                <German>Verwackeln beim Zielen</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_SKILL_AIMSPEED">
-                <Original>Set skill, aimingSpeed</Original>
-                <German>KI-Fertigkeit, Zielgeschwindigkeit</German>
-            </Key>
-            <Key ID="STR_BTC_HAM_PARAM_SKILL_ENDURANCE">
-                <Original>Set skill, endurance</Original>
-                <German>KI-Fertigkeit, Ausdauer</German>
+                <Original>AimingSpeed</Original>
+                <German>Zielgeschwindigkeit</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_SKILL_SPOTDIST">
-                <Original>Set skill, spotDistance</Original>
-                <German>KI-Fertigkeit, Aufklärungsentfernung</German>
+                <Original>SpotDistance</Original>
+                <German>Aufklärungsentfernung</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_SKILL_SPOTTIME">
-                <Original>Set skill, spotTime</Original>
-                <German>KI-Fertigkeit, Aufklärungsgeschwindigkeit</German>
+                <Original>SpotTime</Original>
+                <German>Aufklärungsgeschwindigkeit</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_SKILL_COURAGE">
-                <Original>Set skill, courage</Original>
-                <German>KI-Fertigkeit, Mut</German>
+                <Original>Courage</Original>
+                <German>Mut</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_SKILL_RELOAD">
-                <Original>Set skill, reloadSpeed</Original>
-                <German>KI-Fertigkeit, Nachladegeschwindigkeit</German>
+                <Original>ReloadSpeed</Original>
+                <German>Nachladegeschwindigkeit</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_SKILL_COMMANDING">
-                <Original>Set skill, commanding</Original>
-                <German>KI-Fertigkeit, Befehligen</German>
+                <Original>Commanding</Original>
+                <German>Befehligen</German>
             </Key>
         </Container>
         <Container name="Parameters: Gameplay">
@@ -501,10 +426,6 @@
                 <Original>Restrict arsenal (See /define_mod.sqf):</Original>
                 <German>Arsenal beschränken (Siehe /define_mod.sqf):</German>
             </Key>
-            <Key ID="STR_BTC_HAM_PARAM_ARSENAL_ARSENALRESTR_FULL">
-                <Original>Full</Original>
-                <German>Komplett</German>
-            </Key>
             <Key ID="STR_BTC_HAM_PARAM_ARSENAL_ARSENALRESTR_REMOVEONLY">
                 <Original>Remove only (works only with ACE3-Arsenal)</Original>
                 <German>Nur entfernen (funktioniert nur beim ACE3-Arsenal)</German>
@@ -556,13 +477,6 @@
         </Container>
     </Package>
     <Package name="Missions">
-        <Container name="Mission: Basics">
-            <Key ID="STR_BTC_HAM_MISSION_BASIC_WIN_TITLE">
-                <Original>Mission accomplished!</Original>
-                <Spanish>Mision cumplida!</Spanish>
-                <German>Mission erfolgreich!</German>
-            </Key>
-        </Container>
         <Container name="Mission: Defeat the Oplitas">
             <Key ID="STR_BTC_HAM_MISSION_DEFEAT_TITLE">
                 <Original>Defeat the Oplitas</Original>
@@ -651,11 +565,6 @@
             </Key>
         </Container>
         <Container name="Checkpoint">
-            <Key ID="STR_BTC_HAM_SIDE_CHECKPOINT_MRK">
-                <Original>Checkpoint</Original>
-                <Spanish>Checkpoint</Spanish>
-                <German>Kontrollpunkt</German>
-            </Key>
             <Key ID="STR_BTC_HAM_SIDE_CHECKPOINT_TITLE">
                 <Original>Destroy checkpoints in %1</Original>
                 <Spanish>Destruir los puestos de control en %1</Spanish>
@@ -732,11 +641,6 @@
                 <Spanish>¡El convoy ha dejado el punto de partida!</Spanish>
                 <German>Der Konvoi ist losgefahren!</German>
             </Key>
-            <Key ID="STR_BTC_HAM_SIDE_CONVOY_MRKSTART">
-                <Original>Convoy Start</Original>
-                <Spanish>Inicio del Convoy</Spanish>
-                <German>Konvoi Start</German>
-            </Key>
             <Key ID="STR_BTC_HAM_SIDE_CONVOY_MRKEND">
                 <Original>Convoy End</Original>
                 <Spanish>Fin del Convoy</Spanish>
@@ -768,11 +672,6 @@
                 <Original>Defend the terminal until the missile is hacked!</Original>
                 <Spanish>Defiende la terminal hasta que el misil sea hacekado!</Spanish>
                 <German>Verteidigt das Terminal, bis die Rakete gehackt erfolgreich gehackt ist!</German>
-            </Key>
-            <Key ID="STR_BTC_HAM_SIDE_HACK_MRK">
-                <Original>Terminal</Original>
-                <Spanish>Terminal</Spanish>
-                <German>Terminal</German>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_HACK_ACEACTION">
                 <Original>Start Hacking</Original>
@@ -1010,23 +909,8 @@
                 <Spanish>Base de Dato</Spanish>
                 <German>Datenbank</German>
             </Key>
-            <Key ID="STR_BTC_HAM_ACTION_DATA_SAVE">
-                <Original>Save</Original>
-                <Spanish>Guardar</Spanish>
-                <German>Sichern</German>
-            </Key>
-            <Key ID="STR_BTC_HAM_ACTION_DATA_DELETE">
-                <Original>Delete</Original>
-                <Spanish>Borrar</Spanish>
-                <German>Löschen</German>
-            </Key>
         </Container>
         <Container name="Action(ACE): Intel">
-            <Key ID="STR_BTC_HAM_ACTION_INTEL_SEARCH">
-                <Original>Search for intel</Original>
-                <Spanish>Buscar Intel</Spanish>
-                <German>Nach Informationen suchen</German>
-            </Key>
             <Key ID="STR_BTC_HAM_ACTION_INTEL_INTERROGATE">
                 <Original>Interrogate</Original>
                 <German>Verhören</German>
@@ -1064,11 +948,6 @@
                 <Original>Dismantle FOB</Original>
                 <Spanish>Desarmar FOB</Spanish>
                 <German>FOB abbauen</German>
-            </Key>
-            <Key ID="STR_BTC_HAM_ACTION_FOB_PLACE">
-                <Original>Place</Original>
-                <Spanish>Colocar</Spanish>
-                <German>Platzieren</German>
             </Key>
         </Container>
         <Container name="Action(ACE): Orders">
@@ -1210,11 +1089,6 @@
                 <Original>low</Original>
                 <Spanish>baja</Spanish>
                 <German>niedrig</German>
-            </Key>
-            <Key ID="STR_BTC_HAM_CON_INFO_ASKREP_NORMAL">
-                <Original>normal</Original>
-                <Spanish>normal</Spanish>
-                <German>normal</German>
             </Key>
             <Key ID="STR_BTC_HAM_CON_INFO_ASKREP_HIGH">
                 <Original>high</Original>

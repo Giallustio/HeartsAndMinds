@@ -6,13 +6,13 @@ class Params {
         default = 0;
     };
     class btc_p_time { // Set the start time:
-        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_TIME_START"]);
+        title = __EVAL(format ["      %1", localize "STR_A3_CFGVEHICLES_MODULEDATE_F_ARGUMENTS_HOUR_0"]);
         values[]={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24};
         texts[]={"1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24"};
         default = 12;
     };
     class btc_p_acctime { // Acceleration time multiplier:
-        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_TIME_MULTIP"]);
+        title = __EVAL(format ["      %1", localize "STR_USRACT_TIME_INC"]);
         values[]={1,2,3,4,5,6,7,8,9,10,11,12};
         texts[]={"1","2","3","4","5","6","7","8","9","10","11","12"};
         default = 5;
@@ -74,13 +74,13 @@ class Params {
     class btc_p_ied { // IEDs ratio:
         title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_IED_RATIO"]);
         values[]={0, 1, 2, 3};
-        texts[]={$STR_DISABLED,$STR_BTC_HAM_PARAM_IED_RATIO_LOW,$STR_BTC_HAM_PARAM_IED_RATIO_NORMAL,$STR_BTC_HAM_PARAM_IED_RATIO_HIGH}; //texts[]={"Off","Low","Normal","High"};
+        texts[]={$STR_DISABLED,$STR_A3_TIME_TRIALS_MISCTT_ROF_25,$STR_3DEN_ATTRIBUTES_SPEEDMODE_NORMAL,$STR_A3_TIME_TRIALS_MISCTT_ROF_21}; //texts[]={"Off","Low","Normal","High"};
         default = 2;
     };
     class btc_p_ied_spot { // IEDs spotting difficulty:
         title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_IED_SPOT"]);
         values[]={0, 1, 2};
-        texts[]={$STR_BTC_HAM_PARAM_IED_SPOT_VERYEASY,$STR_BTC_HAM_PARAM_IED_SPOT_EASY,$STR_BTC_HAM_PARAM_IED_RATIO_NORMAL}; //texts[]={"Very easy","Easy","Normal"};
+        texts[]={$STR_BTC_HAM_PARAM_IED_SPOT_VERYEASY,$STR_BTC_HAM_PARAM_IED_SPOT_EASY,$STR_3DEN_ATTRIBUTES_SPEEDMODE_NORMAL}; //texts[]={"Very easy","Easy","Normal"};
         default = 2;
     };
     class btc_p_ied_drone { // Drone bomber:
@@ -98,7 +98,7 @@ class Params {
     class btc_p_hideout_n { // Hideout numbers:
         title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_HIDE_NUMBERS"]);
         values[]={99,1,2,3,4,5};
-        texts[]={$STR_BTC_HAM_PARAM_HIDE_NUMBERS_RND,"1","2","3","4","5"}; //texts[]={"Random","1","2","3","4","5"};
+        texts[]={$STR_3DEN_ATTRIBUTES_OBJECTTEXTURE_RANDOM_TEXT,"1","2","3","4","5"}; //texts[]={"Random","1","2","3","4","5"};
         default = 5;
     };
     class btc_p_cache_info_def { // Info cache distance:
@@ -138,67 +138,67 @@ class Params {
         default = 0;
     };
     class btc_p_set_skill { // Set skill?
-        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_SKILL_ONOFF"]);
+        title = __EVAL(format ["      %1?", localize "STR_A3_CFGVEHICLES_MODULESKILL_F_0"]);
         values[]={0,1};
         texts[]={$STR_DISABLED,$STR_ENABLED};
         default = 1;
     };
     class btc_p_set_skill_general {  // Set skill, general
-        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_SKILL_GEN"]);
+        title = __EVAL(format ["      %1, %2", localize "STR_A3_CFGVEHICLES_MODULESKILL_F_0", localize "STR_3DEN_SCENARIO_TEXTSINGULAR"]);
         values[]={0,1,2,3,4,5,6,7,8,9,10};
         texts[]={"0","0.1","0.2","0.3","0.4","0.5","0.6","0.7","0.8","0.9","1"};
         default = 0;
     };
     class btc_p_set_skill_aimingAccuracy { // Set skill, aimingAccuracy
-        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_SKILL_AIMACC"]);
+        title = __EVAL(format ["      %1, %2", localize "STR_A3_CFGVEHICLES_MODULESKILL_F_0", localize "STR_BTC_HAM_PARAM_SKILL_AIMACC"]);
         values[]={0,1,2,3,4,5,6,7,8,9,10};
         texts[]={"0","0.1","0.2","0.3","0.4","0.5","0.6","0.7","0.8","0.9","1"};
         default = 1;
     };
     class btc_p_set_skill_aimingShake {  // Set skill, aimingShake
-        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_SKILL_AIMSKILL"]);
+        title = __EVAL(format ["      %1, %2", localize "STR_A3_CFGVEHICLES_MODULESKILL_F_0", localize "STR_BTC_HAM_PARAM_SKILL_AIMSKILL"]);
         values[]={0,1,2,3,4,5,6,7,8,9,10};
         texts[]={"0","0.1","0.2","0.3","0.4","0.5","0.6","0.7","0.8","0.9","1"};
         default = 4;
     };
     class btc_p_set_skill_aimingSpeed { // Set skill, aimingSpeed
-        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_SKILL_AIMSPEED"]);
+        title = __EVAL(format ["      %1, %2", localize "STR_A3_CFGVEHICLES_MODULESKILL_F_0", localize "STR_BTC_HAM_PARAM_SKILL_AIMSPEED"]);
         values[]={0,1,2,3,4,5,6,7,8,9,10};
         texts[]={"0","0.1","0.2","0.3","0.4","0.5","0.6","0.7","0.8","0.9","1"};
         default = 3;
     };
     class btc_p_set_skill_endurance { // Set skill, endurance
-        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_SKILL_ENDURANCE"]);
+        title = __EVAL(format ["      %1, %2", localize "STR_A3_CFGVEHICLES_MODULESKILL_F_0", localize "STR_A3_VR_STAMINA"]);
         values[]={0,1,2,3,4,5,6,7,8,9,10};
         texts[]={"0","0.1","0.2","0.3","0.4","0.5","0.6","0.7","0.8","0.9","1"};
         default = 5;
     };
     class btc_p_set_skill_spotDistance { // Set skill, spotDistance
-        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_SKILL_SPOTDIST"]);
+        title = __EVAL(format ["      %1, %2", localize "STR_A3_CFGVEHICLES_MODULESKILL_F_0", localize "STR_BTC_HAM_PARAM_SKILL_SPOTDIST"]);
         values[]={0,1,2,3,4,5,6,7,8,9,10};
         texts[]={"0","0.1","0.2","0.3","0.4","0.5","0.6","0.7","0.8","0.9","1"};
         default = 9;
     };
     class btc_p_set_skill_spotTime { // Set skill, spotTime
-        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_SKILL_SPOTTIME"]);
+        title = __EVAL(format ["      %1, %2", localize "STR_A3_CFGVEHICLES_MODULESKILL_F_0", localize "STR_BTC_HAM_PARAM_SKILL_SPOTTIME"]);
         values[]={0,1,2,3,4,5,6,7,8,9,10};
         texts[]={"0","0.1","0.2","0.3","0.4","0.5","0.6","0.7","0.8","0.9","1"};
         default = 7;
     };
     class btc_p_set_skill_courage { // Set skill, courage
-        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_SKILL_COURAGE"]);
+        title = __EVAL(format ["      %1, %2", localize "STR_A3_CFGVEHICLES_MODULESKILL_F_0", localize "STR_BTC_HAM_PARAM_SKILL_COURAGE"]);
         values[]={0,1,2,3,4,5,6,7,8,9,10};
         texts[]={"0","0.1","0.2","0.3","0.4","0.5","0.6","0.7","0.8","0.9","1"};
         default = 2;
     };
     class btc_p_set_skill_reloadSpeed { // Set skill, reloadSpeed
-        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_SKILL_RELOAD"]);
+        title = __EVAL(format ["      %1, %2", localize "STR_A3_CFGVEHICLES_MODULESKILL_F_0", localize "STR_BTC_HAM_PARAM_SKILL_RELOAD"]);
         values[]={0,1,2,3,4,5,6,7,8,9,10};
         texts[]={"0","0.1","0.2","0.3","0.4","0.5","0.6","0.7","0.8","0.9","1"};
         default = 10;
     };
     class btc_p_set_skill_commanding { // Set skill, commanding
-        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_SKILL_COMMANDING"]);
+        title = __EVAL(format ["      %1, %2", localize "STR_A3_CFGVEHICLES_MODULESKILL_F_0", localize "STR_A3_CFGHINTS0"]);
         values[]={0,1,2,3,4,5,6,7,8,9,10};
         texts[]={"0","0.1","0.2","0.3","0.4","0.5","0.6","0.7","0.8","0.9","1"};
         default = 7;
@@ -248,7 +248,7 @@ class Params {
     class btc_p_arsenal_Restrict { // Restricted arsenal (See /define_mod.sqf):
         title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_ARSENAL_ARSENALRESTR"]);
         values[]={0,1,2,3};
-        texts[] = {$STR_DISABLED,$STR_BTC_HAM_PARAM_ARSENAL_ARSENALRESTR_FULL,$STR_BTC_HAM_PARAM_ARSENAL_ARSENALRESTR_REMOVEONLY,$STR_BTC_HAM_PARAM_ARSENAL_ARSENALRESTR_FILTER}; //texts[]={"Off","Full","Remove only (works only with ACE3-Arsenal)","Filter on player role (works only with ACE3-Arsenal)"};
+        texts[] = {$STR_DISABLED,$STR_3DEN_ATTRIBUTES_SPEEDMODE_FULL,$STR_BTC_HAM_PARAM_ARSENAL_ARSENALRESTR_REMOVEONLY,$STR_BTC_HAM_PARAM_ARSENAL_ARSENALRESTR_FILTER}; //texts[]={"Off","Full","Remove only (works only with ACE3-Arsenal)","Filter on player role (works only with ACE3-Arsenal)"};
         default = 3;
     };
     class btc_p_autoloadout { // Automatic loadout:
@@ -272,7 +272,7 @@ class Params {
     class btc_p_rep { // Reputation at start:
         title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_OTHER_REPSTART"]);
         values[]={0, 200, 500, 750};
-        texts[]={$STR_BTC_HAM_PARAM_OTHER_REPSTART_VLOW,$STR_BTC_HAM_PARAM_IED_RATIO_LOW,$STR_BTC_HAM_PARAM_IED_RATIO_NORMAL,$STR_BTC_HAM_PARAM_IED_RATIO_HIGH}; //texts[]={"Very Low","Low","Normal","High"};
+        texts[]={$STR_BTC_HAM_PARAM_OTHER_REPSTART_VLOW,$STR_A3_TIME_TRIALS_MISCTT_ROF_25,$STR_3DEN_ATTRIBUTES_SPEEDMODE_NORMAL,$STR_A3_TIME_TRIALS_MISCTT_ROF_21}; //texts[]={"Very Low","Low","Normal","High"};
         default = 200;
     };
     class btc_p_city_radius { // Spawn city radius offset:
