@@ -47,7 +47,8 @@ profileNamespace setVariable [format ["btc_hm_%1_cities", _name], _cities_status
 private _array_ho = [];
 {
     private _data = [];
-    _data pushBack (getPos _x);
+    (getPos _x) params ["_xx", "_yy"];
+    _data pushBack [_xx, _yy, 0];
     _data pushBack (_x getVariable ["id", 0]);
     _data pushBack (_x getVariable ["rinf_time", 0]);
     _data pushBack (_x getVariable ["cap_time", 0]);
