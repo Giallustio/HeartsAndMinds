@@ -30,7 +30,7 @@ btc_side_jip_data remoteExec ["btc_fnc_task_create", 0];
 //// Create markers \\\\
 private _marker1 = createMarker [format ["sm_2_%1", _pos1], _pos1];
 _marker1 setMarkerType "hd_flag";
-[_marker1, "STR_BTC_HAM_SIDE_CONVOY_MRKSTART"] remoteExec ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker1]; //Convoy start
+[_marker1, "str_a3_campaign_b_m06_marker01"] remoteExec ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker1]; //Convoy start
 _marker1 setMarkerSize [0.6, 0.6];
 
 private _marker2 = createMarker [format ["sm_2_%1", _pos2], _pos2];

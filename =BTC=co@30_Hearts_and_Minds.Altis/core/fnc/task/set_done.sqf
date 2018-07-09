@@ -9,13 +9,13 @@ if (isServer) exitWith {
 private _description = [];
 switch _task_id do {
     case 0 : {
-        _description = [localize "STR_BTC_HAM_MISSION_BASIC_WIN_TITLE", localize "STR_BTC_HAM_MISSION_DEFEAT_WIN_TEXT"]; //"Mission accomplished!","Oplitas have been finally defeated!    Mission accomplished!"
+        _description = [localize "str_a3_cfgmusic_eventtrack01_f_curator", localize "STR_BTC_HAM_MISSION_DEFEAT_WIN_TEXT"]; //"Mission accomplished!","Oplitas have been finally defeated!    Mission accomplished!"
     };
     case 1 : {
-        _description = [localize "STR_BTC_HAM_MISSION_BASIC_WIN_TITLE", localize "STR_BTC_HAM_MISSION_DESTORY_WIN_TEXT"]; //"Mission accomplished!","All the hideouts have been destroyed!"
+        _description = [localize "str_a3_cfgmusic_eventtrack01_f_curator", localize "STR_BTC_HAM_MISSION_DESTORY_WIN_TEXT"]; //"Mission accomplished!","All the hideouts have been destroyed!"
     };
     case 2 : {
-        _description = [localize "STR_BTC_HAM_MISSION_BASIC_WIN_TITLE", localize "STR_BTC_HAM_MISSION_DEFEAT_WIN_TEXT"]; //"Mission accomplished!","Oplitas have been finally defeated!    Mission accomplished!"
+        _description = [localize "str_a3_cfgmusic_eventtrack01_f_curator", localize "STR_BTC_HAM_MISSION_DEFEAT_WIN_TEXT"]; //"Mission accomplished!","Oplitas have been finally defeated!    Mission accomplished!"
     };
     case 3 : {
         _description = [localize "STR_BTC_HAM_SIDE_BASIC_WIN_TITLE", localize "STR_BTC_HAM_SIDE_SUPPLIES_WIN_TEXT"]; //"Side mission Accomplished!","Supplies have been delivered"
