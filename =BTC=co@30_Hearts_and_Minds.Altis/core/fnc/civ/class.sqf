@@ -11,7 +11,8 @@ _allClass = _allClass select {getNumber(_cfgVehicles >> _x >> "scope") isEqualTo
 
 //Check if faction existe
 private _cfgFactionClasses = configFile >> "CfgFactionClasses";
-_factions = _factions apply {if !(isClass(_cfgFactionClasses >> _x)) then {
+_factions = _factions apply {
+    if !(isClass(_cfgFactionClasses >> _x)) then {
         "CIV_F"
     } else {
         _x
@@ -43,7 +44,11 @@ _factions = _factions apply {if !(isClass(_cfgFactionClasses >> _x)) then {
 } forEach _factions;
 
 //Final filter unwanted units type
-_type_units = _type_units select {((_x find "_Driver_") isEqualTo -1) && ((_x find "_base") isEqualTo -1) && ((_x find "_unarmed_") isEqualTo -1) && ((_x find "_VR_") isEqualTo -1) && ((_x find "_pilot_") isEqualTo -1)};
-_type_veh = _type_veh select {!(getNumber (_cfgVehicles >> _x >> "isUav") isEqualTo 1) && ((_x find "_Kart_") isEqualTo -1)};
+_type_units = _type_units select {
+    !(getText (_cfgVehicles >> _x >> "role") isEqualTo "Crewman") &&
+    ((_x find "_unarmed_") isEqualTo -1) &&
+    !(getText (_cfgVehicles >> _x >> "vehicleClass") isEqualTo "MenVR")
+};
+_type_veh = _type_veh select {!(getNumber (_cfgVehicles >> _x >> "isUav") isEqualTo 1) && !(_x isKindOf "Kart_01_Base_F")};
 
 [_type_units, _type_boats, _type_veh]
