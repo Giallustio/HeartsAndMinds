@@ -43,7 +43,6 @@ _fx attachTo [_heli, [0.5, -2, 1]];
 
 private _group = createGroup btc_player_side;
 _group setVariable ["no_cache", true];
-_group setVariable ["btc_patrol", true];
 getText (configfile >> "CfgVehicles" >> _heli_type >> "crew") createUnit [_pos, _group];
 private _units = [];
 private _triggers = [];

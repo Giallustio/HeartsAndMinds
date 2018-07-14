@@ -25,7 +25,6 @@ if (_useful getVariable ["hasbeach", false]) then {
 private _group = createGroup [btc_enemy_side, true];
 _group setVariable ["city", _city];
 _group setVariable ["no_cache", true];
-_group setVariable ["btc_patrol", true];
 _group setVariable ["btc_patrol_id", btc_patrol_id, btc_debug];
 btc_patrol_id = btc_patrol_id + 1;
 
