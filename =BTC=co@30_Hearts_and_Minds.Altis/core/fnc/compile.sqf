@@ -21,6 +21,7 @@ if (isServer) then {
     btc_fnc_final_phase = compile preprocessFileLineNumbers "core\fnc\common\final_phase.sqf";
     btc_fnc_findPosOutsideRock = compile preprocessFileLineNumbers "core\fnc\common\findposoutsiderock.sqf";
     btc_fnc_set_groupsowner = compile preprocessFileLineNumbers "core\fnc\common\set_groupsowner.sqf";
+    btc_fnc_playersInAreaCityGroup = compile preprocessFileLineNumbers "core\fnc\common\playersInAreaCityGroup.sqf";
 
     //CITY
     btc_fnc_city_activate = compile preprocessFileLineNumbers "core\fnc\city\activate.sqf";
@@ -104,6 +105,9 @@ if (isServer) then {
     btc_fnc_mil_unit_create = compile preprocessFileLineNumbers "core\fnc\mil\unit_create.sqf";
     btc_fnc_mil_patrol_eh = compile preprocessFileLineNumbers "core\fnc\mil\patrol_eh.sqf";
     btc_fnc_mil_patrol_eh_remove = compile preprocessFileLineNumbers "core\fnc\mil\patrol_eh_remove.sqf";
+    btc_fnc_mil_patrol_usefulCity = compile preprocessFileLineNumbers "core\fnc\mil\patrol_usefulCity.sqf";
+    btc_fnc_mil_patrol_WPCheck = compile preprocessFileLineNumbers "core\fnc\mil\patrol_WPCheck.sqf";
+    btc_fnc_mil_patrol_init = compile preprocessFileLineNumbers "core\fnc\mil\patrol_init.sqf";
     btc_fnc_mil_CuratorMilPlaced_s = compile preprocessFileLineNumbers "core\fnc\mil\CuratorMilPlaced_s.sqf";
     btc_fnc_mil_getStructures = compile preprocessFileLineNumbers "core\fnc\mil\getStructures.sqf";
     btc_fnc_mil_createVehicle = compile preprocessFileLineNumbers "core\fnc\mil\createVehicle.sqf";

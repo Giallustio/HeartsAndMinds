@@ -1,0 +1,40 @@
+params [
+    ["_group", grpNull, [grpNull]],
+    ["_area", btc_patrol_area, [0]],
+    ["_citiesID", [], [[]]],
+    ["_isBoat", false, [false]]
+];
+_citiesID params [
+    ["_start_cityID", 0, [0]],
+    ["_active_cityID", 0, [0]],
+    ["_end_cityID", 0, [0]]
+];
+
+if (btc_debug) then {
+    if (!isNil {_group getVariable "btc_patrol_id"}) then {
+        deleteMarker format ["Patrol_fant_%1", _group getVariable ["btc_patrol_id", -1]];
+    };
+};
+
+private _start_city = btc_city_all select _start_cityID;
+private _active_city = btc_city_all select _active_cityID;
+private _end_city = btc_city_all select _end_cityID;
+
+//Remove if too far from player
+if ([_active_city, _group, _area] call btc_fnc_playersInAreaCityGroup) exitWith {
+    [_group] call btc_fnc_mil_patrol_eh;
+};
+
+//Sometimes the waypoint is completed but too far due to obstacle (water for island etc)
+if ((leader _group) distance _end_city > 30) then {
+    if (btc_debug) then {
+        [format ["Patrol ID: %1, %2 inaccessible (city ID: %3)", _group getVariable ["btc_patrol_id", -1], _end_city getVariable ["name", "no name"], _end_city getVariable ["id", 0]], __FILE__, [btc_debug, true]] call btc_fnc_debug_message;
+    };
+
+    //Dynamically create a balcklist of cities inaccessible from the starting city
+    private _cities_inaccessible = _start_city getVariable ["btc_cities_inaccessible", []];
+    _cities_inaccessible pushBack _end_city;
+    _start_city setVariable ["btc_cities_inaccessible", _cities_inaccessible];
+};
+
+[_group, [_start_city, _active_city], _area, _isBoat] call btc_fnc_mil_patrol_init;

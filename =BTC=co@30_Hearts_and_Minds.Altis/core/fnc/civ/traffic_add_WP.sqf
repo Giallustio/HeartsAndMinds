@@ -7,7 +7,7 @@ private _noaccess = _group getVariable ["noaccess", []];
 private _players = [switchableUnits, playableUnits] select isMultiplayer;
 
 //Remove if too far from player
-if (_players inAreaArray [getPosWorld _active_city, _area/2, _area/2] isEqualTo [] && {_players inAreaArray [getPosWorld leader _group, _area/2, _area/2] isEqualTo []}) exitWith {
+if ([_active_city, _group, _area] call btc_fnc_playersInAreaCityGroup) exitWith {
     if (btc_debug_log) then    {
         [format ["REMOVE ID: %1 (%3) POS: %2", _group getVariable "btc_traffic_id", getPos leader _group, typeOf vehicle leader _group], __FILE__, [false]] call btc_fnc_debug_message;
     };
