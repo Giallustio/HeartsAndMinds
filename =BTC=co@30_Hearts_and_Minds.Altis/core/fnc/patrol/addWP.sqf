@@ -29,7 +29,7 @@ if (btc_debug) then {
         private _marker = createMarker [format ["Patrol_fant_%1", _group getVariable "btc_patrol_id"] , [(_pos select 0) + random 30, (_pos select 1) + random 30, 0]];
         _marker setMarkerType "mil_dot";
         _marker setMarkerText format ["P %1", _group getVariable "btc_patrol_id"];
-        _marker setMarkerColor "ColorRed";
+        _marker setMarkerColor (["ColorWhite", "ColorRed"] select ((_group getVariable "btc_patrol_id") > 0));
         _marker setMarkerSize [0.5, 0.5];
     };
 };

@@ -4,7 +4,7 @@ params [
     ["_area", btc_patrol_area, [0]]
 ];
 
-if (isNil "btc_patrol_id") then {btc_patrol_id = 0;};
+if (isNil "btc_patrol_id") then {btc_patrol_id = 1;};
 
 if (_random isEqualTo 0) then {
     _random = selectRandom [1, 2];
@@ -15,15 +15,16 @@ if (btc_debug_log) then {
 };
 
 sleep 5 + random 10;
+
 //Remove if too far from player
-if ([_active_city, grpNull, _area] call btc_fnc_playersInAreaCityGroup) exitWith {false};
+if ([_active_city, grpNull, _area] call btc_fnc_patrol_playersInAreaCityGroup) exitWith {false};
 
 //Find a city
 private _cities = btc_city_all inAreaArray [getPosWorld _active_city, _area, _area];
 private _usefuls = _cities select {!(_x getVariable ["active", false]) && _x getVariable ["occupied", false]};
 if (_usefuls isEqualTo []) exitWith {false};
 
-//Randomize position if city has a beach so position could be in water
+//Randomize position if city has a beach, so position could be in water
 private _start_city = selectRandom _usefuls;
 private _pos = [];
 if (_start_city getVariable ["hasbeach", false]) then {
@@ -65,13 +66,13 @@ switch (true) do {
         };
         private _veh = [_group, _pos, _veh_type] call btc_fnc_mil_createVehicle;
 
-        private _1 = _veh addEventHandler ["Fuel", btc_fnc_mil_patrol_eh];
-        _veh setVariable ["eh", [_1/*, _2, _3,4, 5*/]];
+        private _fuelEh = _veh addEventHandler ["Fuel", btc_fnc_patrol_eh];
+        _veh setVariable ["btc_eh", [_fuelEh]];
         _veh setVariable ["btc_crews", _group];
     };
 };
 
-[_group, [_start_city, _active_city], _area, _pos_isWater] call btc_fnc_mil_patrol_init;
+[_group, [_start_city, _active_city], _area, _pos_isWater] call btc_fnc_patrol_init;
 
 btc_patrol_active pushBack _group;
 

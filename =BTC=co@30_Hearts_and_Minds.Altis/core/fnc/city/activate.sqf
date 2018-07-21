@@ -192,7 +192,7 @@ if (_number_patrol_active < btc_patrol_max) then {
     private _d = _n - _av;
     _r = if (_d > 0) then {_n - _d;} else {_n;};
     for "_i" from 1 to _r do {
-        [1 + round random 1, _city, _radius_x + _radius_y + btc_patrol_area] spawn btc_fnc_mil_patrol_create;
+        [1 + round random 1, _city, _radius_x + _radius_y + btc_patrol_area] spawn btc_fnc_mil_create_patrol;
     };
 
     if (btc_debug_log) then {
@@ -210,7 +210,7 @@ if (_number_civ_veh_active < btc_civ_max_veh) then {
     private _d = _n - _av;
     _r = if (_d > 0) then {_n - _d;} else {_n;};
     for "_i" from 1 to _r do {
-        [_city, _radius_x+_radius_y + btc_patrol_area] spawn btc_fnc_civ_traffic_create;
+        [_city, _radius_x+_radius_y + btc_patrol_area] call btc_fnc_civ_create_traffic;
     };
 
     if (btc_debug_log) then {

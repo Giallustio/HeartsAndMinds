@@ -18,6 +18,16 @@ if (_isBoat) then {
 private _cities = _useful inAreaArray [getPosWorld _active_city, _area, _area];
 private _cities = _cities - (_start_city getVariable ["btc_cities_inaccessible", []]);
 
+//Choose a city to have the _active_city (where the player is) between the _start_city and the _end_city :  _start_city  ----> _active_city  ----> _end_city
+private _dirTo = _start_city getDir _active_city;
+_cities_dirTo = _cities select {
+    private _ang = _active_city getDir _x;
+    (abs(_ang - _dirTo) min (360 - abs(_ang - _dirTo)) < 45);
+};
+if !(_cities_dirTo isEqualTo []) then {
+    _cities = _cities_dirTo;
+};
+
 //Check if end city has been found, if not take the closer city
 if (_cities isEqualTo []) then {
     _cities = [[_active_city, _useful, false] call btc_fnc_find_closecity];
