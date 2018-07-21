@@ -37,4 +37,4 @@ if ((leader _group) distance _end_city > 30) then {
     _start_city setVariable ["btc_cities_inaccessible", _cities_inaccessible];
 };
 
-[_group, [_start_city, _active_city], _area, _isBoat] call btc_fnc_patrol_init;
+[_group, [_end_city, _active_city], _area, _isBoat] call btc_fnc_patrol_init;
