@@ -18,7 +18,7 @@ if (_isBoat) then {
 private _cities = _useful inAreaArray [getPosWorld _active_city, _area, _area];
 private _cities = _cities - (_start_city getVariable ["btc_cities_inaccessible", []]);
 
-//Choose a city to have the _active_city (where the player is) between the _start_city and the _end_city :  _start_city  ----> _active_city  ----> _end_city
+//Choose a city to have the _active_city (where the player is) between the _start_city and the _end_city: _start_city  ----> _active_city  ----> _end_city
 private _dirTo = _start_city getDir _active_city;
 _cities_dirTo = _cities select {
     private _ang = _active_city getDir _x;
@@ -33,11 +33,4 @@ if (_cities isEqualTo []) then {
     _cities = [[_active_city, _useful, false] call btc_fnc_find_closecity];
 };
 
-private _end_city = selectRandom _cities;
-private _pos = getPos _end_city;
-if (_isBoat) then {
-    ((selectBestPlaces [_pos, (_end_city getVariable ["RadiusX", 0]) + (_end_city getVariable ["RadiusY", 0]), "sea", 10, 1]) select 0 select 0) params ["_x", "_y"];
-    _pos = [_x, _y, 0];
-};
-
-[_end_city, _pos]
+_cities

@@ -3,7 +3,7 @@ params [
     ["_area", btc_patrol_area, [0]]
 ];
 
-if (isNil "btc_traffic_id") then {btc_traffic_id = -1;};
+if (isNil "btc_civilian_id") then {btc_civilian_id = -1;};
 
 //Find a city
 private _cities = btc_city_all inAreaArray [getPosWorld _active_city, _area, _area];
@@ -36,14 +36,13 @@ private _veh = createVehicle [_veh_type, _safe_pos, [], 0, "FLY"];
 private _group = createGroup [civilian, true];
 (selectRandom btc_civ_type_units) createUnit [_safe_pos, _group, "this moveinDriver _veh; this assignAsDriver _veh;"];
 _group setVariable ["no_cache", true];
-_group setVariable ["btc_patrol_id", btc_traffic_id, btc_debug];
-btc_traffic_id = btc_traffic_id - 1;
+_group setVariable ["btc_patrol_id", btc_civilian_id, btc_debug];
+btc_civilian_id = btc_civilian_id - 1;
 
 btc_civ_veh_active pushBack _group;
 
 {
     _x call btc_fnc_civ_unit_create;
-    _x setVariable ["traffic", _veh];
 } forEach units _group;
 
 private _handleDamageEh = _veh addEventHandler ["HandleDamage", {

@@ -4,7 +4,7 @@ params [
     ["_area", btc_patrol_area, [0]]
 ];
 
-if (isNil "btc_patrol_id") then {btc_patrol_id = 1;};
+if (isNil "btc_military_id") then {btc_military_id = 1;};
 
 if (_random isEqualTo 0) then {
     _random = selectRandom [1, 2];
@@ -40,17 +40,17 @@ if (_pos_isWater) then {
 //Creating units
 private _group = createGroup [btc_enemy_side, true];
 _group setVariable ["no_cache", true];
-_group setVariable ["btc_patrol_id", btc_patrol_id, btc_debug];
-btc_patrol_id = btc_patrol_id + 1;
+_group setVariable ["btc_patrol_id", btc_military_id, btc_debug];
+btc_military_id = btc_military_id + 1;
 
-switch (true) do {
-    case (_random isEqualTo 1) : {
+switch (_random) do {
+    case 1 : {
         private _n_units = 5 + (round random 8);
         _pos = [_pos, 0, 50, 10, false] call btc_fnc_findsafepos;
 
         [_group, _pos, _n_units] call btc_fnc_mil_createUnits;
     };
-    case (_random isEqualTo 2) : {
+    case 2 : {
         private _veh_type = "";
         if (_pos_isWater) then {
             _veh_type = selectRandom btc_type_boats;
