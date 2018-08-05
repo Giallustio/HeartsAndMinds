@@ -11,6 +11,7 @@ if (isPlayer _killer) then {
     };
 };
 
-if !((_unit getVariable ["traffic", objNull]) isEqualTo objNull) then {
-    [[], [_unit getVariable ["traffic", objNull]], []] call btc_fnc_delete;
+private _vehicle = assignedVehicle _unit;
+if !(_vehicle isEqualTo objNull) then {
+    [[], [_vehicle], []] call btc_fnc_delete;
 };

@@ -22,7 +22,7 @@ private _cfgVehicles = configFile >> "CfgVehicles";
 
     private _text = "";
     if (leader group _x isEqualTo _x) then {
-        _text = format ["%1 (%2)", _typeof, group _x getVariable ["btc_patrol_id", group _x getVariable ["btc_traffic_id", ""]]];
+        _text = format ["%1 (%2)", _typeof, group _x getVariable ["btc_patrol_id", ""]];
     } else {
         if ((_x isKindOf "car") OR (_x isKindOf "tank") OR (_x isKindOf "ship") OR (_x isKindOf "air")) then {
             _text = "";
