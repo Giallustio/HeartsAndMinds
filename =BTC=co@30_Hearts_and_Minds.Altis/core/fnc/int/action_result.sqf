@@ -1,4 +1,10 @@
-params ["_totalTime", "_args", "_onFinish", "_onFail", ["_localizedTitle", ""]];
+params [
+    ["_totalTime", 10, [0]],
+    ["_args", [], [[]]],
+    ["_onFinish", {}, [{}]],
+    ["_onFail", {}, [{}]],
+    ["_localizedTitle", "", [""]]
+];
 _args params ["_target"];
 
 private _radius = 7;

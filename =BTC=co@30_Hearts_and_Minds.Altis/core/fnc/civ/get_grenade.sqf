@@ -1,4 +1,8 @@
-params ["_pos", "_range", ["_units", []]];
+params [
+    ["_pos", [0, 0, 0], [[]]],
+    ["_range", 300, [0]],
+    ["_units", [], [[]]]
+];
 
 if (_units isEqualTo []) then {
     _units = _pos nearEntities [btc_civ_type_units, _range];

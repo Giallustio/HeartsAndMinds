@@ -1,4 +1,8 @@
-params ["_group", ["_pos", getPos leader param [0]] , ["_radius", 50]];
+params [
+    ["_group", grpNull, [grpNull]],
+    ["_pos", getPos leader param [0], [[]]],
+    ["_radius", 50, [0]]
+];
 
 [_group, _pos, 0, "MOVE", "SAFE", "NO CHANGE", "LIMITED"] call CBA_fnc_addWaypoint;
 

@@ -1,4 +1,8 @@
-params ["_obj", ["_pos", getPosASL btc_create_object_point], ["_vector", vectorUp btc_create_object_point]];
+params [
+    ["_obj", objNull, [objNull]],
+    ["_pos", getPosASL btc_create_object_point, [[]]],
+    ["_vector", vectorUp btc_create_object_point, [[]]]
+];
 
 if (getText (configFile >> "cfgVehicles" >> _obj >> "displayName") isEqualTo "") then {
     _obj = [btc_create_object_point, _obj] call ace_rearm_fnc_createDummy;
