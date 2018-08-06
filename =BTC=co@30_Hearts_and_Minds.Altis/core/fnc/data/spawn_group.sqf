@@ -65,7 +65,7 @@ if (_type isEqualTo 2) then {
 if (_type isEqualTo 3) then {
     [_group] call CBA_fnc_clearWaypoints;
     [_group, nearestObject [(units _group) select 0, _array_veh]] spawn btc_fnc_house_addWP;
-    _group setVariable ["inHouse", _array_veh];
+    _group setVariable ["btc_inHouse", _array_veh];
 };
 if (_type isEqualTo 4) then {[[0, 0, 0], 0, units _group] spawn btc_fnc_civ_get_weapons;};
 if (_type isEqualTo 5) then {

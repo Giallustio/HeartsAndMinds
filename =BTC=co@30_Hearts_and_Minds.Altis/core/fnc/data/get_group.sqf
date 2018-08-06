@@ -31,8 +31,8 @@ _index_wp = (currentWaypoint _group) + 1;
 
 
 if (_group getVariable ["stop", false]) then {_type_db = 2;};
-if !(_group getVariable ["inHouse", ""] isEqualTo "") then {_type_db = 3;
-    _array_veh = _group getVariable ["inHouse", false];
+if !(_group getVariable ["btc_inHouse", ""] isEqualTo "") then {_type_db = 3;
+    _array_veh = _group getVariable ["btc_inHouse", false];
 };
 if (_group getVariable ["getWeapons", false]) then {_type_db = 4;};
 if (_group getVariable ["suicider", false]) then {_type_db = 5;};
