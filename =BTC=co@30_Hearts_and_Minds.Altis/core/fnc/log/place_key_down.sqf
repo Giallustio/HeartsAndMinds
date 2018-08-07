@@ -4,9 +4,9 @@
 params [
     ["_display", displayNull, [displayNull]],
     ["_key", 16, [0]],
-    ["_shift", 0, [0]],
-    ["_ctrl", 0, [0]],
-    ["_alt", 0, [0]],
+    ["_shift", false, [false]],
+    ["_ctrl", false, [false]],
+    ["_alt", false, [false]],
     ["_keyPressed", false, [false]]
 ];
 
