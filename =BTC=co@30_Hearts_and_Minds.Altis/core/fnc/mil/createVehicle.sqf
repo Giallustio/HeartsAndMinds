@@ -1,11 +1,11 @@
 params [
-    "_group",
-    ["_pos", [0, 0, 0]],
-    ["_veh_type", selectRandom btc_type_motorized],
+    ["_group", grpNull, [grpNull]],
+    ["_pos", [0, 0, 0], [[]]],
+    ["_veh_type", selectRandom btc_type_motorized, [""]],
     ["_dir", 0, [0]],
-    ["_type_units", btc_type_units],
-    ["_type_divers", btc_type_divers],
-    ["_type_crewmen", btc_type_crewmen]
+    ["_type_units", btc_type_units, [[]]],
+    ["_type_divers", btc_type_divers, [[]]],
+    ["_type_crewmen", btc_type_crewmen, [[]]]
 ];
 
 private _needdiver = getText (configFile >> "CfgVehicles" >> _veh_type >> "simulation") isEqualTo "submarinex";

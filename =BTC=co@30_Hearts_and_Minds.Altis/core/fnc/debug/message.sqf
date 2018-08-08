@@ -1,7 +1,7 @@
 params [
-    ["_message", "BTC Message debug"],
-    ["_folder", __FILE__],
-    ["_type", []]
+    ["_message", "BTC Message debug", [""]],
+    ["_folder", __FILE__, [""]],
+    ["_type", [], [[]]]
 ];
 _type params [["_systemchat", btc_debug], ["_rtp", btc_debug_log], ["_global", false]];
 

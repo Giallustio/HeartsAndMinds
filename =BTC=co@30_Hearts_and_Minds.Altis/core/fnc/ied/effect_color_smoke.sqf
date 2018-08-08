@@ -1,10 +1,10 @@
 params [
-    ["_pos", [0, 0, 0]],
-    ["_posASL", [0, 0, 0]],
-    ["_colorSel", ""],
-    ["_horizontal", 900],
-    ["_upwards", 500],
-    ["_color", []]
+    ["_pos", [0, 0, 0], [[]]],
+    ["_posASL", [0, 0, 0], [[]]],
+    ["_colorSel", "", [""]],
+    ["_horizontal", 900, [0]],
+    ["_upwards", 500, [0]],
+    ["_color", [], [[]]]
 ];
 
 if (_colorSel isEqualTo "") exitWith {};

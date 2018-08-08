@@ -1,7 +1,12 @@
 /*
     Send a group of units to a location then call btc_fnc_data_add_group. If player is around, initiate patrol around the destination, ifnot save in database and delete units.
 */
-params ["_start", "_dest", "_typeOf_patrol", ["_veh_type", ""]];
+params [
+    ["_start", objNull, [objNull]],
+    ["_dest", [0, 0, 0], [[]]],
+    ["_typeOf_patrol", 0, [0]],
+    ["_veh_type", "", [""]]
+];
 
 private _pos = getPos _start;
 

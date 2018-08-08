@@ -1,4 +1,8 @@
-params ["_task_id", ["_destination", objNull], ["_location", ""]];
+params [
+    ["_task_id", "0", [0, ""]],
+    ["_destination", objNull, [objNull]],
+    ["_location", "", [""]]
+];
 
 if !( _task_id isEqualType "") then {_task_id = str _task_id;};
 
