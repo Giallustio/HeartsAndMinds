@@ -1,10 +1,10 @@
 params [
-    ["_pos", []],
-    ["_id_hideout", btc_hideouts_id],
-    ["_rinf_time", time],
-    ["_cap_time", time - btc_hideout_cap_time],
-    ["_id", 0],
-    ["_markers_saved", []]
+    ["_pos", [], [[]]],
+    ["_id_hideout", btc_hideouts_id, [0]],
+    ["_rinf_time", time, [0]],
+    ["_cap_time", time - btc_hideout_cap_time, [0]],
+    ["_id", 0, [0]],
+    ["_markers_saved", [], [[]]]
 ];
 
 private _city = objNull;

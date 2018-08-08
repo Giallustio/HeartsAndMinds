@@ -1,4 +1,9 @@
-params ["_city", "_area", ["_rpos", []], ["_group", createGroup [btc_enemy_side, true]]];
+params [
+    ["_city", objNull, [objNull]],
+    ["_area", 300, [0]],
+    ["_rpos", [], [[]]],
+    ["_group", createGroup [btc_enemy_side, true], [grpNull]]
+];
 
 if (btc_debug_log) then {
     [format ["_name = %1 _area %2", _city getVariable ["name", "name"], _area], __FILE__, [false]] call btc_fnc_debug_message;

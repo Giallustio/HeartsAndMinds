@@ -1,6 +1,6 @@
 params [
-    ["_pos", [0, 0, 0]],
-    ["_caller", player]
+    ["_pos", [0, 0, 0], [[]]],
+    ["_caller", player, [objNull]]
 ];
 
 [_pos, _caller] spawn btc_fnc_ied_effect_blurEffect;
