@@ -43,7 +43,7 @@ private _simul = true;
 
 {
     _x setMarkerAlphaLocal 0;
-} foreach _fobs_marker;
+} forEach _fobs_marker;
 
 private _display = [
     _parentDisplay,
@@ -66,7 +66,7 @@ _display displayaddeventhandler [
         "
             {
                 _x setMarkerAlphaLocal 1;
-            } foreach %1;
+            } forEach %1;
         ",
         _fobs_marker
     ]

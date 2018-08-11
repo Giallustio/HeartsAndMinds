@@ -22,5 +22,5 @@ if (_houses isEqualTo []) then {
     [] call btc_fnc_cache_find_pos;
 } else {
     private _house = selectRandom _houses;
-    _house spawn btc_fnc_cache_spawn;
+    _house call btc_fnc_cache_spawn;
 };

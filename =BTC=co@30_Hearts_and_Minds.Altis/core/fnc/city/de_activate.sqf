@@ -48,6 +48,6 @@ if !(_city getVariable ["active", false]) exitWith {};
         [] call btc_fnc_mil_check_cap;
     };
 
-    call btc_fnc_clean_up;
+    [] call btc_fnc_clean_up;
 
 }, [_city, _id]] call CBA_fnc_waitUntilAndExecute;
