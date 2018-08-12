@@ -64,10 +64,10 @@ if (_type isEqualTo 2) then {
 };
 if (_type isEqualTo 3) then {
     [_group] call CBA_fnc_clearWaypoints;
-    [_group, nearestObject [(units _group) select 0, _array_veh]] spawn btc_fnc_house_addWP;
+    [_group, nearestObject [(units _group) select 0, _array_veh]] call btc_fnc_house_addWP;
     _group setVariable ["btc_inHouse", _array_veh];
 };
-if (_type isEqualTo 4) then {[[0, 0, 0], 0, units _group] spawn btc_fnc_civ_get_weapons;};
+if (_type isEqualTo 4) then {[[0, 0, 0], 0, units _group] call btc_fnc_civ_get_weapons;};
 if (_type isEqualTo 5) then {
     _group spawn {
         _this setVariable ["suicider", true];
@@ -89,7 +89,7 @@ if (_type isEqualTo 5) then {
 };
 if (_type isEqualTo 6) then {
     [_group] call CBA_fnc_clearWaypoints;
-    [_group, _array_veh select 0] spawn btc_fnc_civ_addWP;
+    [_group, _array_veh select 0] call btc_fnc_civ_addWP;
     _group setVariable ["btc_data_inhouse", _array_veh];
 };
 if (_type isEqualTo 7) then {

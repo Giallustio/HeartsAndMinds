@@ -1,4 +1,8 @@
-params ["_pos", "_random_area", ["_allowwater", false]];
+params [
+    ["_pos", [0, 0, 0], [[]]],
+    ["_random_area", 300, [0]],
+    ["_allowwater", false, [true]]
+];
 
 private _return_pos = _pos;
 

@@ -1,4 +1,4 @@
-call compile preprocessFileLineNumbers "core\doc.sqf";
+[] call compile preprocessFileLineNumbers "core\doc.sqf";
 
 [{!isNull player}, {
 
@@ -11,8 +11,8 @@ call compile preprocessFileLineNumbers "core\doc.sqf";
     if (btc_p_arsenal_Restrict isEqualTo 3) then {
         [_arsenal_trait] call btc_fnc_arsenal_weaponsFilter;
     };
-    call btc_fnc_int_add_actions;
-    call btc_fnc_int_shortcuts;
+    [] call btc_fnc_int_add_actions;
+    [] call btc_fnc_int_shortcuts;
 
     if (player getVariable ["interpreter", false]) then {
         player createDiarySubject [localize "STR_BTC_HAM_CON_INFO_ASKHIDEOUT_DIARYLOG", localize "STR_BTC_HAM_CON_INFO_ASKHIDEOUT_DIARYLOG"];

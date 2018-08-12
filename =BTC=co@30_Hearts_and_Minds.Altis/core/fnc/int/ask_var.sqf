@@ -1,7 +1,7 @@
 params [
-    ["_id", 0],
-    ["_target", objNull],
-    ["_varName", "btc_int_ask_data"]
+    ["_id", 0, [0, ""]],
+    ["_target", objNull, [objNull]],
+    ["_varName", "btc_int_ask_data", [""]]
 ];
 
 private _data = switch (_id) do {

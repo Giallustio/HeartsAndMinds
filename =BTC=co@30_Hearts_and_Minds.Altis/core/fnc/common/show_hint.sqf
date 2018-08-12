@@ -1,6 +1,9 @@
 if (isDedicated) exitWith {};
 
-params ["_type", ["_custom", ""]];
+params [
+    ["_type", 0, [0]],
+    ["_custom", "", [""]]
+];
 
 switch (_type) do {
     case 0 : {
