@@ -9,7 +9,7 @@ switch (true) do {
         if !(_houses isEqualTo []) then {
             private _house = selectRandom _houses;
             [_group, _house] spawn btc_fnc_house_addWP;
-            _group setVariable ["inHouse", typeOf _house];
+            _group setVariable ["btc_inHouse", typeOf _house];
         } else {
             [_group, _rpos, _area, 2 + floor (random 4), "MOVE", "SAFE", "RED", ["LIMITED", "NORMAL"] select ((vehicle leader _group) isKindOf "Air"), "STAG COLUMN", "", [5, 10, 20]] call CBA_fnc_taskPatrol;
         };
