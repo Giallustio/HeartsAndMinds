@@ -8,13 +8,13 @@ def btc_fnc_generate_header(file_name, folder_name, parameters_array):
     function_name = "btc_fnc_%s_%s" % (folder_name, file_name)
     parameters_string = ''
     for param in parameters_array:
-        parameters_string = parameters_string + ('''    %s - <>\n''' % (param))
+        parameters_string = parameters_string + ('''    %s - [%s]\n''' % (param[0], param[1]))
 
     header_for_HaM = '''
 /* ----------------------------------------------------------------------------
 Function: %s
 
-Description: 
+Description:
     Fill me when you edit me !
 
 Parameters:
@@ -26,7 +26,7 @@ Examples:
         _result = [] call %s;
     (end)
 
-Author: 
+Author:
     Giallustio
 
 ---------------------------------------------------------------------------- */
@@ -60,13 +60,58 @@ def btc_fnc_get_params(text):
 
     pattern = re.compile(re2+re3,re.IGNORECASE|re.DOTALL)
     parameters_array = []
-    for param in re.findall(pattern, text):
+    typeOf_param = btc_fnc_get_typeOf_param(text)
+    for index, param in enumerate(re.findall(pattern, text)):
         first, second = param
+        _typeOf_index = ''
         if first != '':
-            parameters_array.append(btc_fnc_get_param(first))
+            parameters_array.append([btc_fnc_get_param(first), _typeOf_index])
         if second != '':
-            parameters_array.append(btc_fnc_get_param(second))
+            if index < len(typeOf_param):
+                _typeOf_index = typeOf_param[index]
+                if ' [objNull]]' in _typeOf_index:
+                    _typeOf_index = 'Object'
+                elif ' [grpNull]]' in _typeOf_index:
+                    _typeOf_index = 'Group'
+                elif ' [0]]' in _typeOf_index:
+                    _typeOf_index = 'Number'
+                elif ' [[]]]' in _typeOf_index:
+                    _typeOf_index = 'Array'
+                elif ' [{}]]' in _typeOf_index:
+                    _typeOf_index = 'Code'
+                elif ' [true]]' in _typeOf_index:
+                    _typeOf_index = 'Booleen'
+                elif ' [false]]' in _typeOf_index:
+                    _typeOf_index = 'Booleen'
+                elif ' [east]]' in _typeOf_index:
+                    _typeOf_index = 'Side'
+                elif ' [west]]' in _typeOf_index:
+                    _typeOf_index = 'Side'
+                elif ' [displayNull]]' in _typeOf_index:
+                    _typeOf_index = 'Display'
+                else:
+                    _typeOf_index = ''
+            parameters_array.append([btc_fnc_get_param(second), _typeOf_index])
     return parameters_array
+
+def btc_fnc_get_typeOf_param(text):
+    re2='( \\[""\\]\\])|'    # Command Seperated Values 1
+    re4='( \\[objNull\\]\\])|'   # Command Seperated Values 2
+    re6='( \\[grpNull\\]\\])|'   # Command Seperated Values 3
+    re8='( \\[0\\]\\])|' # Command Seperated Values 4
+    re10='( \\[\\[\\]\\]\\])|' # Command Seperated Values 4
+    re12='( \\[true\\]\\])|'   # Command Seperated Values 2
+    re14='( \\[false\\]\\])|'   # Command Seperated Values 2
+    re16='( \\[\\{\\}\\]\\])|'   # Command Seperated Values 2
+    re18='( \\[east\\]\\])|'   # Command Seperated Values 2
+    re20='( \\[west\\]\\])|'   # Command Seperated Values 2
+    re22='( \\[displayNull\\]\\])'   # Command Seperated Values 2
+
+    rg = re.compile(re2+re4+re6+re8+re10+re12+re14+re16+re18+re20+re22,re.IGNORECASE|re.DOTALL)
+    m = rg.findall(text)
+    if m:
+        return m
+    return ()
 
 def btc_fnc_detect_params(txt):
     re1='(params \\[.*?\\]\\;)'  # Word 1
