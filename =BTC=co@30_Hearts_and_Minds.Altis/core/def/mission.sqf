@@ -275,7 +275,14 @@ if (isServer) then {
     [
         //"Static"
         "B_Mortar_01_F"
-    ]  + (_allclass select {((_x isKindOf "StaticGrenadeLauncher") || (_x isKindOf "StaticMGWeapon")) && (getNumber(configfile >> "CfgVehicles" >> _x >> "side") isEqualTo ([east,west,independent,civilian] find btc_player_side))});
+    ]  + (_allclass select {(
+        _x isKindOf "GMG_TriPod" ||
+        _x isKindOf "StaticMortar" ||
+        _x isKindOf "HMG_01_base_F" ||
+        _x isKindOf "AA_01_base_F" ||
+        _x isKindOf "AT_01_base_F") && (
+        getNumber (configfile >> "CfgVehicles" >> _x >> "side") isEqualTo ([east, west, independent, civilian] find btc_player_side))
+    });
 
     _magazines_static = [];
     {
