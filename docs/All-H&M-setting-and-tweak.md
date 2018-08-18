@@ -1,4 +1,4 @@
-You can change all setting and tweak all parameters in [core/def/mission.sqf](https://github.com/Vdauphin/HeartsAndMinds/blob/master_stable/%3DBTC%3Dco%4030_Hearts_and_Minds.Altis/core/def/mission.sqf)
+You can change all setting and tweak all parameters in [core/def/mission.sqf](https://github.com/Vdauphin/HeartsAndMinds/blob/master/%3DBTC%3Dco%4030_Hearts_and_Minds.Altis/core/def/mission.sqf)
 
 You can found for exemple:
 

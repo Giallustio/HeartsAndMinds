@@ -1,7 +1,7 @@
 @Giallustio implemented it by two way, the simpler, for me, is explain here:
 - in arma editor:  create your base where you want.
 - in arma editor: create a marker next to your base name for exemple : YOUR_MARKER_AREA
-- open with your text editor file [core/fnc/city/init.sqf L38-L41](https://github.com/Vdauphin/HeartsAndMinds/blob/master_stable/%3DBTC%3Dco%4030_Hearts_and_Minds.Altis/core/fnc/city/init.sqf#L38-L41) , uncomment (remove `/*` and `*/` command):
+- open with your text editor file [core/fnc/city/init.sqf L38-L41](https://github.com/Vdauphin/HeartsAndMinds/blob/master/%3DBTC%3Dco%4030_Hearts_and_Minds.Altis/core/fnc/city/init.sqf#L38-L41) , uncomment (remove `/*` and `*/` command):
 
 >     /*
 
