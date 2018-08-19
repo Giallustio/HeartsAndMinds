@@ -1,84 +1,88 @@
-if (isDedicated) exitWith {};
 
-switch (_this select 0) do
-{
-	case 0 :
-	{
-		private "_task";
-		_task = player createSimpleTask ["Defeat the Oplitas"];
-		_task setSimpleTaskDescription ["Destroy all the hideouts of the Oplitas and defeat them once and for all","Defeat the Oplitas","Defeat the Oplitas"];
-		player setVariable ["task_0",_task];
-		["TaskAssigned",["New task assigned!","Defeat the Oplitas"]] call bis_fnc_showNotification;
-	};
-	case 1 :
-	{
-		private "_task";
-		_task = player createSimpleTask ["Destroy all the hideouts"];
-		_task setSimpleTaskDescription ["Destroy all the hideouts of the Oplitas and defeat them once and for all","Destroy all the hideouts","Destroy all the hideouts"];
-		player setVariable ["task_1",_task];
-		["TaskAssigned",["New task assigned!","Destroy all the hideouts"]] call bis_fnc_showNotification;
-	};
-	case 3 :
-	{
-		private "_task";
-		_task = player createSimpleTask [("Supply " + (_this select 2))];
-		_task setSimpleTaskDescription [format ["The citizens of %1 are starving to death, bring them some supplies!",(_this select 2)],("Supply " + (_this select 2)),("Supply " + (_this select 2))];
-		_task setSimpleTaskDestination (_this select 1);
-		player setVariable ["task_3",_task];
-		["TaskAssigned",["New task assigned!",("Supply " + (_this select 2))]] call bis_fnc_showNotification;
-	};
-	case 4 :
-	{
-		private "_task";
-		_task = player createSimpleTask [("Minefield near " + (_this select 2))];
-		_task setSimpleTaskDescription [format ["There is a minefield near %1, clear it!",(_this select 2)],("Minefield near " + (_this select 2)),("Minefield near " + (_this select 2))];
-		_task setSimpleTaskDestination (_this select 1);
-		player setVariable ["task_4",_task];
-		["TaskAssigned",["New task assigned!",("Clear the minefield near " + (_this select 2))]] call bis_fnc_showNotification;
-	};
-	case 5 :
-	{
-		private "_task";
-		_task = player createSimpleTask [("Vehicle needs assistance near " + (_this select 2))];
-		_task setSimpleTaskDescription [format ["A vehicle damaged by an IED needs assistance near %1!",(_this select 2)],("Vehicle needs assistance near " + (_this select 2)),("Vehicle needs assistance near " + (_this select 2))];
-		_task setSimpleTaskDestination (_this select 1);
-		player setVariable ["task_5",_task];
-		["TaskAssigned",["New task assigned!",("Vehicle needs assistance near " + (_this select 2))]] call bis_fnc_showNotification;
-	};
-	case 6 :
-	{
-		private "_task";
-		_task = player createSimpleTask [("Free " + (_this select 2))];
-		_task setSimpleTaskDescription [format ["%1 has been conquered by the Oplitas! Local population is terrorised and is asking for your help!",(_this select 2)],("Free " + (_this select 2)),("Free " + (_this select 2))];
-		_task setSimpleTaskDestination (_this select 1);
-		player setVariable ["task_6",_task];
-		["TaskAssigned",["New task assigned!",("Free " + (_this select 2))]] call bis_fnc_showNotification;
-	};
-	case 7 :
-	{
-		private "_task";
-		_task = player createSimpleTask [("Destroy tower in " + (_this select 2))];
-		_task setSimpleTaskDescription [format ["A Oplitas radio tower has been located in %1. Local population is asking for your help to destroy it!",(_this select 2)],("Destroy tower in " + (_this select 2)),("Destroy tower in " + (_this select 2))];
-		_task setSimpleTaskDestination (_this select 1);
-		player setVariable ["task_7",_task];
-		["TaskAssigned",["New task assigned!",("Destroy tower in " + (_this select 2))]] call bis_fnc_showNotification;
-	};
-	case 8 :
-	{
-		private "_task";
-		_task = player createSimpleTask [("Medical emergency call in " + (_this select 2))];
-		_task setSimpleTaskDescription [format ["A civilian is calling for a medic in %1, treat and wait for patient stabilization ",(_this select 2)],("Medical emergency call in " + (_this select 2)),("Medical emergency call in " + (_this select 2))];
-		_task setSimpleTaskDestination (_this select 1);
-		player setVariable ["task_8",_task];
-		["TaskAssigned",["New task assigned!",("Medical emergency call in " + (_this select 2))]] call bis_fnc_showNotification;
-	};
-	case 9 :
-	{
-		private "_task";
-		_task = player createSimpleTask [("Destroy checkpoints in " + (_this select 2))];
-		_task setSimpleTaskDescription [format ["Checkpoints has been located in %1. Local population is asking for your help to destroy it!",(_this select 2)],("Destroy checkpoints in " + (_this select 2)),("Destroy checkpoints in " + (_this select 2))];
-		_task setSimpleTaskDestination (_this select 1);
-		player setVariable ["task_9",_task];
-		["TaskAssigned",["New task assigned!",("Destroy checkpoints in " + (_this select 2))]] call bis_fnc_showNotification;
-	};
+params ["_task_id", ["_destination", objNull], ["_location", ""]];
+
+if !( _task_id isEqualType "") then {_task_id = str(_task_id);};
+
+private ["_description","_type"];
+
+switch (_task_id) do {
+    case "0" : {
+        _description = [(localize "STR_BTC_HAM_MISSION_DEFEAT_DESC"),(localize "STR_BTC_HAM_MISSION_DEFEAT_TITLE"),(localize "STR_BTC_HAM_MISSION_DEFEAT_TITLE")]; //"Defeat the Oplitas once and for all","Defeat the Oplitas","Defeat the Oplitas"
+        _type = "kill";
+    };
+    case "1" : {
+        _description = [(localize "STR_BTC_HAM_MISSION_DESTORY_DESC"),(localize "STR_BTC_HAM_MISSION_DESTORY_TITLE"),(localize "STR_BTC_HAM_MISSION_DESTORY_TITLE")]; //"Destroy all the hideouts of the Oplitas","Destroy all the hideouts","Destroy all the hideouts"
+        _type = "destroy";
+    };
+    case "2" : {
+        _description = [(localize "STR_BTC_HAM_MISSION_SEIZE_DESC"),(localize "STR_BTC_HAM_MISSION_SEIZE_TITLE"),(localize "STR_BTC_HAM_MISSION_SEIZE_MRK")]; //"Seize the last positions held by Oplitas fighters","Seize the last Oplitas positions","Seize the last Oplitas fighters positions"
+        _type = "move";
+    };
+    case "3" : {
+        _description = [format [(localize "STR_BTC_HAM_SIDE_SUPPLIES_DESC"),_location],(format [(localize "STR_BTC_HAM_SIDE_SUPPLIES_TITLE"),_location]),(format [(localize "STR_BTC_HAM_SIDE_SUPPLIES_TITLE"),_location])]; //The citizens of %1 are on the brink starving to death, bring them some supplies present at the logisitic point!",_location],("Supply " + _location),("Supply " + _location)
+        _type = "container";
+    };
+    case "4" : {
+        _description = [format [(localize "STR_BTC_HAM_SIDE_MINES_DESC"),_location],(format [(localize "STR_BTC_HAM_SIDE_MINES_TITLE"),_location]),(format [(localize "STR_BTC_HAM_SIDE_MINES_TITLE"),_location])]; //There is a minefield near %1, clear it!",_location],("Minefield near " + _location),("Minefield near " + _location)
+        _type = "mine";
+    };
+    case "5" : {
+        _description = [format [(localize "STR_BTC_HAM_SIDE_VEHICLE_DESC"),_location],(format [(localize "STR_BTC_HAM_SIDE_VEHICLE_TITLE"),_location]),(format [(localize "STR_BTC_HAM_SIDE_VEHICLE_TITLE"),_location])]; //"A vehicle damaged by an IED needs assistance near %1! Repair it!",_location],("Vehicle needs assistance near " + _location),("Vehicle needs assistance near " + _location)
+        _type = "repair";
+    };
+    case "6" : {
+        _description = [format [(localize "STR_BTC_HAM_SIDE_CONQUER_DESC"),_location],(format [(localize "STR_BTC_HAM_SIDE_CONQUER_TITLE"),_location]),(format [(localize "STR_BTC_HAM_SIDE_CONQUER_TITLE"),_location])]; //"%1 has been conquered by the Oplitas! Local population is being terrorized, they are asking for help!",_location],("Free " + _location),("Free " + _location)
+        _type = "attack";
+    };
+    case "7" : {
+        _description = [format [(localize "STR_BTC_HAM_SIDE_TOWER_DESC"),_location],(format [(localize "STR_BTC_HAM_SIDE_TOWER_TITLE"),_location]),(format [(localize "STR_BTC_HAM_SIDE_TOWER_TITLE"),_location])]; //"A Oplitas communications tower has been located in %1. Local population is asking for your help to destroy it! (Use one M183 explosive satchel)",_location],("Destroy tower in " + _location),("Destroy tower in " + _location)
+        _type = "destroy";
+    };
+    case "8" : {
+        _description = [format [(localize "STR_BTC_HAM_SIDE_CIVTREAT_DESC"),_location],(format [(localize "STR_BTC_HAM_SIDE_CIVTREAT_TITLE"),_location]),(format [(localize "STR_BTC_HAM_SIDE_CIVTREAT_TITLE"),_location])]; //format ["A civilian is calling for a medic in %1, treat and wait for patient stabilization ",_location],("Medical emergency call in " + _location),("Medical emergency call in " + _location)
+        _type = "heal";
+    };
+    case "9" : {
+        _description = [format [(localize "STR_BTC_HAM_SIDE_CHECKPOINT_DESC"),_location],(format [(localize "STR_BTC_HAM_SIDE_CHECKPOINT_TITLE"),_location]),(format [(localize "STR_BTC_HAM_SIDE_CHECKPOINT_TITLE"),_location])]; //"Checkpoints have been located in %1. Local population is asking for your help to destroy ammo box in all checkpoints!",_location],("Destroy checkpoints in " + _location),("Destroy checkpoints in " + _location)
+        _type = "destroy";
+    };
+    case "10" : {
+        _description = [format [(localize "STR_BTC_HAM_SIDE_CIVTREATBOAT_DESC"),_location],(format [(localize "STR_BTC_HAM_SIDE_CIVTREATBOAT_TITLE"),_location]),(format [(localize "STR_BTC_HAM_SIDE_CIVTREATBOAT_TITLE"),_location])]; //"A civilian is calling for a medic in %1, treat and wait for patient stabilization ",_location],("Medical emergency call in " + _location),("Medical emergency call in " + _location)
+        _type = "heal";
+    };
+    case "11" : {
+        _description = [format [(localize "STR_BTC_HAM_SIDE_UNDERWATER_DESC"),_location],(format [(localize "STR_BTC_HAM_SIDE_UNDERWATER_TITLE"),_location]),(format [(localize "STR_BTC_HAM_SIDE_UNDERWATER_TITLE"),_location])]; //"Underwater generator has been located in %1. Local population is asking for your help to destroy it!",_location],("Destroy underwater generator in " + _location),("Destroy underwater generator in " + _location)
+        _type = "destroy";
+    };
+    case "12" : {
+        _description = [format [(localize "STR_BTC_HAM_SIDE_CONVOY_DESC"),_location],(format [(localize "STR_BTC_HAM_SIDE_CONVOY_TITLE"),_location]),(format [(localize "STR_BTC_HAM_SIDE_CONVOY_TITLE"),_location])]; //"An armed Oplitas convoy is going to attack %1. Local population is asking for your help to destroy it before it gets there!",_location],("Destroy Oplitas convoy attacking " + _location),("Destroy Oplitas convoy attacking " + _location)
+        _type = "attack";
+    };
+    case "13" : {
+        _description = [format [(localize "STR_BTC_HAM_SIDE_RESC_DESC"),_location],(format [(localize "STR_BTC_HAM_SIDE_RESC_TITLE"),_location]),(format [(localize "STR_BTC_HAM_SIDE_RESC_TITLE"),_location])]; //"MAYDAY-MAYDAY, a pilot crashed his helicopter near %1. Command is asking for your help to rescue and bring him back to base!",_location],("Rescue downed pilot near " + _location),("Rescue downed pilot near " + _location)
+        _type = "heli";
+    };
+    case "14" : {
+        _description = [format [(localize "STR_BTC_HAM_SIDE_CAPOFF_DESC"),_location],((localize "STR_BTC_HAM_SIDE_CAPOFF_TITLE")),((localize "STR_BTC_HAM_SIDE_CAPOFF_TITLE"))]; //"Capture an officer travelling in a concealed convoy, then bring him at base for interrogation. He is his responsible for terrorizing local population!",_location],("Capture commander in concealed convoy"),("Capture commander in concealed convoy")
+        _type = "run";
+    };
+    case "15" :    {
+        _description = [format [(localize "STR_BTC_HAM_SIDE_HOSTAGE_DESC"),_location],(format [(localize "STR_BTC_HAM_SIDE_HOSTAGE_TITLE"),_location]),(format [(localize "STR_BTC_HAM_SIDE_HOSTAGE_TITLE"),_location])]; //"Liberate a civilian hostage in %1. Local population is asking for your help!",_location],("Liberate hostage near " + _location),("Liberate hostage near " + _location)
+        _type = "exit";
+    };
+    case "16" : {
+        _description = [format [(localize "STR_BTC_HAM_SIDE_HACK_DESC"),_location],(format [(localize "STR_BTC_HAM_SIDE_HACK_TITLE"),_location]),(format [(localize "STR_BTC_HAM_SIDE_HACK_TITLE"),_location])]; //"Hack a prototype missile with a terminal available in %1. Defend your position until the process is done!",_location],("Hack missile near " + _location),("Hack missile near " + _location)
+        _type = "defend";
+    };
 };
+
+if (!isServer) exitWith {
+    [[_task_id], btc_player_side, _description, _destination, true, 2, false, false] spawn {
+
+        waitUntil {(_this select 0) call BIS_fnc_taskState isEqualTo "ASSIGNED";};
+        _this call BIS_fnc_setTask;
+        (_this select 0) call BIS_fnc_taskHint;
+    };
+};
+
+[btc_player_side,[_task_id],_description,_destination,true,2,false,_type,false] call BIS_fnc_taskCreate;

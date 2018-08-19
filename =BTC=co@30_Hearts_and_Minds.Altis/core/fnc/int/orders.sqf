@@ -1,56 +1,61 @@
 
-private ["_order","_unit","_gesture","_pos","_wp","_rep","_ran","_info_type"];
+params ["_order", ["_unit", objNull]];
 
-_order = _this select 0;
-_unit = objNull;
-if (count _this > 1) then {_unit = _this select 1;};
-
-_gesture = switch (_order) do {
-	case 1 : {"gestureFreeze"};
-	case 2 : {"gestureCover"};
-	case 3 : {"gestureGo"};
-	case 4 : {"gestureGo"};
+private _gesture = switch (_order) do {
+    case 1 : {"gestureFreeze"};
+    case 2 : {"gestureCover"};
+    case 3 : {"gestureGo"};
+    case 4 : {"gestureGo"};
 };
 
 player playActionNow _gesture;
 
-_pos = getpos player;
+private _pos = getpos player;
+private _dir = getDir player;
+private _units = (_pos nearEntities [["Car","Civilian_F"] + btc_civ_type_units, btc_int_radius_orders]) apply {driver _x};
 
-if (count (_pos nearEntities [["Car","Civilian_F"], btc_int_radius_orders]) == 0) exitWith {true};
+if (_units isEqualTo []) exitWith {true};
 
 if (isNull _unit) then {
-	[[_pos,_order],"btc_fnc_int_orders_give",false] spawn BIS_fnc_MP;
+    [_units, _dir, _order] remoteExec ["btc_fnc_int_orders_give", 2];
 } else {
-	if (_order == 4) then {
+    if (_order isEqualTo 4) then {
 
-		btc_int_ask_data = nil;
-		[[2,nil,player],"btc_fnc_int_ask_var",false] spawn BIS_fnc_MP;
-		waitUntil {!(isNil "btc_int_ask_data")};
-		_rep = btc_int_ask_data;
+        btc_int_ask_data = nil;
+        [2,nil,player] remoteExec ["btc_fnc_int_ask_var", 2];
+        waitUntil {!(isNil "btc_int_ask_data")};
+        private _rep = btc_int_ask_data;
 
-		if (_rep >= 500) then {
-			hintSilent "Show me where you want to go with your map.";
-			["1", "onMapSingleClick", {
-				if (surfaceIsWater _pos) then {
-					hintSilent 'Selected area must be on land.';
-				} else {
-					[[(getpos (_this select 0)),4,_this select 1,_pos],'btc_fnc_int_orders_give',_this select 1] spawn BIS_fnc_MP;
-					["1", "onMapSingleClick"] call BIS_fnc_removeStackedEventHandler;
-				};
-			}, [player, _unit]] call BIS_fnc_addStackedEventHandler;
-		} else {
-			if (isNil {player getVariable "interpreter"}) exitWith {hint "I can't understand what is saying";};
-			_ran = round random 3;
-			_info_type = switch (true) do {
-				case (_ran == 0) : {"I hate you ! Get out !"};
-				case (_ran == 1) : {"Get Out of my car ! You are not welcome."};
-				case (_ran == 2) : {"I am not a taxi driver !"};
-				case (_ran == 3) : {"No ! I go where I want ! "};
-			};
-			_text = format ["%1", _info_type];
-			hint _text;
-		};
-	} else {
-		[[_pos,_order,_unit],"btc_fnc_int_orders_give",_unit] spawn BIS_fnc_MP;
-	};
+        if (_rep >= 500) then {
+            [name _unit,localize "STR_BTC_HAM_CON_INT_ORDERS_SHOWMAP"] spawn btc_fnc_showSubtitle; //Show me where you want to go with your map.
+            openMap true;
+            ["1", "onMapSingleClick", {
+                if (surfaceIsWater _pos) then {
+                    [name (_this select 4),localize "STR_BTC_HAM_CON_INT_ORDERS_ONLAND"] spawn btc_fnc_showSubtitle; //Selected area must be on land.
+                } else {
+                    [[_this select 4], 0, 4, _pos] remoteExec ["btc_fnc_int_orders_give", _this select 4];
+                    ["1", "onMapSingleClick"] call BIS_fnc_removeStackedEventHandler;
+                    openMap false;
+                    private _textMap = selectRandom [
+                            localize "STR_BTC_HAM_CON_INT_ORDERS_TAXI_OK1", // No problem. I'd love to do that.
+                            localize "STR_BTC_HAM_CON_INT_ORDERS_TAXI_OK2", // The ride should not take long. Let's go.
+                            localize "STR_BTC_HAM_CON_INT_ORDERS_TAXI_OK3"  // After what you've done for us, it's an honor to drive you. Let's go.
+                    ];
+                    [name (_this select 4),_textMap] spawn btc_fnc_showSubtitle;
+                };
+            }, [_unit]] call BIS_fnc_addStackedEventHandler;
+        } else {
+            if (isNil {player getVariable "interpreter"}) exitWith {[name _unit,localize "STR_BTC_HAM_CON_INFO_ASKREP_NOINTER"] spawn btc_fnc_showSubtitle;}; //I can't understand what is saying
+
+            private _text = selectRandom [
+                localize "STR_BTC_HAM_CON_INT_ORDERS_NEG1", //I hate you ! Get out !
+                localize "STR_BTC_HAM_CON_INT_ORDERS_NEG2", // Get Out of my car ! You are not welcome.
+                localize "STR_BTC_HAM_CON_INT_ORDERS_NEG3", // I am not a taxi driver !
+                localize "STR_BTC_HAM_CON_INT_ORDERS_NEG4"  //No ! I go where I want !
+            ];
+            [name _unit,_text] spawn btc_fnc_showSubtitle;
+        };
+    } else {
+        [[_unit], _dir, _order] remoteExec ["btc_fnc_int_orders_give", _unit];
+    };
 };

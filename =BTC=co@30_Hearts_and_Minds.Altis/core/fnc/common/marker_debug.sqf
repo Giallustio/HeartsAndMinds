@@ -1,20 +1,56 @@
-_units = allunits;
-if !(btc_marker_debug_cond) exitWith {};
-_color = "";_markers = [];
+
+private ["_units","_color","_text","_typeof","_has_headless","_owners","_alpha"];
+
+_has_headless = !((entities "HeadlessClient_F") isEqualTo []);
+
+if (_has_headless) then {
+    _units = btc_units_owners apply {_x select 0};
+    _owners = btc_units_owners apply {_x select 1};
+} else {
+    _units = allunits select {Alive _x};
+    _units append entities "Car";
+    _units append entities "Tank";
+    _units append entities "Ship";
+    _units append entities "Air";
+};
+
 {
-	if (Alive _x) then
-	{
-		_marker = createmarkerLocal [format ["%1", _x], position _x];
-		format ["%1", _x] setmarkertypelocal "mil_Dot";
-		format ["%1", _x] setMarkerTextLocal format ["%1", typeOf _x];
-		if (leader group _x == _x) then {format ["%1", _x] setMarkerTextLocal format ["%1 (%2) (%3)", typeOf _x,group _x getVariable "btc_patrol_id",group _x getVariable "btc_traffic_id"];};
-		switch (true) do {case (side _x == west) : {_color = "ColorBlue"};case (side _x == east) : {_color = "ColorRed"};case (side _x == independent) : {_color = "ColorGreen"}; default {_color = "ColorWhite"};};
-		format ["%1", _x] setmarkerColorlocal _color;
-		format ["%1", _x] setMarkerSizeLocal [0.7, 0.7];
-		_markers = _markers + [_marker];
-	};
+    _typeof = typeOf _x;
+
+    _alpha = 1;
+    if (_has_headless) then {
+        if !((_owners select _foreachindex) isEqualTo 2) then    {
+            _alpha = 0.3;
+        };
+    };
+
+    switch (side _x) do {
+        case (west) : {_color = [0,0,1,_alpha]};
+        case (east) : {_color = [1,0,0,_alpha]};
+        case (independent) : {_color = [0,1,0,_alpha]};
+        default {_color = [1,1,1,_alpha]};
+    };
+
+    if (leader group _x isEqualTo _x) then {
+        _text = format ["%1 (%2)", _typeof,group _x getVariable ["btc_patrol_id",group _x getVariable ["btc_traffic_id",""]]];
+    } else {
+        if ((_x isKindOf "car") OR (_x isKindOf "tank") OR (_x isKindOf "ship")  OR (_x isKindOf "air")) then {
+            _text = "";
+            _color = [1,0,0.5,_alpha];
+        } else {
+            _text = format ["%1", _typeof];
+        };
+    };
+
+    (_this select 0) drawIcon [
+        getText (configFile/"CfgVehicles"/ _typeof /"Icon"),
+        _color ,
+        visiblePosition _x,
+        20,
+        20,
+        direction _x,
+        _text,
+        0,
+        0.05
+    ];
 } foreach _units;
-player sideChat format ["UNITS:%1 - GROUPS:%2", count allunits, count allgroups];
-sleep 1;
-{deleteMarker _x} foreach _markers;
-_marker = [] spawn btc_fnc_marker_debug;

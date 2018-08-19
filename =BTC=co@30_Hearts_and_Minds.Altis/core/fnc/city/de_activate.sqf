@@ -17,19 +17,19 @@ _radius = (_radius_x+_radius_y);
 _has_en = _city getVariable ["occupied",false];
 
 if (_has_en) then {
-	_trigger = _city getVariable ["trigger",objNull];
-	deleteVehicle _trigger;
-	_city setVariable ["trigger",objNull];
+    _trigger = _city getVariable ["trigger",objNull];
+    deleteVehicle _trigger;
+    _city setVariable ["trigger",objNull];
 };
 
 _data_units = [];
 {
-	if (((leader _x) distance _city) < _radius && {side _x != btc_player_side} && {isNil {_x getVariable "no_cache"}}) then {
-		private ["_data_group"];
-		_data_group = _x call btc_fnc_data_get_group;
-		_data_units set [count _data_units, _data_group];
-		if (btc_debug_log) then {diag_log format ["data_units = %1",_data_units];};
-	};
+    if (((leader _x) distance _city) < _radius && {side _x != btc_player_side} && !(_x getVariable ["no_cache", false])) then {
+        private ["_data_group"];
+        _data_group = _x call btc_fnc_data_get_group;
+        _data_units set [count _data_units, _data_group];
+        if (btc_debug_log) then {diag_log format ["data_units = %1",_data_units];};
+    };
 } foreach allGroups;
 
 _city setVariable ["data_units",_data_units];

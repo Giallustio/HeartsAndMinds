@@ -6,3 +6,4 @@ _data = _this getVariable "eh";
 _this removeEventHandler ["HandleDamage", (_data select 0)];
 _this removeEventHandler ["Fuel", (_data select 1)];
 _this removeEventHandler ["GetOut", (_data select 2)];
+_this removeEventHandler ["HandleDamage", (_data select 3)];

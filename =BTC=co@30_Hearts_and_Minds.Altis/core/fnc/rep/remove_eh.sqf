@@ -1,12 +1,12 @@
 
-if (isNil {_this getVariable "btc_rep_eh_added"}) exitWith {true};
+private _data = _this getVariable ["btc_rep_eh_added", []];
 
-_data = _this getVariable "btc_rep_eh_added";
+if (_data isEqualTo []) exitWith {true};
 
-_this removeEventHandler ["HandleHeal", (_data select 0)];
-_this removeEventHandler ["HandleDamage", (_data select 1)];
-_this removeEventHandler ["Killed", (_data select 2)];
+_this setVariable ["btc_rep_eh_added", []];
 
-//, [_id_h,_id_d,_id_k]];
+_this removeEventHandler ["HandleDamage", (_data select 0)];
+_this removeEventHandler ["Killed", (_data select 1)];
+_this removeEventHandler ["FiredNear", (_data select 2)];
 
 true

@@ -1,5 +1,4 @@
 
-_obj = _this select 0;
-_mass = _this select 1;
+params ["_obj","_mass"];
 
 _obj setMass _mass;
