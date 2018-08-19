@@ -45,7 +45,7 @@ def btc_fnc_get_file_folder_name(path):
     return file_name, folder_name
 
 def btc_fnc_get_param(text):
-    re2='((?:[a-z][a-z0-9_]*))'   # Double Quote String 1
+    re2='((?:[a-z][a-z0-9_]*))'
 
     rg = re.compile(re2,re.IGNORECASE|re.DOTALL)
     m = rg.search(text)
@@ -55,7 +55,7 @@ def btc_fnc_get_param(text):
     return ""
 
 def btc_fnc_get_params(text):
-    re2='("_.*?")|'   # Double Quote String 1
+    re2='("_.*?")|'
     re3='(\\["_.*?")'
 
     pattern = re.compile(re2+re3,re.IGNORECASE|re.DOTALL)
@@ -89,32 +89,35 @@ def btc_fnc_get_params(text):
                     _typeOf_index = 'Side'
                 elif ' [displayNull]]' in _typeOf_index:
                     _typeOf_index = 'Display'
+                elif ' [controlNull]]' in _typeOf_index:
+                    _typeOf_index = 'Control'
                 else:
                     _typeOf_index = ''
             parameters_array.append([btc_fnc_get_param(second), _typeOf_index])
     return parameters_array
 
 def btc_fnc_get_typeOf_param(text):
-    re2='( \\[""\\]\\])|'    # Command Seperated Values 1
-    re4='( \\[objNull\\]\\])|'   # Command Seperated Values 2
-    re6='( \\[grpNull\\]\\])|'   # Command Seperated Values 3
-    re8='( \\[0\\]\\])|' # Command Seperated Values 4
-    re10='( \\[\\[\\]\\]\\])|' # Command Seperated Values 4
-    re12='( \\[true\\]\\])|'   # Command Seperated Values 2
-    re14='( \\[false\\]\\])|'   # Command Seperated Values 2
-    re16='( \\[\\{\\}\\]\\])|'   # Command Seperated Values 2
-    re18='( \\[east\\]\\])|'   # Command Seperated Values 2
-    re20='( \\[west\\]\\])|'   # Command Seperated Values 2
-    re22='( \\[displayNull\\]\\])'   # Command Seperated Values 2
+    re2='( \\[""\\]\\])|'
+    re4='( \\[objNull\\]\\])|'
+    re6='( \\[grpNull\\]\\])|'
+    re8='( \\[0\\]\\])|'
+    re10='( \\[\\[\\]\\]\\])|'
+    re12='( \\[true\\]\\])|'
+    re14='( \\[false\\]\\])|'
+    re16='( \\[\\{\\}\\]\\])|'
+    re18='( \\[east\\]\\])|'
+    re20='( \\[west\\]\\])|'
+    re22='( \\[displayNull\\]\\])'
+    re24='( \\[controlNull\\]\\])'
 
-    rg = re.compile(re2+re4+re6+re8+re10+re12+re14+re16+re18+re20+re22,re.IGNORECASE|re.DOTALL)
+    rg = re.compile(re2+re4+re6+re8+re10+re12+re14+re16+re18+re20+re22+re24,re.IGNORECASE|re.DOTALL)
     m = rg.findall(text)
     if m:
         return m
     return ()
 
 def btc_fnc_detect_params(txt):
-    re1='(params \\[.*?\\]\\;)'  # Word 1
+    re1='(params \\[.*?\\]\\;)'
     rg = re.compile(re1,re.IGNORECASE|re.DOTALL)
     m = rg.search(txt)
     if m:
