@@ -17,7 +17,7 @@ _group selectLeader (driver _veh);
 _units joinSilent _group;
 {_x call btc_fnc_mil_unit_create} forEach _units;
 
-private _cargo = (_veh emptyPositions "cargo") - 1;
+private _cargo = _veh emptyPositions "cargo";
 [_group, _pos, _cargo, _needdiver, _type_units, _type_divers] call btc_fnc_mil_createUnits;
 
 _veh

@@ -70,7 +70,7 @@ if ((random 1) > _ratio) then {
     };
 } else {
     //INF
-    private _group = ([_start_pos, 50, 8 + random 6, 1] call btc_fnc_mil_create_group) select 0;
+    private _group = ([_start_pos, 50, 8 + round random 6, 1] call btc_fnc_mil_create_group) select 0;
     _group setVariable ["no_cache", true];
 
     [_group] call CBA_fnc_clearWaypoints;

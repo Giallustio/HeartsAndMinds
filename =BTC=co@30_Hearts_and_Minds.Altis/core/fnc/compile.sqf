@@ -28,6 +28,7 @@ if (isServer) then {
     btc_fnc_city_de_activate = compile preprocessFileLineNumbers "core\fnc\city\de_activate.sqf";
     btc_fnc_city_set_clear = compile preprocessFileLineNumbers "core\fnc\city\set_clear.sqf";
     btc_fnc_city_trigger_player_side = compile preprocessFileLineNumbers "core\fnc\city\trigger_player_side.sqf";
+    btc_fnc_city_findPos = compile preprocessFileLineNumbers "core\fnc\city\findPos.sqf";
 
     //CIV
     btc_fnc_civ_add_weapons = compile preprocessFileLineNumbers "core\fnc\civ\add_weapons.sqf";
@@ -100,6 +101,8 @@ if (isServer) then {
     btc_fnc_mil_unit_create = compile preprocessFileLineNumbers "core\fnc\mil\unit_create.sqf";
     btc_fnc_mil_CuratorMilPlaced_s = compile preprocessFileLineNumbers "core\fnc\mil\CuratorMilPlaced_s.sqf";
     btc_fnc_mil_getStructures = compile preprocessFileLineNumbers "core\fnc\mil\getStructures.sqf";
+    btc_fnc_mil_getBuilding = compile preprocessFileLineNumbers "core\fnc\mil\getBuilding.sqf";
+
     btc_fnc_mil_createVehicle = compile preprocessFileLineNumbers "core\fnc\mil\createVehicle.sqf";
     btc_fnc_mil_createUnits = compile preprocessFileLineNumbers "core\fnc\mil\createUnits.sqf";
 
