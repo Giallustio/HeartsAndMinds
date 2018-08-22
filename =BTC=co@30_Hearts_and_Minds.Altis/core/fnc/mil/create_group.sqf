@@ -7,7 +7,7 @@ params [
     ["_type_units", btc_type_units, [[]]],
     ["_p_sea", btc_p_sea, [true]],
     ["_enemy_side", btc_enemy_side, [east]],
-    ["_wp_ratios", [0.3, 0.75], [[]]]
+    ["_wp_ratios", [btc_p_en_in_house, 1.05 - btc_p_en_in_house], [[]]]
 ];
 _wp_ratios params ["_wp_house_probability", "_wp_sentry_probability"];
 
@@ -23,7 +23,7 @@ switch (true) do {
     case (_wp <= _wp_house_probability) : {
         ([_rpos, _n] call btc_fnc_mil_getBuilding) params ["_n", "_structure"];
         if (_structure isEqualTo "") exitWith {
-            [_city, _area, _n, 0.4, _type_divers, _type_units, _p_sea, _enemy_side, _wp_ratios] call btc_fnc_mil_create_group;
+            [_city, _area, _n, _wp_sentry_probability, _type_divers, _type_units, _p_sea, _enemy_side, _wp_ratios] call btc_fnc_mil_create_group;
         };
         for "_i" from 1 to _n do {
             private _grp = createGroup _enemy_side;
@@ -33,11 +33,11 @@ switch (true) do {
             _groups pushBack _grp;
         };
     };
-    case (_wp > _wp_house_probability && _wp < _wp_sentry_probability) : {
+    case (_wp > _wp_house_probability && _wp <= _wp_sentry_probability) : {
         [_group, _rpos, _n, _pos_iswater] call btc_fnc_mil_createUnits;
         [_group, _rpos, _area, 2 + floor (random 4), "MOVE", "SAFE", "RED", "LIMITED", "STAG COLUMN", "", [5, 10, 20]] call CBA_fnc_taskPatrol;
     };
-    case (_wp >= _wp_sentry_probability) : {
+    case (_wp > _wp_sentry_probability) : {
         [_group, _rpos, _n, _pos_iswater] call btc_fnc_mil_createUnits;
         [_group, _rpos, 0, "SENTRY", "AWARE", "RED"] call CBA_fnc_addWaypoint;
     };

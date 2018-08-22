@@ -44,10 +44,16 @@ private _p_skill = [
     ("btc_p_set_skill_commanding" call BIS_fnc_getParamValue)/10//commanding
 ];
 
-//<< Gameplay options >>
-btc_p_sea  = ("btc_p_sea" call BIS_fnc_getParamValue) isEqualTo 1;
+//<< Spawn options >>
+btc_p_mil_group_ratio = 1;
+btc_p_en_in_house = 0.3;
 btc_p_veh_armed_ho = ("btc_p_veh_armed_ho" call BIS_fnc_getParamValue) isEqualTo 1;
 btc_p_veh_armed_spawn_more = ("btc_p_veh_armed_spawn_more" call BIS_fnc_getParamValue) isEqualTo 1;
+btc_p_patrol_max = 8;
+btc_p_civ_max_veh = 10;
+
+//<< Gameplay options >>
+btc_p_sea  = ("btc_p_sea" call BIS_fnc_getParamValue) isEqualTo 1;
 btc_p_side_mission_cycle = ("btc_p_side_mission_cycle" call BIS_fnc_getParamValue) isEqualTo 1;
 
 //<< Arsenal options >>
@@ -130,7 +136,6 @@ if (isServer) then {
     btc_fobs = [[], []];
 
     //Patrol
-    btc_patrol_max = 8;
     btc_patrol_active = [];
     btc_patrol_area = 2500;
 
@@ -229,7 +234,6 @@ _allclasse = [[_p_civ_veh]] call btc_fnc_civ_class;
 btc_civ_type_veh = _allclasse select 2;
 btc_civ_type_boats = _allclasse select 1;
 
-btc_civ_max_veh = 10;
 btc_w_civs = ["V_Rangemaster_belt", "arifle_Mk20_F", "30Rnd_556x45_Stanag", "hgun_ACPC2_F", "9Rnd_45ACP_Mag"];
 btc_g_civs = ["HandGrenade", "MiniGrenade", "ACE_M84", "ACE_M84"];
 
