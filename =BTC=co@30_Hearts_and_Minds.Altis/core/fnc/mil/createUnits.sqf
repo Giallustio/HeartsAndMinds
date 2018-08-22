@@ -7,7 +7,7 @@ params [
     ["_type_divers", btc_type_divers, [[]]]
 ];
 
-for "_i" from 0 to _number do {
+for "_i" from 1 to _number do {
     private _unit_type = if (_pos_iswater) then {
         selectRandom _type_divers;
     } else {
