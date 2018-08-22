@@ -1,6 +1,7 @@
 // Author : sethduda for AdvancedTowing
-
-params ["_vehicle"];
+params [
+    ["_vehicle", objNull, [objNull]]
+];
 
 ([_vehicle] call btc_fnc_log_get_corner_points) params [
     "_rearCorner",

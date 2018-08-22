@@ -1,4 +1,6 @@
-params ["_unit"];
+params [
+	["_unit", objNull, [objNull]]
+];
 
 private _playableUnits = playableUnits inAreaArray [getPosWorld _unit, 50, 50];
 _hgun = _playableUnits findif {[_x, _unit] call btc_fnc_check_los} != -1;

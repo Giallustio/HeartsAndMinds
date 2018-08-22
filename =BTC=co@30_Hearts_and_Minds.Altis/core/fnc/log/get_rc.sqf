@@ -1,4 +1,6 @@
-params ["_obj"];
+params [
+    ["_obj", objNull, [objNull]]
+];
 
 private _type = typeOf _obj;
 private _rc = 0;

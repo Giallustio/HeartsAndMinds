@@ -1,4 +1,7 @@
-params ["_unit", "_killer"];
+params [
+	["_unit", objNull, [objNull]],
+	["_killer", objNull, [objNull]]
+];
 
 if (isPlayer _killer) then {
     btc_rep_malus_civ_killed call btc_fnc_rep_change;

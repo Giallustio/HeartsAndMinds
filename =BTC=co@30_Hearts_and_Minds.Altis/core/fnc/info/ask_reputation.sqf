@@ -1,4 +1,6 @@
-params ["_man"];
+params [
+    ["_man", objNull, [objNull]]
+];
 
 if !(player getVariable ["interpreter", false]) exitWith {
     [name _man, localize "STR_BTC_HAM_CON_INFO_ASKREP_NOINTER"] call btc_fnc_showSubtitle; //I can't understand what is saying

@@ -1,4 +1,6 @@
-params ["_house"];
+params [
+    ["_house", objNull, [objNull]]
+];
 
 if ((_house buildingPos -1) isEqualTo []) exitWith {
     [] call btc_fnc_cache_find_pos;

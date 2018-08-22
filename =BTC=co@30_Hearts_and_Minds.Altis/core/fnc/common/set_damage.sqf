@@ -1,4 +1,6 @@
-params ["_unit"];
+params [
+    ["_unit", objNull, [objNull]]
+];
 
 private _selection = [
     "head",

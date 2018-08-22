@@ -1,4 +1,6 @@
-params ["_group"];
+params [
+    ["_group", grpNull, [grpNull]]
+];
 
 private _units          = units _group;
 private _type_db        = 0;

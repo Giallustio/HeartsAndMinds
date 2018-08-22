@@ -1,10 +1,12 @@
+params [
+    ["_heli", vehicle player, [objNull]]
+];
+
 btc_ropes_deployed = true;
 btc_lifted = false;
 btc_log_hud = false;
 
 btc_log_lifted = objNull;
-
-private _heli = vehicle player;
 
 _heli setVariable ["cargo", nil];
 

@@ -1,4 +1,6 @@
-params ["_id"];
+params [
+    ["_id", 0, [0]]
+];
 
 private _city = btc_city_all select _id;
 

@@ -1,9 +1,12 @@
-if (!(vehicle player isKindOf "Helicopter" || (vehicle player isKindOf "Ship")) || !isNull ((vehicle player) getVariable ["cargo", objNull])) exitWith {false};
+params [
+    ["_chopper", vehicle player, [objNull]]
+];
 
-private _array = [vehicle player] call btc_fnc_log_get_liftable;
+if (!(_chopper isKindOf "Helicopter" || (_chopper isKindOf "Ship")) || !isNull ((_chopper) getVariable ["cargo", objNull])) exitWith {false};
+
+private _array = [_chopper] call btc_fnc_log_get_liftable;
 if (_array isEqualTo []) exitWith {false};
 
-private _chopper  = vehicle player;
 private _cargo_array = nearestObjects [_chopper, _array, 30];
 _cargo_array = _cargo_array - [_chopper];
 _cargo_array = _cargo_array select {!(

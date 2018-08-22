@@ -1,5 +1,8 @@
 // _tower ----rope--- (hook)_towed
-params ["_tower", "_towed"];
+params [
+    ["_tower", objNull, [objNull]],
+    ["_towed", objNull, [objNull]]
+];
 
 private _array = [_tower] call btc_fnc_log_get_nottowable;
 

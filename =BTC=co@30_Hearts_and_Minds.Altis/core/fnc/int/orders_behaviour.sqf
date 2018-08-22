@@ -1,4 +1,8 @@
-params ["_unit", "_order", "_wp_pos"];
+params [
+    ["_unit", objNull, [objNull]],
+    ["_order", 0, [0]],
+    ["_wp_pos", [0, 0, 0], [[]]]
+];
 
 private _group = group _unit;
 

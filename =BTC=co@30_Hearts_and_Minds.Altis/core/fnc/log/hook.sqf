@@ -1,4 +1,6 @@
-params ["_towed"];
+params [
+    ["_towed", objNull, [objNull]]
+];
 
 btc_log_vehicle_selected = _towed;
 

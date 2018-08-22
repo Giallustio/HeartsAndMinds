@@ -1,4 +1,6 @@
-params ["_healer"];
+params [
+    ["_healer", objNull, [objNull]]
+];
 
 if (isPlayer _healer) then {
     btc_rep_bonus_civ_hh spawn btc_fnc_rep_change;

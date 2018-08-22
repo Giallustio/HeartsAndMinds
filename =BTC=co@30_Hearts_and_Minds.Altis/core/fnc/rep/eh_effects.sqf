@@ -1,6 +1,8 @@
 if (btc_global_reputation >= 600) exitWith {};
 
-params ["_pos"];
+params [
+    ["_pos", [0, 0, 0], [[]]]
+];
 
 private _rep = (btc_global_reputation / 100);
 private _random = random (10 - _rep);

@@ -1,4 +1,6 @@
-params ["_mat"];
+params [
+    ["_mat", objNull, [objNull]]
+];
 
 // "Area is not flat enough!"
 if (((position _mat) isFlatEmpty [1, 0, 0.9, 1, 0, false, _mat]) isEqualTo []) exitWith {hint localize "STR_BTC_HAM_O_FOB_CREATE_H_AREA";};

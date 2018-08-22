@@ -1,4 +1,11 @@
-params ["_position", "_type", "_name", "_radius_x", "_radius_y", "_has_en"];
+params [
+    ["_position", [0, 0, 0], [[]]],
+    ["_type", "", [""]],
+    ["_name", "", [""]],
+    ["_radius_x", 0, [0]],
+    ["_radius_y", 0, [0]],
+    ["_has_en", false, [false]]
+];
 
 private _id = count btc_city_all;
 

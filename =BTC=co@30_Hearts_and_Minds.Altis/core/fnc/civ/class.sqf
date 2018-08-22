@@ -1,4 +1,6 @@
-params ["_factions"];
+params [
+    ["_factions", [], [[]]]
+];
 
 private _type_units = [];
 private _type_boats = [];

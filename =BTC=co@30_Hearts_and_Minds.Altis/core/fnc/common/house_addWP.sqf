@@ -1,4 +1,7 @@
-params ["_group", "_house"];
+params [
+    ["_group", grpNull, [grpNull]],
+    ["_house", objNull, [objNull]]
+];
 
 private _allpositions = [_group, _house] call btc_fnc_house_addWP_loop;
 

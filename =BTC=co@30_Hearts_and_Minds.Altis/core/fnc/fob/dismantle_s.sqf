@@ -1,4 +1,6 @@
-params ["_flag"];
+params [
+    ["_flag", objNull, [objNull]]
+];
 
 private _FOBname = _flag getVariable "btc_fob";
 private _element = (btc_fobs select 0) find _FOBname;

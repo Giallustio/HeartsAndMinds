@@ -1,4 +1,6 @@
-params ["_object"];
+params [
+    ["_object", objNull, [objNull]]
+];
 
 private _array = (nearestObjects [_object, ["LandVehicle", "Air"], 10]) select {!((_x isKindOf "ACE_friesGantry") OR (typeOf _x isEqualTo "ACE_friesAnchorBar"))};
 

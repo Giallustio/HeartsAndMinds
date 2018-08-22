@@ -1,4 +1,7 @@
-params ["_position", ["_position_evac", []]];
+params [
+    ["_position", [], [[]]],
+    ["_position_evac", [], [[]]]
+];
 
 private _civilians = (allUnits select {side _x isEqualTo civilian}) inAreaArray [_position, 200, 200];
 

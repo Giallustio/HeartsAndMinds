@@ -1,4 +1,6 @@
-params ["_task_id"];
+params [
+    ["_task_id", 0 , [0]]
+];
 
 if (isServer) exitWith {
     btc_side_jip_data = [];

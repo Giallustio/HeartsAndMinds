@@ -1,4 +1,7 @@
-params ["_body", "_asker"];
+params [
+	["_body", objNull, [objNull]],
+	["_asker", objNull, [objNull]]
+];
 
 if (btc_debug_log) then {
     [format ["%1", _body getVariable "intel"], __FILE__, [false]] call btc_fnc_debug_message;

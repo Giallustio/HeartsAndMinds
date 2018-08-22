@@ -1,4 +1,6 @@
-params ["_rpos"];
+params [
+    ["_rpos", [0, 0, 0], []]
+];
 _rpos params ["_x", "_y"];
 
 private _objects = lineIntersectsObjs [[_x, _y, (getTerrainHeightASL _rpos) + 1], [_x, _y, (getTerrainHeightASL _rpos) + 100], objNull, objNull, false, 16];

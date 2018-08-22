@@ -1,4 +1,6 @@
-params ["_terminal"];
+params [
+	["_terminal", objNull, [objNull]]
+];
 
 private _action = ["Open", localize "STR_BTC_HAM_SIDE_HACK_ACEACTION", "\A3\ui_f\data\igui\cfg\simpleTasks\types\intel_ca.paa", {
     //Start Hacking

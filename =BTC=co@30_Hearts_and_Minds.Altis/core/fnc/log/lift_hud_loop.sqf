@@ -1,4 +1,7 @@
-params ["_ui", "_PFH_id"];
+params [
+    ["_ui", [], [[]],
+    ["_PFH_id", 0, [0]]
+];
 _ui params ["_arrow_up", "_arrow_down", "_complete", "_incomplete", "_obj_img", "_obj_pic", "_arrow", "_obj_name", "_obj_alt"];
 
 disableSerialization;

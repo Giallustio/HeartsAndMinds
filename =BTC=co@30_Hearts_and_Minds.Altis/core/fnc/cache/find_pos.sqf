@@ -1,7 +1,10 @@
+params [
+    ["_city_all", btc_city_all, [[]]]
+];
 
-private _useful = btc_city_all select {_x getVariable ["occupied", false] && {!(_x getVariable ["type", ""] in ["NameLocal", "Hill", "NameMarine"])}};
+private _useful = _city_all select {_x getVariable ["occupied", false] && {!(_x getVariable ["type", ""] in ["NameLocal", "Hill", "NameMarine"])}};
 
-if (_useful isEqualTo []) then {_useful = btc_city_all;};
+if (_useful isEqualTo []) then {_useful = _city_all;};
 
 private _id = floor random count _useful;
 private _city = _useful select _id;
