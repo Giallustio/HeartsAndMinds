@@ -451,10 +451,12 @@
                 <German>Nur entfernen (funktioniert nur beim ACE3-Arsenal)</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_ARSENAL_AUTOLOADOUT">
-                <Original>Automatic loadout</Original>
+                <Original>Predefined loadouts (See /define_mod.sqf)</Original>
+                <German>Vorgefertigte Loadouts (Siehe /define_mod.sqf)</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_ARSENAL_ARSENALRESTR_FILTER">
                 <Original>Filter on player role (works only with ACE3-Arsenal)</Original>
+                <German>Nach der Rolle des Spielers beschränken (geht nur mit dem ACE3-Arsenal)</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_ARSENAL_GARAGEADMIN">
                 <Original>Activate garage for admin:</Original>

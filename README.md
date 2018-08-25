@@ -17,6 +17,8 @@ Hearts and Minds is a cooperative Military Simulation (MilSim) mission that aims
 CSAT forces retreated from Altis and NATO deployed units and vehicles to help the local population.
 A new formed group, known as "Oplitas", is against the NATO intervention and is ready to fight.
 
+Online [wiki available](http://vdauphin.github.io/HeartsAndMinds/).
+
 ### The mission has a lot of features:
 
 - **Dedicated server support only**
