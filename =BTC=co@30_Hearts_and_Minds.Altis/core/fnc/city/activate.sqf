@@ -89,7 +89,7 @@ if !(_data_units isEqualTo []) then {
     });
 
     if (_has_en) then {
-        for "_i" from 1 to (1 + round (_p_mil_group_ratio * random _max_number_group)) do {[_city, _radius, 1 + round random [0, 1, 2] , random 1] call btc_fnc_mil_create_group;};
+        for "_i" from 1 to (round (_p_mil_group_ratio * (1 + random _max_number_group))) do {[_city, _radius, 1 + round random [0, 1, 2] , random 1] call btc_fnc_mil_create_group;};
     };
 
     //Spawn civilians
@@ -116,7 +116,7 @@ if (_has_en) then {
 
 if (_city getVariable ["spawn_more", false]) then {
     _city setVariable ["spawn_more", false];
-    for "_i" from 1 to (2 + round (_p_mil_group_ratio * random 3)) do {
+    for "_i" from 1 to (round (_p_mil_group_ratio * (2 + random 3))) do {
         [_city, _radius, 4 + round random 3, random 1] call btc_fnc_mil_create_group;
     };
     if (btc_p_veh_armed_spawn_more) then {

@@ -65,6 +65,54 @@ class Params {
         texts[]={"0 - EricJ: Afghan Civilians (Side: CIV)","1 - Bohemia Interactive: Civils (Side: CIV)","2 -btc_militia_mod Giallustio: Afghan Civilians (Side: CIV)","3 -CAF CAF MOD TEAM: African (Side: CIV)","4 -CAF CAF MOD TEAM: Middle Eastern (Side: CIV)","5 -CFP Drew: Civilians (Afghanistan) (Side: CIV)","6 -CFP Drew: Civilians (African Christian) (Side: CIV)","7 -CFP Drew: Civilians (African Islamic) (Side: CIV)","8 -CFP Drew: Civilians (Asian) (Side: CIV)","9 -CFP Drew: Civilians (Middle Eastern) (Side: CIV)","10 -CUP_Units Community Upgrade Project: Civilians (Russian) (Side: CIV)","11 -CUP_Vehicles Community Upgrade Project: Civilians (Chernarus) (Side: CIV)","12 -CUP_Vehicles Bohemia Interactive: Civilians (Sahrani) (Side: CIV)","13 -CUP_Vehicles Community Upgrade Project: Civilians (Takistan) (Side: CIV)","14 -LIB IFA3 Team: 40s Civilians (Side: CIV)","15 -LOP_LeightsOPFOR Project OPFOR: Civilians (African) (Side: CIV)","16 -LOP_LeightsOPFOR Project OPFOR: Civilians (Eastern European) (Side: CIV)","17 -LOP_LeightsOPFOR Project OPFOR: Civilians (Middle Eastern) (Side: CIV)","18 -OPTRE Article 2 Studios: Civilians (UEG) (Side: CIV)","19 -ORANGE Bohemia Interactive: IDAP (Side: CIV)","20 -RDS_CIV_PACK reyhard: Russians (Side: CIV)","21 -UNSUNG Bohemia Interactive: Vietnamese (UNSUNG) (Side: CIV)"};
         default = 1;
     };
+    class btc_p_spawn_title { // << Spawn options >>
+        title = $STR_BTC_HAM_PARAM_SPAWN_TITLE;
+        values[]={0};
+        texts[]={""};
+        default = 0;
+    };
+    class btc_p_mil_group_ratio { // Enemy density:
+        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_SPWAN_ENEMY_DENSITY"]);
+        values[]={0,10,20,30,40,50,60,70,80,90,100};
+        texts[]={"0%","10%","20%","30%","40%","50%","60%","70%","80%","90%","100%"};
+        default = 100;
+    };
+    class btc_p_civ_group_ratio { // Civilian density:
+        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_SPWAN_CIVILIAN_DENSITY"]);
+        values[]={0,10,20,30,40,50,60,70,80,90,100};
+        texts[]={"0%","10%","20%","30%","40%","50%","60%","70%","80%","90%","100%"};
+        default = 100;
+    };
+    class btc_p_wp_house_probability { // Density of military in house:
+        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_SPWAN_MIL_INHOUSE_DENSITY"]);
+        values[]={0,10,20,30,40,50,60,70,80,90,100};
+        texts[]={"0%","10%","20%","30%","40%","50%","60%","70%","80%","90%","100%"};
+        default = 30;
+    };
+    class btc_p_veh_armed_ho { // Add armed vehicles in Hideout:
+        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_SPAWN_ARMEDHIDEOUT"]);
+        values[] = {0,1};
+        texts[] = {$STR_DISABLED,$STR_ENABLED};
+        default = 0;
+    };
+    class btc_p_veh_armed_spawn_more { // Add armed vehicles in Side mission/Cache:
+        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_SPAWN_ARMEDOTHER"]);
+        values[] = {0,1};
+        texts[] = {$STR_DISABLED,$STR_ENABLED};
+        default = 0;
+    };
+    class btc_p_patrol_max { // Maximum number of military patrol:
+        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_SPWAN_PATROL_MAX"]);
+        values[]={0,1,2,3,4,5,6,7,8,9,10};
+        texts[]={"1","2","3","4","5","6","7","8","9","10"};
+        default = 8;
+    };
+    class btc_p_civ_max_veh { // Maximum number of civilian patrol:
+        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_SPWAN_CIV_MAX_VEH"]);
+        values[]={0,1,2,3,4,5,6,7,8,9,10};
+        texts[]={"1","2","3","4","5","6","7","8","9","10"};
+        default = 10;
+    };
     class btc_p_IED_title { // << IED options >>
         title = $STR_BTC_HAM_PARAM_IED_TITLE;
         values[]={0};
@@ -215,18 +263,6 @@ class Params {
         texts[] = {$STR_DISABLED,$STR_ENABLED};
         default = 1;
     };
-    class btc_p_veh_armed_ho { // Add armed vehicles in Hideout:
-        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_GAMEPLAY_ARMEDHIDEOUT"]);
-        values[] = {0,1};
-        texts[] = {$STR_DISABLED,$STR_ENABLED};
-        default = 0;
-    };
-    class btc_p_veh_armed_spawn_more { // Add armed vehicles in Side mission/Cache:
-        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_GAMEPLAY_ARMEDOTHER"]);
-        values[] = {0,1};
-        texts[] = {$STR_DISABLED,$STR_ENABLED};
-        default = 0;
-    };
     class btc_p_side_mission_cycle {  // Side mission cycle:
         title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_GAMEPLAY_SIDEM"]);
         values[] = {0,1};
@@ -291,6 +327,6 @@ class Params {
         title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_OTHER_DEBUG"]);
         values[]={0,1,2};
         texts[]={$STR_DISABLED,$STR_ENABLED, $STR_BTC_HAM_PARAM_OTHER_DEBUG_LOGONLY}; // texts[]={"Off","On","Log only"};
-        default = 1;
+        default = 0;
     };
 };
