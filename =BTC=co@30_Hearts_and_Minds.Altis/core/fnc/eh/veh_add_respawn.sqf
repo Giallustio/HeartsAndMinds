@@ -1,4 +1,8 @@
-params ["_vehicle", "_time", "_has_marker"];
+params [
+    ["_vehicle", objNull, [objNull]],
+    ["_time", 0, [0]],
+    ["_has_marker", false, [false]]
+];
 
 private _type = typeOf _vehicle;
 private _pos = getPosASL _vehicle;

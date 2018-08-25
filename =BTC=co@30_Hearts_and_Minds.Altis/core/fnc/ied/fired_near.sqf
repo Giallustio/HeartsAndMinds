@@ -1,4 +1,7 @@
-params ["_wreck", "_ied"];
+params [
+    ["_wreck", objNull, [objNull]],
+    ["_ied", objNull, [objNull]]
+];
 
 (getPos _ied) params ["_x", "_y", "_z"];
 private _pos = [_x, _y, _z + 0.5];

@@ -1,4 +1,7 @@
-params ["_unit", "_killer", "_instigator", "_useEffects"];
+params [
+    ["_unit", objNull, [objNull]],
+    ["_killer", objNull, [objNull]]
+];
 
 private _killer = _unit getVariable ["ace_medical_lastDamageSource", _killer];
 

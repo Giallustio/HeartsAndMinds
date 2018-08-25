@@ -1,4 +1,8 @@
-params ["_from", "_to", "_isRuin"];
+params [
+    ["_from", objNull, [objNull]],
+    ["_to", objNull, [objNull]],
+    ["_isRuin", false, [false]]
+];
 
 private _classname = toUpper typeOf _from;
 private _malus = [btc_rep_malus_building_damaged, btc_rep_malus_building_destroyed] select _isRuin;

@@ -1,4 +1,6 @@
-params ["_trigger"];
+params [
+    ["_trigger", objNull, [objNull]]
+];
 
 private _suicider = _trigger getVariable "suicider";
 

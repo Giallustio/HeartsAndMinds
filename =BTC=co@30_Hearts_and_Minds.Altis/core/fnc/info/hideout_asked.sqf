@@ -1,6 +1,6 @@
 params [
     ["_name", "Vdauphin", [""]],
-    ["_is_real", true, ["true"]],
+    ["_is_real", true, [true]],
     ["_text", "", [""]]
 ];
 

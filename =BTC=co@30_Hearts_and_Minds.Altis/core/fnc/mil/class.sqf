@@ -1,4 +1,8 @@
-params ["_factions", "_en_AA", "_en_tank"];
+params [
+    ["_factions", [], [[]]],
+    ["_en_AA", false, [false]],
+    ["_en_tank", false, [false]]
+];
 
 private _enemy_side = [];
 private _type_units = [];

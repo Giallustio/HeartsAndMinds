@@ -1,4 +1,10 @@
-params ["_cache", "", "_damage", "", "_ammo"];
+params [
+    ["_cache", objNull, [objNull]],
+    ["_part", "", [""]],
+    ["_damage", 0, [0]],
+    ["_injurer", objNull, [objNull]],
+    ["_ammo", "", [""]]
+];
 
 private _explosive = (getNumber(configFile >> "cfgAmmo" >> _ammo >> "explosive") > 0);
 
@@ -23,7 +29,6 @@ if (isNil {_cache getVariable "btc_hd_cache"} && {_explosive} && {_damage > 0.6}
     _marker setMarkerType "hd_destroy";
     [_marker, "STR_BTC_HAM_O_EH_HDCACHE_MRK", btc_cache_n] remoteExec ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker]; //Cached %1 destroyed
 
-    // Vehicle needs assistance
     _marker setMarkerSize [1, 1];
     _marker setMarkerColor "ColorRed";
 

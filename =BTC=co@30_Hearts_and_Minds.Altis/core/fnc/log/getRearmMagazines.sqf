@@ -1,5 +1,5 @@
 params [
-    ["_rearming_vehicles", objNull, [objNull]]
+    ["_rearming_vehicles", [], [[]]]
 ];
 
 private _typeof_rearming_vehicles = ([_rearming_vehicles] call btc_fnc_find_veh_with_turret) select 0;

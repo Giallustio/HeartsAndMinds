@@ -1,4 +1,6 @@
-params ["_suicider"];
+params [
+    ["_suicider", objNull, [objNull]]
+];
 
 [_suicider] joinSilent createGroup [btc_enemy_side, true];
 

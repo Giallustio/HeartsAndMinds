@@ -1,4 +1,6 @@
-params ["_vehicle"];
+params [
+    ["_vehicle", objNull, [objNull]]
+];
 
 private _marker = createMarker [format ["m_%1", _vehicle], getPos _vehicle];
 _marker setMarkerType "mil_box";

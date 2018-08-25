@@ -2,7 +2,10 @@
     curator,object
 */
 
-params ["_curator", "_object_placed"];
+params [
+    ["_curator", objNull, [objNull]],
+    ["_object_placed", objNull, [objNull]]
+];
 
 if !((_object_placed isKindOf "AllVehicles") || (_object_placed isKindOf "Module_F")) then {
     [_object_placed] remoteExec ["btc_fnc_log_CuratorObjectPlaced_s", 2];

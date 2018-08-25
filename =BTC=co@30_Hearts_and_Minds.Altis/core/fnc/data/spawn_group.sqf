@@ -1,12 +1,12 @@
 params [
     ["_type", "", [""]],
-    ["_array_pos", [], [[]],
-    ["_array_type", [], [[]],
+    ["_array_pos", [], [[]]],
+    ["_array_type", [], [[]]],
     ["_side", east, [east]],
-    ["_array_dam", [], [[]],
+    ["_array_dam", [], [[]]],
     ["_behaviour", [], [[]]],
-    ["_array_wp", [], [[]],
-    ["_array_veh", [], [[]]
+    ["_array_wp", [], [[]]],
+    ["_array_veh", [], [[]]]
 ];
 
 private _group = createGroup _side;

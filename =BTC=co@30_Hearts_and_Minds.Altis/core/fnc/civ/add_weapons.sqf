@@ -1,5 +1,5 @@
 params [
-	["_unit", objNull, [objNull]]
+    ["_unit", objNull, [objNull]]
 ];
 
 private _playableUnits = playableUnits inAreaArray [getPosWorld _unit, 50, 50];

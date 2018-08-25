@@ -1,4 +1,9 @@
-params ["_caller", "_target", "_selectionName", "_className"];
+params [
+    ["_caller", objNull, [objNull]],
+    ["_target", objNull, [objNull]],
+    ["_selectionName", "", [""]],
+    ["_className", "", [""]]
+];
 
 if (isPlayer _target) exitWith {};
 if ((Alive _target) && (side _target isEqualTo civilian) && !(_className isEqualTo "Diagnose")) then {
