@@ -3,7 +3,7 @@ params [
     ["_city", objNull, [objNull]],
     ["_area", 0, [0]],
     ["_wp", 0, [0]],
-    ["_wp_ratios", [btc_p_en_in_house, 1.05 - btc_p_en_in_house], [[]]]
+    ["_wp_ratios", btc_p_mil_wp_ratios, [[]]]
 ];
 _wp_ratios params ["_wp_house_probability", "_wp_sentry_probability"];
 

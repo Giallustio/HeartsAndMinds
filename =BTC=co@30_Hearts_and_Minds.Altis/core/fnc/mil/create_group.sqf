@@ -7,7 +7,7 @@ params [
     ["_type_units", btc_type_units, [[]]],
     ["_p_sea", btc_p_sea, [true]],
     ["_enemy_side", btc_enemy_side, [east]],
-    ["_wp_ratios", [btc_p_en_in_house, 1.05 - btc_p_en_in_house], [[]]]
+    ["_wp_ratios", btc_p_mil_wp_ratios, [[]]]
 ];
 _wp_ratios params ["_wp_house_probability", "_wp_sentry_probability"];
 
@@ -44,7 +44,7 @@ switch (true) do {
 };
 
 if (btc_debug_log) then {
-    [format ["_this = %1 ; POS %2 UNITS N %3", _this, _rpos, _n], __FILE__, [false]] call btc_fnc_debug_message;
+    [format ["_this = %1 ; POS %2 UNITS N %3 _wp_ratios %4", _this, _rpos, _n, _wp_ratios], __FILE__, [false]] call btc_fnc_debug_message;
 };
 
 _groups

@@ -46,7 +46,8 @@ private _p_skill = [
 
 //<< Spawn options >>
 btc_p_mil_group_ratio = 1;
-btc_p_en_in_house = 0.3;
+btc_p_civ_group_ratio = 1;
+private _wp_house_probability = 0.3;
 btc_p_veh_armed_ho = ("btc_p_veh_armed_ho" call BIS_fnc_getParamValue) isEqualTo 1;
 btc_p_veh_armed_spawn_more = ("btc_p_veh_armed_spawn_more" call BIS_fnc_getParamValue) isEqualTo 1;
 btc_p_patrol_max = 8;
@@ -134,6 +135,9 @@ if (isServer) then {
 
     //FOB
     btc_fobs = [[], []];
+
+    //MIL
+    btc_p_mil_wp_ratios = [_wp_house_probability, (1 - _wp_house_probability)/1.5 + _wp_house_probability];
 
     //Patrol
     btc_patrol_active = [];

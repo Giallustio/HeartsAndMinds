@@ -1,9 +1,12 @@
 params [
     ["_id", 0, [0]],
     ["_p_mil_group_ratio", btc_p_mil_group_ratio, [0]],
+    ["_p_civ_group_ratio", btc_p_civ_group_ratio, [0]],
     ["_p_civ_max_veh", btc_p_civ_max_veh, [0]],
-    ["_p_patrol_max", btc_p_patrol_max, [0]]
+    ["_p_patrol_max", btc_p_patrol_max, [0]],
+    ["_wp_ratios", btc_p_mil_wp_ratios, [[]]]
 ];
+_wp_ratios params ["_wp_house", "_wp_sentry"];
 
 if (btc_debug) then {
     hint ("Activate " + str _id);
@@ -99,7 +102,7 @@ if !(_data_units isEqualTo []) then {
             case "Airport" : {6};
             default {2};
         });
-        [_city, _radius/3, round random _max_number_group] call btc_fnc_civ_populate;
+        [_city, _radius/3, round (_p_civ_group_ratio * random _max_number_group)] call btc_fnc_civ_populate;
     };
 };
 
@@ -127,8 +130,8 @@ if (_city getVariable ["spawn_more", false]) then {
 if !(btc_cache_pos isEqualTo []) then {
     if (_city inArea [btc_cache_pos, _radius_x + _radius_y, _radius_x + _radius_y, 0, false]) then {
         if (count (btc_cache_pos nearEntities ["Man", 30]) > 3) exitWith {};
-        [btc_cache_pos, 8, 3, 0.2] call btc_fnc_mil_create_group;
-        [btc_cache_pos, 60, 4, 0.5] call btc_fnc_mil_create_group;
+        [btc_cache_pos, 8, 3, _wp_house] call btc_fnc_mil_create_group;
+        [btc_cache_pos, 60, 4, _wp_sentry] call btc_fnc_mil_create_group;
         if (btc_p_veh_armed_spawn_more) then {
             private _closest = [_city, btc_city_all select {!(_x getVariable ["active", false])}, false] call btc_fnc_find_closecity;
             for "_i" from 1 to (1 + round random 3) do {
@@ -141,9 +144,9 @@ if !(btc_cache_pos isEqualTo []) then {
 if (_has_ho && {!(_city getVariable ["ho_units_spawned", false])}) then {
     _city setVariable ["ho_units_spawned", true];
     private _pos = _city getVariable ["ho_pos", getPos _city];
-    [_pos, 20, 10 + round (_p_mil_group_ratio * random 6), 0.8] call btc_fnc_mil_create_group;
-    [_pos, 120, 1 + round random 2, 0.5] call btc_fnc_mil_create_group;
-    [_pos, 120, 1 + round random 2, 0.5] call btc_fnc_mil_create_group;
+    [_pos, 20, 10 + round (_p_mil_group_ratio * random 6), 1.1] call btc_fnc_mil_create_group;
+    [_pos, 120, 1 + round random 2, _wp_sentry] call btc_fnc_mil_create_group;
+    [_pos, 120, 1 + round random 2, _wp_sentry] call btc_fnc_mil_create_group;
     private _random = random 1;
     switch (true) do {
         case (_random < 0.3) : {};
