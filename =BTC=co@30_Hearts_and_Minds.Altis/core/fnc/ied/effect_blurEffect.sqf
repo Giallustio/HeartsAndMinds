@@ -1,11 +1,14 @@
-params [["_pos", [0, 0, 0]], ["_caller", objNull]];
+params [
+    ["_pos", [0, 0, 0], [[]]],
+    ["_caller", objNull, [objNull]]
+];
 
 if (!isPlayer _caller) exitWith {};
 if (alive _caller) then {
     private _distance = (getPos _caller) distance _pos;
 
     //blurry screen with cam shake
-    if(_distance < 40) then {
+    if (_distance < 40) then {
         [] spawn {
             addCamShake [1, 3, 3];
 

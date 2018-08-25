@@ -7,8 +7,12 @@ params ["_curator", "_object_placed"];
 if !((_object_placed isKindOf "AllVehicles") || (_object_placed isKindOf "Module_F")) then {
     [_object_placed] remoteExec ["btc_fnc_log_CuratorObjectPlaced_s", 2];
 
-    if (btc_debug_log) then {diag_log format ["CURATOR OBJECT %1", _object_placed];};
-    if (btc_debug) then {hint str _object_placed;};
+    if (btc_debug_log) then {
+        [format ["OBJECT %1", _object_placed], __FILE__, [false]] call btc_fnc_debug_message;
+    };
+    if (btc_debug) then {
+        [str _object_placed, __FILE__, [btc_debug, false]] call btc_fnc_debug_message;
+    };
 };
 
 if (_object_placed isKindOf "Man") then {
@@ -21,6 +25,10 @@ if (_object_placed isKindOf "Man") then {
         [_object_placed] remoteExec ["btc_fnc_civ_CuratorCivPlaced_s", 2];
     };
 
-    if (btc_debug_log) then {diag_log format ["CURATOR MAN %1", _object_placed];};
-    if (btc_debug) then {hint str _object_placed;};
+    if (btc_debug_log) then {
+        [format ["MAN %1", _object_placed], __FILE__, [false]] call btc_fnc_debug_message;
+    };
+    if (btc_debug) then {
+        [str _object_placed, __FILE__, [btc_debug, false]] call btc_fnc_debug_message;
+    };
 };

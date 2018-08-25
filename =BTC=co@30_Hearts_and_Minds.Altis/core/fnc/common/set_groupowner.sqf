@@ -1,18 +1,18 @@
-
-private ["_HC","_group"];
+params ["_group"];
 
 //Choose a HC
-_HC = owner ((entities "HeadlessClient_F") select 0);
+private _HC = owner ((entities "HeadlessClient_F") select 0);
 
 //Transfert GROUP to HC
-_group = _this select 0;
-if !(_group setgroupOwner _HC) exitWith {};
+if !(_group setGroupOwner _HC) exitWith {};
 
 //Transfert EH to HC
 if (side _group isEqualTo btc_enemy_side) then {
-    [_group,{
+    [_group, {
+        params ["_group"];
+
         {
             _x call btc_fnc_mil_add_eh;
-        } foreach units _this;
+        } forEach units _group;
     }] remoteExec ["call", _HC];
 };

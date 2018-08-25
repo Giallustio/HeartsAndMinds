@@ -23,28 +23,12 @@ switch true do {
         [_type, 0, ["ACE_MainActions", "Logistic"], _action] call ace_interact_menu_fnc_addActionToClass;
         _action = ["log_hook", localize "STR_BTC_HAM_ACTION_VEHINIT_UHOOK", "\z\ace\addons\attach\UI\detach_ca.paa", {(_this select 0) spawn btc_fnc_log_unhook;}, {true}] call ace_interact_menu_fnc_createAction; //Unhook
         [_type, 0, ["ACE_MainActions", "Logistic"], _action] call ace_interact_menu_fnc_addActionToClass;
-        //Cargo
-        _action = ["check_cargo", localize "STR_BTC_HAM_ACTION_LOGISTIC_CHECKCARGO", "\A3\ui_f\data\igui\cfg\simpleTasks\types\search_ca.paa", {(_this select 0) spawn btc_fnc_log_check_cargo;}, {true}] call ace_interact_menu_fnc_createAction; //Check Cargo
-        //Outside Vehicle
-        [_type, 0, ["ACE_MainActions", "Logistic"], _action] call ace_interact_menu_fnc_addActionToClass; //Logistic
-        //Inside Vehicle
-        [_type, 1, ["ACE_SelfActions"], _action, true] call ace_interact_menu_fnc_addActionToClass;
-        _action = ["Load_selected", localize "STR_BTC_HAM_ACTION_LOGISTIC_LOADSEL", "a3\ui_f\data\IGUI\Cfg\Actions\loadVehicle_ca.paa", {(_this select 0) spawn btc_fnc_log_load;}, {!isNull btc_log_object_selected && {btc_log_object_selected distance (_this select 0) <= btc_log_max_distance_load}}] call ace_interact_menu_fnc_createAction; //Load selected
-        [_type, 0, ["ACE_MainActions", "Logistic"], _action] call ace_interact_menu_fnc_addActionToClass; //Logistic
     };
     case (_type isKindOf "Helicopter") : {
         private _action = ["Logistic", localize "STR_BTC_HAM_ACTION_LOC_MAIN", "\A3\ui_f\data\igui\cfg\simpleTasks\letters\L_ca.paa", {}, {true}] call ace_interact_menu_fnc_createAction; //Logistic
         [_type, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToClass;
-        //Cargo
-        _action = ["check_cargo", localize "STR_BTC_HAM_ACTION_LOGISTIC_CHECKCARGO", "\A3\ui_f\data\igui\cfg\simpleTasks\types\search_ca.paa", {(_this select 0) spawn btc_fnc_log_check_cargo;}, {true}] call ace_interact_menu_fnc_createAction; //Check Cargo
-        //Outside Vehicle
-        [_type, 0, ["ACE_MainActions", "Logistic"], _action] call ace_interact_menu_fnc_addActionToClass; //Logistic
-        //Inside Vehicle
-        [_type, 1, ["ACE_SelfActions"], _action, true] call ace_interact_menu_fnc_addActionToClass;
-        _action = ["Load_selected", localize "STR_BTC_HAM_ACTION_LOGISTIC_LOADSEL", "a3\ui_f\data\IGUI\Cfg\Actions\loadVehicle_ca.paa", {(_this select 0) spawn btc_fnc_log_load;}, {!isNull btc_log_object_selected && {btc_log_object_selected distance (_this select 0) <= btc_log_max_distance_load}}] call ace_interact_menu_fnc_createAction; //Load selected
-        [_type, 0, ["ACE_MainActions", "Logistic"], _action] call ace_interact_menu_fnc_addActionToClass; //Logistic
         //Lift
-        _action = ["Deploy_ropes", localize "STR_BTC_HAM_ACTION_VEHINIT_DEPLOYROPES", "\A3\ui_f\data\igui\cfg\simpleTasks\types\container_ca.paa", {[] spawn btc_fnc_log_lift_deploy_ropes;}, {!btc_ropes_deployed && {(driver vehicle player) isEqualTo player} && {(getposATL player) select 2 > 4}}] call ace_interact_menu_fnc_createAction; //Deploy ropes
+        _action = ["Deploy_ropes", localize "STR_BTC_HAM_ACTION_VEHINIT_DEPLOYROPES", "\A3\ui_f\data\igui\cfg\simpleTasks\types\container_ca.paa", {[] spawn btc_fnc_log_lift_deploy_ropes;}, {!btc_ropes_deployed && {(driver vehicle player) isEqualTo player} && {(getPosATL player) select 2 > 4}}] call ace_interact_menu_fnc_createAction; //Deploy ropes
         [_type, 1, ["ACE_SelfActions"], _action, true] call ace_interact_menu_fnc_addActionToClass;
         _action = ["Cut_ropes", localize "STR_BTC_HAM_ACTION_VEHINIT_CUTROPES", "\z\ace\addons\logistics_wirecutter\ui\wirecutter_ca.paa", {[] spawn btc_fnc_log_lift_destroy_ropes;}, {btc_ropes_deployed && {(driver vehicle player) isEqualTo player}}] call ace_interact_menu_fnc_createAction; //Cut ropes
         [_type, 1, ["ACE_SelfActions"], _action, true] call ace_interact_menu_fnc_addActionToClass;

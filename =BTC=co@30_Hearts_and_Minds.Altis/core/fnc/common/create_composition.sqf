@@ -1,4 +1,3 @@
-
 params ["_pos", "_setdir", "_array"];
 _pos params ["_pos_x", "_pos_y", ["_pos_z", 0]];
 

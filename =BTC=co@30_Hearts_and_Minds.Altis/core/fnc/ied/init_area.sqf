@@ -31,11 +31,11 @@ for "_i" from 1 to _n do {
                 private _obj = objNull;
                 private _dist = 100;
                 {
-                    if (_x distance _sel_pos < _dist) then {
+                    if (_x inArea [_sel_pos, _dist, _dist, 0, false]) then {
                         _dist = _x distance _sel_pos;
                         _obj = _x;
                     };
-                } foreach _roads;
+                } forEach _roads;
 
                 if (isNull _obj) exitWith {};
                 if (random 1 > 0.5) then {
@@ -57,7 +57,7 @@ for "_i" from 1 to _n do {
     };
 
     if (btc_debug_log) then {
-        diag_log format ["btc_fnc_ied_create_in_area: _this = %1 ; POS %2 ; N %3(%4)", _this, _sel_pos, _i, _n];
+        [format ["_this = %1  POS %2  N %3(%4)", _this, _sel_pos, _i, _n], __FILE__, [false]] call btc_fnc_debug_message;
     };
 
     _array pushBack [_sel_pos, _type_ied, _dir, _active];
@@ -96,7 +96,7 @@ for "_i" from 1 to _n do {
     };
 
     if (btc_debug_log) then {
-        diag_log format ["btc_fnc_ied_create_in_area: _this = %1 ; POS %2 ; N %3(%4)", _this, _sel_pos, _i, _n];
+         [format ["_this = %1 ; POS %2 ; N %3(%4)", _this, _sel_pos, _i, _n], __FILE__, [false]] call btc_fnc_debug_message;
     };
 
     _array pushBack [_sel_pos, _type_ied, _dir, _active];

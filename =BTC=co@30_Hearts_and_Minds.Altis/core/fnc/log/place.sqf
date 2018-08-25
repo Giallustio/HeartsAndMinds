@@ -1,6 +1,8 @@
-btc_log_placing_obj = _this;
+params ["_placing_obj"];
 
-[btc_log_placing_obj, player] remoteExec ["btc_fnc_set_owner", 2];
+btc_log_placing_obj = _placing_obj;
+
+[btc_log_placing_obj, clientOwner] remoteExecCall ["setOwner", 2];
 
 hint composeText [
     localize "STR_BTC_HAM_LOG_PLACE_HINT1", //Q/Z to raise/lower the object
@@ -35,13 +37,14 @@ private _bbr = boundingBoxReal btc_log_placing_obj;
 private _c = boundingCenter btc_log_placing_obj;
 
 btc_log_placing_h = abs((_bbr select 0) select 2) - (_c select 2);
-btc_log_placing_d = 1.5 + (abs(((_bbr select 1) select 1) - ((_bbr select 0) select 1)));
+btc_log_placing_d = 1.5 + abs(((_bbr select 1) select 1) - ((_bbr select 0) select 1));
 
-btc_log_placing_obj attachTo [player,[0, btc_log_placing_d, btc_log_placing_h]];
+btc_log_placing_obj attachTo [player, [0, btc_log_placing_d, btc_log_placing_h]];
 btc_log_placing_obj setDir btc_log_placing_dir;
 
 [{
     params ["_arguments", "_idPFH"];
+
     if (!Alive player || player getVariable ["ACE_isUnconscious", false] || !btc_log_placing) then {
         _arguments params ["_placing_obj", "_actionEH", "_place_EH_keydown"];
 
@@ -65,4 +68,4 @@ btc_log_placing_obj setDir btc_log_placing_dir;
         [player, "DefaultAction", _actionEH, -1] call ace_common_fnc_removeActionEventHandler;
 
     };
-}, 0.5, [_this, _actionEH, _place_EH_keydown]] call CBA_fnc_addPerFrameHandler;
+}, 0.5, [_placing_obj, _actionEH, _place_EH_keydown]] call CBA_fnc_addPerFrameHandler;

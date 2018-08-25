@@ -7,7 +7,7 @@ if (_order isEqualTo (_unit getVariable ["order", 0])) exitWith {};
 _unit setVariable ["order", _order];
 
 if (_unit isEqualTo vehicle _unit) then {
-    while {!((waypoints _group) isEqualTo [])} do {deleteWaypoint ((waypoints _group) select 0);};
+    [_group] call CBA_fnc_clearWaypoints;
 };
 
 private _behaviour = behaviour _unit;
@@ -19,8 +19,8 @@ switch (_order) do {
     };
     case 2 : {
         doStop _unit;
+        [_unit, "", 2] call ace_common_fnc_doAnimation;
         _unit setUnitPos "DOWN";
-        [_unit, format ["AmovP%1MstpSnonWnonDnon_AmovPpneMstpSnonWnonDnon", (animationState _unit) select [5, 3]], 1] call ace_common_fnc_doAnimation;
     };
     case 3 : {
         _unit setUnitPos "UP";
@@ -32,7 +32,7 @@ switch (_order) do {
 };
 
 if (_order isEqualTo 4) then {
-    waitUntil {sleep 3; (isNull _unit || !alive _unit || ((getPos _unit) distance _wp_pos < 10))};
+    waitUntil {sleep 3; (isNull _unit || !alive _unit || (_unit inArea [_wp_pos, 10, 10, 0, false]))};
 } else {
     waitUntil {sleep 3; (isNull _unit || !alive _unit || (count (getPos _unit nearEntities ["SoldierWB", 50]) isEqualTo 0))};
 };
@@ -50,5 +50,5 @@ _unit setBehaviour _behaviour;
 _unit doMove getPos _unit;
 
 if (_unit isEqualTo vehicle _unit) then {
-    [_group] spawn btc_fnc_civ_addWP;
+    [_group] call btc_fnc_civ_addWP;
 };

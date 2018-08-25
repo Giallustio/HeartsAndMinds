@@ -1,4 +1,6 @@
-params [["_pos", [0, 0, 0]]];
+params [
+    ["_pos", [0, 0, 0], [[]]]
+];
 _pos params ["_x", "_y"];
 
 _posASL = [_x, _y, getTerrainHeightASL _pos];
@@ -28,4 +30,4 @@ for "_i" from 0 to ((count _rVar)-1) step 1 do {
 };
 
 sleep 0.22;
-{deletevehicle _x} forEach _rockesArr;
+{deleteVehicle _x} forEach _rockesArr;

@@ -5,9 +5,11 @@
 
 params ["_group"];
 
-if (btc_debug_log) then {diag_log format ["ADD GROUP = %1", _group];};
+if (btc_debug_log) then {
+    [format ["%1", _group], __FILE__, [false]] call btc_fnc_debug_message;
+};
 _group setVariable ["no_cache", Nil];
-while {!((waypoints _group) isEqualTo [])} do {deleteWaypoint ((waypoints _group) select 0);};
+[_group] call CBA_fnc_clearWaypoints;
 
 private _city = [leader _group, btc_city_all, false] call btc_fnc_find_closecity;
 _city setVariable ["occupied", true];
@@ -36,10 +38,14 @@ if !(_city getVariable ["active", false]) then {
 
     _data_units pushBack _data_group;
     _city setVariable ["data_units", _data_units];
-    if (btc_debug_log) then {diag_log format ["PUSHBACK = %1", _data_group];};
+    if (btc_debug_log) then {
+        [format ["PUSHBACK = %1", _data_group], __FILE__, [false]] call btc_fnc_debug_message;
+    };
 };
 
 if (btc_final_phase) then {
     btc_city_remaining pushBack _city;
 };
-if (btc_debug_log) then {diag_log format ["END = %1", []];};
+if (btc_debug_log) then {
+    [format ["END = %1", []], __FILE__, [false]] call btc_fnc_debug_message;
+};

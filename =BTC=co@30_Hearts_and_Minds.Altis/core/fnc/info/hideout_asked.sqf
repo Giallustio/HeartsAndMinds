@@ -1,8 +1,12 @@
-params ["_name", "_is_real", ["_text", ""]];
+params [
+    ["_name", "Vdauphin", [""]],
+    ["_is_real", true, ["true"]],
+    ["_text", "", [""]]
+];
 
 if (_is_real) then {
     btc_int_ask_data = nil;
-    [1, [], player] remoteExec ["btc_fnc_int_ask_var", 2];
+    [1, player] remoteExecCall ["btc_fnc_int_ask_var", 2];
 
     waitUntil {!(isNil "btc_int_ask_data")};
 

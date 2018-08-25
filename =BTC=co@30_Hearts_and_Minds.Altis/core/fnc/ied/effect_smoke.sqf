@@ -1,4 +1,6 @@
-params [["_pos", [0, 0, 0]]];
+params [
+    ["_pos", [0, 0, 0], [[]]]
+];
 _pos params ["_x", "_y"];
 
 _posASL = [_x, _y, getTerrainHeightASL _pos];
@@ -49,21 +51,21 @@ for "_i" from 0 to 6 step 1 do {
           _x setParticleRandom (_rndVar select 0);
           _x setParticleParams _modPPar;
           _x setDropInterval .03;
-        } count _smokes;
+        } forEach _smokes;
     };
     if (_i isEqualTo 5) then {
         {
           _x setParticleRandom (_rndVar select 1);
           _x setParticleParams _modPPar;
           _x setDropInterval .05;
-        } count _smokes;
+        } forEach _smokes;
     };
     if (_i isEqualTo 6) then {
         {
           _x setParticleRandom (_rndVar select 2);
           _x setParticleParams _modPPar;
           _x setDropInterval .05;
-        } count _smokes;
+        } forEach _smokes;
     };
 };
 sleep 2;

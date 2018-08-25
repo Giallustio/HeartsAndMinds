@@ -42,8 +42,8 @@ disableSerialization;
         ["_from", "", [""]],
         ["_text", "", [""]],
         ["_lineBreak", false , [false]],
-        ["_colorFrom", "#d4cd00" , [""]], //default color: gold
-        ["_colorText", "#FFFFFF" , [""]], //default color: white
+        ["_colorFrom", "#d4cd00", [""]], //default color: gold
+        ["_colorText", "#FFFFFF", [""]], //default color: white
         ["_fontText", "RobotoCondensedBold", [""]]
     ];
 
@@ -53,13 +53,13 @@ disableSerialization;
 
     _ctrl ctrlSetBackgroundColor (["Subtitles","Background"] call bis_fnc_displayColorGet);
     //_ctrl ctrlSetBackgroundColor [0, 0, 0, 0.5]; //optional? - for better readability
-    _ctrl ctrlSetTextColor (["Subtitles","Text"] call bis_fnc_displayColorGet);
-    _ctrl ctrlSetPosition [POS_X,POS_Y,POS_W,POS_H];
+    _ctrl ctrlSetTextColor (["Subtitles", "Text"] call bis_fnc_displayColorGet);
+    _ctrl ctrlSetPosition [POS_X, POS_Y, POS_W, POS_H];
     _ctrl ctrlCommit 0;
 
     // Show subtitle
     _ctrl ctrlSetStructuredText parseText format [
-        if (_from == "") then {
+        if (_from isEqualTo "") then {
             "<t align='center' shadow='1' color='%5' size='%3' font=%6>%2</t>"
         } else {
             if (_lineBreak) then {
@@ -68,15 +68,16 @@ disableSerialization;
                 "<t align='center' shadow='1' color='%4' size='%3' font=%6>%1: </t><t align='center' color='%5' shadow='1' size='%3' font=%6>%2</t>"
             };
         },
-        toUpper _from, _text,   (safezoneH * 0.65) max 1, _colorFrom, _colorText,_fontText
+        toUpper _from, _text, (safezoneH * 0.65) max 1, _colorFrom, _colorText, _fontText
     ];
 
     private _textHeight = ctrlTextHeight _ctrl;
-    _ctrl ctrlSetPosition [POS_X,POS_Y - _textHeight,POS_W,_textHeight];
+    _ctrl ctrlSetPosition [POS_X, POS_Y - _textHeight, POS_W, _textHeight];
     _ctrl ctrlcommit 0;
 
     [{
         params ["_ctrl"];
+
         // Hide subtitle
         _ctrl ctrlSetFade 1;
         _ctrl ctrlCommit 0.5;

@@ -9,22 +9,16 @@ switch (true) do {
         if !(_houses isEqualTo []) then {
             private _house = selectRandom _houses;
             [_group, _house] spawn btc_fnc_house_addWP;
-            _group setVariable ["inHouse", typeOf _house];
+            _group setVariable ["btc_inHouse", typeOf _house];
         } else {
-            [_group, _rpos, _area, "SAFE"] call btc_fnc_task_patrol;
+            [_group, _rpos, _area, 2 + floor (random 4), "MOVE", "SAFE", "RED", ["LIMITED", "NORMAL"] select ((vehicle leader _group) isKindOf "Air"), "STAG COLUMN", "", [5, 10, 20]] call CBA_fnc_taskPatrol;
         };
     };
     case (_wp > 0.3 && _wp < 0.75) : {
-        [_group, _rpos, _area, "AWARE"] call btc_fnc_task_patrol;
+        [_group, _rpos, _area, 2 + floor (random 4), "MOVE", "AWARE", "RED", ["LIMITED", "NORMAL"] select ((vehicle leader _group) isKindOf "Air"), "STAG COLUMN", "", [5, 10, 20]] call CBA_fnc_taskPatrol;
     };
     case (_wp > 0.75) : {
-        private _wpa = _group addWaypoint [_rpos, 0];
-        _wpa setWaypointType "SENTRY";
-        _wpa setWaypointCombatMode "RED";
-        _wpa setWaypointBehaviour "AWARE";
-        _wpa setWaypointFormation "WEDGE";
-        _wpa setWaypointTimeout [18000, 36000, 54000];
-        _wpa setWaypointStatements ["true", "(group this) spawn btc_fnc_data_add_group;"];
+        [_group, _rpos, 0, "SENTRY", "AWARE", "RED", "UNCHANGED", "WEDGE", "(group this) spawn btc_fnc_data_add_group;", [18000, 36000, 54000]] call CBA_fnc_addWaypoint;
     };
 };
 

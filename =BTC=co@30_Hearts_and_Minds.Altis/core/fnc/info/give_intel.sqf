@@ -3,7 +3,7 @@ params ["_asker"];
 private _id = 1;
 private _n = random 100;
 
-if !(btc_hideouts isEqualTo []) then {_n = (btc_info_intel_type select 0) - 10;};
+if (btc_hideouts isEqualTo []) then {_n = (btc_info_intel_type select 0) - 10;};
 
 switch (true) do {
     case (_n < (btc_info_intel_type select 0)) : { //cache

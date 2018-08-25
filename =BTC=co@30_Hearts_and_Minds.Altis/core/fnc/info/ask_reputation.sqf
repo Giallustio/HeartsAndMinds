@@ -5,7 +5,7 @@ if !(player getVariable ["interpreter", false]) exitWith {
 };
 
 btc_int_ask_data = nil;
-[2, nil, player] remoteExec ["btc_fnc_int_ask_var", 2];
+["btc_global_reputation"] remoteExecCall ["btc_fnc_int_ask_var", 2];
 
 waitUntil {!(isNil "btc_int_ask_data")};
 
@@ -14,7 +14,7 @@ private _rep = btc_int_ask_data;
 private _ho_left = "";
 if ((round random 1) isEqualTo 1) then {
     btc_int_ask_data = nil;
-    [8, nil, player] remoteExec ["btc_fnc_int_ask_var", 2];
+    [8] remoteExecCall ["btc_fnc_int_ask_var", 2];
 
     waitUntil {!(isNil "btc_int_ask_data")};
 
@@ -24,7 +24,7 @@ if ((round random 1) isEqualTo 1) then {
 private _info_type = switch (true) do {
     case (_rep < 200): {localize "STR_BTC_HAM_CON_INFO_ASKREP_VLOW"}; //very low
     case (_rep >= 200 && _rep < 500): {localize "STR_BTC_HAM_CON_INFO_ASKREP_LOW"}; //low
-    case (_rep >= 500 && _rep < 750): {localize "STR_BTC_HAM_CON_INFO_ASKREP_NORMAL"}; //normal
+    case (_rep >= 500 && _rep < 750): {toLower localize "str_a3_firing_drills_rule_normal"}; //normal
     case (_rep >= 750): {localize "STR_BTC_HAM_CON_INFO_ASKREP_HIGH"}; //high
 };
 

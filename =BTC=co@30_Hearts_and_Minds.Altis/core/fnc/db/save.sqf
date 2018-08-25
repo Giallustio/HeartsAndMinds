@@ -1,23 +1,27 @@
+if (btc_debug) then {
+    ["...1", __FILE__, [btc_debug, false, true]] call btc_fnc_debug_message;
+};
 
-call btc_fnc_db_delete;
-
-if (btc_debug) then {hint "saving...1";};
 [8] remoteExec ["btc_fnc_show_hint", 0];
 
 btc_db_is_saving = true;
 private _name = worldName;
+
+for "_i" from 0 to (count btc_city_all - 1) do {
+    private _s = [_i] spawn btc_fnc_city_de_activate;
+    waitUntil {scriptDone _s};
+};
+if (btc_debug) then {
+    ["...2", __FILE__, [btc_debug, false, true]] call btc_fnc_debug_message;
+};
+
+call btc_fnc_db_delete;
 
 //Version
 profileNamespace setVariable [format ["btc_hm_%1_version", _name], btc_version];
 
 //World Date
 profileNamespace setVariable [format ["btc_hm_%1_date", _name], date];
-
-for "_i" from 0 to (count btc_city_all - 1) do {
-    private _s = [_i] spawn btc_fnc_city_de_activate;
-    waitUntil {scriptDone _s};
-};
-if (btc_debug) then {hint "saving...2";};
 
 //City status
 private _cities_status = [];
@@ -38,7 +42,9 @@ private _cities_status = [];
     _city_status pushBack (_x getVariable ["has_suicider", false]);
 
     _cities_status pushBack _city_status;
-    if (btc_debug_log) then {diag_log format ["SAVE: %1 - %2", _x getVariable "id", _x getVariable "occupied"];};
+    if (btc_debug_log) then {
+        [format ["ID %1 - IsOccupied %2", _x getVariable "id", _x getVariable "occupied"], __FILE__, [false]] call btc_fnc_debug_message;
+    };
 } forEach btc_city_all;
 profileNamespace setVariable [format ["btc_hm_%1_cities", _name], _cities_status];
 
@@ -46,7 +52,8 @@ profileNamespace setVariable [format ["btc_hm_%1_cities", _name], _cities_status
 private _array_ho = [];
 {
     private _data = [];
-    _data pushBack (getPos _x);
+    (getPos _x) params ["_xx", "_yy"];
+    _data pushBack [_xx, _yy, 0];
     _data pushBack (_x getVariable ["id", 0]);
     _data pushBack (_x getVariable ["rinf_time", 0]);
     _data pushBack (_x getVariable ["cap_time", 0]);
@@ -60,7 +67,9 @@ private _array_ho = [];
         _ho_markers pushBack _marker;
     } forEach (_x getVariable ["markers", []]);
     _data pushBack _ho_markers;
-    if (btc_debug_log) then {diag_log format ["HO %1 DATA %2", _x, _data];};
+    if (btc_debug_log) then {
+        [format ["HO %1 DATA %2", _x, _data], __FILE__, [false]] call btc_fnc_debug_message;
+    };
     _array_ho pushBack _data;
 } forEach btc_hideouts;
 profileNamespace setVariable [format ["btc_hm_%1_ho", _name], _array_ho];
@@ -106,13 +115,15 @@ private _array_veh = [];
     private _cargo = [];
     {
         _cargo pushBack [typeOf _x, _x getVariable ["ace_rearm_magazineClass", ""], [getWeaponCargo _x, getMagazineCargo _x, getItemCargo _x]]
-    } forEach (_x getVariable ["cargo", []]);
+    } forEach (_x getVariable ["ace_cargo_loaded", []]);
     _data pushBack _cargo;
     private _cont = [getWeaponCargo _x, getMagazineCargo _x, getItemCargo _x];
     _data pushBack _cont;
     _data pushBack ([_x] call BIS_fnc_getVehicleCustomization);
     _array_veh pushBack _data;
-    if (btc_debug_log) then {diag_log format ["VEH %1 DATA %2", _x, _data]};
+    if (btc_debug_log) then {
+        [format ["VEH %1 DATA %2", _x, _data], __FILE__, [false]] call btc_fnc_debug_message;
+    };
 } forEach (btc_vehicles - [objNull]);
 profileNamespace setVariable [format ["btc_hm_%1_vehs", _name], _array_veh];
 
@@ -123,7 +134,7 @@ private _array_obj = [];
     if !(_data isEqualTo []) then {
         _array_obj pushBack _data;
     };
-} forEach btc_log_obj_created;
+} forEach (btc_log_obj_created select {!(isObjectHidden _x)});
 profileNamespace setVariable [format ["btc_hm_%1_objs", _name], _array_obj];
 
 //Player Markers
@@ -136,7 +147,9 @@ profileNamespace setVariable [format ["btc_hm_%1_markers", _name], _markers_prop
 //End
 profileNamespace setVariable [format ["btc_hm_%1_db", _name], true];
 saveProfileNamespace;
-if (btc_debug) then {hint "saving...3";};
+if (btc_debug) then {
+    ["...3", __FILE__, [btc_debug, false, true]] call btc_fnc_debug_message;
+};
 [9] remoteExec ["btc_fnc_show_hint", 0];
 
 btc_db_is_saving = false;

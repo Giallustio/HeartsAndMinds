@@ -1,5 +1,6 @@
+params ["_pos"];
 
-player setPosASL btc_player_respawn;
+player setPosASL _pos;
 player addRating 9999;
 player setCaptive false;
 
