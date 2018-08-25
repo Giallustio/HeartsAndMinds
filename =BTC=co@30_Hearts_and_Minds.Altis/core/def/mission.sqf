@@ -279,8 +279,14 @@ if (isServer) then {
     private _rearming_static =
     [
         //"Static"
-        "B_Mortar_01_F"
-    ] + (_allclass select {(_x isKindOf "StaticGrenadeLauncher" || _x isKindOf "StaticMGWeapon") && (getNumber(configFile >> "CfgVehicles" >> _x >> "side") isEqualTo ([east, west, independent, civilian] find btc_player_side))});
+    ] + (_allclass select {(
+        _x isKindOf "GMG_TriPod" ||
+        _x isKindOf "StaticMortar" ||
+        _x isKindOf "HMG_01_base_F" ||
+        _x isKindOf "AA_01_base_F" ||
+        _x isKindOf "AT_01_base_F") && (
+        getNumber (configfile >> "CfgVehicles" >> _x >> "side") isEqualTo ([east, west, independent, civilian] find btc_player_side))
+    });
     ([_rearming_static] call btc_fnc_find_veh_with_turret) params ["_rearming_static", "_magazines_static"];
 
     ([btc_vehicles + btc_helo] call btc_fnc_log_getRearmMagazines) params ["_rearming_vehicles", "_rearming_magazines"];
