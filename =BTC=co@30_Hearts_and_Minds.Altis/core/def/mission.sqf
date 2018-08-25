@@ -274,8 +274,7 @@ if (isServer) then {
     _rearming_static =
     [
         //"Static"
-        "B_Mortar_01_F"
-    ]  + (_allclass select {(
+    ] + (_allclass select {(
         _x isKindOf "GMG_TriPod" ||
         _x isKindOf "StaticMortar" ||
         _x isKindOf "HMG_01_base_F" ||
