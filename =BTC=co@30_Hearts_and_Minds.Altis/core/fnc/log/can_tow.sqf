@@ -6,7 +6,7 @@ params [
 
 private _array = [_tower] call btc_fnc_log_get_nottowable;
 
-if ((_array findif {_towed isKindOf _x}) != -1) exitWith {false};
+if ((_array findIf {_towed isKindOf _x}) != -1) exitWith {false};
 
 private _model_rear = ([_tower] call btc_fnc_log_hitch_points) select 1;
 private _model_front = ([_towed] call btc_fnc_log_hitch_points) select 0;

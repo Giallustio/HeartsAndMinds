@@ -3,7 +3,7 @@
 */
 params [
     ["_start", objNull, [objNull]],
-    ["_dest", [0, 0, 0], [[]]],
+    ["_dest", [0, 0, 0], [[], objNull]],
     ["_typeOf_patrol", 0, [0]],
     ["_veh_type", "", [""]]
 ];

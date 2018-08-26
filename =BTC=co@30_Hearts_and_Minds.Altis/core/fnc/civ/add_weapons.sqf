@@ -3,7 +3,7 @@ params [
 ];
 
 private _playableUnits = playableUnits inAreaArray [getPosWorld _unit, 50, 50];
-_hgun = _playableUnits findif {[_x, _unit] call btc_fnc_check_los} != -1;
+_hgun = _playableUnits findIf {[_x, _unit] call btc_fnc_check_los} != -1;
 
 private _weapon = [btc_w_civs select 1, btc_w_civs select 3] select _hgun;
 private _magazine = [btc_w_civs select 2, btc_w_civs select 4] select _hgun;

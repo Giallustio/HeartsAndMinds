@@ -1,5 +1,5 @@
 params [
-    ["_type", "", [""]],
+    ["_type", 1, [0]],
     ["_array_pos", [], [[]]],
     ["_array_type", [], [[]]],
     ["_side", east, [east]],
