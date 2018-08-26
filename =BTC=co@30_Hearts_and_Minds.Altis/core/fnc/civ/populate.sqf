@@ -20,7 +20,7 @@ for [{_i = 25}, {_i < _area}, {_i = _i + 50}] do {
 
 if (_houses isEqualTo []) exitWith {};
 
-for "_i" from 0 to _n do {
+for "_i" from 1 to _n do {
     if (_houses isEqualTo []) exitWith {};
 
     private _house = selectRandom _houses;

@@ -44,10 +44,17 @@ private _p_skill = [
     ("btc_p_set_skill_commanding" call BIS_fnc_getParamValue)/10//commanding
 ];
 
-//<< Gameplay options >>
-btc_p_sea  = ("btc_p_sea" call BIS_fnc_getParamValue) isEqualTo 1;
+//<< Spawn options >>
+btc_p_mil_group_ratio = ("btc_p_mil_group_ratio" call BIS_fnc_getParamValue)/100;
+btc_p_civ_group_ratio = ("btc_p_civ_group_ratio" call BIS_fnc_getParamValue)/100;
+private _wp_house_probability = ("btc_p_wp_house_probability" call BIS_fnc_getParamValue)/100;
 btc_p_veh_armed_ho = ("btc_p_veh_armed_ho" call BIS_fnc_getParamValue) isEqualTo 1;
 btc_p_veh_armed_spawn_more = ("btc_p_veh_armed_spawn_more" call BIS_fnc_getParamValue) isEqualTo 1;
+btc_p_patrol_max = "btc_p_patrol_max" call BIS_fnc_getParamValue;
+btc_p_civ_max_veh = "btc_p_civ_max_veh" call BIS_fnc_getParamValue;
+
+//<< Gameplay options >>
+btc_p_sea  = ("btc_p_sea" call BIS_fnc_getParamValue) isEqualTo 1;
 btc_p_side_mission_cycle = ("btc_p_side_mission_cycle" call BIS_fnc_getParamValue) isEqualTo 1;
 
 //<< Arsenal options >>
@@ -129,8 +136,10 @@ if (isServer) then {
     //FOB
     btc_fobs = [[], []];
 
+    //MIL
+    btc_p_mil_wp_ratios = [_wp_house_probability, (1 - _wp_house_probability)/1.5 + _wp_house_probability];
+
     //Patrol
-    btc_patrol_max = 8;
     btc_patrol_active = [];
     btc_patrol_area = 2500;
 
@@ -229,7 +238,6 @@ _allclasse = [[_p_civ_veh]] call btc_fnc_civ_class;
 btc_civ_type_veh = _allclasse select 2;
 btc_civ_type_boats = _allclasse select 1;
 
-btc_civ_max_veh = 10;
 btc_w_civs = ["V_Rangemaster_belt", "arifle_Mk20_F", "30Rnd_556x45_Stanag", "hgun_ACPC2_F", "9Rnd_45ACP_Mag"];
 btc_g_civs = ["HandGrenade", "MiniGrenade", "ACE_M84", "ACE_M84"];
 
@@ -279,8 +287,14 @@ if (isServer) then {
     private _rearming_static =
     [
         //"Static"
-        "B_Mortar_01_F"
-    ] + (_allclass select {(_x isKindOf "StaticGrenadeLauncher" || _x isKindOf "StaticMGWeapon") && (getNumber(configFile >> "CfgVehicles" >> _x >> "side") isEqualTo ([east, west, independent, civilian] find btc_player_side))});
+    ] + (_allclass select {(
+        _x isKindOf "GMG_TriPod" ||
+        _x isKindOf "StaticMortar" ||
+        _x isKindOf "HMG_01_base_F" ||
+        _x isKindOf "AA_01_base_F" ||
+        _x isKindOf "AT_01_base_F") && (
+        getNumber (configfile >> "CfgVehicles" >> _x >> "side") isEqualTo ([east, west, independent, civilian] find btc_player_side))
+    });
     ([_rearming_static] call btc_fnc_find_veh_with_turret) params ["_rearming_static", "_magazines_static"];
 
     ([btc_vehicles + btc_helo] call btc_fnc_log_getRearmMagazines) params ["_rearming_vehicles", "_rearming_magazines"];

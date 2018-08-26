@@ -13,7 +13,7 @@ private _pos = getPos _start;
 private _group = grpNull;
 switch (_typeOf_patrol) do {
     case 0 : {
-        _group = ([_pos, 150, 3 + random 6, 1] call btc_fnc_mil_create_group) select 0;
+        _group = ([_pos, 150, 3 + round random 6, 1] call btc_fnc_mil_create_group) select 0;
         _group setVariable ["no_cache", true];
         [_group] call CBA_fnc_clearWaypoints;
 
