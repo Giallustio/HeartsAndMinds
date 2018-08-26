@@ -278,15 +278,19 @@
         <Container name="Parameters: Spawn">
             <Key ID="STR_BTC_HAM_PARAM_SPAWN_TITLE">
                 <Original>&lt;&lt; Spawn options &gt;&gt;</Original>
+                <German>Spawn Einstellungen:</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_SPWAN_ENEMY_DENSITY">
                 <Original>Enemy density:</Original>
+                <German>Feinddichte:</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_SPWAN_CIVILIAN_DENSITY">
                 <Original>Civilian density:</Original>
+                <German>Zivilistendichte:</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_SPWAN_MIL_INHOUSE_DENSITY">
                 <Original>Density of military in house:</Original>
+                <German>Feinddichte in Gebäuden:</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_SPAWN_ARMEDHIDEOUT">
                 <Original>Add armed vehicles in Hideout:</Original>
@@ -298,9 +302,11 @@
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_SPWAN_PATROL_MAX">
                 <Original>Maximum number of military patrol:</Original>
+                <German>Maximale Anzahl feindl. Patrouillen:</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_SPWAN_CIV_MAX_VEH">
                 <Original>Maximum number of civilian patrol:</Original>
+                <German>Maximale Anzahl an ziviler Fahrzeuge:</German>
             </Key>
         </Container>
         <Container name="Parameters: IEDS">
