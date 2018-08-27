@@ -91,6 +91,8 @@ def btc_fnc_get_params(text):
                     _typeOf_index = 'Display'
                 elif ' [controlNull]]' in _typeOf_index:
                     _typeOf_index = 'Control'
+                elif ' [""]]' in _typeOf_index:
+                    _typeOf_index = 'String'
                 else:
                     _typeOf_index = ''
             parameters_array.append([btc_fnc_get_param(second), _typeOf_index])
@@ -107,7 +109,7 @@ def btc_fnc_get_typeOf_param(text):
     re16='( \\[\\{\\}\\]\\])|'
     re18='( \\[east\\]\\])|'
     re20='( \\[west\\]\\])|'
-    re22='( \\[displayNull\\]\\])'
+    re22='( \\[displayNull\\]\\])|'
     re24='( \\[controlNull\\]\\])'
 
     rg = re.compile(re2+re4+re6+re8+re10+re12+re14+re16+re18+re20+re22+re24,re.IGNORECASE|re.DOTALL)
