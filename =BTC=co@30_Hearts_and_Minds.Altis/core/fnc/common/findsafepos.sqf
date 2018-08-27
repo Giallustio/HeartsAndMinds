@@ -2,7 +2,7 @@ params [
     ["_check_pos", [0, 0, 0], [[]]],
     ["_mindist", 0, [0]],
     ["_random_area", 100, [0]],
-    ["_objdist", 0, []],
+    ["_objdist", 0, [0]],
     ["_allow_water", false, [false, 0]]
 ];
 
