@@ -1,7 +1,7 @@
 params [
     ["_type", 0, [0]], // 0 - Rifleman, 1 - Medic Adv, 2 - Medic Basic, 3 - Repair, 4 - Engineer, 5 - Anti-Tank, 6 - Anti Air, 7 - Sniper, 8 - Machine gunner
     ["_color", [[0, 1] select (worldName in ["Tanoa", "chernarus", "lingor3", "sara"]), 2] select (sunOrMoon isEqualTo 0), [0]], //0 - Desert, 1 - Tropic, 2 - Black
-    ["_isDay", 0, [0]], // false - night, true - day
+    ["_isDay", 0, [0, false]], // false - night, true - day
     ["_arsenal_loadout", btc_arsenal_loadout, [[]]]
 ];
 (_arsenal_loadout apply {_x select _color}) params ["_uniform", "_vest", "_helmet", "_hood", "_laserdesignator", "_night_vision", "_weapon", "_weapon_sniper", "_weapon_machineGunner", "_bipod", "_pistol", "_launcher_AT", "_launcher_AA", "_backpack", "_backpack_big", "_radio"];

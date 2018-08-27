@@ -1,7 +1,6 @@
 params [
     ["_pos", [0, 0, 0], [[]]]
 ];
-params ["_pos"];
 
 player setPosASL _pos;
 player addRating 9999;
