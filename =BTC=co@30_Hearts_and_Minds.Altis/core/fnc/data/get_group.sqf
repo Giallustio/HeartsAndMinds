@@ -34,12 +34,12 @@ _index_wp = (currentWaypoint _group) + 1;
 
 if (_group getVariable ["stop", false]) then {_type_db = 2;};
 if !(_group getVariable ["btc_inHouse", ""] isEqualTo "") then {_type_db = 3;
-    _array_veh = _group getVariable ["btc_inHouse", false];
+    _array_veh = _group getVariable ["btc_inHouse", ""];
 };
 if (_group getVariable ["getWeapons", false]) then {_type_db = 4;};
 if (_group getVariable ["suicider", false]) then {_type_db = 5;};
 if !(_group getVariable ["btc_data_inhouse", []] isEqualTo []) then {_type_db = 6;
-    _array_veh = _group getVariable ["btc_data_inhouse", false];
+    _array_veh = _group getVariable ["btc_data_inhouse", []];
 };
 if (_group getVariable ["btc_ied_drone", false]) then {_type_db = 7;};
 if ((vehicle leader _group != leader _group) && !(_type_db isEqualTo 7)) then {_type_db = 1;};

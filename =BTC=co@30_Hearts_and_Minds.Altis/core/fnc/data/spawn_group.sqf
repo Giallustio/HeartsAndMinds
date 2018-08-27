@@ -6,7 +6,7 @@ params [
     ["_array_dam", [], [[]]],
     ["_behaviour", [], [[]]],
     ["_array_wp", [], [[]]],
-    ["_array_veh", [], [[]]]
+    ["_array_veh", [], [[], ""]]
 ];
 
 private _group = createGroup _side;
