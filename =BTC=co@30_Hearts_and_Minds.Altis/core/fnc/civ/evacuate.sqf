@@ -1,4 +1,7 @@
-params ["_position", ["_position_evac", []]];
+params [
+    ["_position", [], [[]]],
+    ["_position_evac", [], [[]]]
+];
 
 private _civilians = (allUnits select {side _x isEqualTo civilian}) inAreaArray [_position, 200, 200];
 
@@ -20,7 +23,7 @@ if (_position_evac isEqualTo []) then {
     private _group = group _x;
     [_group] call CBA_fnc_clearWaypoints;
 
-    [_group, _position_evac, 20] spawn btc_fnc_civ_addWP;
+    [_group, _position_evac, 20] call btc_fnc_civ_addWP;
 } forEach _civilians;
 
 _civilians

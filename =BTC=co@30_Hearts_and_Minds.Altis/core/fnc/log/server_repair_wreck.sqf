@@ -1,4 +1,6 @@
-params ["_veh"];
+params [
+    ["_veh", objNull, [objNull]]
+];
 
 private _type = typeOf _veh;
 (getPosASL _veh) params ["_x", "_y", "_z"];

@@ -1,4 +1,7 @@
-params ["_order", ["_unit", objNull]];
+params [
+    ["_order", 0, [0]],
+    ["_unit", objNull, [objNull]]
+];
 
 private _gesture = ["", "gestureFreeze", "gestureCover", "gestureGo", "gestureGo"] select _order;
 

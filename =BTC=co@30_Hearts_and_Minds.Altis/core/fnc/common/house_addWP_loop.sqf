@@ -1,4 +1,7 @@
-params ["_group", "_house"];
+params [
+    ["_group", grpNull, [grpNull]],
+    ["_house", objNull, [objNull]]
+];
 
 private _allpositions = (_house buildingPos -1) call BIS_fnc_arrayShuffle;
 

@@ -1,4 +1,10 @@
-params ["_unit", "_part", "_dam", "_injurer", "_ammo"];
+params [
+    ["_unit", objNull, [objNull]],
+    ["_part", "", [""]],
+    ["_dam", 0, [0]],
+    ["_injurer", objNull, [objNull]],
+    ["_ammo", "", [""]]
+];
 
 if (_part in ["body", "wheel_1_1_steering", "wheel_1_2_steering", "wheel_2_1_steering", "wheel_2_2_steering", "palivo", "engine", "glass1", "glass2", "glass3", "glass4", "karoserie", "palivo", "fuel_hitpoint", "engine_hitpoint", "body_hitpoint"]) then {
     if (isPlayer _injurer && {_dam > 0.01}) then    {

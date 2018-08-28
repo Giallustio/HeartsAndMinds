@@ -1,4 +1,7 @@
-params [["_pos", [0, 0, 0]], ["_caller", objNull]];
+params [
+    ["_pos", [0, 0, 0], [[]]],
+    ["_caller", objNull, [objNull]]
+];
 
 if (!isPlayer _caller) exitWith {};
 if (alive _caller) then {

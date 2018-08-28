@@ -1,4 +1,7 @@
-params ["_unit", "_target"];
+params [
+    ["_unit", objNull, [objNull]],
+    ["_target", objNull, [objNull]]
+];
 
 (eyeDirection _unit) params ["_point1", "_point2"];
 private _atan = _point1 atan2 _point2;

@@ -1,4 +1,6 @@
-params ["_road"];
+params [
+    ["_road", objNull, [objNull]]
+];
 
 private _roadConnectedTo = roadsConnectedTo _road;
 if (_roadConnectedTo isEqualTo []) exitWith {0};

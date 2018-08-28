@@ -1,8 +1,13 @@
+params [
+    ["_gear_object", btc_gear_object, [""]],
+    ["_create_object", btc_create_object, [objNull]]
+];
+
 private _color = [1, 0.5, 0,1];
 
-private _gear_object_pos = getPos btc_gear_object;
+private _gear_object_pos = getPos _gear_object;
 _gear_object_pos params ["_gear_object_pos_x", "_gear_object_pos_y", "_gear_object_pos_z"];
-private _create_object_pos = getPos btc_create_object;
+private _create_object_pos = getPos _create_object;
 _create_object_pos params ["_create_object_pos_x", "_create_object_pos_y", "_create_object_pos_z"];
 
 private _array = [

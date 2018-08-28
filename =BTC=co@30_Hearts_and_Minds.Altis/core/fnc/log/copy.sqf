@@ -1,6 +1,9 @@
-params ["_create_object_point"];
+params [
+    ["_create_object_point", objNull, [objNull]],
+    ["_containers_mat", btc_containers_mat, [objNull]]
+];
 
-private _objects = nearestObjects [_create_object_point, btc_containers_mat, 3];
+private _objects = nearestObjects [_create_object_point, _containers_mat, 3];
 
 if (_objects isEqualTo []) exitWith {hint localize "STR_BTC_HAM_O_COPY_NOCONTAINER"}; //No container around!
 

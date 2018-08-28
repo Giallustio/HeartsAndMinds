@@ -1,4 +1,6 @@
-params ["_pos"];
+params [
+    ["_pos", [0, 0, 0], [[]]]
+];
 
 private _type_bigbox = selectRandom ["Box_FIA_Ammo_F", "C_supplyCrate_F", "Box_East_AmmoVeh_F"];
 

@@ -1,4 +1,6 @@
-params ["_get_civ_faction"];
+params [
+    ["_get_civ_faction", "EN", [""]]
+];
 
 private _faction_list = if (_get_civ_faction isEqualTo "CIV") then {[3]} else {[0, 1, 2]};
 

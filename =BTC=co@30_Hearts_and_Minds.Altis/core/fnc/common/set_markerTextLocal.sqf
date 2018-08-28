@@ -1,7 +1,7 @@
 params [
-    ["_marker", ""],
-    ["_text", ""],
-    ["_arg", ""]
+    ["_marker", "", [""]],
+    ["_text", "", [""]],
+    ["_arg", "", ["", 0]]
 ];
 
 //check for localized text

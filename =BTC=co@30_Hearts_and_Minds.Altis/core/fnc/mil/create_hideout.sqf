@@ -1,10 +1,10 @@
 params [
-    ["_pos", []],
-    ["_id_hideout", btc_hideouts_id],
-    ["_rinf_time", time],
-    ["_cap_time", time - btc_hideout_cap_time],
-    ["_id", 0],
-    ["_markers_saved", []]
+    ["_pos", [], [[]]],
+    ["_id_hideout", btc_hideouts_id, [0]],
+    ["_rinf_time", time, [0]],
+    ["_cap_time", time - btc_hideout_cap_time, [0]],
+    ["_id", 0, [0]],
+    ["_markers_saved", [], [[]]]
 ];
 
 private _city = objNull;
@@ -33,13 +33,8 @@ _city setPos _pos;
 _city setVariable ["ho_pos", _pos];
 if (btc_debug) then {deleteMarker format ["loc_%1", _id];};
 deleteVehicle (_city getVariable ["trigger_player_side", objNull]);
-private _radius_x = btc_hideouts_radius;
-private _radius_y = btc_hideouts_radius;
 
-[_pos, _radius_x, _radius_y, _city, _city getVariable "occupied", _city getVariable "name", _city getVariable "type", _city getVariable "id"] call btc_fnc_city_trigger_player_side;
-
-_city setVariable ["RadiusX", _radius_x];
-_city setVariable ["RadiusY", _radius_y];
+[_pos, btc_hideouts_radius, btc_hideouts_radius, _city, _city getVariable "occupied", _city getVariable "name", _city getVariable "type", _city getVariable "id"] call btc_fnc_city_trigger_player_side;
 
 private _hideout = [_pos] call btc_fnc_mil_create_hideout_composition;
 clearWeaponCargoGlobal _hideout;

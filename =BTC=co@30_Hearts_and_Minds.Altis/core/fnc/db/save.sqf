@@ -1,3 +1,7 @@
+params [
+    ["_name", worldName, [""]]
+];
+
 if (btc_debug) then {
     ["...1", __FILE__, [btc_debug, false, true]] call btc_fnc_debug_message;
 };
@@ -5,7 +9,6 @@ if (btc_debug) then {
 [8] remoteExec ["btc_fnc_show_hint", 0];
 
 btc_db_is_saving = true;
-private _name = worldName;
 
 for "_i" from 0 to (count btc_city_all - 1) do {
     private _s = [_i] spawn btc_fnc_city_de_activate;

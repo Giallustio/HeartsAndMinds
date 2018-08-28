@@ -1,4 +1,6 @@
-params ["_vehicle"];
+params [
+    ["_vehicle", objNull, [objNull]]
+];
 
 private _marker = createMarker [format ["m_%1", _vehicle], getPos _vehicle];
 _marker setMarkerType "mil_box";
@@ -8,7 +10,7 @@ _marker setMarkerColor "ColorRed";
 _vehicle setVariable ["marker", _marker];
 
 if (isServer) then {
-    btc_rep_malus_veh_killed spawn btc_fnc_rep_change;
+    btc_rep_malus_veh_killed call btc_fnc_rep_change;
 } else {
     btc_rep_malus_veh_killed remoteExec ["btc_fnc_rep_change", 2];
 };

@@ -1,4 +1,12 @@
-params ["_id"];
+params [
+    ["_id", 0, [0]],
+    ["_p_mil_group_ratio", btc_p_mil_group_ratio, [0]],
+    ["_p_civ_group_ratio", btc_p_civ_group_ratio, [0]],
+    ["_p_civ_max_veh", btc_p_civ_max_veh, [0]],
+    ["_p_patrol_max", btc_p_patrol_max, [0]],
+    ["_wp_ratios", btc_p_mil_wp_ratios, [[]]]
+];
+_wp_ratios params ["_wp_house", "_wp_sentry"];
 
 if (btc_debug) then {
     hint ("Activate " + str _id);
@@ -68,52 +76,48 @@ if !(_data_units isEqualTo []) then {
         };
     } forEach _data_units;
 } else {
-    //Spawn bad guys "NameVillage","NameCity","NameCityCapital","NameLocal"
-    private _ratio = (switch _type do {
-        case "Hill" : {0.6};
-        case "NameLocal" : {0.75};
-        case "NameVillage" : {1};
-        case "NameCity" : {2};
-        case "NameCityCapital" : {4};
-        case "Airport" : {4};
-        case "NameMarine" : {0.6};
-        default {0.1};
+    // Maximum number of enemy group
+    private _max_number_group = (switch _type do {
+        case "Hill" : {1};
+        case "NameLocal" : {2};
+        case "NameVillage" : {3};
+        case "NameCity" : {7};
+        case "NameCityCapital" : {15};
+        case "Airport" : {15};
+        case "NameMarine" : {1};
+        default {0};
     });
 
     if (_has_en) then {
-        //Find a better way to randomize city occupation
-        private _n = random 3;
-        private _groups = ceil ((1 + _n) * _ratio);
-        for "_i" from 1 to (_groups) do {[_city, _radius, 1 + random _ratio, random 1] call btc_fnc_mil_create_group;};
+        for "_i" from 1 to (round (_p_mil_group_ratio * (1 + random _max_number_group))) do {[_city, _radius, 1 + round random [0, 1, 2] , random 1] call btc_fnc_mil_create_group;};
     };
 
     //Spawn civilians
     if (_type != "Hill") then {
-        private _factor = (switch _type do {
-            case "NameLocal" : {0.5};
-            case "NameVillage" : {1.5};
-            case "NameCity" : {3};
-            case "NameCityCapital" : {6};
-            case "Airport" : {1.5};
-            default {1};
+        private _max_number_group = (switch _type do {
+            case "NameLocal" : {3};
+            case "NameVillage" : {6};
+            case "NameCity" : {10};
+            case "NameCityCapital" : {19};
+            case "Airport" : {6};
+            default {2};
         });
-        private _n = 3 * _factor;
-        [_city, _radius/3, _n] call btc_fnc_civ_populate;
+        [_city, _radius/3, round (_p_civ_group_ratio * random _max_number_group)] call btc_fnc_civ_populate;
     };
 };
 
 if (_has_en) then {
-    private _trigger = createTrigger["EmptyDetector", getPos _city];
-    _trigger setTriggerArea[_radius_x + _radius_y, _radius_x + _radius_y, 0, false];
-    _trigger setTriggerActivation[str btc_enemy_side, "NOT PRESENT", false];
-    _trigger setTriggerStatements ["this", format ["[%1] spawn btc_fnc_city_set_clear", _id], ""];
+    private _trigger = createTrigger ["EmptyDetector", getPos _city];
+    _trigger setTriggerArea [_radius_x + _radius_y, _radius_x + _radius_y, 0, false];
+    _trigger setTriggerActivation [str btc_enemy_side, "NOT PRESENT", false];
+    _trigger setTriggerStatements ["this", format ["[%1] call btc_fnc_city_set_clear", _id], ""];
     _city setVariable ["trigger", _trigger];
 };
 
 if (_city getVariable ["spawn_more", false]) then {
     _city setVariable ["spawn_more", false];
-    for "_i" from 1 to (2 + round random 3) do {
-        [_city, _radius, 4 + random 3, random 1] call btc_fnc_mil_create_group;
+    for "_i" from 1 to (round (_p_mil_group_ratio * (2 + random 3))) do {
+        [_city, _radius, 4 + round random 3, random 1] call btc_fnc_mil_create_group;
     };
     if (btc_p_veh_armed_spawn_more) then {
         private _closest = [_city, btc_city_all select {!(_x getVariable ["active", false])}, false] call btc_fnc_find_closecity;
@@ -126,8 +130,8 @@ if (_city getVariable ["spawn_more", false]) then {
 if !(btc_cache_pos isEqualTo []) then {
     if (_city inArea [btc_cache_pos, _radius_x + _radius_y, _radius_x + _radius_y, 0, false]) then {
         if (count (btc_cache_pos nearEntities ["Man", 30]) > 3) exitWith {};
-        [btc_cache_pos, 8, 3, 0.2] call btc_fnc_mil_create_group;
-        [btc_cache_pos, 60, 4, 0.5] call btc_fnc_mil_create_group;
+        [btc_cache_pos, 8, 3, _wp_house] call btc_fnc_mil_create_group;
+        [btc_cache_pos, 60, 4, _wp_sentry] call btc_fnc_mil_create_group;
         if (btc_p_veh_armed_spawn_more) then {
             private _closest = [_city, btc_city_all select {!(_x getVariable ["active", false])}, false] call btc_fnc_find_closecity;
             for "_i" from 1 to (1 + round random 3) do {
@@ -140,9 +144,9 @@ if !(btc_cache_pos isEqualTo []) then {
 if (_has_ho && {!(_city getVariable ["ho_units_spawned", false])}) then {
     _city setVariable ["ho_units_spawned", true];
     private _pos = _city getVariable ["ho_pos", getPos _city];
-    [_pos, 20, 10 + random 6, 0.8] call btc_fnc_mil_create_group;
-    [_pos, 120, 1 + random 2, 0.5] call btc_fnc_mil_create_group;
-    [_pos, 120, 1 + random 2, 0.5] call btc_fnc_mil_create_group;
+    [_pos, 20, 10 + round (_p_mil_group_ratio * random 6), 1.1] call btc_fnc_mil_create_group;
+    [_pos, 120, 1 + round random 2, _wp_sentry] call btc_fnc_mil_create_group;
+    [_pos, 120, 1 + round random 2, _wp_sentry] call btc_fnc_mil_create_group;
     private _random = random 1;
     switch (true) do {
         case (_random < 0.3) : {};
@@ -183,11 +187,11 @@ _city setVariable ["activating", false];
 //Patrol
 btc_patrol_active = btc_patrol_active - [grpNull];
 private _number_patrol_active = count btc_patrol_active;
-if (_number_patrol_active < btc_patrol_max) then {
+if (_number_patrol_active < _p_patrol_max) then {
     private _n = 0;
     private _r = 0;
     if (_has_en) then {_n = round (random 3 + (3/2));} else {_n = round random 2;};
-    private _av = btc_patrol_max - _number_patrol_active;
+    private _av = _p_patrol_max - _number_patrol_active;
     private _d = _n - _av;
     _r = if (_d > 0) then {_n - _d;} else {_n;};
     for "_i" from 1 to _r do {
@@ -201,11 +205,11 @@ if (_number_patrol_active < btc_patrol_max) then {
 //Traffic
 btc_civ_veh_active = btc_civ_veh_active - [grpNull];
 private _number_civ_veh_active = count btc_civ_veh_active;
-if (_number_civ_veh_active < btc_civ_max_veh) then {
+if (_number_civ_veh_active < _p_civ_max_veh) then {
     private _n = 0;
     private _r = 0;
     _n = round (random 3 + (3/2));
-    private _av = btc_civ_max_veh - _number_civ_veh_active;
+    private _av = _p_civ_max_veh - _number_civ_veh_active;
     private _d = _n - _av;
     _r = if (_d > 0) then {_n - _d;} else {_n;};
     for "_i" from 1 to _r do {

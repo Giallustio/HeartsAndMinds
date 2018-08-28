@@ -1,4 +1,6 @@
-params ["_id"];
+params [
+    ["_id", 0, [0]]
+];
 
 private _city = btc_city_all select _id;
 
@@ -48,6 +50,6 @@ if !(_city getVariable ["active", false]) exitWith {};
         [] call btc_fnc_mil_check_cap;
     };
 
-    call btc_fnc_clean_up;
+    [] call btc_fnc_clean_up;
 
 }, [_city, _id]] call CBA_fnc_waitUntilAndExecute;

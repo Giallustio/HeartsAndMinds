@@ -1,4 +1,8 @@
-params ["_city", "_area", "_n"];
+params [
+    ["_city", objNull, [objNull]],
+    ["_area", 100, [0]],
+    ["_n", 1, [0]]
+];
 
 private _pos = getPos _city;
 private _array = _city getVariable ["ieds", []];

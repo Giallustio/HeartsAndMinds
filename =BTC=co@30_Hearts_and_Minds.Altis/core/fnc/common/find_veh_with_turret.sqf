@@ -1,4 +1,6 @@
-params ["_vehicles"];
+params [
+    ["_vehicles", [], [[]]]
+];
 
 private _typeOf_vehicles = if ((_vehicles select 0) isEqualType objNull) then {
     _vehicles apply {typeOf _x}

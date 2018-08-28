@@ -2,7 +2,9 @@
 
 disableSerialization;
 
-params ["_display"];
+params [
+    ["_display", displayNull, [displayNull]]
+];
 
 private _GRPframes = _display displayCtrl 9901;
 private _TXTfps = _display displayCtrl 1000;

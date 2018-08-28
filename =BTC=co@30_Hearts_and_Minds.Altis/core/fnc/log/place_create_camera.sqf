@@ -1,4 +1,7 @@
-params ["_terminal", "_campos"];
+params [
+    ["_terminal", objNull, [objNull]],
+    ["_campos", [0, 0, 0], [[]]]
+];
 
 _terminal setObjectTexture [0, "#(argb,512,512,1)r2t(uavrtt,1)"];
 

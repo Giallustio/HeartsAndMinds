@@ -1,4 +1,6 @@
-params ["_asker"];
+params [
+    ["_asker", objNull, [objNull]]
+];
 
 private _id = 1;
 private _n = random 100;

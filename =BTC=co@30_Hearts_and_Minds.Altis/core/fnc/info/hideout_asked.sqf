@@ -1,4 +1,8 @@
-params ["_name", "_is_real", ["_text", ""]];
+params [
+    ["_name", "Vdauphin", [""]],
+    ["_is_real", true, [true]],
+    ["_text", "", [""]]
+];
 
 if (_is_real) then {
     btc_int_ask_data = nil;

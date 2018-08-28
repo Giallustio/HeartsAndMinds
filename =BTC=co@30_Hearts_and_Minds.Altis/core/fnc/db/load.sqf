@@ -1,5 +1,6 @@
-
-private _name = worldName;
+params [
+    ["_name", worldName, [""]]
+];
 
 setDate (profileNamespace getVariable [format ["btc_hm_%1_date", _name], date]);
 

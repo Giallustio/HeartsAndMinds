@@ -1,4 +1,6 @@
-params [["_pos", [0, 0, 0]]];
+params [
+    ["_pos", [0, 0, 0], [[]]]
+];
 _pos params ["_x", "_y"];
 
 _posASL = [_x, _y, getTerrainHeightASL _pos];

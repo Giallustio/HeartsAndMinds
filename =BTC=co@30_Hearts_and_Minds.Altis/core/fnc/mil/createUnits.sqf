@@ -1,13 +1,13 @@
 params [
-    "_group",
-    ["_pos", [0, 0, 0]],
-    ["_number", 0],
-    ["_pos_iswater", false],
-    ["_type_units", btc_type_units],
-    ["_type_divers", btc_type_divers]
+    ["_group", grpNull, [grpNull]],
+    ["_pos", [0, 0, 0], [[]]],
+    ["_number", 0, [0]],
+    ["_pos_iswater", false, [false]],
+    ["_type_units", btc_type_units, [[]]],
+    ["_type_divers", btc_type_divers, [[]]]
 ];
 
-for "_i" from 0 to _number do {
+for "_i" from 1 to _number do {
     private _unit_type = if (_pos_iswater) then {
         selectRandom _type_divers;
     } else {

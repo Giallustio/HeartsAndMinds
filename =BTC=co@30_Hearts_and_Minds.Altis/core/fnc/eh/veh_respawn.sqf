@@ -1,4 +1,6 @@
-params ["_vehicle"];
+params [
+    ["_vehicle", objNull, [objNull]]
+];
 
 private _data = _vehicle getVariable ["data_respawn", []];
 

@@ -1,4 +1,8 @@
-params ["_unit", "_order", "_wp_pos"];
+params [
+    ["_unit", objNull, [objNull]],
+    ["_order", 0, [0]],
+    ["_wp_pos", [0, 0, 0], [[]]]
+];
 
 private _group = group _unit;
 
@@ -50,5 +54,5 @@ _unit setBehaviour _behaviour;
 _unit doMove getPos _unit;
 
 if (_unit isEqualTo vehicle _unit) then {
-    [_group] spawn btc_fnc_civ_addWP;
+    [_group] call btc_fnc_civ_addWP;
 };

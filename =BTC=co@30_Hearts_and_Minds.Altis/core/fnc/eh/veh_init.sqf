@@ -1,4 +1,6 @@
-params ["_type"];
+params [
+    ["_type", "", [""]]
+];
 
 if (isNil "btc_actions_veh") then {btc_actions_veh = [];};
 if ((btc_actions_veh pushBackUnique _type) isEqualTo -1) exitWith {};

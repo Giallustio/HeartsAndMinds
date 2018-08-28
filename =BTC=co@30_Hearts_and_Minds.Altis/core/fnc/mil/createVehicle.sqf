@@ -1,11 +1,11 @@
 params [
-    "_group",
-    ["_pos", [0, 0, 0]],
-    ["_veh_type", selectRandom btc_type_motorized],
+    ["_group", grpNull, [grpNull]],
+    ["_pos", [0, 0, 0], [[]]],
+    ["_veh_type", selectRandom btc_type_motorized, [""]],
     ["_dir", 0, [0]],
-    ["_type_units", btc_type_units],
-    ["_type_divers", btc_type_divers],
-    ["_type_crewmen", btc_type_crewmen]
+    ["_type_units", btc_type_units, [[]]],
+    ["_type_divers", btc_type_divers, [[]]],
+    ["_type_crewmen", btc_type_crewmen, [[]]]
 ];
 
 private _needdiver = getText (configFile >> "CfgVehicles" >> _veh_type >> "simulation") isEqualTo "submarinex";
@@ -17,7 +17,7 @@ _group selectLeader (driver _veh);
 _units joinSilent _group;
 {_x call btc_fnc_mil_unit_create} forEach _units;
 
-private _cargo = (_veh emptyPositions "cargo") - 1;
+private _cargo = _veh emptyPositions "cargo";
 [_group, _pos, _cargo, _needdiver, _type_units, _type_divers] call btc_fnc_mil_createUnits;
 
 _veh

@@ -1,4 +1,6 @@
-params ["_unit"];
+params [
+    ["_unit", objNull, [objNull]]
+];
 
 _unit setskill ["general", btc_AI_skill select 0];
 _unit setskill ["aimingAccuracy", btc_AI_skill select 1];

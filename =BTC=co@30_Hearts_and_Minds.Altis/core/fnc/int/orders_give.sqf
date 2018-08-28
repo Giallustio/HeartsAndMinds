@@ -1,4 +1,9 @@
-params ["_units", "_dir", "_order", ["_wp_pos", []]];
+params [
+    ["_units", [], [[]]],
+    ["_dir", 0, [0]],
+    ["_order", 0, [0]],
+    ["_wp_pos", [], [[]]]
+];
 
 _units = _units select {!(group _x getVariable ["suicider", false]) && ((side _x) isEqualTo civilian)};
 

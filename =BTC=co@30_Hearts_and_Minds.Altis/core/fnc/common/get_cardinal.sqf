@@ -1,4 +1,6 @@
-params ["_n"];
+params [
+    ["_n", 0, [0]]
+];
 
 private _card = "";
 switch (true) do {

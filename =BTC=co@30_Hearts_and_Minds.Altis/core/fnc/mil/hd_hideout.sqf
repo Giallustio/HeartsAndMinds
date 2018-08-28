@@ -1,3 +1,13 @@
+params [
+    ["_hideout", objNull, [objNull]],
+    ["_selection", "", [""]],
+    ["_damage", 0, [0]],
+    ["_source", objNull, [objNull]],
+    ["_ammo", "", [""]],
+    ["_hitIndex", 0, [0]],
+    ["_instigator", objNull, [objNull]],
+    ["_hitPoint", "", [""]]
+];
 params ["_hideout", "_selection", "_damage", "_source", "_ammo", "_hitIndex", "_instigator", "_hitPoint"];
 
 private _explosive = getNumber(configFile >> "cfgAmmo" >> _ammo >> "explosive") > 0;

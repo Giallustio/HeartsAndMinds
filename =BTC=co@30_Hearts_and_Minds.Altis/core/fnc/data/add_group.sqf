@@ -3,7 +3,9 @@
     Ifnot: save in database and delete units by calling btc_fnc_data_get_group.
 */
 
-params ["_group"];
+params [
+    ["_group", grpNull, [grpNull]]
+];
 
 if (btc_debug_log) then {
     [format ["%1", _group], __FILE__, [false]] call btc_fnc_debug_message;
@@ -23,7 +25,7 @@ if (_city getVariable ["marker", ""] != "") then {
 private _wp = if (vehicle leader _group isEqualTo leader _group) then {
     random 1;
 } else {
-    if ((vehicle leader _group) isKindOf "Air") then     {
+    if ((vehicle leader _group) isKindOf "Air") then {
         0.7;
     } else {
         0.3 + random 0.7;

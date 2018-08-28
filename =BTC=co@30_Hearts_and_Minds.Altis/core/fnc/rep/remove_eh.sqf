@@ -1,4 +1,6 @@
-params ["_civilian"];
+params [
+    ["_civilian", objNull, [objNull]]
+];
 
 private _data = _civilian getVariable ["btc_rep_eh_added", []];
 

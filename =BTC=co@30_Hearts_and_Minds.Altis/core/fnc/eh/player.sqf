@@ -1,4 +1,6 @@
-params ["_player"];
+params [
+    ["_player", objNull, [objNull]]
+];
 
 _player addEventHandler ["Respawn", format ["[%1] call btc_fnc_eh_player_respawn", getPosASL player]];
 _player addEventHandler ["CuratorObjectPlaced", btc_fnc_eh_CuratorObjectPlaced];

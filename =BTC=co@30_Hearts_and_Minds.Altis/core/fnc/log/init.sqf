@@ -1,4 +1,6 @@
-params [["_obj", objNull]];
+params [
+    ["_obj", objNull, [objNull]]
+];
 
 btc_log_obj_created pushBack _obj;
 btc_curator addCuratorEditableObjects [[_obj], false];

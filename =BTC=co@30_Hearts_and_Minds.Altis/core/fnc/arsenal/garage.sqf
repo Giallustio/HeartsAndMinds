@@ -1,4 +1,6 @@
-params ["_current_garage"];
+params [
+    ["_current_garage", objNull, [objNull]]
+];
 
 if (count (nearestObjects [_current_garage, ["All"], 5]) > 1) exitWith {
     hint localize "STR_BTC_HAM_LOG_BASICS_CLEARAREA"; //Clear the area before create another object!

@@ -1,4 +1,7 @@
-params ["_isReal", "_showHint"];
+params [
+    ["_isReal", true, [true]],
+    ["_showHint", 0, [0]]
+];
 
 if (isNull btc_cache_obj) exitWith {};
 

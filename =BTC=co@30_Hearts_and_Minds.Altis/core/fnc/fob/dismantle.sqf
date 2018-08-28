@@ -1,4 +1,6 @@
-params ["_flag"];
+params [
+    ["_flag", objNull, [objNull]]
+];
 
 hint format [localize "STR_BTC_HAM_O_FOB_DISMANTLE_H_PROC"]; //"Dismantle, move out ..."
 sleep 10;

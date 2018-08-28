@@ -1,4 +1,6 @@
-params ["_civilian"];
+params [
+    ["_civilian", objNull, [objNull]]
+];
 
 if !((_civilian getVariable ["btc_rep_eh_added", []]) isEqualTo []) exitWith {true};
 

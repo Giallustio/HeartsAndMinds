@@ -1,4 +1,6 @@
-params ["_driver_drone"];
+params [
+    ["_driver_drone", objNull, [objNull]]
+];
 
 [group _driver_drone] call CBA_fnc_clearWaypoints;
 

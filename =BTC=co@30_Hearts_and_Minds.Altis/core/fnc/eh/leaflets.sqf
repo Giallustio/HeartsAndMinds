@@ -1,4 +1,7 @@
-params ["_uav", "_weapon"];
+params [
+    ["_uav", objNull, [objNull]],
+    ["_weapon", "", [""]]
+];
 
 if (btc_debug) then {
     [format ["%1 fired with %2", typeOf _uav, _weapon], __FILE__, [btc_debug, false]] call btc_fnc_debug_message;

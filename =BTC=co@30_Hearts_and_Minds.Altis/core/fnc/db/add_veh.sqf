@@ -1,4 +1,6 @@
-params ["_veh"];
+params [
+    ["_veh", objNull, [objNull]]
+];
 
 if !(isServer) exitWith {
     _veh remoteExec ["btc_fnc_db_add_veh", 2];
