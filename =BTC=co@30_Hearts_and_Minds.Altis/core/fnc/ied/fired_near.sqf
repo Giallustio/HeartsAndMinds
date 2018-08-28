@@ -1,4 +1,7 @@
-params ["_wreck", "_ied"];
+params [
+    ["_wreck", objNull, [objNull]],
+    ["_ied", objNull, [objNull]]
+];
 
 (getPos _ied) params ["_x", "_y", "_z"];
 private _pos = [_x, _y, _z + 0.5];
@@ -15,8 +18,8 @@ _array = [];
             {
                 private _b = _x;
                 private _bullet = typeOf _b;
-                if (["SmokeShell", "FlareCore", "IRStrobeBase", "GrenadeHand_stone", "Smoke_120mm_AMOS_White", "TMR_R_DG32V_F"] findif {_bullet isKindOf _x} != -1) exitWith {};
-                if (["TimeBombCore", "BombCore", "Grenade"] findif {_bullet isKindOf _x} != -1) then {
+                if (["SmokeShell", "FlareCore", "IRStrobeBase", "GrenadeHand_stone", "Smoke_120mm_AMOS_White", "TMR_R_DG32V_F"] findIf {_bullet isKindOf _x} != -1) exitWith {};
+                if (["TimeBombCore", "BombCore", "Grenade"] findIf {_bullet isKindOf _x} != -1) then {
                     if !(_b in _array) then {
                         _array pushBack _b;
                         [{!Alive _b}, {

@@ -1,4 +1,6 @@
-params ["_unit"];
+params [
+    ["_unit", objNull, [objNull]]
+];
 
 _unit call btc_fnc_civ_unit_create;
 

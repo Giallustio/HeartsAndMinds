@@ -1,6 +1,7 @@
 // Author : sethduda for AdvancedTowing
-
-params ["_vehicle"];
+params [
+    ["_vehicle", objNull, [objNull]]
+];
 
 // Correct width and length factor for air
 private _widthFactor = 0.75;

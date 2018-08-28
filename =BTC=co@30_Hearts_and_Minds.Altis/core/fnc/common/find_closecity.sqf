@@ -1,4 +1,8 @@
-params ["_obj", "_array", "_isOccupied"];
+params [
+    ["_obj", objNull, [objNull]],
+    ["_array", [], [[]]],
+    ["_isOccupied", true, [true]]
+];
 
 private _city_all_distance = [];
 if (_isOccupied) then {

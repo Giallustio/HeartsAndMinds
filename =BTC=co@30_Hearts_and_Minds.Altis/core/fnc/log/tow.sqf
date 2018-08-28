@@ -1,4 +1,6 @@
-params ["_tower"];
+params [
+    ["_tower", objNull, [objNull]]
+];
 
 btc_int_ask_data = nil;
 [4, _tower] remoteExecCall ["btc_fnc_int_ask_var", 2];

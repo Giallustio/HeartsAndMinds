@@ -1,4 +1,9 @@
-params ["_pos", "_type", "_dir", "_active"];
+params [
+    ["_pos", [0, 0, 0], [[]]],
+    ["_type", "", [""]],
+    ["_dir", 0, [0]],
+    ["_active", false, [false]]
+];
 
 if (btc_debug_log) then {
     [format ["%1", _this], __FILE__, [false]] call btc_fnc_debug_message;

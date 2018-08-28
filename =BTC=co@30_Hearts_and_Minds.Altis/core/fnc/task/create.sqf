@@ -1,6 +1,6 @@
 params [
     ["_task_id", "0", [0, ""]],
-    ["_destination", objNull, [objNull, []]],
+    ["_destination", [], [objNull, []]],
     ["_location", "", [""]]
 ];
 

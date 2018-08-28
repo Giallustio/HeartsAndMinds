@@ -1,4 +1,6 @@
-params ["_placing_obj"];
+params [
+    ["_placing_obj", objNull, [objNull]]
+];
 
 btc_log_placing_obj = _placing_obj;
 

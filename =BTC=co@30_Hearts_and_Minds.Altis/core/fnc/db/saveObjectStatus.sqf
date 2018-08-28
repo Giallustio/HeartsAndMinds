@@ -1,4 +1,6 @@
-params ["_object"];
+params [
+    ["_object", objNull, [objNull]]
+];
 
 private _data = [];
 

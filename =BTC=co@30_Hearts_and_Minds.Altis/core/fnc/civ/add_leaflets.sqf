@@ -1,4 +1,7 @@
-params ["_player", "_uav"];
+params [
+    ["_player", objNull, [objNull]],
+    ["_uav", objNull, [objNull]]
+];
 
 if !(_uav isKindOf "UAV_06_base_F") exitWith {};
 

@@ -1,4 +1,13 @@
-params ["_civ", "_vehicle", "_distance", "_weapon", "_muzzle", "_mode", "_ammo", "_gunner"];
+params [
+    ["_civ", objNull, [objNull]],
+    ["_vehicle", objNull, [objNull]],
+    ["_distance", 0, [0]],
+    ["_weapon", "", [""]],
+    ["_muzzle", "", [""]],
+    ["_mode", "", [""]],
+    ["_ammo", "", [""]],
+    ["_gunner", objNull, [objNull]]
+];
 
 if (_ammo isKindOf "SmokeShell") exitWith {};
 

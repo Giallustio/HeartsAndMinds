@@ -1,4 +1,7 @@
-params ["_ied", "_unit"];
+params [
+    ["_ied", objNull, [objNull]],
+    ["_unit", objNull, [objNull]]
+];
 
 private _type_ied = typeOf _ied;
 if ((_type_ied select [0, _type_ied find "_"]) in (btc_type_ieds_ace apply {_x select [0, _x find "_"]})) then {

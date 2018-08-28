@@ -1,4 +1,6 @@
-params ["_display"];
+params [
+    ["_display", controlNull, [controlNull]]
+];
 
 private _units = btc_units_owners apply {_x select 0};
 private _owners = btc_units_owners apply {_x select 1};

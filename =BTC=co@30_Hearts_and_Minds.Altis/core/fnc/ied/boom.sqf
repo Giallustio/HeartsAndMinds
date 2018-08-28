@@ -1,4 +1,7 @@
-params ["_wreck", "_ied"];
+params [
+    ["_wreck", objNull, [objNull]],
+    ["_ied", objNull, [objNull]]
+];
 
 if (btc_debug_log) then {
     [format ["%1 - POS %2", [_wreck, _ied], getPos _wreck], __FILE__, [false]] call btc_fnc_debug_message;

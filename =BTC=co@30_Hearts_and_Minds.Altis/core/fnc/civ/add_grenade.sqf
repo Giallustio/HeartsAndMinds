@@ -1,4 +1,6 @@
-params ["_unit"];
+params [
+    ["_unit", objNull, [objNull]]
+];
 
 _unit addMagazines [selectRandom btc_g_civs, 1];
 

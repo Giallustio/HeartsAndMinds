@@ -110,7 +110,7 @@ if (_has_en) then {
     private _trigger = createTrigger ["EmptyDetector", getPos _city];
     _trigger setTriggerArea [_radius_x + _radius_y, _radius_x + _radius_y, 0, false];
     _trigger setTriggerActivation [str btc_enemy_side, "NOT PRESENT", false];
-    _trigger setTriggerStatements ["this", format ["[%1] spawn btc_fnc_city_set_clear", _id], ""];
+    _trigger setTriggerStatements ["this", format ["[%1] call btc_fnc_city_set_clear", _id], ""];
     _city setVariable ["trigger", _trigger];
 };
 

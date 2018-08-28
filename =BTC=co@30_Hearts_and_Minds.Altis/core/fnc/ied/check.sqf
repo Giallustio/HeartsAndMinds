@@ -1,4 +1,7 @@
-params ["_city", "_ieds"];
+params [
+    ["_city", objNull, [objNull]],
+    ["_ieds", [objNull], [[]]]
+];
 
 if (btc_debug) then {
     [format ["START CITY ID %1", _city getVariable "id"], __FILE__, [btc_debug, false]] call btc_fnc_debug_message;

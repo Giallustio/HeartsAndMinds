@@ -1,4 +1,8 @@
-params ["_object", "_holder", "_pos_type"];
+params [
+    ["_object", objNull, [objNull]],
+    ["_holder", objNull, [objNull]],
+    ["_pos_type", "", [""]]
+];
 
 private _bbr = (boundingBoxReal _object) params ["_p1", "_p2"];
 private _height_box = abs ((_p2 select 2) - (_p1 select 2)) + ((boundingCenter _object) select 2);

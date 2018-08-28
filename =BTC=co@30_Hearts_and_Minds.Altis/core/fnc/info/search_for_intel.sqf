@@ -1,4 +1,6 @@
-params ["_target"];
+params [
+    ["_target", objNull, [objNull]]
+];
 
 private _onFinish = {
     params ["_args"];

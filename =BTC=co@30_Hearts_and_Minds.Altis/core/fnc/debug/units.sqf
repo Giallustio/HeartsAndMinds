@@ -1,4 +1,7 @@
-params ["_args", "_id"];
+params [
+    ["_args", [], [[]]],
+    ["_id", 0, [0]]
+];
 _args params ["_display", "_TXTunits"];
 
 if (isNull _display || !btc_debug_graph) exitWith {

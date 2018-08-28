@@ -3,7 +3,9 @@
     Ifnot: save in database and delete units by calling btc_fnc_data_get_group.
 */
 
-params ["_group"];
+params [
+    ["_group", grpNull, [grpNull]]
+];
 
 if (btc_debug_log) then {
     [format ["%1", _group], __FILE__, [false]] call btc_fnc_debug_message;

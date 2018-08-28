@@ -1,4 +1,6 @@
-params ["_create_obj"];
+params [
+    ["_create_obj", objNull, [objNull]]
+];
 
 closeDialog 0;
 

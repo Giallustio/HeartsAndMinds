@@ -9,10 +9,10 @@ btc_city_all = [];
 for "_i" from 0 to (count _locations - 1) do {
     private _current = _locations select _i;
 
-    private _type = getText(_current >> "type");
+    private _type = getText (_current >> "type");
 
     if (_type in _cities) then {
-        private _position = getArray(_current >> "position");
+        private _position = getArray (_current >> "position");
         if (surfaceIsWater _position) then {
             if !(_type isEqualTo "NameMarine") then {
                 private _church = nearestTerrainObjects [_position, ["CHURCH"], 470];

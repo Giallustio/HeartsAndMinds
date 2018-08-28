@@ -1,4 +1,7 @@
-params ["_city", "_area"];
+params [
+    ["_city", objNull, [objNull]],
+    ["_area", 100, [0]]
+];
 
 if (btc_debug_log) then {
     [format ["_name = %1 _area %2", _city getVariable ["name", "name"], _area], __FILE__, [false]] call btc_fnc_debug_message;

@@ -1,4 +1,6 @@
-params ["_group"];
+params [
+    ["_group", grpNull, [grpNull]]
+];
 
 //Choose a HC
 private _HC = owner ((entities "HeadlessClient_F") select 0);

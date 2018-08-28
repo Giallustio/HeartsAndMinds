@@ -1,7 +1,8 @@
+params [
+    ["_ho", btc_hq, [[]]]
+];
 
 if (btc_hideouts isEqualTo []) exitWith {};
-
-private _ho = btc_hq;
 
 if (isNull _ho) then {
     _ho = selectRandom btc_hideouts;

@@ -1,4 +1,6 @@
-params ["_obj_created"];
+params [
+    ["_obj_created", objNull, [objNull]]
+];
 
 [_obj_created] call btc_fnc_log_init;
 

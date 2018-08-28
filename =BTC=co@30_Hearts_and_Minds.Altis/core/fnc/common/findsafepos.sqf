@@ -1,4 +1,10 @@
-params ["_check_pos", "_mindist", "_random_area", "_objdist", "_allow_water"];
+params [
+    ["_check_pos", [0, 0, 0], [[]]],
+    ["_mindist", 0, [0]],
+    ["_random_area", 100, [0]],
+    ["_objdist", 0, [0]],
+    ["_allow_water", false, [false, 0]]
+];
 
 private _return_pos = [];
 for "_i" from 0 to 4 do {

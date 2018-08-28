@@ -1,4 +1,8 @@
-params ["_city", "_area", "_n"];
+params [
+    ["_city", objNull, [objNull]],
+    ["_area", 0, [0]],
+    ["_n", 0, [0]]
+];
 
 private _pos = position _city;
 private _houses = [];

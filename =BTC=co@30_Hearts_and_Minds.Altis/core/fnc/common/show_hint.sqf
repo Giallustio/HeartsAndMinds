@@ -2,7 +2,7 @@ if (isDedicated) exitWith {};
 
 params [
     ["_type", 0, [0]],
-    ["_custom", "", [""]]
+    ["_custom", 0, [0, ""]]
 ];
 
 switch (_type) do {

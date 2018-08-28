@@ -1,4 +1,6 @@
-params ["_pos"];
+params [
+    ["_pos", [0, 0, 0], [[]]]
+];
 
 btc_rep_militia_called = time;
 
