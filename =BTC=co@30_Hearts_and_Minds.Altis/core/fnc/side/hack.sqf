@@ -1,3 +1,26 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_side_hack
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _x - []
+    _y - []
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_side_hack;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 //https://forums.bistudio.com/forums/topic/186316-how-to-open-the-land_dataterminal_01_f-data-terminal-nexus-update/
 //http://killzonekid.com/arma-scripting-tutorials-uav-r2t-and-pip/
 //http://killzonekid.com/arma-scripting-tutorials-scripted-charges/

@@ -1,3 +1,27 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_eh_veh_add_respawn
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _vehicle - [Object]
+    _time - [Number]
+    _has_marker - [Booleen]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_eh_veh_add_respawn;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_vehicle", objNull, [objNull]],
     ["_time", 0, [0]],

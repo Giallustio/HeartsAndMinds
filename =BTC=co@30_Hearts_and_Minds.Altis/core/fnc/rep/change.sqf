@@ -1,3 +1,25 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_rep_change
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _reputation - [Number]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_rep_change;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_reputation", 0, [0]]
 ];

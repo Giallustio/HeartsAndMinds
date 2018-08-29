@@ -1,3 +1,28 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_arsenal_loadout
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _type - [Number]
+    _color - [Number]
+    _isDay - [Array]
+    _arsenal_loadout - []
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_arsenal_loadout;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_type", 0, [0]], // 0 - Rifleman, 1 - Medic Adv, 2 - Medic Basic, 3 - Repair, 4 - Engineer, 5 - Anti-Tank, 6 - Anti Air, 7 - Sniper, 8 - Machine gunner
     ["_color", [[0, 1] select (worldName in ["Tanoa", "chernarus", "lingor3", "sara"]), 2] select (sunOrMoon isEqualTo 0), [0]], //0 - Desert, 1 - Tropic, 2 - Black

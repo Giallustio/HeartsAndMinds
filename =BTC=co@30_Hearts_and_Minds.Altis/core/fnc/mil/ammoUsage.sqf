@@ -1,3 +1,26 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_mil_ammoUsage
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _typeof_unit - [String]
+    _itemType_ammo_usageAllowed - [Array]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_mil_ammoUsage;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_typeof_unit", "", [""]],
     ["_itemType_ammo_usageAllowed", ["MissileLauncher", "256", []], [[]]]

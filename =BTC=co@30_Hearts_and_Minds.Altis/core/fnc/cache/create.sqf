@@ -1,3 +1,24 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_cache_create
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_cache_create;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 btc_cache_obj = selectRandom btc_cache_type createVehicle btc_cache_pos;
 btc_cache_obj setPosATL btc_cache_pos;
 btc_cache_obj setDir (random 360);

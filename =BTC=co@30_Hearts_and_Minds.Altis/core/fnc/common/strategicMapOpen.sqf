@@ -1,3 +1,24 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_common_strategicMapOpen
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_common_strategicMapOpen;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 /*
     Author: Karel Moricky
 

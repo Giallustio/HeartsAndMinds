@@ -1,3 +1,26 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_info_ask
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _man - [Object]
+    _isInterrogate - [Booleen]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_info_ask;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_man", objNull, [objNull]],
     ["_isInterrogate", false, [false]]

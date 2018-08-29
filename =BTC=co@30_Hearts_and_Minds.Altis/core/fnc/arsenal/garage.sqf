@@ -1,3 +1,25 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_arsenal_garage
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _current_garage - [Object]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_arsenal_garage;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_current_garage", objNull, [objNull]]
 ];

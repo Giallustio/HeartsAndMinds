@@ -1,3 +1,25 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_log_hook
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _towed - [Object]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_log_hook;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_towed", objNull, [objNull]]
 ];

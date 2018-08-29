@@ -1,3 +1,26 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_civ_evacuate
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _position - [Array]
+    _position_evac - [Array]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_civ_evacuate;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_position", [], [[]]],
     ["_position_evac", [], [[]]]

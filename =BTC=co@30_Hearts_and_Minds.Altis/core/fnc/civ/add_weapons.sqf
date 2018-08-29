@@ -1,3 +1,25 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_civ_add_weapons
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _unit - [Object]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_civ_add_weapons;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_unit", objNull, [objNull]]
 ];

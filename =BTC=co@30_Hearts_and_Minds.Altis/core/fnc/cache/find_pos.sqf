@@ -1,3 +1,25 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_cache_find_pos
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _city_all - [Array]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_cache_find_pos;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_city_all", btc_city_all, [[]]]
 ];

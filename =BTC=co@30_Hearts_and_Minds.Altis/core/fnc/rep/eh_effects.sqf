@@ -1,3 +1,25 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_rep_eh_effects
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _pos - [Array]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_rep_eh_effects;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 if (btc_global_reputation >= 600) exitWith {};
 
 params [

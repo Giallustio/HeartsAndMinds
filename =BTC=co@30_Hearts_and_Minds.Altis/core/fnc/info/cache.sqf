@@ -1,3 +1,26 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_info_cache
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _isReal - [Booleen]
+    _showHint - [Number]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_info_cache;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_isReal", true, [true]],
     ["_showHint", 0, [0]]

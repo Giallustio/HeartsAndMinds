@@ -1,3 +1,25 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_common_set_groupowner
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _group - [Group]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_common_set_groupowner;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_group", grpNull, [grpNull]]
 ];

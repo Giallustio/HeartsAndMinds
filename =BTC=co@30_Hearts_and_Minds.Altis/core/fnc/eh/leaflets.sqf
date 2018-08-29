@@ -1,3 +1,26 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_eh_leaflets
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _uav - [Object]
+    _weapon - [String]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_eh_leaflets;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_uav", objNull, [objNull]],
     ["_weapon", "", [""]]

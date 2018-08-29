@@ -1,3 +1,24 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_side_civtreatment_boat
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_side_civtreatment_boat;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 //// Choose a Marine location \\\\
 private _useful = btc_city_all select {_x getVariable ["type", ""] isEqualTo "NameMarine" || _x getVariable ["hasbeach", false]};
 

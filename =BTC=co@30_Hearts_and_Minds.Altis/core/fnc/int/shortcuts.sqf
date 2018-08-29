@@ -1,3 +1,24 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_int_shortcuts
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_int_shortcuts;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 #include "\a3\editor_f\Data\Scripts\dikCodes.h"
 #define BTC_PLAY_FBSOUND true    //set false if you do not want a "key-pressed-feedback" (sound)
 #define BTC_FBSOUND "ClickSoft"  //really quiet sound

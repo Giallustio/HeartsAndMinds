@@ -1,3 +1,31 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_mil_createVehicle
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _group - [Group]
+    _pos - [Array]
+    _veh_type - [String]
+    _dir - [Number]
+    _type_units - [Array]
+    _type_divers - [Array]
+    _type_crewmen - [Array]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_mil_createVehicle;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_group", grpNull, [grpNull]],
     ["_pos", [0, 0, 0], [[]]],

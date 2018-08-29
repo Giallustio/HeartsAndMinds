@@ -1,3 +1,26 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_eh_CuratorObjectPlaced
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _curator - [Object]
+    _object_placed - [Object]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_eh_CuratorObjectPlaced;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 /*
     curator,object
 */

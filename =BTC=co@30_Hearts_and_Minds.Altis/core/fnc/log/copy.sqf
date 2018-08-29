@@ -1,3 +1,26 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_log_copy
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _create_object_point - [Object]
+    _containers_mat - [Object]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_log_copy;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_create_object_point", objNull, [objNull]],
     ["_containers_mat", btc_containers_mat, [objNull]]

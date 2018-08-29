@@ -1,3 +1,26 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_side_underwater_generator
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _x - []
+    _y - []
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_side_underwater_generator;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 //// Choose a Marine location occupied \\\\
 private _useful = btc_city_all select {(_x getVariable ["occupied", false]) && (_x getVariable ["type", ""] isEqualTo "NameMarine")};
 if (_useful isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};

@@ -1,3 +1,25 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_log_getRearmMagazines
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _rearming_vehicles - [Array]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_log_getRearmMagazines;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_rearming_vehicles", [], [[]]]
 ];

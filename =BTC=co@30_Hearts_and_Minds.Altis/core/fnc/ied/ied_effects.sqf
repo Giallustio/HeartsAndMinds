@@ -1,3 +1,26 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_ied_ied_effects
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _pos - [Array]
+    _caller - [Object]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_ied_ied_effects;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_pos", [0, 0, 0], [[]]],
     ["_caller", player, [objNull]]

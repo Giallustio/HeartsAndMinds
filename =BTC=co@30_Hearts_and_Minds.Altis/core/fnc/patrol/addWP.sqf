@@ -1,3 +1,27 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_patrol_addWP
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _group - [Group]
+    _pos - [Array]
+    _waypointStatements - [String]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_patrol_addWP;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_group", grpNull, [grpNull]],
     ["_pos", [0, 0, 0], [[]]],

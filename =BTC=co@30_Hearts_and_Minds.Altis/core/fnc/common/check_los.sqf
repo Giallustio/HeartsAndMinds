@@ -1,3 +1,26 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_common_check_los
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _unit - [Object]
+    _target - [Object]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_common_check_los;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_unit", objNull, [objNull]],
     ["_target", objNull, [objNull]]

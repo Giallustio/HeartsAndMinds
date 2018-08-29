@@ -1,4 +1,34 @@
 
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_db_load_old
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _id - []
+    _initialized - []
+    _spawn_more - []
+    _occupied - []
+    _data_units - []
+    _has_ho - []
+    _ho_units_spawned - []
+    _ieds - []
+    _has_suicider - []
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_db_load_old;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
+
 private _name = worldName;
 
 setDate (profileNamespace getVariable [format ["btc_hm_%1_date", _name], date]);

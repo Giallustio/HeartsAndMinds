@@ -1,3 +1,26 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_int_orders
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _order - [Number]
+    _unit - [Object]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_int_orders;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_order", 0, [0]],
     ["_unit", objNull, [objNull]]

@@ -1,3 +1,26 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_civ_create_patrol
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _active_city - [Object]
+    _area - [Number]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_civ_create_patrol;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_active_city", objNull, [objNull]],
     ["_area", btc_patrol_area, [0]]

@@ -1,3 +1,25 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_db_saveObjectStatus
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _object - [Object]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_db_saveObjectStatus;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_object", objNull, [objNull]]
 ];

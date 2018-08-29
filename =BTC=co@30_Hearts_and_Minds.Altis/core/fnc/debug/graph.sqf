@@ -1,3 +1,25 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_debug_graph
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _display - [Display]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_debug_graph;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 //https://forums.bohemia.net/forums/topic/204157-display-graph-in-dialog/
 
 disableSerialization;

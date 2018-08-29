@@ -1,3 +1,25 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_db_add_veh
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _veh - [Object]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_db_add_veh;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_veh", objNull, [objNull]]
 ];

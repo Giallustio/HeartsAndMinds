@@ -1,3 +1,25 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_common_set_damage
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _unit - [Object]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_common_set_damage;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_unit", objNull, [objNull]]
 ];

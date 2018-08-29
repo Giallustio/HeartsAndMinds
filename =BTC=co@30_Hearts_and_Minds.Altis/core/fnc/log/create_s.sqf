@@ -1,3 +1,27 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_log_create_s
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _objec_type - [String]
+    _pos - [Array]
+    _vector - [Array]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_log_create_s;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_objec_type", "", [""]],
     ["_pos", getPosASL btc_create_object_point, [[]]],

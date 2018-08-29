@@ -1,3 +1,28 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_arsenal_weaponsfilter
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _trait - [Array]
+    _custom_arsenal - [Array]
+    _arsenalRestrict - [Number]
+    _type_units - [Array]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_arsenal_weaponsfilter;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_trait", [0, [["AssaultRifle", ""], ["RocketLauncher", ""]]], [[]]],
     ["_custom_arsenal", btc_custom_arsenal, [[]]],

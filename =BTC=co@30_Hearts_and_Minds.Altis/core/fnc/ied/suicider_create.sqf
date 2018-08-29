@@ -1,3 +1,26 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_ied_suicider_create
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _city - [Object]
+    _area - [Number]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_ied_suicider_create;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_city", objNull, [objNull]],
     ["_area", 100, [0]]

@@ -1,4 +1,25 @@
 
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_int_add_actions
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_int_add_actions;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
+
 //Database
 private _action = ["Database", localize "STR_BTC_HAM_ACTION_DATA_MAIN", "\A3\ui_f\data\igui\cfg\simpleTasks\letters\D_ca.paa", {}, {serverCommandAvailable "#logout" || !isMultiplayer}] call ace_interact_menu_fnc_createAction;
 [player, 1, ["ACE_SelfActions"], _action] call ace_interact_menu_fnc_addActionToObject;

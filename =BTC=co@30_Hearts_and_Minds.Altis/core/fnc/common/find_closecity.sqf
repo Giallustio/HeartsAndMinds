@@ -1,3 +1,27 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_common_find_closecity
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _obj - [Object]
+    _array - [Array]
+    _isOccupied - [Booleen]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_common_find_closecity;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_obj", objNull, [objNull]],
     ["_array", [], [[]]],

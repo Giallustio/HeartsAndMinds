@@ -1,3 +1,28 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_patrol_playersInAreaCityGroup
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _active_city - [Object]
+    _group - [Group]
+    _area - [Number]
+    _players - [Array]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_patrol_playersInAreaCityGroup;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_active_city", objNull, [objNull]],
     ["_group", grpNull, [grpNull]],

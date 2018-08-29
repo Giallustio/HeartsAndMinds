@@ -1,3 +1,25 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_log_place
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _placing_obj - [Object]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_log_place;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_placing_obj", objNull, [objNull]]
 ];

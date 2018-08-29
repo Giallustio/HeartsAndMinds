@@ -1,3 +1,29 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_patrol_WPCheck
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _group - [Group]
+    _area - [Number]
+    _last_wp_pos - [Array]
+    _citiesID - [Array]
+    _isBoat - [Booleen]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_patrol_WPCheck;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_group", grpNull, [grpNull]],
     ["_area", btc_patrol_area, [0]],

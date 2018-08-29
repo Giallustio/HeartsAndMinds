@@ -1,3 +1,26 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_log_create_load
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _main_class - []
+    _sub_class - []
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_log_create_load;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 lbClear 71;
 btc_construction_array params ["_main_class", "_sub_class"];
 for "_i" from 0 to ((count _main_class) - 1) do {

@@ -1,3 +1,26 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_mil_getBuilding
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _rpos - [Array]
+    _n - [Number]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_mil_getBuilding;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_rpos", [0, 0, 0], [[]]],
     ["_n", 0, [0]]

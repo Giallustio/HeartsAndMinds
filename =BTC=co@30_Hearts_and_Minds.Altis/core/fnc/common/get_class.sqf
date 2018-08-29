@@ -1,3 +1,25 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_common_get_class
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _get_civ_faction - [String]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_common_get_class;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_get_civ_faction", "EN", [""]]
 ];

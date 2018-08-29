@@ -1,3 +1,25 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_common_clean_up
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _playableUnits - [Array]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_common_clean_up;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_playableUnits", playableUnits, [[]]]
 ];

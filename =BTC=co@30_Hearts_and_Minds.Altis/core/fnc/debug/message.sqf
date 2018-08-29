@@ -1,3 +1,27 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_debug_message
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _message - [String]
+    _folder - [String]
+    _type - [Array]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_debug_message;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_message", "BTC Message debug", [""]],
     ["_folder", __FILE__, [""]],

@@ -1,3 +1,25 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_ied_effect_rocks
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _pos - [Array]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_ied_effect_rocks;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_pos", [0, 0, 0], [[]]]
 ];

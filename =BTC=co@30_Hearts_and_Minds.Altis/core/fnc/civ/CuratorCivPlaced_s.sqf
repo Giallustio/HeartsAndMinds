@@ -1,3 +1,25 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_civ_CuratorCivPlaced_s
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _unit - [Object]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_civ_CuratorCivPlaced_s;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_unit", objNull, [objNull]]
 ];

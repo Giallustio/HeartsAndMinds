@@ -1,3 +1,24 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_side_capture_officer
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_side_capture_officer;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 /*
     Thanks DAP for inspiration.
 */

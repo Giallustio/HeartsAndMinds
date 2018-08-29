@@ -1,3 +1,27 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_common_create_composition
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _pos - [Array]
+    _setdir - [Number]
+    _array - [Array]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_common_create_composition;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_pos", [0, 0, 0], [[]]],
     ["_setdir", 0, [0]],

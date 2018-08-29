@@ -1,3 +1,25 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_eh_veh_killed
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _vehicle - [Object]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_eh_veh_killed;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_vehicle", objNull, [objNull]]
 ];

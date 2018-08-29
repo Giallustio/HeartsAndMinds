@@ -1,3 +1,30 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_ied_effect_color_smoke
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _pos - [Array]
+    _posASL - [Array]
+    _colorSel - [String]
+    _horizontal - [Number]
+    _upwards - [Number]
+    _color - [Array]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_ied_effect_color_smoke;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_pos", [0, 0, 0], [[]]],
     ["_posASL", [0, 0, 0], [[]]],

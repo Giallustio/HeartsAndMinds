@@ -1,3 +1,25 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_common_road_direction
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _road - [Object]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_common_road_direction;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_road", objNull, [objNull]]
 ];

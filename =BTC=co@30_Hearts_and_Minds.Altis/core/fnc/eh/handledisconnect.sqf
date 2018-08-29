@@ -1,3 +1,25 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_eh_handledisconnect
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _headless - [Object]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_eh_handledisconnect;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_headless", objNull, [objNull]]
 ];

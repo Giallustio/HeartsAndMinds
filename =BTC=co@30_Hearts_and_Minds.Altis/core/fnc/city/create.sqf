@@ -1,3 +1,30 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_city_create
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _position - [Array]
+    _type - [String]
+    _name - [String]
+    _radius_x - [Number]
+    _radius_y - [Number]
+    _has_en - [Booleen]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_city_create;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_position", [0, 0, 0], [[]]],
     ["_type", "", [""]],

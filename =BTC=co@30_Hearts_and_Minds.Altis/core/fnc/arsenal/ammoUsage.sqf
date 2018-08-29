@@ -1,3 +1,26 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_arsenal_ammoUsage
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _weapons - [Array]
+    _itemType_ammo_usageAllowed - [Array]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_arsenal_ammoUsage;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_weapons", ["launch_RPG7_F"], [[]]],
     ["_itemType_ammo_usageAllowed", ["MissileLauncher", "256", []], [[]]]

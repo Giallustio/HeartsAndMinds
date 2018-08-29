@@ -1,3 +1,25 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_data_add_group
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _group - [Group]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_data_add_group;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 /*
     If player is around: initiate patrol around the destination,
     Ifnot: save in database and delete units by calling btc_fnc_data_get_group.

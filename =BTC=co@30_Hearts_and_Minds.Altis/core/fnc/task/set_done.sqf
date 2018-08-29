@@ -1,3 +1,25 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_task_set_done
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _task_id - [Number]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_task_set_done;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_task_id", 0 , [0]]
 ];

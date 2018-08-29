@@ -1,3 +1,25 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_mil_set_skill
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _unit - [Object]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_mil_set_skill;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_unit", objNull, [objNull]]
 ];

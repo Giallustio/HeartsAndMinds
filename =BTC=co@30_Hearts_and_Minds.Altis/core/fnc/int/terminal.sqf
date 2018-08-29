@@ -1,3 +1,25 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_int_terminal
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _terminal - [Object]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_int_terminal;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_terminal", objNull, [objNull]]
 ];

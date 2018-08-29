@@ -1,3 +1,26 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_rep_killed
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _unit - [Object]
+    _killer - [Object]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_rep_killed;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_unit", objNull, [objNull]],
     ["_killer", objNull, [objNull]]

@@ -1,3 +1,26 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_info_has_intel
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _body - [Object]
+    _asker - [Object]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_info_has_intel;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_body", objNull, [objNull]],
     ["_asker", objNull, [objNull]]

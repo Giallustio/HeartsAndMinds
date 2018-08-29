@@ -1,3 +1,27 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_info_hideout_asked
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _name - [String]
+    _is_real - [Booleen]
+    _text - [String]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_info_hideout_asked;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_name", "Vdauphin", [""]],
     ["_is_real", true, [true]],

@@ -1,3 +1,25 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_info_hideout
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _ho - [Array]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_info_hideout;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_ho", btc_hq, [[]]]
 ];

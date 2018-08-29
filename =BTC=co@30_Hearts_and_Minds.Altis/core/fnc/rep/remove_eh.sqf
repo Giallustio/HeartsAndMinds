@@ -1,3 +1,25 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_rep_remove_eh
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _civilian - [Object]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_rep_remove_eh;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_civilian", objNull, [objNull]]
 ];

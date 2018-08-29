@@ -1,3 +1,25 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_ied_suicider_active
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _suicider - [Object]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_ied_suicider_active;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_suicider", objNull, [objNull]]
 ];

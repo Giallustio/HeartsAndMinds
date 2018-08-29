@@ -1,3 +1,25 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_mil_create_hideout_composition
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _pos - [Array]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_mil_create_hideout_composition;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_pos", [0, 0, 0], [[]]]
 ];

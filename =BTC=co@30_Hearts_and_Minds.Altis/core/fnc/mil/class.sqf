@@ -1,3 +1,27 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_mil_class
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _factions - [Array]
+    _en_AA - [Booleen]
+    _en_tank - [Booleen]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_mil_class;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_factions", [], [[]]],
     ["_en_AA", false, [false]],

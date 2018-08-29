@@ -1,3 +1,25 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_db_loadObjectStatus
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _object_data - [Array]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_db_loadObjectStatus;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_object_data", [], [[]]]
 ];

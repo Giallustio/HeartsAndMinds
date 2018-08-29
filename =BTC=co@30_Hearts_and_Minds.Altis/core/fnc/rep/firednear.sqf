@@ -1,3 +1,32 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_rep_firednear
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _civ - [Object]
+    _vehicle - [Object]
+    _distance - [Number]
+    _weapon - [String]
+    _muzzle - [String]
+    _mode - [String]
+    _ammo - [String]
+    _gunner - [Object]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_rep_firednear;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_civ", objNull, [objNull]],
     ["_vehicle", objNull, [objNull]],

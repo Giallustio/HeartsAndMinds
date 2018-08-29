@@ -1,3 +1,25 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_debug_marker
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _display - [Control]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_debug_marker;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_display", controlNull, [controlNull]]
 ];

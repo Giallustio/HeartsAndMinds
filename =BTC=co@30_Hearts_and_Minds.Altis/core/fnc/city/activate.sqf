@@ -1,3 +1,30 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_city_activate
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _id - [Number]
+    _p_mil_group_ratio - [Number]
+    _p_civ_group_ratio - [Number]
+    _p_civ_max_veh - [Number]
+    _p_patrol_max - [Number]
+    _wp_ratios - [Array]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_city_activate;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_id", 0, [0]],
     ["_p_mil_group_ratio", btc_p_mil_group_ratio, [0]],

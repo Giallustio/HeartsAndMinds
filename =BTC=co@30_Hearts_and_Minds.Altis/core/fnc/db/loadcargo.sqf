@@ -1,3 +1,27 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_db_loadcargo
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _obj - []
+    _cargo - []
+    _inventory - []
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_db_loadcargo;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 [{
     params ["_obj", "_cargo", "_inventory"];
 

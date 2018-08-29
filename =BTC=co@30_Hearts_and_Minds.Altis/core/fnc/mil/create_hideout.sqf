@@ -1,3 +1,30 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_mil_create_hideout
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _pos - [Array]
+    _id_hideout - [Number]
+    _rinf_time - [Number]
+    _cap_time - [Number]
+    _id - [Number]
+    _markers_saved - [Array]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_mil_create_hideout;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_pos", [], [[]]],
     ["_id_hideout", btc_hideouts_id, [0]],
