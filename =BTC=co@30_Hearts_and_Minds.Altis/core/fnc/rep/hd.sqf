@@ -1,3 +1,29 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_rep_hd
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _unit - [Object]
+    _part - [String]
+    _dam - [Number]
+    _injurer - [Object]
+    _ammo - [String]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_rep_hd;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_unit", objNull, [objNull]],
     ["_part", "", [""]],

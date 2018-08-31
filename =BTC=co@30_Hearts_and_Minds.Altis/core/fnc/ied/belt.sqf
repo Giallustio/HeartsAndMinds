@@ -1,3 +1,27 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_ied_belt
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _expl1 - [Object]
+    _expl2 - [Object]
+    _expl3 - [Object]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_ied_belt;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_expl1", objNull, [objNull]],
     ["_expl2", objNull, [objNull]],

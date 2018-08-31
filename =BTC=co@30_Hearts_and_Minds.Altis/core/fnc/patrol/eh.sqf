@@ -1,3 +1,25 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_patrol_eh
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _veh - []
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_patrol_eh;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_veh", objNull, [objNull, grpNull]]
 ];

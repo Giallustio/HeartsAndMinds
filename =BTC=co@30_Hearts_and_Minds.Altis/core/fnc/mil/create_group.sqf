@@ -1,3 +1,33 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_mil_create_group
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _city - [Number]
+    _area - [Number]
+    _n - [Number]
+    _wp - [Array]
+    _type_divers - [Array]
+    _type_units - [Booleen]
+    _p_sea - [Side]
+    _enemy_side - [Array]
+    _wp_ratios - []
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_mil_create_group;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_city", objNull, [objNull, []]],
     ["_area", 300, [0]],

@@ -1,3 +1,26 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_log_place_create_camera
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _terminal - [Object]
+    _campos - [Array]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_log_place_create_camera;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_terminal", objNull, [objNull]],
     ["_campos", [0, 0, 0], [[]]]

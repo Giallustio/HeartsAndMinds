@@ -1,3 +1,26 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_common_house_addWP
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _group - [Group]
+    _house - [Object]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_common_house_addWP;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_group", grpNull, [grpNull]],
     ["_house", objNull, [objNull]]

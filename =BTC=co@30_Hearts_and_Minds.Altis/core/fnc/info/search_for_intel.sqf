@@ -1,3 +1,25 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_info_search_for_intel
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _target - [Object]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_info_search_for_intel;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_target", objNull, [objNull]]
 ];

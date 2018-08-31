@@ -1,3 +1,25 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_log_get_corner_points
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _vehicle - [Object]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_log_get_corner_points;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 // Author : sethduda for AdvancedTowing
 params [
     ["_vehicle", objNull, [objNull]]

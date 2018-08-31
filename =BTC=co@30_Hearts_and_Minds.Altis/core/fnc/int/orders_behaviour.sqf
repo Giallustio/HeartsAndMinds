@@ -1,3 +1,27 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_int_orders_behaviour
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _unit - [Object]
+    _order - [Number]
+    _wp_pos - [Array]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_int_orders_behaviour;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_unit", objNull, [objNull]],
     ["_order", 0, [0]],

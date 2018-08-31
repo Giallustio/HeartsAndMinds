@@ -1,3 +1,26 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_log_can_tow
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _tower - [Object]
+    _towed - [Object]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_log_can_tow;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 // _tower ----rope--- (hook)_towed
 params [
     ["_tower", objNull, [objNull]],

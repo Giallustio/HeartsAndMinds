@@ -1,3 +1,25 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_db_delete
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _name - [String]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_db_delete;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_name", worldName, [""]]
 ];

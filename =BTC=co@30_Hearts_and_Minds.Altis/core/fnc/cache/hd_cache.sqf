@@ -1,3 +1,29 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_cache_hd_cache
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _cache - [Object]
+    _part - [String]
+    _damage - [Number]
+    _injurer - [Object]
+    _ammo - [String]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_cache_hd_cache;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_cache", objNull, [objNull]],
     ["_part", "", [""]],

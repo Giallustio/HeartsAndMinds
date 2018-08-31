@@ -1,3 +1,26 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_common_show_hint
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _type - [Number]
+    _custom - []
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_common_show_hint;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 if (isDedicated) exitWith {};
 
 params [

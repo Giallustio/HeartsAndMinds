@@ -1,3 +1,25 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_log_lift_hook
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _chopper - [Object]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_log_lift_hook;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_chopper", vehicle player, [objNull]]
 ];

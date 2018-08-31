@@ -1,3 +1,26 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_log_lift_hud_loop
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _ui - [Array]
+    _PFH_id - [Number]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_log_lift_hud_loop;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_ui", [], [[]]],
     ["_PFH_id", 0, [0]]

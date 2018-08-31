@@ -1,3 +1,30 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_mil_createUnits
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _group - [Group]
+    _pos - [Array]
+    _number - [Number]
+    _pos_iswater - [Booleen]
+    _type_units - [Array]
+    _type_divers - [Array]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_mil_createUnits;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_group", grpNull, [grpNull]],
     ["_pos", [0, 0, 0], [[]]],

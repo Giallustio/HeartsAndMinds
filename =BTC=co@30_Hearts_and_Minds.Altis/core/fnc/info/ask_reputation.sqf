@@ -1,3 +1,25 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_info_ask_reputation
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _man - [Object]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_info_ask_reputation;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_man", objNull, [objNull]]
 ];

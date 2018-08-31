@@ -1,3 +1,26 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_fob_redeploy
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _sunrise - []
+    _sunset - []
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_fob_redeploy;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 btc_int_ask_data = nil;
 ["btc_fobs"] remoteExecCall ["btc_fnc_int_ask_var", 2];
 

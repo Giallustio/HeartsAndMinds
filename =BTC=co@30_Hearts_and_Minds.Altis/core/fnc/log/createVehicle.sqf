@@ -1,3 +1,28 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_log_createVehicle
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _type - [String]
+    _pos - [Array]
+    _dir - [Number]
+    _customization - [Array]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_log_createVehicle;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_type", "", [""]],
     ["_pos", [0, 0, 0], [[]]],

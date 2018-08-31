@@ -1,3 +1,27 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_civ_get_grenade
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _pos - [Array]
+    _range - [Number]
+    _units - [Array]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_civ_get_grenade;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_pos", [0, 0, 0], [[]]],
     ["_range", 300, [0]],

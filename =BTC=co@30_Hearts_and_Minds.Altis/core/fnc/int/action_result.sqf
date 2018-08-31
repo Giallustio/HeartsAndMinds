@@ -1,3 +1,29 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_int_action_result
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _totalTime - [Number]
+    _args - [Array]
+    _onFinish - [Code]
+    _onFail - [Code]
+    _localizedTitle - [String]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_int_action_result;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_totalTime", 10, [0]],
     ["_args", [], [[]]],

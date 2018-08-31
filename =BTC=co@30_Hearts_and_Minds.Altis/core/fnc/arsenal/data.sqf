@@ -1,3 +1,28 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_arsenal_data
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _box - [Object]
+    _arsenalType - [Number]
+    _arsenalRestrict - [Number]
+    _arsenalData - [Array]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_arsenal_data;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_box", objNull, [objNull]],
     ["_arsenalType", 0, [0]],

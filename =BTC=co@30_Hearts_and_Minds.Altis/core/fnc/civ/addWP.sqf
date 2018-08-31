@@ -1,3 +1,27 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_civ_addWP
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _group - [Group]
+    _pos - [Array]
+    _radius - [Number]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_civ_addWP;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_group", grpNull, [grpNull]],
     ["_pos", getPos leader param [0], [[]]],

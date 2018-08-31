@@ -1,3 +1,27 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_int_ask_var
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _id - [Object]
+    _target - [String]
+    _varName - []
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_int_ask_var;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_id", 0, [0, ""]],
     ["_target", objNull, [objNull]],

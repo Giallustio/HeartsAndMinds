@@ -1,3 +1,25 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_log_lift_destroy_ropes
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _heli - [Object]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_log_lift_destroy_ropes;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_heli", vehicle player, [objNull]]
 ];

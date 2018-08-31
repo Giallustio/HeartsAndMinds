@@ -1,3 +1,30 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_common_showSubtitle
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _from - [String]
+    _text - [String]
+    _lineBreak - [Booleen]
+    _colorFrom - [String]
+    _colorText - [String]
+    _fontText - [String]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_common_showSubtitle;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 /*
     Author: Thomas Ryan, updated by Karel Moricky
         Modified: kuemmel

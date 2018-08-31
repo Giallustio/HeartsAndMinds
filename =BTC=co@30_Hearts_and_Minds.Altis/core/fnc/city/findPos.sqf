@@ -1,3 +1,29 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_city_findPos
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _city - [Number]
+    _area - [Array]
+    _type_divers - [Array]
+    _type_units - [Booleen]
+    _p_sea - []
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_city_findPos;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_city", objNull, [objNull, []]],
     ["_area", 300, [0]],

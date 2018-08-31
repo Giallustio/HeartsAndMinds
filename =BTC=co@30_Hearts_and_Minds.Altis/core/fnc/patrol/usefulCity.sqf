@@ -1,3 +1,27 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_patrol_usefulCity
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _cities - [Array]
+    _area - [Number]
+    _isBoat - [Booleen]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_patrol_usefulCity;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_cities", [], [[]]],
     ["_area", btc_patrol_area, [0]],

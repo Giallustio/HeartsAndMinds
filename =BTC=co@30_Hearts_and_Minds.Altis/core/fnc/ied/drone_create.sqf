@@ -1,3 +1,28 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_ied_drone_create
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _city - [Object]
+    _area - [Number]
+    _rpos - [Array]
+    _group - [Group]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_ied_drone_create;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_city", objNull, [objNull]],
     ["_area", 300, [0]],

@@ -1,3 +1,25 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_log_CuratorObjectPlaced_s
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _obj_created - [Object]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_log_CuratorObjectPlaced_s;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_obj_created", objNull, [objNull]]
 ];

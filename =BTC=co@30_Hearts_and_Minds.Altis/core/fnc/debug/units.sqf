@@ -1,3 +1,26 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_debug_units
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _args - [Array]
+    _id - [Number]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_debug_units;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_args", [], [[]]],
     ["_id", 0, [0]]

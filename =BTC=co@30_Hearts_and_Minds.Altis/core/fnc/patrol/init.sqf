@@ -1,3 +1,28 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_patrol_init
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _group - [Group]
+    _cities - [Array]
+    _area - [Number]
+    _isBoat - [Booleen]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_patrol_init;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_group", grpNull, [grpNull]],
     ["_cities", [], [[]]],

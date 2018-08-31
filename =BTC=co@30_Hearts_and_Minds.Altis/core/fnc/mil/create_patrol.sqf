@@ -1,3 +1,27 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_mil_create_patrol
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _random - [Number]
+    _active_city - [Object]
+    _area - [Number]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_mil_create_patrol;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_random", 0, [0]],
     ["_active_city", objNull, [objNull]],

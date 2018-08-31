@@ -1,3 +1,27 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_eh_buildingchanged
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _from - [Object]
+    _to - [Object]
+    _isRuin - [Booleen]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_eh_buildingchanged;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_from", objNull, [objNull]],
     ["_to", objNull, [objNull]],

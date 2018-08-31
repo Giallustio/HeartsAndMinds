@@ -1,3 +1,25 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_common_find_veh_with_turret
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _vehicles - [Array]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_common_find_veh_with_turret;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_vehicles", [], [[]]]
 ];

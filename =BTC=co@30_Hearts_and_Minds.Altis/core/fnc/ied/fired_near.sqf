@@ -1,3 +1,26 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_ied_fired_near
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _wreck - [Object]
+    _ied - [Object]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_ied_fired_near;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_wreck", objNull, [objNull]],
     ["_ied", objNull, [objNull]]

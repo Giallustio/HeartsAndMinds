@@ -1,3 +1,26 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_ied_effect_blurEffect
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _pos - [Array]
+    _caller - [Object]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_ied_effect_blurEffect;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_pos", [0, 0, 0], [[]]],
     ["_caller", objNull, [objNull]]

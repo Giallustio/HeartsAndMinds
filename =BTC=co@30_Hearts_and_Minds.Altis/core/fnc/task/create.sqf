@@ -1,3 +1,27 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_task_create
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _task_id - [String]
+    _destination - []
+    _location - []
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_task_create;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_task_id", "0", [0, ""]],
     ["_destination", [], [objNull, []]],

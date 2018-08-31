@@ -1,3 +1,25 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_cache_spawn
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _house - [Object]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_cache_spawn;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_house", objNull, [objNull]]
 ];

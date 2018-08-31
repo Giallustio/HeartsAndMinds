@@ -1,3 +1,25 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_ied_allahu_akbar
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _trigger - [Object]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_ied_allahu_akbar;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_trigger", objNull, [objNull]]
 ];

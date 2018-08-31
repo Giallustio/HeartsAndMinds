@@ -1,3 +1,29 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_fob_create_s
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _pos - [Array]
+    _FOB_name - [String]
+    _fob_structure - [Array]
+    _fob_flag - [Array]
+    _fobs - [Array]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_fob_create_s;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_pos", [], [[]]],
     ["_FOB_name", "FOB ", [""]],

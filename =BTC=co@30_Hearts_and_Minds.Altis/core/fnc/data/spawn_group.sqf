@@ -1,3 +1,32 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_data_spawn_group
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _type - [Number]
+    _array_pos - [Array]
+    _array_type - [Array]
+    _side - [Side]
+    _array_dam - [Array]
+    _behaviour - [Array]
+    _array_wp - [Array]
+    _array_veh - []
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_data_spawn_group;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_type", 1, [0]],
     ["_array_pos", [], [[]]],

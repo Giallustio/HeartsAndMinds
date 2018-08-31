@@ -1,3 +1,26 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_common_intro
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _gear_object - [String]
+    _create_object - [Object]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_common_intro;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_gear_object", btc_gear_object, [""]],
     ["_create_object", btc_create_object, [objNull]]

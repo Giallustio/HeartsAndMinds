@@ -1,3 +1,25 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_ied_drone_fire
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _trigger - [Object]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_ied_drone_fire;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_trigger", objNull, [objNull]]
 ];

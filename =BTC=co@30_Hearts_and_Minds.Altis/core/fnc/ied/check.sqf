@@ -1,3 +1,26 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_ied_check
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _city - [Object]
+    _ieds - [Array]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_ied_check;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_city", objNull, [objNull]],
     ["_ieds", [objNull], [[]]]

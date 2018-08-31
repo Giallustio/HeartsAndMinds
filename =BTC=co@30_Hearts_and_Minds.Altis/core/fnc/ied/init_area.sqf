@@ -1,3 +1,27 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_ied_init_area
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _city - [Object]
+    _area - [Number]
+    _n - [Number]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_ied_init_area;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_city", objNull, [objNull]],
     ["_area", 100, [0]],

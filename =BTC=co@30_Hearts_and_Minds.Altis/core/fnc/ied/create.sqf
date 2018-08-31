@@ -1,3 +1,28 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_ied_create
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _pos - [Array]
+    _type - [String]
+    _dir - [Number]
+    _active - [Booleen]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_ied_create;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_pos", [0, 0, 0], [[]]],
     ["_type", "", [""]],

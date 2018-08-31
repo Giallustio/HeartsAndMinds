@@ -1,3 +1,27 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_cache_create_attachto
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _object - [Object]
+    _holder - [Object]
+    _pos_type - [String]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_cache_create_attachto;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_object", objNull, [objNull]],
     ["_holder", objNull, [objNull]],

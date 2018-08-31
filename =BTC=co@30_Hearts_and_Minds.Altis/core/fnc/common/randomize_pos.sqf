@@ -1,3 +1,27 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_common_randomize_pos
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _pos - [Array]
+    _random_area - [Number]
+    _allowwater - [Booleen]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_common_randomize_pos;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_pos", [0, 0, 0], [[]]],
     ["_random_area", 300, [0]],

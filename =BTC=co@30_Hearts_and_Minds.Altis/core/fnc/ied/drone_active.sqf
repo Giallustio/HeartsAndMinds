@@ -1,3 +1,25 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_ied_drone_active
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _driver_drone - [Object]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_ied_drone_active;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_driver_drone", objNull, [objNull]]
 ];

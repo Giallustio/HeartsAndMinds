@@ -1,3 +1,25 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_patrol_eh_remove
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _veh - [Object]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_patrol_eh_remove;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_veh", objNull, [objNull]]
 ];

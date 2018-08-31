@@ -1,3 +1,29 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_common_findsafepos
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _check_pos - [Array]
+    _mindist - [Number]
+    _random_area - [Number]
+    _objdist - [Number]
+    _allow_water - []
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_common_findsafepos;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_check_pos", [0, 0, 0], [[]]],
     ["_mindist", 0, [0]],

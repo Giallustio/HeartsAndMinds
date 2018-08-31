@@ -1,3 +1,32 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_city_trigger_player_side
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _position - [Array]
+    _radius_x - [Number]
+    _radius_y - [Number]
+    _city - [Object]
+    _has_en - [Booleen]
+    _name - [String]
+    _type - [String]
+    _id - [Number]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_city_trigger_player_side;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_position", [0, 0, 0], [[]]],
     ["_radius_x", 0, [0]],

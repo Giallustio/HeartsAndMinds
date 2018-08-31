@@ -1,3 +1,25 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_eh_veh_init
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _type - [String]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_eh_veh_init;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_type", "", [""]]
 ];

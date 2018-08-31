@@ -1,3 +1,27 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_common_delete
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _markers - []
+    _objects - []
+    _groups - []
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_common_delete;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_markers", [], [[""]]],
     ["_objects", [], [[objNull]]],

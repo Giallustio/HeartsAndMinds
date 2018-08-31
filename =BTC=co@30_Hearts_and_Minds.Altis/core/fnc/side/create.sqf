@@ -1,3 +1,25 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_side_create
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _cycle - []
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_side_create;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 if (btc_side_assigned) exitWith {};
 
 params [["_cycle", false]];

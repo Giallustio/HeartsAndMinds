@@ -1,3 +1,25 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_common_findposoutsiderock
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _rpos - [Array]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_common_findposoutsiderock;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_rpos", [0, 0, 0], [[]]]
 ];

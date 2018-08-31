@@ -1,3 +1,25 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_fob_dismantle_s
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _flag - [Object]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_fob_dismantle_s;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_flag", objNull, [objNull]]
 ];

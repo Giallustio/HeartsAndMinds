@@ -1,3 +1,26 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_civ_add_leaflets
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _player - [Object]
+    _uav - [Object]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_civ_add_leaflets;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_player", objNull, [objNull]],
     ["_uav", objNull, [objNull]]

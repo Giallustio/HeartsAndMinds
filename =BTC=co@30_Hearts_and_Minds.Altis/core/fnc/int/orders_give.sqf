@@ -1,3 +1,28 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_int_orders_give
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _units - [Array]
+    _dir - [Number]
+    _order - [Number]
+    _wp_pos - [Array]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_int_orders_give;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_units", [], [[]]],
     ["_dir", 0, [0]],

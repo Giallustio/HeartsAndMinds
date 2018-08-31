@@ -1,3 +1,30 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_log_place_key_down
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _display - [Display]
+    _key - [Number]
+    _shift - [Booleen]
+    _ctrl - [Booleen]
+    _alt - [Booleen]
+    _keyPressed - [Booleen]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_log_place_key_down;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 /*
     DIK_KeyCodes:    https://community.bistudio.com/wiki/DIK_KeyCodes
 */

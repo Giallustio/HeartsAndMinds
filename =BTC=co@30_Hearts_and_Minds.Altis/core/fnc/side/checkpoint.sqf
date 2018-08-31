@@ -1,3 +1,27 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_side_checkpoint
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _x - []
+    _y - []
+    _z - []
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_side_checkpoint;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 //// Choose an occupied City \\\\
 private _useful = btc_city_all select {_x getVariable ["occupied", false] && !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])};
 if (_useful isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};

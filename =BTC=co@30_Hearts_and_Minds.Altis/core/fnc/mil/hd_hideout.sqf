@@ -1,3 +1,32 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_mil_hd_hideout
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _hideout - [Object]
+    _selection - [String]
+    _damage - [Number]
+    _source - [Object]
+    _ammo - [String]
+    _hitIndex - [Number]
+    _instigator - [Object]
+    _hitPoint - [String]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_mil_hd_hideout;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_hideout", objNull, [objNull]],
     ["_selection", "", [""]],

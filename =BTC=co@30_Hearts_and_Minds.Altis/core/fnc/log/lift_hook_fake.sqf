@@ -1,3 +1,26 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_log_lift_hook_fake
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _cargo - [Object]
+    _chopper - [Object]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_log_lift_hook_fake;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_cargo", objNull, [objNull]],
     ["_chopper", objNull, [objNull]]

@@ -1,3 +1,28 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_mil_send
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _start - [Object]
+    _dest - [Number]
+    _typeOf_patrol - [String]
+    _veh_type - []
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_mil_send;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 /*
     Send a group of units to a location then call btc_fnc_data_add_group. If player is around, initiate patrol around the destination, ifnot save in database and delete units.
 */

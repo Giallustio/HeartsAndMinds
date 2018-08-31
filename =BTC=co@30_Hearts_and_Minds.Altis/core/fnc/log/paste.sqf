@@ -1,3 +1,26 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_log_paste
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _copy_container - [Array]
+    _create_object_point - [Object]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_log_paste;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 params [
     ["_copy_container", [], [[]]],
     ["_create_object_point", objNull, [objNull]]
