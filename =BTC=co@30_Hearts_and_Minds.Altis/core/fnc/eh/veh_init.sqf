@@ -34,10 +34,6 @@ switch true do {
         _action = ["Load_selected", (localize "STR_BTC_HAM_ACTION_LOGISTIC_LOADSEL"), "a3\ui_f\data\IGUI\Cfg\Actions\loadVehicle_ca.paa", {(_this select 0) spawn btc_fnc_log_load;}, {!isNull btc_log_object_selected && {btc_log_object_selected distance (_this select 0) <= btc_log_max_distance_load}}] call ace_interact_menu_fnc_createAction; //Load selected
         [_type, 0, ["ACE_MainActions","Logistic"], _action] call ace_interact_menu_fnc_addActionToClass; //Logistic
     };
-    case (_type isKindOf "UAV_06_base_F" || _type isKindOf "B_UAV_01_F") : {
-        private _action = ["Fire_leaflets", "fire leaflets","\A3\ui_f\data\igui\cfg\simpleTasks\types\container_ca.paa", {(_this select 0) fire ["Bomb_Leaflets"];}, {true}] call ace_interact_menu_fnc_createAction;
-        [_type, 1, ["ACE_SelfActions"], _action, true] call ace_interact_menu_fnc_addActionToClass;
-    };
     case (_type isKindOf "Helicopter") : {
         private ["_action"];
         _action = ["Logistic",(localize "STR_BTC_HAM_ACTION_LOC_MAIN"),"\A3\ui_f\data\igui\cfg\simpleTasks\letters\L_ca.paa",{},{true}] call ace_interact_menu_fnc_createAction; //Logistic

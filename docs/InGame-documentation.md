@@ -113,7 +113,7 @@ Any player can give orders to civilians. To do this, just open your self interac
 
 If you want to give an order to just one unit, interact with it (object interaction).
 
-You can also drop leaflets to ask all civilians in a circle of 200m to evacuate to a religious building (if not available a safe area) by interacting with a AL-6 drone.
+You can also drop leaflets to ask all civilians in a circle of 200m to evacuate to a religious building (if not available a safe area) with a AL-2 drone.
 
 ## Traffic
 Civilians are travelling by vehicle across cities. If your reputation is higher than normal, you can ask for a lift to a location chosen on the map. If you bump into a Oplitas patrol, don't worry, the civilian driver will do their best to hide you in the car.

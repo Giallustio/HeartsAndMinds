@@ -3,7 +3,7 @@ params ["_player","_uav"];
 
 private _isUAV6 = _uav isKindOf "UAV_06_base_F";
 
-if !(_isUAV6 || _uav isKindOf "B_UAV_01_F") exitWith {};
+if !(_isUAV6 || _uav isKindOf "UAV_01_base_F") exitWith {};
 
 private _turret = [0, -1] select (_isUAV6);
 
@@ -13,8 +13,6 @@ if !("Bomb_Leaflets" in (_uav weaponsTurret [_turret])) then {
 };
 _uav selectWeaponTurret ["Bomb_Leaflets", [_turret]];
 if (needReload _uav == 1) then {reload _uav};
-
-//_player action ["ManualFire", _uav];
 
 if ((_uav getVariable ["btc_leaflets_eh_added" , -1]) isEqualTo -1) then {
     private _id_f = _uav addEventHandler ["Fired", btc_fnc_eh_leaflets];
