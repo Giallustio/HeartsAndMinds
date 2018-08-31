@@ -35,7 +35,7 @@ switch true do {
         [_type, 0, ["ACE_MainActions","Logistic"], _action] call ace_interact_menu_fnc_addActionToClass; //Logistic
     };
     case (_type isKindOf "UAV_06_base_F" || _type isKindOf "B_UAV_01_F") : {
-        private _action = ["Fire_leaflets", "fire leaflets","\A3\ui_f\data\igui\cfg\simpleTasks\types\container_ca.paa",{_this spawn {((_this select 0)) fire ["Bomb_Leaflets"]}; hint (str _this);},{(driver vehicle player) isEqualTo player}] call ace_interact_menu_fnc_createAction;
+        private _action = ["Fire_leaflets", "fire leaflets","\A3\ui_f\data\igui\cfg\simpleTasks\types\container_ca.paa", {(_this select 0) fire ["Bomb_Leaflets"];}, {true}] call ace_interact_menu_fnc_createAction;
         [_type, 1, ["ACE_SelfActions"], _action, true] call ace_interact_menu_fnc_addActionToClass;
     };
     case (_type isKindOf "Helicopter") : {
