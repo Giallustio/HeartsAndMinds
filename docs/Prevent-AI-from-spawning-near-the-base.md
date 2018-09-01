@@ -13,4 +13,4 @@
 
 Note : you can tweak radius of desactivation by changing `500` meters by more or less.  Make sure your marker radius is large enough to reach out and overlap the epicenter of the town you want to black out.
 
-![107630_20170403172205_1](https://cloud.githubusercontent.com/assets/14364400/24616751/5158449c-1892-11e7-901c-47747c9c349d.png)
+![107410_20170403172205_1](https://cloud.githubusercontent.com/assets/14364400/24616751/5158449c-1892-11e7-901c-47747c9c349d.png)
