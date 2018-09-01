@@ -48,15 +48,8 @@ At the logistic point you can require new objects (like ammo, fortifications, su
 
 ## Logistic
 ### Cargo System:
-- Load: You can load objects inside vehicles. Approach the object you want to load and interact with it.
-Select 'LOAD IN' option.
-After that interact with the vehicle and select 'LOAD object selected' option.
-The object has to be close to the vehicle.
-- Unload: You can unload an object from a vehicle interacting with it. You can be inside the vehicle (personal interaction) or outside (object interaction).
-Select the option 'CHECK CARGO', then choose the object you want to unload from the list, and click 'UNLOAD'.
-If you are inside a chopper the object will be paradropped with a chute. If your height is too low, the object will crash down.
-Every vehicle has a 'CARGO CAPACITY' (CC in game), and every object has a 'REQUIRED CAPACITY' value (RC in game.)
-You can check those values in game with 'LOAD IN' and 'CHECK CARGO' options.
+- Use ACE 3 Cargo system.
+
 ### Towing system:
 To tow a vehicle interact with it and select the option 'HOOK'.After that place the tow vehicle in front of it and select 'TOW' in the interaction menu.
 If the two vehicles are too far away or the vehicle can't tow that load (Car can't tow truck or tank), the option will be disabled.

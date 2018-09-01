@@ -9,7 +9,7 @@ You can add new vehicle in the mision.sqm :
 - Give a unique name like: `btc_veh_16`,`btc_veh_17` ...).
 - Add in the init field : `this setVariable ["btc_dont_delete",true]`
 - Save.
-- Open the [/core/def/mission.sqf L168](https://github.com/Vdauphin/HeartsAndMinds/blob/master/%3DBTC%3Dco%4030_Hearts_and_Minds.Altis/core/def/mission.sqf#L168)
+- Open the [/core/def/mission.sqf L193](https://github.com/Vdauphin/HeartsAndMinds/blob/master/%3DBTC%3Dco%4030_Hearts_and_Minds.Altis/core/def/mission.sqf#L193)
 - Add names you gave to your vehicles.
 - Save.
 
@@ -21,8 +21,8 @@ A garage is available for admin only. Activate the garage through mission parame
 You can add a new vehicle/boat to respawn system by :
 - in the editor, name it like **btc_helo_2**
 - Add in the init field : `this setVariable ["btc_dont_delete",true]`
-- in the [core/def/mission.sqf L169](https://github.com/Vdauphin/HeartsAndMinds/blob/master/%3DBTC%3Dco%4030_Hearts_and_Minds.Altis/core/def/mission.sqf#L169) file, add **btc_helo_2** to the list of btc_helo.
+- in the [core/def/mission.sqf L194](https://github.com/Vdauphin/HeartsAndMinds/blob/master/%3DBTC%3Dco%4030_Hearts_and_Minds.Altis/core/def/mission.sqf#L194) file, add **btc_helo_2** to the list of btc_helo.
 
     like : btc_helo = [btc_helo_1,**btc_helo_2**];
 
-Note: you can tweak respawn time here: [/core/init_server.sqf L37](https://github.com/Vdauphin/HeartsAndMinds/blob/master/%3DBTC%3Dco%4030_Hearts_and_Minds.Altis/core/init_server.sqf#L37) by changing 30s to what you want.
+Note: you can tweak respawn time here: [/core/init_server.sqf L32](https://github.com/Vdauphin/HeartsAndMinds/blob/master/%3DBTC%3Dco%4030_Hearts_and_Minds.Altis/core/init_server.sqf#L32) by changing 30s to what you want.
