@@ -190,11 +190,11 @@ private _vehs = profileNamespace getVariable [format ["btc_hm_%1_vehs", _name], 
         {
             _x params ["_type", "_rearm_magazineClass", "_cargo_obj"];
 
-            private _l = createVehicle [_type, getPosATL _obj, [], 0, "CAN_COLLIDE"];
-            [_l] call btc_fnc_log_init;
-            private _isloaded = [_l, _obj] call ace_cargo_fnc_loadItem;
-            if (btc_debug_log) then {
-                [format ["Object loaded: %1 in veh/container %2 IsLoaded: %3", _l, _obj, _isloaded], __FILE__, [false]] call btc_fnc_debug_message;
+            private _obj = createVehicle [_type, getPosATL _veh, [], 0, "CAN_COLLIDE"];
+            [_obj] call btc_fnc_log_init;
+            private _isloaded = [_obj, _veh] call ace_cargo_fnc_loadItem;
+            if (btc_debug) then {
+                [format ["Object loaded: %1 in veh/container %2 IsLoaded: %3", _obj, _veh, _isloaded], __FILE__, [false]] call btc_fnc_debug_message;
             };
             if (_rearm_magazineClass != "") then {_obj setVariable ["ace_rearm_magazineClass", _rearm_magazineClass, true]};
 
