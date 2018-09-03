@@ -9,7 +9,7 @@ You can also contribute and share your work by pushing on :
 - [master_daily](https://github.com/Vdauphin/HeartsAndMinds/tree/master_daily) : We are only pushing PR Adding new functionality (labeled Enhancement) or FIX which create conflicts in Database system.  When master_daily branch is stable enough, we push it into master and create a Released.
 - Other branches are new features in developement.
 
-See https://guides.github.com/introduction/flow/ for more information. This will explain how [GitHub works](https://youtu.be/BKr8lbx3uFY?t=184).
+See [https://guides.github.com/introduction/flow/](https://guides.github.com/introduction/flow/) for more information. This will explain how [GitHub works](https://youtu.be/BKr8lbx3uFY?t=184).
 
 ### Versioning :
 - Hotfix : 1.15.X  (1.15.1, 1.15.2 etc ...)
