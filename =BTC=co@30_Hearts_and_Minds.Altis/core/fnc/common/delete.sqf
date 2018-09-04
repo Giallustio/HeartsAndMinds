@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_common_delete
+Function: btc_fnc_delete
 
 Description:
     Fill me when you edit me !
@@ -14,11 +14,11 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_common_delete;
+        _result = [] call btc_fnc_delete;
     (end)
 
 Author:
-    Giallustio
+    Vdauphin
 
 ---------------------------------------------------------------------------- */
 

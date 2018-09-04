@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_common_set_markerTextLocal
+Function: btc_fnc_set_markerTextLocal
 
 Description:
     Fill me when you edit me !
@@ -14,11 +14,11 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_common_set_markerTextLocal;
+        _result = [] call btc_fnc_set_markerTextLocal;
     (end)
 
 Author:
-    Giallustio
+    1kuemmel1
 
 ---------------------------------------------------------------------------- */
 

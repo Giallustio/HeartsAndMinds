@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_common_clean_up
+Function: btc_fnc_clean_up
 
 Description:
     Fill me when you edit me !
@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_common_clean_up;
+        _result = [] call btc_fnc_clean_up;
     (end)
 
 Author:

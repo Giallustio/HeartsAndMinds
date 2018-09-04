@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_common_check_los
+Function: btc_fnc_check_los
 
 Description:
     Fill me when you edit me !
@@ -13,7 +13,7 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_common_check_los;
+        _result = [] call btc_fnc_check_los;
     (end)
 
 Author:

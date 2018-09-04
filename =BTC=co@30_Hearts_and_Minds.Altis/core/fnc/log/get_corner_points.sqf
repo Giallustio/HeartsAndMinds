@@ -16,11 +16,10 @@ Examples:
     (end)
 
 Author:
-    Giallustio
+    sethduda
 
 ---------------------------------------------------------------------------- */
 
-// Author : sethduda for AdvancedTowing
 params [
     ["_vehicle", objNull, [objNull]]
 ];

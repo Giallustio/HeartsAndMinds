@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_common_road_direction
+Function: btc_fnc_road_direction
 
 Description:
     Fill me when you edit me !
@@ -12,11 +12,11 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_common_road_direction;
+        _result = [] call btc_fnc_road_direction;
     (end)
 
 Author:
-    Giallustio
+    Vdauphin
 
 ---------------------------------------------------------------------------- */
 

@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_common_set_damage
+Function: btc_fnc_set_damage
 
 Description:
     Fill me when you edit me !
@@ -12,11 +12,11 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_common_set_damage;
+        _result = [] call btc_fnc_set_damage;
     (end)
 
 Author:
-    Giallustio
+    Vdauphin
 
 ---------------------------------------------------------------------------- */
 

@@ -3,7 +3,7 @@
 Function: btc_fnc_log_place_key_down
 
 Description:
-    Fill me when you edit me !
+    https://community.bistudio.com/wiki/DIK_KeyCodes
 
 Parameters:
     _display - [Display]
@@ -21,13 +21,10 @@ Examples:
     (end)
 
 Author:
-    Giallustio
+    1kuemmel1
 
 ---------------------------------------------------------------------------- */
 
-/*
-    DIK_KeyCodes:    https://community.bistudio.com/wiki/DIK_KeyCodes
-*/
 params [
     ["_display", displayNull, [displayNull]],
     ["_key", 16, [0]],

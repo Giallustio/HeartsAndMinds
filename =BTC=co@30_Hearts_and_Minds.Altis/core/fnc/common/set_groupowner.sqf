@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_common_set_groupowner
+Function: btc_fnc_set_groupowner
 
 Description:
     Fill me when you edit me !
@@ -12,11 +12,11 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_common_set_groupowner;
+        _result = [] call btc_fnc_set_groupowner;
     (end)
 
 Author:
-    Giallustio
+    Vdauphin
 
 ---------------------------------------------------------------------------- */
 

@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_common_getHouses
+Function: btc_fnc_getHouses
 
 Description:
     Fill me when you edit me !
@@ -13,7 +13,7 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_common_getHouses;
+        _result = [] call btc_fnc_getHouses;
     (end)
 
 Author:

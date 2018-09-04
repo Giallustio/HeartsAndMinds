@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_common_findposoutsiderock
+Function: btc_fnc_findposoutsiderock
 
 Description:
     Fill me when you edit me !
@@ -12,11 +12,11 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_common_findposoutsiderock;
+        _result = [] call btc_fnc_findposoutsiderock;
     (end)
 
 Author:
-    Giallustio
+    Vdauphin
 
 ---------------------------------------------------------------------------- */
 

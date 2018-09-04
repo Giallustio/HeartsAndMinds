@@ -1,57 +1,31 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_common_showSubtitle
+Function: btc_fnc_showSubtitle
 
 Description:
     Fill me when you edit me !
 
 Parameters:
-    _from - [String]
-    _text - [String]
-    _lineBreak - [Booleen]
-    _colorFrom - [String]
-    _colorText - [String]
-    _fontText - [String]
+    _from - Name of the person speaking [String]
+    _text - Contents of the subtitle [String]
+    _lineBreak - Add a line break [Booleen]
+    _colorFrom - HEX color for speaker (#RGB or #ARGB) [String]
+    _colorText - HEX color for content (#RGB or #ARGB) [String]
+    _fontText - Font (https://community.bistudio.com/wiki/FXY_File_Format#Available_Fonts) [String]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_common_showSubtitle;
-    (end)
-
-Author:
-    Giallustio
-
----------------------------------------------------------------------------- */
-
-/*
-    Author: Thomas Ryan, updated by Karel Moricky
-        Modified: kuemmel
-
-    Description:
-        Displays a subtitle at the bottom of the screen.
-
-    CHANGED:
-        - added optional line break
-        - added optional color for 'speaker' and 'content'
-        - changed position
-        - added optional font selection
-        - added background handling (WIP)
-
-    Parameters:
-        _this select 0: STRING - Name of the person speaking
-        _this select 1: STRING - Contents of the subtitle
-        _this select 2: BOOL   - Add a line break (Optional - default: false)
-        _this select 3: HEX color for speaker (#RGB or #ARGB): - (Optional- default: "#d4cd00")
-        _this select 4: HEX color for content (#RGB or #ARGB): - (Optional- default: "#FFFFFF")
-        _this select 5: STRING - Font (https://community.bistudio.com/wiki/FXY_File_Format#Available_Fonts)
-
-    Examples:
         ["Some Guy","How do yo do?"] call btc_fnc_showSubtitle;
         ["Darth Vader","Come to the dark side. We have cookies!", false, "#ed2939"] call btc_fnc_showSubtitle;
         ["Luke Skywalker","Whhhhhhyyyyyyyy", true, "#1768d3", nil, "PuristaBold"] call btc_fnc_showSubtitle;
-*/
+    (end)
+
+Author:
+    Thomas Ryan
+
+---------------------------------------------------------------------------- */
 
 #define WAIT         10
 #define POS_W        (0.4 * safeZoneW)

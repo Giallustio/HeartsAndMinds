@@ -3,7 +3,8 @@
 Function: btc_fnc_data_add_group
 
 Description:
-    Fill me when you edit me !
+    If player is around: initiate patrol around the destination,
+    Ifnot: save in database and delete units by calling btc_fnc_data_get_group.
 
 Parameters:
     _group - [Group]
@@ -19,11 +20,6 @@ Author:
     Giallustio
 
 ---------------------------------------------------------------------------- */
-
-/*
-    If player is around: initiate patrol around the destination,
-    Ifnot: save in database and delete units by calling btc_fnc_data_get_group.
-*/
 
 params [
     ["_group", grpNull, [grpNull]]

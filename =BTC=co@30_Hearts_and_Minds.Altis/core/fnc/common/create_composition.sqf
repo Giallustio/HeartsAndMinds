@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_common_create_composition
+Function: btc_fnc_create_composition
 
 Description:
     Fill me when you edit me !
@@ -14,7 +14,7 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_common_create_composition;
+        _result = [] call btc_fnc_create_composition;
     (end)
 
 Author:

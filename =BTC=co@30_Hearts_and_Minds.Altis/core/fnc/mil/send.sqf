@@ -3,7 +3,7 @@
 Function: btc_fnc_mil_send
 
 Description:
-    Fill me when you edit me !
+    Send a group of units to a location then call btc_fnc_data_add_group. If player is around, initiate patrol around the destination, ifnot save in database and delete units.
 
 Parameters:
     _start - [Object]
@@ -23,9 +23,6 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-/*
-    Send a group of units to a location then call btc_fnc_data_add_group. If player is around, initiate patrol around the destination, ifnot save in database and delete units.
-*/
 params [
     ["_start", objNull, [objNull]],
     ["_dest", [0, 0, 0], [[], objNull]],
