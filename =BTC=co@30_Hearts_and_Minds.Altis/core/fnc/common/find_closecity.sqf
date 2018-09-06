@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_common_find_closecity
+Function: btc_fnc_find_closecity
 
 Description:
     Fill me when you edit me !
@@ -14,11 +14,11 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_common_find_closecity;
+        _result = [] call btc_fnc_find_closecity;
     (end)
 
 Author:
-    Giallustio
+    Vdauphin
 
 ---------------------------------------------------------------------------- */
 

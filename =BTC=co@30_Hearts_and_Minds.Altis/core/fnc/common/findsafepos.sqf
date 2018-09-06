@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_common_findsafepos
+Function: btc_fnc_findsafepos
 
 Description:
     Fill me when you edit me !
@@ -16,11 +16,11 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_common_findsafepos;
+        _result = [] call btc_fnc_findsafepos;
     (end)
 
 Author:
-    Giallustio
+    Vdauphin
 
 ---------------------------------------------------------------------------- */
 

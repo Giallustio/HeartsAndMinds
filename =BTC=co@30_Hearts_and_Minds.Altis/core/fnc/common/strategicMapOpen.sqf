@@ -1,71 +1,61 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_common_strategicMapOpen
+Function: btc_fnc_strategicMapOpen
 
 Description:
     Fill me when you edit me !
 
 Parameters:
+    0: DISPLAY - parent display. When empty, mission display is used.
+    1: ARRAY - default view position in format [x,y,y] or [x,y]
+    2: ARRAY - list of missions in format:
+        0: ARRAY - mission position in format [x,y,y] or [x,y]
+        1: CODE - expression executed when user clicks on mission icon
+        2: STRING - mission name
+        3: STRING - short description
+        4: STRING - name of mission's player
+        5: STRING - path to overview image
+        6: NUMBER - size multiplier, 1 means default size
+        7: ARRAY - parameters for the -on click- code; referenced from the script as (_this select 9)
+    3: ARRAY - list of ORBAT groups in format:
+        0: ARRAY - group position in format [x,y,y] or [x,y]
+        1: CONFIG - preview CfgORBAT group
+        2: CONFIG - topmost displayed CfgORBAT group
+        3: ARRAY - list of allowed tags
+        4: NUMBER - maximum number of displayed tiers
+    4: ARRAY - list of markers revealed in strategic map (will be hidden when map is closed)
+    5: ARRAY - list of custom images in format:
+        0: STRING - texture path
+        1: ARRAY - color in format [R,G,B,A]
+        2: ARRAY - image position
+        3: NUMBER - image width (in metres)
+        4: NUMBER - image height (in metres)
+        5: NUMBER - image angle (in degrees)
+        6: STRING - text displayed next to the image
+        7: BOOL - true to display shadow
+    6: NUMBER - value in range <0-1> defining weather on strategic map (i.e. density of clouds)
+    7: BOOL - true for night version of strategic map (darker with blue tone)
+    8: NUMBER - default map scale coeficient (1 is automatic scale)
+    9: BOOL - true to enable simulation while the map is opened (default: false)
+       10: STRING - bottom bar action label text (default: "Select a mission")
+       11: BOOL - true to show icon label as a mission name (default: true)
+       12: STRING - path to mission icon texture (default: "\A3\Ui_f\data\Map\GroupIcons\badge_rotate_%1_gs.paa")
+            %1 - animation frame from 0-6 (optional)
+            %2 - index from 1-9 (optional)
 
 Returns:
+    _display - RscDisplayStrategicMap [Display]
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_common_strategicMapOpen;
+        _result = [] call btc_fnc_strategicMapOpen;
     (end)
 
 Author:
-    Giallustio
+    Karel Moricky
 
 ---------------------------------------------------------------------------- */
 
-/*
-    Author: Karel Moricky
-
-    Description:
-    Open strategic map.
-
-    Parameter(s):
-        0: DISPLAY - parent display. When empty, mission display is used.
-        1: ARRAY - default view position in format [x,y,y] or [x,y]
-        2: ARRAY - list of missions in format:
-            0: ARRAY - mission position in format [x,y,y] or [x,y]
-            1: CODE - expression executed when user clicks on mission icon
-            2: STRING - mission name
-            3: STRING - short description
-            4: STRING - name of mission's player
-            5: STRING - path to overview image
-            6: NUMBER - size multiplier, 1 means default size
-            7: ARRAY - parameters for the -on click- code; referenced from the script as (_this select 9)
-        3: ARRAY - list of ORBAT groups in format:
-            0: ARRAY - group position in format [x,y,y] or [x,y]
-            1: CONFIG - preview CfgORBAT group
-            2: CONFIG - topmost displayed CfgORBAT group
-            3: ARRAY - list of allowed tags
-            4: NUMBER - maximum number of displayed tiers
-        4: ARRAY - list of markers revealed in strategic map (will be hidden when map is closed)
-        5: ARRAY - list of custom images in format:
-            0: STRING - texture path
-            1: ARRAY - color in format [R,G,B,A]
-            2: ARRAY - image position
-            3: NUMBER - image width (in metres)
-            4: NUMBER - image height (in metres)
-            5: NUMBER - image angle (in degrees)
-            6: STRING - text displayed next to the image
-            7: BOOL - true to display shadow
-        6: NUMBER - value in range <0-1> defining weather on strategic map (i.e. density of clouds)
-        7: BOOL - true for night version of strategic map (darker with blue tone)
-        8: NUMBER - default map scale coeficient (1 is automatic scale)
-        9: BOOL - true to enable simulation while the map is opened (default: false)
-           10: STRING - bottom bar action label text (default: "Select a mission")
-           11: BOOL - true to show icon label as a mission name (default: true)
-           12: STRING - path to mission icon texture (default: "\A3\Ui_f\data\Map\GroupIcons\badge_rotate_%1_gs.paa")
-                %1 - animation frame from 0-6 (optional)
-                %2 - index from 1-9 (optional)
-
-    Returns:
-    DISPLAY - RscDisplayStrategicMap
-*/
 private ["_parentDisplayDefault","_parentDisplay","_mapCenter","_missions","_ORBAT","_markers","_images","_overcast","_scale","_defaultScale","_simulationEnabled","_displayClass","_display","_playerIcon","_playerColor","_cloudTextures","_cloudsGrid","_cloudsMax","_cloudsSize","_map","_fade","_actionText","_missionIcon","_showIconText"];
 disableserialization;
 

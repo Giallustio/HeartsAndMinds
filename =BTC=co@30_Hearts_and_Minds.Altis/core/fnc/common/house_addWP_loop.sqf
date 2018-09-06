@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_common_house_addWP_loop
+Function: btc_fnc_house_addWP_loop
 
 Description:
     Fill me when you edit me !
@@ -13,7 +13,7 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_common_house_addWP_loop;
+        _result = [] call btc_fnc_house_addWP_loop;
     (end)
 
 Author:

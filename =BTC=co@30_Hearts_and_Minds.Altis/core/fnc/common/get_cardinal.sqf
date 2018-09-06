@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_common_get_cardinal
+Function: btc_fnc_get_cardinal
 
 Description:
     Fill me when you edit me !
@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_common_get_cardinal;
+        _result = [] call btc_fnc_get_cardinal;
     (end)
 
 Author:

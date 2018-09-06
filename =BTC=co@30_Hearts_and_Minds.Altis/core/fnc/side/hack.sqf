@@ -3,7 +3,9 @@
 Function: btc_fnc_side_hack
 
 Description:
-    Fill me when you edit me !
+    https://forums.bistudio.com/forums/topic/186316-how-to-open-the-land_dataterminal_01_f-data-terminal-nexus-update/
+    http://killzonekid.com/arma-scripting-tutorials-uav-r2t-and-pip/
+    http://killzonekid.com/arma-scripting-tutorials-scripted-charges/
 
 Parameters:
     _x - []
@@ -17,7 +19,7 @@ Examples:
     (end)
 
 Author:
-    Giallustio
+    Vdauphin
 
 ---------------------------------------------------------------------------- */
 

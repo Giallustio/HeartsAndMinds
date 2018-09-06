@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_common_find_veh_with_turret
+Function: btc_fnc_find_veh_with_turret
 
 Description:
     Fill me when you edit me !
@@ -12,11 +12,11 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_common_find_veh_with_turret;
+        _result = [] call btc_fnc_find_veh_with_turret;
     (end)
 
 Author:
-    Giallustio
+    Vdauphin
 
 ---------------------------------------------------------------------------- */
 

@@ -3,7 +3,7 @@
 Function: btc_fnc_log_can_tow
 
 Description:
-    Fill me when you edit me !
+    _tower ----rope--- (hook)_towed
 
 Parameters:
     _tower - [Object]
@@ -21,7 +21,6 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-// _tower ----rope--- (hook)_towed
 params [
     ["_tower", objNull, [objNull]],
     ["_towed", objNull, [objNull]]

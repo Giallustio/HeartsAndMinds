@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_common_final_phase
+Function: btc_fnc_final_phase
 
 Description:
     Fill me when you edit me !
@@ -11,7 +11,7 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_common_final_phase;
+        _result = [] call btc_fnc_final_phase;
     (end)
 
 Author:

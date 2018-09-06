@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_common_intro
+Function: btc_fnc_intro
 
 Description:
     Fill me when you edit me !
@@ -13,11 +13,11 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_common_intro;
+        _result = [] call btc_fnc_intro;
     (end)
 
 Author:
-    Giallustio
+    Vdauphin
 
 ---------------------------------------------------------------------------- */
 
