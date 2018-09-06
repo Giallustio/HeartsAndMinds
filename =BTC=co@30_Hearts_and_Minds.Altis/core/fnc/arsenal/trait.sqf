@@ -3,16 +3,17 @@
 Function: btc_fnc_arsenal_trait
 
 Description:
-    Fill me when you edit me !
+    Get trait from an object (e.g. Player) and return the corresponding trait and weapons allowed filter (https://community.bistudio.com/wiki/CfgAmmo_Config_Reference#aiAmmoUsageFlags).
 
 Parameters:
-    _player - [Object]
+    _player - Object use to determine the trait and the weapons allowed filter accordingly to the trait. [Object]
 
 Returns:
+    _type_ammoUsageAllowed = trait and array of weapons allowed filter: array of item type ("AssaultRifle", "MissileLauncher"...), allowed ammo usage ("128 + 512": ammo against vehicles and armored vehicles) and array to check if weapons are parent to a parent.
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_arsenal_trait;
+        _type_ammoUsageAllowed = [player] call btc_fnc_arsenal_trait;
     (end)
 
 Author:
@@ -24,8 +25,6 @@ params [
     ["_player", objNull, [objNull]]
 ];
 
-// 0 - Rifleman, 1 - Medic Adv, 2 - Medic Basic, 3 - Repair, 4 - Engineer, 5 - Anti-Tank, 6 - Anti Air, 7 - Sniper, 8 - Machine gunner
-// https://community.bistudio.com/wiki/CfgAmmo_Config_Reference#aiAmmoUsageFlags
 private _type_ammoUsageAllowed = [];
 switch (true) do {
     case ((_player getUnitTrait "medic") && (ace_medical_level isEqualTo 1)): {

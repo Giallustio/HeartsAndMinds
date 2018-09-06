@@ -3,19 +3,20 @@
 Function: btc_fnc_arsenal_loadout
 
 Description:
-    Fill me when you edit me !
+    Generate a loadout from an array of defined loadout depending on trait, medical level, color and hour of the day.
 
 Parameters:
-    _type - [Number]
-    _color - [Number]
-    _isDay - [Array]
-    _arsenal_loadout - []
+    _type - Type of loadout: 0 - Rifleman, 1 - Medic Adv, 2 - Medic Basic, 3 - Repair, 4 - Engineer, 5 - Anti-Tank, 6 - Anti Air, 7 - Sniper, 8 - Machine gunner. [Number]
+    _color - Color of skin loadout: 0 - Desert, 1 - Tropic, 2 - Black. [Number]
+    _isDay - Select night (false) or day (true) loadout. [Boolean]
+    _arsenal_loadout - Array of defined loadout. [Array]
 
 Returns:
+    Loadout array.
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_arsenal_loadout;
+        _rifleman_loadout = [0] call btc_fnc_arsenal_loadout;
     (end)
 
 Author:
@@ -24,9 +25,9 @@ Author:
 ---------------------------------------------------------------------------- */
 
 params [
-    ["_type", 0, [0]], // 0 - Rifleman, 1 - Medic Adv, 2 - Medic Basic, 3 - Repair, 4 - Engineer, 5 - Anti-Tank, 6 - Anti Air, 7 - Sniper, 8 - Machine gunner
-    ["_color", [[0, 1] select (worldName in ["Tanoa", "chernarus", "lingor3", "sara"]), 2] select (sunOrMoon isEqualTo 0), [0]], //0 - Desert, 1 - Tropic, 2 - Black
-    ["_isDay", 0, [0, false]], // false - night, true - day
+    ["_type", 0, [0]],
+    ["_color", [[0, 1] select (worldName in ["Tanoa", "chernarus", "lingor3", "sara"]), 2] select (sunOrMoon isEqualTo 0), [0]],
+    ["_isDay", 0, [0, false]],
     ["_arsenal_loadout", btc_arsenal_loadout, [[]]]
 ];
 (_arsenal_loadout apply {_x select _color}) params ["_uniform", "_vest", "_helmet", "_hood", "_laserdesignator", "_night_vision", "_weapon", "_weapon_sniper", "_weapon_machineGunner", "_bipod", "_pistol", "_launcher_AT", "_launcher_AA", "_backpack", "_backpack_big", "_radio"];

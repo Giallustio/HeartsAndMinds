@@ -3,19 +3,19 @@
 Function: btc_fnc_arsenal_data
 
 Description:
-    Fill me when you edit me !
+    Add virtual weapons to an object (e.g., ammo box) with restriction. Virtual items can be selected in the BIS/ACE3 Arsenal.
 
 Parameters:
-    _box - [Object]
-    _arsenalType - [Number]
-    _arsenalRestrict - [Number]
-    _arsenalData - [Array]
+    _box - Object to which items will be added. [Object]
+    _arsenalType - _arsenalType < 3 add BIS Arsenal, _arsenalType > 0 add ACE3 Arsenal. [Number]
+    _arsenalRestrict - 1 to add to Arsenal _arsenalData, other to restrict Arsenal with _arsenalData. [Number]
+    _arsenalData - Array of weapons, magazines and items. [Array]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_arsenal_data;
+        [btc_gear_object, btc_p_arsenal_Type, btc_p_arsenal_Restrict, btc_custom_arsenal] call btc_fnc_arsenal_data;
     (end)
 
 Author:

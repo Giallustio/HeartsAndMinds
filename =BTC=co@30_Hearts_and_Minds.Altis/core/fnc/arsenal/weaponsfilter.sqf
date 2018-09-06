@@ -1,21 +1,22 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_arsenal_weaponsfilter
+Function: btc_fnc_arsenal_weaponsFilter
 
 Description:
-    Fill me when you edit me !
+    Filter weapons allowed with the weapons allowed filter: array of item type ("AssaultRifle", "MissileLauncher"...), allowed ammo usage ("128 + 512": ammo against vehicles and armored vehicles) and array to check if weapons are parent to a parent.
 
 Parameters:
-    _trait - [Array]
-    _custom_arsenal - [Array]
-    _arsenalRestrict - [Number]
-    _type_units - [Array]
+    _itemType_ammo_usageAllowed - Array of weapons allowed filter. [Array]
+    _custom_arsenal - Array of weapons, magazines and items. [Array]
+    _arsenalRestrict - 1 to add allowed weapons to Arsenal _custom_arsenal, other to restrict. [Number]
+    _type_units - Array of enemies type. Use to remove enemies weapons from the allowed weapons. [Array]
 
 Returns:
+    _allowedWeapons - Array of allowed weapons [Array]
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_arsenal_weaponsfilter;
+        _allowedWeapons = [["AssaultRifle", ""], ["RocketLauncher", ""]] call btc_fnc_arsenal_weaponsFilter;
     (end)
 
 Author:
@@ -24,12 +25,11 @@ Author:
 ---------------------------------------------------------------------------- */
 
 params [
-    ["_trait", [0, [["AssaultRifle", ""], ["RocketLauncher", ""]]], [[]]],
+    ["_itemType_ammo_usageAllowed", [["AssaultRifle", ""], ["RocketLauncher", ""]], [[]]],
     ["_custom_arsenal", btc_custom_arsenal, [[]]],
     ["_arsenalRestrict", btc_p_arsenal_Restrict, [0]],
     ["_type_units", btc_type_units, [[]]]
 ];
-_trait params ["_type", "_itemType_ammo_usageAllowed"];
 
 private _weapons = ("true" configClasses (configFile >> "CfgWeapons") select {
     getNumber (_x >> "scope") isEqualTo 2 &&

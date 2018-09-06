@@ -3,16 +3,16 @@
 Function: btc_fnc_arsenal_garage
 
 Description:
-    Fill me when you edit me !
+    Open virtual Arsenal garage on object position.
 
 Parameters:
-    _current_garage - [Object]
+    _current_garage - Object where the vehicle from garage will spawn. [Object]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_arsenal_garage;
+        [btc_create_object_point] call btc_fnc_arsenal_garage;
     (end)
 
 Author:
