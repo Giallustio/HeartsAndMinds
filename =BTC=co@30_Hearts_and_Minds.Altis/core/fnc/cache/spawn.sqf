@@ -3,16 +3,16 @@
 Function: btc_fnc_cache_spawn
 
 Description:
-    Fill me when you edit me !
+    Spawn at a house an ammo cache.
 
 Parameters:
-    _house - [Object]
+    _house - House where to spawn the cache. [Object]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_cache_spawn;
+        [] call btc_fnc_cache_spawn;
     (end)
 
 Author:

@@ -3,16 +3,16 @@
 Function: btc_fnc_cache_find_pos
 
 Description:
-    Fill me when you edit me !
+    Find a house in a city and spawn in it an ammo cache.
 
 Parameters:
-    _city_all - [Array]
+    _city_all - Array of cities where the ammo cache can be spawn. [Array]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_cache_find_pos;
+        [] call btc_fnc_cache_find_pos;
     (end)
 
 Author:
@@ -34,9 +34,6 @@ private _city = _useful select _id;
 if (_city getVariable ["type", ""] in ["NameLocal", "Hill", "NameMarine"]) exitWith {
     [] call btc_fnc_cache_find_pos;
 };
-
-btc_cache_cities set [_id, 0];
-btc_cache_cities = btc_cache_cities - [0];
 
 private _xx = _city getVariable ["RadiusX", 500];
 private _yy = _city getVariable ["RadiusY", 500];

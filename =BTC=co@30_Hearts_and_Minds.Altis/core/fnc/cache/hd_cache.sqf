@@ -3,14 +3,14 @@
 Function: btc_fnc_cache_hd_cache
 
 Description:
-    Fill me when you edit me !
+    Destroy an ammo cache only when an explposive with damage > 0.6 is used.
 
 Parameters:
-    _cache - [Object]
-    _part - [String]
-    _damage - [Number]
-    _injurer - [Object]
-    _ammo - [String]
+    _cache - Object to destroy. [Object]
+    _part - Not use. [String]
+    _damage - Amount of damage get by the object. [Number]
+    _injurer - Not use. [Object]
+    _ammo - Type of ammo use to make damage. [String]
 
 Returns:
 

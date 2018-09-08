@@ -3,18 +3,18 @@
 Function: btc_fnc_cache_create_attachto
 
 Description:
-    Fill me when you edit me !
+    Attach holder to an object at the desired position.
 
 Parameters:
-    _object - [Object]
-    _holder - [Object]
-    _pos_type - [String]
+    _object - Object where holders are attached. [Object]
+    _holder - Object attached to _object [Object]
+    _pos_type - Position ("TOP", "FRONT", "CORNER_L", "CORNER_R") where holder will be attached to object. [String]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_cache_create_attachto;
+        [btc_cache_obj, "groundWeaponHolder" createVehicle btc_cache_obj, "TOP"] call btc_fnc_cache_create_attachto;
     (end)
 
 Author:

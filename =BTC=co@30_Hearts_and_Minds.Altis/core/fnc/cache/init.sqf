@@ -3,7 +3,7 @@
 Function: btc_fnc_cache_init
 
 Description:
-    Fill me when you edit me !
+    Initialise the ammo cache system with all necessary variable and start the search of a suitable position for it.
 
 Parameters:
 
@@ -11,7 +11,7 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_cache_init;
+        [] call btc_fnc_cache_init;
     (end)
 
 Author:
@@ -19,7 +19,6 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-btc_cache_cities = + btc_city_all;
 btc_cache_pos = [];
 btc_cache_n = 0;
 btc_cache_obj = objNull;
