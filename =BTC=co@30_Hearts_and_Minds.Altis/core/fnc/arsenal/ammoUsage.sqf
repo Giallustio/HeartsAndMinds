@@ -3,17 +3,21 @@
 Function: btc_fnc_arsenal_ammoUsage
 
 Description:
-    Fill me when you edit me !
+    Select weapons if:
+        - is a type of item
+        - and has a ammo usage allowed
+        - and is not/is parent to a parent
 
 Parameters:
-    _weapons - [Array]
-    _itemType_ammo_usageAllowed - [Array]
+    _weapons - Array of weapopns. [Array]
+    _itemType_ammo_usageAllowed - Weapons allowed filter: array of item type ("AssaultRifle", "MissileLauncher"...), allowed ammo usage ("128 + 512": ammo against vehicles and armored vehicles) and array to check if weapons are parent to a parent. [Array]
 
 Returns:
+    Array of selected weapons
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_arsenal_ammoUsage;
+        _weapons_selected = [["launch_RPG7_F"], ["MissileLauncher", "256", []]] call btc_fnc_arsenal_ammoUsage;
     (end)
 
 Author:

@@ -9,7 +9,7 @@
 
     private _arsenal_trait = player call btc_fnc_arsenal_trait;
     if (btc_p_arsenal_Restrict isEqualTo 3) then {
-        [_arsenal_trait] call btc_fnc_arsenal_weaponsFilter;
+        [_arsenal_trait select 1] call btc_fnc_arsenal_weaponsFilter;
     };
     [] call btc_fnc_int_add_actions;
     [] call btc_fnc_int_shortcuts;
