@@ -4,7 +4,7 @@
 } foreach (((allMissionObjects "groundweaponholder") + (entities "WeaponHolderSimulated")) select {!(_x getVariable ["no_cache",false])});
 {
     private _dead = _x;
-    if (({_x distance _dead < 300} count playableUnits) == 0 && isNil {_dead getVariable "btc_dont_delete"}) then {deleteVehicle _dead};
+    if (({_x distance _dead < 500} count playableUnits) == 0 && isNil {_dead getVariable "btc_dont_delete"}) then {deleteVehicle _dead};
 } foreach alldead;
 {
     if ({Alive _x} count units _x == 0) then {deleteGroup _x;};
