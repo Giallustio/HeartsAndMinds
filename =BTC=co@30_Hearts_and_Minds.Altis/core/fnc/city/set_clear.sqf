@@ -3,10 +3,10 @@
 Function: btc_fnc_city_set_clear
 
 Description:
-    Fill me when you edit me !
+    Define a city with the corresponding ID as clear (no more occupied).
 
 Parameters:
-    _id - [Number]
+    _id - ID of the city no more occupied. [Number]
 
 Returns:
 

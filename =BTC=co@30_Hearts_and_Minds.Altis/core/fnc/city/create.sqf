@@ -3,21 +3,22 @@
 Function: btc_fnc_city_create
 
 Description:
-    Fill me when you edit me !
+    Create a city at the desired position with all necessary variable and the trigger to detect player presence.
 
 Parameters:
-    _position - [Array]
-    _type - [String]
-    _name - [String]
-    _radius_x - [Number]
-    _radius_y - [Number]
-    _has_en - [Booleen]
+    _position - The position where the city will be created. [Array]
+    _type - Type of city. [String]
+    _name - The name of the city. [String]
+    _radius_x - The city radius along x. [Number]
+    _radius_y - The city radius along y. [Number]
+    _has_en - If the city is occupied by enemies. [Booleen]
 
 Returns:
+    _city - City created [Onject]
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_city_create;
+        _city = [[0, 0, 0], "NameCityCapital", "BTC Capital", 500, 500, true] call btc_fnc_city_create;
     (end)
 
 Author:

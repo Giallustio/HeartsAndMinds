@@ -3,23 +3,23 @@
 Function: btc_fnc_city_trigger_player_side
 
 Description:
-    Fill me when you edit me !
+    Create a trigger to detect player presence around a position.
 
 Parameters:
-    _position - [Array]
-    _radius_x - [Number]
-    _radius_y - [Number]
-    _city - [Object]
-    _has_en - [Booleen]
-    _name - [String]
-    _type - [String]
-    _id - [Number]
+    _position - Position where the trigger is created. [Array]
+    _radius_x - Radius of the location along x. [Number]
+    _radius_y - Radius of the location along y. [Number]
+    _city - City object where the trigger will be stored. [Object]
+    _has_en - City is occupied. [Booleen]
+    _name - Name of the city. [String]
+    _type - Type of the city. [String]
+    _id - ID of the city. [Number]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_city_trigger_player_side;
+        [_position, _radius_x, _radius_y, _city, _has_en, _name, _type, _id] call btc_fnc_city_trigger_player_side;
     (end)
 
 Author:
