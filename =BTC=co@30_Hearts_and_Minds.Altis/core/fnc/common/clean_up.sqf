@@ -33,7 +33,7 @@ private _toRemove = (((allMissionObjects "groundweaponholder") + (entities "Weap
 _toRemove append (allDead select {
     private _dead = _x;
 
-    (_playableUnits inAreaArray [getPosWorld _dead, 300, 300]) isEqualTo [] && !(_dead getVariable ["btc_dont_delete", false])
+    (_playableUnits inAreaArray [getPosWorld _dead, 500, 500]) isEqualTo [] && !(_dead getVariable ["btc_dont_delete", false])
 });
 
 _toRemove append (allGroups select {units _x select {alive _x} isEqualTo []});
