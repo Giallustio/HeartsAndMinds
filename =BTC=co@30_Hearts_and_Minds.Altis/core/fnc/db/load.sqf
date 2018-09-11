@@ -70,7 +70,6 @@ btc_hq = btc_hideouts select _ho;
 if (btc_hideouts isEqualTo []) then {[] spawn btc_fnc_final_phase;};
 
 //CACHE
-btc_cache_cities = + btc_city_all;
 btc_cache_markers = [];
 
 private _array_cache = profileNamespace getVariable [format ["btc_hm_%1_cache", _name], []];

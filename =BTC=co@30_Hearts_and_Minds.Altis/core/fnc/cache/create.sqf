@@ -3,7 +3,7 @@
 Function: btc_fnc_cache_create
 
 Description:
-    Fill me when you edit me !
+    Create a cache at btc_cache_pos position.
 
 Parameters:
 
