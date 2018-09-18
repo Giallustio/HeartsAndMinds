@@ -3,17 +3,17 @@
 Function: btc_fnc_civ_add_leaflets
 
 Description:
-    Fill me when you edit me !
+    Add leaflets to drone which have parents classe: UAV_06_base_F and UAV_01_base_F.
 
 Parameters:
-    _player - [Object]
-    _uav - [Object]
+    _player - Not used. [Object]
+    _uav - Drone where leaflets will be added. [Object]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_civ_add_leaflets;
+        [_player, _uav] call btc_fnc_civ_add_leaflets;
     (end)
 
 Author:

@@ -3,16 +3,16 @@
 Function: btc_fnc_civ_add_grenade
 
 Description:
-    Fill me when you edit me !
+    Add grenade to a unit.
 
 Parameters:
-    _unit - [Object]
+    _unit - Unit where a grenade will be added. [Object]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_civ_add_grenade;
+        [_unit] call btc_fnc_civ_add_grenade;
     (end)
 
 Author:
