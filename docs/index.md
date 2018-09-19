@@ -15,7 +15,9 @@ Servers list : [arma3.swec.se](https://arma3.swec.se/server/list?mquery=hearts+a
 	* ### AI Spawn
 		* #### [Civilian spawn](http://vdauphin.github.io/HeartsAndMinds/Tweak-civilian-spawn-in-town)
 		* #### [Enemy spawn](http://vdauphin.github.io/HeartsAndMinds/Enemy-spawn)
-		* #### [Add factions](http://vdauphin.github.io/HeartsAndMinds/Add-factions)
+	* ### Change Factions
+		* #### [AI](http://vdauphin.github.io/HeartsAndMinds/Add-factions)
+		* #### [Player](http://vdauphin.github.io/HeartsAndMinds/faction_player)
 	* ### [All H&M setting and tweak](http://vdauphin.github.io/HeartsAndMinds/All-H&M-setting-and-tweak)
 	* ### [Mods dependency](http://vdauphin.github.io/HeartsAndMinds/Mods-dependency)
 * ## [For developer and tester](http://vdauphin.github.io/HeartsAndMinds/For-developer-and-tester)
