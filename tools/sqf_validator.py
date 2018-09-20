@@ -8,7 +8,7 @@ import sys
 import argparse
 
 def validKeyWordAfterCode(content, index):
-    keyWords = ["for", "do", "count", "each", "forEach", "else", "and", "not", "isEqualTo", "in", "call", "spawn", "execVM", "catch"];
+    keyWords = ["for", "do", "count", "each", "forEach", "else", "and", "not", "isEqualTo", "in", "call", "spawn", "execVM", "catch", "param", "select", "apply", "findIf", "remoteExec"];
     for word in keyWords:
         try:
             subWord = content.index(word, index, index+len(word))
@@ -47,7 +47,7 @@ def check_sqf_syntax(filepath):
         inStringType = '';
 
         lastIsCurlyBrace = False
-        checkForSemiColumn = False
+        checkForSemiColon = False
 
         # Extra information so we know what line we find errors at
         lineNumber = 0
@@ -57,7 +57,8 @@ def check_sqf_syntax(filepath):
         for c in content:
             if (lastIsCurlyBrace):
                 lastIsCurlyBrace = False
-                checkForSemiColumn = True
+                # Test generates false positives with binary commands that take CODE as 2nd arg (e.g. findIf)
+                checkForSemiColon = not re.search('findIf', content, re.IGNORECASE)
 
             if c == '\n': # Keeping track of our line numbers
                 lineNumber += 1 # so we can print accurate line number information when we detect a possible error
@@ -113,9 +114,9 @@ def check_sqf_syntax(filepath):
                             print("ERROR: Tab detected at {0} Line number: {1}".format(filepath,lineNumber))
                             bad_count_file += 1
                             
-                        if (checkForSemiColumn):
+                        if (checkForSemiColon):
                             if (c not in [' ', '\t', '\n', '/']): # keep reading until no white space or comments
-                                checkForSemiColumn = False
+                                checkForSemiColon = False
                                 if (c not in [']', ')', '}', ';', ',', '&', '!', '|', '='] and not validKeyWordAfterCode(content, indexOfCharacter)): # , 'f', 'd', 'c', 'e', 'a', 'n', 'i']):
                                     print("ERROR: Possible missing semicolon ';' detected at {0} Line number: {1}".format(filepath,lineNumber))
                                     bad_count_file += 1
