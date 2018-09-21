@@ -3,16 +3,16 @@
 Function: btc_fnc_civ_CuratorCivPlaced_s
 
 Description:
-    Fill me when you edit me !
+    Apply btc_fnc_civ_unit_create to a unit.
 
 Parameters:
-    _unit - [Object]
+    _unit - Unit where the btc_fnc_civ_unit_create will be apply. [Object]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_civ_CuratorCivPlaced_s;
+        [_unit] call btc_fnc_civ_CuratorCivPlaced_s;
     (end)
 
 Author:

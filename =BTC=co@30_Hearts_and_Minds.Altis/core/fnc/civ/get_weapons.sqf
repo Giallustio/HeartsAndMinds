@@ -3,18 +3,18 @@
 Function: btc_fnc_civ_get_weapons
 
 Description:
-    Fill me when you edit me !
+    Search for civilians at a position in a range to add weapons to their inventory.
 
 Parameters:
-    _pos - [Array]
-    _range - [Number]
-    _units - [Array]
+    _pos - Position to search for civilians. [Array]
+    _range - Range to find civilians around the position. [Number]
+    _units - Pass directly units to add weapons. [Array]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_civ_get_weapons;
+        [[0, 0, 0], 200] call btc_fnc_civ_get_grenade;
     (end)
 
 Author:

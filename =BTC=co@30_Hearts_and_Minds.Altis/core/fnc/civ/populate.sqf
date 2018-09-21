@@ -3,18 +3,18 @@
 Function: btc_fnc_civ_populate
 
 Description:
-    Fill me when you edit me !
+    Populate a city in an area with a defined number of civilians.
 
 Parameters:
-    _city - [Object]
-    _area - [Number]
-    _n - [Number]
+    _city - City to populate. [Object]
+    _area - Area to populate around a city. [Number]
+    _n - Number of civilians to generate. [Number]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_civ_populate;
+        [_city, 200, 3] call btc_fnc_civ_populate;
     (end)
 
 Author:

@@ -3,17 +3,17 @@
 Function: btc_fnc_civ_evacuate
 
 Description:
-    Fill me when you edit me !
+    Evacuate civlians around a position in an area of 200 to a safe position.
 
 Parameters:
-    _position - [Array]
-    _position_evac - [Array]
+    _position - Position to search for cilivians in a area of 200. [Array]
+    _position_evac - Safe position where civilians will move to. [Array]
 
 Returns:
-
+    _civilians - Civlians found. [Array]
 Examples:
     (begin example)
-        _result = [] call btc_fnc_civ_evacuate;
+        _civilians = [[0, 0, 0], [100, 100, 100]] call btc_fnc_civ_evacuate;
     (end)
 
 Author:
