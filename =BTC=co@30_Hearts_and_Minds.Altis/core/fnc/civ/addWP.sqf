@@ -3,18 +3,18 @@
 Function: btc_fnc_civ_addWP
 
 Description:
-    Fill me when you edit me !
+    Add waypoints to a group. The group will patrol inside a first house, then 4 waypoints outside are added and finally the group will patrol again in an other house.
 
 Parameters:
-    _group - [Group]
-    _pos - [Array]
-    _radius - [Number]
+    _group - Group where waypoints will be added. [Group]
+    _pos - Position to search house and position to patrol. [Array]
+    _radius - Radius number to search around the position. [Number]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_civ_addWP;
+        [_group] call btc_fnc_civ_addWP;
     (end)
 
 Author:

@@ -3,10 +3,10 @@
 Function: btc_fnc_city_de_activate
 
 Description:
-    Fill me when you edit me !
+    Desactivate the city with the corresponding ID by storing all groups present inside and clean up dead bodies.
 
 Parameters:
-    _id - [Number]
+    _id - ID of the city to desactivate. [Number]
 
 Returns:
 

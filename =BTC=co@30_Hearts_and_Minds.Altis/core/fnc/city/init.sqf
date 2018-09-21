@@ -3,7 +3,7 @@
 Function: btc_fnc_city_init
 
 Description:
-    Fill me when you edit me !
+    Create cities all over the map and store those properties.
 
 Parameters:
 
@@ -11,7 +11,7 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_city_init;
+        [] call btc_fnc_city_init;
     (end)
 
 Author:

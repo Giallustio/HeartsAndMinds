@@ -3,16 +3,16 @@
 Function: btc_fnc_civ_add_weapons
 
 Description:
-    Fill me when you edit me !
+    Add weapon to a unit.
 
 Parameters:
-    _unit - [Object]
+    _unit - Unit where a weapon will be added. [Object]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_civ_add_weapons;
+        [_unit] call btc_fnc_civ_add_weapons;
     (end)
 
 Author:

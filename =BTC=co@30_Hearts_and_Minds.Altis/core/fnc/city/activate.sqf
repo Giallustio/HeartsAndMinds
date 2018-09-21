@@ -3,15 +3,15 @@
 Function: btc_fnc_city_activate
 
 Description:
-    Fill me when you edit me !
+    Activate the city with the current id passed. This generate IED, random group, populate city with civilian and suicider. It also spawn military patrol and civilian.
 
 Parameters:
-    _id - [Number]
-    _p_mil_group_ratio - [Number]
-    _p_civ_group_ratio - [Number]
-    _p_civ_max_veh - [Number]
-    _p_patrol_max - [Number]
-    _wp_ratios - [Array]
+    _id - Number of the city will be activated. [Number]
+    _p_mil_group_ratio - Enemy density. [Number]
+    _p_civ_group_ratio - Civilian density. [Number]
+    _p_civ_max_veh - Maximum number of civilian patrol. [Number]
+    _p_patrol_max - Maximum number of enemy patrol. [Number]
+    _wp_ratios - Ratio of spawned group in and out houses. [Array]
 
 Returns:
 

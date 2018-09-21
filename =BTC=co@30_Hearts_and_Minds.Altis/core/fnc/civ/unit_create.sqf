@@ -3,16 +3,17 @@
 Function: btc_fnc_civ_unit_create
 
 Description:
-    Fill me when you edit me !
+    Initialize civilian by adding eventhandlers.
 
 Parameters:
-    _unit - [Object]
+    _unit - Unit to initialize. [Object]
 
 Returns:
+	_isInitialized - Return true if is initialized. [Boolean]
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_civ_unit_create;
+        _isInitialized = [_unit] call btc_fnc_civ_unit_create;
     (end)
 
 Author:

@@ -3,17 +3,18 @@
 Function: btc_fnc_civ_create_patrol
 
 Description:
-    Fill me when you edit me !
+    Create a civilian patrol around a city in a defined area.
 
 Parameters:
-    _active_city - [Object]
-    _area - [Number]
+    _active_city - City where the patrol will be done around. [Object]
+    _area - Area to search a start and an end city for the patrol [Number]
 
 Returns:
+    _isCreated - return true if the patrol is created. [Boolean]
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_civ_create_patrol;
+        _isCreated = [_active_city] call btc_fnc_civ_create_patrol;
     (end)
 
 Author:

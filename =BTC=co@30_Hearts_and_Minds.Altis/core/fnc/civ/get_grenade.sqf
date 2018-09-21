@@ -3,18 +3,18 @@
 Function: btc_fnc_civ_get_grenade
 
 Description:
-    Fill me when you edit me !
+    Search for civilians at a position in a range to add grenade to their inventory.
 
 Parameters:
-    _pos - [Array]
-    _range - [Number]
-    _units - [Array]
+    _pos - Position to search for civilians. [Array]
+    _range - Range to find civilians around the position. [Number]
+    _units - Pass directly units to add greande. [Array]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_civ_get_grenade;
+        [[0, 0, 0], 200] call btc_fnc_civ_get_grenade;
     (end)
 
 Author:
