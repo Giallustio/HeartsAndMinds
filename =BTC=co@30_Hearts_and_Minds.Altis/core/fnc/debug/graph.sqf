@@ -3,7 +3,7 @@
 Function: btc_fnc_debug_graph
 
 Description:
-    Fill me when you edit me !
+    https://forums.bohemia.net/forums/topic/204157-display-graph-in-dialog/
 
 Parameters:
     _display - [Display]
@@ -19,8 +19,6 @@ Author:
     Vdauphin
 
 ---------------------------------------------------------------------------- */
-
-//https://forums.bohemia.net/forums/topic/204157-display-graph-in-dialog/
 
 disableSerialization;
 

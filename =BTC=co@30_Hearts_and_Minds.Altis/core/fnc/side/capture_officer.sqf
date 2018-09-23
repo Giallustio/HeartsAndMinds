@@ -3,7 +3,7 @@
 Function: btc_fnc_side_capture_officer
 
 Description:
-    Fill me when you edit me !
+    Thanks DAP for inspiration.
 
 Parameters:
 
@@ -18,10 +18,6 @@ Author:
     Giallustio
 
 ---------------------------------------------------------------------------- */
-
-/*
-    Thanks DAP for inspiration.
-*/
 
 //// Choose two Cities \\\\
 private _usefuls = btc_city_all select {!((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"]) && !(_x getVariable ["occupied", false])};
