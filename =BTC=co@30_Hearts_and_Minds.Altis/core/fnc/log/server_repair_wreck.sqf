@@ -34,7 +34,7 @@ btc_vehicles = btc_vehicles - [_veh];
 
 if (_marker != "") then {
     deleteMarker _marker;
-    remoteExec ["", _marker];
+    remoteExecCall ["", _marker];
 };
 deleteVehicle _veh;
 sleep 1;

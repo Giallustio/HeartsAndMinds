@@ -43,7 +43,7 @@ btc_side_assigned = true;
 publicVariable "btc_side_assigned";
 
 btc_side_jip_data = [7, _pos, _city getVariable "name"];
-btc_side_jip_data remoteExec ["btc_fnc_task_create", 0];
+btc_side_jip_data remoteExecCall ["btc_fnc_task_create", 0];
 
 _city setVariable ["spawn_more", true];
 
@@ -56,7 +56,7 @@ _area setmarkercolor "colorBlue";
 
 private _marker = createMarker [format ["sm_2_%1", _pos], _pos];
 _marker setMarkerType "hd_flag";
-[_marker, "str_a3_exp_m01_respawntower"] remoteExec ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker]; //Radio Tower
+[_marker, "str_a3_exp_m01_respawntower"] remoteExecCall ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker]; //Radio Tower
 _marker setMarkerSize [0.6, 0.6];
 
 //// Randomise composition \\\\
@@ -85,9 +85,9 @@ publicVariable "btc_side_assigned";
 [[_area, _marker], _btc_composition, []] call btc_fnc_delete;
 
 if (btc_side_aborted || btc_side_failed ) exitWith {
-    7 remoteExec ["btc_fnc_task_fail", 0];
+    7 remoteExecCall ["btc_fnc_task_fail", 0];
 };
 
 80 call btc_fnc_rep_change;
 
-7 remoteExec ["btc_fnc_task_set_done", 0];
+7 remoteExecCall ["btc_fnc_task_set_done", 0];

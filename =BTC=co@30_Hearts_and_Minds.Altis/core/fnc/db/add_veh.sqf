@@ -25,7 +25,7 @@ params [
 ];
 
 if !(isServer) exitWith {
-    _veh remoteExec ["btc_fnc_db_add_veh", 2];
+    _veh remoteExecCall ["btc_fnc_db_add_veh", 2];
 };
 
 btc_vehicles pushBackUnique _veh;

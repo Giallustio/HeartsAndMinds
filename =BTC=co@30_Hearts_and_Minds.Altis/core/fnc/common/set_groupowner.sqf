@@ -38,5 +38,5 @@ if (side _group isEqualTo btc_enemy_side) then {
         {
             _x call btc_fnc_mil_add_eh;
         } forEach units _group;
-    }] remoteExec ["call", _HC];
+    }] remoteExecCall ["call", _HC];
 };

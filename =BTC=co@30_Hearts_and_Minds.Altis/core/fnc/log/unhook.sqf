@@ -53,5 +53,5 @@ if (_z < -0.05) then {
     _towed setVelocity [0, 0, 0.01];
 };
 
-[_towed, ["tow", objNull]] remoteExec ["setVariable", 2];
-[_veh, ["tow", objNull]] remoteExec ["setVariable", 2];
+[_towed, ["tow", objNull]] remoteExecCall ["setVariable", 2];
+[_veh, ["tow", objNull]] remoteExecCall ["setVariable", 2];

@@ -97,7 +97,7 @@ switch (_info_type) do {
             case "CACHE" : {
                 [name _man, localize "STR_BTC_HAM_CON_INFO_ASK_CACHEMAP"] call btc_fnc_showSubtitle; //I'll show you some hint on the map
                 sleep 2;
-                [true, 1] remoteExec ["btc_fnc_info_cache", 2];
+                [true, 1] remoteExecCall ["btc_fnc_info_cache", 2];
             };
         };
     };
@@ -112,7 +112,7 @@ switch (_info_type) do {
             case "CACHE" : {
                 [name _man, localize "STR_BTC_HAM_CON_INFO_ASK_CACHEMAP"] call btc_fnc_showSubtitle; //I'll show you some hint on the map
                 sleep 2;
-                [false, 1] remoteExec ["btc_fnc_info_cache", 2];
+                [false, 1] remoteExecCall ["btc_fnc_info_cache", 2];
             };
         };
     };

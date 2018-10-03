@@ -22,5 +22,5 @@ Author:
 if (isServer) then {
     btc_side_aborted = true;
 } else {
-    [] remoteExec ["btc_fnc_side_abort", 2];
+    [] remoteExecCall ["btc_fnc_side_abort", 2];
 };

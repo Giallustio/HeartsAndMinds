@@ -49,7 +49,7 @@ _expl2 attachTo [_suicider, [0, 0.15, 0.15], "Pelvis"];
 private _expl3 = "DemoCharge_Remote_Ammo" createVehicle (position _suicider);
 _expl3 attachTo [_suicider, [0.1, 0.1, 0.15], "Pelvis"];
 
-[_expl1, _expl2, _expl3] remoteExec ["btc_fnc_ied_belt", 0];
+[_expl1, _expl2, _expl3] remoteExecCall ["btc_fnc_ied_belt", 0];
 
 _suicider addEventHandler ["Killed", {
     params ["_unit", "_killer"];
