@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_ied_ied_effects
+Function: btc_fnc_ied_effects
 
 Description:
     Fill me when you edit me !
@@ -13,7 +13,7 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_ied_ied_effects;
+        _result = [] call btc_fnc_ied_effects;
     (end)
 
 Author:
