@@ -255,7 +255,7 @@ if (!isDedicated) then {
     btc_fnc_civ_add_leaflets = compile preprocessFileLineNumbers "core\fnc\civ\add_leaflets.sqf";
 
     //IED
-    btc_fnc_ied_effects = compile preprocessFileLineNumbers "core\fnc\ied\ied_effects.sqf";
+    btc_fnc_ied_effects = compile preprocessFileLineNumbers "core\fnc\ied\effects.sqf";
     btc_fnc_ied_effect_smoke = compile preprocessFileLineNumbers "core\fnc\ied\effect_smoke.sqf";
     btc_fnc_ied_effect_color_smoke = compile preprocessFileLineNumbers "core\fnc\ied\effect_color_smoke.sqf";
     btc_fnc_ied_effect_rocks = compile preprocessFileLineNumbers "core\fnc\ied\effect_rocks.sqf";

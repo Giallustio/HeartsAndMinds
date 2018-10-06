@@ -23,10 +23,6 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-//https://forums.bistudio.com/forums/topic/186316-how-to-open-the-land_dataterminal_01_f-data-terminal-nexus-update/
-//http://killzonekid.com/arma-scripting-tutorials-uav-r2t-and-pip/
-//http://killzonekid.com/arma-scripting-tutorials-scripted-charges/
-
 private _useful = btc_city_all select {_x getVariable ["occupied", false] && !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])};
 
 if (_useful isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
