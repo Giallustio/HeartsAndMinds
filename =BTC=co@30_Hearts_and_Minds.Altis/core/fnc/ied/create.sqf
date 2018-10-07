@@ -9,7 +9,7 @@ Parameters:
     _pos - [Array]
     _type - [String]
     _dir - [Number]
-    _active - [Booleen]
+    _active - [Boolean]
 
 Returns:
 

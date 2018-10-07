@@ -8,7 +8,7 @@ Description:
 Parameters:
     _vehicle - [Object]
     _time - [Number]
-    _has_marker - [Booleen]
+    _has_marker - [Boolean]
 
 Returns:
 

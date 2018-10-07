@@ -8,7 +8,7 @@ Description:
 Parameters:
     _cities - [Array]
     _area - [Number]
-    _isBoat - [Booleen]
+    _isBoat - [Boolean]
 
 Returns:
 

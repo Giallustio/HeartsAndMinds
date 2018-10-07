@@ -7,8 +7,8 @@ Description:
 
 Parameters:
     _factions - [Array]
-    _en_AA - [Booleen]
-    _en_tank - [Booleen]
+    _en_AA - [Boolean]
+    _en_tank - [Boolean]
 
 Returns:
 

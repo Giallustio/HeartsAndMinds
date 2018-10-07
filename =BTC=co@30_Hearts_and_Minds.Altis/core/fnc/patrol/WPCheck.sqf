@@ -10,7 +10,7 @@ Parameters:
     _area - [Number]
     _last_wp_pos - [Array]
     _citiesID - [Array]
-    _isBoat - [Booleen]
+    _isBoat - [Boolean]
 
 Returns:
 

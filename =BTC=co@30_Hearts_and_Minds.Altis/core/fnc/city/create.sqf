@@ -11,7 +11,7 @@ Parameters:
     _name - The name of the city. [String]
     _radius_x - The city radius along x. [Number]
     _radius_y - The city radius along y. [Number]
-    _has_en - If the city is occupied by enemies. [Booleen]
+    _has_en - If the city is occupied by enemies. [Boolean]
 
 Returns:
     _city - City created [Onject]

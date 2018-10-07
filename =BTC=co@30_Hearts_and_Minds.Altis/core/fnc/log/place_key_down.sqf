@@ -8,10 +8,10 @@ Description:
 Parameters:
     _display - [Display]
     _key - [Number]
-    _shift - [Booleen]
-    _ctrl - [Booleen]
-    _alt - [Booleen]
-    _keyPressed - [Booleen]
+    _shift - [Boolean]
+    _ctrl - [Boolean]
+    _alt - [Boolean]
+    _keyPressed - [Boolean]
 
 Returns:
 
