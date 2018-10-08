@@ -8,7 +8,7 @@ Description:
 Parameters:
     _from - [Object]
     _to - [Object]
-    _isRuin - [Booleen]
+    _isRuin - [Boolean]
 
 Returns:
 

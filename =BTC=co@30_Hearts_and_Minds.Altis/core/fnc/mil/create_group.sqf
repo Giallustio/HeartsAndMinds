@@ -11,7 +11,7 @@ Parameters:
     _n - [Number]
     _wp - [Array]
     _type_divers - [Array]
-    _type_units - [Booleen]
+    _type_units - [Boolean]
     _p_sea - [Side]
     _enemy_side - [Array]
     _wp_ratios - []

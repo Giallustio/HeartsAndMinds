@@ -8,7 +8,7 @@ Description:
 Parameters:
     _pos - [Array]
     _random_area - [Number]
-    _allowwater - [Booleen]
+    _allowwater - [Boolean]
 
 Returns:
 

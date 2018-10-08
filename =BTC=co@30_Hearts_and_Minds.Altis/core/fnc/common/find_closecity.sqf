@@ -8,7 +8,7 @@ Description:
 Parameters:
     _obj - [Object]
     _array - [Array]
-    _isOccupied - [Booleen]
+    _isOccupied - [Boolean]
 
 Returns:
 
