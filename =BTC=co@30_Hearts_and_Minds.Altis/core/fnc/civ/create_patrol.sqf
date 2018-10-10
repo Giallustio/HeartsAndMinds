@@ -40,7 +40,9 @@ private _pos = getPos _start_city;
 private _pos_isWater = false;
 private _veh_type = "";
 private _safe_pos = [];
-if ((_pos nearRoads 200) isEqualTo []) then {
+private _roads = _pos nearRoads 200;
+_roads = _roads select {isOnRoad _x};
+if (_roads isEqualTo []) then {
     _safe_pos = [_pos, 0, 500, 13, [0,1] select btc_p_sea, 60 * (pi / 180), 0] call BIS_fnc_findSafePos;
     _safe_pos = [_safe_pos select 0, _safe_pos select 1, 0];
     _pos_isWater = surfaceIsWater _safe_pos;
@@ -50,7 +52,7 @@ if ((_pos nearRoads 200) isEqualTo []) then {
         _veh_type = selectRandom btc_civ_type_veh;
     };
 } else {
-    _safe_pos = getPos (selectRandom (_pos nearRoads 200));
+    _safe_pos = getPos (selectRandom _roads);
     _veh_type = selectRandom btc_civ_type_veh;
 };
 
@@ -61,6 +63,7 @@ private _group = createGroup [civilian, true];
 (selectRandom btc_civ_type_units) createUnit [_safe_pos, _group, "this moveinDriver _veh; this assignAsDriver _veh;"];
 _group setVariable ["no_cache", true];
 _group setVariable ["btc_patrol_id", btc_civilian_id, btc_debug];
+_veh setVariable ["btc_crews", _group];
 btc_civilian_id = btc_civilian_id - 1;
 
 btc_civ_veh_active pushBack _group;
@@ -79,7 +82,6 @@ private _fuelEh = _veh addEventHandler ["Fuel", btc_fnc_patrol_eh];
 private _getOutEh = _veh addEventHandler ["GetOut", btc_fnc_patrol_eh];
 private _handleDamageRepEh = _veh addEventHandler ["HandleDamage", btc_fnc_rep_hd];
 _veh setVariable ["btc_eh", [_fuelEh, _handleDamageEh, _getOutEh, _handleDamageRepEh]];
-_veh setVariable ["btc_crews", _group];
 
 [_group, [_start_city, _active_city], _area, _pos_isWater] call btc_fnc_patrol_init;
 

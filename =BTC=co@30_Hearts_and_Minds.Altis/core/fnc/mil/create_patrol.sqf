@@ -82,6 +82,7 @@ switch (_random) do {
             _veh_type = selectRandom (btc_type_motorized + [selectRandom btc_civ_type_veh]);
             //Tweak position of spawn
             private _roads = _pos nearRoads 150;
+            _roads = _roads select {isOnRoad _x};
             if (_roads isEqualTo []) then {
                 _pos = [_pos, 0, 500, 13, false] call btc_fnc_findsafepos;
             } else {
@@ -89,10 +90,10 @@ switch (_random) do {
             };
         };
         private _veh = [_group, _pos, _veh_type] call btc_fnc_mil_createVehicle;
+        _veh setVariable ["btc_crews", _group];
 
         private _fuelEh = _veh addEventHandler ["Fuel", btc_fnc_patrol_eh];
         _veh setVariable ["btc_eh", [_fuelEh]];
-        _veh setVariable ["btc_crews", _group];
     };
 };
 
