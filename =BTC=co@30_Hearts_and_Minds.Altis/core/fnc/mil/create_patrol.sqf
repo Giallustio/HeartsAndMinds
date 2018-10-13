@@ -58,6 +58,7 @@ if (_start_city getVariable ["hasbeach", false]) then {
 };
 private _pos_isWater = surfaceIsWater _pos;
 if (_pos_isWater) then {
+    _pos = [_pos select 0, _pos select 1, 0];
     _random = 2;
 };
 
