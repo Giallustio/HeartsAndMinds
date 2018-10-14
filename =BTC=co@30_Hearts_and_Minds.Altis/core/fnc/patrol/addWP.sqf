@@ -47,7 +47,8 @@ if !(_vehicle isKindOf "Air") then {
 
         [_group, _newPos, 0, "MOVE", "UNCHANGED", "RED", "UNCHANGED", "NO CHANGE", "", [0, 0, 0], 20] call CBA_fnc_addWaypoint;
     };
-    [_group, _pos, 0, "MOVE", "UNCHANGED", "NO CHANGE", "UNCHANGED", "NO CHANGE", _waypointStatements, [0, 0, 0], 20] call CBA_fnc_addWaypoint;
+    private _waypoint_WPCheck = [_group, _pos, 0, "MOVE", "UNCHANGED", "NO CHANGE", "UNCHANGED", "NO CHANGE", _waypointStatements, [0, 0, 0], 20] call CBA_fnc_addWaypoint;
+    [format ["_waypoint_WPCheck = %1 ID: %2", _waypoint_WPCheck,  _group getVariable ["btc_patrol_id", -1]], __FILE__, [True]] call btc_fnc_debug_message;
     [_group, _pos, 0, "MOVE", "UNCHANGED", "NO CHANGE", "UNCHANGED", "NO CHANGE", "[format ['ID: %1, _waypointStatements not executed, units in group %2', (group this) getVariable 'btc_patrol_id', thislist apply {typeOf _x}], __FILE__] call btc_fnc_debug_message;", [0, 0, 0], 20] call CBA_fnc_addWaypoint;
 
 } else {
