@@ -308,7 +308,7 @@ class Params {
     class btc_p_rep { // Reputation at start:
         title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_OTHER_REPSTART"]);
         values[]={0, 200, 500, 750};
-        texts[]={$STR_BTC_HAM_PARAM_OTHER_REPSTART_VLOW,$STR_A3_TIME_TRIALS_MISCTT_ROF_25,$STR_3DEN_ATTRIBUTES_SPEEDMODE_NORMAL,$STR_A3_TIME_TRIALS_MISCTT_ROF_21}; //texts[]={"Very Low","Low","Normal","High"};
+        texts[]={$STR_ACE_ViewDistance_object_verylow,$STR_A3_TIME_TRIALS_MISCTT_ROF_25,$STR_3DEN_ATTRIBUTES_SPEEDMODE_NORMAL,$STR_A3_TIME_TRIALS_MISCTT_ROF_21}; //texts[]={"Very Low","Low","Normal","High"};
         default = 200;
     };
     class btc_p_city_radius { // Spawn city radius offset:

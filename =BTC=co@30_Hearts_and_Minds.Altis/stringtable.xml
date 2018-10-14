@@ -110,12 +110,6 @@
             </Key>
         </Container>
         <Container name="Documentation: Vehicles">
-            <Key ID="STR_BTC_HAM_DOC_VEHICLES_TITLE">
-                <Original>Vehicles</Original>
-                <Spanish>Vehículos</Spanish>
-                <German>Fahrzeuge</German>
-                <Portuguese>Veículos</Portuguese>
-            </Key>
             <Key ID="STR_BTC_HAM_DOC_VEHICLES_TEXT">
                 <Original>&lt;marker name='blufor_base'&gt;&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\destroy_ca.paa' width='20' height='20' color='#FFBF00'/&gt; Respawn:&lt;/marker&gt;&lt;br/&gt; When a vehicle is destroyed it will not respawn in base, you need to tow or lift it back to base and repair it near the logistic point (Interact with the red box). Helicopter wrecks can only be lifted. &lt;br/&gt; The Chinook is the only exception, it will respawn after 30 seconds. &lt;br/&gt;&lt;br/&gt; &lt;marker name='blufor_base'&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\rearm_ca.paa' width='20' height='20' color='#FFBF00'/&gt; Rearm:&lt;/marker&gt;&lt;br/&gt; You can also rearm them by spawning the corresponding caliber at logistic point (Interact with the red box, select the vehicle type and caliber). Carry the ammo created and interact with the vehicle to rearm. This only works if rearming is setting on entire magazine or amount based on caliber (not for entire vehicle setting).</Original>
                 <Spanish>&lt;marker name='blufor_base'&gt;&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\destroy_ca.paa' width='20' height='20' color='#FFBF00'/&gt; Respawn:&lt;/marker&gt;&lt;br/&gt; Cuando un vehículo es destruido no va a reaparecer en la base, es necesario remolcarlo o transportarlo de vuelta a la base y repararlo cerca del punto logístico (Interactuar con la caja roja). Los destrozos de helicópteros sólo pueden ser transportados por vía aérea.. &lt;br/&gt; El Chinook es la única excepción, reaparecerá después de 30 segundos.. &lt;br/&gt;&lt;br/&gt; &lt;marker name='blufor_base'&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\rearm_ca.paa' width='20' height='20' color='#FFBF00'/&gt; Rearm:&lt;/marker&gt;&lt;br/&gt; También puede rearmarlos generando el calibre correspondiente en el punto logístico (Interactuar con la caja roja, seleccionar el tipo y calibre del vehículo). Lleva la munición creada e interactúa con el vehículo para rearmarlo. Esto sólo funciona si el rearme se está ajustando en todo el cargador o en una cantidad basada en el calibre (no para el ajuste de todo el vehículo).</Spanish>
@@ -154,12 +148,6 @@
             </Key>
         </Container>
         <Container name="Documentation: Logistic point">
-            <Key ID="STR_BTC_HAM_DOC_LOGISTICP_TITLE">
-                <Original>Logistic point</Original>
-                <Spanish>Punto Logistico</Spanish>
-                <German>Logistikpunkt</German>
-                <Portuguese>Ponto Logístico</Portuguese>
-            </Key>
             <Key ID="STR_BTC_HAM_DOC_LOGISTICP_TEXT">
                 <Original>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\repair_ca.paa' width='20' height='20'/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\rearm_ca.paa' width='20' height='20'/&gt; At the logistic point you can require new objects (like ammo, fortifications, supplies for the side missions...) and repair destroyed vehicles.</Original>
                 <Spanish>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\repair_ca.paa' width='20' height='20'/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\rearm_ca.paa' width='20' height='20'/&gt; En el punto logístico puede requerir nuevos objetos (como municiones, fortificaciones, suministros para las misiones secundarias...) y reparar vehículos destruidos.</Spanish>
@@ -168,12 +156,6 @@
             </Key>
         </Container>
         <Container name="Documentation: Logistic">
-            <Key ID="STR_BTC_HAM_DOC_LOGISTIC_TITLE">
-                <Original>Logistic</Original>
-                <Spanish>Logistica</Spanish>
-                <German>Logistik</German>
-                <Portuguese>Logística</Portuguese>
-            </Key>
             <Key ID="STR_BTC_HAM_DOC_LOGISTIC_TEXT">
                 <Original>&lt;marker name='blufor_base'&gt;Cargo System:&lt;/marker&gt;&lt;br/&gt; Use ACE 3 Cargo system. &lt;br/&gt;&lt;br/&gt; &lt;marker name='blufor_base'&gt;Towing system:&lt;/marker&gt;&lt;br/&gt; To tow a vehicle interact with it and select the option 'HOOK'.&lt;br/&gt;After that place the tow vehicle in front of it and select 'TOW' in the interaction menu.&lt;br/&gt; If the two vehicles are too far away or the vehicle can't tow that load (Car can't tow truck or tank), the option will be disabled.&lt;br/&gt; To unhook interact with one of the two vehicles and select the option 'UNHOOK'.&lt;br/&gt;&lt;br/&gt; &lt;marker name='blufor_base'&gt;Place option:&lt;/marker&gt;&lt;br/&gt; With this option you can move heavy objects to build small outpost or base.&lt;br/&gt; When you select the option an hint will show all the keys required to move the object.</Original>
                 <German>&lt;marker name='blufor_base'&gt;Fracht-System:&lt;/marker&gt;&lt;br/&gt;Siehe ACE3 Dokumentation. &lt;br/&gt;&lt;br/&gt; &lt;marker name='blufor_base'&gt;Abschleppsystem:&lt;/marker&gt;&lt;br/&gt; Um ein Fahrzeug abzuschleppen muss man mit diesem interagieren und 'EINHACKEN' auswählen.&lt;br/&gt;Als nächstes muss man das Zugfahrzeug vor das abzuschleppende Fahrzeug stellen und über das Interagtionsmenü die Option 'ABSCHLEPPEN' aktivieren.&lt;br/&gt; Zu beachten ist dabei, dass die beiden Fahrzeuge nicht zu weit von einander entfernt sein dürfen. Ebenso ist daruf zu achten, dass das Zugfahrzeug auch das andere Fahrzeug abschleppen kann (zB. Autos können keine Lkw/Panzer abschleppen).&lt;br/&gt; Um das Abschleppseil wieder zu entfernen muss man einen bei einem der beiden Fahrzeuge die Option 'AUSHACKEN' auswählen.&lt;br/&gt;&lt;br/&gt; &lt;marker name='blufor_base'&gt;Platzierung von Objekten:&lt;/marker&gt;&lt;br/&gt; Mit dieser Option können Sie schwere Objekte bewegen, um einen kleinen Außenposten oder eine Basis zu bauen.&lt;br/&gt; Wenn Sie die Option auswählen, zeigt ein Hinweis alle Tasten an, die zum Verschieben des Objekts erforderlich sind.</German>
@@ -470,11 +452,6 @@
                 <German>Nachladegeschwindigkeit</German>
                 <Portuguese>Velocidade de Recarga</Portuguese>
             </Key>
-            <Key ID="STR_BTC_HAM_PARAM_SKILL_COMMANDING">
-                <Original>Commanding</Original>
-                <German>Befehligen</German>
-                <Portuguese>Comando</Portuguese>
-            </Key>
         </Container>
         <Container name="Parameters: Gameplay">
             <Key ID="STR_BTC_HAM_PARAM_GAMEPLAY_TITLE">
@@ -560,11 +537,6 @@
                 <Original>Reputation at start:</Original>
                 <German>Ansehen zu Beginn:</German>
                 <Portuguese>Reputação inicial:</Portuguese>
-            </Key>
-            <Key ID="STR_BTC_HAM_PARAM_OTHER_REPSTART_VLOW">
-                <Original>Very Low</Original>
-                <German>Sehr Niedrig</German>
-                <Portuguese>Muito baixa</Portuguese>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_OTHER_SPAWNRAD">
                 <Original>Spawn city radius offset:</Original>
@@ -889,12 +861,6 @@
             </Key>
         </Container>
         <Container name="Mines">
-            <Key ID="STR_BTC_HAM_SIDE_MINES_MRK">
-                <Original>Mines</Original>
-                <Spanish>Minas</Spanish>
-                <German>Minen</German>
-                <Portuguese>Minas</Portuguese>
-            </Key>
             <Key ID="STR_BTC_HAM_SIDE_MINES_TITLE">
                 <Original>Minefield near %1</Original>
                 <Spanish>Campo minado cerca de %1</Spanish>
@@ -947,12 +913,6 @@
             </Key>
         </Container>
         <Container name="Supply">
-            <Key ID="STR_BTC_HAM_SIDE_SUPPLIES_MRK">
-                <Original>Supplies</Original>
-                <Spanish>Suministros</Spanish>
-                <German>Nachschub</German>
-                <Portuguese>Suprimento</Portuguese>
-            </Key>
             <Key ID="STR_BTC_HAM_SIDE_SUPPLIES_TITLE">
                 <Original>Supply %1</Original>
                 <Spanish>Suministrar %1</Spanish>
@@ -979,12 +939,6 @@
             </Key>
         </Container>
         <Container name="Tower">
-            <Key ID="STR_BTC_HAM_SIDE_TOWER_MRK">
-                <Original>Radio Tower</Original>
-                <Spanish>Torre de Radio</Spanish>
-                <German>Funkturm</German>
-                <Portuguese>Torre de Rádio</Portuguese>
-            </Key>
             <Key ID="STR_BTC_HAM_SIDE_TOWER_TITLE">
                 <Original>Destroy tower in %1</Original>
                 <Spanish>Destruir torre de radio en %1</Spanish>
@@ -1728,12 +1682,6 @@
                 <Spanish>Hud Encendido\Apagado</Spanish>
                 <German>Hud An\Aus</German>
                 <Portuguese>Hud Ligado\Desligado</Portuguese>
-            </Key>
-            <Key ID="STR_BTC_HAM_LOG_LDR_ACTIONHOOK">
-                <Original>Hook</Original>
-                <Spanish>Enganchar</Spanish>
-                <German>Einhacken</German>
-                <Portuguese>Gancho</Portuguese>
             </Key>
         </Container>
         <Container name="Logistic: Load ">

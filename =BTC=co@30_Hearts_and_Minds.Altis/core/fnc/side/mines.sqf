@@ -48,7 +48,7 @@ _area setmarkercolor "colorBlue";
 
 private _marker = createMarker [format ["sm_2_%1", _pos], _pos];
 _marker setMarkerType "hd_flag";
-[_marker, "STR_BTC_HAM_SIDE_MINES_MRK"] remoteExec ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker]; //Mines
+[_marker, "str_a3_orange_cfgmods_mines_displayname"] remoteExec ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker]; //Mines
 _marker setMarkerSize [0.6, 0.6];
 
 //// Randomise composition \\\\
