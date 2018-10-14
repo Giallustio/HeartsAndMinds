@@ -30,6 +30,10 @@ params [
 
 [_group] call CBA_fnc_clearWaypoints;
 
+if (btc_debug) then {
+    [format ["_waypointStatements = %1 ID: %2", _waypointStatements,  _group getVariable ["btc_patrol_id", -1]], __FILE__, [True]] call btc_fnc_debug_message;
+};
+
 private _vehicle = vehicle leader _group;
 if (_vehicle isKindOf "Air" || _vehicle isKindOf "LandVehicle") then {
     _vehicle setFuel 1;
@@ -44,6 +48,8 @@ if !(_vehicle isKindOf "Air") then {
         [_group, _newPos, 0, "MOVE", "UNCHANGED", "RED", "UNCHANGED", "NO CHANGE", "", [0, 0, 0], 20] call CBA_fnc_addWaypoint;
     };
     [_group, _pos, 0, "MOVE", "UNCHANGED", "NO CHANGE", "UNCHANGED", "NO CHANGE", _waypointStatements, [0, 0, 0], 20] call CBA_fnc_addWaypoint;
+    [_group, _pos, 0, "MOVE", "UNCHANGED", "NO CHANGE", "UNCHANGED", "NO CHANGE", "[format ['ID: %1, _waypointStatements not executed, units in group %2', (group this) getVariable 'btc_patrol_id', thislist apply {typeOf _x}], __FILE__] call btc_fnc_debug_message;", [0, 0, 0], 20] call CBA_fnc_addWaypoint;
+
 } else {
     [_group, _pos, 0, "MOVE", "UNCHANGED", "RED", "LIMITED", "STAG COLUMN", _waypointStatements, [0, 0, 0], 20] call CBA_fnc_addWaypoint;
 };

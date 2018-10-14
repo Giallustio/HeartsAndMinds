@@ -38,6 +38,7 @@ _citiesID params [
 ];
 
 if (btc_debug) then {
+    [format ["_this = %1, _citiesID = %2 ID: %3", _this, _citiesID, _group getVariable ["btc_patrol_id", -1]], __FILE__, [True]] call btc_fnc_debug_message;
     if (!isNil {_group getVariable "btc_patrol_id"}) then {
         deleteMarker format ["Patrol_fant_%1", _group getVariable ["btc_patrol_id", -1]];
     };
