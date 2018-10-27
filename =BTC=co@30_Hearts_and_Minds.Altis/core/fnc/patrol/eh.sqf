@@ -30,7 +30,7 @@ if (btc_debug_log) then {
 
 if (_veh isEqualType objNull) then {
     if (btc_debug) then {
-        deleteMarker format ["Patrol_fant_%1", (_veh getVariable ["btc_crews", grpNull]) getVariable "btc_patrol_id"];
+        deleteMarker format ["Patrol_fant_%1", (_veh getVariable ["btc_crews", grpNull]) getVariable ["btc_patrol_id", 0]];
     };
 
     _veh call btc_fnc_patrol_eh_remove;

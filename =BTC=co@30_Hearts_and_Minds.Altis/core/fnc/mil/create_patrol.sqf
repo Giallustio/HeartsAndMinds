@@ -64,6 +64,7 @@ if (_pos_isWater) then {
 
 //Creating units
 private _group = createGroup [btc_enemy_side, true];
+btc_patrol_active pushBack _group;
 _group setVariable ["no_cache", true];
 _group setVariable ["btc_patrol_id", btc_military_id, btc_debug];
 btc_military_id = btc_military_id + 1;
@@ -99,8 +100,6 @@ switch (_random) do {
 };
 
 [_group, [_start_city, _active_city], _area, _pos_isWater] call btc_fnc_patrol_init;
-
-btc_patrol_active pushBack _group;
 
 //Check if HC is connected
 if !((entities "HeadlessClient_F") isEqualTo []) then {

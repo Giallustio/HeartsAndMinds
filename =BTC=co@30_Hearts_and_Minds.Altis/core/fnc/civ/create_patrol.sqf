@@ -60,13 +60,12 @@ private _veh = createVehicle [_veh_type, _safe_pos, [], 0, "FLY"];
 [_veh, "", []] call BIS_fnc_initvehicle;
 
 private _group = createGroup [civilian, true];
-(selectRandom btc_civ_type_units) createUnit [_safe_pos, _group, "this moveinDriver _veh; this assignAsDriver _veh;"];
+btc_civ_veh_active pushBack _group;
 _group setVariable ["no_cache", true];
 _group setVariable ["btc_patrol_id", btc_civilian_id, btc_debug];
-_veh setVariable ["btc_crews", _group];
 btc_civilian_id = btc_civilian_id - 1;
-
-btc_civ_veh_active pushBack _group;
+(selectRandom btc_civ_type_units) createUnit [_safe_pos, _group, "this moveinDriver _veh; this assignAsDriver _veh;"];
+_veh setVariable ["btc_crews", _group];
 
 {
     _x call btc_fnc_civ_unit_create;
