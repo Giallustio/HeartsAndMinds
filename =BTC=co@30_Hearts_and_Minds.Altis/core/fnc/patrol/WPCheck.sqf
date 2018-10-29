@@ -63,7 +63,7 @@ if ((leader _group) distance _last_wp_pos > 100) then {
     _cities_inaccessible pushBack _end_city;
     _start_city setVariable ["btc_cities_inaccessible", _cities_inaccessible];
 
-    private _end_city = _start_city;
+    _end_city = _start_city;
 };
 
 [_group, [_end_city, _active_city], _area, _isBoat] call btc_fnc_patrol_init;
