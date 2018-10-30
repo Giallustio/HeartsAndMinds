@@ -41,6 +41,6 @@ Author:
     };
 
     if !(_entities isEqualTo []) exitWith {
-        [_entities, _playableUnits] call btc_fnc_deleteEntities;
+        _this call btc_fnc_deleteEntities;
     };
 }, _this, 1] call CBA_fnc_waitAndExecute;
