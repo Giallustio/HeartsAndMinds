@@ -27,7 +27,8 @@ params [
     ["_pos", [0, 0, 0], [[]]],
     ["_type", "", [""]],
     ["_dir", 0, [0]],
-    ["_active", false, [false]]
+    ["_active", false, [false]],
+    ["_ied_list", btc_ied_list, [[]]]
 ];
 
 if (btc_debug_log) then {
@@ -43,6 +44,8 @@ if !(_active) exitWith {[_wreck, _type, objNull]};
 
 private _ied = createMine [selectRandom btc_type_ieds_ace, [_pos select 0, _pos select 1, btc_ied_offset], [], 2];
 _ied setVectorUp surfaceNormal _pos;
-[_wreck, _ied] call btc_fnc_ied_fired_near;
+//[_wreck, _ied] call btc_fnc_ied_fired_near;
+_pos params ["_xx", "_yy", "_zz"];
+_ied_list pushBack [_ied, _wreck, [_xx, _yy, _zz + 0.5]];
 
 [_wreck, _type, _ied]
