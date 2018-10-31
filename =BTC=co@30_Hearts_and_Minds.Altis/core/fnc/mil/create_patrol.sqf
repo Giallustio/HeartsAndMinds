@@ -58,11 +58,13 @@ if (_start_city getVariable ["hasbeach", false]) then {
 };
 private _pos_isWater = surfaceIsWater _pos;
 if (_pos_isWater) then {
+    _pos = [_pos select 0, _pos select 1, 0];
     _random = 2;
 };
 
 //Creating units
 private _group = createGroup [btc_enemy_side, true];
+btc_patrol_active pushBack _group;
 _group setVariable ["no_cache", true];
 _group setVariable ["btc_patrol_id", btc_military_id, btc_debug];
 btc_military_id = btc_military_id + 1;
@@ -82,6 +84,7 @@ switch (_random) do {
             _veh_type = selectRandom (btc_type_motorized + [selectRandom btc_civ_type_veh]);
             //Tweak position of spawn
             private _roads = _pos nearRoads 150;
+            _roads = _roads select {isOnRoad _x};
             if (_roads isEqualTo []) then {
                 _pos = [_pos, 0, 500, 13, false] call btc_fnc_findsafepos;
             } else {
@@ -89,16 +92,14 @@ switch (_random) do {
             };
         };
         private _veh = [_group, _pos, _veh_type] call btc_fnc_mil_createVehicle;
+        _veh setVariable ["btc_crews", _group];
 
         private _fuelEh = _veh addEventHandler ["Fuel", btc_fnc_patrol_eh];
         _veh setVariable ["btc_eh", [_fuelEh]];
-        _veh setVariable ["btc_crews", _group];
     };
 };
 
 [_group, [_start_city, _active_city], _area, _pos_isWater] call btc_fnc_patrol_init;
-
-btc_patrol_active pushBack _group;
 
 //Check if HC is connected
 if !((entities "HeadlessClient_F") isEqualTo []) then {
