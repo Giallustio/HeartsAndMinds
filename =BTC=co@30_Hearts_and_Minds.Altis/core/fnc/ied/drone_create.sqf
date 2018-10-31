@@ -8,8 +8,8 @@ Description:
 Parameters:
     _city - [Object]
     _area - [Number]
-    _rpos - [Array]
-    _group - [Group]
+    _rpos - Create the drone at this position. [Array]
+    _group - Group used for drone crew. [Group]
 
 Returns:
 
