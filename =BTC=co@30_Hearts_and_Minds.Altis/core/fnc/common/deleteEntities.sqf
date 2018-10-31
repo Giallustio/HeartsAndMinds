@@ -3,7 +3,7 @@
 Function: btc_fnc_deleteEntities
 
 Description:
-    This delete objects or groups when there are far from player.
+    This deletes objects or groups when they are far away from a player.
 
 Parameters:
     _entities - Entities deleted when _playableUnits are far. [Array]
