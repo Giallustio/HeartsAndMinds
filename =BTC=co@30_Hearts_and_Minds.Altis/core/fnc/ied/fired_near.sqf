@@ -31,35 +31,43 @@ private _cfgAmmo = configFile >> "cfgAmmo";
     params ["_args", "_id"];
     _args params [
         ["_ied_list", [], [[]]],
-        ["_cfgAmmo", configNull, [configNull]]
+        ["_cfgAmmo", configNull, [configNull]],
+        ["_detected_grenade", [], [[]]]
     ];
 
     {
         _x params ["_ied", "_wreck", "_pos"];
 
-        private _array = [];
         if (alive _ied && !isNull _ied) then {
             private _list = _pos nearObjects ["Default", 2];
+            _list = _list select {
+                private _object = _x;
+                _object != _ied &&
+                {(["SmokeShell", "FlareCore", "IRStrobeBase", "GrenadeHand_stone", "Smoke_120mm_AMOS_White", "TMR_R_DG32V_F"] findIf {_object isKindOf _x} isEqualTo -1)}
+            };
             {
                 private _bullet = _x;
-                if !(["SmokeShell", "FlareCore", "IRStrobeBase", "GrenadeHand_stone", "Smoke_120mm_AMOS_White", "TMR_R_DG32V_F"] findIf {_bullet isKindOf _x} != -1) then {
-                    if (["TimeBombCore", "BombCore", "Grenade"] findIf {_bullet isKindOf _x} != -1) then {
-                        if !(_bullet in _array) then {
-                            _array pushBack _bullet;
-                            [{!alive (_this select 2)}, {
-                                params ["_wreck", "_ied"];
+                if (["TimeBombCore", "BombCore", "Grenade"] findIf {_bullet isKindOf _x} != -1) then {
+                    if !(_bullet in _detected_grenade) then {
+                        _detected_grenade pushBack _bullet;
+                        [{!alive (_this select 2)}, {
+                            params ["_wreck", "_ied", "_bullet", "_detected_grenade"];
 
-                                if (alive _ied) then {[_wreck, _ied] call btc_fnc_ied_boom;};
-                            }, [_wreck, _ied, _bullet]] call CBA_fnc_waitUntilAndExecute;
-                        };
-                    } else {
-                        private _bullet_type = typeOf _bullet;
-                        private _explosive = getNumber (_cfgAmmo >> _bullet_type >> "explosive") > 0;
-                        private _caliber = getNumber (_cfgAmmo >> _bullet_type >> "caliber") > 1.6;
-                        if (_explosive || _caliber) then {
-                            if (alive _ied) then {
-                                [_wreck, _ied] call btc_fnc_ied_boom;
-                            };
+                            if (alive _ied) then {[_wreck, _ied] call btc_fnc_ied_boom;};
+                            {
+                                if (isNull _x) then {
+                                    _detected_grenade deleteAt _forEachIndex;
+                                };
+                            } forEach _detected_grenade;
+                        }, [_wreck, _ied, _bullet, _detected_grenade]] call CBA_fnc_waitUntilAndExecute;
+                    };
+                } else {
+                    private _bullet_type = typeOf _bullet;
+                    private _explosive = getNumber (_cfgAmmo >> _bullet_type >> "explosive") > 0;
+                    private _caliber = getNumber (_cfgAmmo >> _bullet_type >> "caliber") > 1.6;
+                    if (_explosive || _caliber) then {
+                        if (alive _ied) then {
+                            [_wreck, _ied] call btc_fnc_ied_boom;
                         };
                     };
                 };
@@ -68,4 +76,4 @@ private _cfgAmmo = configFile >> "cfgAmmo";
             _ied_list deleteAt _forEachIndex;
         };
     } forEach _ied_list;
-}, 0.01, [_ied_list, _cfgAmmo]] call CBA_fnc_addPerFrameHandler;
+}, 0.01, [_ied_list, _cfgAmmo, []]] call CBA_fnc_addPerFrameHandler;
