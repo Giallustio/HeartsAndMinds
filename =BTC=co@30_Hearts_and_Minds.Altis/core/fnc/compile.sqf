@@ -18,6 +18,7 @@ if (isServer) then {
     btc_fnc_set_groupowner = compile preprocessFileLineNumbers "core\fnc\common\set_groupowner.sqf";
     btc_fnc_find_closecity = compile preprocessFileLineNumbers "core\fnc\common\find_closecity.sqf";
     btc_fnc_delete = compile preprocessFileLineNumbers "core\fnc\common\delete.sqf";
+    btc_fnc_deleteEntities = compile preprocessFileLineNumbers "core\fnc\common\deleteEntities.sqf";
     btc_fnc_final_phase = compile preprocessFileLineNumbers "core\fnc\common\final_phase.sqf";
     btc_fnc_findPosOutsideRock = compile preprocessFileLineNumbers "core\fnc\common\findposoutsiderock.sqf";
     btc_fnc_set_groupsowner = compile preprocessFileLineNumbers "core\fnc\common\set_groupsowner.sqf";
