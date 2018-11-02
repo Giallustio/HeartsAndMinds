@@ -82,7 +82,7 @@ waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !Alive _tower )};
 
 btc_side_assigned = false;
 publicVariable "btc_side_assigned";
-[[_area, _marker], _btc_composition, []] call btc_fnc_delete;
+[[_area, _marker], _btc_composition] call btc_fnc_delete;
 
 if (btc_side_aborted || btc_side_failed ) exitWith {
     7 remoteExec ["btc_fnc_task_fail", 0];
