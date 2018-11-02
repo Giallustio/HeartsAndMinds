@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_ied_suicider_active;
+        [_suicider] call btc_fnc_ied_suicider_active;
     (end)
 
 Author:

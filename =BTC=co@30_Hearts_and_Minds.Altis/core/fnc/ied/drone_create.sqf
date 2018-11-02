@@ -3,15 +3,16 @@
 Function: btc_fnc_ied_drone_create
 
 Description:
-    Fill me when you edit me !
+    Create a drone in a city under a random area.
 
 Parameters:
-    _city - [Object]
-    _area - [Number]
+    _city - City where the drone is created. [Object]
+    _area - Area around the city where the drone is created randomly. [Number]
     _rpos - Create the drone at this position. [Array]
     _group - Group used for drone crew. [Group]
 
 Returns:
+    _leader - return the leader of the group. [Object]
 
 Examples:
     (begin example)

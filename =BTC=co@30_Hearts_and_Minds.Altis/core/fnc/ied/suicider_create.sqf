@@ -7,7 +7,7 @@ Description:
 
 Parameters:
     _city - City where the suicider is created. [Object]
-    _area - Area where the suicider is created randomly. [Number]
+    _area - Area around the city the suicider is created randomly. [Number]
 
 Returns:
     _suicider - Created suicider. [Object]
