@@ -3,17 +3,17 @@
 Function: btc_fnc_ied_check
 
 Description:
-    Fill me when you edit me !
+    Contantly check if player is around by calling btc_fnc_ied_checkLoop. If yes, trigger the explosion.
 
 Parameters:
-    _city - [Object]
-    _ieds - [Array]
+    _city - City where IED has been created. [Object]
+    _ieds - All IED (even FACK IED). [Array]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_ied_check;
+        [_city, _ieds] call btc_fnc_ied_check;
     (end)
 
 Author:
