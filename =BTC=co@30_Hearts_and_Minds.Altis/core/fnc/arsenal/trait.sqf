@@ -30,26 +30,23 @@ switch (true) do {
     case ((_player getUnitTrait "medic") && (ace_medical_level isEqualTo 1)): {
         _type_ammoUsageAllowed = [1, [["AssaultRifle", "", [false, "Rifle_Long_Base_F"]]]];
     };
-    case ((_player getUnitTrait "medic") && (ace_medical_level isEqualTo 2)): {
+    case (_player getVariable ["ace_isEngineer", 0] in [1, 2]): {
         _type_ammoUsageAllowed = [2, [["AssaultRifle", "", [false, "Rifle_Long_Base_F"]]]];
     };
-    case (_player getVariable ["ace_isEngineer", 0] in [1, 2]): {
+    case (_player getUnitTrait "explosiveSpecialist"): {
         _type_ammoUsageAllowed = [3, [["AssaultRifle", "", [false, "Rifle_Long_Base_F"]]]];
     };
-    case (_player getUnitTrait "explosiveSpecialist"): {
-        _type_ammoUsageAllowed = [4, [["AssaultRifle", "", [false, "Rifle_Long_Base_F"]]]];
-    };
     case ([typeOf _player, ["MissileLauncher", "128 + 512"]] call btc_fnc_mil_ammoUsage): {
-        _type_ammoUsageAllowed = [5, [["AssaultRifle", "", [false, "Rifle_Long_Base_F"]], ["RocketLauncher", ""], ["MissileLauncher",  "128 + 512"]]];
+        _type_ammoUsageAllowed = [4, [["AssaultRifle", "", [false, "Rifle_Long_Base_F"]], ["RocketLauncher", ""], ["MissileLauncher",  "128 + 512"]]];
     };
     case ([typeOf _player, ["MissileLauncher", "256"]] call btc_fnc_mil_ammoUsage): {
-        _type_ammoUsageAllowed = [6, [["AssaultRifle", "", [false, "Rifle_Long_Base_F"]], ["MissileLauncher", "256"]]];
+        _type_ammoUsageAllowed = [5, [["AssaultRifle", "", [false, "Rifle_Long_Base_F"]], ["MissileLauncher", "256"]]];
     };
     case ([typeOf _player, ["SniperRifle", ""]] call btc_fnc_mil_ammoUsage): {
-        _type_ammoUsageAllowed = [7, [["AssaultRifle", "64 + 128 + 256", [true, "Rifle_Long_Base_F"]], ["SniperRifle", ""]]];
+        _type_ammoUsageAllowed = [6, [["AssaultRifle", "64 + 128 + 256", [true, "Rifle_Long_Base_F"]], ["SniperRifle", ""]]];
     };
     case ([typeOf _player, ["MachineGun", ""]] call btc_fnc_mil_ammoUsage): {
-        _type_ammoUsageAllowed = [8, [["MachineGun", ""]]];
+        _type_ammoUsageAllowed = [7, [["MachineGun", ""]]];
     };
     default {
         _type_ammoUsageAllowed = [0, [["AssaultRifle", "", [false, "Rifle_Long_Base_F"]], ["RocketLauncher", ""]]];
