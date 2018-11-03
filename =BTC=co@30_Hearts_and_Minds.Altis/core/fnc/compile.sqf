@@ -68,6 +68,7 @@ if (isServer) then {
     //IED
     btc_fnc_ied_boom = compile preprocessFileLineNumbers "core\fnc\ied\boom.sqf";
     btc_fnc_ied_check = compile preprocessFileLineNumbers "core\fnc\ied\check.sqf";
+    btc_fnc_ied_checkLoop = compile preprocessFileLineNumbers "core\fnc\ied\checkLoop.sqf";
     btc_fnc_ied_create = compile preprocessFileLineNumbers "core\fnc\ied\create.sqf";
     btc_fnc_ied_fired_near = compile preprocessFileLineNumbers "core\fnc\ied\fired_near.sqf";
     btc_fnc_ied_init_area = compile preprocessFileLineNumbers "core\fnc\ied\init_area.sqf";
