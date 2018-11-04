@@ -22,8 +22,8 @@ if (btc_db_load && {profileNamespace getVariable [format ["btc_hm_%1_db", worldN
 };
 
 [] call btc_fnc_db_autosave;
-
 [] call btc_fnc_eh_server;
+[btc_ied_list] call btc_fnc_ied_fired_near;
 
 ["Initialize"] call BIS_fnc_dynamicGroups;
 

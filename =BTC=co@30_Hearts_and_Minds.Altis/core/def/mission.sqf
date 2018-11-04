@@ -132,6 +132,7 @@ if (isServer) then {
     btc_ied_suic_time = 900;
     btc_ied_suic_spawned = - btc_ied_suic_time;
     btc_ied_offset = [0, -0.03, -0.07] select _p_ied_spot;
+    btc_ied_list = [];
 
     //FOB
     btc_fobs = [[], []];
