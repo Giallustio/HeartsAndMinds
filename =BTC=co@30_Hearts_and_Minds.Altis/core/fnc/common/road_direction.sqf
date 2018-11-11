@@ -1,10 +1,32 @@
 
-private ["_road","_roadConnectedTo","_connectedRoad","_direction"];
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_road_direction
 
-_road = _this select 0;
-_roadConnectedTo = roadsConnectedTo _road;
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _road - [Object]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_road_direction;
+    (end)
+
+Author:
+    Vdauphin
+
+---------------------------------------------------------------------------- */
+
+params [
+    ["_road", objNull, [objNull]]
+];
+
+private _roadConnectedTo = roadsConnectedTo _road;
 if (_roadConnectedTo isEqualTo []) exitWith {0};
-_connectedRoad = _roadConnectedTo select 0;
-_direction = _road getDir _connectedRoad;
+private _connectedRoad = _roadConnectedTo select 0;
+private _direction = _road getDir _connectedRoad;
 
 _direction

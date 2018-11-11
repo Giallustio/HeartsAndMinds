@@ -1,5 +1,32 @@
 
-params ["_pos", "_setdir", "_array"];
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_create_composition
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _pos - [Array]
+    _setdir - [Number]
+    _array - [Array]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_create_composition;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
+params [
+    ["_pos", [0, 0, 0], [[]]],
+    ["_setdir", 0, [0]],
+    ["_array", [], [[]]]
+];
 _pos params ["_pos_x", "_pos_y", ["_pos_z", 0]];
 
 _array apply {

@@ -1,24 +1,43 @@
 
-private ["_main_class","_sub_class","_lb","_category"];
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_log_create_load
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _main_class - []
+    _sub_class - []
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_log_create_load;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
 
 lbClear 71;
-_main_class = btc_construction_array select 0;
-_sub_class  = btc_construction_array select 1;
-for "_i" from 0 to ((count _main_class) - 1) do
-{
-    _lb = lbAdd [71,(_main_class select _i)];if (_i == 0) then {lbSetCurSel [71,_lb];};
+btc_construction_array params ["_main_class", "_sub_class"];
+for "_i" from 0 to ((count _main_class) - 1) do {
+    private _lb = lbAdd [71, _main_class select _i];
+    if (_i isEqualTo 0) then {
+        lbSetCurSel [71, _lb];
+    };
 };
-_category = _sub_class select 0;
+private _category = _sub_class select 0;
 lbClear 72;
-for "_i" from 0 to ((count _category) - 1) do
-{
-    private ["_class","_display"];
-    _class = (_category select _i);
-    _display = getText (configFile >> "cfgVehicles" >> _class >> "displayName");
-    //_lb = lbAdd [72,_display];
-    //lbSetData [72, _i, _class];
-    _index = lbAdd [72,_display];
+for "_i" from 0 to ((count _category) - 1) do {
+    private _class = _category select _i;
+    private _display = getText (configFile >> "cfgVehicles" >> _class >> "displayName");
+    private _index = lbAdd [72, _display];
     lbSetData [72, _index, _class];
-    if (_i == 0) then {lbSetCurSel [72,_index];};
+    if (_i isEqualTo 0) then {
+        lbSetCurSel [72, _index];
+    };
 };
 true

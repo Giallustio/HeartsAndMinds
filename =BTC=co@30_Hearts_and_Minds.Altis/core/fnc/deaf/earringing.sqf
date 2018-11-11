@@ -1,7 +1,28 @@
 
-private ["_players_close","_pos"];
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_deaf_earringing
 
-_pos = _this select 0;
+Description:
+    Fill me when you edit me !
 
-_players_close = allPlayers select {_pos distance _x < 100};
+Parameters:
+    _pos - [Array]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_deaf_earringing;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
+params [
+    ["_pos", [0, 0, 0], [[]]]
+];
+
+private _players_close = allPlayers inAreaArray [_pos, 100, 100];
 [20] remoteExec ["ace_hearing_fnc_earRinging", _players_close apply {owner _x}];

@@ -1,60 +1,96 @@
-/*
-mapAnimAdd [1, 0.2, [0,0]]; mapAnimCommit;*/
 
-private ["_fobs","_idc","_fob","_marker","_pos","_text"];
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_fob_redeploy
 
-closeDialog 0;
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _sunrise - []
+    _sunset - []
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_fob_redeploy;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
 
 btc_int_ask_data = nil;
-
-[6,nil,player] remoteExec ["btc_fnc_int_ask_var", 2];
+["btc_fobs"] remoteExecCall ["btc_fnc_int_ask_var", 2];
 
 waitUntil {!(isNil "btc_int_ask_data")};
 
-if (count (btc_int_ask_data select 0) == 0) exitWith {hint (localize "STR_BTC_HAM_O_FOB_REDEPLOY_H_NOFOB");}; //"No FOBs deployed"
+private _fobs_marker = btc_int_ask_data select 0;
+private _fobs_structure = btc_int_ask_data select 1;
+if (_fobs_marker isEqualTo []) exitWith {
+    hint localize "STR_BTC_HAM_O_FOB_REDEPLOY_H_NOFOB"; //"No FOBs deployed"
+};
 
-_fobs = btc_int_ask_data;
+ private _respawn_positions = _fobs_structure apply {
+    private _positions = _x buildingPos -1;
+    selectRandom (_positions select {_x select 2 < 1});
+};
 
-forceMap true;
+private _missionsData = [];
+{
+    _missionsData pushBack [
+        getMarkerPos _x,
+        compile format ["player setPosATL %1", _respawn_positions select _forEachIndex],
+        _x,
+        format [localize "STR_BTC_HAM_O_FOB_REDEPLOY_H_MOVING", _x], //"Moving to %1"
+        "",
+        getText (configfile >> "CfgVehicles" >> typeOf (_fobs_structure select _forEachIndex) >> "editorPreview"),
+        1,
+        []
+    ]
+} forEach _fobs_marker;
 
-btc_fob_dlg = false;
+disableserialization;
+(date call BIS_fnc_sunriseSunsetTime) params ["_sunrise", "_sunset"];
 
-createDialog "btc_fob_redeploy";
+private _parentDisplay = [] call bis_fnc_displayMission;
+private _mapCenter = getMarkerPos btc_respawn_marker;
+private _ORBAT  = [];
+private _markers = [];
+private _images = [];
+private _overcast = overcast;
+private _isNight = !((_sunrise < dayTime) && (_sunset > dayTime));
+private _scale = 1;
+private _simul = true;
 
-waitUntil {dialog};
+{
+    _x setMarkerAlphaLocal 0;
+} forEach _fobs_marker;
 
-_idc = 778;
+private _display = [
+    _parentDisplay,
+    _mapCenter,
+    _missionsData,
+    _ORBAT,
+    _markers,
+    _images,
+    _overcast,
+    _isNight,
+    _scale,
+    _simul,
+    localize "$STR_BTC_HAM_O_FOB_REDEPLOY_LABEL",
+    true
+] call btc_fnc_strategicMapOpen;
 
-{lbAdd [ _idc, _x];} foreach (_fobs select 0);
-
-lbSetCurSel [_idc, 0];
-/*
-while {!btc_fob_dlg} do {
-    if !(dialog) then {hint "Do not close the dialog with esc";createDialog "btc_fob_redeploy";{_index = lbAdd [ _idc, _x ];} foreach _fobs;lbSetCurSel [_idc, 0];};
-    sleep 0.1;
-};*/
-
-waitUntil {!dialog || btc_fob_dlg};
-
-if (!btc_fob_dlg) exitWith {forceMap false;};
-
-_fob = lbText [_idc, lbCurSel _idc];
-
-_marker = lbText [_idc, lbCurSel _idc];
-
-if (_marker == "Base") then {_marker = btc_respawn_marker;};
-
-forceMap false;
-
-closeDialog 0;
-
-_pos = ((_fobs select 1) select ((_fobs select 0) find _marker)) buildingPos -1;
-
-_text = format [(localize "STR_BTC_HAM_O_FOB_REDEPLOY_H_MOVING"),_fob]; //"Moving to %1"
-
-titleText [_text, "BLACK OUT"];
-sleep 3;
-titleText [_text, "BLACK FADED"];
-player setPosATL selectRandom (_pos select [0, [count _pos,4] select (count _pos >= 4)]);
-sleep 2;
-titleText ["", "BLACK IN"];
+_display displayaddeventhandler [
+    "unload",
+    format [
+        "
+            {
+                _x setMarkerAlphaLocal 1;
+            } forEach %1;
+        ",
+        _fobs_marker
+    ]
+];

@@ -1,11 +1,33 @@
 
-private ["_vehicle","_data"];
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_eh_veh_respawn
 
-_vehicle = _this select 0;
-_data = _vehicle getVariable ["data_respawn",[]];
+Description:
+    Fill me when you edit me !
 
-[_vehicle,_data] spawn {
-    params ["_vehicle","_data"];
+Parameters:
+    _vehicle - [Object]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_eh_veh_respawn;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
+params [
+    ["_vehicle", objNull, [objNull]]
+];
+
+private _data = _vehicle getVariable ["data_respawn", []];
+
+[_vehicle, _data] spawn {
+    params ["_vehicle", "_data"];
     _data params ["_type", "_pos", "_dir", "_time", "_has_marker", ["_customization", [false, false]]];
 
     sleep _time;
@@ -15,5 +37,5 @@ _data = _vehicle getVariable ["data_respawn",[]];
     [_veh, _customization select 0, _customization select 1] call BIS_fnc_initVehicle;
     _veh setDir _dir;
     _veh setPosASL _pos;
-    [_veh,_time, _has_marker] spawn btc_fnc_eh_veh_add_respawn;
+    [_veh, _time, _has_marker] spawn btc_fnc_eh_veh_add_respawn;
 };

@@ -1,6 +1,25 @@
 
-private _useful = btc_city_all select {(_x getVariable ["type",""] != "NameLocal") && {_x getVariable ["type",""] != "Hill"} && (_x getVariable ["type",""] != "NameMarine")};
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_side_mines
 
+Description:
+    Fill me when you edit me !
+
+Parameters:
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_side_mines;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
+private _useful = btc_city_all select {!((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])};
 if (_useful isEqualTo []) then {_useful = + btc_city_all;};
 
 private _city = selectRandom _useful;
@@ -9,27 +28,27 @@ private _pos = [getPos _city, 0, 500, 30, 0, 60 * (pi / 180), 0] call BIS_fnc_fi
 btc_side_aborted = false;
 btc_side_done = false;
 btc_side_failed = false;
-btc_side_assigned = true;publicVariable "btc_side_assigned";
-
-[4, _pos, _city getVariable "name"] remoteExec ["btc_fnc_task_create", 0];
+btc_side_assigned = true;
+publicVariable "btc_side_assigned";
 
 btc_side_jip_data = [4, _pos, _city getVariable "name"];
+btc_side_jip_data remoteExec ["btc_fnc_task_create", 0];
 
 private _distance_between_fences = 8.1;
 private _number_of_fences = 3 + floor random 4;
 private _area_size = _distance_between_fences * _number_of_fences;
 private _offset = _area_size + _distance_between_fences/2;
 
-private _area = createmarker [format ["sm_%1", _pos], _pos];
+private _area = createMarker [format ["sm_%1", _pos], _pos];
 _area setMarkerShape "RECTANGLE";
 _area setMarkerBrush "SolidBorder";
 _area setMarkerSize [_offset, _offset];
 _area setMarkerAlpha 0.3;
 _area setmarkercolor "colorBlue";
 
-private _marker = createmarker [format ["sm_2_%1", _pos], _pos];
-_marker setmarkertype "hd_flag";
-[_marker, "STR_BTC_HAM_SIDE_MINES_MRK"] remoteExec ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker]; //Mines
+private _marker = createMarker [format ["sm_2_%1", _pos], _pos];
+_marker setMarkerType "hd_flag";
+[_marker, "str_a3_orange_cfgmods_mines_displayname"] remoteExec ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker]; //Mines
 _marker setMarkerSize [0.6, 0.6];
 
 //// Randomise composition \\\\
@@ -62,14 +81,14 @@ for "_i" from -_number_of_fences to _number_of_fences do {
         [_fence, 90, [ -_offset, _i * _distance_between_fences, 0]]
     ];
     if !(_i isEqualTo 1) then {
-        _composition_pattern pushBack [_fence, 90, [ _offset, _i * _distance_between_fences, 0]];
+        _composition_pattern pushBack [_fence, 90, [_offset, _i * _distance_between_fences, 0]];
     };
 
     if (random 1 > 0.7) then {
         _composition_pattern append [
             [selectRandom btc_type_signs, 180, [_i * _distance_between_fences, _offset - 1, 0]],
             [selectRandom btc_type_signs, 0, [_i * _distance_between_fences, -_offset + 1, 0]],
-            [selectRandom btc_type_signs, 270, [ _offset - 1, _i * _distance_between_fences, 0]],
+            [selectRandom btc_type_signs, 270, [_offset - 1, _i * _distance_between_fences, 0]],
             [selectRandom btc_type_signs, 90, [ -_offset + 1, _i * _distance_between_fences, 0]]
         ];
     };
@@ -92,23 +111,24 @@ for "_i" from 1 to (5 + round random 5) do {
     };
 };
 
-waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({_x distance _pos < 100} count playableUnits > 0))};
+waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !(playableUnits inAreaArray [_pos, 100, 100] isEqualTo []))};
 
-private _closest = [_city,btc_city_all select {!(_x getVariable ["active",false])}, false] call btc_fnc_find_closecity;
+private _closest = [_city,btc_city_all select {!(_x getVariable ["active", false])}, false] call btc_fnc_find_closecity;
 for "_i" from 1 to (round random 2) do {
     [_closest, _pos, 1, selectRandom btc_type_motorized] spawn btc_fnc_mil_send;
 };
 
-waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || ({!isNull _x} count _mines == 0))};
+waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || (_mines select {!isNull _x} isEqualTo []))};
 
-btc_side_assigned = false;publicVariable "btc_side_assigned";
+btc_side_assigned = false;
+publicVariable "btc_side_assigned";
 if (btc_side_aborted || btc_side_failed) exitWith {
     4 remoteExec ["btc_fnc_task_fail", 0];
-    [[_area,_marker], _mines + _composition_objects, [], []] call btc_fnc_delete;
+    [[_area, _marker], _mines + _composition_objects, []] call btc_fnc_delete;
 };
 
 30 call btc_fnc_rep_change;
 
 4 remoteExec ["btc_fnc_task_set_done", 0];
 
-[[_area,_marker], _composition_objects, [], []] call btc_fnc_delete;
+[[_area, _marker], _composition_objects, []] call btc_fnc_delete;

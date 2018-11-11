@@ -1,11 +1,47 @@
-{
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_clean_up
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _playableUnits - [Array]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_clean_up;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
+params [
+    ["_playableUnits", playableUnits, [[]]]
+];
+
+private _toRemove = (((allMissionObjects "groundweaponholder") + (entities "WeaponHolderSimulated")) select {!(_x getVariable ["no_cache", false])}) select {
     private _obj = _x;
-    if (({_x distance _obj < 150} count playableUnits) == 0) then {deleteVehicle _obj};
-} foreach (((allMissionObjects "groundweaponholder") + (entities "WeaponHolderSimulated")) select {!(_x getVariable ["no_cache",false])});
-{
+
+    _playableUnits inAreaArray [getPosWorld _obj, 150, 150] isEqualTo []
+};
+
+_toRemove append (allDead select {
     private _dead = _x;
-    if (({_x distance _dead < 500} count playableUnits) == 0 && isNil {_dead getVariable "btc_dont_delete"}) then {deleteVehicle _dead};
-} foreach alldead;
-{
-    if ({Alive _x} count units _x == 0) then {deleteGroup _x;};
-} foreach allGroups;
+
+    (_playableUnits inAreaArray [getPosWorld _dead, 500, 500]) isEqualTo [] && !(_dead getVariable ["btc_dont_delete", false])
+});
+
+_toRemove append (allGroups select {
+    units _x select {alive _x} isEqualTo [] &&
+    !(
+        _x in btc_patrol_active ||
+        _x in btc_civ_veh_active
+    )
+});
+
+_toRemove call CBA_fnc_deleteEntity;

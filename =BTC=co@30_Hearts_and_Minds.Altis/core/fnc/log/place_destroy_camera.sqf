@@ -1,3 +1,24 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_log_place_destroy_camera
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_log_place_destroy_camera;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 player cameraEffect ["TERMINATE", "BACK"];
 camDestroy btc_log_place_camera;
 btc_log_place_camera = objNull;

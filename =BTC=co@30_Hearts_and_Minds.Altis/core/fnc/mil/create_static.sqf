@@ -1,23 +1,39 @@
 
-private ["_pos","_type","_dir","_static","_group","_unit_type","_gunner"];
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_mil_create_static
 
-_pos  = _this select 0;
-_type = _this select 1;
-_dir = 0; if (count _this > 2) then {_dir = _this select 2;};
-if (typeName _type == "ARRAY") then {_type = selectRandom _type;};
+Description:
+    Fill me when you edit me !
 
-_static = _type createVehicle _pos;
-_static setDir _dir;
-_static setpos _pos;
+Parameters:
+    _pos - [Array]
+    _statics_type - [Array]
+    _dir - [Number]
 
-_group = createGroup btc_enemy_side;
-_unit_type = selectRandom btc_type_units;
-_gunner = _group createUnit [_unit_type, _pos, [], 0, "NONE"];
-[_gunner] joinSilent _group;
-_gunner moveInGunner _static;
-_gunner setBehaviour "COMBAT";
-_gunner setCombatMode "RED";
+Returns:
 
-_gunner call btc_fnc_mil_unit_create;
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_mil_create_static;
+    (end)
 
-if (btc_debug_log) then {diag_log format ["btc_fnc_mil_create_static: _this = %1 ; POS %2 _type %3",_this,_pos,_type];};
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
+params [
+    ["_pos", [0, 0, 0], [[]]],
+    ["_statics_type", btc_type_mg, [[]]],
+    ["_dir", 0, [0]]
+];
+
+private _group = createGroup btc_enemy_side;
+private _static = [_group, _pos, selectRandom _statics_type, _dir] call btc_fnc_mil_createVehicle;
+
+_group setBehaviour "COMBAT";
+_group setCombatMode "RED";
+
+if (btc_debug_log) then {
+    [format ["POS %1 _type %2", _pos, typeOf _static], __FILE__, [false]] call btc_fnc_debug_message;
+};

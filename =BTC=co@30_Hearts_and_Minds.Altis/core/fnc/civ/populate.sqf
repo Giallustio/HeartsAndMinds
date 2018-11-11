@@ -1,49 +1,59 @@
 
-private ["_city","_area","_n","_pos","_houses"];
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_civ_populate
 
-_city = _this select 0;
-_area = _this select 1;
-_n = _this select 2;
+Description:
+    Populate a city in an area with a defined number of civilians.
 
-//_houses = [_city,_area] call btc_fnc_getHouses;
+Parameters:
+    _city - City to populate. [Object]
+    _area - Area to populate around a city. [Number]
+    _n - Number of civilians to generate. [Number]
 
-_pos = [];
+Returns:
 
-switch (typeName _city) do {
-    case "ARRAY" : {_pos = _city;};
-    case "STRING": {_pos = getMarkerPos _city;};
-    case "OBJECT": {_pos = position _city;};
+Examples:
+    (begin example)
+        [_city, 200, 3] call btc_fnc_civ_populate;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
+params [
+    ["_city", objNull, [objNull]],
+    ["_area", 0, [0]],
+    ["_n", 0, [0]]
+];
+
+private _pos = position _city;
+private _houses = [];
+
+for [{_i = 25}, {_i < _area}, {_i = _i + 50}] do {
+    private _hs = [[(_pos select 0) + _i, (_pos select 1) + _i, 0], 50] call btc_fnc_getHouses;
+    _houses append _hs;
+    _hs = [[(_pos select 0) + _i, (_pos select 1) - _i, 0], 50] call btc_fnc_getHouses;
+    _houses append _hs;
+    _hs = [[(_pos select 0) - _i, (_pos select 1) - _i, 0], 50] call btc_fnc_getHouses;
+    _houses append _hs;
+    _hs = [[(_pos select 0) - _i, (_pos select 1) + _i, 0], 50] call btc_fnc_getHouses;
+    _houses append _hs;
 };
 
-_houses = [];
+if (_houses isEqualTo []) exitWith {};
 
-for [{_i = 25},{_i < _area},{_i = _i + 50}] do {
-    private "_hs";
-    _hs = [[(_pos select 0) + _i,(_pos select 1) + _i,0],50] call btc_fnc_getHouses;
-    _houses append _hs;
-    _hs = [[(_pos select 0) + _i,(_pos select 1) - _i,0],50] call btc_fnc_getHouses;
-    _houses append _hs;
-    _hs = [[(_pos select 0) - _i,(_pos select 1) - _i,0],50] call btc_fnc_getHouses;
-    _houses append _hs;
-    _hs = [[(_pos select 0) - _i,(_pos select 1) + _i,0],50] call btc_fnc_getHouses;
-    _houses append _hs;
-};
+for "_i" from 1 to _n do {
+    if (_houses isEqualTo []) exitWith {};
 
-
-if (count _houses == 0) exitWith {};
-
-for "_i" from 0 to _n do
-{
-    private ["_house","_unit_type"];
-    if (count _houses == 0) exitWith {};
-    _house = selectRandom _houses;
-
-    _unit_type = selectRandom btc_civ_type_units;
+    private _house = selectRandom _houses;
+    private _unit_type = selectRandom btc_civ_type_units;
 
     _group = createGroup civilian;
     _group createUnit [_unit_type, _house buildingPos 0, [], 0, "NONE"];
     _group setVariable ["btc_data_inhouse", [_house buildingPos 0]];
-    [_group] spawn btc_fnc_civ_addWP;
-    {_x call btc_fnc_civ_unit_create} foreach units _group;
+    [_group] call btc_fnc_civ_addWP;
+    {_x call btc_fnc_civ_unit_create} forEach units _group;
     _houses = _houses - [_house];
 };

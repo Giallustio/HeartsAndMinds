@@ -1,21 +1,40 @@
 
-private ["_obj","_pos","_vector"];
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_log_create_s
 
-if (count _this > 1) then {
-    _pos = _this select 1;
-    _vector = surfaceNormal _pos;
-} else {
-    _pos = getPosASL btc_create_object_point;
-    _vector = vectorUp btc_create_object_point;
-};
+Description:
+    Fill me when you edit me !
 
-if (getText (configFile >> "cfgVehicles" >> (_this select 0) >> "displayName") isEqualTo "") then {
-    _obj = [btc_create_object_point,(_this select 0)] call ace_rearm_fnc_createDummy;
+Parameters:
+    _objec_type - [String]
+    _pos - [Array]
+    _vector - [Array]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_log_create_s;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
+params [
+    ["_objec_type", "", [""]],
+    ["_pos", getPosASL btc_create_object_point, [[]]],
+    ["_vector", vectorUp btc_create_object_point, [[]]]
+];
+
+private _obj = objNull;
+if (getText (configFile >> "cfgVehicles" >> _objec_type >> "displayName") isEqualTo "") then {
+    _obj = [btc_create_object_point, _objec_type] call ace_rearm_fnc_createDummy;
 } else {
-    _obj = (_this select 0) createVehicle [0,0,0];
+    _obj = _objec_type createVehicle [0, 0, 0];
 };
 _obj setVectorUp _vector;
 _obj setPosASL _pos;
 
-btc_log_obj_created pushBack _obj;
-btc_curator addCuratorEditableObjects [[_obj], false];
+[_obj] call btc_fnc_log_init;

@@ -1,17 +1,32 @@
 
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_side_create
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _cycle - []
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_side_create;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
 if (btc_side_assigned) exitWith {};
 
-private ["_side","_cycle"];
+params [["_cycle", false]];
 
-if (_this isEqualTo []) then {
-    _cycle = false;
-} else {
-    _cycle = _this select 0;
-};
+if (btc_side_list_use isEqualTo []) then {btc_side_list_use = + btc_side_list;};
 
-if (count btc_side_list_use == 0) then {btc_side_list_use = + btc_side_list;};
-
-_side = selectRandom btc_side_list_use;
+private _side = selectRandom btc_side_list_use;
 
 btc_side_list_use = btc_side_list_use - [_side];
 

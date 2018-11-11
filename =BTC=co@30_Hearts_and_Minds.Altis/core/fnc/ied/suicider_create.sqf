@@ -1,47 +1,48 @@
 
-params ["_city", "_area"];
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_ied_suicider_create
+
+Description:
+    Create a suicider in a city under a random area.
+
+Parameters:
+    _city - City where the suicider is created. [Object]
+    _area - Area around the city the suicider is created randomly. [Number]
+
+Returns:
+    _suicider - Created suicider. [Object]
+
+Examples:
+    (begin example)
+        _suicider = [allplayers select 0, 100] call btc_fnc_ied_suicider_create;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
+params [
+    ["_city", objNull, [objNull]],
+    ["_area", 100, [0]]
+];
 
 if (btc_debug_log) then {
-    diag_log format ["btc_fnc_ied_suicider_create:  _name = %1 _area %2",_city getVariable ["name","name"],_area];
+    [format ["_name = %1 _area %2", _city getVariable ["name", "name"], _area], __FILE__, [false]] call btc_fnc_debug_message;
 };
 
-_pos = [];
-
-switch (typeName _city) do
-{
-    case "ARRAY" :{_pos = _city;};
-    case "STRING":{_pos = getMarkerPos _city;};
-    case "OBJECT":{_pos = position _city;};
-};
+_pos = position _city;
 
 private _rpos = [_pos, _area] call btc_fnc_randomize_pos;
 
-private _unit_type = selectRandom btc_civ_type_units;
-
 private _group = createGroup civilian;
-_group createUnit [_unit_type, _rpos, [], 0, "NONE"];
-(leader _group) setpos _rpos;
+private _suicider = _group createUnit [selectRandom btc_civ_type_units, _rpos, [], 0, "CAN_COLLIDE"];
 
-[_group] spawn btc_fnc_civ_addWP;
+[_group] call btc_fnc_civ_addWP;
+_group setVariable ["suicider", true];
 
-_group setVariable ["suicider",true];
-
-private _suicider = leader _group;
 _suicider call btc_fnc_civ_unit_create;
 
-//Main check
-[{
-    params ["_args", "_id"];
-    _args params ["_suicider"];
+[_suicider] call btc_fnc_ied_suiciderLoop;
 
-    if (Alive _suicider && !isNull _suicider) then {
-        if (count (getpos _suicider nearEntities ["SoldierWB", 25]) > 0) then {
-            [_id] call CBA_fnc_removePerFrameHandler;
-            _suicider call btc_fnc_ied_suicider_active;
-        };
-    } else {
-        [_id] call CBA_fnc_removePerFrameHandler;
-    };
-} , 5, [_suicider]] call CBA_fnc_addPerFrameHandler;
-
-leader _group
+_suicider

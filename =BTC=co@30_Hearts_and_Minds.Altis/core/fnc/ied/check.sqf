@@ -1,42 +1,38 @@
 
-private _city = _this select 0;
-private _ieds = _this select 1;
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_ied_check
 
-if (btc_debug) then {systemChat format ["START IED CHECK CITY ID %1",_city getVariable "id"];};
-if (btc_debug_log) then {diag_log format ["START IED CHECK CITY ID %1",_city getVariable "id"];};
+Description:
+    Contantly check if player is around by calling btc_fnc_ied_checkLoop. If yes, trigger the explosion.
 
-private _ieds_check = (+ _ieds) select {!((_x select 2) isEqualTo objNull)};
+Parameters:
+    _city - City where IED has been created. [Object]
+    _ieds - All IED (even FACK IED). [Array]
 
-[{
-    params ["_args", "_id"];
-    _args params ["_city", "_ieds", "_ieds_check"];
+Returns:
 
-    if (_city getVariable ["active", false]) then {
-        {
-            private _wreck = _x select 0;
-            private _ied = _x select 2;
-            if (!isNull _ied && {Alive _ied}) then    {
-                {
-                    if (side _x == btc_player_side && {(speed _x > 5 || vehicle _x != _x)}) then {[_wreck,_ied] spawn btc_fnc_ied_boom;};
-                } foreach (_ied nearEntities ["allvehicles", 10]);
-            } else {
-                _ieds_check = _ieds_check - [_ied];
-            };
-        } foreach _ieds_check;
-    } else {
-        [_id] call CBA_fnc_removePerFrameHandler;
+Examples:
+    (begin example)
+        [_city, _ieds] call btc_fnc_ied_check;
+    (end)
 
-        private _data = [];
-        {
-            private _wreck = _x select 0;
-            if (!isNull _wreck && {Alive _wreck}) then {
-                _data pushBack [getPosATL _wreck,_x select 1,getDir _wreck,!((_x select 2) isEqualTo objNull)];
-                deleteVehicle (_x select 2);deleteVehicle _wreck;};
-        } foreach _ieds;
+Author:
+    Giallustio
 
-        _city setVariable ["ieds",_data];
+---------------------------------------------------------------------------- */
 
-        if (btc_debug) then {systemChat format ["END IED CHECK CITY ID %1",_city getVariable "id"];};
-        if (btc_debug_log) then {diag_log format ["END IED CHECK CITY ID %1",_city getVariable "id"];};
-    };
-} , 1, [_city, _ieds, _ieds_check]] call CBA_fnc_addPerFrameHandler;
+params [
+    ["_city", objNull, [objNull]],
+    ["_ieds", [objNull], [[]]]
+];
+
+if (btc_debug) then {
+    [format ["START CITY ID %1", _city getVariable "id"], __FILE__, [btc_debug, false]] call btc_fnc_debug_message;
+};
+if (btc_debug_log) then {
+    [format ["START CITY ID %1", _city getVariable "id"], __FILE__, [false]] call btc_fnc_debug_message;
+};
+
+private _ieds_check = _ieds select {!((_x select 2) isEqualTo objNull)};
+
+[_city, _ieds, _ieds_check] call btc_fnc_ied_checkLoop;

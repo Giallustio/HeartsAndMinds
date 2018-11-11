@@ -1,28 +1,54 @@
 
-params ["_cargo", "_chopper"];
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_log_lift_hook_fake
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _cargo - [Object]
+    _chopper - [Object]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_log_lift_hook_fake;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
+params [
+    ["_cargo", objNull, [objNull]],
+    ["_chopper", objNull, [objNull]]
+];
 
 private _simulation = createVehicle ["Box_T_NATO_WpsSpecial_F", getPosATL _cargo , [], 0, "CAN_COLLIDE"];
 _simulation enableSimulation false;
-private _pos = getPosATL _cargo;
-if ((_pos select 2) < -0.05) then {_pos = [_pos select 0, _pos select 1, (_pos select 2) - ((getPosATL _cargo) select 2)]};
-_simulation setPosATL _pos;
+(getPosATL _cargo) params ["_x", "_y", "_z"];
+_simulation setPosATL [_x, _y, [_z, 0] select (_z < -0.05)];
 _simulation setDir getDir _cargo;
 _simulation setVectorUp vectorUp _cargo;
 
-_cargo attachTo [_simulation, [0,0, 0.2 + abs(((_cargo modelToWorld [0,0,0]) select 2) - ((_simulation  modelToWorld [0,0,0]) select 2))]];
+_cargo attachTo [_simulation, [0, 0, 0.2 + abs(((_cargo modelToWorld [0, 0, 0]) select 2) - ((_simulation modelToWorld [0, 0, 0]) select 2))]];
 
 _chopper addEventHandler ["RopeBreak", {
-    (_this select 0) removeEventHandler ["RopeBreak", _thisEventHandler];
+    params ["_object1", "_rope", "_object2"];
+
+    _object1 removeEventHandler ["RopeBreak", _thisEventHandler];
     btc_lifted = false;
     {
         detach _x;
         _x setVectorUp surfaceNormal getPosATL _x;
-        private _pos = getPosATL _x;
-        if ((_pos select 2) < -0.05) then {
-            _x setPosATL [_pos select 0, _pos select 1, 0];
+        (getPosATL _x) params ["_xx", "_yy", "_zz"];
+        if (_zz < -0.05) then {
+            _x setPosATL [_xx, _yy, 0];
         };
-    } forEach attachedObjects (_this select 2);
-    deleteVehicle (_this select 2);
+    } forEach attachedObjects _object2;
+    deleteVehicle _object2;
 }];
 
 _simulation enableSimulation true;

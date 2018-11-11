@@ -1,15 +1,36 @@
 
-if (typeName _this == "OBJECT") then {_this = [_this];} else {_this = units _this;};
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_mil_set_skill
 
-{
-    _x setskill ["general",(btc_AI_skill select 0)];
-    _x setskill ["aimingAccuracy",(btc_AI_skill select 1)];
-    _x setskill ["aimingShake",(btc_AI_skill select 2)];
-    _x setskill ["aimingSpeed",(btc_AI_skill select 3)];
-    _x setskill ["endurance",(btc_AI_skill select 4)];
-    _x setskill ["spotDistance",(btc_AI_skill select 5)];
-    _x setskill ["spotTime",(btc_AI_skill select 6)];
-    _x setskill ["courage",(btc_AI_skill select 7)];
-    _x setskill ["reloadSpeed",(btc_AI_skill select 8)];
-    _x setskill ["commanding",(btc_AI_skill select 9)];
-} foreach _this;
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _unit - [Object]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_mil_set_skill;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
+params [
+    ["_unit", objNull, [objNull]]
+];
+
+_unit setskill ["general", btc_AI_skill select 0];
+_unit setskill ["aimingAccuracy", btc_AI_skill select 1];
+_unit setskill ["aimingShake", btc_AI_skill select 2];
+_unit setskill ["aimingSpeed", btc_AI_skill select 3];
+_unit setskill ["endurance", btc_AI_skill select 4];
+_unit setskill ["spotDistance", btc_AI_skill select 5];
+_unit setskill ["spotTime", btc_AI_skill select 6];
+_unit setskill ["courage", btc_AI_skill select 7];
+_unit setskill ["reloadSpeed", btc_AI_skill select 8];
+_unit setskill ["commanding", btc_AI_skill select 9];

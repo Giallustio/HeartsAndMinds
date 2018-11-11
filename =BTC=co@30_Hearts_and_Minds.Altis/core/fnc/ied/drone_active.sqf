@@ -1,17 +1,42 @@
 
-params ["_driver_drone"];
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_ied_drone_active
 
-while {(count (waypoints group _driver_drone)) > 0} do { deleteWaypoint ((waypoints group _driver_drone) select 0); };
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _driver_drone - [Object]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_ied_drone_active;
+    (end)
+
+Author:
+    Vdauphin
+
+---------------------------------------------------------------------------- */
+
+params [
+    ["_driver_drone", objNull, [objNull]]
+];
+
+[group _driver_drone] call CBA_fnc_clearWaypoints;
 
 private _trigger = createTrigger ["EmptyDetector", getPos _driver_drone];
 _trigger setTriggerArea [10, 10, 0, false, -60];
-_trigger setTriggerActivation [str(btc_player_side), "PRESENT", true];
+_trigger setTriggerActivation [str btc_player_side, "PRESENT", true];
 _trigger setTriggerStatements ["this", "[thisTrigger] call btc_fnc_ied_drone_fire;", ""];
 _trigger setVariable ["btc_ied_drone", _driver_drone];
 
-_trigger attachTo [vehicle _driver_drone,[0,0,0]];
+_trigger attachTo [vehicle _driver_drone, [0, 0, 0]];
 
-if (btc_debug_log) then {diag_log format ["btc_fnc_ied_drone_active: _driver_drone = %1; POS %2 START LOOP",_driver_drone,getpos _driver_drone];};
+if (btc_debug_log) then {
+    [format ["_driver_drone = %1 POS %2 START LOOP", _driver_drone, getPos _driver_drone], __FILE__, [false]] call btc_fnc_debug_message;
+};
 
 (group _driver_drone) setBehaviour "CARELESS";
 (group _driver_drone) setSpeedMode "LIMITED";
