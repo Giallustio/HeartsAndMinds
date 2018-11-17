@@ -42,17 +42,11 @@ params ["_hideout", "_selection", "_damage", "_source", "_ammo", "_hitIndex", "_
 private _explosive = getNumber(configFile >> "cfgAmmo" >> _ammo >> "explosive") > 0;
 
 if (_explosive && {_damage > 0.6}) then {
+    btc_hideouts deleteAt (btc_hideouts find _hideout);
+
+    btc_rep_bonus_hideout call btc_fnc_rep_change;
+
     private _id = _hideout getVariable "id";
-
-    for "_i" from 0 to (count btc_hideouts - 1) do {
-        if ((btc_hideouts select _i) getVariable "id" isEqualTo _id) then {
-            btc_hideouts set [_i, 0];
-        };
-    };
-    btc_hideouts = btc_hideouts - [0];
-
-    btc_rep_bonus_hideout spawn btc_fnc_rep_change;
-
     private _marker = createMarker [format ["btc_hideout_%1_destroyed", _id], getPos _hideout];
     _marker setMarkerType "hd_destroy";
     [_marker, "STR_BTC_HAM_O_EH_HDHIDEOUT_MRK", _id] remoteExec ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker];
