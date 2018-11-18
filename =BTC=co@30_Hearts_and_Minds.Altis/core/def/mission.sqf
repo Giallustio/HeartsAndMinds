@@ -271,7 +271,8 @@ btc_info_cache_ratio = _cache_info_ratio;
 btc_info_hideout_radius = 4000;
 
 //Supplies
-btc_supplies_mat = "Land_Cargo20_IDAP_F";
+btc_supplies_cargo = "Land_Cargo20_IDAP_F";
+btc_supplies_mat = ["Land_FoodSacks_01_cargo_white_idap_F", "Land_WaterBottle_01_stack_F", "Land_PaperBox_01_small_stacked_F"];
 
 //Containers
 btc_containers_mat = ["Land_Cargo20_military_green_F", "Land_Cargo40_military_green_F"];
@@ -349,7 +350,7 @@ if (isServer) then {
             ] + btc_containers_mat,
             [
                 //"Supplies"
-                btc_supplies_mat
+                btc_supplies_cargo
             ],
             [
                 //"FOB"
@@ -366,9 +367,9 @@ if (isServer) then {
 };
 
 private _c_array = btc_construction_array select 1;
-btc_log_def_loadable = (_c_array select 0) + (_c_array select 1) + (_c_array select 2) + (_c_array select 3) + (_c_array select 4) + (_c_array select 5) + (_c_array select 6) + ["ace_rearm_defaultCarriedObject", "ace_rearm_Bo_Mk82", "ace_rearm_Bomb_04_F", "ace_rearm_Bo_GBU12_LGB", "ace_rearm_Bomb_03_F", "ace_rearm_Missile_AA_03_F", "ace_rearm_Missile_AGM_02_F", "ace_rearm_Missile_AGM_01_F", "ace_rearm_Rocket_03_AP_F", "ace_rearm_R_80mm_HE", "ace_rearm_R_60mm_HE", "ace_rearm_Rocket_04_HE_F", "ace_rearm_R_Hydra_HE", "ace_rearm_Missile_AA_04_F", "ace_rearm_M_PG_AT", "ace_rearm_R_230mm_HE", "ace_rearm_Rocket_03_HE_F", "ace_rearm_Rocket_04_AP_F", "ace_rearm_R_230mm_fly"];
+btc_log_def_loadable = (_c_array select 0) + (_c_array select 1) + (_c_array select 2) + (_c_array select 3) + (_c_array select 4) + (_c_array select 5) + (_c_array select 6) + ["ace_rearm_defaultCarriedObject", "ace_rearm_Bo_Mk82", "ace_rearm_Bomb_04_F", "ace_rearm_Bo_GBU12_LGB", "ace_rearm_Bomb_03_F", "ace_rearm_Missile_AA_03_F", "ace_rearm_Missile_AGM_02_F", "ace_rearm_Missile_AGM_01_F", "ace_rearm_Rocket_03_AP_F", "ace_rearm_R_80mm_HE", "ace_rearm_R_60mm_HE", "ace_rearm_Rocket_04_HE_F", "ace_rearm_R_Hydra_HE", "ace_rearm_Missile_AA_04_F", "ace_rearm_M_PG_AT", "ace_rearm_R_230mm_HE", "ace_rearm_Rocket_03_HE_F", "ace_rearm_Rocket_04_AP_F", "ace_rearm_R_230mm_fly"] + btc_supplies_mat;
 btc_log_def_can_load = (_c_array select 3);
-btc_log_def_placeable = (_c_array select 0) + (_c_array select 3) + (_c_array select 4) + (_c_array select 5);
+btc_log_def_placeable = (_c_array select 0) + (_c_array select 3) + (_c_array select 4) + (_c_array select 5) + btc_supplies_mat;
 btc_log_max_distance_load = 15;
 btc_log_object_selected = objNull;
 btc_log_vehicle_selected = objNull;
@@ -407,7 +408,7 @@ btc_log_main_rc = [
 ];
 btc_log_def_cc = [
     "Land_CargoBox_V1_F", 0,
-    btc_supplies_mat, 0,
+    btc_supplies_cargo, 20,
     btc_fob_mat, 0,
     "Land_Cargo20_military_green_F", 20,
     "Land_Cargo40_military_green_F", 40
@@ -415,7 +416,7 @@ btc_log_def_cc = [
 btc_log_def_rc = [
     "Land_BagBunker_Small_F", 5,
     "Land_CargoBox_V1_F", 9999,
-    btc_supplies_mat, 8,
+    btc_supplies_cargo, 8,
     btc_fob_mat, 8,
     "Land_Cargo20_military_green_F", 8,
     "B_Slingload_01_Fuel_F", 20,

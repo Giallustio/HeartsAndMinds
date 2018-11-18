@@ -48,7 +48,7 @@ _marker setMarkerType "hd_flag";
 [_marker, "str_a3_cfgeditorcategories_edcat_supplies0"] remoteExec ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker]; //Supplies
 _marker setMarkerSize [0.6, 0.6];
 
-waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !((nearestObjects [_pos, [btc_supplies_mat], 30]) isEqualTo []))};
+waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !((nearestObjects [_pos, btc_supplies_mat, 30]) isEqualTo []))};
 
 btc_side_assigned = false;
 publicVariable "btc_side_assigned";
