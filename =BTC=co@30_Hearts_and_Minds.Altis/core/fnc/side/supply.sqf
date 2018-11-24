@@ -48,7 +48,11 @@ _marker setMarkerType "hd_flag";
 [_marker, "str_a3_cfgeditorcategories_edcat_supplies0"] remoteExec ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker]; //Supplies
 _marker setMarkerSize [0.6, 0.6];
 
-waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !((nearestObjects [_pos, btc_supplies_mat, 30]) isEqualTo []))};
+waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !((nearestObjects [_pos, [btc_supplies_cargo], 30]) isEqualTo []))};
+
+[getPos _city, _pos] call btc_fnc_civ_evacuate;
+
+waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || (count (nearestObjects [_pos, btc_supplies_mat, 30]) >= 2))};
 
 btc_side_assigned = false;
 publicVariable "btc_side_assigned";
@@ -62,4 +66,4 @@ if (btc_side_aborted || btc_side_failed) exitWith {
 
 3 remoteExec ["btc_fnc_task_set_done", 0];
 
-[[_area, _marker], nearestObjects [_pos, btc_supplies_mat, 30], []] call btc_fnc_delete;
+[[_area, _marker], nearestObjects [_pos, btc_supplies_mat + [btc_supplies_cargo], 30], []] call btc_fnc_delete;

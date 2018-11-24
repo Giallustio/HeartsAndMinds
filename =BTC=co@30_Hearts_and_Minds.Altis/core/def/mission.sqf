@@ -272,7 +272,7 @@ btc_info_hideout_radius = 4000;
 
 //Supplies
 btc_supplies_cargo = "Land_Cargo20_IDAP_F";
-btc_supplies_mat = ["Land_FoodSacks_01_cargo_white_idap_F", "Land_WaterBottle_01_stack_F", "Land_PaperBox_01_small_stacked_F"];
+btc_supplies_mat = ["Land_FoodSacks_01_cargo_white_idap_F", "Land_WaterBottle_01_stack_F"];
 
 //Containers
 btc_containers_mat = ["Land_Cargo20_military_green_F", "Land_Cargo40_military_green_F"];

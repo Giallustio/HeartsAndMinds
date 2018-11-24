@@ -24,9 +24,11 @@ closeDialog 0;
 sleep 0.2;
 
 if (_class isEqualTo btc_supplies_cargo) then {
+    private _position_world = getPosWorld btc_create_object_point;
+    _position_world params ["_xx", "_yy", "_zz"];
     [[
-        _class,
-        getPosWorld btc_create_object_point, getDir btc_create_object_point,
+        btc_supplies_cargo,
+        [_xx, _yy, _zz + 1.5], getDir btc_create_object_point,
         "",
         btc_supplies_mat apply {[_x, "", [[[], []], [[], []], [[], []]]]},
         [[[], []], [[], []], [[], []]],
