@@ -3,18 +3,19 @@
 Function: btc_fnc_create_composition
 
 Description:
-    Fill me when you edit me !
+    Create a composition based on an array containing line for each object of a composition. An objects is describe by : [type of object, direction, real position].
 
 Parameters:
-    _pos - [Array]
-    _setdir - [Number]
-    _array - [Array]
+    _pos - Position where the composition will be created. [Array]
+    _setdir - Set the direction of composition spawn. [Number]
+    _array - Array of each objects in the composition. [Array]
 
 Returns:
+    _composition_objects - Objects created from the _array. [Array]
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_create_composition;
+        _composition_objects = [getPos player, 45, [["Land_SatelliteAntenna_01_F",304.749,[-3.71973,2.46143,0]], ["Flag_Red_F",0,[0,0,0]]] call btc_fnc_create_composition;
     (end)
 
 Author:

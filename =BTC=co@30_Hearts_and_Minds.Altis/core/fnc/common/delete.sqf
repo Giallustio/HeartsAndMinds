@@ -3,18 +3,18 @@
 Function: btc_fnc_delete
 
 Description:
-    Fill me when you edit me !
+    Delete markers (and JIP data of marker) and objects or units in groups when there are far enough from players.
 
 Parameters:
-    _markers - []
-    _objects - []
-    _groups - []
+    _markers - Array of markers. [Array]
+    _objects - Array of objects. [Array]
+    _groups - Array of groups. [Array]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_delete;
+        [[], [btc_helo_1]] call btc_fnc_delete;
     (end)
 
 Author:

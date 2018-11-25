@@ -3,17 +3,17 @@
 Function: btc_fnc_intro
 
 Description:
-    Fill me when you edit me !
+    Introduction camera.
 
 Parameters:
-    _gear_object - [String]
-    _create_object - [Object]
+    _gear_object - Arsenal position. [String]
+    _create_object - Repair/Logistic position. [Object]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_intro;
+        [] call btc_fnc_intro;
     (end)
 
 Author:

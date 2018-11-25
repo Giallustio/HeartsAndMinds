@@ -3,17 +3,18 @@
 Function: btc_fnc_house_addWP_loop
 
 Description:
-    Fill me when you edit me !
+    Add waypoints to group to patrol inside an house.
 
 Parameters:
-    _group - [Group]
-    _house - [Object]
+    _group - Group to add waypoints. [Group]
+    _house - House use to patrol. [Object]
 
 Returns:
+    _allpositions - All position available. [Array]
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_house_addWP_loop;
+        _allpositions = [group player, ([getPos player] call btc_fnc_getHouses) select 0] call btc_fnc_house_addWP_loop;
     (end)
 
 Author:
