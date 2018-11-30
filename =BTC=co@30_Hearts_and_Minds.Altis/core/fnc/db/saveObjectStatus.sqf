@@ -35,7 +35,11 @@ if !(!alive _object || isNull _object) then {
     //Cargo
     private _cargo = [];
     {
-        _cargo pushBack [typeOf _x, _x getVariable ["ace_rearm_magazineClass", ""], [getWeaponCargo _x, getMagazineCargo _x, getItemCargo _x]];
+        _cargo pushBack (if (_x isEqualType "") then {
+            [_x, "", [[], [], []]]
+        } else {
+            [typeOf _x, _x getVariable ["ace_rearm_magazineClass", ""], [getWeaponCargo _x, getMagazineCargo _x, getItemCargo _x]]
+        });
     } forEach (_object getVariable ["ace_cargo_loaded", []]);
     _data pushBack _cargo;
     //Inventory
