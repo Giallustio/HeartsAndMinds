@@ -3,7 +3,7 @@
 Function: btc_fnc_end_mission
 
 Description:
-    Fill me when you edit me !
+    Message shown when the mission end.
 
 Parameters:
 
@@ -11,7 +11,7 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_end_mission;
+        [] call btc_fnc_end_mission;
     (end)
 
 Author:

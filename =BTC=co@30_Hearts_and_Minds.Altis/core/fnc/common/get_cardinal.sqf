@@ -3,16 +3,17 @@
 Function: btc_fnc_get_cardinal
 
 Description:
-    Fill me when you edit me !
+    Get cardinal.
 
 Parameters:
-    _n - [Number]
+    _n - Degree. [Number]
 
 Returns:
+    _card - Cardinal. [String]
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_get_cardinal;
+        _result = [100] call btc_fnc_get_cardinal;
     (end)
 
 Author:

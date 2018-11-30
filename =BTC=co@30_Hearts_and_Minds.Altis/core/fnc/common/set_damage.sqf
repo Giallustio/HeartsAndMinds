@@ -3,16 +3,16 @@
 Function: btc_fnc_set_damage
 
 Description:
-    Fill me when you edit me !
+    Set ACE damage.
 
 Parameters:
-    _unit - [Object]
+    _unit - Unit taking damage. [Object]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_set_damage;
+        [player] call btc_fnc_set_damage;
     (end)
 
 Author:
