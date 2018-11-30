@@ -139,7 +139,11 @@ private _array_veh = [];
     _data pushBack (getAllHitPointsDamage _x);
     private _cargo = [];
     {
-        _cargo pushBack [typeOf _x, _x getVariable ["ace_rearm_magazineClass", ""], [getWeaponCargo _x, getMagazineCargo _x, getItemCargo _x]]
+        _cargo pushBack (if (_x isEqualType "") then {
+            [_x, "", [[], [], []]]
+        } else {
+            [typeOf _x, _x getVariable ["ace_rearm_magazineClass", ""], [getWeaponCargo _x, getMagazineCargo _x, getItemCargo _x]]
+        });
     } forEach (_x getVariable ["ace_cargo_loaded", []]);
     _data pushBack _cargo;
     private _cont = [getWeaponCargo _x, getMagazineCargo _x, getItemCargo _x];
