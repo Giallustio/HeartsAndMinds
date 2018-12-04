@@ -309,6 +309,9 @@
                 <Original>&lt;&lt; Spawn options &gt;&gt;</Original>
                 <German>Spawn Einstellungen:</German>
             </Key>
+            <Key ID="STR_BTC_HAM_PARAM_SPWAN_ISFREE_PROB">
+                <Original>Probability for a city to be free:</Original>
+            </Key>
             <Key ID="STR_BTC_HAM_PARAM_SPWAN_ENEMY_DENSITY">
                 <Original>Enemy density:</Original>
                 <German>Feinddichte:</German>
