@@ -372,13 +372,13 @@
                 <Original>Add armed vehicles in Hideout:</Original>
                 <German>Gepanzerte Fahrzeuge bei den Verstecken:</German>
                 <Portuguese>Veículos blindados no esconderijo:</Portuguese>
-                <Chinesesimp>藏匿点包含的装甲载具:</Chinesesimp>
+                <Chinesesimp>藏匿点包含装甲载具:</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_SPAWN_ARMEDOTHER">
                 <Original>Add armed vehicles in Side mission/Cache:</Original>
                 <German>Gepanzerte Fahrzeuge bei den Nebenmissionen/ Waffenlagern:</German>
                 <Portuguese>Adicione veículos blindados/arsenal em missões secundárias:</Portuguese>
-                <Chinesesimp>支线任务/武器库包含的装甲载具:</Chinesesimp>
+                <Chinesesimp>支线任务/武器库包含装甲载具:</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_SPWAN_PATROL_MAX">
                 <Original>Maximum number of military patrol:</Original>
@@ -446,13 +446,13 @@
                 <Original>Info cache distance:</Original>
                 <German>Distanzangabe für ein Waffenlager(Startwert):</German>
                 <Portuguese>Distância para um depósito de armas (valor inicial):</Portuguese>
-                <Chinesesimp>武器库与藏匿点的最大距离(初始值):</Chinesesimp>
+                <Chinesesimp>武器库/藏匿点的初始范围:</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_CACHE_RATIO">
                 <Original>Cache info ratio:</Original>
                 <German>Verkürzungschritt je gefundener Information:</German>
                 <Portuguese>Taxa de informação de esconderijo:</Portuguese>
-                <Chinesesimp>武器库情报出现几率:</Chinesesimp>
+                <Chinesesimp>每次获得武器库情报的使其范围缩小的距离:</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_CACHE_DEADINFO">
                 <Original>Intel from dead bodies chance:</Original>
