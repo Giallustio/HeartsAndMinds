@@ -7,7 +7,7 @@
                 <Spanish>Hearts and Minds</Spanish>
                 <German>Hearts and Minds</German>
                 <Portuguese>Corações e Mentes</Portuguese>
-                <Chinesesimp>Hearts and Minds</Chinesesimp>
+                <Chinesesimp>心灵与智慧</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_DESCR_AUTHOR">
                 <Original>Giallustio</Original>
@@ -426,7 +426,7 @@
                 <Original>Drone bomber:</Original>
                 <German>Feindl. Drohnen mit Bomben:</German>
                 <Portuguese>Drone Bombardeiro:</Portuguese>
-                <Chinesesimp>敌方无人机炸弹:</Chinesesimp>
+                <Chinesesimp>敌方炸弹无人机:</Chinesesimp>
             </Key>
         </Container>
         <Container name="Parameters: Hideout/Cache">
@@ -446,13 +446,13 @@
                 <Original>Info cache distance:</Original>
                 <German>Distanzangabe für ein Waffenlager(Startwert):</German>
                 <Portuguese>Distância para um depósito de armas (valor inicial):</Portuguese>
-                <Chinesesimp>武器库/藏匿点的初始范围:</Chinesesimp>
+                <Chinesesimp>武器库/藏匿点的地图标记初始范围:</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_CACHE_RATIO">
                 <Original>Cache info ratio:</Original>
                 <German>Verkürzungschritt je gefundener Information:</German>
                 <Portuguese>Taxa de informação de esconderijo:</Portuguese>
-                <Chinesesimp>每次获得武器库情报的使其范围缩小的距离:</Chinesesimp>
+                <Chinesesimp>每次获得武器库情报, 使其地图标记范围减小的距离:</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_CACHE_DEADINFO">
                 <Original>Intel from dead bodies chance:</Original>
@@ -472,7 +472,7 @@
                 <Original>Allow re-deploy?</Original>
                 <German>Verlegen erlauben?</German>
                 <Portuguese>Permitir ressurgimento?</Portuguese>
-                <Chinesesimp>允许重生?</Chinesesimp>
+                <Chinesesimp>允许重新部署?</Chinesesimp>
             </Key>
         </Container>
         <Container name="Parameters: AI Skill">
