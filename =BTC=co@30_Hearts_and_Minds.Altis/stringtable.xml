@@ -1245,7 +1245,7 @@
                 <Spanish>Logistica</Spanish>
                 <German>Logistik</German>
                 <Portuguese>Logística</Portuguese>
-                <Chinesesimp>补给</Chinesesimp>
+                <Chinesesimp>后勤</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_ACTION_LOGPOINT_REQOBJ">
                 <Original>Require object</Original>
