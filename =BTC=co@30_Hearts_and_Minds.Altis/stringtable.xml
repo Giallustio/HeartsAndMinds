@@ -89,7 +89,7 @@
                 <Spanish>&lt;img image='\a3\ui_f\data\map\vehicleicons\iconvirtual_ca.paa' width='20' height='20'/&gt; Esta mision usa automaticamente un Headless client si está disponible .&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/&gt; Esta misión tiene un sistema de base de datos. Se guardan unidades enemigas, ciudades, escondites, caché, objetos creados por jugadores o Zeus, vehículos, marcadores de jugadores (no líneas) en el canal global / campamento. Todos los administradores pueden guardar el progreso de la misión en cualquier momento con su clave de auto interacción.</Spanish>
                 <German>&lt;img image='\a3\ui_f\data\map\vehicleicons\iconvirtual_ca.paa' width='20' height='20'/&gt; Sollte ein Headless Client vorhanden sein, so wird dieser durch die Mission automatisch genutzt.&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/&gt; Diese Mission verfügt über ein eingenes Datenbanksystem, in welcher folgende Dinge gespeichert werden: feindliche Einheiten, Städte, Verstecke, feindliche Waffenlager, Fahrzeuge, vom Spieler oder vom Zeus erstelle Objecte und Marker (keine Linien) vom Spieler im Globalen-Channel. Jeder Admin kann zu jeder Zeit den Missionsfortschritt über das Eigen-Interaktionsmenü speichern.</German>
                 <Portuguese>&lt;img image='\a3\ui_f\data\map\vehicleicons\iconvirtual_ca.paa' width='20' height='20'/&gt; Esta missão usa automaticamente um cliente Headless quando disponível.&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/&gt; Esta missão tem um sistema de banco de dados. Unidades inimigas, cidades, esconderijos, cache, objetos criados por jogadores ou Zeus, veículos, marcação de jogadores (sem linhas) no canal global são salvos. O administrador pode salvar o progresso da missão a qualquer momento usando botão de interação.</Portuguese>
-                <Chinesesimp>&lt;img image='\a3\ui_f\data\map\vehicleicons\iconvirtual_ca.paa' width='20' height='20'/&gt; 最多一台无头客户端将被任务自动使用。&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/&gt; 本任务内置独立的数据库系统, 用于存储以下项目：敌方单位、城市、藏匿点、武器库、车辆、玩家或宙斯创建的对象以及公共频道中的地图标记(不含划线标记)。每个管理员都可以通过自我互动菜单随时保存任务进度。</Chinesesimp>
+                <Chinesesimp>&lt;img image='\a3\ui_f\data\map\vehicleicons\iconvirtual_ca.paa' width='20' height='20'/&gt; 最多一台无头客户端将被任务自动使用。&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/&gt; 本任务内置独立的数据库系统, 用于存储以下项目：敌方单位、城市、藏匿点、武器箱、车辆、玩家或宙斯创建的对象以及公共频道中的地图标记(不含划线标记)。每个管理员都可以通过自我互动菜单随时保存任务进度。</Chinesesimp>
             </Key>
         </Container>
         <Container name="Documentation: Wounds">
@@ -208,7 +208,7 @@
                 <Spanish>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\map_ca.paa' width='20' height='20'/&gt; La Inteligencia se puede recuperar de las siguientes maneras:&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\search_ca.paa' width='13' height='13'/&gt; Registrando cadáveres&lt;br/&gt; - &lt;img image='\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\instructor_ca.paa' width='13' height='13'/&gt; Interrogando prisioneros&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='13' height='13'/&gt; Conversando con Civiles&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\talk_ca.paa' width='20' height='20'/&gt; Tenga en cuenta que sólo el intérprete puede hablar con civiles y ellos pueden mentir si su nivel de reputación es bajo.&lt;br/&gt;&lt;br/&gt; Cuando encuentres una información de un cadáver o interrogues a un prisionero, aparecerá un marcador en el mapa. Recuerda, los prisioneros tienen un número aleatorio de información más o menos interesante.&lt;br/&gt; Hay 2 tipos de marcas:&lt;br/&gt; - Signo de interrogacion rojo (&lt;img image='\A3\ui_f\data\map\markers\handdrawn\unknown_CA.paa' width='13' height='13' color='#ff0000'/&gt;): intel sobre cache de municion&lt;br/&gt; - Signo de exclamacion rojo (&lt;img image='\A3\ui_f\data\map\markers\handdrawn\warning_CA.paa' width='13' height='13' color='#ff0000'/&gt;): intel sobre escondite&lt;br/&gt;&lt;br/&gt;&lt;br/&gt; Cuando destruyes un escondite o una caché de munición, todos los marcadores relacionados con él se borrarán.</Spanish>
                 <German>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\map_ca.paa' width='20' height='20'/&gt;  Informationen kann man auf verschiedene Arten erhalten:&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\search_ca.paa' width='13' height='13'/&gt; Durchsuchen von toten Personen&lt;br/&gt; - &lt;img image='\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\instructor_ca.paa' width='13' height='13'/&gt; Verhören von Gefangenen&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='13' height='13'/&gt; Mit Zivilisten reden&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\talk_ca.paa' width='20' height='20'/&gt; Nur der Dolmetscher kann sich mit Zivilisten unterhalten. Wenn ihr Ansehen bei der Bevölkerunge niedrig ist, so kann es auch mal vorkommen das manche Zivilisten sie belügen.&lt;br/&gt;&lt;br/&gt; Wenn Sie Information erhalten, erscheint eine Markierung auf der Karte. Zur Erinnerung: Gefangene habe mal mehr und mal weniger interessante Informationen.&lt;br/&gt; Es gibt zwei Arten von Markierungen:&lt;br/&gt; - Ein rotes Fragezeichen (&lt;img image='\A3\ui_f\data\map\markers\handdrawn\unknown_CA.paa' width='13' height='13' color='#ff0000'/&gt;): Information über ein Waffenlager &lt;br/&gt; - Ein rotes Ausrufezeichen (&lt;img image='\A3\ui_f\data\map\markers\handdrawn\warning_CA.paa' width='13' height='13' color='#ff0000'/&gt;): Information über ein Versteck &lt;br/&gt;&lt;br/&gt;&lt;br/&gt; Wenn Sie ein Versteck oder ein Waffenlager zersört haben, so werden alle relevanten Markierungen automatisch gelöscht.</German>
                 <Portuguese>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\map_ca.paa' width='20' height='20'/&gt; Informações podem ser obtidas de diferentes maneiras:&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\search_ca.paa' width='13' height='13'/&gt; Procurando nos corpos dos mortos&lt;br/&gt; - &lt;img image='\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\instructor_ca.paa' width='13' height='13'/&gt; Interrogando prisioneiros&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='13' height='13'/&gt; Falando com civis&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\talk_ca.paa' width='20' height='20'/&gt; Somente o intérprete pode conversar com os civis. Se a reputação entre a população é baixa, pode acontecer de alguns civis passarem informações mentirosas.&lt;br/&gt;&lt;br/&gt; Quando você encontrar uma informação em um cadáver ou interrogando um prisioneiro, uma marcação aparecerá no mapa. Lembre-se, os prisioneiros possuem um número aleatório de informações que são mais ou menos importante.&lt;br/&gt; Existem dois tipos de marcação:&lt;br/&gt; - Interrogação em Vermelho (&lt;img image='\A3\ui_f\data\map\markers\handdrawn\unknown_CA.paa' width='13' height='13' color='#ff0000'/&gt;): Informações sobre depósito de armas&lt;br/&gt; - Exclamação em Vermelho (&lt;img image='\A3\ui_f\data\map\markers\handdrawn\warning_CA.paa' width='13' height='13' color='#ff0000'/&gt;): Informações sobre um esconderijo&lt;br/&gt;&lt;br/&gt;&lt;br/&gt; Quando você destroí um esconderijo ou depósito de munição, o marcador será excluído.</Portuguese>
-                <Chinesesimp>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\map_ca.paa' width='20' height='20'/&gt; 可以通过以下方式获取情报:&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\search_ca.paa' width='13' height='13'/&gt; 搜查尸体&lt;br/&gt; - &lt;img image='\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\instructor_ca.paa' width='13' height='13'/&gt; 审问俘虏&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='13' height='13'/&gt; 询问平民&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\talk_ca.paa' width='20' height='20'/&gt; 请谨记: 只有翻译员可以与平民交谈, 而且如果你的声誉低, 他们也会说谎。&lt;br/&gt;&lt;br/&gt; 当通过搜查尸体或审问俘虏得到情报时, 地图上会出现标记。记住, 俘虏所持情报的数量和价值都是随机的。&lt;br/&gt; 情报标记有两类:&lt;br/&gt; - 红色问号标记 (&lt;img image='\A3\ui_f\data\map\markers\handdrawn\unknown_CA.paa' width='13' height='13' color='#ff0000'/&gt;): 武器库情报&lt;br/&gt; - 红色叹号标记 (&lt;img image='\A3\ui_f\data\map\markers\handdrawn\warning_CA.paa' width='13' height='13' color='#ff0000'/&gt;): 藏匿点情报&lt;br/&gt;&lt;br/&gt;&lt;br/&gt; 当你摧毁了藏匿点或武器库时, 与之相关的所有标记将被删除。</Chinesesimp>
+                <Chinesesimp>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\map_ca.paa' width='20' height='20'/&gt; 可以通过以下方式获取情报:&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\search_ca.paa' width='13' height='13'/&gt; 搜查尸体&lt;br/&gt; - &lt;img image='\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\instructor_ca.paa' width='13' height='13'/&gt; 审问俘虏&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='13' height='13'/&gt; 询问平民&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\talk_ca.paa' width='20' height='20'/&gt; 请谨记: 只有翻译员可以与平民交谈, 而且如果你的声誉低, 他们也会说谎。&lt;br/&gt;&lt;br/&gt; 当通过搜查尸体或审问俘虏得到情报时, 地图上会出现标记。记住, 俘虏所持情报的数量和价值都是随机的。&lt;br/&gt; 情报标记有两类:&lt;br/&gt; - 红色问号标记 (&lt;img image='\A3\ui_f\data\map\markers\handdrawn\unknown_CA.paa' width='13' height='13' color='#ff0000'/&gt;): 武器箱情报&lt;br/&gt; - 红色叹号标记 (&lt;img image='\A3\ui_f\data\map\markers\handdrawn\warning_CA.paa' width='13' height='13' color='#ff0000'/&gt;): 藏匿点情报&lt;br/&gt;&lt;br/&gt;&lt;br/&gt; 当你摧毁了藏匿点或武器箱时, 与之相关的所有标记将被删除。</Chinesesimp>
             </Key>
         </Container>
         <Container name="Documentation: Reputation">
@@ -378,7 +378,7 @@
                 <Original>Add armed vehicles in Side mission/Cache:</Original>
                 <German>Gepanzerte Fahrzeuge bei den Nebenmissionen/ Waffenlagern:</German>
                 <Portuguese>Adicione veículos blindados/arsenal em missões secundárias:</Portuguese>
-                <Chinesesimp>支线任务/武器库包含装甲载具:</Chinesesimp>
+                <Chinesesimp>支线任务/武器箱包含装甲载具:</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_SPWAN_PATROL_MAX">
                 <Original>Maximum number of military patrol:</Original>
@@ -434,7 +434,7 @@
                 <Original>&lt;&lt; Hideout/Cache options &gt;&gt;</Original>
                 <German>&lt;&lt; Verstecke/Waffenlager Einstellungen &gt;&gt;</German>
                 <Portuguese>&lt;&lt; Opções de Esconderijo/Armazenamento &gt;&gt;</Portuguese>
-                <Chinesesimp>&lt;&lt; 藏匿点/武器库 设置 &gt;&gt;</Chinesesimp>
+                <Chinesesimp>&lt;&lt; 藏匿点/武器箱 设置 &gt;&gt;</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_HIDE_NUMBERS">
                 <Original>Hideout numbers:</Original>
@@ -446,13 +446,13 @@
                 <Original>Info cache distance:</Original>
                 <German>Distanzangabe für ein Waffenlager(Startwert):</German>
                 <Portuguese>Distância para um depósito de armas (valor inicial):</Portuguese>
-                <Chinesesimp>武器库/藏匿点的地图标记初始范围:</Chinesesimp>
+                <Chinesesimp>武器箱/藏匿点的地图标记初始范围:</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_CACHE_RATIO">
                 <Original>Cache info ratio:</Original>
                 <German>Verkürzungschritt je gefundener Information:</German>
                 <Portuguese>Taxa de informação de esconderijo:</Portuguese>
-                <Chinesesimp>每次获得武器库情报, 使其地图标记范围减小的距离:</Chinesesimp>
+                <Chinesesimp>每次获得武器箱情报, 使其地图标记范围减小的距离:</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_CACHE_DEADINFO">
                 <Original>Intel from dead bodies chance:</Original>
@@ -791,7 +791,7 @@
                 <Spanish>Los puntos de control se han localizado en %1. La población local está pidiendo su ayuda para destruir la caja de municiones en todos los puntos de control!</Spanish>
                 <German>Kontrollpunkt wurden in der Nähe von %1 gesichtet. Die lokale Bevölkerung bittet Sie darum, alle Munitionskisten und den jeweiligen Kontrollpunkt zu beseitigen!</German>
                 <Portuguese>Os pontos de verificação foram localizados em %1. A população local está pedindo sua ajuda para destruidir todas as caixas de munições em todos os pontos de verificação!</Portuguese>
-                <Chinesesimp>在 %1 地区发现检查站。当地居民请求您摧毁武器库和相应的检查站!</Chinesesimp>
+                <Chinesesimp>在 %1 地区发现检查站。当地居民请求您摧毁武器箱和相应的检查站!</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_CHECKPOINT_FAILED_TEXT">
                 <Original>Checkpoints were not destroyed</Original>
@@ -1745,7 +1745,7 @@
                 <Spanish>Cache destruido!</Spanish>
                 <German>Waffenlager zerstört!</German>
                 <Portuguese>Depósito destruído!</Portuguese>
-                <Chinesesimp>武器库已摧毁!</Chinesesimp>
+                <Chinesesimp>武器箱已摧毁!</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_1">
                 <Original>Intel about an ammo cache found! Map updated</Original>
@@ -1773,7 +1773,7 @@
                 <Spanish>¡Encontré información sobre un depósito de municiones y un escondite! Mapa actualizado</Spanish>
                 <German>Informationen über ein Waffenlager und ein Versteck gefunden! Karte aktualisiert</German>
                 <Portuguese>Encontrada informação sobre depósito de armas e esconderijo! Mapa atualizado</Portuguese>
-                <Chinesesimp>发现了关于武器库和藏匿点的情报! 地图已更新</Chinesesimp>
+                <Chinesesimp>发现了关于武器箱和藏匿点的情报! 地图已更新</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_5">
                 <Original>Intel about an hideout found! Map updated</Original>
@@ -1921,7 +1921,7 @@
                 <Spanish>Cache %1 destruído</Spanish>
                 <German>Waffenlager %1 wurde zerstört</German>
                 <Portuguese>Depósito %1 destruído</Portuguese>
-                <Chinesesimp>武器库 %1 已摧毁</Chinesesimp>
+                <Chinesesimp>武器箱 %1 已摧毁</Chinesesimp>
             </Key>
         </Container>
     </Package>
