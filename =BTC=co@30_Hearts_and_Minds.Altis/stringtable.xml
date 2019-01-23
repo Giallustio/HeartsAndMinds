@@ -259,7 +259,6 @@
                 <German>Ausrüstung (Arsenal)</German>
                 <Portuguese>Equipamento (Arsenal)</Portuguese>
                 <Chinesesimp>装备(军火库)</Chinesesimp>
-
             </Key>
             <Key ID="STR_BTC_HAM_DOC_GEAR_TEXT">
                 <Original>&lt;img image='\A3\Ui_f\data\Logos\a_64_ca.paa' width='20' height='20'/&gt;You can choose your gear at the red box inside the base. Located at the spawn point.&lt;br/&gt;</Original>
