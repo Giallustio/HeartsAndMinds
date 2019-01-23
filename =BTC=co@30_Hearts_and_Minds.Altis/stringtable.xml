@@ -1704,7 +1704,7 @@
                 <Portuguese>Afaste-se! Montando a FOB</Portuguese>
                 <Chinesesimp>FOB装配中, 请远离!</Chinesesimp>
             </Key>
-            <Key ID="STR_BTC_HAM_O_FOBDISMANTLE_H_PROC">
+            <Key ID="STR_BTC_HAM_O_FOB_DISMANTLE_H_PROC">
                 <Original>Dismantle, move out ...</Original>
                 <Spanish>Desmantelado, muévanse...</Spanish>
                 <German>Abbau im gange, geh ein wenig zurück...</German>
