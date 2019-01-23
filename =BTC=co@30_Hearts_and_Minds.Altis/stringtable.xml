@@ -1702,7 +1702,7 @@
                 <Spanish>¡Atrás! Montando FOB</Spanish>
                 <German>Geh ein wenig zurück! Die FOB wird aufgebaut</German>
                 <Portuguese>Afaste-se! Montando a FOB</Portuguese>
-                <Chinesesimp>回去! FOB装配中</Chinesesimp>
+                <Chinesesimp>FOB装配中, 请远离!</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_O_FOBDISMANTLE_H_PROC">
                 <Original>Dismantle, move out ...</Original>
