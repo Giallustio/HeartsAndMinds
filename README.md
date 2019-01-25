@@ -42,7 +42,7 @@ Online [wiki available](http://vdauphin.github.io/HeartsAndMinds/).
 - Something I forgot for sure
 
 
-You main task is to defeat the "Oplitas" group and restore peace and order in Altis.
+Your main task is to defeat the "Oplitas" group and restore peace and order in Altis.
 The militia has an unknown number of hideouts in the island that need to be destroyed.
 They have also ammo caches in various locations, destroy them to weaken its power.
 
