@@ -37,5 +37,5 @@ if (_veh isEqualType objNull) then {
     [[], [_veh, _veh getVariable ["btc_crews", grpNull]]] call btc_fnc_delete;
 } else {
     (assignedVehicle leader _veh) call btc_fnc_patrol_eh_remove;
-    [[], [assignedVehicle leader _veh], [_veh]] call btc_fnc_delete;
+    [[], [assignedVehicle leader _veh, _veh]] call btc_fnc_delete;
 };
