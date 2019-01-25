@@ -103,7 +103,7 @@ private _fobs = profileNamespace getVariable [format ["btc_hm_%1_fobs", _name], 
     _x params ["_fob_name", "_pos", "_direction"];
 
     [_pos, _direction, _fob_name] call btc_fnc_fob_create_s;
-} forEach (_fobs select 0);
+} forEach _fobs;
 
 //REP
 private _global_reputation = profileNamespace getVariable [format ["btc_hm_%1_rep", _name], 0];
