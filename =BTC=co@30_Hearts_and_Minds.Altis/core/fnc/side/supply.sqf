@@ -52,7 +52,8 @@ waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !((nearestObjects [_
 
 [getPos _city, _pos] call btc_fnc_civ_evacuate;
 
-waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || (count (nearestObjects [_pos, btc_supplies_mat, 30]) >= 2))};
+btc_supplies_mat params ["_food", "_water"];
+waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || (count (nearestObjects [_pos, _food + _water, 30]) >= 2))};
 
 btc_side_assigned = false;
 publicVariable "btc_side_assigned";
@@ -66,4 +67,4 @@ if (btc_side_aborted || btc_side_failed) exitWith {
 
 3 remoteExec ["btc_fnc_task_set_done", 0];
 
-[[_area, _marker], nearestObjects [_pos, btc_supplies_mat + [btc_supplies_cargo], 30], []] call btc_fnc_delete;
+[[_area, _marker], nearestObjects [_pos, _food + _water + [btc_supplies_cargo], 30], []] call btc_fnc_delete;
