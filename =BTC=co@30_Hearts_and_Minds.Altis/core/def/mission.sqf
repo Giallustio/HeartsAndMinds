@@ -151,7 +151,11 @@ if (isServer) then {
 
     //Hideout classname
     btc_type_campfire = ["MetalBarrel_burning_F", "Campfire_burning_F", "Land_Campfire_F", "FirePlace_burning_F"];
-    btc_type_bigbox = ["Box_FIA_Ammo_F", "Box_East_AmmoVeh_F", "CargoNet_01_box_F", "O_CargoNet_01_ammo_F", "Land_Pallet_MilBoxes_F", "Land_PaperBox_open_full_F"];
+    btc_type_Scrapyard = _allClassSorted select {
+        _x isKindOf "Scrapyard_base_F" &&
+        {(tolower _x find "scrap") isEqualTo -1}
+    };
+    btc_type_bigbox = ["Box_FIA_Ammo_F", "Box_East_AmmoVeh_F", "CargoNet_01_box_F", "O_CargoNet_01_ammo_F"] + btc_type_Scrapyard;
     btc_type_seat = ["Land_WoodenLog_F", "Land_CampingChair_V2_F", "Land_CampingChair_V1_folded_F", "Land_CampingChair_V1_F"];
     btc_type_sleepingbag = ["Land_Sleeping_bag_F", "Land_Sleeping_bag_blue_F", "Land_Sleeping_bag_brown_F"];
     btc_type_tent = ["Land_TentA_F", "Land_TentDome_F"];
@@ -179,7 +183,7 @@ if (isServer) then {
     btc_type_cord = ["Land_ExtensionCord_F"];
     btc_type_cones = ["Land_RoadCone_01_F", "RoadCone_F", "RoadCone_L_F"];
     btc_type_fences = ["Land_PlasticNetFence_01_long_F", "Land_PlasticNetFence_01_long_d_F", "RoadBarrier_F", "TapeSign_F"];
-    btc_type_portable_light = ["Land_PortableLight_double_F", "Land_PortableLight_single_F"];
+    btc_type_portable_light = _allClassSorted select {_x isKindOf "Land_PortableLight_single_F"};
     btc_type_first_aid_kits = ["Land_FirstAidKit_01_open_F", "Land_FirstAidKit_01_closed_F"];
     btc_type_body_bags = _allClassSorted select {
         _x isKindOf "Land_Bodybag_01_base_F" ||
@@ -189,6 +193,25 @@ if (isServer) then {
     btc_type_signs = _allClassSorted select {_x isKindOf "Land_Sign_Mines_F"};
     btc_type_bloods = _allClassSorted select {_x isKindOf "Blood_01_Base_F"};
     btc_type_medicals = _allClassSorted select {_x isKindOf "MedicalGarbage_01_Base_F"};
+    btc_type_table = _allClassSorted select {_x isKindOf "Land_CampingTable_F"};
+    btc_type_garbage = ["Land_Garbage_line_F","Land_Garbage_square3_F","Land_Garbage_square5_F"];
+    btc_type_foodSack = _allClassSorted select {_x isKindOf "Land_FoodSack_01_empty_base_F"};
+    btc_type_PaperBox = _allClassSorted select {
+        _x isKindOf "Land_PaperBox_01_small_ransacked_base_F" ||
+        _x isKindOf "Land_PaperBox_01_small_open_base_F" ||
+        _x isKindOf "Land_PaperBox_01_small_destroyed_base_F"
+    };
+    btc_type_EmergencyBlanket = _allClassSorted select {_x isKindOf "Land_EmergencyBlanket_01_base_F"};
+    btc_type_Sponsor = _allClassSorted select {_x isKindOf "SignAd_Sponsor_F" && {(tolower _x find "idap") != -1}};
+    btc_type_PlasticCase = _allClassSorted select {_x isKindOf "PlasticCase_01_base_F"};
+    btc_type_MedicalTent = _allClassSorted select {_x isKindOf "Land_MedicalTent_01_base_F"};
+    btc_type_cargo_ruins = _allClassSorted select {
+        _x isKindOf "Ruins_F" &&
+        {
+            (tolower _x find "cargo40") != -1 ||
+            (tolower _x find "cargo20") != -1
+        }
+    };
 
     //BTC Vehicles in missions.sqm
     btc_vehicles = [btc_veh_1, btc_veh_2, btc_veh_3, btc_veh_4, btc_veh_5, btc_veh_6, btc_veh_7, btc_veh_8, btc_veh_9, btc_veh_10, btc_veh_11, btc_veh_12, btc_veh_13, btc_veh_14, btc_veh_15];
