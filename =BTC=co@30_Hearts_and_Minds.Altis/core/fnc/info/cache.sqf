@@ -29,15 +29,14 @@ params [
 if (isNull btc_cache_obj) exitWith {};
 
 if (btc_cache_info < btc_info_cache_ratio) then {
-    btc_cache_info = btc_info_cache_ratio;
 
-    private _building_cache = typeOf nearestBuilding btc_cache_obj;
+    private _building_cache = tolower (typeOf nearestBuilding btc_cache_obj);
     private _classnames = (nearestTerrainObjects [btc_cache_obj, [], 5, false]) apply {
         private _model = (getModelInfo _x) select 0;
         format ["Land_%1", _model select [0, _model find ".p3d"]]
     };
     _classnames select {isText (configfile >> "CfgVehicles" >> _x >> "editorPreview")};
-    _classname_object = selectRandom _classnames;
+    _classname_object = tolower (selectRandom _classnames);
 
     btc_cache_DiaryRecord = [
         "Cache building picture",
@@ -62,6 +61,6 @@ if (btc_cache_info < btc_info_cache_ratio) then {
     btc_cache_markers pushBack _marker;
 
     if (_showHint > 0) then {[1] remoteExec ["btc_fnc_show_hint", 0];};
-};
 
-btc_cache_info = btc_cache_info - btc_info_cache_ratio;
+    btc_cache_info = btc_cache_info - btc_info_cache_ratio;
+};
