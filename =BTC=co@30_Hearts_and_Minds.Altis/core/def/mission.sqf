@@ -138,7 +138,7 @@ if (isServer) then {
     btc_fobs = [[], []];
 
     //MIL
-    btc_p_mil_wp_ratios = [_wp_house_probability, (1 - _wp_house_probability)/1.5 + _wp_house_probability];
+    btc_p_mil_wp_ratios = [_wp_house_probability, (1 - _wp_house_probability) / 1.5 + _wp_house_probability];
 
     //Patrol
     btc_patrol_active = [];
@@ -442,23 +442,23 @@ btc_fnc_log_get_liftable = {
     params ["_chopper"];
 
     private _array   = [];
-    switch (typeOf _chopper) do    {
+    switch (typeOf _chopper) do {
         case "B_SDV_01_F" : {
             _array = ["Motorcycle", "ReammoBox", "ReammoBox_F", "StaticWeapon", "Car", "Truck", "Wheeled_APC_F", "Tracked_APC", "APC_Tracked_01_base_F", "APC_Tracked_02_base_F", "Air", "Ship", "Tank"] + ((btc_construction_array select 1) select 3) + ((btc_construction_array select 1) select 4) + ((btc_construction_array select 1) select 5);
         };
         default {
             private _MaxCargoMass = getNumber (configFile >> "CfgVehicles" >> typeOf _chopper >> "slingLoadMaxCargoMass");
             switch (true) do {
-                case (_MaxCargoMass  <= 510) : {
+                case (_MaxCargoMass <= 510) : {
                     _array = ["Motorcycle", "ReammoBox", "ReammoBox_F", "Quadbike_01_base_F", "Strategic"];
                 };
-                case (_MaxCargoMass  <= 2100) : {
+                case (_MaxCargoMass <= 2100) : {
                     _array = ["Motorcycle", "ReammoBox", "ReammoBox_F", "StaticWeapon", "Car"];
                 };
-                case (_MaxCargoMass  <= 4100) : {
+                case (_MaxCargoMass <= 4100) : {
                     _array = ["Motorcycle", "ReammoBox", "ReammoBox_F", "StaticWeapon", "Car", "Truck_F", "Truck", "Wheeled_APC_F", "Air", "Ship"] + ((btc_construction_array select 1) select 3) + ((btc_construction_array select 1) select 4) + ((btc_construction_array select 1) select 5);
                 };
-                case (_MaxCargoMass  <= 14000) : {
+                case (_MaxCargoMass <= 14000) : {
                     _array = ["Motorcycle", "ReammoBox", "ReammoBox_F", "StaticWeapon", "Car", "Truck_F", "Truck", "Wheeled_APC_F", "Tracked_APC", "APC_Tracked_01_base_F", "APC_Tracked_02_base_F", "Air", "Ship", "Tank"] + ((btc_construction_array select 1) select 3) + ((btc_construction_array select 1) select 4) + ((btc_construction_array select 1) select 5);
                 };
                 default {
