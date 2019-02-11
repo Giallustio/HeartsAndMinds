@@ -3,16 +3,16 @@
 Function: btc_fnc_clean_up
 
 Description:
-    Fill me when you edit me !
+    Delete all ground weapon holder (in range of 150 m), dead bodies (in range of 500 m) and empty ground.
 
 Parameters:
-    _playableUnits - [Array]
+    _playableUnits - Players connected. [Array]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_clean_up;
+        [] call btc_fnc_clean_up;
     (end)
 
 Author:

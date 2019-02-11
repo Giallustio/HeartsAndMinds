@@ -3,16 +3,16 @@
 Function: btc_fnc_set_groupsowner
 
 Description:
-    Fill me when you edit me !
+    Transfert groups to a headless client.
 
 Parameters:
-    _group_array - [Array]
+    _group_array - Array of groups to transfert. [Array]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_set_groupsowner;
+        [] call btc_fnc_set_groupsowner;
     (end)
 
 Author:

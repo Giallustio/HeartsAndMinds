@@ -3,17 +3,18 @@
 Function: btc_fnc_ied_suicider_create
 
 Description:
-    Fill me when you edit me !
+    Create a suicider in a city under a random area.
 
 Parameters:
-    _city - [Object]
-    _area - [Number]
+    _city - City where the suicider is created. [Object]
+    _area - Area around the city the suicider is created randomly. [Number]
 
 Returns:
+    _suicider - Created suicider. [Object]
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_ied_suicider_create;
+        _suicider = [allplayers select 0, 100] call btc_fnc_ied_suicider_create;
     (end)
 
 Author:
@@ -42,19 +43,6 @@ _group setVariable ["suicider", true];
 
 _suicider call btc_fnc_civ_unit_create;
 
-//Main check
-[{
-    params ["_args", "_id"];
-    _args params ["_suicider"];
-
-    if (Alive _suicider && !isNull _suicider) then {
-        if !((getPos _suicider nearEntities ["SoldierWB", 25]) isEqualTo []) then {
-            [_id] call CBA_fnc_removePerFrameHandler;
-            _suicider call btc_fnc_ied_suicider_active;
-        };
-    } else {
-        [_id] call CBA_fnc_removePerFrameHandler;
-    };
-}, 5, [_suicider]] call CBA_fnc_addPerFrameHandler;
+[_suicider] call btc_fnc_ied_suiciderLoop;
 
 _suicider

@@ -3,17 +3,18 @@
 Function: btc_fnc_check_los
 
 Description:
-    Fill me when you edit me !
+    Check the line of sight (LOS) between a unit and a target.
 
 Parameters:
-    _unit - [Object]
-    _target - [Object]
+    _unit - Unit for checking. [Object]
+    _target - Target to check. [Object]
 
 Returns:
+    _can_see - Tell if the unit can see or not the target. [Boolean]
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_check_los;
+        _can_see = [player, btc_helo_1] call btc_fnc_check_los;
     (end)
 
 Author:

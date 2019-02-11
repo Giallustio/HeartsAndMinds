@@ -3,16 +3,17 @@
 Function: btc_fnc_find_veh_with_turret
 
 Description:
-    Fill me when you edit me !
+    Find turret in a vehicle.
 
 Parameters:
-    _vehicles - [Array]
+    _vehicles - Array of vehicles or vehicles class name. [Array]
 
 Returns:
+    _array - Array of vehicles with turrets and corresponding magazines.
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_find_veh_with_turret;
+        _array = ["B_Heli_Transport_03_F"] call btc_fnc_find_veh_with_turret;
     (end)
 
 Author:

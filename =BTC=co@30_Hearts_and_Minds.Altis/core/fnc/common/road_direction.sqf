@@ -3,16 +3,17 @@
 Function: btc_fnc_road_direction
 
 Description:
-    Fill me when you edit me !
+    Found road direction.
 
 Parameters:
-    _road - [Object]
+    _road - Road to find the direction. [Object]
 
 Returns:
+	_direction - Direction of the road. [Number]
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_road_direction;
+        _direction = [(nearRoads player) select 0] call btc_fnc_road_direction;
     (end)
 
 Author:

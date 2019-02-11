@@ -92,7 +92,7 @@ _hideout setVariable ["markers", _markers];
 if (btc_debug) then {
     private _marker = createMarker [format ["btc_hideout_%1", _pos], _pos];
     _marker setMarkerType "mil_unknown";
-    _marker setMarkerText format ["Hideout %1", btc_hideouts_id];
+    _marker setMarkerText format ["Hideout %1", _id_hideout];
     _marker setMarkerSize [0.8, 0.8];
     _marker setMarkerColor "ColorRed";
 };

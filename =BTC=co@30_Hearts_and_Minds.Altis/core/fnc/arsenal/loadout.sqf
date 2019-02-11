@@ -6,7 +6,7 @@ Description:
     Generate a loadout from an array of defined loadout depending on trait, medical level, color and hour of the day.
 
 Parameters:
-    _type - Type of loadout: 0 - Rifleman, 1 - Medic Adv, 2 - Medic Basic, 3 - Repair, 4 - Engineer, 5 - Anti-Tank, 6 - Anti Air, 7 - Sniper, 8 - Machine gunner. [Number]
+    _type - Type of loadout: 0 - Rifleman, 1 - Medic Basic, 2 - Medic Adv, 3 - Repair, 4 - Engineer, 5 - Anti-Tank, 6 - Anti Air, 7 - Sniper, 8 - Machine gunner. [Number]
     _color - Color of skin loadout: 0 - Desert, 1 - Tropic, 2 - Black. [Number]
     _isDay - Select night (false) or day (true) loadout. [Boolean]
     _arsenal_loadout - Array of defined loadout. [Array]

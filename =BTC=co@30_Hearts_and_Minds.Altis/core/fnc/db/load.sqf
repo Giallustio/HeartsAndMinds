@@ -65,7 +65,12 @@ private _array_ho = profileNamespace getVariable [format ["btc_hm_%1_ho", _name]
 } forEach _array_ho;
 
 private _ho = profileNamespace getVariable [format ["btc_hm_%1_ho_sel", _name], 0];
-btc_hq = btc_hideouts select _ho;
+private _select_ho = (btc_hideouts apply {_x getVariable "id"}) find _ho;
+if (_select_ho isEqualTo - 1) then {
+    btc_hq = objNull;
+} else {
+    btc_hq = btc_hideouts select _select_ho;
+};
 
 if (btc_hideouts isEqualTo []) then {[] spawn btc_fnc_final_phase;};
 

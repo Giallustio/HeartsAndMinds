@@ -91,7 +91,6 @@ _city setVariable ["active", true];
 
 if !(_ieds isEqualTo []) then {
     private _ieds_data = _ieds apply {_x call btc_fnc_ied_create};
-    _city = btc_city_all select _id;
     [_city, _ieds_data] call btc_fnc_ied_check;
 };
 
