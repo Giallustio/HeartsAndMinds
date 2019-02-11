@@ -27,7 +27,7 @@ params [
 
 private _type_ammoUsageAllowed = [];
 switch (true) do {
-    case ((_player getUnitTrait "medic") && (ace_medical_level isEqualTo 1)): {
+    case (_player getUnitTrait "medic"): {
         _type_ammoUsageAllowed = [1, [["AssaultRifle", "", [false, "Rifle_Long_Base_F"]]]];
     };
     case (_player getVariable ["ace_isEngineer", 0] in [1, 2]): {
@@ -55,9 +55,8 @@ switch (true) do {
 
 if (btc_debug || btc_debug_log) then {
     [
-        format ["IsMedic basic: %1 IsMedic Adv: %2 IsAdvEngineer: %3 IsExplosiveSpecialist: %4 IsAT: %5 IsAA: %6",
-            (_player getUnitTrait "medic") && (ace_medical_level isEqualTo 1),
-            (_player getUnitTrait "medic") && (ace_medical_level isEqualTo 2),
+        format ["IsMedic: %1 IsAdvEngineer: %2 IsExplosiveSpecialist: %3 IsAT: %4 IsAA: %5",
+            _player getUnitTrait "medic",
             _player getVariable ["ace_isEngineer", 0],
             _player getUnitTrait "explosiveSpecialist",
             [typeOf _player, ["MissileLauncher", "128 + 512"]] call btc_fnc_mil_ammoUsage,

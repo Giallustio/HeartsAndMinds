@@ -6,10 +6,10 @@ Description:
     Generate a loadout from an array of defined loadout depending on trait, medical level, color and hour of the day.
 
 Parameters:
-    _type - Type of loadout: 0 - Rifleman, 1 - Medic (Basic/Advanced), 2 - Repair, 3 - Engineer, 4 - Anti-Tank, 5 - Anti Air, 6 - Sniper, 7 - Machine gunner. [Number]
+    _type - Type of loadout: 0 - Rifleman, 1 - Medic, 2 - Repair, 3 - Engineer, 4 - Anti-Tank, 5 - Anti Air, 6 - Sniper, 7 - Machine gunner. [Number]
     _color - Color of skin loadout: 0 - Desert, 1 - Tropic, 2 - Black. [Number]
     _isDay - Select night (false) or day (true) loadout. [Boolean]
-    _isAdvanced_medical - Select the correct medical stuff depends on medical level. [Boolean]
+    _isAdvanced_medical - Select the correct medical stuff depends on ACE3 medical level. [Boolean]
     _arsenal_loadout - Array of defined loadout. [Array]
 
 Returns:
@@ -18,6 +18,20 @@ Returns:
 Examples:
     (begin example)
         _rifleman_loadout = [0] call btc_fnc_arsenal_loadout;
+    (end)
+    (begin example)
+        [] spawn {
+            {
+                private _i = _x;
+                {
+                    private _j = _x;
+                    {
+                        player setUnitLoadout ([_i, _j, _x] call btc_fnc_arsenal_loadout);
+                        sleep 1;
+                    } forEach [false,true];
+                } forEach [0,1,2];
+            } forEach [0,1,2,3,4,5,6,7];
+        };
     (end)
 
 Author:
