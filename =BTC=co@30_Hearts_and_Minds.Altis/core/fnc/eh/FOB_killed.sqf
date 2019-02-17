@@ -9,7 +9,7 @@ Parameters:
     _struc - Object the event handler is assigned to. [Object]
     _killer - Object that killed the unit. Contains the unit itself in case of collisions. [Object]
     _instigator - Person who pulled the trigger. [Object]
-    _useEffects - same as useEffects in setDamage alt syntax. [Boolean].
+    _useEffects - same as useEffects in setDamage alt syntax. [Boolean]
     _fobs - Array containing FOB data. [Array]
 
 Returns:
@@ -22,7 +22,7 @@ Examples:
     (end)
 
 Author:
-    Giallustio
+    Vdauphin
 
 ---------------------------------------------------------------------------- */
 
