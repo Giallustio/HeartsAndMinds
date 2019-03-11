@@ -49,7 +49,7 @@ if !(_fuelSource isEqualTo []) then {
         ["_fuelCargo", 0, [0]],
         ["_hooks", nil, [[]]]
     ];
-    if ((!isNil "_hooks") && {_hooks isEqualTo (_veh getVariable ["ace_refuel_hooks", []])}) then {
+    if ((!isNil "_hooks") && {!(_hooks isEqualTo (_veh getVariable ["ace_refuel_hooks", []]))}) then {
         [_veh, _fuelCargo, _hooks] call ace_refuel_fnc_makeSource;
     } else {
         if (_fuelCargo != [_veh] call ace_refuel_fnc_getFuel) then {
