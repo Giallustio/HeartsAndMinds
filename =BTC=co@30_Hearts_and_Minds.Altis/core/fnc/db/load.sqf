@@ -126,8 +126,8 @@ private _vehs = profileNamespace getVariable [format ["btc_hm_%1_vehs", _name], 
             "_veh_cargo",
             "_veh_cont",
             "_customization",
-            ["_isMedicalVehicle", false, [true]],
-            ["_isRepairVehicle", false, [true]],
+            ["_isMedicalVehicle", false, [false]],
+            ["_isRepairVehicle", false, [false]],
             ["_fuelSource", [], [[]]],
             ["_pylons", [], [[]]]
         ];
@@ -136,7 +136,7 @@ private _vehs = profileNamespace getVariable [format ["btc_hm_%1_vehs", _name], 
             [format ["_veh = %1", _x], __FILE__, [false]] call btc_fnc_debug_message;
         };
 
-        private _veh = [_veh_type, _veh_pos, _veh_dir, _customization] call btc_fnc_log_createVehicle;
+        private _veh = [_veh_type, _veh_pos, _veh_dir, _customization, _isMedicalVehicle, _isRepairVehicle, _fuelSource, _pylons] call btc_fnc_log_createVehicle;
         if ((getPos _veh) select 2 < 0) then {_veh setVectorUp surfaceNormal position _veh;};
         _veh setFuel _veh_fuel;
 

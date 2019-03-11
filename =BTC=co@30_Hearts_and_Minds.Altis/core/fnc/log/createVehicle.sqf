@@ -39,25 +39,25 @@ _veh setDir _dir;
 _veh setPosASL _pos;
 [_veh, _customization select 0, _customization select 1] call BIS_fnc_initVehicle;
 if (_isMedicalVehicle && {!([_veh] call ace_medical_fnc_isMedicalVehicle)}) then {
-    _veh setVariable ["ACE_isMedicalVehicle", _isMedicalVehicle, true];
+    _veh setVariable ["ace_medical_medicclass", 1, true];
 };
 if (_isRepairVehicle && {!([_veh] call ace_repair_fnc_isRepairVehicle)}) then {
     _veh setVariable ["ACE_isRepairVehicle", _isRepairVehicle, true];
 };
 if !(_fuelSource isEqualTo []) then {
     _fuelSource params [
-        ["_source", objNull, [objNull]],
         ["_fuelCargo", 0, [0]],
         ["_hooks", nil, [[]]]
     ];
-    [_source, _fuelCargo, _hooks] call ace_refuel_fnc_makeSource;
+    if ((!isNil "_hooks") && {_hooks isEqualTo (_veh getVariable ["ace_refuel_hooks", []])}) then {
+        [_veh, _fuelCargo, _hooks] call ace_refuel_fnc_makeSource;
+    } else {
+        if (_fuelCargo != [_veh] call ace_refuel_fnc_getFuel) then {
+            [_veh, _fuelCargo] call ace_refuel_fnc_makeSource;
+        };
+    };
 };
 if !(_pylons isEqualTo []) then {
-    _fuelSource params [
-        ["_source", objNull, [objNull]],
-        ["_fuelCargo", 0, [0]],
-        ["_hooks", nil, [[]]]
-    ];
     private _pylonPaths = (configProperties [configFile >> "CfgVehicles" >> typeOf _veh >> "Components" >> "TransportPylonsComponent" >> "Pylons", "isClass _x"]) apply {getArray (_x >> "turret")};
     {
         _veh removeWeaponGlobal getText (configFile >> "CfgMagazines" >> _x >> "pylonWeapon")
