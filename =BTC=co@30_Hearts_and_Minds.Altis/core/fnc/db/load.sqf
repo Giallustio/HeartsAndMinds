@@ -3,16 +3,16 @@
 Function: btc_fnc_db_load
 
 Description:
-    Fill me when you edit me !
+    Load database from profileNamespace depends one worldname
 
 Parameters:
-    _name - [String]
+    _name - Name of the saved game. [String]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_db_load;
+        ["Altis"] call btc_fnc_db_load;
     (end)
 
 Author:

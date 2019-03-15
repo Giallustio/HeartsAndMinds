@@ -3,16 +3,16 @@
 Function: btc_fnc_log_server_repair_wreck
 
 Description:
-    Fill me when you edit me !
+    Repair wreck.
 
 Parameters:
-    _veh - [Object]
+    _veh - Vehicle to repair. [Object]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_log_server_repair_wreck;
+        _veh = [my_vehicle] call btc_fnc_log_server_repair_wreck;
     (end)
 
 Author:

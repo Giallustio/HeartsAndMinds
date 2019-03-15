@@ -3,16 +3,16 @@
 Function: btc_fnc_db_save
 
 Description:
-    Fill me when you edit me !
+    Save the current game into profileNamespace.
 
 Parameters:
-    _name - [String]
+    _name - Name of the game saved. [String]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_db_save;
+        ["Altis"] call btc_fnc_db_save;
     (end)
 
 Author:

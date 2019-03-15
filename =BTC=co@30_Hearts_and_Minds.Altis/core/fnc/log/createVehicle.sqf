@@ -3,19 +3,23 @@
 Function: btc_fnc_log_createVehicle
 
 Description:
-    Fill me when you edit me !
+    Creates an empty object of given classname type.
 
 Parameters:
-    _type - [String]
-    _pos - [Array]
-    _dir - [Number]
-    _customization - [Array]
+    _type - Vehicle className. [String]
+    _pos -  Desired placement position. If the exact position is occupied, nearest empty position is used. [Array]
+    _dir - Desired direction. [Number]
+    _customization - Customized appearance [Array]
+    _isMedicalVehicle - Set the ACE parameter is a medical vehicle. [Boolean]
+    _isRepairVehicle - Set the ACE parameter is a repair vehicle. [Boolean]
+    _fuelSource - Define the ACE cargo fuel source. [Array]
+    _pylons - Set pylon loadout. [Array]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_log_createVehicle;
+        _veh = ["vehicle_class_name", getPos player] call btc_fnc_log_createVehicle;
     (end)
 
 Author:
