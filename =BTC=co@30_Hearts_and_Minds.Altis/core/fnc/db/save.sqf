@@ -3,16 +3,16 @@
 Function: btc_fnc_db_save
 
 Description:
-    Fill me when you edit me !
+    Save the current game into profileNamespace.
 
 Parameters:
-    _name - [String]
+    _name - Name of the game saved. [String]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_db_save;
+        ["Altis"] call btc_fnc_db_save;
     (end)
 
 Author:
@@ -149,6 +149,13 @@ private _array_veh = [];
     private _cont = [getWeaponCargo _x, getMagazineCargo _x, getItemCargo _x];
     _data pushBack _cont;
     _data pushBack ([_x] call BIS_fnc_getVehicleCustomization);
+    _data pushBack ([_x] call ace_medical_fnc_isMedicalVehicle);
+    _data pushBack ([_x] call ace_repair_fnc_isRepairVehicle);
+    _data pushBack ([
+        [_x] call ace_refuel_fnc_getFuel,
+        _x getVariable ["ace_refuel_hooks", []]
+    ]);
+    _data pushBack (getPylonMagazines _x);
     _array_veh pushBack _data;
     if (btc_debug_log) then {
         [format ["VEH %1 DATA %2", _x, _data], __FILE__, [false]] call btc_fnc_debug_message;
