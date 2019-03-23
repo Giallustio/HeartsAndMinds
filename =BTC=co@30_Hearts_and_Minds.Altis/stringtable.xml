@@ -1072,9 +1072,9 @@
                 <Chinesesimp>在 %1 发放物资</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_SUPPLIES_DESC">
-                <Original>The citizens of %1 are on the brink starving to death, bring them some supplies present at the logistic point!</Original>
+                <Original>The citizens of %1 are on the brink starving and thirsty to death, bring them food and potable water present in the supply container at the logistic point!</Original>
                 <Spanish>Los ciudadanos de %1 están al borde de la muerte de hambre, ¡tráiganles algunos suministros presentes en el punto logístico!</Spanish>
-                <German>Die Bürger von %1 sind am verhungern. Bingen Sie ihnen Vorräte. Die Vorräte(Supplies) können beim Logistikpunkt angefordert werden.</German>
+                <German>Die Bewohner der Stadt %1 sind am verdusten und verhungern. Versorgen Sie die Bürger mit den nötigen Nahrungsmitteln. Den benötigten Nachschubcontainer finden sie am Versorgungspunkt.</German>
                 <Portuguese>O população de %1 estão passando fome! Forneça suprimentos! Os suprimentos podem ser solicitados no ponto logístico.</Portuguese>
                 <Chinesesimp>%1 的居民正在挨饿, 在补给点生成一些救援物资并带给他们!</Chinesesimp>
             </Key>
