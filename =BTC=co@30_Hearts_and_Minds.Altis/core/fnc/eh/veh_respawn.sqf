@@ -3,16 +3,16 @@
 Function: btc_fnc_eh_veh_respawn
 
 Description:
-    Fill me when you edit me !
+    Respawn the vehicle passed in parameter.
 
 Parameters:
-    _vehicle - [Object]
+    _vehicle - Vehicle to respawn. [Object]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_eh_veh_respawn;
+        [cursorObject] call btc_fnc_eh_veh_respawn;
     (end)
 
 Author:

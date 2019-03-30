@@ -3,18 +3,19 @@
 Function: btc_fnc_eh_veh_add_respawn
 
 Description:
-    Fill me when you edit me !
+    Add a vehicle to the respawn system and save vehicle parameters.
 
 Parameters:
-    _vehicle - [Object]
-    _time - [Number]
-    _has_marker - [Boolean]
+    _vehicle - Vehicle to add inside the respawn system. [Object]
+    _time - Time before respawn. [Number]
+    _has_marker - Unused. [Boolean]
 
 Returns:
+    _handle - Value of the MPEventhandle. [Number]
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_eh_veh_add_respawn;
+        [cursorObject, 30, false] call btc_fnc_eh_veh_add_respawn;
     (end)
 
 Author:
