@@ -276,13 +276,12 @@ btc_supplies_mat = "Land_Cargo20_IDAP_F";
 //Containers
 btc_containers_mat = ["Land_Cargo20_military_green_F", "Land_Cargo40_military_green_F"];
 
-//Player
-btc_player_side = west;
-btc_respawn_marker = "respawn_west";
-
-//Log
 if (isServer) then {
+    //Player
+    missionNamespace setVariable ["btc_player_side", west, true];
+    missionNamespace setVariable ["btc_respawn_marker", "respawn_west", true];
 
+    //Log
     private _allclass = ("true" configClasses (configFile >> "CfgVehicles")) apply {configName _x};
     _allclass = _allclass select {getNumber(configFile >> "CfgVehicles" >> _x >> "scope") isEqualTo 2};
     private _rearming_static =
