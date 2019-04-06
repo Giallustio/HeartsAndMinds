@@ -1,5 +1,5 @@
 btc_version = 1.19;
-diag_log format ["=BTC= HEARTS AND MINDS VERSION %1.2", btc_version];
+diag_log format ["=BTC= HEARTS AND MINDS VERSION %1.3", btc_version];
 
 //Param
 //<< Time options >>
@@ -532,7 +532,7 @@ switch (_p_en) do {
         btc_type_boats = btc_type_boats;
         btc_type_motorized = btc_type_motorized;
         btc_type_mg = btc_type_mg;
-        btc_type_g = btc_type_g;
+        btc_type_gl = btc_type_gl;
     };*/
     case "IND_G_F" : {
         btc_type_motorized = btc_type_motorized + ["I_Truck_02_transport_F", "I_Truck_02_covered_F"];

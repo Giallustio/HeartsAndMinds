@@ -175,8 +175,8 @@ if (_has_ho && {!(_city getVariable ["ho_units_spawned", false])}) then {
     [_pos, 120, 1 + round random 2, _wp_sentry] call btc_fnc_mil_create_group;
     private _random = random 1;
     switch (true) do {
-        case (_random < 0.3) : {};
-        case (_random > 0.3) : {
+        case (_random <= 0.3) : {};
+        case (_random > 0.3 && _random <= 0.75) : {
             private _statics = btc_type_gl + btc_type_mg;
             [[(_pos select 0) + 7, (_pos select 1) + 7, 0], _statics, 45] call btc_fnc_mil_create_static;
         };

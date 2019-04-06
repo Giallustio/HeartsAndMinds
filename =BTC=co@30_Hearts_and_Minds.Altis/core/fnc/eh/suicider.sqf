@@ -3,16 +3,16 @@
 Function: btc_fnc_eh_suicider
 
 Description:
-    Fill me when you edit me !
+    Remove the the suicider flag to the corresponding city.
 
 Parameters:
-    _id - [Number]
+    _id - ID of the city. [Number]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_eh_suicider;
+        [0] call btc_fnc_eh_suicider;
     (end)
 
 Author:

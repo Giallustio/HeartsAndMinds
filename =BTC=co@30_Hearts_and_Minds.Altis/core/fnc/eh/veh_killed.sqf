@@ -3,16 +3,16 @@
 Function: btc_fnc_eh_veh_killed
 
 Description:
-    Fill me when you edit me !
+    Create marker wreck and change reputation on vehicle destruction.
 
 Parameters:
-    _vehicle - [Object]
+    _vehicle - Vehicle object. [Object]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_eh_veh_killed;
+        [btc_veh_12] call btc_fnc_eh_veh_killed;
     (end)
 
 Author:
