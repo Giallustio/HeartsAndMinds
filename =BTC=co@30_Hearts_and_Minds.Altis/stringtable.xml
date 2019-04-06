@@ -606,6 +606,9 @@
                 <German>Vorgefertigte Loadouts (Siehe /define_mod.sqf)</German>
                 <Chinesesimp>预设装备 (见 /define_mod.sqf)</Chinesesimp>
             </Key>
+            <Key ID="STR_BTC_HAM_PARAM_ARSENAL_RMVWEAPONS">
+                <Original>Remove all weapons</Original>
+            </Key>
             <Key ID="STR_BTC_HAM_PARAM_ARSENAL_ARSENALRESTR_FILTER">
                 <Original>Filter on player role (works only with ACE3-Arsenal)</Original>
                 <German>Nach der Rolle des Spielers beschränken (geht nur mit dem ACE3-Arsenal)</German>
