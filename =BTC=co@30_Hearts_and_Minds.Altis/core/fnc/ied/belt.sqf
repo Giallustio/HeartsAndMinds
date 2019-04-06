@@ -3,18 +3,18 @@
 Function: btc_fnc_ied_belt
 
 Description:
-    Fill me when you edit me !
+    Arrange three objects in upper direction.
 
 Parameters:
-    _expl1 - [Object]
-    _expl2 - [Object]
-    _expl3 - [Object]
+    _expl1 - Object to set vector. [Object]
+    _expl2 - Object to set vector. [Object]
+    _expl3 - Object to set vector. [Object]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_ied_belt;
+        [object1, object2, object3] call btc_fnc_ied_belt;
     (end)
 
 Author:

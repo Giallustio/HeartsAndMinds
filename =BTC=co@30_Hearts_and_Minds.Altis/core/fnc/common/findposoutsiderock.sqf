@@ -3,16 +3,17 @@
 Function: btc_fnc_findposoutsiderock
 
 Description:
-    Fill me when you edit me !
+    Found position outside rock.
 
 Parameters:
-    _rpos - [Array]
+    _rpos - Position to check. [Array]
 
 Returns:
+    _rpos - New position outside rock.
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_findposoutsiderock;
+        _rpos = [getPos player] call btc_fnc_findposoutsiderock;
     (end)
 
 Author:

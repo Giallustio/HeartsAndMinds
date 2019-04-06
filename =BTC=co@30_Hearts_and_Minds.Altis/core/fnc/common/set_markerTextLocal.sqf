@@ -3,18 +3,18 @@
 Function: btc_fnc_set_markerTextLocal
 
 Description:
-    Fill me when you edit me !
+    Add local text to a marker.
 
 Parameters:
-    _marker - [String]
-    _text - [String]
-    _arg - []
+    _marker - Marker to add text locally [String]
+    _text - Text to add locally. [String]
+    _arg - Argument for custom text. [String, Number]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_set_markerTextLocal;
+        [] call btc_fnc_set_markerTextLocal;
     (end)
 
 Author:

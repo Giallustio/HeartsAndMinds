@@ -3,16 +3,17 @@
 Function: btc_fnc_eh_player
 
 Description:
-    Fill me when you edit me !
+    Add event handler to player.
 
 Parameters:
-    _player - [Object]
+    _player - Player to add event. [Object]
 
 Returns:
+	_eventHandleID - ID of the WeaponAssembled event handle. [Number]
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_eh_player;
+        _eventHandleID = [player] call btc_fnc_eh_player;
     (end)
 
 Author:

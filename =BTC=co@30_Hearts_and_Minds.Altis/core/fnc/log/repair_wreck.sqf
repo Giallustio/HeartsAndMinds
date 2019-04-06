@@ -24,7 +24,10 @@ params [
     ["_object", objNull, [objNull]]
 ];
 
-private _array = (nearestObjects [_object, ["LandVehicle", "Air"], 10]) select {!((_x isKindOf "ACE_friesGantry") OR (typeOf _x isEqualTo "ACE_friesAnchorBar"))};
+private _array = (nearestObjects [_object, ["LandVehicle", "Air"], 10]) select {!(
+    _x isKindOf "ACE_friesBase" OR
+    _x isKindOf "ace_fastroping_helper"
+)};
 
 if (_array isEqualTo []) exitWith {hint localize "STR_BTC_HAM_LOG_RWRECK_NOWRECK";}; //No wreck found
 

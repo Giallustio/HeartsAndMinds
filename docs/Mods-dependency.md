@@ -7,7 +7,7 @@ You can remove RHS US mod dependency by :
 - All vehicles have RHS weapons and ammo in cargo. If you want to remove the RHS dependency, make sure to check the [vehicle contents](https://forums.bistudio.com/topic/165948-btc-hearts-and-minds/?p=3094122) also.
 - Save.
 
-Note: more information about vehicle integration in H&M [Here](https://github.com/Vdauphin/HeartsAndMinds/wiki/Add-vehicle-or-boat-to-H&M-system).
+Note: more information about vehicle integration in H&M [Here](http://vdauphin.github.io/HeartsAndMinds/Add-vehicle-or-boat-to-H&M-system).
 
 #### 2: ACE3 dependency
 

@@ -3,20 +3,20 @@
 Function: btc_fnc_findsafepos
 
 Description:
-    Fill me when you edit me !
+    Find safe position.
 
 Parameters:
-    _check_pos - [Array]
-    _mindist - [Number]
-    _random_area - [Number]
-    _objdist - [Number]
-    _allow_water - []
+    _check_pos - Center position. [Array]
+    _mindist - Minimum distance from the center position. [Number]
+    _random_area - Maximum distance from the center position. [Number]
+    _objdist - Minimum distance from the resulting position to the center of nearest object. Specifying quite large distance here will slow the function and might often fail to find suitable position. Recommended value: 0 - 10. [Number]
+    _allow_water - Allow water position. [Boolean]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_findsafepos;
+        _result = [getPos player] call btc_fnc_findsafepos;
     (end)
 
 Author:

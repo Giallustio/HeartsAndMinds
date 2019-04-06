@@ -3,7 +3,7 @@
 Function: btc_fnc_strategicMapOpen
 
 Description:
-    Fill me when you edit me !
+    Show strategic map with the possibility to navigate freely on the map.
 
 Parameters:
     0: DISPLAY - parent display. When empty, mission display is used.
