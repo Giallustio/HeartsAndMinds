@@ -97,7 +97,7 @@ _action = ["Civil_Go_away", localize "STR_BTC_HAM_ACTION_ORDERS_GOAWAY", "\A3\ui
 } forEach btc_civ_type_units;
 
 //Side missions
-_action = ["side_mission", localize "STR_BTC_HAM_ACTION_SIDEMISSION_MAIN", "\A3\ui_f\data\igui\cfg\simpleTasks\types\whiteboard_ca.paa", {}, {player getVariable ["side_mission", false]}] call ace_interact_menu_fnc_createAction;
+_action = ["side_mission", localize "STR_BTC_HAM_DOC_SIDEMISSION_TITLE", "\A3\ui_f\data\igui\cfg\simpleTasks\types\whiteboard_ca.paa", {}, {player getVariable ["side_mission", false]}] call ace_interact_menu_fnc_createAction;
 [player, 1, ["ACE_SelfActions"], _action] call ace_interact_menu_fnc_addActionToObject;
 
 _action = ["side_mission_abort", localize "STR_BTC_HAM_ACTION_SIDEMISSION_ABORT", "\A3\ui_f\data\igui\cfg\simpleTasks\types\exit_ca.paa", {[] call btc_fnc_side_abort}, {player getVariable ["side_mission", false] && {btc_side_assigned}}] call ace_interact_menu_fnc_createAction;
