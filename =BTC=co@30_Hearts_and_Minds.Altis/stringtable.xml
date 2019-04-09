@@ -602,6 +602,7 @@
             <Key ID="STR_BTC_HAM_PARAM_ARSENAL_RMVWEAPONS">
                 <Original>Remove all weapons</Original>
                 <German>nur Waffen entfernen</German>
+                <Chinesesimp>移除所有武器</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_ARSENAL_ARSENALRESTR_FILTER">
                 <Original>Filter on player role (works only with ACE3-Arsenal)</Original>
