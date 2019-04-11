@@ -23,10 +23,10 @@ player createDiaryRecord [_MainCategory, ["FOB", localize "STR_BTC_HAM_DOC_FOB_T
 player createDiaryRecord [_MainCategory, [localize "STR_A3_SlingLoad1", localize "STR_BTC_HAM_DOC_SLING_TEXT"]];
 
 //Logistic point
-player createDiaryRecord [_MainCategory, [localize "STR_BTC_HAM_DOC_LOGISTICP_TITLE", localize "STR_BTC_HAM_DOC_LOGISTICP_TEXT"]];
+player createDiaryRecord [_MainCategory, [localize "STR_BTC_HAM_MSQM_MRK_LOGPOINT", localize "STR_BTC_HAM_DOC_LOGISTICP_TEXT"]];
 
 //Logistic
-player createDiaryRecord [_MainCategory, [localize "STR_BTC_HAM_DOC_LOGISTIC_TITLE", localize "STR_BTC_HAM_DOC_LOGISTIC_TEXT"]];
+player createDiaryRecord [_MainCategory, [localize "STR_BTC_HAM_ACTION_LOC_MAIN", localize "STR_BTC_HAM_DOC_LOGISTIC_TEXT"]];
 
 //Hideout
 player createDiaryRecord [_MainCategory, [localize "str_a3_campaign_b_m03_marker02", localize "STR_BTC_HAM_DOC_HIDEOUT_TEXT"]];
@@ -54,6 +54,6 @@ player createDiaryRecord [_MainCategory, [localize "STR_BTC_HAM_DOC_INTERACTION_
 
 //Version
 player createDiaryRecord [_MainCategory, [localize "STR_A3_FM_Welcome4",
-    format ["<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/> Version %1.4 <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/>", btc_version]
+    format ["<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/> Version %1.3 <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/>", btc_version]
     ]
 ];

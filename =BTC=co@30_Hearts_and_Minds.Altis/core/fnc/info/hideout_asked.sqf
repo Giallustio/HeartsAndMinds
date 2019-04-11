@@ -7,7 +7,7 @@ Description:
 
 Parameters:
     _name - [String]
-    _is_real - [Booleen]
+    _is_real - [Boolean]
     _text - [String]
 
 Returns:

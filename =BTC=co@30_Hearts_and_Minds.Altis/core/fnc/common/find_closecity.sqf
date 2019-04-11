@@ -3,18 +3,19 @@
 Function: btc_fnc_find_closecity
 
 Description:
-    Fill me when you edit me !
+    Find closer city in an array of cities from an initial city.
 
 Parameters:
-    _obj - [Object]
-    _array - [Array]
-    _isOccupied - [Booleen]
+    _obj - City used to find the closer city. [Object]
+    _array - Array of city. [Array]
+    _isOccupied - Filter city by their occupation by enemies. [Boolean]
 
 Returns:
+    _closer_city - Closer city from the array of city. [Object]
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_find_closecity;
+        _closer_city = [player, btc_city_all] call btc_fnc_find_closecity;
     (end)
 
 Author:

@@ -3,17 +3,18 @@
 Function: btc_fnc_getHouses
 
 Description:
-    Fill me when you edit me !
+    Get open houses around a position.
 
 Parameters:
-    _pos - [Array]
-    _radius - [Number]
+    _pos - Position to search for houses. [Array]
+    _radius - Radius of search. [Number]
 
 Returns:
+	_useful - Useful open houses. [Array]
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_getHouses;
+        _useful = [getPos player] call btc_fnc_getHouses;
     (end)
 
 Author:
@@ -22,7 +23,7 @@ Author:
 ---------------------------------------------------------------------------- */
 
 params [
-    ["_pos", [0, 0, 0], [[]]],
+    ["_pos", [0, 0, 0], [[], objNull]],
     ["_radius", 100, [0]]
 ];
 

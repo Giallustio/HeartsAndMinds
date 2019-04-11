@@ -5,8 +5,8 @@
 </p>
 
 <p align="center">
-    <a href="https://github.com/Vdauphin/HeartsAndMinds/releases/tag/1.18.4">
-        <img src="https://img.shields.io/badge/Version-1.18.4-blue.svg?style=flat-square" alt="H&M Version">
+    <a href="https://github.com/Vdauphin/HeartsAndMinds/releases/tag/1.19.3">
+        <img src="https://img.shields.io/badge/Version-1.19.3-blue.svg?style=flat-square" alt="H&M Version">
     </a>
     <a href="http://www.somsubhra.com/github-release-stats/?username=vdauphin&repository=HeartsAndMinds">
         <img src="https://img.shields.io/github/downloads/Vdauphin/HeartsAndMinds/total.svg?style=flat-square&label=Downloads" alt="H&M Downloads">
@@ -31,7 +31,7 @@ Online [wiki available](http://vdauphin.github.io/HeartsAndMinds/).
 - Civilian interaction/fleeing
 - Reputation system
 - Deep ACE3 support
-- More than 197 enemies and 21 civilians factions available
+- More than 212 enemies and 21 civilians factions available
 - More than 14 side mission
 - Dynamic caching system
 - Full saving Database
@@ -42,7 +42,7 @@ Online [wiki available](http://vdauphin.github.io/HeartsAndMinds/).
 - Something I forgot for sure
 
 
-You main task is to defeat the "Oplitas" group and restore peace and order in Altis.
+Your main task is to defeat the "Oplitas" group and restore peace and order in Altis.
 The militia has an unknown number of hideouts in the island that need to be destroyed.
 They have also ammo caches in various locations, destroy them to weaken its power.
 

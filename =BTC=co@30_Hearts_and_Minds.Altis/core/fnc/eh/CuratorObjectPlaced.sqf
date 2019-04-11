@@ -21,10 +21,6 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-/*
-    curator,object
-*/
-
 params [
     ["_curator", objNull, [objNull]],
     ["_object_placed", objNull, [objNull]]

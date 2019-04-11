@@ -58,7 +58,7 @@ waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || (_veh getHit "wheel_
 
 btc_side_assigned = false;
 publicVariable "btc_side_assigned";
-[[_area, _marker], [_veh], []] call btc_fnc_delete;
+[[_area, _marker], [_veh]] call btc_fnc_delete;
 
 if (btc_side_aborted || btc_side_failed || !Alive _veh) exitWith {
     5 remoteExecCall ["btc_fnc_task_fail", 0];

@@ -80,9 +80,9 @@ def btc_fnc_get_params(text):
                 elif ' [{}]]' in _typeOf_index:
                     _typeOf_index = 'Code'
                 elif ' [true]]' in _typeOf_index:
-                    _typeOf_index = 'Booleen'
+                    _typeOf_index = 'Boolean'
                 elif ' [false]]' in _typeOf_index:
-                    _typeOf_index = 'Booleen'
+                    _typeOf_index = 'Boolean'
                 elif ' [east]]' in _typeOf_index:
                     _typeOf_index = 'Side'
                 elif ' [west]]' in _typeOf_index:

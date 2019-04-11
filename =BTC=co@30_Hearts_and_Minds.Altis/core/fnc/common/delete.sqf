@@ -3,18 +3,17 @@
 Function: btc_fnc_delete
 
 Description:
-    Fill me when you edit me !
+    Delete markers and the JIP remoteExec associated. Delete objects when player is far from them.
 
 Parameters:
-    _markers - []
-    _objects - []
-    _groups - []
+    _markers - Array of marker to delete. [Array]
+    _objects - Array of objects and or groups to delete. [Array]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_delete;
+        [["mymarker"], [objNull, grpNull]] call btc_fnc_delete;
     (end)
 
 Author:
@@ -24,8 +23,7 @@ Author:
 
 params [
     ["_markers", [], [[""]]],
-    ["_objects", [], [[objNull]]],
-    ["_groups", [], [[grpNull]]]
+    ["_objects", [], [[]]]
 ];
 
 {
@@ -34,26 +32,4 @@ params [
     remoteExecCall ["", _x];
 } forEach _markers;
 
-{
-    private _object = _x;
-    [{
-        params ["_args", "_id"];
-
-        if (playableUnits inAreaArray [getPosWorld _args, 1000, 1000] isEqualTo []) then {
-            [_id] call CBA_fnc_removePerFrameHandler;
-            _args call CBA_fnc_deleteEntity;
-        };
-    }, 5, _object] call CBA_fnc_addPerFrameHandler;
-} forEach _objects;
-
-{
-    private _group = _x;
-    [{
-        params ["_args", "_id"];
-
-        if (playableUnits inAreaArray [getPosWorld leader _args, 1000, 1000] isEqualTo []) then {
-            [_id] call CBA_fnc_removePerFrameHandler;
-            _args call CBA_fnc_deleteEntity;
-        };
-    }, 5, _group] call CBA_fnc_addPerFrameHandler;
-} forEach _groups;
+[_objects] call btc_fnc_deleteEntities;

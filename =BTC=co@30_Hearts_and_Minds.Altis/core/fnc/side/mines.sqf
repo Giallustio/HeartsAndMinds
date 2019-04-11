@@ -48,7 +48,7 @@ _area setmarkercolor "colorBlue";
 
 private _marker = createMarker [format ["sm_2_%1", _pos], _pos];
 _marker setMarkerType "hd_flag";
-[_marker, "STR_BTC_HAM_SIDE_MINES_MRK"] remoteExecCall ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker]; //Mines
+[_marker, "str_a3_orange_cfgmods_mines_displayname"] remoteExecCall ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker]; //Mines
 _marker setMarkerSize [0.6, 0.6];
 
 //// Randomise composition \\\\
@@ -124,11 +124,11 @@ btc_side_assigned = false;
 publicVariable "btc_side_assigned";
 if (btc_side_aborted || btc_side_failed) exitWith {
     4 remoteExecCall ["btc_fnc_task_fail", 0];
-    [[_area, _marker], _mines + _composition_objects, []] call btc_fnc_delete;
+    [[_area, _marker], _mines + _composition_objects] call btc_fnc_delete;
 };
 
 30 call btc_fnc_rep_change;
 
 4 remoteExecCall ["btc_fnc_task_set_done", 0];
 
-[[_area, _marker], _composition_objects, []] call btc_fnc_delete;
+[[_area, _marker], _composition_objects] call btc_fnc_delete;

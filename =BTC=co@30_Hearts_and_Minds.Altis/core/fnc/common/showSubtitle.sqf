@@ -3,12 +3,12 @@
 Function: btc_fnc_showSubtitle
 
 Description:
-    Fill me when you edit me !
+    Show text as a subtitle.
 
 Parameters:
     _from - Name of the person speaking [String]
     _text - Contents of the subtitle [String]
-    _lineBreak - Add a line break [Booleen]
+    _lineBreak - Add a line break [Boolean]
     _colorFrom - HEX color for speaker (#RGB or #ARGB) [String]
     _colorText - HEX color for content (#RGB or #ARGB) [String]
     _fontText - Font (https://community.bistudio.com/wiki/FXY_File_Format#Available_Fonts) [String]

@@ -1,5 +1,5 @@
-btc_version = 1.18;
-diag_log format ["=BTC= HEARTS AND MINDS VERSION %1.4", btc_version];
+btc_version = 1.19;
+diag_log format ["=BTC= HEARTS AND MINDS VERSION %1.3", btc_version];
 
 //Param
 //<< Time options >>
@@ -45,6 +45,7 @@ private _p_skill = [
 ];
 
 //<< Spawn options >>
+btc_p_is_free_prob = ("btc_p_is_free_prob" call BIS_fnc_getParamValue)/100;
 btc_p_mil_group_ratio = ("btc_p_mil_group_ratio" call BIS_fnc_getParamValue)/100;
 btc_p_civ_group_ratio = ("btc_p_civ_group_ratio" call BIS_fnc_getParamValue)/100;
 private _wp_house_probability = ("btc_p_wp_house_probability" call BIS_fnc_getParamValue)/100;
@@ -97,11 +98,11 @@ if (!isMultiplayer) then {
     btc_debug_frames = 0;
 };
 
+private _allClassVehicles = ("true" configClasses (configFile >> "CfgVehicles")) apply {configName _x};
+private _allClassSorted = _allClassVehicles select {getNumber (configFile >> "CfgVehicles" >> _x >> "scope") isEqualTo 2};
+
 if (isServer) then {
     btc_final_phase = false;
-
-    private _allclass = ("true" configClasses (configFile >> "CfgVehicles")) apply {configName _x};
-    _allclass = _allclass select {getNumber(configFile >> "CfgVehicles" >> _x >> "scope") isEqualTo 2};
 
     //City
     btc_city_radius = _p_city_radius;
@@ -132,9 +133,10 @@ if (isServer) then {
     btc_ied_suic_time = 900;
     btc_ied_suic_spawned = - btc_ied_suic_time;
     btc_ied_offset = [0, -0.03, -0.07] select _p_ied_spot;
+    btc_ied_list = [];
 
     //FOB
-    btc_fobs = [[], []];
+    btc_fobs = [[], [], [], []];
 
     //MIL
     btc_p_mil_wp_ratios = [_wp_house_probability, (1 - _wp_house_probability)/1.5 + _wp_house_probability];
@@ -150,7 +152,11 @@ if (isServer) then {
 
     //Hideout classname
     btc_type_campfire = ["MetalBarrel_burning_F", "Campfire_burning_F", "Land_Campfire_F", "FirePlace_burning_F"];
-    btc_type_bigbox = ["Box_FIA_Ammo_F", "Box_East_AmmoVeh_F", "CargoNet_01_box_F", "O_CargoNet_01_ammo_F", "Land_Pallet_MilBoxes_F", "Land_PaperBox_open_full_F"];
+    btc_type_Scrapyard = _allClassSorted select {
+        _x isKindOf "Scrapyard_base_F" &&
+        {(tolower _x find "scrap") isEqualTo -1}
+    };
+    btc_type_bigbox = ["Box_FIA_Ammo_F", "Box_East_AmmoVeh_F", "CargoNet_01_box_F", "O_CargoNet_01_ammo_F"] + btc_type_Scrapyard;
     btc_type_seat = ["Land_WoodenLog_F", "Land_CampingChair_V2_F", "Land_CampingChair_V1_folded_F", "Land_CampingChair_V1_F"];
     btc_type_sleepingbag = ["Land_Sleeping_bag_F", "Land_Sleeping_bag_blue_F", "Land_Sleeping_bag_brown_F"];
     btc_type_tent = ["Land_TentA_F", "Land_TentDome_F"];
@@ -176,18 +182,37 @@ if (isServer) then {
     btc_type_mines = ["APERSMine", "APERSBoundingMine", "APERSTripMine"];
     btc_type_power = ["WaterPump_01_sand_F", "WaterPump_01_forest_F", "Land_PressureWasher_01_F", "Land_DieselGroundPowerUnit_01_F", "Land_JetEngineStarter_01_F", "Land_PowerGenerator_F", "Land_PortableGenerator_01_F"];
     btc_type_cord = ["Land_ExtensionCord_F"];
-    btc_type_cones = ["Land_RoadCone_01_F", "RoadCone_F"];
+    btc_type_cones = ["Land_RoadCone_01_F", "RoadCone_F", "RoadCone_L_F"];
     btc_type_fences = ["Land_PlasticNetFence_01_long_F", "Land_PlasticNetFence_01_long_d_F", "RoadBarrier_F", "TapeSign_F"];
-    btc_type_portable_light = ["Land_PortableLight_double_F", "Land_PortableLight_single_F"];
+    btc_type_portable_light = _allClassSorted select {_x isKindOf "Land_PortableLight_single_F"};
     btc_type_first_aid_kits = ["Land_FirstAidKit_01_open_F", "Land_FirstAidKit_01_closed_F"];
-    btc_type_body_bags = _allclass select {
+    btc_type_body_bags = _allClassSorted select {
         _x isKindOf "Land_Bodybag_01_base_F" ||
         _x isKindOf "Land_Bodybag_01_empty_base_F" ||
         _x isKindOf "Land_Bodybag_01_folded_base_F"
     };
-    btc_type_signs = _allclass select {_x isKindOf "Land_Sign_Mines_F"};
-    btc_type_bloods = _allclass select {_x isKindOf "Blood_01_Base_F"};
-    btc_type_medicals = _allclass select {_x isKindOf "MedicalGarbage_01_Base_F"};
+    btc_type_signs = _allClassSorted select {_x isKindOf "Land_Sign_Mines_F"};
+    btc_type_bloods = _allClassSorted select {_x isKindOf "Blood_01_Base_F"};
+    btc_type_medicals = _allClassSorted select {_x isKindOf "MedicalGarbage_01_Base_F"};
+    btc_type_table = _allClassSorted select {_x isKindOf "Land_CampingTable_F"};
+    btc_type_garbage = ["Land_Garbage_line_F","Land_Garbage_square3_F","Land_Garbage_square5_F"];
+    btc_type_foodSack = _allClassSorted select {_x isKindOf "Land_FoodSack_01_empty_base_F"};
+    btc_type_PaperBox = _allClassSorted select {
+        _x isKindOf "Land_PaperBox_01_small_ransacked_base_F" ||
+        _x isKindOf "Land_PaperBox_01_small_open_base_F" ||
+        _x isKindOf "Land_PaperBox_01_small_destroyed_base_F"
+    };
+    btc_type_EmergencyBlanket = _allClassSorted select {_x isKindOf "Land_EmergencyBlanket_01_base_F"};
+    btc_type_Sponsor = _allClassSorted select {_x isKindOf "SignAd_Sponsor_F" && {(tolower _x find "idap") != -1}};
+    btc_type_PlasticCase = _allClassSorted select {_x isKindOf "PlasticCase_01_base_F"};
+    btc_type_MedicalTent = _allClassSorted select {_x isKindOf "Land_MedicalTent_01_base_F"};
+    btc_type_cargo_ruins = _allClassSorted select {
+        _x isKindOf "Ruins_F" &&
+        {
+            (tolower _x find "cargo40") != -1 ||
+            (tolower _x find "cargo20") != -1
+        }
+    };
 
     //BTC Vehicles in missions.sqm
     btc_vehicles = [btc_veh_1, btc_veh_2, btc_veh_3, btc_veh_4, btc_veh_5, btc_veh_6, btc_veh_7, btc_veh_8, btc_veh_9, btc_veh_10, btc_veh_11, btc_veh_12, btc_veh_13, btc_veh_14, btc_veh_15];
@@ -227,7 +252,7 @@ if (isServer) then {
 //Civ
 // Get all faction from mod there are currently running
 //copyToClipboard str (["CIV"] call btc_fnc_get_class);
-private _allfaction = ["AFGCIV","CIV_F","BTC_AC","CAF_AG_AFR_CIV","CAF_AG_ME_CIV","CFP_C_AFG","CFP_C_AFRCHRISTIAN","CFP_C_AFRISLAMIC","CFP_C_ASIA","CFP_C_ME","CUP_C_RU","CUP_C_CHERNARUS","CUP_C_SAHRANI","CUP_C_TK","LIB_CIV","LOP_AFR_CIV","LOP_CHR_CIV","LOP_TAK_CIV","OPTRE_UEG_CIV","CIV_IDAP_F","RDS_RUS_CIV","UNSUNG_C"]; //All factions
+private _allfaction = ["AFGCIV","CIV_F","BTC_AC","CAF_AG_AFR_CIV","CAF_AG_ME_CIV","CFP_C_AFG","CFP_C_AFRCHRISTIAN","CFP_C_AFRISLAMIC","CFP_C_ASIA","CFP_C_ME","CUP_C_RU","CUP_C_CHERNARUS","CUP_C_SAHRANI","CUP_C_TK","OPTRE_UEG_CIV","LIB_CIV","LOP_AFR_CIV","LOP_CHR_CIV","LOP_TAK_CIV","CIV_IDAP_F","RDS_RUS_CIV","UNSUNG_C"]; //All factions
 _p_civ = _allfaction select _p_civ; //Select faction selected from mission parameter
 _p_civ_veh = _allfaction select _p_civ_veh; //Select faction selected from mission parameter
 private _allclasse = [[_p_civ]] call btc_fnc_civ_class; //Create classes from factions, you can combine factions from the SAME side : [[_p_civ , "btc_ac","LOP_TAK_CIV"]] call btc_fnc_civ_class.
@@ -270,7 +295,11 @@ btc_info_cache_ratio = _cache_info_ratio;
 btc_info_hideout_radius = 4000;
 
 //Supplies
-btc_supplies_mat = "Land_Cargo20_IDAP_F";
+btc_supplies_cargo = "Land_Cargo20_IDAP_F";
+btc_supplies_mat = [
+    _allClassSorted select {_x isKindOf "Land_FoodSack_01_cargo_base_F"},
+    _allClassSorted select {_x isKindOf "Land_WaterBottle_01_stack_F"}
+];
 
 //Containers
 btc_containers_mat = ["Land_Cargo20_military_green_F", "Land_Cargo40_military_green_F"];
@@ -281,13 +310,10 @@ btc_respawn_marker = "respawn_west";
 
 //Log
 if (isServer) then {
-
-    private _allclass = ("true" configClasses (configFile >> "CfgVehicles")) apply {configName _x};
-    _allclass = _allclass select {getNumber(configFile >> "CfgVehicles" >> _x >> "scope") isEqualTo 2};
     private _rearming_static =
     [
         //"Static"
-    ] + (_allclass select {(
+    ] + (_allClassSorted select {(
         _x isKindOf "GMG_TriPod" ||
         _x isKindOf "StaticMortar" ||
         _x isKindOf "HMG_01_base_F" ||
@@ -341,14 +367,14 @@ if (isServer) then {
                 //"Ammobox"
                 "Land_WoodenBox_F"
 
-            ] + (_allclass select {_x isKindOf "ReammoBox_F" && !(_x isKindOf "Slingload_01_Base_F") && !(_x isKindOf "Pod_Heli_Transport_04_base_F")}),
+            ] + (_allClassSorted select {_x isKindOf "ReammoBox_F" && !(_x isKindOf "Slingload_01_Base_F") && !(_x isKindOf "Pod_Heli_Transport_04_base_F")}),
             [
                 //"Containers"
 
             ] + btc_containers_mat,
             [
                 //"Supplies"
-                btc_supplies_mat
+                btc_supplies_cargo
             ],
             [
                 //"FOB"
@@ -364,10 +390,11 @@ if (isServer) then {
     publicVariable "btc_construction_array";
 };
 
+btc_supplies_mat params ["_food", "_water"];
 private _c_array = btc_construction_array select 1;
-btc_log_def_loadable = (_c_array select 0) + (_c_array select 1) + (_c_array select 2) + (_c_array select 3) + (_c_array select 4) + (_c_array select 5) + (_c_array select 6) + ["ace_rearm_defaultCarriedObject", "ace_rearm_Bo_Mk82", "ace_rearm_Bomb_04_F", "ace_rearm_Bo_GBU12_LGB", "ace_rearm_Bomb_03_F", "ace_rearm_Missile_AA_03_F", "ace_rearm_Missile_AGM_02_F", "ace_rearm_Missile_AGM_01_F", "ace_rearm_Rocket_03_AP_F", "ace_rearm_R_80mm_HE", "ace_rearm_R_60mm_HE", "ace_rearm_Rocket_04_HE_F", "ace_rearm_R_Hydra_HE", "ace_rearm_Missile_AA_04_F", "ace_rearm_M_PG_AT", "ace_rearm_R_230mm_HE", "ace_rearm_Rocket_03_HE_F", "ace_rearm_Rocket_04_AP_F", "ace_rearm_R_230mm_fly"];
+btc_log_def_loadable = (_c_array select 0) + (_c_array select 1) + (_c_array select 2) + (_c_array select 3) + (_c_array select 4) + (_c_array select 5) + (_c_array select 6) + ["ace_rearm_defaultCarriedObject", "ace_rearm_Bo_Mk82", "ace_rearm_Bomb_04_F", "ace_rearm_Bo_GBU12_LGB", "ace_rearm_Bomb_03_F", "ace_rearm_Missile_AA_03_F", "ace_rearm_Missile_AGM_02_F", "ace_rearm_Missile_AGM_01_F", "ace_rearm_Rocket_03_AP_F", "ace_rearm_R_80mm_HE", "ace_rearm_R_60mm_HE", "ace_rearm_Rocket_04_HE_F", "ace_rearm_R_Hydra_HE", "ace_rearm_Missile_AA_04_F", "ace_rearm_M_PG_AT", "ace_rearm_R_230mm_HE", "ace_rearm_Rocket_03_HE_F", "ace_rearm_Rocket_04_AP_F", "ace_rearm_R_230mm_fly"] + _food + _water;
 btc_log_def_can_load = (_c_array select 3);
-btc_log_def_placeable = (_c_array select 0) + (_c_array select 3) + (_c_array select 4) + (_c_array select 5);
+btc_log_def_placeable = (_c_array select 0) + (_c_array select 3) + (_c_array select 4) + (_c_array select 5) + _food + _water;
 btc_log_max_distance_load = 15;
 btc_log_object_selected = objNull;
 btc_log_vehicle_selected = objNull;
@@ -406,7 +433,7 @@ btc_log_main_rc = [
 ];
 btc_log_def_cc = [
     "Land_CargoBox_V1_F", 0,
-    btc_supplies_mat, 0,
+    btc_supplies_cargo, 20,
     btc_fob_mat, 0,
     "Land_Cargo20_military_green_F", 20,
     "Land_Cargo40_military_green_F", 40
@@ -414,7 +441,7 @@ btc_log_def_cc = [
 btc_log_def_rc = [
     "Land_BagBunker_Small_F", 5,
     "Land_CargoBox_V1_F", 9999,
-    btc_supplies_mat, 8,
+    btc_supplies_cargo, 8,
     btc_fob_mat, 8,
     "Land_Cargo20_military_green_F", 8,
     "B_Slingload_01_Fuel_F", 20,
@@ -480,7 +507,7 @@ btc_lift_HUD_y  = 0.848;
 btc_hq = objNull;
 // Get all faction from mod there are currently running
 //copyToClipboard str (["EN"] call btc_fnc_get_class);
-private _allfaction = ["BLU_F","BLU_G_F","CAR","IND_F","IND_G_F","OPF_F","OPF_G_F","TBAN","UNSUNG","AFR_ARMY","ARA_ARMY","ARL_ARMY","BTC_AM","CAF_AG_AFR_P","CAF_AG_EEUR_R","CAF_AG_ME_T","CEC_ARMY","CFP_B_AFARMY","CFP_B_AFGPOLICE","CFP_B_CZARMY_WDL","CFP_B_DEARMY_WDL","CFP_B_IQARMY","CFP_B_IQPOLICE","CFP_B_KEARMY","CFP_B_NAARMY","CFP_B_PESH","CFP_B_UGARMY","CFP_B_USMC_DES","CFP_B_YPG","CFP_I_ALNUSRA","CFP_I_IS","CFP_O_ALQAEDA","CFP_O_ALSHABAAB","CFP_O_BOKOHARAM","CFP_O_HEZBOLLAH","CFP_O_IS","CFP_O_RUMVD","CFP_O_SOREBEL","CFP_O_SYARMY","CFP_O_TBAN","CFP_O_WESTULTRA","CUP_B_CZ","CUP_B_GER","CUP_B_US_ARMY","CUP_I_NAPA","CUP_I_RACS","CUP_O_TK","CFP_B_GBARMY_WDL","CFP_B_USCIA","CUP_B_GB","CUP_I_TK_GUE","CUP_I_UN","CUP_O_CHDKZ","CUP_O_TK_MILITIA","CFP_B_USARMY_WDL","CFP_O_RUARMY_DES","CUP_B_CDF","CUP_B_RNZN","CUP_B_USMC","CUP_O_RU","CUP_O_SLA","BLU_CTRG_F","BLU_GEN_F","BLU_T_F","CUP_I_PMC_ION","OPF_T_F","FOW_AUS","FOW_HEER","FOW_HI","FOW_IJA_NAS","FOW_IT","FOW_LUFTWAFFE","FOW_UK","FOW_UK_FAA","FOW_USA_NAVY","FOW_WAFFENSS","FOW_IJA","FOW_USA","FOW_USA_P","FOW_USMC","GAL_ARMY","GANGBLUE_ARMY","GANGRED_ARMY","IBR_ZETABORN_FACTION","ISC_IP_B","ISC_YPG_B","OPCAN_INS","OPCAN_UNSCDF","LIB_ACI","LIB_ARR","LIB_DAK","LIB_FFI","LIB_FSJ","LIB_GUER","LIB_LUFTWAFFE","LIB_LUFTWAFFE_W","LIB_MKHL","LIB_NAC","LIB_NKVD","LIB_PANZERWAFFE","LIB_PANZERWAFFE_W","LIB_RAAF","LIB_RAF","LIB_RBAF","LIB_RKKA","LIB_RKKA_W","LIB_US_101AB","LIB_US_82AB","LIB_US_AIRFORCE","LIB_US_AIRFORCE_W","LIB_US_ARMY","LIB_US_ARMY_W","LIB_US_RANGERS","LIB_US_TANK_TROOPS","LIB_US_TANK_TROOPS_W","LIB_USSR_AIRFORCE","LIB_USSR_AIRFORCE_W","LIB_USSR_TANK_TROOPS","LIB_USSR_TANK_TROOPS_W","LIB_WEHRMACHT","LIB_WEHRMACHT_W","LOP_BH","LOP_IRA","LOP_UVF","LOP_AA","LOP_AFR","LOP_AFR_OPF","LOP_AM","LOP_AM_OPF","LOP_CDF","LOP_CHDKZ","LOP_IA","LOP_IRAN","LOP_ISTS","LOP_ISTS_OPF","LOP_NAPA","LOP_PESH","LOP_PESH_IND","LOP_PMC","LOP_RACS","LOP_SLA","LOP_TKA","LOP_UA","LOP_UKR","LOP_UN","LOP_US","MOL_ARMY","OPTRE_INS","OPTRE_PD","OPTRE_UNSC","ISC_ALNUSRA_I","ISC_IA_B","ISC_IS_I","ISC_IS_O","ISC_PESH_B","ISC_SAA_O","RHS_FACTION_INSURGENTS","RHS_FACTION_MSV","RHS_FACTION_RVA","RHS_FACTION_TV","RHS_FACTION_VDV","RHS_FACTION_VMF","RHS_FACTION_VPVO","RHS_FACTION_VV","RHS_FACTION_VVS","RHS_FACTION_VVS_C","RHSGREF_FACTION_CDF_AIR","RHSGREF_FACTION_CDF_AIR_B","RHSGREF_FACTION_CDF_GROUND","RHSGREF_FACTION_CDF_GROUND_B","RHSGREF_FACTION_CDF_NG","RHSGREF_FACTION_CDF_NG_B","RHSGREF_FACTION_CHDKZ","RHSGREF_FACTION_CHDKZ_G","RHSGREF_FACTION_UN","RHSSAF_FACTION_AIRFORCE","RHSSAF_FACTION_ARMY","RHSSAF_FACTION_UN","RHS_FACTION_SOCOM","RHS_FACTION_USAF","RHS_FACTION_USARMY_D","RHS_FACTION_USARMY_WD","RHS_FACTION_USMC_D","RHS_FACTION_USMC_WD","RHS_FACTION_USN","RHSGREF_FACTION_HIDF","RHSGREF_FACTION_NATIONALIST","SG_STURM","SG_STURM_W","SG_STURMPANZER","IND_C_F","UNSUNG_AUS","UNSUNG_E","UNSUNG_EV","UNSUNG_G","UNSUNG_NZ","UNSUNG_W","USML_AIF"]; //All factions
+private _allfaction = ["BLU_F","BLU_G_F","IND_F","IND_G_F","OPF_F","OPF_G_F","TBAN","UNSUNG","AFR_ARMY","ARA_ARMY","ARL_ARMY","BTC_AM","CAF_AG_AFR_P","CAF_AG_EEUR_R","CAF_AG_ME_T","CEC_ARMY","CFP_B_AFARMY","CFP_B_AFGPOLICE","CFP_B_CZARMY_WDL","CFP_B_DEARMY_WDL","CFP_B_ILIDF","CFP_B_IQARMY","CFP_B_IQPOLICE","CFP_B_KEARMY","CFP_B_NAARMY","CFP_B_PESH","CFP_B_SDARMY","CFP_B_SDMILITIA","CFP_B_UGARMY","CFP_B_USMC_DES","CFP_B_USRANGERS_WDL","CFP_B_USSEALS_DES","CFP_B_USSEALS_WDL","CFP_B_YPG","CFP_I_ALNUSRA","CFP_I_IS","CFP_I_SDREBELS","CFP_I_SSARMY","CFP_I_TUAREG","CFP_I_WESTULTRA","CFP_O_ALQAEDA","CFP_O_ALSHABAAB","CFP_O_ANSARALLAH","CFP_O_BOKOHARAM","CFP_O_CFREBELS","CFP_O_HAMAS","CFP_O_HEZBOLLAH","CFP_O_IRARMY","CFP_O_IS","CFP_O_RUMVD","CFP_O_SDREBELS","CFP_O_SOREBEL","CFP_O_SSREBELS","CFP_O_SYARMY","CFP_O_TBAN","CUP_B_CZ","CUP_B_GER","CUP_B_US_ARMY","CUP_I_NAPA","CUP_I_RACS","CUP_O_TK","CFP_B_GBARMY_WDL","CFP_B_USCIA","CUP_B_GB","CUP_I_TK_GUE","CUP_I_UN","CUP_O_CHDKZ","CUP_O_TK_MILITIA","CFP_B_USARMY_WDL","CFP_O_RUARMY_DES","CUP_B_CDF","CUP_B_RNZN","CUP_B_USMC","CUP_O_RU","CUP_O_SLA","BLU_CTRG_F","BLU_GEN_F","BLU_T_F","CUP_I_PMC_ION","OPF_T_F","FOW_AUS","FOW_HEER","FOW_HI","FOW_IJA_NAS","FOW_IT","FOW_LUFTWAFFE","FOW_UK","FOW_UK_FAA","FOW_USA_NAVY","FOW_WAFFENSS","FOW_IJA","FOW_USA","FOW_USA_P","FOW_USMC","GAL_ARMY","GANGBLUE_ARMY","GANGRED_ARMY","IBR_ZETABORN_FACTION","ISC_IP_B","ISC_YPG_B","OPCAN_INS","OPCAN_UNSCDF","LIB_ACI","LIB_ARR","LIB_DAK","LIB_FFI","LIB_FSJ","LIB_GUER","LIB_LUFTWAFFE","LIB_LUFTWAFFE_W","LIB_MKHL","LIB_NAC","LIB_NKVD","LIB_PANZERWAFFE","LIB_PANZERWAFFE_W","LIB_RAAF","LIB_RAF","LIB_RBAF","LIB_RKKA","LIB_RKKA_W","LIB_US_101AB","LIB_US_82AB","LIB_US_AIRFORCE","LIB_US_AIRFORCE_W","LIB_US_ARMY","LIB_US_ARMY_W","LIB_US_RANGERS","LIB_US_TANK_TROOPS","LIB_US_TANK_TROOPS_W","LIB_USSR_AIRFORCE","LIB_USSR_AIRFORCE_W","LIB_USSR_TANK_TROOPS","LIB_USSR_TANK_TROOPS_W","LIB_WEHRMACHT","LIB_WEHRMACHT_W","LOP_BH","LOP_IRA","LOP_UVF","LOP_AA","LOP_AFR","LOP_AFR_OPF","LOP_AM","LOP_AM_OPF","LOP_CDF","LOP_CHDKZ","LOP_IA","LOP_IRAN","LOP_ISTS","LOP_ISTS_OPF","LOP_NAPA","LOP_PESH","LOP_PESH_IND","LOP_PMC","LOP_RACS","LOP_SLA","LOP_TKA","LOP_UA","LOP_UKR","LOP_UN","LOP_US","MOL_ARMY","O_CAR","OPTRE_INS","OPTRE_PD","OPTRE_UNSC","ISC_ALNUSRA_I","ISC_IA_B","ISC_IS_I","ISC_IS_O","ISC_PESH_B","ISC_SAA_O","RHS_FACTION_INSURGENTS","RHS_FACTION_MSV","RHS_FACTION_RVA","RHS_FACTION_TV","RHS_FACTION_VDV","RHS_FACTION_VMF","RHS_FACTION_VPVO","RHS_FACTION_VV","RHS_FACTION_VVS","RHS_FACTION_VVS_C","RHSGREF_FACTION_CDF_AIR","RHSGREF_FACTION_CDF_AIR_B","RHSGREF_FACTION_CDF_GROUND","RHSGREF_FACTION_CDF_GROUND_B","RHSGREF_FACTION_CDF_NG","RHSGREF_FACTION_CDF_NG_B","RHSGREF_FACTION_CHDKZ","RHSGREF_FACTION_CHDKZ_G","RHSSAF_FACTION_AIRFORCE","RHSSAF_FACTION_ARMY","RHSSAF_FACTION_UN","RHS_FACTION_SOCOM","RHS_FACTION_USAF","RHS_FACTION_USARMY_D","RHS_FACTION_USARMY_WD","RHS_FACTION_USMC_D","RHS_FACTION_USMC_WD","RHS_FACTION_USN","RHSGREF_FACTION_HIDF","RHSGREF_FACTION_NATIONALIST","RHSGREF_FACTION_UN","SG_STURM","SG_STURM_W","SG_STURMPANZER","IND_C_F","UNSUNG_AUS","UNSUNG_E","UNSUNG_EV","UNSUNG_G","UNSUNG_NZ","UNSUNG_W","USML_AIF"]; //All factions
 _p_en = _allfaction select _p_en; //Select faction selected from mission parameter
 _allclasse = [[_p_en], _p_en_AA, _p_en_tank] call btc_fnc_mil_class; //Create classes from factions, you can combine factions like that: [[_p_en , "IND_F"], _p_en_AA, _p_en_tank] call btc_fnc_mil_class;
 
@@ -505,7 +532,7 @@ switch (_p_en) do {
         btc_type_boats = btc_type_boats;
         btc_type_motorized = btc_type_motorized;
         btc_type_mg = btc_type_mg;
-        btc_type_g = btc_type_g;
+        btc_type_gl = btc_type_gl;
     };*/
     case "IND_G_F" : {
         btc_type_motorized = btc_type_motorized + ["I_Truck_02_transport_F", "I_Truck_02_covered_F"];

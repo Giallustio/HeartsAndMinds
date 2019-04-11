@@ -3,7 +3,7 @@
 Function: btc_fnc_side_capture_officer
 
 Description:
-    Fill me when you edit me !
+    Thanks DAP for inspiration.
 
 Parameters:
 
@@ -18,10 +18,6 @@ Author:
     Giallustio
 
 ---------------------------------------------------------------------------- */
-
-/*
-    Thanks DAP for inspiration.
-*/
 
 //// Choose two Cities \\\\
 private _usefuls = btc_city_all select {!((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"]) && !(_x getVariable ["occupied", false])};
@@ -109,7 +105,7 @@ btc_side_assigned = false;
 publicVariable "btc_side_assigned";
 if (btc_side_aborted || !(Alive _captive)) exitWith {
     14 remoteExecCall ["btc_fnc_task_fail", 0];
-    [_markers, _vehs + [_trigger], [_group]] call btc_fnc_delete;
+    [_markers, _vehs + [_trigger, _group]] call btc_fnc_delete;
 };
 
 if (btc_side_failed) exitWith {
@@ -120,11 +116,11 @@ if (btc_side_failed) exitWith {
         (crew _x) joinSilent _group;
         _group call btc_fnc_data_add_group;
     } forEach _vehs;
-    [_markers, [_trigger], []] call btc_fnc_delete;
+    [_markers, [_trigger]] call btc_fnc_delete;
 };
 
 50 call btc_fnc_rep_change;
 
 14 remoteExecCall ["btc_fnc_task_set_done", 0];
 
-[_markers, _vehs + [_trigger, _captive], [_group]] call btc_fnc_delete;
+[_markers, _vehs + [_trigger, _captive, _group]] call btc_fnc_delete;

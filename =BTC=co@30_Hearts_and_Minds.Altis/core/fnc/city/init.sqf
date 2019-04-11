@@ -6,6 +6,7 @@ Description:
     Create cities all over the map and store those properties.
 
 Parameters:
+    _is_free_probability - Probability for a city to have military. [Number]
 
 Returns:
 
@@ -18,6 +19,10 @@ Author:
     Giallustio
 
 ---------------------------------------------------------------------------- */
+
+params [
+    ["_is_free_probability", btc_p_is_free_prob, [0]]
+];
 
 private _locations = configfile >> "cfgworlds" >> worldname >> "names";
 
@@ -62,7 +67,7 @@ for "_i" from 0 to (count _locations - 1) do {
         if ((getMarkerPos "YOUR_MARKER_AREA") inArea [_position, 500, 500, 0, false]) exitWith {};
         */
 
-        [_position, _type, _name, _radius_x, _radius_y, random 1 > 0.45] call btc_fnc_city_create;
+        [_position, _type, _name, _radius_x, _radius_y, random 1 > _is_free_probability] call btc_fnc_city_create;
     };
 };
 

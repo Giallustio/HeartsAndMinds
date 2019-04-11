@@ -9,7 +9,7 @@ Parameters:
     _group - [Group]
     _cities - [Array]
     _area - [Number]
-    _isBoat - [Booleen]
+    _isBoat - [Boolean]
 
 Returns:
 
@@ -51,6 +51,6 @@ private _waypointStatements = format ["[group this, %1, %2, %3, %4] call btc_fnc
 
 if (btc_debug_log) then {
     if (!isNil {_group getVariable "btc_patrol_id"}) then {
-        [format ["ID: %1, End city ID: %2", _group getVariable "btc_patrol_id", _end_cityID], __FILE__, [false]] call btc_fnc_debug_message;
+        [format ["ID: %1, End city ID: %2", _group getVariable ["btc_patrol_id", "Missing patrol ID"], _end_cityID], __FILE__, [false]] call btc_fnc_debug_message;
     };
 };

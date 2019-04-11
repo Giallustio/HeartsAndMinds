@@ -10,7 +10,7 @@ Parameters:
     _radius_x - Radius of the location along x. [Number]
     _radius_y - Radius of the location along y. [Number]
     _city - City object where the trigger will be stored. [Object]
-    _has_en - City is occupied. [Booleen]
+    _has_en - City is occupied. [Boolean]
     _name - Name of the city. [String]
     _type - Type of the city. [String]
     _id - ID of the city. [Number]

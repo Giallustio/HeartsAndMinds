@@ -23,10 +23,6 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-//https://forums.bistudio.com/forums/topic/186316-how-to-open-the-land_dataterminal_01_f-data-terminal-nexus-update/
-//http://killzonekid.com/arma-scripting-tutorials-uav-r2t-and-pip/
-//http://killzonekid.com/arma-scripting-tutorials-scripted-charges/
-
 private _useful = btc_city_all select {_x getVariable ["occupied", false] && !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])};
 
 if (_useful isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
@@ -64,7 +60,7 @@ private _launchsite = createVehicle ["Land_PenBlack_F", _pos, [], 0, "FLY"];
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || btc_side_done)};
 if (btc_side_aborted || btc_side_failed) exitWith {
     16 remoteExecCall ["btc_fnc_task_fail", 0];
-    [[_marker], [_terminal], []] call btc_fnc_delete;
+    [[_marker], [_terminal]] call btc_fnc_delete;
     btc_side_assigned = false;
     publicVariable "btc_side_assigned";
 };
@@ -88,7 +84,8 @@ if (btc_side_aborted || btc_side_failed) exitWith {
     btc_side_done = nil;
     publicVariable "btc_side_done";
     16 remoteExecCall ["btc_fnc_task_fail", 0];
-    [[_marker], [_terminal], []] call btc_fnc_delete;
+    [[_marker], [_terminal]] call btc_fnc_delete;
+
     btc_side_assigned = false;
     publicVariable "btc_side_assigned";
 };
@@ -110,7 +107,7 @@ btc_side_done = nil;
 publicVariable "btc_side_done";
 btc_side_assigned = false;
 publicVariable "btc_side_assigned";
-[[_marker], [_rocket, _terminal, _fx], []] call btc_fnc_delete;
+[[_marker], [_rocket, _terminal, _fx]] call btc_fnc_delete;
 if (btc_side_aborted || btc_side_failed || !(_city getVariable ["active", false])) exitWith {
     16 remoteExecCall ["btc_fnc_task_fail", 0];
 };

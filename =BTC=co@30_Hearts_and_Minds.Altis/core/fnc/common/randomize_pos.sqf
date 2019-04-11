@@ -3,18 +3,19 @@
 Function: btc_fnc_randomize_pos
 
 Description:
-    Fill me when you edit me !
+    Randomize position.
 
 Parameters:
-    _pos - [Array]
-    _random_area - [Number]
-    _allowwater - [Booleen]
+    _pos - Starting position. [Array]
+    _random_area - Area of radomization. [Number]
+    _allowwater - Allow water position. [Boolean]
 
 Returns:
+    _return_pos - New position. [Array]
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_randomize_pos;
+        _return_pos = [getPos player] call btc_fnc_randomize_pos;
     (end)
 
 Author:

@@ -3,16 +3,16 @@
 Function: btc_fnc_ied_suicider_active
 
 Description:
-    Fill me when you edit me !
+    Activate the suicider by adding explosive charge around his pelvis and force suicider to move in the direction of soldier.
 
 Parameters:
-    _suicider - [Object]
+    _suicider - Suicider created. [Object]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_ied_suicider_active;
+        [_suicider] call btc_fnc_ied_suicider_active;
     (end)
 
 Author:
@@ -66,21 +66,4 @@ if (btc_debug_log) then {
     [format ["_suicider = %1 POS %2 START LOOP", _suicider, getPos _suicider], __FILE__, [false]] call btc_fnc_debug_message;
 };
 
-[{
-    params ["_args", "_id"];
-    _args params ["_suicider", "_trigger"];
-
-    if (Alive _suicider) then {
-        private _array = _suicider nearEntities ["SoldierWB", 30];
-        if !(_array isEqualTo []) then {
-            _suicider doMove (position (_array select 0));
-        };
-    } else {
-        [_id] call CBA_fnc_removePerFrameHandler;
-        deleteVehicle _trigger;
-        group _suicider setVariable ["suicider", false];
-        if (btc_debug_log) then {
-            [format ["_suicider = %1 POS %2 END LOOP", _suicider, getPos _suicider], __FILE__, [false]] call btc_fnc_debug_message;
-        };
-    };
-}, 0.5, [_suicider, _trigger]] call CBA_fnc_addPerFrameHandler;
+[_suicider, _trigger] call btc_fnc_ied_suicider_activeLoop;

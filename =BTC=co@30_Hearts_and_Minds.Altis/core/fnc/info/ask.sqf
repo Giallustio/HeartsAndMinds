@@ -7,7 +7,7 @@ Description:
 
 Parameters:
     _man - [Object]
-    _isInterrogate - [Booleen]
+    _isInterrogate - [Boolean]
 
 Returns:
 

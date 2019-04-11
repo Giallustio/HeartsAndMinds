@@ -6,7 +6,7 @@ Description:
     Fill me when you edit me !
 
 Parameters:
-    _isReal - [Booleen]
+    _isReal - [Boolean]
     _showHint - [Number]
 
 Returns:

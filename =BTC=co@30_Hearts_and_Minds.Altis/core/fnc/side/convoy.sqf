@@ -93,7 +93,7 @@ btc_side_assigned = false;
 publicVariable "btc_side_assigned";
 if (btc_side_aborted) exitWith {
     12 remoteExecCall ["btc_fnc_task_fail", 0];
-    [_markers, _vehs, [_group]] call btc_fnc_delete;
+    [_markers, _vehs + [_group]] call btc_fnc_delete;
 };
 
 if (btc_side_failed) exitWith {
@@ -104,11 +104,11 @@ if (btc_side_failed) exitWith {
         (crew _x) joinSilent _group;
         _group call btc_fnc_data_add_group;
     } forEach _vehs;
-    [_markers, [], []] call btc_fnc_delete;
+    [_markers] call btc_fnc_delete;
 };
 
 50 call btc_fnc_rep_change;
 
 12 remoteExecCall ["btc_fnc_task_set_done", 0];
 
-[_markers, _vehs, [_group]] call btc_fnc_delete;
+[_markers, _vehs + [_group]] call btc_fnc_delete;

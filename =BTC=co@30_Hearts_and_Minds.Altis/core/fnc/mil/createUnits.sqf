@@ -9,7 +9,7 @@ Parameters:
     _group - [Group]
     _pos - [Array]
     _number - [Number]
-    _pos_iswater - [Booleen]
+    _pos_iswater - [Boolean]
     _type_units - [Array]
     _type_divers - [Array]
 
