@@ -29,7 +29,7 @@ params [
 {
     deleteMarker _x;
     //remove JIP remoteExec
-    remoteExec ["", _x];
+    remoteExecCall ["", _x];
 } forEach _markers;
 
 [_objects] call btc_fnc_deleteEntities;

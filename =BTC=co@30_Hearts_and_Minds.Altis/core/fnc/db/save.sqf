@@ -28,7 +28,7 @@ if (btc_debug) then {
     ["...1", __FILE__, [btc_debug, false, true]] call btc_fnc_debug_message;
 };
 
-[8] remoteExec ["btc_fnc_show_hint", 0];
+[8] remoteExecCall ["btc_fnc_show_hint", 0];
 
 btc_db_is_saving = true;
 
@@ -186,6 +186,6 @@ saveProfileNamespace;
 if (btc_debug) then {
     ["...3", __FILE__, [btc_debug, false, true]] call btc_fnc_debug_message;
 };
-[9] remoteExec ["btc_fnc_show_hint", 0];
+[9] remoteExecCall ["btc_fnc_show_hint", 0];
 
 btc_db_is_saving = false;

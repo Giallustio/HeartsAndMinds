@@ -46,17 +46,17 @@ btc_side_assigned = true;
 publicVariable "btc_side_assigned";
 
 btc_side_jip_data = [14, _pos2, _city2 getVariable "name"];
-btc_side_jip_data remoteExec ["btc_fnc_task_create", 0];
+btc_side_jip_data remoteExecCall ["btc_fnc_task_create", 0];
 
 //// Create markers \\\\
 private _marker1 = createMarker [format ["sm_2_%1", getPos _city1], getPos _city1];
 _marker1 setMarkerType "hd_flag";
-[_marker1, "str_a3_campaign_b_m06_marker01"] remoteExec ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker1]; //Convoy Start
+[_marker1, "str_a3_campaign_b_m06_marker01"] remoteExecCall ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker1]; //Convoy Start
 _marker1 setMarkerSize [0.6, 0.6];
 
 private _marker2 = createMarker [format ["sm_2_%1", _pos2], _pos2];
 _marker2 setMarkerType "hd_flag";
-[_marker2, "STR_BTC_HAM_SIDE_CONVOY_MRKEND"] remoteExec ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker2]; //Convoy End
+[_marker2, "STR_BTC_HAM_SIDE_CONVOY_MRKEND"] remoteExecCall ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker2]; //Convoy End
 _marker2 setMarkerSize [0.6, 0.6];
 
 private _area = createMarker [format ["sm_%1", _pos2], _pos2];
@@ -97,19 +97,19 @@ _trigger setTriggerActivation [str btc_player_side, "PRESENT", true];
 _trigger setTriggerStatements ["this", "_captive = thisTrigger getVariable 'captive'; doStop _captive; [_captive, true] call ace_captives_fnc_setSurrendered;", ""];
 _trigger attachTo [_captive, [0, 0, 0]];
 
-[12] remoteExec ["btc_fnc_show_hint", -2];
+[12] remoteExecCall ["btc_fnc_show_hint", -2];
 
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !(alive _captive) || (_captive inArea [getPosWorld btc_create_object_point, 100, 100, 0, false]))};
 
 btc_side_assigned = false;
 publicVariable "btc_side_assigned";
 if (btc_side_aborted || !(Alive _captive)) exitWith {
-    14 remoteExec ["btc_fnc_task_fail", 0];
+    14 remoteExecCall ["btc_fnc_task_fail", 0];
     [_markers, _vehs + [_trigger, _group]] call btc_fnc_delete;
 };
 
 if (btc_side_failed) exitWith {
-    14 remoteExec ["btc_fnc_task_fail", 0];
+    14 remoteExecCall ["btc_fnc_task_fail", 0];
     _group setVariable ["no_cache", false];
     {
         _group = createGroup btc_enemy_side;
@@ -121,6 +121,6 @@ if (btc_side_failed) exitWith {
 
 50 call btc_fnc_rep_change;
 
-14 remoteExec ["btc_fnc_task_set_done", 0];
+14 remoteExecCall ["btc_fnc_task_set_done", 0];
 
 [_markers, _vehs + [_trigger, _captive, _group]] call btc_fnc_delete;
