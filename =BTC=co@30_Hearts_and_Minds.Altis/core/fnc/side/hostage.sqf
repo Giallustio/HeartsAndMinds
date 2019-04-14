@@ -49,12 +49,12 @@ btc_side_assigned = true;
 publicVariable "btc_side_assigned";
 
 btc_side_jip_data = [15, _pos, _city getVariable "name"];
-btc_side_jip_data remoteExec ["btc_fnc_task_create", 0];
+btc_side_jip_data remoteExecCall ["btc_fnc_task_create", 0];
 
 //// Marker
 private _marker = createMarker [format ["sm_2_%1", getPos _house], getPos _house];
 _marker setMarkerType "hd_flag";
-[_marker, "STR_BTC_HAM_SIDE_HOSTAGE_MRK"] remoteExec ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker]; //Hostage
+[_marker, "STR_BTC_HAM_SIDE_HOSTAGE_MRK"] remoteExecCall ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker]; //Hostage
 _marker setMarkerSize [0.6, 0.6];
 
 _city setVariable ["spawn_more", true];
@@ -106,11 +106,11 @@ btc_side_assigned = false;
 publicVariable "btc_side_assigned";
 
 if (btc_side_aborted || btc_side_failed || !(Alive _captive)) exitWith {
-    15 remoteExec ["btc_fnc_task_fail", 0];
+    15 remoteExecCall ["btc_fnc_task_fail", 0];
     [[_marker], _group + [_group_civ, _trigger, _mine]] call btc_fnc_delete;
 };
 
 40 call btc_fnc_rep_change;
 
 [[_marker]] call btc_fnc_delete;
-15 remoteExec ["btc_fnc_task_set_done", 0];
+15 remoteExecCall ["btc_fnc_task_set_done", 0];

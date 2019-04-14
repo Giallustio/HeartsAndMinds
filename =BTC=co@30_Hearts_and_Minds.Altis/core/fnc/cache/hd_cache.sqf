@@ -53,7 +53,7 @@ if (isNil {_cache getVariable "btc_hd_cache"} && {_explosive} && {_damage > 0.6}
 
     private _marker = createMarker [format ["btc_cache_%1", btc_cache_n], btc_cache_pos];
     _marker setMarkerType "hd_destroy";
-    [_marker, "STR_BTC_HAM_O_EH_HDCACHE_MRK", btc_cache_n] remoteExec ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker]; //Cached %1 destroyed
+    [_marker, "STR_BTC_HAM_O_EH_HDCACHE_MRK", btc_cache_n] remoteExecCall ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker]; //Cached %1 destroyed
 
     _marker setMarkerSize [1, 1];
     _marker setMarkerColor "ColorRed";
@@ -71,9 +71,9 @@ if (isNil {_cache getVariable "btc_hd_cache"} && {_explosive} && {_damage > 0.6}
     btc_cache_markers = [];
 
     //Notification
-    [0] remoteExec ["btc_fnc_show_hint", 0];
+    [0] remoteExecCall ["btc_fnc_show_hint", 0];
 
-    [] spawn {[] call btc_fnc_cache_find_pos;};
+    [] spawn btc_fnc_cache_find_pos;
 } else {
     0
 };

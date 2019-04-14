@@ -31,5 +31,5 @@ if (btc_debug) then {
 };
 
 if (_weapon isEqualTo "Bomb_Leaflets") then {
-    [getPos _uav] remoteExec ["btc_fnc_civ_evacuate", 2];
+    [getPos _uav] remoteExecCall ["btc_fnc_civ_evacuate", 2];
 };

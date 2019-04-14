@@ -1,5 +1,5 @@
 btc_version = 1.19;
-diag_log format ["=BTC= HEARTS AND MINDS VERSION %1.2", btc_version];
+diag_log format ["=BTC= HEARTS AND MINDS VERSION %1.3", btc_version];
 
 //Param
 //<< Time options >>
@@ -62,7 +62,7 @@ btc_p_side_mission_cycle = ("btc_p_side_mission_cycle" call BIS_fnc_getParamValu
 btc_p_arsenal_Type = "btc_p_arsenal_Type" call BIS_fnc_getParamValue;
 btc_p_arsenal_Restrict = "btc_p_arsenal_Restrict" call BIS_fnc_getParamValue;
 btc_p_garage = ("btc_p_garage" call BIS_fnc_getParamValue) isEqualTo 1;
-btc_p_autoloadout = ("btc_p_autoloadout" call BIS_fnc_getParamValue) isEqualTo 1;
+btc_p_autoloadout = "btc_p_autoloadout" call BIS_fnc_getParamValue;
 
 //<< Other options >>
 private _p_rep = "btc_p_rep" call BIS_fnc_getParamValue;
@@ -139,7 +139,7 @@ if (isServer) then {
     btc_fobs = [[], [], [], []];
 
     //MIL
-    btc_p_mil_wp_ratios = [_wp_house_probability, (1 - _wp_house_probability)/1.5 + _wp_house_probability];
+    btc_p_mil_wp_ratios = [_wp_house_probability, (1 - _wp_house_probability) / 1.5 + _wp_house_probability];
 
     //Patrol
     btc_patrol_active = [];
@@ -468,23 +468,23 @@ btc_fnc_log_get_liftable = {
     params ["_chopper"];
 
     private _array   = [];
-    switch (typeOf _chopper) do    {
+    switch (typeOf _chopper) do {
         case "B_SDV_01_F" : {
             _array = ["Motorcycle", "ReammoBox", "ReammoBox_F", "StaticWeapon", "Car", "Truck", "Wheeled_APC_F", "Tracked_APC", "APC_Tracked_01_base_F", "APC_Tracked_02_base_F", "Air", "Ship", "Tank"] + ((btc_construction_array select 1) select 3) + ((btc_construction_array select 1) select 4) + ((btc_construction_array select 1) select 5);
         };
         default {
             private _MaxCargoMass = getNumber (configFile >> "CfgVehicles" >> typeOf _chopper >> "slingLoadMaxCargoMass");
             switch (true) do {
-                case (_MaxCargoMass  <= 510) : {
+                case (_MaxCargoMass <= 510) : {
                     _array = ["Motorcycle", "ReammoBox", "ReammoBox_F", "Quadbike_01_base_F", "Strategic"];
                 };
-                case (_MaxCargoMass  <= 2100) : {
+                case (_MaxCargoMass <= 2100) : {
                     _array = ["Motorcycle", "ReammoBox", "ReammoBox_F", "StaticWeapon", "Car"];
                 };
-                case (_MaxCargoMass  <= 4100) : {
+                case (_MaxCargoMass <= 4100) : {
                     _array = ["Motorcycle", "ReammoBox", "ReammoBox_F", "StaticWeapon", "Car", "Truck_F", "Truck", "Wheeled_APC_F", "Air", "Ship"] + ((btc_construction_array select 1) select 3) + ((btc_construction_array select 1) select 4) + ((btc_construction_array select 1) select 5);
                 };
-                case (_MaxCargoMass  <= 14000) : {
+                case (_MaxCargoMass <= 14000) : {
                     _array = ["Motorcycle", "ReammoBox", "ReammoBox_F", "StaticWeapon", "Car", "Truck_F", "Truck", "Wheeled_APC_F", "Tracked_APC", "APC_Tracked_01_base_F", "APC_Tracked_02_base_F", "Air", "Ship", "Tank"] + ((btc_construction_array select 1) select 3) + ((btc_construction_array select 1) select 4) + ((btc_construction_array select 1) select 5);
                 };
                 default {
@@ -532,7 +532,7 @@ switch (_p_en) do {
         btc_type_boats = btc_type_boats;
         btc_type_motorized = btc_type_motorized;
         btc_type_mg = btc_type_mg;
-        btc_type_g = btc_type_g;
+        btc_type_gl = btc_type_gl;
     };*/
     case "IND_G_F" : {
         btc_type_motorized = btc_type_motorized + ["I_Truck_02_transport_F", "I_Truck_02_covered_F"];

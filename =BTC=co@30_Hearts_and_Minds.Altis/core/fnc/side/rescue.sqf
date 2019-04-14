@@ -37,7 +37,7 @@ btc_side_assigned = true;
 publicVariable "btc_side_assigned";
 
 btc_side_jip_data = [13, getPos _city, _city getVariable "name"];
-btc_side_jip_data remoteExec ["btc_fnc_task_create", 0];
+btc_side_jip_data remoteExecCall ["btc_fnc_task_create", 0];
 
 _city setVariable ["spawn_more", true];
 
@@ -91,9 +91,9 @@ publicVariable "btc_side_assigned";
 [[], [_heli, _fx, _group] + _triggers] call btc_fnc_delete;
 
 if (btc_side_aborted || btc_side_failed || (_units select {alive _x} isEqualTo [])) exitWith {
-    13 remoteExec ["btc_fnc_task_fail", 0];
+    13 remoteExecCall ["btc_fnc_task_fail", 0];
 };
 
 50 call btc_fnc_rep_change;
 
-13 remoteExec ["btc_fnc_task_set_done", 0];
+13 remoteExecCall ["btc_fnc_task_set_done", 0];

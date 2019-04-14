@@ -32,8 +32,7 @@ if (_array isEqualTo []) exitWith {false};
 private _cargo_array = nearestObjects [_chopper, _array, 30];
 _cargo_array = _cargo_array - [_chopper];
 _cargo_array = _cargo_array select {!(
-    _x isKindOf "ACE_friesGantry" ||
-    (typeOf _x) isEqualTo "ACE_friesAnchorBar" ||
+    _x isKindOf "ACE_friesBase" OR
     _x isKindOf "ace_fastroping_helper"
 )};
 
