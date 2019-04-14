@@ -62,7 +62,7 @@ btc_p_side_mission_cycle = ("btc_p_side_mission_cycle" call BIS_fnc_getParamValu
 btc_p_arsenal_Type = "btc_p_arsenal_Type" call BIS_fnc_getParamValue;
 btc_p_arsenal_Restrict = "btc_p_arsenal_Restrict" call BIS_fnc_getParamValue;
 btc_p_garage = ("btc_p_garage" call BIS_fnc_getParamValue) isEqualTo 1;
-btc_p_autoloadout = ("btc_p_autoloadout" call BIS_fnc_getParamValue) isEqualTo 1;
+btc_p_autoloadout = "btc_p_autoloadout" call BIS_fnc_getParamValue;
 
 //<< Other options >>
 private _p_rep = "btc_p_rep" call BIS_fnc_getParamValue;

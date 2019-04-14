@@ -50,7 +50,7 @@ player createDiaryRecord [_MainCategory, [localize "STR_BTC_HAM_DOC_TRAFFIC_TITL
 player createDiaryRecord [_MainCategory, [localize "STR_BTC_HAM_DOC_GEAR_TITLE", localize "STR_BTC_HAM_DOC_GEAR_TEXT"]];
 
 //Interaction
-player createDiaryRecord [_MainCategory, [localize "STR_BTC_HAM_DOC_INTERACTION_TITLE", localize "STR_BTC_HAM_DOC_INTERACTION_TEXT"]];
+player createDiaryRecord [_MainCategory, [localize "STR_ACE_Interaction_DisplayName", localize "STR_BTC_HAM_DOC_INTERACTION_TEXT"]];
 
 //Version
 player createDiaryRecord [_MainCategory, [localize "STR_A3_FM_Welcome4",
