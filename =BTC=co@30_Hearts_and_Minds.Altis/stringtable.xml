@@ -2055,6 +2055,9 @@
                 <Portuguese>Isso não é um carcaça!</Portuguese>
                 <Chinesesimp>这不是残骸!</Chinesesimp>
             </Key>
+            <Key ID="STR_BTC_HAM_LOG_RWRECK_ISHELO">
+                <Original>This wreck will respawn</Original>
+            </Key>
         </Container>
         <Container name="Logistic: Tow ">
             <Key ID="STR_BTC_HAM_LOG_TOW_ALREADYTOWED">
