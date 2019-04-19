@@ -2057,6 +2057,7 @@
             </Key>
             <Key ID="STR_BTC_HAM_LOG_RWRECK_ISHELO">
                 <Original>This wreck will respawn</Original>
+                <Chinesesimp>此残骸将会重生</Chinesesimp>
             </Key>
         </Container>
         <Container name="Logistic: Tow ">
