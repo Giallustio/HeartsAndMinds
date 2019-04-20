@@ -71,4 +71,16 @@ switch (_type) do {
     case 13 : {
         hint localize "STR_BTC_HAM_SIDE_HACK_STARTCHAT"; //Defend the terminal until the missile is hacked!
     };
+    case 14 : {
+        hint parseText format [
+            "We got a picture of the building where the cache is.<br/> <img size='5' image='%1' align='center'/>",
+            getText (configfile >> "CfgVehicles" >> _custom >> "editorPreview")
+        ];
+    };
+    case 15 : {
+        hint parseText format [
+            "We got a picture of the something around the cache.<br/> <img size='5' image='%1' align='center'/>",
+            getText (configfile >> "CfgVehicles" >> _custom >> "editorPreview")
+        ];
+    };
 };

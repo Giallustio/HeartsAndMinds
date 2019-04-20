@@ -13,7 +13,8 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_info_cache;
+        btc_cache_info = 100;
+        [true, 1] call btc_fnc_info_cache;
     (end)
 
 Author:
@@ -30,37 +31,24 @@ if (isNull btc_cache_obj) exitWith {};
 
 if (btc_cache_info < btc_info_cache_ratio) then {
 
-    private _building_cache = tolower (typeOf nearestBuilding btc_cache_obj);
-    private _classnames = (nearestTerrainObjects [btc_cache_obj, [], 5, false]) apply {
-        private _model = (getModelInfo _x) select 0;
-        format ["Land_%1", _model select [0, _model find ".p3d"]]
-    };
-    _classnames select {isText (configfile >> "CfgVehicles" >> _x >> "editorPreview")};
+    ([btc_cache_obj] call btc_fnc_cache_nearestTerrainObjects) params ["_building_with_the_cache", "_classnames"];
     _classname_object = tolower (selectRandom _classnames);
 
-    btc_cache_DiaryRecord = [
-        "Cache building picture",
-        ["Is around the cache.", "We got a picture of the building where the cache is."] select (_building_cache isEqualTo _classname_object),
-        getText (configfile >> "CfgVehicles" >> _classname_object >> "editorPreview"), nil, name player
-    ];
-    ["btc_cache_DiaryRecord", "diary"] spawn BIS_fnc_initIntelObject;
-} else {
-    private _pos = [btc_cache_pos, btc_cache_info] call CBA_fnc_randPos;
-
-    if !(_isReal) then {
-        private _axis = getNumber (configfile >> "CfgWorlds" >> worldName >> "mapSize") / 2;
-        _pos = [[_axis, _axis, 0], btc_cache_info + _axis] call CBA_fnc_randPos;
+    if (btc_cache_pictures pushBackUnique _classname_object isEqualTo -1) exitWith {
+        [btc_cache_pos, btc_info_cache_ratio, _isReal, _showHint] call btc_fnc_info_cacheMarker;
     };
 
-    private _marker = createMarker [format ["%1", _pos], _pos];
-    _marker setMarkerType "hd_unknown";
-    _marker setMarkerText format ["%1m", btc_cache_info];
-    _marker setMarkerSize [0.5, 0.5];
-    _marker setMarkerColor "ColorRed";
-
-    btc_cache_markers pushBack _marker;
-
-    if (_showHint > 0) then {[1] remoteExec ["btc_fnc_show_hint", 0];};
-
-    btc_cache_info = btc_cache_info - btc_info_cache_ratio;
+    if (_showHint > 0) then {
+        [
+            [15, 14] select (_classname_object isEqualTo _building_with_the_cache),
+            _classname_object
+        ] remoteExecCall ["btc_fnc_show_hint", 0];
+    };
+    [
+        _classname_object,
+        btc_cache_n,
+        _classname_object isEqualTo _building_with_the_cache
+    ] remoteExecCall ["btc_fnc_info_cachePicture", [0, -2] select isDedicated, btc_cache_obj];
+} else {
+    btc_cache_info = [btc_cache_pos, btc_cache_info, _isReal, _showHint] call btc_fnc_info_cacheMarker;
 };
