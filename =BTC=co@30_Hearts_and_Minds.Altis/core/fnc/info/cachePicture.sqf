@@ -29,7 +29,7 @@ params [
 ];
 
 if !(player diarySubjectExists "btc_diarylog") then {
-    player createDiarySubject ["btc_diarylog", "Intel pictures"];
+    player createDiarySubject ["btc_diarylog", localize "STR_BTC_HAM_CON_INFO_ASKHIDEOUT_DIARYLOG"];
 };
 
 private _string = if (_is_building_with_the_cache) then {
@@ -41,7 +41,7 @@ private _string = if (_is_building_with_the_cache) then {
 player createDiaryRecord [
     "btc_diarylog",
     [
-        format ["Cache number %1", _cache_n],
+        format ["Pictures of cache number %1", _cache_n],
         format [_string, getText (configfile >> "CfgVehicles" >> _classname_object >> "editorPreview")]
     ]
 ];

@@ -71,6 +71,7 @@ if (btc_hideouts isEqualTo []) then {[] spawn btc_fnc_final_phase;};
 
 //CACHE
 btc_cache_markers = [];
+btc_cache_pictures = [];
 
 private _array_cache = profileNamespace getVariable [format ["btc_hm_%1_cache", _name], []];
 

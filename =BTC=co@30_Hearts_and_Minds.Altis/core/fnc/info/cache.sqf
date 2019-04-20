@@ -45,11 +45,6 @@ if (_cache_info < _info_cache_ratio) then {
     if ((btc_cache_pictures pushBackUnique _classname_object) isEqualTo -1) exitWith {
         [_cache_pos, _info_cache_ratio, _isReal, _showHint] call btc_fnc_info_cacheMarker;
     };
-    [
-        str([
-                    [15, 14] select (_classname_object isEqualTo _building_with_the_cache),
-                    _classname_object
-                ]), __FILE__, [true, true]] call btc_fnc_debug_message;
     if (_showHint > 0) then {
         [
             [15, 14] select (_classname_object isEqualTo _building_with_the_cache),
