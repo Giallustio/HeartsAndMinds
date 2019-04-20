@@ -44,9 +44,9 @@ switch (true) do {
     };
     default {
         _id = 0;
-        [3] remoteExec ["btc_fnc_show_hint", _asker];
+        [3] remoteExecCall ["btc_fnc_show_hint", _asker];
     };
 };
 
 if (_id isEqualTo 0) exitWith {};
-[_id] remoteExec ["btc_fnc_show_hint", 0];
+[_id] remoteExecCall ["btc_fnc_show_hint", 0];

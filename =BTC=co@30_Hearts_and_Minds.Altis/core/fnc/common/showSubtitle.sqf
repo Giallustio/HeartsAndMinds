@@ -3,7 +3,7 @@
 Function: btc_fnc_showSubtitle
 
 Description:
-    Fill me when you edit me !
+    Show text as a subtitle.
 
 Parameters:
     _from - Name of the person speaking [String]

@@ -3,7 +3,7 @@
 Function: btc_fnc_final_phase
 
 Description:
-    Fill me when you edit me !
+    Start the final mission process by waiting until all cities are free, then trigger the mission end.
 
 Parameters:
 
@@ -11,7 +11,7 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_final_phase;
+        [] call btc_fnc_final_phase;
     (end)
 
 Author:
@@ -19,8 +19,8 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-[6] remoteExec ["btc_fnc_show_hint", 0];
-1 remoteExec ["btc_fnc_task_set_done", 0];
+[6] remoteExecCall ["btc_fnc_show_hint", 0];
+1 remoteExecCall ["btc_fnc_task_set_done", 0];
 
 btc_final_phase = true;
 
@@ -51,7 +51,7 @@ btc_city_remaining = [];
 
 waitUntil {sleep 15; (btc_city_remaining isEqualTo [])};
 
-0 remoteExec ["btc_fnc_task_set_done", 0];
+0 remoteExecCall ["btc_fnc_task_set_done", 0];
 2 call btc_fnc_task_set_done;
 
 //END

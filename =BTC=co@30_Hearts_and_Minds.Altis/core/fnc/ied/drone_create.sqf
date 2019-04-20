@@ -3,19 +3,20 @@
 Function: btc_fnc_ied_drone_create
 
 Description:
-    Fill me when you edit me !
+    Create a drone in a city under a random area.
 
 Parameters:
-    _city - [Object]
-    _area - [Number]
-    _rpos - [Array]
-    _group - [Group]
+    _city - City where the drone is created. [Object]
+    _area - Area around the city where the drone is created randomly. [Number]
+    _rpos - Create the drone at this position. [Array]
+    _group - Group used for drone crew. [Group]
 
 Returns:
+    _leader - return the leader of the group. [Object]
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_ied_drone_create;
+        _leader = [allplayers select 0, 100] call btc_fnc_ied_drone_create;
     (end)
 
 Author:
@@ -47,37 +48,6 @@ _group setVariable ["btc_ied_drone", true];
 [_group, _rpos, _area, 4] call CBA_fnc_taskPatrol;
 _drone flyInHeight 10;
 
-//Main check
-[{
-    params ["_args", "_id"];
-    _args params ["_driver_drone", "_rpos", "_area", "_trigger"];
-
-    private _group = group _driver_drone;
-    if (Alive _driver_drone && !isNull _driver_drone) then {
-        private _array = _driver_drone nearEntities ["SoldierWB", 200];
-        if (_array isEqualTo []) then {
-            if (waypoints _group isEqualTo []) then {
-                [_group, _rpos, _area, 4] call CBA_fnc_taskPatrol;
-                (vehicle _driver_drone) flyInHeight 10;
-                deleteVehicle (_trigger deleteAt 0);
-            };
-        } else {
-            if (_trigger isEqualTo []) then {
-                _trigger pushBack ([_driver_drone] call btc_fnc_ied_drone_active);
-            };
-            if (btc_debug) then {
-                hint format ["Distance with UAV IED : %1", (_array select 0) distance (vehicle _driver_drone)];
-            };
-            (vehicle _driver_drone) doMove (ASLtoAGL getPosASL (_array select 0));
-        };
-    } else {
-        [_id] call CBA_fnc_removePerFrameHandler;
-        deleteVehicle (_trigger deleteAt 0);
-        _group setVariable ["btc_ied_drone", false];
-        if (btc_debug_log) then {
-            [format ["_driver_drone = %1 POS %2 END LOOP", _driver_drone, getPos _driver_drone], __FILE__, [false]] call btc_fnc_debug_message;
-        };
-    };
-}, 5, [driver _drone, _rpos, _area, []]] call CBA_fnc_addPerFrameHandler;
+[driver _drone, _rpos, _area, []] call btc_fnc_ied_droneLoop;
 
 leader _group

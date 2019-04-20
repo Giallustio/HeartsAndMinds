@@ -3,16 +3,16 @@
 Function: btc_fnc_db_load
 
 Description:
-    Fill me when you edit me !
+    Load database from profileNamespace depends one worldname
 
 Parameters:
-    _name - [String]
+    _name - Name of the saved game. [String]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_db_load;
+        ["Altis"] call btc_fnc_db_load;
     (end)
 
 Author:
@@ -65,7 +65,12 @@ private _array_ho = profileNamespace getVariable [format ["btc_hm_%1_ho", _name]
 } forEach _array_ho;
 
 private _ho = profileNamespace getVariable [format ["btc_hm_%1_ho_sel", _name], 0];
-btc_hq = btc_hideouts select _ho;
+private _select_ho = (btc_hideouts apply {_x getVariable "id"}) find _ho;
+if (_select_ho isEqualTo - 1) then {
+    btc_hq = objNull;
+} else {
+    btc_hq = btc_hideouts select _select_ho;
+};
 
 if (btc_hideouts isEqualTo []) then {[] spawn btc_fnc_final_phase;};
 
@@ -113,13 +118,26 @@ private _vehs = profileNamespace getVariable [format ["btc_hm_%1_vehs", _name], 
     params ["_vehs", "_global_reputation"];
 
     {
-        _x params ["_veh_type", "_veh_pos", "_veh_dir", "_veh_fuel", "_veh_AllHitPointsDamage", "_veh_cargo", "_veh_cont", "_customization"];
+        _x params [
+            "_veh_type",
+            "_veh_pos",
+            "_veh_dir",
+            "_veh_fuel",
+            "_veh_AllHitPointsDamage",
+            "_veh_cargo",
+            "_veh_cont",
+            "_customization",
+            ["_isMedicalVehicle", false, [false]],
+            ["_isRepairVehicle", false, [false]],
+            ["_fuelSource", [], [[]]],
+            ["_pylons", [], [[]]]
+        ];
 
         if (btc_debug_log) then {
             [format ["_veh = %1", _x], __FILE__, [false]] call btc_fnc_debug_message;
         };
 
-        private _veh = [_veh_type, _veh_pos, _veh_dir, _customization] call btc_fnc_log_createVehicle;
+        private _veh = [_veh_type, _veh_pos, _veh_dir, _customization, _isMedicalVehicle, _isRepairVehicle, _fuelSource, _pylons] call btc_fnc_log_createVehicle;
         if ((getPos _veh) select 2 < 0) then {_veh setVectorUp surfaceNormal position _veh;};
         _veh setFuel _veh_fuel;
 

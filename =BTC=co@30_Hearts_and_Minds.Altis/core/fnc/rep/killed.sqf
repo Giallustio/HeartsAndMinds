@@ -39,5 +39,5 @@ if (isPlayer _killer) then {
 
 private _vehicle = assignedVehicle _unit;
 if !(_vehicle isEqualTo objNull) then {
-    [[], [_vehicle], []] call btc_fnc_delete;
+    [[], [_vehicle]] call btc_fnc_delete;
 };

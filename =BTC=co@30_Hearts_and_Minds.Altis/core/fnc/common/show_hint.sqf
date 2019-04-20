@@ -3,17 +3,17 @@
 Function: btc_fnc_show_hint
 
 Description:
-    Fill me when you edit me !
+    Show hint.
 
 Parameters:
-    _type - [Number]
-    _custom - []
+    _type - Type of hint to show. [Number]
+    _custom - Argument for custom text. [String, Number]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_show_hint;
+        [0] call btc_fnc_show_hint;
     (end)
 
 Author:

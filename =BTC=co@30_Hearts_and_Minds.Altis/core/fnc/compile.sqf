@@ -65,6 +65,7 @@ if (isServer) then {
     btc_fnc_eh_buildingchanged = compile preprocessFileLineNumbers "core\fnc\eh\buildingchanged.sqf";
     btc_fnc_eh_suicider = compile preprocessFileLineNumbers "core\fnc\eh\suicider.sqf";
     btc_fnc_eh_server = compile preprocessFileLineNumbers "core\fnc\eh\server.sqf";
+    btc_fnc_eh_FOB_killed = compile preprocessFileLineNumbers "core\fnc\eh\FOB_killed.sqf";
 
     //IED
     btc_fnc_ied_boom = compile preprocessFileLineNumbers "core\fnc\ied\boom.sqf";
@@ -74,10 +75,13 @@ if (isServer) then {
     btc_fnc_ied_fired_near = compile preprocessFileLineNumbers "core\fnc\ied\fired_near.sqf";
     btc_fnc_ied_init_area = compile preprocessFileLineNumbers "core\fnc\ied\init_area.sqf";
     btc_fnc_ied_suicider_active = compile preprocessFileLineNumbers "core\fnc\ied\suicider_active.sqf";
+    btc_fnc_ied_suicider_activeLoop = compile preprocessFileLineNumbers "core\fnc\ied\suicider_activeLoop.sqf";
     btc_fnc_ied_suicider_create = compile preprocessFileLineNumbers "core\fnc\ied\suicider_create.sqf";
+    btc_fnc_ied_suiciderLoop = compile preprocessFileLineNumbers "core\fnc\ied\suiciderLoop.sqf";
     btc_fnc_ied_allahu_akbar = compile preprocessFileLineNumbers "core\fnc\ied\allahu_akbar.sqf";
     btc_fnc_ied_drone_active = compile preprocessFileLineNumbers "core\fnc\ied\drone_active.sqf";
     btc_fnc_ied_drone_create = compile preprocessFileLineNumbers "core\fnc\ied\drone_create.sqf";
+    btc_fnc_ied_droneLoop = compile preprocessFileLineNumbers "core\fnc\ied\droneLoop.sqf";
     btc_fnc_ied_drone_fire = compile preprocessFileLineNumbers "core\fnc\ied\drone_fire.sqf";
 
     //INFO
@@ -248,6 +252,7 @@ if (!isDedicated) then {
     btc_fnc_set_markerTextLocal = compile preprocessFileLineNumbers "core\fnc\common\set_markerTextLocal.sqf";
     btc_fnc_showSubtitle = compile preprocessFileLineNumbers "core\fnc\common\showSubtitle.sqf";
     btc_fnc_strategicMapOpen = compile preprocessFileLineNumbers "core\fnc\common\strategicMapOpen.sqf";
+    btc_fnc_get_composition = compile preprocessFileLineNumbers "core\fnc\common\get_composition.sqf";
 
     //DEBUG
     btc_fnc_debug_marker = compile preprocessFileLineNumbers "core\fnc\debug\marker.sqf";

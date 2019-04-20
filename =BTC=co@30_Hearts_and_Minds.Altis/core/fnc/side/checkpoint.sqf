@@ -35,7 +35,7 @@ btc_side_assigned = true;
 publicVariable "btc_side_assigned";
 
 btc_side_jip_data = [9, _pos, _city getVariable "name"];
-btc_side_jip_data remoteExec ["btc_fnc_task_create", 0];
+btc_side_jip_data remoteExecCall ["btc_fnc_task_create", 0];
 
 _city setVariable ["spawn_more", true];
 
@@ -60,7 +60,7 @@ for "_i" from 1 to (1 + round random 2) do {
     //// Create marker \\\\
     private _marker = createMarker [format ["sm_2_%1", _pos], _pos];
     _marker setMarkerType "hd_flag";
-    [_marker, "str_a3_timetrials_checkpoints0"] remoteExec ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker]; //Checkpoint
+    [_marker, "str_a3_timetrials_checkpoints0"] remoteExecCall ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker]; //Checkpoint
     _marker setMarkerColor "ColorRed";
     _marker setMarkerSize [0.6, 0.6];
     _markers pushback _marker;
@@ -71,6 +71,7 @@ for "_i" from 1 to (1 + round random 2) do {
     private _type_barrel_canister2 = selectRandom (btc_type_barrel + btc_type_canister);
     private _type_pallet = selectRandom btc_type_pallet;
     private _type_box = selectRandom btc_type_box;
+    private _type_cone = selectRandom btc_type_cones;
     private _composition_checkpoint = [
         [_type_barrel,10,[0.243652,-2.78906,0]],
         [_type_barrel,20,[-0.131836,3.12939,0]],
@@ -82,11 +83,11 @@ for "_i" from 1 to (1 + round random 2) do {
         [_type_barrel_canister2,0,[1.83984,-4.95264,0]],
         [_type_box,180,[-1.97998,4.88574,0]],
         ["Land_CncBarrier_stripes_F",180,[2.26367,-5.38623,0]],
-        ["RoadCone_L_F",180,[1.14771,-5.89697,0.00211954]],
+        [_type_cone,180,[1.14771,-5.89697,0.00211954]],
         ["Land_CncBarrier_stripes_F",0,[-2.1416,5.66553,0]],
-        ["RoadCone_L_F",0,[-1.03101,6.18164,0.00211954]],
-        ["RoadCone_L_F",180,[2.81616,-5.81689,0.00211954]],
-        ["RoadCone_L_F",0,[-2.6731,6.17773,0.00211954]]
+        [_type_cone,0,[-1.03101,6.18164,0.00211954]],
+        [_type_cone,180,[2.81616,-5.81689,0.00211954]],
+        [_type_cone,0,[-2.6731,6.17773,0.00211954]]
     ];
 
     //// Create checkpoint with static at _pos \\\\
@@ -114,12 +115,12 @@ waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || (_boxes select {Aliv
 
 btc_side_assigned = false;
 publicVariable "btc_side_assigned";
-[_markers, _boxes, []] call btc_fnc_delete;
+[_markers, _boxes] call btc_fnc_delete;
 
 if (btc_side_aborted || btc_side_failed) exitWith {
-    9 remoteExec ["btc_fnc_task_fail", 0];
+    9 remoteExecCall ["btc_fnc_task_fail", 0];
 };
 
 80 call btc_fnc_rep_change;
 
-9 remoteExec ["btc_fnc_task_set_done", 0];
+9 remoteExecCall ["btc_fnc_task_set_done", 0];

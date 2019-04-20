@@ -3,16 +3,17 @@
 Function: btc_fnc_get_class
 
 Description:
-    Fill me when you edit me !
+    Get enemy or civilian factions. The
 
 Parameters:
-    _get_civ_faction - [String]
+    _get_civ_faction - Search for factions of civilian or enemies. [String]
 
 Returns:
+    _array_of_factions - Array with authos names, text entry for mission parameters, corresponding number for each faction, faction name array. [Array]
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_get_class;
+        copyToClipboard str (["CIV"] call btc_fnc_get_class);
     (end)
 
 Author:

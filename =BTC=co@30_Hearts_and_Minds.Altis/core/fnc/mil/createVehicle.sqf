@@ -39,7 +39,10 @@ params [
 private _needdiver = getText (configFile >> "CfgVehicles" >> _veh_type >> "simulation") isEqualTo "submarinex";
 
 private _veh = createVehicle [_veh_type, _pos, [], 0, "FLY"];
-_veh setdir _dir;
+if !(_veh_type isKindOf "Plane") then {
+    _veh setdir _dir;
+};
+
 private _units = [_veh, _group, false, "", [_type_crewmen, _type_divers select 0] select _needdiver] call BIS_fnc_spawnCrew;
 _group selectLeader (driver _veh);
 _units joinSilent _group;
