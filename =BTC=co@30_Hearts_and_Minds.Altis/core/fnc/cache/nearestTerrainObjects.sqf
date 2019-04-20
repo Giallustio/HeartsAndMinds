@@ -28,11 +28,9 @@ params [
     ["_distance", 10, [0]]
 ];
 
-private _nearest_building = tolower (typeOf nearestBuilding _position);
-private _classnames = (nearestTerrainObjects [_position, [], _distance, false]) apply {
-    private _model = (getModelInfo _x) select 0;
-    format ["Land_%1", _model select [0, _model find ".p3d"]]
-};
+private _nearest_building = typeOf nearestBuilding _position;
+
+private _classnames = [nearestTerrainObjects [_position, [], _distance, false]] call btc_fnc_typeOf;
 _classnames select {isText (configfile >> "CfgVehicles" >> _x >> "editorPreview")};
 _classnames pushBackUnique _nearest_building;
 

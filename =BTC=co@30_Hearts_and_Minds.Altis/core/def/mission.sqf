@@ -102,6 +102,8 @@ private _allClassVehicles = ("true" configClasses (configFile >> "CfgVehicles"))
 private _allClassSorted = _allClassVehicles select {getNumber (configFile >> "CfgVehicles" >> _x >> "scope") isEqualTo 2};
 
 if (isServer) then {
+    btc_modelNamespace = call CBA_fnc_createNamespace;
+
     btc_final_phase = false;
 
     //City

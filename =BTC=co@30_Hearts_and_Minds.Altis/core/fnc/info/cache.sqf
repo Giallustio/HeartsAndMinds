@@ -40,21 +40,21 @@ params [
 
 if (_cache_info < _info_cache_ratio) then {
     ([_cache_obj] call btc_fnc_cache_nearestTerrainObjects) params ["_building_with_the_cache", "_classnames"];
-    private _classname_object = tolower (selectRandom _classnames);
+    private _classname_object = toLower (selectRandom _classnames);
 
     if ((btc_cache_pictures pushBackUnique _classname_object) isEqualTo -1) exitWith {
         [_cache_pos, _info_cache_ratio, _isReal, _showHint] call btc_fnc_info_cacheMarker;
     };
     if (_showHint > 0) then {
         [
-            [15, 14] select (_classname_object isEqualTo _building_with_the_cache),
+            [15, 14] select (_classname_object isEqualTo toLower _building_with_the_cache),
             _classname_object
         ] remoteExecCall ["btc_fnc_show_hint", 0];
     };
     [
         _classname_object,
         _cache_n,
-        _classname_object isEqualTo _building_with_the_cache
+        _classname_object isEqualTo toLower _building_with_the_cache
     ] remoteExecCall ["btc_fnc_info_cachePicture", [0, -2] select isDedicated, _cache_obj];
 } else {
     btc_cache_info = [_cache_pos, _cache_info, _isReal, _showHint] call btc_fnc_info_cacheMarker;
