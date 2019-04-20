@@ -3,13 +3,17 @@
 Function: btc_fnc_info_cacheMarker
 
 Description:
-    Fill me when you edit me !
+    Create marker intel.
 
 Parameters:
-    _position - Position of the cahce. [Array]
+    _position - Position of the cache. [Array]
     _radius - Radius of the indication. [Number]
+    _isReal - Is a real intel. [Boolean]
+    _showHint - Show hint. [Number]
+    _info_cache_ratio - Offset intel distance. [Number]
 
 Returns:
+    _cache_info - Next intel distance. [Number]
 
 Examples:
     (begin example)
@@ -25,7 +29,8 @@ params [
     ["_position", btc_cache_pos, [[]]],
     ["_radius", btc_cache_info, [0]],
     ["_isReal", true, [true]],
-    ["_showHint", 0, [0]]
+    ["_showHint", 0, [0]],
+    ["_info_cache_ratio", btc_info_cache_ratio, [0]]
 ];
 
 private _pos = [_position, _radius] call CBA_fnc_randPos;
@@ -45,4 +50,4 @@ btc_cache_markers pushBack _marker;
 
 if (_showHint > 0) then {[1] remoteExec ["btc_fnc_show_hint", 0];};
 
-_radius - btc_info_cache_ratio
+_radius - _info_cache_ratio

@@ -15,7 +15,7 @@
     [] call btc_fnc_int_shortcuts;
 
     if (player getVariable ["interpreter", false]) then {
-        player createDiarySubject [localize "STR_BTC_HAM_CON_INFO_ASKHIDEOUT_DIARYLOG", localize "STR_BTC_HAM_CON_INFO_ASKHIDEOUT_DIARYLOG"];
+        player createDiarySubject ["btc_diarylog", localize "STR_BTC_HAM_CON_INFO_ASKHIDEOUT_DIARYLOG"];
     };
 
     if (btc_p_autoloadout) then {
