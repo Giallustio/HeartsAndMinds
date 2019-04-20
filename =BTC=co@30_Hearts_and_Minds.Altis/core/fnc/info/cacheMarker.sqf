@@ -48,6 +48,6 @@ _marker setMarkerColor "ColorRed";
 
 btc_cache_markers pushBack _marker;
 
-if (_showHint > 0) then {[1] remoteExec ["btc_fnc_show_hint", 0];};
+if (_showHint > 0) then {[1] remoteExecCall ["btc_fnc_show_hint", 0];};
 
 _radius - _info_cache_ratio
