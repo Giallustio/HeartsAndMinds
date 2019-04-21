@@ -29,7 +29,7 @@ btc_cache_n = _cache_n;
 btc_cache_obj = objNull;
 btc_cache_markers = [];
 {
-	remoteExecCall ["", _x];
+    remoteExecCall ["", _x];
 } forEach (btc_cache_pictures select 2);
 btc_cache_pictures = [[], [], []];
 btc_cache_info = btc_info_cache_def;

@@ -33,15 +33,15 @@ if !(player diarySubjectExists "btc_diarylog") then {
 };
 
 private _string = if (_is_building_with_the_cache) then {
-    "We got a picture of the building where the cache is:<br/> <img size='3' image='%1' align='center'/>"
+    "STR_BTC_HAM_O_COMMON_SHOWHINTS_14"
 } else {
-    "We got a picture of something around the cache:<br/> <img size='3' image='%1' align='center'/>"
+    "STR_BTC_HAM_O_COMMON_SHOWHINTS_15"
 };
 
 player createDiaryRecord [
     "btc_diarylog",
     [
-        format ["Pictures of cache number %1", _cache_n],
-        format [_string, getText (configfile >> "CfgVehicles" >> _classname_object >> "editorPreview")]
+        format [localize "STR_BTC_HAM_CON_INFO_PICTURE", _cache_n],
+        format [(localize _string) + "<br /><img image='%1' width='355' height='200'/>", getText (configfile >> "CfgVehicles" >> _classname_object >> "editorPreview")]
     ]
 ];

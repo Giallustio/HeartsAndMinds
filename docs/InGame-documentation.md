@@ -83,9 +83,9 @@ Intel can be retrieved in the following:
 Keep in mind that only the interpreter can talk to civilians and they can lie if your reputation level is low.
 When you find an intel from a dead body or interrogate a prisoner, a marker will appear in the map. Remember, prisoner have a random number of intel more or less interesting.
 
-There are two types of marker:
-- Red question mark : ammo cache intel
-- Red exclamation mark : hideout intel
+There are two types of intel:
+- Red question mark and picture: ammo cache intel
+- Red exclamation mark: hideout intel
 
 When you destroy an hideout or an ammo cache, all the markers related to it will be deleted.
 

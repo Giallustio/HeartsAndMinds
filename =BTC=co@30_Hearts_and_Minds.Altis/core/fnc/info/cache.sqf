@@ -46,10 +46,6 @@ if (_cache_info < _info_cache_ratio) then {
 
     private _classname_object = toLower (selectRandom _classnames);
 
-    if (btc_debug_log) then {
-        [format ["_classnames = %1", _classnames], __FILE__, [true]] call btc_fnc_debug_message;
-    };
-
     if (((btc_cache_pictures select 0) pushBackUnique _classname_object) isEqualTo -1) exitWith {
         [[_cache_pos, _info_cache_ratio] call CBA_fnc_randPos, _info_cache_ratio, _isReal, _showHint] call btc_fnc_info_cacheMarker;
     };
