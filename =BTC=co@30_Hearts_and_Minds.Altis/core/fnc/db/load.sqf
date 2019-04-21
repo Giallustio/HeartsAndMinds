@@ -75,9 +75,6 @@ if (_select_ho isEqualTo - 1) then {
 if (btc_hideouts isEqualTo []) then {[] spawn btc_fnc_final_phase;};
 
 //CACHE
-btc_cache_markers = [];
-btc_cache_pictures = [[], []];
-
 private _array_cache = profileNamespace getVariable [format ["btc_hm_%1_cache", _name], []];
 
 btc_cache_pos = _array_cache select 0;
@@ -86,15 +83,11 @@ btc_cache_info = _array_cache select 2;
 
 call btc_fnc_cache_create;
 
+btc_cache_markers = [];
 {
     _x params ["_pos", "_marker_name"];
 
-    private _marker = createMarker [format ["%1", _pos], _pos];
-    _marker setMarkerType "hd_unknown";
-    _marker setMarkerText _marker_name;
-    _marker setMarkerSize [0.5, 0.5];
-    _marker setMarkerColor "ColorRed";
-    btc_cache_markers pushBack _marker;
+    [_pos, 0, true, 0, _marker_name] call btc_fnc_info_cacheMarker;
 } forEach (_array_cache select 3);
 
 btc_cache_pictures = _array_cache select 4;

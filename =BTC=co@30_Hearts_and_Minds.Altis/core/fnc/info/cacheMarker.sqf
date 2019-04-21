@@ -6,7 +6,7 @@ Description:
     Create marker intel.
 
 Parameters:
-    _position - Position of the cache. [Array]
+    _position - Position of the marker. [Array]
     _radius - Radius of the indication. [Number]
     _isReal - Is a real intel. [Boolean]
     _showHint - Show hint. [Number]
@@ -17,7 +17,7 @@ Returns:
 
 Examples:
     (begin example)
-        [btc_cache_pos, btc_cache_info] call btc_fnc_info_cacheMarker;
+        [[btc_cache_pos, btc_cache_info] call CBA_fnc_randPos, btc_cache_info] call btc_fnc_info_cacheMarker;
     (end)
 
 Author:
@@ -26,14 +26,13 @@ Author:
 ---------------------------------------------------------------------------- */
 
 params [
-    ["_position", btc_cache_pos, [[]]],
+    ["_pos", btc_cache_pos, [[]]],
     ["_radius", btc_cache_info, [0]],
     ["_isReal", true, [true]],
     ["_showHint", 0, [0]],
+    ["_marker_name", "", [""]],
     ["_info_cache_ratio", btc_info_cache_ratio, [0]]
 ];
-
-private _pos = [_position, _radius] call CBA_fnc_randPos;
 
 if !(_isReal) then {
     private _axis = getNumber (configfile >> "CfgWorlds" >> worldName >> "mapSize") / 2;
@@ -42,7 +41,7 @@ if !(_isReal) then {
 
 private _marker = createMarker [format ["%1", _pos], _pos];
 _marker setMarkerType "hd_unknown";
-_marker setMarkerText format ["%1m", _radius];
+_marker setMarkerText ([_marker_name, format ["%1m", _radius]] select (_marker_name isEqualTo ""));
 _marker setMarkerSize [0.5, 0.5];
 _marker setMarkerColor "ColorRed";
 

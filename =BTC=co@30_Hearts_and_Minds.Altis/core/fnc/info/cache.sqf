@@ -9,7 +9,7 @@ Parameters:
     _isReal - Return a real information. [Boolean]
     _showHint - Show hint about the intel. [Number]
     _cache_obj - Cache object. [Object]
-    _cache_n - Cache numer. [Number]
+    _cache_n - Cache number. [Number]
     _cache_info - Last cache intel radius. [Number]
     _info_cache_ratio - Lower cache intel radius. [Number]
 
@@ -42,8 +42,12 @@ if (_cache_info < _info_cache_ratio) then {
     ([_cache_obj] call btc_fnc_cache_nearestTerrainObjects) params ["_building_with_the_cache", "_classnames"];
     private _classname_object = toLower (selectRandom _classnames);
 
+    if (btc_debug_log) then {
+        [format ["_classnames = %1", _classnames], __FILE__, [true]] call btc_fnc_debug_message;
+    };
+
     if (((btc_cache_pictures select 0) pushBackUnique _classname_object) isEqualTo -1) exitWith {
-        [_cache_pos, _info_cache_ratio, _isReal, _showHint] call btc_fnc_info_cacheMarker;
+        [[_cache_pos, _info_cache_ratio] call CBA_fnc_randPos, _info_cache_ratio, _isReal, _showHint] call btc_fnc_info_cacheMarker;
     };
     private _is_building_with_the_cache = _classname_object isEqualTo toLower _building_with_the_cache;
     (btc_cache_pictures select 1) pushBack _is_building_with_the_cache;
@@ -60,5 +64,5 @@ if (_cache_info < _info_cache_ratio) then {
         _is_building_with_the_cache
     ] remoteExecCall ["btc_fnc_info_cachePicture", [0, -2] select isDedicated, _cache_obj];
 } else {
-    btc_cache_info = [_cache_pos, _cache_info, _isReal, _showHint] call btc_fnc_info_cacheMarker;
+    btc_cache_info = [[_cache_pos, _cache_info] call CBA_fnc_randPos, _cache_info, _isReal, _showHint] call btc_fnc_info_cacheMarker;
 };
