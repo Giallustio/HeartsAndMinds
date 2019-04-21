@@ -3,16 +3,16 @@
 Function: btc_fnc_db_save
 
 Description:
-    Fill me when you edit me !
+    Save the current game into profileNamespace.
 
 Parameters:
-    _name - [String]
+    _name - Name of the game saved. [String]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_db_save;
+        ["Altis"] call btc_fnc_db_save;
     (end)
 
 Author:
@@ -28,7 +28,7 @@ if (btc_debug) then {
     ["...1", __FILE__, [btc_debug, false, true]] call btc_fnc_debug_message;
 };
 
-[8] remoteExec ["btc_fnc_show_hint", 0];
+[8] remoteExecCall ["btc_fnc_show_hint", 0];
 
 btc_db_is_saving = true;
 
@@ -149,6 +149,13 @@ private _array_veh = [];
     private _cont = [getWeaponCargo _x, getMagazineCargo _x, getItemCargo _x];
     _data pushBack _cont;
     _data pushBack ([_x] call BIS_fnc_getVehicleCustomization);
+    _data pushBack ([_x] call ace_medical_fnc_isMedicalVehicle);
+    _data pushBack ([_x] call ace_repair_fnc_isRepairVehicle);
+    _data pushBack ([
+        [_x] call ace_refuel_fnc_getFuel,
+        _x getVariable ["ace_refuel_hooks", []]
+    ]);
+    _data pushBack (getPylonMagazines _x);
     _array_veh pushBack _data;
     if (btc_debug_log) then {
         [format ["VEH %1 DATA %2", _x, _data], __FILE__, [false]] call btc_fnc_debug_message;
@@ -179,6 +186,6 @@ saveProfileNamespace;
 if (btc_debug) then {
     ["...3", __FILE__, [btc_debug, false, true]] call btc_fnc_debug_message;
 };
-[9] remoteExec ["btc_fnc_show_hint", 0];
+[9] remoteExecCall ["btc_fnc_show_hint", 0];
 
 btc_db_is_saving = false;

@@ -3,16 +3,16 @@
 Function: btc_fnc_eh_handledisconnect
 
 Description:
-    Fill me when you edit me !
+    Delete headless.
 
 Parameters:
-    _headless - [Object]
+    _headless - Headless object. [Object]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_eh_handledisconnect;
+        [headless] call btc_fnc_eh_handledisconnect;
     (end)
 
 Author:

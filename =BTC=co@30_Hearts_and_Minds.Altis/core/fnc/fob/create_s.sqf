@@ -48,6 +48,10 @@ _marker setMarkerShape "ICON";
 
 (_fobs select 0) pushBack _FOB_name;
 (_fobs select 1) pushBack _struc;
+(_fobs select 2) pushBack _flag;
+(_fobs select 3) pushBack _marker;
 _flag setVariable ["btc_fob", _FOB_name];
+
+_struc addEventHandler ["Killed", btc_fnc_eh_FOB_killed];
 
 [_FOB_name, _struc, _flag]

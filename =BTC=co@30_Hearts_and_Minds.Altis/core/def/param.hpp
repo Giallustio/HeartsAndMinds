@@ -71,6 +71,12 @@ class Params {
         texts[]={""};
         default = 0;
     };
+    class btc_p_is_free_prob { // Probability for a city to be free:
+        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_SPWAN_ISFREE_PROB"]);
+        values[]={0,10,20,30,40,45,50,60,70,80,90,100};
+        texts[]={"0%","10%","20%","30%","40%","45%","50%","60%","70%","80%","90%","100%"};
+        default = 45;
+    };
     class btc_p_mil_group_ratio { // Enemy density:
         title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_SPWAN_ENEMY_DENSITY"]);
         values[]={0,10,20,30,40,50,60,70,80,90,100};
@@ -287,10 +293,10 @@ class Params {
         texts[] = {$STR_DISABLED,$STR_3DEN_ATTRIBUTES_SPEEDMODE_FULL,$STR_BTC_HAM_PARAM_ARSENAL_ARSENALRESTR_REMOVEONLY,$STR_BTC_HAM_PARAM_ARSENAL_ARSENALRESTR_FILTER}; //texts[]={"Off","Full","Remove only (works only with ACE3-Arsenal)","Filter on player role (works only with ACE3-Arsenal)"};
         default = 3;
     };
-    class btc_p_autoloadout { // Automatic loadout:
-        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_ARSENAL_AUTOLOADOUT"]);
-        values[]={0,1};
-        texts[]={$STR_DISABLED,$STR_ENABLED};
+    class btc_p_autoloadout { // loadout:
+        title = __EVAL(format ["      %1:", localize "STR_ACE_Interaction_Equipment"]);
+        values[]={0,1,2};
+        texts[]={$STR_DISABLED,$STR_BTC_HAM_PARAM_ARSENAL_AUTOLOADOUT, $STR_BTC_HAM_PARAM_ARSENAL_RMVWEAPONS};
         default = 1;
     };
     class btc_p_garage { // Activate garage for admin:

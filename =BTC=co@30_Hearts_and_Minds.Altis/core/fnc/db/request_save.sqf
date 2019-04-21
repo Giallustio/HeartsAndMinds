@@ -19,4 +19,4 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-[] remoteExec ["btc_fnc_db_save", 2];
+[] remoteExecCall ["btc_fnc_db_save", 2];

@@ -40,13 +40,13 @@ btc_side_assigned = true;
 publicVariable "btc_side_assigned";
 
 btc_side_jip_data = [16, _pos, _city getVariable "name"];
-btc_side_jip_data remoteExec ["btc_fnc_task_create", 0];
+btc_side_jip_data remoteExecCall ["btc_fnc_task_create", 0];
 
 _city setVariable ["spawn_more",true];
 
 private _marker = createMarker [format ["sm_2_%1", _pos], _pos];
 _marker setMarkerType "hd_flag";
-[_marker, "str_a3_terminal010"] remoteExec ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker]; //Terminal
+[_marker, "str_a3_terminal010"] remoteExecCall ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker]; //Terminal
 _marker setMarkerSize [0.6, 0.6];
 
 //// Create terminal \\\\
@@ -55,12 +55,12 @@ _pos = [[_pos, 100] call btc_fnc_randomize_pos, 50, 500, 30, 0, 60 * (pi / 180),
 private _launchsite = createVehicle ["Land_PenBlack_F", _pos, [], 0, "FLY"];
 
 //// Add interaction on Terminal \\\\
-[_terminal] remoteExec ["btc_fnc_int_terminal", -2, _terminal];
+[_terminal] remoteExecCall ["btc_fnc_int_terminal", -2, _terminal];
 
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || btc_side_done)};
 if (btc_side_aborted || btc_side_failed) exitWith {
-    16 remoteExec ["btc_fnc_task_fail", 0];
-    [[_marker], [_terminal], []] call btc_fnc_delete;
+    16 remoteExecCall ["btc_fnc_task_fail", 0];
+    [[_marker], [_terminal]] call btc_fnc_delete;
     btc_side_assigned = false;
     publicVariable "btc_side_assigned";
 };
@@ -75,16 +75,17 @@ for "_i" from 1 to (2 + round random 1) do {
   _x setBehaviour "CARELESS"
 } forEach _groups;
 
-[_terminal, _launchsite modelToWorld [0, 100, 10]] remoteExec ["btc_fnc_log_place_create_camera", -2];
+[_terminal, _launchsite modelToWorld [0, 100, 10]] remoteExecCall ["btc_fnc_log_place_create_camera", -2];
 
-[13] remoteExec ["btc_fnc_show_hint", -2];
+[13] remoteExecCall ["btc_fnc_show_hint", -2];
 
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || (grpNull in _groups) || !(_city getVariable ["active", false]))};
 if (btc_side_aborted || btc_side_failed) exitWith {
     btc_side_done = nil;
     publicVariable "btc_side_done";
-    16 remoteExec ["btc_fnc_task_fail", 0];
-    [[_marker], [_terminal], []] call btc_fnc_delete;
+    16 remoteExecCall ["btc_fnc_task_fail", 0];
+    [[_marker], [_terminal]] call btc_fnc_delete;
+
     btc_side_assigned = false;
     publicVariable "btc_side_assigned";
 };
@@ -106,11 +107,11 @@ btc_side_done = nil;
 publicVariable "btc_side_done";
 btc_side_assigned = false;
 publicVariable "btc_side_assigned";
-[[_marker], [_rocket, _terminal, _fx], []] call btc_fnc_delete;
+[[_marker], [_rocket, _terminal, _fx]] call btc_fnc_delete;
 if (btc_side_aborted || btc_side_failed || !(_city getVariable ["active", false])) exitWith {
-    16 remoteExec ["btc_fnc_task_fail", 0];
+    16 remoteExecCall ["btc_fnc_task_fail", 0];
 };
 
 80 call btc_fnc_rep_change;
 
-16 remoteExec ["btc_fnc_task_set_done", 0];
+16 remoteExecCall ["btc_fnc_task_set_done", 0];

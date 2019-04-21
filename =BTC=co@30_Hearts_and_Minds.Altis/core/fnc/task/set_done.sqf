@@ -27,7 +27,7 @@ params [
 if (isServer) exitWith {
     btc_side_jip_data = [];
     [str _task_id, "SUCCEEDED", false] spawn BIS_fnc_taskSetState;
-    if (_task_id isEqualTo 1) then {[2] remoteExec ["btc_fnc_task_create", 0]};
+    if (_task_id isEqualTo 1) then {[2] remoteExecCall ["btc_fnc_task_create", 0]};
 };
 
 private _description = [];

@@ -269,13 +269,6 @@
             </Key>
         </Container>
         <Container name="Documentation: Interaction">
-            <Key ID="STR_BTC_HAM_DOC_INTERACTION_TITLE">
-                <Original>Interaction</Original>
-                <Spanish>Interaccion</Spanish>
-                <German>Interaktion</German>
-                <Portuguese>Interação</Portuguese>
-                <Chinesesimp>互动</Chinesesimp>
-            </Key>
             <Key ID="STR_BTC_HAM_DOC_INTERACTION_TEXT">
                 <Original> &lt;img image='\z\ace\addons\interaction\UI\Icon_Module_Interaction_ca.paa' width='20' height='20'/&gt;Use ACE 3 interactions system.</Original>
                 <Spanish> &lt;img image='\z\ace\addons\interaction\UI\Icon_Module_Interaction_ca.paa' width='20' height='20'/&gt;Use los sistema de interaccion de ACE 3.</Spanish>
@@ -351,6 +344,10 @@
                 <Original>&lt;&lt; Spawn options &gt;&gt;</Original>
                 <German>Spawn Einstellungen:</German>
                 <Chinesesimp>&lt;&lt; 重生设置 &gt;&gt;</Chinesesimp>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_SPWAN_ISFREE_PROB">
+                <Original>Probability for a city to be free:</Original>
+                <German>Wahrscheinlichkeit, dass eine Stadt unbesetzt ist:</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_SPWAN_ENEMY_DENSITY">
                 <Original>Enemy density:</Original>
@@ -601,6 +598,11 @@
                 <Original>Predefined loadouts (See /define_mod.sqf)</Original>
                 <German>Vorgefertigte Loadouts (Siehe /define_mod.sqf)</German>
                 <Chinesesimp>预设装备 (见 /define_mod.sqf)</Chinesesimp>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_ARSENAL_RMVWEAPONS">
+                <Original>Remove all weapons</Original>
+                <German>nur Waffen entfernen</German>
+                <Chinesesimp>移除所有武器</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_ARSENAL_ARSENALRESTR_FILTER">
                 <Original>Filter on player role (works only with ACE3-Arsenal)</Original>
@@ -1068,9 +1070,9 @@
                 <Chinesesimp>在 %1 发放物资</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_SUPPLIES_DESC">
-                <Original>The citizens of %1 are on the brink starving to death, bring them some supplies present at the logistic point!</Original>
+                <Original>The citizens of %1 are on the brink starving and thirsty to death, bring them food and potable water present in the supply container at the logistic point!</Original>
                 <Spanish>Los ciudadanos de %1 están al borde de la muerte de hambre, ¡tráiganles algunos suministros presentes en el punto logístico!</Spanish>
-                <German>Die Bürger von %1 sind am verhungern. Bingen Sie ihnen Vorräte. Die Vorräte(Supplies) können beim Logistikpunkt angefordert werden.</German>
+                <German>Die Bewohner der Stadt %1 sind am verdusten und verhungern. Versorgen Sie die Bürger mit den nötigen Nahrungsmitteln. Den benötigten Nachschubcontainer finden sie am Versorgungspunkt.</German>
                 <Portuguese>O população de %1 estão passando fome! Forneça suprimentos! Os suprimentos podem ser solicitados no ponto logístico.</Portuguese>
                 <Chinesesimp>%1 的居民正在挨饿, 在补给点生成一些救援物资并带给他们!</Chinesesimp>
             </Key>
@@ -1336,13 +1338,6 @@
             </Key>
         </Container>
         <Container name="Action(ACE): Side missions">
-            <Key ID="STR_BTC_HAM_ACTION_SIDEMISSION_MAIN">
-                <Original>Side mission</Original>
-                <Spanish>Mision Alternativa</Spanish>
-                <German>Nebenmission</German>
-                <Portuguese>Missão secundária</Portuguese>
-                <Chinesesimp>支线任务</Chinesesimp>
-            </Key>
             <Key ID="STR_BTC_HAM_ACTION_SIDEMISSION_ABORT">
                 <Original>Abort</Original>
                 <Spanish>Abortar</Spanish>
@@ -1404,20 +1399,6 @@
                 <German>Aushaken</German>
                 <Portuguese>Desenganchar</Portuguese>
                 <Chinesesimp>取消牵引</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_ACTION_VEHINIT_DEPLOYROPES">
-                <Original>Deploy ropes</Original>
-                <Spanish>Desplegar cuerdas</Spanish>
-                <German>Seile auswerfen</German>
-                <Portuguese>Colocar cordas</Portuguese>
-                <Chinesesimp>部署绳索</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_ACTION_VEHINIT_CUTROPES">
-                <Original>Cut ropes</Original>
-                <Spanish>Cortar cuerdas</Spanish>
-                <German>Seile trennen</German>
-                <Portuguese>Cortar cordas</Portuguese>
-                <Chinesesimp>断开绳索</Chinesesimp>
             </Key>
         </Container>
         <Container name="Action(ACE): Copy Paste">

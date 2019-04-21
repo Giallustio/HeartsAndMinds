@@ -29,8 +29,7 @@ private _cargo_array = nearestObjects [_chopper, _array, 30];
 _cargo_array = _cargo_array - [_chopper];
 _cargo_array = _cargo_array select {
     !(
-    _x isKindOf "ACE_friesGantry" ||
-    (typeOf _x) isEqualTo "ACE_friesAnchorBar" ||
+    _x isKindOf "ACE_friesBase" OR
     _x isKindOf "ace_fastroping_helper"
     )
 };
@@ -89,11 +88,11 @@ sleep 1;
 if ((_mass + 400) > _max_cargo) then {
     private _new_mass = _max_cargo - 1000;
     if (_new_mass < 0) then {_new_mass = 50;};
-    [_cargo, _new_mass] remoteExec ["setMass", _cargo];
+    [_cargo, _new_mass] remoteExecCall ["setMass", _cargo];
 };
 
 _chopper setVariable ["cargo", _cargo];
 
 waitUntil {sleep 5; (!alive player || !alive _cargo || !btc_lifted || vehicle player isEqualTo player)};
 
-[_cargo, _mass] remoteExec ["setMass", _cargo];
+[_cargo, _mass] remoteExecCall ["setMass", _cargo];

@@ -2,5 +2,5 @@
 
 You can change player faction by:
 - Migrate all playable slot to the desired side in /mission.sqm.
-- Define the correct player side in [/core/def/mission.sqf#L255](https://github.com/Vdauphin/HeartsAndMinds/blob/master/%3DBTC%3Dco%4030_Hearts_and_Minds.Altis/core/def/mission.sqf#L255).
+- Define the correct player side in [/core/def/mission.sqf#L281](https://github.com/Vdauphin/HeartsAndMinds/blob/master/%3DBTC%3Dco%4030_Hearts_and_Minds.Altis/core/def/mission.sqf#L281).
 - Choose in mission parameter an enemy faction with a different side from player side.

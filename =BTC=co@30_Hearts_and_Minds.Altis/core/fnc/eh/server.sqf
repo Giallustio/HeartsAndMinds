@@ -3,7 +3,7 @@
 Function: btc_fnc_eh_server
 
 Description:
-    Fill me when you edit me !
+    Add event handler to player.
 
 Parameters:
 
@@ -11,7 +11,7 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_eh_server;
+        [] call btc_fnc_eh_server;
     (end)
 
 Author:

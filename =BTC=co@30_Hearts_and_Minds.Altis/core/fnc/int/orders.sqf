@@ -37,7 +37,7 @@ private _units = (_pos nearEntities [["Car", "Civilian_F"] + btc_civ_type_units,
 if (_units isEqualTo []) exitWith {true};
 
 if (isNull _unit) then {
-    [_units, _dir, _order] remoteExec ["btc_fnc_int_orders_give", 2];
+    [_units, _dir, _order] remoteExecCall ["btc_fnc_int_orders_give", 2];
 } else {
     if (_order isEqualTo 4) then {
 
@@ -54,7 +54,7 @@ if (isNull _unit) then {
                 if (surfaceIsWater _pos) then {
                     [name (_this select 4), localize "STR_BTC_HAM_CON_INT_ORDERS_ONLAND"] call btc_fnc_showSubtitle; //Selected area must be on land.
                 } else {
-                    [[_this select 4], 0, 4, _pos] remoteExec ["btc_fnc_int_orders_give", _this select 4];
+                    [[_this select 4], 0, 4, _pos] remoteExecCall ["btc_fnc_int_orders_give", _this select 4];
                     ["1", "onMapSingleClick"] call BIS_fnc_removeStackedEventHandler;
                     openMap false;
                     private _textMap = selectRandom [
@@ -79,6 +79,6 @@ if (isNull _unit) then {
             [name _unit, _text] call btc_fnc_showSubtitle;
         };
     } else {
-        [[_unit], _dir, _order] remoteExec ["btc_fnc_int_orders_give", _unit];
+        [[_unit], _dir, _order] remoteExecCall ["btc_fnc_int_orders_give", _unit];
     };
 };
