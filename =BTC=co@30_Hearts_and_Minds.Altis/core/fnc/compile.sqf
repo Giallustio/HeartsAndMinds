@@ -6,7 +6,7 @@ if (isServer) then {
     btc_fnc_cache_spawn = compile preprocessFileLineNumbers "core\fnc\cache\spawn.sqf";
     btc_fnc_cache_create = compile preprocessFileLineNumbers "core\fnc\cache\create.sqf";
     btc_fnc_cache_create_attachto = compile preprocessFileLineNumbers "core\fnc\cache\create_attachto.sqf";
-    btc_fnc_cache_nearestTerrainObjects = compile preprocessFileLineNumbers "core\fnc\cache\nearestTerrainObjects.sqf";
+    btc_fnc_cache_init = compile preprocessFileLineNumbers "core\fnc\cache\init.sqf";
 
     //COMMON
     btc_fnc_check_los = compile preprocessFileLineNumbers "core\fnc\common\check_los.sqf";

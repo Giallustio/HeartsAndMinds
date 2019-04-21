@@ -10,7 +10,7 @@ if (btc_db_load && {profileNamespace getVariable [format ["btc_hm_%1_db", worldN
     };
 } else {
     for "_i" from 1 to btc_hideout_n do {[] call btc_fnc_mil_create_hideout;};
-    [] call compile preprocessFileLineNumbers "core\fnc\cache\init.sqf";
+    [] call btc_fnc_cache_init;
 
     private _date = date;
     _date set [3, btc_p_time];

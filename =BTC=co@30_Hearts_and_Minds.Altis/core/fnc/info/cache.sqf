@@ -39,7 +39,11 @@ params [
 ];
 
 if (_cache_info < _info_cache_ratio) then {
-    ([_cache_obj] call btc_fnc_cache_nearestTerrainObjects) params ["_building_with_the_cache", "_classnames"];
+    private _building_with_the_cache = typeOf nearestBuilding _cache_obj;
+    private _classnames = [nearestTerrainObjects [_cache_obj, [], 10, false]] call btc_fnc_typeOf;
+    _classnames = _classnames select {isText (configfile >> "CfgVehicles" >> _x >> "editorPreview")};
+    _classnames pushBackUnique _building_with_the_cache;
+
     private _classname_object = toLower (selectRandom _classnames);
 
     if (btc_debug_log) then {
