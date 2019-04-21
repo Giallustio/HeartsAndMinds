@@ -9,7 +9,8 @@ Parameters:
     _position - Position of the marker. [Array]
     _radius - Radius of the indication. [Number]
     _isReal - Is a real intel. [Boolean]
-    _showHint - Show hint. [Number]
+    _showHint - Show hint. [Boolean]
+    _marker_name - Marker name. [String]
     _info_cache_ratio - Offset intel distance. [Number]
 
 Returns:
@@ -29,7 +30,7 @@ params [
     ["_pos", btc_cache_pos, [[]]],
     ["_radius", btc_cache_info, [0]],
     ["_isReal", true, [true]],
-    ["_showHint", 0, [0]],
+    ["_showHint", false, [false]],
     ["_marker_name", "", [""]],
     ["_info_cache_ratio", btc_info_cache_ratio, [0]]
 ];
@@ -47,6 +48,6 @@ _marker setMarkerColor "ColorRed";
 
 btc_cache_markers pushBack _marker;
 
-if (_showHint > 0) then {[1] remoteExecCall ["btc_fnc_show_hint", 0];};
+if (_showHint) then {[1] remoteExecCall ["btc_fnc_show_hint", 0];};
 
 _radius - _info_cache_ratio
