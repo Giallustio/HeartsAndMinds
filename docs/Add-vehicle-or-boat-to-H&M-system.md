@@ -20,7 +20,6 @@ A garage is available for admin only. Activate the garage through mission parame
 
 You can add a new vehicle/boat to respawn system by :
 - in the editor, name it like **btc_helo_2**
-- Add in the init field : `this setVariable ["btc_dont_delete",true]`
 - in the [core/def/mission.sqf L195](https://github.com/Vdauphin/HeartsAndMinds/blob/master/%3DBTC%3Dco%4030_Hearts_and_Minds.Altis/core/def/mission.sqf#L195) file, add **btc_helo_2** to the list of btc_helo.
 
     like : btc_helo = [btc_helo_1,**btc_helo_2**];
