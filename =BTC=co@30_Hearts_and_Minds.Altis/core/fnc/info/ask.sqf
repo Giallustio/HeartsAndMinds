@@ -49,7 +49,6 @@ if ((round random 3) >= 2 || !_isInterrogate) then {
     if (_isInterrogate) then {_man setVariable ["btc_already_interrogated", true, true];};
 };
 
-
 //NO < 200 . FAKE < 600 . REAL > 600
 
 btc_int_ask_data = nil;

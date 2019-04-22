@@ -28,7 +28,7 @@ if (_useful isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
 private _city = selectRandom _useful;
 
 //// Choose a random position \\\\
-private _objects = nearestobjects [getPos _city, [], 200];
+private _objects = nearestObjects [getPos _city, [], 200];
 
 _objects = _objects select {!((str (_x) find "wreck") isEqualTo -1) || !((str (_x) find "broken") isEqualTo -1) || !((str (_x) find "rock") isEqualTo -1)};
 _objects = _objects select {(getPos _x select 2 < -3) && (((str (_x) find "car") isEqualTo -1) || ((str (_x) find "uaz") isEqualTo -1))};
