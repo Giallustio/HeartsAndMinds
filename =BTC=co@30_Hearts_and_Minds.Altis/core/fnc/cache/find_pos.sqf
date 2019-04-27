@@ -43,5 +43,5 @@ private _houses = [_pos, 50] call btc_fnc_getHouses;
 if (_houses isEqualTo []) then {
     [] call btc_fnc_cache_find_pos;
 } else {
-    (selectRandom _houses) call btc_fnc_cache_spawn;
+    [selectRandom (selectRandom _houses buildingPos -1)] call btc_fnc_cache_create;
 };
