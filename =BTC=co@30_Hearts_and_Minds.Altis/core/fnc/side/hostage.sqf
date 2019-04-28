@@ -76,7 +76,7 @@ private _group = [];
     _unit setPosATL _x;
     _group pushBack _grp;
     _grp setVariable ["no_cache", true];
-    _unit call btc_fnc_mil_unit_create;
+    [_grp] call btc_fnc_mil_unit_create;
 } forEach (_buildingPos - [_pos]);
 
 _trigger = createTrigger ["EmptyDetector", _pos];
