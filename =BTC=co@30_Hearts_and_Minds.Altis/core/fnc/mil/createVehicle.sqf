@@ -40,7 +40,7 @@ private _needdiver = getText (configFile >> "CfgVehicles" >> _veh_type >> "simul
 
 private _veh = createVehicle [_veh_type, _pos, [], 0, "FLY"];
 if !(_veh_type isKindOf "Plane") then {
-    _veh setdir _dir;
+    _veh setDir _dir;
 };
 
 private _units = [_veh, _group, false, "", [_type_crewmen, _type_divers select 0] select _needdiver] call BIS_fnc_spawnCrew;
