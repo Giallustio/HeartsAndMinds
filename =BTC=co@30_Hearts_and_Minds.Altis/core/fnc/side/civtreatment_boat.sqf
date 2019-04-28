@@ -64,7 +64,7 @@ waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !(playableUnits inAr
 [_unit] call btc_fnc_set_damage;
 _unit setVariable ["ace_medical_ai_treatmentoverat", CBA_missionTime + 10000]; //Disable AI to self healing
 
-{_x call btc_fnc_civ_unit_create} forEach units _group;
+[_group] call btc_fnc_civ_unit_create;
 
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !Alive _unit || {_unit call ace_medical_fnc_isInStableCondition && [_unit] call ace_common_fnc_isAwake})};
 

@@ -54,6 +54,6 @@ for "_i" from 1 to _n do {
     _group createUnit [_unit_type, _house buildingPos 0, [], 0, "NONE"];
     _group setVariable ["btc_data_inhouse", [_house buildingPos 0]];
     [_group] call btc_fnc_civ_addWP;
-    {_x call btc_fnc_civ_unit_create} forEach units _group;
+    [_group] call btc_fnc_civ_unit_create;
     _houses = _houses - [_house];
 };

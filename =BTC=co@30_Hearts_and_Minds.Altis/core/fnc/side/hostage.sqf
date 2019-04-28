@@ -66,7 +66,7 @@ private _captive = _group_civ createUnit [selectRandom btc_civ_type_units, _pos,
 waitUntil {local _captive};
 [_captive, true] call ACE_captives_fnc_setHandcuffed;
 _captive setPosATL _pos;
-_captive call btc_fnc_civ_unit_create;
+[_group_civ] call btc_fnc_civ_unit_create;
 
 private _group = [];
 {

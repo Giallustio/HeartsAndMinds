@@ -31,4 +31,4 @@ params [
     if (btc_p_set_skill) then {
         _x call btc_fnc_mil_set_skill;
     };
-} forEach units _group select {!(_x getVariable ["btc_init", false])};
+} forEach (units _group select {!(_x getVariable ["btc_init", false])});
