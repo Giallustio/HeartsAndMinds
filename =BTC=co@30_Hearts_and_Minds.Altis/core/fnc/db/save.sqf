@@ -120,12 +120,12 @@ profileNamespace setVariable [format ["btc_hm_%1_cache", _name], _array_cache];
 profileNamespace setVariable [format ["btc_hm_%1_rep", _name], btc_global_reputation];
 
 //FOBS
-private _fobs = [[], []];
+private _fobs = [];
 {
     private _pos = getMarkerPos _x;
-    (_fobs select 0) pushBack [_x, _pos];
+    private _direction = getDir ((btc_fobs select 1) select _forEachIndex);
+    _fobs pushBack [_x, _pos, _direction];
 } forEach (btc_fobs select 0);
-(_fobs select 1) append (btc_fobs select 1);
 profileNamespace setVariable [format ["btc_hm_%1_fobs", _name], _fobs];
 
 //Vehicles status

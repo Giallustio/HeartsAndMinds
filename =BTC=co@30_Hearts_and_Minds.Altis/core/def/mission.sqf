@@ -1,4 +1,4 @@
-btc_version = 1.19;
+btc_version = 1.191;
 diag_log format ["=BTC= HEARTS AND MINDS VERSION %1.3", btc_version];
 
 //Param
@@ -304,12 +304,12 @@ btc_supplies_mat = [
 //Containers
 btc_containers_mat = ["Land_Cargo20_military_green_F", "Land_Cargo40_military_green_F"];
 
-//Player
-btc_player_side = west;
-btc_respawn_marker = "respawn_west";
-
-//Log
 if (isServer) then {
+    //Player
+    missionNamespace setVariable ["btc_player_side", west, true];
+    missionNamespace setVariable ["btc_respawn_marker", "respawn_west", true];
+
+    //Log
     private _rearming_static =
     [
         //"Static"
