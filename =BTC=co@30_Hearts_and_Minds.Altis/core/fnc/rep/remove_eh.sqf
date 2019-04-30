@@ -24,14 +24,10 @@ params [
     ["_civilian", objNull, [objNull]]
 ];
 
-private _data = _civilian getVariable ["btc_rep_eh_added", []];
-
-if (_data isEqualTo []) exitWith {true};
-
-_civilian setVariable ["btc_rep_eh_added", []];
-
-_civilian removeEventHandler ["HandleDamage", _data select 0];
-_civilian removeEventHandler ["Killed", _data select 1];
-_civilian removeEventHandler ["FiredNear", _data select 2];
-
-true
+if (local _civilian) then {
+    [_civilian, "HandleDamage", "btc_fnc_rep_hd"] call btc_fnc_eh_removePersistantOnLocalityChange;
+    [_civilian, "Killed", "btc_fnc_rep_killed"] call btc_fnc_eh_removePersistantOnLocalityChange;
+    [_civilian, "FiredNear", "btc_fnc_rep_firednear"] call btc_fnc_eh_removePersistantOnLocalityChange;
+} else {
+    _civilian remoteExecCall ["btc_fnc_rep_remove_eh", _civilian];
+}

@@ -65,7 +65,6 @@ if (isServer) then {
     btc_fnc_eh_suicider = compile preprocessFileLineNumbers "core\fnc\eh\suicider.sqf";
     btc_fnc_eh_server = compile preprocessFileLineNumbers "core\fnc\eh\server.sqf";
     btc_fnc_eh_FOB_killed = compile preprocessFileLineNumbers "core\fnc\eh\FOB_killed.sqf";
-    btc_fnc_eh_persistantOnLocalityChange = compile preprocessFileLineNumbers "core\fnc\eh\persistantOnLocalityChange.sqf";
 
     //IED
     btc_fnc_ied_boom = compile preprocessFileLineNumbers "core\fnc\ied\boom.sqf";
@@ -181,6 +180,9 @@ btc_fnc_debug_message = compile preprocessFileLineNumbers "core\fnc\debug\messag
 
 //DB
 btc_fnc_db_add_veh = compile preprocessFileLineNumbers "core\fnc\db\add_veh.sqf";
+//EH
+btc_fnc_eh_persistantOnLocalityChange = compile preprocessFileLineNumbers "core\fnc\eh\persistantOnLocalityChange.sqf";
+btc_fnc_eh_removePersistantOnLocalityChange = compile preprocessFileLineNumbers "core\fnc\eh\removePersistantOnLocalityChange.sqf";
 
 //CIV
 btc_fnc_civ_class = compile preprocessFileLineNumbers "core\fnc\civ\class.sqf";

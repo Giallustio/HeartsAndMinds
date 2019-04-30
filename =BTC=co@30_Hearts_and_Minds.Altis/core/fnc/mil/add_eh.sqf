@@ -24,6 +24,6 @@ params [
     ["_unit", objNull, [objNull]]
 ];
 
-[_unit, ["Killed", btc_fnc_mil_unit_killed]] call btc_fnc_eh_persistantOnLocalityChange;
+[_unit, "Killed", "btc_fnc_mil_unit_killed"] call btc_fnc_eh_persistantOnLocalityChange;
 
 true
