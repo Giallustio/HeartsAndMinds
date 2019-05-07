@@ -9,6 +9,7 @@ Parameters:
     _city_all - Array of cities where the ammo cache can be spawn. [Array]
 
 Returns:
+    - Position of the cache. [Array]
 
 Examples:
     (begin example)
@@ -41,7 +42,7 @@ private _pos = [getPos _city, _xx + _yy] call btc_fnc_randomize_pos;
 private _houses = [_pos, 50] call btc_fnc_getHouses;
 
 if (_houses isEqualTo []) then {
-    [] call btc_fnc_cache_find_pos;
+    [] call btc_fnc_cache_find_pos
 } else {
-    [selectRandom (selectRandom _houses buildingPos -1)] call btc_fnc_cache_create;
-};
+    selectRandom (selectRandom _houses buildingPos -1)
+}
