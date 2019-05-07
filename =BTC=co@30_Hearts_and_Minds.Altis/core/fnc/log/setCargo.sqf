@@ -35,20 +35,14 @@ _inventory params [
     ["_items_obj", [], [[]]]
 ];
 
-if !(_weap_obj isEqualTo []) then {
-    for "_i" from 0 to ((count (_weap_obj select 0)) - 1) do {
-        _objects addWeaponCargoGlobal [(_weap_obj select 0) select _i, (_weap_obj select 1) select _i];
-    };
-};
+{
+    _objects addWeaponCargoGlobal [_x, (_weap_obj select 1) select _forEachIndex];
+} forEach (_weap_obj select 0);
 
-if !(_mags_obj isEqualTo []) then {
-    for "_i" from 0 to ((count (_mags_obj select 0)) - 1) do {
-        _objects addMagazineCargoGlobal [(_mags_obj select 0) select _i, (_mags_obj select 1) select _i];
-    };
-};
+{
+    _objects addMagazineCargoGlobal [_x, (_mags_obj select 1) select _forEachIndex];
+} forEach (_mags_obj select 0);
 
-if !(_items_obj isEqualTo []) then {
-    for "_i" from 0 to ((count (_items_obj select 0)) - 1) do {
-        _objects addItemCargoGlobal [(_items_obj select 0) select _i, (_items_obj select 1) select _i];
-    };
-};
+{
+    _objects addItemCargoGlobal [_x, (_items_obj select 1) select _forEachIndex];
+} forEach (_items_obj select 0);

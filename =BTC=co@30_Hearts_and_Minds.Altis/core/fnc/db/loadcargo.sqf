@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_db_loadcargo
+Function: btc_fnc_db_loadCargo
 
 Description:
     Fill me when you edit me !
@@ -14,7 +14,7 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_db_loadcargo;
+        _result = [] call btc_fnc_db_loadCargo;
     (end)
 
 Author:
