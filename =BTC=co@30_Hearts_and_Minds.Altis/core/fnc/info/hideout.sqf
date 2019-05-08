@@ -3,16 +3,16 @@
 Function: btc_fnc_info_hideout
 
 Description:
-    Fill me when you edit me !
+    Add an random intel marker for the current hideout.
 
 Parameters:
-    _ho - [Array]
+    _ho - Current hideout. [Object]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_info_hideout;
+        [] call btc_fnc_info_hideout;
     (end)
 
 Author:
