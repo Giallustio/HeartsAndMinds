@@ -21,7 +21,7 @@ Author:
 ---------------------------------------------------------------------------- */
 
 params [
-    ["_ho", btc_hq, [[]]]
+    ["_ho", btc_hq, [objNull]]
 ];
 
 if (btc_hideouts isEqualTo []) exitWith {};
