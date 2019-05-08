@@ -44,7 +44,7 @@ if !(_isReal) then {
 
 if (_cache_info < _info_cache_ratio) then {
     private _building_with_the_cache = typeOf nearestBuilding _cache_obj;
-    private _classnames = [nearestTerrainObjects [_building_with_the_cache, [], 10, false]] call btc_fnc_typeOf;
+    private _classnames = [nearestTerrainObjects [_cache_obj, [], 10, false]] call btc_fnc_typeOf;
     _classnames = _classnames select {isText (configfile >> "CfgVehicles" >> _x >> "editorPreview")};
     _classnames pushBackUnique _building_with_the_cache;
 
@@ -60,7 +60,7 @@ if (_cache_info < _info_cache_ratio) then {
         [
             [15, 14] select _is_building_with_the_cache,
             _classname_object
-        ] remoteExecCall ["btc_fnc_show_hint", 0];
+        ] remoteExecCall ["btc_fnc_show_hint", [0, -2] select isDedicated];
     };
     (btc_cache_pictures select 2) pushBack ([
         _classname_object,

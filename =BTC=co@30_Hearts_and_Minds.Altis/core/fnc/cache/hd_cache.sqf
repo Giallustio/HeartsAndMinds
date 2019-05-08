@@ -67,7 +67,7 @@ if (isNil {_cache getVariable "btc_hd_cache"} && {_explosive} && {_damage > 0.6}
     //Notification
     [0] remoteExecCall ["btc_fnc_show_hint", 0];
 
-    [btc_cache_n + 1] call btc_fnc_cache_init;
+    [btc_cache_n + 1, btc_cache_pictures] call btc_fnc_cache_init;
 } else {
     0
 };

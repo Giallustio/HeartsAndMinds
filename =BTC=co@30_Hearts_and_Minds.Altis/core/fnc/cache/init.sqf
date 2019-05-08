@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        [0] call btc_fnc_cache_init;
+        [0, btc_cache_pictures] call btc_fnc_cache_init;
     (end)
 
 Author:
@@ -21,7 +21,8 @@ Author:
 ---------------------------------------------------------------------------- */
 
 params [
-    ["_cache_n", 0, [0]]
+    ["_cache_n", 0, [0]],
+    ["_cache_pictures", [[], [], []], [[]]]
 ];
 
 btc_cache_pos = [];
@@ -30,7 +31,7 @@ btc_cache_obj = objNull;
 btc_cache_markers = [];
 {
     remoteExecCall ["", _x];
-} forEach (btc_cache_pictures select 2);
+} forEach (_cache_pictures select 2);
 btc_cache_pictures = [[], [], []];
 btc_cache_info = btc_info_cache_def;
 [] call btc_fnc_cache_find_pos;
