@@ -8,8 +8,6 @@ Description:
 Parameters:
     _position - Position of the marker. [Array]
     _radius - Radius of the indication. [Number]
-    _isReal - Is a real intel. [Boolean]
-    _showHint - Show hint. [Boolean]
     _marker_name - Marker name. [String]
     _info_cache_ratio - Offset intel distance. [Number]
 

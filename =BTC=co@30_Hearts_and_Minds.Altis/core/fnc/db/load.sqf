@@ -90,7 +90,7 @@ btc_cache_markers = [];
     [_pos, 0, _marker_name] call btc_fnc_info_cacheMarker;
 } forEach (_array_cache select 3);
 
-btc_cache_pictures = _array_cache select 4;
+btc_cache_pictures = +(_array_cache select 4);
 {
     (btc_cache_pictures select 2) pushBack ([
             _x,

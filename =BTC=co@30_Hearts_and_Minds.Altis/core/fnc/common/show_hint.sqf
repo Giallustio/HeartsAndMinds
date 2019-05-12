@@ -34,6 +34,7 @@ private _text = switch (_type) do {
     };
     case 1 : {
         [
+            ["<img size='1' image='\A3\ui_f\data\map\markers\handdrawn\unknown_CA.paa' align='center' color='#ff0000'/>"],
             [localize "STR_BTC_HAM_O_COMMON_SHOWHINTS_1"],
             [localize "STR_BTC_HAM_O_COMMON_SHOWHINTS_MU"]
         ]; //Intel about an ammo cache found! Map updated
@@ -46,6 +47,7 @@ private _text = switch (_type) do {
     };
     case 5 : {
         [
+            ["<img size='1' image='\A3\ui_f\data\map\markers\handdrawn\warning_CA.paa' align='center' color='#ff0000'/>"],
             [localize "STR_BTC_HAM_O_COMMON_SHOWHINTS_5"],
             [localize "STR_BTC_HAM_O_COMMON_SHOWHINTS_MU"]
         ]; //Intel about an hideout found! Map updated
@@ -77,21 +79,17 @@ private _text = switch (_type) do {
     case 14 : {
         [
             [localize "STR_BTC_HAM_O_COMMON_SHOWHINTS_14"],
-            [format ["<br/> <img size='5' image='%1' align='center'/>", getText (configfile >> "CfgVehicles" >> _custom >> "editorPreview")]],
+            [format ["<img size='5' image='%1' align='center'/>", getText (configfile >> "CfgVehicles" >> _custom >> "editorPreview")]],
             [" "]
         ];
     };
     case 15 : {
         [
             [localize "STR_BTC_HAM_O_COMMON_SHOWHINTS_15"],
-            [format ["<br/> <img size='5' image='%1' align='center'/>", getText (configfile >> "CfgVehicles" >> _custom >> "editorPreview")]],
+            [format ["<img size='5' image='%1' align='center'/>", getText (configfile >> "CfgVehicles" >> _custom >> "editorPreview")]],
             [" "]
         ];
     };
-};
-
-if (btc_debug_log) then {
-    [format ["_text: %1", _text], __FILE__, [false]] call btc_fnc_debug_message;
 };
 
 _text call CBA_fnc_notify;

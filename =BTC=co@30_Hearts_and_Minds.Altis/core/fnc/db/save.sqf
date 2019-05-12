@@ -115,7 +115,7 @@ private _cache_markers = [];
 } forEach btc_cache_markers;
 _array_cache pushBack _cache_markers;
 _array_cache pushBack btc_cache_pictures;
-profileNamespace setVariable [format ["btc_hm_%1_cache", _name], _array_cache];
+profileNamespace setVariable [format ["btc_hm_%1_cache", _name], +_array_cache];
 
 //REPUTATION
 profileNamespace setVariable [format ["btc_hm_%1_rep", _name], btc_global_reputation];
