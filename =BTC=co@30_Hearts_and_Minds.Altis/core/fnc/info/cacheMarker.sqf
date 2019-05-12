@@ -29,7 +29,6 @@ Author:
 params [
     ["_pos", btc_cache_pos, [[]]],
     ["_radius", btc_cache_info, [0]],
-    ["_showHint", false, [false]],
     ["_marker_name", "", [""]],
     ["_info_cache_ratio", btc_info_cache_ratio, [0]]
 ];
@@ -41,7 +40,5 @@ _marker setMarkerSize [0.5, 0.5];
 _marker setMarkerColor "ColorRed";
 
 btc_cache_markers pushBack _marker;
-
-if (_showHint) then {[1] remoteExecCall ["btc_fnc_show_hint", 0];};
 
 _radius - _info_cache_ratio

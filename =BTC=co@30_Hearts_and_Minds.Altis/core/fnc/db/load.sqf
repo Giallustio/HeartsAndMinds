@@ -87,7 +87,7 @@ btc_cache_markers = [];
 {
     _x params ["_pos", "_marker_name"];
 
-    [_pos, 0, false, _marker_name] call btc_fnc_info_cacheMarker;
+    [_pos, 0, _marker_name] call btc_fnc_info_cacheMarker;
 } forEach (_array_cache select 3);
 
 btc_cache_pictures = _array_cache select 4;
