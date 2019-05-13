@@ -98,8 +98,9 @@ if (!isMultiplayer) then {
     btc_debug_frames = 0;
 };
 
-private _allClassVehicles = ("true" configClasses (configFile >> "CfgVehicles")) apply {configName _x};
-private _allClassSorted = _allClassVehicles select {getNumber (configFile >> "CfgVehicles" >> _x >> "scope") isEqualTo 2};
+private _cfgVehicles = configFile >> "CfgVehicles";
+private _allClassVehicles = ("true" configClasses _cfgVehicles) apply {configName _x};
+private _allClassSorted = _allClassVehicles select {getNumber (_cfgVehicles >> _x >> "scope") isEqualTo 2};
 
 if (isServer) then {
     btc_final_phase = false;
@@ -154,7 +155,7 @@ if (isServer) then {
     btc_type_campfire = ["MetalBarrel_burning_F", "Campfire_burning_F", "Land_Campfire_F", "FirePlace_burning_F"];
     btc_type_Scrapyard = _allClassSorted select {
         _x isKindOf "Scrapyard_base_F" &&
-        {(tolower _x find "scrap") isEqualTo -1}
+        {(toLower _x find "scrap") isEqualTo -1}
     };
     btc_type_bigbox = ["Box_FIA_Ammo_F", "Box_East_AmmoVeh_F", "CargoNet_01_box_F", "O_CargoNet_01_ammo_F"] + btc_type_Scrapyard;
     btc_type_seat = ["Land_WoodenLog_F", "Land_CampingChair_V2_F", "Land_CampingChair_V1_folded_F", "Land_CampingChair_V1_F"];
@@ -203,14 +204,14 @@ if (isServer) then {
         _x isKindOf "Land_PaperBox_01_small_destroyed_base_F"
     };
     btc_type_EmergencyBlanket = _allClassSorted select {_x isKindOf "Land_EmergencyBlanket_01_base_F"};
-    btc_type_Sponsor = _allClassSorted select {_x isKindOf "SignAd_Sponsor_F" && {(tolower _x find "idap") != -1}};
+    btc_type_Sponsor = _allClassSorted select {_x isKindOf "SignAd_Sponsor_F" && {(toLower _x find "idap") != -1}};
     btc_type_PlasticCase = _allClassSorted select {_x isKindOf "PlasticCase_01_base_F"};
     btc_type_MedicalTent = _allClassSorted select {_x isKindOf "Land_MedicalTent_01_base_F"};
     btc_type_cargo_ruins = _allClassSorted select {
         _x isKindOf "Ruins_F" &&
         {
-            (tolower _x find "cargo40") != -1 ||
-            (tolower _x find "cargo20") != -1
+            (toLower _x find "cargo40") != -1 ||
+            (toLower _x find "cargo20") != -1
         }
     };
 
@@ -280,7 +281,7 @@ btc_fob_id = 0;
 
 //IED
 btc_type_ieds = ["Land_GarbageContainer_closed_F", "Land_GarbageContainer_open_F", "Land_GarbageBarrel_01_F", "Land_Pallets_F", "Land_Portable_generator_F", "Land_WoodenBox_F", "Land_MetalBarrel_F", "Land_BarrelTrash_grey_F", "Land_Sacks_heap_F", "Land_Bricks_V2_F", "Land_Bricks_V3_F", "Land_Bricks_V4_F", "Land_GarbageBags_F", "Land_GarbagePallet_F", "Land_GarbageWashingMachine_F", "Land_JunkPile_F", "Land_Tyres_F", "Land_Wreck_Skodovka_F", "Land_Wreck_Car_F", "Land_Wreck_Car3_F", "Land_Wreck_Car2_F", "Land_Wreck_Offroad_F", "Land_Wreck_Offroad2_F", "Land_WheelieBin_01_F", "Land_GarbageHeap_04_F", "Land_GarbageHeap_03_F", "Land_GarbageHeap_01_F"];
-btc_model_ieds = btc_type_ieds apply {(toLower getText(configFile >> "CfgVehicles" >> _x >> "model")) select [1]};
+btc_model_ieds = btc_type_ieds apply {(toLower getText(_cfgVehicles >> _x >> "model")) select [1]};
 btc_type_ieds_ace = ["IEDLandBig_F", "IEDLandSmall_F"];
 
 //Int
@@ -319,7 +320,8 @@ if (isServer) then {
         _x isKindOf "HMG_01_base_F" ||
         _x isKindOf "AA_01_base_F" ||
         _x isKindOf "AT_01_base_F") && (
-        getNumber (configfile >> "CfgVehicles" >> _x >> "side") isEqualTo ([east, west, independent, civilian] find btc_player_side))
+            getNumber (_cfgVehicles >> _x >> "side") isEqualTo ([east, west, independent, civilian] find btc_player_side)
+        )
     });
     ([_rearming_static] call btc_fnc_find_veh_with_turret) params ["_rearming_static", "_magazines_static"];
 
@@ -335,7 +337,7 @@ if (isServer) then {
             "Supplies",
             "FOB",
             "Vehicle Logistic"
-        ] + (_rearming_vehicles apply {getText (configFile >> "cfgVehicles" >> _x >> "displayName")}),
+        ] + (_rearming_vehicles apply {getText (_cfgVehicles >> _x >> "displayName")}),
         [
             [
                 //"Fortifications"
@@ -473,7 +475,7 @@ btc_fnc_log_get_liftable = {
             _array = ["Motorcycle", "ReammoBox", "ReammoBox_F", "StaticWeapon", "Car", "Truck", "Wheeled_APC_F", "Tracked_APC", "APC_Tracked_01_base_F", "APC_Tracked_02_base_F", "Air", "Ship", "Tank"] + ((btc_construction_array select 1) select 3) + ((btc_construction_array select 1) select 4) + ((btc_construction_array select 1) select 5);
         };
         default {
-            private _MaxCargoMass = getNumber (configFile >> "CfgVehicles" >> typeOf _chopper >> "slingLoadMaxCargoMass");
+            private _MaxCargoMass = getNumber (_cfgVehicles >> typeOf _chopper >> "slingLoadMaxCargoMass");
             switch (true) do {
                 case (_MaxCargoMass <= 510) : {
                     _array = ["Motorcycle", "ReammoBox", "ReammoBox_F", "Quadbike_01_base_F", "Strategic"];
