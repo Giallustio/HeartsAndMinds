@@ -81,7 +81,7 @@ btc_cache_pos = _array_cache select 0;
 btc_cache_n = _array_cache select 1;
 btc_cache_info = _array_cache select 2;
 
-call btc_fnc_cache_create;
+[] call btc_fnc_cache_create;
 
 btc_cache_markers = [];
 {

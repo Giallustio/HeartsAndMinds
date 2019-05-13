@@ -68,8 +68,6 @@ if (isNil {_cache getVariable "btc_hd_cache"} && {_explosive} && {_damage > 0.6}
     [0] remoteExecCall ["btc_fnc_show_hint", 0];
 
     [btc_cache_n + 1, btc_cache_pictures] call btc_fnc_cache_init;
-    btc_cache_pos = [] call btc_fnc_cache_find_pos;
-    [btc_cache_pos] call btc_fnc_cache_create;
 } else {
     0
 };

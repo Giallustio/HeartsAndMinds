@@ -26,6 +26,10 @@ params [
     ["_objectArray", [], [[]]]
 ];
 
+if (isNil "btc_modelNamespace") then {
+    btc_modelNamespace = call CBA_fnc_createNamespace;
+};
+
 _objectArray apply {
     private _type = typeOf _x;
 

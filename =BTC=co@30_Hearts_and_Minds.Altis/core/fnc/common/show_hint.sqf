@@ -34,9 +34,9 @@ private _text = switch (_type) do {
     };
     case 1 : {
         [
-            ["<img size='1' image='\A3\ui_f\data\map\markers\handdrawn\unknown_CA.paa' align='center' color='#ff0000'/>"],
             [localize "STR_BTC_HAM_O_COMMON_SHOWHINTS_1"],
-            [localize "STR_BTC_HAM_O_COMMON_SHOWHINTS_MU"]
+            [localize "STR_BTC_HAM_O_COMMON_SHOWHINTS_MU"],
+            ["<img size='1' image='\A3\ui_f\data\map\markers\handdrawn\unknown_CA.paa' align='center' color='#ff0000'/>"]
         ]; //Intel about an ammo cache found! Map updated
     };
     case 2 : {
@@ -47,9 +47,9 @@ private _text = switch (_type) do {
     };
     case 5 : {
         [
-            ["<img size='1' image='\A3\ui_f\data\map\markers\handdrawn\warning_CA.paa' align='center' color='#ff0000'/>"],
             [localize "STR_BTC_HAM_O_COMMON_SHOWHINTS_5"],
-            [localize "STR_BTC_HAM_O_COMMON_SHOWHINTS_MU"]
+            [localize "STR_BTC_HAM_O_COMMON_SHOWHINTS_MU"],
+            ["<img size='1' image='\A3\ui_f\data\map\markers\handdrawn\warning_CA.paa' align='center' color='#ff0000'/>"]
         ]; //Intel about an hideout found! Map updated
     };
     case 6 : {

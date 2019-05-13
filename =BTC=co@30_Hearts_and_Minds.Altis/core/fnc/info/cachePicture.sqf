@@ -42,6 +42,6 @@ player createDiaryRecord [
     "btc_diarylog",
     [
         format [localize "STR_BTC_HAM_CON_INFO_PICTURE", _cache_n],
-        format [(localize _string) + "<br /><img image='%1' width='355' height='200'/>", getText (configfile >> "CfgVehicles" >> _classname_object >> "editorPreview")]
+        format [(localize _string) + "<br/><img image='%1' width='355' height='200'/>", getText (configfile >> "CfgVehicles" >> _classname_object >> "editorPreview")]
     ]
 ];

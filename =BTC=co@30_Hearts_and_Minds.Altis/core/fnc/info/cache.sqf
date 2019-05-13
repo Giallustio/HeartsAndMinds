@@ -3,7 +3,7 @@
 Function: btc_fnc_info_cache
 
 Description:
-    Create cache intel players with marker or picture.
+    Create cache intel with marker or picture.
 
 Parameters:
     _isReal - Return a real information. [Boolean]
@@ -40,7 +40,7 @@ if !(_isReal) then {
     _cache_obj = [[_axis, _axis, 0], _radius + _axis] call CBA_fnc_randPos;
 };
 
-private _id = 1;
+private _id = [1];
 if (_cache_info < _info_cache_ratio) then {
     private _building_with_the_cache = typeOf nearestBuilding _cache_obj;
     private _classnames = [nearestTerrainObjects [_cache_obj, [], 10, false]] call btc_fnc_typeOf;
@@ -69,7 +69,6 @@ if (_cache_info < _info_cache_ratio) then {
     ];
 } else {
     btc_cache_info = [[_cache_obj, _cache_info] call CBA_fnc_randPos, _cache_info] call btc_fnc_info_cacheMarker;
-    _id = [1];
 };
 
 _id remoteExecCall ["btc_fnc_show_hint", [0, -2] select isDedicated];
