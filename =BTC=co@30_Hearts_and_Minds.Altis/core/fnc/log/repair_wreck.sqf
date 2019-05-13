@@ -33,4 +33,12 @@ if (_array isEqualTo []) exitWith {hint localize "STR_BTC_HAM_LOG_RWRECK_NOWRECK
 
 if (damage (_array select 0) != 1) exitWith {hint localize "STR_BTC_HAM_LOG_RWRECK_NOTWRECK"}; //It is not a wreck!
 
+btc_int_ask_data = nil;
+["btc_helo"] remoteExecCall ["btc_fnc_int_ask_var", 2];
+
+waitUntil {!(isNil "btc_int_ask_data")};
+
+private _helo = btc_int_ask_data;
+if ((_array select 0) in _helo) exitWith {hint localize "STR_BTC_HAM_LOG_RWRECK_ISHELO"};
+
 [_array select 0] remoteExec ["btc_fnc_log_server_repair_wreck", 2];
