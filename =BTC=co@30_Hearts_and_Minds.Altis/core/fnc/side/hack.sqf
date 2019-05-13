@@ -72,7 +72,7 @@ for "_i" from 1 to (2 + round random 1) do {
 };
 
 {
-  _x setBehaviour "CARELESS"
+    _x setBehaviour "CARELESS"
 } forEach _groups;
 
 [_terminal, _launchsite modelToWorld [0, 100, 10]] remoteExecCall ["btc_fnc_log_place_create_camera", -2];

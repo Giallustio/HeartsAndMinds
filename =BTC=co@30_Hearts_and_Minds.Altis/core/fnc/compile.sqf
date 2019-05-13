@@ -3,7 +3,6 @@ if (isServer) then {
     //CACHE
     btc_fnc_cache_find_pos = compile preprocessFileLineNumbers "core\fnc\cache\find_pos.sqf";
     btc_fnc_cache_hd_cache = compile preprocessFileLineNumbers "core\fnc\cache\hd_cache.sqf";
-    btc_fnc_cache_spawn = compile preprocessFileLineNumbers "core\fnc\cache\spawn.sqf";
     btc_fnc_cache_create = compile preprocessFileLineNumbers "core\fnc\cache\create.sqf";
     btc_fnc_cache_create_attachto = compile preprocessFileLineNumbers "core\fnc\cache\create_attachto.sqf";
     btc_fnc_cache_init = compile preprocessFileLineNumbers "core\fnc\cache\init.sqf";
@@ -241,10 +240,6 @@ btc_fnc_side_abort = compile preprocessFileLineNumbers "core\fnc\side\abort.sqf"
 
 /////////////////////CLIENT\\\\\\\\\\\\\\\\\\\\\
 if (!isDedicated) then {
-    //DB
-    btc_fnc_db_request_save = compile preprocessFileLineNumbers "core\fnc\db\request_save.sqf";
-    btc_fnc_db_request_delete = compile preprocessFileLineNumbers "core\fnc\db\request_delete.sqf";
-
     //COMMON
     btc_fnc_end_mission = compile preprocessFileLineNumbers "core\fnc\common\end_mission.sqf";
     btc_fnc_get_cardinal = compile preprocessFileLineNumbers "core\fnc\common\get_cardinal.sqf";
@@ -315,7 +310,4 @@ if (!isDedicated) then {
     btc_fnc_task_create = compile preprocessFileLineNumbers "core\fnc\task\create.sqf";
     btc_fnc_task_fail = compile preprocessFileLineNumbers "core\fnc\task\fail.sqf";
     btc_fnc_task_set_done = compile preprocessFileLineNumbers "core\fnc\task\set_done.sqf";
-
-    //SIDE
-    btc_fnc_side_request = compile preprocessFileLineNumbers "core\fnc\side\request.sqf";
 };
