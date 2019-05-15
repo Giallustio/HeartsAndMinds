@@ -40,7 +40,7 @@ if (btc_debug) then {
     ["...2", __FILE__, [btc_debug, false, true]] call btc_fnc_debug_message;
 };
 
-call btc_fnc_db_delete;
+[false] call btc_fnc_db_delete;
 
 //Version
 profileNamespace setVariable [format ["btc_hm_%1_version", _name], btc_version];
