@@ -138,7 +138,7 @@ _group setBehaviour (_behaviour select 0);
 _group setCombatMode (_behaviour select 1);
 _group setFormation (_behaviour select 2);
 
-if (_side isEqualTo btc_enemy_side) then {{_x call btc_fnc_mil_unit_create} forEach units _group;};
-if (_side isEqualTo civilian) then {{_x call btc_fnc_civ_unit_create} forEach units _group;};
+if (_side isEqualTo btc_enemy_side) then {[_group] call btc_fnc_mil_unit_create;};
+if (_side isEqualTo civilian) then {[_group] call btc_fnc_civ_unit_create};
 
 [leader _group, _type]

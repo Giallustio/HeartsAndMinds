@@ -88,7 +88,7 @@ _unit setBehaviour "CARELESS";
 _unit setDir (random 360);
 _unit setPosATL _pos;
 _unit setUnitPos "DOWN";
-{_x call btc_fnc_civ_unit_create} forEach units _group;
+[_group] call btc_fnc_civ_unit_create;
 
 sleep 1;
 
