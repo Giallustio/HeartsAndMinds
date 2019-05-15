@@ -288,10 +288,7 @@
                 <Chinesesimp>载入存档 (如果可用)</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_DB_ASAVE">
-                <Original>Auto savegame (can break player immersion)</Original>
-                <German>Spielstand autom. sichern (kann die Immersion stören)</German>
-                <Portuguese>Salvamento do jogo automático (pode quebrar a imersão do jogador)</Portuguese>
-                <Chinesesimp>自动保存 (存档时会暂停游戏进程, 可能破坏玩家的沉浸感)</Chinesesimp>
+                <Original>Auto savegame when all player disconnected</Original>
             </Key>
         </Container>
         <Container name="Parameters: Factions">
