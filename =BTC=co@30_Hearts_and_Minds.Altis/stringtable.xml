@@ -1732,10 +1732,10 @@
             </Key>
             <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_1">
                 <Original>Intel about an ammo cache found!</Original>
-                <Spanish>¡Inteligencia sobre una caché de munición encontrada! Mapa actualizado</Spanish>
-                <German>Informationen über ein Waffenlager gefunden! Karte aktualisiert</German>
-                <Portuguese>Informação sobre um depósito de armas encontrada! Mapa atualizado</Portuguese>
-                <Chinesesimp>发现了关于弹药箱的情报! 地图已更新</Chinesesimp>
+                <Spanish>¡Inteligencia sobre una caché de munición encontrada!</Spanish>
+                <German>Informationen über ein Waffenlager gefunden!</German>
+                <Portuguese>Informação sobre um depósito de armas encontrada!</Portuguese>
+                <Chinesesimp>发现了关于弹药箱的情报!</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_2">
                 <Original>Hideout destroyed! %1 remaining</Original>

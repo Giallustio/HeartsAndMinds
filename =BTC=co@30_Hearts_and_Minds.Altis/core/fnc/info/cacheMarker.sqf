@@ -16,7 +16,8 @@ Returns:
 
 Examples:
     (begin example)
-        [[btc_cache_pos, btc_cache_info] call CBA_fnc_randPos, btc_cache_info] call btc_fnc_info_cacheMarker;
+        [[btc_cache_pos, btc_cache_info] call CBA_fnc_randPos,
+         btc_cache_info] call btc_fnc_info_cacheMarker;
     (end)
 
 Author:

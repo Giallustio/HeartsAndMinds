@@ -17,7 +17,7 @@ Returns:
 Examples:
     (begin example)
         btc_cache_info = 100;
-        [true, true] call btc_fnc_info_cache;
+        [true] call btc_fnc_info_cache;
     (end)
 
 Author:
@@ -40,8 +40,7 @@ if !(_isReal) then {
     _cache_obj = [[_axis, _axis, 0], _radius + _axis] call CBA_fnc_randPos;
 };
 
-private _id = [1];
-if (_cache_info < _info_cache_ratio) then {
+private _id = if (_cache_info < _info_cache_ratio) then {
     private _building_with_the_cache = typeOf nearestBuilding _cache_obj;
     private _classnames = [nearestTerrainObjects [_cache_obj, [], 10, false]] call btc_fnc_typeOf;
     _classnames = _classnames select {isText (configfile >> "CfgVehicles" >> _x >> "editorPreview")};
@@ -63,12 +62,13 @@ if (_cache_info < _info_cache_ratio) then {
         _is_building_with_the_cache
     ] remoteExecCall ["btc_fnc_info_cachePicture", [0, -2] select isDedicated, true]);
 
-    _id = [
+    [
         [15, 14] select _is_building_with_the_cache,
         _classname_object
-    ];
+    ]
 } else {
     btc_cache_info = [[_cache_obj, _cache_info] call CBA_fnc_randPos, _cache_info] call btc_fnc_info_cacheMarker;
+    [1]
 };
 
 _id remoteExecCall ["btc_fnc_show_hint", [0, -2] select isDedicated];
