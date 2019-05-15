@@ -67,9 +67,7 @@ btc_civilian_id = btc_civilian_id - 1;
 (selectRandom btc_civ_type_units) createUnit [_safe_pos, _group, "this moveinDriver _veh; this assignAsDriver _veh;"];
 _veh setVariable ["btc_crews", _group];
 
-{
-    _x call btc_fnc_civ_unit_create;
-} forEach units _group;
+[_group] call btc_fnc_civ_unit_create;
 
 private _handleDamageEh = _veh addEventHandler ["HandleDamage", {
     params ["_veh", "_selection", "_damage"];

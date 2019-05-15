@@ -46,7 +46,6 @@ if !(_veh_type isKindOf "Plane") then {
 private _units = [_veh, _group, false, "", [_type_crewmen, _type_divers select 0] select _needdiver] call BIS_fnc_spawnCrew;
 _group selectLeader (driver _veh);
 _units joinSilent _group;
-{_x call btc_fnc_mil_unit_create} forEach _units;
 
 private _cargo = _veh emptyPositions "cargo";
 [_group, _pos, _cargo, _needdiver, _type_units, _type_divers] call btc_fnc_mil_createUnits;

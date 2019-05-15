@@ -6,7 +6,7 @@ Description:
     Fill me when you edit me !
 
 Parameters:
-    _unit - [Object]
+    _group - [Object]
 
 Returns:
 
@@ -21,17 +21,14 @@ Author:
 ---------------------------------------------------------------------------- */
 
 params [
-    ["_unit", objNull, [objNull]]
+    ["_group", grpNull, [grpNull]]
 ];
 
-if (_unit getVariable ["btc_init", false]) exitWith {true};
+{
+    _x setVariable ["btc_init", true];
+    _x call btc_fnc_mil_add_eh;
 
-_unit setVariable ["btc_init", true];
-
-_unit call btc_fnc_mil_add_eh;
-
-if (btc_p_set_skill) then {
-    _unit call btc_fnc_mil_set_skill;
-};
-
-true
+    if (btc_p_set_skill) then {
+        _x call btc_fnc_mil_set_skill;
+    };
+} forEach (units _group select {!(_x getVariable ["btc_init", false])});
