@@ -42,7 +42,7 @@ private _veh  = createVehicle [_type, ASLToATL _pos, [], 0, "CAN_COLLIDE"];
 _veh setDir _dir;
 _veh setPosASL _pos;
 [_veh, _customization select 0, _customization select 1] call BIS_fnc_initVehicle;
-if (_isMedicalVehicle && {!([_veh] call ace_medical_fnc_isMedicalVehicle)}) then {
+if (_isMedicalVehicle && {!([_veh] call ace_medical_treatment_fnc_isInMedicalVehicle)}) then {
     _veh setVariable ["ace_medical_medicclass", 1, true];
 };
 if (_isRepairVehicle && {!([_veh] call ace_repair_fnc_isRepairVehicle)}) then {

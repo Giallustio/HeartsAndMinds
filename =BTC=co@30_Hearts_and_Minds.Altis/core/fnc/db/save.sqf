@@ -149,7 +149,7 @@ private _array_veh = [];
     private _cont = [getWeaponCargo _x, getMagazineCargo _x, getItemCargo _x];
     _data pushBack _cont;
     _data pushBack ([_x] call BIS_fnc_getVehicleCustomization);
-    _data pushBack ([_x] call ace_medical_fnc_isMedicalVehicle);
+    _data pushBack ([_x] call ace_medical_treatment_fnc_isInMedicalVehicle);
     _data pushBack ([_x] call ace_repair_fnc_isRepairVehicle);
     _data pushBack ([
         [_x] call ace_refuel_fnc_getFuel,

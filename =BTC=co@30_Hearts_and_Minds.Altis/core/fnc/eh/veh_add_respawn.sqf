@@ -38,7 +38,7 @@ private _pos = getPosASL _vehicle;
 private _dir = getDir _vehicle;
 private _customization = [_vehicle] call BIS_fnc_getVehicleCustomization;
 private _vector = [vectorDir _vehicle, vectorUp _vehicle];
-private _isMedicalVehicle = [_vehicle] call ace_medical_fnc_isMedicalVehicle;
+private _isMedicalVehicle = [_vehicle] call ace_medical_treatment_fnc_isInMedicalVehicle;
 private _isRepairVehicle = [_vehicle] call ace_repair_fnc_isRepairVehicle;
 private _fuelSource = [
     [_vehicle] call ace_refuel_fnc_getFuel,
