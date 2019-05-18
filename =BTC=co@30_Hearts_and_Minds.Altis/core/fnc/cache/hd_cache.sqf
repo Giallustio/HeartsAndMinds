@@ -43,9 +43,9 @@ if (isNil {_cache getVariable "btc_hd_cache"} && {_explosive} && {_damage > 0.6}
     [_pos] spawn {
         params ["_pos"];
 
-        sleep 2;
+        sleep random [0.5, 2, 3];
         "M_PG_AT" createVehicle _pos;
-        sleep 2;
+        sleep random [0.5, 2, 3];
         "M_Titan_AT" createVehicle _pos;
     };
     [_pos] call btc_fnc_deaf_earringing;
