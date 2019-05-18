@@ -96,7 +96,7 @@ btc_cache_pictures = +(_array_cache select 4);
         _x,
         btc_cache_n,
         btc_cache_pictures select 1 select _forEachindex
-    ] remoteExecCall ["btc_fnc_info_cachePicture", [0, -2] select isDedicated, btc_cache_obj]);
+    ] remoteExecCall ["btc_fnc_info_cachePicture", [0, -2] select isDedicated, true]);
 } forEach (btc_cache_pictures select 0);
 
 //FOB
