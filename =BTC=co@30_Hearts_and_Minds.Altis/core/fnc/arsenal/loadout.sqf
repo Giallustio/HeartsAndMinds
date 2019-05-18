@@ -9,7 +9,7 @@ Parameters:
     _type - Type of loadout: 0 - Rifleman, 1 - Medic, 2 - Repair, 3 - Engineer, 4 - Anti-Tank, 5 - Anti Air, 6 - Sniper, 7 - Machine gunner. [Number]
     _color - Color of skin loadout: 0 - Desert, 1 - Tropic, 2 - Black. [Number]
     _isDay - Select night (false) or day (true) loadout. [Boolean]
-    _isAdvanced_medical - Select the correct medical stuff depends on ACE3 medical level. [Boolean]
+    _medicalParameters - Select the correct medical stuff depends on ACE3 medical parameters. [Array]
     _arsenal_loadout - Array of defined loadout. [Array]
 
 Returns:

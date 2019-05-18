@@ -62,7 +62,6 @@ _unit moveinCargo [_veh, _index];
 sleep 1;
 waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !(playableUnits inAreaArray [getPosWorld _unit, 5000, 5000] isEqualTo []))};
 
-_unit setVariable ["ace_medical_ai_treatmentoverat", CBA_missionTime + 10000]; //Disable AI to self healing
 [_unit] call btc_fnc_set_damage;
 
 {_x call btc_fnc_civ_unit_create} forEach units _group;
