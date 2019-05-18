@@ -24,6 +24,6 @@ params [
     ["_flag", objNull, [objNull]]
 ];
 
-hint format [localize "STR_BTC_HAM_O_FOB_DISMANTLE_H_PROC"]; //"Dismantle, move out ..."
+(format [localize "STR_BTC_HAM_O_FOB_DISMANTLE_H_PROC"]) call CBA_fnc_notify;
 sleep 10;
 _flag remoteExecCall ["btc_fnc_fob_dismantle_s", 2];

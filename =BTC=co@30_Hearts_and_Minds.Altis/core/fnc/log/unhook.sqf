@@ -29,7 +29,7 @@ btc_int_ask_data = nil;
 
 waitUntil {!(isNil "btc_int_ask_data")};
 
-if (isNull btc_int_ask_data) exitWith {hint localize "STR_BTC_HAM_LOG_UNHOOK_NOROPE";}; //This vehicle is not attached to another!
+if (isNull btc_int_ask_data) exitWith {hint localize "STR_BTC_HAM_LOG_UNHOOK_NOROPE";};
 
 deTach _veh;
 _veh removeEventHandler ["RopeBreak", _veh getVariable ["btc_eh", -1]];
