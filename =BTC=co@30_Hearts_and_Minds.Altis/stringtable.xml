@@ -197,7 +197,7 @@
         </Container>
         <Container name="Documentation: Intel">
             <Key ID="STR_BTC_HAM_DOC_INTEL_TEXT">
-                <Original>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\map_ca.paa' width='20' height='20'/&gt; Intel can be retrieved in the following ways:&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\search_ca.paa' width='13' height='13'/&gt; Searching dead bodies&lt;br/&gt; - &lt;img image='\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\instructor_ca.paa' width='13' height='13'/&gt; Interrogate prisoner&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='13' height='13'/&gt; Talking to civilians&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\talk_ca.paa' width='20' height='20'/&gt; Keep in mind that only the interpreter can talk to civilians and they can lie if your reputation level is low.&lt;br/&gt;&lt;br/&gt; When you find an intel from a dead body or interrogate a prisoner, a marker will appear in the map. Remember, prisoner have a random number of intel more or less interesting.&lt;br/&gt; There are two types of marker:&lt;br/&gt; - Red question mark (&lt;img image='\A3\ui_f\data\map\markers\handdrawn\unknown_CA.paa' width='13' height='13' color='#ff0000'/&gt;): ammo cache intel&lt;br/&gt; - Red exclamation mark (&lt;img image='\A3\ui_f\data\map\markers\handdrawn\warning_CA.paa' width='13' height='13' color='#ff0000'/&gt;): hideout intel&lt;br/&gt;&lt;br/&gt;&lt;br/&gt; When you destroy an hideout or an ammo cache, all the markers related to it will be deleted.</Original>
+                <Original>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\map_ca.paa' width='20' height='20'/&gt; Intel can be retrieved in the following ways:&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\search_ca.paa' width='13' height='13'/&gt; Searching dead bodies&lt;br/&gt; - &lt;img image='\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\instructor_ca.paa' width='13' height='13'/&gt; Interrogate prisoner&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='13' height='13'/&gt; Talking to civilians&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\talk_ca.paa' width='20' height='20'/&gt; Keep in mind that only the interpreter can talk to civilians and they can lie if your reputation level is low.&lt;br/&gt;&lt;br/&gt; When you find an intel from a dead body or interrogate a prisoner, a marker will appear in the map. Remember, prisoner have a random number of intel more or less interesting.&lt;br/&gt; There are two types of intel:&lt;br/&gt; - Red question mark (&lt;img image='\A3\ui_f\data\map\markers\handdrawn\unknown_CA.paa' width='13' height='13' color='#ff0000'/&gt;) and pictures under diary log map menu: ammo cache intel&lt;br/&gt; - Red exclamation mark (&lt;img image='\A3\ui_f\data\map\markers\handdrawn\warning_CA.paa' width='13' height='13' color='#ff0000'/&gt;): hideout intel&lt;br/&gt;&lt;br/&gt;&lt;br/&gt; When you destroy an hideout or an ammo cache, all the markers related to it will be deleted.</Original>
                 <Spanish>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\map_ca.paa' width='20' height='20'/&gt; La Inteligencia se puede recuperar de las siguientes maneras:&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\search_ca.paa' width='13' height='13'/&gt; Registrando cadáveres&lt;br/&gt; - &lt;img image='\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\instructor_ca.paa' width='13' height='13'/&gt; Interrogando prisioneros&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='13' height='13'/&gt; Conversando con Civiles&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\talk_ca.paa' width='20' height='20'/&gt; Tenga en cuenta que sólo el intérprete puede hablar con civiles y ellos pueden mentir si su nivel de reputación es bajo.&lt;br/&gt;&lt;br/&gt; Cuando encuentres una información de un cadáver o interrogues a un prisionero, aparecerá un marcador en el mapa. Recuerda, los prisioneros tienen un número aleatorio de información más o menos interesante.&lt;br/&gt; Hay 2 tipos de marcas:&lt;br/&gt; - Signo de interrogacion rojo (&lt;img image='\A3\ui_f\data\map\markers\handdrawn\unknown_CA.paa' width='13' height='13' color='#ff0000'/&gt;): intel sobre cache de municion&lt;br/&gt; - Signo de exclamacion rojo (&lt;img image='\A3\ui_f\data\map\markers\handdrawn\warning_CA.paa' width='13' height='13' color='#ff0000'/&gt;): intel sobre escondite&lt;br/&gt;&lt;br/&gt;&lt;br/&gt; Cuando destruyes un escondite o una caché de munición, todos los marcadores relacionados con él se borrarán.</Spanish>
                 <German>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\map_ca.paa' width='20' height='20'/&gt;  Informationen kann man auf verschiedene Arten erhalten:&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\search_ca.paa' width='13' height='13'/&gt; Durchsuchen von toten Personen&lt;br/&gt; - &lt;img image='\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\instructor_ca.paa' width='13' height='13'/&gt; Verhören von Gefangenen&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='13' height='13'/&gt; Mit Zivilisten reden&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\talk_ca.paa' width='20' height='20'/&gt; Nur der Dolmetscher kann sich mit Zivilisten unterhalten. Wenn ihr Ansehen bei der Bevölkerunge niedrig ist, so kann es auch mal vorkommen das manche Zivilisten sie belügen.&lt;br/&gt;&lt;br/&gt; Wenn Sie Information erhalten, erscheint eine Markierung auf der Karte. Zur Erinnerung: Gefangene habe mal mehr und mal weniger interessante Informationen.&lt;br/&gt; Es gibt zwei Arten von Markierungen:&lt;br/&gt; - Ein rotes Fragezeichen (&lt;img image='\A3\ui_f\data\map\markers\handdrawn\unknown_CA.paa' width='13' height='13' color='#ff0000'/&gt;): Information über ein Waffenlager &lt;br/&gt; - Ein rotes Ausrufezeichen (&lt;img image='\A3\ui_f\data\map\markers\handdrawn\warning_CA.paa' width='13' height='13' color='#ff0000'/&gt;): Information über ein Versteck &lt;br/&gt;&lt;br/&gt;&lt;br/&gt; Wenn Sie ein Versteck oder ein Waffenlager zersört haben, so werden alle relevanten Markierungen automatisch gelöscht.</German>
                 <Portuguese>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\map_ca.paa' width='20' height='20'/&gt; Informações podem ser obtidas de diferentes maneiras:&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\search_ca.paa' width='13' height='13'/&gt; Procurando nos corpos dos mortos&lt;br/&gt; - &lt;img image='\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\instructor_ca.paa' width='13' height='13'/&gt; Interrogando prisioneiros&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='13' height='13'/&gt; Falando com civis&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\talk_ca.paa' width='20' height='20'/&gt; Somente o intérprete pode conversar com os civis. Se a reputação entre a população é baixa, pode acontecer de alguns civis passarem informações mentirosas.&lt;br/&gt;&lt;br/&gt; Quando você encontrar uma informação em um cadáver ou interrogando um prisioneiro, uma marcação aparecerá no mapa. Lembre-se, os prisioneiros possuem um número aleatório de informações que são mais ou menos importante.&lt;br/&gt; Existem dois tipos de marcação:&lt;br/&gt; - Interrogação em Vermelho (&lt;img image='\A3\ui_f\data\map\markers\handdrawn\unknown_CA.paa' width='13' height='13' color='#ff0000'/&gt;): Informações sobre depósito de armas&lt;br/&gt; - Exclamação em Vermelho (&lt;img image='\A3\ui_f\data\map\markers\handdrawn\warning_CA.paa' width='13' height='13' color='#ff0000'/&gt;): Informações sobre um esconderijo&lt;br/&gt;&lt;br/&gt;&lt;br/&gt; Quando você destroí um esconderijo ou depósito de munição, o marcador será excluído.</Portuguese>
@@ -1539,6 +1539,9 @@
                 <Portuguese>Relatório</Portuguese>
                 <Chinesesimp>日志</Chinesesimp>
             </Key>
+            <Key ID="STR_BTC_HAM_CON_INFO_PICTURE">
+                <Original>Pictures of cache number %1</Original>
+            </Key>
             <Key ID="STR_BTC_HAM_CON_INFO_SEARCH_BAR">
                 <Original>Searching for intel . . .</Original>
                 <Spanish>Buscando información . . .</Spanish>
@@ -1713,6 +1716,13 @@
             </Key>
         </Container>
         <Container name="Other: Hints ">
+            <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_MU">
+                <Original>Map updated</Original>
+                <Spanish>Mapa actualizado</Spanish>
+                <German>Karte aktualisiert</German>
+                <Portuguese>Mapa atualizado</Portuguese>
+                <Chinesesimp>地图已更新</Chinesesimp>
+            </Key>
             <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_0">
                 <Original>Cache destroyed!</Original>
                 <Spanish>Cache destruido!</Spanish>
@@ -1721,11 +1731,11 @@
                 <Chinesesimp>武器箱已摧毁!</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_1">
-                <Original>Intel about an ammo cache found! Map updated</Original>
-                <Spanish>¡Inteligencia sobre una caché de munición encontrada! Mapa actualizado</Spanish>
-                <German>Informationen über ein Waffenlager gefunden! Karte aktualisiert</German>
-                <Portuguese>Informação sobre um depósito de armas encontrada! Mapa atualizado</Portuguese>
-                <Chinesesimp>发现了关于弹药箱的情报! 地图已更新</Chinesesimp>
+                <Original>Intel about an ammo cache found!</Original>
+                <Spanish>¡Inteligencia sobre una caché de munición encontrada!</Spanish>
+                <German>Informationen über ein Waffenlager gefunden!</German>
+                <Portuguese>Informação sobre um depósito de armas encontrada!</Portuguese>
+                <Chinesesimp>发现了关于弹药箱的情报!</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_2">
                 <Original>Hideout destroyed! %1 remaining</Original>
@@ -1741,19 +1751,12 @@
                 <Portuguese>Este corpo não contém informação</Portuguese>
                 <Chinesesimp>这具尸体没有任何情报</Chinesesimp>
             </Key>
-            <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_4">
-                <Original>Found intels about an ammo cache and an hideout! Map updated</Original>
-                <Spanish>¡Encontré información sobre un depósito de municiones y un escondite! Mapa actualizado</Spanish>
-                <German>Informationen über ein Waffenlager und ein Versteck gefunden! Karte aktualisiert</German>
-                <Portuguese>Encontrada informação sobre depósito de armas e esconderijo! Mapa atualizado</Portuguese>
-                <Chinesesimp>发现了关于武器箱和藏匿点的情报! 地图已更新</Chinesesimp>
-            </Key>
             <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_5">
-                <Original>Intel about an hideout found! Map updated</Original>
-                <Spanish>¡Información sobre un escondite encontrado! Mapa actualizado</Spanish>
-                <German>Informationen über ein Versteck gefunden! Karte aktualisiert</German>
-                <Portuguese>Informação sobre esconderijo encontrada! Mapa atualizado</Portuguese>
-                <Chinesesimp>发现了关于藏匿点的情报! 地图已更新</Chinesesimp>
+                <Original>Intel about an hideout found!</Original>
+                <Spanish>¡Información sobre un escondite encontrado!</Spanish>
+                <German>Informationen über ein Versteck gefunden!</German>
+                <Portuguese>Informação sobre esconderijo encontrada!</Portuguese>
+                <Chinesesimp>发现了关于藏匿点的情报!</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_6">
                 <Original>In the last hideout we found important intel about all the cities occupied by the Oplitas! Size the last positions held by the enemies and defeat them once and for all</Original>
@@ -1796,6 +1799,12 @@
                 <German>Ein Kontrollpunkt wurde zerstört!</German>
                 <Portuguese>Um ponto de verificação destruído!</Portuguese>
                 <Chinesesimp>一个检查站被摧毁!</Chinesesimp>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_14">
+                <Original>We got a picture of the building where the cache is:</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_15">
+                <Original>We got a picture of the something around the cache:</Original>
             </Key>
         </Container>
         <Container name="Other: Shortcuts">

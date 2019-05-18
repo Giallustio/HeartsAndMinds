@@ -5,6 +5,7 @@ if (isServer) then {
     btc_fnc_cache_hd_cache = compile preprocessFileLineNumbers "core\fnc\cache\hd_cache.sqf";
     btc_fnc_cache_create = compile preprocessFileLineNumbers "core\fnc\cache\create.sqf";
     btc_fnc_cache_create_attachto = compile preprocessFileLineNumbers "core\fnc\cache\create_attachto.sqf";
+    btc_fnc_cache_init = compile preprocessFileLineNumbers "core\fnc\cache\init.sqf";
 
     //COMMON
     btc_fnc_check_los = compile preprocessFileLineNumbers "core\fnc\common\check_los.sqf";
@@ -21,6 +22,7 @@ if (isServer) then {
     btc_fnc_final_phase = compile preprocessFileLineNumbers "core\fnc\common\final_phase.sqf";
     btc_fnc_findPosOutsideRock = compile preprocessFileLineNumbers "core\fnc\common\findposoutsiderock.sqf";
     btc_fnc_set_groupsowner = compile preprocessFileLineNumbers "core\fnc\common\set_groupsowner.sqf";
+    btc_fnc_typeOf = compile preprocessFileLineNumbers "core\fnc\common\typeOf.sqf";
 
     //CITY
     btc_fnc_city_activate = compile preprocessFileLineNumbers "core\fnc\city\activate.sqf";
@@ -87,6 +89,7 @@ if (isServer) then {
     btc_fnc_info_give_intel = compile preprocessFileLineNumbers "core\fnc\info\give_intel.sqf";
     btc_fnc_info_has_intel = compile preprocessFileLineNumbers "core\fnc\info\has_intel.sqf";
     btc_fnc_info_hideout = compile preprocessFileLineNumbers "core\fnc\info\hideout.sqf";
+    btc_fnc_info_cacheMarker = compile preprocessFileLineNumbers "core\fnc\info\cacheMarker.sqf";
 
     //FOB
     btc_fnc_fob_create_s = compile preprocessFileLineNumbers "core\fnc\fob\create_s.sqf";
@@ -290,6 +293,7 @@ if (!isDedicated) then {
     btc_fnc_info_search_for_intel = compile preprocessFileLineNumbers "core\fnc\info\search_for_intel.sqf";
     btc_fnc_info_troops = compile preprocessFileLineNumbers "core\fnc\info\troops.sqf";
     btc_fnc_info_ask_reputation = compile preprocessFileLineNumbers "core\fnc\info\ask_reputation.sqf";
+    btc_fnc_info_cachePicture = compile preprocessFileLineNumbers "core\fnc\info\cachePicture.sqf";
 
     //LOG
     btc_fnc_log_hitch_points = compile preprocessFileLineNumbers "core\fnc\log\hitch_points.sqf";
