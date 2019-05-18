@@ -23,7 +23,7 @@ class Params {
         texts[]={$STR_DISABLED,$STR_ENABLED};
         default = 1;
     };
-    class btc_p_auto_db { // Auto savegame when all player disconnected
+    class btc_p_auto_db { // Auto savegame when all players disconnected
         title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_DB_ASAVE"]);
         values[]={0,1};
         texts[]={$STR_DISABLED,$STR_ENABLED}; // texts[]={"Off","On"};

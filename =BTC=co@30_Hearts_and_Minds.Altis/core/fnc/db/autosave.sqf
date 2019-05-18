@@ -3,7 +3,7 @@
 Function: btc_fnc_db_autosave
 
 Description:
-    Save game when all player disconnected.
+    Save game when all players disconnected.
 
 Parameters:
 
