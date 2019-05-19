@@ -90,6 +90,18 @@ private _text = switch (_type) do {
             [" "]
         ];
     };
+    case 16 : {
+        [
+            [localize "STR_BTC_HAM_LOG_RWRECK_ISHELO"],
+            ["<img size='1' image='\A3\ui_f\data\igui\cfg\simpleTasks\types\repair_ca.paa' align='center'/>"]
+        ];
+    };
+    case 17 : {
+        [
+            [localize "STR_BTC_HAM_LOG_LPDELETE"],
+            ["<img size='1' image='\z\ace\addons\arsenal\data\iconClearContainer.paa' align='center'/>"]
+        ];
+    };
 };
 
 _text call CBA_fnc_notify;
