@@ -46,7 +46,7 @@ if (!isServer && _removeServerSide) then {
 };
 
 _object setVariable [
-    _EH_fnc,
+    _EH_fnc + _EH_name,
     nil
 ];
 

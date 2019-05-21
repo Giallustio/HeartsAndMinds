@@ -57,7 +57,7 @@ if (btc_debug_log) then {
 };
 
 _object setVariable [
-    _EH_fnc,
+    _EH_fnc + _EH_name,
     _EH_IDs
 ];
 
