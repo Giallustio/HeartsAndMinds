@@ -29,7 +29,7 @@ btc_int_ask_data = nil;
 
 waitUntil {!(isNil "btc_int_ask_data")};
 
-if (!isNull btc_int_ask_data) exitWith {hint localize "STR_BTC_HAM_LOG_TOW_ALREADYTOWED";};
+if (!isNull btc_int_ask_data) exitWith {(localize "STR_BTC_HAM_LOG_TOW_ALREADYTOWED") call CBA_fnc_notify;};
 
 private _model_rear_tower = ([_tower] call btc_fnc_log_hitch_points) select 1;
 private _model_front_selected = ([btc_log_vehicle_selected] call btc_fnc_log_hitch_points) select 0;
