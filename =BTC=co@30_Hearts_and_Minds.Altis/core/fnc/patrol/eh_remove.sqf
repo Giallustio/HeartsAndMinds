@@ -24,12 +24,10 @@ params [
     ["_veh", objNull, [objNull]]
 ];
 
-private _indexEH = _veh getVariable ["btc_eh", []];
-if (_indexEH isEqualTo []) exitWith {false};
-
-private _EH_name = ["Fuel", "HandleDamage", "GetOut", "HandleDamage"];
-{
-    _veh removeEventHandler [_EH_name select _forEachIndex, _x];
-} forEach _indexEH;
-
-true
+if (local _veh) then {
+    [_veh, "Fuel", "btc_fnc_patrol_eh"] call btc_fnc_eh_removePersistantOnLocalityChange;
+    [_veh, "GetOut", "btc_fnc_patrol_eh"] call btc_fnc_eh_removePersistantOnLocalityChange;
+    [_veh, "HandleDamage", "btc_fnc_rep_hd"] call btc_fnc_eh_removePersistantOnLocalityChange;
+} else {
+    _veh remoteExecCall ["btc_fnc_patrol_eh_remove", _veh];
+};

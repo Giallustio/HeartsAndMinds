@@ -94,8 +94,7 @@ switch (_random) do {
         private _veh = [_group, _pos, _veh_type] call btc_fnc_mil_createVehicle;
         _veh setVariable ["btc_crews", _group];
 
-        private _fuelEh = _veh addEventHandler ["Fuel", btc_fnc_patrol_eh];
-        _veh setVariable ["btc_eh", [_fuelEh]];
+        [_veh, "Fuel", "btc_fnc_patrol_eh"] call btc_fnc_eh_persistantOnLocalityChange;
     };
 };
 

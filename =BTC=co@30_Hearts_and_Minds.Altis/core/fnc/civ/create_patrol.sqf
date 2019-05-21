@@ -77,10 +77,9 @@ private _handleDamageEh = _veh addEventHandler ["HandleDamage", {
     if (_damage < 0.1) exitWith {};
     [_veh] call btc_fnc_patrol_eh;
 }];
-private _fuelEh = _veh addEventHandler ["Fuel", btc_fnc_patrol_eh];
-private _getOutEh = _veh addEventHandler ["GetOut", btc_fnc_patrol_eh];
-private _handleDamageRepEh = _veh addEventHandler ["HandleDamage", btc_fnc_rep_hd];
-_veh setVariable ["btc_eh", [_fuelEh, _handleDamageEh, _getOutEh, _handleDamageRepEh]];
+[_veh, "Fuel", "btc_fnc_patrol_eh"] call btc_fnc_eh_persistantOnLocalityChange;
+[_veh, "GetOut", "btc_fnc_patrol_eh"] call btc_fnc_eh_persistantOnLocalityChange;
+[_veh, "HandleDamage", "btc_fnc_rep_hd"] call btc_fnc_eh_persistantOnLocalityChange;
 
 [_group, [_start_city, _active_city], _area, _pos_isWater] call btc_fnc_patrol_init;
 

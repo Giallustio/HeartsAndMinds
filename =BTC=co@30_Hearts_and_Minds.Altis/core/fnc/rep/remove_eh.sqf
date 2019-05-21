@@ -30,4 +30,4 @@ if (local _civilian) then {
     [_civilian, "FiredNear", "btc_fnc_rep_firednear"] call btc_fnc_eh_removePersistantOnLocalityChange;
 } else {
     _civilian remoteExecCall ["btc_fnc_rep_remove_eh", _civilian];
-}
+};
