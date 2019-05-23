@@ -27,7 +27,8 @@ class RscTitles {
 
 #include "core\fnc\mil\aiskill.hpp"
 
-#include "core\fnc\task\tasktypes.hpp"
+#include "core\fnc\task\taskTypes.hpp"
+#include "core\fnc\task\taskDescriptions.hpp"
 
 class CfgFunctions {
     #include "core\fnc\eh\functions.hpp"

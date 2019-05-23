@@ -28,26 +28,6 @@
         default {
         };
     };
-
-    [{scriptDone btc_intro_done;}, {
-        private _standard_tasks = (player call BIS_fnc_tasksUnit) select {
-                    [_x] call BIS_fnc_taskState isEqualTo "ASSIGNED" &&
-                    _x in ["0", "1", "2"]
-                };
-        {
-            [_x] call btc_fnc_task_create
-        } forEach _standard_tasks;
-
-        btc_int_ask_data = nil;
-        ["btc_side_jip_data"] remoteExecCall ["btc_fnc_int_ask_var", 2];
-
-        [{!(isNil "btc_int_ask_data")}, {
-            private _side_jip_data = btc_int_ask_data;
-            if !(_side_jip_data isEqualTo []) then {
-                _side_jip_data call btc_fnc_task_create;
-            };
-        }] call CBA_fnc_waitUntilAndExecute;
-    }] call CBA_fnc_waitUntilAndExecute;
 }] call CBA_fnc_waitUntilAndExecute;
 
 if (btc_debug) then {

@@ -164,6 +164,9 @@ if (isServer) then {
 
     //DEAF
     btc_fnc_deaf_earringing = compile preprocessFileLineNumbers "core\fnc\deaf\earringing.sqf";
+
+    //TASK
+    btc_fnc_task_create = compile preprocessFileLineNumbers "core\fnc\task\create.sqf";
 };
 
 /////////////////////SERVER AND HEADLESS\\\\\\\\\\\\\\\\\\\\\
@@ -213,7 +216,6 @@ btc_fnc_mil_ammoUsage = compile preprocessFileLineNumbers "core\fnc\mil\ammoUsag
 btc_fnc_arsenal_ammoUsage = compile preprocessFileLineNumbers "core\fnc\arsenal\ammoUsage.sqf";
 
 //TASK
-btc_fnc_task_create = compile preprocessFileLineNumbers "core\fnc\task\create.sqf";
 btc_fnc_task_fail = compile preprocessFileLineNumbers "core\fnc\task\fail.sqf";
 btc_fnc_task_set_done = compile preprocessFileLineNumbers "core\fnc\task\set_done.sqf";
 
@@ -308,7 +310,5 @@ if (!isDedicated) then {
     btc_fnc_arsenal_weaponsFilter = compile preprocessFileLineNumbers "core\fnc\arsenal\weaponsfilter.sqf";
 
     //TASK
-    btc_fnc_task_create = compile preprocessFileLineNumbers "core\fnc\task\create.sqf";
-    btc_fnc_task_fail = compile preprocessFileLineNumbers "core\fnc\task\fail.sqf";
-    btc_fnc_task_set_done = compile preprocessFileLineNumbers "core\fnc\task\set_done.sqf";
+    btc_fnc_task_setDescription = compile preprocessFileLineNumbers "core\fnc\task\setDescription.sqf";
 };
