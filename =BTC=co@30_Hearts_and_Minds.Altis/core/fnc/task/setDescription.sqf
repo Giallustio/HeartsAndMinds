@@ -23,21 +23,23 @@ Author:
 ---------------------------------------------------------------------------- */
 
 params [
-    ["_task_ids", [], [[]]],
+    ["_task_ids", [], ["", []]],
     ["_side", west, [west]],
     ["_description", [], [[], ""]],
     ["_destination", [], [objNull, []]],
     ["_priority", 2, [0]],
+    ["_showNotification", true, [true]],
     ["_isGlobal", false, [true]],
     ["_type", "", [""]]
 ];
 
-private _task_id = (_task_ids select (count _task_ids - 1));
 [
     _task_ids, _side, _description, _destination,
         _task_id call BIS_fnc_taskState,
     _priority, false, _isGlobal, _type
 ] call BIS_fnc_setTask;
+
+if !(_showNotification) exitWith {};
 
 [
     {!isNull player && {scriptDone btc_intro_done}},
@@ -48,5 +50,5 @@ private _task_id = (_task_ids select (count _task_ids - 1));
             _task_id call BIS_fnc_taskHint;
         };
     },
-    _task_id
+    _task_ids select 0
 ] call CBA_fnc_waitUntilAndExecute;

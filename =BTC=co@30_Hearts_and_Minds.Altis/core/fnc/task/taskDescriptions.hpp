@@ -1,5 +1,10 @@
 class CfgTaskDescriptions
 {
+    class missionMain {
+        title       = "Main tasks";
+        description = "Must be accomplish";
+        marker      = "missionMain";
+    };
     class missionDefeat {
         title       = $STR_BTC_HAM_MISSION_DEFEAT_TITLE;
         description = $STR_BTC_HAM_MISSION_DEFEAT_DESC;

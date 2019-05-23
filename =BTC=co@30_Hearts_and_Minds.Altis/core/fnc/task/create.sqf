@@ -24,84 +24,76 @@ Author:
 ---------------------------------------------------------------------------- */
 
 params [
-    ["_task_type", 0, [0, ""]],
-    ["_task_id", "", [""]],
+    ["_task_ids", "btc_dft", [""]],
+    ["_description", "missionDefeat", [""]],
     ["_destination", [], [objNull, []]],
     ["_location", "", [""]]
 ];
 
-private _description = _task_id;
+_task_ids = [_task_ids];
 private _type = "";
-switch (_task_type) do {
-    case 0 : {
-        _description = "missionDefeat";
-        _type = "kill";
-    };
-    case 1 : {
-        _description = "missionDestroy";
-        _type = "destroy";
-    };
-    case 2 : {
-        _description = "missionSeize";
+private _showNotification = true;
+
+switch (_description) do {
+    case "missionMain" : {
+        _showNotification = false;
         _type = "move";
     };
-    case 3 : {
-        _description = "sideSupplies";
+    case "missionDefeat" : {
+        _task_ids pushBack "btc_m";
+        _type = "kill";
+    };
+    case "missionDestroy" : {
+        _task_ids pushBack "btc_m";
+        _type = "destroy";
+    };
+    case "missionSeize" : {
+        _task_ids pushBack "btc_m";
+        _type = "move";
+    };
+    case "sideSupplies" : {
         _type = "container";
     };
-    case 4 : {
-        _description = "sideMines";
+    case "sideMines" : {
         _type = "mine";
     };
-    case 5 : {
-        _description = "sideVehicle";
+    case "sideVehicle" : {
         _type = "repair";
     };
-    case 6 : {
-        _description = "sideConquer";
+    case "sideConquer" : {
         _type = "attack";
     };
-    case 7 : {
-        _description = "sideTower";
+    case "sideTower" : {
         _type = "destroy";
     };
-    case 8 : {
-        _description = "sideCivTreat";
+    case "sideCivTreat" : {
         _type = "heal";
     };
-    case 9 : {
-        _description = "sideCheckpoint";
+    case "sideCheckpoint" : {
         _type = "destroy";
     };
-    case 10 : {
-        _description = "sideCivTreatBoat";
+     case "sideCivTreatBoat" : {
         _type = "heal";
     };
-    case 11 : {
-        _description = "sideUnderwater";
+     case "sideUnderwater" : {
         _type = "destroy";
     };
-    case 12 : {
-        _description = "sideConvoy";
+     case "sideConvoy" : {
         _type = "attack";
     };
-    case 13 : {
-        _description = "sideResc";
+     case "sideResc" : {
         _type = "heli";
     };
-    case 14 : {
-        _description = "sideCapOff";
+     case "sideCapOff" : {
         _type = "run";
     };
-    case 15 : {
-        _description = "sideHostage";
+     case "sideHostage" : {
         _type = "exit";
     };
-    case 16 : {
-        _description = "sideHack";
+     case "sideHack" : {
         _type = "defend";
     };
 };
 
-[btc_player_side, [_task_id]] call BIS_fnc_taskCreate;
-[[_task_id], btc_player_side, _description, _destination, 2, false, _type] remoteExecCall ["btc_fnc_task_setDescription", [0, -2] select isDedicated, true];
+[btc_player_side, _task_ids] call BIS_fnc_taskCreate;
+[_task_ids, btc_player_side, _description, _destination, 2, _showNotification, false, _type] remoteExecCall ["btc_fnc_task_setDescription", [0, -2] select isDedicated, true];

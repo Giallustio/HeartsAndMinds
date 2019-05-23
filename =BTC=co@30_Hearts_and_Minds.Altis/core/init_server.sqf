@@ -1,7 +1,8 @@
 [] call compile preprocessFileLineNumbers "core\fnc\city\init.sqf";
 
-[0, "btc_dft"] call btc_fnc_task_create;
-[1, "btc_dty"] call btc_fnc_task_create;
+["btc_m", "missionMain"] call btc_fnc_task_create;
+["btc_dty", "missionDestroy"] call btc_fnc_task_create;
+["btc_dft", "missionDefeat"] call btc_fnc_task_create;
 
 if (btc_db_load && {profileNamespace getVariable [format ["btc_hm_%1_db", worldName], false]}) then {
     if (btc_version isEqualTo (profileNamespace getVariable [format ["btc_hm_%1_version", worldName], 1.13])) then {
