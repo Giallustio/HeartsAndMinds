@@ -1935,57 +1935,6 @@
                 <Chinesesimp>启用/关闭抬头显示器(HUD)</Chinesesimp>
             </Key>
         </Container>
-        <Container name="Logistic: Load ">
-            <Key ID="STR_BTC_HAM_LOG_LOAD_TOOFAR">
-                <Original>%1 is too far from %2!</Original>
-                <Spanish>%1 está demasiado lejos de %2!</Spanish>
-                <German>%1 ist zu weit von %2 entfernt!</German>
-                <Portuguese>%1 está muito londe de %2!</Portuguese>
-                <Chinesesimp>%1 与 %2 距离过远!</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_LOG_LOAD_TOOFAST">
-                <Original>%1 is moving!</Original>
-                <Spanish>%1 se está moviendo!</Spanish>
-                <German>%1 is in Bewegung!</German>
-                <Portuguese>%1 está se movendo</Portuguese>
-                <Chinesesimp>%1 正在移动!</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_LOG_LOAD_TOOBIG">
-                <Original>Can not load %1 in %2</Original>
-                <Spanish>No se puede cargar %1 en %2</Spanish>
-                <German>Der Laderaum von %2 ist zu klein für %1</German>
-                <Portuguese>Não é possível carregar %1 em %2</Portuguese>
-                <Chinesesimp>无法将 %1 装进 %2</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_LOG_LOAD_NOSPACE">
-                <Original>There is no enough space for %1 in %2</Original>
-                <Spanish>No hay suficiente espacio para %1 en %2</Spanish>
-                <German>Es ist nicht mehr genug Platz im Laderaum von %1 vorhanden</German>
-                <Portuguese>Não há espaço suficiente para %1 em %2</Portuguese>
-                <Chinesesimp>剩余空间不足以将 %1 装进 %2</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_LOG_LOAD_BAR">
-                <Original>Loading %1 in %2. . .</Original>
-                <Spanish>Cargando %1 en %2. . .</Spanish>
-                <German>%1 wird verladen in %2 . . .</German>
-                <Portuguese>Carregando %1 em %2. . .</Portuguese>
-                <Chinesesimp>正在将 %1 装进 %2. . .</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_LOG_LOAD_FIN">
-                <Original>%1 has been loaded in %2</Original>
-                <Spanish>%1 ha sido cargado en %2</Spanish>
-                <German>%1 wurde in %2 eingeladen</German>
-                <Portuguese>%1 foi carregado com sucesso em %2</Portuguese>
-                <Chinesesimp>%1 已被装进 %2</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_LOG_LOAD_ABORT">
-                <Original>Loading aborted</Original>
-                <Spanish>Cargar abortada</Spanish>
-                <German>Ladevorgang abgebrochen</German>
-                <Portuguese>Carregamento abortado</Portuguese>
-                <Chinesesimp>装载中止</Chinesesimp>
-            </Key>
-        </Container>
         <Container name="Logistic: Place ">
             <Key ID="STR_BTC_HAM_LOG_PLACE_HINT1">
                 <Original>Q/Z to raise/lower the object</Original>
