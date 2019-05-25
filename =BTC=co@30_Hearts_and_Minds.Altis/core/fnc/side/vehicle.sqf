@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_side_vehicle;
+        [] spawn btc_fnc_side_vehicle;
     (end)
 
 Author:
@@ -32,13 +32,13 @@ private _pos = [getPos _city, 100] call btc_fnc_randomize_pos;
 private _roads = _pos nearRoads 300;
 if !(_roads isEqualTo []) then {_pos = getPos (selectRandom _roads);};
 
-private _jip = [_taskID, 5, _pos, _city getVariable "name"] call btc_fnc_task_create;
-
 private _veh_type = selectRandom btc_civ_type_veh;
 private _veh = createVehicle [_veh_type, _pos, [], 0, "NONE"];
 _veh setDir (random 360);
 _veh setDamage 0.7;
 _veh setHit ["wheel_1_1_steering", 1];
+
+private _jip = [_taskID, 5, _veh, [_city getVariable "name", _veh_type]] call btc_fnc_task_create;
 
 waitUntil {sleep 5; (_taskID call BIS_fnc_taskCompleted || (_veh getHit "wheel_1_1_steering" < 1) || !alive _veh)};
 
@@ -46,7 +46,7 @@ waitUntil {sleep 5; (_taskID call BIS_fnc_taskCompleted || (_veh getHit "wheel_1
 
 if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {};
 if (!alive _veh) exitWith {
-    [_taskID, "FAIL"] call BIS_fnc_taskSetState;
+    [_taskID, "FAILED"] call BIS_fnc_taskSetState;
 };
 
 15 call btc_fnc_rep_change;

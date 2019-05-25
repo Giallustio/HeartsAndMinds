@@ -38,8 +38,6 @@ _pos = getPos _road;
 
 private _direction = [_road] call btc_fnc_road_direction;
 
-private _jip = [_taskID, 7, _pos, _city getVariable "name"] call btc_fnc_task_create;
-
 _city setVariable ["spawn_more", true];
 
 //// Randomise composition \\\\
@@ -60,6 +58,8 @@ _pos params ["_x", "_y", "_z"];
 
 private _btc_composition = [_pos, _direction, _btc_composition_tower] call btc_fnc_create_composition;
 private _tower = _btc_composition select ((_btc_composition apply {typeOf _x}) find _tower_type);
+
+private _jip = [_taskID, 7, _tower, [_city getVariable "name", _tower_type]] call btc_fnc_task_create;
 
 waitUntil {sleep 5; (!alive _tower || _taskID call BIS_fnc_taskCompleted)};
 

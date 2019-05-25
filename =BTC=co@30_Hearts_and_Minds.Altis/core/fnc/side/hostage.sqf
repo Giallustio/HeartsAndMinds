@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_side_hostage;
+        [] spawn btc_fnc_side_hostage;
     (end)
 
 Author:
@@ -46,25 +46,20 @@ private _buildingPos = _house buildingPos -1;
 private _pos_number = count _buildingPos - 1;
 private _pos = _buildingPos select (_pos_number - round random 1);
 
-//// Data side mission
-private _jip = [_taskID, 15, _pos, _city getVariable "name"] call btc_fnc_task_create;
-
-//// Marker
-private _marker = createMarker [format ["sm_2_%1", getPos _house], getPos _house];
-_marker setMarkerType "hd_flag";
-[_marker, "STR_BTC_HAM_SIDE_HOSTAGE_MRK"] remoteExecCall ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker]; //Hostage
-_marker setMarkerSize [0.6, 0.6];
-
 _city setVariable ["spawn_more", true];
 
 //// Hostage
 private _group_civ = createGroup civilian;
 _group_civ setVariable ["no_cache", true];
-private _captive = _group_civ createUnit [selectRandom btc_civ_type_units, _pos, [], 0, "CAN_COLLIDE"];
+private _civType = selectRandom btc_civ_type_units;
+private _captive = _group_civ createUnit [_civType, _pos, [], 0, "CAN_COLLIDE"];
 waitUntil {local _captive};
 [_captive, true] call ACE_captives_fnc_setHandcuffed;
 _captive setPosATL _pos;
 [_group_civ] call btc_fnc_civ_unit_create;
+
+//// Data side mission
+private _jip = [_taskID, 15, _captive, [_city getVariable "name", _civType]] call btc_fnc_task_create;
 
 private _group = [];
 {
@@ -102,14 +97,13 @@ _group_civ setVariable ["no_cache", false];
 } forEach _group;
 
 if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {
-    [[_marker], _group + [_group_civ, _trigger, _mine]] call btc_fnc_delete;
+    [[], _group + [_group_civ, _trigger, _mine]] call btc_fnc_delete;
 };
 if !(alive _captive) exitWith {
-    [_taskID, "FAIL"] call BIS_fnc_taskSetState;
-    [[_marker], _group + [_group_civ, _trigger, _mine]] call btc_fnc_delete;
+    [_taskID, "FAILED"] call BIS_fnc_taskSetState;
+    [[], _group + [_group_civ, _trigger, _mine]] call btc_fnc_delete;
 };
 
 40 call btc_fnc_rep_change;
 
-[[_marker]] call btc_fnc_delete;
 [_taskID, "SUCCEEDED"] call BIS_fnc_taskSetState;

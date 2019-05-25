@@ -828,7 +828,7 @@
             </Key>
         </Container>
         <Container name="Hack">
-            <Key ID="STR_BTC_HAM_SIDE_HACK_STARTCHAT">
+            <Key ID="STR_BTC_HAM_SIDE_HACK_STARTHACK">
                 <Original>Defend the terminal until the missile is hacked!</Original>
                 <Spanish>Defiende la terminal hasta que el misil sea hacekado!</Spanish>
                 <German>Verteidigt das Terminal, bis die Rakete gehackt erfolgreich gehackt ist!</German>
@@ -858,13 +858,6 @@
             </Key>
         </Container>
         <Container name="Hostage">
-            <Key ID="STR_BTC_HAM_SIDE_HOSTAGE_MRK">
-                <Original>Hostage</Original>
-                <Spanish>Rehén</Spanish>
-                <German>Geisel</German>
-                <Portuguese>Refém</Portuguese>
-                <Chinesesimp>人质</Chinesesimp>
-            </Key>
             <Key ID="STR_BTC_HAM_SIDE_HOSTAGE_TITLE">
                 <Original>Liberate hostage near %1</Original>
                 <Spanish>Liberar rehén cerca de %1</Spanish>

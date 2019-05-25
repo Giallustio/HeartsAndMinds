@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_side_create;
+        [] spawn btc_fnc_side_create;
     (end)
 
 Author:

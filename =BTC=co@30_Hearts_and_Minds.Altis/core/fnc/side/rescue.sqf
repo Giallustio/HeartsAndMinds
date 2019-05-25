@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_side_rescue;
+        [] spawn btc_fnc_side_rescue;
     (end)
 
 Author:
@@ -34,8 +34,6 @@ private _city = selectRandom _useful;
 //// Randomise position \\\\
 private _pos = [getPos _city, (((_city getVariable ["RadiusX", 0]) + (_city getVariable ["RadiusY", 0]))/2) - 100] call btc_fnc_randomize_pos;
 _pos = [_pos, 0, 50, 13, 0, 60 * (pi / 180), 0] call btc_fnc_findsafepos;
-
-private _jip = [_taskID, 13, getPos _city, _city getVariable "name"] call btc_fnc_task_create;
 
 _city setVariable ["spawn_more", true];
 
@@ -62,7 +60,14 @@ _fx attachTo [_heli, [0.5, -2, 1]];
 
 private _group = createGroup btc_player_side;
 _group setVariable ["no_cache", true];
-getText (configfile >> "CfgVehicles" >> _heli_type >> "crew") createUnit [_pos, _group];
+private _crew = getText (configfile >> "CfgVehicles" >> _heli_type >> "crew");
+_crew createUnit [_pos, _group];
+
+private _jip = [_taskID, 13, getPos _city, _city getVariable "name"] call btc_fnc_task_create;
+private _find_taskID = _taskID + "mv";
+private _jipFind = [[_find_taskID, _taskID], 20, objNull, _crew] call btc_fnc_task_create;
+private _back_taskID = _taskID + "bk";
+
 private _units = [];
 private _triggers = [];
 {
@@ -77,20 +82,34 @@ private _triggers = [];
     _trigger setVariable ["unit", _x];
     _trigger setTriggerArea [50, 50, 0, false];
     _trigger setTriggerActivation [str btc_player_side, "PRESENT", false];
-    _trigger setTriggerStatements ["this", "_unit = thisTrigger getVariable 'unit'; [_unit] join (thisList select 0); _unit setUnitPos 'UP';", ""];
+    _trigger setTriggerStatements ["this", format ["_unit = thisTrigger getVariable 'unit'; [_unit] join (thisList select 0); _unit setUnitPos 'UP'; ['%1', 'SUCCEEDED'] call BIS_fnc_taskSetState; [['%2', '%3'], 21, btc_create_object_point, typeOf btc_create_object_point] call btc_fnc_task_create;", _find_taskID, _back_taskID, _taskID], ""];
     _trigger attachTo [_x, [0, 0, 0]];
     _triggers pushBack _trigger;
 } forEach units _group;
 
-waitUntil {sleep 5; (_taskID call BIS_fnc_taskCompleted || (_units select {_x distance btc_create_object_point > 100} isEqualTo []) || (_units select {alive _x} isEqualTo []))};
+waitUntil {sleep 5; (_find_taskID call BIS_fnc_taskState isEqualTo "CANCELED" || _back_taskID call BIS_fnc_taskCompleted || (_units select {_x distance btc_create_object_point > 100} isEqualTo []) || (_units select {alive _x} isEqualTo []))};
 
 [[], [_heli, _fx, _group] + _triggers] call btc_fnc_delete;
 
-if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {};
+if (_find_taskID call BIS_fnc_taskState isEqualTo "CANCELED" ||
+    _back_taskID call BIS_fnc_taskState isEqualTo "CANCELED"
+) exitWith {
+    {
+        if !(_x call BIS_fnc_taskCompleted) then {
+            [_x, "CANCELED"] call BIS_fnc_taskSetState;
+        };
+    } forEach [_taskID, _back_taskID, _find_taskID];
+};
 if (_units select {alive _x} isEqualTo []) exitWith {
-    [_taskID, "FAIL"] call BIS_fnc_taskSetState;
+    {
+        if !(_x call BIS_fnc_taskCompleted) then {
+            [_x, "FAILED"] call BIS_fnc_taskSetState;
+        };
+    } forEach [_taskID, _back_taskID, _find_taskID];
 };
 
 50 call btc_fnc_rep_change;
 
-[_taskID, "SUCCEEDED"] call BIS_fnc_taskSetState;
+{
+    [_x, "SUCCEEDED"] call BIS_fnc_taskSetState;
+} forEach [_taskID, _back_taskID];

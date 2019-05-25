@@ -73,9 +73,6 @@ private _text = switch (_type) do {
     case 12 : {
         localize "STR_BTC_HAM_SIDE_CONVOY_STARTCHAT"; //Convoy has left the starting point!
     };
-    case 13 : {
-        localize "STR_BTC_HAM_SIDE_HACK_STARTCHAT"; //Defend the terminal until the missile is hacked!
-    };
     case 14 : {
         [
             [localize "STR_BTC_HAM_O_COMMON_SHOWHINTS_14"],

@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_side_underwater_generator;
+        [] spawn btc_fnc_side_underwater_generator;
     (end)
 
 Author:
@@ -49,28 +49,14 @@ if (_wrecks isEqualTo []) then {
     _pos = getPos (selectRandom _wrecks);
 };
 
-private _jip = [_taskID, 11, _pos, _city getVariable "name"] call btc_fnc_task_create;
-
 _city setVariable ["spawn_more", true];
-
-//// Create marker \\\\
-private _area = createMarker [format ["sm_%1", _pos], _pos];
-_area setMarkerShape "ELLIPSE";
-_area setMarkerBrush "SolidBorder";
-_area setMarkerSize [30, 30];
-_area setMarkerAlpha 0.3;
-_area setmarkercolor "colorBlue";
-
-private _marker = createMarker [format ["sm_2_%1", _pos], _pos];
-_marker setMarkerType "hd_flag";
-[_marker, "STR_BTC_HAM_SIDE_UNDERWATER_MRK"] remoteExecCall ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker]; //Generator
-_marker setMarkerSize [0.6, 0.6];
-
 
 //// Create underwater generator \\\\
 private _generator = (selectRandom btc_type_generator) createVehicle _pos;
 _pos params ["_x", "_y", "_z"];
 private _storagebladder = (selectRandom btc_type_storagebladder) createVehicle [_x + 5, _y, _z];
+
+private _jip = [_taskID, 11, _generator, [_city getVariable "name", typeOf _generator]] call btc_fnc_task_create;
 
 private _group = [_pos, 8, 1 + round random 5,0.8] call btc_fnc_mil_create_group;
 [_pos, 20, 2 + round random 4, 0.5] call btc_fnc_mil_create_group;
@@ -80,7 +66,7 @@ _pos = getPosASL _generator;
 
 waitUntil {sleep 5; (_taskID call BIS_fnc_taskCompleted || !alive _generator)};
 
-[[_area, _marker], [_generator, _storagebladder]] call btc_fnc_delete;
+[[], [_generator, _storagebladder]] call btc_fnc_delete;
 
 if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {};
 

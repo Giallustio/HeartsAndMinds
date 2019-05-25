@@ -44,4 +44,10 @@ class CfgTaskTypes {
     class Intel {
         icon = \A3\ui_f\data\igui\cfg\simpleTasks\types\intel_ca.paa;
     };
+    class Car {
+        icon = \A3\ui_f\data\igui\cfg\simpleTasks\types\car_ca.paa;
+    };
+    class Box {
+        icon = \A3\ui_f\data\igui\cfg\simpleTasks\types\box_ca.paa;
+    };
 };

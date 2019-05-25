@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_side_capture_officer;
+        [] spawn btc_fnc_side_capture_officer;
     (end)
 
 Author:
@@ -43,8 +43,6 @@ if (_roads isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
 private _road = selectRandom _roads;
 private _pos1 = getPos _road;
 private _pos2 = getPos _city2;
-
-private _jip = [_taskID, 14, _pos2, _city2 getVariable "name"] call btc_fnc_task_create;
 
 //// Create markers \\\\
 private _marker1 = createMarker [format ["sm_2_%1", getPos _city1], getPos _city1];
@@ -85,26 +83,42 @@ private _captive = selectRandom units _group;
 removeAllWeapons _captive;
 _group selectLeader _captive;
 
-[_group, _pos2, 0, "MOVE", "SAFE", "RED", "LIMITED", "COLUMN", format ["['%1', 'FAIL'] call BIS_fnc_taskSetState;", _taskID], [0, 0, 0], _radius_x/1.5] call CBA_fnc_addWaypoint;
+private _jip = [_taskID, 14, _pos2, _city2 getVariable "name"] call btc_fnc_task_create;
+private _surrender_taskID = _taskID + "su";
+private _jipSurrender = [[_surrender_taskID, _taskID], 24, objNull, typeOf _captive] call btc_fnc_task_create;
+private _back_taskID = _taskID + "bk";
+
+[_group, _pos2, 0, "MOVE", "SAFE", "RED", "LIMITED", "COLUMN", format ["['%1', 'FAILED'] call BIS_fnc_taskSetState;", _taskID], [0, 0, 0], _radius_x / 1.5] call CBA_fnc_addWaypoint;
 
 //// Create trigger \\\\
 _trigger = createTrigger ["EmptyDetector", getPos _city1];
 _trigger setVariable ["captive", _captive];
 _trigger setTriggerArea [15, 15, 0, false];
 _trigger setTriggerActivation [str btc_player_side, "PRESENT", true];
-_trigger setTriggerStatements ["this", "_captive = thisTrigger getVariable 'captive'; doStop _captive; [_captive, true] call ace_captives_fnc_setSurrendered;", ""];
+_trigger setTriggerStatements ["this", format ["_captive = thisTrigger getVariable 'captive'; doStop _captive; [_captive, true] call ace_captives_fnc_setSurrendered; ['%1', 'SUCCEEDED'] call BIS_fnc_taskSetState; [['%2', '%3'], 21, btc_create_object_point, typeOf btc_create_object_point] call btc_fnc_task_create;", _surrender_taskID, _back_taskID, _taskID], ""];
 _trigger attachTo [_captive, [0, 0, 0]];
 
-[12] remoteExecCall ["btc_fnc_show_hint", -2];
+[12] remoteExecCall ["btc_fnc_show_hint", [0, -2] select isDedicated];
 
-waitUntil {sleep 5; (!(alive _captive) || (_captive inArea [getPosWorld btc_create_object_point, 100, 100, 0, false]) || _taskID call BIS_fnc_taskCompleted)};
+waitUntil {sleep 5; (!(alive _captive) || (_captive inArea [getPosWorld btc_create_object_point, 100, 100, 0, false]) || _surrender_taskID call BIS_fnc_taskState isEqualTo "CANCELED" || _back_taskID call BIS_fnc_taskCompleted)};
 
-if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {
+if (_surrender_taskID call BIS_fnc_taskState isEqualTo "CANCELED" ||
+    _back_taskID call BIS_fnc_taskState isEqualTo "CANCELED"
+) exitWith {
+    {
+        if !(_x call BIS_fnc_taskCompleted) then {
+            [_x, "CANCELED"] call BIS_fnc_taskSetState;
+        };
+    } forEach [_taskID, _surrender_taskID, _back_taskID];
     [_markers, _vehs + [_trigger, _group]] call btc_fnc_delete;
 };
 
-if !(alive _captive || _taskID call BIS_fnc_taskState isEqualTo "FAIL") exitWith {
-    [_taskID, "FAIL"] call BIS_fnc_taskSetState;
+if (!alive _captive || _taskID call BIS_fnc_taskState isEqualTo "FAILED") exitWith {
+    {
+        if !(_x call BIS_fnc_taskCompleted) then {
+            [_x, "FAILED"] call BIS_fnc_taskSetState;
+        };
+    } forEach [_taskID, _surrender_taskID, _back_taskID];
     _group setVariable ["no_cache", false];
     {
         _group = createGroup btc_enemy_side;
@@ -116,6 +130,7 @@ if !(alive _captive || _taskID call BIS_fnc_taskState isEqualTo "FAIL") exitWith
 
 50 call btc_fnc_rep_change;
 
+[_back_taskID, "SUCCEEDED"] call BIS_fnc_taskSetState;
 [_taskID, "SUCCEEDED"] call BIS_fnc_taskSetState;
 
 [_markers, _vehs + [_trigger, _captive, _group]] call btc_fnc_delete;

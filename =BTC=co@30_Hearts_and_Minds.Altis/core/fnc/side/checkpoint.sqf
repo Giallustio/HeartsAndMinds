@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_side_checkpoint;
+        [] spawn btc_fnc_side_checkpoint;
     (end)
 
 Author:
@@ -30,7 +30,7 @@ if (_useful isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
 private _city = selectRandom _useful;
 private _pos = getPos _city;
 
-private _jip = [_taskID, 9, _pos, _city getVariable "name"] call btc_fnc_task_create;
+private _jip = [_taskID, 9, objNull, _city getVariable "name"] call btc_fnc_task_create;
 
 _city setVariable ["spawn_more", true];
 
@@ -40,7 +40,7 @@ private _radius_y = _city getVariable ["RadiusY", 0];
 private _radius = (_radius_x + _radius_y)/4;
 
 private _boxes = [];
-private _markers = [];
+private _taskID_array = [];
 for "_i" from 1 to (1 + round random 2) do {
     //// Choose a road \\\\
     private _pos = [getPos _city, _radius] call btc_fnc_randomize_pos;
@@ -51,14 +51,6 @@ for "_i" from 1 to (1 + round random 2) do {
     _pos = getPos _road;
 
     private _direction = [_road] call btc_fnc_road_direction;
-
-    //// Create marker \\\\
-    private _marker = createMarker [format ["sm_2_%1", _pos], _pos];
-    _marker setMarkerType "hd_flag";
-    [_marker, "str_a3_timetrials_checkpoints0"] remoteExecCall ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker]; //Checkpoint
-    _marker setMarkerColor "ColorRed";
-    _marker setMarkerSize [0.6, 0.6];
-    _markers pushback _marker;
 
     //// Randomise composition \\\\
     private _type_barrel = selectRandom btc_type_barrel;
@@ -93,24 +85,39 @@ for "_i" from 1 to (1 + round random 2) do {
 
     private _boxe = nearestObject [_pos, _type_box];
     _boxe setVariable ["ace_cookoff_enable", false, true];
-    [_boxe, _taskID] spawn {
-        params ["_boxe", "_taskID"];
+    private _destroy_taskID = _taskID + "dt" + str _i;
+    private _jipdestroy = [[_destroy_taskID, _taskID], 23, _boxe, _type_box, false] call btc_fnc_task_create;
+    _taskID_array pushBack _destroy_taskID;
+    [_boxe, _destroy_taskID] spawn {
+        params ["_boxe", "_destroy_taskID"];
 
         private _pos = getPos _boxe;
-        waitUntil {sleep 5; _taskID call BIS_fnc_taskCompleted || !(alive _boxe)};
-        private _fx = "test_EmptyObjectForSmoke" createVehicle _pos;
-        _fx setPos _pos;
-        sleep 120;
-        _fx call CBA_fnc_deleteEntity;
+        waitUntil {sleep 5; _destroy_taskID call BIS_fnc_taskCompleted || !(alive _boxe)};
+        if !(_destroy_taskID call BIS_fnc_taskState isEqualTo "CANCELED") then {
+            [_destroy_taskID, "SUCCEEDED"] call BIS_fnc_taskSetState;
+            private _fx = "test_EmptyObjectForSmoke" createVehicle _pos;
+            _fx setPos _pos;
+            sleep 120;
+            _fx call CBA_fnc_deleteEntity;
+        };
     };
     _boxes pushBack _boxe;
 };
 
-waitUntil {sleep 5; (_taskID call BIS_fnc_taskCompleted || (_boxes select {alive _x} isEqualTo []))};
+waitUntil {sleep 5; (
+    _taskID_array findIf {_x call BIS_fnc_taskState isEqualTo "CANCELED"} > -1 ||
+    (_boxes select {alive _x} isEqualTo []))
+};
 
-[_markers, _boxes] call btc_fnc_delete;
+[[], _boxes] call btc_fnc_delete;
 
-if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {};
+if (_taskID_array findIf {_x call BIS_fnc_taskState isEqualTo "CANCELED"} > -1) exitWith {
+    {
+        if !(_x call BIS_fnc_taskCompleted) then {
+            [_x, "CANCELED"] call BIS_fnc_taskSetState;
+        };
+    } forEach (_taskID_array + [_taskID]);
+};
 
 80 call btc_fnc_rep_change;
 

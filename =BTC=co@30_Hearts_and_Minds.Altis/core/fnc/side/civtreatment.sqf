@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_side_civtreatment;
+        [] spawn btc_fnc_side_civtreatment;
     (end)
 
 Author:
@@ -44,14 +44,6 @@ if ( _r < 1)    then {
     _pos = selectRandom ((selectRandom _houses) buildingPos -1);
     _vehpos = [_pos select 0, _pos select 1, (_pos select 2) + 0.1];
 };
-
-private _jip = [_taskID, 8, _pos, _city getVariable "name"] call btc_fnc_task_create;
-
-//// Create marker \\\\
-private _marker = createMarker [format ["sm_2_%1", _pos], _pos];
-_marker setMarkerType "hd_flag";
-[_marker, "STR_BTC_HAM_SIDE_CIVTREAT_MRK"] remoteExecCall ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker]; //Civil need help
-_marker setMarkerSize [0.6, 0.6];
 
 //// Create civ on _pos \\\\
 private _veh = objNull;
@@ -88,6 +80,8 @@ _unit setPosATL _pos;
 _unit setUnitPos "DOWN";
 [_group] call btc_fnc_civ_unit_create;
 
+private _jip = [_taskID, 8, _unit, _city getVariable "name"] call btc_fnc_task_create;
+
 sleep 1;
 
 waitUntil {sleep 5; (_taskID call BIS_fnc_taskCompleted || !(playableUnits inAreaArray [getPosWorld _unit, 5000, 5000] isEqualTo []))};
@@ -101,7 +95,7 @@ waitUntil {sleep 5; (_taskID call BIS_fnc_taskCompleted || !alive _unit || {_uni
 
 if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {};
 if !(alive _unit) exitWith {
-    [_taskID, "FAIL"] call BIS_fnc_taskSetState;
+    [_taskID, "FAILED"] call BIS_fnc_taskSetState;
 };
 
 10 call btc_fnc_rep_change;

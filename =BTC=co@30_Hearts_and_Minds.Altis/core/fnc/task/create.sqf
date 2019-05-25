@@ -27,7 +27,7 @@ params [
     ["_task_ids", "btc_dft", ["", []]],
     ["_description", 0, [0]],
     ["_destination", objNull, [objNull, []]],
-    ["_location", "", [""]],
+    ["_location", "", ["", []]],
     ["_showNotification", true, [true]]
 ];
 

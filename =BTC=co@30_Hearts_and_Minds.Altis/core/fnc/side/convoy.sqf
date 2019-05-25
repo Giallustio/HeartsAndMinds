@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_side_convoy;
+        [] spawn btc_fnc_side_convoy;
     (end)
 
 Author:
@@ -81,9 +81,9 @@ for "_i" from 0 to (2 + round random 2) do {
     _pos1 = getPos _road;
 };
 
-[_group, _pos2, 0, "MOVE", "SAFE", "RED", "LIMITED", "COLUMN", format ["['%1', 'FAIL'] call BIS_fnc_taskSetState;", _taskID], [0, 0, 0], _radius_x/2] call CBA_fnc_addWaypoint;
+[_group, _pos2, 0, "MOVE", "SAFE", "RED", "LIMITED", "COLUMN", format ["['%1', 'FAILED'] call BIS_fnc_taskSetState;", _taskID], [0, 0, 0], _radius_x/2] call CBA_fnc_addWaypoint;
 
-[12] remoteExecCall ["btc_fnc_show_hint", -2];
+[12] remoteExecCall ["btc_fnc_show_hint", [0, -2] select isDedicated];
 
 waitUntil {sleep 5; (_taskID call BIS_fnc_taskCompleted || (_vehs select {canMove _x} isEqualTo []) || (_group isEqualTo grpNull))};
 
@@ -91,7 +91,7 @@ if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {
     [_markers, _vehs + [_group]] call btc_fnc_delete;
 };
 
-if (_taskID call BIS_fnc_taskState isEqualTo "FAIL") exitWith {
+if (_taskID call BIS_fnc_taskState isEqualTo "FAILED") exitWith {
     _group setVariable ["no_cache", false];
     {
         private _group = createGroup btc_enemy_side;
