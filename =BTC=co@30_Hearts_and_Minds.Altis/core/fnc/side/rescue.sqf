@@ -60,7 +60,6 @@ private _bank = if (random 1 > 0.5) then {
 };
 [_heli, _pitch, _bank] call BIS_fnc_setPitchBank;
 private _fx = createVehicle ["test_EmptyObjectForSmoke", _pos, [], 0, "CAN_COLLIDE"];
-_fx attachTo [_heli, [0.5, -2, 1]];
 
 private _group = createGroup btc_player_side;
 _group setVariable ["no_cache", true];
