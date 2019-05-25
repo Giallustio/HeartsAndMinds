@@ -50,4 +50,7 @@ class CfgTaskTypes {
     class Box {
         icon = \A3\ui_f\data\igui\cfg\simpleTasks\types\box_ca.paa;
     };
+    class Surrender {
+        icon = \z\ace\addons\captives\UI\Surrender_ca.paa;
+    };
 };

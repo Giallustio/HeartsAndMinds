@@ -167,6 +167,7 @@ if (isServer) then {
 
     //TASK
     btc_fnc_task_create = compile preprocessFileLineNumbers "core\fnc\task\create.sqf";
+    btc_fnc_task_setState = compile preprocessFileLineNumbers "core\fnc\task\setState.sqf";
 };
 
 /////////////////////SERVER AND HEADLESS\\\\\\\\\\\\\\\\\\\\\

@@ -202,7 +202,7 @@ switch (_description) do {
             "Surrender the officer",
             "Surrender the officer"
         ];
-        _type = "destroy";
+        _type = "surrender";
     };
 };
 

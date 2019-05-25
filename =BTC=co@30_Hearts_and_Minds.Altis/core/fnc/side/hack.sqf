@@ -91,15 +91,13 @@ private _rocket = createVehicle ["ace_rearm_Missile_AGM_02_F", [_x, _y, _altitud
 private _fx = createVehicle ["test_EmptyObjectForSmoke", [_x, _y, _altitude], [], 0, "CAN_COLLIDE"];
 _fx attachTo [_rocket, [0, 0, 0]];
 
+private _allTasks = [_taskID, _terminal_taskID, _defend_taskID];
+
 [[], [_rocket, _terminal, _fx]] call btc_fnc_delete;
 if !(_city getVariable ["active", false]) exitWith {
-    {
-        [_x, "FAILED"] call BIS_fnc_taskSetState;
-    } forEach [_taskID, _find_taskID];
+    [_allTasks, "FAILED"] call btc_fnc_task_setState;
 };
 
 80 call btc_fnc_rep_change;
 
-{
-    [_x, "SUCCEEDED"] call BIS_fnc_taskSetState;
-} forEach [_taskID, _find_taskID];
+[_allTasks, "SUCCEEDED"] call btc_fnc_task_setState;

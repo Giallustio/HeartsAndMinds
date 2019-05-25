@@ -111,14 +111,12 @@ waitUntil {sleep 5; (
 
 [[], _boxes] call btc_fnc_delete;
 
+private _allTasks = _taskID_array + [_taskID];
+
 if (_taskID_array findIf {_x call BIS_fnc_taskState isEqualTo "CANCELED"} > -1) exitWith {
-    {
-        if !(_x call BIS_fnc_taskCompleted) then {
-            [_x, "CANCELED"] call BIS_fnc_taskSetState;
-        };
-    } forEach (_taskID_array + [_taskID]);
+    [_allTasks, "CANCELED"] call btc_fnc_task_setState;
 };
 
 80 call btc_fnc_rep_change;
 
-[_taskID, "SUCCEEDED"] call BIS_fnc_taskSetState;
+[_allTasks, "SUCCEEDED"] call btc_fnc_task_setState;

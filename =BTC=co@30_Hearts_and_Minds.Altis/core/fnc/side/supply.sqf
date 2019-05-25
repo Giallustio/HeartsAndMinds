@@ -101,21 +101,19 @@ if !(_move_taskID call BIS_fnc_taskState isEqualTo "CANCELED") then {
 
 [getPos _city, _pos getPos [10, _direction_composition]] call btc_fnc_civ_evacuate;
 
-waitUntil {sleep 5; (_move_taskID call BIS_fnc_taskCompleted || _drop_taskID call BIS_fnc_taskCompleted || (count (nearestObjects [_pos, _food + _water, 30]) >= 2))};
+waitUntil {sleep 5; (_move_taskID call BIS_fnc_taskState isEqualTo "CANCELED" || _drop_taskID call BIS_fnc_taskCompleted || (count (nearestObjects [_pos, _food + _water, 30]) >= 2))};
+
+private _allTasks = [_move_taskID, _taskID, _drop_taskID];
 
 if (_drop_taskID call BIS_fnc_taskState isEqualTo "CANCELED" ||
     _move_taskID call BIS_fnc_taskState isEqualTo "CANCELED"
 ) exitWith {
-    {
-        [_x, "CANCELED"] call BIS_fnc_taskSetState;
-    } forEach [_move_taskID, _taskID, _drop_taskID];
+    [_allTasks, "CANCELED"] call btc_fnc_task_setState;
     [[_area], _composition_objects] call btc_fnc_delete;
 };
 
 50 call btc_fnc_rep_change;
 
-{
-    [_x, "SUCCEEDED"] call BIS_fnc_taskSetState;
-} forEach [_taskID, _drop_taskID];
+[_allTasks, "SUCCEEDED"] call btc_fnc_task_setState;
 
 [[_area], _composition_objects + nearestObjects [_pos, _food + _water + [btc_supplies_cargo], 30]] call btc_fnc_delete;

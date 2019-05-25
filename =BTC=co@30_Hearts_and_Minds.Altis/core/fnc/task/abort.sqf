@@ -34,4 +34,4 @@ if (_task_id in ["btc_m", "btc_dty", "btc_dft"]) exitWith {
     "Isn't a side mission, can't abort" call CBA_fnc_notify;
 };
 
-[_task_id, "CANCELED"] remoteExecCall ["BIS_fnc_taskSetState", 2]
+[_task_id, "CANCELED"] remoteExecCall ["BIS_fnc_taskSetState", 2];

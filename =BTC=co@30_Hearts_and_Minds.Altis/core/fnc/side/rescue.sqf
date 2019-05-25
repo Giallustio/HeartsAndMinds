@@ -89,27 +89,19 @@ private _triggers = [];
 
 waitUntil {sleep 5; (_find_taskID call BIS_fnc_taskState isEqualTo "CANCELED" || _back_taskID call BIS_fnc_taskCompleted || (_units select {_x distance btc_create_object_point > 100} isEqualTo []) || (_units select {alive _x} isEqualTo []))};
 
+private _allTasks = [_taskID, _back_taskID, _find_taskID];
+
 [[], [_heli, _fx, _group] + _triggers] call btc_fnc_delete;
 
 if (_find_taskID call BIS_fnc_taskState isEqualTo "CANCELED" ||
     _back_taskID call BIS_fnc_taskState isEqualTo "CANCELED"
 ) exitWith {
-    {
-        if !(_x call BIS_fnc_taskCompleted) then {
-            [_x, "CANCELED"] call BIS_fnc_taskSetState;
-        };
-    } forEach [_taskID, _back_taskID, _find_taskID];
+    [_allTasks, "CANCELED"] call btc_fnc_task_setState;
 };
 if (_units select {alive _x} isEqualTo []) exitWith {
-    {
-        if !(_x call BIS_fnc_taskCompleted) then {
-            [_x, "FAILED"] call BIS_fnc_taskSetState;
-        };
-    } forEach [_taskID, _back_taskID, _find_taskID];
+    [_allTasks, "FAILED"] call btc_fnc_task_setState;
 };
 
 50 call btc_fnc_rep_change;
 
-{
-    [_x, "SUCCEEDED"] call BIS_fnc_taskSetState;
-} forEach [_taskID, _back_taskID];
+[_allTasks, "SUCCEEDED"] call btc_fnc_task_setState;
