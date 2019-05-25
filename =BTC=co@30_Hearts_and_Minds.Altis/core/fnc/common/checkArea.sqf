@@ -7,7 +7,7 @@ Description:
 
 Parameters:
     _create_obj - Object to check around. [Object]
-    _distance - Distance aroun the object. [Number]
+    _distance - Distance around the object. [Number]
 
 Returns:
     _isNotClear - Is not clear. [Boolean]
