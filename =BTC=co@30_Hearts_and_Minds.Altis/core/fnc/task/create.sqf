@@ -24,76 +24,12 @@ Author:
 ---------------------------------------------------------------------------- */
 
 params [
-    ["_task_ids", "btc_dft", [""]],
-    ["_description", "missionDefeat", [""]],
-    ["_destination", [], [objNull, []]],
-    ["_location", "", [""]]
+    ["_task_ids", "btc_dft", ["", []]],
+    ["_description", 0, [0]],
+    ["_destination", objNull, [objNull, []]],
+    ["_location", "", [""]],
+    ["_showNotification", true, [true]]
 ];
 
-_task_ids = [_task_ids];
-private _type = "";
-private _showNotification = true;
-
-switch (_description) do {
-    case "missionMain" : {
-        _showNotification = false;
-        _type = "move";
-    };
-    case "missionDefeat" : {
-        _task_ids pushBack "btc_m";
-        _type = "kill";
-    };
-    case "missionDestroy" : {
-        _task_ids pushBack "btc_m";
-        _type = "destroy";
-    };
-    case "missionSeize" : {
-        _task_ids pushBack "btc_m";
-        _type = "move";
-    };
-    case "sideSupplies" : {
-        _type = "container";
-    };
-    case "sideMines" : {
-        _type = "mine";
-    };
-    case "sideVehicle" : {
-        _type = "repair";
-    };
-    case "sideConquer" : {
-        _type = "attack";
-    };
-    case "sideTower" : {
-        _type = "destroy";
-    };
-    case "sideCivTreat" : {
-        _type = "heal";
-    };
-    case "sideCheckpoint" : {
-        _type = "destroy";
-    };
-     case "sideCivTreatBoat" : {
-        _type = "heal";
-    };
-     case "sideUnderwater" : {
-        _type = "destroy";
-    };
-     case "sideConvoy" : {
-        _type = "attack";
-    };
-     case "sideResc" : {
-        _type = "heli";
-    };
-     case "sideCapOff" : {
-        _type = "run";
-    };
-     case "sideHostage" : {
-        _type = "exit";
-    };
-     case "sideHack" : {
-        _type = "defend";
-    };
-};
-
 [btc_player_side, _task_ids] call BIS_fnc_taskCreate;
-[_task_ids, btc_player_side, _description, _destination, 2, _showNotification, false, _type] remoteExecCall ["btc_fnc_task_setDescription", [0, -2] select isDedicated, true];
+[_task_ids, btc_player_side, _description, _destination, 2, _showNotification, _location] remoteExecCall ["btc_fnc_task_setDescription", [0, -2] select isDedicated, true];

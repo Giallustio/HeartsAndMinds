@@ -135,7 +135,7 @@
                 <Chinesesimp>支线任务</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_DOC_SIDEMISSION_TEXT">
-                <Original>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\whiteboard_ca.paa' width='20' height='20'/&gt; Side missions are really useful to raise your reputation level.&lt;br/&gt; A side mission can be requested by the officer with his self interaction menu.&lt;br/&gt; If you don't want to complete a task, you can always abort it with the self interaction menu.</Original>
+                <Original>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\whiteboard_ca.paa' width='20' height='20'/&gt; Side missions are really useful to raise your reputation level.&lt;br/&gt; A side mission can be requested by the officer with his self interaction menu.&lt;br/&gt; If you don't want to complete a task, assigned it to you and abort it with the self interaction menu.</Original>
                 <Spanish>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\whiteboard_ca.paa' width='20' height='20'/&gt; Las misiones secundarias son realmente útiles para elevar tu nivel de reputación.&lt;br/&gt; Una misión secundaria puede ser solicitada por el oficial con su menú de auto-interacción..&lt;br/&gt; Si no desea completar una tarea, siempre puede abortarla con el menú de auto-interacción.</Spanish>
                 <German>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\whiteboard_ca.paa' width='20' height='20'/&gt; Nebenaufgaben sind sehr nütlich um das Ansehen in der Bevölkerung zu erhöhen.&lt;br/&gt;Diese Aufgaben können vom Offizier über das Eigen-Interaktionsmenü angefordert werden.&lt;br/&gt;Kann man eine Mission aus verschiedenen Gründen nicht abgeschlossen werden, so kann der Offizier sie jederzeit über das Eigen-Interaktionsmenü abbrechen.</German>
                 <Portuguese>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\whiteboard_ca.paa' width='20' height='20'/&gt; Missões secundárias são úteis para elevar o nível de reputação.&lt;br/&gt; Uma missão secundária pode ser solicitada pelo Oficial usando menu de interação pessoal.&lt;br/&gt; Se você não quiser concluir uma tarefa, poderá sempre abortá-la usando o menu de interação.</Portuguese>
@@ -726,22 +726,6 @@
         </Container>
     </Package>
     <Package name="Side Missions">
-        <Container name="Basics">
-            <Key ID="STR_BTC_HAM_SIDE_BASIC_WIN_TITLE">
-                <Original>Side mission Accomplished!</Original>
-                <Spanish>Misión paralela Cumplida!</Spanish>
-                <German>Nebenmission erfolgreich!</German>
-                <Portuguese>Missão secundária Cumprida!</Portuguese>
-                <Chinesesimp>支线任务完成!</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_SIDE_BASIC_LOSE_TITLE">
-                <Original>Side mission failed!</Original>
-                <Spanish>Misión paralela Fallida!</Spanish>
-                <German>Nebenmission fehlschlagen!</German>
-                <Portuguese>Missão secundária falhou!</Portuguese>
-                <Chinesesimp>支线任务失败!</Chinesesimp>
-            </Key>
-        </Container>
         <Container name="Capture officer">
             <Key ID="STR_BTC_HAM_SIDE_CAPOFF_TITLE">
                 <Original>Capture commander in concealed convoy</Original>
@@ -756,20 +740,6 @@
                 <German>Ein feindlicher Offizier ist in einem getarnten Konvoi unterwegs. Finden und bringen Sie ihn in die Basis für weitere Befragungen. Er ist einer der Hauptverantwortlichen für die Terrorisierung der lokalen Bevölkerung!</German>
                 <Portuguese>Um Oficial está viajando em um comboio camuflado. Encontre e traga-o para base para interrogatório. Ele é um dos principais responsáveis por aterrorizar a população local!</Portuguese>
                 <Chinesesimp>一名敌军军官已经伪装起来, 随同车队进行转移。找到他并把他带回基地, 进行进一步的审问。 他是对当地恐怖活动负责的主要人物之一!</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_SIDE_CAPOFF_FAILED_TEXT">
-                <Original>The officer was not captured</Original>
-                <Spanish>El oficial no fue capturado</Spanish>
-                <German>Der Offizier wurde nicht gefangen genommen</German>
-                <Portuguese>O oficial não foi capturado</Portuguese>
-                <Chinesesimp>敌方军官未被抓捕</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_SIDE_CAPOFF_WIN_TEXT">
-                <Original>The officer has been captured!</Original>
-                <Spanish>¡El oficial ha sido capturado!</Spanish>
-                <German>Der Offizier wurde erfolgreich gefangen genommen!</German>
-                <Portuguese>O Oficial foi capturado!</Portuguese>
-                <Chinesesimp>敌方军官已被抓捕!</Chinesesimp>
             </Key>
         </Container>
         <Container name="Checkpoint">
@@ -787,20 +757,6 @@
                 <Portuguese>Os pontos de verificação foram localizados em %1. A população local está pedindo sua ajuda para destruidir todas as caixas de munições em todos os pontos de verificação!</Portuguese>
                 <Chinesesimp>在 %1 地区发现检查站。当地居民请求您摧毁武器箱和相应的检查站!</Chinesesimp>
             </Key>
-            <Key ID="STR_BTC_HAM_SIDE_CHECKPOINT_FAILED_TEXT">
-                <Original>Checkpoints were not destroyed</Original>
-                <Spanish>Los puestos de control no fueron destruidos</Spanish>
-                <German>Die Kontrollpunkte wurden nicht zerstört</German>
-                <Portuguese>Pontos de Verificação não foram destruídos</Portuguese>
-                <Chinesesimp>检查站未摧毁</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_SIDE_CHECKPOINT_WIN_TEXT">
-                <Original>Checkpoints have been destroyed!</Original>
-                <Spanish>¡Los puestos de control han sido destruidos!</Spanish>
-                <German>Die Kontrollpunkte wurden zerstört!</German>
-                <Portuguese>Pontos de Verificação foram destruídos!</Portuguese>
-                <Chinesesimp>检查站已被摧毁!</Chinesesimp>
-            </Key>
         </Container>
         <Container name="Civ treatment boat">
             <Key ID="STR_BTC_HAM_SIDE_CIVTREATBOAT_TITLE">
@@ -816,20 +772,6 @@
                 <German>Ein Zivilist aus %1 hat einen Notruf abgesetzt. Behandeln Sie ihn umd warten Sie darauf, dass sich sein Zustand stabilisiert.</German>
                 <Portuguese>Um civil fez uma chamada médica em %1. Trate-o e aguarde a estabilização dele.</Portuguese>
                 <Chinesesimp>一位当地居民正在 %1 地区呼叫医疗支援, 治疗并护理患者, 直至其伤势稳定。</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_SIDE_CIVTREATBOAT_FAILED_TEXT">
-                <Original>The patient was not stabilized</Original>
-                <Spanish>El paciente no fue estabilizado</Spanish>
-                <German>Der Patient wurde nicht rechtzeitig stabilisiert</German>
-                <Portuguese>O paciente não foi estabilizado a tempo</Portuguese>
-                <Chinesesimp>患者的伤势未稳定</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_SIDE_CIVTREATBOAT_WIN_TEXT">
-                <Original>The civilian has been stabilized!</Original>
-                <Spanish>¡El paciente fue estabilizado!</Spanish>
-                <German>Der Patient wurde erfolgreich behandelt!</German>
-                <Portuguese>O paciente foi estabilizado com sucesso!</Portuguese>
-                <Chinesesimp>平民的伤势已经稳定!</Chinesesimp>
             </Key>
         </Container>
         <Container name="Civ treatment">
@@ -853,20 +795,6 @@
                 <German>Ein Zivilist aus %1 hat einen Notruf abgesetzt. Behandeln Sie ihn umd warten Sie darauf, dass sich sein Zustand stabilisiert </German>
                 <Portuguese>Um civil fez uma chamada médica em %1. Trate-o e aguarde a estabilização dele.</Portuguese>
                 <Chinesesimp>一位平民正在 %1 地区呼叫医疗支援, 治疗并护理患者, 直至其伤势稳定。</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_SIDE_CIVTREAT_FAILED_TEXT">
-                <Original>The patient was not stabilized</Original>
-                <Spanish>El paciente no fue estabilizado</Spanish>
-                <German>Der Patient wurde nicht rechtzeitig stabilisiert</German>
-                <Portuguese>O paciente não foi estabilizado a tempo</Portuguese>
-                <Chinesesimp>患者的伤势未稳定</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_SIDE_CIVTREAT_WIN_TEXT">
-                <Original>The civilian has been stabilized!</Original>
-                <Spanish>¡El paciente fue estabilizado!</Spanish>
-                <German>Der Patient wurde erfolgreich behandelt!</German>
-                <Portuguese>O paciente foi estabilizado com sucesso!</Portuguese>
-                <Chinesesimp>平民的伤势已经稳定!</Chinesesimp>
             </Key>
         </Container>
         <Container name="Convoy">
@@ -898,20 +826,6 @@
                 <Portuguese>Um comboio armado inimigo vai atacar %1. Proteja a população local dentruindo o comboio antes que ele chegue</Portuguese>
                 <Chinesesimp>一队Oplitas武装车队将要攻打 %1。当地居民请求在其抵达之前将其摧毁!</Chinesesimp>
             </Key>
-            <Key ID="STR_BTC_HAM_SIDE_CONVOY_FAILED_TEXT">
-                <Original>The armed convoy was not destroyed</Original>
-                <Spanish>El convoy armado no fue destruido</Spanish>
-                <German>Der bewaffnete Konvoi wurde nicht zerstört!</German>
-                <Portuguese>O comboio armado não foi destruído!</Portuguese>
-                <Chinesesimp>武装车队未被摧毁</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_SIDE_CONVOY_WIN_TEXT">
-                <Original>The armed convoy has been destroyed!</Original>
-                <Spanish>¡El convoy armado ha sido destruido!</Spanish>
-                <German>Der bewaffnete Konvoi ist zerstört worden!</German>
-                <Portuguese>O comboio armado foi destruído com sucesso!</Portuguese>
-                <Chinesesimp>武装车队已被摧毁!</Chinesesimp>
-            </Key>
         </Container>
         <Container name="Hack">
             <Key ID="STR_BTC_HAM_SIDE_HACK_STARTCHAT">
@@ -942,20 +856,6 @@
                 <Portuguese>Hackei o terminal de protótipo de míssil em %1. Defenda sua posição até que o processo seja concluído!</Portuguese>
                 <Chinesesimp>在 %1 地区入侵一枚带有控制终端的导弹原型的系统。守住你的位置, 直到系统入侵完成!</Chinesesimp>
             </Key>
-            <Key ID="STR_BTC_HAM_SIDE_HACK_FAILED_TEXT">
-                <Original>The missile was not hacked</Original>
-                <Spanish>El misil no fue hackeado</Spanish>
-                <German>Die Rakete wurde nicht gehackt</German>
-                <Portuguese>O míssil não foi hackeado</Portuguese>
-                <Chinesesimp>导弹系统未被入侵</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_SIDE_HACK_WIN_TEXT">
-                <Original>The missile has been hacked!</Original>
-                <Spanish>El misil fue hackeado!</Spanish>
-                <German>Die Rakete wurde erfolgreich gehackt!</German>
-                <Portuguese>O míssil foi hackeado com sucesso!</Portuguese>
-                <Chinesesimp>导弹系统已被入侵!</Chinesesimp>
-            </Key>
         </Container>
         <Container name="Hostage">
             <Key ID="STR_BTC_HAM_SIDE_HOSTAGE_MRK">
@@ -979,20 +879,6 @@
                 <Portuguese>Liberte o civil refém em %1 das mãos dos terroristas. A população local está pedindo sua ajuda!</Portuguese>
                 <Chinesesimp>在 %1 地区解救人质。当地居民正在请求你的帮助!</Chinesesimp>
             </Key>
-            <Key ID="STR_BTC_HAM_SIDE_HOSTAGE_FAILED_TEXT">
-                <Original>The hostage was not liberated</Original>
-                <Spanish>El rehén no fue liberado</Spanish>
-                <German>Die Geisel wurde nicht befreit</German>
-                <Portuguese>O refém não foi libertado</Portuguese>
-                <Chinesesimp>人质未被解救</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_SIDE_HOSTAGE_WIN_TEXT">
-                <Original>The hostage has been liberated!</Original>
-                <Spanish>El rehén fue liberado!</Spanish>
-                <German>Die Geisel wurde befreit!</German>
-                <Portuguese>O refém foi libertado com sucesso!</Portuguese>
-                <Chinesesimp>人质已重获自由!</Chinesesimp>
-            </Key>
         </Container>
         <Container name="Mines">
             <Key ID="STR_BTC_HAM_SIDE_MINES_TITLE">
@@ -1008,20 +894,6 @@
                 <German>Es gibt ein Minenfeld in der Nähe von %1, räumen Sie es!</German>
                 <Portuguese>Campo minado próximo a %1. Limpe-os!</Portuguese>
                 <Chinesesimp>%1 附近有雷区, 把它们清除掉!</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_SIDE_MINES_FAILED_TEXT">
-                <Original>The minefield was not cleared</Original>
-                <Spanish>El campo minado no fue despejado</Spanish>
-                <German>Das Minenfeld wurde nicht geräumt</German>
-                <Portuguese>O campo minado não foi limpo</Portuguese>
-                <Chinesesimp>雷区未清除</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_SIDE_MINES_WIN_TEXT">
-                <Original>The minefield has been cleared</Original>
-                <Spanish>El campo minado fue despejado por completo!</Spanish>
-                <German>Alle Minen wurden entschärft</German>
-                <Portuguese>O campo minado foi limpo com sucesso!</Portuguese>
-                <Chinesesimp>雷区已被清除!</Chinesesimp>
             </Key>
         </Container>
         <Container name="Rescue">
@@ -1039,20 +911,6 @@
                 <Portuguese>MAYDAY-MAYDAY, um piloto caiu com seu helicóptero próximo a %1. O comando solicitou sua ajuda para resgatá-lo e trazê-lo de volta a base!</Portuguese>
                 <Chinesesimp>MAYDAY-MAYDAY, 一架直升机在 %1 附近坠毁。指挥部正在请求你的帮助。前去搜救这名飞行员, 并将其带回基地!</Chinesesimp>
             </Key>
-            <Key ID="STR_BTC_HAM_SIDE_RESC_FAILED_TEXT">
-                <Original>The pilot was not rescued</Original>
-                <Spanish>El piloto no fue rescatado</Spanish>
-                <German>Der Pilot wurde nicht gerettet</German>
-                <Portuguese>O piloto não foi resgatado</Portuguese>
-                <Chinesesimp>飞行员未获救</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_SIDE_RESC_WIN_TEXT">
-                <Original>The pilot has been rescued!</Original>
-                <Spanish>El piloto fue rescatado!</Spanish>
-                <German>Der Pilot wurde gerettet!</German>
-                <Portuguese>O piloto foi resgatado com sucesso!</Portuguese>
-                <Chinesesimp>飞行员已获救!</Chinesesimp>
-            </Key>
         </Container>
         <Container name="Supply">
             <Key ID="STR_BTC_HAM_SIDE_SUPPLIES_TITLE">
@@ -1069,20 +927,6 @@
                 <Portuguese>O população de %1 estão passando fome! Forneça suprimentos! Os suprimentos podem ser solicitados no ponto logístico.</Portuguese>
                 <Chinesesimp>%1 的居民正在挨饿, 在补给点生成一些救援物资并带给他们!</Chinesesimp>
             </Key>
-            <Key ID="STR_BTC_HAM_SIDE_SUPPLIES_FAILED_TEXT">
-                <Original>Supplies were not delivered</Original>
-                <Spanish>Los suministros no fueron entregados</Spanish>
-                <German>Die Lieferungen haben ihr Ziel nicht erreicht</German>
-                <Portuguese>Os suprimentos não foram entregues</Portuguese>
-                <Chinesesimp>救援物资未送达</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_SIDE_SUPPLIES_WIN_TEXT">
-                <Original>Supplies have been delivered</Original>
-                <Spanish>Los suministros han sido entregados</Spanish>
-                <German>Lieferungen wurden geliefert</German>
-                <Portuguese>Os suprimentos foram entregues!</Portuguese>
-                <Chinesesimp>救援物资已分发</Chinesesimp>
-            </Key>
         </Container>
         <Container name="Tower">
             <Key ID="STR_BTC_HAM_SIDE_TOWER_TITLE">
@@ -1098,18 +942,6 @@
                 <German>Ein Funkturm der Oplitas befindet sich in %1. Die lokale Bevölkerung bittet darum diesen zu zerstören! (Nutzen Sie die M183 Sprengladungen)</German>
                 <Portuguese>A torre de comunicação inimiga foi localizada em %1. A população local está pedindo sua ajuda para destruí-las. (Use a mochila de explosivos M183)</Portuguese>
                 <Chinesesimp>在 %1 地区发现了一座 Oplitas 通讯信号塔。当地居民请求您将其摧毁。(使用一个M183炸药包)</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_SIDE_TOWER_FAILED_TEXT">
-                <Original>The tower was not destroyed</Original>
-                <German>Der Funkturm wurde nicht zerstört</German>
-                <Portuguese>A torre não foi destruída</Portuguese>
-                <Chinesesimp>信号塔未摧毁</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_SIDE_TOWER_WIN_TEXT">
-                <Original>The tower has been destroyed!</Original>
-                <German>Der Funkturm wurde zerstört!</German>
-                <Portuguese>A torre foi destruída com sucesso!</Portuguese>
-                <Chinesesimp>信号塔已摧毁!</Chinesesimp>
             </Key>
         </Container>
         <Container name="Underwater generator">
@@ -1134,29 +966,8 @@
                 <Portuguese>O gerador subaquático foi localizado em %1. A população local está pedindo sua ajuda para destruí-lo!</Portuguese>
                 <Chinesesimp>在 %1 地区发现了一部水下发电机。当地居民请求您将其摧毁。</Chinesesimp>
             </Key>
-            <Key ID="STR_BTC_HAM_SIDE_UNDERWATER_FAILED_TEXT">
-                <Original>The underwater generator was not destroyed</Original>
-                <Spanish>El generador submarino no fue destruido</Spanish>
-                <German>Der Unterwassergenerator wurde nicht zerstört</German>
-                <Portuguese>O gerador subaquático não foi destruído</Portuguese>
-                <Chinesesimp>水下发电机未被摧毁</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_SIDE_UNDERWATER_WIN_TEXT">
-                <Original>The underwater generator has been destroyed!</Original>
-                <Spanish>¡El generador submarino ha sido destruido!</Spanish>
-                <German>Der Generator wurde zerstört!</German>
-                <Portuguese>O gerador subaquático foi destruído com sucesso!</Portuguese>
-                <Chinesesimp>水下发电机已被摧毁!</Chinesesimp>
-            </Key>
         </Container>
         <Container name="Vehicle">
-            <Key ID="STR_BTC_HAM_SIDE_VEHICLE_MRK">
-                <Original>Vehicle needs assistance</Original>
-                <Spanish>Vehículo necesita asistencia</Spanish>
-                <German>Fahrzeug braucht Unterstützung</German>
-                <Portuguese>Veículo necessitando de assistência</Portuguese>
-                <Chinesesimp>载具需要援助</Chinesesimp>
-            </Key>
             <Key ID="STR_BTC_HAM_SIDE_VEHICLE_TITLE">
                 <Original>Vehicle needs assistance near %1</Original>
                 <Spanish>Vehículo necesita asistencia cerca de %1</Spanish>
@@ -1170,18 +981,6 @@
                 <German>Ein Fahrzeug wurde durch eine IED beschädigt und braucht nun Unterstützung in der Nähe von %1! Repariere Sie es!</German>
                 <Portuguese>Um veículo foi danificado por um IED precisa de reparo em %1! Conserte-o!</Portuguese>
                 <Chinesesimp>一辆被IED损坏的载具在 %1 附近等待援助! 修好它!</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_SIDE_VEHICLE_FAILED_TEXT">
-                <Original>The vehicle was not repaired</Original>
-                <German>Das Fahrzeug wurde nicht repariert</German>
-                <Portuguese>O veículo não foi reparado</Portuguese>
-                <Chinesesimp>载具未被修复</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_SIDE_VEHICLE_WIN_TEXT">
-                <Original>The vehicle has been repaired</Original>
-                <German>Die Reparatur war erfolgreich</German>
-                <Portuguese>O veículo foi reparado com sucesso</Portuguese>
-                <Chinesesimp>载具已被修复</Chinesesimp>
             </Key>
         </Container>
         <Container name="Conquer">
@@ -1198,20 +997,6 @@
                 <German>%1 wurde von der Oplitas erobert! Die lokale Bevölkerung wird terrorisiert, greifen Sie ein!</German>
                 <Portuguese>Os inimigos estão conquistando a cidade %1. A população local está sendo aterrorizada. Ajude-os!</Portuguese>
                 <Chinesesimp>%1 已被Oplitas占领! 当地居民受到恐吓, 他们正在请求帮助!</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_SIDE_CONQUER_FAILED_TEXT">
-                <Original>The city was not conquered</Original>
-                <Spanish>La ciudad no fue liberada</Spanish>
-                <German>Die Stadt wurde nicht erobert</German>
-                <Portuguese>A cidade não foi limpa</Portuguese>
-                <Chinesesimp>该城市未被夺回</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_SIDE_CONQUER_WIN_TEXT">
-                <Original>The city has been cleared!</Original>
-                <Spanish>La ciudad ha sido liberada!</Spanish>
-                <German>Die Stadt wurde erfolgreich gesichert!</German>
-                <Portuguese>A cidade foi recuperada com sucesso! </Portuguese>
-                <Chinesesimp>该城市已经安全!</Chinesesimp>
             </Key>
         </Container>
     </Package>
@@ -1332,7 +1117,7 @@
         </Container>
         <Container name="Action(ACE): Side missions">
             <Key ID="STR_BTC_HAM_ACTION_SIDEMISSION_ABORT">
-                <Original>Abort</Original>
+                <Original>Abort assigned</Original>
                 <Spanish>Abortar</Spanish>
                 <German>Abbrechen</German>
                 <Portuguese>Abortar</Portuguese>

@@ -215,13 +215,6 @@ btc_fnc_mil_ammoUsage = compile preprocessFileLineNumbers "core\fnc\mil\ammoUsag
 //ARSENAL
 btc_fnc_arsenal_ammoUsage = compile preprocessFileLineNumbers "core\fnc\arsenal\ammoUsage.sqf";
 
-//TASK
-btc_fnc_task_fail = compile preprocessFileLineNumbers "core\fnc\task\fail.sqf";
-btc_fnc_task_set_done = compile preprocessFileLineNumbers "core\fnc\task\set_done.sqf";
-
-//SIDE
-btc_fnc_side_abort = compile preprocessFileLineNumbers "core\fnc\side\abort.sqf";
-
 /////////////////////CLIENT\\\\\\\\\\\\\\\\\\\\\
 if (!isDedicated) then {
     //COMMON
@@ -311,4 +304,5 @@ if (!isDedicated) then {
 
     //TASK
     btc_fnc_task_setDescription = compile preprocessFileLineNumbers "core\fnc\task\setDescription.sqf";
+    btc_fnc_task_abort = compile preprocessFileLineNumbers "core\fnc\task\abort.sqf";
 };

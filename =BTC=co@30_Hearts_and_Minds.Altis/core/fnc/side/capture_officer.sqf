@@ -6,6 +6,7 @@ Description:
     Thanks DAP for inspiration.
 
 Parameters:
+    _taskID - unique task ID. [String]
 
 Returns:
 
@@ -18,6 +19,10 @@ Author:
     Giallustio
 
 ---------------------------------------------------------------------------- */
+
+params [
+    ["_taskID", "btc_side", [""]]
+];
 
 //// Choose two Cities \\\\
 private _usefuls = btc_city_all select {!((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"]) && !(_x getVariable ["occupied", false])};
@@ -39,14 +44,7 @@ private _road = selectRandom _roads;
 private _pos1 = getPos _road;
 private _pos2 = getPos _city2;
 
-btc_side_aborted = false;
-btc_side_done = false;
-btc_side_failed = false;
-btc_side_assigned = true;
-publicVariable "btc_side_assigned";
-
-btc_side_jip_data = [14, _pos2, _city2 getVariable "name"];
-btc_side_jip_data remoteExecCall ["btc_fnc_task_create", 0];
+private _jip = [_taskID, 14, _pos2, _city2 getVariable "name"] call btc_fnc_task_create;
 
 //// Create markers \\\\
 private _marker1 = createMarker [format ["sm_2_%1", getPos _city1], getPos _city1];
@@ -87,7 +85,7 @@ private _captive = selectRandom units _group;
 removeAllWeapons _captive;
 _group selectLeader _captive;
 
-[_group, _pos2, 0, "MOVE", "SAFE", "RED", "LIMITED", "COLUMN", "btc_side_failed = true", [0, 0, 0], _radius_x/1.5] call CBA_fnc_addWaypoint;
+[_group, _pos2, 0, "MOVE", "SAFE", "RED", "LIMITED", "COLUMN", format ["['%1', 'FAIL'] call BIS_fnc_taskSetState;", _taskID], [0, 0, 0], _radius_x/1.5] call CBA_fnc_addWaypoint;
 
 //// Create trigger \\\\
 _trigger = createTrigger ["EmptyDetector", getPos _city1];
@@ -99,17 +97,14 @@ _trigger attachTo [_captive, [0, 0, 0]];
 
 [12] remoteExecCall ["btc_fnc_show_hint", -2];
 
-waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !(alive _captive) || (_captive inArea [getPosWorld btc_create_object_point, 100, 100, 0, false]))};
+waitUntil {sleep 5; (!(alive _captive) || (_captive inArea [getPosWorld btc_create_object_point, 100, 100, 0, false]) || _taskID call BIS_fnc_taskCompleted)};
 
-btc_side_assigned = false;
-publicVariable "btc_side_assigned";
-if (btc_side_aborted || !(Alive _captive)) exitWith {
-    14 remoteExecCall ["btc_fnc_task_fail", 0];
+if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {
     [_markers, _vehs + [_trigger, _group]] call btc_fnc_delete;
 };
 
-if (btc_side_failed) exitWith {
-    14 remoteExecCall ["btc_fnc_task_fail", 0];
+if !(alive _captive || _taskID call BIS_fnc_taskState isEqualTo "FAIL") exitWith {
+    [_taskID, "FAIL"] call BIS_fnc_taskSetState;
     _group setVariable ["no_cache", false];
     {
         _group = createGroup btc_enemy_side;
@@ -121,6 +116,6 @@ if (btc_side_failed) exitWith {
 
 50 call btc_fnc_rep_change;
 
-14 remoteExecCall ["btc_fnc_task_set_done", 0];
+[_taskID, "SUCCEEDED"] call BIS_fnc_taskSetState;
 
 [_markers, _vehs + [_trigger, _captive, _group]] call btc_fnc_delete;

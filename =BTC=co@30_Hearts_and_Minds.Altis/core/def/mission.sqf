@@ -164,14 +164,10 @@ if (isServer) then {
     btc_type_camonet = ["CamoNet_ghex_big_F", "CamoNet_OPFOR_big_F", "CamoNet_INDP_big_F", "CamoNet_BLUFOR_big_F", "CamoNet_OPFOR_open_F", "CamoNet_ghex_open_F", "CamoNet_BLUFOR_open_F", "Land_IRMaskingCover_02_F", "CamoNet_BLUFOR_F", "CamoNet_ghex_F", "CamoNet_OPFOR_F", "CamoNet_INDP_F"];
 
     //Side
-    btc_side_aborted = false;
-    btc_side_assigned = false;
-    btc_side_done = false;
-    btc_side_failed = false;
+    btc_side_ID = 0;
     btc_side_list = [0, 1, 2, 3, 4, 5, 6, 9, 10, 11, 12, 13]; // On ground (Side 9 and 11 are not think for map with different islands. Start and end city can be on different islands.)
     if (btc_p_sea) then {btc_side_list append [7, 8]}; // On sea
     btc_side_list_use = + btc_side_list;
-    btc_side_jip_data = [];
     btc_type_tower = ["Land_Communication_F", "Land_TTowerBig_1_F", "Land_TTowerBig_2_F"];
     btc_type_phone = ["Land_PortableLongRangeRadio_F", "Land_MobilePhone_smart_F", "Land_MobilePhone_old_F"];
     btc_type_barrel = ["Land_GarbageBarrel_01_F", "Land_BarrelSand_grey_F", "MetalBarrel_burning_F", "Land_BarrelWater_F", "Land_MetalBarrel_F", "Land_MetalBarrel_empty_F"];
@@ -561,9 +557,6 @@ btc_rep_malus_player_respawn = - 10;
 btc_rep_malus_veh_killed = - 25;
 btc_rep_malus_building_damaged = - 2.5;
 btc_rep_malus_building_destroyed = - 5;
-
-//Side
-if (isNil "btc_side_assigned") then {btc_side_assigned = false;};
 
 //Skill
 btc_AI_skill = _p_skill;

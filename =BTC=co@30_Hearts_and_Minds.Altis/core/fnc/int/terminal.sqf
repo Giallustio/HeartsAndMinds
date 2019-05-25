@@ -21,16 +21,16 @@ Author:
 ---------------------------------------------------------------------------- */
 
 params [
-    ["_terminal", objNull, [objNull]]
+    ["_terminal", objNull, [objNull]],
+    ["_terminal_taskID", "", [""]]
 ];
 
 private _action = ["Open", localize "STR_BTC_HAM_SIDE_HACK_ACEACTION", "\A3\ui_f\data\igui\cfg\simpleTasks\types\intel_ca.paa", {
     //Start Hacking
-    params ["_terminal"];
+    params ["_terminal", "_terminal_taskID"];
 
     [_terminal, 3] call BIS_fnc_dataTerminalAnimate;
-    btc_side_done = true;
-    publicVariable "btc_side_done";
-}, {isNil "btc_side_done"}] call ace_interact_menu_fnc_createAction;
+    [_terminal_taskID, "SUCCEEDED"] call BIS_fnc_taskSetState;
+}, {(_this select 1) call BIS_fnc_taskCompleted}] call ace_interact_menu_fnc_createAction;
 
-[_terminal, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToObject;
+[[_terminal, _terminal_taskID], 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToObject;

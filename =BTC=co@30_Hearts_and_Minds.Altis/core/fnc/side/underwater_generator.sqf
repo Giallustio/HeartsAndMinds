@@ -6,8 +6,7 @@ Description:
     Fill me when you edit me !
 
 Parameters:
-    _x - []
-    _y - []
+    _taskID - unique task ID. [String]
 
 Returns:
 
@@ -20,6 +19,10 @@ Author:
     Vdauphin
 
 ---------------------------------------------------------------------------- */
+
+params [
+    ["_taskID", "btc_side", [""]]
+];
 
 //// Choose a Marine location occupied \\\\
 private _useful = btc_city_all select {(_x getVariable ["occupied", false]) && (_x getVariable ["type", ""] isEqualTo "NameMarine")};
@@ -46,14 +49,7 @@ if (_wrecks isEqualTo []) then {
     _pos = getPos (selectRandom _wrecks);
 };
 
-btc_side_aborted = false;
-btc_side_done = false;
-btc_side_failed = false;
-btc_side_assigned = true;
-publicVariable "btc_side_assigned";
-
-btc_side_jip_data = [11, _pos, _city getVariable "name"];
-btc_side_jip_data remoteExecCall ["btc_fnc_task_create", 0];
+private _jip = [_taskID, 11, _pos, _city getVariable "name"] call btc_fnc_task_create;
 
 _city setVariable ["spawn_more", true];
 
@@ -82,16 +78,12 @@ private _group = [_pos, 8, 1 + round random 5,0.8] call btc_fnc_mil_create_group
 _pos = getPosASL _generator;
 (leader (_group select 0)) setPosASL [_x, _y, _z + 1 + random 1];
 
-waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !Alive _generator )};
+waitUntil {sleep 5; (_taskID call BIS_fnc_taskCompleted || !alive _generator)};
 
-btc_side_assigned = false;
-publicVariable "btc_side_assigned";
 [[_area, _marker], [_generator, _storagebladder]] call btc_fnc_delete;
 
-if (btc_side_aborted || btc_side_failed ) exitWith {
-    11 remoteExecCall ["btc_fnc_task_fail", 0];
-};
+if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {};
 
 80 call btc_fnc_rep_change;
 
-11 remoteExecCall ["btc_fnc_task_set_done", 0];
+[_taskID, "SUCCEEDED"] call BIS_fnc_taskSetState;

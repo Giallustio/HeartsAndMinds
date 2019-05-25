@@ -32,13 +32,16 @@ class CfgTaskTypes {
     class Container {
         icon = \A3\ui_f\data\igui\cfg\simpleTasks\types\container_ca.paa;
     };
-    class Mine  {
+    class Mine {
         icon = \A3\ui_f\data\igui\cfg\simpleTasks\types\mine_ca.paa;
     };
-    class Heli  {
+    class Heli {
         icon = \A3\ui_f\data\igui\cfg\simpleTasks\types\heli_ca.paa;
     };
-    class Defend  {
+    class Defend {
         icon = \A3\ui_f\data\igui\cfg\simpleTasks\types\defend_ca.paa;
+    };
+    class Intel {
+        icon = \A3\ui_f\data\igui\cfg\simpleTasks\types\intel_ca.paa;
     };
 };

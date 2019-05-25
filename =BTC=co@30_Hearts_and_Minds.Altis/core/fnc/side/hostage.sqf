@@ -6,6 +6,7 @@ Description:
     Fill me when you edit me !
 
 Parameters:
+    _taskID - unique task ID. [String]
 
 Returns:
 
@@ -18,6 +19,10 @@ Author:
     Vdauphin
 
 ---------------------------------------------------------------------------- */
+
+params [
+    ["_taskID", "btc_side", [""]]
+];
 
 //// Choose an occupied City \\\\
 private _useful = btc_city_all select {_x getVariable ["occupied", false] && !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])};
@@ -42,14 +47,7 @@ private _pos_number = count _buildingPos - 1;
 private _pos = _buildingPos select (_pos_number - round random 1);
 
 //// Data side mission
-btc_side_aborted = false;
-btc_side_done = false;
-btc_side_failed = false;
-btc_side_assigned = true;
-publicVariable "btc_side_assigned";
-
-btc_side_jip_data = [15, _pos, _city getVariable "name"];
-btc_side_jip_data remoteExecCall ["btc_fnc_task_create", 0];
+private _jip = [_taskID, 15, _pos, _city getVariable "name"] call btc_fnc_task_create;
 
 //// Marker
 private _marker = createMarker [format ["sm_2_%1", getPos _house], getPos _house];
@@ -91,7 +89,7 @@ if (random 1 > 0.5) then {
     _mine = createMine [selectRandom btc_type_mines, getPosATL _captive, [], 0];
 };
 
-waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !(_captive getVariable ["ace_captives_isHandcuffed", false]) || !Alive _captive)};
+waitUntil {sleep 5; (_taskID call BIS_fnc_taskCompleted || !(_captive getVariable ["ace_captives_isHandcuffed", false]) || !alive _captive)};
 
 if (!(_captive getVariable ["ace_captives_isHandcuffed", false])) then {
     _mine setDamage 1;
@@ -102,15 +100,16 @@ _group_civ setVariable ["no_cache", false];
 {
     _x setVariable ["no_cache", false];
 } forEach _group;
-btc_side_assigned = false;
-publicVariable "btc_side_assigned";
 
-if (btc_side_aborted || btc_side_failed || !(Alive _captive)) exitWith {
-    15 remoteExecCall ["btc_fnc_task_fail", 0];
+if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {
+    [[_marker], _group + [_group_civ, _trigger, _mine]] call btc_fnc_delete;
+};
+if !(alive _captive) exitWith {
+    [_taskID, "FAIL"] call BIS_fnc_taskSetState;
     [[_marker], _group + [_group_civ, _trigger, _mine]] call btc_fnc_delete;
 };
 
 40 call btc_fnc_rep_change;
 
 [[_marker]] call btc_fnc_delete;
-15 remoteExecCall ["btc_fnc_task_set_done", 0];
+[_taskID, "SUCCEEDED"] call BIS_fnc_taskSetState;

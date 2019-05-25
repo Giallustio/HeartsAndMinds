@@ -6,6 +6,7 @@ Description:
     Fill me when you edit me !
 
 Parameters:
+    _taskID - unique task ID. [String]
 
 Returns:
 
@@ -19,6 +20,10 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
+params [
+    ["_taskID", "btc_side", [""]]
+];
+
 //// Choose an occupied City \\\\
 private _useful = btc_city_all select {_x getVariable ["occupied", false] && !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])};
 
@@ -30,14 +35,7 @@ private _city = selectRandom _useful;
 private _pos = [getPos _city, (((_city getVariable ["RadiusX", 0]) + (_city getVariable ["RadiusY", 0]))/2) - 100] call btc_fnc_randomize_pos;
 _pos = [_pos, 0, 50, 13, 0, 60 * (pi / 180), 0] call btc_fnc_findsafepos;
 
-btc_side_aborted = false;
-btc_side_done = false;
-btc_side_failed = false;
-btc_side_assigned = true;
-publicVariable "btc_side_assigned";
-
-btc_side_jip_data = [13, getPos _city, _city getVariable "name"];
-btc_side_jip_data remoteExecCall ["btc_fnc_task_create", 0];
+private _jip = [_taskID, 13, getPos _city, _city getVariable "name"] call btc_fnc_task_create;
 
 _city setVariable ["spawn_more", true];
 
@@ -84,16 +82,15 @@ private _triggers = [];
     _triggers pushBack _trigger;
 } forEach units _group;
 
-waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || (_units select {_x distance btc_create_object_point > 100} isEqualTo []) || (_units select {alive _x} isEqualTo []))};
+waitUntil {sleep 5; (_taskID call BIS_fnc_taskCompleted || (_units select {_x distance btc_create_object_point > 100} isEqualTo []) || (_units select {alive _x} isEqualTo []))};
 
-btc_side_assigned = false;
-publicVariable "btc_side_assigned";
 [[], [_heli, _fx, _group] + _triggers] call btc_fnc_delete;
 
-if (btc_side_aborted || btc_side_failed || (_units select {alive _x} isEqualTo [])) exitWith {
-    13 remoteExecCall ["btc_fnc_task_fail", 0];
+if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {};
+if (_units select {alive _x} isEqualTo []) exitWith {
+    [_taskID, "FAIL"] call BIS_fnc_taskSetState;
 };
 
 50 call btc_fnc_rep_change;
 
-13 remoteExecCall ["btc_fnc_task_set_done", 0];
+[_taskID, "SUCCEEDED"] call BIS_fnc_taskSetState;

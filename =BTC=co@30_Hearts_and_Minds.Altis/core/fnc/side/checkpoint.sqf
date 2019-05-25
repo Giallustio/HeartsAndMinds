@@ -6,9 +6,7 @@ Description:
     Fill me when you edit me !
 
 Parameters:
-    _x - []
-    _y - []
-    _z - []
+    _taskID - unique task ID. [String]
 
 Returns:
 
@@ -22,20 +20,17 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
+params [
+    ["_taskID", "btc_side", [""]]
+];
+
 //// Choose an occupied City \\\\
 private _useful = btc_city_all select {_x getVariable ["occupied", false] && !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])};
 if (_useful isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
 private _city = selectRandom _useful;
 private _pos = getPos _city;
 
-btc_side_aborted = false;
-btc_side_done = false;
-btc_side_failed = false;
-btc_side_assigned = true;
-publicVariable "btc_side_assigned";
-
-btc_side_jip_data = [9, _pos, _city getVariable "name"];
-btc_side_jip_data remoteExecCall ["btc_fnc_task_create", 0];
+private _jip = [_taskID, 9, _pos, _city getVariable "name"] call btc_fnc_task_create;
 
 _city setVariable ["spawn_more", true];
 
@@ -98,11 +93,11 @@ for "_i" from 1 to (1 + round random 2) do {
 
     private _boxe = nearestObject [_pos, _type_box];
     _boxe setVariable ["ace_cookoff_enable", false, true];
-    _boxe spawn {
-        params ["_boxe"];
+    [_boxe, _taskID] spawn {
+        params ["_boxe", "_taskID"];
 
         private _pos = getPos _boxe;
-        waitUntil {sleep 5; btc_side_aborted || btc_side_failed || !(Alive _boxe)};
+        waitUntil {sleep 5; _taskID call BIS_fnc_taskCompleted || !(alive _boxe)};
         private _fx = "test_EmptyObjectForSmoke" createVehicle _pos;
         _fx setPos _pos;
         sleep 120;
@@ -111,16 +106,12 @@ for "_i" from 1 to (1 + round random 2) do {
     _boxes pushBack _boxe;
 };
 
-waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || (_boxes select {Alive _x} isEqualTo []))};
+waitUntil {sleep 5; (_taskID call BIS_fnc_taskCompleted || (_boxes select {alive _x} isEqualTo []))};
 
-btc_side_assigned = false;
-publicVariable "btc_side_assigned";
 [_markers, _boxes] call btc_fnc_delete;
 
-if (btc_side_aborted || btc_side_failed) exitWith {
-    9 remoteExecCall ["btc_fnc_task_fail", 0];
-};
+if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {};
 
 80 call btc_fnc_rep_change;
 
-9 remoteExecCall ["btc_fnc_task_set_done", 0];
+[_taskID, "SUCCEEDED"] call BIS_fnc_taskSetState;
