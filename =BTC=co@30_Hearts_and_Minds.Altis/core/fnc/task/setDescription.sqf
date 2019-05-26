@@ -3,18 +3,22 @@
 Function: btc_fnc_task_setDescription
 
 Description:
-    Fill me when you edit me !
+    Set description to created task accordingly to player language.
 
 Parameters:
-    _task_id - [String]
-    _destination - []
-    _location - []
+    _task_ids - ID of the task. [String]
+    _side - Side of the player. [Side]
+    _description - Nuber of the corresponding description. [Number]
+    _destination - Destination of the task. [Object or Array]
+    _priority - Task priority. [Number]
+    _showNotification - Show notification. [Boolean]
+    _location - Custom information to fill the task description. [String or Array]
 
 Returns:
 
 Examples:
     (begin example)
-        [0, "btc_dft"] call btc_fnc_task_setDescription;
+        ["btc_1", btc_player_side, -1] remoteExecCall ["btc_fnc_task_setDescription", [0, -2] select isDedicated, true];
     (end)
 
 Author:
@@ -37,7 +41,7 @@ private _image = "<br/><img image='%1' width='355' height='200'/>";
 switch (_description) do {
     case -1 : {
         _description = ["Must be accomplish.", "Main tasks", "Main tasks"];
-        _type = "move";
+        _type = "documents";
     };
     case 0 : {
         _description = [localize "STR_BTC_HAM_MISSION_DEFEAT_DESC", localize "STR_BTC_HAM_MISSION_DEFEAT_TITLE", localize "STR_BTC_HAM_MISSION_DEFEAT_TITLE"];
@@ -48,8 +52,8 @@ switch (_description) do {
         _type = "destroy";
     };
     case 2 : {
-        _description = [localize "STR_BTC_HAM_MISSION_SEIZE_DESC", localize "STR_BTC_HAM_MISSION_SEIZE_TITLE", localize "STR_BTC_HAM_MISSION_SEIZE_MRK"];
-        _type = "move";
+        _description = [localize "STR_BTC_HAM_O_COMMON_SHOWHINTS_6", localize "STR_BTC_HAM_MISSION_SEIZE_TITLE", localize "STR_BTC_HAM_MISSION_SEIZE_TITLE"];
+        _type = "map";
     };
     case 3 : {
         _description = [format [localize "STR_BTC_HAM_SIDE_SUPPLIES_DESC", _location], format [localize "STR_BTC_HAM_SIDE_SUPPLIES_TITLE", _location], format [localize "STR_BTC_HAM_SIDE_SUPPLIES_TITLE", _location]];
@@ -130,11 +134,11 @@ switch (_description) do {
     case 15 : {
         _location params ["_loc", "_hostageType"];
         _description = [
-            (format [localize "STR_BTC_HAM_SIDE_HOSTAGE_DESC", _loc]) + format [_image, getText (configfile >> "Cfghostages" >> _hostageType >> "editorPreview")],
+            (format [localize "STR_BTC_HAM_SIDE_HOSTAGE_DESC", _loc]) + format [_image, getText (configfile >> "CfgVehicles" >> _hostageType >> "editorPreview")],
             format [localize "STR_BTC_HAM_SIDE_HOSTAGE_TITLE", _loc],
             format [localize "STR_BTC_HAM_SIDE_HOSTAGE_TITLE", _loc]
         ];
-        _type = "exit";
+        _type = "handcuff";
     };
     case 16 : {
         _description = [format [localize "STR_BTC_HAM_SIDE_HACK_DESC", _location], format [localize "STR_BTC_HAM_SIDE_HACK_TITLE", _location], format [localize "STR_BTC_HAM_SIDE_HACK_TITLE", _location]];

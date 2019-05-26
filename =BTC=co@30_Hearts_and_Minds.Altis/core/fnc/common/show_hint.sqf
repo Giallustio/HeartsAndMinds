@@ -52,9 +52,6 @@ private _text = switch (_type) do {
             ["<img size='1' image='\A3\ui_f\data\map\markers\handdrawn\warning_CA.paa' align='center' color='#ff0000'/>"]
         ]; //Intel about an hideout found! Map updated
     };
-    case 6 : {
-        localize "STR_BTC_HAM_O_COMMON_SHOWHINTS_6"; //In the last hideout we found important intel about all the cities occupied by the Oplitas! Size the last positions held by the enemies and defeat them once and for all
-    };
     case 7 : {
         format [localize "STR_BTC_HAM_O_COMMON_SHOWHINTS_7", _custom]; // has been deployed!
     };

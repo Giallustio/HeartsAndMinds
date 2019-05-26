@@ -3,10 +3,10 @@
 Function: btc_fnc_task_setState
 
 Description:
-    Set state to multiple task.
+    Set state to task and subtasks (hildren).
 
 Parameters:
-    _tasks - Array of task to change state. [Array]
+    _task - Task to change state of the task and children. [Array]
     _state - State to apply. [String]
 
 Returns:
@@ -14,7 +14,7 @@ Returns:
 
 Examples:
     (begin example)
-        [["btc_dft"], "CANCELED"] call btc_fnc_task_setState;
+        ["btc_dft", "CANCELED"] call btc_fnc_task_setState;
     (end)
 
 Author:
@@ -23,11 +23,16 @@ Author:
 ---------------------------------------------------------------------------- */
 
 params [
-    ["_tasks", [], [[]]],
+    ["_task", "", [""]],
     ["_state", "CANCELED", [""]]
 ];
 
-_tasks apply {
+private _subTasks = _task call BIS_fnc_taskChildren;
+if (_subTasks isEqualTo []) then {
+    _subTasks = (_subTasks call BIS_fnc_taskParent) call BIS_fnc_taskChildren;
+};
+
+(_subTasks + [_task]) apply {
     if !(_x call BIS_fnc_taskCompleted) then {
         [_x, _state] call BIS_fnc_taskSetState
     } else {

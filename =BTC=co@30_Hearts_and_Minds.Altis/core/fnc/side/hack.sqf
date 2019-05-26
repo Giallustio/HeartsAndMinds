@@ -49,18 +49,17 @@ private _terminal_taskID = _taskID + "ter";
 private _jipTerminal = [[_terminal_taskID, _taskID], 17, _terminal, _terminalType] call btc_fnc_task_create;
 
 //// Add interaction on Terminal \\\\
-[_terminal, _terminal_taskID] remoteExecCall ["btc_fnc_int_terminal", [0, -2] select isDedicated, _terminal];
+_terminal setVariable ["btc_terminal_taskID", _terminal_taskID, true];
+[_terminal] remoteExecCall ["btc_fnc_int_terminal", [0, -2] select isDedicated, _terminal];
 
 waitUntil {sleep 5; (_terminal_taskID call BIS_fnc_taskCompleted)};
 if (_terminal_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {
-    {
-        [_x, "CANCELED"] call BIS_fnc_taskSetState;
-    } forEach [_terminal_taskID, _taskID];
+    [_taskID, "CANCELED"] call btc_fnc_task_setState;
     [[], [_terminal]] call btc_fnc_delete;
 };
 
 private _defend_taskID = _taskID + "df";
-private _jipdefend = [[_defend_taskID, _taskID], 22, _terminal, _terminalType] call btc_fnc_task_create;
+private _jipdefend = [[_defend_taskID, _taskID], 22, _terminal, _terminalType, true] call btc_fnc_task_create;
 
 private _groups = [];
 private _closest = [_city, btc_city_all select {!(_x getVariable ["active", false])}, false] call btc_fnc_find_closecity;
@@ -72,10 +71,16 @@ for "_i" from 1 to (2 + round random 1) do {
     _x setBehaviour "CARELESS"
 } forEach _groups;
 
-[_terminal, _launchsite modelToWorld [0, 100, 10]] remoteExecCall ["btc_fnc_log_place_create_camera", -2];
+[_terminal, _launchsite modelToWorld [0, 100, 10]] remoteExecCall ["btc_fnc_log_place_create_camera", [0, -2] select isDedicated];
 
 waitUntil {sleep 5; (_defend_taskID call BIS_fnc_taskCompleted || (grpNull in _groups) || !(_city getVariable ["active", false]))};
 if (_defend_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {
+    [_taskID, "CANCELED"] call btc_fnc_task_setState;
+    [[], [_terminal]] call btc_fnc_delete;
+};
+
+if !(_city getVariable ["active", false]) exitWith {
+    [_taskID, "FAILED"] call btc_fnc_task_setState;
     [[], [_terminal]] call btc_fnc_delete;
 };
 
@@ -91,13 +96,8 @@ private _rocket = createVehicle ["ace_rearm_Missile_AGM_02_F", [_x, _y, _altitud
 private _fx = createVehicle ["test_EmptyObjectForSmoke", [_x, _y, _altitude], [], 0, "CAN_COLLIDE"];
 _fx attachTo [_rocket, [0, 0, 0]];
 
-private _allTasks = [_taskID, _terminal_taskID, _defend_taskID];
-
 [[], [_rocket, _terminal, _fx]] call btc_fnc_delete;
-if !(_city getVariable ["active", false]) exitWith {
-    [_allTasks, "FAILED"] call btc_fnc_task_setState;
-};
 
 80 call btc_fnc_rep_change;
 
-[_allTasks, "SUCCEEDED"] call btc_fnc_task_setState;
+[_taskID, "SUCCEEDED"] call btc_fnc_task_setState;

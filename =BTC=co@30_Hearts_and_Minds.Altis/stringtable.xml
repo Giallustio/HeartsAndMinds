@@ -709,20 +709,6 @@
                 <Portuguese>Conquiste as últimas posições inimigas</Portuguese>
                 <Chinesesimp>夺取最后一个Oplitas据点</Chinesesimp>
             </Key>
-            <Key ID="STR_BTC_HAM_MISSION_SEIZE_MRK">
-                <Original>Seize the last Oplitas fighters positions</Original>
-                <Spanish>Ocupen las últimas posiciones de los Oplitas.</Spanish>
-                <German>Erobern Sie die letzten Positionen der Oplitas-Kämpfer</German>
-                <Portuguese>Conquiste as últimas posições da resistência inimiga</Portuguese>
-                <Chinesesimp>夺取最后一个Oplitas战匪的据点</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_MISSION_SEIZE_DESC">
-                <Original>Seize the last positions held by Oplitas fighters</Original>
-                <Spanish>Ocupen las últimas posiciones de resistencia de los Oplitas.</Spanish>
-                <German>Erobern Sie die letzten Stellungen der Oplitas-Kämpfer zurück.</German>
-                <Portuguese>Conquiste as últimas posições da retarguarda inimiga</Portuguese>
-                <Chinesesimp>夺取最后一个被Oplitas战匪占领的据点</Chinesesimp>
-            </Key>
         </Container>
     </Package>
     <Package name="Side Missions">

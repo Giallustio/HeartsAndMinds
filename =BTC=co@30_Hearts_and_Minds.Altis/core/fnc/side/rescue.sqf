@@ -82,26 +82,24 @@ private _triggers = [];
     _trigger setVariable ["unit", _x];
     _trigger setTriggerArea [50, 50, 0, false];
     _trigger setTriggerActivation [str btc_player_side, "PRESENT", false];
-    _trigger setTriggerStatements ["this", format ["_unit = thisTrigger getVariable 'unit'; [_unit] join (thisList select 0); _unit setUnitPos 'UP'; ['%1', 'SUCCEEDED'] call BIS_fnc_taskSetState; [['%2', '%3'], 21, btc_create_object_point, typeOf btc_create_object_point] call btc_fnc_task_create;", _find_taskID, _back_taskID, _taskID], ""];
+    _trigger setTriggerStatements ["this", format ["_unit = thisTrigger getVariable 'unit'; [_unit] join (thisList select 0); _unit setUnitPos 'UP'; ['%1', 'SUCCEEDED'] call BIS_fnc_taskSetState; [['%2', '%3'], 21, btc_create_object_point, typeOf btc_create_object_point, true] call btc_fnc_task_create;", _find_taskID, _back_taskID, _taskID], ""];
     _trigger attachTo [_x, [0, 0, 0]];
     _triggers pushBack _trigger;
 } forEach units _group;
 
 waitUntil {sleep 5; (_find_taskID call BIS_fnc_taskState isEqualTo "CANCELED" || _back_taskID call BIS_fnc_taskCompleted || (_units select {_x distance btc_create_object_point > 100} isEqualTo []) || (_units select {alive _x} isEqualTo []))};
 
-private _allTasks = [_taskID, _back_taskID, _find_taskID];
-
 [[], [_heli, _fx, _group] + _triggers] call btc_fnc_delete;
 
 if (_find_taskID call BIS_fnc_taskState isEqualTo "CANCELED" ||
     _back_taskID call BIS_fnc_taskState isEqualTo "CANCELED"
 ) exitWith {
-    [_allTasks, "CANCELED"] call btc_fnc_task_setState;
+    [_taskID, "CANCELED"] call btc_fnc_task_setState;
 };
 if (_units select {alive _x} isEqualTo []) exitWith {
-    [_allTasks, "FAILED"] call btc_fnc_task_setState;
+    [_taskID, "FAILED"] call btc_fnc_task_setState;
 };
 
 50 call btc_fnc_rep_change;
 
-[_allTasks, "SUCCEEDED"] call btc_fnc_task_setState;
+[_taskID, "SUCCEEDED"] call btc_fnc_task_setState;

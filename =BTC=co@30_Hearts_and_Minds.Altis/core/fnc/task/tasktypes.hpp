@@ -53,4 +53,13 @@ class CfgTaskTypes {
     class Surrender {
         icon = \z\ace\addons\captives\UI\Surrender_ca.paa;
     };
+    class Documents {
+        icon = \A3\ui_f\data\igui\cfg\simpleTasks\types\documents_ca.paa;
+    };
+    class Map {
+        icon = \A3\ui_f\data\igui\cfg\simpleTasks\types\map_ca.paa;
+    };
+    class Handcuff {
+        icon = \z\ace\addons\captives\UI\handcuff_ca.paa;
+    };
 };

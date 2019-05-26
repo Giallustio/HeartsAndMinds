@@ -96,24 +96,22 @@ _trigger = createTrigger ["EmptyDetector", getPos _city1];
 _trigger setVariable ["captive", _captive];
 _trigger setTriggerArea [15, 15, 0, false];
 _trigger setTriggerActivation [str btc_player_side, "PRESENT", true];
-_trigger setTriggerStatements ["this", format ["deleteVehicle thisTrigger; _captive = thisTrigger getVariable 'captive'; doStop _captive; [_captive, true] call ace_captives_fnc_setSurrendered; ['%1', 'SUCCEEDED'] call BIS_fnc_taskSetState; [['%2', '%3'], 21, btc_create_object_point, typeOf btc_create_object_point] call btc_fnc_task_create;", _surrender_taskID, _back_taskID, _taskID], ""];
+_trigger setTriggerStatements ["this", format ["deleteVehicle thisTrigger; _captive = thisTrigger getVariable 'captive'; doStop _captive; [_captive, true] call ace_captives_fnc_setSurrendered; ['%1', 'SUCCEEDED'] call BIS_fnc_taskSetState; [['%2', '%3'], 21, btc_create_object_point, typeOf btc_create_object_point, true] call btc_fnc_task_create;", _surrender_taskID, _back_taskID, _taskID], ""];
 _trigger attachTo [_captive, [0, 0, 0]];
 
 [12] remoteExecCall ["btc_fnc_show_hint", [0, -2] select isDedicated];
 
 waitUntil {sleep 5; (!(alive _captive) || (_captive inArea [getPosWorld btc_create_object_point, 100, 100, 0, false]) || _surrender_taskID call BIS_fnc_taskState isEqualTo "CANCELED" || _back_taskID call BIS_fnc_taskCompleted)};
 
-private _allTasks = [_taskID, _surrender_taskID, _back_taskID];
-
 if (_surrender_taskID call BIS_fnc_taskState isEqualTo "CANCELED" ||
     _back_taskID call BIS_fnc_taskState isEqualTo "CANCELED"
 ) exitWith {
-    [_allTasks, "CANCELED"] call btc_fnc_task_setState;
+    [_taskID, "CANCELED"] call btc_fnc_task_setState;
     [_markers, _vehs + [_trigger, _group]] call btc_fnc_delete;
 };
 
 if (!alive _captive || _taskID call BIS_fnc_taskState isEqualTo "FAILED") exitWith {
-    [_allTasks, "FAILED"] call btc_fnc_task_setState;
+    [_taskID, "FAILED"] call btc_fnc_task_setState;
     _group setVariable ["no_cache", false];
     {
         _group = createGroup btc_enemy_side;
@@ -125,6 +123,6 @@ if (!alive _captive || _taskID call BIS_fnc_taskState isEqualTo "FAILED") exitWi
 
 50 call btc_fnc_rep_change;
 
-[_allTasks, "SUCCEEDED"] call btc_fnc_task_setState;
+[_taskID, "SUCCEEDED"] call btc_fnc_task_setState;
 
 [_markers, _vehs + [_trigger, _captive, _group]] call btc_fnc_delete;

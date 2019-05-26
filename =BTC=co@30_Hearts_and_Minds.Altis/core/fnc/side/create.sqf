@@ -6,7 +6,8 @@ Description:
     Fill me when you edit me !
 
 Parameters:
-    _cycle - []
+    _cycle - Cycle side mission. [Boolean]
+    _side - Number of the side mission to start. [Number]
 
 Returns:
 
@@ -20,15 +21,20 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-params [["_cycle", false]];
-
 if (btc_side_list_use isEqualTo []) then {btc_side_list_use = + btc_side_list;};
 
-private _side = selectRandom btc_side_list_use;
+params [
+    ["_cycle", false, [false]],
+    ["_side", selectRandom btc_side_list_use, [0]]
+];
 
-btc_side_list_use = btc_side_list_use - [_side];
 btc_side_ID = btc_side_ID + 1;
 private _sideID = format ["btc_%1", btc_side_ID];
+if ([_sideID] call BIS_fnc_taskExists) exitWith {
+    _this call btc_fnc_side_create;
+};
+
+btc_side_list_use = btc_side_list_use - [_side];
 
 switch (_side) do {
     case 0 : {[_sideID] call btc_fnc_side_supply;};

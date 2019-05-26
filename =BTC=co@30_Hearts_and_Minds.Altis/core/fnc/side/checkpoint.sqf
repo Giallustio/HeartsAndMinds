@@ -85,8 +85,9 @@ for "_i" from 1 to (1 + round random 2) do {
 
     private _boxe = nearestObject [_pos, _type_box];
     _boxe setVariable ["ace_cookoff_enable", false, true];
+    _boxe setVariable ["ace_cookoff_enableAmmoCookoff", false, true];
     private _destroy_taskID = _taskID + "dt" + str _i;
-    private _jipdestroy = [[_destroy_taskID, _taskID], 23, _boxe, _type_box, false] call btc_fnc_task_create;
+    private _jipdestroy = [[_destroy_taskID, _taskID], 23, _boxe, _type_box, false, false] call btc_fnc_task_create;
     _taskID_array pushBack _destroy_taskID;
     [_boxe, _destroy_taskID] spawn {
         params ["_boxe", "_destroy_taskID"];
@@ -111,12 +112,10 @@ waitUntil {sleep 5; (
 
 [[], _boxes] call btc_fnc_delete;
 
-private _allTasks = _taskID_array + [_taskID];
-
 if (_taskID_array findIf {_x call BIS_fnc_taskState isEqualTo "CANCELED"} > -1) exitWith {
-    [_allTasks, "CANCELED"] call btc_fnc_task_setState;
+    [_taskID, "CANCELED"] call btc_fnc_task_setState;
 };
 
 80 call btc_fnc_rep_change;
 
-[_allTasks, "SUCCEEDED"] call btc_fnc_task_setState;
+[_taskID, "SUCCEEDED"] call btc_fnc_task_setState;
