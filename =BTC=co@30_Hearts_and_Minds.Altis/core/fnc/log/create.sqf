@@ -29,7 +29,7 @@ closeDialog 0;
 btc_log_create_obj = _create_obj;
 
 if ({!((_x isKindOf "Animal") || (_x isKindOf "Module_F") || (_x isKindOf "WeaponHolder"))} count (nearestObjects [btc_log_create_obj, ["All"], 5]) > 1) exitWith {
-    hint localize "STR_BTC_HAM_LOG_BASICS_CLEARAREA"; //Clear the area before create another object!
+    (localize "STR_BTC_HAM_LOG_BASICS_CLEARAREA") call CBA_fnc_notify;
 };
 
 disableSerialization;

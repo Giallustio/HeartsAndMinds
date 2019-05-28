@@ -25,7 +25,7 @@ params [
 ];
 
 if (count (nearestObjects [_current_garage, ["All"], 5]) > 1) exitWith {
-    hint localize "STR_BTC_HAM_LOG_BASICS_CLEARAREA"; //Clear the area before create another object!
+    (localize "STR_BTC_HAM_LOG_BASICS_CLEARAREA") call CBA_fnc_notify;
 };
 
 disableSerialization;

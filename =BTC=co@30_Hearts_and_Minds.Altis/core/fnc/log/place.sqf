@@ -47,7 +47,7 @@ btc_log_ptich_dir = 0;
 private _actionEH = [player, "DefaultAction", {true}, {btc_log_placing = false;}] call ace_common_fnc_addActionEventHandler;
 
 //show mouse hint for release
-[localize "STR_BTC_HAM_LOG_PLACE_RELEASE", ""] call ace_interaction_fnc_showMouseHint; //Release
+[localize "STR_BTC_HAM_LOG_PLACE_RELEASE", ""] call ace_interaction_fnc_showMouseHint;
 
 //add actions to keys
 private _place_EH_keydown = (findDisplay 46) displayAddEventHandler ["KeyDown", btc_fnc_log_place_key_down];
