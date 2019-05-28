@@ -27,21 +27,21 @@ params [
 ];
 
 if !(player getVariable ["interpreter", false]) exitWith {
-    [name _man, localize "STR_BTC_HAM_CON_INFO_ASKREP_NOINTER"] call btc_fnc_showSubtitle; //I can't understand what is saying
+    [name _man, localize "STR_BTC_HAM_CON_INFO_ASKREP_NOINTER"] call btc_fnc_showSubtitle;
 };
 
 if !(_man call ace_medical_fnc_isInStableCondition) exitWith {
     private _complain = selectRandom [
-        localize "STR_BTC_HAM_CON_INFO_ASK_WOUNDED1", //Help me!
-        localize "STR_BTC_HAM_CON_INFO_ASK_WOUNDED2", //I am suffering!
-        localize "STR_BTC_HAM_CON_INFO_ASK_WOUNDED3", //Injure!
-        localize "STR_BTC_HAM_CON_INFO_ASK_WOUNDED4"  //I have open wound!
+        localize "STR_BTC_HAM_CON_INFO_ASK_WOUNDED1",
+        localize "STR_BTC_HAM_CON_INFO_ASK_WOUNDED2",
+        localize "STR_BTC_HAM_CON_INFO_ASK_WOUNDED3",
+        localize "STR_BTC_HAM_CON_INFO_ASK_WOUNDED4"
     ];
     [name _man, _complain] call btc_fnc_showSubtitle;
 };
 
 if ((_man getVariable ["btc_already_asked", false]) || (_man getVariable ["btc_already_interrogated", false])) exitWith {
-    [name _man, localize "STR_BTC_HAM_CON_INFO_ASK_ALLREADYANS"] call btc_fnc_showSubtitle; //I already answered to your question!
+    [name _man, localize "STR_BTC_HAM_CON_INFO_ASK_ALLREADYANS"] call btc_fnc_showSubtitle;
 };
 
 if ((round random 3) >= 2 || !_isInterrogate) then {
@@ -68,7 +68,7 @@ switch !(_isInterrogate) do {
 };
 if (_isInterrogate) then {_info_type = "REAL";};
 if (_info_type isEqualTo "NO") exitWith {
-    [name _man, localize "STR_BTC_HAM_CON_INFO_ASK_NOINFO"] call btc_fnc_showSubtitle; //I've no information for you
+    [name _man, localize "STR_BTC_HAM_CON_INFO_ASK_NOINFO"] call btc_fnc_showSubtitle;
 };
 
 btc_int_ask_data = nil;
@@ -94,7 +94,7 @@ switch (_info_type) do {
                 [name _man, true] spawn btc_fnc_info_hideout_asked;
             };
             case "CACHE" : {
-                [name _man, localize "STR_BTC_HAM_CON_INFO_ASK_CACHEMAP"] call btc_fnc_showSubtitle; //I'll show you some hint on the map
+                [name _man, localize "STR_BTC_HAM_CON_INFO_ASK_CACHEMAP"] call btc_fnc_showSubtitle;
                 sleep 2;
                 [true] remoteExecCall ["btc_fnc_info_cache", 2];
             };
@@ -109,7 +109,7 @@ switch (_info_type) do {
                 [name _man, false] spawn btc_fnc_info_hideout_asked;
             };
             case "CACHE" : {
-                [name _man, localize "STR_BTC_HAM_CON_INFO_ASK_CACHEMAP"] call btc_fnc_showSubtitle; //I'll show you some hint on the map
+                [name _man, localize "STR_BTC_HAM_CON_INFO_ASK_CACHEMAP"] call btc_fnc_showSubtitle;
                 sleep 2;
                 [false] remoteExecCall ["btc_fnc_info_cache", 2];
             };

@@ -28,6 +28,6 @@ params [
 
 if ([_create_object_point] call btc_fnc_checkArea) exitWith {};
 
-if (isNil "_copy_container") exitWith {hint localize "STR_BTC_HAM_O_PASTE_NOCOPIED"}; //No copied container!
+if (isNil "_copy_container") exitWith {(localize "STR_BTC_HAM_O_PASTE_NOCOPIED") call CBA_fnc_notify};
 
 [_copy_container] remoteExecCall ["btc_fnc_db_loadObjectStatus", 2];
