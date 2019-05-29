@@ -158,6 +158,10 @@ if (isServer) then {
     btc_fnc_log_init = compile preprocessFileLineNumbers "core\fnc\log\init.sqf";
     btc_fnc_log_setCargo = compile preprocessFileLineNumbers "core\fnc\log\setCargo.sqf";
     btc_fnc_log_server_delete = compile preprocessFileLineNumbers "core\fnc\log\server_delete.sqf";
+    btc_fnc_log_create_s = compile preprocessFileLineNumbers "core\fnc\log\create_s.sqf";
+    btc_fnc_log_get_cc = compile preprocessFileLineNumbers "core\fnc\log\get_cc.sqf";
+    btc_fnc_log_get_rc = compile preprocessFileLineNumbers "core\fnc\log\get_rc.sqf";
+    btc_fnc_log_server_repair_wreck = compile preprocessFileLineNumbers "core\fnc\log\server_repair_wreck.sqf";
 
     //DEAF
     btc_fnc_deaf_earringing = compile preprocessFileLineNumbers "core\fnc\deaf\earringing.sqf";
@@ -199,31 +203,8 @@ btc_fnc_int_ask_var = compile preprocessFileLineNumbers "core\fnc\int\ask_var.sq
 
 //LOG
 btc_fnc_log_can_tow = compile preprocessFileLineNumbers "core\fnc\log\can_tow.sqf";
-btc_fnc_log_create = compile preprocessFileLineNumbers "core\fnc\log\create.sqf";
-btc_fnc_log_create_apply = compile preprocessFileLineNumbers "core\fnc\log\create_apply.sqf";
-btc_fnc_log_create_load = compile preprocessFileLineNumbers "core\fnc\log\create_load.sqf";
-btc_fnc_log_create_change_target = compile preprocessFileLineNumbers "core\fnc\log\create_change_target.sqf";
-btc_fnc_log_create_s = compile preprocessFileLineNumbers "core\fnc\log\create_s.sqf";
 btc_fnc_log_hook = compile preprocessFileLineNumbers "core\fnc\log\hook.sqf";
-btc_fnc_log_lift_check = compile preprocessFileLineNumbers "core\fnc\log\lift_check.sqf";
-btc_fnc_log_lift_deploy_ropes = compile preprocessFileLineNumbers "core\fnc\log\lift_deploy_ropes.sqf";
-btc_fnc_log_lift_destroy_ropes = compile preprocessFileLineNumbers "core\fnc\log\lift_destroy_ropes.sqf";
-btc_fnc_log_lift_hook = compile preprocessFileLineNumbers "core\fnc\log\lift_hook.sqf";
-btc_fnc_log_lift_hook_fake = compile preprocessFileLineNumbers "core\fnc\log\lift_hook_fake.sqf";
-btc_fnc_log_lift_hud = compile preprocessFileLineNumbers "core\fnc\log\lift_hud.sqf";
-btc_fnc_log_lift_hud_loop = compile preprocessFileLineNumbers "core\fnc\log\lift_hud_loop.sqf";
-btc_fnc_log_get_cc = compile preprocessFileLineNumbers "core\fnc\log\get_cc.sqf";
-btc_fnc_log_get_rc = compile preprocessFileLineNumbers "core\fnc\log\get_rc.sqf";
-btc_fnc_log_place = compile preprocessFileLineNumbers "core\fnc\log\place.sqf";
-btc_fnc_log_place_create_camera = compile preprocessFileLineNumbers "core\fnc\log\place_create_camera.sqf";
 btc_fnc_log_place_destroy_camera = compile preprocessFileLineNumbers "core\fnc\log\place_destroy_camera.sqf";
-btc_fnc_log_place_key_down = compile preprocessFileLineNumbers "core\fnc\log\place_key_down.sqf";
-btc_fnc_log_repair_wreck = compile preprocessFileLineNumbers "core\fnc\log\repair_wreck.sqf";
-btc_fnc_log_server_repair_wreck = compile preprocessFileLineNumbers "core\fnc\log\server_repair_wreck.sqf";
-btc_fnc_log_tow = compile preprocessFileLineNumbers "core\fnc\log\tow.sqf";
-btc_fnc_log_unhook = compile preprocessFileLineNumbers "core\fnc\log\unhook.sqf";
-btc_fnc_log_copy = compile preprocessFileLineNumbers "core\fnc\log\copy.sqf";
-btc_fnc_log_paste = compile preprocessFileLineNumbers "core\fnc\log\paste.sqf";
 
 //MIL
 btc_fnc_mil_class = compile preprocessFileLineNumbers "core\fnc\mil\class.sqf";
@@ -251,6 +232,7 @@ if (!isDedicated) then {
     btc_fnc_showSubtitle = compile preprocessFileLineNumbers "core\fnc\common\showSubtitle.sqf";
     btc_fnc_strategicMapOpen = compile preprocessFileLineNumbers "core\fnc\common\strategicMapOpen.sqf";
     btc_fnc_get_composition = compile preprocessFileLineNumbers "core\fnc\common\get_composition.sqf";
+    btc_fnc_checkArea = compile preprocessFileLineNumbers "core\fnc\common\checkArea.sqf";
 
     //DEBUG
     btc_fnc_debug_marker = compile preprocessFileLineNumbers "core\fnc\debug\marker.sqf";
@@ -300,6 +282,25 @@ if (!isDedicated) then {
     btc_fnc_log_hitch_points = compile preprocessFileLineNumbers "core\fnc\log\hitch_points.sqf";
     btc_fnc_log_get_corner_points = compile preprocessFileLineNumbers "core\fnc\log\get_corner_points.sqf";
     btc_fnc_log_delete = compile preprocessFileLineNumbers "core\fnc\log\delete.sqf";
+    btc_fnc_log_create = compile preprocessFileLineNumbers "core\fnc\log\create.sqf";
+    btc_fnc_log_create_apply = compile preprocessFileLineNumbers "core\fnc\log\create_apply.sqf";
+    btc_fnc_log_create_load = compile preprocessFileLineNumbers "core\fnc\log\create_load.sqf";
+    btc_fnc_log_create_change_target = compile preprocessFileLineNumbers "core\fnc\log\create_change_target.sqf";
+    btc_fnc_log_lift_check = compile preprocessFileLineNumbers "core\fnc\log\lift_check.sqf";
+    btc_fnc_log_lift_deploy_ropes = compile preprocessFileLineNumbers "core\fnc\log\lift_deploy_ropes.sqf";
+    btc_fnc_log_lift_destroy_ropes = compile preprocessFileLineNumbers "core\fnc\log\lift_destroy_ropes.sqf";
+    btc_fnc_log_lift_hook = compile preprocessFileLineNumbers "core\fnc\log\lift_hook.sqf";
+    btc_fnc_log_lift_hook_fake = compile preprocessFileLineNumbers "core\fnc\log\lift_hook_fake.sqf";
+    btc_fnc_log_lift_hud = compile preprocessFileLineNumbers "core\fnc\log\lift_hud.sqf";
+    btc_fnc_log_lift_hud_loop = compile preprocessFileLineNumbers "core\fnc\log\lift_hud_loop.sqf";
+    btc_fnc_log_place_create_camera = compile preprocessFileLineNumbers "core\fnc\log\place_create_camera.sqf";
+    btc_fnc_log_place = compile preprocessFileLineNumbers "core\fnc\log\place.sqf";
+    btc_fnc_log_place_key_down = compile preprocessFileLineNumbers "core\fnc\log\place_key_down.sqf";
+    btc_fnc_log_repair_wreck = compile preprocessFileLineNumbers "core\fnc\log\repair_wreck.sqf";
+    btc_fnc_log_copy = compile preprocessFileLineNumbers "core\fnc\log\copy.sqf";
+    btc_fnc_log_paste = compile preprocessFileLineNumbers "core\fnc\log\paste.sqf";
+    btc_fnc_log_tow = compile preprocessFileLineNumbers "core\fnc\log\tow.sqf";
+    btc_fnc_log_unhook = compile preprocessFileLineNumbers "core\fnc\log\unhook.sqf";
 
     //ARSENAL
     btc_fnc_arsenal_data = compile preprocessFileLineNumbers "core\fnc\arsenal\data.sqf";
