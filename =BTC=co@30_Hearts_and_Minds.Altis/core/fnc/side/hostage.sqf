@@ -65,15 +65,13 @@ _group_civ setVariable ["no_cache", true];
 private _captive = _group_civ createUnit [selectRandom btc_civ_type_units, _pos, [], 0, "CAN_COLLIDE"];
 waitUntil {local _captive};
 [_captive, true] call ACE_captives_fnc_setHandcuffed;
-_captive setPosATL _pos;
 _captive call btc_fnc_civ_unit_create;
 
 private _group = [];
 {
     private _grp = createGroup btc_enemy_side;
-    private _unit = _grp createUnit [selectRandom btc_type_units, _x, [], 0, "NONE"];
+    private _unit = _grp createUnit [selectRandom btc_type_units, _x, [], 0, "CAN_COLLIDE"];
     [_unit] joinSilent _grp;
-    _unit setPosATL _x;
     _group pushBack _grp;
     _grp setVariable ["no_cache", true];
     _unit call btc_fnc_mil_unit_create;
