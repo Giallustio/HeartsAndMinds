@@ -21,8 +21,13 @@ Author:
 ---------------------------------------------------------------------------- */
 
 params [
-    ["_veh", objNull, [objNull]]
+    ["_veh", objNull, [objNull]],
+    ["_blacklist", btc_helo, [[]]]
 ];
+
+if (_veh in _blacklist) exitWith {
+    [16] remoteExecCall ["btc_fnc_show_hint", remoteExecutedOwner];
+};
 
 private _type = typeOf _veh;
 (getPosASL _veh) params ["_x", "_y", "_z"];

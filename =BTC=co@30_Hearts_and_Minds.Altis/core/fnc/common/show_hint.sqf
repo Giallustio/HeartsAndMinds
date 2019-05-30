@@ -3,7 +3,7 @@
 Function: btc_fnc_show_hint
 
 Description:
-    Show hint.
+    Show CBA_fnc_notify.
 
 Parameters:
     _type - Type of CBA_fnc_notify to show. [Number]
@@ -30,42 +30,42 @@ params [
 
 private _text = switch (_type) do {
     case 0 : {
-        localize "STR_BTC_HAM_O_COMMON_SHOWHINTS_0"; //Cache destroyed!
+        localize "STR_BTC_HAM_O_COMMON_SHOWHINTS_0";
     };
     case 1 : {
         [
             [localize "STR_BTC_HAM_O_COMMON_SHOWHINTS_1"],
             [localize "STR_BTC_HAM_O_COMMON_SHOWHINTS_MU"],
             ["<img size='1' image='\A3\ui_f\data\map\markers\handdrawn\unknown_CA.paa' align='center' color='#ff0000'/>"]
-        ]; //Intel about an ammo cache found! Map updated
+        ];
     };
     case 2 : {
-        format [localize "STR_BTC_HAM_O_COMMON_SHOWHINTS_2", _custom]; //Hideout destroyed! %1 remaining
+        format [localize "STR_BTC_HAM_O_COMMON_SHOWHINTS_2", _custom];
     };
     case 3 : {
-        localize "STR_BTC_HAM_O_COMMON_SHOWHINTS_3"; //This body does not have any intel
+        localize "STR_BTC_HAM_O_COMMON_SHOWHINTS_3";
     };
     case 5 : {
         [
             [localize "STR_BTC_HAM_O_COMMON_SHOWHINTS_5"],
             [localize "STR_BTC_HAM_O_COMMON_SHOWHINTS_MU"],
             ["<img size='1' image='\A3\ui_f\data\map\markers\handdrawn\warning_CA.paa' align='center' color='#ff0000'/>"]
-        ]; //Intel about an hideout found! Map updated
+        ];
     };
     case 7 : {
-        format [localize "STR_BTC_HAM_O_COMMON_SHOWHINTS_7", _custom]; // has been deployed!
+        format [localize "STR_BTC_HAM_O_COMMON_SHOWHINTS_7", _custom];
     };
     case 8 : {
-        localize "STR_BTC_HAM_O_COMMON_SHOWHINTS_8"; //Saving in progress...Please wait
+        localize "STR_BTC_HAM_O_COMMON_SHOWHINTS_8";
     };
     case 9 : {
-        localize "STR_BTC_HAM_O_COMMON_SHOWHINTS_9"; //Game has been saved!
+        localize "STR_BTC_HAM_O_COMMON_SHOWHINTS_9";
     };
     case 10 : {
-        localize "STR_BTC_HAM_O_COMMON_SHOWHINTS_10"; //Database deleted!
+        localize "STR_BTC_HAM_O_COMMON_SHOWHINTS_10";
     };
     case 12 : {
-        localize "STR_BTC_HAM_SIDE_CONVOY_STARTCHAT"; //Convoy has left the starting point!
+        localize "STR_BTC_HAM_SIDE_CONVOY_STARTCHAT";
     };
     case 14 : {
         [
@@ -79,6 +79,18 @@ private _text = switch (_type) do {
             [localize "STR_BTC_HAM_O_COMMON_SHOWHINTS_15"],
             [format ["<img size='5' image='%1' align='center'/>", getText (configfile >> "CfgVehicles" >> _custom >> "editorPreview")]],
             [" "]
+        ];
+    };
+    case 16 : {
+        [
+            [localize "STR_BTC_HAM_LOG_RWRECK_ISHELO"],
+            ["<img size='1' image='\A3\ui_f\data\igui\cfg\simpleTasks\types\repair_ca.paa' align='center'/>"]
+        ];
+    };
+    case 17 : {
+        [
+            [localize "STR_BTC_HAM_LOG_LPDELETE"],
+            ["<img size='1' image='\z\ace\addons\arsenal\data\iconClearContainer.paa' align='center'/>"]
         ];
     };
 };

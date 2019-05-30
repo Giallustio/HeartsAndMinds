@@ -19,8 +19,9 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-hint localize "STR_BTC_HAM_O_ENDMISSION"; //All the hideouts are destroyed, finally the Oplitas has been defeated! Mission accomplished
+hint localize "STR_BTC_HAM_O_ENDMISSION";
+
 while {true} do {
-    hintSilent localize "STR_BTC_HAM_O_ENDMISSION";  //All the hideouts are destroyed, finally the Oplitas has been defeated! Mission accomplished
+    hintSilent localize "STR_BTC_HAM_O_ENDMISSION";
     sleep 1;
 };

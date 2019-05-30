@@ -36,7 +36,7 @@ params [
 _wp_ratios params ["_wp_house", "_wp_sentry"];
 
 if (btc_debug) then {
-    hint ("Activate " + str _id);
+    ("Activate " + str _id) call CBA_fnc_notify;
 };
 
 private _city = btc_city_all select _id;

@@ -29,7 +29,7 @@ waitUntil {!(isNil "btc_int_ask_data")};
 private _fobs_marker = btc_int_ask_data select 0;
 private _fobs_structure = btc_int_ask_data select 1;
 if (_fobs_marker isEqualTo []) exitWith {
-    hint localize "STR_BTC_HAM_O_FOB_REDEPLOY_H_NOFOB"; //"No FOBs deployed"
+    (localize "STR_BTC_HAM_O_FOB_REDEPLOY_H_NOFOB") call CBA_fnc_notify;
 };
 
  private _respawn_positions = _fobs_structure apply {
@@ -43,7 +43,7 @@ private _missionsData = [];
         getMarkerPos _x,
         compile format ["player setPosATL %1", _respawn_positions select _forEachIndex],
         _x,
-        format [localize "STR_BTC_HAM_O_FOB_REDEPLOY_H_MOVING", _x], //"Moving to %1"
+        format [localize "STR_BTC_HAM_O_FOB_REDEPLOY_H_MOVING", _x],
         "",
         getText (configfile >> "CfgVehicles" >> typeOf (_fobs_structure select _forEachIndex) >> "editorPreview"),
         1,
