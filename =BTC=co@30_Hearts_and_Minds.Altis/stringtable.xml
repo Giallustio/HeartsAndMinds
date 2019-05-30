@@ -915,7 +915,7 @@
                 <Original>Find the pilot</Original>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_RESC_BACK_DESC">
-                <Original>Get him back to base at logisitc point.</Original>
+                <Original>Get him back to base at logistic point.</Original>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_RESC_BACK_TITLE">
                 <Original>Get him back</Original>
@@ -1606,10 +1606,10 @@
                 <Original>We got a picture of the something around the cache:</Original>
             </Key>
             <Key ID="STR_BTC_HAM_O_TASK_NOSIDE">
-                <Original>No side mission assigned.</Original>
+                <Original>No side mission assigned</Original>
             </Key>
             <Key ID="STR_BTC_HAM_O_TASK_NOTASIDE">
-                <Original>Isn't a side mission, can't abort.</Original>
+                <Original>Isn't a side mission, can't abort</Original>
             </Key>
         </Container>
         <Container name="Other: Shortcuts">
