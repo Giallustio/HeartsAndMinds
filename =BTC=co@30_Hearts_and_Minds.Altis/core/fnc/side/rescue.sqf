@@ -87,7 +87,7 @@ waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || (_units select {_x d
 
 btc_side_assigned = false;
 publicVariable "btc_side_assigned";
-[[], [_heli, _fx] + _triggers, [_group]] call btc_fnc_delete;
+[[], [_heli, _fx] + _triggers + _units, [_group]] call btc_fnc_delete;
 
 if (btc_side_aborted || btc_side_failed || (_units select {alive _x} isEqualTo [])) exitWith {
     13 remoteExec ["btc_fnc_task_fail", 0];
