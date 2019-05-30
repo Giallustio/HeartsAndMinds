@@ -1991,6 +1991,16 @@
                 <German>Dieses Wrack respawnt automatisch</German>
             </Key>
         </Container>
+        <Container name="Logistic: Delete">
+            <Key ID="STR_BTC_HAM_LOG_DELETE">
+                <Original>No object to delete found</Original>
+                <German>Kein Objekt zum löschen gefunden</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_LOG_LPDELETE">
+                <Original>Can't delete object not created by Logistic Point</Original>
+                <German>Objekt konnte nicht gelöscht werden, da es nicht am Logisik-Punkt erstellt worden ist</German>
+            </Key>
+        </Container>
         <Container name="Logistic: Tow ">
             <Key ID="STR_BTC_HAM_LOG_TOW_ALREADYTOWED">
                 <Original>This vehicle is already attached to another!</Original>

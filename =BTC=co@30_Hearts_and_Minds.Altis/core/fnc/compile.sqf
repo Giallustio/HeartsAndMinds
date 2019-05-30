@@ -157,6 +157,7 @@ if (isServer) then {
     btc_fnc_log_getRearmMagazines = compile preprocessFileLineNumbers "core\fnc\log\getRearmMagazines.sqf";
     btc_fnc_log_init = compile preprocessFileLineNumbers "core\fnc\log\init.sqf";
     btc_fnc_log_setCargo = compile preprocessFileLineNumbers "core\fnc\log\setCargo.sqf";
+    btc_fnc_log_server_delete = compile preprocessFileLineNumbers "core\fnc\log\server_delete.sqf";
     btc_fnc_log_create_s = compile preprocessFileLineNumbers "core\fnc\log\create_s.sqf";
     btc_fnc_log_get_cc = compile preprocessFileLineNumbers "core\fnc\log\get_cc.sqf";
     btc_fnc_log_get_rc = compile preprocessFileLineNumbers "core\fnc\log\get_rc.sqf";
@@ -280,6 +281,7 @@ if (!isDedicated) then {
     //LOG
     btc_fnc_log_hitch_points = compile preprocessFileLineNumbers "core\fnc\log\hitch_points.sqf";
     btc_fnc_log_get_corner_points = compile preprocessFileLineNumbers "core\fnc\log\get_corner_points.sqf";
+    btc_fnc_log_delete = compile preprocessFileLineNumbers "core\fnc\log\delete.sqf";
     btc_fnc_log_create = compile preprocessFileLineNumbers "core\fnc\log\create.sqf";
     btc_fnc_log_create_apply = compile preprocessFileLineNumbers "core\fnc\log\create_apply.sqf";
     btc_fnc_log_create_load = compile preprocessFileLineNumbers "core\fnc\log\create_load.sqf";
