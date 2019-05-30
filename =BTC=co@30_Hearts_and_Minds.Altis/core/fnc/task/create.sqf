@@ -35,16 +35,5 @@ params [
     ["_showNotification", true, [true]]
 ];
 
-[btc_player_side, _task_ids] call BIS_fnc_taskCreate;
-private _jip = [_task_ids, btc_player_side, _description, _destination, 2, _showNotification, _location] remoteExecCall ["btc_fnc_task_setDescription", [0, -2] select isDedicated, true];
-
-if (_isCurrent) then {
-    private _task_id = if (_task_ids isEqualType []) then {
-        _task_ids select 0
-    } else {
-        _task_ids
-    };
-    _task_id call BIS_fnc_taskSetCurrent;
-};
-
-_jip
+[btc_player_side, _task_ids, nil, _destination, ["CREATED", "ASSIGNED" ] select _isCurrent] call BIS_fnc_taskCreate;
+[_task_ids, btc_player_side, _description, _destination, 2, _showNotification, _location] remoteExecCall ["btc_fnc_task_setDescription", [0, -2] select isDedicated, true];

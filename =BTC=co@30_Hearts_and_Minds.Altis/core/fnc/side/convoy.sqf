@@ -38,10 +38,10 @@ private _city1 = selectRandom _usefuls;
 //// Find Road \\\\
 private _radius_x = _city1 getVariable ["RadiusX", 0];
 private _roads = _city1 nearRoads (_radius_x * 2);
-_roads = _roads select {(_x distance _city1 > _radius_x ) && isOnRoad _x};
+_roads = _roads select {(_x distance _city1 > _radius_x) && isOnRoad _x};
  if (_roads isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
 private _road = selectRandom _roads;
-private _pos1 = getPos _road;
+private _pos1 = getPosATL _road;
 private _pos2 = getPos _city2;
 
 private _jip = [_taskID, 12, _pos1, _city1 getVariable "name"] call btc_fnc_task_create;
@@ -78,7 +78,7 @@ for "_i" from 0 to (2 + round random 2) do {
     _vehs pushBack _veh;
 
     _road = (roadsConnectedTo _road) select 0;
-    _pos1 = getPos _road;
+    _pos1 = getPosATL _road;
 };
 
 [_group, _pos2, 0, "MOVE", "SAFE", "RED", "LIMITED", "COLUMN", format ["['%1', 'FAILED'] call BIS_fnc_taskSetState;", _taskID], [0, 0, 0], _radius_x/2] call CBA_fnc_addWaypoint;

@@ -41,7 +41,7 @@ private _roads = _city1 nearRoads (_radius_x * 2);
 _roads = _roads select {(_x distance _city1 > _radius_x) && isOnRoad _x};
 if (_roads isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
 private _road = selectRandom _roads;
-private _pos1 = getPos _road;
+private _pos1 = getPosATL _road;
 private _pos2 = getPos _city2;
 
 private _jip = [_taskID, 14, _pos2, _city2 getVariable "name"] call btc_fnc_task_create;
@@ -78,7 +78,7 @@ for "_i" from 0 to (1 + round random 1) do {
     _vehs pushBack _veh;
 
     _road = (roadsConnectedTo _road) select 0;
-    _pos1 = getPos _road;
+    _pos1 = getPosATL _road;
 };
 
 private _captive = selectRandom units _group;
