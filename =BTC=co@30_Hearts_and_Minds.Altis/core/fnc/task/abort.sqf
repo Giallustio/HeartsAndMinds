@@ -6,9 +6,7 @@ Description:
     Abort a side mission.
 
 Parameters:
-    _task_id - [String]
-    _destination - []
-    _location - []
+    _task_id - Task ID of the side mission to abort. [String]
 
 Returns:
 
@@ -27,11 +25,11 @@ params [
 ];
 
 if (_task_id isEqualTo "") exitWith {
-    "No side mission assigned" call CBA_fnc_notify;
+    localize "STR_BTC_HAM_O_TASK_NOSIDE" call CBA_fnc_notify;
 };
 
 if (_task_id in ["btc_m", "btc_dty", "btc_dft"]) exitWith {
-    "Isn't a side mission, can't abort" call CBA_fnc_notify;
+    localize "STR_BTC_HAM_O_TASK_NOTASIDE" call CBA_fnc_notify;
 };
 
-[_task_id, "CANCELED"] remoteExecCall ["BIS_fnc_taskSetState", 2];
+[_task_id, "CANCELED"] remoteExecCall ["btc_fnc_task_setState", 2];

@@ -106,7 +106,6 @@ waitUntil {sleep 5; (!(alive _captive) || (_captive inArea [getPosWorld btc_crea
 if (_surrender_taskID call BIS_fnc_taskState isEqualTo "CANCELED" ||
     _back_taskID call BIS_fnc_taskState isEqualTo "CANCELED"
 ) exitWith {
-    [_taskID, "CANCELED"] call btc_fnc_task_setState;
     [_markers, _vehs + [_trigger, _group]] call btc_fnc_delete;
 };
 

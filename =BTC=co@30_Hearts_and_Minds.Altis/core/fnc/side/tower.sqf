@@ -63,7 +63,7 @@ private _jip = [_taskID, 7, _tower, [_city getVariable "name", _tower_type]] cal
 
 waitUntil {sleep 5; (!alive _tower || _taskID call BIS_fnc_taskCompleted)};
 
-[[_marker], _btc_composition] call btc_fnc_delete;
+[[], _btc_composition] call btc_fnc_delete;
 
 if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {};
 

@@ -54,7 +54,6 @@ _terminal setVariable ["btc_terminal_taskID", _terminal_taskID, true];
 
 waitUntil {sleep 5; (_terminal_taskID call BIS_fnc_taskCompleted)};
 if (_terminal_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {
-    [_taskID, "CANCELED"] call btc_fnc_task_setState;
     [[], [_terminal]] call btc_fnc_delete;
 };
 
@@ -74,8 +73,8 @@ for "_i" from 1 to (2 + round random 1) do {
 [_terminal, _launchsite modelToWorld [0, 100, 10]] remoteExecCall ["btc_fnc_log_place_create_camera", [0, -2] select isDedicated];
 
 waitUntil {sleep 5; (_defend_taskID call BIS_fnc_taskCompleted || (grpNull in _groups) || !(_city getVariable ["active", false]))};
+
 if (_defend_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {
-    [_taskID, "CANCELED"] call btc_fnc_task_setState;
     [[], [_terminal]] call btc_fnc_delete;
 };
 

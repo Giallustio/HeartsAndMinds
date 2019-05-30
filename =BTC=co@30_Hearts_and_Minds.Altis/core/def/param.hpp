@@ -1,5 +1,5 @@
 class Params {
-    class btc_p_time_title {  // << Time options >>
+    class btc_p_time_title { // << Time options >>
         title = $STR_BTC_HAM_PARAM_TIME_TITLE;
         values[]={0};
         texts[]={""};
@@ -197,7 +197,7 @@ class Params {
         texts[]={$STR_DISABLED,$STR_ENABLED};
         default = 1;
     };
-    class btc_p_set_skill_general {  // Set skill, general
+    class btc_p_set_skill_general { // Set skill, general
         title = __EVAL(format ["      %1, %2", localize "STR_A3_CFGVEHICLES_MODULESKILL_F_0", localize "STR_3DEN_SCENARIO_TEXTSINGULAR"]);
         values[]={0,1,2,3,4,5,6,7,8,9,10};
         texts[]={"0","0.1","0.2","0.3","0.4","0.5","0.6","0.7","0.8","0.9","1"};
@@ -209,7 +209,7 @@ class Params {
         texts[]={"0","0.1","0.2","0.3","0.4","0.5","0.6","0.7","0.8","0.9","1"};
         default = 1;
     };
-    class btc_p_set_skill_aimingShake {  // Set skill, aimingShake
+    class btc_p_set_skill_aimingShake { // Set skill, aimingShake
         title = __EVAL(format ["      %1, %2", localize "STR_A3_CFGVEHICLES_MODULESKILL_F_0", localize "STR_BTC_HAM_PARAM_SKILL_AIMSKILL"]);
         values[]={0,1,2,3,4,5,6,7,8,9,10};
         texts[]={"0","0.1","0.2","0.3","0.4","0.5","0.6","0.7","0.8","0.9","1"};
@@ -269,7 +269,7 @@ class Params {
         texts[] = {$STR_DISABLED,$STR_ENABLED};
         default = 1;
     };
-    class btc_p_side_mission_cycle {  // Side mission cycle:
+    class btc_p_side_mission_cycle { // Side mission cycle:
         title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_GAMEPLAY_SIDEM"]);
         values[] = {0,1,2,3,4};
         texts[] = {$STR_DISABLED,1,2,3,4};

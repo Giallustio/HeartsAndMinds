@@ -18,7 +18,7 @@ Returns:
 
 Examples:
     (begin example)
-        [0, "btc_dft"] call btc_fnc_task_create;
+        [["btc_dft", "btc_m"], 0] call btc_fnc_task_create;
     (end)
 
 Author:
@@ -36,7 +36,7 @@ params [
 ];
 
 [btc_player_side, _task_ids] call BIS_fnc_taskCreate;
-[_task_ids, btc_player_side, _description, _destination, 2, _showNotification, _location] remoteExecCall ["btc_fnc_task_setDescription", [0, -2] select isDedicated, true];
+private _jip = [_task_ids, btc_player_side, _description, _destination, 2, _showNotification, _location] remoteExecCall ["btc_fnc_task_setDescription", [0, -2] select isDedicated, true];
 
 if (_isCurrent) then {
     private _task_id = if (_task_ids isEqualType []) then {
@@ -46,3 +46,5 @@ if (_isCurrent) then {
     };
     _task_id call BIS_fnc_taskSetCurrent;
 };
+
+_jip

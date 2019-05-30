@@ -3,10 +3,10 @@
 Function: btc_fnc_task_setState
 
 Description:
-    Set state to task and subtasks (hildren).
+    Set state to task and subtasks (children).
 
 Parameters:
-    _task - Task to change state of the task and children. [Array]
+    _task - Main task to change state of the main task and children. [Array]
     _state - State to apply. [String]
 
 Returns:
@@ -29,7 +29,11 @@ params [
 
 private _subTasks = _task call BIS_fnc_taskChildren;
 if (_subTasks isEqualTo []) then {
-    _subTasks = (_subTasks call BIS_fnc_taskParent) call BIS_fnc_taskChildren;
+    private _taskParent = _task call BIS_fnc_taskParent;
+    if !(_taskParent isEqualTo "") then {
+        _task = _taskParent;
+        _subTasks = _task call BIS_fnc_taskChildren;
+    };
 };
 
 (_subTasks + [_task]) apply {

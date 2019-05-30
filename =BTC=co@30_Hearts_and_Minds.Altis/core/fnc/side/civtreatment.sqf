@@ -91,7 +91,7 @@ _unit setVariable ["ace_medical_ai_treatmentoverat", CBA_missionTime + 10000]; /
 
 waitUntil {sleep 5; (_taskID call BIS_fnc_taskCompleted || !alive _unit || {_unit call ace_medical_fnc_isInStableCondition && [_unit] call ace_common_fnc_isAwake})};
 
-[[_marker], [_veh, _fx, _group]] call btc_fnc_delete;
+[[], [_veh, _fx, _group]] call btc_fnc_delete;
 
 if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {};
 if !(alive _unit) exitWith {

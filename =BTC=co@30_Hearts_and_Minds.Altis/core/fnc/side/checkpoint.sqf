@@ -112,9 +112,7 @@ waitUntil {sleep 5; (
 
 [[], _boxes] call btc_fnc_delete;
 
-if (_taskID_array findIf {_x call BIS_fnc_taskState isEqualTo "CANCELED"} > -1) exitWith {
-    [_taskID, "CANCELED"] call btc_fnc_task_setState;
-};
+if (_taskID_array findIf {_x call BIS_fnc_taskState isEqualTo "CANCELED"} > -1) exitWith {};
 
 80 call btc_fnc_rep_change;
 

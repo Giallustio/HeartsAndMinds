@@ -114,11 +114,11 @@ for "_i" from 1 to (round random 2) do {
 waitUntil {sleep 5; (_taskID call BIS_fnc_taskCompleted || (_mines select {!isNull _x} isEqualTo []))};
 
 if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {
-    [[_area, _marker], _mines + _composition_objects] call btc_fnc_delete;
+    [[_area], _mines + _composition_objects] call btc_fnc_delete;
 };
 
 30 call btc_fnc_rep_change;
 
 [_taskID, "SUCCEEDED"] call BIS_fnc_taskSetState;
 
-[[_area, _marker], _composition_objects] call btc_fnc_delete;
+[[_area], _composition_objects] call btc_fnc_delete;

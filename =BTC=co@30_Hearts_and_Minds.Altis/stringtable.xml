@@ -179,11 +179,11 @@
         </Container>
         <Container name="Documentation: Hideout">
             <Key ID="STR_BTC_HAM_DOC_HIDEOUT_TEXT">
-                <Original>The hideouts are a place where the Oplitas organize their movements.&lt;br/&gt;They send reinforcements from here and can attack the closest city.&lt;br/&gt;If you notice a lot of activity in an area, probably there is an hideout closeby.&lt;br/&gt;If you want to defeat the Oplitas, you need to destroy all their hideouts.&lt;br/&gt;Here an example of an hideout:&lt;br/&gt;&lt;br/&gt;&lt;img image='core\img\hideout.jpg' width='256' height='256'/&gt;&lt;br/&gt;&lt;br/&gt;To destroy an hideout just place a satchel near the ammo box, it's close to the flag, and blow it off!</Original>
-                <Spanish>Los escondites son un lugar donde los Oplitas organizan sus movimientos.&lt;br/&gt;Enviarán refuerzos desde aquí y podrán atacar la ciudad más cercana.&lt;br/&gt;Si usted nota mucha actividad en un área, probablemente hay un escondite cerca.Si quieres derrotar a los Oplitas, tienes que destruir todos sus escondites.&lt;br/&gt;Aquí un ejemplo de un escondite:&lt;br/&gt;&lt;br/&gt;&lt;img image='core\img\hideout.jpg' width='256' height='256'/&gt;&lt;br/&gt;&lt;br/&gt;Para destruir un escondite sólo tienes que colocar una explosivo tipo satchel cerca de la caja de municiones, cerca de la bandera, y volarla!</Spanish>
-                <German>In den Verstecken planen und organisieren die Oplitas ihre Einstäze und Bewegungen.&lt;br/&gt;Von hier wird Verstärkung auf umliegende Gebiete verteilt. Ebenso ist ein Angriff auf die nächste Stadt von hier aus möglich.&lt;br/&gt;Sollten Sie eine erhöhte feindliche Aktivität in der Gegend festestellen, so befindet sich möglicherweise ein Versteck in der Nähe.&lt;br/&gt;Wenn Sie die Oplitas besiegen wollen, so müssen Sie alle Verstecke zerstören.&lt;br/&gt;Hier ein kleines Beispiel für ein Versteck:&lt;br/&gt;&lt;br/&gt;&lt;img image='core\img\hideout.jpg' width='256' height='256'/&gt;&lt;br/&gt;&lt;br/&gt;Das Versteck kann zerstört werden in dem man eine Sprengladung in der Nähe der Munitionskiste oder der Flagge zündet!</German>
-                <Portuguese>Os esconderijos são um lugar onde as inimigos organizam seus movimentos.&lt;br/&gt;Daqui eles enviam reforços e podem atacar as cidades mais próximas.&lt;br/&gt;Se você notar muita atividade em uma área, provavelmente há um esconderijo por perto.&lt;br/&gt;Se você quiser derrotar o inimigo, terá que destruir todos os esconderijos.&lt;br/&gt;Veja um exemplo de um esconderijo:&lt;br/&gt;&lt;br/&gt;&lt;img image='core\img\hideout.jpg' width='256' height='256'/&gt;&lt;br/&gt;&lt;br/&gt;Para destruir um esconderijo, basta colocar uma bolsa de explosivos perto da caixa de munição (que fica perto da bandeira) e explodí-lo!</Portuguese>
-                <Chinesesimp>藏匿点是Oplitas组织活动的地方。&lt;br/&gt;他们从这里派遣增援, 进攻附近的城市。&lt;br/&gt;如果你在某区域注意到了大量民兵活动, 那么藏匿点可能就在附近。&lt;br/&gt;如果你想要打败Oplitas, 你需要摧毁所有的藏匿点。&lt;br/&gt;这是一张藏匿点的示意图:&lt;br/&gt;&lt;br/&gt;&lt;img image='core\img\hideout.jpg' width='256' height='256'/&gt;&lt;br/&gt;&lt;br/&gt;要摧毁藏匿点, 只需在靠近旗帜的弹药箱上放置一个炸药包, 然后炸掉它!</Chinesesimp>
+                <Original>The hideouts are a place where the Oplitas organize their movements.&lt;br/&gt;They send reinforcements from here and can attack the closest city.&lt;br/&gt;If you notice a lot of activity in an area, probably there is an hideout closeby.&lt;br/&gt;If you want to defeat the Oplitas, you need to destroy all their hideouts.&lt;br/&gt;Here an example of an hideout:&lt;br/&gt;&lt;br/&gt;&lt;img image='core\img\hideout.jpg' width='306' height='256'/&gt;&lt;br/&gt;&lt;br/&gt;To destroy an hideout just place a satchel near the ammo box, it's close to the flag, and blow it off!</Original>
+                <Spanish>Los escondites son un lugar donde los Oplitas organizan sus movimientos.&lt;br/&gt;Enviarán refuerzos desde aquí y podrán atacar la ciudad más cercana.&lt;br/&gt;Si usted nota mucha actividad en un área, probablemente hay un escondite cerca.Si quieres derrotar a los Oplitas, tienes que destruir todos sus escondites.&lt;br/&gt;Aquí un ejemplo de un escondite:&lt;br/&gt;&lt;br/&gt;&lt;img image='core\img\hideout.jpg' width='306' height='256'/&gt;&lt;br/&gt;&lt;br/&gt;Para destruir un escondite sólo tienes que colocar una explosivo tipo satchel cerca de la caja de municiones, cerca de la bandera, y volarla!</Spanish>
+                <German>In den Verstecken planen und organisieren die Oplitas ihre Einstäze und Bewegungen.&lt;br/&gt;Von hier wird Verstärkung auf umliegende Gebiete verteilt. Ebenso ist ein Angriff auf die nächste Stadt von hier aus möglich.&lt;br/&gt;Sollten Sie eine erhöhte feindliche Aktivität in der Gegend festestellen, so befindet sich möglicherweise ein Versteck in der Nähe.&lt;br/&gt;Wenn Sie die Oplitas besiegen wollen, so müssen Sie alle Verstecke zerstören.&lt;br/&gt;Hier ein kleines Beispiel für ein Versteck:&lt;br/&gt;&lt;br/&gt;&lt;img image='core\img\hideout.jpg' width='306' height='256'/&gt;&lt;br/&gt;&lt;br/&gt;Das Versteck kann zerstört werden in dem man eine Sprengladung in der Nähe der Munitionskiste oder der Flagge zündet!</German>
+                <Portuguese>Os esconderijos são um lugar onde as inimigos organizam seus movimentos.&lt;br/&gt;Daqui eles enviam reforços e podem atacar as cidades mais próximas.&lt;br/&gt;Se você notar muita atividade em uma área, provavelmente há um esconderijo por perto.&lt;br/&gt;Se você quiser derrotar o inimigo, terá que destruir todos os esconderijos.&lt;br/&gt;Veja um exemplo de um esconderijo:&lt;br/&gt;&lt;br/&gt;&lt;img image='core\img\hideout.jpg' width='306' height='256'/&gt;&lt;br/&gt;&lt;br/&gt;Para destruir um esconderijo, basta colocar uma bolsa de explosivos perto da caixa de munição (que fica perto da bandeira) e explodí-lo!</Portuguese>
+                <Chinesesimp>藏匿点是Oplitas组织活动的地方。&lt;br/&gt;他们从这里派遣增援, 进攻附近的城市。&lt;br/&gt;如果你在某区域注意到了大量民兵活动, 那么藏匿点可能就在附近。&lt;br/&gt;如果你想要打败Oplitas, 你需要摧毁所有的藏匿点。&lt;br/&gt;这是一张藏匿点的示意图:&lt;br/&gt;&lt;br/&gt;&lt;img image='core\img\hideout.jpg' width='306' height='256'/&gt;&lt;br/&gt;&lt;br/&gt;要摧毁藏匿点, 只需在靠近旗帜的弹药箱上放置一个炸药包, 然后炸掉它!</Chinesesimp>
             </Key>
         </Container>
         <Container name="Documentation: IED">
@@ -656,6 +656,12 @@
     </Package>
     <Package name="Missions">
         <Container name="Mission: Defeat the Oplitas">
+            <Key ID="STR_BTC_HAM_MISSION_OBJ_DESC">
+                <Original>Objectives must be accomplish.</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_MISSION_OBJ_TITLE">
+                <Original>Main objectives</Original>
+            </Key>
             <Key ID="STR_BTC_HAM_MISSION_DEFEAT_TITLE">
                 <Original>Defeat the Oplitas</Original>
                 <Spanish>Derrotar a los Oplitas</Spanish>
@@ -679,26 +685,19 @@
             </Key>
         </Container>
         <Container name="Mission: Destroy all the hideouts">
-            <Key ID="STR_BTC_HAM_MISSION_DESTORY_TITLE">
-                <Original>Destroy all the hideouts</Original>
-                <Spanish>Destruye todos los escondites</Spanish>
-                <German>Alle Verstecke zerstören</German>
-                <Portuguese>Destrua todos os esconderijos</Portuguese>
-                <Chinesesimp>摧毁所有藏匿点</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_MISSION_DESTORY_DESC">
+            <Key ID="STR_BTC_HAM_MISSION_DESTROY_DESC">
                 <Original>Destroy all the hideouts of the Oplitas</Original>
                 <Spanish>Destruye todos los escondites de los Oplitas</Spanish>
                 <German>Zerstören Sie sämtliche Verstecke der Oplitas</German>
                 <Portuguese>Destrua todos os esconderijos dos inimigos</Portuguese>
                 <Chinesesimp>摧毁所有Oplitas藏匿点</Chinesesimp>
             </Key>
-            <Key ID="STR_BTC_HAM_MISSION_DESTORY_WIN_TEXT">
-                <Original>All the hideouts have been destroyed!</Original>
-                <Spanish>¡Todos los escondites han sido destruidos!</Spanish>
-                <German>Alle Verstecke wurden zerstört!</German>
-                <Portuguese>Todos os esconderijos foram destruídos!</Portuguese>
-                <Chinesesimp>所有藏匿点都被摧毁了!</Chinesesimp>
+            <Key ID="STR_BTC_HAM_MISSION_DESTROY_TITLE">
+                <Original>Destroy all the hideouts</Original>
+                <Spanish>Destruye todos los escondites</Spanish>
+                <German>Alle Verstecke zerstören</German>
+                <Portuguese>Destrua todos os esconderijos</Portuguese>
+                <Chinesesimp>摧毁所有藏匿点</Chinesesimp>
             </Key>
         </Container>
         <Container name="Mission: Seize the last positions">
@@ -727,6 +726,12 @@
                 <Portuguese>Um Oficial está viajando em um comboio camuflado. Encontre e traga-o para base para interrogatório. Ele é um dos principais responsáveis por aterrorizar a população local!</Portuguese>
                 <Chinesesimp>一名敌军军官已经伪装起来, 随同车队进行转移。找到他并把他带回基地, 进行进一步的审问。 他是对当地恐怖活动负责的主要人物之一!</Chinesesimp>
             </Key>
+            <Key ID="STR_BTC_HAM_SIDE_CAPOFF_SURRENDER_DESC">
+                <Original>Surrender the officer.</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_CAPOFF_SURRENDER_TITLE">
+                <Original>Surrender the officer</Original>
+            </Key>
         </Container>
         <Container name="Checkpoint">
             <Key ID="STR_BTC_HAM_SIDE_CHECKPOINT_TITLE">
@@ -742,6 +747,12 @@
                 <German>Kontrollpunkt wurden in der Nähe von %1 gesichtet. Die lokale Bevölkerung bittet Sie darum, alle Munitionskisten und den jeweiligen Kontrollpunkt zu beseitigen!</German>
                 <Portuguese>Os pontos de verificação foram localizados em %1. A população local está pedindo sua ajuda para destruidir todas as caixas de munições em todos os pontos de verificação!</Portuguese>
                 <Chinesesimp>在 %1 地区发现检查站。当地居民请求您摧毁武器箱和相应的检查站!</Chinesesimp>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_CHECKPOINT_DESTROY_DESC">
+                <Original>Detroy this checkpoint by destroying this object.</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_CHECKPOINT_DESTROY_TITLE">
+                <Original>Detroy this checkpoint</Original>
             </Key>
         </Container>
         <Container name="Civ treatment boat">
@@ -842,6 +853,15 @@
                 <Portuguese>Hackei o terminal de protótipo de míssil em %1. Defenda sua posição até que o processo seja concluído!</Portuguese>
                 <Chinesesimp>在 %1 地区入侵一枚带有控制终端的导弹原型的系统。守住你的位置, 直到系统入侵完成!</Chinesesimp>
             </Key>
+            <Key ID="STR_BTC_HAM_SIDE_HACK_OPEN_DESC">
+                <Original>Open terminal to launch the hack.</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_HACK_OPEN_TITLE">
+                <Original>Open terminal</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_HACK_DEFEND_TITLE">
+                <Original>Defend the terminal</Original>
+            </Key>
         </Container>
         <Container name="Hostage">
             <Key ID="STR_BTC_HAM_SIDE_HOSTAGE_TITLE">
@@ -890,6 +910,18 @@
                 <Portuguese>MAYDAY-MAYDAY, um piloto caiu com seu helicóptero próximo a %1. O comando solicitou sua ajuda para resgatá-lo e trazê-lo de volta a base!</Portuguese>
                 <Chinesesimp>MAYDAY-MAYDAY, 一架直升机在 %1 附近坠毁。指挥部正在请求你的帮助。前去搜救这名飞行员, 并将其带回基地!</Chinesesimp>
             </Key>
+            <Key ID="STR_BTC_HAM_SIDE_RESC_FIND_DESC">
+                <Original>Find the pilot of the helicopter. It should be around the helicopter wreck.</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_RESC_FIND_TITLE">
+                <Original>Find the pilot</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_RESC_BACK_DESC">
+                <Original>Get him back to base at logisitc point.</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_RESC_BACK_TITLE">
+                <Original>Get him back</Original>
+            </Key>
         </Container>
         <Container name="Supply">
             <Key ID="STR_BTC_HAM_SIDE_SUPPLIES_TITLE">
@@ -905,6 +937,18 @@
                 <German>Die Bewohner der Stadt %1 sind am verdusten und verhungern. Versorgen Sie die Bürger mit den nötigen Nahrungsmitteln. Den benötigten Nachschubcontainer finden sie am Versorgungspunkt.</German>
                 <Portuguese>O população de %1 estão passando fome! Forneça suprimentos! Os suprimentos podem ser solicitados no ponto logístico.</Portuguese>
                 <Chinesesimp>%1 的居民正在挨饿, 在补给点生成一些救援物资并带给他们!</Chinesesimp>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_SUPPLIES_MOVE_DESC">
+                <Original>Move to the supply location with supplies available at logistic point.</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_SUPPLIES_MOVE_TITLE">
+                <Original>Move with supplies</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_SUPPLIES_UNLOAD_DESC">
+                <Original>Unload supplies available inside the supplies contanair.</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_SUPPLIES_UNLOAD_TITLE">
+                <Original>Unload supplies</Original>
             </Key>
         </Container>
         <Container name="Tower">
@@ -1557,18 +1601,17 @@
                 <Portuguese>Banco de Dados deletado!</Portuguese>
                 <Chinesesimp>数据库已删除!</Chinesesimp>
             </Key>
-            <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_11">
-                <Original>One checkpoint destroyed!</Original>
-                <Spanish>¡Un puesto de control destruido!</Spanish>
-                <German>Ein Kontrollpunkt wurde zerstört!</German>
-                <Portuguese>Um ponto de verificação destruído!</Portuguese>
-                <Chinesesimp>一个检查站被摧毁!</Chinesesimp>
-            </Key>
             <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_14">
                 <Original>We got a picture of the building where the cache is:</Original>
             </Key>
             <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_15">
                 <Original>We got a picture of the something around the cache:</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_TASK_NOSIDE">
+                <Original>No side mission assigned.</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_TASK_NOTASIDE">
+                <Original>Isn't a side mission, can't abort.</Original>
             </Key>
         </Container>
         <Container name="Other: Shortcuts">
@@ -1638,7 +1681,7 @@
                 <Chinesesimp>集装箱及其货物已记录! 清空该区域以创建一个复制品。</Chinesesimp>
             </Key>
         </Container>
-        <Container name="Other: Endmission ">
+        <Container name="Other: Endmission">
             <Key ID="STR_BTC_HAM_O_COMMON_ENDMISSION">
                 <Original>All the hideouts are destroyed, finally the Oplitas has been defeated! Mission accomplished</Original>
                 <Spanish>Todos los escondites fueron destruidos, finalmente el Oplitas han sido derrotados! Misión cumplida</Spanish>

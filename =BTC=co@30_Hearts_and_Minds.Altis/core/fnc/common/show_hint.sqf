@@ -64,9 +64,6 @@ private _text = switch (_type) do {
     case 10 : {
         localize "STR_BTC_HAM_O_COMMON_SHOWHINTS_10"; //Database deleted!
     };
-    case 11 : {
-        localize "STR_BTC_HAM_O_COMMON_SHOWHINTS_11"; //One checkpoint destroyed!
-    };
     case 12 : {
         localize "STR_BTC_HAM_SIDE_CONVOY_STARTCHAT"; //Convoy has left the starting point!
     };

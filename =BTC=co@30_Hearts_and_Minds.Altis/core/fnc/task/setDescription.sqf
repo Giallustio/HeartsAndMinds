@@ -40,27 +40,51 @@ private _type = "";
 private _image = "<br/><img image='%1' width='355' height='200'/>";
 switch (_description) do {
     case -1 : {
-        _description = ["Must be accomplish.", "Main tasks", "Main tasks"];
+        _description = [
+            localize "STR_BTC_HAM_MISSION_OBJ_DESC",
+            localize "STR_BTC_HAM_MISSION_OBJ_TITLE",
+            localize "STR_BTC_HAM_MISSION_OBJ_TITLE"
+        ];
         _type = "documents";
     };
     case 0 : {
-        _description = [localize "STR_BTC_HAM_MISSION_DEFEAT_DESC", localize "STR_BTC_HAM_MISSION_DEFEAT_TITLE", localize "STR_BTC_HAM_MISSION_DEFEAT_TITLE"];
+        _description = [
+            localize "STR_BTC_HAM_MISSION_DEFEAT_DESC",
+            localize "STR_BTC_HAM_MISSION_DEFEAT_TITLE",
+            localize "STR_BTC_HAM_MISSION_DEFEAT_TITLE"
+        ];
         _type = "kill";
     };
     case 1 : {
-        _description = [localize "STR_BTC_HAM_MISSION_DESTORY_DESC", localize "STR_BTC_HAM_MISSION_DESTORY_TITLE", localize "STR_BTC_HAM_MISSION_DESTORY_TITLE"];
+        _description = [
+            localize "STR_BTC_HAM_MISSION_DESTROY_DESC",
+            localize "STR_BTC_HAM_MISSION_DESTROY_TITLE",
+            localize "STR_BTC_HAM_MISSION_DESTROY_TITLE"
+        ];
         _type = "destroy";
     };
     case 2 : {
-        _description = [localize "STR_BTC_HAM_O_COMMON_SHOWHINTS_6", localize "STR_BTC_HAM_MISSION_SEIZE_TITLE", localize "STR_BTC_HAM_MISSION_SEIZE_TITLE"];
+        _description = [
+            localize "STR_BTC_HAM_O_COMMON_SHOWHINTS_6",
+            localize "STR_BTC_HAM_MISSION_SEIZE_TITLE",
+            localize "STR_BTC_HAM_MISSION_SEIZE_TITLE"
+        ];
         _type = "map";
     };
     case 3 : {
-        _description = [format [localize "STR_BTC_HAM_SIDE_SUPPLIES_DESC", _location], format [localize "STR_BTC_HAM_SIDE_SUPPLIES_TITLE", _location], format [localize "STR_BTC_HAM_SIDE_SUPPLIES_TITLE", _location]];
+        _description = [
+            format [localize "STR_BTC_HAM_SIDE_SUPPLIES_DESC", _location],
+            format [localize "STR_BTC_HAM_SIDE_SUPPLIES_TITLE", _location],
+            format [localize "STR_BTC_HAM_SIDE_SUPPLIES_TITLE", _location]
+        ];
         _type = "container";
     };
     case 4 : {
-        _description = [format [localize "STR_BTC_HAM_SIDE_MINES_DESC", _location], format [localize "STR_BTC_HAM_SIDE_MINES_TITLE", _location], format [localize "STR_BTC_HAM_SIDE_MINES_TITLE", _location]];
+        _description = [
+            format [localize "STR_BTC_HAM_SIDE_MINES_DESC", _location],
+            format [localize "STR_BTC_HAM_SIDE_MINES_TITLE", _location],
+            format [localize "STR_BTC_HAM_SIDE_MINES_TITLE", _location]
+        ];
         _type = "mine";
     };
     case 5 : {
@@ -73,7 +97,11 @@ switch (_description) do {
         _type = "repair";
     };
     case 6 : {
-        _description = [format [localize "STR_BTC_HAM_SIDE_CONQUER_DESC", _location], format [localize "STR_BTC_HAM_SIDE_CONQUER_TITLE", _location], format [localize "STR_BTC_HAM_SIDE_CONQUER_TITLE", _location]];
+        _description = [
+            format [localize "STR_BTC_HAM_SIDE_CONQUER_DESC", _location],
+            format [localize "STR_BTC_HAM_SIDE_CONQUER_TITLE", _location],
+            format [localize "STR_BTC_HAM_SIDE_CONQUER_TITLE", _location]
+        ];
         _type = "attack";
     };
     case 7 : {
@@ -86,11 +114,19 @@ switch (_description) do {
         _type = "destroy";
     };
     case 8 : {
-        _description = [format [localize "STR_BTC_HAM_SIDE_CIVTREAT_DESC", _location], format [localize "STR_BTC_HAM_SIDE_CIVTREAT_TITLE", _location], format [localize "STR_BTC_HAM_SIDE_CIVTREAT_TITLE", _location]];
+        _description = [
+            format [localize "STR_BTC_HAM_SIDE_CIVTREAT_DESC", _location],
+            format [localize "STR_BTC_HAM_SIDE_CIVTREAT_TITLE", _location],
+            format [localize "STR_BTC_HAM_SIDE_CIVTREAT_TITLE", _location]
+        ];
         _type = "heal";
     };
     case 9 : {
-        _description = [format [localize "STR_BTC_HAM_SIDE_CHECKPOINT_DESC", _location], format [localize "STR_BTC_HAM_SIDE_CHECKPOINT_TITLE", _location], format [localize "STR_BTC_HAM_SIDE_CHECKPOINT_TITLE", _location]];
+        _description = [
+            format [localize "STR_BTC_HAM_SIDE_CHECKPOINT_DESC", _location],
+            format [localize "STR_BTC_HAM_SIDE_CHECKPOINT_TITLE", _location],
+            format [localize "STR_BTC_HAM_SIDE_CHECKPOINT_TITLE", _location]
+        ];
         _type = "destroy";
     };
     case 10 : {
@@ -112,7 +148,11 @@ switch (_description) do {
         _type = "destroy";
     };
     case 12 : {
-        _description = [format [localize "STR_BTC_HAM_SIDE_CONVOY_DESC", _location], format [localize "STR_BTC_HAM_SIDE_CONVOY_TITLE", _location], format [localize "STR_BTC_HAM_SIDE_CONVOY_TITLE", _location]];
+        _description = [
+            format [localize "STR_BTC_HAM_SIDE_CONVOY_DESC", _location],
+            format [localize "STR_BTC_HAM_SIDE_CONVOY_TITLE", _location],
+            format [localize "STR_BTC_HAM_SIDE_CONVOY_TITLE", _location]
+        ];
         _type = "car";
     };
     case 13 : {
@@ -141,70 +181,74 @@ switch (_description) do {
         _type = "handcuff";
     };
     case 16 : {
-        _description = [format [localize "STR_BTC_HAM_SIDE_HACK_DESC", _location], format [localize "STR_BTC_HAM_SIDE_HACK_TITLE", _location], format [localize "STR_BTC_HAM_SIDE_HACK_TITLE", _location]];
+        _description = [
+            format [localize "STR_BTC_HAM_SIDE_HACK_DESC", _location],
+            format [localize "STR_BTC_HAM_SIDE_HACK_TITLE", _location],
+            format [localize "STR_BTC_HAM_SIDE_HACK_TITLE", _location]
+        ];
         _type = "defend";
     };
     case 17 : {
         _description = [
-            format ["Open terminal to launch the hack." + format [_image, getText (configfile >> "CfgVehicles" >> _location >> "editorPreview")]],
-            "Open terminal",
-            "Open terminal"
+            format [localize "STR_BTC_HAM_SIDE_HACK_OPEN_DESC" + format [_image, getText (configfile >> "CfgVehicles" >> _location >> "editorPreview")]],
+            localize "STR_BTC_HAM_SIDE_HACK_OPEN_TITLE",
+            localize "STR_BTC_HAM_SIDE_HACK_OPEN_TITLE"
         ];
         _type = "interact";
     };
     case 18 : {
         _description = [
-            format ["Move to the supply location with supplies available at logistic point." + format [_image, getText (configfile >> "CfgVehicles" >> _location >> "editorPreview")]],
-            "Move with supplies",
-            "Move with supplies"
+            format [localize "STR_BTC_HAM_SIDE_SUPPLIES_MOVE_DESC" + format [_image, getText (configfile >> "CfgVehicles" >> _location >> "editorPreview")]],
+            localize "STR_BTC_HAM_SIDE_SUPPLIES_MOVE_TITLE",
+            localize "STR_BTC_HAM_SIDE_SUPPLIES_MOVE_TITLE"
         ];
         _type = "move";
     };
     case 19 : {
         _description = [
-            format ["Unload supplies available inside the supplies contanair." + format [_image, getText (configfile >> "CfgVehicles" >> _location >> "editorPreview")]],
-            "Unload supplies",
-            "Unload supplies"
+            format [localize "STR_BTC_HAM_SIDE_SUPPLIES_UNLOAD_DESC" + format [_image, getText (configfile >> "CfgVehicles" >> _location >> "editorPreview")]],
+            localize "STR_BTC_HAM_SIDE_SUPPLIES_UNLOAD_TITLE",
+            localize "STR_BTC_HAM_SIDE_SUPPLIES_UNLOAD_TITLE"
         ];
         _type = "box";
     };
     case 20 : {
         _description = [
-            format ["Find the pilot of the helicopter. It should be around the helicopter wreck." + format [_image, getText (configfile >> "CfgVehicles" >> _location >> "editorPreview")]],
-            "Find the pilot",
-            "Find the pilot"
+            format [localize "STR_BTC_HAM_SIDE_RESC_FIND_DESC" + format [_image, getText (configfile >> "CfgVehicles" >> _location >> "editorPreview")]],
+            localize "STR_BTC_HAM_SIDE_RESC_FIND_TITLE",
+            localize "STR_BTC_HAM_SIDE_RESC_FIND_TITLE"
         ];
         _type = "scout";
     };
     case 21 : {
         _description = [
-            format ["Get him back to base at logisitc point." + format [_image, getText (configfile >> "CfgVehicles" >> _location >> "editorPreview")]],
-            "Get him back",
-            "Get him back"
+            format [localize "STR_BTC_HAM_SIDE_RESC_BACK_DESC" + format [_image, getText (configfile >> "CfgVehicles" >> _location >> "editorPreview")]],
+            localize "STR_BTC_HAM_SIDE_RESC_BACK_TITLE",
+            localize "STR_BTC_HAM_SIDE_RESC_BACK_TITLE"
         ];
         _type = "move";
     };
     case 22 : {
         _description = [
             format [localize "STR_BTC_HAM_SIDE_HACK_STARTHACK" + format [_image, getText (configfile >> "CfgVehicles" >> _location >> "editorPreview")]],
-            "Defend the terminal",
-            "Defend the terminal"
+            localize "STR_BTC_HAM_SIDE_HACK_DEFEND_TITLE",
+            localize "STR_BTC_HAM_SIDE_HACK_DEFEND_TITLE"
         ];
         _type = "defend";
     };
     case 23 : {
         _description = [
-            format ["Detroy this checkpoint by destroying this object" + format [_image, getText (configfile >> "CfgVehicles" >> _location >> "editorPreview")]],
-            "Detroy this checkpoint",
-            "Detroy this checkpoint"
+            format [localize "STR_BTC_HAM_SIDE_CHECKPOINT_DESTROY_DESC" + format [_image, getText (configfile >> "CfgVehicles" >> _location >> "editorPreview")]],
+            localize "STR_BTC_HAM_SIDE_CHECKPOINT_DESTROY_TITLE",
+            localize "STR_BTC_HAM_SIDE_CHECKPOINT_DESTROY_TITLE"
         ];
         _type = "destroy";
     };
     case 24 : {
         _description = [
-            format ["Surrender the officer" + format [_image, getText (configfile >> "CfgVehicles" >> _location >> "editorPreview")]],
-            "Surrender the officer",
-            "Surrender the officer"
+            format [localize "STR_BTC_HAM_SIDE_CAPOFF_SURRENDER_DESC" + format [_image, getText (configfile >> "CfgVehicles" >> _location >> "editorPreview")]],
+            localize "STR_BTC_HAM_SIDE_CAPOFF_SURRENDER_TITLE",
+            localize "STR_BTC_HAM_SIDE_CAPOFF_SURRENDER_TITLE"
         ];
         _type = "surrender";
     };

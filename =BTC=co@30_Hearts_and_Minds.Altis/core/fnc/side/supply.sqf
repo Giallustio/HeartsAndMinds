@@ -97,7 +97,7 @@ private _drop_taskID = _taskID + "dr";
 if !(_move_taskID call BIS_fnc_taskState isEqualTo "CANCELED") then {
     [_move_taskID, "SUCCEEDED"] call BIS_fnc_taskSetState;
     private _jipDrop = [[_drop_taskID, _taskID], 19,
-    nearestObjects [_pos, [btc_supplies_cargo] + _food + _water, 30],
+    (nearestObjects [_pos, [btc_supplies_cargo] + _food + _water, 30]) select 0,
     selectRandom(_food + _water), true] call btc_fnc_task_create;
 };
 
@@ -108,7 +108,6 @@ waitUntil {sleep 5; (_move_taskID call BIS_fnc_taskState isEqualTo "CANCELED" ||
 if (_drop_taskID call BIS_fnc_taskState isEqualTo "CANCELED" ||
     _move_taskID call BIS_fnc_taskState isEqualTo "CANCELED"
 ) exitWith {
-    [_taskID, "CANCELED"] call btc_fnc_task_setState;
     [[_area], _composition_objects] call btc_fnc_delete;
 };
 

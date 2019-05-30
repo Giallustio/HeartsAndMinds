@@ -93,9 +93,7 @@ waitUntil {sleep 5; (_find_taskID call BIS_fnc_taskState isEqualTo "CANCELED" ||
 
 if (_find_taskID call BIS_fnc_taskState isEqualTo "CANCELED" ||
     _back_taskID call BIS_fnc_taskState isEqualTo "CANCELED"
-) exitWith {
-    [_taskID, "CANCELED"] call btc_fnc_task_setState;
-};
+) exitWith {};
 if (_units select {alive _x} isEqualTo []) exitWith {
     [_taskID, "FAILED"] call btc_fnc_task_setState;
 };
