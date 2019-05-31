@@ -42,7 +42,6 @@ private _data = _vehicle getVariable ["data_respawn", []];
             "_pos",
             "_dir",
             "_time",
-            "_has_marker",
             ["_customization", [false, false], [[]]],
             ["_vectorPos", [], [[]]],
             ["_isMedicalVehicle", false, [true]],
@@ -86,6 +85,6 @@ private _data = _vehicle getVariable ["data_respawn", []];
             } forEach _pylons;
         };
 
-        [_vehicle, _time, _has_marker] call btc_fnc_eh_veh_add_respawn;
+        [_vehicle, _time] call btc_fnc_eh_veh_add_respawn;
     }, _data, 1] call CBA_fnc_waitAndExecute;
 }, [_vehicle, _data], _data select 3] call CBA_fnc_waitAndExecute;
