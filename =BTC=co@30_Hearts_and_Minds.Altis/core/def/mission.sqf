@@ -152,16 +152,16 @@ if (isServer) then {
     btc_rep_militia_called = - btc_rep_militia_call_time;
 
     //Hideout classname
-    btc_type_campfire = ["MetalBarrel_burning_F", "Campfire_burning_F", "Land_Campfire_F", "FirePlace_burning_F"];
+    btc_type_campfire = ["MetalBarrel_burning_F"] + (_allClassSorted select {_x isKindOf "Land_Campfire_F"});
     btc_type_Scrapyard = _allClassSorted select {
         _x isKindOf "Scrapyard_base_F" &&
         {(toLower _x find "scrap") isEqualTo -1}
     };
     btc_type_bigbox = ["Box_FIA_Ammo_F", "Box_East_AmmoVeh_F", "CargoNet_01_box_F", "O_CargoNet_01_ammo_F"] + btc_type_Scrapyard;
     btc_type_seat = ["Land_WoodenLog_F", "Land_CampingChair_V2_F", "Land_CampingChair_V1_folded_F", "Land_CampingChair_V1_F"];
-    btc_type_sleepingbag = ["Land_Sleeping_bag_F", "Land_Sleeping_bag_blue_F", "Land_Sleeping_bag_brown_F"];
+    btc_type_sleepingbag = _allClassSorted select {_x isKindOf "Land_Sleeping_bag_F"};
     btc_type_tent = ["Land_TentA_F", "Land_TentDome_F"];
-    btc_type_camonet = ["CamoNet_ghex_big_F", "CamoNet_OPFOR_big_F", "CamoNet_INDP_big_F", "CamoNet_BLUFOR_big_F", "CamoNet_OPFOR_open_F", "CamoNet_ghex_open_F", "CamoNet_BLUFOR_open_F", "Land_IRMaskingCover_02_F", "CamoNet_BLUFOR_F", "CamoNet_ghex_F", "CamoNet_OPFOR_F", "CamoNet_INDP_F"];
+    btc_type_camonet = ["Land_IRMaskingCover_02_F"] + (_allClassSorted select {_x isKindOf "Shelter_base_F"});
 
     //Side
     btc_side_aborted = false;
@@ -178,10 +178,10 @@ if (isServer) then {
     btc_type_canister = ["Land_CanisterPlastic_F"];
     btc_type_pallet = ["Land_Pallets_stack_F", "Land_Pallets_F", "Land_Pallet_F"];
     btc_type_box = ["Box_East_Wps_F", "Box_East_WpsSpecial_F", "Box_East_Ammo_F"];
-    btc_type_generator = ["Land_Device_assembled_F", "Land_Device_disassembled_F"];
-    btc_type_storagebladder = ["StorageBladder_02_water_forest_F", "StorageBladder_02_water_sand_F"];
+    btc_type_generator = _allClassSorted select {_x isKindOf "Land_Device_assembled_F"};
+    btc_type_storagebladder = _allClassSorted select {_x isKindOf "StorageBladder_base_F"};
     btc_type_mines = ["APERSMine", "APERSBoundingMine", "APERSTripMine"];
-    btc_type_power = ["WaterPump_01_sand_F", "WaterPump_01_forest_F", "Land_PressureWasher_01_F", "Land_DieselGroundPowerUnit_01_F", "Land_JetEngineStarter_01_F", "Land_PowerGenerator_F", "Land_PortableGenerator_01_F"];
+    btc_type_power = ["Land_PowerGenerator_F", "Land_PortableGenerator_01_F"] + (_allClassSorted select {_x isKindOf "StorageBladder_base_F"});
     btc_type_cord = ["Land_ExtensionCord_F"];
     btc_type_cones = ["Land_RoadCone_01_F", "RoadCone_F", "RoadCone_L_F"];
     btc_type_fences = ["Land_PlasticNetFence_01_long_F", "Land_PlasticNetFence_01_long_d_F", "RoadBarrier_F", "TapeSign_F"];
@@ -248,6 +248,22 @@ if (isServer) then {
         ["Pump", 2.5]
     ];
     btc_buildings_changed = [];
+
+    //IED
+    btc_type_ieds = ["Land_GarbageContainer_closed_F", "Land_GarbageContainer_open_F", "Land_Portable_generator_F", "Land_WoodenBox_F", "Land_BarrelTrash_grey_F", "Land_Sacks_heap_F", "Land_Wreck_Skodovka_F", "Land_WheelieBin_01_F"] + btc_type_pallet + btc_type_barrel + (_allClassSorted select {
+        _x isKindOf "GasTank_base_F" ||
+        _x isKindOf "Garbage_base_F" ||
+        (_x isKindOf "Constructions_base_F" &&
+        {
+            (toLower _x find "bricks") != -1
+        }) ||
+        (_x isKindOf "Wreck_base_F" &&
+        {
+            (toLower _x find "car") != -1 ||
+            (toLower _x find "offroad") != -1
+        })
+    });
+    btc_model_ieds = btc_type_ieds apply {(toLower getText(_cfgVehicles >> _x >> "model")) select [1]};
 };
 
 //Civ
@@ -280,8 +296,6 @@ btc_fob_flag = "Flag_NATO_F";
 btc_fob_id = 0;
 
 //IED
-btc_type_ieds = ["Land_GarbageContainer_closed_F", "Land_GarbageContainer_open_F", "Land_GarbageBarrel_01_F", "Land_Pallets_F", "Land_Portable_generator_F", "Land_WoodenBox_F", "Land_MetalBarrel_F", "Land_BarrelTrash_grey_F", "Land_Sacks_heap_F", "Land_Bricks_V2_F", "Land_Bricks_V3_F", "Land_Bricks_V4_F", "Land_GarbageBags_F", "Land_GarbagePallet_F", "Land_GarbageWashingMachine_F", "Land_JunkPile_F", "Land_Tyres_F", "Land_Wreck_Skodovka_F", "Land_Wreck_Car_F", "Land_Wreck_Car3_F", "Land_Wreck_Car2_F", "Land_Wreck_Offroad_F", "Land_Wreck_Offroad2_F", "Land_WheelieBin_01_F", "Land_GarbageHeap_04_F", "Land_GarbageHeap_03_F", "Land_GarbageHeap_01_F"];
-btc_model_ieds = btc_type_ieds apply {(toLower getText(_cfgVehicles >> _x >> "model")) select [1]};
 btc_type_ieds_ace = ["IEDLandBig_F", "IEDLandSmall_F"];
 
 //Int
