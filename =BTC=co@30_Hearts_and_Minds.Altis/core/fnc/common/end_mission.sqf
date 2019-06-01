@@ -19,9 +19,9 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-hint localize "STR_BTC_HAM_O_ENDMISSION";
+hint localize "STR_BTC_HAM_O_COMMON_ENDMISSION";
 
 while {true} do {
-    hintSilent localize "STR_BTC_HAM_O_ENDMISSION";
+    hintSilent localize "STR_BTC_HAM_O_COMMON_ENDMISSION";
     sleep 1;
 };

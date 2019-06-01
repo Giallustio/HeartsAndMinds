@@ -76,7 +76,6 @@ _group setVariable ["no_cache", true];
 private _unit =_group createUnit [_unit_type, _pos, [], 0, "CAN_COLLIDE"];
 _unit setBehaviour "CARELESS";
 _unit setDir (random 360);
-_unit setPosATL _pos;
 _unit setUnitPos "DOWN";
 [_group] call btc_fnc_civ_unit_create;
 

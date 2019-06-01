@@ -56,7 +56,6 @@ private _bank = if (random 1 > 0.5) then {
 };
 [_heli, _pitch, _bank] call BIS_fnc_setPitchBank;
 private _fx = createVehicle ["test_EmptyObjectForSmoke", _pos, [], 0, "CAN_COLLIDE"];
-_fx attachTo [_heli, [0.5, -2, 1]];
 
 private _group = createGroup btc_player_side;
 _group setVariable ["no_cache", true];
@@ -89,7 +88,7 @@ private _triggers = [];
 
 waitUntil {sleep 5; (_find_taskID call BIS_fnc_taskState isEqualTo "CANCELED" || _back_taskID call BIS_fnc_taskCompleted || (_units select {_x distance btc_create_object_point > 100} isEqualTo []) || (_units select {alive _x} isEqualTo []))};
 
-[[], [_heli, _fx, _group] + _triggers] call btc_fnc_delete;
+[[], [_heli, _fx, _group] + _triggers + _units] call btc_fnc_delete;
 
 if (_find_taskID call BIS_fnc_taskState isEqualTo "CANCELED" ||
     _back_taskID call BIS_fnc_taskState isEqualTo "CANCELED"

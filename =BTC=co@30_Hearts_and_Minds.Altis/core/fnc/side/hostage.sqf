@@ -55,7 +55,6 @@ private _civType = selectRandom btc_civ_type_units;
 private _captive = _group_civ createUnit [_civType, _pos, [], 0, "CAN_COLLIDE"];
 waitUntil {local _captive};
 [_captive, true] call ACE_captives_fnc_setHandcuffed;
-_captive setPosATL _pos;
 [_group_civ] call btc_fnc_civ_unit_create;
 
 //// Data side mission
@@ -64,9 +63,8 @@ private _jip = [_taskID, 15, _captive, [_city getVariable "name", _civType]] cal
 private _group = [];
 {
     private _grp = createGroup btc_enemy_side;
-    private _unit = _grp createUnit [selectRandom btc_type_units, _x, [], 0, "NONE"];
+    private _unit = _grp createUnit [selectRandom btc_type_units, _x, [], 0, "CAN_COLLIDE"];
     [_unit] joinSilent _grp;
-    _unit setPosATL _x;
     _group pushBack _grp;
     _grp setVariable ["no_cache", true];
     [_grp] call btc_fnc_mil_unit_create;
