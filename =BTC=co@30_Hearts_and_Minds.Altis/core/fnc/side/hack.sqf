@@ -42,7 +42,7 @@ _city setVariable ["spawn_more",true];
 
 //// Create terminal \\\\
 private _terminalType = "Land_DataTerminal_01_F";
-private _terminal = createVehicle [_terminalType, ASLToATL _pos] select surfaceIsWater _pos, [], 0, "CAN_COLLIDE"];
+private _terminal = createVehicle [_terminalType, [_pos, ASLToATL _pos] select surfaceIsWater _pos, [], 0, "CAN_COLLIDE"];
 _pos = [[_pos, 100] call btc_fnc_randomize_pos, 50, 500, 30, 0, 60 * (pi / 180), 0] call BIS_fnc_findSafePos;
 private _launchsite = createVehicle ["Land_PenBlack_F", _pos, [], 0, "FLY"];
 private _terminal_taskID = _taskID + "ter";
