@@ -30,6 +30,7 @@ private _faction_list = if (_get_civ_faction isEqualTo "CIV") then {[3]} else {[
 //Get all vehicles/Units
 private _cfgVehicles = configFile >> "CfgVehicles";
 private _allvehicles = ("(configName _x) isKindOf 'AllVehicles'" configClasses (_cfgVehicles)) apply {configName _x};
+_allvehicles = _allvehicles select {getNumber (_cfgVehicles >> _x >> "scope") isEqualTo 2};
 private _cfgFactionClasses = configFile >> "CfgFactionClasses";
 private _allfaction = [];
 private _allside = [];
