@@ -50,7 +50,7 @@ _marker setMarkerType "hd_flag";
 _marker setMarkerSize [0.6, 0.6];
 
 //// Create terminal \\\\
-private _terminal = createVehicle ["Land_DataTerminal_01_F", _pos, [], 0, "CAN_COLLIDE"];
+private _terminal = createVehicle ["Land_DataTerminal_01_F", [_pos, ASLToATL _pos] select surfaceIsWater _pos, [], 0, "CAN_COLLIDE"];
 _pos = [[_pos, 100] call btc_fnc_randomize_pos, 50, 500, 30, 0, 60 * (pi / 180), 0] call BIS_fnc_findSafePos;
 private _launchsite = createVehicle ["Land_PenBlack_F", _pos, [], 0, "FLY"];
 
