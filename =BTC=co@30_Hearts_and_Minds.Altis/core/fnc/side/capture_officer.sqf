@@ -6,7 +6,7 @@ Description:
     Thanks DAP for inspiration.
 
 Parameters:
-    _taskID - unique task ID. [String]
+    _taskID - Unique task ID. [String]
 
 Returns:
 

@@ -7,7 +7,7 @@ Description:
 
 Parameters:
     _task_ids - ID of the task. [String]
-    _description - Nuber of the corresponding description. [Number]
+    _description - Number of the corresponding description. [Number]
     _destination - Destination of the task. [Object or Array]
     _location - Custom information to fill the task description. [String or Array]
     _isCurrent - Set task as current. [Boolean]

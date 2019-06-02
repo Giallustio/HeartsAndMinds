@@ -6,7 +6,7 @@ Description:
     Fill me when you edit me !
 
 Parameters:
-    _taskID - unique task ID. [String]
+    _taskID - Unique task ID. [String]
 
 Returns:
 

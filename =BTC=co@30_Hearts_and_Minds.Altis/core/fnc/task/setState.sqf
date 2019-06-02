@@ -10,7 +10,7 @@ Parameters:
     _state - State to apply. [String]
 
 Returns:
-    IsSet - if the state has changed array. [Boolean]
+    _isSet - if the state has changed array. [Boolean]
 
 Examples:
     (begin example)

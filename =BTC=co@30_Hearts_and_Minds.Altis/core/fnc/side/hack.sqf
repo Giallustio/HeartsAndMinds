@@ -8,7 +8,7 @@ Description:
     http://killzonekid.com/arma-scripting-tutorials-scripted-charges/
 
 Parameters:
-    _taskID - unique task ID. [String]
+    _taskID - Unique task ID. [String]
 
 Returns:
 

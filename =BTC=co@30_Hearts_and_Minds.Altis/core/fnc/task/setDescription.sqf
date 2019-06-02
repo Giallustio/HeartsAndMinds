@@ -8,7 +8,7 @@ Description:
 Parameters:
     _task_ids - ID of the task. [String]
     _side - Side of the player. [Side]
-    _description - Nuber of the corresponding description. [Number]
+    _description - Number of the corresponding description. [Number]
     _destination - Destination of the task. [Object or Array]
     _priority - Task priority. [Number]
     _showNotification - Show notification. [Boolean]
