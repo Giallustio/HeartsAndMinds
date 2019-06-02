@@ -28,7 +28,7 @@ private _useful = btc_city_all select {!((_x getVariable ["type", ""]) in ["Name
 if (_useful isEqualTo []) then {_useful = + btc_city_all;};
 
 private _city = selectRandom _useful;
-private _pos = [getPos _city, 0, 500, 30, 0, 60 * (pi / 180), 0] call BIS_fnc_findSafePos;
+private _pos = [getPos _city, 0, 500, 30, false] call btc_fnc_findsafepos;
 
 private _jip = [_taskID, 4, _pos, _city getVariable "name"] call btc_fnc_task_create;
 
