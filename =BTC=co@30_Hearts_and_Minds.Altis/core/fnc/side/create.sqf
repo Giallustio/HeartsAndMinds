@@ -7,13 +7,13 @@ Description:
 
 Parameters:
     _cycle - Cycle side mission. [Boolean]
-    _side - Number of the side mission to start. [Number]
+    _side_fnc_name - Side mission function name. [String]
 
 Returns:
 
 Examples:
     (begin example)
-        [false, 11] spawn btc_fnc_side_create;
+        [false, "btc_fnc_side_supply"] spawn btc_fnc_side_create;
     (end)
 
 Author:
@@ -21,37 +21,25 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-if (btc_side_list_use isEqualTo []) then {btc_side_list_use = + btc_side_list;};
-
 params [
     ["_cycle", false, [false]],
-    ["_side", selectRandom btc_side_list_use, [0]]
+    ["_side_fnc_name", "", [""]]
 ];
 
+if (_side_fnc_name isEqualTo "") then {
+    if (btc_side_list_use isEqualTo []) then {
+        btc_side_list_use = btc_side_list call BIS_fnc_arrayShuffle;
+    };
+    _side_fnc_name = format ["btc_fnc_side_%1", btc_side_list_use deleteAt 0];
+};
+
 btc_side_ID = btc_side_ID + 1;
-private _sideID = format ["btc_%1", btc_side_ID];
-if ([_sideID] call BIS_fnc_taskExists) exitWith {
+private _tskID = format ["btc_tsk_%1", btc_side_ID];
+if ([_tskID] call BIS_fnc_taskExists) exitWith {
     _this call btc_fnc_side_create;
 };
 
-btc_side_list_use = btc_side_list_use - [_side];
-
-switch (_side) do {
-    case 0 : {[_sideID] call btc_fnc_side_supply;};
-    case 1 : {[_sideID] call btc_fnc_side_mines;};
-    case 2 : {[_sideID] call btc_fnc_side_vehicle;};
-    case 3 : {[_sideID] call btc_fnc_side_get_city;};
-    case 4 : {[_sideID] call btc_fnc_side_tower;};
-    case 5 : {[_sideID] call btc_fnc_side_civtreatment;};
-    case 6 : {[_sideID] call btc_fnc_side_checkpoint;};
-    case 7 : {[_sideID] call btc_fnc_side_civtreatment_boat;};
-    case 8 : {[_sideID] call btc_fnc_side_underwater_generator;};
-    case 9 : {[_sideID] call btc_fnc_side_convoy;};
-    case 10 : {[_sideID] call btc_fnc_side_rescue;};
-    case 11 : {[_sideID] call btc_fnc_side_capture_officer;};
-    case 12 : {[_sideID] call btc_fnc_side_hostage;};
-    case 13 : {[_sideID] call btc_fnc_side_hack;};
-};
+[_tskID] call (missionNamespace getVariable [_side_fnc_name, {}]);
 
 if (_cycle) then {
     [true] spawn btc_fnc_side_create;

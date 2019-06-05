@@ -6,7 +6,7 @@ Description:
     Set state to task and subtasks (children).
 
 Parameters:
-    _task - Main task to change state of the main task and children. [Array]
+    _task - Task ID to change state of the main task and children. [String]
     _state - State to apply. [String]
 
 Returns:
