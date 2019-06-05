@@ -50,3 +50,7 @@ class Extended_InitPost_EventHandlers {
         #include "core\fnc\eh\xeh_InitPost_EH_Vehicle.hpp"
     };
 };
+
+// Disable BI wreck system (H&M handle it internally)
+wreckManagerMode = 0;
+corpseManagerMode = 0;

@@ -11,9 +11,13 @@ You can also contribute and share your work by pushing on :
 
 See [https://guides.github.com/introduction/flow/](https://guides.github.com/introduction/flow/) for more information. This will explain how [GitHub works](https://youtu.be/BKr8lbx3uFY?t=184).
 
-### Versioning :
+### Versioning:
 - Hotfix : 1.15.X  (1.15.1, 1.15.2 etc ...)
 - Release : 1.X (1.15, 1.16 etc...)
 
+### Building from Source:
+The mission can be build with python. See https://github.com/dpottavio/CombatDen/wiki/Development for full explanation :
+
+`build.py -z ""`
 
 Thanks in advance!

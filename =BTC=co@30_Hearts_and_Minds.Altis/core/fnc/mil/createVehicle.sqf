@@ -37,6 +37,9 @@ params [
 ];
 
 private _needdiver = getText (configFile >> "CfgVehicles" >> _veh_type >> "simulation") isEqualTo "submarinex";
+if (_veh_type isKindOf "Van_02_vehicle_base_F") then {
+    _veh_type = "I_C_Van_02_transport_F"; // https://feedback.bistudio.com/T129141
+};
 
 private _veh = createVehicle [_veh_type, _pos, [], 0, "FLY"];
 if !(_veh_type isKindOf "Plane") then {
