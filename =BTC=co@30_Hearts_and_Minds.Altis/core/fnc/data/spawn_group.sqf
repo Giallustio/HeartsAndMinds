@@ -116,7 +116,7 @@ if (_type isEqualTo 5) then {
 
         private _cond = false;
 
-        while {Alive _suicider && !isNull _suicider && !_cond} do {
+        while {alive _suicider && !isNull _suicider && !_cond} do {
             sleep 5;
             if !((getPos _suicider nearEntities ["SoldierWB", 25]) isEqualTo []) then {
                 _cond = true;

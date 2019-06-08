@@ -52,9 +52,6 @@ private _text = switch (_type) do {
             ["<img size='1' image='\A3\ui_f\data\map\markers\handdrawn\warning_CA.paa' align='center' color='#ff0000'/>"]
         ];
     };
-    case 6 : {
-        localize "STR_BTC_HAM_O_COMMON_SHOWHINTS_6";
-    };
     case 7 : {
         format [localize "STR_BTC_HAM_O_COMMON_SHOWHINTS_7", _custom];
     };
@@ -67,14 +64,8 @@ private _text = switch (_type) do {
     case 10 : {
         localize "STR_BTC_HAM_O_COMMON_SHOWHINTS_10";
     };
-    case 11 : {
-        localize "STR_BTC_HAM_O_COMMON_SHOWHINTS_11";
-    };
     case 12 : {
         localize "STR_BTC_HAM_SIDE_CONVOY_STARTCHAT";
-    };
-    case 13 : {
-        localize "STR_BTC_HAM_SIDE_HACK_STARTCHAT";
     };
     case 14 : {
         [

@@ -69,7 +69,7 @@ btc_log_placing_obj setDir btc_log_placing_dir;
 [{
     params ["_arguments", "_idPFH"];
 
-    if (!Alive player || player getVariable ["ACE_isUnconscious", false] || !btc_log_placing) then {
+    if (!alive player || player getVariable ["ACE_isUnconscious", false] || !btc_log_placing) then {
         _arguments params ["_placing_obj", "_actionEH", "_place_EH_keydown"];
 
         //remove PFH

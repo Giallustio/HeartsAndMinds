@@ -31,6 +31,6 @@ params [
 ];
 
 if (isPlayer _target) exitWith {};
-if ((Alive _target) && (side _target isEqualTo civilian) && !(_className isEqualTo "Diagnose")) then {
+if ((alive _target) && (side _target isEqualTo civilian) && !(_className isEqualTo "Diagnose")) then {
     _this remoteExecCall ["btc_fnc_rep_hh", 2];
 };

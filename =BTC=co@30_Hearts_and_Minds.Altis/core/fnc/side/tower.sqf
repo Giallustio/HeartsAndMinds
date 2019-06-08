@@ -6,21 +6,23 @@ Description:
     Fill me when you edit me !
 
 Parameters:
-    _x - []
-    _y - []
-    _z - []
+    _taskID - Unique task ID. [String]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_side_tower;
+        ["btc_9999"] spawn btc_fnc_side_tower;
     (end)
 
 Author:
     Vdauphin
 
 ---------------------------------------------------------------------------- */
+
+params [
+    ["_taskID", "btc_side", [""]]
+];
 
 private _useful = btc_city_all select {_x getVariable ["occupied", false] && !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])};
 if (_useful isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
@@ -36,28 +38,7 @@ _pos = getPos _road;
 
 private _direction = [_road] call btc_fnc_road_direction;
 
-btc_side_aborted = false;
-btc_side_done = false;
-btc_side_failed = false;
-btc_side_assigned = true;
-publicVariable "btc_side_assigned";
-
-btc_side_jip_data = [7, _pos, _city getVariable "name"];
-btc_side_jip_data remoteExecCall ["btc_fnc_task_create", 0];
-
 _city setVariable ["spawn_more", true];
-
-private _area = createMarker [format ["sm_%1", _pos], _pos];
-_area setMarkerShape "ELLIPSE";
-_area setMarkerBrush "SolidBorder";
-_area setMarkerSize [30, 30];
-_area setMarkerAlpha 0.3;
-_area setmarkercolor "colorBlue";
-
-private _marker = createMarker [format ["sm_2_%1", _pos], _pos];
-_marker setMarkerType "hd_flag";
-[_marker, "str_a3_exp_m01_respawntower"] remoteExecCall ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker]; //Radio Tower
-_marker setMarkerSize [0.6, 0.6];
 
 //// Randomise composition \\\\
 private _tower_type = selectRandom btc_type_tower;
@@ -78,16 +59,14 @@ _pos params ["_x", "_y", "_z"];
 private _btc_composition = [_pos, _direction, _btc_composition_tower] call btc_fnc_create_composition;
 private _tower = _btc_composition select ((_btc_composition apply {typeOf _x}) find _tower_type);
 
-waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !Alive _tower )};
+private _jip = [_taskID, 7, _tower, [_city getVariable "name", _tower_type]] call btc_fnc_task_create;
 
-btc_side_assigned = false;
-publicVariable "btc_side_assigned";
-[[_area, _marker], _btc_composition] call btc_fnc_delete;
+waitUntil {sleep 5; (!alive _tower || _taskID call BIS_fnc_taskCompleted)};
 
-if (btc_side_aborted || btc_side_failed ) exitWith {
-    7 remoteExecCall ["btc_fnc_task_fail", 0];
-};
+[[], _btc_composition] call btc_fnc_delete;
+
+if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {};
 
 80 call btc_fnc_rep_change;
 
-7 remoteExecCall ["btc_fnc_task_set_done", 0];
+[_taskID, "SUCCEEDED"] call BIS_fnc_taskSetState;

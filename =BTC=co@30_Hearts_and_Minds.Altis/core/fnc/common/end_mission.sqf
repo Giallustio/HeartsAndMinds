@@ -19,9 +19,8 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-0 call btc_fnc_task_set_done;
-
 hint localize "STR_BTC_HAM_O_COMMON_ENDMISSION";
+
 while {true} do {
     hintSilent localize "STR_BTC_HAM_O_COMMON_ENDMISSION";
     sleep 1;
