@@ -95,11 +95,6 @@ if !(_side isEqualTo civilian && {vehicle leader _group isEqualTo leader _group}
         _group setCurrentWaypoint [_group, _array_wp select 0];
     };
 };
-if (_type isEqualTo 2) then {
-    [_group] call CBA_fnc_clearWaypoints;
-    {doStop _x;} forEach units _group;
-    _group setVariable ["stop", true];
-};
 if (_type isEqualTo 3) then {
     [_group] call CBA_fnc_clearWaypoints;
     [_group, nearestObject [(units _group) select 0, _array_veh]] call btc_fnc_house_addWP;
