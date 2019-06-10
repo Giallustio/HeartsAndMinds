@@ -21,8 +21,6 @@ class RscTitles {
     #include "core\fnc\debug\dlg.hpp"
 };
 
-#include "core\sounds\sounds.hpp"
-
 #include "core\def\param.hpp"
 
 #include "core\fnc\mil\aiskill.hpp"
