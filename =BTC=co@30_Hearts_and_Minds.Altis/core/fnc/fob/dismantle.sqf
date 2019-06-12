@@ -3,16 +3,16 @@
 Function: btc_fnc_fob_dismantle
 
 Description:
-    Fill me when you edit me !
+    Show hint when player dismantle FOB.
 
 Parameters:
-    _flag - [Object]
+    _flag - Flag of the FOB. [Object]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_fob_dismantle;
+        [cursorTarget] call btc_fnc_fob_dismantle;
     (end)
 
 Author:
