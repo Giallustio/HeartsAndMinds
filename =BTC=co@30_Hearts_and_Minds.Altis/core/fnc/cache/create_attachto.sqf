@@ -38,12 +38,6 @@ private _p = 0;
 private _r = 0;
 
 switch (_pos_type) do {
-    case "TOP": {
-        _holder attachTo [_object, [0, 0, _height_box + _height_weapon]];
-        _y = random 180;
-        _p = 0;
-        _r = 0;
-    };
     case "FRONT": {
         _holder attachTo [_object, [- _maxWidth_box/6, 0, -0.1]];
         _y = random [-20, 0, 20];
@@ -62,7 +56,7 @@ switch (_pos_type) do {
         _p = random [-10, 0, 10];
         _r = 255;
     };
-    default {
+    default { // TOP
         _holder attachTo [_object, [0, 0, _height_box + _height_weapon]];
         _y = random 180;
         _p = 0;

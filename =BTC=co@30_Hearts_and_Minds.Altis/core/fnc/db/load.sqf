@@ -75,26 +75,29 @@ if (_select_ho isEqualTo - 1) then {
 if (btc_hideouts isEqualTo []) then {[] spawn btc_fnc_final_phase;};
 
 //CACHE
-btc_cache_markers = [];
-
 private _array_cache = profileNamespace getVariable [format ["btc_hm_%1_cache", _name], []];
 
 btc_cache_pos = _array_cache select 0;
 btc_cache_n = _array_cache select 1;
 btc_cache_info = _array_cache select 2;
 
-call btc_fnc_cache_create;
+[] call btc_fnc_cache_create;
 
+btc_cache_markers = [];
 {
     _x params ["_pos", "_marker_name"];
 
-    private _marker = createMarker [format ["%1", _pos], _pos];
-    _marker setMarkerType "hd_unknown";
-    _marker setMarkerText _marker_name;
-    _marker setMarkerSize [0.5, 0.5];
-    _marker setMarkerColor "ColorRed";
-    btc_cache_markers pushBack _marker;
+    [_pos, 0, _marker_name] call btc_fnc_info_cacheMarker;
 } forEach (_array_cache select 3);
+
+btc_cache_pictures = +(_array_cache select 4);
+{
+    (btc_cache_pictures select 2) pushBack ([
+        _x,
+        btc_cache_n,
+        btc_cache_pictures select 1 select _forEachindex
+    ] remoteExecCall ["btc_fnc_info_cachePicture", [0, -2] select isDedicated, true]);
+} forEach (btc_cache_pictures select 0);
 
 //FOB
 private _fobs = profileNamespace getVariable [format ["btc_hm_%1_fobs", _name], []];

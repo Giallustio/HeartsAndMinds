@@ -43,11 +43,11 @@ for "_i" from 1 to _number do {
 
     private _unit = _group createUnit [_unit_type, _pos, [], 0, "CARGO"];
     [_unit] joinSilent _group;
-    _unit call btc_fnc_mil_unit_create;
 
     if (canSuspend) then {
         sleep 1;
     };
 };
+[_group] call btc_fnc_mil_unit_create;
 
 _group

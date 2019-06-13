@@ -40,7 +40,7 @@ if (btc_debug) then {
     ["...2", __FILE__, [btc_debug, false, true]] call btc_fnc_debug_message;
 };
 
-call btc_fnc_db_delete;
+[false] call btc_fnc_db_delete;
 
 //Version
 profileNamespace setVariable [format ["btc_hm_%1_version", _name], btc_version];
@@ -114,7 +114,8 @@ private _cache_markers = [];
     _cache_markers pushBack _data;
 } forEach btc_cache_markers;
 _array_cache pushBack _cache_markers;
-profileNamespace setVariable [format ["btc_hm_%1_cache", _name], _array_cache];
+_array_cache pushBack [btc_cache_pictures select 0, btc_cache_pictures select 1, []];
+profileNamespace setVariable [format ["btc_hm_%1_cache", _name], +_array_cache];
 
 //REPUTATION
 profileNamespace setVariable [format ["btc_hm_%1_rep", _name], btc_global_reputation];

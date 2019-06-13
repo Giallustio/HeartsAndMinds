@@ -43,9 +43,9 @@ if (isNil {_cache getVariable "btc_hd_cache"} && {_explosive} && {_damage > 0.6}
     [_pos] spawn {
         params ["_pos"];
 
-        sleep 2;
+        sleep random [0.5, 2, 3];
         "M_PG_AT" createVehicle _pos;
-        sleep 2;
+        sleep random [0.5, 2, 3];
         "M_Titan_AT" createVehicle _pos;
     };
     [_pos] call btc_fnc_deaf_earringing;
@@ -58,22 +58,16 @@ if (isNil {_cache getVariable "btc_hd_cache"} && {_explosive} && {_damage > 0.6}
     _marker setMarkerSize [1, 1];
     _marker setMarkerColor "ColorRed";
 
-    if (btc_debug_log) then    {
+    if (btc_debug_log) then {
         [format ["DESTROYED: ID %1 POS %2", btc_cache_n, btc_cache_pos], __FILE__, [false]] call btc_fnc_debug_message;
     };
 
     btc_rep_bonus_cache call btc_fnc_rep_change;
 
-    btc_cache_pos = [];
-    btc_cache_n = btc_cache_n + 1;
-    btc_cache_obj = objNull;
-    btc_cache_info = btc_info_cache_def;
-    btc_cache_markers = [];
-
     //Notification
     [0] remoteExecCall ["btc_fnc_show_hint", 0];
 
-    [] spawn btc_fnc_cache_find_pos;
+    [btc_cache_n + 1, btc_cache_pictures] call btc_fnc_cache_init;
 } else {
     0
 };

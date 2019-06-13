@@ -39,22 +39,22 @@ if (_is_real) then {
         private _dist = (player distance _hideout) + (random 500) - (random 500);
         private _dir = player getDir _hideout;
         private _card = [_dir] call btc_fnc_get_cardinal;
-        _text = format [localize "STR_BTC_HAM_CON_INFO_ASKHIDEOUT_TRUE", _card, round _dist]; //I saw a lot of militia activity towards %2, %3 meter from here. Probably there is an hideout!
+        _text = format [localize "STR_BTC_HAM_CON_INFO_ASKHIDEOUT_TRUE", _card, round _dist];
     } else {
-        _text = localize "STR_BTC_HAM_CON_INFO_ASKHIDEOUT_FALSE"; //There are no hideout around here!
+        _text = localize "STR_BTC_HAM_CON_INFO_ASKHIDEOUT_FALSE";
     };
 } else {
     if ((random 1) > 0.5) then {
         private _array = ["N", "E", "W", "S", "NW", "NE", "SE", "SW"];
         private _dir = selectRandom _array;
         private _dist = 300 + (random 2000);
-        _text = format [localize "STR_BTC_HAM_CON_INFO_ASKHIDEOUT_TRUE", _dir, round _dist]; //I saw a lot of militia activity towards %2, %3 meter from here. Probably there is an hideout!
+        _text = format [localize "STR_BTC_HAM_CON_INFO_ASKHIDEOUT_TRUE", _dir, round _dist];
     } else {
-        _text = localize "STR_BTC_HAM_CON_INFO_ASKHIDEOUT_FALSE"; //There are no hideout around here!
+        _text = localize "STR_BTC_HAM_CON_INFO_ASKHIDEOUT_FALSE";
     };
 };
 
 if (btc_debug) then {_text = _text + " - " + str _is_real};
 
 [_name, _text] call btc_fnc_showSubtitle;
-player createDiaryRecord [localize "STR_BTC_HAM_CON_INFO_ASKHIDEOUT_DIARYLOG", [str(mapGridPosition player) + " - " + _name, _text]]; //Diary log
+player createDiaryRecord ["btc_diarylog", [str(mapGridPosition player) + " - " + _name, _text]];

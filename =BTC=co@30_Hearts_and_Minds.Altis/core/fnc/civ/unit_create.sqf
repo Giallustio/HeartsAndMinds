@@ -6,14 +6,13 @@ Description:
     Initialize civilian by adding eventhandlers.
 
 Parameters:
-    _unit - Unit to initialize. [Object]
+    _group - group to initialize. [Object]
 
 Returns:
-	_isInitialized - Return true if is initialized. [Boolean]
 
 Examples:
     (begin example)
-        _isInitialized = [_unit] call btc_fnc_civ_unit_create;
+        [_group] call btc_fnc_civ_unit_create;
     (end)
 
 Author:
@@ -22,13 +21,11 @@ Author:
 ---------------------------------------------------------------------------- */
 
 params [
-    ["_unit", objNull, [objNull]]
+    ["_group", grpNull, [grpNull]]
 ];
 
-if (_unit getVariable ["btc_init", false]) exitWith {true};
+{
+    _x setVariable ["btc_init", true];
 
-_unit setVariable ["btc_init", true];
-
-_unit call btc_fnc_rep_add_eh;
-
-true
+    _x call btc_fnc_rep_add_eh;
+} forEach (units _group select {!(_x getVariable ["btc_init", false])});

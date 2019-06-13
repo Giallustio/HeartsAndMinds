@@ -42,6 +42,6 @@ _array apply {
     _obj setDir (_dir + _setdir);
 
     _obj setVectorUp surfaceNormal position _obj;
-    _obj setPosWorld getPosWorld _obj;
+    _obj setPosASL _final;
     _obj;
 };
