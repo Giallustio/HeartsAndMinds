@@ -3,7 +3,7 @@
 Function: btc_fnc_ied_init_area
 
 Description:
-    Fill me when you edit me !
+    Initialize positions of IEDS
 
 Parameters:
     _city - [Object]
@@ -46,11 +46,10 @@ for "_i" from 1 to _n do {
         private _roads = _sel_pos nearRoads _area;
         if !(_roads isEqualTo []) then {
             private _obj = selectRandom _roads;
-            if (random 1 > 0.5) then {
-                _sel_pos = _obj modelToWorld [3.5, 0, 0];
-            } else {
-                _sel_pos = _obj modelToWorld [-3.5, 0, 0];
-            };
+
+            private _arr = _obj call btc_fnc_ied_pos_roadside;
+            _sel_pos = _arr select 0;
+            _dir = _arr select 1;
         };
     } else {
         if (isOnRoad _sel_pos) then {
@@ -66,11 +65,10 @@ for "_i" from 1 to _n do {
                 } forEach _roads;
 
                 if (isNull _obj) exitWith {};
-                if (random 1 > 0.5) then {
-                    _sel_pos = _obj modelToWorld [3.5, 0, 0];
-                } else {
-                    _sel_pos = _obj modelToWorld [-3.5, 0, 0];
-                };
+
+                private _arr = _obj call btc_fnc_ied_pos_roadside;
+                _sel_pos = _arr select 0;
+                _dir = _arr select 1;
             };
         }
     };
@@ -106,11 +104,10 @@ for "_i" from 1 to _n do {
         private _roads = _sel_pos nearRoads _area;
         if !(_roads isEqualTo []) then     {
             private _obj = selectRandom _roads;
-            if (random 1 > 0.5) then {
-                _sel_pos = _obj modelToWorld [3, 0, 0];
-            } else {
-                _sel_pos = _obj modelToWorld [-3, 0, 0];
-            };
+
+            private _arr = _obj call btc_fnc_ied_pos_roadside;
+            _sel_pos = _arr select 0;
+            _dir = _arr select 1;
         };
     };
 
