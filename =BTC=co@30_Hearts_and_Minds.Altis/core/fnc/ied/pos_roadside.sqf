@@ -27,16 +27,17 @@ params [
     ["_road", objNull]
 ];
 private _roadDir = _road getRelDir ((roadsConnectedTo _road) select 0);
-private _bBD = (boundingBoxReal _road) select 2;
+private _bBD = (0 boundingBoxReal _road) select 2;
 
 private _centerPoint = createSimpleObject ["CBA_NamespaceDummy", (getPosWorld _road)];
 _centerPoint setDir _roadDir;
 
-private _posArr = selectRandom [
-    (_centerPoint modelToWorld [(_bBD*0.4),0,0]),
-    (_centerPoint modelToWorld [-(_bBD*0.4),0,0])
+private _result = selectRandom [
+    [(_centerPoint modelToWorld [(_bBD*0.4),0,0]), _roadDir],
+    [(_centerPoint modelToWorld [-(_bBD*0.4),0,0]), _roadDir],
+    [_centerPoint modelToWorld [0,0,0], random 360]
 ];
 
 deleteVehicle _centerPoint;
 
-[[_posArr select 0, _posArr select 1, 0], _roadDir]
+_result
