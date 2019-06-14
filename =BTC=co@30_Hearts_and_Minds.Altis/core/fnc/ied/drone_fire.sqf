@@ -3,16 +3,16 @@
 Function: btc_fnc_ied_drone_fire
 
 Description:
-    Fill me when you edit me !
+    Fire bomb of the drone.
 
 Parameters:
-    _trigger - [Object]
+    _trigger - Trigger. [Object]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_ied_drone_fire;
+        [_trigger] call btc_fnc_ied_drone_fire;
     (end)
 
 Author:

@@ -3,21 +3,21 @@
 Function: btc_fnc_ied_effect_color_smoke
 
 Description:
-    Fill me when you edit me !
+    Add colored smoke effect.
 
 Parameters:
-    _pos - [Array]
-    _posASL - [Array]
-    _colorSel - [String]
-    _horizontal - [Number]
-    _upwards - [Number]
-    _color - [Array]
+    _pos - Bucket position. [Array]
+    _posASL - Smoke position. [Array]
+    _colorSel - Color of the smoke. [String]
+    _horizontal - Velocity horizontal. [Number]
+    _upwards - Velocity upwards. [Number]
+    _color - RGB color. [Array]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_ied_effect_color_smoke;
+        [getPos player, getPosASL player, "sand"] call btc_fnc_ied_effect_color_smoke;
     (end)
 
 Author:
