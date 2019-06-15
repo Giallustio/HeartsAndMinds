@@ -83,7 +83,7 @@ if (isServer) then {
     btc_fnc_ied_drone_create = compile preprocessFileLineNumbers "core\fnc\ied\drone_create.sqf";
     btc_fnc_ied_droneLoop = compile preprocessFileLineNumbers "core\fnc\ied\droneLoop.sqf";
     btc_fnc_ied_drone_fire = compile preprocessFileLineNumbers "core\fnc\ied\drone_fire.sqf";
-    btc_fnc_ied_pos_roadside = compile preprocessFileLineNumbers "core\fnc\ied\pos_roadside.sqf";
+    btc_fnc_ied_randomRoadPos = compile preprocessFileLineNumbers "core\fnc\ied\randomRoadPos.sqf";
 
     //INFO
     btc_fnc_info_cache = compile preprocessFileLineNumbers "core\fnc\info\cache.sqf";

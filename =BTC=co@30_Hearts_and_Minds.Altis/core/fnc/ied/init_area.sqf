@@ -3,7 +3,7 @@
 Function: btc_fnc_ied_init_area
 
 Description:
-    Initialize positions of IEDS
+    Initialize positions of IEDS.
 
 Parameters:
     _city - [Object]
@@ -47,7 +47,7 @@ for "_i" from 1 to _n do {
         if !(_roads isEqualTo []) then {
             private _obj = selectRandom _roads;
 
-            private _arr = _obj call btc_fnc_ied_pos_roadside;
+            private _arr = _obj call btc_fnc_ied_randomRoadPos;
             _sel_pos = _arr select 0;
             _dir = _arr select 1;
         };
@@ -55,22 +55,15 @@ for "_i" from 1 to _n do {
         if (isOnRoad _sel_pos) then {
             private _roads = _sel_pos nearRoads 15;
             if !(_roads isEqualTo []) then {
-                private _obj = objNull;
-                private _dist = 100;
-                {
-                    if (_x inArea [_sel_pos, _dist, _dist, 0, false]) then {
-                        _dist = _x distance _sel_pos;
-                        _obj = _x;
-                    };
-                } forEach _roads;
+                _obj = selectRandom _roads;
 
                 if (isNull _obj) exitWith {};
 
-                private _arr = _obj call btc_fnc_ied_pos_roadside;
+                private _arr = _obj call btc_fnc_ied_randomRoadPos;
                 _sel_pos = _arr select 0;
                 _dir = _arr select 1;
             };
-        }
+        };
     };
 
 
@@ -105,7 +98,7 @@ for "_i" from 1 to _n do {
         if !(_roads isEqualTo []) then     {
             private _obj = selectRandom _roads;
 
-            private _arr = _obj call btc_fnc_ied_pos_roadside;
+            private _arr = _obj call btc_fnc_ied_randomRoadPos;
             _sel_pos = _arr select 0;
             _dir = _arr select 1;
         };
