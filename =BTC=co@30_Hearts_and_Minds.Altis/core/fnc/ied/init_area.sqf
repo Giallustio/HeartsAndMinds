@@ -55,7 +55,7 @@ for "_i" from 1 to _n do {
         if (isOnRoad _sel_pos) then {
             private _roads = _sel_pos nearRoads 15;
             if !(_roads isEqualTo []) then {
-                _obj = selectRandom _roads;
+                private _obj = selectRandom _roads;
 
                 if (isNull _obj) exitWith {};
 
