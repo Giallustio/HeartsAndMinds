@@ -37,8 +37,7 @@ params [
 
 private _id = count btc_city_all;
 
-private _city = createSimpleObject ["a3\structures_f_epb\items\military\ammobox_rounds_f.p3d", [_position select 0, _position select 1, getTerrainHeightASL _position]];
-hideObjectGlobal _city;
+private _city = createSimpleObject ["CBA_NamespaceDummy", [_position select 0, _position select 1, getTerrainHeightASL _position]];
 _city setVariable ["activating", false];
 _city setVariable ["initialized", false];
 _city setVariable ["id", _id];
