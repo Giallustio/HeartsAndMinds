@@ -3,16 +3,17 @@
 Function: btc_fnc_patrol_eh_remove
 
 Description:
-    Fill me when you edit me !
+    Remove events.
 
 Parameters:
-    _veh - [Object]
+    _veh - Object with events.  [Object]
 
 Returns:
+	_bool - Events ID found. [Boolean]
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_patrol_eh_remove;
+        [cursorTarget] call btc_fnc_patrol_eh_remove;
     (end)
 
 Author:
