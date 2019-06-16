@@ -31,15 +31,14 @@ params [
 private _roadDir = _road call btc_fnc_road_direction;
 private _roadRadius = ((0 boundingBoxReal _road) select 2) * 0.4;
 
-private _centerPoint = createSimpleObject ["CBA_NamespaceDummy", (getPosWorld _road)];
-_centerPoint setDir _roadDir;
-
-private _result = selectRandom [
-    [(_centerPoint modelToWorld [_roadRadius, 0, 0]), _roadDir],
-    [(_centerPoint modelToWorld [-_roadRadius, 0, 0]), _roadDir],
-    [_centerPoint modelToWorld [_roadRadius - random(2 * (_roadRadius * 0.9)), 0, 0], random 360]
-];
-
-deleteVehicle _centerPoint;
-
-_result
+switch (floor random 3) do {
+    case 0: {
+        [_road getPos [_roadRadius, _roadDir + 90], _roadDir]
+    };
+    case 1: {
+        [_road getPos [_roadRadius, _roadDir - 90], _roadDir]
+    };
+    default {
+        [_road getPos [_roadRadius * 0.5 - random(_roadRadius * 0.4), _roadDir + (90 * selectRandom [-1, 1])], random 360]
+    };
+};
