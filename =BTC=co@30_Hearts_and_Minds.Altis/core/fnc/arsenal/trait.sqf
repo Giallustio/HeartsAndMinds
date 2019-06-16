@@ -37,7 +37,7 @@ switch (true) do {
         _type_ammoUsageAllowed = [3, [["AssaultRifle", "", [false, "Rifle_Long_Base_F"]]]];
     };
     case ([typeOf _player, ["MissileLauncher", "128 + 512"]] call btc_fnc_mil_ammoUsage): {
-        _type_ammoUsageAllowed = [4, [["AssaultRifle", "", [false, "Rifle_Long_Base_F"]], ["RocketLauncher", ""], ["MissileLauncher",  "128 + 512"]]];
+        _type_ammoUsageAllowed = [4, [["AssaultRifle", "", [false, "Rifle_Long_Base_F"]], ["RocketLauncher", ""], ["MissileLauncher", "128 + 512"]]];
     };
     case ([typeOf _player, ["MissileLauncher", "256"]] call btc_fnc_mil_ammoUsage): {
         _type_ammoUsageAllowed = [5, [["AssaultRifle", "", [false, "Rifle_Long_Base_F"]], ["MissileLauncher", "256"]]];

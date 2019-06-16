@@ -1,6 +1,8 @@
 [] call compile preprocessFileLineNumbers "core\fnc\city\init.sqf";
 
-{[_x] spawn btc_fnc_task_create} forEach [0, 1];
+["btc_m", -1, objNull, "", false, false] call btc_fnc_task_create;
+[["btc_dft", "btc_m"], 0] call btc_fnc_task_create;
+[["btc_dty", "btc_m"], 1] call btc_fnc_task_create;
 
 if (btc_db_load && {profileNamespace getVariable [format ["btc_hm_%1_db", worldName], false]}) then {
     if (btc_version isEqualTo (profileNamespace getVariable [format ["btc_hm_%1_version", worldName], 1.13])) then {
@@ -10,7 +12,7 @@ if (btc_db_load && {profileNamespace getVariable [format ["btc_hm_%1_db", worldN
     };
 } else {
     for "_i" from 1 to btc_hideout_n do {[] call btc_fnc_mil_create_hideout;};
-    [] call compile preprocessFileLineNumbers "core\fnc\cache\init.sqf";
+    [] call btc_fnc_cache_init;
 
     private _date = date;
     _date set [3, btc_p_time];
@@ -21,7 +23,6 @@ if (btc_db_load && {profileNamespace getVariable [format ["btc_hm_%1_db", worldN
     } forEach btc_vehicles;
 };
 
-[] call btc_fnc_db_autosave;
 [] call btc_fnc_eh_server;
 [btc_ied_list] call btc_fnc_ied_fired_near;
 
@@ -31,6 +32,8 @@ setTimeMultiplier btc_p_acctime;
 
 {[_x, 30, false] call btc_fnc_eh_veh_add_respawn;} forEach btc_helo;
 
-if (btc_p_side_mission_cycle) then {
-    [true] spawn btc_fnc_side_create;
+if (btc_p_side_mission_cycle > 0) then {
+    for "_i" from 1 to btc_p_side_mission_cycle do {
+        [true] spawn btc_fnc_side_create;
+    };
 };

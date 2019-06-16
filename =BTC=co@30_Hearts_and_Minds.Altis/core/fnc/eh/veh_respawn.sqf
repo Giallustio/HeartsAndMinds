@@ -27,9 +27,14 @@ params [
 private _data = _vehicle getVariable ["data_respawn", []];
 
 [{
-    params ["_vehicle", "_data"];
+    params [
+        "_vehicle",
+        "_data",
+        ["_helo", btc_helo, [[]]]
+    ];
 
     deleteVehicle _vehicle;
+    _helo deleteAt (_helo find _vehicle);
 
     [{
         params [

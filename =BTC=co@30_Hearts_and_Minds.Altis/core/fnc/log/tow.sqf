@@ -29,13 +29,13 @@ btc_int_ask_data = nil;
 
 waitUntil {!(isNil "btc_int_ask_data")};
 
-if (!isNull btc_int_ask_data) exitWith {hint localize "STR_BTC_HAM_LOG_TOW_ALREADYTOWED";}; //This vehicle is already attached to another!
+if (!isNull btc_int_ask_data) exitWith {(localize "STR_BTC_HAM_LOG_TOW_ALREADYTOWED") call CBA_fnc_notify;};
 
 private _model_rear_tower = ([_tower] call btc_fnc_log_hitch_points) select 1;
 private _model_front_selected = ([btc_log_vehicle_selected] call btc_fnc_log_hitch_points) select 0;
 private _relative_pos = - (_model_front_selected select 1) + (_model_rear_tower select 1) - ((btc_log_vehicle_selected modelToWorld _model_front_selected) distance (_tower modelToWorld _model_rear_tower));
 
-btc_log_vehicle_selected attachTo [_tower, [0, _relative_pos,  0.2 + ((btc_log_vehicle_selected modelToWorld [0, 0, 0]) select 2) - ((_tower modelToWorld [0, 0, 0]) select 2)]];
+btc_log_vehicle_selected attachTo [_tower, [0, _relative_pos, 0.2 + ((btc_log_vehicle_selected modelToWorld [0, 0, 0]) select 2) - ((_tower modelToWorld [0, 0, 0]) select 2)]];
 
 private _pos_rear = _tower modelToWorld _model_rear_tower;
 private _pos_front = btc_log_vehicle_selected modelToWorld _model_front_selected;

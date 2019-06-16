@@ -13,7 +13,7 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_info_has_intel;
+        [cursorObject, player] remoteExecCall ["btc_fnc_info_has_intel", 2];
     (end)
 
 Author:

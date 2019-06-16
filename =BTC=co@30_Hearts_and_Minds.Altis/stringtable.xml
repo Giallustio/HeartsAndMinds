@@ -9,13 +9,6 @@
                 <Portuguese>Corações e Mentes</Portuguese>
                 <Chinesesimp>心灵与智慧</Chinesesimp>
             </Key>
-            <Key ID="STR_BTC_HAM_DESCR_AUTHOR">
-                <Original>Giallustio</Original>
-                <Spanish>Giallustio</Spanish>
-                <German>Giallustio</German>
-                <Portuguese>Giallustio</Portuguese>
-                <Chinesesimp>Giallustio</Chinesesimp>
-            </Key>
             <Key ID="STR_BTC_HAM_DESCR_MISSION">
                 <Original>www.blacktemplars.altervista.org</Original>
                 <Spanish>www.blacktemplars.altervista.org</Spanish>
@@ -142,7 +135,7 @@
                 <Chinesesimp>支线任务</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_DOC_SIDEMISSION_TEXT">
-                <Original>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\whiteboard_ca.paa' width='20' height='20'/&gt; Side missions are really useful to raise your reputation level.&lt;br/&gt; A side mission can be requested by the officer with his self interaction menu.&lt;br/&gt; If you don't want to complete a task, you can always abort it with the self interaction menu.</Original>
+                <Original>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\whiteboard_ca.paa' width='20' height='20'/&gt; Side missions are really useful to raise your reputation level.&lt;br/&gt; A side mission can be requested by the officer with his self interaction menu.&lt;br/&gt; If you don't want to complete a task, assigned it to you and abort it with the self interaction menu.</Original>
                 <Spanish>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\whiteboard_ca.paa' width='20' height='20'/&gt; Las misiones secundarias son realmente útiles para elevar tu nivel de reputación.&lt;br/&gt; Una misión secundaria puede ser solicitada por el oficial con su menú de auto-interacción..&lt;br/&gt; Si no desea completar una tarea, siempre puede abortarla con el menú de auto-interacción.</Spanish>
                 <German>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\whiteboard_ca.paa' width='20' height='20'/&gt; Nebenaufgaben sind sehr nütlich um das Ansehen in der Bevölkerung zu erhöhen.&lt;br/&gt;Diese Aufgaben können vom Offizier über das Eigen-Interaktionsmenü angefordert werden.&lt;br/&gt;Kann man eine Mission aus verschiedenen Gründen nicht abgeschlossen werden, so kann der Offizier sie jederzeit über das Eigen-Interaktionsmenü abbrechen.</German>
                 <Portuguese>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\whiteboard_ca.paa' width='20' height='20'/&gt; Missões secundárias são úteis para elevar o nível de reputação.&lt;br/&gt; Uma missão secundária pode ser solicitada pelo Oficial usando menu de interação pessoal.&lt;br/&gt; Se você não quiser concluir uma tarefa, poderá sempre abortá-la usando o menu de interação.</Portuguese>
@@ -186,11 +179,11 @@
         </Container>
         <Container name="Documentation: Hideout">
             <Key ID="STR_BTC_HAM_DOC_HIDEOUT_TEXT">
-                <Original>The hideouts are a place where the Oplitas organize their movements.&lt;br/&gt;They send reinforcements from here and can attack the closest city.&lt;br/&gt;If you notice a lot of activity in an area, probably there is an hideout closeby.&lt;br/&gt;If you want to defeat the Oplitas, you need to destroy all their hideouts.&lt;br/&gt;Here an example of an hideout:&lt;br/&gt;&lt;br/&gt;&lt;img image='core\img\hideout.jpg' width='256' height='256'/&gt;&lt;br/&gt;&lt;br/&gt;To destroy an hideout just place a satchel near the ammo box, it's close to the flag, and blow it off!</Original>
-                <Spanish>Los escondites son un lugar donde los Oplitas organizan sus movimientos.&lt;br/&gt;Enviarán refuerzos desde aquí y podrán atacar la ciudad más cercana.&lt;br/&gt;Si usted nota mucha actividad en un área, probablemente hay un escondite cerca.Si quieres derrotar a los Oplitas, tienes que destruir todos sus escondites.&lt;br/&gt;Aquí un ejemplo de un escondite:&lt;br/&gt;&lt;br/&gt;&lt;img image='core\img\hideout.jpg' width='256' height='256'/&gt;&lt;br/&gt;&lt;br/&gt;Para destruir un escondite sólo tienes que colocar una explosivo tipo satchel cerca de la caja de municiones, cerca de la bandera, y volarla!</Spanish>
-                <German>In den Verstecken planen und organisieren die Oplitas ihre Einstäze und Bewegungen.&lt;br/&gt;Von hier wird Verstärkung auf umliegende Gebiete verteilt. Ebenso ist ein Angriff auf die nächste Stadt von hier aus möglich.&lt;br/&gt;Sollten Sie eine erhöhte feindliche Aktivität in der Gegend festestellen, so befindet sich möglicherweise ein Versteck in der Nähe.&lt;br/&gt;Wenn Sie die Oplitas besiegen wollen, so müssen Sie alle Verstecke zerstören.&lt;br/&gt;Hier ein kleines Beispiel für ein Versteck:&lt;br/&gt;&lt;br/&gt;&lt;img image='core\img\hideout.jpg' width='256' height='256'/&gt;&lt;br/&gt;&lt;br/&gt;Das Versteck kann zerstört werden in dem man eine Sprengladung in der Nähe der Munitionskiste oder der Flagge zündet!</German>
-                <Portuguese>Os esconderijos são um lugar onde as inimigos organizam seus movimentos.&lt;br/&gt;Daqui eles enviam reforços e podem atacar as cidades mais próximas.&lt;br/&gt;Se você notar muita atividade em uma área, provavelmente há um esconderijo por perto.&lt;br/&gt;Se você quiser derrotar o inimigo, terá que destruir todos os esconderijos.&lt;br/&gt;Veja um exemplo de um esconderijo:&lt;br/&gt;&lt;br/&gt;&lt;img image='core\img\hideout.jpg' width='256' height='256'/&gt;&lt;br/&gt;&lt;br/&gt;Para destruir um esconderijo, basta colocar uma bolsa de explosivos perto da caixa de munição (que fica perto da bandeira) e explodí-lo!</Portuguese>
-                <Chinesesimp>藏匿点是Oplitas组织活动的地方。&lt;br/&gt;他们从这里派遣增援, 进攻附近的城市。&lt;br/&gt;如果你在某区域注意到了大量民兵活动, 那么藏匿点可能就在附近。&lt;br/&gt;如果你想要打败Oplitas, 你需要摧毁所有的藏匿点。&lt;br/&gt;这是一张藏匿点的示意图:&lt;br/&gt;&lt;br/&gt;&lt;img image='core\img\hideout.jpg' width='256' height='256'/&gt;&lt;br/&gt;&lt;br/&gt;要摧毁藏匿点, 只需在靠近旗帜的弹药箱上放置一个炸药包, 然后炸掉它!</Chinesesimp>
+                <Original>The hideouts are a place where the Oplitas organize their movements.&lt;br/&gt;They send reinforcements from here and can attack the closest city.&lt;br/&gt;If you notice a lot of activity in an area, probably there is an hideout closeby.&lt;br/&gt;If you want to defeat the Oplitas, you need to destroy all their hideouts.&lt;br/&gt;Here an example of an hideout:&lt;br/&gt;&lt;br/&gt;&lt;img image='core\img\hideout.jpg' width='306' height='256'/&gt;&lt;br/&gt;&lt;br/&gt;To destroy an hideout just place a satchel near the ammo box, it's close to the flag, and blow it off!</Original>
+                <Spanish>Los escondites son un lugar donde los Oplitas organizan sus movimientos.&lt;br/&gt;Enviarán refuerzos desde aquí y podrán atacar la ciudad más cercana.&lt;br/&gt;Si usted nota mucha actividad en un área, probablemente hay un escondite cerca.Si quieres derrotar a los Oplitas, tienes que destruir todos sus escondites.&lt;br/&gt;Aquí un ejemplo de un escondite:&lt;br/&gt;&lt;br/&gt;&lt;img image='core\img\hideout.jpg' width='306' height='256'/&gt;&lt;br/&gt;&lt;br/&gt;Para destruir un escondite sólo tienes que colocar una explosivo tipo satchel cerca de la caja de municiones, cerca de la bandera, y volarla!</Spanish>
+                <German>In den Verstecken planen und organisieren die Oplitas ihre Einstäze und Bewegungen.&lt;br/&gt;Von hier wird Verstärkung auf umliegende Gebiete verteilt. Ebenso ist ein Angriff auf die nächste Stadt von hier aus möglich.&lt;br/&gt;Sollten Sie eine erhöhte feindliche Aktivität in der Gegend festestellen, so befindet sich möglicherweise ein Versteck in der Nähe.&lt;br/&gt;Wenn Sie die Oplitas besiegen wollen, so müssen Sie alle Verstecke zerstören.&lt;br/&gt;Hier ein kleines Beispiel für ein Versteck:&lt;br/&gt;&lt;br/&gt;&lt;img image='core\img\hideout.jpg' width='306' height='256'/&gt;&lt;br/&gt;&lt;br/&gt;Das Versteck kann zerstört werden in dem man eine Sprengladung in der Nähe der Munitionskiste oder der Flagge zündet!</German>
+                <Portuguese>Os esconderijos são um lugar onde as inimigos organizam seus movimentos.&lt;br/&gt;Daqui eles enviam reforços e podem atacar as cidades mais próximas.&lt;br/&gt;Se você notar muita atividade em uma área, provavelmente há um esconderijo por perto.&lt;br/&gt;Se você quiser derrotar o inimigo, terá que destruir todos os esconderijos.&lt;br/&gt;Veja um exemplo de um esconderijo:&lt;br/&gt;&lt;br/&gt;&lt;img image='core\img\hideout.jpg' width='306' height='256'/&gt;&lt;br/&gt;&lt;br/&gt;Para destruir um esconderijo, basta colocar uma bolsa de explosivos perto da caixa de munição (que fica perto da bandeira) e explodí-lo!</Portuguese>
+                <Chinesesimp>藏匿点是Oplitas组织活动的地方。&lt;br/&gt;他们从这里派遣增援, 进攻附近的城市。&lt;br/&gt;如果你在某区域注意到了大量民兵活动, 那么藏匿点可能就在附近。&lt;br/&gt;如果你想要打败Oplitas, 你需要摧毁所有的藏匿点。&lt;br/&gt;这是一张藏匿点的示意图:&lt;br/&gt;&lt;br/&gt;&lt;img image='core\img\hideout.jpg' width='306' height='256'/&gt;&lt;br/&gt;&lt;br/&gt;要摧毁藏匿点, 只需在靠近旗帜的弹药箱上放置一个炸药包, 然后炸掉它!</Chinesesimp>
             </Key>
         </Container>
         <Container name="Documentation: IED">
@@ -204,7 +197,7 @@
         </Container>
         <Container name="Documentation: Intel">
             <Key ID="STR_BTC_HAM_DOC_INTEL_TEXT">
-                <Original>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\map_ca.paa' width='20' height='20'/&gt; Intel can be retrieved in the following ways:&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\search_ca.paa' width='13' height='13'/&gt; Searching dead bodies&lt;br/&gt; - &lt;img image='\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\instructor_ca.paa' width='13' height='13'/&gt; Interrogate prisoner&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='13' height='13'/&gt; Talking to civilians&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\talk_ca.paa' width='20' height='20'/&gt; Keep in mind that only the interpreter can talk to civilians and they can lie if your reputation level is low.&lt;br/&gt;&lt;br/&gt; When you find an intel from a dead body or interrogate a prisoner, a marker will appear in the map. Remember, prisoner have a random number of intel more or less interesting.&lt;br/&gt; There are two types of marker:&lt;br/&gt; - Red question mark (&lt;img image='\A3\ui_f\data\map\markers\handdrawn\unknown_CA.paa' width='13' height='13' color='#ff0000'/&gt;): ammo cache intel&lt;br/&gt; - Red exclamation mark (&lt;img image='\A3\ui_f\data\map\markers\handdrawn\warning_CA.paa' width='13' height='13' color='#ff0000'/&gt;): hideout intel&lt;br/&gt;&lt;br/&gt;&lt;br/&gt; When you destroy an hideout or an ammo cache, all the markers related to it will be deleted.</Original>
+                <Original>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\map_ca.paa' width='20' height='20'/&gt; Intel can be retrieved in the following ways:&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\search_ca.paa' width='13' height='13'/&gt; Searching dead bodies&lt;br/&gt; - &lt;img image='\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\instructor_ca.paa' width='13' height='13'/&gt; Interrogate prisoner&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='13' height='13'/&gt; Talking to civilians&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\talk_ca.paa' width='20' height='20'/&gt; Keep in mind that only the interpreter can talk to civilians and they can lie if your reputation level is low.&lt;br/&gt;&lt;br/&gt; When you find an intel from a dead body or interrogate a prisoner, a marker will appear in the map. Remember, prisoner have a random number of intel more or less interesting.&lt;br/&gt; There are two types of intel:&lt;br/&gt; - Red question mark (&lt;img image='\A3\ui_f\data\map\markers\handdrawn\unknown_CA.paa' width='13' height='13' color='#ff0000'/&gt;) and pictures under diary log map menu: ammo cache intel&lt;br/&gt; - Red exclamation mark (&lt;img image='\A3\ui_f\data\map\markers\handdrawn\warning_CA.paa' width='13' height='13' color='#ff0000'/&gt;): hideout intel&lt;br/&gt;&lt;br/&gt;&lt;br/&gt; When you destroy an hideout or an ammo cache, all the markers related to it will be deleted.</Original>
                 <Spanish>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\map_ca.paa' width='20' height='20'/&gt; La Inteligencia se puede recuperar de las siguientes maneras:&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\search_ca.paa' width='13' height='13'/&gt; Registrando cadáveres&lt;br/&gt; - &lt;img image='\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\instructor_ca.paa' width='13' height='13'/&gt; Interrogando prisioneros&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='13' height='13'/&gt; Conversando con Civiles&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\talk_ca.paa' width='20' height='20'/&gt; Tenga en cuenta que sólo el intérprete puede hablar con civiles y ellos pueden mentir si su nivel de reputación es bajo.&lt;br/&gt;&lt;br/&gt; Cuando encuentres una información de un cadáver o interrogues a un prisionero, aparecerá un marcador en el mapa. Recuerda, los prisioneros tienen un número aleatorio de información más o menos interesante.&lt;br/&gt; Hay 2 tipos de marcas:&lt;br/&gt; - Signo de interrogacion rojo (&lt;img image='\A3\ui_f\data\map\markers\handdrawn\unknown_CA.paa' width='13' height='13' color='#ff0000'/&gt;): intel sobre cache de municion&lt;br/&gt; - Signo de exclamacion rojo (&lt;img image='\A3\ui_f\data\map\markers\handdrawn\warning_CA.paa' width='13' height='13' color='#ff0000'/&gt;): intel sobre escondite&lt;br/&gt;&lt;br/&gt;&lt;br/&gt; Cuando destruyes un escondite o una caché de munición, todos los marcadores relacionados con él se borrarán.</Spanish>
                 <German>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\map_ca.paa' width='20' height='20'/&gt;  Informationen kann man auf verschiedene Arten erhalten:&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\search_ca.paa' width='13' height='13'/&gt; Durchsuchen von toten Personen&lt;br/&gt; - &lt;img image='\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\instructor_ca.paa' width='13' height='13'/&gt; Verhören von Gefangenen&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='13' height='13'/&gt; Mit Zivilisten reden&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\talk_ca.paa' width='20' height='20'/&gt; Nur der Dolmetscher kann sich mit Zivilisten unterhalten. Wenn ihr Ansehen bei der Bevölkerunge niedrig ist, so kann es auch mal vorkommen das manche Zivilisten sie belügen.&lt;br/&gt;&lt;br/&gt; Wenn Sie Information erhalten, erscheint eine Markierung auf der Karte. Zur Erinnerung: Gefangene habe mal mehr und mal weniger interessante Informationen.&lt;br/&gt; Es gibt zwei Arten von Markierungen:&lt;br/&gt; - Ein rotes Fragezeichen (&lt;img image='\A3\ui_f\data\map\markers\handdrawn\unknown_CA.paa' width='13' height='13' color='#ff0000'/&gt;): Information über ein Waffenlager &lt;br/&gt; - Ein rotes Ausrufezeichen (&lt;img image='\A3\ui_f\data\map\markers\handdrawn\warning_CA.paa' width='13' height='13' color='#ff0000'/&gt;): Information über ein Versteck &lt;br/&gt;&lt;br/&gt;&lt;br/&gt; Wenn Sie ein Versteck oder ein Waffenlager zersört haben, so werden alle relevanten Markierungen automatisch gelöscht.</German>
                 <Portuguese>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\map_ca.paa' width='20' height='20'/&gt; Informações podem ser obtidas de diferentes maneiras:&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\search_ca.paa' width='13' height='13'/&gt; Procurando nos corpos dos mortos&lt;br/&gt; - &lt;img image='\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\instructor_ca.paa' width='13' height='13'/&gt; Interrogando prisioneiros&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='13' height='13'/&gt; Falando com civis&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\talk_ca.paa' width='20' height='20'/&gt; Somente o intérprete pode conversar com os civis. Se a reputação entre a população é baixa, pode acontecer de alguns civis passarem informações mentirosas.&lt;br/&gt;&lt;br/&gt; Quando você encontrar uma informação em um cadáver ou interrogando um prisioneiro, uma marcação aparecerá no mapa. Lembre-se, os prisioneiros possuem um número aleatório de informações que são mais ou menos importante.&lt;br/&gt; Existem dois tipos de marcação:&lt;br/&gt; - Interrogação em Vermelho (&lt;img image='\A3\ui_f\data\map\markers\handdrawn\unknown_CA.paa' width='13' height='13' color='#ff0000'/&gt;): Informações sobre depósito de armas&lt;br/&gt; - Exclamação em Vermelho (&lt;img image='\A3\ui_f\data\map\markers\handdrawn\warning_CA.paa' width='13' height='13' color='#ff0000'/&gt;): Informações sobre um esconderijo&lt;br/&gt;&lt;br/&gt;&lt;br/&gt; Quando você destroí um esconderijo ou depósito de munição, o marcador será excluído.</Portuguese>
@@ -295,10 +288,8 @@
                 <Chinesesimp>载入存档 (如果可用)</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_DB_ASAVE">
-                <Original>Auto savegame (can break player immersion)</Original>
-                <German>Spielstand autom. sichern (kann die Immersion stören)</German>
-                <Portuguese>Salvamento do jogo automático (pode quebrar a imersão do jogador)</Portuguese>
-                <Chinesesimp>自动保存 (存档时会暂停游戏进程, 可能破坏玩家的沉浸感)</Chinesesimp>
+                <Original>Auto savegame when all players disconnected</Original>
+                <German>Spiel wird automatisch Gespeichert, wenn alle Spieler das Spiel verlassen</German>
             </Key>
         </Container>
         <Container name="Parameters: Factions">
@@ -663,6 +654,12 @@
     </Package>
     <Package name="Missions">
         <Container name="Mission: Defeat the Oplitas">
+            <Key ID="STR_BTC_HAM_MISSION_OBJ_DESC">
+                <Original>Objectives must be accomplish.</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_MISSION_OBJ_TITLE">
+                <Original>Main objectives</Original>
+            </Key>
             <Key ID="STR_BTC_HAM_MISSION_DEFEAT_TITLE">
                 <Original>Defeat the Oplitas</Original>
                 <Spanish>Derrotar a los Oplitas</Spanish>
@@ -686,26 +683,19 @@
             </Key>
         </Container>
         <Container name="Mission: Destroy all the hideouts">
-            <Key ID="STR_BTC_HAM_MISSION_DESTORY_TITLE">
-                <Original>Destroy all the hideouts</Original>
-                <Spanish>Destruye todos los escondites</Spanish>
-                <German>Alle Verstecke zerstören</German>
-                <Portuguese>Destrua todos os esconderijos</Portuguese>
-                <Chinesesimp>摧毁所有藏匿点</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_MISSION_DESTORY_DESC">
+            <Key ID="STR_BTC_HAM_MISSION_DESTROY_DESC">
                 <Original>Destroy all the hideouts of the Oplitas</Original>
                 <Spanish>Destruye todos los escondites de los Oplitas</Spanish>
                 <German>Zerstören Sie sämtliche Verstecke der Oplitas</German>
                 <Portuguese>Destrua todos os esconderijos dos inimigos</Portuguese>
                 <Chinesesimp>摧毁所有Oplitas藏匿点</Chinesesimp>
             </Key>
-            <Key ID="STR_BTC_HAM_MISSION_DESTORY_WIN_TEXT">
-                <Original>All the hideouts have been destroyed!</Original>
-                <Spanish>¡Todos los escondites han sido destruidos!</Spanish>
-                <German>Alle Verstecke wurden zerstört!</German>
-                <Portuguese>Todos os esconderijos foram destruídos!</Portuguese>
-                <Chinesesimp>所有藏匿点都被摧毁了!</Chinesesimp>
+            <Key ID="STR_BTC_HAM_MISSION_DESTROY_TITLE">
+                <Original>Destroy all the hideouts</Original>
+                <Spanish>Destruye todos los escondites</Spanish>
+                <German>Alle Verstecke zerstören</German>
+                <Portuguese>Destrua todos os esconderijos</Portuguese>
+                <Chinesesimp>摧毁所有藏匿点</Chinesesimp>
             </Key>
         </Container>
         <Container name="Mission: Seize the last positions">
@@ -716,39 +706,9 @@
                 <Portuguese>Conquiste as últimas posições inimigas</Portuguese>
                 <Chinesesimp>夺取最后一个Oplitas据点</Chinesesimp>
             </Key>
-            <Key ID="STR_BTC_HAM_MISSION_SEIZE_MRK">
-                <Original>Seize the last Oplitas fighters positions</Original>
-                <Spanish>Ocupen las últimas posiciones de los Oplitas.</Spanish>
-                <German>Erobern Sie die letzten Positionen der Oplitas-Kämpfer</German>
-                <Portuguese>Conquiste as últimas posições da resistência inimiga</Portuguese>
-                <Chinesesimp>夺取最后一个Oplitas战匪的据点</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_MISSION_SEIZE_DESC">
-                <Original>Seize the last positions held by Oplitas fighters</Original>
-                <Spanish>Ocupen las últimas posiciones de resistencia de los Oplitas.</Spanish>
-                <German>Erobern Sie die letzten Stellungen der Oplitas-Kämpfer zurück.</German>
-                <Portuguese>Conquiste as últimas posições da retarguarda inimiga</Portuguese>
-                <Chinesesimp>夺取最后一个被Oplitas战匪占领的据点</Chinesesimp>
-            </Key>
         </Container>
     </Package>
     <Package name="Side Missions">
-        <Container name="Basics">
-            <Key ID="STR_BTC_HAM_SIDE_BASIC_WIN_TITLE">
-                <Original>Side mission Accomplished!</Original>
-                <Spanish>Misión paralela Cumplida!</Spanish>
-                <German>Nebenmission erfolgreich!</German>
-                <Portuguese>Missão secundária Cumprida!</Portuguese>
-                <Chinesesimp>支线任务完成!</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_SIDE_BASIC_LOSE_TITLE">
-                <Original>Side mission failed!</Original>
-                <Spanish>Misión paralela Fallida!</Spanish>
-                <German>Nebenmission fehlschlagen!</German>
-                <Portuguese>Missão secundária falhou!</Portuguese>
-                <Chinesesimp>支线任务失败!</Chinesesimp>
-            </Key>
-        </Container>
         <Container name="Capture officer">
             <Key ID="STR_BTC_HAM_SIDE_CAPOFF_TITLE">
                 <Original>Capture commander in concealed convoy</Original>
@@ -764,19 +724,11 @@
                 <Portuguese>Um Oficial está viajando em um comboio camuflado. Encontre e traga-o para base para interrogatório. Ele é um dos principais responsáveis por aterrorizar a população local!</Portuguese>
                 <Chinesesimp>一名敌军军官已经伪装起来, 随同车队进行转移。找到他并把他带回基地, 进行进一步的审问。 他是对当地恐怖活动负责的主要人物之一!</Chinesesimp>
             </Key>
-            <Key ID="STR_BTC_HAM_SIDE_CAPOFF_FAILED_TEXT">
-                <Original>The officer was not captured</Original>
-                <Spanish>El oficial no fue capturado</Spanish>
-                <German>Der Offizier wurde nicht gefangen genommen</German>
-                <Portuguese>O oficial não foi capturado</Portuguese>
-                <Chinesesimp>敌方军官未被抓捕</Chinesesimp>
+            <Key ID="STR_BTC_HAM_SIDE_CAPOFF_SURRENDER_DESC">
+                <Original>Surrender the officer.</Original>
             </Key>
-            <Key ID="STR_BTC_HAM_SIDE_CAPOFF_WIN_TEXT">
-                <Original>The officer has been captured!</Original>
-                <Spanish>¡El oficial ha sido capturado!</Spanish>
-                <German>Der Offizier wurde erfolgreich gefangen genommen!</German>
-                <Portuguese>O Oficial foi capturado!</Portuguese>
-                <Chinesesimp>敌方军官已被抓捕!</Chinesesimp>
+            <Key ID="STR_BTC_HAM_SIDE_CAPOFF_SURRENDER_TITLE">
+                <Original>Surrender the officer</Original>
             </Key>
         </Container>
         <Container name="Checkpoint">
@@ -794,19 +746,11 @@
                 <Portuguese>Os pontos de verificação foram localizados em %1. A população local está pedindo sua ajuda para destruidir todas as caixas de munições em todos os pontos de verificação!</Portuguese>
                 <Chinesesimp>在 %1 地区发现检查站。当地居民请求您摧毁武器箱和相应的检查站!</Chinesesimp>
             </Key>
-            <Key ID="STR_BTC_HAM_SIDE_CHECKPOINT_FAILED_TEXT">
-                <Original>Checkpoints were not destroyed</Original>
-                <Spanish>Los puestos de control no fueron destruidos</Spanish>
-                <German>Die Kontrollpunkte wurden nicht zerstört</German>
-                <Portuguese>Pontos de Verificação não foram destruídos</Portuguese>
-                <Chinesesimp>检查站未摧毁</Chinesesimp>
+            <Key ID="STR_BTC_HAM_SIDE_CHECKPOINT_DESTROY_DESC">
+                <Original>Detroy this checkpoint by destroying this object.</Original>
             </Key>
-            <Key ID="STR_BTC_HAM_SIDE_CHECKPOINT_WIN_TEXT">
-                <Original>Checkpoints have been destroyed!</Original>
-                <Spanish>¡Los puestos de control han sido destruidos!</Spanish>
-                <German>Die Kontrollpunkte wurden zerstört!</German>
-                <Portuguese>Pontos de Verificação foram destruídos!</Portuguese>
-                <Chinesesimp>检查站已被摧毁!</Chinesesimp>
+            <Key ID="STR_BTC_HAM_SIDE_CHECKPOINT_DESTROY_TITLE">
+                <Original>Detroy this checkpoint</Original>
             </Key>
         </Container>
         <Container name="Civ treatment boat">
@@ -823,20 +767,6 @@
                 <German>Ein Zivilist aus %1 hat einen Notruf abgesetzt. Behandeln Sie ihn umd warten Sie darauf, dass sich sein Zustand stabilisiert.</German>
                 <Portuguese>Um civil fez uma chamada médica em %1. Trate-o e aguarde a estabilização dele.</Portuguese>
                 <Chinesesimp>一位当地居民正在 %1 地区呼叫医疗支援, 治疗并护理患者, 直至其伤势稳定。</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_SIDE_CIVTREATBOAT_FAILED_TEXT">
-                <Original>The patient was not stabilized</Original>
-                <Spanish>El paciente no fue estabilizado</Spanish>
-                <German>Der Patient wurde nicht rechtzeitig stabilisiert</German>
-                <Portuguese>O paciente não foi estabilizado a tempo</Portuguese>
-                <Chinesesimp>患者的伤势未稳定</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_SIDE_CIVTREATBOAT_WIN_TEXT">
-                <Original>The civilian has been stabilized!</Original>
-                <Spanish>¡El paciente fue estabilizado!</Spanish>
-                <German>Der Patient wurde erfolgreich behandelt!</German>
-                <Portuguese>O paciente foi estabilizado com sucesso!</Portuguese>
-                <Chinesesimp>平民的伤势已经稳定!</Chinesesimp>
             </Key>
         </Container>
         <Container name="Civ treatment">
@@ -860,20 +790,6 @@
                 <German>Ein Zivilist aus %1 hat einen Notruf abgesetzt. Behandeln Sie ihn umd warten Sie darauf, dass sich sein Zustand stabilisiert </German>
                 <Portuguese>Um civil fez uma chamada médica em %1. Trate-o e aguarde a estabilização dele.</Portuguese>
                 <Chinesesimp>一位平民正在 %1 地区呼叫医疗支援, 治疗并护理患者, 直至其伤势稳定。</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_SIDE_CIVTREAT_FAILED_TEXT">
-                <Original>The patient was not stabilized</Original>
-                <Spanish>El paciente no fue estabilizado</Spanish>
-                <German>Der Patient wurde nicht rechtzeitig stabilisiert</German>
-                <Portuguese>O paciente não foi estabilizado a tempo</Portuguese>
-                <Chinesesimp>患者的伤势未稳定</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_SIDE_CIVTREAT_WIN_TEXT">
-                <Original>The civilian has been stabilized!</Original>
-                <Spanish>¡El paciente fue estabilizado!</Spanish>
-                <German>Der Patient wurde erfolgreich behandelt!</German>
-                <Portuguese>O paciente foi estabilizado com sucesso!</Portuguese>
-                <Chinesesimp>平民的伤势已经稳定!</Chinesesimp>
             </Key>
         </Container>
         <Container name="Convoy">
@@ -905,23 +821,9 @@
                 <Portuguese>Um comboio armado inimigo vai atacar %1. Proteja a população local dentruindo o comboio antes que ele chegue</Portuguese>
                 <Chinesesimp>一队Oplitas武装车队将要攻打 %1。当地居民请求在其抵达之前将其摧毁!</Chinesesimp>
             </Key>
-            <Key ID="STR_BTC_HAM_SIDE_CONVOY_FAILED_TEXT">
-                <Original>The armed convoy was not destroyed</Original>
-                <Spanish>El convoy armado no fue destruido</Spanish>
-                <German>Der bewaffnete Konvoi wurde nicht zerstört!</German>
-                <Portuguese>O comboio armado não foi destruído!</Portuguese>
-                <Chinesesimp>武装车队未被摧毁</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_SIDE_CONVOY_WIN_TEXT">
-                <Original>The armed convoy has been destroyed!</Original>
-                <Spanish>¡El convoy armado ha sido destruido!</Spanish>
-                <German>Der bewaffnete Konvoi ist zerstört worden!</German>
-                <Portuguese>O comboio armado foi destruído com sucesso!</Portuguese>
-                <Chinesesimp>武装车队已被摧毁!</Chinesesimp>
-            </Key>
         </Container>
         <Container name="Hack">
-            <Key ID="STR_BTC_HAM_SIDE_HACK_STARTCHAT">
+            <Key ID="STR_BTC_HAM_SIDE_HACK_STARTHACK">
                 <Original>Defend the terminal until the missile is hacked!</Original>
                 <Spanish>Defiende la terminal hasta que el misil sea hacekado!</Spanish>
                 <German>Verteidigt das Terminal, bis die Rakete gehackt erfolgreich gehackt ist!</German>
@@ -949,29 +851,17 @@
                 <Portuguese>Hackei o terminal de protótipo de míssil em %1. Defenda sua posição até que o processo seja concluído!</Portuguese>
                 <Chinesesimp>在 %1 地区入侵一枚带有控制终端的导弹原型的系统。守住你的位置, 直到系统入侵完成!</Chinesesimp>
             </Key>
-            <Key ID="STR_BTC_HAM_SIDE_HACK_FAILED_TEXT">
-                <Original>The missile was not hacked</Original>
-                <Spanish>El misil no fue hackeado</Spanish>
-                <German>Die Rakete wurde nicht gehackt</German>
-                <Portuguese>O míssil não foi hackeado</Portuguese>
-                <Chinesesimp>导弹系统未被入侵</Chinesesimp>
+            <Key ID="STR_BTC_HAM_SIDE_HACK_OPEN_DESC">
+                <Original>Open terminal to launch the hack.</Original>
             </Key>
-            <Key ID="STR_BTC_HAM_SIDE_HACK_WIN_TEXT">
-                <Original>The missile has been hacked!</Original>
-                <Spanish>El misil fue hackeado!</Spanish>
-                <German>Die Rakete wurde erfolgreich gehackt!</German>
-                <Portuguese>O míssil foi hackeado com sucesso!</Portuguese>
-                <Chinesesimp>导弹系统已被入侵!</Chinesesimp>
+            <Key ID="STR_BTC_HAM_SIDE_HACK_OPEN_TITLE">
+                <Original>Open terminal</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_HACK_DEFEND_TITLE">
+                <Original>Defend the terminal</Original>
             </Key>
         </Container>
         <Container name="Hostage">
-            <Key ID="STR_BTC_HAM_SIDE_HOSTAGE_MRK">
-                <Original>Hostage</Original>
-                <Spanish>Rehén</Spanish>
-                <German>Geisel</German>
-                <Portuguese>Refém</Portuguese>
-                <Chinesesimp>人质</Chinesesimp>
-            </Key>
             <Key ID="STR_BTC_HAM_SIDE_HOSTAGE_TITLE">
                 <Original>Liberate hostage near %1</Original>
                 <Spanish>Liberar rehén cerca de %1</Spanish>
@@ -985,20 +875,6 @@
                 <German>Befreien Sie eine Geisel in %1 aus den Händen der Terroristen. Die lokale Bevölkerung bittet um Ihre Hilfe!</German>
                 <Portuguese>Liberte o civil refém em %1 das mãos dos terroristas. A população local está pedindo sua ajuda!</Portuguese>
                 <Chinesesimp>在 %1 地区解救人质。当地居民正在请求你的帮助!</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_SIDE_HOSTAGE_FAILED_TEXT">
-                <Original>The hostage was not liberated</Original>
-                <Spanish>El rehén no fue liberado</Spanish>
-                <German>Die Geisel wurde nicht befreit</German>
-                <Portuguese>O refém não foi libertado</Portuguese>
-                <Chinesesimp>人质未被解救</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_SIDE_HOSTAGE_WIN_TEXT">
-                <Original>The hostage has been liberated!</Original>
-                <Spanish>El rehén fue liberado!</Spanish>
-                <German>Die Geisel wurde befreit!</German>
-                <Portuguese>O refém foi libertado com sucesso!</Portuguese>
-                <Chinesesimp>人质已重获自由!</Chinesesimp>
             </Key>
         </Container>
         <Container name="Mines">
@@ -1016,20 +892,6 @@
                 <Portuguese>Campo minado próximo a %1. Limpe-os!</Portuguese>
                 <Chinesesimp>%1 附近有雷区, 把它们清除掉!</Chinesesimp>
             </Key>
-            <Key ID="STR_BTC_HAM_SIDE_MINES_FAILED_TEXT">
-                <Original>The minefield was not cleared</Original>
-                <Spanish>El campo minado no fue despejado</Spanish>
-                <German>Das Minenfeld wurde nicht geräumt</German>
-                <Portuguese>O campo minado não foi limpo</Portuguese>
-                <Chinesesimp>雷区未清除</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_SIDE_MINES_WIN_TEXT">
-                <Original>The minefield has been cleared</Original>
-                <Spanish>El campo minado fue despejado por completo!</Spanish>
-                <German>Alle Minen wurden entschärft</German>
-                <Portuguese>O campo minado foi limpo com sucesso!</Portuguese>
-                <Chinesesimp>雷区已被清除!</Chinesesimp>
-            </Key>
         </Container>
         <Container name="Rescue">
             <Key ID="STR_BTC_HAM_SIDE_RESC_TITLE">
@@ -1046,19 +908,17 @@
                 <Portuguese>MAYDAY-MAYDAY, um piloto caiu com seu helicóptero próximo a %1. O comando solicitou sua ajuda para resgatá-lo e trazê-lo de volta a base!</Portuguese>
                 <Chinesesimp>MAYDAY-MAYDAY, 一架直升机在 %1 附近坠毁。指挥部正在请求你的帮助。前去搜救这名飞行员, 并将其带回基地!</Chinesesimp>
             </Key>
-            <Key ID="STR_BTC_HAM_SIDE_RESC_FAILED_TEXT">
-                <Original>The pilot was not rescued</Original>
-                <Spanish>El piloto no fue rescatado</Spanish>
-                <German>Der Pilot wurde nicht gerettet</German>
-                <Portuguese>O piloto não foi resgatado</Portuguese>
-                <Chinesesimp>飞行员未获救</Chinesesimp>
+            <Key ID="STR_BTC_HAM_SIDE_RESC_FIND_DESC">
+                <Original>Find the pilot of the helicopter. It should be around the helicopter wreck.</Original>
             </Key>
-            <Key ID="STR_BTC_HAM_SIDE_RESC_WIN_TEXT">
-                <Original>The pilot has been rescued!</Original>
-                <Spanish>El piloto fue rescatado!</Spanish>
-                <German>Der Pilot wurde gerettet!</German>
-                <Portuguese>O piloto foi resgatado com sucesso!</Portuguese>
-                <Chinesesimp>飞行员已获救!</Chinesesimp>
+            <Key ID="STR_BTC_HAM_SIDE_RESC_FIND_TITLE">
+                <Original>Find the pilot</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_RESC_BACK_DESC">
+                <Original>Get him back to base at logistic point.</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_RESC_BACK_TITLE">
+                <Original>Get him back</Original>
             </Key>
         </Container>
         <Container name="Supply">
@@ -1076,19 +936,17 @@
                 <Portuguese>O população de %1 estão passando fome! Forneça suprimentos! Os suprimentos podem ser solicitados no ponto logístico.</Portuguese>
                 <Chinesesimp>%1 的居民正在挨饿, 在补给点生成一些救援物资并带给他们!</Chinesesimp>
             </Key>
-            <Key ID="STR_BTC_HAM_SIDE_SUPPLIES_FAILED_TEXT">
-                <Original>Supplies were not delivered</Original>
-                <Spanish>Los suministros no fueron entregados</Spanish>
-                <German>Die Lieferungen haben ihr Ziel nicht erreicht</German>
-                <Portuguese>Os suprimentos não foram entregues</Portuguese>
-                <Chinesesimp>救援物资未送达</Chinesesimp>
+            <Key ID="STR_BTC_HAM_SIDE_SUPPLIES_MOVE_DESC">
+                <Original>Move to the supply location with supplies available at logistic point.</Original>
             </Key>
-            <Key ID="STR_BTC_HAM_SIDE_SUPPLIES_WIN_TEXT">
-                <Original>Supplies have been delivered</Original>
-                <Spanish>Los suministros han sido entregados</Spanish>
-                <German>Lieferungen wurden geliefert</German>
-                <Portuguese>Os suprimentos foram entregues!</Portuguese>
-                <Chinesesimp>救援物资已分发</Chinesesimp>
+            <Key ID="STR_BTC_HAM_SIDE_SUPPLIES_MOVE_TITLE">
+                <Original>Move with supplies</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_SUPPLIES_UNLOAD_DESC">
+                <Original>Unload supplies available inside the supplies contanair.</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_SUPPLIES_UNLOAD_TITLE">
+                <Original>Unload supplies</Original>
             </Key>
         </Container>
         <Container name="Tower">
@@ -1105,18 +963,6 @@
                 <German>Ein Funkturm der Oplitas befindet sich in %1. Die lokale Bevölkerung bittet darum diesen zu zerstören! (Nutzen Sie die M183 Sprengladungen)</German>
                 <Portuguese>A torre de comunicação inimiga foi localizada em %1. A população local está pedindo sua ajuda para destruí-las. (Use a mochila de explosivos M183)</Portuguese>
                 <Chinesesimp>在 %1 地区发现了一座 Oplitas 通讯信号塔。当地居民请求您将其摧毁。(使用一个M183炸药包)</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_SIDE_TOWER_FAILED_TEXT">
-                <Original>The tower was not destroyed</Original>
-                <German>Der Funkturm wurde nicht zerstört</German>
-                <Portuguese>A torre não foi destruída</Portuguese>
-                <Chinesesimp>信号塔未摧毁</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_SIDE_TOWER_WIN_TEXT">
-                <Original>The tower has been destroyed!</Original>
-                <German>Der Funkturm wurde zerstört!</German>
-                <Portuguese>A torre foi destruída com sucesso!</Portuguese>
-                <Chinesesimp>信号塔已摧毁!</Chinesesimp>
             </Key>
         </Container>
         <Container name="Underwater generator">
@@ -1141,29 +987,8 @@
                 <Portuguese>O gerador subaquático foi localizado em %1. A população local está pedindo sua ajuda para destruí-lo!</Portuguese>
                 <Chinesesimp>在 %1 地区发现了一部水下发电机。当地居民请求您将其摧毁。</Chinesesimp>
             </Key>
-            <Key ID="STR_BTC_HAM_SIDE_UNDERWATER_FAILED_TEXT">
-                <Original>The underwater generator was not destroyed</Original>
-                <Spanish>El generador submarino no fue destruido</Spanish>
-                <German>Der Unterwassergenerator wurde nicht zerstört</German>
-                <Portuguese>O gerador subaquático não foi destruído</Portuguese>
-                <Chinesesimp>水下发电机未被摧毁</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_SIDE_UNDERWATER_WIN_TEXT">
-                <Original>The underwater generator has been destroyed!</Original>
-                <Spanish>¡El generador submarino ha sido destruido!</Spanish>
-                <German>Der Generator wurde zerstört!</German>
-                <Portuguese>O gerador subaquático foi destruído com sucesso!</Portuguese>
-                <Chinesesimp>水下发电机已被摧毁!</Chinesesimp>
-            </Key>
         </Container>
         <Container name="Vehicle">
-            <Key ID="STR_BTC_HAM_SIDE_VEHICLE_MRK">
-                <Original>Vehicle needs assistance</Original>
-                <Spanish>Vehículo necesita asistencia</Spanish>
-                <German>Fahrzeug braucht Unterstützung</German>
-                <Portuguese>Veículo necessitando de assistência</Portuguese>
-                <Chinesesimp>载具需要援助</Chinesesimp>
-            </Key>
             <Key ID="STR_BTC_HAM_SIDE_VEHICLE_TITLE">
                 <Original>Vehicle needs assistance near %1</Original>
                 <Spanish>Vehículo necesita asistencia cerca de %1</Spanish>
@@ -1177,18 +1002,6 @@
                 <German>Ein Fahrzeug wurde durch eine IED beschädigt und braucht nun Unterstützung in der Nähe von %1! Repariere Sie es!</German>
                 <Portuguese>Um veículo foi danificado por um IED precisa de reparo em %1! Conserte-o!</Portuguese>
                 <Chinesesimp>一辆被IED损坏的载具在 %1 附近等待援助! 修好它!</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_SIDE_VEHICLE_FAILED_TEXT">
-                <Original>The vehicle was not repaired</Original>
-                <German>Das Fahrzeug wurde nicht repariert</German>
-                <Portuguese>O veículo não foi reparado</Portuguese>
-                <Chinesesimp>载具未被修复</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_SIDE_VEHICLE_WIN_TEXT">
-                <Original>The vehicle has been repaired</Original>
-                <German>Die Reparatur war erfolgreich</German>
-                <Portuguese>O veículo foi reparado com sucesso</Portuguese>
-                <Chinesesimp>载具已被修复</Chinesesimp>
             </Key>
         </Container>
         <Container name="Conquer">
@@ -1205,20 +1018,6 @@
                 <German>%1 wurde von der Oplitas erobert! Die lokale Bevölkerung wird terrorisiert, greifen Sie ein!</German>
                 <Portuguese>Os inimigos estão conquistando a cidade %1. A população local está sendo aterrorizada. Ajude-os!</Portuguese>
                 <Chinesesimp>%1 已被Oplitas占领! 当地居民受到恐吓, 他们正在请求帮助!</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_SIDE_CONQUER_FAILED_TEXT">
-                <Original>The city was not conquered</Original>
-                <Spanish>La ciudad no fue liberada</Spanish>
-                <German>Die Stadt wurde nicht erobert</German>
-                <Portuguese>A cidade não foi limpa</Portuguese>
-                <Chinesesimp>该城市未被夺回</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_SIDE_CONQUER_WIN_TEXT">
-                <Original>The city has been cleared!</Original>
-                <Spanish>La ciudad ha sido liberada!</Spanish>
-                <German>Die Stadt wurde erfolgreich gesichert!</German>
-                <Portuguese>A cidade foi recuperada com sucesso! </Portuguese>
-                <Chinesesimp>该城市已经安全!</Chinesesimp>
             </Key>
         </Container>
     </Package>
@@ -1339,7 +1138,7 @@
         </Container>
         <Container name="Action(ACE): Side missions">
             <Key ID="STR_BTC_HAM_ACTION_SIDEMISSION_ABORT">
-                <Original>Abort</Original>
+                <Original>Abort assigned</Original>
                 <Spanish>Abortar</Spanish>
                 <German>Abbrechen</German>
                 <Portuguese>Abortar</Portuguese>
@@ -1546,6 +1345,9 @@
                 <Portuguese>Relatório</Portuguese>
                 <Chinesesimp>日志</Chinesesimp>
             </Key>
+            <Key ID="STR_BTC_HAM_CON_INFO_PICTURE">
+                <Original>Pictures of cache number %1</Original>
+            </Key>
             <Key ID="STR_BTC_HAM_CON_INFO_SEARCH_BAR">
                 <Original>Searching for intel . . .</Original>
                 <Spanish>Buscando información . . .</Spanish>
@@ -1720,6 +1522,13 @@
             </Key>
         </Container>
         <Container name="Other: Hints ">
+            <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_MU">
+                <Original>Map updated</Original>
+                <Spanish>Mapa actualizado</Spanish>
+                <German>Karte aktualisiert</German>
+                <Portuguese>Mapa atualizado</Portuguese>
+                <Chinesesimp>地图已更新</Chinesesimp>
+            </Key>
             <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_0">
                 <Original>Cache destroyed!</Original>
                 <Spanish>Cache destruido!</Spanish>
@@ -1728,11 +1537,11 @@
                 <Chinesesimp>武器箱已摧毁!</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_1">
-                <Original>Intel about an ammo cache found! Map updated</Original>
-                <Spanish>¡Inteligencia sobre una caché de munición encontrada! Mapa actualizado</Spanish>
-                <German>Informationen über ein Waffenlager gefunden! Karte aktualisiert</German>
-                <Portuguese>Informação sobre um depósito de armas encontrada! Mapa atualizado</Portuguese>
-                <Chinesesimp>发现了关于弹药箱的情报! 地图已更新</Chinesesimp>
+                <Original>Intel about an ammo cache found!</Original>
+                <Spanish>¡Inteligencia sobre una caché de munición encontrada!</Spanish>
+                <German>Informationen über ein Waffenlager gefunden!</German>
+                <Portuguese>Informação sobre um depósito de armas encontrada!</Portuguese>
+                <Chinesesimp>发现了关于弹药箱的情报!</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_2">
                 <Original>Hideout destroyed! %1 remaining</Original>
@@ -1748,19 +1557,12 @@
                 <Portuguese>Este corpo não contém informação</Portuguese>
                 <Chinesesimp>这具尸体没有任何情报</Chinesesimp>
             </Key>
-            <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_4">
-                <Original>Found intels about an ammo cache and an hideout! Map updated</Original>
-                <Spanish>¡Encontré información sobre un depósito de municiones y un escondite! Mapa actualizado</Spanish>
-                <German>Informationen über ein Waffenlager und ein Versteck gefunden! Karte aktualisiert</German>
-                <Portuguese>Encontrada informação sobre depósito de armas e esconderijo! Mapa atualizado</Portuguese>
-                <Chinesesimp>发现了关于武器箱和藏匿点的情报! 地图已更新</Chinesesimp>
-            </Key>
             <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_5">
-                <Original>Intel about an hideout found! Map updated</Original>
-                <Spanish>¡Información sobre un escondite encontrado! Mapa actualizado</Spanish>
-                <German>Informationen über ein Versteck gefunden! Karte aktualisiert</German>
-                <Portuguese>Informação sobre esconderijo encontrada! Mapa atualizado</Portuguese>
-                <Chinesesimp>发现了关于藏匿点的情报! 地图已更新</Chinesesimp>
+                <Original>Intel about an hideout found!</Original>
+                <Spanish>¡Información sobre un escondite encontrado!</Spanish>
+                <German>Informationen über ein Versteck gefunden!</German>
+                <Portuguese>Informação sobre esconderijo encontrada!</Portuguese>
+                <Chinesesimp>发现了关于藏匿点的情报!</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_6">
                 <Original>In the last hideout we found important intel about all the cities occupied by the Oplitas! Size the last positions held by the enemies and defeat them once and for all</Original>
@@ -1797,12 +1599,17 @@
                 <Portuguese>Banco de Dados deletado!</Portuguese>
                 <Chinesesimp>数据库已删除!</Chinesesimp>
             </Key>
-            <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_11">
-                <Original>One checkpoint destroyed!</Original>
-                <Spanish>¡Un puesto de control destruido!</Spanish>
-                <German>Ein Kontrollpunkt wurde zerstört!</German>
-                <Portuguese>Um ponto de verificação destruído!</Portuguese>
-                <Chinesesimp>一个检查站被摧毁!</Chinesesimp>
+            <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_14">
+                <Original>We got a picture of the building where the cache is:</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_15">
+                <Original>We got a picture of the something around the cache:</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_TASK_NOSIDE">
+                <Original>No side mission assigned</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_TASK_NOTASIDE">
+                <Original>Isn't a side mission, can't abort</Original>
             </Key>
         </Container>
         <Container name="Other: Shortcuts">
@@ -1872,7 +1679,7 @@
                 <Chinesesimp>集装箱及其货物已记录! 清空该区域以创建一个复制品。</Chinesesimp>
             </Key>
         </Container>
-        <Container name="Other: Endmission ">
+        <Container name="Other: Endmission">
             <Key ID="STR_BTC_HAM_O_COMMON_ENDMISSION">
                 <Original>All the hideouts are destroyed, finally the Oplitas has been defeated! Mission accomplished</Original>
                 <Spanish>Todos los escondites fueron destruidos, finalmente el Oplitas han sido derrotados! Misión cumplida</Spanish>
@@ -1917,11 +1724,11 @@
         </Container>
         <Container name="Logistic: Hook ">
             <Key ID="STR_BTC_HAM_LOG_HOOK_HINFO">
-                <Original>Interact with a vehicle to tow it! (This vehicle can't tow %1)</Original>
-                <Spanish>Interactúe con un vehículo para remolcarlo! (Este vehículo no puede remolcar %1)</Spanish>
-                <German>Interagieren Sie mit dem Zug-Fahrzeug, um es abzuschleppen! (Folgende Fahrzeuge können nicht gezogen werden: %1)</German>
-                <Portuguese>Interaja com o veículo para rebocá-lo! (Este veículo não pode rebocar %1)</Portuguese>
-                <Chinesesimp>与牵引车(前车)互动以牵引它! (当前载具(后车)无法牵引如下类型的载具: %1)</Chinesesimp>
+                <Original>Interact with a vehicle to tow it!&lt;br/&gt;(This vehicle can't tow %1)</Original>
+                <Spanish>Interactúe con un vehículo para remolcarlo!&lt;br/&gt;(Este vehículo no puede remolcar %1)</Spanish>
+                <German>Interagieren Sie mit dem Zug-Fahrzeug, um es abzuschleppen!&lt;br/&gt;(Folgende Fahrzeuge können nicht gezogen werden: %1)</German>
+                <Portuguese>Interaja com o veículo para rebocá-lo!&lt;br/&gt;(Este veículo não pode rebocar %1)</Portuguese>
+                <Chinesesimp>与牵引车(前车)互动以牵引它!&lt;br/&gt;(当前载具(后车)无法牵引如下类型的载具: %1)</Chinesesimp>
             </Key>
         </Container>
         <Container name="Logistic: Lift deploy ropes ">
@@ -1931,57 +1738,6 @@
                 <German>Hud An\Aus</German>
                 <Portuguese>Hud Ligado\Desligado</Portuguese>
                 <Chinesesimp>启用/关闭抬头显示器(HUD)</Chinesesimp>
-            </Key>
-        </Container>
-        <Container name="Logistic: Load ">
-            <Key ID="STR_BTC_HAM_LOG_LOAD_TOOFAR">
-                <Original>%1 is too far from %2!</Original>
-                <Spanish>%1 está demasiado lejos de %2!</Spanish>
-                <German>%1 ist zu weit von %2 entfernt!</German>
-                <Portuguese>%1 está muito londe de %2!</Portuguese>
-                <Chinesesimp>%1 与 %2 距离过远!</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_LOG_LOAD_TOOFAST">
-                <Original>%1 is moving!</Original>
-                <Spanish>%1 se está moviendo!</Spanish>
-                <German>%1 is in Bewegung!</German>
-                <Portuguese>%1 está se movendo</Portuguese>
-                <Chinesesimp>%1 正在移动!</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_LOG_LOAD_TOOBIG">
-                <Original>Can not load %1 in %2</Original>
-                <Spanish>No se puede cargar %1 en %2</Spanish>
-                <German>Der Laderaum von %2 ist zu klein für %1</German>
-                <Portuguese>Não é possível carregar %1 em %2</Portuguese>
-                <Chinesesimp>无法将 %1 装进 %2</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_LOG_LOAD_NOSPACE">
-                <Original>There is no enough space for %1 in %2</Original>
-                <Spanish>No hay suficiente espacio para %1 en %2</Spanish>
-                <German>Es ist nicht mehr genug Platz im Laderaum von %1 vorhanden</German>
-                <Portuguese>Não há espaço suficiente para %1 em %2</Portuguese>
-                <Chinesesimp>剩余空间不足以将 %1 装进 %2</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_LOG_LOAD_BAR">
-                <Original>Loading %1 in %2. . .</Original>
-                <Spanish>Cargando %1 en %2. . .</Spanish>
-                <German>%1 wird verladen in %2 . . .</German>
-                <Portuguese>Carregando %1 em %2. . .</Portuguese>
-                <Chinesesimp>正在将 %1 装进 %2. . .</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_LOG_LOAD_FIN">
-                <Original>%1 has been loaded in %2</Original>
-                <Spanish>%1 ha sido cargado en %2</Spanish>
-                <German>%1 wurde in %2 eingeladen</German>
-                <Portuguese>%1 foi carregado com sucesso em %2</Portuguese>
-                <Chinesesimp>%1 已被装进 %2</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_LOG_LOAD_ABORT">
-                <Original>Loading aborted</Original>
-                <Spanish>Cargar abortada</Spanish>
-                <German>Ladevorgang abgebrochen</German>
-                <Portuguese>Carregamento abortado</Portuguese>
-                <Chinesesimp>装载中止</Chinesesimp>
             </Key>
         </Container>
         <Container name="Logistic: Place ">
@@ -2035,6 +1791,21 @@
                 <German>Das ist kein Wrack!</German>
                 <Portuguese>Isso não é um carcaça!</Portuguese>
                 <Chinesesimp>这不是残骸!</Chinesesimp>
+            </Key>
+            <Key ID="STR_BTC_HAM_LOG_RWRECK_ISHELO">
+                <Original>This wreck will respawn</Original>
+                <Chinesesimp>此残骸将会重生</Chinesesimp>
+                <German>Dieses Wrack respawnt automatisch</German>
+            </Key>
+        </Container>
+        <Container name="Logistic: Delete">
+            <Key ID="STR_BTC_HAM_LOG_DELETE">
+                <Original>No object to delete found</Original>
+                <German>Kein Objekt zum löschen gefunden</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_LOG_LPDELETE">
+                <Original>Can't delete object not created by Logistic Point</Original>
+                <German>Objekt konnte nicht gelöscht werden, da es nicht am Logisik-Punkt erstellt worden ist</German>
             </Key>
         </Container>
         <Container name="Logistic: Tow ">

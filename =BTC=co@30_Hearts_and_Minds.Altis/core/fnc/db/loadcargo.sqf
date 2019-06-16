@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_db_loadcargo
+Function: btc_fnc_db_loadCargo
 
 Description:
     Fill me when you edit me !
@@ -14,7 +14,7 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_db_loadcargo;
+        _result = [] call btc_fnc_db_loadCargo;
     (end)
 
 Author:
@@ -40,52 +40,9 @@ Author:
             _l setVariable ["ace_rearm_magazineClass", _magClass, true]
         };
 
-        clearWeaponCargoGlobal _l;
-        clearItemCargoGlobal _l;
-        clearMagazineCargoGlobal _l;
-
-        _cargo_obj params ["_weap_obj", "_mags_obj", "_items_obj"];
-
-        if !(_weap_obj isEqualTo []) then {
-            for "_i" from 0 to ((count (_weap_obj select 0)) - 1) do {
-                _l addWeaponCargoGlobal [(_weap_obj select 0) select _i, (_weap_obj select 1) select _i];
-            };
-        };
-
-        if !(_mags_obj isEqualTo []) then {
-            for "_i" from 0 to ((count (_mags_obj select 0)) - 1) do {
-                _l addMagazineCargoGlobal [(_mags_obj select 0) select _i, (_mags_obj select 1) select _i];
-            };
-        };
-
-        if !(_items_obj isEqualTo []) then {
-            for "_i" from 0 to ((count (_items_obj select 0)) - 1) do {
-                _l addItemCargoGlobal [(_items_obj select 0) select _i, (_items_obj select 1) select _i];
-            };
-        };
+        [_l, _cargo_obj] call btc_fnc_log_setCargo;
     } forEach _cargo;
 
     //set inventory content for weapons, magazines and items
-    _inventory params ["_weap", "_mags", "_items"];
-
-    clearWeaponCargoGlobal _obj;
-    clearItemCargoGlobal _obj;
-    clearMagazineCargoGlobal _obj;
-
-    if !(_weap isEqualTo []) then {
-        for "_i" from 0 to ((count (_weap select 0)) - 1) do {
-            _obj addWeaponCargoGlobal [(_weap select 0) select _i, (_weap select 1) select _i];
-        };
-    };
-    if !(_mags isEqualTo []) then {
-        for "_i" from 0 to ((count (_mags select 0)) - 1) do {
-            _obj addMagazineCargoGlobal [(_mags select 0) select _i, (_mags select 1) select _i];
-        };
-    };
-    if !(_items isEqualTo []) then {
-        for "_i" from 0 to ((count (_items select 0)) - 1) do {
-            _obj addItemCargoGlobal [(_items select 0) select _i, (_items select 1) select _i];
-        };
-    };
-
+    [_obj, _inventory] call btc_fnc_log_setCargo;
 }, _this] call CBA_fnc_waitAndExecute;
