@@ -45,10 +45,7 @@ private _data = switch (_id) do {
     case 9 : {[_target] call btc_fnc_db_saveObjectStatus;};
     case 10 : {
         private _units = allUnits select {alive _x};
-        _units append entities "Car";
-        _units append entities "Tank";
-        _units append entities "Ship";
-        _units append entities "Air";
+        _units append entities [["Car", "Tank", "Ship", "Air"], []];
         _units apply {[_x, owner _x]};
     };
     case 11 : {floor diag_fps;};
