@@ -25,9 +25,9 @@ params [
 ];
 
 if (local _veh) then {
-    [_veh, "Fuel", "btc_fnc_patrol_eh"] call btc_fnc_eh_removePersistantOnLocalityChange;
-    [_veh, "GetOut", "btc_fnc_patrol_eh"] call btc_fnc_eh_removePersistantOnLocalityChange;
-    [_veh, "HandleDamage", "btc_fnc_rep_hd"] call btc_fnc_eh_removePersistantOnLocalityChange;
+    [_veh, "Fuel", "btc_fnc_patrol_eh"] call btc_fnc_eh_removePersistOnLocalityChange;
+    [_veh, "GetOut", "btc_fnc_patrol_eh"] call btc_fnc_eh_removePersistOnLocalityChange;
+    [_veh, "HandleDamage", "btc_fnc_rep_hd"] call btc_fnc_eh_removePersistOnLocalityChange;
 } else {
     _veh remoteExecCall ["btc_fnc_patrol_eh_remove", _veh];
 };

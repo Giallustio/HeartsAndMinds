@@ -41,7 +41,7 @@ params [
 if (_ammo isKindOf "SmokeShell") exitWith {};
 
 //Remove the eventHandler to prevent spamming
-[_civ, "FiredNear", "btc_fnc_rep_firednear"] call btc_fnc_eh_removePersistantOnLocalityChange;
+[_civ, "FiredNear", "btc_fnc_rep_firednear"] call btc_fnc_eh_removePersistOnLocalityChange;
 
 if (!isServer) exitWith {
     _this remoteExecCall ["btc_fnc_rep_firednear", 2];
