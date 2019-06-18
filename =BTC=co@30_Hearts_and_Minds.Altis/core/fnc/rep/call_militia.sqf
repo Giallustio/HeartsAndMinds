@@ -3,16 +3,16 @@
 Function: btc_fnc_rep_call_militia
 
 Description:
-    Fill me when you edit me !
+    Call militia to a position.
 
 Parameters:
-    _pos - [Array]
+    _pos - Position to calling for militia. [Array]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_rep_call_militia;
+        [getPos player] call btc_fnc_rep_call_militia;
     (end)
 
 Author:

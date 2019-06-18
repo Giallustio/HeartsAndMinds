@@ -3,16 +3,16 @@
 Function: btc_fnc_rep_change
 
 Description:
-    Fill me when you edit me !
+    Change reputation level.
 
 Parameters:
-    _reputation - [Number]
+    _reputation - Number to add or substrat to the reputation level. [Number]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_rep_change;
+        [-10] call btc_fnc_rep_change;
     (end)
 
 Author:
