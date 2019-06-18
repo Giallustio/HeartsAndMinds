@@ -31,13 +31,7 @@ params [
 private _roadDir = _road call btc_fnc_road_direction;
 private _roadRadius = ((0 boundingBoxReal _road) select 2) * 0.4;
 
-private _cond = switch (btc_p_ied_placement) do {
-    case 0: {floor random 2};
-    case 1: {-1};
-    default {floor random 3};
-};
-
-switch (_cond) do {
+switch (floor random btc_p_ied_placement) do {
     case 0: {
         [_road getPos [_roadRadius, _roadDir + 90], _roadDir]
     };
