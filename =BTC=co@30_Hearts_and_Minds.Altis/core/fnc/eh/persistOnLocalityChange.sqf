@@ -32,26 +32,6 @@ params [
 ];
 
 private _EH_IDs = [
-    [_object, "Local", {
-        params ["_entity", "_isLocal"];
-
-        if !(_isLocal) then {
-            _thisArgs params [
-                ["_EH_name", "", [""]],
-                ["_EH_fnc", "", [""]],
-                ["_params", [], [[]]]
-            ];
-
-            if !(isServer) then { // Keep EH on server in case owner drop connection
-                [_entity, _EH_name, _EH_fnc, false] call btc_fnc_eh_removePersistOnLocalityChange;
-            } else {
-                [_entity, _EH_name, _EH_fnc, _params] remoteExecCall ["btc_fnc_eh_persistOnLocalityChange", _entity];
-            };
-        };
-    }, [_EH_name, _EH_fnc, _params]] call CBA_fnc_addBISEventHandler
-];
-
-_EH_IDs pushBack (
     _object addEventHandler [_EH_name,
         if (_params isEqualTo []) then {
             missionNamespace getVariable [_EH_fnc, {}]
@@ -59,7 +39,29 @@ _EH_IDs pushBack (
             format ["%1 call %2", _params, _EH_fnc]
         }
     ]
-);
+];
+
+if ((toLower _EH_name) in ["killed", "handledamage", "hit"]) then { // Those EH are only trigger where object is local
+    _EH_IDs pushBack (
+        [_object, "Local", {
+            params ["_entity", "_isLocal"];
+
+            if !(_isLocal) then {
+                _thisArgs params [
+                    ["_EH_name", "", [""]],
+                    ["_EH_fnc", "", [""]],
+                    ["_params", [], [[]]]
+                ];
+
+                if !(isServer) then { // Keep EH on server in case owner drop connection
+                    [_entity, _EH_name, _EH_fnc, false] call btc_fnc_eh_removePersistOnLocalityChange;
+                } else {
+                    [_entity, _EH_name, _EH_fnc, _params] remoteExecCall ["btc_fnc_eh_persistOnLocalityChange", _entity];
+                };
+            };
+        }, [_EH_name, _EH_fnc, _params]] call CBA_fnc_addBISEventHandler
+    );
+};
 
 if (btc_debug_log) then {
     [format ["%1: EH = %2, fnc = %3, isRE = %4", _object, _EH_name, _EH_fnc, isRemoteExecuted], __FILE__, [false]] call btc_fnc_debug_message;

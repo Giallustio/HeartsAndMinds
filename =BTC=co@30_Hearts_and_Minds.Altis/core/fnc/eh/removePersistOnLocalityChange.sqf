@@ -32,21 +32,25 @@ params [
 ];
 
 private _EH_IDs = _object getVariable [_EH_fnc + _EH_name, []];
+
 if (btc_debug_log) then {
     [format ["%1: EH = %2, fnc = %3, isR = %4, IDs %5", _object, _EH_name, _EH_fnc, isRemoteExecuted, _EH_IDs], __FILE__, [false]] call btc_fnc_debug_message;
 };
-if (_EH_IDs isEqualTo []) exitWith {_EH_IDs};
 
-_object removeEventHandler ["Local", _EH_IDs select 0];
-_object removeEventHandler [_EH_name, _EH_IDs select 1];
+if !(_EH_IDs isEqualTo []) then {
+    _object removeEventHandler [_EH_name, _EH_IDs select 0];
+    if (count _EH_IDs > 1) then {
+        _object removeEventHandler ["Local", _EH_IDs select 1];
+    };
+
+    _object setVariable [
+        _EH_fnc + _EH_name,
+        nil
+    ];
+};
 
 if (!isServer && _removeServerSide) then {
     [_object, _EH_name, _EH_fnc] remoteExecCall ["btc_fnc_eh_removePersistOnLocalityChange", 2];
 };
-
-_object setVariable [
-    _EH_fnc + _EH_name,
-    nil
-];
 
 _EH_IDs

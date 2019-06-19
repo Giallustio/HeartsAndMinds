@@ -127,6 +127,7 @@ if (isServer) then {
     btc_fnc_rep_change = compile preprocessFileLineNumbers "core\fnc\rep\change.sqf";
     btc_fnc_rep_eh_effects = compile preprocessFileLineNumbers "core\fnc\rep\eh_effects.sqf";
     btc_fnc_rep_hh = compile preprocessFileLineNumbers "core\fnc\rep\hh.sqf";
+    btc_fnc_rep_firednear = compile preprocessFileLineNumbers "core\fnc\rep\firednear.sqf";
 
     //SIDE
     btc_fnc_side_create = compile preprocessFileLineNumbers "core\fnc\side\create.sqf";
@@ -213,7 +214,6 @@ btc_fnc_patrol_disabled = compile preprocessFileLineNumbers "core\fnc\patrol\dis
 //REP
 btc_fnc_rep_hd = compile preprocessFileLineNumbers "core\fnc\rep\hd.sqf";
 btc_fnc_rep_killed = compile preprocessFileLineNumbers "core\fnc\rep\killed.sqf";
-btc_fnc_rep_firednear = compile preprocessFileLineNumbers "core\fnc\rep\firednear.sqf";
 btc_fnc_rep_remove_eh = compile preprocessFileLineNumbers "core\fnc\rep\remove_eh.sqf";
 
 //ARSENAL

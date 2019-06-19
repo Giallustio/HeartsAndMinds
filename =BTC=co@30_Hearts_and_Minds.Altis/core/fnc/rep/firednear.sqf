@@ -43,10 +43,6 @@ if (_ammo isKindOf "SmokeShell") exitWith {};
 //Remove the eventHandler to prevent spamming
 [_civ, "FiredNear", "btc_fnc_rep_firednear"] call btc_fnc_eh_removePersistOnLocalityChange;
 
-if (!isServer) exitWith {
-    _this remoteExecCall ["btc_fnc_rep_firednear", 2];
-};
-
 if (!(side _civ isEqualTo civilian) || (random 3 < 1)) exitWith {};
 
 [_civ, selectRandom ["ApanPknlMstpSnonWnonDnon_G01", "ApanPknlMstpSnonWnonDnon_G02", "ApanPknlMstpSnonWnonDnon_G03", "ApanPpneMstpSnonWnonDnon_G01", "ApanPpneMstpSnonWnonDnon_G02", "ApanPpneMstpSnonWnonDnon_G03"], 1] call ace_common_fnc_doAnimation;
