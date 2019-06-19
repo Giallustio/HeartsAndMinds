@@ -2,7 +2,6 @@
 if (isServer) then {
     //CACHE
     btc_fnc_cache_find_pos = compile preprocessFileLineNumbers "core\fnc\cache\find_pos.sqf";
-    btc_fnc_cache_hd_cache = compile preprocessFileLineNumbers "core\fnc\cache\hd_cache.sqf";
     btc_fnc_cache_create = compile preprocessFileLineNumbers "core\fnc\cache\create.sqf";
     btc_fnc_cache_create_attachto = compile preprocessFileLineNumbers "core\fnc\cache\create_attachto.sqf";
     btc_fnc_cache_init = compile preprocessFileLineNumbers "core\fnc\cache\init.sqf";
@@ -167,6 +166,9 @@ if (isServer) then {
 };
 
 /////////////////////CLIENT AND SERVER\\\\\\\\\\\\\\\\\\\\\
+
+//CACHE
+btc_fnc_cache_hd_cache = compile preprocessFileLineNumbers "core\fnc\cache\hd_cache.sqf";
 
 //COMMON
 btc_fnc_find_veh_with_turret = compile preprocessFileLineNumbers "core\fnc\common\find_veh_with_turret.sqf";
