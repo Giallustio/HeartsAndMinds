@@ -415,6 +415,18 @@
                 <Portuguese>Drone Bombardeiro:</Portuguese>
                 <Chinesesimp>敌方炸弹无人机:</Chinesesimp>
             </Key>
+            <Key ID="STR_BTC_HAM_PARAM_IED_PLACEMENT">
+                <Original>IEDs type of placement:</Original>
+                <German>IED Art der Platzierung</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_IED_PLACEMENT_MIDDLE">
+                <Original>Middle</Original>
+                <German>Straßenmitte</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_IED_PLACEMENT_ROADSIDE">
+                <Original>Roadside</Original>
+                <German>Straßenrand</German>
+            </Key>
         </Container>
         <Container name="Parameters: Hideout/Cache">
             <Key ID="STR_BTC_HAM_PARAM_HIDE_TITLE">

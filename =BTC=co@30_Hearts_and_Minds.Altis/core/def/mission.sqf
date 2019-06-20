@@ -18,6 +18,7 @@ private _p_civ_veh = "btc_p_civ_veh" call BIS_fnc_getParamValue;
 //<< IED options >>
 btc_p_ied = ("btc_p_ied" call BIS_fnc_getParamValue)/2;
 private _p_ied_spot = "btc_p_ied_spot" call BIS_fnc_getParamValue;
+btc_p_ied_placement = "btc_p_ied_placement" call BIS_fnc_getParamValue;
 btc_p_ied_drone = ("btc_p_ied_drone" call BIS_fnc_getParamValue) isEqualTo 1;
 
 //<< Hideout/Cache options >>
