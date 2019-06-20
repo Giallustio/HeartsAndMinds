@@ -667,10 +667,12 @@
     <Package name="Missions">
         <Container name="Mission: Defeat the Oplitas">
             <Key ID="STR_BTC_HAM_MISSION_OBJ_DESC">
-                <Original>Objectives must be accomplish.</Original>
+                <Original>Objectives must be accomplished.</Original>
+                <German>Ziele müssen erreicht werden.</German>
             </Key>
             <Key ID="STR_BTC_HAM_MISSION_OBJ_TITLE">
                 <Original>Main objectives</Original>
+                <German>Hauptziele</German>
             </Key>
             <Key ID="STR_BTC_HAM_MISSION_DEFEAT_TITLE">
                 <Original>Defeat the Oplitas</Original>
@@ -738,9 +740,11 @@
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_CAPOFF_SURRENDER_DESC">
                 <Original>Surrender the officer.</Original>
+                <German>Nehmen Sie den Offizier gefangen.</German>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_CAPOFF_SURRENDER_TITLE">
                 <Original>Surrender the officer</Original>
+                <German>Offizier gefangen nehmen</German>
             </Key>
         </Container>
         <Container name="Checkpoint">
@@ -759,10 +763,12 @@
                 <Chinesesimp>在 %1 地区发现检查站。当地居民请求您摧毁武器箱和相应的检查站!</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_CHECKPOINT_DESTROY_DESC">
-                <Original>Detroy this checkpoint by destroying this object.</Original>
+                <Original>Destroy this checkpoint by destroying this object.</Original>
+                <German>Beseitigen Sie den Kontrollpunkt, indem Sie alle Objekte zerstören.</German>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_CHECKPOINT_DESTROY_TITLE">
-                <Original>Detroy this checkpoint</Original>
+                <Original>Destroy this checkpoint</Original>
+                <German>Kontrollpunkt beseitigen</German>
             </Key>
         </Container>
         <Container name="Civ treatment boat">
@@ -864,13 +870,16 @@
                 <Chinesesimp>在 %1 地区入侵一枚带有控制终端的导弹原型的系统。守住你的位置, 直到系统入侵完成!</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_HACK_OPEN_DESC">
-                <Original>Open terminal to launch the hack.</Original>
+                <Original>Use the terminal to launch the hack.</Original>
+                <German>Benutzen Sie das Terminal, um den Hack zu starten.</German>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_HACK_OPEN_TITLE">
-                <Original>Open terminal</Original>
+                <Original>Start the Hack</Original>
+                <German>Hack starten</German>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_HACK_DEFEND_TITLE">
                 <Original>Defend the terminal</Original>
+                <German>Verteidigen Sie das Terminal</German>
             </Key>
         </Container>
         <Container name="Hostage">
@@ -922,15 +931,19 @@
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_RESC_FIND_DESC">
                 <Original>Find the pilot of the helicopter. It should be around the helicopter wreck.</Original>
+                <German>Finden Sie den Piloten. Er sollte sich um Umfeld des Helikopterwracks befinden.</German>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_RESC_FIND_TITLE">
                 <Original>Find the pilot</Original>
+                <German>Finde den Piloten</German>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_RESC_BACK_DESC">
-                <Original>Get him back to base at logistic point.</Original>
+                <Original>Get him back to base at the logistic point.</Original>
+                <German>Bringen Sie ihn zum Logistikpunkt zurück.</German>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_RESC_BACK_TITLE">
                 <Original>Get him back</Original>
+                <German>Hol ihn zurück</German>
             </Key>
         </Container>
         <Container name="Supply">
@@ -949,16 +962,20 @@
                 <Chinesesimp>%1 的居民正在挨饿, 在补给点生成一些救援物资并带给他们!</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_SUPPLIES_MOVE_DESC">
-                <Original>Move to the supply location with supplies available at logistic point.</Original>
+                <Original>Move to the supply location with supplies available at the logistic point.</Original>
+                <German>Begeben Sie sich mir der Versorgungslieferung (erhältlich am Versorgungspunkt) zum Einsatzgebiet.</German>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_SUPPLIES_MOVE_TITLE">
                 <Original>Move with supplies</Original>
+                <German>Versorgungslieferung</German>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_SUPPLIES_UNLOAD_DESC">
-                <Original>Unload supplies available inside the supplies contanair.</Original>
+                <Original>Unload supplies available inside the supplies container.</Original>
+                <German>Entladen Sie alle Nachschubgüter aus der Versorgungslieferung.</German>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_SUPPLIES_UNLOAD_TITLE">
                 <Original>Unload supplies</Original>
+                <German>Nachschubgüter ausladen</German>
             </Key>
         </Container>
         <Container name="Tower">
@@ -1152,7 +1169,7 @@
             <Key ID="STR_BTC_HAM_ACTION_SIDEMISSION_ABORT">
                 <Original>Abort assigned</Original>
                 <Spanish>Abortar</Spanish>
-                <German>Abbrechen</German>
+                <German>Zugewiesene Mission abbrechen</German>
                 <Portuguese>Abortar</Portuguese>
                 <Chinesesimp>中止</Chinesesimp>
             </Key>
@@ -1359,6 +1376,7 @@
             </Key>
             <Key ID="STR_BTC_HAM_CON_INFO_PICTURE">
                 <Original>Pictures of cache number %1</Original>
+                <German>Bilder des Waffenlagers %1</German>
             </Key>
             <Key ID="STR_BTC_HAM_CON_INFO_SEARCH_BAR">
                 <Original>Searching for intel . . .</Original>
@@ -1523,6 +1541,7 @@
             </Key>
             <Key ID="STR_BTC_HAM_O_FOB_REDEPLOY_LABEL">
                 <Original>Select a FOB</Original>
+                <German>FOB auswähen</German>
                 <Chinesesimp>选择一个FOB:</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_O_FOB_DLG_T_NAMEFOB">
@@ -1613,15 +1632,19 @@
             </Key>
             <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_14">
                 <Original>We got a picture of the building where the cache is:</Original>
+                <German>Wir haben ein Bild von dem Gebäude, in dem sich das Waffenlager befinden soll:</German>
             </Key>
             <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_15">
                 <Original>We got a picture of the something around the cache:</Original>
+                <German>Wir haben ein Bild von der näheren Umgebung des Waffenlagers:</German>
             </Key>
             <Key ID="STR_BTC_HAM_O_TASK_NOSIDE">
                 <Original>No side mission assigned</Original>
+                <German>Keine Nebenmission zugewiesen</German>
             </Key>
             <Key ID="STR_BTC_HAM_O_TASK_NOTASIDE">
                 <Original>Isn't a side mission, can't abort</Original>
+                <German>Nur Nebenmissionen können abgebrochen werden</German>
             </Key>
         </Container>
         <Container name="Other: Shortcuts">
