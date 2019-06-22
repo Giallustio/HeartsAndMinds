@@ -21,14 +21,14 @@ Author:
 ---------------------------------------------------------------------------- */
 
 params [
-	["_veh", objNull, [objNull]],
-	["_selection", "wheel_1_1_steering", [""]],
-	["_damage", 0.2, [0]]
+    ["_veh", objNull, [objNull]],
+    ["_selection", "wheel_1_1_steering", [""]],
+    ["_damage", 0.2, [0]]
 ];
 
 if (_damage > 0.1) then {
-	[_veh, "HandleDamage", "btc_fnc_patrol_disabled"] call btc_fnc_eh_removePersistOnLocalityChange;
-	[_veh] call btc_fnc_patrol_eh;
+    [_veh, "HandleDamage", "btc_fnc_patrol_disabled"] call btc_fnc_eh_removePersistOnLocalityChange;
+    [_veh] call btc_fnc_patrol_eh;
 };
 
 _damage
