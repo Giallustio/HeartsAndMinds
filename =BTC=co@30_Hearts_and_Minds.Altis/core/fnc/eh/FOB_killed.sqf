@@ -41,6 +41,8 @@ if (btc_debug || btc_debug_log) then {
 };
 
 deleteVehicle ((_fobs select 2) deleteAt _fob_index);
-deleteMarker ((_fobs select 3) deleteAt _fob_index);
+private _marker = ((_fobs select 0) deleteAt _fob_index);
+private _FOB_name = markerText _marker;
+deleteMarker _marker;
 
-[(_fobs select 0) deleteAt _fob_index, (_fobs select 1) deleteAt _fob_index]
+[_FOB_name, (_fobs select 1) deleteAt _fob_index]
