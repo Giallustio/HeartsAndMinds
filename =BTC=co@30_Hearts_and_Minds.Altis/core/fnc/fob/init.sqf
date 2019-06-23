@@ -3,17 +3,19 @@
 Function: btc_fnc_fob_init
 
 Description:
-    Add leaflets to drone which have parents classe: UAV_06_base_F and UAV_01_base_F.
+    Store FOB data in btc_fobs global variable.
 
 Parameters:
-    _structure - Not used. [Object]
-    _flag - Drone where leaflets will be added. [Object]
+    _structure - Structure/rallypoint of the FOB. [Object]
+    _flag - Flag of the FOB. [Object]
+    _marker - Marker. [String]
+    _fobs - GLobal variable. [Array]
 
 Returns:
 
 Examples:
     (begin example)
-        [_structure] call btc_fnc_fob_init;
+        [cursorObject] call btc_fnc_fob_init;
     (end)
 
 Author:
@@ -28,11 +30,19 @@ params [
     ["_fobs", btc_fobs, [[]]]
 ];
 
-if (_marker isEqualTo "") then {
-    _marker = "respawn_" + str btc_player_side + str _structure;
-};
-
-if (_marker in (_fobs select 0)) exitWith {};
+if (
+    if (_marker isEqualTo "") then {
+        _marker = "respawn_" + str btc_player_side + str _structure;
+        if (_marker in (_fobs select 0)) then {
+            true
+        } else {
+            _structure setVariable ["btc_tickets", btc_fob_rallypointTicket, true];
+            false
+        }
+    } else {
+        false
+    }
+) exitWith {};
 
 (_fobs select 0) pushBack _marker;
 (_fobs select 1) pushBack _structure;

@@ -9,12 +9,12 @@ Parameters:
     _struc - Object the event handler is assigned to. [Object]
     _killer - Object that killed the unit. Contains the unit itself in case of collisions. [Object]
     _instigator - Person who pulled the trigger. [Object]
-    _useEffects - same as useEffects in setDamage alt syntax. [Boolean]
+    _delete - Delete the FOB/Rallypoint. [Boolean]
+    _useEffects - Same as useEffects in setDamage alt syntax. [Boolean]
     _fobs - Array containing FOB data. [Array]
 
 Returns:
-    _fob_name - Name of the deleted FOB. [String]
-    _fob_struc - FOB structure object. [Object]
+    _this - Arguments passed. [Array]
 
 Examples:
     (begin example)
@@ -31,6 +31,7 @@ params [
     ["_killer", objNull, [objNull]],
     ["_instigator", objNull, [objNull]],
     ["_useEffects", true, [true]],
+    ["_delete", false, [true]],
     ["_fobs", btc_fobs, [[]]]
 ];
 
@@ -41,8 +42,10 @@ if (btc_debug || btc_debug_log) then {
 };
 
 deleteVehicle ((_fobs select 2) deleteAt _fob_index);
-private _marker = ((_fobs select 0) deleteAt _fob_index);
-private _FOB_name = markerText _marker;
-deleteMarker _marker;
+deleteMarker ((_fobs select 0) deleteAt _fob_index);
 
-[_FOB_name, (_fobs select 1) deleteAt _fob_index]
+if (_delete) then {
+    deleteVehicle ((_fobs select 1) deleteAt _fob_index);
+};
+
+_this

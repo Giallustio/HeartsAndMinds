@@ -28,10 +28,12 @@ waitUntil {!(isNil "btc_int_ask_data")};
 
 private _fobs_marker = [];
 private _fobs_structure = [];
+private _fobs_tickets = [];
 {
     if (_x in allMapMarkers) then {
         _fobs_marker pushBack _x;
         _fobs_structure pushBack ((btc_int_ask_data select 1) select _forEachIndex);
+        _fobs_tickets pushBack ((_fobs_structure select _forEachIndex) getVariable ["btc_tickets", -1]);
     };
 } forEach (btc_int_ask_data select 0);
 if (_fobs_marker isEqualTo []) exitWith {
@@ -41,22 +43,42 @@ if (_fobs_marker isEqualTo []) exitWith {
 private _respawn_positions = _fobs_structure apply {
     private _positions = _x buildingPos -1;
     if (_positions isEqualTo []) then {
-        _positions = [_x getPos [0.5, direction _x]];
+        _positions = [_x getPos [1, direction _x]];
     };
     selectRandom (_positions select {_x select 2 < 1});
 };
+
+private _EHid = ["btc_respawn", {
+    _this params ["_pos", "_structure"];
+
+    player setPosATL _pos;
+
+    private _ticket = _structure getVariable ["btc_tickets", -1];
+    if !(_ticket isEqualTo -1) then {
+        _ticket = _ticket - 1;
+        if (_ticket <= 0) then {
+            [_structure, objNull, objNull, true, true] remoteExecCall ["btc_fnc_eh_FOB_killed", 2];
+        } else {
+            _structure setVariable ["btc_tickets", _ticket, true];
+        };
+    };
+}] call CBA_fnc_addEventHandler;
 
 private _missionsData = [];
 {
     _missionsData pushBack [
         getMarkerPos _x,
-        compile format ["player setPosATL %1", _respawn_positions select _forEachIndex],
+        {["btc_respawn", _this select 9] call CBA_fnc_localEvent;},
         markerText _x,
-        format [localize "STR_BTC_HAM_O_FOB_REDEPLOY_H_MOVING", markerText _x],
+        if ((_fobs_tickets select _forEachIndex) isEqualTo -1) then {
+            format [localize "STR_BTC_HAM_O_FOB_REDEPLOY_H_MOVING", markerText _x]
+        } else {
+            format [localize "STR_BTC_HAM_O_FOB_REDEPLOY_H_MOVING" + " (%2: " + localize "str_a3_rscdisplaycampaignlobby_respawn_tooltip" +")", markerText _x, _fobs_tickets select _forEachIndex]
+        },
         "",
         getText (configfile >> "CfgVehicles" >> typeOf (_fobs_structure select _forEachIndex) >> "editorPreview"),
         1,
-        []
+        [_respawn_positions select _forEachIndex, _fobs_structure select _forEachIndex]
     ]
 } forEach _fobs_marker;
 
@@ -99,7 +121,9 @@ _display displayaddeventhandler [
             {
                 _x setMarkerAlphaLocal 1;
             } forEach %1;
+            ['btc_respawn', %2] call CBA_fnc_removeEventHandler;
         ",
-        _fobs_marker
+        _fobs_marker,
+        _EHid
     ]
 ];
