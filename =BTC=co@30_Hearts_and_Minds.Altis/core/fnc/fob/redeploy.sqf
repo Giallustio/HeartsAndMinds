@@ -28,14 +28,21 @@ waitUntil {!(isNil "btc_int_ask_data")};
 
 private _fobs_marker = [];
 private _fobs_structure = [];
-private _fobs_tickets = [];
+private _fobs_texts = [];
 {
     if (_x in allMapMarkers) then {
         _fobs_marker pushBack _x;
         _fobs_structure pushBack ((btc_int_ask_data select 1) select _forEachIndex);
-        _fobs_tickets pushBack ((_fobs_structure select _forEachIndex) getVariable ["btc_tickets", -1]);
+
+        private _fobs_ticket = (_fobs_structure select _forEachIndex) getVariable ["btc_tickets", -1];
+        _fobs_texts pushBack (if (_fobs_ticket isEqualTo -1) then {
+            format [localize "STR_BTC_HAM_O_FOB_REDEPLOY_H_MOVING", markerText _x]
+        } else {
+            format [localize "STR_BTC_HAM_O_FOB_REDEPLOY_H_MOVING" + "<br/>%2: " + localize "str_a3_rscdisplaycampaignlobby_respawn_tooltip", markerText _x, _fobs_ticket]
+        });
     };
 } forEach (btc_int_ask_data select 0);
+
 if (_fobs_marker isEqualTo []) exitWith {
     (localize "STR_BTC_HAM_O_FOB_REDEPLOY_H_NOFOB") call CBA_fnc_notify;
 };
@@ -43,15 +50,20 @@ if (_fobs_marker isEqualTo []) exitWith {
 private _respawn_positions = _fobs_structure apply {
     private _positions = _x buildingPos -1;
     if (_positions isEqualTo []) then {
-        _positions = [_x getPos [1, direction _x]];
+        _x modelToWorld [0, 1.5, 0];
+    } else {
+        selectRandom (_positions select {_x select 2 < 1})
     };
-    selectRandom (_positions select {_x select 2 < 1});
 };
 
 private _EHid = ["btc_respawn", {
     _this params ["_pos", "_structure"];
 
-    player setPosATL _pos;
+    if (surfaceIsWater _pos) then {
+        player setPosASL _pos;
+    } else {
+        player setPosATL _pos;
+    };
 
     private _ticket = _structure getVariable ["btc_tickets", -1];
     if !(_ticket isEqualTo -1) then {
@@ -70,11 +82,7 @@ private _missionsData = [];
         getMarkerPos _x,
         {["btc_respawn", _this select 9] call CBA_fnc_localEvent;},
         markerText _x,
-        if ((_fobs_tickets select _forEachIndex) isEqualTo -1) then {
-            format [localize "STR_BTC_HAM_O_FOB_REDEPLOY_H_MOVING", markerText _x]
-        } else {
-            format [localize "STR_BTC_HAM_O_FOB_REDEPLOY_H_MOVING" + " (%2: " + localize "str_a3_rscdisplaycampaignlobby_respawn_tooltip" +")", markerText _x, _fobs_tickets select _forEachIndex]
-        },
+        _fobs_texts select _forEachIndex,
         "",
         getText (configfile >> "CfgVehicles" >> typeOf (_fobs_structure select _forEachIndex) >> "editorPreview"),
         1,
