@@ -93,6 +93,9 @@ private _text = switch (_type) do {
             ["<img size='1' image='\z\ace\addons\arsenal\data\iconClearContainer.paa' align='center'/>"]
         ];
     };
+    case 18 : {
+        localize "STR_BTC_HAM_O_FOB_DISMANTLE_H_PROC";
+    };
 };
 
 _text call CBA_fnc_notify;
