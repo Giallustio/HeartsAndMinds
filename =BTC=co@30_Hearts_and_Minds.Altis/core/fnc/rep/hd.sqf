@@ -3,7 +3,7 @@
 Function: btc_fnc_rep_hd
 
 Description:
-    Handle damage
+    Handle damage.
 
 Parameters:
     _unit - [Object]
