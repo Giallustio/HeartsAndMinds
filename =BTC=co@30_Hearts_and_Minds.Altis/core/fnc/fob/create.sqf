@@ -3,16 +3,16 @@
 Function: btc_fnc_fob_create
 
 Description:
-    Fill me when you edit me !
+    Create user interface for FOB creation.
 
 Parameters:
-    _mat - [Object]
+    _mat - Object "containing" the FOB. [Object]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_fob_create;
+        [cursorObject] call btc_fnc_fob_create;
     (end)
 
 Author:

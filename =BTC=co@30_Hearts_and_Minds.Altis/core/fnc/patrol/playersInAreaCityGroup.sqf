@@ -3,19 +3,19 @@
 Function: btc_fnc_patrol_playersInAreaCityGroup
 
 Description:
-    Fill me when you edit me !
+    Check if player is around the active city or leader of the patrol.
 
 Parameters:
-    _active_city - [Object]
-    _group - [Group]
-    _area - [Number]
-    _players - [Array]
+    _active_city - Active city triggered. [Object]
+    _group - Group patrolling. [Group]
+    _area - Radius of patrol. [Number]
+    _players - Players. [Array]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_patrol_playersInAreaCityGroup;
+        [selectRandom btc_city_all, group cursorTarget] call btc_fnc_patrol_playersInAreaCityGroup;
     (end)
 
 Author:

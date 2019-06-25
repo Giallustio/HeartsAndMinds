@@ -3,19 +3,19 @@
 Function: btc_fnc_patrol_init
 
 Description:
-    Fill me when you edit me !
+    Initialise patrol between two city.
 
 Parameters:
-    _group - [Group]
-    _cities - [Array]
-    _area - [Number]
-    _isBoat - [Boolean]
+    _group - Group patroling. [Group]
+    _cities - Contain a starting city and the current active city. [Array]
+    _area - Area to find the end city. [Number]
+    _isBoat - Does the vehicle is a boat. [Boolean]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_patrol_init;
+        [group cursorTarget, [selectRandom btc_city_all, selectRandom btc_city_all]] call btc_fnc_patrol_init;
     (end)
 
 Author:

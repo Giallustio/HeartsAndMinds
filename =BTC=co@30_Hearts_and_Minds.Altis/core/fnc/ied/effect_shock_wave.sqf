@@ -3,16 +3,16 @@
 Function: btc_fnc_ied_effect_shock_wave
 
 Description:
-    Fill me when you edit me !
+    Create a shock wave.
 
 Parameters:
-    _pos - [Array]
+    _pos - Position of the IED. [Array]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_ied_effect_shock_wave;
+        [getPos player] call btc_fnc_ied_effect_shock_wave;
     (end)
 
 Author:
