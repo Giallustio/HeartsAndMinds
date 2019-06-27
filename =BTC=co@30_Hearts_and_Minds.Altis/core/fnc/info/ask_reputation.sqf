@@ -48,7 +48,7 @@ if ((round random 1) isEqualTo 1) then {
 private _info_type = switch (true) do {
     case (_rep < 200): {localize "STR_BTC_HAM_CON_INFO_ASKREP_VLOW"}; //very low
     case (_rep >= 200 && _rep < 500): {localize "STR_BTC_HAM_CON_INFO_ASKREP_LOW"}; //low
-    case (_rep >= 500 && _rep < 750): {toLower localize "str_a3_firing_drills_rule_normal"}; //normal
+    case (_rep >= 500 && _rep < 750): {toLower localize "str_3den_display3den_menubar_visionmodenormal_text"}; //normal
     case (_rep >= 750): {localize "STR_BTC_HAM_CON_INFO_ASKREP_HIGH"}; //high
 };
 
