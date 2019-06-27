@@ -1,35 +1,40 @@
-
-call compile preprocessFile "core\doc.sqf";
+[] call compile preprocessFileLineNumbers "core\doc.sqf";
 
 [{!isNull player}, {
 
     player addRating 9999;
-    btc_player_respawn = getPosASL player;
     ["InitializePlayer", [player]] call BIS_fnc_dynamicGroups;
 
-    player addEventHandler ["Respawn", btc_fnc_eh_player_respawn];
-    player addEventHandler ["CuratorObjectPlaced", btc_fnc_eh_CuratorObjectPlaced];
-    ["ace_treatmentSucceded", btc_fnc_eh_treatment] call CBA_fnc_addEventHandler;
-    player addEventHandler ["WeaponAssembled", btc_fnc_civ_add_leaflets];
+    [player] call btc_fnc_eh_player;
 
-    call btc_fnc_int_add_actions;
-    call btc_fnc_int_shortcuts;
+    private _arsenal_trait = player call btc_fnc_arsenal_trait;
+    if (btc_p_arsenal_Restrict isEqualTo 3) then {
+        [_arsenal_trait select 1] call btc_fnc_arsenal_weaponsFilter;
+    };
+    [] call btc_fnc_int_add_actions;
+    [] call btc_fnc_int_shortcuts;
 
-    if (player getVariable ["interpreter", false]) then {player createDiarySubject [localize "STR_BTC_HAM_CON_INFO_ASKHIDEOUT_DIARYLOG", localize "STR_BTC_HAM_CON_INFO_ASKHIDEOUT_DIARYLOG"];};
+    if (player getVariable ["interpreter", false]) then {
+        player createDiarySubject [localize "STR_BTC_HAM_CON_INFO_ASKHIDEOUT_DIARYLOG", localize "STR_BTC_HAM_CON_INFO_ASKHIDEOUT_DIARYLOG"];
+    };
 
-    removeAllWeapons player;
+    if (btc_p_autoloadout) then {
+        player setUnitLoadout ([_arsenal_trait select 0] call btc_fnc_arsenal_loadout);
+    } else {
+        removeAllWeapons player;
+    };
 
-    [{scriptDone btc_intro_done}, {
+    [{scriptDone btc_intro_done;}, {
         private _standard_tasks = (player call BIS_fnc_tasksUnit) select {
-                    ([_x] call BIS_fnc_taskState isEqualTo "ASSIGNED") &&
-                    (_x in ["0", "1", "2"])
+                    [_x] call BIS_fnc_taskState isEqualTo "ASSIGNED" &&
+                    _x in ["0", "1", "2"]
                 };
         {
             [_x] call btc_fnc_task_create
-        } foreach _standard_tasks;
+        } forEach _standard_tasks;
 
         btc_int_ask_data = nil;
-        [5, nil, player] remoteExec ["btc_fnc_int_ask_var", 2];
+        ["btc_side_jip_data"] remoteExecCall ["btc_fnc_int_ask_var", 2];
 
         [{!(isNil "btc_int_ask_data")}, {
             private _side_jip_data = btc_int_ask_data;
@@ -42,12 +47,9 @@ call compile preprocessFile "core\doc.sqf";
 
 if (btc_debug) then {
 
-    onMapSingleClick "if (vehicle player == player) then {player setpos _pos} else {vehicle player setpos _pos}";
+    onMapSingleClick "vehicle player setPos _pos";
     player allowDamage false;
 
     waitUntil {!isNull (findDisplay 12)};
-    private _eh = ((findDisplay 12) displayCtrl 51) ctrlAddEventHandler ["Draw", btc_fnc_marker_debug];
-
-    btc_marker_debug_cond = true;
-    [_eh] spawn btc_fnc_systemchat_debug;
+    private _eh = ((findDisplay 12) displayCtrl 51) ctrlAddEventHandler ["Draw", btc_fnc_debug_marker];
 };

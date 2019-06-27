@@ -1,17 +1,45 @@
 
-private ["_pos","_range","_units"];
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_civ_get_grenade
 
-_pos = _this select 0;
-_range = _this select 1;
-_units = [];
-if (count _this > 2) then {_units = _this select 2;} else {_units = _pos nearEntities [btc_civ_type_units, _range];};
+Description:
+    Search for civilians at a position in a range to add grenade to their inventory.
 
-_units = (_units select {side _x isEqualTo civilian});
+Parameters:
+    _pos - Position to search for civilians. [Array]
+    _range - Range to find civilians around the position. [Number]
+    _units - Pass directly units to add greande. [Array]
+
+Returns:
+
+Examples:
+    (begin example)
+        [[0, 0, 0], 200] call btc_fnc_civ_get_grenade;
+    (end)
+
+Author:
+    Vdauphin
+
+---------------------------------------------------------------------------- */
+
+params [
+    ["_pos", [0, 0, 0], [[]]],
+    ["_range", 300, [0]],
+    ["_units", [], [[]]]
+];
+
+if (_units isEqualTo []) then {
+    _units = _pos nearEntities [btc_civ_type_units, _range];
+};
+
+_units = _units select {side _x isEqualTo civilian};
 
 if (_units isEqualTo []) exitWith {};
 
 {
-    if (btc_debug_log) then    {diag_log format ["fnc_civ_get_grenade %1 - %2",_x,side _x];};
+    if (btc_debug_log) then {
+        [format ["%1 - %2", _x, side _x], __FILE__, [false]] call btc_fnc_debug_message;
+    };
 
     _x call btc_fnc_rep_remove_eh;
 
@@ -19,10 +47,8 @@ if (_units isEqualTo []) exitWith {};
 
     [_x] joinSilent createGroup [btc_enemy_side, true];
 
-    (group _x) setVariable ["getWeapons",true];
+    (group _x) setVariable ["getWeapons", true];
 
     (group _x) setBehaviour "AWARE";
-    private _wp = (group _x) addWaypoint [_pos, 10];
-    _wp setWaypointType "GUARD";
-    _wp setWaypointCombatMode "RED";
-} foreach [selectRandom _units];
+    [group _x, _pos, 10, "GUARD", "UNCHANGED", "RED"] call CBA_fnc_addWaypoint;
+} forEach [selectRandom _units];

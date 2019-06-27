@@ -1,5 +1,28 @@
 
-params ["_unit"];
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_set_damage
+
+Description:
+    Set ACE damage.
+
+Parameters:
+    _unit - Unit taking damage. [Object]
+
+Returns:
+
+Examples:
+    (begin example)
+        [player] call btc_fnc_set_damage;
+    (end)
+
+Author:
+    Vdauphin
+
+---------------------------------------------------------------------------- */
+
+params [
+    ["_unit", objNull, [objNull]]
+];
 
 private _selection = [
     "head",

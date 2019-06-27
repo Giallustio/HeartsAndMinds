@@ -1,19 +1,41 @@
 
-params ["_group","_house"];
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_house_addWP_loop
 
-private _allpositions = _house buildingPos -1;
-private _copyallpositions = +_allpositions;
+Description:
+    Add waypoints to group to patrol inside an house.
 
-if (btc_debug_log) then {diag_log format ["setWaypoint : count all pos %1 in %2 ", count _allpositions,_house];};
+Parameters:
+    _group - Group to add waypoints. [Group]
+    _house - House use to patrol. [Object]
+
+Returns:
+    _allpositions - All position available. [Array]
+
+Examples:
+    (begin example)
+        _allpositions = [group player, ([getPos player] call btc_fnc_getHouses) select 0] call btc_fnc_house_addWP_loop;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
+params [
+    ["_group", grpNull, [grpNull]],
+    ["_house", objNull, [objNull]]
+];
+
+private _allpositions = (_house buildingPos -1) call BIS_fnc_arrayShuffle;
+
+if (btc_debug_log) then {
+    [format ["count all pos %1 in %2 ", count _allpositions, _house], __FILE__, [false]] call btc_fnc_debug_message;
+};
 {
-    private _index = _copyallpositions find selectRandom(_copyallpositions);
-
-    private _wp = _group addWaypoint [_copyallpositions deleteAt _index, 0.2];
-    _wp setWaypointType "MOVE";
-    _wp setWaypointCompletionRadius 0;
+    private _wp = [_group, _x, 0.2, "MOVE", "UNCHANGED", "NO CHANGE", "UNCHANGED", "NO CHANGE", "", [15, 20, 30]] call CBA_fnc_addWaypoint;
     _wp waypointAttachObject _house;
-    _wp setWaypointHousePosition _index;
-    _wp setWaypointTimeout [15, 20, 30];
+    _wp setWaypointHousePosition _forEachIndex;
 } forEach _allpositions;
 
 _allpositions

@@ -1,14 +1,32 @@
 
-private ["_n","_array","_card"];
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_get_cardinal
 
-_n = _this select 0;
+Description:
+    Get cardinal.
 
-_array = ["N","E","W","S","NW","NE","SE","SW"];
+Parameters:
+    _n - Degree. [Number]
 
-_card = "";
+Returns:
+    _card - Cardinal. [String]
 
-switch (true) do
-{
+Examples:
+    (begin example)
+        _result = [100] call btc_fnc_get_cardinal;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
+params [
+    ["_n", 0, [0]]
+];
+
+private _card = "";
+switch (true) do {
     case (_n > 345 || _n <= 15) : {_card = "N";};
     case (_n > 15 && _n <= 75) : {_card = "NE";};
     case (_n > 75 && _n <= 105) : {_card = "E";};
@@ -18,4 +36,5 @@ switch (true) do
     case (_n > 255 && _n <= 285) : {_card = "W";};
     case (_n > 285 && _n <= 345) : {_card = "NW";};
 };
+
 _card

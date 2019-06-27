@@ -1,91 +1,80 @@
 
-private ["_city","_area","_n","_wp","_pos","_rpos","_unit_type","_group","_pos_iswater","_newpos"];
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_mil_create_group
 
-_city = _this select 0;
-_area = _this select 1;
-_n = _this select 2;
-_wp = _this select 3;
+Description:
+    Fill me when you edit me !
 
-_pos = [];
+Parameters:
+    _city - [Number]
+    _area - [Number]
+    _n - [Number]
+    _wp - [Array]
+    _type_divers - [Array]
+    _type_units - [Boolean]
+    _p_sea - [Side]
+    _enemy_side - [Array]
+    _wp_ratios - []
 
-switch (typeName _city) do {
-    case "ARRAY" :{_pos = _city;};
-    case "STRING":{_pos = getMarkerPos _city;};
-    case "OBJECT":{_pos = position _city;};
-};
+Returns:
 
-_rpos = [_pos, _area, btc_p_sea] call btc_fnc_randomize_pos;
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_mil_create_group;
+    (end)
 
-_pos_iswater = surfaceIsWater _rpos;
-if (_pos_iswater) then {
-    _unit_type = selectRandom btc_type_divers;
-} else {
-    _unit_type = selectRandom btc_type_units;
-    _newpos = _rpos findEmptyPosition [0, 40, _unit_type];
-    if !(_newpos isEqualTo []) then {_rpos = _newpos;};
-    _rpos = [_rpos] call btc_fnc_findPosOutsideRock;
-};
+Author:
+    Giallustio
 
-_group = createGroup btc_enemy_side;
-[_group createUnit [_unit_type, _rpos, [], 0, "NONE"]] joinSilent _group;
-(leader _group) setPos _rpos;
+---------------------------------------------------------------------------- */
+
+params [
+    ["_city", objNull, [objNull, []]],
+    ["_area", 300, [0]],
+    ["_n", 0, [0]],
+    ["_wp", 0, [0]],
+    ["_type_divers", btc_type_divers, [[]]],
+    ["_type_units", btc_type_units, [[]]],
+    ["_p_sea", btc_p_sea, [true]],
+    ["_enemy_side", btc_enemy_side, [east]],
+    ["_wp_ratios", btc_p_mil_wp_ratios, [[]]]
+];
+_wp_ratios params ["_wp_house_probability", "_wp_sentry_probability"];
+
+// Find a position
+([_city] call btc_fnc_city_findPos) params ["_rpos", "_pos_iswater"];
+
+private _group = createGroup _enemy_side;
 private _groups = [];
 _groups pushBack _group;
-private _structure = objNull;
 
+// Handle different case of wp
 switch (true) do {
-    case (_wp < 0.3) : {
-        private _structures = [_rpos,70] call btc_fnc_mil_getStructures;
-        if !(_structures isEqualTo []) then    {
-            _structure = selectRandom _structures;
-            _n = count (_structure buildingPos -1);
-            if (_n > 8) then {
-                _n = 2;
-            } else {
-                _n = floor(_n/2);
-            };
-            for "_i" from 0 to _n do {
-                [_group createUnit [selectRandom btc_type_units, _rpos, [], 0, "NONE"]] joinSilent _group;
-                sleep 0.5;
-            };
-        } else {
-            private _houses = [_rpos,50] call btc_fnc_getHouses;
-            if !(_houses isEqualTo []) then    {
-                _structure = selectRandom _houses;
-            } else {[_group,_rpos,_area,"SAFE",_pos_iswater] spawn btc_fnc_task_patrol;};
+    case (_wp <= _wp_house_probability) : {
+        ([_rpos, _n] call btc_fnc_mil_getBuilding) params ["_n", "_structure"];
+        if (_structure isEqualTo "") exitWith {
+            [_city, _area, _n, _wp_sentry_probability, _type_divers, _type_units, _p_sea, _enemy_side, _wp_ratios] call btc_fnc_mil_create_group;
+        };
+        for "_i" from 1 to _n do {
+            private _grp = createGroup _enemy_side;
+            [_grp, _rpos, 1] call btc_fnc_mil_createUnits;
+            _grp setVariable ["btc_inHouse", typeOf _structure];
+            [_grp, _structure] call btc_fnc_house_addWP;
+            _groups pushBack _grp;
         };
     };
-    case (_wp > 0.3 && _wp < 0.75) : {
-        [_group,_rpos,_area,"AWARE",_pos_iswater] spawn btc_fnc_task_patrol;
+    case (_wp > _wp_house_probability && _wp <= _wp_sentry_probability) : {
+        [_group, _rpos, _n, _pos_iswater] call btc_fnc_mil_createUnits;
+        [_group, _rpos, _area, 2 + floor (random 4), "MOVE", "SAFE", "RED", "LIMITED", "STAG COLUMN", "", [5, 10, 20]] call CBA_fnc_taskPatrol;
     };
-    case (_wp > 0.75) :    {
-        private _wpa = _group addWaypoint [_rpos, 0];
-        _wpa setWaypointType "SENTRY";
-        _wpa setWaypointCombatMode "RED";
-        _wpa setWaypointBehaviour "AWARE";
+    case (_wp > _wp_sentry_probability) : {
+        [_group, _rpos, _n, _pos_iswater] call btc_fnc_mil_createUnits;
+        [_group, _rpos, 0, "SENTRY", "AWARE", "RED"] call CBA_fnc_addWaypoint;
     };
 };
-if (_structure isEqualTo objNull) then {
-    for "_i" from 0 to _n do {
-        _unit_type = [selectRandom btc_type_units, selectRandom btc_type_divers ] select _pos_iswater;
-        [_group createUnit [_unit_type, _rpos, [], 0, "NONE"]] joinSilent _group;
-        sleep 0.5;
-    };
-    //_group createUnit [btc_type_medic, _pos, [], 0, "NONE"];
-} else {
-    {
-        private _grp = createGroup btc_enemy_side;
-        [_x] joinSilent _grp;
-        _grp setVariable ["inHouse", typeOf _structure];
-        [_grp,_structure] spawn btc_fnc_house_addWP;
-        _groups pushBack _grp;
-    } forEach units _group;
+
+if (btc_debug_log) then {
+    [format ["_this = %1 ; POS %2 UNITS N %3 _wp_ratios %4", _this, _rpos, _n, _wp_ratios], __FILE__, [false]] call btc_fnc_debug_message;
 };
-
-//if ((position leader _group) distance [0,0,0] < 50) then {{_x setpos _rpos;} foreach units _group;};
-
-{_x call btc_fnc_mil_unit_create;} foreach units _group;
-
-if (btc_debug_log) then {diag_log format ["btc_fnc_mil_create_group: _this = %1 ; POS %2 UNITS N %3",_this,_rpos,count units _group];};
 
 _groups

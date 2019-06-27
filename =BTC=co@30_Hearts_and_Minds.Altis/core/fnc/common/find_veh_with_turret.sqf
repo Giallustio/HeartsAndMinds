@@ -1,24 +1,66 @@
 
-private ["_veh_array"];
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_find_veh_with_turret
 
-if ((_this select 0) isEqualTypeAll objNull) then {
-    _veh_array = (_this select 0) apply {typeOf _x};
+Description:
+    Find turret in a vehicle.
+
+Parameters:
+    _vehicles - Array of vehicles or vehicles class name. [Array]
+
+Returns:
+    _array - Array of vehicles with turrets and corresponding magazines.
+
+Examples:
+    (begin example)
+        _array = ["B_Heli_Transport_03_F"] call btc_fnc_find_veh_with_turret;
+    (end)
+
+Author:
+    Vdauphin
+
+---------------------------------------------------------------------------- */
+
+params [
+    ["_vehicles", [], [[]]]
+];
+
+private _typeOf_vehicles = if ((_vehicles select 0) isEqualType objNull) then {
+    _vehicles apply {typeOf _x}
 } else {
-    _veh_array = _this select 0;
+    _vehicles
 };
 
-private _veh_with_turret = [];
-{
-    private _wps = [];
-    private _type = _x;
+_typeOf_vehicles = _typeOf_vehicles arrayIntersect _typeOf_vehicles;
+
+private _magazines = _typeOf_vehicles apply {
+    private _vehicle = _x;
+    [
+        _vehicle,
+        [_vehicle] call ace_rearm_fnc_getAllRearmTurrets apply {
+                [_vehicle, _x] call ace_rearm_fnc_getTurretConfigMagazines;
+            }
+    ]
+};
+
+private _magazines_clean = _magazines select {!((_x select 1) isEqualTo [[]])};
+
+private _vehicles_with_turrets = _magazines_clean apply {_x select 0};
+_magazines_clean = _magazines_clean apply {_x select 1};
+
+_magazines_clean = _magazines_clean apply {
+    private _vehicle_magazines = _x;
+    private _array = [];
     {
-        _wps append (([_type,_x] call btc_fnc_log_getconfigmagazines));
-    } forEach [[-1], [0], [0,0], [0,1], [1], [2], [0,2]];
-    _wps = _wps - (_this select 1);
+        _array append _x;
+    } forEach _vehicle_magazines;
+    _array
+};
 
-    if !(_wps isEqualTo []) then {
-        _veh_with_turret pushBackUnique _x;
-    };
-} forEach _veh_array;
+private _magazines_clean_array = [];
+{
+    _magazines_clean_array append _x;
+} forEach _magazines_clean;
 
-_veh_with_turret
+
+[_vehicles_with_turrets, _magazines_clean_array arrayIntersect _magazines_clean_array]

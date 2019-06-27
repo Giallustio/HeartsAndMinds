@@ -5,10 +5,10 @@ onLoadName = $STR_BTC_HAM_DESCR_NAME;
 onLoadMission = $STR_BTC_HAM_DESCR_MISSION;
 enabledebugconsole = 1;
 
-#include "core\def\dlg_def.hpp"
-
+#include "core\fnc\common\dlg.hpp"
 #include "core\fnc\fob\dlg.hpp"
 #include "core\fnc\log\dlg.hpp"
+#include "core\fnc\debug\defines.hpp"
 
 class RscTitles {
     class Default {
@@ -18,6 +18,7 @@ class RscTitles {
         duration = 0;
     };
     #include "core\fnc\log\rsc.hpp"
+    #include "core\fnc\debug\dlg.hpp"
 };
 
 #include "core\sounds\sounds.hpp"
@@ -29,9 +30,27 @@ class RscTitles {
 #include "core\fnc\task\tasktypes.hpp"
 
 class CfgFunctions {
-    #include "core\def\functions.hpp"
+    #include "core\fnc\eh\functions.hpp"
     // add your own functions below
 };
 
-#include "core\fnc\eh\extended_InitPost_EH.hpp"
-#include "core\fnc\eh\extended_PreInit_EH.hpp"
+// CBA XEH
+class Extended_PreInit_EventHandlers {
+    #include "core\fnc\eh\xeh_PreInit_EH.hpp"
+};
+
+class Extended_InitPost_EventHandlers {
+    class LandVehicle {
+        #include "core\fnc\eh\xeh_InitPost_EH_Vehicle.hpp"
+    };
+    class Air {
+        #include "core\fnc\eh\xeh_InitPost_EH_Vehicle.hpp"
+    };
+    class Ship {
+        #include "core\fnc\eh\xeh_InitPost_EH_Vehicle.hpp"
+    };
+};
+
+// Disable BI wreck system (H&M handle it internally)
+wreckManagerMode = 0;
+corpseManagerMode = 0;

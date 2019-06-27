@@ -1,11 +1,31 @@
 
-params ["_id"];
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_eh_suicider
 
-if (btc_debug) then {
-    systemChat format ["btc_eh_suicider: Suicider killed in city %1", _id];
-};
-if (btc_debug_log) then {
-    diag_log format ["btc_eh_suicider: Suicider killed in city %1", _id];
+Description:
+    Remove the the suicider flag to the corresponding city.
+
+Parameters:
+    _id - ID of the city. [Number]
+
+Returns:
+
+Examples:
+    (begin example)
+        [0] call btc_fnc_eh_suicider;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
+params [
+    ["_id", 0, [0]]
+];
+
+if (btc_debug || btc_debug_log) then {
+    [format ["Suicider killed in city %1", _id], __FILE__, [btc_debug, btc_debug_log]] call btc_fnc_debug_message;
 };
 
 private _city = btc_city_all select _id;

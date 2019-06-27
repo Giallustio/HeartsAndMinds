@@ -1,53 +1,49 @@
 
-private ["_mat","_name","_pos","_struc","_flag","_h","_marker"];
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_fob_create_s
 
-_mat = _this select 0;
-_name = _this select 1;
+Description:
+    Fill me when you edit me !
 
-_pos = getPos _mat;
-deleteVehicle _mat;
+Parameters:
+    _pos - [Array]
+    _FOB_name - [String]
+    _fob_structure - [Array]
+    _fob_flag - [Array]
+    _fobs - [Array]
 
-_struc = createVehicle [btc_fob_structure, [_pos select 0,_pos select 1,-10], [], 0, "NONE"];
-_flag  = createVehicle [btc_fob_flag, _pos, [], 0, "NONE"];
+Returns:
 
-_h = - 10;
-while {_h < 0} do {
-    _h = _h + 0.1;
-    _struc setpos [_pos select 0,_pos select 1,_h];
-    sleep 0.1;
-};
-{_x setpos _pos} foreach [_flag,_struc];
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_fob_create_s;
+    (end)
 
-_marker = createmarker [("FOB " + _name), getPos _flag];
-("FOB " + _name) setMarkerSize [1,1];
-("FOB " + _name) setMarkerType "b_hq";
-("FOB " + _name) setMarkerText (("FOB " + _name));
-("FOB " + _name) setMarkerColor "ColorBlue";
-("FOB " + _name) setMarkerShape "ICON";
+Author:
+    Giallustio
 
-(btc_fobs select 0) pushBack (("FOB " + _name));
-(btc_fobs select 1) pushBack _struc;
-_flag setVariable ["btc_fob",("FOB " + _name)];
-[7,("FOB " + _name)] remoteExec ["btc_fnc_show_hint", 0];
+---------------------------------------------------------------------------- */
 
-/*
-//_flag setVariable ["BTC_mobile_west",format ["FOB_%1",BTC_fob_id],true];
-    BTC_fob_placed = BTC_fob_placed + [_flag];publicVariable "BTC_fob_placed";//Till nearestObjects will work again
-    BTC_vehs_mobile_west_str = BTC_vehs_mobile_west_str + [format ["FOB_%1",BTC_fob_id]];
-    BTC_fob_id = BTC_fob_id + 1;publicVariable "BTC_fob_id";publicVariable "BTC_vehs_mobile_west_str";
-    _flag setvariable ["BTC_cannot_lift",1,true];
-    _flag setVariable ["BTC_cannot_drag",1,true];
-    _flag setVariable ["BTC_cannot_load",1,true];
-    _flag setVariable ["BTC_cannot_place",1,true];
-    _marker = createmarker [(_flag getVariable "BTC_mobile_west"), getPos _flag];
-    (_flag getVariable "BTC_mobile_west") setMarkerSize [0.5,0.5];
-    (_flag getVariable "BTC_mobile_west") setMarkerType "hd_flag";
-    (_flag getVariable "BTC_mobile_west") setMarkerText (_flag getVariable "BTC_mobile_west");
-    (_flag getVariable "BTC_mobile_west") setMarkerColor "ColorBlue";
-    (_flag getVariable "BTC_mobile_west") setMarkerShape "ICON";
-    BTC_m_PVEH = [1,_flag];publicVariable "BTC_m_PVEH";
-    _flag addAction [("<t color=""#12F905"">") + ("Dismantle FOB") + "</t>","=BTC=_revive\=BTC=_addAction.sqf",[[_flag],BTC_dismantle_fob], 8, true, true, "", "true"];
-    hint "FOB assembled!";
+params [
+    ["_pos", [], [[]]],
+    ["_FOB_name", "FOB ", [""]],
+    ["_fob_structure", btc_fob_structure, [[]]],
+    ["_fob_flag", btc_fob_flag, [[]]],
+    ["_fobs", btc_fobs, [[]]]
+];
 
-    #define east_pack "Land_Pod_Heli_Transport_04_box_F"
-#define west_pack "B_Slingload_01_Cargo_F" */
+private _flag = createVehicle [_fob_flag, _pos, [], 0, "CAN_COLLIDE"];
+private _struc = createVehicle [_fob_structure, _pos, [], 0, "CAN_COLLIDE"];
+
+private _marker = createMarker [_FOB_name, _pos];
+_marker setMarkerSize [1, 1];
+_marker setMarkerType "b_hq";
+_marker setMarkerText _FOB_name;
+_marker setMarkerColor "ColorBlue";
+_marker setMarkerShape "ICON";
+
+(_fobs select 0) pushBack _FOB_name;
+(_fobs select 1) pushBack _struc;
+_flag setVariable ["btc_fob", _FOB_name];
+
+[_FOB_name, _struc, _flag]

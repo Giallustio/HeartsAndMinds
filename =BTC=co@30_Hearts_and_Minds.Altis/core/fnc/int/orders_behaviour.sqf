@@ -1,20 +1,50 @@
 
-params ["_unit", "_order", "_wp_pos"];
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_int_orders_behaviour
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _unit - [Object]
+    _order - [Number]
+    _wp_pos - [Array]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_int_orders_behaviour;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
+params [
+    ["_unit", objNull, [objNull]],
+    ["_order", 0, [0]],
+    ["_wp_pos", [0, 0, 0], [[]]]
+];
 
 private _group = group _unit;
 
-if (_order == _unit getVariable ["order",0]) exitWith {};
+if (_order isEqualTo (_unit getVariable ["order", 0])) exitWith {};
 
-_unit setVariable ["order",_order];
+_unit setVariable ["order", _order];
 
 if (_unit isEqualTo vehicle _unit) then {
-    while {(count (waypoints _group)) > 0} do {deleteWaypoint ((waypoints _group) select 0);};
+    [_group] call CBA_fnc_clearWaypoints;
 };
 
 private _behaviour = behaviour _unit;
 
 switch (_order) do {
-    case 1 : {_unit setBehaviour selectRandom ["CARELESS", _behaviour]; doStop _unit;};
+    case 1 : {
+        _unit setBehaviour selectRandom ["CARELESS", _behaviour];
+        doStop _unit;
+    };
     case 2 : {
         doStop _unit;
         [_unit, "", 2] call ace_common_fnc_doAnimation;
@@ -30,23 +60,23 @@ switch (_order) do {
 };
 
 if (_order isEqualTo 4) then {
-    waitUntil {sleep 3; (isNull _unit || !Alive _unit || ((getpos _unit) distance _wp_pos < 10))};
+    waitUntil {sleep 3; (isNull _unit || !alive _unit || (_unit inArea [_wp_pos, 10, 10, 0, false]))};
 } else {
-    waitUntil {sleep 3; (isNull _unit || !Alive _unit || (count (getpos _unit nearEntities ["SoldierWB", 50]) == 0))};
+    waitUntil {sleep 3; (isNull _unit || !alive _unit || (count (getPos _unit nearEntities ["SoldierWB", 50]) isEqualTo 0))};
 };
 
-if (isNull _unit || !Alive _unit) exitWith {};
+if (isNull _unit || !alive _unit) exitWith {};
 
-if (_order == 4) then {
+if (_order isEqualTo 4) then {
     doStop _unit;
     sleep (30 + random 10);
 };
 
-_unit setVariable ["order",nil];
+_unit setVariable ["order", nil];
 _unit setUnitPos "AUTO";
 _unit setBehaviour _behaviour;
 _unit doMove getPos _unit;
 
 if (_unit isEqualTo vehicle _unit) then {
-    [_group] spawn btc_fnc_civ_addWP;
+    [_group] call btc_fnc_civ_addWP;
 };

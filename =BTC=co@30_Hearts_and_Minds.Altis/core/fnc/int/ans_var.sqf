@@ -1,1 +1,0 @@
-btc_int_ask_data = _this select 0;

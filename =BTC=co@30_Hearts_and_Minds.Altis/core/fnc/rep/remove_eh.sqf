@@ -1,12 +1,37 @@
 
-private _data = _this getVariable ["btc_rep_eh_added", []];
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_rep_remove_eh
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _civilian - [Object]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_rep_remove_eh;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
+params [
+    ["_civilian", objNull, [objNull]]
+];
+
+private _data = _civilian getVariable ["btc_rep_eh_added", []];
 
 if (_data isEqualTo []) exitWith {true};
 
-_this setVariable ["btc_rep_eh_added", []];
+_civilian setVariable ["btc_rep_eh_added", []];
 
-_this removeEventHandler ["HandleDamage", (_data select 0)];
-_this removeEventHandler ["Killed", (_data select 1)];
-_this removeEventHandler ["FiredNear", (_data select 2)];
+_civilian removeEventHandler ["HandleDamage", _data select 0];
+_civilian removeEventHandler ["Killed", _data select 1];
+_civilian removeEventHandler ["FiredNear", _data select 2];
 
 true

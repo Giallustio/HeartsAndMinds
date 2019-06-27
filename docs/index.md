@@ -12,9 +12,7 @@ Servers list : [arma3.swec.se](https://arma3.swec.se/server/list?mquery=hearts+a
 	* ### [Change MAP of H&M](http://vdauphin.github.io/HeartsAndMinds/Change-MAP-of-Hearts-and-Minds)
 	* ### [Prevent AI from spawning near the base](http://vdauphin.github.io/HeartsAndMinds/Prevent-AI-from-spawning-near-the-base)
 	* ### [Add new vehicle or boat to H&M system](http://vdauphin.github.io/HeartsAndMinds/Add-vehicle-or-boat-to-H&M-system)
-	* ### AI Spawn
-		* #### [Civilian spawn](http://vdauphin.github.io/HeartsAndMinds/Tweak-civilian-spawn-in-town)
-		* #### [Enemy spawn](http://vdauphin.github.io/HeartsAndMinds/Enemy-spawn)
+	* ### [Enemy/Civilian spawn](http://vdauphin.github.io/HeartsAndMinds/spawn)
 	* ### Change Factions
 		* #### [AI](http://vdauphin.github.io/HeartsAndMinds/Add-factions)
 		* #### [Player](http://vdauphin.github.io/HeartsAndMinds/faction_player)

@@ -1,26 +1,51 @@
 
-params ["_object"];
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_db_saveObjectStatus
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _object - [Object]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_db_saveObjectStatus;
+    (end)
+
+Author:
+    Vdauphin
+
+---------------------------------------------------------------------------- */
+
+params [
+    ["_object", objNull, [objNull]]
+];
 
 private _data = [];
 
-if !(!isNil {_object getVariable "loaded"} || !Alive _object || isNull _object) then {
-        //select 0: Type
-        _data pushBack (typeOf _object);
-        //select 1: World Pos
-        _data pushBack (getPosWorld _object);
-        //select 2: Dir
-        _data pushBack (getDir _object);
-        //select 3: ACE rearm
-        _data pushBack (_object getVariable ["ace_rearm_magazineClass",""]);
-        //select 4: Cargo
-        private _cargo = [];
-        {_cargo pushBack [(typeOf _x),(_x getVariable ["ace_rearm_magazineClass",""]),[getWeaponCargo _x,getMagazineCargo _x,getItemCargo _x]]} foreach (_object getVariable ["cargo",[]]);
-        _data pushBack _cargo;
-        //select 5: Inventory
-        private _cont = [getWeaponCargo _object,getMagazineCargo _object,getItemCargo _object];
-        _data pushBack _cont;
-        //select 6: Vector Pos (Dir and Up)
-        _data pushBack [vectorDir _object, vectorUp _object];
+if !(!alive _object || isNull _object) then {
+
+    _data pushBack (typeOf _object);
+    _data pushBack (getPosWorld _object);
+    _data pushBack (getDir _object);
+    _data pushBack (_object getVariable ["ace_rearm_magazineClass", ""]);
+    //Cargo
+    private _cargo = [];
+    {
+        _cargo pushBack (if (_x isEqualType "") then {
+            [_x, "", [[], [], []]]
+        } else {
+            [typeOf _x, _x getVariable ["ace_rearm_magazineClass", ""], [getWeaponCargo _x, getMagazineCargo _x, getItemCargo _x]]
+        });
+    } forEach (_object getVariable ["ace_cargo_loaded", []]);
+    _data pushBack _cargo;
+    //Inventory
+    private _cont = [getWeaponCargo _object, getMagazineCargo _object, getItemCargo _object];
+    _data pushBack _cont;
+    _data pushBack [vectorDir _object, vectorUp _object];
 };
 
 _data

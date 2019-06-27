@@ -1,22 +1,43 @@
 
-private ["_unit","_target","_can_see","_dir","_atan","_dirTo","_ang","_eyeu","_eyet","_terr","_int"];
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_check_los
 
-_unit = _this select 0;
-_target = _this select 1;
+Description:
+    Check the line of sight (LOS) between a unit and a target.
 
-_can_see = false;
+Parameters:
+    _unit - Unit for checking. [Object]
+    _target - Target to check. [Object]
 
-_dir = eyedirection _unit;
-_atan = ((_dir select 0) atan2 (_dir select 1));
-_dirTo = _target getdir _unit;
-_ang = abs (_dirTo - _atan);
-if ((_ang > 120) && (_ang < 240)) then {_can_see = true;};
-if (_can_see) then
-{
-    _eyeu = eyepos _unit;
-    _eyet = eyepos _target;
-    _terr = terrainintersectasl [_eyeu, _eyet];
-    _int = lineintersects [_eyeu, _eyet];
-    if (_int || _terr) then {_can_see = false;};
+Returns:
+    _can_see - Tell if the unit can see or not the target. [Boolean]
+
+Examples:
+    (begin example)
+        _can_see = [player, btc_helo_1] call btc_fnc_check_los;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
+params [
+    ["_unit", objNull, [objNull]],
+    ["_target", objNull, [objNull]]
+];
+
+(eyeDirection _unit) params ["_point1", "_point2"];
+private _atan = _point1 atan2 _point2;
+private _dirTo = _target getDir _unit;
+private _ang = abs (_dirTo - _atan);
+private _can_see = (_ang > 120) && (_ang < 240);
+
+if (_can_see) then {
+    private _eyeu = eyePos _unit;
+    private _eyet = eyePos _target;
+    private _terr = terrainIntersectASL [_eyeu, _eyet];
+    private _int = lineIntersects [_eyeu, _eyet];
+    private _can_see = !(_int || _terr);
 };
 _can_see

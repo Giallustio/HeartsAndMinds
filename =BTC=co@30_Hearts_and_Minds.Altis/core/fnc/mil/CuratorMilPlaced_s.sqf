@@ -1,4 +1,31 @@
 
-(_this select 0) call btc_fnc_mil_unit_create;
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_mil_CuratorMilPlaced_s
 
-if (btc_debug_log) then    {diag_log format ["Curator create mil : %1",(_this select 0)];};
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _unit - [Object]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_mil_CuratorMilPlaced_s;
+    (end)
+
+Author:
+    Vdauphin
+
+---------------------------------------------------------------------------- */
+
+params [
+    ["_unit", objNull, [objNull]]
+];
+
+_unit call btc_fnc_mil_unit_create;
+
+if (btc_debug_log) then {
+    [format ["%1", _unit], __FILE__, [false]] call btc_fnc_debug_message;
+};

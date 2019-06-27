@@ -1,4 +1,33 @@
-params ["_from", "_to", "_isRuin"];
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_eh_buildingchanged
+
+Description:
+    Fill me when you edit me !
+
+Parameters:
+    _from - [Object]
+    _to - [Object]
+    _isRuin - [Boolean]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_fnc_eh_buildingchanged;
+    (end)
+
+Author:
+    mtusnio
+
+---------------------------------------------------------------------------- */
+
+params [
+    ["_from", objNull, [objNull]],
+    ["_to", objNull, [objNull]],
+    ["_isRuin", false, [false]]
+];
+
 private _classname = toUpper typeOf _from;
 private _malus = [btc_rep_malus_building_damaged, btc_rep_malus_building_destroyed] select _isRuin;
 private _skipCategories = false;
@@ -9,23 +38,26 @@ if ((getObjectType _from != 1) && !(_from in btc_buildings_changed)) exitWith {}
 btc_buildings_changed pushBack _to;
 
 {
-    if (_classname find (toUpper (_x select 0)) != -1) exitWith {
-        _malus = _malus * (_x select 1);
+    _x params ["_buildings_classname", "_malus_multipliers"];
+
+    if (_classname find (toUpper _buildings_classname) != -1) exitWith {
+        _malus = _malus * _malus_multipliers;
         _skipCategories = true;
     };
 } forEach btc_buildings_multipliers;
 
 if (!_skipCategories) then {
     {
-        if (_classname find (toUpper (_x select 0)) != -1) then {
-            _malus = _malus * (_x select 1);
+        _x params ["_buildings_classname", "_malus_multipliers"];
+
+        if (_classname find (toUpper _buildings_classname) != -1) then {
+            _malus = _malus * _malus_multipliers;
         };
     } forEach btc_buildings_categories_multipliers;
 };
 
 if (btc_debug) then {
-    systemChat format [ "BuildingChanged: %1 to %2. Malus: %3",
-    typeOf _from, typeOf _to, _malus ];
+    [format ["%1 to %2. Malus: %3", typeOf _from, typeOf _to, _malus], __FILE__, [btc_debug, false]] call btc_fnc_debug_message;
 };
 
 _malus call btc_fnc_rep_change;
