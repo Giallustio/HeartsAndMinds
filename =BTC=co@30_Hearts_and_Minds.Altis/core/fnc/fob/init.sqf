@@ -33,6 +33,7 @@ params [
 if (
     if (_marker isEqualTo "") then {
         _marker = "respawn_" + str btc_player_side + str _structure;
+        _structure setVariable ["btc_fob_rallypointPos", position _structure, true];
         if (_marker in (_fobs select 0)) then {
             true
         } else {

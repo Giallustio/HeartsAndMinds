@@ -38,14 +38,15 @@ params [
 private _fob_index = (_fobs select 1) find _struc;
 
 if (btc_debug || btc_debug_log) then {
-    [format ["FOB killed named %1", (_fobs select 0) select _fob_index], __FILE__, [btc_debug, btc_debug_log]] call btc_fnc_debug_message;
+    [format ["named %1", (_fobs select 0) select _fob_index], __FILE__, [btc_debug, btc_debug_log]] call btc_fnc_debug_message;
 };
 
-deleteVehicle ((_fobs select 2) deleteAt _fob_index);
 deleteMarker ((_fobs select 0) deleteAt _fob_index);
+private _fob = (_fobs select 1) deleteAt _fob_index;
+deleteVehicle ((_fobs select 2) deleteAt _fob_index);
 
 if (_delete) then {
-    deleteVehicle ((_fobs select 1) deleteAt _fob_index);
+    deleteVehicle _fob;
 };
 
 _this

@@ -47,8 +47,7 @@ _marker setMarkerColor "ColorBlue";
 _marker setMarkerShape "ICON";
 
 [_struc, _flag, _marker] call btc_fnc_fob_init;
-_flag setVariable ["btc_fob", _FOB_name];
 
 _struc addEventHandler ["Killed", btc_fnc_eh_FOB_killed];
 
-[_FOB_name, _struc, _flag]
+[_marker, _struc, _flag]

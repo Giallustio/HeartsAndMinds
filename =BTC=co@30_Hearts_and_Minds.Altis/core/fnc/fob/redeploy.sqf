@@ -30,11 +30,12 @@ private _fobs_marker = [];
 private _fobs_structure = [];
 private _fobs_texts = [];
 {
-    if (_x in allMapMarkers) then {
+    private _structure = (btc_int_ask_data select 1) select _forEachIndex;
+    if ((_x in allMapMarkers) || !(isNull _structure) && (_structure inArea [_structure getVariable ["btc_fob_rallypointPos", [0, 0]], 1, 1, 0, false])) then {
         _fobs_marker pushBack _x;
-        _fobs_structure pushBack ((btc_int_ask_data select 1) select _forEachIndex);
+        _fobs_structure pushBack _structure;
 
-        private _fobs_ticket = (_fobs_structure select _forEachIndex) getVariable ["btc_tickets", -1];
+        private _fobs_ticket = _structure getVariable ["btc_tickets", -1];
         _fobs_texts pushBack (if (_fobs_ticket isEqualTo -1) then {
             format [localize "STR_BTC_HAM_O_FOB_REDEPLOY_H_MOVING", markerText _x]
         } else {
@@ -50,7 +51,7 @@ if (_fobs_marker isEqualTo []) exitWith {
 private _respawn_positions = _fobs_structure apply {
     private _positions = _x buildingPos -1;
     if (_positions isEqualTo []) then {
-        _x modelToWorld [0, 1.5, 0];
+        _x modelToWorld [0, 1.5, 0]
     } else {
         selectRandom (_positions select {_x select 2 < 1})
     };
@@ -79,16 +80,16 @@ private _EHid = ["btc_respawn", {
 private _missionsData = [];
 {
     _missionsData pushBack [
-        getMarkerPos _x,
+        position _x,
         {["btc_respawn", _this select 9] call CBA_fnc_localEvent;},
-        markerText _x,
+        markerText (_fobs_marker select _forEachIndex),
         _fobs_texts select _forEachIndex,
         "",
-        getText (configfile >> "CfgVehicles" >> typeOf (_fobs_structure select _forEachIndex) >> "editorPreview"),
+        getText (configfile >> "CfgVehicles" >> typeOf _x >> "editorPreview"),
         1,
-        [_respawn_positions select _forEachIndex, _fobs_structure select _forEachIndex]
+        [_respawn_positions select _forEachIndex, _x]
     ]
-} forEach _fobs_marker;
+} forEach _fobs_structure;
 
 disableserialization;
 (date call BIS_fnc_sunriseSunsetTime) params ["_sunrise", "_sunset"];
