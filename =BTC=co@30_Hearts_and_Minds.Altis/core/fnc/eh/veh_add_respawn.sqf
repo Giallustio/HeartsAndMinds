@@ -8,7 +8,6 @@ Description:
 Parameters:
     _vehicle - Vehicle to add inside the respawn system. [Object]
     _time - Time before respawn. [Number]
-    _has_marker - Unused. [Boolean]
     _helo - Array of respawning vehicles. [Array]
 
 Returns:
@@ -16,7 +15,7 @@ Returns:
 
 Examples:
     (begin example)
-        [cursorObject, 30, false] call btc_fnc_eh_veh_add_respawn;
+        [cursorObject, 30] call btc_fnc_eh_veh_add_respawn;
     (end)
 
 Author:
@@ -26,8 +25,7 @@ Author:
 
 params [
     ["_vehicle", objNull, [objNull]],
-    ["_time", 0, [0]],
-    ["_has_marker", false, [false]],
+    ["_time", 30, [0]],
     ["_helo", btc_helo, [[]]]
 ];
 
@@ -46,7 +44,7 @@ private _fuelSource = [
 ];
 private _pylons = getPylonMagazines _vehicle;
 
-_vehicle setVariable ["data_respawn", [_type, _pos, _dir, _time, _has_marker, _customization, _vector, _isMedicalVehicle, _isRepairVehicle, _fuelSource, _pylons]];
+_vehicle setVariable ["data_respawn", [_type, _pos, _dir, _time, _customization, _vector, _isMedicalVehicle, _isRepairVehicle, _fuelSource, _pylons]];
 
 if ((isNumber (configFile >> "CfgVehicles" >> typeOf _vehicle >> "ace_fastroping_enabled")) && !(typeOf _vehicle isEqualTo "RHS_UH1Y_d")) then {[_vehicle] call ace_fastroping_fnc_equipFRIES};
 _vehicle addMPEventHandler ["MPKilled", {if (isServer) then {[_this select 0] call btc_fnc_eh_veh_respawn};}];

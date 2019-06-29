@@ -259,11 +259,9 @@ if (!isDedicated) then {
     //FOB
     btc_fnc_fob_create = compile preprocessFileLineNumbers "core\fnc\fob\create.sqf";
     btc_fnc_fob_redeploy = compile preprocessFileLineNumbers "core\fnc\fob\redeploy.sqf";
-    btc_fnc_fob_dismantle = compile preprocessFileLineNumbers "core\fnc\fob\dismantle.sqf";
 
     //INT
     btc_fnc_int_add_actions = compile preprocessFileLineNumbers "core\fnc\int\add_actions.sqf";
-    btc_fnc_int_action_result = compile preprocessFileLineNumbers "core\fnc\int\action_result.sqf";
     btc_fnc_int_orders = compile preprocessFileLineNumbers "core\fnc\int\orders.sqf";
     btc_fnc_int_shortcuts = compile preprocessFileLineNumbers "core\fnc\int\shortcuts.sqf";
     btc_fnc_int_terminal = compile preprocessFileLineNumbers "core\fnc\int\terminal.sqf";
