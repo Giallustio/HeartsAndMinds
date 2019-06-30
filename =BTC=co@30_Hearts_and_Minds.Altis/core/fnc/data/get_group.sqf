@@ -53,8 +53,6 @@ _index_wp = (currentWaypoint _group) + 1;
     _array_wp append [[waypointPosition _x, waypointType _x, waypointSpeed _x, waypointFormation _x, waypointCombatMode _x, waypointBehaviour _x]];
 } forEach waypoints _group;
 
-
-if (_group getVariable ["stop", false]) then {_type_db = 2;};
 if !(_group getVariable ["btc_inHouse", ""] isEqualTo "") then {_type_db = 3;
     _array_veh = _group getVariable ["btc_inHouse", ""];
 };
