@@ -181,7 +181,7 @@ if (isServer) then {
     btc_type_generator = _allClassSorted select {_x isKindOf "Land_Device_assembled_F"};
     btc_type_storagebladder = _allClassSorted select {_x isKindOf "StorageBladder_base_F"};
     btc_type_mines = ["APERSMine", "APERSBoundingMine", "APERSTripMine"];
-    btc_type_power = ["Land_PowerGenerator_F", "Land_PortableGenerator_01_F"] + (_allClassSorted select {_x isKindOf "StorageBladder_base_F"});
+    btc_type_power = ["Land_PowerGenerator_F", "Land_PortableGenerator_01_F"] + (_allClassSorted select {_x isKindOf "Machine_base_F"});
     btc_type_cord = ["Land_ExtensionCord_F"];
     btc_type_cones = ["Land_RoadCone_01_F", "RoadCone_F", "RoadCone_L_F"];
     btc_type_fences = ["Land_PlasticNetFence_01_long_F", "Land_PlasticNetFence_01_long_d_F", "RoadBarrier_F", "TapeSign_F"];
@@ -250,7 +250,7 @@ if (isServer) then {
     btc_buildings_changed = [];
 
     //IED
-    btc_type_ieds = ["Land_GarbageContainer_closed_F", "Land_GarbageContainer_open_F", "Land_Portable_generator_F", "Land_WoodenBox_F", "Land_BarrelTrash_grey_F", "Land_Sacks_heap_F", "Land_Wreck_Skodovka_F", "Land_WheelieBin_01_F"] + btc_type_pallet + btc_type_barrel + (_allClassSorted select {
+    private _ieds = ["Land_GarbageContainer_closed_F", "Land_GarbageContainer_open_F", "Land_Portable_generator_F", "Land_WoodenBox_F", "Land_BarrelTrash_grey_F", "Land_Sacks_heap_F", "Land_Wreck_Skodovka_F", "Land_WheelieBin_01_F"] + btc_type_pallet + btc_type_barrel + (_allClassSorted select {
         _x isKindOf "GasTank_base_F" ||
         _x isKindOf "Garbage_base_F" ||
         (_x isKindOf "Constructions_base_F" &&
@@ -263,7 +263,8 @@ if (isServer) then {
             (toLower _x find "offroad") != -1
         })
     });
-    btc_model_ieds = btc_type_ieds apply {(toLower getText(_cfgVehicles >> _x >> "model")) select [1]};
+    _ieds = _ieds - ["Land_Garbage_line_F","Land_Garbage_square3_F","Land_Garbage_square5_F"];
+    btc_model_ieds = _ieds apply {(toLower getText(_cfgVehicles >> _x >> "model")) select [1]};
 };
 
 //Civ
