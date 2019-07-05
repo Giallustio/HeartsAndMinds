@@ -27,12 +27,18 @@ btc_int_ask_data = nil;
 waitUntil {!(isNil "btc_int_ask_data")};
 
 private _fobs_marker = [];
+private _fobs_markerText = [];
 private _fobs_structure = [];
 private _fobs_texts = [];
 {
     private _structure = (btc_int_ask_data select 1) select _forEachIndex;
     if ((_x in allMapMarkers) || !(isNull _structure) && (_structure inArea [_structure getVariable ["btc_fob_rallypointPos", [0, 0]], 1, 1, 0, false])) then {
         _fobs_marker pushBack _x;
+        _fobs_markerText pushBack (if (_x in allMapMarkers) then {
+            markerText _x;
+        } else {
+            getText (configfile >> "CfgVehicles" >> typeOf _structure >> "displayName")
+        });
         _fobs_structure pushBack _structure;
 
         private _fobs_ticket = _structure getVariable ["btc_tickets", -1];
@@ -82,7 +88,7 @@ private _missionsData = [];
     _missionsData pushBack [
         position _x,
         {["btc_respawn", _this select 9] call CBA_fnc_localEvent;},
-        markerText (_fobs_marker select _forEachIndex),
+        _fobs_markerText select _forEachIndex,
         _fobs_texts select _forEachIndex,
         "",
         getText (configfile >> "CfgVehicles" >> typeOf _x >> "editorPreview"),
