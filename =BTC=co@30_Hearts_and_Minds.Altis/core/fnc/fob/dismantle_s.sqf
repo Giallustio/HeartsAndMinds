@@ -3,16 +3,16 @@
 Function: btc_fnc_fob_dismantle_s
 
 Description:
-    Fill me when you edit me !
+    Dismantle server side the FOB.
 
 Parameters:
-    _flag - [Object]
+    _flag - Flag of the FOB. [Object]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_fob_dismantle_s;
+        [cursorTarget] call btc_fnc_fob_dismantle_s;
     (end)
 
 Author:

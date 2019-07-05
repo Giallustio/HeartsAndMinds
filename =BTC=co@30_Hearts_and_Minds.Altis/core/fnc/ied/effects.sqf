@@ -3,11 +3,11 @@
 Function: btc_fnc_ied_effects
 
 Description:
-    Fill me when you edit me !
+    Create effects on player (smoke, rock, shock wave ...).
 
 Parameters:
-    _pos - [Array]
-    _caller - [Object]
+    _pos - Position of the IED. [Array]
+    _caller - Player. [Object]
 
 Returns:
 

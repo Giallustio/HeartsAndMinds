@@ -3,7 +3,7 @@
 Function: btc_fnc_rep_hd
 
 Description:
-    Fill me when you edit me !
+    Handle damage.
 
 Parameters:
     _unit - [Object]
@@ -16,7 +16,7 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_rep_hd;
+        [cursorObject, "body", 0.1, player] call btc_fnc_rep_hd;
     (end)
 
 Author:

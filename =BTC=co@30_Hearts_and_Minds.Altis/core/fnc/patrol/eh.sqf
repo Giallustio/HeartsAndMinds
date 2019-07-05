@@ -3,16 +3,16 @@
 Function: btc_fnc_patrol_eh
 
 Description:
-    Fill me when you edit me !
+    Remove events and delete entity.
 
 Parameters:
-    _veh - []
+    _veh - Object to delete. [Object, Group]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_patrol_eh;
+        [cursorTarget] call btc_fnc_patrol_eh;
     (end)
 
 Author:

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project name="BTC Hearts and Minds: Mission">
     <Package name="Description">
         <Container name="Description: Main">
@@ -335,6 +335,7 @@
                 <Original>&lt;&lt; Spawn options &gt;&gt;</Original>
                 <German>Spawn Einstellungen:</German>
                 <Chinesesimp>&lt;&lt; 重生设置 &gt;&gt;</Chinesesimp>
+                <Portuguese>&lt;&lt; Opções de Spawn &gt;&gt;</Portuguese>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_SPWAN_ISFREE_PROB">
                 <Original>Probability for a city to be free:</Original>
@@ -344,16 +345,19 @@
                 <Original>Enemy density:</Original>
                 <German>Feinddichte:</German>
                 <Chinesesimp>敌军密度:</Chinesesimp>
+                <Portuguese>Densidade inimiga:</Portuguese>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_SPWAN_CIVILIAN_DENSITY">
                 <Original>Civilian density:</Original>
                 <German>Zivilistendichte:</German>
                 <Chinesesimp>平民密度:</Chinesesimp>
+                <Portuguese>Densidade civil:</Portuguese>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_SPWAN_MIL_INHOUSE_DENSITY">
                 <Original>Density of military in house:</Original>
                 <German>Feinddichte in Gebäuden:</German>
                 <Chinesesimp>建筑物中的敌军密度:</Chinesesimp>
+                <Portuguese>Densidade de militares em construções:</Portuguese>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_SPAWN_ARMEDHIDEOUT">
                 <Original>Add armed vehicles in Hideout:</Original>
@@ -371,11 +375,13 @@
                 <Original>Maximum number of military patrol:</Original>
                 <German>Maximale Anzahl feindl. Patrouillen:</German>
                 <Chinesesimp>敌方巡逻队数量上限:</Chinesesimp>
+                <Portuguese>Número máximo de patrulhas militares:</Portuguese>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_SPWAN_CIV_MAX_VEH">
                 <Original>Maximum number of civilian patrol:</Original>
                 <German>Maximale Anzahl an ziviler Fahrzeuge:</German>
                 <Chinesesimp>民用车辆数量上限:</Chinesesimp>
+                <Portuguese>Número máximo de patrulhas civis:</Portuguese>
             </Key>
         </Container>
         <Container name="Parameters: IEDS">
@@ -550,6 +556,7 @@
                 <Original>&lt;&lt; Arsenal options &gt;&gt;</Original>
                 <German>&lt;&lt; Arsenal Einstellungen &gt;&gt;</German>
                 <Chinesesimp>&lt;&lt; 军火库设置 &gt;&gt;</Chinesesimp>
+                <Portuguese>&lt;&lt; Opções do Arsenal &gt;&gt;</Portuguese>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_ARSENAL_ARSENALTYPE">
                 <Original>Type of the arsenal:</Original>
@@ -591,16 +598,19 @@
                 <Original>Restrict arsenal (See /define_mod.sqf):</Original>
                 <German>Arsenal beschränken (Siehe /define_mod.sqf):</German>
                 <Chinesesimp>军火库限制 (见 /define_mod.sqf):</Chinesesimp>
+                <Portuguese>Restringir arsenal (Veja /define_mod.sqf):</Portuguese>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_ARSENAL_ARSENALRESTR_REMOVEONLY">
                 <Original>Remove only (works only with ACE3-Arsenal)</Original>
                 <German>Nur entfernen (funktioniert nur beim ACE3-Arsenal)</German>
                 <Chinesesimp>仅移除 (仅对ACE3军火库生效)</Chinesesimp>
+                <Portuguese>Apenas remover (funciona apenas com o ACE3-Arsenal)</Portuguese>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_ARSENAL_AUTOLOADOUT">
                 <Original>Predefined loadouts (See /define_mod.sqf)</Original>
                 <German>Vorgefertigte Loadouts (Siehe /define_mod.sqf)</German>
                 <Chinesesimp>预设装备 (见 /define_mod.sqf)</Chinesesimp>
+                <Portuguese>Loadouts prédefinidos (Veja /define_mod.sqf)</Portuguese>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_ARSENAL_RMVWEAPONS">
                 <Original>Remove all weapons</Original>
@@ -611,6 +621,7 @@
                 <Original>Filter on player role (works only with ACE3-Arsenal)</Original>
                 <German>Nach der Rolle des Spielers beschränken (geht nur mit dem ACE3-Arsenal)</German>
                 <Chinesesimp>根据玩家角色限制 (仅对ACE3军火库生效)</Chinesesimp>
+                <Portuguese>Filtrar à função do jogador (funciona apenas com o ACE3-Arsenal)</Portuguese>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_ARSENAL_GARAGEADMIN">
                 <Original>Activate garage for admin:</Original>
@@ -1147,7 +1158,7 @@
                 <Original>Taxi</Original>
                 <Spanish>Taxi</Spanish>
                 <German>Taxi</German>
-                <Portuguese>Taxi</Portuguese>
+                <Portuguese>Táxi</Portuguese>
                 <Chinesesimp>搭车</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_ACTION_ORDERS_ASKINFO">
@@ -1177,7 +1188,7 @@
                 <Original>Request</Original>
                 <Spanish>Solicitar</Spanish>
                 <German>Anfordern</German>
-                <Portuguese>Requisitar</Portuguese>
+                <Portuguese>Solicitar</Portuguese>
                 <Chinesesimp>申请</Chinesesimp>
             </Key>
         </Container>
@@ -1186,7 +1197,7 @@
                 <Original>Re-deploy</Original>
                 <Spanish>Re-deploy</Spanish>
                 <German>Verlegen</German>
-                <Portuguese>Recolocar</Portuguese>
+                <Portuguese>Ressurgir na FOB</Portuguese>
                 <Chinesesimp>重新部署</Chinesesimp>
             </Key>
         </Container>
@@ -1521,7 +1532,7 @@
                 <Original>Dismantle, move out ...</Original>
                 <Spanish>Desmantelado, muévanse...</Spanish>
                 <German>Abbau im gange, geh ein wenig zurück...</German>
-                <Portuguese>Saia... Desmontando</Portuguese>
+                <Portuguese>Desmontando, se afaste...</Portuguese>
                 <!-- This translation might have confusion. 此处翻译存疑。 -->
                 <Chinesesimp>拆除, 搬走 ...</Chinesesimp>
             </Key>
@@ -1543,6 +1554,7 @@
                 <Original>Select a FOB</Original>
                 <German>FOB auswähen</German>
                 <Chinesesimp>选择一个FOB:</Chinesesimp>
+                <Portuguese>Selecione uma FOB</Portuguese>
             </Key>
             <Key ID="STR_BTC_HAM_O_FOB_DLG_T_NAMEFOB">
                 <Original>Name the FOB:</Original>
@@ -1599,7 +1611,7 @@
                 <Original>In the last hideout we found important intel about all the cities occupied by the Oplitas! Size the last positions held by the enemies and defeat them once and for all</Original>
                 <Spanish>En el último escondite encontramos información importante sobre todas las ciudades ocupadas por los Oplitas! Evalúa las últimas posiciones de los enemigos y derrótalos de una vez por todas.</Spanish>
                 <German>In the last hideout we found important intel about all the cities occupied by the Oplitas! Size the last positions held by the enemies and defeat them once and for all</German>
-                <Portuguese>No último esconderijo encontramos informações importantes sobre as cidades ocupadas pelos inimigos! Dimensione as últimas posições dos inimigos e derrote-os de uma vez por todas</Portuguese>
+                <Portuguese>No último esconderijo encontramos informações importantes sobre as cidades ocupadas pelos inimigos! Conquites as últimas posições dos inimigos e derrote-os de uma vez por todas</Portuguese>
                 <Chinesesimp>在上个敌军藏匿点中, 我们发现了写有Oplitas占领的全部城市的重要情报! 夺取最后一个敌军据点, 一举消灭他们! </Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_7">
@@ -1719,7 +1731,7 @@
                 <Original>All the hideouts are destroyed, finally the Oplitas has been defeated! Mission accomplished</Original>
                 <Spanish>Todos los escondites fueron destruidos, finalmente el Oplitas han sido derrotados! Misión cumplida</Spanish>
                 <German>Alle Verstecke sind zerstört, nun sind die Oplitas besiegt! Mission erfüllt</German>
-                <Portuguese>Todos os econderijos foram destruídos, finalmente os inimigos foram derrotados! Missão cumprida</Portuguese>
+                <Portuguese>Todos os esconderijos foram destruídos, finalmente os inimigos foram derrotados! Missão cumprida</Portuguese>
                 <Chinesesimp>所有敌军藏匿点已被摧毁, 敌军终于被打败了! 任务完成</Chinesesimp>
             </Key>
         </Container>
@@ -1831,6 +1843,7 @@
                 <Original>This wreck will respawn</Original>
                 <Chinesesimp>此残骸将会重生</Chinesesimp>
                 <German>Dieses Wrack respawnt automatisch</German>
+                <Portuguese>Esta carcaça será respawnada</Portuguese>
             </Key>
         </Container>
         <Container name="Logistic: Delete">

@@ -3,16 +3,17 @@
 Function: btc_fnc_ied_drone_active
 
 Description:
-    Fill me when you edit me !
+    Create a trigger to allow drone to fire on player side presence.
 
 Parameters:
-    _driver_drone - [Object]
+    _driver_drone - Driver of the drone. [Object]
 
 Returns:
+	_trigger - Trigger to allow drone to fire on player side presence. [Object]
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_ied_drone_active;
+        _trigger = [driver] call btc_fnc_ied_drone_active;
     (end)
 
 Author:

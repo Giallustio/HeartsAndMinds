@@ -3,16 +3,16 @@
 Function: btc_fnc_ied_effect_rocks
 
 Description:
-    Fill me when you edit me !
+    Add rocks effect, some rock fall from the sky.
 
 Parameters:
-    _pos - [Array]
+    _pos - Position of the IED. [Array]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_ied_effect_rocks;
+        [player] call btc_fnc_ied_effect_rocks;
     (end)
 
 Author:

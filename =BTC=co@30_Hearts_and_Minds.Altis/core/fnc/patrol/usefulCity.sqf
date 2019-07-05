@@ -3,18 +3,19 @@
 Function: btc_fnc_patrol_usefulCity
 
 Description:
-    Fill me when you edit me !
+    Return useful city based on starting city and activated city by player. Prefer cities in the opposite side of the active city relatively to the starting city.
 
 Parameters:
-    _cities - [Array]
-    _area - [Number]
-    _isBoat - [Boolean]
+    _cities - Starting city and activated city by player. [Array]
+    _area - Area of patroling. [Number]
+    _isBoat - Does the vehicle is a boat. [Boolean]
 
 Returns:
+    _cities - End city of the patrol. [Array]
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_patrol_usefulCity;
+        [[selectRandom btc_city_all, selectRandom btc_city_all]] call btc_fnc_patrol_usefulCity;
     (end)
 
 Author:

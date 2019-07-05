@@ -3,17 +3,15 @@
 Function: btc_fnc_fob_redeploy
 
 Description:
-    Fill me when you edit me !
+    Show user interface of the map with FOB position.
 
 Parameters:
-    _sunrise - []
-    _sunset - []
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_fob_redeploy;
+        [] spawn btc_fnc_fob_redeploy;
     (end)
 
 Author:

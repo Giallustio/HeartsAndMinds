@@ -3,16 +3,16 @@
 Function: btc_fnc_rep_add_eh
 
 Description:
-    Fill me when you edit me !
+    Add event handler link to the reputation system to a unit not initialised.
 
 Parameters:
-    _civilian - [Object]
+    _civilian - Unit. [Object]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_rep_add_eh;
+        [curosrTarget] call btc_fnc_rep_add_eh;
     (end)
 
 Author:
