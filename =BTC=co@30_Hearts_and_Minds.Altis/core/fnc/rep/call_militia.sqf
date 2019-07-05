@@ -47,7 +47,7 @@ if (_start_pos isEqualTo []) then {
         if (_pos distance _city > 300 && {_city inArea [_pos, 2500, 2500, 0, false]} && {_players inAreaArray [getPosWorld _city, 500, 500] isEqualTo []}) then {
             _start_pos = getPos _city;
         };
-    } forEach btc_city_all;
+    } forEach (btc_city_all select {!(isNull _x)});
 };
 if (btc_debug_log) then {
     [format ["_start_pos : %1 (CITIES)", _start_pos], __FILE__, [false]] call btc_fnc_debug_message;

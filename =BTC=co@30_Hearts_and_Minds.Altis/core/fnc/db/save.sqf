@@ -32,10 +32,13 @@ if (btc_debug) then {
 
 btc_db_is_saving = true;
 
-for "_i" from 0 to (count btc_city_all - 1) do {
-    private _s = [_i] spawn btc_fnc_city_de_activate;
-    waitUntil {scriptDone _s};
-};
+{
+    if (!isNull _x) then {
+        private _s = [_forEachIndex] spawn btc_fnc_city_de_activate;
+        waitUntil {scriptDone _s};
+    };
+} forEach btc_city_all;
+
 if (btc_debug) then {
     ["...2", __FILE__, [btc_debug, false, true]] call btc_fnc_debug_message;
 };
@@ -70,7 +73,7 @@ private _cities_status = [];
     if (btc_debug_log) then {
         [format ["ID %1 - IsOccupied %2", _x getVariable "id", _x getVariable "occupied"], __FILE__, [false]] call btc_fnc_debug_message;
     };
-} forEach btc_city_all;
+} forEach (btc_city_all select {!(isNull _x)});
 profileNamespace setVariable [format ["btc_hm_%1_cities", _name], _cities_status];
 
 //HIDEOUT

@@ -29,10 +29,29 @@ setDate (profileNamespace getVariable [format ["btc_hm_%1_date", _name], date]);
 //CITIES
 private _cities_status = profileNamespace getVariable [format ["btc_hm_%1_cities", _name], []];
 
+private _cities = ["NameVillage", "NameCity", "NameCityCapital", "NameLocal", "Hill", "Airport"];
+if (btc_p_sea) then {_cities pushBack "NameMarine";};
+private _locations = configfile >> "cfgworlds" >> worldname >> "names";
+private _oldID_to_newID = [];
+// Get ID from the old system
+for "_id" from 0 to (count _locations - 1) do {
+    private _current = _locations select _id;
+    private _type = getText (_current >> "type");
+
+    if (_type in _cities) then {
+        _oldID_to_newID pushBack _id;
+    };
+};
+private _size = count _locations;
+{
+    _oldID_to_newID pushBack (_forEachindex + _size);
+} forEach btc_custom_loc;
+
 {
     _x params ["_id", "_initialized", "_spawn_more", "_occupied", "_data_units", "_has_ho", "_ho_units_spawned", "_ieds", "_has_suicider"];
 
-    private _city = btc_city_all select _id;
+
+    private _city = btc_city_all select (_oldID_to_newID select _id);
 
     _city setVariable ["initialized", _initialized];
     _city setVariable ["spawn_more", _spawn_more];
