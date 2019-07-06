@@ -3,20 +3,20 @@
 Function: btc_fnc_patrol_WPCheck
 
 Description:
-    Fill me when you edit me !
+    Check if the waypoint has been completed and initialise a new patrol.
 
 Parameters:
-    _group - [Group]
-    _area - [Number]
-    _last_wp_pos - [Array]
-    _citiesID - [Array]
-    _isBoat - [Boolean]
+    _group - Group patroling. [Group]
+    _area - Area of patroling. [Number]
+    _last_wp_pos - Position of the end city (last waypoint). [Array]
+    _citiesID - ID of the starting city, activated city by player and end city. [Array]
+    _isBoat - Does the vehicle is a boat. [Boolean]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_patrol_WPCheck;
+        [group cursorTarget, 1000, getPos player, [0, 1, 2]] call btc_fnc_patrol_WPCheck;
     (end)
 
 Author:

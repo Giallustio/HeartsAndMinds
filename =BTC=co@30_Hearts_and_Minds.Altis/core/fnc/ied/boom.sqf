@@ -3,17 +3,17 @@
 Function: btc_fnc_ied_boom
 
 Description:
-    Fill me when you edit me !
+    Create the boom and the visual effect player side.
 
 Parameters:
-    _wreck - [Object]
-    _ied - [Object]
+    _wreck - Simple object around the ied. [Object]
+    _ied - ACE IED. [Object]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_ied_boom;
+        [wreck, ied] call btc_fnc_ied_boom;
     (end)
 
 Author:

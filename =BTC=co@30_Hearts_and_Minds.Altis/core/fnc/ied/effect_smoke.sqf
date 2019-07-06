@@ -3,16 +3,16 @@
 Function: btc_fnc_ied_effect_smoke
 
 Description:
-    Fill me when you edit me !
+    Create a smoke effect.
 
 Parameters:
-    _pos - [Array]
+    _pos - Position of the IED. [Array]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_ied_effect_smoke;
+        [getPos player] call btc_fnc_ied_effect_smoke;
     (end)
 
 Author:

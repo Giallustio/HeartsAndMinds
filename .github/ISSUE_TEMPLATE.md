@@ -1,3 +1,5 @@
+(Use English only.)
+
 ## Before reporting
 
 If you have found an issue with Hearts and Minds please make sure that Hearts and Minds really is the cause of the problem. To do this try to reproduce the issue with using only `@CBA_A3`, `@ace` and `@RHSUSAF` on a stable and unchanged Hearts and minds available [here](https://github.com/Vdauphin/HeartsAndMinds/releases) on a dedicated server.
