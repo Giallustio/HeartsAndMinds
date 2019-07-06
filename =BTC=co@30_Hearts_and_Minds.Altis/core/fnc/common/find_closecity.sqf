@@ -24,7 +24,7 @@ Author:
 ---------------------------------------------------------------------------- */
 
 params [
-    ["_obj", objNull, [objNull]],
+    ["_obj", objNull, [objNull, []]],
     ["_array", [], [[]]],
     ["_isOccupied", true, [true]]
 ];
