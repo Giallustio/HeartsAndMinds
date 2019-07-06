@@ -1,18 +1,19 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_set_groupsowner
+Function: btc_fnc_set_groupsOwner
 
 Description:
     Transfert groups to a headless client.
 
 Parameters:
-    _group_array - Array of groups to transfert. [Array]
+    _groups - Array of groups to transfert. [Array]
 
 Returns:
+	Returns array of true if locality was changed. [Array]
 
 Examples:
     (begin example)
-        [] call btc_fnc_set_groupsowner;
+        [btc_patrol_active + btc_civ_veh_active] call btc_fnc_set_groupsOwner;
     (end)
 
 Author:
@@ -20,8 +21,15 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
+if !(btc_p_auto_headless) exitWith {};
+private _HCs = entities "HeadlessClient_F";
+if (_HCs isEqualTo []) exitWith {[]};
+
 params [
-    ["_group_array", btc_patrol_active, [[]]]
+    ["_groups", btc_patrol_active + btc_civ_veh_active, [[]]]
 ];
 
-_group_array apply {[_x] call btc_fnc_set_groupowner;};
+private _HC = owner (_HCs select 0);
+_groups apply {
+    _x setGroupOwner _HC;
+};

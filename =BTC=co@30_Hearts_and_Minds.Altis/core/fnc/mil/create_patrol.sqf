@@ -100,9 +100,6 @@ switch (_random) do {
 
 [_group, [_start_city, _active_city], _area, _pos_isWater] call btc_fnc_patrol_init;
 
-//Check if HC is connected
-if !((entities "HeadlessClient_F") isEqualTo []) then {
-    [_group] call btc_fnc_set_groupowner;
-};
+[[_group]] call btc_fnc_set_groupsOwner;
 
 true

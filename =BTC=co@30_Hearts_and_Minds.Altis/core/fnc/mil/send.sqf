@@ -58,9 +58,6 @@ switch (_typeOf_patrol) do {
     };
 };
 
-//Check if HC is connected
-if !((entities "HeadlessClient_F") isEqualTo []) then {
-    [_group] call btc_fnc_set_groupowner;
-};
+[[_group]] call btc_fnc_set_groupsOwner;
 
 _group

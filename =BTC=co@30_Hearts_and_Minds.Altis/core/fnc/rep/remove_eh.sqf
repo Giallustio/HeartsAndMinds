@@ -24,10 +24,6 @@ params [
     ["_civilian", objNull, [objNull]]
 ];
 
-if (local _civilian) then {
-    [_civilian, "HandleDamage", "btc_fnc_rep_hd"] call btc_fnc_eh_removePersistOnLocalityChange;
-    [_civilian, "Killed", "btc_fnc_rep_killed"] call btc_fnc_eh_removePersistOnLocalityChange;
-    [_civilian, "FiredNear", "btc_fnc_rep_firednear"] call btc_fnc_eh_removePersistOnLocalityChange;
-} else {
-    _civilian remoteExecCall ["btc_fnc_rep_remove_eh", _civilian];
-};
+[_civilian, "FiredNear", "btc_fnc_rep_firednear"] call btc_fnc_eh_removePersistOnLocalityChange;
+[_civilian, "HandleDamage", "btc_fnc_rep_hd"] remoteExecCall ["btc_fnc_eh_removePersistOnLocalityChange", _civilian];
+[_civilian, "Killed", "btc_fnc_rep_killed"] remoteExecCall ["btc_fnc_eh_removePersistOnLocalityChange", _civilian];

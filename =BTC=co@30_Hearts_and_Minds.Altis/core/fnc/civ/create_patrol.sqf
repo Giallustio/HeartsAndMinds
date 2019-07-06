@@ -76,4 +76,6 @@ _veh setVariable ["btc_crews", _group];
 
 [_group, [_start_city, _active_city], _area, _pos_isWater] call btc_fnc_patrol_init;
 
+[[_group]] call btc_fnc_set_groupsOwner;
+
 true

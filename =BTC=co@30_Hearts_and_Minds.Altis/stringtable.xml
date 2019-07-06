@@ -638,6 +638,9 @@
                 <Portuguese>Desativar o surgimento de unidades na cidade quando uma aeronave ou helicóptero estiver sobrevoando em velocidade (&gt;190km/h): </Portuguese>
                 <Chinesesimp>当飞机或直升机(&gt;190Km/h)飞掠城市上空时, 不激活城市:</Chinesesimp>
             </Key>
+            <Key ID="STR_BTC_HAM_PARAM_OTHER_AUTOHEADLESS">
+                <Original>Autodetect Headless client:</Original>
+            </Key>
             <Key ID="STR_BTC_HAM_PARAM_OTHER_DEBUG">
                 <Original>Debug:</Original>
                 <German>Debug:</German>
