@@ -42,7 +42,7 @@ if (btc_debug_log) then {
 };
 
 if (_start_pos isEqualTo []) then {
-    _start_pos = [_pos, btc_city_all select {!(_x getVariable ["active", false]) && _x getVariable ["type", ""] != "NameMarine"}, true] call btc_fnc_find_closecity;
+    _start_pos = [_pos, btc_city_all select {!(_x getVariable ["active", false]) && _x getVariable ["type", ""] != "NameMarine"}, false] call btc_fnc_find_closecity;
     _start_pos = getPos _start_pos;
 };
 

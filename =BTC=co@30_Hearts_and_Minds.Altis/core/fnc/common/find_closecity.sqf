@@ -8,7 +8,7 @@ Description:
 Parameters:
     _obj - City used to find the closer city. [Object]
     _array - Array of city. [Array]
-    _isOccupied - Filter city by their occupation by enemies. [Boolean]
+    _isOccupied - Activate not occupied city filter. [Boolean]
 
 Returns:
     _closer_city - Closer city from the array of city. [Object]
