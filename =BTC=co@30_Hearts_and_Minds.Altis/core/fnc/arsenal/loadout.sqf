@@ -42,7 +42,7 @@ params [
     ["_type", 0, [0]],
     ["_color", [[0, 1] select (worldName in ["Tanoa", "chernarus", "lingor3", "sara"]), 2] select (sunOrMoon isEqualTo 0), [0]],
     ["_isDay", 0, [0, false]],
-    ["_medicalParameters", [ace_medical_treatment_advancedBandages, ace_medical_treatment_medicEpinephrine, ace_medical_treatment_medicSurgicalKit, ace_medical_treatment_medicPAK, ace_medical_fractures], [[]]],
+    ["_medicalParameters", [ace_medical_treatment_advancedBandages, ace_medical_treatment_locationEpinephrine, ace_medical_treatment_locationSurgicalKit, ace_medical_treatment_locationPAK, ace_medical_fractures], [[]]],
     ["_arsenal_loadout", btc_arsenal_loadout, [[]]]
 ];
 (_arsenal_loadout apply {_x select _color}) params ["_uniform", "_vest", "_helmet", "_hood", "_laserdesignator", "_night_vision", "_weapon", "_weapon_sniper", "_weapon_machineGunner", "_bipod", "_pistol", "_launcher_AT", "_launcher_AA", "_backpack", "_backpack_big", "_radio"];
@@ -52,7 +52,7 @@ if (_isDay isEqualType 0) then {
     _isDay = (_sunrise < dayTime) && (_sunset > dayTime + 1);
 };
 
-_medicalParameters params ["_treatment_advancedBandages", "_treatment_Epi", "_treatment_SurgicalKit", "_treatment_PAK", "_fractures"];
+_medicalParameters params ["_advancedBandages", "_epi", "_surgicalKit", "_PAK", "_fractures"];
 
 //Item inside Uniform
 private _cfgPatches = configFile >> "CfgPatches";
@@ -60,12 +60,12 @@ private _cargo_uniform = [["acc_flashlight", 1], ["ACE_EarPlugs", 1], ["ACE_Cabl
 
 //Tweak uniform medical item depends on medical parameters
 private _medical = [["ACE_fieldDressing", 3], ["ACE_tourniquet", 4], ["ACE_morphine", 3]];
-_medical pushBack (if (_treatment_advancedBandages) then {
+_medical pushBack (if (_advancedBandages) then {
     ["ACE_packingBandage", 4]
 } else {
     ["ACE_fieldDressing", 4]
 });
-_medical pushBack (if (_treatment_Epi < 4) then {
+_medical pushBack (if (_epi < 4) then {
     ["ACE_epinephrine", 3]
 } else {
     ["ACE_morphine", 3]
@@ -99,20 +99,20 @@ private _launcher = [_launcher, _launcher_AA] select (_type isEqualTo 5);
 //Backpack content
 //Tweak backpack medical item depends on medical parameters
 private _backpackMedical = [["ACE_fieldDressing", 10], ["ACE_morphine", 12], ["ACE_bloodIV", 2], ["ACE_bloodIV_250", 2], ["ACE_bloodIV_500", 1]];
-_backpackMedical append (if (_treatment_advancedBandages) then {
+_backpackMedical append (if (_advancedBandages) then {
     [["ACE_packingBandage", 15], ["ACE_elasticBandage", 10], ["ACE_quikclot", 10]]
 } else {
     [["ACE_fieldDressing", 10]]
 });
-_backpackMedical pushBack (if (_treatment_Epi < 4) then {
+_backpackMedical pushBack (if (_epi < 4) then {
     ["ACE_epinephrine", 12]
 } else {
     ["ACE_morphine", 2]
 });
-if (_treatment_SurgicalKit < 4) then {
+if (_surgicalKit < 4) then {
     _backpackMedical pushBack ["ACE_surgicalKit", 1];
 };
-if (_treatment_PAK < 4) then {
+if (_PAK < 4) then {
     _backpackMedical pushBack ["ACE_personalAidKit", 1];
 };
 if (_fractures > 0) then {

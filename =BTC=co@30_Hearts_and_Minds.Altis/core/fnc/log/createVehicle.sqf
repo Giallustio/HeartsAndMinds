@@ -43,7 +43,7 @@ _veh setDir _dir;
 _veh setPosASL _pos;
 [_veh, _customization select 0, _customization select 1] call BIS_fnc_initVehicle;
 if (_isMedicalVehicle && {!([_veh] call ace_medical_treatment_fnc_isMedicalVehicle)}) then {
-    _veh setVariable ["ace_medical_isMedicalVehicle", 1, true];
+    _veh setVariable ["ace_medical_isMedicalVehicle", _isMedicalVehicle, true];
 };
 if (_isRepairVehicle && {!([_veh] call ace_repair_fnc_isRepairVehicle)}) then {
     _veh setVariable ["ACE_isRepairVehicle", _isRepairVehicle, true];
