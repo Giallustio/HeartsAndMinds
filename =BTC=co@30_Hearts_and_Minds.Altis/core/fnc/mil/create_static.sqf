@@ -3,18 +3,19 @@
 Function: btc_fnc_mil_create_static
 
 Description:
-    Fill me when you edit me !
+    Create a static.
 
 Parameters:
-    _pos - [Array]
-    _statics_type - [Array]
-    _dir - [Number]
+    _pos - Position of creation. [Array]
+    _statics_type - Type of static available. [Array]
+    _dir - Direction of the static. [Number]
 
 Returns:
+    _static - Created static. [Object]
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_mil_create_static;
+        _static = [getPosATL player] call btc_fnc_mil_create_static;
     (end)
 
 Author:
@@ -37,3 +38,5 @@ _group setCombatMode "RED";
 if (btc_debug_log) then {
     [format ["POS %1 _type %2", _pos, typeOf _static], __FILE__, [false]] call btc_fnc_debug_message;
 };
+
+_static
