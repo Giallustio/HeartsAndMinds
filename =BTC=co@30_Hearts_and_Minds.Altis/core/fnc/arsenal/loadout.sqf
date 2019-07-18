@@ -39,7 +39,7 @@ Author:
 ---------------------------------------------------------------------------- */
 
 params [
-    ["_type", 0, [0]],
+    ["_type", 0, [1]],
     ["_color", [[0, 1] select (worldName in ["Tanoa", "chernarus", "lingor3", "sara"]), 2] select (sunOrMoon isEqualTo 0), [0]],
     ["_isDay", 0, [0, false]],
     ["_medicalParameters", [ace_medical_treatment_advancedBandages, ace_medical_treatment_locationEpinephrine, ace_medical_treatment_locationSurgicalKit, ace_medical_treatment_locationPAK, ace_medical_fractures], [[]]],
