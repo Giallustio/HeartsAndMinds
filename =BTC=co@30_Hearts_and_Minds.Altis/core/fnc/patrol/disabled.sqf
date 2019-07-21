@@ -27,7 +27,7 @@ params [
 ];
 
 if (_damage > 0.1) then {
-    [_veh, "HandleDamage", "btc_fnc_patrol_disabled"] call btc_fnc_eh_removePersistOnLocalityChange;
+    [_veh, "HandleDamage", "btc_fnc_patrol_disabled", false] call btc_fnc_eh_removePersistOnLocalityChange;
     [_veh] call btc_fnc_patrol_eh;
 };
 
