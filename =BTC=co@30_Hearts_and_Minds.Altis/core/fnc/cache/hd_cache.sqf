@@ -37,8 +37,8 @@ private _explosive = (getNumber(configFile >> "cfgAmmo" >> _ammo >> "explosive")
 if (isNil {_cache getVariable "btc_hd_cache"} && {_explosive} && {_damage > 0.6}) then {
 
     if (!isServer) exitWith {
-        [_cache, "HandleDamage", "btc_fnc_rep_hd"] call btc_fnc_eh_removePersistOnLocalityChange;
-        _this remoteExecCall ["btc_fnc_rep_hd", 2];
+        [_cache, "HandleDamage", "btc_fnc_cache_hd_cache"] call btc_fnc_eh_removePersistOnLocalityChange;
+        _this remoteExecCall ["btc_fnc_cache_hd_cache", 2];
     };
 
     _cache setVariable ["btc_hd_cache", true];
