@@ -71,9 +71,8 @@ private _btc_composition_tower = [
 
 //// Create tower with static at _pos \\\\
 private _statics = btc_type_gl + btc_type_mg;
-_pos params ["_x", "_y", "_z"];
-[[_x + (sin(_direction)*5), _y + (cos(_direction)*5), _z], _statics, _direction] call btc_fnc_mil_create_static;
-[[_x - (sin(_direction)*5), _y - (cos(_direction)*5), _z], _statics, _direction + 180] call btc_fnc_mil_create_static;
+[_pos getPos [5, _direction], _statics, _direction] call btc_fnc_mil_create_static;
+[_pos getPos [- 5, _direction], _statics, _direction + 180] call btc_fnc_mil_create_static;
 
 private _btc_composition = [_pos, _direction, _btc_composition_tower] call btc_fnc_create_composition;
 private _tower = _btc_composition select ((_btc_composition apply {typeOf _x}) find _tower_type);
