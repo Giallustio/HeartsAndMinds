@@ -9,7 +9,6 @@ if (isServer) then {
 
     //COMMON
     btc_fnc_check_los = compile preprocessFileLineNumbers "core\fnc\common\check_los.sqf";
-    btc_fnc_clean_up = compile preprocessFileLineNumbers "core\fnc\common\clean_up.sqf";
     btc_fnc_create_composition = compile preprocessFileLineNumbers "core\fnc\common\create_composition.sqf";
     btc_fnc_house_addWP = compile preprocessFileLineNumbers "core\fnc\common\house_addWP.sqf";
     btc_fnc_set_damage = compile preprocessFileLineNumbers "core\fnc\common\set_damage.sqf";
@@ -31,6 +30,7 @@ if (isServer) then {
     btc_fnc_city_set_clear = compile preprocessFileLineNumbers "core\fnc\city\set_clear.sqf";
     btc_fnc_city_trigger_player_side = compile preprocessFileLineNumbers "core\fnc\city\trigger_player_side.sqf";
     btc_fnc_city_findPos = compile preprocessFileLineNumbers "core\fnc\city\findPos.sqf";
+    btc_fnc_city_cleanUp = compile preprocessFileLineNumbers "core\fnc\city\cleanUp.sqf";
 
     //CIV
     btc_fnc_civ_add_weapons = compile preprocessFileLineNumbers "core\fnc\civ\add_weapons.sqf";
