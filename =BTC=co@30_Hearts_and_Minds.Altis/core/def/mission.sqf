@@ -463,7 +463,7 @@ btc_fnc_log_get_nottowable = {
 };
 
 //Lift
-btc_fnc_log_get_liftable = {
+btc_fnc_lift_getLiftable = {
     params ["_chopper"];
 
     private _array   = [];

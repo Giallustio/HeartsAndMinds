@@ -1,10 +1,10 @@
 
-class btc_log_hud {
+class btc_lift_hud {
     idd = 1000;
     movingEnable=0;
     duration=1e+011;
-    name = "btc_log_hud";
-    onLoad = "uiNamespace setVariable [""btc_log_hud"", _this select 0];";
+    name = "btc_lift_hud";
+    onLoad = "uiNamespace setVariable [""btc_lift_hud"", _this select 0];";
     controlsBackground[] = {};
     objects[] = {};
     class controls {
