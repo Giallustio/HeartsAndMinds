@@ -24,8 +24,16 @@ params [
     ["_veh", objNull, [objNull, grpNull]]
 ];
 
+if (!isServer) exitWith {
+    _this remoteExecCall ["btc_fnc_patrol_eh", 2];
+
+    if (btc_debug_log) then {
+        [format ["%1, RECall", _veh, isRemoteExecuted], __FILE__, [false]] call btc_fnc_debug_message;
+    };
+};
+
 if (btc_debug_log) then {
-    [format ["%1", _veh], __FILE__, [false]] call btc_fnc_debug_message;
+    [format ["%1, isRE %2", _veh, isRemoteExecuted], __FILE__, [false]] call btc_fnc_debug_message;
 };
 
 if (_veh isEqualType objNull) then {

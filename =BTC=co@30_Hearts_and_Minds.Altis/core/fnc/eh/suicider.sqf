@@ -28,5 +28,9 @@ if (btc_debug || btc_debug_log) then {
     [format ["Suicider killed in city %1", _id], __FILE__, [btc_debug, btc_debug_log]] call btc_fnc_debug_message;
 };
 
+if (!isServer) exitWith {
+    _this remoteExecCall ["btc_fnc_eh_suicider", 2];
+};
+
 private _city = btc_city_all select _id;
 _city setVariable ["has_suicider", false];

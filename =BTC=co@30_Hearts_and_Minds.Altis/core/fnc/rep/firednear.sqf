@@ -41,7 +41,7 @@ params [
 if (_ammo isKindOf "SmokeShell") exitWith {};
 
 //Remove the eventHandler to prevent spamming
-_civ removeEventHandler ["FiredNear", _thisEventHandler];
+[_civ, "FiredNear", "btc_fnc_rep_firednear"] call btc_fnc_eh_removePersistOnLocalityChange;
 
 if (!(side _civ isEqualTo civilian) || (random 3 < 1)) exitWith {};
 
