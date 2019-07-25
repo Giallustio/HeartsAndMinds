@@ -276,6 +276,15 @@ if (!isDedicated) then {
     btc_fnc_info_ask_reputation = compile preprocessFileLineNumbers "core\fnc\info\ask_reputation.sqf";
     btc_fnc_info_cachePicture = compile preprocessFileLineNumbers "core\fnc\info\cachePicture.sqf";
 
+    //LIFT
+    btc_fnc_lift_check = compile preprocessFileLineNumbers "core\fnc\lift\check.sqf";
+    btc_fnc_lift_deployRopes = compile preprocessFileLineNumbers "core\fnc\lift\deployRopes.sqf";
+    btc_fnc_lift_destroyRopes = compile preprocessFileLineNumbers "core\fnc\lift\destroyRopes.sqf";
+    btc_fnc_lift_hook = compile preprocessFileLineNumbers "core\fnc\lift\hook.sqf";
+    btc_fnc_lift_hookFake = compile preprocessFileLineNumbers "core\fnc\lift\hookFake.sqf";
+    btc_fnc_lift_hud = compile preprocessFileLineNumbers "core\fnc\lift\hud.sqf";
+    btc_fnc_lift_hudLoop = compile preprocessFileLineNumbers "core\fnc\lift\hudLoop.sqf";
+
     //LOG
     btc_fnc_log_hitch_points = compile preprocessFileLineNumbers "core\fnc\log\hitch_points.sqf";
     btc_fnc_log_get_corner_points = compile preprocessFileLineNumbers "core\fnc\log\get_corner_points.sqf";
@@ -284,13 +293,6 @@ if (!isDedicated) then {
     btc_fnc_log_create_apply = compile preprocessFileLineNumbers "core\fnc\log\create_apply.sqf";
     btc_fnc_log_create_load = compile preprocessFileLineNumbers "core\fnc\log\create_load.sqf";
     btc_fnc_log_create_change_target = compile preprocessFileLineNumbers "core\fnc\log\create_change_target.sqf";
-    btc_fnc_log_lift_check = compile preprocessFileLineNumbers "core\fnc\log\lift_check.sqf";
-    btc_fnc_log_lift_deploy_ropes = compile preprocessFileLineNumbers "core\fnc\log\lift_deploy_ropes.sqf";
-    btc_fnc_log_lift_destroy_ropes = compile preprocessFileLineNumbers "core\fnc\log\lift_destroy_ropes.sqf";
-    btc_fnc_log_lift_hook = compile preprocessFileLineNumbers "core\fnc\log\lift_hook.sqf";
-    btc_fnc_log_lift_hook_fake = compile preprocessFileLineNumbers "core\fnc\log\lift_hook_fake.sqf";
-    btc_fnc_log_lift_hud = compile preprocessFileLineNumbers "core\fnc\log\lift_hud.sqf";
-    btc_fnc_log_lift_hud_loop = compile preprocessFileLineNumbers "core\fnc\log\lift_hud_loop.sqf";
     btc_fnc_log_place_create_camera = compile preprocessFileLineNumbers "core\fnc\log\place_create_camera.sqf";
     btc_fnc_log_place = compile preprocessFileLineNumbers "core\fnc\log\place.sqf";
     btc_fnc_log_place_key_down = compile preprocessFileLineNumbers "core\fnc\log\place_key_down.sqf";

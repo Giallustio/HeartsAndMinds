@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_log_lift_hud_loop
+Function: btc_fnc_lift_hudLoop
 
 Description:
     Fill me when you edit me !
@@ -13,7 +13,7 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_log_lift_hud_loop;
+        _result = [] call btc_fnc_lift_hudLoop;
     (end)
 
 Author:
@@ -29,13 +29,13 @@ _ui params ["_arrow_up", "_arrow_down", "_complete", "_incomplete", "_obj_img", 
 
 disableSerialization;
 
-if !((alive player && vehicle player != player) && btc_log_hud) then {
+if !((alive player && vehicle player != player) && btc_lift_hud) then {
     [_PFH_id] call CBA_fnc_removePerFrameHandler;
     939996 cutRsc ["Default", "PLAIN"];
 };
 
 private _chopper = vehicle player;
-private _array = [_chopper] call btc_fnc_log_get_liftable;
+private _array = [_chopper] call btc_fnc_lift_getLiftable;
 private _cargo_array = nearestObjects [_chopper, _array, 30];
 if (_array isEqualTo []) then {_cargo_array = [];};
 _cargo_array = _cargo_array - [_chopper];

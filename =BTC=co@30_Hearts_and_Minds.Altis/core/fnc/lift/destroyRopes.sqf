@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_log_lift_destroy_ropes
+Function: btc_fnc_lift_destroyRopes
 
 Description:
     Fill me when you edit me !
@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_log_lift_destroy_ropes;
+        _result = [] call btc_fnc_lift_destroyRopes;
     (end)
 
 Author:
@@ -25,7 +25,7 @@ params [
 ];
 
 btc_ropes_deployed = false;
-btc_log_hud = false;
+btc_lift_hud = false;
 btc_lifted = false;
 
 player removeAction btc_lift_action;
