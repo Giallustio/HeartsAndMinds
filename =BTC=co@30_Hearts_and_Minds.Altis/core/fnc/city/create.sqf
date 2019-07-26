@@ -37,7 +37,7 @@ params [
 
 private _id = count btc_city_all;
 
-private _city = createSimpleObject ["CBA_NamespaceDummy", [_position select 0, _position select 1, getTerrainHeightASL _position]];
+private _city = createSimpleObject ["CBA_NamespaceDummy", [_position select 0, _position select 1, getTerrainHeightASL _position], true];
 _city setVariable ["activating", false];
 _city setVariable ["initialized", false];
 _city setVariable ["id", _id];
