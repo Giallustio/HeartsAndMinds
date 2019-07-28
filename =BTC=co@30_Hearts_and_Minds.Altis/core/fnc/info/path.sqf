@@ -31,7 +31,7 @@ params [
 
 private _parent = [configFile >> "CfgVehicles" >> typeOf vehicle _unit, true] call BIS_fnc_returnParents;
 private _type = (_parent arrayIntersect ["Man", "Car", "Tank", "Wheeled_APC", "Boat", "Plane", "Helicopter"]) select 0;
-private _agent = calculatePath [_type, "SAFE", getPos _unit, _endPos];
+private _agent = calculatePath [_type, behaviour _unit, getPos _unit, _endPos];
 
 [_agent, "PathCalculated", {
     params ["_agent", "_path"];
