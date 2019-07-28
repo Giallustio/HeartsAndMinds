@@ -139,7 +139,8 @@ if (isServer) then {
     btc_ied_list = [];
 
     //FOB
-    btc_fobs = [[], [], [], []];
+    btc_fobs = [[], [], []];
+    btc_fob_rallypointTicket = 2;
 
     //MIL
     btc_p_mil_wp_ratios = [_wp_house_probability, (1 - _wp_house_probability) / 1.5 + _wp_house_probability];
