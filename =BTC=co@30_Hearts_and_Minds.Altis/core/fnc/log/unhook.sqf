@@ -3,16 +3,16 @@
 Function: btc_fnc_log_unhook
 
 Description:
-    Fill me when you edit me !
+    Unhook the current tower/towed vehicle.
 
 Parameters:
-    _veh - [Object]
+    _veh - Vehicle, could be the tower or the towed vehicle. [Object]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_log_unhook;
+        [cursorObject] spawn btc_fnc_log_unhook;
     (end)
 
 Author:

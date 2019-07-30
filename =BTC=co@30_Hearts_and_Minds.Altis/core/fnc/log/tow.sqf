@@ -3,16 +3,17 @@
 Function: btc_fnc_log_tow
 
 Description:
-    Fill me when you edit me !
+    Tow a vehicle.
 
 Parameters:
-    _tower - [Object]
+    _tower - Vehicle. [Object]
 
 Returns:
+    _thisId - ID of the event handler. [Number]
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_log_tow;
+        [cursorObject] spawn btc_fnc_log_tow;
     (end)
 
 Author:
