@@ -24,6 +24,9 @@ params [
     ["_tower", objNull, [objNull]]
 ];
 
+if !((isVehicleCargo btc_log_vehicle_selected) isEqualTo objNull) exitWith {(localize "STR_BTC_HAM_LOG_TOW_ALREADYTOWED") call CBA_fnc_notify;};
+if (_tower setVehicleCargo btc_log_vehicle_selected) exitWith {};
+
 btc_int_ask_data = nil;
 [4, _tower] remoteExecCall ["btc_fnc_int_ask_var", 2];
 
