@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_log_lift_hook
+Function: btc_fnc_lift_hook
 
 Description:
     Fill me when you edit me !
@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_log_lift_hook;
+        _result = [] call btc_fnc_lift_hook;
     (end)
 
 Author:
@@ -24,7 +24,7 @@ params [
     ["_chopper", vehicle player, [objNull]]
 ];
 
-private _array = [_chopper] call btc_fnc_log_get_liftable;
+private _array = [_chopper] call btc_fnc_lift_getLiftable;
 private _cargo_array = nearestObjects [_chopper, _array, 30];
 _cargo_array = _cargo_array - [_chopper];
 _cargo_array = _cargo_array select {
@@ -64,7 +64,7 @@ if ((_bbr isEqualTo []) OR (_ropes_check isEqualTo [])) then {
     private _support = _cargo;
     private _bbr_z = 0;
     if (!alive _cargo) then {
-        _support = [_cargo, _chopper] call btc_fnc_log_lift_hook_fake;
+        _support = [_cargo, _chopper] call btc_fnc_lift_hookFake;
         _bbr_z = _support distance _cargo;
         sleep 0.3;
     };

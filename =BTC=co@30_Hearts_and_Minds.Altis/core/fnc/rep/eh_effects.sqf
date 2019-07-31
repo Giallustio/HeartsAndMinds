@@ -3,16 +3,16 @@
 Function: btc_fnc_rep_eh_effects
 
 Description:
-    Fill me when you edit me !
+    Add effects when player do bad things (call militia, take weapons/grenade).
 
 Parameters:
-    _pos - [Array]
+    _pos - Poistion where bad stuff happened. [Array]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_rep_eh_effects;
+        [getPos player] call btc_fnc_rep_eh_effects;
     (end)
 
 Author:

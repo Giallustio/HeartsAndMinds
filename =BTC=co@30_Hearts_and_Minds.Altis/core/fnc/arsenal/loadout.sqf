@@ -7,7 +7,7 @@ Description:
 
 Parameters:
     _type - Type of loadout: 0 - Rifleman, 1 - Medic, 2 - Repair, 3 - Engineer, 4 - Anti-Tank, 5 - Anti Air, 6 - Sniper, 7 - Machine gunner. [Number]
-    _color - Color of skin loadout: 0 - Desert, 1 - Tropic, 2 - Black. [Number]
+    _color - Color of skin loadout: 0 - Desert, 1 - Tropic, 2 - Black, 3 - Forest. [Number]
     _isDay - Select night (false) or day (true) loadout. [Boolean]
     _isAdvanced_medical - Select the correct medical stuff depends on ACE3 medical level. [Boolean]
     _arsenal_loadout - Array of defined loadout. [Array]
@@ -29,7 +29,7 @@ Examples:
                         player setUnitLoadout ([_i, _j, _x] call btc_fnc_arsenal_loadout);
                         sleep 1;
                     } forEach [false,true];
-                } forEach [0,1,2];
+                } forEach [0,1,2,3];
             } forEach [0,1,2,3,4,5,6,7];
         };
     (end)
@@ -41,11 +41,30 @@ Author:
 
 params [
     ["_type", 0, [0]],
-    ["_color", [[0, 1] select (worldName in ["Tanoa", "chernarus", "lingor3", "sara"]), 2] select (sunOrMoon isEqualTo 0), [0]],
+    ["_color", -1, [0]],
     ["_isDay", 0, [0, false]],
     ["_isAdvanced_medical", ace_medical_level isEqualTo 2, [false]],
     ["_arsenal_loadout", btc_arsenal_loadout, [[]]]
 ];
+
+if (_color < 0) then {
+    _color = if (sunOrMoon isEqualTo 0) then {
+        2
+    } else {
+        switch (true) do {
+            case (worldName in ["Tanoa", "lingor3"]): {
+                1
+            };
+            case (worldName in ["chernarus", "Enoch", "sara"]): {
+                3
+            };
+            default {
+                0
+            };
+        };
+    }
+};
+
 (_arsenal_loadout apply {_x select _color}) params ["_uniform", "_vest", "_helmet", "_hood", "_laserdesignator", "_night_vision", "_weapon", "_weapon_sniper", "_weapon_machineGunner", "_bipod", "_pistol", "_launcher_AT", "_launcher_AA", "_backpack", "_backpack_big", "_radio"];
 
 if (_isDay isEqualType 0) then {

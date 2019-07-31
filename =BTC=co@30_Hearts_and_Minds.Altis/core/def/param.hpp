@@ -335,6 +335,12 @@ class Params {
         texts[]={$STR_DISABLED,$STR_ENABLED};
         default = 0;
     };
+    class btc_p_auto_headless { // Autodetect Headless client:
+        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_OTHER_AUTOHEADLESS"]);
+        values[]={0,1};
+        texts[]={$STR_DISABLED,$STR_ENABLED};
+        default = 1;
+    };
     class btc_p_debug { // Debug:
         title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_OTHER_DEBUG"]);
         values[]={0,1,2};

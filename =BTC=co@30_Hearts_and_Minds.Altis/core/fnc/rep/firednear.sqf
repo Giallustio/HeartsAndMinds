@@ -3,23 +3,23 @@
 Function: btc_fnc_rep_firednear
 
 Description:
-    Fill me when you edit me !
+    Detect if player is firing. Then add a random panic animation. If player fire in direction of a civilian without enemies around, punish him by applying reputation effect and reduce reputation.
 
 Parameters:
-    _civ - [Object]
-    _vehicle - [Object]
-    _distance - [Number]
-    _weapon - [String]
-    _muzzle - [String]
-    _mode - [String]
-    _ammo - [String]
-    _gunner - [Object]
+    _civ - Unit. [Object]
+    _vehicle - Not used. [Object]
+    _distance - Distance of firing. [Number]
+    _weapon - Not used. [String]
+    _muzzle - Not used. [String]
+    _mode - Not used. [String]
+    _ammo - Type of ammo. [String]
+    _gunner - Unit firing around. [Object]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_rep_firednear;
+        [cursorObject, objNull, player distance cursorObject, "", "", "", "", player] call btc_fnc_rep_firednear;
     (end)
 
 Author:
@@ -41,7 +41,7 @@ params [
 if (_ammo isKindOf "SmokeShell") exitWith {};
 
 //Remove the eventHandler to prevent spamming
-_civ removeEventHandler ["FiredNear", _thisEventHandler];
+[_civ, "FiredNear", "btc_fnc_rep_firednear"] call btc_fnc_eh_removePersistOnLocalityChange;
 
 if (!(side _civ isEqualTo civilian) || (random 3 < 1)) exitWith {};
 

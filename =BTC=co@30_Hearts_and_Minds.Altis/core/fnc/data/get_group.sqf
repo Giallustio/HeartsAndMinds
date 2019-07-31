@@ -3,10 +3,10 @@
 Function: btc_fnc_data_get_group
 
 Description:
-    Fill me when you edit me !
+    Get groups parameters (position, waypoints, behaviour ...), save them and delete.
 
 Parameters:
-    _group - [Group]
+    _group - Group of units. [Group]
 
 Returns:
 

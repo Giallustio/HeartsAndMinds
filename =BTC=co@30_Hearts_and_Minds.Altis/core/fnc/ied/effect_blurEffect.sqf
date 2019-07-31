@@ -3,17 +3,17 @@
 Function: btc_fnc_ied_effect_blurEffect
 
 Description:
-    Fill me when you edit me !
+    Add blur effect on player camera.
 
 Parameters:
-    _pos - [Array]
-    _caller - [Object]
+    _pos - Position of the explosion. [Array]
+    _caller - Player. [Object]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_ied_effect_blurEffect;
+        [getPos player, player] call btc_fnc_ied_effect_blurEffect;
     (end)
 
 Author:

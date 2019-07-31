@@ -1,5 +1,5 @@
 btc_version = 1.193;
-diag_log format ["=BTC= HEARTS AND MINDS VERSION %1.5", btc_version];
+diag_log format ["=BTC= HEARTS AND MINDS VERSION %1.6", btc_version];
 
 //Param
 //<< Time options >>
@@ -73,7 +73,8 @@ btc_p_trigger = if (("btc_p_trigger" call BIS_fnc_getParamValue) isEqualTo 1) th
 } else {
     "this && !btc_db_is_saving"
 };
-btc_p_debug  = "btc_p_debug" call BIS_fnc_getParamValue;
+btc_p_auto_headless = ("btc_p_auto_headless" call BIS_fnc_getParamValue) isEqualTo 1;
+btc_p_debug = "btc_p_debug" call BIS_fnc_getParamValue;
 
 switch (btc_p_debug) do {
     case 0 : {
@@ -138,7 +139,8 @@ if (isServer) then {
     btc_ied_list = [];
 
     //FOB
-    btc_fobs = [[], [], [], []];
+    btc_fobs = [[], [], []];
+    btc_fob_rallypointTicket = 2;
 
     //MIL
     btc_p_mil_wp_ratios = [_wp_house_probability, (1 - _wp_house_probability) / 1.5 + _wp_house_probability];
@@ -463,7 +465,7 @@ btc_fnc_log_get_nottowable = {
 };
 
 //Lift
-btc_fnc_log_get_liftable = {
+btc_fnc_lift_getLiftable = {
     params ["_chopper"];
 
     private _array   = [];

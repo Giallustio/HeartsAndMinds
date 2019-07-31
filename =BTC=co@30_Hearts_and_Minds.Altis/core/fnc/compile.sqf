@@ -2,26 +2,23 @@
 if (isServer) then {
     //CACHE
     btc_fnc_cache_find_pos = compile preprocessFileLineNumbers "core\fnc\cache\find_pos.sqf";
-    btc_fnc_cache_hd_cache = compile preprocessFileLineNumbers "core\fnc\cache\hd_cache.sqf";
     btc_fnc_cache_create = compile preprocessFileLineNumbers "core\fnc\cache\create.sqf";
     btc_fnc_cache_create_attachto = compile preprocessFileLineNumbers "core\fnc\cache\create_attachto.sqf";
     btc_fnc_cache_init = compile preprocessFileLineNumbers "core\fnc\cache\init.sqf";
 
     //COMMON
     btc_fnc_check_los = compile preprocessFileLineNumbers "core\fnc\common\check_los.sqf";
-    btc_fnc_clean_up = compile preprocessFileLineNumbers "core\fnc\common\clean_up.sqf";
     btc_fnc_create_composition = compile preprocessFileLineNumbers "core\fnc\common\create_composition.sqf";
     btc_fnc_house_addWP = compile preprocessFileLineNumbers "core\fnc\common\house_addWP.sqf";
     btc_fnc_set_damage = compile preprocessFileLineNumbers "core\fnc\common\set_damage.sqf";
     btc_fnc_road_direction = compile preprocessFileLineNumbers "core\fnc\common\road_direction.sqf";
     btc_fnc_findsafepos = compile preprocessFileLineNumbers "core\fnc\common\findsafepos.sqf";
-    btc_fnc_set_groupowner = compile preprocessFileLineNumbers "core\fnc\common\set_groupowner.sqf";
     btc_fnc_find_closecity = compile preprocessFileLineNumbers "core\fnc\common\find_closecity.sqf";
     btc_fnc_delete = compile preprocessFileLineNumbers "core\fnc\common\delete.sqf";
     btc_fnc_deleteEntities = compile preprocessFileLineNumbers "core\fnc\common\deleteEntities.sqf";
     btc_fnc_final_phase = compile preprocessFileLineNumbers "core\fnc\common\final_phase.sqf";
     btc_fnc_findPosOutsideRock = compile preprocessFileLineNumbers "core\fnc\common\findposoutsiderock.sqf";
-    btc_fnc_set_groupsowner = compile preprocessFileLineNumbers "core\fnc\common\set_groupsowner.sqf";
+    btc_fnc_set_groupsOwner = compile preprocessFileLineNumbers "core\fnc\common\set_groupsOwner.sqf";
     btc_fnc_typeOf = compile preprocessFileLineNumbers "core\fnc\common\typeOf.sqf";
 
     //CITY
@@ -31,6 +28,7 @@ if (isServer) then {
     btc_fnc_city_set_clear = compile preprocessFileLineNumbers "core\fnc\city\set_clear.sqf";
     btc_fnc_city_trigger_player_side = compile preprocessFileLineNumbers "core\fnc\city\trigger_player_side.sqf";
     btc_fnc_city_findPos = compile preprocessFileLineNumbers "core\fnc\city\findPos.sqf";
+    btc_fnc_city_cleanUp = compile preprocessFileLineNumbers "core\fnc\city\cleanUp.sqf";
 
     //CIV
     btc_fnc_civ_add_weapons = compile preprocessFileLineNumbers "core\fnc\civ\add_weapons.sqf";
@@ -63,7 +61,6 @@ if (isServer) then {
     btc_fnc_eh_explosives_defuse = compile preprocessFileLineNumbers "core\fnc\eh\explosives_defuse.sqf";
     btc_fnc_eh_handledisconnect = compile preprocessFileLineNumbers "core\fnc\eh\handledisconnect.sqf";
     btc_fnc_eh_buildingchanged = compile preprocessFileLineNumbers "core\fnc\eh\buildingchanged.sqf";
-    btc_fnc_eh_suicider = compile preprocessFileLineNumbers "core\fnc\eh\suicider.sqf";
     btc_fnc_eh_server = compile preprocessFileLineNumbers "core\fnc\eh\server.sqf";
     btc_fnc_eh_FOB_killed = compile preprocessFileLineNumbers "core\fnc\eh\FOB_killed.sqf";
 
@@ -95,6 +92,7 @@ if (isServer) then {
     //FOB
     btc_fnc_fob_create_s = compile preprocessFileLineNumbers "core\fnc\fob\create_s.sqf";
     btc_fnc_fob_dismantle_s = compile preprocessFileLineNumbers "core\fnc\fob\dismantle_s.sqf";
+    btc_fnc_fob_init = compile preprocessFileLineNumbers "core\fnc\fob\init.sqf";
 
     //MIL
     btc_fnc_mil_addWP = compile preprocessFileLineNumbers "core\fnc\mil\addWP.sqf";
@@ -111,13 +109,12 @@ if (isServer) then {
     btc_fnc_mil_CuratorMilPlaced_s = compile preprocessFileLineNumbers "core\fnc\mil\CuratorMilPlaced_s.sqf";
     btc_fnc_mil_getStructures = compile preprocessFileLineNumbers "core\fnc\mil\getStructures.sqf";
     btc_fnc_mil_getBuilding = compile preprocessFileLineNumbers "core\fnc\mil\getBuilding.sqf";
-
+    btc_fnc_mil_add_eh = compile preprocessFileLineNumbers "core\fnc\mil\add_eh.sqf";
     btc_fnc_mil_createVehicle = compile preprocessFileLineNumbers "core\fnc\mil\createVehicle.sqf";
     btc_fnc_mil_createUnits = compile preprocessFileLineNumbers "core\fnc\mil\createUnits.sqf";
 
     //PATROL
     btc_fnc_patrol_playersInAreaCityGroup = compile preprocessFileLineNumbers "core\fnc\patrol\playersInAreaCityGroup.sqf";
-    btc_fnc_patrol_eh = compile preprocessFileLineNumbers "core\fnc\patrol\eh.sqf";
     btc_fnc_patrol_eh_remove = compile preprocessFileLineNumbers "core\fnc\patrol\eh_remove.sqf";
     btc_fnc_patrol_usefulCity = compile preprocessFileLineNumbers "core\fnc\patrol\usefulCity.sqf";
     btc_fnc_patrol_WPCheck = compile preprocessFileLineNumbers "core\fnc\patrol\WPCheck.sqf";
@@ -129,9 +126,7 @@ if (isServer) then {
     btc_fnc_rep_call_militia = compile preprocessFileLineNumbers "core\fnc\rep\call_militia.sqf";
     btc_fnc_rep_change = compile preprocessFileLineNumbers "core\fnc\rep\change.sqf";
     btc_fnc_rep_eh_effects = compile preprocessFileLineNumbers "core\fnc\rep\eh_effects.sqf";
-    btc_fnc_rep_hd = compile preprocessFileLineNumbers "core\fnc\rep\hd.sqf";
     btc_fnc_rep_hh = compile preprocessFileLineNumbers "core\fnc\rep\hh.sqf";
-    btc_fnc_rep_killed = compile preprocessFileLineNumbers "core\fnc\rep\killed.sqf";
     btc_fnc_rep_firednear = compile preprocessFileLineNumbers "core\fnc\rep\firednear.sqf";
     btc_fnc_rep_remove_eh = compile preprocessFileLineNumbers "core\fnc\rep\remove_eh.sqf";
 
@@ -172,14 +167,10 @@ if (isServer) then {
     btc_fnc_task_setState = compile preprocessFileLineNumbers "core\fnc\task\setState.sqf";
 };
 
-/////////////////////SERVER AND HEADLESS\\\\\\\\\\\\\\\\\\\\\
-if (isServer OR (!isDedicated && !hasInterface)) then {
-    //MIL
-    btc_fnc_mil_unit_killed = compile preprocessFileLineNumbers "core\fnc\mil\unit_killed.sqf";
-    btc_fnc_mil_add_eh = compile preprocessFileLineNumbers "core\fnc\mil\add_eh.sqf";
-};
-
 /////////////////////CLIENT AND SERVER\\\\\\\\\\\\\\\\\\\\\
+
+//CACHE
+btc_fnc_cache_hd_cache = compile preprocessFileLineNumbers "core\fnc\cache\hd_cache.sqf";
 
 //COMMON
 btc_fnc_find_veh_with_turret = compile preprocessFileLineNumbers "core\fnc\common\find_veh_with_turret.sqf";
@@ -193,6 +184,10 @@ btc_fnc_debug_message = compile preprocessFileLineNumbers "core\fnc\debug\messag
 
 //DB
 btc_fnc_db_add_veh = compile preprocessFileLineNumbers "core\fnc\db\add_veh.sqf";
+//EH
+btc_fnc_eh_persistOnLocalityChange = compile preprocessFileLineNumbers "core\fnc\eh\persistOnLocalityChange.sqf";
+btc_fnc_eh_removePersistOnLocalityChange = compile preprocessFileLineNumbers "core\fnc\eh\removePersistOnLocalityChange.sqf";
+btc_fnc_eh_suicider = compile preprocessFileLineNumbers "core\fnc\eh\suicider.sqf";
 
 //CIV
 btc_fnc_civ_class = compile preprocessFileLineNumbers "core\fnc\civ\class.sqf";
@@ -214,6 +209,15 @@ btc_fnc_log_place_destroy_camera = compile preprocessFileLineNumbers "core\fnc\l
 //MIL
 btc_fnc_mil_class = compile preprocessFileLineNumbers "core\fnc\mil\class.sqf";
 btc_fnc_mil_ammoUsage = compile preprocessFileLineNumbers "core\fnc\mil\ammoUsage.sqf";
+btc_fnc_mil_unit_killed = compile preprocessFileLineNumbers "core\fnc\mil\unit_killed.sqf";
+
+//PATROL
+btc_fnc_patrol_eh = compile preprocessFileLineNumbers "core\fnc\patrol\eh.sqf";
+btc_fnc_patrol_disabled = compile preprocessFileLineNumbers "core\fnc\patrol\disabled.sqf";
+
+//REP
+btc_fnc_rep_hd = compile preprocessFileLineNumbers "core\fnc\rep\hd.sqf";
+btc_fnc_rep_killed = compile preprocessFileLineNumbers "core\fnc\rep\killed.sqf";
 
 //ARSENAL
 btc_fnc_arsenal_ammoUsage = compile preprocessFileLineNumbers "core\fnc\arsenal\ammoUsage.sqf";
@@ -273,6 +277,15 @@ if (!isDedicated) then {
     btc_fnc_info_ask_reputation = compile preprocessFileLineNumbers "core\fnc\info\ask_reputation.sqf";
     btc_fnc_info_cachePicture = compile preprocessFileLineNumbers "core\fnc\info\cachePicture.sqf";
 
+    //LIFT
+    btc_fnc_lift_check = compile preprocessFileLineNumbers "core\fnc\lift\check.sqf";
+    btc_fnc_lift_deployRopes = compile preprocessFileLineNumbers "core\fnc\lift\deployRopes.sqf";
+    btc_fnc_lift_destroyRopes = compile preprocessFileLineNumbers "core\fnc\lift\destroyRopes.sqf";
+    btc_fnc_lift_hook = compile preprocessFileLineNumbers "core\fnc\lift\hook.sqf";
+    btc_fnc_lift_hookFake = compile preprocessFileLineNumbers "core\fnc\lift\hookFake.sqf";
+    btc_fnc_lift_hud = compile preprocessFileLineNumbers "core\fnc\lift\hud.sqf";
+    btc_fnc_lift_hudLoop = compile preprocessFileLineNumbers "core\fnc\lift\hudLoop.sqf";
+
     //LOG
     btc_fnc_log_hitch_points = compile preprocessFileLineNumbers "core\fnc\log\hitch_points.sqf";
     btc_fnc_log_get_corner_points = compile preprocessFileLineNumbers "core\fnc\log\get_corner_points.sqf";
@@ -281,13 +294,6 @@ if (!isDedicated) then {
     btc_fnc_log_create_apply = compile preprocessFileLineNumbers "core\fnc\log\create_apply.sqf";
     btc_fnc_log_create_load = compile preprocessFileLineNumbers "core\fnc\log\create_load.sqf";
     btc_fnc_log_create_change_target = compile preprocessFileLineNumbers "core\fnc\log\create_change_target.sqf";
-    btc_fnc_log_lift_check = compile preprocessFileLineNumbers "core\fnc\log\lift_check.sqf";
-    btc_fnc_log_lift_deploy_ropes = compile preprocessFileLineNumbers "core\fnc\log\lift_deploy_ropes.sqf";
-    btc_fnc_log_lift_destroy_ropes = compile preprocessFileLineNumbers "core\fnc\log\lift_destroy_ropes.sqf";
-    btc_fnc_log_lift_hook = compile preprocessFileLineNumbers "core\fnc\log\lift_hook.sqf";
-    btc_fnc_log_lift_hook_fake = compile preprocessFileLineNumbers "core\fnc\log\lift_hook_fake.sqf";
-    btc_fnc_log_lift_hud = compile preprocessFileLineNumbers "core\fnc\log\lift_hud.sqf";
-    btc_fnc_log_lift_hud_loop = compile preprocessFileLineNumbers "core\fnc\log\lift_hud_loop.sqf";
     btc_fnc_log_place_create_camera = compile preprocessFileLineNumbers "core\fnc\log\place_create_camera.sqf";
     btc_fnc_log_place = compile preprocessFileLineNumbers "core\fnc\log\place.sqf";
     btc_fnc_log_place_key_down = compile preprocessFileLineNumbers "core\fnc\log\place_key_down.sqf";

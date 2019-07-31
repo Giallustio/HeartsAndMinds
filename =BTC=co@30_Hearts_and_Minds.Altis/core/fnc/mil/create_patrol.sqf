@@ -94,16 +94,12 @@ switch (_random) do {
         private _veh = [_group, _pos, _veh_type] call btc_fnc_mil_createVehicle;
         _veh setVariable ["btc_crews", _group];
 
-        private _fuelEh = _veh addEventHandler ["Fuel", btc_fnc_patrol_eh];
-        _veh setVariable ["btc_eh", [_fuelEh]];
+        [_veh, "Fuel", "btc_fnc_patrol_eh"] call btc_fnc_eh_persistOnLocalityChange;
     };
 };
 
 [_group, [_start_city, _active_city], _area, _pos_isWater] call btc_fnc_patrol_init;
 
-//Check if HC is connected
-if !((entities "HeadlessClient_F") isEqualTo []) then {
-    [_group] call btc_fnc_set_groupowner;
-};
+[[_group]] call btc_fnc_set_groupsOwner;
 
 true
