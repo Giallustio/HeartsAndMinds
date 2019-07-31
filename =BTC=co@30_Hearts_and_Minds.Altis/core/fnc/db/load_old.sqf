@@ -80,6 +80,8 @@ private _size = count _locations;
 private _array_ho = profileNamespace getVariable [format ["btc_hm_%1_ho", _name], []];
 
 {
+    private _id = _x select 4;
+    _x set [4, _oldID_to_newID select _id];
     _x call btc_fnc_mil_create_hideout;
 } forEach _array_ho;
 
