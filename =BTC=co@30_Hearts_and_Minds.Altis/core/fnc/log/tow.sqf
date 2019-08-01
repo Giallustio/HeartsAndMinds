@@ -3,16 +3,17 @@
 Function: btc_fnc_log_tow
 
 Description:
-    Fill me when you edit me !
+    Tow a vehicle.
 
 Parameters:
-    _tower - [Object]
+    _tower - Vehicle. [Object]
 
 Returns:
+    _thisId - ID of the event handler. [Number]
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_log_tow;
+        [cursorObject] spawn btc_fnc_log_tow;
     (end)
 
 Author:
@@ -45,14 +46,25 @@ private _distance = 0.3 + (_pos_front distance _pos_rear);
 ropeCreate [_tower, _model_rear_tower, _tower, [_model_front_selected_x - 0.4, _model_front_selected_y, _model_front_selected_z], _distance];
 ropeCreate [_tower, _model_rear_tower, _tower, [_model_front_selected_x + 0.4, _model_front_selected_y, _model_front_selected_z], _distance];
 
-private _eh = _tower addEventHandler ["RopeBreak", {
-    params ["_rope"];
-
-    _rope removeEventHandler ["RopeBreak", _thisEventHandler];
-    _rope setVariable ["btc_eh", nil];
-    _rope spawn btc_fnc_log_unhook;
-}];
-_tower setVariable ["btc_eh", _eh];
-
 [_tower, ["tow", btc_log_vehicle_selected]] remoteExec ["setVariable", 2];
 [btc_log_vehicle_selected, ["tow", _tower]] remoteExec ["setVariable", 2];
+
+[_tower, "RopeBreak", {
+    params ["_tower", "_rope"];
+    _thisArgs params ["_towed"];
+
+    _tower removeEventHandler ["RopeBreak", _thisId];
+
+    deTach _towed;
+
+    (getPos _towed) params ["_x", "_y", "_z"];
+
+    if (_z < -0.05) then {
+        _towed setPosASL [_x, _y, ((getPosASL _tower) select 2) - _z];
+    } else {
+        [_towed, [0, 0, 0.01]] remoteExecCall ["setVelocity", _towed];
+    };
+
+    [_towed, ["tow", objNull]] remoteExecCall ["setVariable", 2];
+    [_tower, ["tow", objNull]] remoteExecCall ["setVariable", 2];
+}, [btc_log_vehicle_selected]] call CBA_fnc_addBISEventHandler;
