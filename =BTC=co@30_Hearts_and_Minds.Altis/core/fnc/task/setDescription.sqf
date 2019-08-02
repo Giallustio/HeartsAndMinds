@@ -287,6 +287,14 @@ switch (_description) do {
         ];
         _type = "move";
     };
+    case 29 : {
+        _description = [
+            localize "STR_BTC_HAM_SIDE_CAPOFF_HANDCUFF_DESC",
+            localize "STR_BTC_HAM_SIDE_CAPOFF_HANDCUFF_TITLE",
+            localize "STR_BTC_HAM_SIDE_CAPOFF_HANDCUFF_TITLE"
+        ];
+        _type = "handcuff";
+    };
 };
 
 [
