@@ -27,13 +27,12 @@ params [
 private _locations = configfile >> "cfgworlds" >> worldname >> "names";
 
 private _cities = ["NameVillage", "NameCity", "NameCityCapital", "NameLocal", "Hill", "Airport"];
-
 if (btc_p_sea) then {_cities pushBack "NameMarine";};
 
 btc_city_all = [];
 
-for "_i" from 0 to (count _locations - 1) do {
-    private _current = _locations select _i;
+for "_id" from 0 to (count _locations - 1) do {
+    private _current = _locations select _id;
 
     private _type = getText (_current >> "type");
 
@@ -67,10 +66,12 @@ for "_i" from 0 to (count _locations - 1) do {
         if ((getMarkerPos "YOUR_MARKER_AREA") inArea [_position, 500, 500, 0, false]) exitWith {};
         */
 
-        [_position, _type, _name, _radius_x, _radius_y, random 1 > _is_free_probability] call btc_fnc_city_create;
+        [_position, _type, _name, _radius_x, _radius_y, random 1 > _is_free_probability, _id] call btc_fnc_city_create;
     };
 };
 
 if !(isNil "btc_custom_loc") then {
     {_x call btc_fnc_city_create} forEach btc_custom_loc;
 };
+
+btc_city_all = btc_city_all apply {if (isNil "_x") then {objNull} else {_x}};
