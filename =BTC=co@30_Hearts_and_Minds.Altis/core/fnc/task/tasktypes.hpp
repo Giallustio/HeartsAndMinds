@@ -62,4 +62,7 @@ class CfgTaskTypes {
     class Handcuff {
         icon = \z\ace\addons\captives\UI\handcuff_ca.paa;
     };
+    class Dogtags {
+        icon = \z\ace\addons\dogtags\data\dogtag_icon_ca.paa;
+    };
 };

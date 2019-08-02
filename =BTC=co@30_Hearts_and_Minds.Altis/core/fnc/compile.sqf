@@ -146,6 +146,7 @@ if (isServer) then {
     btc_fnc_side_capture_officer = compile preprocessFileLineNumbers "core\fnc\side\capture_officer.sqf";
     btc_fnc_side_hostage = compile preprocessFileLineNumbers "core\fnc\side\hostage.sqf";
     btc_fnc_side_hack = compile preprocessFileLineNumbers "core\fnc\side\hack.sqf";
+    btc_fnc_side_kill = compile preprocessFileLineNumbers "core\fnc\side\kill.sqf";
 
     //LOG
     btc_fnc_log_CuratorObjectPlaced_s = compile preprocessFileLineNumbers "core\fnc\log\CuratorObjectPlaced_s.sqf";

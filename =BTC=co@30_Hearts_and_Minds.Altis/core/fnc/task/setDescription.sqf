@@ -252,6 +252,41 @@ switch (_description) do {
         ];
         _type = "surrender";
     };
+    case 25 : {
+        _location params ["_officerName", "_loc"];
+        _description = [
+            format [localize "STR_BTC_HAM_SIDE_KILL_DESC", _officerName, _loc],
+            format [localize "STR_BTC_HAM_SIDE_KILL_TITLE", _officerName],
+            format [localize "STR_BTC_HAM_SIDE_KILL_TITLE", _officerName]
+        ];
+        _type = "kill";
+    };
+    case 26 : {
+        _location params ["_officerName", "_loc", "_officerType"];
+        _description = [
+            format [localize "STR_BTC_HAM_SIDE_KILL_IN_DESC", _officerName] + format [_image, getText (configfile >> "CfgVehicles" >> _officerType >> "editorPreview")],
+            format [localize "STR_BTC_HAM_SIDE_KILL_IN_TITLE", _officerName, _loc],
+            format [localize "STR_BTC_HAM_SIDE_KILL_IN_TITLE", _officerName, _loc]
+        ];
+        _type = "kill";
+    };
+    case 27 : {
+        _description = [
+            format [localize "STR_BTC_HAM_SIDE_KILL_DOGTAG_DESC", _location] + format [_image, "\z\ace\addons\dogtags\data\dogtagSingle.paa"],
+            localize "STR_BTC_HAM_SIDE_KILL_DOGTAG_TITLE",
+            localize "STR_BTC_HAM_SIDE_KILL_DOGTAG_TITLE"
+        ];
+        _type = "dogtags";
+    };
+    case 28 : {
+        _location params ["_officerName", "_base"];
+        _description = [
+            format [localize "STR_BTC_HAM_SIDE_KILL_BRING_DESC", _officerName] + format [_image, getText (configfile >> "CfgVehicles" >> _base >> "editorPreview")],
+            localize "STR_BTC_HAM_SIDE_KILL_BRING_TITLE",
+            localize "STR_BTC_HAM_SIDE_KILL_BRING_TITLE"
+        ];
+        _type = "move";
+    };
 };
 
 [

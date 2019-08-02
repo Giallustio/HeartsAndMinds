@@ -1063,6 +1063,32 @@
                 <Chinesesimp>%1 已被Oplitas占领! 当地居民受到恐吓, 他们正在请求帮助!</Chinesesimp>
             </Key>
         </Container>
+        <Container name="Kill">
+            <Key ID="STR_BTC_HAM_SIDE_KILL_TITLE">
+                <Original>Assassinate %1</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_KILL_DESC">
+                <Original>Assassinate %1 in %2, then bring his dogtag to the base for identification. He is responsible for terrorizing local population!</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_KILL_IN_DESC">
+                <Original>Kill %1.</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_KILL_IN_TITLE">
+                <Original>Kill %1 in %2.</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_KILL_DOGTAG_TITLE">
+                <Original>Take dogtag</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_KILL_DOGTAG_DESC">
+                <Original>Take dogtag of %1.</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_KILL_BRING_TITLE">
+                <Original>Bring dogtag to base</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_KILL_BRING_DESC">
+                <Original>Bring %1 dogtag to the logistic point.</Original>
+            </Key>
+        </Container>
     </Package>
     <Package name="Actions">
         <Container name="Action(ACE): Database handling">
