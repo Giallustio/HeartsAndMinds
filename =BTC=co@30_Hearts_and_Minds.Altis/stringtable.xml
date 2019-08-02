@@ -760,6 +760,12 @@
                 <Original>Surrender the officer</Original>
                 <German>Offizier gefangen nehmen</German>
             </Key>
+            <Key ID="STR_BTC_HAM_SIDE_CAPOFF_HANDCUFF_DESC">
+                <Original>Handcuff the officer.</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_CAPOFF_HANDCUFF_TITLE">
+                <Original>Handcuff the officer</Original>
+            </Key>
         </Container>
         <Container name="Checkpoint">
             <Key ID="STR_BTC_HAM_SIDE_CHECKPOINT_TITLE">
