@@ -93,7 +93,7 @@ private _back_taskID = _taskID + "bk";
 [_group, _pos2, 0, "MOVE", "SAFE", "RED", "LIMITED", "COLUMN", format ["['%1', 'FAILED'] call BIS_fnc_taskSetState;", _taskID], [0, 0, 0], _radius_x / 1.5] call CBA_fnc_addWaypoint;
 
 //// Create trigger \\\\
-_trigger = createTrigger ["EmptyDetector", getPos _city1];
+private _trigger = createTrigger ["EmptyDetector", getPos _city1];
 _trigger setVariable ["captive", _captive];
 _trigger setTriggerArea [15, 15, 0, false];
 _trigger setTriggerActivation [str btc_player_side, "PRESENT", true];
@@ -106,6 +106,9 @@ _trigger attachTo [_captive, [0, 0, 0]];
     params ["_unit", "_state", "_type"];
     _thisArgs params ["_captive", "_handcuff_taskID"];
 
+    if (_captive isEqualTo objNull) then {
+        [_thisType, _thisId] call CBA_fnc_removeEventHandler;
+    };
     if (_unit isEqualTo _captive && _type isEqualTo "SetHandcuffed") then {
         [_thisType, _thisId] call CBA_fnc_removeEventHandler;
         [_handcuff_taskID, "SUCCEEDED"] call BIS_fnc_taskSetState;
@@ -116,10 +119,12 @@ _trigger attachTo [_captive, [0, 0, 0]];
 waitUntil {sleep 5; (!(alive _captive) || (_captive inArea [getPosWorld btc_create_object_point, 100, 100, 0, false]) || _taskID call BIS_fnc_taskCompleted || _back_taskID call BIS_fnc_taskCompleted)};
 
 if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {
-    [_markers, _vehs + [_trigger, _group]] call btc_fnc_delete;
+    deleteVehicle _trigger;
+    [_markers, _vehs + [_group]] call btc_fnc_delete;
 };
 
 if (!alive _captive || _taskID call BIS_fnc_taskState isEqualTo "FAILED") exitWith {
+    deleteVehicle _trigger;
     [_taskID, "FAILED"] call btc_fnc_task_setState;
     _group setVariable ["no_cache", false];
     {
@@ -127,11 +132,11 @@ if (!alive _captive || _taskID call BIS_fnc_taskState isEqualTo "FAILED") exitWi
         (crew _x) joinSilent _group;
         _group call btc_fnc_data_add_group;
     } forEach _vehs;
-    [_markers, [_trigger]] call btc_fnc_delete;
+    [_markers, []] call btc_fnc_delete;
 };
 
 50 call btc_fnc_rep_change;
 
 [_taskID, "SUCCEEDED"] call btc_fnc_task_setState;
 
-[_markers, _vehs + [_trigger, _captive, _group]] call btc_fnc_delete;
+[_markers, _vehs + [_captive, _group]] call btc_fnc_delete;
