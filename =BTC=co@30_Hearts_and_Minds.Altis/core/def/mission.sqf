@@ -154,6 +154,10 @@ if (isServer) then {
     btc_rep_militia_call_time = 600;
     btc_rep_militia_called = - btc_rep_militia_call_time;
 
+    //Chem
+    btc_chem_decontaminate = [];
+    btc_chem_contaminated = [];
+
     //Hideout classname
     btc_type_campfire = ["MetalBarrel_burning_F"] + (_allClassSorted select {_x isKindOf "Land_Campfire_F"});
     btc_type_Scrapyard = _allClassSorted select {
@@ -185,6 +189,10 @@ if (isServer) then {
     btc_type_cones = ["Land_RoadCone_01_F", "RoadCone_F", "RoadCone_L_F"];
     btc_type_fences = ["Land_PlasticNetFence_01_long_F", "Land_PlasticNetFence_01_long_d_F", "RoadBarrier_F", "TapeSign_F"];
     btc_type_portable_light = _allClassSorted select {_x isKindOf "Land_PortableLight_single_F"};
+    btc_type_portableLamp = _allClassSorted select {
+        _x isKindOf "Land_PortableLight_02_base_F" ||
+        _x isKindOf "TentLamp_01_standing_base_F"
+    };
     btc_type_first_aid_kits = ["Land_FirstAidKit_01_open_F", "Land_FirstAidKit_01_closed_F"];
     btc_type_body_bags = _allClassSorted select {
         _x isKindOf "Land_Bodybag_01_base_F" ||
