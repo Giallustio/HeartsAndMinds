@@ -49,7 +49,7 @@ private _doorCenter = (9.47217 - 5.86768)/2 + 5.86768;
 private _composition_pattern = [
     [_cone, random 360 ,[60.3545 + _offset_door,5.86768,0]],
     [_cone, random 360 ,[60.3755 + _offset_door,9.47217,0]],
-    [selectRandom btc_type_portable_light,101,[61.1982 + _offset_door,3.28906,0]],
+    [selectRandom btc_type_portable_light,40,[61.1982 + _offset_door,3.28906,0]],
     [selectRandom btc_type_portable_light,37,[60.7373 + _offset_door,11.856,0]],
     [selectRandom btc_type_body_bags,332,[62.4473 + _offset_door,0.76416,0]],
     [selectRandom btc_type_medicals,0,[65.4448 + _offset_door,1.52734,0]],
@@ -81,7 +81,6 @@ for "_i" from -_number_of_fences to _number_of_fences do {
 
     if (random 1 > 0.7) then {
         _composition_pattern append [
-            [selectRandom btc_type_portableLamp, 0, [_i * _distance_between_fences, _offset - 1, 0]],
             [selectRandom btc_type_portableLamp, 180, [_i * _distance_between_fences, -_offset + 1, 0]],
             [selectRandom btc_type_portableLamp, 90, [_offset - 1, _i * _distance_between_fences, 0]],
             [selectRandom btc_type_portableLamp, 270, [ -_offset + 1, _i * _distance_between_fences, 0]]
@@ -93,13 +92,14 @@ private _composition_objects = [_pos, random 360, _composition_pattern] call btc
 
 private _chemical = [];
 for "_i" from 1 to (5 + round random 5) do {
-    private _type = "HazmatBag_01_F";
     private _m_pos = [_pos, _area_size - 10] call btc_fnc_randomize_pos;
-    _chemical pushBack createVehicle [_type, _m_pos, [], 10, "CAN_COLLIDE"];
+    private _hazmat = createVehicle [selectRandom btc_type_hazmat, _m_pos, [], 10, "CAN_COLLIDE"];
+    [_hazmat] call btc_fnc_log_init;
+    _chemical pushBack _hazmat;
 };
 
 btc_chem_contaminated append _chemical;
-btc_chem_decontaminate append _composition_objects select {_x isKindOf "DeconShower_01_F"};
+btc_chem_decontaminate append (_composition_objects select {_x isKindOf "DeconShower_01_F"});
 
 waitUntil {sleep 5; (
     _taskID call BIS_fnc_taskCompleted ||

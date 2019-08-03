@@ -64,14 +64,14 @@ private _bodyParts = ["head","body","hand_l","hand_r","leg_l","leg_r"];
             ) &&
             uniform _x find "CBRN" > -1
         ) then {
-            [_x, random [0.05, 0.1, 0.2], selectRandom _bodyParts, "ropeburn"] call ace_medical_fnc_addDamageToUnit;
+            [_x, random [0.05, 0.1, 0.1], selectRandom _bodyParts, "stab"] call ace_medical_fnc_addDamageToUnit; // ropeburn
         };
-
-        // Propagate the contamination
-        _contaminated pushBackUnique (if (isObjectHidden _x) then {
-            attachedTo obj
-        } else {
-            vehicle _x
-        });
     } forEach _unitContaminate;
+
+    // Propagate contamimation from ACE Cargo or passenger seat to vehicle
+    private _toContaminate = (_contaminated select {isObjectHidden _x}) apply {attachedTo _x};
+    _toContaminate append _unitContaminate;
+    {
+        _contaminated pushBackUnique vehicle _x;
+    } forEach _toContaminate;
 }, 1, [btc_chem_contaminated, btc_chem_decontaminate, 3, _bodyParts, configFile >> "CfgGlasses"]] call CBA_fnc_addPerFrameHandler;
