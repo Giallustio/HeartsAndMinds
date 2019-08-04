@@ -87,10 +87,6 @@ for "_i" from 0 to (2 + round random 2) do {
 
 waitUntil {sleep 5; (_taskID call BIS_fnc_taskCompleted || (_vehs select {canMove _x} isEqualTo []) || (_group isEqualTo grpNull))};
 
-if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {
-    [_markers, _vehs + [_group]] call btc_fnc_delete;
-};
-
 if (_taskID call BIS_fnc_taskState isEqualTo "FAILED") exitWith {
     _group setVariable ["no_cache", false];
     {
@@ -101,8 +97,10 @@ if (_taskID call BIS_fnc_taskState isEqualTo "FAILED") exitWith {
     [_markers] call btc_fnc_delete;
 };
 
+[_markers, _vehs + [_group]] call btc_fnc_delete;
+
+if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {};
+
 50 call btc_fnc_rep_change;
 
 [_taskID, "SUCCEEDED"] call BIS_fnc_taskSetState;
-
-[_markers, _vehs + [_group]] call btc_fnc_delete;
