@@ -240,6 +240,9 @@ if (!isDedicated) then {
     btc_fnc_get_composition = compile preprocessFileLineNumbers "core\fnc\common\get_composition.sqf";
     btc_fnc_checkArea = compile preprocessFileLineNumbers "core\fnc\common\checkArea.sqf";
 
+    //CHEM
+    btc_fnc_chem_biopsy = compile preprocessFileLineNumbers "core\fnc\chem\biopsy.sqf";
+
     //DEBUG
     btc_fnc_debug_marker = compile preprocessFileLineNumbers "core\fnc\debug\marker.sqf";
     btc_fnc_debug_units = compile preprocessFileLineNumbers "core\fnc\debug\units.sqf";

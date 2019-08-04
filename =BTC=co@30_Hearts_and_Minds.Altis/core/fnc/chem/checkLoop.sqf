@@ -6,9 +6,6 @@ Description:
     Loop over chemical objects and check if player is around. If yes, set damage to player. Then propagate the contamination if player get in vehicle or contaminated objets are loaded to vehicle.
 
 Parameters:
-    _list - List in the chemical system. [Object]
-    _ieds - All IED (even FACK IED). [Array]
-    _bodyParts - Body parts to damage. [Array]
 
 Returns:
 
@@ -28,7 +25,7 @@ private _bodyParts = ["head","body","hand_l","hand_r","leg_l","leg_r"];
     params ["_args", "_id"];
     _args params ["_contaminated", "_decontaminate", "_range", "_bodyParts", "_cfgGlasses"];
 
-    if (_contaminated isEqualTo [] && _decontaminate isEqualTo []) exitWith {};
+    if (_contaminated isEqualTo []) exitWith {};
 
     private _objtToDecontaminate = [];
     {
@@ -37,7 +34,9 @@ private _bodyParts = ["head","body","hand_l","hand_r","leg_l","leg_r"];
         private _p2 = _bbr select 1;
         private _maxWidth = abs ((_p2 select 0) - (_p1 select 0));
         private _maxLength = abs ((_p2 select 1) - (_p1 select 1));
-        _objtToDecontaminate append (_contaminated inAreaArray [getPosWorld _x, _maxWidth/2, _maxLength/2, getDir _x, true]);
+        private _pos = getPosWorld _x;
+        private _maxHeight = abs ((_p2 select 2) - (_p1 select 2)) + (_pos select 2);
+        _objtToDecontaminate append (_contaminated inAreaArray [_pos, _maxWidth/2, _maxLength/2, getDir _x, true, _maxHeight]);
     } forEach (_decontaminate select {_x animationSourcePhase "valve_source" isEqualTo 1});
     {
         _contaminated deleteAt (_contaminated find _x);
@@ -51,7 +50,8 @@ private _bodyParts = ["head","body","hand_l","hand_r","leg_l","leg_r"];
         if (_x in _units) then {
             _range = _range / 2;
         };
-        _unitContaminate append (_units inAreaArray [getPosWorld _x, _range, _range]);
+        private _pos = getPosWorld _x;
+        _unitContaminate append (_units inAreaArray [_pos, _range, _range, 0, false, 2 + (_pos select 2)]);
     } forEach _contaminated;
     {
         if !(
@@ -74,4 +74,4 @@ private _bodyParts = ["head","body","hand_l","hand_r","leg_l","leg_r"];
     {
         _contaminated pushBackUnique vehicle _x;
     } forEach _toContaminate;
-}, 1, [btc_chem_contaminated, btc_chem_decontaminate, 3, _bodyParts, configFile >> "CfgGlasses"]] call CBA_fnc_addPerFrameHandler;
+}, 5, [btc_chem_contaminated, btc_chem_decontaminate, 3, _bodyParts, configFile >> "CfgGlasses"]] call CBA_fnc_addPerFrameHandler;

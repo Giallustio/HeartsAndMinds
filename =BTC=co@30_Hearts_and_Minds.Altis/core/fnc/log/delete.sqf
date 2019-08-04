@@ -7,7 +7,7 @@ Description:
 
 Parameters:
     _object - Helipad where the object to delete is. [Object]
-    _blackList - Object can't b deleted. [Array]
+    _blackList - Object can't be deleted. [Array]
 
 Returns:
 

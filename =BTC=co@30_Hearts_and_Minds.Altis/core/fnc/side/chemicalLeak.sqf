@@ -24,7 +24,7 @@ params [
     ["_taskID", "btc_side", [""]]
 ];
 
-private _useful = btc_city_all select {!((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])};
+private _useful = btc_city_all select {!(_x getVariable ["occupied", false]) && !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])};
 if (_useful isEqualTo []) then {_useful = + btc_city_all;};
 
 private _city = selectRandom _useful;
@@ -32,30 +32,49 @@ private _pos = [getPos _city, 0, 500, 30, false] call btc_fnc_findsafepos;
 
 [_taskID, 4, _pos, _city getVariable "name"] call btc_fnc_task_create;
 
-private _distance_between_fences = 8.1;
-private _number_of_fences = 2 + floor random 2;
+private _distance_between_fences = 3;
+private _number_of_fences = 2 * (3 + floor random 2);
 private _area_size = _distance_between_fences * _number_of_fences;
 private _offset = _area_size + _distance_between_fences/2;
 
 //// Randomise composition \\\\
 private _cone = selectRandom btc_type_cones;
-private _fences = + btc_type_fences;
-_fences pushBack _cone;
-private _fence = selectRandom _fences;
+private _barrier = selectRandom btc_type_barrier;
+
+private _doorCenter = 0;
+private _composition_pattern = [];
+for "_i" from -_number_of_fences to _number_of_fences do {
+    _composition_pattern append [
+        [_barrier, 0, [_i * _distance_between_fences, -_offset, 0]],
+        [_barrier, 0, [_i * _distance_between_fences, _offset, 0]],
+        [_barrier, 90, [ -_offset, _i * _distance_between_fences, 0]]
+    ];
+    if !(_i isEqualTo 3) then {
+        _composition_pattern pushBack [_barrier, 90, [_offset, _i * _distance_between_fences, 0]];
+        if (random 1 > 0.7) then {
+            _composition_pattern append [
+                [selectRandom btc_type_portableLamp, 180, [_i * _distance_between_fences, -_offset + 1, 0]],
+                [selectRandom btc_type_portableLamp, 90, [_offset - 1, _i * _distance_between_fences, 0]],
+                [selectRandom btc_type_portableLamp, 270, [ -_offset + 1, _i * _distance_between_fences, 0]]
+            ];
+        };
+    } else {
+        _doorCenter = _i * _distance_between_fences;
+    };
+};
 
 private _offset_door = - 60 + _offset;
 private _sas = -24 + _offset;
-private _doorCenter = (9.47217 - 5.86768)/2 + 5.86768;
-private _composition_pattern = [
-    [_cone, random 360 ,[60.3545 + _offset_door,5.86768,0]],
-    [_cone, random 360 ,[60.3755 + _offset_door,9.47217,0]],
-    [selectRandom btc_type_portable_light,40,[61.1982 + _offset_door,3.28906,0]],
-    [selectRandom btc_type_portable_light,37,[60.7373 + _offset_door,11.856,0]],
-    [selectRandom btc_type_body_bags,332,[62.4473 + _offset_door,0.76416,0]],
-    [selectRandom btc_type_medicals,0,[65.4448 + _offset_door,1.52734,0]],
-    [selectRandom btc_type_first_aid_kits,0,[65.6187 + _offset_door,0.109863,0]],
-    [selectRandom btc_type_power,223,[63.9292 + _offset_door,14.8687,0]],
-    [selectRandom (btc_type_barrel + btc_type_canister),0,[66.4707 + _offset_door,0.0717773,0]],
+_composition_pattern append [
+    [_cone, random 360 ,[60.3545 + _offset_door,_doorCenter + 2,0]],
+    [_cone, random 360 ,[60.3755 + _offset_door,_doorCenter - 2,0]],
+    [selectRandom btc_type_portable_light,40,[61.1982 + _offset_door,_doorCenter - 4,0]],
+    [selectRandom btc_type_portable_light,37,[60.7373 + _offset_door,_doorCenter + 5,0]],
+    [selectRandom btc_type_body_bags,332,[63 + _offset_door,_doorCenter - 4.7,0.1]],
+    [selectRandom btc_type_medicals,0,[65.4448 + _offset_door,_doorCenter - 3,0]],
+    [selectRandom btc_type_first_aid_kits,0,[65.6187 + _offset_door,_doorCenter - 4.1,0]],
+    [selectRandom btc_type_power,random [180, 223, 260],[63.9292 + _offset_door,_doorCenter + 7,0]],
+    [selectRandom (btc_type_barrel + btc_type_canister), random 360,[66.4707 + _offset_door, _doorCenter - 4.3,0]],
     ["DeconShower_01_F",0,[23 + _sas,_doorCenter,0]],
     ["Tarp_01_Small_Yellow_F",0,[23 + _sas,_doorCenter,0]],
     ["Land_ConnectorTent_01_white_open_F",270,[16.188 + _sas,_doorCenter,0]],
@@ -66,48 +85,47 @@ private _composition_pattern = [
     ["DeconShower_01_F",360,[12.7 + _sas,_doorCenter,0]],
     ["TrashBagHolder_01_F", random [0, 0, 10],[12.7 + _sas, _doorCenter -1.93781,0]],
     ["TrashBagHolder_01_F", random [0, 0, 10],[12.7 + _sas, _doorCenter + 2.23615,0]],
-    ["Tarp_01_Small_Black_F",0,[12.7 + _sas,_doorCenter,0]]
+    ["Tarp_01_Small_Black_F",0,[12.7 + _sas,_doorCenter,0]],
+    [selectRandom btc_type_spill,random 360,[-1.96582,1.60091 - _doorCenter/2,0]],
+    [selectRandom btc_type_spill,random 360,[4,3.95 - _doorCenter/2,0]],
+    [selectRandom btc_type_spill,random 360,[3.47607,-4.70143 - _doorCenter/2,0]],
+    [selectRandom btc_type_cargo_ruins,random 360,[6.31689,0.373489 - _doorCenter/2,0]],
+    [selectRandom btc_type_cargo_ruins,random 360,[-4,7.95 - _doorCenter/2,0]],
+    [selectRandom btc_type_spill,random 360,[0,11.95 - _doorCenter/2,0]]
 ];
-
-for "_i" from -_number_of_fences to _number_of_fences do {
-    _composition_pattern append [
-        [_fence, 0, [_i * _distance_between_fences, -_offset, 0]],
-        [_fence, 0, [_i * _distance_between_fences, _offset, 0]],
-        [_fence, 90, [ -_offset, _i * _distance_between_fences, 0]]
-    ];
-    if !(_i isEqualTo 1) then {
-        _composition_pattern pushBack [_fence, 90, [_offset, _i * _distance_between_fences, 0]];
-    };
-
-    if (random 1 > 0.7) then {
-        _composition_pattern append [
-            [selectRandom btc_type_portableLamp, 180, [_i * _distance_between_fences, -_offset + 1, 0]],
-            [selectRandom btc_type_portableLamp, 90, [_offset - 1, _i * _distance_between_fences, 0]],
-            [selectRandom btc_type_portableLamp, 270, [ -_offset + 1, _i * _distance_between_fences, 0]]
-        ];
-    };
+if (random 1 > 0.5) then {
+    _composition_pattern pushBack [selectRandom btc_type_cargo_ruins,random 360,[-5.12109,-6.19316 - _doorCenter/2,0]];
+};
+if (random 1 > 0.5) then {
+    _composition_pattern pushBack [selectRandom btc_type_spill,random 360,[-4,-4.05 - _doorCenter/2,0]];
 };
 
 private _composition_objects = [_pos, random 360, _composition_pattern] call btc_fnc_create_composition;
+btc_chem_decontaminate append (_composition_objects select {_x isKindOf "DeconShower_01_F"});
 
 private _chemical = [];
 for "_i" from 1 to (5 + round random 5) do {
     private _m_pos = [_pos, _area_size - 10] call btc_fnc_randomize_pos;
-    private _hazmat = createVehicle [selectRandom btc_type_hazmat, _m_pos, [], 10, "CAN_COLLIDE"];
+    private _hazmat = createVehicle [selectRandom btc_type_hazmat, _m_pos, [], 10, "NONE"];
+    _hazmat setVectorUp [random 1, random 1, 1];
     [_hazmat] call btc_fnc_log_init;
     _chemical pushBack _hazmat;
+    if (random 1 > 0.5) then {
+        btc_chem_contaminated pushBack _hazmat;
+    };
 };
-
-btc_chem_contaminated append _chemical;
-btc_chem_decontaminate append (_composition_objects select {_x isKindOf "DeconShower_01_F"});
+private _hazmat = createVehicle [btc_type_hazmatContainer, _pos, [], _area_size - 10, "NONE"];
+[_hazmat] call btc_fnc_log_init;
+btc_chem_contaminated pushBack _hazmat;
+_chemical pushBack _hazmat;
 
 waitUntil {sleep 5; (
     _taskID call BIS_fnc_taskCompleted ||
-    _chemical select {!isNull _x} isEqualTo []
+    (_chemical arrayIntersect btc_chem_contaminated) select {!isNull _x} isEqualTo []
 )};
 
 if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {
-    [[], _composition_objects, _chemical] call btc_fnc_delete;
+    [[], _composition_objects + _chemical] call btc_fnc_delete;
 };
 
 30 call btc_fnc_rep_change;
