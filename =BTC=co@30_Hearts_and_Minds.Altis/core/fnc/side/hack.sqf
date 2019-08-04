@@ -14,7 +14,7 @@ Returns:
 
 Examples:
     (begin example)
-        [] spawn btc_fnc_side_hack;
+        [false, "btc_fnc_side_hack"] spawn btc_fnc_side_create;
     (end)
 
 Author:
