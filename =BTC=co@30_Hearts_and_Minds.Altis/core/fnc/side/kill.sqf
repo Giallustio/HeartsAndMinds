@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        [] spawn btc_fnc_side_kill;
+        [false, "btc_fnc_side_kill"] spawn btc_fnc_side_create;
     (end)
 
 Author:
@@ -78,8 +78,8 @@ _trigger setTriggerArea [20, 20, 0, false];
 _trigger setTriggerActivation [str btc_player_side, "PRESENT", true];
 _trigger setTriggerStatements ["this", "private _group = thisTrigger getVariable 'group'; {_x setCombatMode 'RED';} forEach _group;", "private _group = thisTrigger getVariable 'group'; {_x setCombatMode 'WHITE';} forEach _group;"];
 
-waitUntil {sleep 5; (_kill_taskID call BIS_fnc_taskCompleted || !alive _officer)};
-if (_kill_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {
+waitUntil {sleep 5; (_taskID call BIS_fnc_taskCompleted || !alive _officer)};
+if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {
     [[], _group + [_group_officer, _trigger]] call btc_fnc_delete;
 };
 
@@ -94,8 +94,6 @@ private _globalVariableName = format ["btc_%1", _dogTag_taskID];
     _thisArgs params ["_officer_dogTagData", "_dogTag_taskID", "_taskID", "_globalVariableName"];
 
     if (_dogTagData isEqualTo _officer_dogTagData) then {
-        systemChat str(_dogTagData);
-        systemChat str(_officer_dogTagData);
         [_thisType, _thisId] call CBA_fnc_removeEventHandler;
         [_dogTag_taskID, "SUCCEEDED"] call BIS_fnc_taskSetState;
         private _base_taskID = _taskID + "bs";

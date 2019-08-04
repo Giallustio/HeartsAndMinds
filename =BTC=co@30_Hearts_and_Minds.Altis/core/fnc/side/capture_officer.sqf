@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        [] spawn btc_fnc_side_capture_officer;
+        [false, "btc_fnc_side_capture_officer"] spawn btc_fnc_side_create;
     (end)
 
 Author:
@@ -116,7 +116,7 @@ _trigger attachTo [_captive, [0, 0, 0]];
     _this
 }, [_captive, _handcuff_taskID]] call CBA_fnc_addEventHandlerArgs;
 
-waitUntil {sleep 5; (!(alive _captive) || (_captive inArea [getPosWorld btc_create_object_point, 100, 100, 0, false]) || _taskID call BIS_fnc_taskCompleted || _back_taskID call BIS_fnc_taskCompleted)};
+waitUntil {sleep 5; (!(alive _captive) || (_captive inArea [getPosWorld btc_create_object_point, 100, 100, 0, false]) || _taskID call BIS_fnc_taskCompleted)};
 
 if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {
     deleteVehicle _trigger;

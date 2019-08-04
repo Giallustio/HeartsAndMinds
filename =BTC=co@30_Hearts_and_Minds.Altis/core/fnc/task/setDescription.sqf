@@ -272,7 +272,7 @@ switch (_description) do {
     };
     case 27 : {
         _description = [
-            format [localize "STR_BTC_HAM_SIDE_KILL_DOGTAG_DESC", _location] + format [_image, "\z\ace\addons\dogtags\data\dogtagSingle.paa"],
+            format [localize "STR_BTC_HAM_SIDE_KILL_DOGTAG_DESC", _location] + format ["<br/><img image='%1' width='355' height='300'/>", "\z\ace\addons\dogtags\data\dogtagSingle.paa"],
             localize "STR_BTC_HAM_SIDE_KILL_DOGTAG_TITLE",
             localize "STR_BTC_HAM_SIDE_KILL_DOGTAG_TITLE"
         ];
