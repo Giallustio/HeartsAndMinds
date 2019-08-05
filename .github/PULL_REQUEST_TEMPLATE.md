@@ -1,3 +1,5 @@
+(Use English only.)
+
 - FIX/Add: here write the line will be used in the changelog (@Author1, @Author2 ...).
 
 **When merged this pull request will:**

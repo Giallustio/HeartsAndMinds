@@ -3,16 +3,16 @@
 Function: btc_fnc_ied_allahu_akbar
 
 Description:
-    Fill me when you edit me !
+    Play song and trigger suicider bomb if suicider is alive and awake.
 
 Parameters:
-    _trigger - [Object]
+    _trigger - Trigger attached to the suicider. [Object]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_ied_allahu_akbar;
+        [trigger] call btc_fnc_ied_allahu_akbar;
     (end)
 
 Author:

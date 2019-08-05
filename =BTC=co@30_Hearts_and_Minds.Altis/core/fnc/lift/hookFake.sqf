@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_log_lift_hook_fake
+Function: btc_fnc_lift_hookFake
 
 Description:
     Fill me when you edit me !
@@ -13,7 +13,7 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_log_lift_hook_fake;
+        _result = [] call btc_fnc_lift_hookFake;
     (end)
 
 Author:

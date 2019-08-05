@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project name="BTC Hearts and Minds: Mission">
     <Package name="Description">
         <Container name="Description: Main">
@@ -144,9 +144,9 @@
         </Container>
         <Container name="Documentation: FOB">
             <Key ID="STR_BTC_HAM_DOC_FOB_TEXT">
-                <Original>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move1_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\run_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move2_ca.paa' width='20' height='20' /&gt; &lt;marker name='blufor_base'&gt;FOB:&lt;/marker&gt;&lt;br/&gt; In this mission a FOB is a forward spawn point, to create a FOB approach the red box at the logistic point and require a blue container.&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\Ui_f\data\Map\Markers\NATO\b_hq.paa' width='20' height='20'/&gt;  &lt;marker name='blufor_base'&gt;Deploy:&lt;/marker&gt; &lt;br/&gt; Move it where you want to deploy a new FOB and interact with it to set it up. Keep in mind that you can not deploy a FOB close to the main base (2.500m) and the terrain needs to be flat.&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Dismantle:&lt;/marker&gt; &lt;br/&gt; You can dismantle a FOB by interacting with the flag on the HQ roof.</Original>
+                <Original>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move1_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\run_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move2_ca.paa' width='20' height='20' /&gt; &lt;marker name='blufor_base'&gt;FOB:&lt;/marker&gt;&lt;br/&gt; In this mission a FOB is a forward spawn point, to create a FOB approach the red box at the logistic point and require a blue container.&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\Ui_f\data\Map\Markers\NATO\b_hq.paa' width='20' height='20'/&gt;  &lt;marker name='blufor_base'&gt;Deploy:&lt;/marker&gt; &lt;br/&gt; Move it where you want to deploy a new FOB and interact with it to set it up. Keep in mind that you can not deploy a FOB close to the main base (2.500m) and the terrain needs to be flat.&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Dismantle:&lt;/marker&gt; &lt;br/&gt; You can dismantle a FOB by interacting with the flag on the HQ roof.&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move1_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\run_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move2_ca.paa' width='20' height='20' /&gt; &lt;marker name='blufor_base'&gt;Rallypoint:&lt;/marker&gt;&lt;br/&gt; You can also use the Zeus rallypoint backpack available in Arsenal. Those have a limited number of respawn.</Original>
                 <Spanish>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move1_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\run_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move2_ca.paa' width='20' height='20' /&gt; &lt;marker name='blufor_base'&gt;FOB:&lt;/marker&gt;&lt;br/&gt; En esta misión un FOB es un punto de respawn avanzado, para crear un FOB se aproxima a la caja roja en el punto logístico y requiere un contenedor azul.&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\Ui_f\data\Map\Markers\NATO\b_hq.paa' width='20' height='20'/&gt;  &lt;marker name='blufor_base'&gt;Deploy:&lt;/marker&gt; &lt;br/&gt; Muévelo donde quieras desplegar un nuevo FOB e interactúa con él para configurarlo. Tenga en cuenta que no puede desplegar un FOB cerca de la base principal (2.500m) y el terreno debe ser plano.&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Dismantle:&lt;/marker&gt; &lt;br/&gt; Puede desmontar un FOB interactuando con la bandera en el techo del HQ.</Spanish>
-                <German>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move1_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\run_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move2_ca.paa' width='20' height='20' /&gt; &lt;marker name='blufor_base'&gt;FOB:&lt;/marker&gt;&lt;br/&gt; Eine FOB (Forward Operating Base / vorgeschobene Operationsbasis) dient in dieser Mission als Spawn-Punkt. Um eine FOB zu erstellen muss am Logistikpunkt ein ensprechnender Frachtcontainer(Blau) angefordert werden&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\Ui_f\data\Map\Markers\NATO\b_hq.paa' width='20' height='20'/&gt;  &lt;marker name='blufor_base'&gt;Aufbau:&lt;/marker&gt; &lt;br/&gt; Der Aufbau kann nur statfinden, wenn man sich mindestens 2,5km von der Basis entfernt hat und das Gelände relativ flach ist. Um den Aufbau zu beginnen: einfach mit dem Frachtcontainer interagieren und 'FOB aufbauen' auswählen.&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Abbau:&lt;/marker&gt; &lt;br/&gt; Auf dem Dach der FOB kann man mit der Flagge interagieren um den Abbau zu beginnen.</German>
+                 <German>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move1_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\run_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move2_ca.paa' width='20' height='20' /&gt; &lt;marker name='blufor_base'&gt;FOB:&lt;/marker&gt;&lt;br/&gt; Eine FOB (Forward Operating Base / vorgeschobene Operationsbasis) dient in dieser Mission als Spawn-Punkt. Um eine FOB zu erstellen muss am Logistikpunkt ein ensprechnender Frachtcontainer(Blau) angefordert werden&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\Ui_f\data\Map\Markers\NATO\b_hq.paa' width='20' height='20'/&gt;  &lt;marker name='blufor_base'&gt;Aufbau:&lt;/marker&gt; &lt;br/&gt; Der Aufbau kann nur statfinden, wenn man sich mindestens 2,5km von der Basis entfernt hat und das Gelände relativ flach ist. Um den Aufbau zu beginnen: einfach mit dem Frachtcontainer interagieren und 'FOB aufbauen' auswählen.&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Abbau:&lt;/marker&gt; &lt;br/&gt; Auf dem Dach der FOB kann man mit der Flagge interagieren um den Abbau zu beginnen.&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move1_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\run_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move2_ca.paa' width='20' height='20' /&gt; &lt;marker name='blufor_base'&gt;Sammelpunkt:&lt;/marker&gt;&lt;br/&gt; Nutzen Sie den im Arsenal erhältlichen Lager-Rucksack aus dem Zeus-DLC. Die Anzahl der Respawns bei den Sammelpunkten ist beschränkt.</German>
                 <Portuguese>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move1_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\run_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move2_ca.paa' width='20' height='20' /&gt; &lt;marker name='blufor_base'&gt;FOB:&lt;/marker&gt;&lt;br/&gt; Nesta missão, uma FOB é um ponto de surgimento. Para criar uma FOB, aproxime-se da caixa vermelha no ponto logístico, solicite um container azul.&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\Ui_f\data\Map\Markers\NATO\b_hq.paa' width='20' height='20'/&gt;  &lt;marker name='blufor_base'&gt;Deploy:&lt;/marker&gt; &lt;br/&gt; A construção só pode acontecer se você se deslocar 2.500m da FOB principal e o terreno deve ser plano. Para começar a criar a nova FOB, basta interagir com o cônteiner e selecionar: "Build FOB" (Criar FOB).&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Dismantle:&lt;/marker&gt; &lt;br/&gt; No telhado da FOB, você pode interagir com a bandeira para iniciar a desmontagem da FOB.</Portuguese>
                 <Chinesesimp>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move1_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\run_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move2_ca.paa' width='20' height='20' /&gt; &lt;marker name='blufor_base'&gt;FOB:&lt;/marker&gt;&lt;br/&gt; FOB 可作为前线复活点使用。要创建FOB, 请在补给点申请蓝色货运集装箱。&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\Ui_f\data\Map\Markers\NATO\b_hq.paa' width='20' height='20'/&gt;  &lt;marker name='blufor_base'&gt;部署:&lt;/marker&gt; &lt;br/&gt; 将FOB集装箱移动至部署位置并与其互动即可建造FOB。请谨记: 只有在主基地2500米范围外的地形平坦区域才能建立FOB。&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;拆除:&lt;/marker&gt; &lt;br/&gt; 你可以与指挥部(HQ)屋顶的旗杆互动, 以拆除FOB。</Chinesesimp>
             </Key>
@@ -335,6 +335,7 @@
                 <Original>&lt;&lt; Spawn options &gt;&gt;</Original>
                 <German>Spawn Einstellungen:</German>
                 <Chinesesimp>&lt;&lt; 重生设置 &gt;&gt;</Chinesesimp>
+                <Portuguese>&lt;&lt; Opções de Spawn &gt;&gt;</Portuguese>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_SPWAN_ISFREE_PROB">
                 <Original>Probability for a city to be free:</Original>
@@ -344,16 +345,19 @@
                 <Original>Enemy density:</Original>
                 <German>Feinddichte:</German>
                 <Chinesesimp>敌军密度:</Chinesesimp>
+                <Portuguese>Densidade inimiga:</Portuguese>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_SPWAN_CIVILIAN_DENSITY">
                 <Original>Civilian density:</Original>
                 <German>Zivilistendichte:</German>
                 <Chinesesimp>平民密度:</Chinesesimp>
+                <Portuguese>Densidade civil:</Portuguese>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_SPWAN_MIL_INHOUSE_DENSITY">
                 <Original>Density of military in house:</Original>
                 <German>Feinddichte in Gebäuden:</German>
                 <Chinesesimp>建筑物中的敌军密度:</Chinesesimp>
+                <Portuguese>Densidade de militares em construções:</Portuguese>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_SPAWN_ARMEDHIDEOUT">
                 <Original>Add armed vehicles in Hideout:</Original>
@@ -371,11 +375,13 @@
                 <Original>Maximum number of military patrol:</Original>
                 <German>Maximale Anzahl feindl. Patrouillen:</German>
                 <Chinesesimp>敌方巡逻队数量上限:</Chinesesimp>
+                <Portuguese>Número máximo de patrulhas militares:</Portuguese>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_SPWAN_CIV_MAX_VEH">
                 <Original>Maximum number of civilian patrol:</Original>
                 <German>Maximale Anzahl an ziviler Fahrzeuge:</German>
                 <Chinesesimp>民用车辆数量上限:</Chinesesimp>
+                <Portuguese>Número máximo de patrulhas civis:</Portuguese>
             </Key>
         </Container>
         <Container name="Parameters: IEDS">
@@ -550,6 +556,7 @@
                 <Original>&lt;&lt; Arsenal options &gt;&gt;</Original>
                 <German>&lt;&lt; Arsenal Einstellungen &gt;&gt;</German>
                 <Chinesesimp>&lt;&lt; 军火库设置 &gt;&gt;</Chinesesimp>
+                <Portuguese>&lt;&lt; Opções do Arsenal &gt;&gt;</Portuguese>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_ARSENAL_ARSENALTYPE">
                 <Original>Type of the arsenal:</Original>
@@ -591,16 +598,19 @@
                 <Original>Restrict arsenal (See /define_mod.sqf):</Original>
                 <German>Arsenal beschränken (Siehe /define_mod.sqf):</German>
                 <Chinesesimp>军火库限制 (见 /define_mod.sqf):</Chinesesimp>
+                <Portuguese>Restringir arsenal (Veja /define_mod.sqf):</Portuguese>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_ARSENAL_ARSENALRESTR_REMOVEONLY">
                 <Original>Remove only (works only with ACE3-Arsenal)</Original>
                 <German>Nur entfernen (funktioniert nur beim ACE3-Arsenal)</German>
                 <Chinesesimp>仅移除 (仅对ACE3军火库生效)</Chinesesimp>
+                <Portuguese>Apenas remover (funciona apenas com o ACE3-Arsenal)</Portuguese>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_ARSENAL_AUTOLOADOUT">
                 <Original>Predefined loadouts (See /define_mod.sqf)</Original>
                 <German>Vorgefertigte Loadouts (Siehe /define_mod.sqf)</German>
                 <Chinesesimp>预设装备 (见 /define_mod.sqf)</Chinesesimp>
+                <Portuguese>Loadouts prédefinidos (Veja /define_mod.sqf)</Portuguese>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_ARSENAL_RMVWEAPONS">
                 <Original>Remove all weapons</Original>
@@ -611,6 +621,7 @@
                 <Original>Filter on player role (works only with ACE3-Arsenal)</Original>
                 <German>Nach der Rolle des Spielers beschränken (geht nur mit dem ACE3-Arsenal)</German>
                 <Chinesesimp>根据玩家角色限制 (仅对ACE3军火库生效)</Chinesesimp>
+                <Portuguese>Filtrar à função do jogador (funciona apenas com o ACE3-Arsenal)</Portuguese>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_ARSENAL_GARAGEADMIN">
                 <Original>Activate garage for admin:</Original>
@@ -650,6 +661,9 @@
                 <Portuguese>Desativar o surgimento de unidades na cidade quando uma aeronave ou helicóptero estiver sobrevoando em velocidade (&gt;190km/h): </Portuguese>
                 <Chinesesimp>当飞机或直升机(&gt;190Km/h)飞掠城市上空时, 不激活城市:</Chinesesimp>
             </Key>
+            <Key ID="STR_BTC_HAM_PARAM_OTHER_AUTOHEADLESS">
+                <Original>Autodetect Headless client:</Original>
+            </Key>
             <Key ID="STR_BTC_HAM_PARAM_OTHER_DEBUG">
                 <Original>Debug:</Original>
                 <German>Debug:</German>
@@ -667,10 +681,12 @@
     <Package name="Missions">
         <Container name="Mission: Defeat the Oplitas">
             <Key ID="STR_BTC_HAM_MISSION_OBJ_DESC">
-                <Original>Objectives must be accomplish.</Original>
+                <Original>Objectives must be accomplished.</Original>
+                <German>Ziele müssen erreicht werden.</German>
             </Key>
             <Key ID="STR_BTC_HAM_MISSION_OBJ_TITLE">
                 <Original>Main objectives</Original>
+                <German>Hauptziele</German>
             </Key>
             <Key ID="STR_BTC_HAM_MISSION_DEFEAT_TITLE">
                 <Original>Defeat the Oplitas</Original>
@@ -738,9 +754,11 @@
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_CAPOFF_SURRENDER_DESC">
                 <Original>Surrender the officer.</Original>
+                <German>Nehmen Sie den Offizier gefangen.</German>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_CAPOFF_SURRENDER_TITLE">
                 <Original>Surrender the officer</Original>
+                <German>Offizier gefangen nehmen</German>
             </Key>
         </Container>
         <Container name="Checkpoint">
@@ -759,10 +777,12 @@
                 <Chinesesimp>在 %1 地区发现检查站。当地居民请求您摧毁武器箱和相应的检查站!</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_CHECKPOINT_DESTROY_DESC">
-                <Original>Detroy this checkpoint by destroying this object.</Original>
+                <Original>Destroy this checkpoint by destroying this object.</Original>
+                <German>Beseitigen Sie den Kontrollpunkt, indem Sie alle Objekte zerstören.</German>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_CHECKPOINT_DESTROY_TITLE">
-                <Original>Detroy this checkpoint</Original>
+                <Original>Destroy this checkpoint</Original>
+                <German>Kontrollpunkt beseitigen</German>
             </Key>
         </Container>
         <Container name="Civ treatment boat">
@@ -864,13 +884,16 @@
                 <Chinesesimp>在 %1 地区入侵一枚带有控制终端的导弹原型的系统。守住你的位置, 直到系统入侵完成!</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_HACK_OPEN_DESC">
-                <Original>Open terminal to launch the hack.</Original>
+                <Original>Use the terminal to launch the hack.</Original>
+                <German>Benutzen Sie das Terminal, um den Hack zu starten.</German>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_HACK_OPEN_TITLE">
-                <Original>Open terminal</Original>
+                <Original>Start the Hack</Original>
+                <German>Hack starten</German>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_HACK_DEFEND_TITLE">
                 <Original>Defend the terminal</Original>
+                <German>Verteidigen Sie das Terminal</German>
             </Key>
         </Container>
         <Container name="Hostage">
@@ -922,15 +945,19 @@
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_RESC_FIND_DESC">
                 <Original>Find the pilot of the helicopter. It should be around the helicopter wreck.</Original>
+                <German>Finden Sie den Piloten. Er sollte sich um Umfeld des Helikopterwracks befinden.</German>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_RESC_FIND_TITLE">
                 <Original>Find the pilot</Original>
+                <German>Finde den Piloten</German>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_RESC_BACK_DESC">
-                <Original>Get him back to base at logistic point.</Original>
+                <Original>Get him back to base at the logistic point.</Original>
+                <German>Bringen Sie ihn zum Logistikpunkt zurück.</German>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_RESC_BACK_TITLE">
                 <Original>Get him back</Original>
+                <German>Hol ihn zurück</German>
             </Key>
         </Container>
         <Container name="Supply">
@@ -949,16 +976,20 @@
                 <Chinesesimp>%1 的居民正在挨饿, 在补给点生成一些救援物资并带给他们!</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_SUPPLIES_MOVE_DESC">
-                <Original>Move to the supply location with supplies available at logistic point.</Original>
+                <Original>Move to the supply location with supplies available at the logistic point.</Original>
+                <German>Begeben Sie sich mir der Versorgungslieferung (erhältlich am Versorgungspunkt) zum Einsatzgebiet.</German>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_SUPPLIES_MOVE_TITLE">
                 <Original>Move with supplies</Original>
+                <German>Versorgungslieferung</German>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_SUPPLIES_UNLOAD_DESC">
-                <Original>Unload supplies available inside the supplies contanair.</Original>
+                <Original>Unload supplies available inside the supplies container.</Original>
+                <German>Entladen Sie alle Nachschubgüter aus der Versorgungslieferung.</German>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_SUPPLIES_UNLOAD_TITLE">
                 <Original>Unload supplies</Original>
+                <German>Nachschubgüter ausladen</German>
             </Key>
         </Container>
         <Container name="Tower">
@@ -1130,7 +1161,7 @@
                 <Original>Taxi</Original>
                 <Spanish>Taxi</Spanish>
                 <German>Taxi</German>
-                <Portuguese>Taxi</Portuguese>
+                <Portuguese>Táxi</Portuguese>
                 <Chinesesimp>搭车</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_ACTION_ORDERS_ASKINFO">
@@ -1152,7 +1183,7 @@
             <Key ID="STR_BTC_HAM_ACTION_SIDEMISSION_ABORT">
                 <Original>Abort assigned</Original>
                 <Spanish>Abortar</Spanish>
-                <German>Abbrechen</German>
+                <German>Zugewiesene Mission abbrechen</German>
                 <Portuguese>Abortar</Portuguese>
                 <Chinesesimp>中止</Chinesesimp>
             </Key>
@@ -1160,7 +1191,7 @@
                 <Original>Request</Original>
                 <Spanish>Solicitar</Spanish>
                 <German>Anfordern</German>
-                <Portuguese>Requisitar</Portuguese>
+                <Portuguese>Solicitar</Portuguese>
                 <Chinesesimp>申请</Chinesesimp>
             </Key>
         </Container>
@@ -1169,7 +1200,7 @@
                 <Original>Re-deploy</Original>
                 <Spanish>Re-deploy</Spanish>
                 <German>Verlegen</German>
-                <Portuguese>Recolocar</Portuguese>
+                <Portuguese>Ressurgir na FOB</Portuguese>
                 <Chinesesimp>重新部署</Chinesesimp>
             </Key>
         </Container>
@@ -1359,6 +1390,7 @@
             </Key>
             <Key ID="STR_BTC_HAM_CON_INFO_PICTURE">
                 <Original>Pictures of cache number %1</Original>
+                <German>Bilder des Waffenlagers %1</German>
             </Key>
             <Key ID="STR_BTC_HAM_CON_INFO_SEARCH_BAR">
                 <Original>Searching for intel . . .</Original>
@@ -1503,7 +1535,7 @@
                 <Original>Dismantle, move out ...</Original>
                 <Spanish>Desmantelado, muévanse...</Spanish>
                 <German>Abbau im gange, geh ein wenig zurück...</German>
-                <Portuguese>Saia... Desmontando</Portuguese>
+                <Portuguese>Desmontando, se afaste...</Portuguese>
                 <!-- This translation might have confusion. 此处翻译存疑。 -->
                 <Chinesesimp>拆除, 搬走 ...</Chinesesimp>
             </Key>
@@ -1523,7 +1555,9 @@
             </Key>
             <Key ID="STR_BTC_HAM_O_FOB_REDEPLOY_LABEL">
                 <Original>Select a FOB</Original>
+                <German>FOB auswähen</German>
                 <Chinesesimp>选择一个FOB:</Chinesesimp>
+                <Portuguese>Selecione uma FOB</Portuguese>
             </Key>
             <Key ID="STR_BTC_HAM_O_FOB_DLG_T_NAMEFOB">
                 <Original>Name the FOB:</Original>
@@ -1580,7 +1614,7 @@
                 <Original>In the last hideout we found important intel about all the cities occupied by the Oplitas! Size the last positions held by the enemies and defeat them once and for all</Original>
                 <Spanish>En el último escondite encontramos información importante sobre todas las ciudades ocupadas por los Oplitas! Evalúa las últimas posiciones de los enemigos y derrótalos de una vez por todas.</Spanish>
                 <German>In the last hideout we found important intel about all the cities occupied by the Oplitas! Size the last positions held by the enemies and defeat them once and for all</German>
-                <Portuguese>No último esconderijo encontramos informações importantes sobre as cidades ocupadas pelos inimigos! Dimensione as últimas posições dos inimigos e derrote-os de uma vez por todas</Portuguese>
+                <Portuguese>No último esconderijo encontramos informações importantes sobre as cidades ocupadas pelos inimigos! Conquites as últimas posições dos inimigos e derrote-os de uma vez por todas</Portuguese>
                 <Chinesesimp>在上个敌军藏匿点中, 我们发现了写有Oplitas占领的全部城市的重要情报! 夺取最后一个敌军据点, 一举消灭他们! </Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_7">
@@ -1613,15 +1647,19 @@
             </Key>
             <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_14">
                 <Original>We got a picture of the building where the cache is:</Original>
+                <German>Wir haben ein Bild von dem Gebäude, in dem sich das Waffenlager befinden soll:</German>
             </Key>
             <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_15">
                 <Original>We got a picture of the something around the cache:</Original>
+                <German>Wir haben ein Bild von der näheren Umgebung des Waffenlagers:</German>
             </Key>
             <Key ID="STR_BTC_HAM_O_TASK_NOSIDE">
                 <Original>No side mission assigned</Original>
+                <German>Keine Nebenmission zugewiesen</German>
             </Key>
             <Key ID="STR_BTC_HAM_O_TASK_NOTASIDE">
                 <Original>Isn't a side mission, can't abort</Original>
+                <German>Nur Nebenmissionen können abgebrochen werden</German>
             </Key>
         </Container>
         <Container name="Other: Shortcuts">
@@ -1696,7 +1734,7 @@
                 <Original>All the hideouts are destroyed, finally the Oplitas has been defeated! Mission accomplished</Original>
                 <Spanish>Todos los escondites fueron destruidos, finalmente el Oplitas han sido derrotados! Misión cumplida</Spanish>
                 <German>Alle Verstecke sind zerstört, nun sind die Oplitas besiegt! Mission erfüllt</German>
-                <Portuguese>Todos os econderijos foram destruídos, finalmente os inimigos foram derrotados! Missão cumprida</Portuguese>
+                <Portuguese>Todos os esconderijos foram destruídos, finalmente os inimigos foram derrotados! Missão cumprida</Portuguese>
                 <Chinesesimp>所有敌军藏匿点已被摧毁, 敌军终于被打败了! 任务完成</Chinesesimp>
             </Key>
         </Container>
@@ -1808,6 +1846,7 @@
                 <Original>This wreck will respawn</Original>
                 <Chinesesimp>此残骸将会重生</Chinesesimp>
                 <German>Dieses Wrack respawnt automatisch</German>
+                <Portuguese>Esta carcaça será respawnada</Portuguese>
             </Key>
         </Container>
         <Container name="Logistic: Delete">

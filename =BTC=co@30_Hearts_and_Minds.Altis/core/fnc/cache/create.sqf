@@ -32,7 +32,7 @@ clearWeaponCargoGlobal btc_cache_obj;
 clearItemCargoGlobal btc_cache_obj;
 clearMagazineCargoGlobal btc_cache_obj;
 
-btc_cache_obj addEventHandler ["HandleDamage", btc_fnc_cache_hd_cache];
+[btc_cache_obj, "HandleDamage", "btc_fnc_cache_hd_cache"] call btc_fnc_eh_persistOnLocalityChange;
 
 private _pos_type_array = ["TOP", "FRONT", "CORNER_L", "CORNER_R"];
 

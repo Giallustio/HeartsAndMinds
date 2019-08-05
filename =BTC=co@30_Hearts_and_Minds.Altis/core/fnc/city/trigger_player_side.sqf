@@ -59,5 +59,5 @@ if (btc_debug) then {
 
     private _marke = createMarker [format ["locn_%1", _id], _position];
     _marke setMarkerType "mil_dot";
-    _marke setMarkerText format ["loc_%3 %1 %2 - [%4] - [%5] ", _name, _type, _id, _has_en, _city getVariable ["hasbeach", "empty"]];
+    _marke setMarkerText format ["loc_%3 %1 %2 - [%4] - [%5]", _name, _type, _id, _has_en, _city getVariable ["hasbeach", "empty"]];
 };

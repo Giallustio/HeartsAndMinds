@@ -3,7 +3,7 @@
 Function: btc_fnc_rep_hd
 
 Description:
-    Fill me when you edit me !
+    Handle damage.
 
 Parameters:
     _unit - [Object]
@@ -16,7 +16,7 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_rep_hd;
+        [cursorObject, "body", 0.1, player] call btc_fnc_rep_hd;
     (end)
 
 Author:
@@ -34,6 +34,10 @@ params [
 
 if (_part in ["body", "wheel_1_1_steering", "wheel_1_2_steering", "wheel_2_1_steering", "wheel_2_2_steering", "palivo", "engine", "glass1", "glass2", "glass3", "glass4", "karoserie", "palivo", "fuel_hitpoint", "engine_hitpoint", "body_hitpoint"]) then {
     if (isPlayer _injurer && {_dam > 0.01}) then    {
+        if (!isServer) exitWith {
+            _this remoteExecCall ["btc_fnc_rep_hd", 2];
+        };
+
         btc_rep_malus_civ_hd call btc_fnc_rep_change;
 
         if (btc_global_reputation < 600) then {[getPos _unit] spawn btc_fnc_rep_eh_effects;};

@@ -3,19 +3,20 @@
 Function: btc_fnc_data_spawn_group
 
 Description:
-    Fill me when you edit me !
+    Create group previously saved by btc_fnc_data_get_group.
 
 Parameters:
-    _type - [Number]
-    _array_pos - [Array]
-    _array_type - [Array]
-    _side - [Side]
-    _array_dam - [Array]
-    _behaviour - [Array]
-    _array_wp - [Array]
-    _array_veh - []
+    _type - Type of group (3: in house group, 4: civilian with weapon, 5: suicider ...). [Number]
+    _array_pos - Position on units. [Array]
+    _array_type - Type of units. [Array]
+    _side - Side of the group. [Side]
+    _array_dam - Damage of units. [Array]
+    _behaviour - Behaviour of units. [Array]
+    _array_wp - Waypoints of group. [Array]
+    _array_veh - Vehicle occupied by the group. [Array, String]
 
 Returns:
+    leader of the group and type of group. [Array]
 
 Examples:
     (begin example)
@@ -94,11 +95,6 @@ if !(_side isEqualTo civilian && {vehicle leader _group isEqualTo leader _group}
         } forEach (_array_wp select 1);
         _group setCurrentWaypoint [_group, _array_wp select 0];
     };
-};
-if (_type isEqualTo 2) then {
-    [_group] call CBA_fnc_clearWaypoints;
-    {doStop _x;} forEach units _group;
-    _group setVariable ["stop", true];
 };
 if (_type isEqualTo 3) then {
     [_group] call CBA_fnc_clearWaypoints;

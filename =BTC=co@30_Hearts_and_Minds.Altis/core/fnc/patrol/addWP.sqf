@@ -3,18 +3,18 @@
 Function: btc_fnc_patrol_addWP
 
 Description:
-    Fill me when you edit me !
+    Add waypoint to the end city.
 
 Parameters:
-    _group - [Group]
-    _pos - [Array]
-    _waypointStatements - [String]
+    _group - Group to add waypoint. [Group]
+    _pos - Position of the end city. [Array]
+    _waypointStatements - Code to execute on waypoint completion. [String]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_patrol_addWP;
+        [group cursorTarget, getPos player, "[group this, 1000, [0, 0, 0], [0, 1, 2], false] call btc_fnc_patrol_WPCheck;"] call btc_fnc_patrol_addWP;
     (end)
 
 Author:

@@ -3,16 +3,16 @@
 Function: btc_fnc_rep_call_militia
 
 Description:
-    Fill me when you edit me !
+    Call militia to a position.
 
 Parameters:
-    _pos - [Array]
+    _pos - Position to calling for militia. [Array]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_rep_call_militia;
+        [getPos player] call btc_fnc_rep_call_militia;
     (end)
 
 Author:
@@ -29,48 +29,24 @@ btc_rep_militia_called = time;
 private _players = if (isMultiplayer) then {playableUnits} else {switchableunits};
 
 //is there an hideout close by?
-private _start_pos = [];
-{
-    private _hideout = _x;
-    if (_hideout inArea [_pos, 2000, 2000, 0, false] && {_players inAreaArray [getPosWorld _hideout, 500, 500] isEqualTo []}) then {
-        _start_pos = getPos _hideout;
-    };
-} forEach btc_hideouts;
+private _start_pos = objNull;
+private _hideouts = btc_hideouts inAreaArray [_pos, 2000, 2000];
+if !(_hideouts isEqualTo []) then {
+    _hideouts = _hideouts select {_players inAreaArray [getPosWorld _hideout, 500, 500] isEqualTo []};
+    if !(_hideouts isEqualTo []) then {_start_pos = selectRandom _hideouts};
+};
 
 if (btc_debug_log) then {
     [format ["_start_pos : %1 (HIDEOUTS)", _start_pos], __FILE__, [false]] call btc_fnc_debug_message;
 };
 
-if (_start_pos isEqualTo []) then {
+if (_start_pos isEqualTo objNull) then {
     {
         private _city = _x;
         if (_pos distance _city > 300 && {_city inArea [_pos, 2500, 2500, 0, false]} && {_players inAreaArray [getPosWorld _city, 500, 500] isEqualTo []}) then {
-            _start_pos = getPos _city;
+            _start_pos = _city;
         };
-    } forEach btc_city_all;
-};
-if (btc_debug_log) then {
-    [format ["_start_pos : %1 (CITIES)", _start_pos], __FILE__, [false]] call btc_fnc_debug_message;
-};
-
-if (_start_pos isEqualTo []) then {
-    _pos params ["_x", "_y"];
-
-    private _random = random 8;
-    switch (true) do {
-        case (_random <= 1) : {_start_pos = [_x , _y + 1000, 0];};//N
-        case (_random > 1 && _random <= 2) : {_start_pos = [_x + 750, _y + 750, 0];};//NE
-        case (_random > 2 && _random <= 3) : {_start_pos = [_x + 1000, _y + 0, 0];};//E
-        case (_random > 3 && _random <= 4) : {_start_pos = [_x + 750, _y - 750, 0];};//SE
-        case (_random > 4 && _random <= 5) : {_start_pos = [_x - 1000, _y + 0, 0];};//W
-        case (_random > 5 && _random <= 6) : {_start_pos = [_x - 750, _y - 750, 0];};//SW
-        case (_random > 6 && _random <= 7) : {_start_pos = [_x - 750, _y + 750, 0];};//NW
-        case (_random > 7) : {_start_pos = [_x, _y - 1000, 0];};//S
-    };
-};
-
-if (btc_debug_log) then {
-    [format ["_start_pos : %1 (ULTIMA RATIO)", _start_pos], __FILE__, [false]] call btc_fnc_debug_message;
+    } forEach (btc_city_all select {!(isNull _x)});
 };
 
 private _ratio = if (_pos distance _start_pos > 1000) then {0.2} else {0.6};
@@ -81,11 +57,7 @@ if (btc_debug_log) then {
 
 if ((random 1) > _ratio) then {
     //MOT
-    private _group = createGroup btc_enemy_side;
-    _group setVariable ["no_cache", true];
-    private _veh = [_group, _start_pos] call btc_fnc_mil_createVehicle;
-
-    [_group, _pos, 60, "MOVE", "AWARE", "RED", "FULL", "NO CHANGE", "(group this) spawn btc_fnc_data_add_group;"] call CBA_fnc_addWaypoint;
+    private _group = [_start_pos, _pos, 1] call btc_fnc_mil_send;
     [_group, _pos, 60, "UNLOAD"] call CBA_fnc_addWaypoint;
     [_group, _pos, 60, "SAD"] call CBA_fnc_addWaypoint;
 
@@ -94,11 +66,7 @@ if ((random 1) > _ratio) then {
     };
 } else {
     //INF
-    private _group = ([_start_pos, 50, 8 + round random 6, 1] call btc_fnc_mil_create_group) select 0;
-    _group setVariable ["no_cache", true];
-
-    [_group] call CBA_fnc_clearWaypoints;
-    [_group, _pos, 60, "MOVE", "AWARE", "RED", "FULL", "WEDGE", "(group this) spawn btc_fnc_data_add_group;"] call CBA_fnc_addWaypoint;
+    private _group = [_start_pos, _pos, 0, "", "WEDGE"] call btc_fnc_mil_send;
     [_group, _pos, 60, "SAD"] call CBA_fnc_addWaypoint;
 
     if (btc_debug_log) then {

@@ -17,7 +17,7 @@ class RscTitles {
         fadeout = 0;
         duration = 0;
     };
-    #include "core\fnc\log\rsc.hpp"
+    #include "core\fnc\lift\rsc.hpp"
     #include "core\fnc\debug\dlg.hpp"
 };
 

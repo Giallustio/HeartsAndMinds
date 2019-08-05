@@ -7,7 +7,7 @@ Description:
     Ifnot: save in database and delete units by calling btc_fnc_data_get_group.
 
 Parameters:
-    _group - [Group]
+    _group - Group of units. [Group]
 
 Returns:
 
