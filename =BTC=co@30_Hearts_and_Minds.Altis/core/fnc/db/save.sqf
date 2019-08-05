@@ -162,6 +162,7 @@ private _array_veh = [];
         _x getVariable ["ace_refuel_hooks", []]
     ]);
     _data pushBack (getPylonMagazines _x);
+    _data pushBack (_x in btc_chem_contaminated);
     _array_veh pushBack _data;
     if (btc_debug_log) then {
         [format ["VEH %1 DATA %2", _x, _data], __FILE__, [false]] call btc_fnc_debug_message;

@@ -30,7 +30,7 @@ if (_useful isEqualTo []) then {_useful = + btc_city_all;};
 private _city = selectRandom _useful;
 private _pos = [getPos _city, 0, 500, 30, false] call btc_fnc_findsafepos;
 
-[_taskID, 4, _pos, _city getVariable "name"] call btc_fnc_task_create;
+[_taskID, 30, getPos _city, _city getVariable "name"] call btc_fnc_task_create;
 
 private _distance_between_fences = 3;
 private _number_of_fences = 2 * (3 + floor random 2);
@@ -114,22 +114,31 @@ for "_i" from 1 to (5 + round random 5) do {
         btc_chem_contaminated pushBack _hazmat;
     };
 };
-private _hazmat = createVehicle [btc_type_hazmatContainer, _pos, [], _area_size - 10, "NONE"];
-[_hazmat] call btc_fnc_log_init;
-btc_chem_contaminated pushBack _hazmat;
-_chemical pushBack _hazmat;
+
+private _bring_taskID = _taskID + "br";
+[[_bring_taskID, _taskID], 31, _pos, btc_containers_mat select 0] call btc_fnc_task_create;
+
+waitUntil {sleep 5; (_taskID call BIS_fnc_taskCompleted || !((nearestObjects [_pos, btc_containers_mat, 200]) isEqualTo []))};
+
+if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {[[], _composition_objects + _chemical] call btc_fnc_delete;};
+
+[_bring_taskID, "SUCCEEDED"] call BIS_fnc_taskSetState;
+
+private _locate_taskID = _taskID + "lc";
+[[_locate_taskID, _taskID], 32, _pos, typeOf(_chemical select 0)] call btc_fnc_task_create;
+
+private _clean_taskID = _taskID + "cl";
+[[_clean_taskID, _taskID], 33, btc_bigShower, typeOf btc_bigShower] call btc_fnc_task_create;
 
 waitUntil {sleep 5; (
     _taskID call BIS_fnc_taskCompleted ||
     (_chemical arrayIntersect btc_chem_contaminated) select {!isNull _x} isEqualTo []
 )};
 
-if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {
-    [[], _composition_objects + _chemical] call btc_fnc_delete;
-};
+[[], _composition_objects + _chemical] call btc_fnc_delete;
+
+if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {};
 
 30 call btc_fnc_rep_change;
 
 [_taskID, "SUCCEEDED"] call BIS_fnc_taskSetState;
-
-[[], _composition_objects] call btc_fnc_delete;

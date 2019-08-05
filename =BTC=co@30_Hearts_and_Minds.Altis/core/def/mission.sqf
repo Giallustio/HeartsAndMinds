@@ -56,7 +56,8 @@ btc_p_patrol_max = "btc_p_patrol_max" call BIS_fnc_getParamValue;
 btc_p_civ_max_veh = "btc_p_civ_max_veh" call BIS_fnc_getParamValue;
 
 //<< Gameplay options >>
-btc_p_sea  = ("btc_p_sea" call BIS_fnc_getParamValue) isEqualTo 1;
+btc_p_sea = ("btc_p_sea" call BIS_fnc_getParamValue) isEqualTo 1;
+btc_p_chem = ("btc_p_chem" call BIS_fnc_getParamValue) isEqualTo 1;
 btc_p_side_mission_cycle = "btc_p_side_mission_cycle" call BIS_fnc_getParamValue;
 
 //<< Arsenal options >>
@@ -155,7 +156,7 @@ if (isServer) then {
     btc_rep_militia_called = - btc_rep_militia_call_time;
 
     //Chem
-    btc_chem_decontaminate = [];
+    btc_chem_decontaminate = [btc_bigShower];
     btc_chem_contaminated = [];
 
     //Hideout classname
@@ -174,6 +175,7 @@ if (isServer) then {
     btc_side_ID = 0;
     btc_side_list = ["supply", "mines", "vehicle", "get_city", "tower", "civtreatment", "checkpoint", "underwater_generator", "convoy", "rescue", "capture_officer", "hostage", "hack", "kill"]; // On ground (Side "convoy" and "capture_officer" are not design for map with different islands. Start and end city can be on different islands.)
     if (btc_p_sea) then {btc_side_list append ["civtreatment_boat", "underwater_generator"]}; // On sea
+    if (btc_p_chem) then {btc_side_list pushBack "chemicalLeak"};
     btc_side_list_use = [];
     btc_type_tower = ["Land_Communication_F", "Land_TTowerBig_1_F", "Land_TTowerBig_2_F"];
     btc_type_phone = ["Land_PortableLongRangeRadio_F", "Land_MobilePhone_smart_F", "Land_MobilePhone_old_F"];
@@ -233,7 +235,6 @@ if (isServer) then {
         _x isKindOf "Land_DirtPatch_02_base_F" ||
         _x isKindOf "WaterSpill_01_Base_F"
     });
-    btc_type_hazmatContainer = "Land_Cargo10_orange_F";
 
     //BTC Vehicles in missions.sqm
     btc_vehicles = [btc_veh_1, btc_veh_2, btc_veh_3, btc_veh_4, btc_veh_5, btc_veh_6, btc_veh_7, btc_veh_8, btc_veh_9, btc_veh_10, btc_veh_11, btc_veh_12, btc_veh_13, btc_veh_14, btc_veh_15];
@@ -420,8 +421,7 @@ if (isServer) then {
             ],
             [
                 //"Decontamination"
-                "DeconShower_01_F",
-                "DeconShower_02_F"
+                "DeconShower_01_F"
             ],
             [
                 //"Vehicle logistic"
@@ -435,9 +435,9 @@ if (isServer) then {
 
 btc_supplies_mat params ["_food", "_water"];
 private _c_array = btc_construction_array select 1;
-btc_log_def_loadable = (_c_array select 0) + (_c_array select 1) + (_c_array select 2) + (_c_array select 3) + (_c_array select 4) + (_c_array select 5) + (_c_array select 6) + (_c_array select 7) + ["ace_rearm_defaultCarriedObject", "ace_rearm_Bo_Mk82", "ace_rearm_Bomb_04_F", "ace_rearm_Bo_GBU12_LGB", "ace_rearm_Bomb_03_F", "ace_rearm_Missile_AA_03_F", "ace_rearm_Missile_AGM_02_F", "ace_rearm_Missile_AGM_01_F", "ace_rearm_Rocket_03_AP_F", "ace_rearm_R_80mm_HE", "ace_rearm_R_60mm_HE", "ace_rearm_Rocket_04_HE_F", "ace_rearm_R_Hydra_HE", "ace_rearm_Missile_AA_04_F", "ace_rearm_M_PG_AT", "ace_rearm_R_230mm_HE", "ace_rearm_Rocket_03_HE_F", "ace_rearm_Rocket_04_AP_F", "ace_rearm_R_230mm_fly"] + _food + _water + btc_type_hazmat + [btc_type_hazmatContainer];
+btc_log_def_loadable = (_c_array select 0) + (_c_array select 1) + (_c_array select 2) + (_c_array select 3) + (_c_array select 4) + (_c_array select 5) + (_c_array select 6) + (_c_array select 7) + ["ace_rearm_defaultCarriedObject", "ace_rearm_Bo_Mk82", "ace_rearm_Bomb_04_F", "ace_rearm_Bo_GBU12_LGB", "ace_rearm_Bomb_03_F", "ace_rearm_Missile_AA_03_F", "ace_rearm_Missile_AGM_02_F", "ace_rearm_Missile_AGM_01_F", "ace_rearm_Rocket_03_AP_F", "ace_rearm_R_80mm_HE", "ace_rearm_R_60mm_HE", "ace_rearm_Rocket_04_HE_F", "ace_rearm_R_Hydra_HE", "ace_rearm_Missile_AA_04_F", "ace_rearm_M_PG_AT", "ace_rearm_R_230mm_HE", "ace_rearm_Rocket_03_HE_F", "ace_rearm_Rocket_04_AP_F", "ace_rearm_R_230mm_fly"] + _food + _water + btc_type_hazmat;
 btc_log_def_can_load = (_c_array select 3);
-btc_log_def_placeable = (_c_array select 0) + (_c_array select 3) + (_c_array select 4) + (_c_array select 5) + (_c_array select 6) + _food + _water + btc_type_hazmat + [btc_type_hazmatContainer];
+btc_log_def_placeable = (_c_array select 0) + (_c_array select 3) + (_c_array select 4) + (_c_array select 5) + (_c_array select 6) + _food + _water + btc_type_hazmat;
 btc_log_vehicle_selected = objNull;
 btc_log_placing_max_h = 12;
 btc_log_placing = false;
@@ -477,7 +477,6 @@ btc_log_def_cc = [
     "Land_CargoBox_V1_F", 0,
     btc_supplies_cargo, 20,
     btc_fob_mat, 0,
-    btc_type_hazmatContainer, 0,
     "Land_Cargo20_military_green_F", 20,
     "Land_Cargo40_military_green_F", 40
 ];

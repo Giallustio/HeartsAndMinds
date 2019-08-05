@@ -35,7 +35,8 @@ params [
     ["_isMedicalVehicle", false, [true]],
     ["_isRepairVehicle", false, [true]],
     ["_fuelSource", [], [[]]],
-    ["_pylons", [], [[]]]
+    ["_pylons", [], [[]]],
+    ["_isContaminated", false, [false]]
 ];
 
 private _veh  = createVehicle [_type, ASLToATL _pos, [], 0, "CAN_COLLIDE"];
@@ -69,6 +70,9 @@ if !(_pylons isEqualTo []) then {
     {
         _veh setPylonLoadOut [_forEachIndex + 1, _x, true, _pylonPaths select _forEachIndex]
     } forEach _pylons;
+};
+if (_isContaminated) then {
+    btc_chem_contaminated pushBackUnique _veh;
 };
 
 _veh setVariable ["btc_dont_delete", true];

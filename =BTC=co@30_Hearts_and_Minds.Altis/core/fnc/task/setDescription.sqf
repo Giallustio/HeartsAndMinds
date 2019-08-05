@@ -295,6 +295,38 @@ switch (_description) do {
         ];
         _type = "handcuff";
     };
+    case 30 : {
+        _description = [
+            format [localize "STR_BTC_HAM_SIDE_CHEM_DESC", _location] + format [_image, getText (configfile >> "CfgVehicles" >> "B_W_Soldier_CBRN_F" >> "editorPreview")],
+            format [localize "STR_BTC_HAM_SIDE_CHEM_TITLE", _location],
+            format [localize "STR_BTC_HAM_SIDE_CHEM_TITLE", _location]
+        ];
+        _type = "danger";
+    };
+    case 31 : {
+        _description = [
+            (localize "STR_BTC_HAM_SIDE_CHEM_BRING_DESC") + format [_image, getText (configfile >> "CfgVehicles" >> _location >> "editorPreview")],
+            localize "STR_BTC_HAM_SIDE_CHEM_BRING_TITLE",
+            localize "STR_BTC_HAM_SIDE_CHEM_BRING_TITLE"
+        ];
+        _type = "container";
+    };
+    case 32 : {
+        _description = [
+            (localize "STR_BTC_HAM_SIDE_CHEM_LOCATE_DESC") + (format [_image, getText (configfile >> "CfgVehicles" >> _location >> "editorPreview")]),
+            localize "STR_BTC_HAM_SIDE_CHEM_LOCATE_TITLE",
+            localize "STR_BTC_HAM_SIDE_CHEM_LOCATE_TITLE"
+        ];
+        _type = "search";
+    };
+    case 33 : {
+        _description = [
+            (localize "STR_BTC_HAM_SIDE_CHEM_MOVE_DESC") + (format [_image, getText (configfile >> "CfgVehicles" >> _location >> "editorPreview")]),
+            localize "STR_BTC_HAM_SIDE_CHEM_MOVE_TITLE",
+            localize "STR_BTC_HAM_SIDE_CHEM_MOVE_TITLE"
+        ];
+        _type = "move";
+    };
 };
 
 [

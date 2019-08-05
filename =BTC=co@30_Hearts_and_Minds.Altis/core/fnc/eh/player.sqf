@@ -42,9 +42,10 @@ _player addEventHandler ["WeaponAssembled", {
     _this
 }];
 
-// Add biopsy
-[missionnamespace, "probingStarted", {
-    btc_int_ask_data = nil;
-    ["btc_chem_contaminated"] remoteExecCall ["btc_fnc_int_ask_var", 2]
-}] call BIS_fnc_addScriptedEventHandler;
-[missionnamespace, "probingEnded", btc_fnc_chem_biopsy] call BIS_fnc_addScriptedEventHandler;
+if (btc_p_chem) then { // Add biopsy
+    [missionnamespace, "probingStarted", {
+        btc_int_ask_data = nil;
+        ["btc_chem_contaminated"] remoteExecCall ["btc_fnc_int_ask_var", 2];
+    }] call BIS_fnc_addScriptedEventHandler;
+    [missionnamespace, "probingEnded", btc_fnc_chem_biopsy] call BIS_fnc_addScriptedEventHandler;
+};

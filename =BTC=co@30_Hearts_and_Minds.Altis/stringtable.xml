@@ -270,6 +270,14 @@
                 <Chinesesimp> &lt;img image='\z\ace\addons\interaction\UI\Icon_Module_Interaction_ca.paa' width='20' height='20'/&gt;使用 ACE 3 互动系统。</Chinesesimp>
             </Key>
         </Container>
+        <Container name="Documentation: Chemical warfare">
+            <Key ID="STR_BTC_HAM_DOC_CHEMICALWARFARE_TITLE">
+                <Original>Chemical Warfare</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_DOC_CHEMICALWARFARE_TEXT">
+                <Original>&lt;marker name='blufor_base'&gt;Chemical agent:&lt;/marker&gt;&lt;br/&gt; Chemical agent can be found in the battle field. When an object is contaminated, the chemical agent propagate to people around (in a circle of 3m). Those people will be hurt constantly until they died or found a decontaminating shower (available at logistic point) to remove the agent from thier body. When they are contaminated, they can propagate it to other people around (in a circle of 1.5m) or vehicle if they get inside. Keep in mind, body stay contaminated even dead. Also, contaminated object loaded as cargo will contaminate the container or vehicle. &lt;br/&gt;&lt;br/&gt; &lt;marker name='blufor_base'&gt;Protection:&lt;/marker&gt;&lt;br/&gt; Use CBRN gear to protect you from the contamination effect. But, don't forget to take a shower for more than 5s before removing your CBRN gear. Be aware, even with a CBRN you can propate the agent to people or vehicle, you are just protected from the effect. &lt;br/&gt;&lt;br/&gt; &lt;marker name='blufor_base'&gt;Decontaminate:&lt;/marker&gt;&lt;br/&gt; You can use small shower to decontaminate units only. Use the big shower for objects. &lt;br/&gt;&lt;br/&gt; &lt;marker name='blufor_base'&gt;Detection:&lt;/marker&gt;&lt;br/&gt; You can analyse an object/vehicle/man with ED-1E drone to determine if it is contaminated (Note: The drone will never be contaminated.).</Original>
+            </Key>
+        </Container>
     </Package>
     <Package name="Parameters">
         <Container name="Parameters: Time">
@@ -543,6 +551,9 @@
                 <German>Kämpfe aufs Wasser ausweiten:</German>
                 <Portuguese>Ampliar campo de batalha para o mar:</Portuguese>
                 <Chinesesimp>将战场扩展至海域:</Chinesesimp>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_GAMEPLAY_CHEM">
+                <Original>Chemical warfare:</Original>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_GAMEPLAY_SIDEM">
                 <Original>Side mission cycle:</Original>
@@ -1093,6 +1104,32 @@
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_KILL_BRING_DESC">
                 <Original>Bring %1 dogtag to the logistic point.</Original>
+            </Key>
+        </Container>
+        <Container name="Chemical Leak">
+            <Key ID="STR_BTC_HAM_SIDE_CHEM_TITLE">
+                <Original>Chemical leak in %1</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_CHEM_DESC">
+                <Original>Some containers with dangerous chemical agent has been broken in %1. Civilian population reported that only some small objects are contaminated. Eliminate the contamination by moving those objects under a big shower.</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_CHEM_BRING_DESC">
+                <Original>Bring a containers available at the logistic point to the contaminated area. You will use it to load all contaminated objects.</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_CHEM_BRING_TITLE">
+                <Original>Bring a container</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_CHEM_LOCATE_TITLE">
+                <Original>Locate contaminated objects</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_CHEM_LOCATE_DESC">
+                <Original>Locate contaminated objects. The ED-1E drone can help you to identify contaminated objects by biopsy.</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_CHEM_MOVE_TITLE">
+                <Original>Clean contaminated objects</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_CHEM_MOVE_DESC">
+                <Original>Load contaminated objects in containers. Move the container or objects inside to a big shower. Note: you can load this container inside a vehicle and move the vehicle under the shower. This clean up the vehicle, crew and cargo.</Original>
             </Key>
         </Container>
     </Package>

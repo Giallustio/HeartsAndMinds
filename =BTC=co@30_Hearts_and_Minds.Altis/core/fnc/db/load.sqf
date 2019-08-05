@@ -133,7 +133,8 @@ private _vehs = profileNamespace getVariable [format ["btc_hm_%1_vehs", _name], 
             ["_isMedicalVehicle", false, [false]],
             ["_isRepairVehicle", false, [false]],
             ["_fuelSource", [], [[]]],
-            ["_pylons", [], [[]]]
+            ["_pylons", [], [[]]],
+            ["_isContaminated", false, [false]]
         ];
 
         if (btc_debug_log) then {

@@ -26,3 +26,6 @@ addMissionEventHandler ["BuildingChanged", btc_fnc_eh_buildingchanged];
 if (btc_p_auto_db) then {
     addMissionEventHandler ["HandleDisconnect", btc_fnc_db_autosave];
 };
+if (btc_p_chem) then {
+    ["ace_cargoLoaded", btc_fnc_chem_propagate] call CBA_fnc_addEventHandler;
+};
