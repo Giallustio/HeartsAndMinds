@@ -663,6 +663,7 @@
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_OTHER_AUTOHEADLESS">
                 <Original>Autodetect Headless client:</Original>
+                <German>Headless-Client automatisch erkennen:</German>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_OTHER_DEBUG">
                 <Original>Debug:</Original>
