@@ -33,7 +33,8 @@ params [
     ["_dir", 0, [0]],
     ["_type_units", btc_type_units, [[]]],
     ["_type_divers", btc_type_divers, [[]]],
-    ["_type_crewmen", btc_type_crewmen, [[]]]
+    ["_type_crewmen", btc_type_crewmen, [[]]],
+    ["_p_chem", btc_p_chem, [false]]
 ];
 
 private _needdiver = getText (configFile >> "CfgVehicles" >> _veh_type >> "simulation") isEqualTo "submarinex";
@@ -44,6 +45,12 @@ if (_veh_type isKindOf "Van_02_vehicle_base_F") then {
 private _veh = createVehicle [_veh_type, _pos, [], 0, "FLY"];
 if !(_veh_type isKindOf "Plane") then {
     _veh setDir _dir;
+};
+if (_p_chem) then {
+    _veh addEventHandler ["GetIn", {
+        [_this select 0, _this select 2] call btc_fnc_chem_propagate;
+        _this
+    }];
 };
 
 private _units = [_veh, _group, false, "", [_type_crewmen, _type_divers select 0] select _needdiver] call BIS_fnc_spawnCrew;

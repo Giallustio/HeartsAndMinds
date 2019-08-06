@@ -65,7 +65,7 @@ private _bodyParts = ["head","body","hand_l","hand_r","leg_l","leg_r"];
         _unitContaminate append (_units inAreaArray [_pos, _range, _range, 0, false, 2 + (_pos select 2)]);
     } forEach _contaminated;
     {
-        private _isAlready = _contaminated pushBackUnique vehicle _x > -1;
+        private _isAlready = _contaminated pushBackUnique _x > -1;
         if !(
             (
                 goggles _x isKindOf ["G_RegulatorMask_base_F", _cfgGlasses] ||
@@ -75,7 +75,7 @@ private _bodyParts = ["head","body","hand_l","hand_r","leg_l","leg_r"];
                 backpack _x isKindOf "B_CombinationUnitRespirator_01_Base_F"
             ) &&
             uniform _x find "CBRN" > -1
-        ) then { // Propagate to vehicle and don't always apply damage to unit already contaminated
+        ) then { // Don't always apply damage to unit already contaminated
             if (selectRandom [true, _isAlready]) then {
                 [_x, random [0.05, 0.1, 0.1], selectRandom _bodyParts, "stab"] call ace_medical_fnc_addDamageToUnit; // ropeburn
             };

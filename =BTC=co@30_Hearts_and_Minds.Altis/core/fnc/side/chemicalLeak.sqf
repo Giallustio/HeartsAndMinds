@@ -126,7 +126,6 @@ if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {[[], _composi
 
 private _locate_taskID = _taskID + "lc";
 [[_locate_taskID, _taskID], 32, _pos, typeOf(_chemical select 0)] call btc_fnc_task_create;
-
 private _clean_taskID = _taskID + "cl";
 [[_clean_taskID, _taskID], 33, btc_bigShower, typeOf btc_bigShower] call btc_fnc_task_create;
 

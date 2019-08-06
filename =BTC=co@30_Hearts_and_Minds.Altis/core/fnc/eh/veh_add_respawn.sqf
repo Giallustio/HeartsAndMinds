@@ -26,7 +26,8 @@ Author:
 params [
     ["_vehicle", objNull, [objNull]],
     ["_time", 30, [0]],
-    ["_helo", btc_helo, [[]]]
+    ["_helo", btc_helo, [[]]],
+    ["_p_chem", btc_p_chem, [false]]
 ];
 
 _helo pushBackUnique _vehicle;
@@ -48,3 +49,9 @@ _vehicle setVariable ["data_respawn", [_type, _pos, _dir, _time, _customization,
 
 if ((isNumber (configFile >> "CfgVehicles" >> typeOf _vehicle >> "ace_fastroping_enabled")) && !(typeOf _vehicle isEqualTo "RHS_UH1Y_d")) then {[_vehicle] call ace_fastroping_fnc_equipFRIES};
 _vehicle addMPEventHandler ["MPKilled", {if (isServer) then {[_this select 0] call btc_fnc_eh_veh_respawn};}];
+if (_p_chem) then {
+    _vehicle addEventHandler ["GetIn", {
+        [_this select 0, _this select 2] call btc_fnc_chem_propagate;
+        _this
+    }];
+};
