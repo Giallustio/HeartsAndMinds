@@ -762,9 +762,11 @@
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_CAPOFF_HANDCUFF_DESC">
                 <Original>Handcuff the officer.</Original>
+                <German>Legen Sie dem Offizier Handschellen an.</German>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_CAPOFF_HANDCUFF_TITLE">
                 <Original>Handcuff the officer</Original>
+                <German>Offizier gefangen nehmen</German>
             </Key>
         </Container>
         <Container name="Checkpoint">
@@ -1072,27 +1074,35 @@
         <Container name="Kill">
             <Key ID="STR_BTC_HAM_SIDE_KILL_TITLE">
                 <Original>Assassinate %1</Original>
+                <German>Eliminiere %1</German>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_KILL_DESC">
-                <Original>Assassinate %1 in %2, then bring his dogtag to the base for identification. He is responsible for terrorizing local population!</Original>
-            </Key>
-            <Key ID="STR_BTC_HAM_SIDE_KILL_IN_DESC">
-                <Original>Kill %1.</Original>
+                <Original>Assassinate %1 in %2, then bring his dog tag to the base for identification. He is responsible for terrorizing the local population!</Original>
+                <German>Eliminieren Sie %1 in %2 und sichern Sie seine Hundemarke zur Identifizierung. Er ist der Hauptverantwortliche für den Terror in der Region!</German>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_KILL_IN_TITLE">
+                <Original>Kill %1</Original>
+                <German>Töte %1</German>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_KILL_IN_DESC">
                 <Original>Kill %1 in %2.</Original>
+                <German>Töten Sie %1 in %2.</German>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_KILL_DOGTAG_TITLE">
-                <Original>Take dogtag</Original>
+                <Original>Take dog tag</Original>
+                <German>Hundemarke aufnehmen</German>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_KILL_DOGTAG_DESC">
-                <Original>Take dogtag of %1.</Original>
+                <Original>Take dog tag of %1.</Original>
+                <German>Nehmen Sie die Hundemarke von %1 an sich.</German>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_KILL_BRING_TITLE">
-                <Original>Bring dogtag to base</Original>
+                <Original>Bring dog tag to base</Original>
+                <German>Bringen Sie die Hundemarke in die Basis</German>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_KILL_BRING_DESC">
-                <Original>Bring %1 dogtag to the logistic point.</Original>
+                <Original>Bring %1 dog tag to the logistic point.</Original>
+                <German>Geben Sie die Hundemarke beim Logistikpunkt in der Basis ab.</German>
             </Key>
         </Container>
     </Package>
