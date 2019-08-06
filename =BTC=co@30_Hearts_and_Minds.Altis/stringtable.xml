@@ -32,7 +32,7 @@
                 <Spanish>Punto de Logística</Spanish>
                 <German>Logistikpunkt</German>
                 <Portuguese>Ponto Logístico</Portuguese>
-                <Chinesesimp>补给点</Chinesesimp>
+                <Chinesesimp>后勤点</Chinesesimp>
             </Key>
         </Container>
     </Package>
@@ -57,7 +57,7 @@
                 <Spanish>Solo Respawneable</Spanish>
                 <German>Respawnt bei Zertörung</German>
                 <Portuguese>Único Respawnável</Portuguese>
-                <Chinesesimp>载具重生</Chinesesimp>
+                <Chinesesimp>可重生载具</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_INTRO_LOADINGTXT">
                 <Original>Base overview. Loading ...</Original>
@@ -123,7 +123,7 @@
                 <Spanish>&lt;marker name='blufor_base'&gt;&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\destroy_ca.paa' width='20' height='20' color='#FFBF00'/&gt; Respawn:&lt;/marker&gt;&lt;br/&gt; Cuando un vehículo es destruido no va a reaparecer en la base, es necesario remolcarlo o transportarlo de vuelta a la base y repararlo cerca del punto logístico (Interactuar con la caja roja). Los destrozos de helicópteros sólo pueden ser transportados por vía aérea.. &lt;br/&gt; El Chinook es la única excepción, reaparecerá después de 30 segundos.. &lt;br/&gt;&lt;br/&gt; &lt;marker name='blufor_base'&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\rearm_ca.paa' width='20' height='20' color='#FFBF00'/&gt; Rearm:&lt;/marker&gt;&lt;br/&gt; También puede rearmarlos generando el calibre correspondiente en el punto logístico (Interactuar con la caja roja, seleccionar el tipo y calibre del vehículo). Lleva la munición creada e interactúa con el vehículo para rearmarlo. Esto sólo funciona si el rearme se está ajustando en todo el cargador o en una cantidad basada en el calibre (no para el ajuste de todo el vehículo).</Spanish>
                 <German>&lt;marker name='blufor_base'&gt;&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\destroy_ca.paa' width='20' height='20' color='#FFBF00'/&gt; Respawn:&lt;/marker&gt;&lt;br/&gt; Wenn ein Fahrzeug zersört wurde, wird dies nicht Respawnen. Es muss durch Abschleppen oder Anheben(Sling-Load) zum Logisik-Punkt gebracht und dort repariert werden (mit der roten Box interagieren). Wracks von Hubschraubern können nur angehoben werden (Sling-Load). &lt;br/&gt; Die einzigste Ausnahme hierbei ist der Chinook. Er respawnt nach 30 Sekunden. &lt;br/&gt;&lt;br/&gt; &lt;marker name='blufor_base'&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\rearm_ca.paa' width='20' height='20' color='#FFBF00'/&gt; Aufmunitionieren:&lt;/marker&gt;&lt;br/&gt; Fahrzeuge können Aufmunitioniert werden, in dem man das entsprechende Kaliber am Logisik-Punk anfordert (mit der Roten Box interagieren: Fahzeug und Kaliber auswählen). Nun muss man nur noch die erstellte Munition zum Fahrzeug bringen und mit diesem interagieren um das aufmunitionieren zu beginnen.&lt;br/&gt;ANMERKUNG: Das funktioiert nur wenn die Aufmunitionierungseinstellung auf 'Gesamtes Magazin' oder 'Kalieberbasierte Anzahl' gestellt ist (get nicht für 'Gesamtes Fahrzeug').</German>
                 <Portuguese>&lt;marker name='blufor_base'&gt;&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\destroy_ca.paa' width='20' height='20' color='#FFBF00'/&gt; Respawn:&lt;/marker&gt;&lt;br/&gt; Quando um veículo é destruído ele não reaparecerá na base, você precisa rebocá-lo/levá-lo de volta à base e repará-lo perto do ponto logístico (Interagir com a caixa vermelha). Os destroços de helicóptero só podem ser levantados. &lt;br/&gt; O Chinook é a única exceção, ele reaparecerá depois de 30 segundos. &lt;br/&gt;&lt;br/&gt; &lt;marker name='blufor_base'&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\rearm_ca.paa' width='20' height='20' color='#FFBF00'/&gt; Rearm:&lt;/marker&gt;&lt;br/&gt; Você também pode rearmar-los, gerando o calibre correspondente no ponto logístico (Interaja com a caixa vermelha, selecione o tipo de veículo e calibre). Leve a munição criada e interaja com o veículo para rearmar. Isso só funciona se o rearme estiver configurado em um depósito inteiro ou em um valor baseado em calibre (não para toda a configuração do veículo).</Portuguese>
-                <Chinesesimp>&lt;marker name='blufor_base'&gt;&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\destroy_ca.paa' width='20' height='20' color='#FFBF00'/&gt; 载具重生:&lt;/marker&gt;&lt;br/&gt; 当载具损毁时, 它不会自行在基地重生。你需要采用车辆牵引或直升机吊挂的方式将其残骸运回基地, 并在补给点对其进行维修(与补给点的红色箱子进行互动)。直升机的残骸只能使用吊挂的方式运输。 &lt;br/&gt; 支奴干(Chinook)是唯一的例外, 它会在损毁后30秒于基地重生。 &lt;br/&gt;&lt;br/&gt; &lt;marker name='blufor_base'&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\rearm_ca.paa' width='20' height='20' color='#FFBF00'/&gt; 弹药补给:&lt;/marker&gt;&lt;br/&gt; 你可以在补给点生成对应口径的弹药, 对载具进行弹药补给。与红色箱子互动, 选择对应的载具类型及口径, 弹药箱将会生成。将生成的弹药箱搬到载具附近, 与载具互动, 即可执行补给。注意: 如需启用此功能, 需要将任务参数中的弹药补给选项设置为 "Total Magazine" 或 "Calibre Based Number" (而非 "Entire Vehicle")。</Chinesesimp>
+                <Chinesesimp>&lt;marker name='blufor_base'&gt;&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\destroy_ca.paa' width='20' height='20' color='#FFBF00'/&gt; 载具重生:&lt;/marker&gt;&lt;br/&gt; 当载具损毁时, 它不会自行在基地重生。你需要采用车辆牵引或直升机吊挂的方式将其残骸运回基地, 并在后勤点对其进行维修(与后勤点的红色箱子进行互动)。直升机的残骸只能使用吊挂的方式运输。 &lt;br/&gt; 支奴干(Chinook)是唯一的例外, 它会在损毁后30秒于基地重生。 &lt;br/&gt;&lt;br/&gt; &lt;marker name='blufor_base'&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\rearm_ca.paa' width='20' height='20' color='#FFBF00'/&gt; 弹药补给:&lt;/marker&gt;&lt;br/&gt; 你可以在后勤点生成对应口径的弹药, 对载具进行弹药补给。与红色箱子互动, 选择对应的载具类型及口径, 弹药箱将会生成。将生成的弹药箱搬到载具附近, 与载具互动, 即可执行补给。注意: 如需启用此功能, 需要将任务参数中的弹药补给选项设置为 "Total Magazine" 或 "Calibre Based Number" (而非 "Entire Vehicle")。</Chinesesimp>
             </Key>
         </Container>
         <Container name="Documentation: Side Mission">
@@ -148,7 +148,7 @@
                 <Spanish>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move1_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\run_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move2_ca.paa' width='20' height='20' /&gt; &lt;marker name='blufor_base'&gt;FOB:&lt;/marker&gt;&lt;br/&gt; En esta misión un FOB es un punto de respawn avanzado, para crear un FOB se aproxima a la caja roja en el punto logístico y requiere un contenedor azul.&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\Ui_f\data\Map\Markers\NATO\b_hq.paa' width='20' height='20'/&gt;  &lt;marker name='blufor_base'&gt;Deploy:&lt;/marker&gt; &lt;br/&gt; Muévelo donde quieras desplegar un nuevo FOB e interactúa con él para configurarlo. Tenga en cuenta que no puede desplegar un FOB cerca de la base principal (2.500m) y el terreno debe ser plano.&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Dismantle:&lt;/marker&gt; &lt;br/&gt; Puede desmontar un FOB interactuando con la bandera en el techo del HQ.</Spanish>
                  <German>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move1_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\run_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move2_ca.paa' width='20' height='20' /&gt; &lt;marker name='blufor_base'&gt;FOB:&lt;/marker&gt;&lt;br/&gt; Eine FOB (Forward Operating Base / vorgeschobene Operationsbasis) dient in dieser Mission als Spawn-Punkt. Um eine FOB zu erstellen muss am Logistikpunkt ein ensprechnender Frachtcontainer(Blau) angefordert werden&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\Ui_f\data\Map\Markers\NATO\b_hq.paa' width='20' height='20'/&gt;  &lt;marker name='blufor_base'&gt;Aufbau:&lt;/marker&gt; &lt;br/&gt; Der Aufbau kann nur statfinden, wenn man sich mindestens 2,5km von der Basis entfernt hat und das Gelände relativ flach ist. Um den Aufbau zu beginnen: einfach mit dem Frachtcontainer interagieren und 'FOB aufbauen' auswählen.&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Abbau:&lt;/marker&gt; &lt;br/&gt; Auf dem Dach der FOB kann man mit der Flagge interagieren um den Abbau zu beginnen.&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move1_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\run_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move2_ca.paa' width='20' height='20' /&gt; &lt;marker name='blufor_base'&gt;Sammelpunkt:&lt;/marker&gt;&lt;br/&gt; Nutzen Sie den im Arsenal erhältlichen Lager-Rucksack aus dem Zeus-DLC. Die Anzahl der Respawns bei den Sammelpunkten ist beschränkt.</German>
                 <Portuguese>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move1_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\run_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move2_ca.paa' width='20' height='20' /&gt; &lt;marker name='blufor_base'&gt;FOB:&lt;/marker&gt;&lt;br/&gt; Nesta missão, uma FOB é um ponto de surgimento. Para criar uma FOB, aproxime-se da caixa vermelha no ponto logístico, solicite um container azul.&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\Ui_f\data\Map\Markers\NATO\b_hq.paa' width='20' height='20'/&gt;  &lt;marker name='blufor_base'&gt;Deploy:&lt;/marker&gt; &lt;br/&gt; A construção só pode acontecer se você se deslocar 2.500m da FOB principal e o terreno deve ser plano. Para começar a criar a nova FOB, basta interagir com o cônteiner e selecionar: "Build FOB" (Criar FOB).&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Dismantle:&lt;/marker&gt; &lt;br/&gt; No telhado da FOB, você pode interagir com a bandeira para iniciar a desmontagem da FOB.</Portuguese>
-                <Chinesesimp>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move1_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\run_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move2_ca.paa' width='20' height='20' /&gt; &lt;marker name='blufor_base'&gt;FOB:&lt;/marker&gt;&lt;br/&gt; FOB 可作为前线复活点使用。要创建FOB, 请在补给点申请蓝色货运集装箱。&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\Ui_f\data\Map\Markers\NATO\b_hq.paa' width='20' height='20'/&gt;  &lt;marker name='blufor_base'&gt;部署:&lt;/marker&gt; &lt;br/&gt; 将FOB集装箱移动至部署位置并与其互动即可建造FOB。请谨记: 只有在主基地2500米范围外的地形平坦区域才能建立FOB。&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;拆除:&lt;/marker&gt; &lt;br/&gt; 你可以与指挥部(HQ)屋顶的旗杆互动, 以拆除FOB。</Chinesesimp>
+                <Chinesesimp>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move1_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\run_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move2_ca.paa' width='20' height='20' /&gt; &lt;marker name='blufor_base'&gt;FOB:&lt;/marker&gt;&lt;br/&gt; FOB 可作为前线复活点使用。要创建FOB, 请在后勤点申请蓝色货运集装箱。&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\Ui_f\data\Map\Markers\NATO\b_hq.paa' width='20' height='20'/&gt;  &lt;marker name='blufor_base'&gt;部署:&lt;/marker&gt; &lt;br/&gt; 将FOB集装箱移动至部署位置并与其互动即可建造FOB。请谨记: 只有在主基地2500米范围外的地形平坦区域才能建立FOB。&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;拆除:&lt;/marker&gt; &lt;br/&gt; 你可以与指挥部(HQ)屋顶的旗杆互动, 以拆除FOB。</Chinesesimp>
             </Key>
         </Container>
         <Container name="Documentation: Sling loading">
@@ -166,7 +166,7 @@
                 <Spanish>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\repair_ca.paa' width='20' height='20'/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\rearm_ca.paa' width='20' height='20'/&gt; En el punto logístico puede requerir nuevos objetos (como municiones, fortificaciones, suministros para las misiones secundarias...) y reparar vehículos destruidos.</Spanish>
                 <German>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\repair_ca.paa' width='20' height='20'/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\rearm_ca.paa' width='20' height='20'/&gt; Am Logistikpunkt kann man neue Objekte (wie zB. Munition, Baumaterial, Nachschubgüter für Nebenaufgaben...) anfordern und zerstörte Fahrzeuge reparieren.</German>
                 <Portuguese>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\repair_ca.paa' width='20' height='20'/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\rearm_ca.paa' width='20' height='20'/&gt; No ponto logístico, você pode solicitar novos objetos (como munição, fortificações, suprimentos para as missões secundárias ...) e reparar veículos destruídos.</Portuguese>
-                <Chinesesimp>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\repair_ca.paa' width='20' height='20'/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\rearm_ca.paa' width='20' height='20'/&gt; 补给点可以生成新的物件(如弹药、防御工事、用于支线任务的救援物资等), 也可以维修受损载具。</Chinesesimp>
+                <Chinesesimp>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\repair_ca.paa' width='20' height='20'/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\rearm_ca.paa' width='20' height='20'/&gt; 后勤点可以生成新的物件(如弹药、防御工事、用于支线任务的救援补给等), 也可以维修受损载具。</Chinesesimp>
             </Key>
         </Container>
         <Container name="Documentation: Logistic">
@@ -235,7 +235,7 @@
                 <Spanish>Trafico</Spanish>
                 <German>Straßenverkehr</German>
                 <Portuguese>Trânsito</Portuguese>
-                <Chinesesimp>道路运输</Chinesesimp>
+                <Chinesesimp>交通</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_DOC_TRAFFIC_TEXT">
                 <Original>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='20' height='20'/&gt; &lt;img image='\A3\soft_f_gamma\van_01\Data\UI\map_van_01_box_CA.paa' width='20' height='20'/&gt; Civilians are travelling by vehicle across cities. If your reputation is higher than normal, you can ask for a lift to a location chosen on the map. If you bump into a Oplitas patrol, don't worry, the civilian driver will do their best to hide you in the car.&lt;br/&gt;</Original>
@@ -451,7 +451,7 @@
                 <Original>Info cache distance:</Original>
                 <German>Distanzangabe für ein Waffenlager(Startwert):</German>
                 <Portuguese>Distância para um depósito de armas (valor inicial):</Portuguese>
-                <Chinesesimp>武器箱/藏匿点的地图标记初始范围:</Chinesesimp>
+                <Chinesesimp>首个武器箱情报的初始距离:</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_CACHE_RATIO">
                 <Original>Cache info ratio:</Original>
@@ -485,8 +485,7 @@
                 <Original>&lt;&lt; A3 Skill options &gt;&gt;</Original>
                 <German>&lt;&lt; A3 Skill options &gt;&gt;</German>
                 <Portuguese>&lt;&lt; Opções de Habilidade A3 &gt;&gt;</Portuguese>
-                <!-- This translation might have confusion. 此处翻译存疑。 -->
-                <Chinesesimp>&lt;&lt; A3技能设置 &gt;&gt;</Chinesesimp>
+                <Chinesesimp>&lt;&lt; AI技能设置 &gt;&gt;</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_SKILL_AIMACC">
                 <Original>AimingAccuracy</Original>
@@ -510,13 +509,13 @@
                 <Original>SpotDistance</Original>
                 <German>Aufklärungsentfernung</German>
                 <Portuguese>Distância de Reconhecimento</Portuguese>
-                <Chinesesimp>目视识别距离(SpotDistance)</Chinesesimp>
+                <Chinesesimp>目标识别距离(SpotDistance)</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_SKILL_SPOTTIME">
                 <Original>SpotTime</Original>
                 <German>Aufklärungsgeschwindigkeit</German>
                 <Portuguese>Velocidade de Reconhecimento</Portuguese>
-                <Chinesesimp>目视识别时间(SpotTime)</Chinesesimp>
+                <Chinesesimp>目标识别时间(SpotTime)</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_SKILL_COURAGE">
                 <Original>Courage</Original>
@@ -542,13 +541,13 @@
                 <Original>Extend battlefield to sea:</Original>
                 <German>Kämpfe aufs Wasser ausweiten:</German>
                 <Portuguese>Ampliar campo de batalha para o mar:</Portuguese>
-                <Chinesesimp>将战场扩展至海域:</Chinesesimp>
+                <Chinesesimp>将战区扩展至海上:</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_GAMEPLAY_SIDEM">
                 <Original>Side mission cycle:</Original>
                 <German>Autom. nächste Nebenmission starten:</German>
                 <Portuguese>Ciclo de missão secundária:</Portuguese>
-                <Chinesesimp>自动开始下一个支线任务:</Chinesesimp>
+                <Chinesesimp>自动生成支线任务:</Chinesesimp>
             </Key>
         </Container>
         <Container name="Parameters: Arsenal">
@@ -747,7 +746,7 @@
                 <Chinesesimp>抓捕敌方军官</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_CAPOFF_DESC">
-                <Original>Capture an officer travelling in a concealed convoy, then bring him to the base for interrogation. He is his responsible for terrorizing local population!</Original>
+                <Original>Capture an officer travelling in a concealed convoy, then bring him to the base for interrogation. He is responsible for terrorizing local population!</Original>
                 <Spanish>Capturar a un oficial que viaja en un convoy oculto y luego llevarlo a la base para interrogarlo. ¡Él es el responsable de aterrorizar a la población local!</Spanish>
                 <German>Ein feindlicher Offizier ist in einem getarnten Konvoi unterwegs. Finden und bringen Sie ihn in die Basis für weitere Befragungen. Er ist einer der Hauptverantwortlichen für die Terrorisierung der lokalen Bevölkerung!</German>
                 <Portuguese>Um Oficial está viajando em um comboio camuflado. Encontre e traga-o para base para interrogatório. Ele é um dos principais responsáveis por aterrorizar a população local!</Portuguese>
@@ -808,7 +807,7 @@
                 <Spanish>Civil necesita ayuda</Spanish>
                 <German>Zivilist braucht Hilfe</German>
                 <Portuguese>Um civil precisa de ajuda</Portuguese>
-                <Chinesesimp>平民需要帮助</Chinesesimp>
+                <Chinesesimp>平民求助</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_CIVTREAT_TITLE">
                 <Original>Medical emergency call in %1</Original>
@@ -919,7 +918,7 @@
                 <Spanish>Campo minado cerca de %1</Spanish>
                 <German>Minenfeld in der Nähe von %1</German>
                 <Portuguese>Campo minado perto de %1</Portuguese>
-                <Chinesesimp>%1 附近的雷区</Chinesesimp>
+                <Chinesesimp>清除 %1 附近的雷区</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_MINES_DESC">
                 <Original>There is a minefield near %1, clear it!</Original>
@@ -967,14 +966,14 @@
                 <Spanish>Suministrar %1</Spanish>
                 <German>Versorgung nach %1 bringen</German>
                 <Portuguese>Envie Suprimentos para %1</Portuguese>
-                <Chinesesimp>在 %1 发放物资</Chinesesimp>
+                <Chinesesimp>在 %1 发放救援补给</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_SUPPLIES_DESC">
                 <Original>The citizens of %1 are on the brink starving and thirsty to death, bring them food and potable water present in the supply container at the logistic point!</Original>
                 <Spanish>Los ciudadanos de %1 están al borde de la muerte de hambre, ¡tráiganles algunos suministros presentes en el punto logístico!</Spanish>
                 <German>Die Bewohner der Stadt %1 sind am verdusten und verhungern. Versorgen Sie die Bürger mit den nötigen Nahrungsmitteln. Den benötigten Nachschubcontainer finden sie am Versorgungspunkt.</German>
                 <Portuguese>O população de %1 estão passando fome! Forneça suprimentos! Os suprimentos podem ser solicitados no ponto logístico.</Portuguese>
-                <Chinesesimp>%1 的居民正在挨饿, 在补给点生成一些救援物资并带给他们!</Chinesesimp>
+                <Chinesesimp>%1 的居民正在挨饿, 在后勤点生成一些救援补给并带给他们!</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_SUPPLIES_MOVE_DESC">
                 <Original>Move to the supply location with supplies available at the logistic point.</Original>
@@ -1488,7 +1487,7 @@
                 <Spanish>El área no es lo suficientemente plana!</Spanish>
                 <German>Das Gebiet ist nicht Flach genug!</German>
                 <Portuguese>A área não é plana o suficiente!</Portuguese>
-                <Chinesesimp>区域不够平坦!</Chinesesimp>
+                <Chinesesimp>此区域不够平坦!</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_O_FOB_CREATE_H_DBASE">
                 <Original>Too close at the main base!</Original>
@@ -1537,8 +1536,7 @@
                 <Spanish>Desmantelado, muévanse...</Spanish>
                 <German>Abbau im gange, geh ein wenig zurück...</German>
                 <Portuguese>Desmontando, se afaste...</Portuguese>
-                <!-- This translation might have confusion. 此处翻译存疑。 -->
-                <Chinesesimp>拆除, 搬走 ...</Chinesesimp>
+                <Chinesesimp>已拆除, 正在搬走 ...</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_O_FOB_REDEPLOY_H_NOFOB">
                 <Original>No FOBs deployed</Original>
@@ -1788,7 +1786,7 @@
                 <Spanish>Hud Encendido\Apagado</Spanish>
                 <German>Hud An\Aus</German>
                 <Portuguese>Hud Ligado\Desligado</Portuguese>
-                <Chinesesimp>启用/关闭抬头显示器(HUD)</Chinesesimp>
+                <Chinesesimp>启用/关闭抬头显示(HUD)</Chinesesimp>
             </Key>
         </Container>
         <Container name="Logistic: Place ">
