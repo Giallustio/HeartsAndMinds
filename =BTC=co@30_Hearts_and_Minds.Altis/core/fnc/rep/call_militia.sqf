@@ -42,13 +42,10 @@ if (btc_debug_log) then {
 };
 
 if (_start_pos isEqualTo []) then {
-    {
-        private _city = _x;
-        if (_pos distance _city > 300 && {_city inArea [_pos, 2500, 2500, 0, false]} && {_players inAreaArray [getPosWorld _city, 500, 500] isEqualTo []}) then {
-            _start_pos = getPos _city;
-        };
-    } forEach btc_city_all;
+    _start_pos = [_pos, btc_city_all select {!(_x getVariable ["active", false]) && _x getVariable ["type", ""] != "NameMarine"}, false] call btc_fnc_find_closecity;
+    _start_pos = getPos _start_pos;
 };
+
 if (btc_debug_log) then {
     [format ["_start_pos : %1 (CITIES)", _start_pos], __FILE__, [false]] call btc_fnc_debug_message;
 };

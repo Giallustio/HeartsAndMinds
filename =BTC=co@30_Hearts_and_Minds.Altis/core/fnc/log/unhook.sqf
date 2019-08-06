@@ -3,16 +3,16 @@
 Function: btc_fnc_log_unhook
 
 Description:
-    Fill me when you edit me !
+    Unhook the current tower/towed vehicle.
 
 Parameters:
-    _veh - [Object]
+    _veh - Vehicle, could be the tower or the towed vehicle. [Object]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_log_unhook;
+        [cursorObject] spawn btc_fnc_log_unhook;
     (end)
 
 Author:
@@ -31,27 +31,9 @@ waitUntil {!(isNil "btc_int_ask_data")};
 
 if (isNull btc_int_ask_data) exitWith {hint localize "STR_BTC_HAM_LOG_UNHOOK_NOROPE";}; //This vehicle is not attached to another!
 
-deTach _veh;
-_veh removeEventHandler ["RopeBreak", _veh getVariable ["btc_eh", -1]];
-(ropes _veh) apply {ropeDestroy _x};
-
-(getPos _veh) params ["_x", "_y", "_z"];
-if (_z < -0.05) then {
-    _veh setPos [_x, _y, 0];
+private _ropes = ropes _veh;
+if (_ropes isEqualTo []) then {
+    _ropes = ropes btc_int_ask_data;
 };
 
-private _towed = btc_int_ask_data;
-
-deTach _towed;
-_towed removeEventHandler ["RopeBreak", _towed getVariable ["btc_eh", -1]];
-(ropes _towed) apply {ropeDestroy _x};
-
-(getPos _towed) params ["_x", "_y", "_z"];
-if (_z < -0.05) then {
-    _towed setPosASL [_x, _y, ((getPosASL _veh) select 2) - _z];
-} else {
-    _towed setVelocity [0, 0, 0.01];
-};
-
-[_towed, ["tow", objNull]] remoteExec ["setVariable", 2];
-[_veh, ["tow", objNull]] remoteExec ["setVariable", 2];
+_ropes apply {ropeDestroy _x};

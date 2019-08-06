@@ -14,7 +14,7 @@ Returns:
 
 Examples:
     (begin example)
-        [[0, 0, 0], 200] call btc_fnc_civ_get_grenade;
+        [getPos player, 200] call btc_fnc_civ_get_weapons;
     (end)
 
 Author:
@@ -30,9 +30,8 @@ params [
 
 if (_units isEqualTo []) then {
     _units = _pos nearEntities [btc_civ_type_units, _range];
+    _units = _units select {side _x isEqualTo civilian};
 };
-
-_units = _units select {side _x isEqualTo civilian};
 
 {
     if (btc_debug_log) then {
