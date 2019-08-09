@@ -240,6 +240,7 @@ if (!isDedicated) then {
     btc_fnc_strategicMapOpen = compile preprocessFileLineNumbers "core\fnc\common\strategicMapOpen.sqf";
     btc_fnc_get_composition = compile preprocessFileLineNumbers "core\fnc\common\get_composition.sqf";
     btc_fnc_checkArea = compile preprocessFileLineNumbers "core\fnc\common\checkArea.sqf";
+    btc_fnc_typeOfPreview = compile preprocessFileLineNumbers "core\fnc\common\typeOfPreview.sqf";
 
     //CHEM
     btc_fnc_chem_biopsy = compile preprocessFileLineNumbers "core\fnc\chem\biopsy.sqf";

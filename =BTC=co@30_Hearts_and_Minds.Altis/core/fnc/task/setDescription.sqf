@@ -264,9 +264,9 @@ switch (_description) do {
     case 26 : {
         _location params ["_officerName", "_loc", "_officerType"];
         _description = [
-            format [localize "STR_BTC_HAM_SIDE_KILL_IN_DESC", _officerName] + format [_image, getText (configfile >> "CfgVehicles" >> _officerType >> "editorPreview")],
-            format [localize "STR_BTC_HAM_SIDE_KILL_IN_TITLE", _officerName, _loc],
-            format [localize "STR_BTC_HAM_SIDE_KILL_IN_TITLE", _officerName, _loc]
+            format [localize "STR_BTC_HAM_SIDE_KILL_IN_DESC", _officerName, _loc] + format [_image, getText (configfile >> "CfgVehicles" >> _officerType >> "editorPreview")],
+            format [localize "STR_BTC_HAM_SIDE_KILL_IN_TITLE", _officerName],
+            format [localize "STR_BTC_HAM_SIDE_KILL_IN_TITLE", _officerName]
         ];
         _type = "kill";
     };

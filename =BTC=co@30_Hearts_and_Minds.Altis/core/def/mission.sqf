@@ -280,7 +280,7 @@ if (isServer) then {
     btc_buildings_changed = [];
 
     //IED
-    private _ieds = ["Land_GarbageContainer_closed_F", "Land_GarbageContainer_open_F", "Land_Portable_generator_F", "Land_WoodenBox_F", "Land_BarrelTrash_grey_F", "Land_Sacks_heap_F", "Land_Wreck_Skodovka_F", "Land_WheelieBin_01_F"] + btc_type_pallet + btc_type_barrel + (_allClassSorted select {
+    private _ieds = ["Land_GarbageContainer_closed_F", "Land_GarbageContainer_open_F", "Land_Portable_generator_F", "Land_WoodenBox_F", "Land_BarrelTrash_grey_F", "Land_Sacks_heap_F", "Land_Wreck_Skodovka_F", "Land_WheelieBin_01_F", "Land_GarbageBin_03_F"] + btc_type_pallet + btc_type_barrel + (_allClassSorted select {
         _x isKindOf "GasTank_base_F" ||
         _x isKindOf "Garbage_base_F" ||
         (_x isKindOf "Constructions_base_F" &&
