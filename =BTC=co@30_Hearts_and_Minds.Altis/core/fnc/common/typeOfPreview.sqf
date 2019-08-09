@@ -25,7 +25,7 @@ Author:
 params [
     ["_typeOf", "Land_PowerGenerator_F", [""]],
     ["_width", 355, [0]],
-    ["_height", 200, [0]],
+    ["_height", 200, [0]]
 ];
 
 format [
