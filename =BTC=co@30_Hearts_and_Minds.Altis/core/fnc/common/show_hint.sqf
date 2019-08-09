@@ -70,14 +70,14 @@ private _text = switch (_type) do {
     case 14 : {
         [
             [localize "STR_BTC_HAM_O_COMMON_SHOWHINTS_14"],
-            [format ["<img size='5' image='%1' align='center'/>", getText (configfile >> "CfgVehicles" >> _custom >> "editorPreview")]],
+            [[_custom, 5, 5] call btc_fnc_typeOfPreview],
             [" "]
         ];
     };
     case 15 : {
         [
             [localize "STR_BTC_HAM_O_COMMON_SHOWHINTS_15"],
-            [format ["<img size='5' image='%1' align='center'/>", getText (configfile >> "CfgVehicles" >> _custom >> "editorPreview")]],
+            [[_custom, 5, 5] call btc_fnc_typeOfPreview],
             [" "]
         ];
     };
