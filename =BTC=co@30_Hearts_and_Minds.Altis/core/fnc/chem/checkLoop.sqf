@@ -56,7 +56,6 @@ private _bodyParts = ["head","body","hand_l","hand_r","leg_l","leg_r"];
     if (_contaminated isEqualTo []) exitWith {};
 
     private _unitContaminate = [];
-
     {
         if (_x in _units) then {
             _range = _range / 2;

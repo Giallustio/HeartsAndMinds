@@ -203,6 +203,7 @@ if (isServer) then {
         _x isKindOf "Land_PortableLight_02_base_F" ||
         _x isKindOf "TentLamp_01_standing_base_F"
     };
+    btc_type_tentLamp = _allClassSorted select {_x isKindOf "TentLamp_01_base_F"};
     btc_type_first_aid_kits = ["Land_FirstAidKit_01_open_F", "Land_FirstAidKit_01_closed_F"];
     btc_type_body_bags = _allClassSorted select {
         _x isKindOf "Land_Bodybag_01_base_F" ||
@@ -235,6 +236,14 @@ if (isServer) then {
         _x isKindOf "Land_DirtPatch_02_base_F" ||
         _x isKindOf "WaterSpill_01_Base_F"
     });
+    btc_type_tarp = _allClassSorted select {_x isKindOf "Tarp_01_base_F"};
+    btc_type_SCBA = _allClassSorted select {_x isKindOf "SCBACylinder_01_base_F"};
+    btc_type_brush = _allClassSorted select {_x isKindOf "Brush_01_base_F"};
+    btc_type_broom = _allClassSorted select {_x isKindOf "Broom_01_base_F"};
+    btc_type_sponge = _allClassSorted select {_x isKindOf "Sponge_01_base_F"};
+    btc_type_connectorTentClosed = _allClassSorted select {_x isKindOf "Land_ConnectorTent_01_closed_base_F"};
+    btc_type_crossTent = _allClassSorted select {_x isKindOf "Land_ConnectorTent_01_cross_base_F"};
+    btc_type_connectorTent = (_allClassSorted select {_x isKindOf "Land_ConnectorTent_01_base_F"}) - btc_type_connectorTentClosed - btc_type_crossTent;
 
     //BTC Vehicles in missions.sqm
     btc_vehicles = [btc_veh_1, btc_veh_2, btc_veh_3, btc_veh_4, btc_veh_5, btc_veh_6, btc_veh_7, btc_veh_8, btc_veh_9, btc_veh_10, btc_veh_11, btc_veh_12, btc_veh_13, btc_veh_14, btc_veh_15];
@@ -305,9 +314,9 @@ btc_civ_type_boats = _allclasse select 1;
 btc_w_civs = ["V_Rangemaster_belt", "arifle_Mk20_F", "30Rnd_556x45_Stanag", "hgun_ACPC2_F", "9Rnd_45ACP_Mag"];
 btc_g_civs = ["HandGrenade", "MiniGrenade", "ACE_M84", "ACE_M84"];
 
-
 //Cache
-btc_cache_type = ["Box_East_Ammo_F"];
+btc_cache_type = [["Box_East_Ammo_F"], ["Land_PlasticCase_01_small_black_CBRN_F", "Land_PlasticCase_01_small_olive_CBRN_F", "Land_PlasticCase_01_small_CBRN_F"]];
+
 private _weapons_usefull = "true" configClasses (configFile >> "CfgWeapons") select {(getNumber (_x >> 'type') isEqualTo 1) AND !(getArray(_x >> 'magazines') isEqualTo []) AND (getNumber (_x >> 'scope') isEqualTo 2)};
 btc_cache_weapons_type = _weapons_usefull apply {configName _x};
 

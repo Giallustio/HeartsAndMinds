@@ -13,10 +13,19 @@ Use the interaction menu to treat your wounds. Keep in mind that all the actions
 ## Deafness
 Use the earplugs to protect your ears to avoid combat deafness. You can put them on with your self interaction key.
 
+## Chemical Warfare
+### Chemical agent:
+Chemical agent can be found in the battle field at cache location for exemple. When an object is contaminated, the chemical agent propagate to people around (in a circle of 3m). Those people will be hurt constantly until they died or found a decontaminating shower (available at logistic point) to clean up their body. When they are contaminated, they can propagate it to other people around (in a circle of 1.5m) or vehicle if they get inside. Keep in mind, dead body stay contaminated but body bag will isolate it. Also, contaminated object loaded as cargo will contaminate the container or vehicle. 
+###Protection:
+Use CBRN gear to protect you from the contamination effect. But, don't forget to take a shower for more than 3s before removing your CBRN gear. Be aware, even with a CBRN you can propate the agent to people or vehicle, you are just protected from the effect. 
+###Decontaminate:
+You can use small shower to decontaminate units only. Use the big shower for objects, vehicles and objects loaded as cargo. 
+###Detection:
+You can analyse an object, vehicle or man with ED-1E drone to determine if it is contaminated (Note: The drone will never be contaminated.).
 
 ## Vehicles
 ### Respawn:
- When a vehicle is destroyed it will not respawn in base, you need to tow or lift it back to base and repair it near the logistic point (Interact with the red box). Helicopter wrecks can only be lifted. The Chinook is the only exception, it will respawn after 30 seconds.
+When a vehicle is destroyed it will not respawn in base, you need to tow or lift it back to base and repair it near the logistic point (Interact with the red box). Helicopter wrecks can only be lifted. The Chinook is the only exception, it will respawn after 30 seconds.
 ### Rearm:
 You can also rearm them by spawning the corresponding caliber at logistic point (Interact with the red box, select the vehicle type and caliber). Carry the ammo created and interact with the vehicle to rearm. This only works if rearming is setting on entire magazine or amount based on caliber (not for entire vehicle setting).
 
