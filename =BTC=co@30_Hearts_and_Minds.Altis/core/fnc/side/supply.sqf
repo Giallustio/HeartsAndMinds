@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        [] spawn btc_fnc_side_supply;
+        [false, "btc_fnc_side_supply"] spawn btc_fnc_side_create;
     (end)
 
 Author:
@@ -103,11 +103,9 @@ if !(_move_taskID call BIS_fnc_taskState isEqualTo "CANCELED") then {
 
 [getPos _city, _pos getPos [10, _direction_composition]] call btc_fnc_civ_evacuate;
 
-waitUntil {sleep 5; (_move_taskID call BIS_fnc_taskState isEqualTo "CANCELED" || _drop_taskID call BIS_fnc_taskCompleted || (count (nearestObjects [_pos, _food + _water, 30]) >= 2))};
+waitUntil {sleep 5; (_taskID call BIS_fnc_taskCompleted || (count (nearestObjects [_pos, _food + _water, 30]) >= 2))};
 
-if (_drop_taskID call BIS_fnc_taskState isEqualTo "CANCELED" ||
-    _move_taskID call BIS_fnc_taskState isEqualTo "CANCELED"
-) exitWith {
+if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {
     [[_area], _composition_objects] call btc_fnc_delete;
 };
 
