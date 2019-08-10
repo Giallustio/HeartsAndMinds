@@ -20,6 +20,8 @@ if (isServer) then {
     btc_fnc_findPosOutsideRock = compile preprocessFileLineNumbers "core\fnc\common\findposoutsiderock.sqf";
     btc_fnc_set_groupsOwner = compile preprocessFileLineNumbers "core\fnc\common\set_groupsOwner.sqf";
     btc_fnc_typeOf = compile preprocessFileLineNumbers "core\fnc\common\typeOf.sqf";
+    btc_fnc_getVehProperties = compile preprocessFileLineNumbers "core\fnc\common\getVehProperties.sqf";
+    btc_fnc_setVehProperties = compile preprocessFileLineNumbers "core\fnc\common\setVehProperties.sqf";
 
     //CITY
     btc_fnc_city_activate = compile preprocessFileLineNumbers "core\fnc\city\activate.sqf";
