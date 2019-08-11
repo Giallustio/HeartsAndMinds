@@ -163,8 +163,9 @@ if (isServer) then {
     btc_type_bigbox = ["Box_FIA_Ammo_F", "Box_East_AmmoVeh_F", "CargoNet_01_box_F", "O_CargoNet_01_ammo_F"] + btc_type_Scrapyard;
     btc_type_seat = ["Land_WoodenLog_F", "Land_CampingChair_V2_F", "Land_CampingChair_V1_folded_F", "Land_CampingChair_V1_F"];
     btc_type_sleepingbag = _allClassSorted select {_x isKindOf "Land_Sleeping_bag_F"};
-    btc_type_tent = ["Land_TentA_F", "Land_TentDome_F"];
+    btc_type_tent = ["Land_TentA_F", "Land_TentDome_F"] + (_allClassSorted select {_x isKindOf "Land_TentSolar_01_base_F" && !(_x isKindOf "Land_TentSolar_01_folded_base_F")});
     btc_type_camonet = ["Land_IRMaskingCover_02_F"] + (_allClassSorted select {_x isKindOf "Shelter_base_F"});
+    btc_type_satelliteAntenna = _allClassSorted select {_x isKindOf "Land_SatelliteAntenna_01_F"};
 
     //Side
     btc_side_ID = 0;
