@@ -41,7 +41,7 @@ if (btc_debug_log) then {
 };
 
 if (_start_pos isEqualTo objNull) then {
-    _start_pos = [_pos, btc_city_all select {!(_x getVariable ["active", false]) && _x getVariable ["type", ""] != "NameMarine"}, false] call btc_fnc_find_closecity;
+    _start_pos = [_pos, btc_city_all select {!(isNull _x) && !(_x getVariable ["active", false]) && _x getVariable ["type", ""] != "NameMarine"}, false] call btc_fnc_find_closecity;
 };
 
 private _ratio = if (_pos distance _start_pos > 1000) then {0.2} else {0.6};
