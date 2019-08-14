@@ -42,7 +42,7 @@ params [
 _wp_ratios params ["_wp_house_probability", "_wp_sentry_probability"];
 
 // Find a position
-([_city] call btc_fnc_city_findPos) params ["_rpos", "_pos_iswater"];
+([_city, _area] call btc_fnc_city_findPos) params ["_rpos", "_pos_iswater"];
 
 private _group = createGroup _enemy_side;
 private _groups = [];
