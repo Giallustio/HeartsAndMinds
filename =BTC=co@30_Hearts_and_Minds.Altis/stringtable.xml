@@ -760,16 +760,15 @@
                 <Portuguese>Um Oficial está viajando em um comboio camuflado. Encontre e traga-o para base para interrogatório. Ele é um dos principais responsáveis por aterrorizar a população local!</Portuguese>
                 <Chinesesimp>一名敌军军官已经伪装起来, 随同车队进行转移。找到他并把他带回基地, 进行进一步的审问。他是当地恐怖主义活动的主要责任人之一!</Chinesesimp>
             </Key>
-            <!-- Begin: Translation might be confusing. -->
             <Key ID="STR_BTC_HAM_SIDE_CAPOFF_SURRENDER_DESC">
                 <Original>Surrender the officer.</Original>
                 <German>Nehmen Sie den Offizier gefangen.</German>
-                <Chinesesimp>将这名军官囚禁起来。</Chinesesimp>
+                <Chinesesimp>迫使这名军官投降。</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_CAPOFF_SURRENDER_TITLE">
                 <Original>Surrender the officer</Original>
                 <German>Offizier gefangen nehmen</German>
-                <Chinesesimp>囚禁军官</Chinesesimp>
+                <Chinesesimp>迫使军官投降</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_CAPOFF_HANDCUFF_DESC">
                 <Original>Handcuff the officer.</Original>
@@ -779,9 +778,8 @@
             <Key ID="STR_BTC_HAM_SIDE_CAPOFF_HANDCUFF_TITLE">
                 <Original>Handcuff the officer</Original>
                 <German>Offizier gefangen nehmen</German>
-                <Chinesesimp>把这名军官囚禁起来。</Chinesesimp>
+                <Chinesesimp>铐住军官</Chinesesimp>
             </Key>
-            <!-- End: Translation might be confusing. -->
         </Container>
         <Container name="Checkpoint">
             <Key ID="STR_BTC_HAM_SIDE_CHECKPOINT_TITLE">
