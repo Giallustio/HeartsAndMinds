@@ -55,6 +55,7 @@ _group_officer setVariable ["no_cache", true];
 private _officerType = selectRandom btc_type_units;
 private _officer = _group_officer createUnit [_officerType, _pos, [], 0, "CAN_COLLIDE"];
 [_group_officer] call btc_fnc_mil_unit_create;
+_officer setVariable ["btc_dont_delete", true];
 
 //// Data side mission
 private _officerName = name _officer;
@@ -63,12 +64,15 @@ private _kill_taskID = _taskID + "ki";
 [[_kill_taskID, _taskID], 26, _officer, [_officerName, _city getVariable "name", _officerType]] call btc_fnc_task_create;
 
 private _group = [];
+private _toDelete = [_group_officer] + units _group_officer;
 {
     private _grp = createGroup btc_enemy_side;
     private _unit = _grp createUnit [selectRandom btc_type_units, _x, [], 0, "CAN_COLLIDE"];
     [_unit] joinSilent _grp;
     _group pushBack _grp;
     _grp setVariable ["no_cache", true];
+    _unit setVariable ["btc_dont_delete", true];
+    _toDelete pushBack _unit;
     [_grp] call btc_fnc_mil_unit_create;
 } forEach (_buildingPos - [_pos]);
 
@@ -78,9 +82,11 @@ _trigger setTriggerArea [20, 20, 0, false];
 _trigger setTriggerActivation [str btc_player_side, "PRESENT", true];
 _trigger setTriggerStatements ["this", "private _group = thisTrigger getVariable 'group'; {_x setCombatMode 'RED';} forEach _group;", "private _group = thisTrigger getVariable 'group'; {_x setCombatMode 'WHITE';} forEach _group;"];
 
+_toDelete append (_group + [_trigger]);
+
 waitUntil {sleep 5; (_taskID call BIS_fnc_taskCompleted || !alive _officer)};
 if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {
-    [[], _group + [_group_officer, _trigger]] call btc_fnc_delete;
+    [[], _toDelete] call btc_fnc_delete;
 };
 
 [_kill_taskID, "SUCCEEDED"] call BIS_fnc_taskSetState;
@@ -103,25 +109,36 @@ private _globalVariableName = format ["btc_%1", _dogTag_taskID];
     _this
 }, [_officer_dogTagData, _dogTag_taskID, _taskID, _globalVariableName]] remoteExecCall ["CBA_fnc_addEventHandlerArgs", [0, -2] select isDedicated, _officer];
 
+private _IDEH = [missionNamespace, "HandleDisconnect", {
+    params [
+        ["_player", objNull, [objNull]]
+    ];
+    _thisArgs params ["_globalVariableName", "_taskID"];
+
+    if ((missionNamespace getVariable [_globalVariableName, ""]) in items _player) then {
+        removeMissionEventHandler [_thisType, _thisID];
+        [_taskID, "FAILED"] call BIS_fnc_taskSetState;
+    };
+}, [_globalVariableName, _taskID]] call CBA_fnc_addBISEventHandler;
+
 waitUntil {sleep 5; (
     true in (
         (
             allPlayers inAreaArray [getPosWorld btc_create_object_point, 100, 100]
         ) apply {(missionNamespace getVariable [_globalVariableName, ""]) in items _x}
     ) ||
-    _taskID call BIS_fnc_taskCompleted)
+    _taskID call BIS_fnc_taskCompleted ||
+    _officer isEqualTo objNull
+)};
+
+if (_officer isEqualTo objNull) then {
+    [_taskID, "FAILED"] call BIS_fnc_taskSetState;
 };
 
-_group_officer setVariable ["no_cache", false];
-{
-    _x setVariable ["no_cache", false];
-} forEach _group;
+removeMissionEventHandler ["HandleDisconnect", _IDEH];
+[[], _toDelete] call btc_fnc_delete;
 
-if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {
-    [[], _group + [_group_officer, _trigger]] call btc_fnc_delete;
-};
-
-[[], [_trigger]] call btc_fnc_delete;
+if ((_taskID call BIS_fnc_taskState) in ["FAILED", "CANCELED"]) exitWith {};
 
 40 call btc_fnc_rep_change;
 
