@@ -225,6 +225,23 @@
             </Key>
         </Container>
         <Container name="Documentation: Orders">
+            <Key ID="STR_BTC_HAM_DOC_ORDERS_TITLE">
+                <Original>Order</Original>
+                <English>Order</English>
+                <Czech>Pořadí</Czech>
+                <German>Reihenfolge</German>
+                <Russian>Порядок</Russian>
+                <Polish>Kolejność</Polish>
+                <Italian>Ordine</Italian>
+                <Spanish>Orden</Spanish>
+                <French>Ordre</French>
+                <Chinese>命令</Chinese>
+                <Japanese>命令</Japanese>
+                <Korean>순서</Korean>
+                <Portuguese>Ordem</Portuguese>
+                <Chinesesimp>命令</Chinesesimp>
+                <Turkish>Düzen</Turkish>
+            </Key>
             <Key ID="STR_BTC_HAM_DOC_ORDERS_TEXT">
                 <Original>Any player can give orders to civilians.&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; To do this, just open your self interaction menu and select 'ORDERS' or use one of the shortcuts. Shortcuts can changed under 'configure' &gt;&gt; 'controls' &gt;&gt; 'configure addons' &gt;&gt; 'Hearts and Minds: Mission' (drop down menu).&lt;br/&gt; Your options are:&lt;br/&gt; - STOP&lt;br/&gt; - GET DOWN&lt;br/&gt; - GO AWAY&lt;br/&gt;&lt;br/&gt; If you want to give an order to just one unit, interact with it (ace object interaction).&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='20' height='20'/&gt; You can also drop leaflets to ask all civilians in a circle of 200m to evacuate to a religious building (if not available a safe area) with a AR-2 drone.</Original>
                 <Spanish>Cualquier jugador puede dar órdenes a civiles.&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; Para ello, sólo tienes que abrir el menú de auto-interacción y seleccionar `ORDENES' o utilizar uno de los accesos directos. Los accesos directos pueden cambiarse en 'configuración'. &gt;&gt; 'controls' &gt;&gt; 'configure addons' &gt;&gt; 'Hearts and Minds: Mission' (menu desplegable).&lt;br/&gt; Tus opciones son:&lt;br/&gt; - ALTO&lt;br/&gt; - AGACHATE&lt;br/&gt; - FUERA DE AQUI&lt;br/&gt;&lt;br/&gt; Si quieres dar una orden a una sola unidad, interactúa con ella (ace object interaction).&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='20' height='20'/&gt; También puede tirar panfletos para pedir a todos los civiles en un círculo de 200 metros que evacuen a un edificio religioso (si no está disponible un área segura) con un drone</Spanish>
@@ -1151,6 +1168,23 @@
                 <German>Datenbank</German>
                 <Portuguese>Base de Dados</Portuguese>
                 <Chinesesimp>数据库</Chinesesimp>
+            </Key>
+            <Key ID="STR_BTC_HAM_ACTION_DATA_DELETE">
+                <Original>Delete</Original>
+                <English>Delete</English>
+                <Czech>Smazat</Czech>
+                <German>Löschen</German>
+                <Russian>Удалить</Russian>
+                <Polish>Usuń</Polish>
+                <Italian>Elimina</Italian>
+                <Spanish>Suprimir</Spanish>
+                <French>Supprimer</French>
+                <Chinese>刪除</Chinese>
+                <Japanese>削除</Japanese>
+                <Korean>삭제</Korean>
+                <Portuguese>Excluir</Portuguese>
+                <Chinesesimp>删除</Chinesesimp>
+                <Turkish>Sil</Turkish>
             </Key>
         </Container>
         <Container name="Action(ACE): Intel">
