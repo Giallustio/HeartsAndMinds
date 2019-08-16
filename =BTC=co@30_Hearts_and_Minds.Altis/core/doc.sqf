@@ -17,7 +17,7 @@ player createDiaryRecord [_MainCategory, [localize "str_a3_cfghints_command_vehi
 player createDiaryRecord [_MainCategory, [localize "STR_BTC_HAM_DOC_SIDEMISSION_TITLE", localize "STR_BTC_HAM_DOC_SIDEMISSION_TEXT"]];
 
 //FOB
-player createDiaryRecord [_MainCategory, ["FOB/Rallypoint", localize "STR_BTC_HAM_DOC_FOB_TEXT"]];
+player createDiaryRecord [_MainCategory, [localize "STR_BTC_HAM_DOC_FOB_TITLE", localize "STR_BTC_HAM_DOC_FOB_TEXT"]];
 
 //Sling loading
 player createDiaryRecord [_MainCategory, [localize "STR_A3_SlingLoad1", localize "STR_BTC_HAM_DOC_SLING_TEXT"]];
