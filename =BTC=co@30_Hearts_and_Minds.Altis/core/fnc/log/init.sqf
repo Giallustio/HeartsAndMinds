@@ -27,7 +27,10 @@ params [
 btc_log_obj_created pushBack _obj;
 btc_curator addCuratorEditableObjects [[_obj], false];
 
-if (_obj isKindOf "DecontaminationSimulated_base_F") then {
+if (
+    _obj isKindOf "DeconShower_01_F" &&
+    _obj isKindOf "DeconShower_02_F"
+) then {
     btc_chem_decontaminate pushBackUnique _obj;
 };
 

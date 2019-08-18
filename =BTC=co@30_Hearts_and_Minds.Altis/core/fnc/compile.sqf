@@ -24,6 +24,7 @@ if (isServer) then {
     //CHEM
     btc_fnc_chem_checkLoop = compile preprocessFileLineNumbers "core\fnc\chem\checkLoop.sqf";
     btc_fnc_chem_propagate = compile preprocessFileLineNumbers "core\fnc\chem\propagate.sqf";
+    btc_fnc_chem_handleShower = compile preprocessFileLineNumbers "core\fnc\chem\handleShower.sqf";
 
     //CITY
     btc_fnc_city_activate = compile preprocessFileLineNumbers "core\fnc\city\activate.sqf";
@@ -185,6 +186,10 @@ btc_fnc_randomize_pos = compile preprocessFileLineNumbers "core\fnc\common\rando
 btc_fnc_getHouses = compile preprocessFileLineNumbers "core\fnc\common\getHouses.sqf";
 btc_fnc_house_addWP_loop = compile preprocessFileLineNumbers "core\fnc\common\house_addWP_loop.sqf";
 
+//CHEM
+btc_fnc_chem_damage = compile preprocessFileLineNumbers "core\fnc\chem\damage.sqf";
+btc_fnc_chem_deconShowerAnimLarge = {(_this select 0) setVariable ["BIN_Shower_Stop",false]; _this call BIN_fnc_deconShowerAnimLarge;};
+
 //DEBUG
 btc_fnc_debug_message = compile preprocessFileLineNumbers "core\fnc\debug\message.sqf";
 
@@ -244,6 +249,7 @@ if (!isDedicated) then {
 
     //CHEM
     btc_fnc_chem_biopsy = compile preprocessFileLineNumbers "core\fnc\chem\biopsy.sqf";
+    btc_fnc_chem_damageLoop = compile preprocessFileLineNumbers "core\fnc\chem\damageLoop.sqf";
 
     //DEBUG
     btc_fnc_debug_marker = compile preprocessFileLineNumbers "core\fnc\debug\marker.sqf";

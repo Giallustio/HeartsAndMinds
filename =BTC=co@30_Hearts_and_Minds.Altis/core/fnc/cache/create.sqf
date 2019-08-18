@@ -14,7 +14,11 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [getPos player, true, 0.7] call btc_fnc_cache_create;
+        [] spawn {
+            for [{_i=1},{_i<=360},{_i=_i+10}] do {
+                [player getpos [10, _i], true, 0.7] call btc_fnc_cache_create;
+            };
+        };
     (end)
 
 Author:

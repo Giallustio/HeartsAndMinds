@@ -5,10 +5,10 @@ class EditorData
 	angleGridStep=0.2617994;
 	scaleGridStep=1;
 	autoGroupingDist=10;
-	toggles=513;
+	toggles=521;
 	class ItemIDProvider
 	{
-		nextID=202;
+		nextID=224;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={8363.8594,84.135818,10130.982};
-		dir[]={-0.87879151,-0.39408851,-0.26953462};
-		up[]={-0.37688223,0.91902727,-0.11559381};
-		aside[]={-0.29325902,1.4916877e-006,0.95614254};
+		pos[]={8349.0146,81.310471,10115.494};
+		dir[]={-0.25951707,-0.57477474,-0.77622974};
+		up[]={-0.18227877,0.81825554,-0.54519916};
+		aside[]={-0.94850081,1.0353397e-006,0.31711411};
 	};
 };
 binarizationWanted=0;
@@ -47,13 +47,14 @@ addons[]=
 	"A3_Armor_F_Beta_APC_Wheeled_01",
 	"A3_Air_F_Beta_Heli_Transport_01",
 	"A3_Air_F_Beta_Heli_Attack_01",
-	"A3_Props_F_Enoch_Military_Decontamination"
+	"A3_Props_F_Enoch_Military_Decontamination",
+	"A3_Signs_F"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=19;
+		items=20;
 		class Item0
 		{
 			className="A3_Ui_F";
@@ -187,6 +188,13 @@ class AddonsMetaData
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
+		class Item19
+		{
+			className="A3_Signs_F";
+			name="Arma 3 - Signs";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
 	};
 };
 randomSeed=2442963;
@@ -210,24 +218,6 @@ class CustomAttributes
 		name="Multiplayer";
 		class Attribute0
 		{
-			property="RespawnTemplates";
-			expression="true";
-			class Value
-			{
-				class data
-				{
-					class type
-					{
-						type[]=
-						{
-							"ARRAY"
-						};
-					};
-				};
-			};
-		};
-		class Attribute1
-		{
 			property="RespawnButton";
 			expression="true";
 			class Value
@@ -242,6 +232,24 @@ class CustomAttributes
 						};
 					};
 					value=1;
+				};
+			};
+		};
+		class Attribute1
+		{
+			property="RespawnTemplates";
+			expression="true";
+			class Value
+			{
+				class data
+				{
+					class type
+					{
+						type[]=
+						{
+							"ARRAY"
+						};
+					};
 				};
 			};
 		};
@@ -680,7 +688,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=53;
+		items=58;
 		class Item0
 		{
 			dataType="Marker";
@@ -2937,18 +2945,19 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={8338.1436,76.094742,10124.353};
-				angles[]={0.0877726,4.0308027,0.01733112};
+				position[]={8346.3516,77.140343,10107.095};
+				angles[]={0.0066671576,5.5850534,6.2485409};
 			};
 			side="Empty";
 			flags=4;
 			class Attributes
 			{
+				init="call{this setVariable ['bin_deconshower_disableAction',true];}";
 				name="btc_bigShower";
 			};
 			id=200;
 			type="DeconShower_02_F";
-			atlOffset=-0.0089950562;
+			atlOffset=-0.01600647;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -2991,6 +3000,91 @@ class Mission
 				};
 				nAttributes=2;
 			};
+		};
+		class Item53
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={8346.4102,73.669189,10106.788};
+				angles[]={0.0066682254,5.5850534,6.2485328};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=203;
+			type="Tarp_01_Large_Black_F";
+			atlOffset=7.6293945e-006;
+		};
+		class Item54
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={8343.1406,74.16777,10102.688};
+				angles[]={0.0079935296,0,6.2472029};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=213;
+			type="RoadCone_L_F";
+			atlOffset=7.6293945e-006;
+		};
+		class Item55
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={8341.2012,74.22155,10104.697};
+				angles[]={0.0079935296,0,6.2472029};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=214;
+			type="RoadCone_L_F";
+			atlOffset=5.3405762e-005;
+		};
+		class Item56
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={8351.1943,73.745712,10109.574};
+				angles[]={0.033321146,0,6.2206011};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=215;
+			type="RoadCone_L_F";
+			atlOffset=6.1035156e-005;
+		};
+		class Item57
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={8349.3574,73.721733,10111.684};
+				angles[]={0.074528553,0,6.2206011};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=216;
+			type="RoadCone_L_F";
+			atlOffset=0.00016784668;
 		};
 	};
 };

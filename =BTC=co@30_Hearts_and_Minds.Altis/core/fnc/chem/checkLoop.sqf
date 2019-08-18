@@ -25,12 +25,13 @@ private _bodyParts = ["head","body","hand_l","hand_r","leg_l","leg_r"];
 
 [{
     params ["_args", "_id"];
-    _args params ["_contaminated", "_decontaminate", "_range", "_bodyParts", "_cfgGlasses"];
+    _args params ["_contaminated", "_decontaminate", "_bodyParts", "_cfgGlasses"];
 
     if (_contaminated isEqualTo []) exitWith {};
 
     private _units = allUnits;
     private _objtToDecontaminate = [];
+    private _unitsContaminated = _contaminated select {_x in _units};
     {
         (0 boundingBoxReal _x) params ["_p1", "_p2"];
         private _maxWidth = abs ((_p2 select 0) - (_p1 select 0));
@@ -39,13 +40,19 @@ private _bodyParts = ["head","body","hand_l","hand_r","leg_l","leg_r"];
         private _maxHeight = abs ((_p2 select 2) - (_p1 select 2)) + (_pos select 2);
         private _sorted = _contaminated;
         if (_x isKindOf "DeconShower_01_F") then {
-            _sorted = _sorted select {_x in _units}; // Small shower can only decontaminate units
+            _sorted = _unitsContaminated; // Small shower can only decontaminate units
         };
         _objtToDecontaminate append (_sorted inAreaArray [_pos, _maxWidth/2, _maxLength/2, getDir _x, true, _maxHeight]);
     } forEach (_decontaminate select {_x animationSourcePhase "valve_source" isEqualTo 1});
     {
+        if (!(local _x) && {_x in _units}) then {
+            ["btc_chem_decontaminated", [_x], _x] call CBA_fnc_targetEvent;
+        };
         _contaminated deleteAt (_contaminated find _x);
         {
+            if (!(local _x) && {_x in _units}) then {
+                ["btc_chem_decontaminated", [_x], _x] call CBA_fnc_targetEvent;
+            };
             _contaminated deleteAt (_contaminated find _x);
             {
                 _contaminated deleteAt (_contaminated find _x);
@@ -56,6 +63,7 @@ private _bodyParts = ["head","body","hand_l","hand_r","leg_l","leg_r"];
     if (_contaminated isEqualTo []) exitWith {};
 
     private _unitContaminate = [];
+    private _range = 3;
     {
         if (_x in _units) then {
             _range = _range / 2;
@@ -64,20 +72,13 @@ private _bodyParts = ["head","body","hand_l","hand_r","leg_l","leg_r"];
         _unitContaminate append (_units inAreaArray [_pos, _range, _range, 0, false, 2 + (_pos select 2)]);
     } forEach _contaminated;
     {
-        private _isAlready = _contaminated pushBackUnique _x > -1;
-        if !(
-            (
-                goggles _x isKindOf ["G_RegulatorMask_base_F", _cfgGlasses] ||
-                goggles _x isKindOf ["G_AirPurifyingRespirator_01_base_F", _cfgGlasses]
-            ) && (
-                backpack _x isKindOf "B_SCBA_01_base_F" ||
-                backpack _x isKindOf "B_CombinationUnitRespirator_01_Base_F"
-            ) &&
-            uniform _x find "CBRN" > -1
-        ) then { // Don't always apply damage to unit already contaminated
-            if (selectRandom [true, _isAlready]) then {
-                [_x, random [0.05, 0.1, 0.1], selectRandom _bodyParts, "stab"] call ace_medical_fnc_addDamageToUnit; // ropeburn
+        private _notAlready = _contaminated pushBackUnique _x > -1;
+        if (local _x) then {
+            [_x, _notAlready, _bodyParts, _cfgGlasses] call btc_fnc_chem_damage;
+        } else {
+            if (_notAlready) then {
+                [_x] remoteExecCall ["btc_fnc_chem_damageLoop", _x]; // ropeburn
             };
         };
     } forEach _unitContaminate;
-}, 3, [btc_chem_contaminated, btc_chem_decontaminate, 3, _bodyParts, configFile >> "CfgGlasses"]] call CBA_fnc_addPerFrameHandler;
+}, 3, [btc_chem_contaminated, btc_chem_decontaminate, _bodyParts, configFile >> "CfgGlasses"]] call CBA_fnc_addPerFrameHandler;

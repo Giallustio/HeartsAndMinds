@@ -28,4 +28,6 @@ if (btc_p_auto_db) then {
 };
 if (btc_p_chem) then {
     ["ace_cargoLoaded", btc_fnc_chem_propagate] call CBA_fnc_addEventHandler;
+    ["DeconShower_01_F", "init", {(_this select 0) setVariable ['bin_deconshower_disableAction',true];}] call CBA_fnc_addClassEventHandler;
+    ["DeconShower_02_F", "init", {(_this select 0) setVariable ['bin_deconshower_disableAction',true]}] call CBA_fnc_addClassEventHandler;
 };

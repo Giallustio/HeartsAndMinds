@@ -59,6 +59,16 @@ _action = ["Logistic", localize "STR_BTC_HAM_ACTION_LOC_MAIN", "\A3\ui_f\data\ig
 _action = ["Place", localize "STR_3DEN_Display3DEN_ControlsHint_Place", "\A3\ui_f\data\map\markers\military\end_CA.paa", {(_this select 0) spawn btc_fnc_log_place}, {!btc_log_placing}] call ace_interact_menu_fnc_createAction;
 {[_x, 0, ["ACE_MainActions", "Logistic"], _action] call ace_interact_menu_fnc_addActionToClass;} forEach btc_log_def_placeable;
 
+//Shower
+_action = ["Shower_act", getText(configfile >> "CfgVehicles" >> "DeconShower_01_F" >> "UserActions" >> "Activate" >> "displayName"), "\A3\ui_f\data\map\markers\military\end_CA.paa", {player playActionNow 'PutDown'; [_this select 0, 1.5, 9] remoteExec ["BIN_fnc_deconShowerAnim", 0]}, {alive (_this select 0) AND {(_this select 0) animationSourcePhase 'valve_source' isEqualTo 0}}] call ace_interact_menu_fnc_createAction;
+["DeconShower_01_F", 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToClass;
+_action = ["Shower_act", getText(configfile >> "CfgVehicles" >> "DeconShower_02_F" >> "UserActions" >> "Activate" >> "displayName"), "\A3\ui_f\data\map\markers\military\end_CA.paa", {player playActionNow 'PutDown'; [_this select 0, 5.4, 4, 2, true] remoteExec ["BIN_fnc_deconShowerAnimLarge", 0]}, {alive (_this select 0) AND {(_this select 0) animationSourcePhase 'valve_source' isEqualTo 0}}] call ace_interact_menu_fnc_createAction;
+["DeconShower_02_F", 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToClass;
+{
+    _action = ["Shower_desact", getText(configfile >> "CfgVehicles" >> "DeconShower_01_F" >> "UserActions" >> "Deactivate" >> "displayName"), "\A3\ui_f\data\map\markers\military\end_CA.paa", {player playActionNow 'PutDown'; [_this select 0] remoteExecCall ["BIN_fnc_deconShowerAnimStop", 0]}, {alive (_this select 0) AND {(_this select 0) animationSourcePhase 'valve_source' > 0}}] call ace_interact_menu_fnc_createAction;
+    [_x, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToClass;
+} forEach ["DeconShower_01_F", "DeconShower_02_F"];
+
 //FOB
 _action = ["Mount_FOB", localize "STR_BTC_HAM_ACTION_FOB_MOUNT", "\A3\Ui_f\data\Map\Markers\NATO\b_hq.paa", {(_this select 0) spawn btc_fnc_fob_create}, {true}] call ace_interact_menu_fnc_createAction;
 [btc_fob_mat, 0, ["ACE_MainActions", "Logistic"], _action] call ace_interact_menu_fnc_addActionToClass;
