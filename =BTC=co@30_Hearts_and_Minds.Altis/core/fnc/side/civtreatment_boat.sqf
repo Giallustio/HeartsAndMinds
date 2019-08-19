@@ -25,7 +25,7 @@ params [
 ];
 
 //// Choose a Marine location \\\\
-private _useful = btc_city_all select {_x getVariable ["type", ""] isEqualTo "NameMarine" || _x getVariable ["hasbeach", false]};
+private _useful = btc_city_all select {!(isNull _x) && _x getVariable ["type", ""] isEqualTo "NameMarine" || _x getVariable ["hasbeach", false]};
 
 if (_useful isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
 
