@@ -1,0 +1,29 @@
+# Configuration for request-info - https://github.com/behaviorbot/request-info
+
+# *OPTIONAL* Comment to reply with
+# Can be either a string :
+requestInfoReplyComment: >
+  The maintainers of this repository would appreciate it if you could provide more information.
+
+# Or an array:
+# requestInfoReplyComment:
+#  - Ah no! young blade! That was a trifle short!
+#  - Tell me more !
+#  - I am sure you can be more effusive
+
+# *OPTIONAL* Label to be added to Issues and Pull Requests with insufficient information given
+requestInfoLabelToAdd: needs-more-info
+
+# *OPTIONAL* Require Issues to contain more information than what is provided in the issue templates
+# Will fail if the issue's body is equal to a provided template
+checkIssueTemplate: true
+
+# *OPTIONAL* Require Pull Requests to contain more information than what is provided in the PR template
+# Will fail if the pull request's body is equal to the provided template
+checkPullRequestTemplate: true
+
+# *OPTIONAL* Only warn about insufficient information on these events type
+# Keys must be lowercase. Valid values are 'issue' and 'pullRequest'
+requestInfoOn:
+  pullRequest: true
+  issue: true
