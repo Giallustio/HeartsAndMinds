@@ -59,7 +59,7 @@ _action = ["Place", localize "STR_ACE_Dragging_Carry", "\z\ace\addons\dragging\U
 
 //FOB
 _action = ["Mount_FOB", localize "STR_BTC_HAM_ACTION_FOB_MOUNT", "\A3\Ui_f\data\Map\Markers\NATO\b_hq.paa", {(_this select 0) spawn btc_fnc_fob_create}, {true}] call ace_interact_menu_fnc_createAction;
-[btc_fob_mat, 0, ["ACE_MainActions", "Logistic"], _action] call ace_interact_menu_fnc_addActionToClass;
+[btc_fob_mat, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToClass;
 _action = ["Dismantle_FOB", localize "STR_BTC_HAM_ACTION_FOB_DISMANTLE", "", {(_this select 0) remoteExecCall ["btc_fnc_fob_dismantle_s", 2]}, {true}, {}, [], [0, 0, -2], 5] call ace_interact_menu_fnc_createAction;
 [btc_fob_flag, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToClass;
 
