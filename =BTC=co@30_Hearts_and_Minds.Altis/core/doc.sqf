@@ -41,7 +41,7 @@ player createDiaryRecord [_MainCategory, [localize "str_a3_mdl_category_intel", 
 player createDiaryRecord [_MainCategory, [localize "STR_BTC_HAM_DOC_REPUTATION_TITLE", localize "STR_BTC_HAM_DOC_REPUTATION_TEXT"]];
 
 //Orders
-player createDiaryRecord [_MainCategory, [localize "STR_BTC_HAM_DOC_ORDERS_TITLE", localize "STR_BTC_HAM_DOC_ORDERS_TEXT"]];
+player createDiaryRecord [_MainCategory, [localize "STR_BTC_HAM_ACTION_ORDERS_MAIN", localize "STR_BTC_HAM_DOC_ORDERS_TEXT"]];
 
 //Traffic
 player createDiaryRecord [_MainCategory, [localize "STR_BTC_HAM_DOC_TRAFFIC_TITLE", localize "STR_BTC_HAM_DOC_TRAFFIC_TEXT"]];
