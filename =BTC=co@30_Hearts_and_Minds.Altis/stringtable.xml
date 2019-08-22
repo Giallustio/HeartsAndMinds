@@ -1152,23 +1152,6 @@
                 <Portuguese>Base de Dados</Portuguese>
                 <Chinesesimp>数据库</Chinesesimp>
             </Key>
-            <Key ID="STR_BTC_HAM_ACTION_DATA_DELETE">
-                <Original>Delete</Original>
-                <English>Delete</English>
-                <Czech>Smazat</Czech>
-                <German>Löschen</German>
-                <Russian>Удалить</Russian>
-                <Polish>Usuń</Polish>
-                <Italian>Elimina</Italian>
-                <Spanish>Suprimir</Spanish>
-                <French>Supprimer</French>
-                <Chinese>刪除</Chinese>
-                <Japanese>削除</Japanese>
-                <Korean>삭제</Korean>
-                <Portuguese>Excluir</Portuguese>
-                <Chinesesimp>删除</Chinesesimp>
-                <Turkish>Sil</Turkish>
-            </Key>
         </Container>
         <Container name="Action(ACE): Intel">
             <Key ID="STR_BTC_HAM_ACTION_INTEL_INTERROGATE">
@@ -1385,13 +1368,6 @@
                 <German>niedrig</German>
                 <Portuguese>baixa</Portuguese>
                 <Chinesesimp>差</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_CON_INFO_ASKREP_HIGH">
-                <Original>high</Original>
-                <Spanish>alta</Spanish>
-                <German>hoch</German>
-                <Portuguese>alta</Portuguese>
-                <Chinesesimp>高</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_CON_INFO_ASKREP_ASK1">
                 <Original>Sir, your reputation is</Original>

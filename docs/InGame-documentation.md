@@ -102,7 +102,7 @@ Helping the local population, fighting the Oplitas, disarming IED will rise your
 Aborting a side mission does not affect reputation.
 
 
-## Orders
+## Civil Orders
 Any player can give orders to civilians. To do this, just open your self interaction menu and select 'ORDERS' or use one of the shortcuts. Shortcuts can changed under 'configure >> controls>> configure addons >> Hearts and Minds: Mission (drop down menu)'. Your options are:
 - STOP
 - GET DOWN
