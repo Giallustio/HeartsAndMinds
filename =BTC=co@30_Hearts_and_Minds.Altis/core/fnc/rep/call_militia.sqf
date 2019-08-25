@@ -41,12 +41,7 @@ if (btc_debug_log) then {
 };
 
 if (_start_pos isEqualTo objNull) then {
-    {
-        private _city = _x;
-        if (_pos distance _city > 300 && {_city inArea [_pos, 2500, 2500, 0, false]} && {_players inAreaArray [getPosWorld _city, 500, 500] isEqualTo []}) then {
-            _start_pos = _city;
-        };
-    } forEach btc_city_all;
+    _start_pos = [_pos, btc_city_all select {!(isNull _x) && !(_x getVariable ["active", false]) && _x getVariable ["type", ""] != "NameMarine"}, false] call btc_fnc_find_closecity;
 };
 
 private _ratio = if (_pos distance _start_pos > 1000) then {0.2} else {0.6};

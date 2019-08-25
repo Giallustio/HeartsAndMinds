@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        [] spawn btc_fnc_side_checkpoint;
+        [false, "btc_fnc_side_checkpoint"] spawn btc_fnc_side_create;
     (end)
 
 Author:
@@ -25,7 +25,7 @@ params [
 ];
 
 //// Choose an occupied City \\\\
-private _useful = btc_city_all select {_x getVariable ["occupied", false] && !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])};
+private _useful = btc_city_all select {!(isNull _x) && _x getVariable ["occupied", false] && !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])};
 if (_useful isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
 private _city = selectRandom _useful;
 private _pos = getPos _city;
@@ -41,6 +41,7 @@ private _radius = (_radius_x + _radius_y)/4;
 
 private _boxes = [];
 private _taskID_array = [];
+private _composition = [];
 for "_i" from 1 to (1 + round random 2) do {
     //// Choose a road \\\\
     private _pos = [getPos _city, _radius] call btc_fnc_randomize_pos;
@@ -66,7 +67,7 @@ for "_i" from 1 to (1 + round random 2) do {
         ["Land_BagFence_Long_F",90,[-0.638672,4.31787,0]],
         ["Flag_Red_F",-90,[2.23193,-4.375,0]],
         [_type_barrel_canister1,0,[1.27393,-4.93604,0]],
-        [_type_pallet,-70,[-3.98071,3.75342,0]],
+        [_type_pallet,-70,[-5,3.75342,0]],
         [_type_barrel_canister2,0,[1.83984,-4.95264,0]],
         [_type_box,180,[-1.97998,4.88574,0]],
         ["Land_CncBarrier_stripes_F",180,[2.26367,-5.38623,0]],
@@ -79,9 +80,15 @@ for "_i" from 1 to (1 + round random 2) do {
 
     //// Create checkpoint with static at _pos \\\\
     _pos params ["_x", "_y", "_z"];
-    [[_x -2.39185*cos(-_direction) - 2.33984*sin(-_direction), _y  + 2.33984 *cos(-_direction) -2.39185*sin(-_direction), _z], _statics, _direction + 180] call btc_fnc_mil_create_static;
-    [[_x + 2.72949*cos(-_direction) - -2.03857*sin(-_direction), _y -2.03857*cos(-_direction) +2.72949*sin(-_direction), _z], _statics, _direction ] call btc_fnc_mil_create_static;
-    [_pos, _direction, _composition_checkpoint] call btc_fnc_create_composition;
+    private _posStatic = [_x -2.39185*cos(-_direction) - 2.33984*sin(-_direction), _y  + 2.33984 *cos(-_direction) -2.39185*sin(-_direction), _z];
+    private _static = [_posStatic, _statics, _direction + 180] call btc_fnc_mil_create_static;
+    _static setPos _posStatic;
+
+    private _posStatic = [_x + 2.72949*cos(-_direction) - -2.03857*sin(-_direction), _y -2.03857*cos(-_direction) +2.72949*sin(-_direction), _z];
+    private _static = [_posStatic, _statics, _direction] call btc_fnc_mil_create_static;
+    _static setPos _posStatic;
+
+    _composition append ([_pos, _direction, _composition_checkpoint] call btc_fnc_create_composition);
 
     private _boxe = nearestObject [_pos, _type_box];
     _boxe setVariable ["ace_cookoff_enable", false, true];
@@ -106,13 +113,13 @@ for "_i" from 1 to (1 + round random 2) do {
 };
 
 waitUntil {sleep 5; (
-    _taskID_array findIf {_x call BIS_fnc_taskState isEqualTo "CANCELED"} > -1 ||
-    (_boxes select {alive _x} isEqualTo []))
+    _taskID call BIS_fnc_taskCompleted ||
+    _boxes select {alive _x} isEqualTo [])
 };
 
-[[], _boxes] call btc_fnc_delete;
+[[], _boxes + _composition] call btc_fnc_delete;
 
-if (_taskID_array findIf {_x call BIS_fnc_taskState isEqualTo "CANCELED"} > -1) exitWith {};
+if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {};
 
 80 call btc_fnc_rep_change;
 

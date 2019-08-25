@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        [] spawn btc_fnc_side_rescue;
+        [false, "btc_fnc_side_rescue"] spawn btc_fnc_side_create;
     (end)
 
 Author:
@@ -25,7 +25,7 @@ params [
 ];
 
 //// Choose an occupied City \\\\
-private _useful = btc_city_all select {_x getVariable ["occupied", false] && !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])};
+private _useful = btc_city_all select {!(isNull _x) && _x getVariable ["occupied", false] && !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])};
 
 if (_useful isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
 
@@ -86,13 +86,14 @@ private _triggers = [];
     _triggers pushBack _trigger;
 } forEach units _group;
 
-waitUntil {sleep 5; (_find_taskID call BIS_fnc_taskState isEqualTo "CANCELED" || _back_taskID call BIS_fnc_taskCompleted || (_units select {_x distance btc_create_object_point > 100} isEqualTo []) || (_units select {alive _x} isEqualTo []))};
+waitUntil {sleep 5; (_taskID call BIS_fnc_taskCompleted || (_units select {_x distance btc_create_object_point > 100} isEqualTo []) || (_units select {alive _x} isEqualTo []))};
 
-[[], [_heli, _fx, _group] + _triggers + _units] call btc_fnc_delete;
+{
+    deleteVehicle _x;
+} forEach _triggers;
+[[], [_heli, _fx, _group] + _units] call btc_fnc_delete;
 
-if (_find_taskID call BIS_fnc_taskState isEqualTo "CANCELED" ||
-    _back_taskID call BIS_fnc_taskState isEqualTo "CANCELED"
-) exitWith {};
+if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {};
 if (_units select {alive _x} isEqualTo []) exitWith {
     [_taskID, "FAILED"] call btc_fnc_task_setState;
 };

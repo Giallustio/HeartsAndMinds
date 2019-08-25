@@ -190,7 +190,7 @@ switch (_description) do {
     };
     case 17 : {
         _description = [
-            format [localize "STR_BTC_HAM_SIDE_HACK_OPEN_DESC" + format [_image, getText (configfile >> "CfgVehicles" >> _location >> "editorPreview")]],
+            localize "STR_BTC_HAM_SIDE_HACK_OPEN_DESC" + format [_image, getText (configfile >> "CfgVehicles" >> _location >> "editorPreview")],
             localize "STR_BTC_HAM_SIDE_HACK_OPEN_TITLE",
             localize "STR_BTC_HAM_SIDE_HACK_OPEN_TITLE"
         ];
@@ -198,7 +198,7 @@ switch (_description) do {
     };
     case 18 : {
         _description = [
-            format [localize "STR_BTC_HAM_SIDE_SUPPLIES_MOVE_DESC" + format [_image, getText (configfile >> "CfgVehicles" >> _location >> "editorPreview")]],
+            localize "STR_BTC_HAM_SIDE_SUPPLIES_MOVE_DESC" + format [_image, getText (configfile >> "CfgVehicles" >> _location >> "editorPreview")],
             localize "STR_BTC_HAM_SIDE_SUPPLIES_MOVE_TITLE",
             localize "STR_BTC_HAM_SIDE_SUPPLIES_MOVE_TITLE"
         ];
@@ -206,7 +206,7 @@ switch (_description) do {
     };
     case 19 : {
         _description = [
-            format [localize "STR_BTC_HAM_SIDE_SUPPLIES_UNLOAD_DESC" + format [_image, getText (configfile >> "CfgVehicles" >> _location >> "editorPreview")]],
+            localize "STR_BTC_HAM_SIDE_SUPPLIES_UNLOAD_DESC" + format [_image, getText (configfile >> "CfgVehicles" >> _location >> "editorPreview")],
             localize "STR_BTC_HAM_SIDE_SUPPLIES_UNLOAD_TITLE",
             localize "STR_BTC_HAM_SIDE_SUPPLIES_UNLOAD_TITLE"
         ];
@@ -214,7 +214,7 @@ switch (_description) do {
     };
     case 20 : {
         _description = [
-            format [localize "STR_BTC_HAM_SIDE_RESC_FIND_DESC" + format [_image, getText (configfile >> "CfgVehicles" >> _location >> "editorPreview")]],
+            localize "STR_BTC_HAM_SIDE_RESC_FIND_DESC" + format [_image, getText (configfile >> "CfgVehicles" >> _location >> "editorPreview")],
             localize "STR_BTC_HAM_SIDE_RESC_FIND_TITLE",
             localize "STR_BTC_HAM_SIDE_RESC_FIND_TITLE"
         ];
@@ -222,7 +222,7 @@ switch (_description) do {
     };
     case 21 : {
         _description = [
-            format [localize "STR_BTC_HAM_SIDE_RESC_BACK_DESC" + format [_image, getText (configfile >> "CfgVehicles" >> _location >> "editorPreview")]],
+            localize "STR_BTC_HAM_SIDE_RESC_BACK_DESC" + format [_image, getText (configfile >> "CfgVehicles" >> _location >> "editorPreview")],
             localize "STR_BTC_HAM_SIDE_RESC_BACK_TITLE",
             localize "STR_BTC_HAM_SIDE_RESC_BACK_TITLE"
         ];
@@ -230,7 +230,7 @@ switch (_description) do {
     };
     case 22 : {
         _description = [
-            format [localize "STR_BTC_HAM_SIDE_HACK_STARTHACK" + format [_image, getText (configfile >> "CfgVehicles" >> _location >> "editorPreview")]],
+            localize "STR_BTC_HAM_SIDE_HACK_STARTHACK" + format [_image, getText (configfile >> "CfgVehicles" >> _location >> "editorPreview")],
             localize "STR_BTC_HAM_SIDE_HACK_DEFEND_TITLE",
             localize "STR_BTC_HAM_SIDE_HACK_DEFEND_TITLE"
         ];
@@ -238,7 +238,7 @@ switch (_description) do {
     };
     case 23 : {
         _description = [
-            format [localize "STR_BTC_HAM_SIDE_CHECKPOINT_DESTROY_DESC" + format [_image, getText (configfile >> "CfgVehicles" >> _location >> "editorPreview")]],
+            localize "STR_BTC_HAM_SIDE_CHECKPOINT_DESTROY_DESC" + format [_image, getText (configfile >> "CfgVehicles" >> _location >> "editorPreview")],
             localize "STR_BTC_HAM_SIDE_CHECKPOINT_DESTROY_TITLE",
             localize "STR_BTC_HAM_SIDE_CHECKPOINT_DESTROY_TITLE"
         ];
@@ -246,11 +246,54 @@ switch (_description) do {
     };
     case 24 : {
         _description = [
-            format [localize "STR_BTC_HAM_SIDE_CAPOFF_SURRENDER_DESC" + format [_image, getText (configfile >> "CfgVehicles" >> _location >> "editorPreview")]],
+            localize "STR_BTC_HAM_SIDE_CAPOFF_SURRENDER_DESC" + format [_image, getText (configfile >> "CfgVehicles" >> _location >> "editorPreview")],
             localize "STR_BTC_HAM_SIDE_CAPOFF_SURRENDER_TITLE",
             localize "STR_BTC_HAM_SIDE_CAPOFF_SURRENDER_TITLE"
         ];
         _type = "surrender";
+    };
+    case 25 : {
+        _location params ["_officerName", "_loc"];
+        _description = [
+            format [localize "STR_BTC_HAM_SIDE_KILL_DESC", _officerName, _loc],
+            format [localize "STR_BTC_HAM_SIDE_KILL_TITLE", _officerName],
+            format [localize "STR_BTC_HAM_SIDE_KILL_TITLE", _officerName]
+        ];
+        _type = "kill";
+    };
+    case 26 : {
+        _location params ["_officerName", "_loc", "_officerType"];
+        _description = [
+            format [localize "STR_BTC_HAM_SIDE_KILL_IN_DESC", _officerName, _loc] + format [_image, getText (configfile >> "CfgVehicles" >> _officerType >> "editorPreview")],
+            format [localize "STR_BTC_HAM_SIDE_KILL_IN_TITLE", _officerName],
+            format [localize "STR_BTC_HAM_SIDE_KILL_IN_TITLE", _officerName]
+        ];
+        _type = "kill";
+    };
+    case 27 : {
+        _description = [
+            format [localize "STR_BTC_HAM_SIDE_KILL_DOGTAG_DESC", _location] + format ["<br/><img image='%1' width='355' height='300'/>", "\z\ace\addons\dogtags\data\dogtagSingle.paa"],
+            localize "STR_BTC_HAM_SIDE_KILL_DOGTAG_TITLE",
+            localize "STR_BTC_HAM_SIDE_KILL_DOGTAG_TITLE"
+        ];
+        _type = "dogtags";
+    };
+    case 28 : {
+        _location params ["_officerName", "_base"];
+        _description = [
+            format [localize "STR_BTC_HAM_SIDE_KILL_BRING_DESC", _officerName] + format [_image, getText (configfile >> "CfgVehicles" >> _base >> "editorPreview")],
+            localize "STR_BTC_HAM_SIDE_KILL_BRING_TITLE",
+            localize "STR_BTC_HAM_SIDE_KILL_BRING_TITLE"
+        ];
+        _type = "move";
+    };
+    case 29 : {
+        _description = [
+            localize "STR_BTC_HAM_SIDE_CAPOFF_HANDCUFF_DESC",
+            localize "STR_BTC_HAM_SIDE_CAPOFF_HANDCUFF_TITLE",
+            localize "STR_BTC_HAM_SIDE_CAPOFF_HANDCUFF_TITLE"
+        ];
+        _type = "handcuff";
     };
 };
 

@@ -25,12 +25,12 @@ params [
 ];
 
 //// Choose two Cities \\\\
-private _usefuls = btc_city_all select {!((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"]) && !(_x getVariable ["occupied", false])};
-if (_usefuls isEqualTo []) then {_usefuls = + btc_city_all;};
+private _usefuls = btc_city_all select {!(isNull _x) && !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"]) && !(_x getVariable ["occupied", false])};
+if (_usefuls isEqualTo []) then {_usefuls = + (btc_city_all select {!(isNull _x)});};
 private _city2 = selectRandom _usefuls;
 
 private _area = (getNumber (configFile >> "CfgWorlds" >> worldName >> "MapSize"))/4;
-private _cities = btc_city_all select {_x distance _city2 > _area};
+private _cities = btc_city_all select {!(isNull _x) && _x distance _city2 > _area};
 _usefuls = _cities select {!((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"]) && (_x getVariable ["occupied", false])};
 if (_usefuls isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
 private _city1 = selectRandom _usefuls;
@@ -109,8 +109,10 @@ if (_taskID call BIS_fnc_taskState isEqualTo "FAILED") exitWith {
     [_markers, _agent] call btc_fnc_delete;
 };
 
+[_markers, _vehs + [_group, _agent]]  call btc_fnc_delete;
+
+if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {};
+
 50 call btc_fnc_rep_change;
 
 [_taskID, "SUCCEEDED"] call BIS_fnc_taskSetState;
-
-[_markers, _vehs + [_group, _agent]] call btc_fnc_delete;

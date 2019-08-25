@@ -25,7 +25,7 @@ params [
 ];
 
 //// Choose a Marine location occupied \\\\
-private _useful = btc_city_all select {(_x getVariable ["occupied", false]) && (_x getVariable ["type", ""] isEqualTo "NameMarine")};
+private _useful = btc_city_all select {!(isNull _x) && (_x getVariable ["occupied", false]) && (_x getVariable ["type", ""] isEqualTo "NameMarine")};
 if (_useful isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
 
 private _city = selectRandom _useful;

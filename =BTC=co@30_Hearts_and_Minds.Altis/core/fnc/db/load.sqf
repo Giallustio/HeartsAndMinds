@@ -44,12 +44,13 @@ private _cities_status = profileNamespace getVariable [format ["btc_hm_%1_cities
     _city setVariable ["has_suicider", _has_suicider];
 
     if (btc_debug) then {
+        private _marker = _city getVariable ["marker", ""];
         if (_city getVariable ["occupied", false]) then {
-            (_city getVariable ["marker", ""]) setMarkerColor "colorRed";
+            _marker setMarkerColor "colorRed";
         } else {
-            (_city getVariable ["marker", ""]) setMarkerColor "colorGreen";
+            _marker setMarkerColor "colorGreen";
         };
-        (_city getVariable ["marker", ""]) setMarkerText format ["loc_%3 %1 %2 - [%4]", _city getVariable "name", _city getVariable "type", _id, _occupied];
+        _marker setMarkerText format ["loc_%3 %1 %2 - [%4]", _city getVariable "name", _city getVariable "type", _id, _occupied];
     };
     if (btc_debug_log) then {
         [format ["ID: %1 - IsOccupied %2", _id, _occupied], __FILE__, [false]] call btc_fnc_debug_message;

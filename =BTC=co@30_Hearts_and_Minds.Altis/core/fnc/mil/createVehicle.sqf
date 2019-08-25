@@ -3,22 +3,23 @@
 Function: btc_fnc_mil_createVehicle
 
 Description:
-    Fill me when you edit me !
+    Create a vehicle with desired crews.
 
 Parameters:
-    _group - [Group]
-    _pos - [Array]
-    _veh_type - [String]
-    _dir - [Number]
-    _type_units - [Array]
-    _type_divers - [Array]
-    _type_crewmen - [Array]
+    _group - Group to store crews. [Group]
+    _pos - Position of creation. [Array]
+    _veh_type - Vehicle type. [String]
+    _dir - Direction of spawn. [Number]
+    _type_units - Array of available unit type for cargo. [Array]
+    _type_divers - Units used for submarine. [Array]
+    _type_crewmen - Array of available crews type. [Array]
 
 Returns:
+    _veh - Vehicle created. [Object]
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_mil_createVehicle;
+        _veh = [createGroup [btc_enemy_side, true], getPosATL player] call btc_fnc_mil_createVehicle;
     (end)
 
 Author:
@@ -44,6 +45,7 @@ if (_veh_type isKindOf "Van_02_vehicle_base_F") then {
 private _veh = createVehicle [_veh_type, _pos, [], 0, "FLY"];
 if !(_veh_type isKindOf "Plane") then {
     _veh setDir _dir;
+    _veh setVectorUp surfaceNormal position _veh;
 };
 
 private _units = [_veh, _group, false, "", [_type_crewmen, _type_divers select 0] select _needdiver] call BIS_fnc_spawnCrew;

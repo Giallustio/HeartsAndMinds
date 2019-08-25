@@ -37,7 +37,8 @@ params [
 private _city = objNull;
 if (_pos isEqualTo []) then {
     private _useful = btc_city_all select {(
-            !(_x getVariable ["active", false]) &&
+            !(isNull _x) &&
+            {!(_x getVariable ["active", false])} &&
             {_x distance (getMarkerPos btc_respawn_marker) > btc_hideout_safezone} &&
             {!(_x getVariable ["has_ho", false])} &&
             {_x getVariable ["type", ""] in ["NameLocal", "Hill", "NameVillage", "Airport"]}

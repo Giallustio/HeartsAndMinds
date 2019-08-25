@@ -47,7 +47,7 @@ btc_city_remaining = [];
         };
         _x setVariable ["marker", _marker];
     };
-} forEach btc_city_all;
+} forEach (btc_city_all select {!(isNull _x)});
 
 waitUntil {sleep 15; (btc_city_remaining isEqualTo [])};
 
