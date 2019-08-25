@@ -124,6 +124,8 @@ _agent addEventHandler ["PathCalculated", {
 
 waitUntil {sleep 5; (!(alive _captive) || (_captive inArea [getPosWorld btc_create_object_point, 100, 100, 0, false]) || _taskID call BIS_fnc_taskCompleted)};
 
+_markers append (allMapMarkers select {(_x select [0, count _taskID]) isEqualTo _taskID});
+
 if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {
     deleteVehicle _trigger;
     [_markers, _vehs + [_group]] call btc_fnc_delete;
