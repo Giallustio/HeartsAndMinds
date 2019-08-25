@@ -99,7 +99,13 @@ _trigger setTriggerActivation [str btc_player_side, "PRESENT", true];
 _trigger setTriggerStatements ["this", format ["deleteVehicle thisTrigger; _captive = thisTrigger getVariable 'captive'; doStop _captive; [_captive, true] call ace_captives_fnc_setSurrendered; ['%1', 'SUCCEEDED'] call BIS_fnc_taskSetState; [['%2', '%3'], 21, btc_create_object_point, typeOf btc_create_object_point, true] call btc_fnc_task_create;", _surrender_taskID, _back_taskID, _taskID], ""];
 _trigger attachTo [_captive, [0, 0, 0]];
 
-[12] remoteExecCall ["btc_fnc_show_hint", [0, -2] select isDedicated];
+private _agent = [leader _group, _pos2, _taskID] call btc_fnc_info_path;
+_agent addEventHandler ["PathCalculated", {
+    params ["_agent", "_path"];
+
+    [12] remoteExecCall ["btc_fnc_show_hint", [0, -2] select isDedicated];
+    _agent removeEventHandler ["PathCalculated", _thisEventHandler];
+}];
 
 waitUntil {sleep 5; (!(alive _captive) || (_captive inArea [getPosWorld btc_create_object_point, 100, 100, 0, false]) || _surrender_taskID call BIS_fnc_taskState isEqualTo "CANCELED" || _back_taskID call BIS_fnc_taskCompleted)};
 

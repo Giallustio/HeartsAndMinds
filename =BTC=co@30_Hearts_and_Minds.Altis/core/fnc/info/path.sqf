@@ -41,47 +41,29 @@ private _agent = calculatePath [_type, behaviour _unit, getPos _unit, _endPos];
 
     _agent removeEventHandler ["PathCalculated", _thisId];
 
-    private _delta = 2;
-    private _pathLength = count _path - _delta;
-    {
-        if (_delta < _forEachIndex && _forEachIndex < _pathLength) then {
-            private _prevPosition = _path select (_forEachIndex - _delta);
-            private _nextPosition = _path select (_forEachIndex + _delta);
-            private _prevDirection = _prevPosition getDir _x;
-            private _nextDirection = _x getDir _nextPosition;
-            private _direction = acos ([sin _nextDirection, cos _nextDirection, 0] vectorCos [sin _prevDirection, cos _prevDirection, 0]);
+    private _color = configName selectRandom (configProperties [configFile >> "CfgMarkerColors"]);
+    private _delta = 10;
+    for "_i" from 1 to (count _path) step 30 do {
+        private _position = _path select (_i - 1);
+        private _direction = _position getDir (_path select _i);
 
-            if (abs(_direction) > 32) then {
-                [
-                    [format ["%1_%2", _taskID, _forEachIndex - _delta], _prevPosition, _prevDirection],
-                    [format ["%1_%2", _taskID, _forEachIndex + _delta], _nextPosition, _nextDirection]
-                ] apply {
-                    _x params ["_mkrName", "_p", "_d"];
+        private _mrk = createMarker [format ["%1_%2", _taskID, _i], _position];
+        _mrk setMarkerType "hd_arrow";
+        _mrk setMarkerAlpha 0.7;
+        _mrk setMarkerColor _color;
+        _mrk setMarkerDir _direction;
 
-                    private _mrk = _mkrName;
-                    if !(_mkrName in allMapMarkers) then {
-                        _mrk = createMarker [_mkrName, _p];
-                        _mrk setMarkerType "hd_arrow";
-                    };
-                    if (isOnRoad _p) then {
-                        _d = [roadAt _p] call btc_fnc_road_direction;
-                    };
-                    _mrk setMarkerDir _d;
-
-                    if (btc_debug) then {
-                        _mrk setMarkerText format ["%1°", floor _direction];
-                    };
-                };
-            } else {
-                if (btc_debug) then {
-                    private _mrk = createMarker [format ["%1_debug_%2", _taskID, _forEachIndex], _x];
-                    _mrk setMarkerType "mil_dot";
-                    _mrk setMarkerAlpha 0.3;
-                    _mrk setMarkerText format ["%1°", floor _direction];
-                };
-            };
+        if (btc_debug) then {
+            _mrk setMarkerText format ["%1°", floor _direction];
         };
-    } forEach _path;
+    };
+    if (btc_debug) then {
+        {
+            private _mrk = createMarker [format ["%1_debug_%2", _taskID, _forEachIndex], _x];
+            _mrk setMarkerType "mil_dot";
+            _mrk setMarkerAlpha 0.3;
+        } forEach _path;
+    };
 }, [_taskID]] call CBA_fnc_addBISEventHandler;
 
 _agent
