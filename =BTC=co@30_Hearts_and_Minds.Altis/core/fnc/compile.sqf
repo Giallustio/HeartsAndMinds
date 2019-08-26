@@ -90,6 +90,7 @@ if (isServer) then {
     btc_fnc_info_has_intel = compile preprocessFileLineNumbers "core\fnc\info\has_intel.sqf";
     btc_fnc_info_hideout = compile preprocessFileLineNumbers "core\fnc\info\hideout.sqf";
     btc_fnc_info_cacheMarker = compile preprocessFileLineNumbers "core\fnc\info\cacheMarker.sqf";
+    btc_fnc_info_path = compile preprocessFileLineNumbers "core\fnc\info\path.sqf";
 
     //FOB
     btc_fnc_fob_create_s = compile preprocessFileLineNumbers "core\fnc\fob\create_s.sqf";
