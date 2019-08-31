@@ -143,7 +143,7 @@ for "_i" from 1 to (5 + round random 5) do {
     private _m_pos = [_pos, _area_size - 14] call btc_fnc_randomize_pos;
     private _hazmat = createVehicle [selectRandom btc_type_hazmat, _m_pos, [], 2, "NONE"];
     _hazmat setDir random 360;
-    _hazmat setVectorUp [random 1, random 1, random [-1,0,1]];
+    _hazmat setVectorUp [random 1, random 1, random [-1, 0, 1]];
     [_hazmat] call btc_fnc_log_init;
     _chemical pushBack _hazmat;
     if (_i < 3 || random 1 > 0.5) then {

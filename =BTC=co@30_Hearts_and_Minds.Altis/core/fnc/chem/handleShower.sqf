@@ -46,7 +46,7 @@ params [
         if (_x isKindOf "DeconShower_01_F") then {
             [_x, 1.5, 9] remoteExec ["BIN_fnc_deconShowerAnim", 0, _x];
         } else {
-            [_x, 5.4, 4, 2, true] remoteExec ["btc_fnc_chem_deconShowerAnimLarge", 0];
+            [_x, 5.4, 4, 2, true] remoteExec ["btc_fnc_chem_deconShowerAnimLarge", 0, _x];
         };
     } forEach _needActivate;
     {
