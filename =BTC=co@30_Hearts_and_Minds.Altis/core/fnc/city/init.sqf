@@ -66,6 +66,11 @@ for "_id" from 0 to (count _locations - 1) do {
         if ((getMarkerPos "YOUR_MARKER_AREA") inArea [_position, 500, 500, 0, false]) exitWith {};
         */
 
+        if (_radius_x < 80 || _radius_y < 80) then {
+            _radius_x = 80;
+            _radius_y = 80;
+        };
+
         [_position, _type, _name, _radius_x, _radius_y, random 1 > _is_free_probability, _id] call btc_fnc_city_create;
     };
 };

@@ -44,7 +44,7 @@ player createDiaryRecord [_MainCategory, [localize "str_a3_mdl_category_intel", 
 player createDiaryRecord [_MainCategory, [localize "STR_BTC_HAM_DOC_REPUTATION_TITLE", localize "STR_BTC_HAM_DOC_REPUTATION_TEXT"]];
 
 //Orders
-player createDiaryRecord [_MainCategory, [localize "str_3den_waypoint_attribute_order_displayname", localize "STR_BTC_HAM_DOC_ORDERS_TEXT"]];
+player createDiaryRecord [_MainCategory, [localize "STR_BTC_HAM_ACTION_ORDERS_MAIN", localize "STR_BTC_HAM_DOC_ORDERS_TEXT"]];
 
 //Traffic
 player createDiaryRecord [_MainCategory, [localize "STR_BTC_HAM_DOC_TRAFFIC_TITLE", localize "STR_BTC_HAM_DOC_TRAFFIC_TEXT"]];
@@ -57,6 +57,6 @@ player createDiaryRecord [_MainCategory, [localize "STR_ACE_Interaction_DisplayN
 
 //Version
 player createDiaryRecord [_MainCategory, [localize "STR_A3_FM_Welcome4",
-    format ["<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/> Version %1.7 <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/>", btc_version]
+    format ["<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/> Version %1.8 <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/>", btc_version]
     ]
 ];

@@ -1406,13 +1406,6 @@
                 <Portuguese>baixa</Portuguese>
                 <Chinesesimp>差</Chinesesimp>
             </Key>
-            <Key ID="STR_BTC_HAM_CON_INFO_ASKREP_HIGH">
-                <Original>high</Original>
-                <Spanish>alta</Spanish>
-                <German>hoch</German>
-                <Portuguese>alta</Portuguese>
-                <Chinesesimp>高</Chinesesimp>
-            </Key>
             <Key ID="STR_BTC_HAM_CON_INFO_ASKREP_ASK1">
                 <Original>Sir, your reputation is</Original>
                 <Spanish>Señor, su reputación es</Spanish>

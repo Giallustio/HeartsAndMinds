@@ -48,7 +48,7 @@ if !(_bbr isEqualTo []) then {
 };
 
 private _rope_length = 10;
-if ((_bbr isEqualTo []) OR (_ropes_check isEqualTo [])) then {
+if ((_bbr isEqualTo []) OR (_ropes_check select {!isNull _x} isEqualTo [])) then {
 
     _bbr = boundingBoxReal _cargo;
     if (abs((_bbr select 0) select 0) > 5) then {
