@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_eh_leaflets
+Function: btc_fnc_civ_leaflets
 
 Description:
     Fill me when you edit me !
@@ -13,7 +13,7 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_eh_leaflets;
+        _result = [] call btc_fnc_civ_leaflets;
     (end)
 
 Author:

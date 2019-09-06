@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_eh_explosives_defuse
+Function: btc_fnc_rep_explosives_defuse
 
 Description:
     Fill me when you edit me !
@@ -13,7 +13,7 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_eh_explosives_defuse;
+        _result = [] call btc_fnc_rep_explosives_defuse;
     (end)
 
 Author:
