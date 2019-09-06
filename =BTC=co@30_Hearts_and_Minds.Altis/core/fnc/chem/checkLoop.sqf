@@ -3,7 +3,7 @@
 Function: btc_fnc_chem_checkLoop
 
 Description:
-    Loop over chemical objects and check if player is around. If yes, set damage to player. Then propagate the contamination if player get in vehicle or contaminated objets are loaded to vehicle.
+    Loop over chemical objects, showers and check if player/objects is around. If yes, decontaminate player/objects or set damage to player.
 
 Parameters:
 
@@ -29,7 +29,11 @@ private _bodyParts = ["head","body","hand_l","hand_r","leg_l","leg_r"];
 
     if (_contaminated isEqualTo []) exitWith {};
 
-    private _units = allUnits;
+    private _allUnitsUAV = [];
+    {
+        _allUnitsUAV append crew _x;
+    } forEach allUnitsUAV;
+    private _units = allUnits - _allUnitsUAV;
     private _objtToDecontaminate = [];
     private _unitsContaminated = _contaminated select {_x in _units};
     {
@@ -77,7 +81,7 @@ private _bodyParts = ["head","body","hand_l","hand_r","leg_l","leg_r"];
             [_x, _notAlready, _bodyParts, _cfgGlasses] call btc_fnc_chem_damage;
         } else {
             if (_notAlready) then {
-                [_x] remoteExecCall ["btc_fnc_chem_damageLoop", _x]; // ropeburn
+                [_x] remoteExecCall ["btc_fnc_chem_damageLoop", _x];
             };
         };
     } forEach _unitContaminate;

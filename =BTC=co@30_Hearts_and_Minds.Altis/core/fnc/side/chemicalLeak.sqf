@@ -91,7 +91,7 @@ _composition_pattern append [
     ["DeconShower_01_F",360,[_sas + 0.2,_doorCenter,0]],
     [selectRandom btc_type_tarp,0,[_sas + 0.2,_doorCenter,0]],
     [_connectorTent,270,[_sas + 3.87891,_doorCenter,0]],
-    ["Land_MetalCase_01_large_F",272,[_sas + 4.4917,_doorCenter-0.7,0]],
+    ["Land_MetalCase_01_large_F",272,[_sas + 4,_doorCenter-0.6,0]],
     [_crossTent,270,[_sas + 7.44434,_doorCenter,0]],
     ["Land_MetalCase_01_large_F",3,[_sas + 6.81201,_doorCenter + 2.97849,0]],
     [_connectorTentClosed,0,[_sas + 7.42627,_doorCenter + 3.46782,0]],

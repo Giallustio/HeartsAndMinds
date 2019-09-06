@@ -1015,7 +1015,7 @@ class Mission
 					{
 						skill=0.60000002;
 						init="this setVariable [""side_mission"",true]";
-						description="Officier";
+						description=$STR_B_OFFICER_F0;
 						isPlayer=1;
 						isPlayable=1;
 					};
@@ -1049,7 +1049,7 @@ class Mission
 					{
 						skill=0.60000002;
 						init="this setVariable [""interpreter"",true]";
-						description="Interpreter";
+						description=$STR_BTC_HAM_MSQM_INTERPRETER;
 						isPlayable=1;
 					};
 					id=29;
@@ -1083,7 +1083,7 @@ class Mission
 					class Attributes
 					{
 						skill=0.60000002;
-						description="Adv. Engineer";
+						description=$STR_ACE_Repair_AssignEngineerRole_role_advanced;
 						isPlayable=1;
 					};
 					id=31;

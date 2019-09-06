@@ -46,11 +46,11 @@ private _handle = [{
         [_handle] call CBA_fnc_removePerFrameHandler;
 
         if (btc_debug || btc_debug_log) then {
-            [format ["Stop: %1", _handle] , __FILE__, [btc_debug, btc_debug_log]] call btc_fnc_debug_message;
+            [format ["Stop: %1", _handle] , __FILE__] call btc_fnc_debug_message;
         };
     };
 }, [_handle, _unit]] call CBA_fnc_addEventHandlerArgs;
 
 if (btc_debug || btc_debug_log) then {
-    [format ["Start: %1", _handle] , __FILE__, [btc_debug, btc_debug_log]] call btc_fnc_debug_message;
+    [format ["Start: %1", _handle] , __FILE__] call btc_fnc_debug_message;
 };

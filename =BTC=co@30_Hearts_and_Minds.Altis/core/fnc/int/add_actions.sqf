@@ -60,12 +60,12 @@ _action = ["Place", localize "STR_ACE_Dragging_Carry", "\z\ace\addons\dragging\U
 {[_x, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToClass;} forEach btc_log_def_placeable;
 
 //Shower
-_action = ["Shower_act", getText(configfile >> "CfgVehicles" >> "DeconShower_01_F" >> "UserActions" >> "Activate" >> "displayName"), "\A3\ui_f\data\map\markers\military\end_CA.paa", {player playActionNow 'PutDown'; [_this select 0, 1.5, 9] remoteExec ["BIN_fnc_deconShowerAnim", 0]}, {alive (_this select 0) AND {(_this select 0) animationSourcePhase 'valve_source' isEqualTo 0}}] call ace_interact_menu_fnc_createAction;
+_action = ["Shower_act", getText(configfile >> "CfgVehicles" >> "DeconShower_01_F" >> "UserActions" >> "Activate" >> "displayName"), "", {player playActionNow 'PutDown'; [_this select 0, 1.5, 9] remoteExec ["BIN_fnc_deconShowerAnim", 0]}, {alive (_this select 0) AND {(_this select 0) animationSourcePhase 'valve_source' isEqualTo 0}}] call ace_interact_menu_fnc_createAction;
 ["DeconShower_01_F", 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToClass;
-_action = ["Shower_act", getText(configfile >> "CfgVehicles" >> "DeconShower_02_F" >> "UserActions" >> "Activate" >> "displayName"), "\A3\ui_f\data\map\markers\military\end_CA.paa", {player playActionNow 'PutDown'; [_this select 0, 5.4, 4, 2, true] remoteExec ["BIN_fnc_deconShowerAnimLarge", 0]}, {alive (_this select 0) AND {(_this select 0) animationSourcePhase 'valve_source' isEqualTo 0}}] call ace_interact_menu_fnc_createAction;
+_action = ["Shower_act", getText(configfile >> "CfgVehicles" >> "DeconShower_02_F" >> "UserActions" >> "Activate" >> "displayName"), "", {player playActionNow 'PutDown'; [_this select 0, 5.4, 4, 2, true] remoteExec ["BIN_fnc_deconShowerAnimLarge", 0]}, {alive (_this select 0) AND {(_this select 0) animationSourcePhase 'valve_source' isEqualTo 0}}] call ace_interact_menu_fnc_createAction;
 ["DeconShower_02_F", 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToClass;
 {
-    _action = ["Shower_desact", getText(configfile >> "CfgVehicles" >> "DeconShower_01_F" >> "UserActions" >> "Deactivate" >> "displayName"), "\A3\ui_f\data\map\markers\military\end_CA.paa", {player playActionNow 'PutDown'; [_this select 0] remoteExecCall ["BIN_fnc_deconShowerAnimStop", 0]}, {alive (_this select 0) AND {(_this select 0) animationSourcePhase 'valve_source' > 0}}] call ace_interact_menu_fnc_createAction;
+    _action = ["Shower_desact", getText(configfile >> "CfgVehicles" >> "DeconShower_01_F" >> "UserActions" >> "Deactivate" >> "displayName"), "", {player playActionNow 'PutDown'; [_this select 0] remoteExecCall ["BIN_fnc_deconShowerAnimStop", 0]}, {alive (_this select 0) AND {(_this select 0) animationSourcePhase 'valve_source' > 0}}] call ace_interact_menu_fnc_createAction;
     [_x, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToClass;
 } forEach ["DeconShower_01_F", "DeconShower_02_F"];
 

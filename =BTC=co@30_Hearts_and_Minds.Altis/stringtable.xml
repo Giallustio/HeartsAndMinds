@@ -1875,6 +1875,14 @@
                 <Chinesesimp>武器箱 %1 已摧毁</Chinesesimp>
             </Key>
         </Container>
+        <Container name="Other: Chemical Warfare">
+            <Key ID="STR_BTC_HAM_O_CHEM_CONTA">
+                <Original>Contaminated</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_CHEM_NOTCONTA">
+                <Original>Not contaminated</Original>
+            </Key>
+        </Container>
     </Package>
     <Package name="Logistic">
         <Container name="Logistic: Basics ">

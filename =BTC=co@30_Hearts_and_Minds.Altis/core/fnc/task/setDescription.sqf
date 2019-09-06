@@ -312,7 +312,7 @@ switch (_description) do {
     };
     case 32 : {
         _description = [
-            (localize "STR_BTC_HAM_SIDE_CHEM_LOCATE_DESC") + (([_location] call btc_fnc_typeOfPreview)),
+            (localize "STR_BTC_HAM_SIDE_CHEM_LOCATE_DESC") + ([_location] call btc_fnc_typeOfPreview),
             localize "STR_BTC_HAM_SIDE_CHEM_LOCATE_TITLE",
             localize "STR_BTC_HAM_SIDE_CHEM_LOCATE_TITLE"
         ];
@@ -320,7 +320,7 @@ switch (_description) do {
     };
     case 33 : {
         _description = [
-            (localize "STR_BTC_HAM_SIDE_CHEM_MOVE_DESC") + (([_location] call btc_fnc_typeOfPreview)),
+            (localize "STR_BTC_HAM_SIDE_CHEM_MOVE_DESC") + ([_location] call btc_fnc_typeOfPreview),
             localize "STR_BTC_HAM_SIDE_CHEM_MOVE_TITLE",
             localize "STR_BTC_HAM_SIDE_CHEM_MOVE_TITLE"
         ];

@@ -8,7 +8,7 @@ Description:
 Parameters:
     _cache_pos - Position of the cache. [Array]
     _p_chem - Create a chemical cache. [Boolean]
-    _probilityOfChemical - Probability of to create a chemical cache. [Number]
+    _probilityOfChemical - Probability to create a chemical cache. [Number]
 
 Returns:
 

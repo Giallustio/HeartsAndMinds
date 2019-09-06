@@ -7,7 +7,7 @@ Description:
 
 Parameters:
     _unit - Unit to apply the damage. [Object]
-    _notAlready - false if is already contaminated. [Boolean]
+    _firstDamage - If no CBRN protection, true: Always apply damage, false: Damage are applied randomly. [Boolean]
     _bodyParts - List of body part. [Array]
     _cfgGlasses - Glasses config. [Config]
 
@@ -25,25 +25,30 @@ Author:
 
 params [
     ["_unit", objNull, [objNull]],
-    ["_notAlready", true, [true]],
+    ["_firstDamage", true, [true]],
     ["_bodyParts", [], [[]]],
     ["_cfgGlasses", configNull, [configNull]]
 ];
 
-if !(
+private _hasProtection = [
     (
         goggles _unit isKindOf ["G_RegulatorMask_base_F", _cfgGlasses] ||
         goggles _unit isKindOf ["G_AirPurifyingRespirator_01_base_F", _cfgGlasses]
-    ) && (
+    ), (
         backpack _unit isKindOf "B_SCBA_01_base_F" ||
         backpack _unit isKindOf "B_CombinationUnitRespirator_01_Base_F"
-    ) &&
+    ),
     uniform _unit find "CBRN" > -1
-) then { // Don't always apply damage to unit already contaminated
-    if (selectRandom [true, _notAlready]) then {
-        _this set [1, false];
-        [_unit, random [0.05, 0.1, 0.1], selectRandom _bodyParts, "stab"] call ace_medical_fnc_addDamageToUnit; // ropeburn
-    };
+];
+
+if !(false in _hasProtection) exitWith {_this};
+
+_hasProtection append [true, true, true];
+
+// Probability of damage increase without protection
+if (_firstDamage || !(selectRandom _hasProtection)) then {
+    _this set [1, false];
+    [_unit, random [0.05, 0.1, 0.1], selectRandom _bodyParts, "stab"] call ace_medical_fnc_addDamageToUnit; // ropeburn
 };
 
 _this
