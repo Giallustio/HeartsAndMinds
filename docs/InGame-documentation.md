@@ -18,7 +18,7 @@ Use the earplugs to protect your ears to avoid combat deafness. You can put them
 ### Chemical agent:
 Chemical agent can be found in the battle field at cache location for exemple. When an object is contaminated, the chemical agent propagate to people around (in a circle of 3m). Those people will be hurt constantly until they died or found a decontaminating shower (available at logistic point) to clean up their body. When they are contaminated, they can propagate it to other people around (in a circle of 1.5m) or vehicle if they get inside. Keep in mind, dead body stay contaminated but body bag will isolate it. Also, contaminated object loaded as cargo will contaminate the container or vehicle.
 ### Protection:
-Use CBRN gear to protect you from the contamination effect. But, don't forget to take a shower for more than 3s before removing your CBRN gear. Be aware, even with a CBRN you can propate the agent to people or vehicle, you are just protected from the effect.
+Use CBRN gear (uniform, mask and breather backpack) to protect you from the contamination effect. But, don't forget to take a shower for more than 3s before removing your CBRN gear. Be aware, even with a CBRN you can propate the agent to people or vehicle, you are just protected from the effect.
 ### Decontaminate:
 You can use small shower to decontaminate units only. Use the big shower for objects, vehicles and objects loaded as cargo. To activate them, just stay under the shower.
 ### Detection:
