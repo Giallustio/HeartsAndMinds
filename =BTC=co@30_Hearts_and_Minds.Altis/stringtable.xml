@@ -1181,6 +1181,7 @@
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_CHEM_LOCATE_TITLE">
                 <Original>Locate contaminated objects</Original>
+                <German>Kontaminierte Objekte lokalisieren</German>
                 <Chinesesimp>确定受污染物体的位置</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_CHEM_LOCATE_DESC">
