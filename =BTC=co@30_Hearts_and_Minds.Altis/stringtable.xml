@@ -1186,6 +1186,7 @@
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_CHEM_LOCATE_DESC">
                 <Original>Locate contaminated objects. The ED-1E drone can help you to identify contaminated objects by biopsy.</Original>
+                <German>Lokalisieren Sie die kontaminierten Objekte mithilfe einer ED-1E-Drohne. Führen Sie mit der Drohne eine Biopsie durch, um die Objekte zu identifizieren.</German>
                 <Chinesesimp>确定受污染物体的位置。ED-1E 无人机可以通过针刺活检帮助你识别受污染物体。</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_CHEM_MOVE_TITLE">
