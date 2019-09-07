@@ -1165,7 +1165,8 @@
                 <Chinesesimp>处理 1% 地区的化学品泄露</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_CHEM_DESC">
-                <Original>Some containers with dangerous chemical agent has been broken in %1. Civilian population reported that only some small objects are contaminated. Eliminate the contamination by moving those objects under a big shower.</Original>
+                <Original>Some containers with a dangerous chemical agent have been broken in %1. The civilian population reported that only some small objects are contaminated. Eliminate the contamination by moving those objects under a big shower.</Original>
+                <German>In %1 wurden einige Behälter mit gefährlichen chemischen Stoffen beschädigt. Laut Aussagen der Zivilbevölkerung scheinen aber nur kleinere Objekte mit dieser Substanz in Berührungen gekommen zu sein. Finden und beseitigen Sie die kontaminierten Objekte, in dem Sie diese unter eine große Dusche stellen.</German>
                 <Chinesesimp>一些装有危险化学试剂的容器在 1% 地区出现破损。平民报告称只有一些小物体受到污染。将这些物体移动到大型淋浴器下以消除污染。</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_CHEM_BRING_DESC">
