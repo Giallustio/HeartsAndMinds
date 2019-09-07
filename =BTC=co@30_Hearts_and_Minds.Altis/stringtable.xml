@@ -1176,6 +1176,7 @@
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_CHEM_BRING_TITLE">
                 <Original>Bring a container</Original>
+                <German>Container bereitstellen</German>
                 <Chinesesimp>携带一个集装箱</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_CHEM_LOCATE_TITLE">
