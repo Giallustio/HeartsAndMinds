@@ -1190,6 +1190,7 @@
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_CHEM_MOVE_TITLE">
                 <Original>Clean contaminated objects</Original>
+                <German>Kontaminierte Objekte reinigen</German>
                 <Chinesesimp>清理受污染的物体</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_CHEM_MOVE_DESC">
