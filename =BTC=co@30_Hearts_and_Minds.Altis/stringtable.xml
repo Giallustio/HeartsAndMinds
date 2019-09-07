@@ -1898,6 +1898,7 @@
         <Container name="Other: Chemical Warfare">
             <Key ID="STR_BTC_HAM_O_CHEM_CONTA">
                 <Original>Contaminated</Original>
+                <German>Kontaminiert</German>
                 <Chinesesimp>受到污染</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_O_CHEM_NOTCONTA">
