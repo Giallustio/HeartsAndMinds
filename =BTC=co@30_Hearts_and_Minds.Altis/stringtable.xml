@@ -565,6 +565,7 @@
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_GAMEPLAY_CHEM">
                 <Original>Chemical warfare:</Original>
+                <German>Chemische Kriegsführung:</German>
                 <Chinesesimp>化学战:</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_GAMEPLAY_SIDEM">
