@@ -1167,7 +1167,8 @@
                 <Chinesesimp>一些装有危险化学试剂的容器在 1% 地区出现破损。平民报告称只有一些小物体受到污染。将这些物体移动到大型淋浴器下以消除污染。</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_CHEM_BRING_DESC">
-                <Original>Bring a containers available at the logistic point to the contaminated area. You will use it to load all contaminated objects.</Original>
+                <Original>Bring a container available at the logistic point to the contaminated area. You will use it to load all contaminated objects.</Original>
+                <German>Bringen Sie einen Container, welchen Sie an dem Logistikpunkt erhalten, zu dem markierten Bereich. Diesen Container können Sie verwenden um alle kontaminierten Objekte zu verlanden/transportieren.</German>
                 <Chinesesimp>在后勤点生成集装箱并将其带到受污染区域。你将使用它来装载所有的受污染物体。</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_CHEM_BRING_TITLE">
