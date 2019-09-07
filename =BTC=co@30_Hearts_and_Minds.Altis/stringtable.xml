@@ -1161,6 +1161,7 @@
         <Container name="Chemical Leak">
             <Key ID="STR_BTC_HAM_SIDE_CHEM_TITLE">
                 <Original>Chemical leak in %1</Original>
+                <German>Chemieunfall in %1</German>
                 <Chinesesimp>处理 1% 地区的化学品泄露</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_CHEM_DESC">
