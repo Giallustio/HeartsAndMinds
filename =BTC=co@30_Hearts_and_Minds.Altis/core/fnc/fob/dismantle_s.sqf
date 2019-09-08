@@ -32,7 +32,7 @@ params [
     private _pos = getPosASL _flag;
     private _element = (btc_fobs select 2) find _flag;
 
-    [(btc_fobs select 1) select _element, objNull, objNull, true, true] call btc_fnc_eh_FOB_killed;
+    [(btc_fobs select 1) select _element, objNull, objNull, true, true] call btc_fnc_fob_killed;
 
     [btc_fob_mat, _pos, surfaceNormal _pos] call btc_fnc_log_create_s;
 }, [_flag], 10] call CBA_fnc_waitAndExecute;
