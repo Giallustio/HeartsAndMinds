@@ -74,7 +74,7 @@ private _EHid = ["btc_respawn", {
     if !(_ticket isEqualTo -1) then {
         _ticket = _ticket - 1;
         if (_ticket <= 0) then {
-            [_structure, objNull, objNull, true, true] remoteExecCall ["btc_fnc_eh_FOB_killed", 2];
+            [_structure, objNull, objNull, true, true] remoteExecCall ["btc_fnc_fob_killed", 2];
         } else {
             _structure setVariable ["btc_tickets", _ticket, true];
         };
