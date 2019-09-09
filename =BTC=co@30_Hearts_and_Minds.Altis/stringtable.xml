@@ -1009,6 +1009,18 @@
                 <German>Hol ihn zurück</German>
                 <Chinesesimp>将他带回</Chinesesimp>
             </Key>
+            <Key ID="STR_BTC_HAM_SIDE_RESC_BODYBAG_DESC">
+                <Original>%1 has been killed. Place %1 in a body bag.</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_RESC_BODYBAG_TITLE">
+                <Original>Place the pilot in a body bag</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_RESC_BRING_DESC">
+                <Original>Bring %1 body bag to the logistic point.</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_RESC_BRING_TITLE">
+                <Original>Bring the body bag to base</Original>
+            </Key>
         </Container>
         <Container name="Supply">
             <Key ID="STR_BTC_HAM_SIDE_SUPPLIES_TITLE">
@@ -1197,7 +1209,7 @@
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_CHEM_MOVE_DESC">
                 <Original>Load contaminated objects in containers. Move the container or objects inside a big shower. Note: you can load this container inside a vehicle and move the vehicle under the shower. This clean up the vehicle, crew and cargo.</Original>
-                <German>Verladen Sie kontaminierte Objekte in einen Container und bringen Sie diesen zu einer großen Dusche. Hinweis: Sie können den Container in ein Fahrzeug laden und das ganze Fahrzeug unter die Dusche stellen. Dies dekontaminiert das Fahrzeug, die Insassen und die Ladung.</German>    
+                <German>Verladen Sie kontaminierte Objekte in einen Container und bringen Sie diesen zu einer großen Dusche. Hinweis: Sie können den Container in ein Fahrzeug laden und das ganze Fahrzeug unter die Dusche stellen. Dies dekontaminiert das Fahrzeug, die Insassen und die Ladung.</German>
                 <Chinesesimp>将受污染物体装载至集装箱中。将集装箱或受污染物体移动到大型淋浴器下。注: 你可以将集装箱装载至载具, 再讲载具移动到淋浴器下。这将会净化载具、成员和货物。</Chinesesimp>
             </Key>
         </Container>
