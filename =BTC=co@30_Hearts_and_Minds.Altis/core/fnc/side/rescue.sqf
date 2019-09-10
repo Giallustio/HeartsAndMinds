@@ -97,7 +97,7 @@ if (_units select {alive _x} isEqualTo []) then {
     [_back_taskID, "FAILED"] call BIS_fnc_taskSetState;
     private _bodyBag_taskID = _taskID + "bb";
     {
-        [_x, "Deleted", {
+        private _IDDeleted = [_x, "Deleted", {
             params [
                 ["_unit", objNull, [objNull]]
             ];
@@ -111,9 +111,11 @@ if (_units select {alive _x} isEqualTo []) then {
         [[_unitBodyBag_taskID, _taskID], 34, _x, [([_x] call ace_dogtags_fnc_getDogtagData) select 0, typeOf _x]] call btc_fnc_task_create;
         ["ace_placedInBodyBag", {
             params ["_patient", "_bodyBag"];
-            _thisArgs params ["_unit", "_unitBodyBag_taskID", "_taskID"];
+            _thisArgs params ["_unit", "_unitBodyBag_taskID", "_taskID", "_IDDeleted"];
 
             if (_patient isEqualTo _unit) then {
+                _patient removeEventHandler ["Deleted", _IDDeleted];
+
                 [_thisType, _thisId] call CBA_fnc_removeEventHandler;
                 [_unitBodyBag_taskID, "SUCCEEDED"] call BIS_fnc_taskSetState;
 
@@ -131,7 +133,7 @@ if (_units select {alive _x} isEqualTo []) then {
                 }, [_taskID]] call CBA_fnc_addBISEventHandler;
             };
             _this
-        }, [_x, _unitBodyBag_taskID, _taskID]] call CBA_fnc_addEventHandlerArgs;
+        }, [_x, _unitBodyBag_taskID, _taskID, _IDDeleted]] call CBA_fnc_addEventHandlerArgs;
     } forEach _units;
 
     private _dogTagList = _units apply {([_x] call ace_dogtags_fnc_getDogtagData) select 0};
