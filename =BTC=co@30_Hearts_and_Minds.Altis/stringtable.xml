@@ -1011,15 +1011,19 @@
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_RESC_BODYBAG_DESC">
                 <Original>%1 has been killed. Place %1 in a body bag.</Original>
+                <Chinesesimp>%1 已经阵亡。将 %1 装进尸体袋。</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_RESC_BODYBAG_TITLE">
                 <Original>Place the pilot in a body bag</Original>
+                <Chinesesimp>将该飞行员装进尸体袋</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_RESC_BRING_DESC">
                 <Original>Bring %1 body bag to the logistic point.</Original>
+                <Chinesesimp>将装有 %1 的尸体袋带回后勤点。</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_RESC_BRING_TITLE">
                 <Original>Bring the body bag to base</Original>
+                <Chinesesimp>将尸体袋带回基地</Chinesesimp>
             </Key>
         </Container>
         <Container name="Supply">
