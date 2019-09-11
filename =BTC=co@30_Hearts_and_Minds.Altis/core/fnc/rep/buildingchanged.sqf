@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_eh_buildingchanged
+Function: btc_fnc_rep_buildingchanged
 
 Description:
     Fill me when you edit me !
@@ -14,7 +14,7 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_eh_buildingchanged;
+        _result = [] call btc_fnc_rep_buildingchanged;
     (end)
 
 Author:

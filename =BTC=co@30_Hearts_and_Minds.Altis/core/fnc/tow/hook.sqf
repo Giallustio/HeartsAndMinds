@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_log_hook
+Function: btc_fnc_tow_hook
 
 Description:
     Fill me when you edit me !
@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_log_hook;
+        _result = [] call btc_fnc_tow_hook;
     (end)
 
 Author:

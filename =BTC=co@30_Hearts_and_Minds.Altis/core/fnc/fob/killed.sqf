@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_eh_FOB_killed
+Function: btc_fnc_fob_killed
 
 Description:
     Delete FOB from the btc_fobs array and remove the flag.
@@ -18,7 +18,7 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [btc_fobs select 1 select 0] call btc_fnc_eh_FOB_killed;
+        _result = [btc_fobs select 1 select 0] call btc_fnc_fob_killed;
     (end)
 
 Author:

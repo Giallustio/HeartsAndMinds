@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_log_hitch_points
+Function: btc_fnc_tow_hitch_points
 
 Description:
     Fill me when you edit me !
@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_log_hitch_points;
+        _result = [] call btc_fnc_tow_hitch_points;
     (end)
 
 Author:

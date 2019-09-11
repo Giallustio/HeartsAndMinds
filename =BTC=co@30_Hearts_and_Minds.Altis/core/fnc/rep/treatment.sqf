@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_eh_treatment
+Function: btc_fnc_rep_treatment
 
 Description:
     Fill me when you edit me !
@@ -15,7 +15,7 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_eh_treatment;
+        _result = [] call btc_fnc_rep_treatment;
     (end)
 
 Author:

@@ -48,6 +48,6 @@ _marker setMarkerShape "ICON";
 
 [_struc, _flag, _marker] call btc_fnc_fob_init;
 
-_struc addEventHandler ["Killed", btc_fnc_eh_FOB_killed];
+_struc addEventHandler ["Killed", btc_fnc_fob_killed];
 
 [_marker, _struc, _flag]
