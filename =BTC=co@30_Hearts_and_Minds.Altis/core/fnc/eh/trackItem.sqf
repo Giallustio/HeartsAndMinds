@@ -23,8 +23,8 @@ Author:
 ---------------------------------------------------------------------------- */
 
 params [
-    "_dogTag",
-    "_taskID",
+    ["_dogTag", "", [""]],
+    ["_taskID", "", [""]],
     ["_objt", player, [objNull]]
 ];
 
@@ -42,7 +42,7 @@ params [
         _unit removeEventHandler [_thisType, _thisID];
     };
     if (btc_debug) then {
-        [format ["_thisArgs %1", _thisArgs, items _unit], __FILE__, [btc_debug, true]] call btc_fnc_debug_message;
+        [format ["_thisArgs %1, items %2", _thisArgs, items _unit], __FILE__, [btc_debug, true]] call btc_fnc_debug_message;
     };
 }, [_dogTag, _taskID]] call CBA_fnc_addBISEventHandler;
 
