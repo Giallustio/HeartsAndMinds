@@ -62,9 +62,9 @@ _group setVariable ["no_cache", true];
 private _crew = getText (configfile >> "CfgVehicles" >> _heli_type >> "crew");
 _crew createUnit [_pos, _group];
 
-private _jip = [_taskID, 13, getPos _city, _city getVariable "name"] call btc_fnc_task_create;
+[_taskID, 13, getPos _city, _city getVariable "name"] call btc_fnc_task_create;
 private _find_taskID = _taskID + "mv";
-private _jipFind = [[_find_taskID, _taskID], 20, objNull, _crew] call btc_fnc_task_create;
+[[_find_taskID, _taskID], 20, objNull, _crew] call btc_fnc_task_create;
 private _back_taskID = _taskID + "bk";
 
 private _units = [];
@@ -86,18 +86,74 @@ private _triggers = [];
     _triggers pushBack _trigger;
 } forEach units _group;
 
-waitUntil {sleep 5; (_taskID call BIS_fnc_taskCompleted || (_units select {_x distance btc_create_object_point > 100} isEqualTo []) || (_units select {alive _x} isEqualTo []))};
+waitUntil {sleep 5; (
+    _taskID call BIS_fnc_taskCompleted ||
+    _units select {_x distance btc_create_object_point > 100} isEqualTo [] ||
+    _units select {alive _x} isEqualTo []
+)};
+
+private _rep = 50;
+if (_units select {alive _x} isEqualTo []) then {
+    [_back_taskID, "FAILED"] call BIS_fnc_taskSetState;
+    private _bodyBag_taskID = _taskID + "bb";
+    {
+        private _IDDeleted = [_x, "Deleted", {
+            params [
+                ["_unit", objNull, [objNull]]
+            ];
+            _thisArgs params ["_taskID"];
+
+            if (_unit inArea [[-5000, -5000, 0], 10, 10, 0, false]) exitWith {}; // Detect if the body is inside a bodybag (https://github.com/acemod/ACE3/blob/44050df98b00e579e5b5a79c0d76d4d1138b4baa/addons/medical_treatment/functions/fnc_placeInBodyBag.sqf#L40)
+            [_taskID, "FAILED"] call btc_fnc_task_setState;
+        }, [_taskID]] call CBA_fnc_addBISEventHandler;
+
+        private _unitBodyBag_taskID = _bodyBag_taskID + str(_forEachIndex);
+        [[_unitBodyBag_taskID, _taskID], 34, _x, [([_x] call ace_dogtags_fnc_getDogtagData) select 0, typeOf _x]] call btc_fnc_task_create;
+        ["ace_placedInBodyBag", {
+            params ["_patient", "_bodyBag"];
+            _thisArgs params ["_unit", "_unitBodyBag_taskID", "_taskID", "_IDDeleted"];
+
+            if (_patient isEqualTo _unit) then {
+                _patient removeEventHandler ["Deleted", _IDDeleted];
+
+                [_thisType, _thisId] call CBA_fnc_removeEventHandler;
+                [_unitBodyBag_taskID, "SUCCEEDED"] call BIS_fnc_taskSetState;
+
+                private _base_taskID = _taskID + "bs";
+                [[_base_taskID, _taskID], 35, btc_create_object_point, [([_patient] call ace_dogtags_fnc_getDogtagData) select 0, typeOf btc_create_object_point]] call btc_fnc_task_create;
+
+                [_bodyBag, "Deleted", {
+                    params [
+                        ["_bodyBag", objNull, [objNull]]
+                    ];
+                    _thisArgs params ["_taskID"];
+
+                    if (_taskID call BIS_fnc_taskCompleted) exitWith {};
+                    [_taskID, "FAILED"] call btc_fnc_task_setState;
+                }, [_taskID]] call CBA_fnc_addBISEventHandler;
+            };
+            _this
+        }, [_x, _unitBodyBag_taskID, _taskID, _IDDeleted]] call CBA_fnc_addEventHandlerArgs;
+    } forEach _units;
+
+    private _dogTagList = _units apply {([_x] call ace_dogtags_fnc_getDogtagData) select 0};
+
+    waitUntil {sleep 5; (
+        _taskID call BIS_fnc_taskCompleted ||
+        {
+            (([_x] call ace_dogtags_fnc_getDogtagData) select 0) in _dogTagList
+        } count (nearestObjects [btc_create_object_point, ["ACE_bodyBagObject"], 100]) >= count _units
+    )};
+    _rep = 40;
+};
 
 {
     deleteVehicle _x;
 } forEach _triggers;
 [[], [_heli, _fx, _group] + _units] call btc_fnc_delete;
 
-if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {};
-if (_units select {alive _x} isEqualTo []) exitWith {
-    [_taskID, "FAILED"] call btc_fnc_task_setState;
-};
+if (_taskID call BIS_fnc_taskState in ["CANCELED", "FAIL"]) exitWith {};
 
-50 call btc_fnc_rep_change;
+_rep call btc_fnc_rep_change;
 
 [_taskID, "SUCCEEDED"] call btc_fnc_task_setState;

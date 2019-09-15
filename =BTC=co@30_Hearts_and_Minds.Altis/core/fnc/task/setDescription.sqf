@@ -326,6 +326,24 @@ switch (_description) do {
         ];
         _type = "move";
     };
+    case 34 : {
+        _location params ["_pilotName", "_typeOf_pilot"];
+        _description = [
+            format [localize "STR_BTC_HAM_SIDE_RESC_BODYBAG_DESC", _pilotName] + ([_typeOf_pilot] call btc_fnc_typeOfPreview),
+            localize "STR_BTC_HAM_SIDE_RESC_BODYBAG_TITLE",
+            localize "STR_BTC_HAM_SIDE_RESC_BODYBAG_TITLE"
+        ];
+        _type = "interact";
+    };
+    case 35 : {
+        _location params ["_pilotName", "_base"];
+        _description = [
+            format [localize "STR_BTC_HAM_SIDE_RESC_BRING_DESC", _pilotName] + ([_base] call btc_fnc_typeOfPreview),
+            localize "STR_BTC_HAM_SIDE_RESC_BRING_TITLE",
+            localize "STR_BTC_HAM_SIDE_RESC_BRING_TITLE"
+        ];
+        _type = "move";
+    };
 };
 
 [
