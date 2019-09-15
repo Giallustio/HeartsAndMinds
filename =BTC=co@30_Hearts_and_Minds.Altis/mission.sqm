@@ -8,7 +8,7 @@ class EditorData
 	toggles=521;
 	class ItemIDProvider
 	{
-		nextID=224;
+		nextID=226;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={8349.0146,81.310471,10115.494};
-		dir[]={-0.25951707,-0.57477474,-0.77622974};
-		up[]={-0.18227877,0.81825554,-0.54519916};
-		aside[]={-0.94850081,1.0353397e-006,0.31711411};
+		pos[]={8380.7012,98.929726,10101.742};
+		dir[]={-0.82167125,-0.56283653,-0.089907967};
+		up[]={-0.5595513,0.82653111,-0.061226442};
+		aside[]={-0.1087717,-3.2095704e-007,0.99407214};
 	};
 };
 binarizationWanted=0;
@@ -48,13 +48,14 @@ addons[]=
 	"A3_Air_F_Beta_Heli_Transport_01",
 	"A3_Air_F_Beta_Heli_Attack_01",
 	"A3_Props_F_Enoch_Military_Decontamination",
-	"A3_Signs_F"
+	"A3_Signs_F",
+	"A3_Soft_F_Enoch_Truck_01"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=20;
+		items=21;
 		class Item0
 		{
 			className="A3_Ui_F";
@@ -195,6 +196,13 @@ class AddonsMetaData
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
+		class Item20
+		{
+			className="A3_Soft_F_Enoch";
+			name="Arma 3 Enoch - Unarmored Land Vehicles";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
 	};
 };
 randomSeed=2442963;
@@ -218,6 +226,24 @@ class CustomAttributes
 		name="Multiplayer";
 		class Attribute0
 		{
+			property="RespawnTemplates";
+			expression="true";
+			class Value
+			{
+				class data
+				{
+					class type
+					{
+						type[]=
+						{
+							"ARRAY"
+						};
+					};
+				};
+			};
+		};
+		class Attribute1
+		{
 			property="RespawnButton";
 			expression="true";
 			class Value
@@ -232,24 +258,6 @@ class CustomAttributes
 						};
 					};
 					value=1;
-				};
-			};
-		};
-		class Attribute1
-		{
-			property="RespawnTemplates";
-			expression="true";
-			class Value
-			{
-				class data
-				{
-					class type
-					{
-						type[]=
-						{
-							"ARRAY"
-						};
-					};
 				};
 			};
 		};
@@ -688,7 +696,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=58;
+		items=59;
 		class Item0
 		{
 			dataType="Marker";
@@ -3085,6 +3093,48 @@ class Mission
 			id=216;
 			type="RoadCone_L_F";
 			atlOffset=0.00016784668;
+		};
+		class Item58
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={8363.5918,75.697517,10104.818};
+				angles[]={0.0066671576,5.6318107,6.1914506};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				skill=0.60000002;
+				init="this setVariable [""btc_dont_delete"",true]";
+				name="btc_veh_16";
+			};
+			id=225;
+			type="B_Truck_01_flatbed_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[""FirstAidKit""],[10]],[[],[]],[[],[]],[[],[]]],false]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 	};
 };
