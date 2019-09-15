@@ -30,7 +30,7 @@ if (_useful isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
 private _city = selectRandom _useful;
 private _pos = getPos _city;
 
-private _jip = [_taskID, 9, objNull, _city getVariable "name"] call btc_fnc_task_create;
+[_taskID, 9, objNull, _city getVariable "name"] call btc_fnc_task_create;
 
 _city setVariable ["spawn_more", true];
 
@@ -95,7 +95,7 @@ for "_i" from 1 to (1 + round random 2) do {
     _boxe setVariable ["ace_cookoff_enable", false, true];
     _boxe setVariable ["ace_cookoff_enableAmmoCookoff", false, true];
     private _destroy_taskID = _taskID + "dt" + str _i;
-    private _jipdestroy = [[_destroy_taskID, _taskID], 23, _boxe, _type_box, false, false] call btc_fnc_task_create;
+    [[_destroy_taskID, _taskID], 23, _boxe, _type_box, false, false] call btc_fnc_task_create;
     _taskID_array pushBack _destroy_taskID;
     [_boxe, _destroy_taskID] spawn {
         params ["_boxe", "_destroy_taskID"];

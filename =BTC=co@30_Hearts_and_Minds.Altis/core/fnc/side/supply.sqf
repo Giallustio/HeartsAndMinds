@@ -32,9 +32,9 @@ private _city = selectRandom _useful;
 private _pos = [getPos _city, 100] call btc_fnc_randomize_pos;
 _pos = [_pos, 0, 300, 20, false] call btc_fnc_findsafepos;
 
-private _jip = [_taskID, 3, getPos _city, _city getVariable "name"] call btc_fnc_task_create;
+[_taskID, 3, getPos _city, _city getVariable "name"] call btc_fnc_task_create;
 private _move_taskID = _taskID + "mv";
-private _jipMove = [[_move_taskID, _taskID], 18, _pos, btc_supplies_cargo] call btc_fnc_task_create;
+[[_move_taskID, _taskID], 18, _pos, btc_supplies_cargo] call btc_fnc_task_create;
 
 private _area = createMarker [format ["sm_%1", _pos], _pos];
 _area setMarkerShape "ELLIPSE";
@@ -96,9 +96,11 @@ waitUntil {sleep 5; (_move_taskID call BIS_fnc_taskCompleted || !((nearestObject
 private _drop_taskID = _taskID + "dr";
 if !(_move_taskID call BIS_fnc_taskState isEqualTo "CANCELED") then {
     [_move_taskID, "SUCCEEDED"] call BIS_fnc_taskSetState;
-    private _jipDrop = [[_drop_taskID, _taskID], 19,
-    (nearestObjects [_pos, [btc_supplies_cargo] + _food + _water, 30]) select 0,
-    selectRandom(_food + _water), true] call btc_fnc_task_create;
+    [
+        [_drop_taskID, _taskID], 19,
+        (nearestObjects [_pos, [btc_supplies_cargo] + _food + _water, 30]) select 0,
+        selectRandom(_food + _water), true
+    ] call btc_fnc_task_create;
 };
 
 [getPos _city, _pos getPos [10, _direction_composition]] call btc_fnc_civ_evacuate;

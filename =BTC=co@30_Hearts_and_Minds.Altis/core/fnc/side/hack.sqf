@@ -36,7 +36,7 @@ private _house = selectRandom ([_pos, 100] call btc_fnc_getHouses);
 if (isNil "_house") exitWith {[] spawn btc_fnc_side_create;};
 _pos = selectRandom (_house buildingPos -1);
 
-private _jip = [_taskID, 16, getPos _city, _city getVariable "name"] call btc_fnc_task_create;
+[_taskID, 16, getPos _city, _city getVariable "name"] call btc_fnc_task_create;
 
 _city setVariable ["spawn_more",true];
 
@@ -46,7 +46,7 @@ private _terminal = createVehicle [_terminalType, [_pos, ASLToATL _pos] select s
 _pos = [[_pos, 100] call btc_fnc_randomize_pos, 50, 500, 30, 0, 60 * (pi / 180), 0] call BIS_fnc_findSafePos;
 private _launchsite = createVehicle ["Land_PenBlack_F", _pos, [], 0, "FLY"];
 private _terminal_taskID = _taskID + "ter";
-private _jipTerminal = [[_terminal_taskID, _taskID], 17, _terminal, _terminalType] call btc_fnc_task_create;
+[[_terminal_taskID, _taskID], 17, _terminal, _terminalType] call btc_fnc_task_create;
 
 //// Add interaction on Terminal \\\\
 _terminal setVariable ["btc_terminal_taskID", _terminal_taskID, true];
@@ -58,7 +58,7 @@ if (_terminal_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {
 };
 
 private _defend_taskID = _taskID + "df";
-private _jipdefend = [[_defend_taskID, _taskID], 22, _terminal, _terminalType, true] call btc_fnc_task_create;
+[[_defend_taskID, _taskID], 22, _terminal, _terminalType, true] call btc_fnc_task_create;
 
 private _groups = [];
 private _closest = [_city, btc_city_all select {!(_x getVariable ["active", false])}, false] call btc_fnc_find_closecity;

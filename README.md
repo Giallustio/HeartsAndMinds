@@ -37,6 +37,7 @@ Online [wiki available](http://vdauphin.github.io/HeartsAndMinds/).
 - Full saving Database
 - Easy map change
 - Extend battlefield to sea
+- Chemical Warfare
 - Custom gameplay
 - Headless support
 - Something I forgot for sure

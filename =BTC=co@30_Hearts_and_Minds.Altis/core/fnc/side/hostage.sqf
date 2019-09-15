@@ -58,7 +58,7 @@ waitUntil {local _captive};
 [_group_civ] call btc_fnc_civ_unit_create;
 
 //// Data side mission
-private _jip = [_taskID, 15, _captive, [_city getVariable "name", _civType]] call btc_fnc_task_create;
+[_taskID, 15, _captive, [_city getVariable "name", _civType]] call btc_fnc_task_create;
 
 private _group = [];
 {

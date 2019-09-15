@@ -56,7 +56,7 @@ private _generator = (selectRandom btc_type_generator) createVehicle _pos;
 _pos params ["_x", "_y", "_z"];
 private _storagebladder = (selectRandom btc_type_storagebladder) createVehicle [_x + 5, _y, _z];
 
-private _jip = [_taskID, 11, _generator, [_city getVariable "name", typeOf _generator]] call btc_fnc_task_create;
+[_taskID, 11, _generator, [_city getVariable "name", typeOf _generator]] call btc_fnc_task_create;
 
 private _group = [_pos, 8, 1 + round random 5,0.8] call btc_fnc_mil_create_group;
 [_pos, 20, 2 + round random 4, 0.5] call btc_fnc_mil_create_group;
