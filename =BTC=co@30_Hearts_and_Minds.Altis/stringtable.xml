@@ -1020,6 +1020,7 @@
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_RESC_BRING_DESC">
                 <Original>Bring %1 body bag to the logistic point.</Original>
+                <German>Geben Sie den in einem Leichensack verpackten Leichnam von %1 beim Logistikpunkt ab.</German>
                 <Chinesesimp>将装有 %1 的尸体袋带回后勤点。</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_RESC_BRING_TITLE">
