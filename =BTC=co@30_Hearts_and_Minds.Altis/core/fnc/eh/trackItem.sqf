@@ -35,12 +35,12 @@ params [
     ];
     _thisArgs params ["_dogTag", "_taskID"];
 
+    if (_taskID call BIS_fnc_taskCompleted) exitWith {};
+
     if (_dogTag in items _unit) then {
         _unit removeItem _dogTag;
     };
-    if (_taskID call BIS_fnc_taskCompleted) then {
-        _unit removeEventHandler [_thisType, _thisID];
-    };
+
     if (btc_debug) then {
         [format ["_thisArgs %1, items %2", _thisArgs, items _unit], __FILE__, [btc_debug, true]] call btc_fnc_debug_message;
     };
@@ -52,8 +52,7 @@ params [
     ];
     _thisArgs params ["_dogTag", "_taskID"];
 
-    if (_dogTag in items _unit) then {
-        _unit removeEventHandler [_thisType, _thisID];
+    if (_dogTag in items _unit && {!(_taskID call BIS_fnc_taskCompleted)}) then {
         [_taskID, "FAILED"] call BIS_fnc_taskSetState;
     };
 }, [_dogTag, _taskID]] call CBA_fnc_addBISEventHandler;
@@ -70,7 +69,6 @@ params [
             _thisArgs params ["_dogTag", "_taskID"];
 
             if (!(_taskID call BIS_fnc_taskCompleted) && {(allunits + vehicles) findif {_dogTag in itemCargo _x} isEqualTo -1}) then {
-                _container removeEventHandler [_thisType, _thisID];
                 [_taskID, "FAILED"] call BIS_fnc_taskSetState;
             };
         }, [_dogTag, _taskID]] remoteExecCall ["CBA_fnc_addBISEventHandler", 0];
