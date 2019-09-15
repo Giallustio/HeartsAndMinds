@@ -1011,6 +1011,7 @@
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_RESC_BODYBAG_DESC">
                 <Original>%1 has been killed. Place %1 in a body bag.</Original>
+                <German>%1 wurde getötet. Bergen Sie seine Leiche mithilfe eines Leichsacks.</German
                 <Chinesesimp>%1 已经阵亡。将 %1 装进尸体袋。</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_RESC_BODYBAG_TITLE">
