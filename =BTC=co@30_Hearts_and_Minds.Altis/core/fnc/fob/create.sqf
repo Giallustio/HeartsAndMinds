@@ -76,6 +76,8 @@ closeDialog 0;
 [{
     params ["_pos", "_mat", "_name"];
 
+    if (isNull _mat) exitWith {};
+
     deleteVehicle _mat;
     private _FOB_name = "FOB " + _name;
     [_pos, _FOB_name] remoteExecCall ["btc_fnc_fob_create_s", 2];
