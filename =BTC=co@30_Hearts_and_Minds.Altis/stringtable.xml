@@ -1602,14 +1602,14 @@
                 <Spanish>¡Atrás! Montando FOB</Spanish>
                 <German>Geh ein wenig zurück! Die FOB wird aufgebaut</German>
                 <Portuguese>Afaste-se! Montando a FOB</Portuguese>
-                <Chinesesimp>FOB装配中, 请远离!</Chinesesimp>
+                <Chinesesimp>后退! FOB装配中</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_O_FOB_DISMANTLE_H_PROC">
                 <Original>Dismantle, move out ...</Original>
                 <Spanish>Desmantelado, muévanse...</Spanish>
                 <German>Abbau im gange, geh ein wenig zurück...</German>
                 <Portuguese>Desmontando, se afaste...</Portuguese>
-                <Chinesesimp>已拆除, 正在搬走 ...</Chinesesimp>
+                <Chinesesimp>正在拆除, 请远离 ...</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_O_FOB_REDEPLOY_H_NOFOB">
                 <Original>No FOBs deployed</Original>
