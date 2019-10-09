@@ -606,6 +606,9 @@ switch (_p_en) do {
     };
 };
 
+//Chem
+btc_chem_range = 3;
+
 //Rep
 btc_rep_bonus_cache = 100;
 btc_rep_bonus_civ_hh = 3;

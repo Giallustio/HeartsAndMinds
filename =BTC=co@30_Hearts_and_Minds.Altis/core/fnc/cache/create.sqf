@@ -49,6 +49,7 @@ clearMagazineCargoGlobal btc_cache_obj;
 
 if (_isChem) then {
     btc_chem_contaminated pushBack btc_cache_obj;
+    publicVariable "btc_chem_contaminated";
     private _holder = createSimpleObject [selectRandom (btc_cache_type select 1), _cache_pos];
     [btc_cache_obj, _holder, "TOP", -0.47] call btc_fnc_cache_create_attachto;
 } else {

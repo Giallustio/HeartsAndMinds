@@ -25,7 +25,7 @@ private _bodyParts = ["head","body","hand_l","hand_r","leg_l","leg_r"];
 
 [{
     params ["_args", "_id"];
-    _args params ["_contaminated", "_decontaminate", "_bodyParts", "_cfgGlasses"];
+    _args params ["_contaminated", "_decontaminate", "_range", "_bodyParts", "_cfgGlasses"];
 
     if (_contaminated isEqualTo []) exitWith {};
 
@@ -62,12 +62,12 @@ private _bodyParts = ["head","body","hand_l","hand_r","leg_l","leg_r"];
                 _contaminated deleteAt (_contaminated find _x);
             } forEach (_x getVariable ["ace_cargo_loaded", []]);
         } forEach ((_x getVariable ["ace_cargo_loaded", []]) + crew _x);
+        publicVariable "btc_chem_contaminated";
     } forEach _objtToDecontaminate;
 
     if (_contaminated isEqualTo []) exitWith {};
 
     private _unitContaminate = [];
-    private _range = 3;
     {
         if (_x in _units) then {
             _range = _range / 2;
@@ -77,6 +77,9 @@ private _bodyParts = ["head","body","hand_l","hand_r","leg_l","leg_r"];
     } forEach _contaminated;
     {
         private _notAlready = _contaminated pushBackUnique _x > -1;
+        if (_notAlready) then {
+            publicVariable "btc_chem_contaminated";
+        };
         if (local _x) then {
             [_x, _notAlready, _bodyParts, _cfgGlasses] call btc_fnc_chem_damage;
         } else {
@@ -85,4 +88,4 @@ private _bodyParts = ["head","body","hand_l","hand_r","leg_l","leg_r"];
             };
         };
     } forEach _unitContaminate;
-}, 3, [btc_chem_contaminated, btc_chem_decontaminate, _bodyParts, configFile >> "CfgGlasses"]] call CBA_fnc_addPerFrameHandler;
+}, 3, [btc_chem_contaminated, btc_chem_decontaminate, btc_chem_range, _bodyParts, configFile >> "CfgGlasses"]] call CBA_fnc_addPerFrameHandler;

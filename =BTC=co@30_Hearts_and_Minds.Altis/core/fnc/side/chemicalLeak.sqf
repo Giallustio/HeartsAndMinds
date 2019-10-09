@@ -148,6 +148,7 @@ for "_i" from 1 to (5 + round random 5) do {
     _chemical pushBack _hazmat;
     if (_i < 3 || random 1 > 0.5) then {
         btc_chem_contaminated pushBack _hazmat;
+        publicVariable "btc_chem_contaminated";
     };
 };
 

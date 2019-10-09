@@ -29,11 +29,9 @@ params [
 if !(_success) exitWith {_this};
 
 private _obj = _data select 0;
-private _contaminated = btc_int_ask_data;
-
 ([
     localize "STR_BTC_HAM_O_CHEM_NOTCONTA",
     localize "STR_BTC_HAM_O_CHEM_CONTA"
-] select (_obj in _contaminated)) call CBA_fnc_notify;
+] select (_obj in btc_chem_contaminated)) call CBA_fnc_notify;
 
 _this
