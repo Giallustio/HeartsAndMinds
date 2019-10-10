@@ -3,16 +3,16 @@
 Function: btc_fnc_log_place
 
 Description:
-    Fill me when you edit me !
+    Carry and place an object with keys.
 
 Parameters:
-    _placing_obj - [Object]
+    _placing_obj - Object to place. [Object]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_log_place;
+        [cursorObject] call btc_fnc_log_place;
     (end)
 
 Author:
@@ -55,16 +55,17 @@ private _place_EH_keydown = (findDisplay 46) displayAddEventHandler ["KeyDown", 
 [player] call ace_weaponselect_fnc_putWeaponAway;
 player forceWalk true;
 
-btc_log_placing_obj enableSimulation false;
+[btc_log_placing_obj, false] remoteExecCall ["enableSimulationGlobal", 2];
 
-private _bbr = boundingBoxReal btc_log_placing_obj;
-private _c = boundingCenter btc_log_placing_obj;
+private _bbr = 0 boundingBoxReal btc_log_placing_obj;
 
-btc_log_placing_h = abs((_bbr select 0) select 2) - (_c select 2);
+btc_log_placing_h = (btc_log_placing_obj modelToWorldVisual [0, 0, 0] select 2) - (player modelToWorldVisual [0, 0, 0] select 2);
 btc_log_placing_d = 1.5 + abs(((_bbr select 1) select 1) - ((_bbr select 0) select 1));
 
-btc_log_placing_obj attachTo [player, [0, btc_log_placing_d, btc_log_placing_h]];
-btc_log_placing_obj setDir btc_log_placing_dir;
+[{local _this}, {
+    _this attachTo [player, [0, btc_log_placing_d, btc_log_placing_h]];
+    _this setDir btc_log_placing_dir;
+}, btc_log_placing_obj] call CBA_fnc_waitUntilAndExecute;
 
 [{
     params ["_arguments", "_idPFH"];
@@ -75,7 +76,7 @@ btc_log_placing_obj setDir btc_log_placing_dir;
         //remove PFH
         [_idPFH] call CBA_fnc_removePerFrameHandler;
 
-        _placing_obj enableSimulation true;
+        [_placing_obj, true] remoteExecCall ["enableSimulationGlobal", 2];
         detach _placing_obj;
 
         player forceWalk false;
