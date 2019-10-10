@@ -26,14 +26,16 @@ params [
     ["_vehicle", objNull, [objNull]]
 ];
 
-private _object = if (_item in btc_chem_contaminated) then {
-    _vehicle
+if (_item in btc_chem_contaminated) then {
+    if ((btc_chem_contaminated pushBackUnique _vehicle) > -1) then {
+        publicVariable "btc_chem_contaminated";
+    };
 } else {
-    _item
-};
-
-if ((btc_chem_contaminated pushBackUnique _object) > -1) then {
-    publicVariable "btc_chem_contaminated";
+    if (_vehicle in btc_chem_contaminated) then {
+        if ((btc_chem_contaminated pushBackUnique _item) > -1) then {
+            publicVariable "btc_chem_contaminated";
+        };
+    };
 };
 
 _this
