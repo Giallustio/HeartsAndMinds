@@ -94,11 +94,11 @@ if (_enemy_side isEqualTo btc_player_side) exitWith {
     _type_motorized_armed append (([_allclass_f select {((_x isKindOf "Air") || (_x isKindOf "Helicopter") || (_x isKindOf "Tank") || (_x isKindOf "Car"))}] call btc_fnc_find_veh_with_turret) select 0);
 
     //Static
-    _type_mg append (_allclass_f select {_x isKindOf "StaticGrenadeLauncher"});
+    _type_mg append (_allclass_f select {_x isKindOf "StaticMGWeapon"});
     if (_type_mg isEqualTo []) then {
         _type_mg = ["O_HMG_01_F", "O_HMG_01_high_F"];
     };
-    _type_gl append (_allclass_f select {_x isKindOf "StaticMGWeapon"});
+    _type_gl append (_allclass_f select {_x isKindOf "StaticGrenadeLauncher"});
     if (_type_gl isEqualTo []) then {
         _type_gl = ["O_GMG_01_F", "O_GMG_01_high_F"];
     };
