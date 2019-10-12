@@ -157,7 +157,7 @@ if (isServer) then {
 
     //Chem
     btc_chem_decontaminate = [btc_bigShower];
-    btc_chem_contaminated = [];
+    missionNamespace setVariable ["btc_chem_contaminated", [], true];
 
     //Cache
     btc_cache_type = [

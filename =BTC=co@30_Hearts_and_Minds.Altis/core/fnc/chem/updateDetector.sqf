@@ -28,6 +28,8 @@ Author:
         ["_obj", controlNull, [controlNull]]
     ];
 
+    if (btc_chem_contaminated isEqualTo []) exitWith {};
+
     if !(visibleWatch) exitWith {
         [_idPFH] call CBA_fnc_removePerFrameHandler;
     };
