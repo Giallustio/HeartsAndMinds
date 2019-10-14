@@ -67,7 +67,9 @@ if !(_pylons isEqualTo []) then {
     } forEach _pylons;
 };
 if (_isContaminated) then {
-    btc_chem_contaminated pushBackUnique _veh;
+    if ((btc_chem_contaminated pushBackUnique _veh) > -1) then {
+        publicVariable "btc_chem_contaminated";
+    };
 };
 
 _vehicle

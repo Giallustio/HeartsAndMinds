@@ -256,6 +256,8 @@ if (!isDedicated) then {
     //CHEM
     btc_fnc_chem_biopsy = compile preprocessFileLineNumbers "core\fnc\chem\biopsy.sqf";
     btc_fnc_chem_damageLoop = compile preprocessFileLineNumbers "core\fnc\chem\damageLoop.sqf";
+    btc_fnc_chem_ehDetector = compile preprocessFileLineNumbers "core\fnc\chem\ehDetector.sqf";
+    btc_fnc_chem_updateDetector = compile preprocessFileLineNumbers "core\fnc\chem\updateDetector.sqf";
 
     //DEBUG
     btc_fnc_debug_marker = compile preprocessFileLineNumbers "core\fnc\debug\marker.sqf";

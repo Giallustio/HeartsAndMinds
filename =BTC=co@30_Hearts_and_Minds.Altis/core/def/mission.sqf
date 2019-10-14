@@ -157,7 +157,7 @@ if (isServer) then {
 
     //Chem
     btc_chem_decontaminate = [btc_bigShower];
-    btc_chem_contaminated = [];
+    missionNamespace setVariable ["btc_chem_contaminated", [], true];
 
     //Cache
     btc_cache_type = [
@@ -605,6 +605,9 @@ switch (_p_en) do {
         btc_type_units = btc_type_units - ["I_C_Soldier_Camo_F"];
     };
 };
+
+//Chem
+btc_chem_range = 3;
 
 //Rep
 btc_rep_bonus_cache = 100;

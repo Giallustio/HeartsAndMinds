@@ -40,7 +40,9 @@ _obj setPosWorld _posWorld;
 _obj setVectorDirAndUp _vectorPos;
 
 if (_isContaminated) then {
-    btc_chem_contaminated pushBackUnique _obj;
+    if ((btc_chem_contaminated pushBackUnique _obj) > -1) then {
+        publicVariable "btc_chem_contaminated";
+    };
 };
 if !(_magClass isEqualTo "") then {_obj setVariable ["ace_rearm_magazineClass", _magClass, true]};
 

@@ -27,10 +27,14 @@ params [
 ];
 
 if (_item in btc_chem_contaminated) then {
-    btc_chem_contaminated pushBackUnique _vehicle;
+    if ((btc_chem_contaminated pushBackUnique _vehicle) > -1) then {
+        publicVariable "btc_chem_contaminated";
+    };
 } else {
     if (_vehicle in btc_chem_contaminated) then {
-        btc_chem_contaminated pushBackUnique _item;
+        if ((btc_chem_contaminated pushBackUnique _item) > -1) then {
+            publicVariable "btc_chem_contaminated";
+        };
     };
 };
 

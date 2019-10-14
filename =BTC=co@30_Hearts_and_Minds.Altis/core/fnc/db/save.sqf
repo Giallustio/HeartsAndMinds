@@ -148,7 +148,7 @@ private _array_veh = [];
         _cargo pushBack (if (_x isEqualType "") then {
             [_x, "", [[], [], []]]
         } else {
-            [typeOf _x, _x getVariable ["ace_rearm_magazineClass", ""], [getWeaponCargo _x, getMagazineCargo _x, getItemCargo _x]]
+            [typeOf _x, _x getVariable ["ace_rearm_magazineClass", ""], [getWeaponCargo _x, getMagazineCargo _x, getItemCargo _x], _x in btc_chem_contaminated]
         });
     } forEach (_x getVariable ["ace_cargo_loaded", []]);
     _data pushBack _cargo;
