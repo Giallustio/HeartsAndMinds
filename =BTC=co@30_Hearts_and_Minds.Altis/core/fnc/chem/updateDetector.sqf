@@ -28,10 +28,11 @@ Author:
         ["_obj", controlNull, [controlNull]]
     ];
 
-    if (btc_chem_contaminated isEqualTo []) exitWith {};
-
     if !(visibleWatch) exitWith {
         [_idPFH] call CBA_fnc_removePerFrameHandler;
+    };
+    if (btc_chem_contaminated isEqualTo []) exitWith {
+        _obj ctrlAnimateModel ["Threat_Level_Source", 0, true];
     };
 
     private _level = selectMin (btc_chem_contaminated apply {player distance _x});
