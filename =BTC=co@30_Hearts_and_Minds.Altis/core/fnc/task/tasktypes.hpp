@@ -65,4 +65,7 @@ class CfgTaskTypes {
     class Dogtags {
         icon = \z\ace\addons\dogtags\data\dogtag_icon_ca.paa;
     };
+    class Danger {
+        icon = \A3\ui_f\data\igui\cfg\simpleTasks\types\danger_ca.paa;
+    };
 };

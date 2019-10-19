@@ -28,6 +28,7 @@ if (isNil "btc_actions_veh") then {btc_actions_veh = [];};
 if ((btc_actions_veh pushBackUnique _type) isEqualTo -1) exitWith {};
 
 switch true do {
+    case (_type isKindOf "UGV_02_Base_F") : {};
     case (_type isKindOf "StaticWeapon") : {
         private _action = ["Logistic", localize "STR_BTC_HAM_ACTION_LOC_MAIN", "\A3\ui_f\data\igui\cfg\simpleTasks\letters\L_ca.paa", {}, {true}] call ace_interact_menu_fnc_createAction;
         [_type, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToClass;

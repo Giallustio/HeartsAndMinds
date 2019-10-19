@@ -30,4 +30,4 @@ if !(_veh in _allowlist) exitWith {
     [17] remoteExecCall ["btc_fnc_show_hint", remoteExecutedOwner];
 };
 
-deleteVehicle (_allowlist deleteAt (_allowlist find _veh));
+[_veh getVariable ["ace_cargo_loaded", []], _allowlist deleteAt (_allowlist find _veh)] call CBA_fnc_deleteEntity;

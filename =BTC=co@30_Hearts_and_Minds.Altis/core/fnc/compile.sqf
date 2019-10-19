@@ -23,6 +23,11 @@ if (isServer) then {
     btc_fnc_getVehProperties = compile preprocessFileLineNumbers "core\fnc\common\getVehProperties.sqf";
     btc_fnc_setVehProperties = compile preprocessFileLineNumbers "core\fnc\common\setVehProperties.sqf";
 
+    //CHEM
+    btc_fnc_chem_checkLoop = compile preprocessFileLineNumbers "core\fnc\chem\checkLoop.sqf";
+    btc_fnc_chem_propagate = compile preprocessFileLineNumbers "core\fnc\chem\propagate.sqf";
+    btc_fnc_chem_handleShower = compile preprocessFileLineNumbers "core\fnc\chem\handleShower.sqf";
+
     //CITY
     btc_fnc_city_activate = compile preprocessFileLineNumbers "core\fnc\city\activate.sqf";
     btc_fnc_city_create = compile preprocessFileLineNumbers "core\fnc\city\create.sqf";
@@ -150,6 +155,7 @@ if (isServer) then {
     btc_fnc_side_hostage = compile preprocessFileLineNumbers "core\fnc\side\hostage.sqf";
     btc_fnc_side_hack = compile preprocessFileLineNumbers "core\fnc\side\hack.sqf";
     btc_fnc_side_kill = compile preprocessFileLineNumbers "core\fnc\side\kill.sqf";
+    btc_fnc_side_chemicalLeak = compile preprocessFileLineNumbers "core\fnc\side\chemicalLeak.sqf";
 
     //LOG
     btc_fnc_log_CuratorObjectPlaced_s = compile preprocessFileLineNumbers "core\fnc\log\CuratorObjectPlaced_s.sqf";
@@ -182,6 +188,10 @@ btc_fnc_get_class = compile preprocessFileLineNumbers "core\fnc\common\get_class
 btc_fnc_randomize_pos = compile preprocessFileLineNumbers "core\fnc\common\randomize_pos.sqf";
 btc_fnc_getHouses = compile preprocessFileLineNumbers "core\fnc\common\getHouses.sqf";
 btc_fnc_house_addWP_loop = compile preprocessFileLineNumbers "core\fnc\common\house_addWP_loop.sqf";
+
+//CHEM
+btc_fnc_chem_damage = compile preprocessFileLineNumbers "core\fnc\chem\damage.sqf";
+btc_fnc_chem_deconShowerAnimLarge = {(_this select 0) setVariable ["BIN_Shower_Stop",false]; _this call BIN_fnc_deconShowerAnimLarge;};
 
 //DEBUG
 btc_fnc_debug_message = compile preprocessFileLineNumbers "core\fnc\debug\message.sqf";
@@ -242,6 +252,12 @@ if (!isDedicated) then {
     btc_fnc_get_composition = compile preprocessFileLineNumbers "core\fnc\common\get_composition.sqf";
     btc_fnc_checkArea = compile preprocessFileLineNumbers "core\fnc\common\checkArea.sqf";
     btc_fnc_typeOfPreview = compile preprocessFileLineNumbers "core\fnc\common\typeOfPreview.sqf";
+
+    //CHEM
+    btc_fnc_chem_biopsy = compile preprocessFileLineNumbers "core\fnc\chem\biopsy.sqf";
+    btc_fnc_chem_damageLoop = compile preprocessFileLineNumbers "core\fnc\chem\damageLoop.sqf";
+    btc_fnc_chem_ehDetector = compile preprocessFileLineNumbers "core\fnc\chem\ehDetector.sqf";
+    btc_fnc_chem_updateDetector = compile preprocessFileLineNumbers "core\fnc\chem\updateDetector.sqf";
 
     //DEBUG
     btc_fnc_debug_marker = compile preprocessFileLineNumbers "core\fnc\debug\marker.sqf";

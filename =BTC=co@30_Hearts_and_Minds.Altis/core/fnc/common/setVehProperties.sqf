@@ -12,6 +12,7 @@ Parameters:
     _isRepairVehicle - Is repair vehicle. [Boolean]
     _fuelSource - Fuel cargo and hook. [Array]
     _pylons - Array of pylon. [Array]
+    _isContaminated - Set a vehicle contaminated. [Boolean]
 
 Returns:
 	_vehicle - Vehicle. [Object]
@@ -32,7 +33,8 @@ params [
     ["_isMedicalVehicle", false, [true]],
     ["_isRepairVehicle", false, [true]],
     ["_fuelSource", [], [[]]],
-    ["_pylons", [], [[]]]
+    ["_pylons", [], [[]]],
+    ["_isContaminated", false, [false]]
 ];
 
 [_vehicle, _customization select 0, _customization select 1] call BIS_fnc_initVehicle;
@@ -63,6 +65,11 @@ if !(_pylons isEqualTo []) then {
     {
         _vehicle setPylonLoadOut [_forEachIndex + 1, _x, true, _pylonPaths select _forEachIndex]
     } forEach _pylons;
+};
+if (_isContaminated) then {
+    if ((btc_chem_contaminated pushBackUnique _veh) > -1) then {
+        publicVariable "btc_chem_contaminated";
+    };
 };
 
 _vehicle

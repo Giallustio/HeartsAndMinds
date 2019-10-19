@@ -14,6 +14,7 @@ Returns:
     _isRepairVehicle - Is repair vehicle. [Boolean]
     _fuelSource - Fuel cargo and hook. [Array]
     _pylons - Array of pylon. [Array]
+    _isContaminated - Is chemically contaminated. [Boolean]
 
 Examples:
     (begin example)
@@ -37,5 +38,6 @@ private _fuelSource = [
     _vehicle getVariable ["ace_refuel_hooks", []]
 ];
 private _pylons = getPylonMagazines _vehicle;
+private _isContaminated = _vehicle in btc_chem_contaminated;
 
-[_customization, _isMedicalVehicle, _isRepairVehicle, _fuelSource, _pylons]
+[_customization, _isMedicalVehicle, _isRepairVehicle, _fuelSource, _pylons, _isContaminated]

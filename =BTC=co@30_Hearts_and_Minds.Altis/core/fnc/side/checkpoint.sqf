@@ -30,7 +30,7 @@ if (_useful isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
 private _city = selectRandom _useful;
 private _pos = getPos _city;
 
-private _jip = [_taskID, 9, objNull, _city getVariable "name"] call btc_fnc_task_create;
+[_taskID, 9, objNull, _city getVariable "name"] call btc_fnc_task_create;
 
 _city setVariable ["spawn_more", true];
 
@@ -60,6 +60,7 @@ for "_i" from 1 to (1 + round random 2) do {
     private _type_pallet = selectRandom btc_type_pallet;
     private _type_box = selectRandom btc_type_box;
     private _type_cone = selectRandom btc_type_cones;
+    private _type_barrier = selectRandom btc_type_barrier;
     private _composition_checkpoint = [
         [_type_barrel,10,[0.243652,-2.78906,0]],
         [_type_barrel,20,[-0.131836,3.12939,0]],
@@ -70,9 +71,9 @@ for "_i" from 1 to (1 + round random 2) do {
         [_type_pallet,-70,[-5,3.75342,0]],
         [_type_barrel_canister2,0,[1.83984,-4.95264,0]],
         [_type_box,180,[-1.97998,4.88574,0]],
-        ["Land_CncBarrier_stripes_F",180,[2.26367,-5.38623,0]],
+        [_type_barrier,180,[2.26367,-5.38623,0]],
         [_type_cone,180,[1.14771,-5.89697,0.00211954]],
-        ["Land_CncBarrier_stripes_F",0,[-2.1416,5.66553,0]],
+        [_type_barrier,0,[-2.1416,5.66553,0]],
         [_type_cone,0,[-1.03101,6.18164,0.00211954]],
         [_type_cone,180,[2.81616,-5.81689,0.00211954]],
         [_type_cone,0,[-2.6731,6.17773,0.00211954]]
@@ -94,7 +95,7 @@ for "_i" from 1 to (1 + round random 2) do {
     _boxe setVariable ["ace_cookoff_enable", false, true];
     _boxe setVariable ["ace_cookoff_enableAmmoCookoff", false, true];
     private _destroy_taskID = _taskID + "dt" + str _i;
-    private _jipdestroy = [[_destroy_taskID, _taskID], 23, _boxe, _type_box, false, false] call btc_fnc_task_create;
+    [[_destroy_taskID, _taskID], 23, _boxe, _type_box, false, false] call btc_fnc_task_create;
     _taskID_array pushBack _destroy_taskID;
     [_boxe, _destroy_taskID] spawn {
         params ["_boxe", "_destroy_taskID"];

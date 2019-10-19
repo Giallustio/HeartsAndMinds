@@ -34,6 +34,7 @@ private _type = typeOf _veh;
 private _dir = getDir _veh;
 private _marker = _veh getVariable ["marker", ""];
 private _vehProperties = [_veh] call btc_fnc_getVehProperties;
+_vehProperties set [5, false];
 
 btc_vehicles = btc_vehicles - [_veh];
 

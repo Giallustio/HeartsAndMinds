@@ -27,6 +27,13 @@ params [
 btc_log_obj_created pushBack _obj;
 btc_curator addCuratorEditableObjects [[_obj], false];
 
+if (
+    _obj isKindOf "DeconShower_01_F" ||
+    _obj isKindOf "DeconShower_02_F"
+) then {
+    btc_chem_decontaminate pushBackUnique _obj;
+};
+
 private _type = typeOf _obj;
 if (_type in btc_log_def_loadable || {_type in btc_log_def_rc}) then {
     if (_type in btc_log_def_rc || {getNumber (configFile >> "CfgVehicles" >> _type >> "ace_cargo_canLoad") isEqualTo 0}) then {

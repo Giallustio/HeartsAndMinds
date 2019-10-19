@@ -44,7 +44,7 @@ private _road = selectRandom _roads;
 private _pos1 = getPosATL _road;
 private _pos2 = getPos _city2;
 
-private _jip = [_taskID, 14, _pos2, _city2 getVariable "name"] call btc_fnc_task_create;
+[_taskID, 14, _pos2, _city2 getVariable "name"] call btc_fnc_task_create;
 
 //// Create markers \\\\
 private _marker1 = createMarker [format ["sm_2_%1", getPos _city1], getPos _city1];
@@ -86,7 +86,7 @@ removeAllWeapons _captive;
 _group selectLeader _captive;
 
 private _surrender_taskID = _taskID + "su";
-private _jipSurrender = [[_surrender_taskID, _taskID], 24, objNull, typeOf _captive] call btc_fnc_task_create;
+[[_surrender_taskID, _taskID], 24, objNull, typeOf _captive] call btc_fnc_task_create;
 private _handcuff_taskID = _taskID + "hc";
 private _back_taskID = _taskID + "bk";
 

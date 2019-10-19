@@ -44,7 +44,7 @@ private _road = selectRandom _roads;
 private _pos1 = getPosATL _road;
 private _pos2 = getPos _city2;
 
-private _jip = [_taskID, 12, _pos1, _city1 getVariable "name"] call btc_fnc_task_create;
+[_taskID, 12, _pos1, _city1 getVariable "name"] call btc_fnc_task_create;
 
 //// Create markers \\\\
 private _marker1 = createMarker [format ["sm_2_%1", _pos1], _pos1];

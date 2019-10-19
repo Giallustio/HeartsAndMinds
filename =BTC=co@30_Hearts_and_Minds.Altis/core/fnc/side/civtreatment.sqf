@@ -79,7 +79,7 @@ _unit setDir (random 360);
 _unit setUnitPos "DOWN";
 [_group] call btc_fnc_civ_unit_create;
 
-private _jip = [_taskID, 8, _unit, _city getVariable "name"] call btc_fnc_task_create;
+[_taskID, 8, _unit, _city getVariable "name"] call btc_fnc_task_create;
 
 sleep 1;
 

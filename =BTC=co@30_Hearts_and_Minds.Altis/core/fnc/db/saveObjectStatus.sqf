@@ -46,6 +46,7 @@ if !(!alive _object || isNull _object) then {
     private _cont = [getWeaponCargo _object, getMagazineCargo _object, getItemCargo _object];
     _data pushBack _cont;
     _data pushBack [vectorDir _object, vectorUp _object];
+    _data pushBack (_object in btc_chem_contaminated);
 };
 
 _data

@@ -37,7 +37,6 @@ params [
 ];
 
 private _type = "";
-private _image = "<br/><img image='%1' width='355' height='200'/>";
 switch (_description) do {
     case -1 : {
         _description = [
@@ -90,7 +89,7 @@ switch (_description) do {
     case 5 : {
         _location params ["_loc", "_vehicleType"];
         _description = [
-            (format [localize "STR_BTC_HAM_SIDE_VEHICLE_DESC", _loc]) + format [_image, getText (configfile >> "CfgVehicles" >> _vehicleType >> "editorPreview")],
+            (format [localize "STR_BTC_HAM_SIDE_VEHICLE_DESC", _loc]) + ([_vehicleType] call btc_fnc_typeOfPreview),
             format [localize "STR_BTC_HAM_SIDE_VEHICLE_TITLE", _loc],
             format [localize "STR_BTC_HAM_SIDE_VEHICLE_TITLE", _loc]
         ];
@@ -107,7 +106,7 @@ switch (_description) do {
     case 7 : {
         _location params ["_loc", "_towerType"];
         _description = [
-            (format [localize "STR_BTC_HAM_SIDE_TOWER_DESC", _loc]) + format [_image, getText (configfile >> "CfgVehicles" >> _towerType >> "editorPreview")],
+            (format [localize "STR_BTC_HAM_SIDE_TOWER_DESC", _loc]) + ([_towerType] call btc_fnc_typeOfPreview),
             format [localize "STR_BTC_HAM_SIDE_TOWER_TITLE", _loc],
             format [localize "STR_BTC_HAM_SIDE_TOWER_TITLE", _loc]
         ];
@@ -132,7 +131,7 @@ switch (_description) do {
     case 10 : {
         _location params ["_loc", "_vehicleType"];
         _description = [
-            (format [localize "STR_BTC_HAM_SIDE_CIVTREATBOAT_DESC", _loc]) + format [_image, getText (configfile >> "CfgVehicles" >> _vehicleType >> "editorPreview")],
+            (format [localize "STR_BTC_HAM_SIDE_CIVTREATBOAT_DESC", _loc]) + ([_vehicleType] call btc_fnc_typeOfPreview),
             format [localize "STR_BTC_HAM_SIDE_CIVTREATBOAT_TITLE", _loc],
             format [localize "STR_BTC_HAM_SIDE_CIVTREATBOAT_TITLE", _loc]
         ];
@@ -141,7 +140,7 @@ switch (_description) do {
     case 11 : {
         _location params ["_loc", "_vehicleType"];
         _description = [
-            (format [localize "STR_BTC_HAM_SIDE_UNDERWATER_DESC", _loc]) + format [_image, getText (configfile >> "CfgVehicles" >> _vehicleType >> "editorPreview")],
+            (format [localize "STR_BTC_HAM_SIDE_UNDERWATER_DESC", _loc]) + ([_vehicleType] call btc_fnc_typeOfPreview),
             format [localize "STR_BTC_HAM_SIDE_UNDERWATER_TITLE", _loc],
             format [localize "STR_BTC_HAM_SIDE_UNDERWATER_TITLE", _loc]
         ];
@@ -174,7 +173,7 @@ switch (_description) do {
     case 15 : {
         _location params ["_loc", "_hostageType"];
         _description = [
-            (format [localize "STR_BTC_HAM_SIDE_HOSTAGE_DESC", _loc]) + format [_image, getText (configfile >> "CfgVehicles" >> _hostageType >> "editorPreview")],
+            (format [localize "STR_BTC_HAM_SIDE_HOSTAGE_DESC", _loc]) + ([_hostageType] call btc_fnc_typeOfPreview),
             format [localize "STR_BTC_HAM_SIDE_HOSTAGE_TITLE", _loc],
             format [localize "STR_BTC_HAM_SIDE_HOSTAGE_TITLE", _loc]
         ];
@@ -190,7 +189,7 @@ switch (_description) do {
     };
     case 17 : {
         _description = [
-            localize "STR_BTC_HAM_SIDE_HACK_OPEN_DESC" + format [_image, getText (configfile >> "CfgVehicles" >> _location >> "editorPreview")],
+            localize "STR_BTC_HAM_SIDE_HACK_OPEN_DESC" + ([_location] call btc_fnc_typeOfPreview),
             localize "STR_BTC_HAM_SIDE_HACK_OPEN_TITLE",
             localize "STR_BTC_HAM_SIDE_HACK_OPEN_TITLE"
         ];
@@ -198,7 +197,7 @@ switch (_description) do {
     };
     case 18 : {
         _description = [
-            localize "STR_BTC_HAM_SIDE_SUPPLIES_MOVE_DESC" + format [_image, getText (configfile >> "CfgVehicles" >> _location >> "editorPreview")],
+            localize "STR_BTC_HAM_SIDE_SUPPLIES_MOVE_DESC" + ([_location] call btc_fnc_typeOfPreview),
             localize "STR_BTC_HAM_SIDE_SUPPLIES_MOVE_TITLE",
             localize "STR_BTC_HAM_SIDE_SUPPLIES_MOVE_TITLE"
         ];
@@ -206,7 +205,7 @@ switch (_description) do {
     };
     case 19 : {
         _description = [
-            localize "STR_BTC_HAM_SIDE_SUPPLIES_UNLOAD_DESC" + format [_image, getText (configfile >> "CfgVehicles" >> _location >> "editorPreview")],
+            localize "STR_BTC_HAM_SIDE_SUPPLIES_UNLOAD_DESC" + ([_location] call btc_fnc_typeOfPreview),
             localize "STR_BTC_HAM_SIDE_SUPPLIES_UNLOAD_TITLE",
             localize "STR_BTC_HAM_SIDE_SUPPLIES_UNLOAD_TITLE"
         ];
@@ -214,7 +213,7 @@ switch (_description) do {
     };
     case 20 : {
         _description = [
-            localize "STR_BTC_HAM_SIDE_RESC_FIND_DESC" + format [_image, getText (configfile >> "CfgVehicles" >> _location >> "editorPreview")],
+            localize "STR_BTC_HAM_SIDE_RESC_FIND_DESC" + ([_location] call btc_fnc_typeOfPreview),
             localize "STR_BTC_HAM_SIDE_RESC_FIND_TITLE",
             localize "STR_BTC_HAM_SIDE_RESC_FIND_TITLE"
         ];
@@ -222,7 +221,7 @@ switch (_description) do {
     };
     case 21 : {
         _description = [
-            localize "STR_BTC_HAM_SIDE_RESC_BACK_DESC" + format [_image, getText (configfile >> "CfgVehicles" >> _location >> "editorPreview")],
+            localize "STR_BTC_HAM_SIDE_RESC_BACK_DESC" + ([_location] call btc_fnc_typeOfPreview),
             localize "STR_BTC_HAM_SIDE_RESC_BACK_TITLE",
             localize "STR_BTC_HAM_SIDE_RESC_BACK_TITLE"
         ];
@@ -230,7 +229,7 @@ switch (_description) do {
     };
     case 22 : {
         _description = [
-            localize "STR_BTC_HAM_SIDE_HACK_STARTHACK" + format [_image, getText (configfile >> "CfgVehicles" >> _location >> "editorPreview")],
+            localize "STR_BTC_HAM_SIDE_HACK_STARTHACK" + ([_location] call btc_fnc_typeOfPreview),
             localize "STR_BTC_HAM_SIDE_HACK_DEFEND_TITLE",
             localize "STR_BTC_HAM_SIDE_HACK_DEFEND_TITLE"
         ];
@@ -238,7 +237,7 @@ switch (_description) do {
     };
     case 23 : {
         _description = [
-            localize "STR_BTC_HAM_SIDE_CHECKPOINT_DESTROY_DESC" + format [_image, getText (configfile >> "CfgVehicles" >> _location >> "editorPreview")],
+            localize "STR_BTC_HAM_SIDE_CHECKPOINT_DESTROY_DESC" + ([_location] call btc_fnc_typeOfPreview),
             localize "STR_BTC_HAM_SIDE_CHECKPOINT_DESTROY_TITLE",
             localize "STR_BTC_HAM_SIDE_CHECKPOINT_DESTROY_TITLE"
         ];
@@ -246,7 +245,7 @@ switch (_description) do {
     };
     case 24 : {
         _description = [
-            localize "STR_BTC_HAM_SIDE_CAPOFF_SURRENDER_DESC" + format [_image, getText (configfile >> "CfgVehicles" >> _location >> "editorPreview")],
+            localize "STR_BTC_HAM_SIDE_CAPOFF_SURRENDER_DESC" + ([_location] call btc_fnc_typeOfPreview),
             localize "STR_BTC_HAM_SIDE_CAPOFF_SURRENDER_TITLE",
             localize "STR_BTC_HAM_SIDE_CAPOFF_SURRENDER_TITLE"
         ];
@@ -264,7 +263,7 @@ switch (_description) do {
     case 26 : {
         _location params ["_officerName", "_loc", "_officerType"];
         _description = [
-            format [localize "STR_BTC_HAM_SIDE_KILL_IN_DESC", _officerName, _loc] + format [_image, getText (configfile >> "CfgVehicles" >> _officerType >> "editorPreview")],
+            format [localize "STR_BTC_HAM_SIDE_KILL_IN_DESC", _officerName, _loc] + ([_officerType] call btc_fnc_typeOfPreview),
             format [localize "STR_BTC_HAM_SIDE_KILL_IN_TITLE", _officerName],
             format [localize "STR_BTC_HAM_SIDE_KILL_IN_TITLE", _officerName]
         ];
@@ -281,7 +280,7 @@ switch (_description) do {
     case 28 : {
         _location params ["_officerName", "_base"];
         _description = [
-            format [localize "STR_BTC_HAM_SIDE_KILL_BRING_DESC", _officerName] + format [_image, getText (configfile >> "CfgVehicles" >> _base >> "editorPreview")],
+            format [localize "STR_BTC_HAM_SIDE_KILL_BRING_DESC", _officerName] + ([_base] call btc_fnc_typeOfPreview),
             localize "STR_BTC_HAM_SIDE_KILL_BRING_TITLE",
             localize "STR_BTC_HAM_SIDE_KILL_BRING_TITLE"
         ];
@@ -294,6 +293,56 @@ switch (_description) do {
             localize "STR_BTC_HAM_SIDE_CAPOFF_HANDCUFF_TITLE"
         ];
         _type = "handcuff";
+    };
+    case 30 : {
+        _description = [
+            format [localize "STR_BTC_HAM_SIDE_CHEM_DESC", _location] + (["B_W_Soldier_CBRN_F"] call btc_fnc_typeOfPreview),
+            format [localize "STR_BTC_HAM_SIDE_CHEM_TITLE", _location],
+            format [localize "STR_BTC_HAM_SIDE_CHEM_TITLE", _location]
+        ];
+        _type = "danger";
+    };
+    case 31 : {
+        _description = [
+            (localize "STR_BTC_HAM_SIDE_CHEM_BRING_DESC") + ([_location] call btc_fnc_typeOfPreview),
+            localize "STR_BTC_HAM_SIDE_CHEM_BRING_TITLE",
+            localize "STR_BTC_HAM_SIDE_CHEM_BRING_TITLE"
+        ];
+        _type = "container";
+    };
+    case 32 : {
+        _description = [
+            (localize "STR_BTC_HAM_SIDE_CHEM_LOCATE_DESC") + ([_location] call btc_fnc_typeOfPreview),
+            localize "STR_BTC_HAM_SIDE_CHEM_LOCATE_TITLE",
+            localize "STR_BTC_HAM_SIDE_CHEM_LOCATE_TITLE"
+        ];
+        _type = "search";
+    };
+    case 33 : {
+        _description = [
+            (localize "STR_BTC_HAM_SIDE_CHEM_MOVE_DESC") + ([_location] call btc_fnc_typeOfPreview),
+            localize "STR_BTC_HAM_SIDE_CHEM_MOVE_TITLE",
+            localize "STR_BTC_HAM_SIDE_CHEM_MOVE_TITLE"
+        ];
+        _type = "move";
+    };
+    case 34 : {
+        _location params ["_pilotName", "_typeOf_pilot"];
+        _description = [
+            format [localize "STR_BTC_HAM_SIDE_RESC_BODYBAG_DESC", _pilotName] + ([_typeOf_pilot] call btc_fnc_typeOfPreview),
+            localize "STR_BTC_HAM_SIDE_RESC_BODYBAG_TITLE",
+            localize "STR_BTC_HAM_SIDE_RESC_BODYBAG_TITLE"
+        ];
+        _type = "interact";
+    };
+    case 35 : {
+        _location params ["_pilotName", "_base"];
+        _description = [
+            format [localize "STR_BTC_HAM_SIDE_RESC_BRING_DESC", _pilotName] + ([_base] call btc_fnc_typeOfPreview),
+            localize "STR_BTC_HAM_SIDE_RESC_BRING_TITLE",
+            localize "STR_BTC_HAM_SIDE_RESC_BRING_TITLE"
+        ];
+        _type = "move";
     };
 };
 

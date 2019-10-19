@@ -41,3 +41,14 @@ _player addEventHandler ["WeaponAssembled", {
 
     _this
 }];
+
+if (btc_p_chem) then {
+     // Add biopsy
+    [missionnamespace, "probingEnded", btc_fnc_chem_biopsy] call BIS_fnc_addScriptedEventHandler;
+
+     // Disable BI shower
+    ["DeconShower_01_F", "init", {(_this select 0) setVariable ['bin_deconshower_disableAction', true];}] call CBA_fnc_addClassEventHandler;
+    ["DeconShower_02_F", "init", {(_this select 0) setVariable ['bin_deconshower_disableAction', true];}] call CBA_fnc_addClassEventHandler;
+
+    [] call btc_fnc_chem_ehDetector;
+};

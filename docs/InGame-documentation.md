@@ -14,9 +14,20 @@ Use the interaction menu to treat your wounds. Keep in mind that all the actions
 Use the earplugs to protect your ears to avoid combat deafness. You can put them on with your self interaction key.
 
 
+## Chemical Warfare
+### Chemical agent:
+A chemical agent can be found in the battlefield at cache location for example. When an object is contaminated, the chemical agent propagates to people around (in a circle of 3m). Those people will be hurt constantly until they died or found a decontaminating shower (available at the logistic point) to clean up their body. When they are contaminated, they can propagate it to other people around (in a circle of 1.5m) or vehicle if they get inside. Keep in mind, dead body stay contaminated but body bag will isolate it. Also, a contaminated object loaded as cargo will contaminate the container or vehicle.
+### Protection:
+Use CBRN gear (uniform, mask and breather backpack) to protect you from the contamination effect. But, don't forget to take a shower for more than 5s before removing your CBRN gear. Be aware, even with a CBRN equipment you can propagate the agent to people or vehicle, you are just protected from the effect.
+### Decontaminate:
+You can use a small shower to decontaminate units only. Use the big shower for objects, vehicles and objects loaded as cargo. To activate them, just stay under the shower.
+### Detection:
+You can analyze an object, vehicle or man with ED-1E drone to determine if it is contaminated (Note: The drone will never be contaminated.). You can also check if you are in a contaminated area by using a chemical detector (THREAT from 0.1 to 0.9: contaminated objects are around, THREAT at 1: you are in the propagating range (you will be contaminated)).
+
+
 ## Vehicles
 ### Respawn:
- When a vehicle is destroyed it will not respawn in base, you need to tow or lift it back to base and repair it near the logistic point (Interact with the red box). Helicopter wrecks can only be lifted. The Chinook is the only exception, it will respawn after 30 seconds.
+When a vehicle is destroyed it will not respawn in base, you need to tow or lift it back to base and repair it near the logistic point (Interact with the red box). Helicopter wrecks can only be lifted. The Chinook is the only exception, it will respawn after 30 seconds.
 ### Rearm:
 You can also rearm them by spawning the corresponding caliber at logistic point (Interact with the red box, select the vehicle type and caliber). Carry the ammo created and interact with the vehicle to rearm. This only works if rearming is setting on entire magazine or amount based on caliber (not for entire vehicle setting).
 

@@ -14,6 +14,7 @@ Parameters:
     _isRepairVehicle - Set the ACE parameter is a repair vehicle. [Boolean]
     _fuelSource - Define the ACE cargo fuel source. [Array]
     _pylons - Set pylon loadout. [Array]
+    _isContaminated - Set a vehicle contaminated. [Boolean]
 
 Returns:
 
@@ -35,13 +36,14 @@ params [
     ["_isMedicalVehicle", false, [true]],
     ["_isRepairVehicle", false, [true]],
     ["_fuelSource", [], [[]]],
-    ["_pylons", [], [[]]]
+    ["_pylons", [], [[]]],
+    ["_isContaminated", false, [false]]
 ];
 
 private _veh  = createVehicle [_type, ASLToATL _pos, [], 0, "CAN_COLLIDE"];
 _veh setDir _dir;
 _veh setPosASL _pos;
-[_veh, _customization, _isMedicalVehicle, _isRepairVehicle, _fuelSource, _pylons] call btc_fnc_setVehProperties;
+[_veh, _customization, _isMedicalVehicle, _isRepairVehicle, _fuelSource, _pylons, _isContaminated] call btc_fnc_setVehProperties;
 
 _veh setVariable ["btc_dont_delete", true];
 

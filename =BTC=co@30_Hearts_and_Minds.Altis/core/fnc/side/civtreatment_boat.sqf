@@ -50,7 +50,7 @@ private _index = 1 + floor (random (_veh emptyPositions "cargo"));
 _unit assignAsCargoIndex [_veh, _index];
 _unit moveinCargo [_veh, _index];
 
-private _jip = [_taskID, 10, _unit, [_city getVariable "name", _veh_type]] call btc_fnc_task_create;
+[_taskID, 10, _unit, [_city getVariable "name", _veh_type]] call btc_fnc_task_create;
 
 sleep 1;
 waitUntil {sleep 5; (_taskID call BIS_fnc_taskCompleted || !(playableUnits inAreaArray [getPosWorld _unit, 5000, 5000] isEqualTo []))};

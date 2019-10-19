@@ -23,15 +23,27 @@ Author:
 params [
     ["_object_data", [], [[]]]
 ];
-_object_data params ["_type", "_posWorld", "_dir", "_magClass", "_cargo", "_inventory", "_vectorPos"];
+_object_data params ["_type",
+    "_posWorld",
+    "_dir",
+    "_magClass",
+    "_cargo",
+    "_inventory",
+    "_vectorPos",
+    ["_isContaminated", false, [false]]
+];
 
-//create object
 private _obj = _type createVehicle _posWorld;
 
 _obj setDir _dir;
 _obj setPosWorld _posWorld;
 _obj setVectorDirAndUp _vectorPos;
 
+if (_isContaminated) then {
+    if ((btc_chem_contaminated pushBackUnique _obj) > -1) then {
+        publicVariable "btc_chem_contaminated";
+    };
+};
 if !(_magClass isEqualTo "") then {_obj setVariable ["ace_rearm_magazineClass", _magClass, true]};
 
 [_obj] call btc_fnc_log_init;
