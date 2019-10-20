@@ -73,6 +73,8 @@ closeDialog 0;
 [{
     params ["_mat", "_name"];
 
+    if (isNull _mat) exitWith {};
+
     private _pos = getPos _mat;
     private _direction = getDir _mat;
     private _FOB_name = "FOB " + _name;

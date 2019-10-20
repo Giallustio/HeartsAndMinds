@@ -1,3 +1,12 @@
+---
+name: Bug report
+about: Create a report to help us improve
+title: ''
+labels: bug
+assignees: ''
+
+---
+
 (Use English only.)
 
 ## Before reporting
@@ -18,6 +27,7 @@ If you have found an issue with Hearts and Minds please make sure that Hearts an
 ```
 
 **Description:**
+- A clear and concise description of what the bug is.
 - Add a detailed description of the error. This makes it easier for us to fix the issue.
 
 **Steps to reproduce:**

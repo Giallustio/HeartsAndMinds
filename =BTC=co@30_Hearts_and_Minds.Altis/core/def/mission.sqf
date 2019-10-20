@@ -1,5 +1,6 @@
+
 btc_version = 1.193;
-diag_log format ["=BTC= HEARTS AND MINDS VERSION %1.8", btc_version];
+diag_log format ["=BTC= HEARTS AND MINDS VERSION %1.9", btc_version];
 
 //Param
 //<< Time options >>
