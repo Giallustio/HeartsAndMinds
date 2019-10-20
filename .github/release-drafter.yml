@@ -1,5 +1,5 @@
 name-template: '=BTC= co@30 Hearts & Minds v$NEXT_PATCH_VERSION'
-tag-template: 'v$NEXT_PATCH_VERSION'
+tag-template: '$NEXT_PATCH_VERSION'
 exclude-lables:
     - 'ignore changelog'
 change-template: '- $TITLE (@$AUTHOR).'
