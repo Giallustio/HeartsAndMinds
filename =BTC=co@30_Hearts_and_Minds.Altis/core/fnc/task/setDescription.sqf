@@ -113,10 +113,11 @@ switch (_description) do {
         _type = "destroy";
     };
     case 8 : {
+        _location params ["_loc", "_unitType"];
         _description = [
-            format [localize "STR_BTC_HAM_SIDE_CIVTREAT_DESC", _location],
-            format [localize "STR_BTC_HAM_SIDE_CIVTREAT_TITLE", _location],
-            format [localize "STR_BTC_HAM_SIDE_CIVTREAT_TITLE", _location]
+            (format [localize "STR_BTC_HAM_SIDE_CIVTREAT_DESC", _loc]) + ([_unitType] call btc_fnc_typeOfPreview),
+            format [localize "STR_BTC_HAM_SIDE_CIVTREAT_TITLE", _loc],
+            format [localize "STR_BTC_HAM_SIDE_CIVTREAT_TITLE", _loc]
         ];
         _type = "heal";
     };
