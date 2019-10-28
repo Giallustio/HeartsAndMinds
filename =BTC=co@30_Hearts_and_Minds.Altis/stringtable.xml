@@ -1098,9 +1098,9 @@
                 <Chinesesimp>在 %1 地区摧毁水下发电机</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_UNDERWATER_DESC">
-                <Original>An Underwater generator has been located in %1. Local population is asking for your help to destroy it!</Original>
+                <Original>An underwater generator has been located in %1. Local population is asking for your help to destroy it!</Original>
                 <Spanish>Se ha localizado un generador submarino en %1. La población local está pidiendo tu ayuda para destruirlo!</Spanish>
-                <German>Ein Unterwassergenerator wurde in der Nähe von %1 aufgeklärt. Die zivile Bevölkerung bittet um die Zerstörung des Aggregats!</German>
+                <German>Ein unterwassergenerator wurde in der Nähe von %1 aufgeklärt. Die zivile Bevölkerung bittet um die Zerstörung des Aggregats!</German>
                 <Portuguese>O gerador subaquático foi localizado em %1. A população local está pedindo sua ajuda para destruí-lo!</Portuguese>
                 <Chinesesimp>在 %1 地区发现了一部水下发电机。当地居民请求您将其摧毁。</Chinesesimp>
             </Key>
