@@ -31,7 +31,7 @@ Online [wiki available](http://vdauphin.github.io/HeartsAndMinds/).
 - Civilian interaction/fleeing
 - Reputation system
 - Deep ACE3 support
-- More than 260 enemies and 25 civilians factions available
+- More than 266 enemies and 24 civilians factions available
 - More than 16 side mission
 - Dynamic caching system
 - Full saving Database

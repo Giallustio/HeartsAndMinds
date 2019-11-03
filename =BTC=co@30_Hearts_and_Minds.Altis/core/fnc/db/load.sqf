@@ -173,7 +173,7 @@ private _markers_properties = profileNamespace getVariable [format ["btc_hm_%1_m
 {
     _x params ["_markerText", "_markerPos", "_markerColor", "_markerType", "_markerSize", "_markerAlpha", "_markerBrush", "_markerDir", "_markerShape"];
 
-    private _marker = createMarker [format ["_USER_DEFINED #0/%1/1", _forEachindex], _markerPos];
+    private _marker = createMarker [format ["_USER_DEFINED #0/%1/0", _forEachindex], _markerPos];
     _marker setMarkerText _markerText;
     _marker setMarkerColor _markerColor;
     _marker setMarkerType _markerType;
