@@ -24,4 +24,4 @@ You can add a new vehicle/boat to respawn system by :
 
     like : btc_helo = [btc_helo_1,**btc_helo_2**];
 
-Note: you can tweak respawn time here: [/core/init_server.sqf L34](https://github.com/Vdauphin/HeartsAndMinds/blob/master/%3DBTC%3Dco%4030_Hearts_and_Minds.Altis/core/init_server.sqf#L34) by changing 30s to what you want.
+Note: you can tweak respawn time here: [/core/init_server.sqf L32](https://github.com/Vdauphin/HeartsAndMinds/blob/master/%3DBTC%3Dco%4030_Hearts_and_Minds.Altis/core/init_server.sqf#L32) by changing 30s to what you want.
