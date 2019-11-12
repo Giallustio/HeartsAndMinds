@@ -59,6 +59,7 @@ btc_p_civ_max_veh = "btc_p_civ_max_veh" call BIS_fnc_getParamValue;
 //<< Gameplay options >>
 btc_p_sea = ("btc_p_sea" call BIS_fnc_getParamValue) isEqualTo 1;
 btc_p_chem = ("btc_p_chem" call BIS_fnc_getParamValue) isEqualTo 1;
+btc_p_spect = ("btc_p_spect" call BIS_fnc_getParamValue) isEqualTo 1;
 btc_p_side_mission_cycle = "btc_p_side_mission_cycle" call BIS_fnc_getParamValue;
 
 //<< Arsenal options >>
@@ -609,6 +610,9 @@ switch (_p_en) do {
 
 //Chem
 btc_chem_range = 3;
+
+//Spect
+btc_spect_range = 500;
 
 //Rep
 btc_rep_bonus_cache = 100;

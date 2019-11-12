@@ -286,6 +286,14 @@
                 <Chinesesimp>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\danger_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;化学试剂:&lt;/marker&gt;&lt;br/&gt; 化学试剂会在战场上的武器箱等位置出现。当一个物体受到污染时, 这种化学试剂会传播它到周围的人身上(3米范围内)。这些人将持续受到伤害直至死亡, 或找到一个净化淋浴(位于在后勤点)来清理他们的身体。当这些人受到污染时, 他们会将污染传播给周围的其他人(1.5米范围内)或车辆(如果他们进入车辆的话)。记住, 尸体将保持受到污染的状态, 但尸体袋可以将其隔离。此外, 作为货物装载受污染物体将会污染集装箱或车辆。 &lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\defend_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;防护措施:&lt;/marker&gt;&lt;br/&gt; 使用CBRN(生化核辐)装备(服装, 面具和呼吸器背包)可以保护您免受污染影响。但是, 在取下CBRN装备之前, 不要忘记进行至少5秒的净化淋浴。请注意, 即使穿戴了CBRN装备, 您也会向人员或车辆传播化学试剂, 只有你免受污染影响。 &lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\box_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;清除污染:&lt;/marker&gt;&lt;br/&gt; 小型淋浴器只能用来净化单兵单位。使用大型淋浴器来清洗物品、车辆和货物。要激活净化过程, 只需待在淋浴下即可。&lt;br/&gt;&lt;br/&gt; &lt;img image='\z\ace\addons\minedetector\ui\icon_mineDetectorOn.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;检测:&lt;/marker&gt;&lt;br/&gt; 你可以使用 ED-1E 无人机分析物体、车辆或人, 以测定其是否受到污染(注: 该无人机永远不会受到污染)。您也可以使用化学探测器检测您是否处于污染区域内(威胁度介于0.1至0.9之间: 附近存在受污染物体, 威胁度等于1: 您处于传播区域内(您将受到污染))。</Chinesesimp>
             </Key>
         </Container>
+        <Container name="Documentation: Spectrum devices">
+            <Key ID="STR_BTC_HAM_DOC_SPECTRUMDEVICES_TITLE">
+                <Original>Spectrum devices</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_DOC_SPECTRUMDEVICES_TEXT">
+                <Original>&lt;img image='\A3\Ui_f\data\Logos\a_64_ca.paa' width='20' height='20'/&gt;You can use spectrum devices to detect UAV. The amplitude of the peak depend on the distance and angle between the UAV and the antenna. The maximum range is 500m.&lt;br/&gt;</Original>
+            </Key>
+        </Container>
     </Package>
     <Package name="Parameters">
         <Container name="Parameters: Time">
@@ -568,6 +576,9 @@
                 <Original>Chemical warfare:</Original>
                 <German>Chemische Kriegsführung:</German>
                 <Chinesesimp>化学战:</Chinesesimp>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_GAMEPLAY_SPECT">
+                <Original>Spectrum devices:</Original>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_GAMEPLAY_SIDEM">
                 <Original>Side mission cycle:</Original>

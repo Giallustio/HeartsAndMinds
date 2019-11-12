@@ -52,3 +52,7 @@ if (btc_p_chem) then {
 
     [] call btc_fnc_chem_ehDetector;
 };
+
+if (btc_p_spect) then {
+    ["weapon", {_this call btc_fnc_spect_updateDevice}] call CBA_fnc_addPlayerEventHandler;
+};

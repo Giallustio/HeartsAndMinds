@@ -326,6 +326,9 @@ if (!isDedicated) then {
     //REP
     btc_fnc_rep_treatment = compile preprocessFileLineNumbers "core\fnc\rep\treatment.sqf";
 
+    //SPECT
+    btc_fnc_spect_updateDevice = compile preprocessFileLineNumbers "core\fnc\spect\updateDevice.sqf";
+
     //ARSENAL
     btc_fnc_arsenal_data = compile preprocessFileLineNumbers "core\fnc\arsenal\data.sqf";
     btc_fnc_arsenal_garage = compile preprocessFileLineNumbers "core\fnc\arsenal\garage.sqf";
