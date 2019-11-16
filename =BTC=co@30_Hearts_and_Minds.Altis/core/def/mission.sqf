@@ -161,6 +161,9 @@ if (isServer) then {
     btc_chem_decontaminate = [btc_bigShower];
     missionNamespace setVariable ["btc_chem_contaminated", [], true];
 
+    //Spect
+    missionNamespace setVariable ["btc_spect_emp", [], true];
+
     //Cache
     btc_cache_type = [
         _allClassSorted select {
@@ -612,7 +615,8 @@ switch (_p_en) do {
 btc_chem_range = 3;
 
 //Spect
-btc_spect_range = 500;
+btc_spect_range = 1000;
+btc_spect_updateOn = -1;
 
 //Rep
 btc_rep_bonus_cache = 100;

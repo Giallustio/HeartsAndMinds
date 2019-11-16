@@ -3,10 +3,11 @@
 Function: btc_fnc_spect_updateDevice
 
 Description:
-    Refresh spectrum device depend on UAV distance.
+    Refresh spectrum device depend on UAV and EMP distance and angle.
 
 Parameters:
-    _objt - Weapon type. [String]
+    _player - Player. [Object]
+    _weapon - Weapon use by player. [Object]
 
 Returns:
 
@@ -25,32 +26,36 @@ params [
     ["_weapon", "", [""]]
 ];
 
-private _CfgWeapons = configFile >> "CfgWeapons";
+if (btc_spect_updateOn > -1) exitWith {};
 
-if !(((_player weaponAccessories _weapon) select 0) isKindOf ["muzzle_antenna_base_01_F", _CfgWeapons]) exitWith {};
+private _accessorie = (_player weaponAccessories _weapon) select 0;
+
+if !(_accessorie isKindOf ["muzzle_antenna_base_01_F", configFile >> "CfgWeapons"]) exitWith {};
+
+private _freq = [[390, 500], [78, 89]] select (_accessorie isEqualTo "muzzle_antenna_01_f");
 
 {missionNamespace setVariable _x} forEach [
-    ["#EM_FMin", 390],
-    ["#EM_FMax", 500],
+    ["#EM_FMin", _freq select 0],
+    ["#EM_FMax", _freq select 1],
     ["#EM_SMin", 0],
     ["#EM_SMax", 100],
-    ["#EM_SelMin", 390],
-    ["#EM_SelMax", 400],
+    ["#EM_SelMin", _freq select 0],
+    ["#EM_SelMax", ((_freq select 1) - (_freq select 0)) / 16 + (_freq select 0)],
     ["#EM_Values", []],
     ["#EM_Transmit", false],
     ["#EM_Progress", 0]
 ];
 
-[{
+btc_spect_updateOn = [{
     params ["_arguments", "_idPFH"];
     _arguments params [
         ["_player", objNull, [objNull]],
-        ["_weapon", "", [""]],
-        ["_CfgWeapons", configNull, [configNull]]
+        ["_accessorie", "", [""]]
     ];
 
-    if !(((_player weaponAccessories currentWeapon _player) select 0) isKindOf ["muzzle_antenna_base_01_F", _CfgWeapons]) exitWith {
+    if !(((_player weaponAccessories currentWeapon _player) select 0) isEqualTo _accessorie) exitWith {
         [_idPFH] call CBA_fnc_removePerFrameHandler;
+        btc_spect_updateOn = -1;
 
         {missionNamespace setVariable _x} forEach [
             ["#EM_FMin", nil],
@@ -61,33 +66,14 @@ if !(((_player weaponAccessories _weapon) select 0) isKindOf ["muzzle_antenna_ba
             ["#EM_SelMax", nil],
             ["#EM_Values", nil],
             ["#EM_Transmit", nil],
-            ["#EM_Progress", nil]
+            ["#EM_Progress", nil],
+            ["#em_Prev", nil],
+            ["#em_Spectrum", nil]
         ];
+        [_player, currentWeapon _player] call btc_fnc_spect_updateDevice;
     };
 
-    private _signalFrequencies = [];
-    {
-        private _distance = _player distance _x;
-        private _level = 100 - 100 * (_distance / btc_spect_range);
-        private _angle = _player getRelDir _x;
-        if (_level < 0 || (_angle < 90 && _angle > 270)) then {
-            _level = 0;
-        } else {
-            _level = _level * (cos _angle);
-        };
-
-        private _offsetFreq = switch (side _x) do {
-            case (west) : {0};
-            case (east) : {10};
-            case (independent) : {20};
-            default {40};
-        };
-
-        _signalFrequencies append [
-            (count typeOf _x) + _offsetFreq + 385, // Generate a custom frequency base on UAV type and side
-            _level
-        ];
-    } forEach allUnitsUAV;
+    private _signalFrequencies = [_player, allUnitsUAV] call btc_fnc_spect_frequencies;
+    _signalFrequencies append ([_player, btc_spect_emp select {damage _x < 1}, [78, 89]] call btc_fnc_spect_frequencies);
     missionNamespace setVariable ["#EM_Values", _signalFrequencies];
-
-}, 1, [_player, _weapon, _CfgWeapons]] call CBA_fnc_addPerFrameHandler;
+}, 1, [_player, _accessorie]] call CBA_fnc_addPerFrameHandler;
