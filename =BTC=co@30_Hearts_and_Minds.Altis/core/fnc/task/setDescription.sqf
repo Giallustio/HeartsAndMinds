@@ -345,6 +345,22 @@ switch (_description) do {
         ];
         _type = "move";
     };
+    case 36 : {
+        _description = [
+            format [localize "STR_BTC_HAM_SIDE_EMP_DESC", _location, "<br/><img image='\a3\Data_F_Enoch\Images\SpectrumDevice_ca.paa'  width='355' height='200'/>"],
+            format [localize "STR_BTC_HAM_SIDE_EMP_TITLE", _location],
+            format [localize "STR_BTC_HAM_SIDE_EMP_TITLE", _location]
+        ];
+        _type = "antenna";
+    };
+    case 37 : {
+        _description = [
+            (localize "STR_BTC_HAM_SIDE_EMP_DESTROY_DESC") + ([_location] call btc_fnc_typeOfPreview),
+            localize "STR_BTC_HAM_SIDE_EMP_DESTROY_TITLE",
+            localize "STR_BTC_HAM_SIDE_EMP_DESTROY_TITLE"
+        ];
+        _type = "search";
+    };
 };
 
 [

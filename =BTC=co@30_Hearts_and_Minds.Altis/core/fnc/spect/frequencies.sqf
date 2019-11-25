@@ -3,7 +3,7 @@
 Function: btc_fnc_spect_frequencies
 
 Description:
-    Generate an array of frequency and amplitude based on object type and position.
+    Generate an array of frequency and amplitude based on object netID and position.
 
 Parameters:
     _player - Player. [Object]
@@ -28,7 +28,8 @@ params [
     ["_freq", [390, 500], [[]]]
 ];
 
-private _frequencyRange = ((_freq select 1) - (_freq select 0)) / 110;
+private _frequencyRange = (_freq select 1) - (_freq select 0);
+
 private _signalFrequencies = [];
 {
     private _distance = _player distance _x;
@@ -40,15 +41,19 @@ private _signalFrequencies = [];
         _level = _level * (cos _angle);
     };
 
-    private _offsetFreq = switch (side _x) do {
-        case (west) : {0};
-        case (east) : {10};
-        case (independent) : {20};
-        default {40};
+    private _side = switch (side _x) do {
+        case (west) : {1};
+        case (btc_enemy_side) : {3};
+        default {2};
     };
+    private _maxSubFreq = _frequencyRange * _side / 3;
+    private _minSubFreq = _frequencyRange * (_side - 1) / 3;
+    private _netID = netId _x;
+    private _unit = parseNumber (_netID select [count _netID - 1, 1]);
+    private _deci = parseNumber (_netID select [count _netID - 2, 1]) / 10;
 
     _signalFrequencies append [
-        ((count typeOf _x) + _offsetFreq) * _frequencyRange + (_freq select 0), // Generate a custom frequency base on UAV type and side
+        (_unit + _deci) * (_maxSubFreq - _minSubFreq) / 9 + _minSubFreq + (_freq select 0), // Generate a custom frequency base on UAV netID and side
         _level
     ];
 } forEach _objects;

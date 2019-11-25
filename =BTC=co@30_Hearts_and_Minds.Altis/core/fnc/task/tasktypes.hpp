@@ -68,4 +68,7 @@ class CfgTaskTypes {
     class Danger {
         icon = \A3\ui_f\data\igui\cfg\simpleTasks\types\danger_ca.paa;
     };
+    class Antenna {
+        icon = \A3\Data_F_Enoch\Logos\arma3_enoch_logo_ca.paa;
+    };
 };

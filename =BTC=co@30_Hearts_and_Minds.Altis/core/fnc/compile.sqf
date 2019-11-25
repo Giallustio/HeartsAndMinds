@@ -160,6 +160,7 @@ if (isServer) then {
     btc_fnc_side_hack = compile preprocessFileLineNumbers "core\fnc\side\hack.sqf";
     btc_fnc_side_kill = compile preprocessFileLineNumbers "core\fnc\side\kill.sqf";
     btc_fnc_side_chemicalLeak = compile preprocessFileLineNumbers "core\fnc\side\chemicalLeak.sqf";
+    btc_fnc_side_EMP = compile preprocessFileLineNumbers "core\fnc\side\EMP.sqf";
 
     //LOG
     btc_fnc_log_CuratorObjectPlaced_s = compile preprocessFileLineNumbers "core\fnc\log\CuratorObjectPlaced_s.sqf";

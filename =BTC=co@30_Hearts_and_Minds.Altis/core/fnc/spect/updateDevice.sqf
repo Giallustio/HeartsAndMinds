@@ -32,19 +32,28 @@ private _accessorie = (_player weaponAccessories _weapon) select 0;
 
 if !(_accessorie isKindOf ["muzzle_antenna_base_01_F", configFile >> "CfgWeapons"]) exitWith {};
 
-private _freq = [[390, 500], [78, 89]] select (_accessorie isEqualTo "muzzle_antenna_01_f");
+private _freq = [[385, 505], [77, 90]] select (_accessorie isEqualTo "muzzle_antenna_01_f");
 
-{missionNamespace setVariable _x} forEach [
+private _EM = [
     ["#EM_FMin", _freq select 0],
     ["#EM_FMax", _freq select 1],
     ["#EM_SMin", 0],
     ["#EM_SMax", 100],
-    ["#EM_SelMin", _freq select 0],
-    ["#EM_SelMax", ((_freq select 1) - (_freq select 0)) / 16 + (_freq select 0)],
     ["#EM_Values", []],
     ["#EM_Transmit", false],
     ["#EM_Progress", 0]
 ];
+
+if (
+    _freq select 0 > missionNamespace getVariable ["#EM_SelMin", 0] ||
+    _freq select 1 < missionNamespace getVariable ["#EM_SelMin", 0]
+) then {
+    _EM append [
+        ["#EM_SelMin", _freq select 0],
+        ["#EM_SelMax", ((_freq select 1) - (_freq select 0)) / 16 + (_freq select 0)]
+    ];
+};
+{missionNamespace setVariable _x} forEach _EM;
 
 btc_spect_updateOn = [{
     params ["_arguments", "_idPFH"];
@@ -62,13 +71,11 @@ btc_spect_updateOn = [{
             ["#EM_FMax", nil],
             ["#EM_SMin", nil],
             ["#EM_SMax", nil],
-            ["#EM_SelMin", nil],
-            ["#EM_SelMax", nil],
             ["#EM_Values", nil],
             ["#EM_Transmit", nil],
             ["#EM_Progress", nil],
-            ["#em_Prev", nil],
-            ["#em_Spectrum", nil]
+            ["#EM_Prev", nil],
+            ["#EM_Spectrum", nil]
         ];
         [_player, currentWeapon _player] call btc_fnc_spect_updateDevice;
     };
