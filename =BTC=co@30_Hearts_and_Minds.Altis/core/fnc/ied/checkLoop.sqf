@@ -41,7 +41,7 @@ Author:
                             speed _x > 5
                         }
                     }) then {
-                        [_wreck, _ied] spawn btc_fnc_ied_boom;
+                        [_wreck, _ied] call btc_fnc_ied_boom;
                     };
                 } forEach (_ied nearEntities ["allvehicles", 10]);
             } else {
