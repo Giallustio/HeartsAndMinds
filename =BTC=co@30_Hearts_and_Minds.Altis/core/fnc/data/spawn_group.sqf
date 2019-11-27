@@ -116,7 +116,7 @@ if (_type isEqualTo 5) then {
             sleep 5;
             if !((getPos _suicider nearEntities ["SoldierWB", 25]) isEqualTo []) then {
                 _cond = true;
-                _suicider spawn btc_fnc_ied_suicider_active
+                _suicider call btc_fnc_ied_suicider_active
             };
         };
     };
