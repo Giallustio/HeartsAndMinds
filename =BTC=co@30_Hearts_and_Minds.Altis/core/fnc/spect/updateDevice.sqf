@@ -33,10 +33,11 @@ private _accessorie = (_player weaponAccessories _weapon) select 0;
 if !(_accessorie isKindOf ["muzzle_antenna_base_01_F", configFile >> "CfgWeapons"]) exitWith {};
 
 private _freq = [[385, 505], [77, 90]] select (_accessorie isEqualTo "muzzle_antenna_01_f");
+_freq params ["_fMin", "_fMax"];
 
 private _EM = [
-    ["#EM_FMin", _freq select 0],
-    ["#EM_FMax", _freq select 1],
+    ["#EM_FMin", _fMin],
+    ["#EM_FMax", _fMax],
     ["#EM_SMin", 0],
     ["#EM_SMax", 100],
     ["#EM_Values", []],
@@ -45,12 +46,12 @@ private _EM = [
 ];
 
 if (
-    _freq select 0 > missionNamespace getVariable ["#EM_SelMin", 0] ||
-    _freq select 1 < missionNamespace getVariable ["#EM_SelMin", 0]
+    _fMin > missionNamespace getVariable ["#EM_SelMin", 0] ||
+    _fMax < missionNamespace getVariable ["#EM_SelMin", 0]
 ) then {
     _EM append [
-        ["#EM_SelMin", _freq select 0],
-        ["#EM_SelMax", ((_freq select 1) - (_freq select 0)) / 16 + (_freq select 0)]
+        ["#EM_SelMin", _fMin],
+        ["#EM_SelMax", (_fMax - _fMin) / 16 + _fMin]
     ];
 };
 {missionNamespace setVariable _x} forEach _EM;
