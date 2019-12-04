@@ -6,7 +6,7 @@ Description:
     Add effects when player do bad things (call militia, take weapons/grenade).
 
 Parameters:
-    _pos - Poistion where bad stuff happened. [Array]
+    _pos - Position where bad stuff happened. [Array]
 
 Returns:
 
