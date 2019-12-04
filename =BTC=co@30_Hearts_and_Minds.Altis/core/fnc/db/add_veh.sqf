@@ -3,7 +3,7 @@
 Function: btc_fnc_db_add_veh
 
 Description:
-    Fill me when you edit me !
+    Add vehicle to the wreck system.
 
 Parameters:
     _veh - [Object]
@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_db_add_veh;
+        [cursorObject] call btc_fnc_db_add_veh;
     (end)
 
 Author:
