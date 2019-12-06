@@ -3,12 +3,12 @@
 Function: btc_fnc_rep_buildingchanged
 
 Description:
-    Fill me when you edit me !
+    Change reputation on building damage.
 
 Parameters:
-    _from - [Object]
-    _to - [Object]
-    _isRuin - [Boolean]
+    _from - Previous building object. [Object]
+    _to - New building object. [Object]
+    _isRuin - If changes to ruins. [Boolean]
 
 Returns:
 

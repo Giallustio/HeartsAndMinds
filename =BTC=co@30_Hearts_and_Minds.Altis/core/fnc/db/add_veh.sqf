@@ -6,7 +6,8 @@ Description:
     Add vehicle to the wreck system.
 
 Parameters:
-    _veh - [Object]
+    _veh - Vehicle to add in wreck system. [Object]
+    _p_chem - Activate chemical propagation. [Boolean]
 
 Returns:
 

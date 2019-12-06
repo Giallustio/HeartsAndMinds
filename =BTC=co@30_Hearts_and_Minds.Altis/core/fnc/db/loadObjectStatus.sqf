@@ -3,7 +3,7 @@
 Function: btc_fnc_db_loadObjectStatus
 
 Description:
-    Fill me when you edit me !
+    Load object status.
 
 Parameters:
     _object_data - [Array]

@@ -3,17 +3,17 @@
 Function: btc_fnc_rep_killed
 
 Description:
-    Fill me when you edit me !
+    Change reputation when a player kill a unit.
 
 Parameters:
-    _unit - [Object]
-    _killer - [Object]
+    _unit - Unit killed. [Object]
+    _killer - Killer. [Object]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_rep_killed;
+        [cursorObject, player] call btc_fnc_rep_killed;
     (end)
 
 Author:
