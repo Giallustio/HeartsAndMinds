@@ -25,6 +25,15 @@ You can use a small shower to decontaminate units only. Use the big shower for o
 You can analyze an object, vehicle or man with ED-1E drone to determine if it is contaminated (Note: The drone will never be contaminated.). You can also check if you are in a contaminated area by using a chemical detector (THREAT from 0.1 to 0.9: contaminated objects are around, THREAT at 1: you are in the propagating range (you will be contaminated)).
 
 
+## Spectrum devices
+### Electromagnetic field:
+There are two types of electromagnetic field from UAV or electromagnetic pulse (EMP). UAV emit electromagnetic field from 390MHz to 500MHz due to device transmission. Electromagnetic pulse are used as weapon to create electronic failure to vehicles. The range of frequency is from 78MHz to 89MHz and is powerfull enough to turn off light, engine and avionic devices.
+### Protection:
+Electromagnetic field from UAV are safe but EMP have a range of 500m where vehicles with engine turn ON will be affected. 
+### Detection:
+You can detect the origin of electromagnetic field with spectrum devices. The amplitude of the peak depend on the distance and angle between the emiter and the antenna. The maximum range is 1000m.
+
+
 ## Vehicles
 ### Respawn:
 When a vehicle is destroyed it will not respawn in base, you need to tow or lift it back to base and repair it near the logistic point (Interact with the red box). Helicopter wrecks can only be lifted. The Chinook is the only exception, it will respawn after 30 seconds.

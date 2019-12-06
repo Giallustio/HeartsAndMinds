@@ -59,6 +59,7 @@ btc_p_civ_max_veh = "btc_p_civ_max_veh" call BIS_fnc_getParamValue;
 //<< Gameplay options >>
 btc_p_sea = ("btc_p_sea" call BIS_fnc_getParamValue) isEqualTo 1;
 btc_p_chem = ("btc_p_chem" call BIS_fnc_getParamValue) isEqualTo 1;
+btc_p_spect = ("btc_p_spect" call BIS_fnc_getParamValue) isEqualTo 1;
 btc_p_side_mission_cycle = "btc_p_side_mission_cycle" call BIS_fnc_getParamValue;
 
 //<< Arsenal options >>
@@ -160,6 +161,9 @@ if (isServer) then {
     btc_chem_decontaminate = [btc_bigShower];
     missionNamespace setVariable ["btc_chem_contaminated", [], true];
 
+    //Spect
+    missionNamespace setVariable ["btc_spect_emp", [], true];
+
     //Cache
     btc_cache_type = [
         _allClassSorted select {
@@ -186,7 +190,7 @@ if (isServer) then {
 
     //Side
     btc_side_ID = 0;
-    btc_side_list = ["supply", "mines", "vehicle", "get_city", "tower", "civtreatment", "checkpoint", "convoy", "rescue", "capture_officer", "hostage", "hack", "kill"]; // On ground (Side "convoy" and "capture_officer" are not design for map with different islands. Start and end city can be on different islands.)
+    btc_side_list = ["supply", "mines", "vehicle", "get_city", "tower", "civtreatment", "checkpoint", "convoy", "rescue", "capture_officer", "hostage", "hack", "kill", "EMP"]; // On ground (Side "convoy" and "capture_officer" are not design for map with different islands. Start and end city can be on different islands.)
     if (btc_p_sea) then {btc_side_list append ["civtreatment_boat", "underwater_generator"]}; // On sea
     if (btc_p_chem) then {btc_side_list pushBack "chemicalLeak"};
     btc_side_list_use = [];
@@ -250,6 +254,9 @@ if (isServer) then {
     btc_type_connectorTentClosed = _allClassSorted select {_x isKindOf "Land_ConnectorTent_01_closed_base_F"};
     btc_type_crossTent = _allClassSorted select {_x isKindOf "Land_ConnectorTent_01_cross_base_F"};
     btc_type_connectorTent = (_allClassSorted select {_x isKindOf "Land_ConnectorTent_01_base_F"}) - btc_type_connectorTentClosed - btc_type_crossTent;
+    btc_type_cargoEMP = _allClassSorted select {_x isKindOf "Cargo_EMP_base_F"};
+    btc_type_antenna = _allClassSorted select {_x isKindOf "OmniDirectionalAntenna_01_base_F"};
+    btc_type_solarPanel = _allClassSorted select {_x isKindOf "Land_SolarPanel_04_base_F"};
 
     //BTC Vehicles in missions.sqm
     btc_vehicles = [btc_veh_1, btc_veh_2, btc_veh_3, btc_veh_4, btc_veh_5, btc_veh_6, btc_veh_7, btc_veh_8, btc_veh_9, btc_veh_10, btc_veh_11, btc_veh_12, btc_veh_13, btc_veh_14, btc_veh_15, btc_veh_16];
@@ -609,6 +616,10 @@ switch (_p_en) do {
 
 //Chem
 btc_chem_range = 3;
+
+//Spect
+btc_spect_range = 1000;
+btc_spect_updateOn = -1;
 
 //Rep
 btc_rep_bonus_cache = 100;

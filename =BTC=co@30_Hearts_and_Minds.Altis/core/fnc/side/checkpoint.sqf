@@ -40,7 +40,6 @@ private _radius_y = _city getVariable ["RadiusY", 0];
 private _radius = (_radius_x + _radius_y)/4;
 
 private _boxes = [];
-private _taskID_array = [];
 private _composition = [];
 for "_i" from 1 to (1 + round random 2) do {
     //// Choose a road \\\\
@@ -96,7 +95,6 @@ for "_i" from 1 to (1 + round random 2) do {
     _boxe setVariable ["ace_cookoff_enableAmmoCookoff", false, true];
     private _destroy_taskID = _taskID + "dt" + str _i;
     [[_destroy_taskID, _taskID], 23, _boxe, _type_box, false, false] call btc_fnc_task_create;
-    _taskID_array pushBack _destroy_taskID;
     [_boxe, _destroy_taskID] spawn {
         params ["_boxe", "_destroy_taskID"];
 

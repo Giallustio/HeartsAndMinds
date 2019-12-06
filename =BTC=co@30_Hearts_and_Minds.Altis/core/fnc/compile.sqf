@@ -28,6 +28,10 @@ if (isServer) then {
     btc_fnc_chem_propagate = compile preprocessFileLineNumbers "core\fnc\chem\propagate.sqf";
     btc_fnc_chem_handleShower = compile preprocessFileLineNumbers "core\fnc\chem\handleShower.sqf";
 
+    //SPECT
+    btc_fnc_spect_checkLoop = compile preprocessFileLineNumbers "core\fnc\spect\checkLoop.sqf";
+    btc_fnc_spect_electronicFailure = compile preprocessFileLineNumbers "core\fnc\spect\electronicFailure.sqf";
+
     //CITY
     btc_fnc_city_activate = compile preprocessFileLineNumbers "core\fnc\city\activate.sqf";
     btc_fnc_city_create = compile preprocessFileLineNumbers "core\fnc\city\create.sqf";
@@ -156,6 +160,7 @@ if (isServer) then {
     btc_fnc_side_hack = compile preprocessFileLineNumbers "core\fnc\side\hack.sqf";
     btc_fnc_side_kill = compile preprocessFileLineNumbers "core\fnc\side\kill.sqf";
     btc_fnc_side_chemicalLeak = compile preprocessFileLineNumbers "core\fnc\side\chemicalLeak.sqf";
+    btc_fnc_side_EMP = compile preprocessFileLineNumbers "core\fnc\side\EMP.sqf";
 
     //LOG
     btc_fnc_log_CuratorObjectPlaced_s = compile preprocessFileLineNumbers "core\fnc\log\CuratorObjectPlaced_s.sqf";
@@ -325,6 +330,10 @@ if (!isDedicated) then {
 
     //REP
     btc_fnc_rep_treatment = compile preprocessFileLineNumbers "core\fnc\rep\treatment.sqf";
+
+    //SPECT
+    btc_fnc_spect_updateDevice = compile preprocessFileLineNumbers "core\fnc\spect\updateDevice.sqf";
+    btc_fnc_spect_frequencies = compile preprocessFileLineNumbers "core\fnc\spect\frequencies.sqf";
 
     //ARSENAL
     btc_fnc_arsenal_data = compile preprocessFileLineNumbers "core\fnc\arsenal\data.sqf";
