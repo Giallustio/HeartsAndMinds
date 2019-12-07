@@ -3,10 +3,10 @@
 Function: btc_fnc_db_loadObjectStatus
 
 Description:
-    Load object status.
+    Load object status like ACE cargo, inventory and position.
 
 Parameters:
-    _object_data - [Array]
+    _object_data - Object to create with position, direction, cargo, inventory ... [Array]
 
 Returns:
 

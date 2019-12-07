@@ -3,17 +3,17 @@
 Function: btc_fnc_eh_CuratorObjectPlaced
 
 Description:
-    Fill me when you edit me !
+    Initialise object placed by curator.
 
 Parameters:
-    _curator - [Object]
-    _object_placed - [Object]
+    _curator - Curator. [Object]
+    _object_placed - Object/Unit placed. [Object]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_eh_CuratorObjectPlaced;
+        [cursorObject] call btc_fnc_eh_CuratorObjectPlaced;
     (end)
 
 Author:

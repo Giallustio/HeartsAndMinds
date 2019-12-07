@@ -3,16 +3,16 @@
 Function: btc_fnc_tow_hook
 
 Description:
-    Fill me when you edit me !
+    Save the vehicle selected.
 
 Parameters:
-    _towed - [Object]
+    _towed - Vehicle will be towed. [Object]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_tow_hook;
+        [cursorObject] call btc_fnc_tow_hook;
     (end)
 
 Author:
