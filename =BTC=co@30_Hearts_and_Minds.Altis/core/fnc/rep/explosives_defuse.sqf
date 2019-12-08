@@ -3,11 +3,11 @@
 Function: btc_fnc_rep_explosives_defuse
 
 Description:
-    Fill me when you edit me !
+    Change reputation when an explosive has been defused.
 
 Parameters:
-    _ied - [Object]
-    _unit - [Object]
+    _ied - IED object. [Object]
+    _unit - Unit defusing the IED. [Object]
 
 Returns:
 

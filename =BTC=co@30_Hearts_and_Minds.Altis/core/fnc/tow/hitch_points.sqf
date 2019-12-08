@@ -3,16 +3,17 @@
 Function: btc_fnc_tow_hitch_points
 
 Description:
-    Fill me when you edit me !
+    Get point to attach rope.
 
 Parameters:
-    _vehicle - [Object]
+    _vehicle - Vehicle. [Object]
 
 Returns:
+    - _array - Front and rear hitch points. [Array]
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_tow_hitch_points;
+        [cursorOject] call btc_fnc_tow_hitch_points;
     (end)
 
 Author:

@@ -3,21 +3,22 @@
 Function: btc_fnc_fob_create_s
 
 Description:
-    Fill me when you edit me !
+   Create the FOB.
 
 Parameters:
-    _pos - [Array]
+    _pos - Position of the FOB. [Array]
     _direction - Direction of the FOB between 0 to 360 degree. [Number]
-    _FOB_name - [String]
-    _fob_structure - [Array]
-    _fob_flag - [Array]
-    _fobs - [Array]
+    _FOB_name - Name of the FOB. [String]
+    _fob_structure - FOB structure. [Array]
+    _fob_flag - Flag type. [Array]
+    _fobs - Array of FOB. [Array]
 
 Returns:
+    _array - Return marker, structure and flag object. [Array]
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_fob_create_s;
+        [getPos player, random 360, "My FOB"] call btc_fnc_fob_create_s;
     (end)
 
 Author:

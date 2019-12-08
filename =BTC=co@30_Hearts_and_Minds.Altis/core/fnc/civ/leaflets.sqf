@@ -3,17 +3,17 @@
 Function: btc_fnc_civ_leaflets
 
 Description:
-    Fill me when you edit me !
+    Evacuate civilian when player drop leaflets.
 
 Parameters:
-    _uav - [Object]
-    _weapon - [String]
+    _uav - UAV use by player. [Object]
+    _weapon - Type of weapon use by player inside UAV. [String]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_civ_leaflets;
+        _result = [player, "Bomb_Leaflets"] call btc_fnc_civ_leaflets;
     (end)
 
 Author:

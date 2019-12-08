@@ -3,7 +3,7 @@
 Function: btc_fnc_get_class
 
 Description:
-    Get enemy or civilian factions. The
+    Get enemy or civilian factions.
 
 Parameters:
     _get_civ_faction - Search for factions of civilian or enemies. [String]
