@@ -59,8 +59,8 @@ if (
 btc_spect_updateOn = [{
     params ["_arguments", "_idPFH"];
     _arguments params [
-        ["_player", objNull, [objNull]],
-        ["_accessorie", "", [""]]
+        ["_accessorie", "", [""]],
+        ["_player", player, [objNull]]
     ];
 
     if !(((_player weaponAccessories currentWeapon _player) select 0) isEqualTo _accessorie) exitWith {
@@ -84,4 +84,4 @@ btc_spect_updateOn = [{
     private _signalFrequencies = [_player, allUnitsUAV] call btc_fnc_spect_frequencies;
     _signalFrequencies append ([_player, btc_spect_emp select {damage _x < 1}, [78, 89]] call btc_fnc_spect_frequencies);
     missionNamespace setVariable ["#EM_Values", _signalFrequencies];
-}, 1, [_player, _accessorie]] call CBA_fnc_addPerFrameHandler;
+}, 1, [_accessorie]] call CBA_fnc_addPerFrameHandler;
