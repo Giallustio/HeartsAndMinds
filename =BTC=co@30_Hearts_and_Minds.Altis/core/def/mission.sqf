@@ -109,6 +109,7 @@ private _allClassSorted = _allClassVehicles select {getNumber (_cfgVehicles >> _
 
 if (isServer) then {
     btc_final_phase = false;
+    btc_delay_createUnit = 0;
 
     //City
     btc_city_radius = _p_city_radius;

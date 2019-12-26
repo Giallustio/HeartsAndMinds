@@ -38,8 +38,6 @@ if (btc_debug_log) then {
     [format ["_random = %1 _active_city %2 _area %3 btc_patrol_active = %4", _random, _active_city, _area, count btc_patrol_active], __FILE__, [false]] call btc_fnc_debug_message;
 };
 
-sleep 5 + random 10;
-
 //Remove if too far from player
 if ([_active_city, grpNull, _area] call btc_fnc_patrol_playersInAreaCityGroup) exitWith {false};
 

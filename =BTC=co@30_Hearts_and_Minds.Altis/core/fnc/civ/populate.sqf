@@ -48,12 +48,15 @@ for "_i" from 1 to _n do {
     if (_houses isEqualTo []) exitWith {};
 
     private _house = selectRandom _houses;
-    private _unit_type = selectRandom btc_civ_type_units;
-
-    _group = createGroup civilian;
-    _group createUnit [_unit_type, _house buildingPos 0, [], 0, "NONE"];
-    _group setVariable ["btc_data_inhouse", [_house buildingPos 0]];
+    private _pos = _house buildingPos 0;
+    private _group = createGroup civilian;
+    _group setVariable ["btc_data_inhouse", [_pos]];
     [_group] call btc_fnc_civ_addWP;
-    [_group] call btc_fnc_civ_unit_create;
+    [_group, selectRandom btc_civ_type_units, _pos] call btc_fnc_createUnit;
+
+    [{
+        _this call btc_fnc_civ_unit_create;
+    }, [_group], btc_delay_createUnit] call CBA_fnc_waitAndExecute;
+
     _houses = _houses - [_house];
 };
