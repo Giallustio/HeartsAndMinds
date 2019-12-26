@@ -50,7 +50,7 @@ for "_i" from 1 to _n do {
     private _house = selectRandom _houses;
     private _unit_type = selectRandom btc_civ_type_units;
 
-    _group = createGroup civilian;
+    private _group = createGroup civilian;
     _group createUnit [_unit_type, _house buildingPos 0, [], 0, "NONE"];
     _group setVariable ["btc_data_inhouse", [_house buildingPos 0]];
     [_group] call btc_fnc_civ_addWP;
