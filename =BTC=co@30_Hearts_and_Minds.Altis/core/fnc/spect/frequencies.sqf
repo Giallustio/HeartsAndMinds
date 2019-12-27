@@ -11,6 +11,7 @@ Parameters:
     _freq - Frequency range. [Array]
 
 Returns:
+    _signalFrequencies - Array of frequencies and amplitudes. [freq1, amp1, freq2, amp2] [Array]
 
 Examples:
     (begin example)
