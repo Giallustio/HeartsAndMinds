@@ -38,8 +38,8 @@ params [
 ];
 
 [_vehicle, _customization select 0, _customization select 1] call BIS_fnc_initVehicle;
-if (_isMedicalVehicle && {!([_vehicle] call ace_medical_fnc_isMedicalVehicle)}) then {
-    _vehicle setVariable ["ace_medical_medicclass", 1, true];
+if (_isMedicalVehicle && {!([_veh] call ace_medical_treatment_fnc_isMedicalVehicle)}) then {
+    _veh setVariable ["ace_medical_isMedicalVehicle", _isMedicalVehicle, true];
 };
 if (_isRepairVehicle && {!([_vehicle] call ace_repair_fnc_isRepairVehicle)}) then {
     _vehicle setVariable ["ACE_isRepairVehicle", _isRepairVehicle, true];

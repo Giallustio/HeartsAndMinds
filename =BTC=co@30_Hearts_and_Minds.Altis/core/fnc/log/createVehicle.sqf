@@ -43,6 +43,7 @@ params [
 private _veh  = createVehicle [_type, ASLToATL _pos, [], 0, "CAN_COLLIDE"];
 _veh setDir _dir;
 _veh setPosASL _pos;
+
 [_veh, _customization, _isMedicalVehicle, _isRepairVehicle, _fuelSource, _pylons, _isContaminated] call btc_fnc_setVehProperties;
 
 _veh setVariable ["btc_dont_delete", true];
