@@ -90,6 +90,9 @@ _medical pushBack (if (_epi < 4) then {
 } else {
     ["ACE_morphine", 3]
 });
+if (_fractures > 0) then {
+    _medical pushBack ["ACE_splint", 1];
+};
 _cargo_uniform append _medical;
 
 //Choose appropriats weapon/optics depends on _type
@@ -136,7 +139,7 @@ if (_PAK < 4) then {
     _backpackMedical pushBack ["ACE_personalAidKit", 1];
 };
 if (_fractures > 0) then {
-    _backpackMedical pushBack ["ACE_splint", 1];
+    _backpackMedical pushBack ["ACE_splint", 3];
 };
 
 private _cargos = [
