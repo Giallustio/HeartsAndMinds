@@ -30,7 +30,7 @@ if !(player getVariable ["interpreter", false]) exitWith {
     [name _man, localize "STR_BTC_HAM_CON_INFO_ASKREP_NOINTER"] call btc_fnc_showSubtitle; //I can't understand what is saying
 };
 
-if !(_man call ace_medical_fnc_isInStableCondition) exitWith {
+if !(_man call ace_medical_status_fnc_isInStableCondition) exitWith {
     private _complain = selectRandom [
         localize "STR_BTC_HAM_CON_INFO_ASK_WOUNDED1", //Help me!
         localize "STR_BTC_HAM_CON_INFO_ASK_WOUNDED2", //I am suffering!

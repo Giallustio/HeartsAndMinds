@@ -57,8 +57,8 @@ private _data = _vehicle getVariable ["data_respawn", []];
         _vehicle setPosASL _pos;
         _vehicle setVectorDirAndUp _vectorPos;
 
-        if (_isMedicalVehicle && {!([_vehicle] call ace_medical_fnc_isMedicalVehicle)}) then {
-            _vehicle setVariable ["ace_medical_medicclass", 1, true];
+        if (_isMedicalVehicle && {!([_vehicle] call ace_medical_treatment_fnc_isMedicalVehicle)}) then {
+            _vehicle setVariable ["ace_medical_isMedicalVehicle", _isMedicalVehicle, true];
         };
         if (_isRepairVehicle && {!([_vehicle] call ace_repair_fnc_isRepairVehicle)}) then {
             _vehicle setVariable ["ACE_isRepairVehicle", _isRepairVehicle, true];

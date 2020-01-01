@@ -29,7 +29,7 @@ private _type = typeOf _veh;
 private _dir = getDir _veh;
 private _customization = [_veh] call BIS_fnc_getVehicleCustomization;
 private _marker = _veh getVariable ["marker", ""];
-private _isMedicalVehicle = [_veh] call ace_medical_fnc_isMedicalVehicle;
+private _isMedicalVehicle = [_veh] call ace_medical_treatment_fnc_isMedicalVehicle;
 private _isRepairVehicle = [_veh] call ace_repair_fnc_isRepairVehicle;
 private _fuelSource = [
     [_veh] call ace_refuel_fnc_getFuel,
