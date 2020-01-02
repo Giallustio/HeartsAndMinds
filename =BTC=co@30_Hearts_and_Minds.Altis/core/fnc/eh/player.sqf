@@ -55,4 +55,8 @@ if (btc_p_chem) then {
 
 if (btc_p_spect) then {
     ["weapon", {_this call btc_fnc_spect_updateDevice}] call CBA_fnc_addPlayerEventHandler;
+    _player addEventHandler ["GetInMan", {
+        [] call btc_fnc_spect_disableDevice;
+        [player, currentWeapon player] call btc_fnc_spect_updateDevice;
+    }];
 };

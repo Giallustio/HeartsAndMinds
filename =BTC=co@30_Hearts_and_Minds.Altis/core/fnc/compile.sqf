@@ -334,6 +334,7 @@ if (!isDedicated) then {
     //SPECT
     btc_fnc_spect_updateDevice = compile preprocessFileLineNumbers "core\fnc\spect\updateDevice.sqf";
     btc_fnc_spect_frequencies = compile preprocessFileLineNumbers "core\fnc\spect\frequencies.sqf";
+    btc_fnc_spect_disableDevice = compile preprocessFileLineNumbers "core\fnc\spect\disableDevice.sqf";
 
     //ARSENAL
     btc_fnc_arsenal_data = compile preprocessFileLineNumbers "core\fnc\arsenal\data.sqf";

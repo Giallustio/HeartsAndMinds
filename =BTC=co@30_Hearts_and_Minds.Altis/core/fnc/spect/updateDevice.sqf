@@ -64,20 +64,7 @@ btc_spect_updateOn = [{
     ];
 
     if !(((_player weaponAccessories currentWeapon _player) select 0) isEqualTo _accessorie) exitWith {
-        [_idPFH] call CBA_fnc_removePerFrameHandler;
-        btc_spect_updateOn = -1;
-
-        {missionNamespace setVariable _x} forEach [
-            ["#EM_FMin", nil],
-            ["#EM_FMax", nil],
-            ["#EM_SMin", nil],
-            ["#EM_SMax", nil],
-            ["#EM_Values", nil],
-            ["#EM_Transmit", nil],
-            ["#EM_Progress", nil],
-            ["#EM_Prev", nil],
-            ["#EM_Spectrum", nil]
-        ];
+        [] call btc_fnc_spect_disableDevice;
         [_player, currentWeapon _player] call btc_fnc_spect_updateDevice;
     };
 
