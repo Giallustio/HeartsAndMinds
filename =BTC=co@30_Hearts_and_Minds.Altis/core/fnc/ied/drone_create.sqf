@@ -26,7 +26,7 @@ Author:
 params [
     ["_city", objNull, [objNull]],
     ["_area", 300, [0]],
-    ["_rpos", [], [[]]],
+    ["_rpos", [], [[]]]
 ];
 
 if (btc_debug_log) then {
