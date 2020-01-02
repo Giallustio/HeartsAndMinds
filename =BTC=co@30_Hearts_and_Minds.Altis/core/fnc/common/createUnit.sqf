@@ -27,7 +27,7 @@ btc_delay_createUnit = btc_delay_createUnit + 0.3;
 [{
     params [
         ["_group", grpNull, [grpNull]],
-        ["_unit_type", "", [[]]],
+        ["_unit_type", "", [""]],
         ["_pos", [0, 0, 0], [[]]],
         ["_special", "CARGO", [""]]
     ];
