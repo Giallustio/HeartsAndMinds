@@ -38,7 +38,7 @@ private _condition = {
     params ["_args"];
     _args params ["_target", "_player", "_radius"];
 
-    (_target distance _player < _radius) && {!([_player, objNull, ["isnotinside"]] call ace_common_fnc_canInteractWith)}
+    (_target distance _player < _radius) && {[_player, objNull, ["isnotinside"]] call ace_common_fnc_canInteractWith}
 };
 
 [localize "STR_BTC_HAM_CON_INFO_SEARCH_BAR", btc_int_search_intel_time, _condition, _onFinish, {}, [_target, player, _radius]] call CBA_fnc_progressBar;
