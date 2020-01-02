@@ -48,6 +48,7 @@ for "_i" from 1 to _n do {
     if (_houses isEqualTo []) exitWith {};
 
     private _house = selectRandom _houses;
+
     private _pos = _house buildingPos 0;
     private _group = createGroup civilian;
     _group setVariable ["btc_data_inhouse", [_pos]];
