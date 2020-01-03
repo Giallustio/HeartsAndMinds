@@ -61,6 +61,8 @@ switch (_typeOf_patrol) do {
     };
 };
 
-[[_group]] call btc_fnc_set_groupsOwner;
+[{
+    _this call btc_fnc_set_groupsOwner;
+}, [[_group]], btc_delay_createUnit] call CBA_fnc_waitAndExecute;
 
 _group

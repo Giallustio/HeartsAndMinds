@@ -22,7 +22,7 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-btc_delay_createUnit = btc_delay_createUnit + 0.3;
+btc_delay_createUnit = btc_delay_createUnit + 1;
 
 [{
     params [
@@ -34,12 +34,12 @@ btc_delay_createUnit = btc_delay_createUnit + 0.3;
 
     if (btc_debug_log) then {
         if (isNull _group) then {
-            [format ["_this = %1", _this], __FILE__, [false]] call btc_fnc_debug_message;
+            [format ["isNull _group _this = %1", _this], __FILE__, [btc_debug]] call btc_fnc_debug_message;
         };
     };
 
     private _unit = _group createUnit [_unit_type, _pos, [], 0, _special];
     [_unit] joinSilent _group;
 
-    btc_delay_createUnit = btc_delay_createUnit - 0.3;
-}, _this, btc_delay_createUnit] call CBA_fnc_waitAndExecute;
+    btc_delay_createUnit = btc_delay_createUnit - 1;
+}, _this, btc_delay_createUnit - 0.01] call CBA_fnc_waitAndExecute;

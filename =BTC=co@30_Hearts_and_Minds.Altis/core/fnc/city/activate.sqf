@@ -129,14 +129,6 @@ if !(_data_units isEqualTo []) then {
     };
 };
 
-if (_has_en) then {
-    private _trigger = createTrigger ["EmptyDetector", getPos _city];
-    _trigger setTriggerArea [_radius_x + _radius_y, _radius_x + _radius_y, 0, false];
-    _trigger setTriggerActivation [str btc_enemy_side, "NOT PRESENT", false];
-    _trigger setTriggerStatements ["this", format ["[%1] call btc_fnc_city_set_clear", _id], ""];
-    _city setVariable ["trigger", _trigger];
-};
-
 if (_city getVariable ["spawn_more", false]) then {
     _city setVariable ["spawn_more", false];
     for "_i" from 1 to (round (_p_mil_group_ratio * (2 + random 3))) do {
@@ -207,8 +199,18 @@ if !(_city getVariable ["has_suicider", false]) then {
 };
 
 [{
-    _this setVariable ["activating", false];
-}, _city, btc_delay_createUnit] call CBA_fnc_waitAndExecute;
+    params ["_has_en", "_city", "_radius_x", "_radius_y"];
+
+    if (_has_en) then {
+        private _trigger = createTrigger ["EmptyDetector", getPos _city];
+        _trigger setTriggerArea [_radius_x + _radius_y, _radius_x + _radius_y, 0, false];
+        _trigger setTriggerActivation [str btc_enemy_side, "NOT PRESENT", false];
+        _trigger setTriggerStatements ["this", format ["[%1] call btc_fnc_city_set_clear", _id], ""];
+        _city setVariable ["trigger", _trigger];
+    };
+
+    _city setVariable ["activating", false];
+}, [_has_en, _city, _radius_x, _radius_y], btc_delay_createUnit] call CBA_fnc_waitAndExecute;
 
 //Patrol
 btc_patrol_active = btc_patrol_active - [grpNull];
