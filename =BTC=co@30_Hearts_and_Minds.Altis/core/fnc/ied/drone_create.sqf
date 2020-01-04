@@ -9,7 +9,6 @@ Parameters:
     _city - City where the drone is created. [Object]
     _area - Area around the city where the drone is created randomly. [Number]
     _rpos - Create the drone at this position. [Array]
-    _group - Group used for drone crew. [Group]
 
 Returns:
     _leader - return the leader of the group. [Object]
@@ -27,8 +26,7 @@ Author:
 params [
     ["_city", objNull, [objNull]],
     ["_area", 300, [0]],
-    ["_rpos", [], [[]]],
-    ["_group", createGroup [btc_enemy_side, true], [grpNull]]
+    ["_rpos", [], [[]]]
 ];
 
 if (btc_debug_log) then {
@@ -39,6 +37,7 @@ if (_rpos isEqualTo []) then {
     _rpos = [position _city, _area] call btc_fnc_randomize_pos;
 };
 
+private _group = createGroup [btc_enemy_side, true];
 private _drone = createVehicle ["C_IDAP_UAV_06_antimine_F", _rpos, [], 0, "FLY"];
 createVehicleCrew _drone;
 [driver _drone] joinSilent _group;
