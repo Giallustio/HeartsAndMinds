@@ -55,47 +55,16 @@ if (_type isEqualTo 7) exitWith {
 };
 
 private _group = createGroup _side;
-private _special = "CAN_COLLIDE";
-private _start = 0;
-
 if (_type isEqualTo 1) then {
-    private _veh = createVehicle [_array_veh select 0, _array_veh select 1, [], 0, "FLY"];
-    _group addVehicle _veh;
-    for "_i" from 0 to ((count _array_pos - 1) - (_veh emptyPositions "cargo")) do {
-        private _unit = _group createUnit [_array_type select _i, _array_pos select _i, [], 0, "CARGO"];
+    [_group, _array_veh select 0, _array_type, _array_veh select 1, {}, _array_veh select 2, _array_veh select 3] call btc_fnc_createVehicle;
+} else {
+    for "_i" from 0 to (count _array_pos - 1) do {
+        [_group, _array_type select _i, _array_pos select _i, "CAN_COLLIDE"] call btc_fnc_createUnit;
+        //_u setDamage (_array_dam select _i);
 
-        if (_veh emptyPositions "driver" > 0) then {
-            _unit moveinDriver _veh;
-            _unit assignAsDriver _veh;
-        } else {
-            if (_veh emptyPositions "gunner" > 0) then {
-                _unit moveinGunner _veh;
-                _unit assignAsGunner _veh;
-            } else {
-                if (_veh emptyPositions "commander" > 0) then {
-                    _unit moveinCommander _veh;
-                    _unit assignAsCommander _veh;
-                };
-            };
+        if (btc_debug_log) then {
+            [format ["pos %1 in %2 ", _array_pos select _i], __FILE__, [false]] call btc_fnc_debug_message;
         };
-        _start = _forEachIndex;
-    };
-    (units _group) joinSilent _group;
-    private _special = "CARGO";
-
-    if !(_veh isKindOf "Plane") then {
-        _veh setPosATL (_array_veh select 1);
-        _veh setDir (_array_veh select 2);
-    };
-    _veh setFuel (_array_veh select 3);
-};
-
-for "_i" from _start to (count _array_pos - 1) do {
-    [_group, _array_type select _i, _array_pos select _i, _special] call btc_fnc_createUnit;
-    //_u setDamage (_array_dam select _i);
-
-    if (btc_debug_log) then {
-        [format ["pos %1 in %2 ", _array_pos select _i, getPos _u], __FILE__, [false]] call btc_fnc_debug_message;
     };
 };
 

@@ -52,7 +52,7 @@ switch (_typeOf_patrol) do {
 
         private _return_pos = [_pos, 10, 500, 13, false] call btc_fnc_findsafepos;
 
-        private _veh = [_group, _return_pos, _veh_type] call btc_fnc_mil_createVehicle;
+        [_group, _return_pos, _veh_type] call btc_fnc_mil_createVehicle;
 
         [_group, _dest, 60, "MOVE", "AWARE", "RED", "NORMAL", "NO CHANGE", "(group this) call btc_fnc_data_add_group;"] call CBA_fnc_addWaypoint;
         [_group, _dest, 60, "GETOUT"] call CBA_fnc_addWaypoint;

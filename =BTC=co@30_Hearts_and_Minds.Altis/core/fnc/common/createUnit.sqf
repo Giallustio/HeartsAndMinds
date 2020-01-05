@@ -29,7 +29,8 @@ btc_delay_createUnit = btc_delay_createUnit + 1;
         ["_group", grpNull, [grpNull]],
         ["_unit_type", "", [""]],
         ["_pos", [0, 0, 0], [[]]],
-        ["_special", "CARGO", [""]]
+        ["_special", "CARGO", [""]],
+        ["_vehicle", objNull, [objNull]]
     ];
 
     if (btc_debug_log) then {
@@ -39,6 +40,9 @@ btc_delay_createUnit = btc_delay_createUnit + 1;
     };
 
     private _unit = _group createUnit [_unit_type, _pos, [], 0, _special];
+    if !(isNull _vehicle) then {
+        _unit moveInAny _vehicle;
+    };
     [_unit] joinSilent _group;
 
     btc_delay_createUnit = btc_delay_createUnit - 1;

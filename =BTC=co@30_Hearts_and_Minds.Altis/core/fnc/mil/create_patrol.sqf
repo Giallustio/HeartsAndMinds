@@ -89,10 +89,11 @@ switch (_random) do {
                 _pos = getPos selectRandom _roads;
             };
         };
-        private _veh = [_group, _pos, _veh_type] call btc_fnc_mil_createVehicle;
-        _veh setVariable ["btc_crews", _group];
-
-        [_veh, "Fuel", "btc_fnc_patrol_eh"] call btc_fnc_eh_persistOnLocalityChange;
+        [_group, _pos, _veh_type, {
+            params ["_veh", "_group"];
+            _veh setVariable ["btc_crews", _group];
+            [_veh, "Fuel", "btc_fnc_patrol_eh"] call btc_fnc_eh_persistOnLocalityChange;
+        }] call btc_fnc_mil_createVehicle;
     };
 };
 
