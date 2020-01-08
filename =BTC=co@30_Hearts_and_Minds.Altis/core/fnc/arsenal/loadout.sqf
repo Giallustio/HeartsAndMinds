@@ -57,7 +57,7 @@ _medicalParameters params ["_advancedBandages", "_epi", "_surgicalKit", "_PAK", 
 
 //Item inside Uniform
 private _cfgPatches = configFile >> "CfgPatches";
-private _cargo_uniform = [["acc_flashlight", 1], ["ACE_EarPlugs", 1], ["ACE_CableTie",5], ["optic_ACO_grn_smg", 1], ["ACE_MapTools", 1], ["ACE_RangeTable_82mm", 1], [["", _radio] select (isClass(_cfgPatches >> "acre_main")), 1]];
+private _cargo_uniform = [["acc_flashlight", 1], ["ACE_EarPlugs", 1], ["ACE_CableTie",5], ["optic_ACO_grn_smg", 1], ["ACE_MapTools", 1], ["ACE_RangeTable_82mm", 1]];
 
 //Tweak uniform medical item depends on medical parameters
 private _medical = [["ACE_fieldDressing", 3], ["ACE_tourniquet", 4], ["ACE_morphine", 3]];
@@ -143,7 +143,7 @@ if (_isDay) then {
         _launcher_array,
         [_pistol, "", "", "", [_pistolMagazine, _pistolCount], [], ""],
         [_uniform, _cargo_uniform],
-        [_vest, [["SmokeShellGreen", 2, 1], [_weaponMagazine, 7, _weaponCount], ["SmokeShellPurple", 2, 1], ["SmokeShellYellow", 1, 1], [_pistolMagazine, 1, _pistolCount], ["ACE_M84", 1, 1], ["HandGrenade", 3, 1]]],
+        [_vest, [["SmokeShellGreen", 2, 1], [_weaponMagazine, 7, _weaponCount], ["SmokeShellPurple", 2, 1], ["SmokeShellYellow", 1, 1], [_pistolMagazine, 1, _pistolCount], ["ACE_M84", 1, 1], ["HandGrenade", 3, 1], [["", _radio] select (isClass(_cfgPatches >> "acre_main")), 1]]],
         _cargos select _type, _helmet, _hood, _binocular_array,
         ["ItemMap", "B_UavTerminal", _radio_item, "ItemCompass", "ItemWatch", ""]
     ]
@@ -153,7 +153,7 @@ if (_isDay) then {
         _launcher_array,
         [_pistol, "", "", "", [_pistolMagazine, _pistolCount], [], ""],
         [_uniform, _cargo_uniform],
-        [_vest, [["SmokeShellGreen", 1, 1], ["B_IR_Grenade", 2, 1], [_weaponMagazines param [1, _weaponMagazine], 7, _weaponCount], ["Chemlight_green", 2, 1], ["Chemlight_blue", 2, 1], ["ACE_HandFlare_Green", 1, 1], ["HandGrenade", 3, 1], ["ACE_M84", 1, 1]]],
+        [_vest, [["SmokeShellGreen", 1, 1], ["B_IR_Grenade", 2, 1], [_weaponMagazines param [1, _weaponMagazine], 7, _weaponCount], ["Chemlight_green", 1, 1], ["Chemlight_blue", 1, 1], ["ACE_HandFlare_Green", 1, 1], ["HandGrenade", 3, 1], ["ACE_M84", 1, 1], [["", _radio] select (isClass(_cfgPatches >> "acre_main")), 1]]],
         _cargos select _type, _helmet, _hood, _binocular_array,
         ["ItemMap", "B_UavTerminal", _radio_item, "ItemCompass", "ItemWatch", _night_vision]
     ]
