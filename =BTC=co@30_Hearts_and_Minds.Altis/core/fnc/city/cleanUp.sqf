@@ -37,7 +37,6 @@ _toRemove append (allDead select {
 });
 
 if (btc_delay_createUnit < 0.01) then { // Don't remove group during units creation.
-    [format ["btc_delay_createUnit = %1", btc_delay_createUnit], __FILE__, [btc_debug]] call btc_fnc_debug_message;
     _toRemove append (allGroups select {
         units _x select {alive _x} isEqualTo [] &&
         !(

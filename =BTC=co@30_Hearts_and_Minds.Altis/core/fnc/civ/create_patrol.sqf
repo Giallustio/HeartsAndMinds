@@ -57,32 +57,25 @@ if (_roads isEqualTo []) then {
     _veh_type = selectRandom btc_civ_type_veh;
 };
 
-private _veh = createVehicle [_veh_type, _safe_pos, [], 0, "FLY"];
-[_veh, "", []] call BIS_fnc_initvehicle;
-
 private _group = createGroup [civilian, true];
 btc_civ_veh_active pushBack _group;
 _group setVariable ["no_cache", true];
 _group setVariable ["btc_patrol_id", btc_civilian_id, btc_debug];
 btc_civilian_id = btc_civilian_id - 1;
-(selectRandom btc_civ_type_units) createUnit [_safe_pos, _group, "this moveinDriver _veh; this assignAsDriver _veh;"];
-_veh setVariable ["btc_crews", _group];
 
-[_group] call btc_fnc_civ_unit_create;
+[_group, _veh_type, [selectRandom btc_civ_type_units], _safe_pos, {
+    params ["_veh", "_group"];
+    _veh setVariable ["btc_crews", _group];
+    [_veh, "HandleDamage", "btc_fnc_patrol_disabled"] call btc_fnc_eh_persistOnLocalityChange;
+    [_veh, "Fuel", "btc_fnc_patrol_eh"] call btc_fnc_eh_persistOnLocalityChange;
+    [_veh, "GetOut", "btc_fnc_patrol_eh"] call btc_fnc_eh_persistOnLocalityChange;
+    [_veh, "HandleDamage", "btc_fnc_rep_hd"] call btc_fnc_eh_persistOnLocalityChange;
+}] call btc_fnc_createVehicle;
 
-[_veh, "HandleDamage", "btc_fnc_patrol_disabled"] call btc_fnc_eh_persistOnLocalityChange;
-[_veh, "Fuel", "btc_fnc_patrol_eh"] call btc_fnc_eh_persistOnLocalityChange;
-[_veh, "GetOut", "btc_fnc_patrol_eh"] call btc_fnc_eh_persistOnLocalityChange;
-[_veh, "HandleDamage", "btc_fnc_rep_hd"] call btc_fnc_eh_persistOnLocalityChange;
-if (_p_chem) then {
-    _veh addEventHandler ["GetIn", {
-        [_this select 0, _this select 2] call btc_fnc_chem_propagate;
-        _this
-    }];
-};
-
-[_group, [_start_city, _active_city], _area, _pos_isWater] call btc_fnc_patrol_init;
-
-[[_group]] call btc_fnc_set_groupsOwner;
+[{
+    [_this select 0] call btc_fnc_civ_unit_create;
+    _this call btc_fnc_patrol_init;
+    [[_this select 0]] call btc_fnc_set_groupsOwner;
+}, [_group, [_start_city, _active_city], _area, _pos_isWater], btc_delay_createUnit] call CBA_fnc_waitAndExecute;
 
 true

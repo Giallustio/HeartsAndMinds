@@ -6,9 +6,11 @@ Description:
     Create unit when all previous units have been created. btc_delay_createUnit define the time (in second) when the unit will be created.
 
 Parameters:
-    _group - [Group]
-    _unit_type - [Array]
-    _pos - [Array]
+    _group - Group to add unit. [Group]
+    _unit_type - Type of units to create. [Array]
+    _pos - Position of creation. [Array]
+    _special - Unit placement special. [String]
+    _vehicle - Vehicle where unit can be load in. [Object]
 
 Returns:
 
