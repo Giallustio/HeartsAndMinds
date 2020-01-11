@@ -47,5 +47,5 @@ if (_units isEqualTo []) then {
     (group _x) setVariable ["getWeapons", true];
 
     (group _x) setBehaviour "AWARE";
-    [group _x, getPos _x, 10, "GUARD", "UNCHANGED", "RED"] call CBA_fnc_addWaypoint;
+    [group _x, getPos _x, -1, "GUARD", "UNCHANGED", "RED", nil, nil, nil, nil, 10] call CBA_fnc_addWaypoint;
 } forEach _units;
