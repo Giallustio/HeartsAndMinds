@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_createVehicle
+Function: btc_fnc_delay_createVehicle
 
 Description:
     Create vehicle and crew when all previous units have been created. btc_delay_createUnit define the time (in second) when the vehicle and crew will be created.
@@ -19,8 +19,8 @@ Returns:
 
 Examples:
     (begin example)
-        [createGroup (side player), "O_G_Van_01_transport_F", (btc_type_units + btc_type_units) select [0, ["O_G_Van_01_transport_F",true] call BIS_fnc_crewCount], player getPos [10, direction player]] call btc_fnc_createVehicle;
-        [createGroup (side player), "B_Heli_Transport_01_camo_F", (btc_type_units + btc_type_units) select [0, ["B_Heli_Transport_01_camo_F",true] call BIS_fnc_crewCount], player getPos [10, direction player]] call btc_fnc_createVehicle;
+        [createGroup (side player), "O_G_Van_01_transport_F", (btc_type_units + btc_type_units) select [0, ["O_G_Van_01_transport_F",true] call BIS_fnc_crewCount], player getPos [10, direction player]] call btc_fnc_delay_createVehicle;
+        [createGroup (side player), "B_Heli_Transport_01_camo_F", (btc_type_units + btc_type_units) select [0, ["B_Heli_Transport_01_camo_F",true] call BIS_fnc_crewCount], player getPos [10, direction player]] call btc_fnc_delay_createVehicle;
     (end)
 
 Author:
@@ -28,7 +28,7 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-btc_delay_createUnit = btc_delay_createUnit + 1;
+btc_delay_createUnit = btc_delay_createUnit + 0.3;
 
 [{
     params [
@@ -86,11 +86,11 @@ btc_delay_createUnit = btc_delay_createUnit + 1;
 
     private _crews_and_turret = _crews + _turretCount;
     for "_i" from _crews to ((_crews_and_turret min _numberOfUnits) - 1) do {
-        [_group, _units_type select _i, _position, "CAN_COLLIDE", _veh] call btc_fnc_createUnit;
+        [_group, _units_type select _i, _position, "CAN_COLLIDE", _veh] call btc_fnc_delay_createUnit;
     };
     for "_i" from _crews_and_turret to (_numberOfUnits - 1) do {
-        [_group, _units_type select _i, _position] call btc_fnc_createUnit;
+        [_group, _units_type select _i, _position] call btc_fnc_delay_createUnit;
     };
 
-    btc_delay_createUnit = btc_delay_createUnit - 1;
+    btc_delay_createUnit = btc_delay_createUnit - 0.3;
 }, _this, btc_delay_createUnit - 0.01] call CBA_fnc_waitAndExecute;

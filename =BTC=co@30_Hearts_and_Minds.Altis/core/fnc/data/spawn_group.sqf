@@ -56,10 +56,10 @@ if (_type isEqualTo 7) exitWith {
 
 private _group = createGroup _side;
 if (_type isEqualTo 1) then {
-    [_group, _array_veh select 0, _array_type, _array_veh select 1, {}, _array_veh select 2, _array_veh select 3] call btc_fnc_createVehicle;
+    [_group, _array_veh select 0, _array_type, _array_veh select 1, {}, _array_veh select 2, _array_veh select 3] call btc_fnc_delay_createVehicle;
 } else {
     for "_i" from 0 to (count _array_pos - 1) do {
-        [_group, _array_type select _i, _array_pos select _i, "CAN_COLLIDE"] call btc_fnc_createUnit;
+        [_group, _array_type select _i, _array_pos select _i, "CAN_COLLIDE"] call btc_fnc_delay_createUnit;
         //_u setDamage (_array_dam select _i);
 
         if (btc_debug_log) then {

@@ -70,7 +70,7 @@ btc_civilian_id = btc_civilian_id - 1;
     [_veh, "Fuel", "btc_fnc_patrol_eh"] call btc_fnc_eh_persistOnLocalityChange;
     [_veh, "GetOut", "btc_fnc_patrol_eh"] call btc_fnc_eh_persistOnLocalityChange;
     [_veh, "HandleDamage", "btc_fnc_rep_hd"] call btc_fnc_eh_persistOnLocalityChange;
-}] call btc_fnc_createVehicle;
+}] call btc_fnc_delay_createVehicle;
 
 [{
     [_this select 0] call btc_fnc_civ_unit_create;

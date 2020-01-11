@@ -22,8 +22,6 @@ if (isServer) then {
     btc_fnc_typeOf = compile preprocessFileLineNumbers "core\fnc\common\typeOf.sqf";
     btc_fnc_getVehProperties = compile preprocessFileLineNumbers "core\fnc\common\getVehProperties.sqf";
     btc_fnc_setVehProperties = compile preprocessFileLineNumbers "core\fnc\common\setVehProperties.sqf";
-    btc_fnc_createUnit = compile preprocessFileLineNumbers "core\fnc\common\createUnit.sqf";
-    btc_fnc_createVehicle = compile preprocessFileLineNumbers "core\fnc\common\createVehicle.sqf";
 
     //CHEM
     btc_fnc_chem_checkLoop = compile preprocessFileLineNumbers "core\fnc\chem\checkLoop.sqf";
@@ -66,6 +64,10 @@ if (isServer) then {
     btc_fnc_db_loadObjectStatus = compile preprocessFileLineNumbers "core\fnc\db\loadObjectStatus.sqf";
     btc_fnc_db_saveObjectStatus = compile preprocessFileLineNumbers "core\fnc\db\saveObjectStatus.sqf";
     btc_fnc_db_loadCargo = compile preprocessFileLineNumbers "core\fnc\db\loadcargo.sqf";
+
+    //DELAY
+    btc_fnc_delay_createUnit = compile preprocessFileLineNumbers "core\fnc\delay\createUnit.sqf";
+    btc_fnc_delay_createVehicle = compile preprocessFileLineNumbers "core\fnc\delay\createVehicle.sqf";
 
     //EH
     btc_fnc_eh_veh_add_respawn = compile preprocessFileLineNumbers "core\fnc\eh\veh_add_respawn.sqf";

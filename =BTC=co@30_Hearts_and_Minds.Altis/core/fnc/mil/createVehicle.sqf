@@ -53,7 +53,7 @@ for "_i" from _crewSeats to (_totalSeats - 1) do {
     _units_type pushBack selectRandom _type_units;
 };
 
-[_group, _veh_type, _units_type, _pos, _code, _dir] call btc_fnc_createVehicle;
+[_group, _veh_type, _units_type, _pos, _code, _dir] call btc_fnc_delay_createVehicle;
 
 [{
     _this call btc_fnc_mil_unit_create;

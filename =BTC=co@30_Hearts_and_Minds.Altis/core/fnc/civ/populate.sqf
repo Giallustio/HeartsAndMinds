@@ -53,7 +53,7 @@ for "_i" from 1 to _n do {
     private _group = createGroup civilian;
     _group setVariable ["btc_data_inhouse", [_pos]];
     [_group, _pos] call btc_fnc_civ_addWP;
-    [_group, selectRandom btc_civ_type_units, _pos] call btc_fnc_createUnit;
+    [_group, selectRandom btc_civ_type_units, _pos] call btc_fnc_delay_createUnit;
 
     [{
         _this call btc_fnc_civ_unit_create;

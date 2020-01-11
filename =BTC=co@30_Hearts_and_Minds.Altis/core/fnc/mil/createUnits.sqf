@@ -41,7 +41,7 @@ for "_i" from 1 to _number do {
         selectRandom _type_units;
     };
 
-    [_group, _unit_type, _pos] call btc_fnc_createUnit;
+    [_group, _unit_type, _pos] call btc_fnc_delay_createUnit;
 };
 
 [{
