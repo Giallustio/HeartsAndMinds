@@ -50,5 +50,5 @@ if (_units isEqualTo []) exitWith {};
     (group _x) setVariable ["getWeapons", true];
 
     (group _x) setBehaviour "AWARE";
-    [group _x, _pos, 10, "GUARD", "UNCHANGED", "RED"] call CBA_fnc_addWaypoint;
+    [group _x, _pos, -1, "GUARD", "UNCHANGED", "RED", nil, nil, nil, nil, 10] call CBA_fnc_addWaypoint;
 } forEach [selectRandom _units];
