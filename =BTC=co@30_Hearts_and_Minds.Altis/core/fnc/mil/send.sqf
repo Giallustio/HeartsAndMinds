@@ -42,7 +42,7 @@ switch (_typeOf_patrol) do {
         _group setVariable ["no_cache", true];
         [_group] call CBA_fnc_clearWaypoints;
 
-        [_group, _dest, 60, "MOVE", "AWARE", "RED", "FULL", _infFormation, "(group this) call btc_fnc_data_add_group;"] call CBA_fnc_addWaypoint;
+        [_group, _dest, -1, "MOVE", "AWARE", "RED", "FULL", _infFormation, "(group this) call btc_fnc_data_add_group;", nil, 60] call CBA_fnc_addWaypoint;
     };
     case 1 : {
         _group = createGroup [btc_enemy_side, true];
@@ -54,9 +54,9 @@ switch (_typeOf_patrol) do {
 
         [_group, _return_pos, _veh_type] call btc_fnc_mil_createVehicle;
 
-        [_group, _dest, 60, "MOVE", "AWARE", "RED", "NORMAL", "NO CHANGE", "(group this) call btc_fnc_data_add_group;"] call CBA_fnc_addWaypoint;
-        [_group, _dest, 60, "GETOUT"] call CBA_fnc_addWaypoint;
-        [_group, _dest, 60, "SENTRY"] call CBA_fnc_addWaypoint;
+        [_group, _dest, -1, "MOVE", "AWARE", "RED", "NORMAL", "NO CHANGE", "(group this) call btc_fnc_data_add_group;", nil, 60] call CBA_fnc_addWaypoint;
+        [_group, _dest, -1, "GETOUT", nil, nil, nil, nil, nil, nil, 60] call CBA_fnc_addWaypoint;
+        [_group, _dest, -1, "SENTRY", nil, nil, nil, nil, nil, nil, 60] call CBA_fnc_addWaypoint;
 
     };
 };

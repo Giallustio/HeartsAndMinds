@@ -87,7 +87,7 @@ _agent addEventHandler ["PathCalculated", {
     _agent removeEventHandler ["PathCalculated", _thisEventHandler];
 }];
 
-[_group, _pos2, 0, "MOVE", "SAFE", "RED", "LIMITED", "COLUMN", format ["['%1', 'FAILED'] call BIS_fnc_taskSetState;", _taskID], [0, 0, 0], _radius_x/2] call CBA_fnc_addWaypoint;
+[_group, _pos2, -1, "MOVE", "SAFE", "RED", "LIMITED", "COLUMN", format ["['%1', 'FAILED'] call BIS_fnc_taskSetState;", _taskID], [0, 0, 0], _radius_x/2] call CBA_fnc_addWaypoint;
 
 waitUntil {sleep 5; (_taskID call BIS_fnc_taskCompleted || (_vehs select {canMove _x} isEqualTo []) || (_group isEqualTo grpNull))};
 

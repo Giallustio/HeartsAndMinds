@@ -69,7 +69,7 @@ switch (true) do {
     };
     case (_wp > _wp_sentry_probability) : {
         [_group, _rpos, _n, _pos_iswater] call btc_fnc_mil_createUnits;
-        [_group, _rpos, 0, "SENTRY", "AWARE", "RED"] call CBA_fnc_addWaypoint;
+        [_group, _rpos, -1, "SENTRY", "AWARE", "RED"] call CBA_fnc_addWaypoint;
     };
 };
 

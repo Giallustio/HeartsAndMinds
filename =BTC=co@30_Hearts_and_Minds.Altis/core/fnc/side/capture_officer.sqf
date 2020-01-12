@@ -87,7 +87,7 @@ private _surrender_taskID = _taskID + "su";
 private _handcuff_taskID = _taskID + "hc";
 private _back_taskID = _taskID + "bk";
 
-[_group, _pos2, 0, "MOVE", "SAFE", "RED", "LIMITED", "COLUMN", format ["['%1', 'FAILED'] call BIS_fnc_taskSetState;", _taskID], [0, 0, 0], _radius_x / 1.5] call CBA_fnc_addWaypoint;
+[_group, _pos2, -1, "MOVE", "SAFE", "RED", "LIMITED", "COLUMN", format ["['%1', 'FAILED'] call BIS_fnc_taskSetState;", _taskID], [0, 0, 0], _radius_x / 1.5] call CBA_fnc_addWaypoint;
 
 //// Create trigger \\\\
 private _trigger = createTrigger ["EmptyDetector", getPos _city1];
