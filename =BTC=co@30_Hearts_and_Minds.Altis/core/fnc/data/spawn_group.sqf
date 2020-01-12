@@ -85,7 +85,7 @@ if (_type isEqualTo 1) then {
     if !(_side isEqualTo civilian && {vehicle leader _group isEqualTo leader _group}) then {
         if (count (_array_wp select 1) > 1) then {
             {
-                [_group, _x select 0, 0, _x select 1, _x select 5, _x select 4, _x select 2, _x select 3, "", [0, 0, 0], 20] call CBA_fnc_addWaypoint;
+                [_group, _x select 0, -1, _x select 1, _x select 5, _x select 4, _x select 2, _x select 3, "", [0, 0, 0], 20] call CBA_fnc_addWaypoint;
             } forEach (_array_wp select 1);
             _group setCurrentWaypoint [_group, _array_wp select 0];
         };
