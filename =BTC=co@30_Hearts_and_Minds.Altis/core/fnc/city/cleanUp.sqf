@@ -24,7 +24,8 @@ params [
     ["_playableUnits", playableUnits, [[]]]
 ];
 
-private _toRemove = (((allMissionObjects "groundweaponholder") + (entities "WeaponHolderSimulated")) select {!(_x getVariable ["no_cache", false])}) select {
+btc_groundWeaponHolder = btc_groundWeaponHolder - [objNull];
+private _toRemove = ((btc_groundWeaponHolder + (entities "WeaponHolderSimulated")) select {!(_x getVariable ["no_cache", false])}) select {
     private _obj = _x;
 
     _playableUnits inAreaArray [getPosWorld _obj, 150, 150] isEqualTo []

@@ -308,6 +308,8 @@ if (isServer) then {
     });
     _ieds = _ieds - ["Land_Garbage_line_F","Land_Garbage_square3_F","Land_Garbage_square5_F"];
     btc_model_ieds = _ieds apply {(toLower getText(_cfgVehicles >> _x >> "model")) select [1]};
+
+    btc_groundWeaponHolder = [];
 };
 
 //Civ
