@@ -48,7 +48,7 @@ _hasProtection append [true, true, true];
 // Probability of damage increase without protection
 if (_firstDamage || !(selectRandom _hasProtection)) then {
     _this set [1, false];
-    [_unit, random [0.05, 0.1, 0.1], selectRandom _bodyParts, "stab"] call ace_medical_fnc_addDamageToUnit; // ropeburn
+    [_unit, random [0.05, 0.05, 0.2], selectRandom _bodyParts, "stab"] call ace_medical_fnc_addDamageToUnit; // ropeburn
 };
 
 _this
