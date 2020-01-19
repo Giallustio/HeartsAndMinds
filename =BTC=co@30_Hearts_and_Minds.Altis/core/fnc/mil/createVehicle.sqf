@@ -20,7 +20,7 @@ Returns:
 
 Examples:
     (begin example)
-        [createGroup [btc_enemy_side, true], getPosATL player] call btc_fnc_mil_createVehicle;
+        [createGroup [btc_enemy_side, true], player getPos [10, direction player]] call btc_fnc_mil_createVehicle;
     (end)
 
 Author:

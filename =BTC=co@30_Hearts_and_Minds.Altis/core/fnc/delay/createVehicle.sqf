@@ -42,8 +42,9 @@ btc_delay_createUnit = btc_delay_createUnit + 0.3;
         ["_p_chem", btc_p_chem, [false]]
     ];
 
-    private _veh = createVehicle [_vehicle_type, _position, [], 0, ["CAN_COLLIDE", "FLY"] select (_vehicle_type isKindOf "Air")];
-    if !(_vehicle_type isKindOf "Air") then {
+    private _isAir = _vehicle_type isKindOf "Air";
+    private _veh = createVehicle [_vehicle_type, _position, [], 0, ["CAN_COLLIDE", "FLY"] select _isAir];
+    if !(_isAir) then {
         _veh setDir _direction;
         _veh setVectorUp surfaceNormal position _veh;
     };
