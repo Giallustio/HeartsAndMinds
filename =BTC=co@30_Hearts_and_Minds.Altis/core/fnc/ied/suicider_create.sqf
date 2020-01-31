@@ -39,7 +39,7 @@ private _suicider = _group createUnit [selectRandom btc_civ_type_units, _rpos, [
 [_group] call btc_fnc_civ_addWP;
 _group setVariable ["suicider", true];
 
-_suicider call btc_fnc_civ_unit_create;
+[_group] call btc_fnc_civ_unit_create;
 
 [_suicider] call btc_fnc_ied_suiciderLoop;
 

@@ -3,16 +3,17 @@
 Function: btc_fnc_db_saveObjectStatus
 
 Description:
-    Fill me when you edit me !
+    Save all data from an object like position, ACE cargo, inventory ...
 
 Parameters:
-    _object - [Object]
+    _object - Object to get data. [Object]
 
 Returns:
+    _data - Data array (type, position, direction ...). [Array]
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_db_saveObjectStatus;
+        [cursorObject] call btc_fnc_db_saveObjectStatus;
     (end)
 
 Author:
@@ -46,6 +47,7 @@ if !(!alive _object || isNull _object) then {
     private _cont = [getWeaponCargo _object, getMagazineCargo _object, getItemCargo _object];
     _data pushBack _cont;
     _data pushBack [vectorDir _object, vectorUp _object];
+    _data pushBack (_object in btc_chem_contaminated);
 };
 
 _data

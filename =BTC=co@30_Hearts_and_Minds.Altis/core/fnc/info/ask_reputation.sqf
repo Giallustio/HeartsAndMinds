@@ -25,7 +25,7 @@ params [
 ];
 
 if !(player getVariable ["interpreter", false]) exitWith {
-    [name _man, localize "STR_BTC_HAM_CON_INFO_ASKREP_NOINTER"] call btc_fnc_showSubtitle; //I can't understand what is saying
+    [name _man, localize "STR_BTC_HAM_CON_INFO_ASKREP_NOINTER"] call btc_fnc_showSubtitle;
 };
 
 btc_int_ask_data = nil;
@@ -42,20 +42,20 @@ if ((round random 1) isEqualTo 1) then {
 
     waitUntil {!(isNil "btc_int_ask_data")};
 
-    _ho_left = format [localize "STR_BTC_HAM_CON_INFO_ASKREP_HIDEOUTS", btc_int_ask_data]; //I heard about %1 hideouts left.
+    _ho_left = format [localize "STR_BTC_HAM_CON_INFO_ASKREP_HIDEOUTS", btc_int_ask_data];
 };
 
 private _info_type = switch (true) do {
-    case (_rep < 200): {localize "STR_BTC_HAM_CON_INFO_ASKREP_VLOW"}; //very low
-    case (_rep >= 200 && _rep < 500): {localize "STR_BTC_HAM_CON_INFO_ASKREP_LOW"}; //low
-    case (_rep >= 500 && _rep < 750): {toLower localize "str_3den_display3den_menubar_visionmodenormal_text"}; //normal
-    case (_rep >= 750): {localize "STR_BTC_HAM_CON_INFO_ASKREP_HIGH"}; //high
+    case (_rep < 200): {localize "STR_BTC_HAM_CON_INFO_ASKREP_VLOW"};
+    case (_rep >= 200 && _rep < 500): {localize "STR_BTC_HAM_CON_INFO_ASKREP_LOW"};
+    case (_rep >= 500 && _rep < 750): {toLower localize "str_terrain_12_5"};
+    case (_rep >= 750): {localize "str_terrain_6_25"};
 };
 
 private _text = selectRandom [
-    localize "STR_BTC_HAM_CON_INFO_ASKREP_ASK1", //Sir, your reputation is
-    localize "STR_BTC_HAM_CON_INFO_ASKREP_ASK2", //Hello ! Your reputation is
-    localize "STR_BTC_HAM_CON_INFO_ASKREP_ASK3"  //I think your reputation is
+    localize "STR_BTC_HAM_CON_INFO_ASKREP_ASK1",
+    localize "STR_BTC_HAM_CON_INFO_ASKREP_ASK2",
+    localize "STR_BTC_HAM_CON_INFO_ASKREP_ASK3"
 ];
 
 [name _man, format ["%1 %2. %3", _text, _info_type, _ho_left]] call btc_fnc_showSubtitle;

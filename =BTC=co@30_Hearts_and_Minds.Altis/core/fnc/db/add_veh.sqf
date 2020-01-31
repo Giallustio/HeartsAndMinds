@@ -3,16 +3,17 @@
 Function: btc_fnc_db_add_veh
 
 Description:
-    Fill me when you edit me !
+    Add vehicle to the wreck system.
 
 Parameters:
-    _veh - [Object]
+    _veh - Vehicle to add in wreck system. [Object]
+    _p_chem - Activate chemical propagation. [Boolean]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_db_add_veh;
+        [cursorObject] call btc_fnc_db_add_veh;
     (end)
 
 Author:
@@ -21,11 +22,12 @@ Author:
 ---------------------------------------------------------------------------- */
 
 params [
-    ["_veh", objNull, [objNull]]
+    ["_veh", objNull, [objNull]],
+    ["_p_chem", btc_p_chem, [false]]
 ];
 
 if !(isServer) exitWith {
-    _veh remoteExec ["btc_fnc_db_add_veh", 2];
+    _veh remoteExecCall ["btc_fnc_db_add_veh", 2];
 };
 
 btc_vehicles pushBackUnique _veh;
@@ -34,4 +36,11 @@ _veh addMPEventHandler ["MPKilled", {
 }];
 if ((isNumber (configfile >> "CfgVehicles" >> typeOf _veh >> "ace_fastroping_enabled")) && !(typeOf _veh isEqualTo "RHS_UH1Y_d")) then {
     [_veh] call ace_fastroping_fnc_equipFRIES
+};
+
+if (_p_chem) then {
+    _veh addEventHandler ["GetIn", {
+        [_this select 0, _this select 2] call btc_fnc_chem_propagate;
+        _this
+    }];
 };

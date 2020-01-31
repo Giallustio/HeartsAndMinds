@@ -91,15 +91,10 @@ units _group joinSilent _group;
 if !(_side isEqualTo civilian && {vehicle leader _group isEqualTo leader _group}) then {
     if (count (_array_wp select 1) > 1) then {
         {
-            [_group, _x select 0, 0, _x select 1, _x select 5, _x select 4, _x select 2, _x select 3, "", [0, 0, 0], 20] call CBA_fnc_addWaypoint;
+            [_group, _x select 0, -1, _x select 1, _x select 5, _x select 4, _x select 2, _x select 3, "", [0, 0, 0], 20] call CBA_fnc_addWaypoint;
         } forEach (_array_wp select 1);
         _group setCurrentWaypoint [_group, _array_wp select 0];
     };
-};
-if (_type isEqualTo 2) then {
-    [_group] call CBA_fnc_clearWaypoints;
-    {doStop _x;} forEach units _group;
-    _group setVariable ["stop", true];
 };
 if (_type isEqualTo 3) then {
     [_group] call CBA_fnc_clearWaypoints;
@@ -117,7 +112,7 @@ if (_type isEqualTo 5) then {
 
         private _cond = false;
 
-        while {Alive _suicider && !isNull _suicider && !_cond} do {
+        while {alive _suicider && !isNull _suicider && !_cond} do {
             sleep 5;
             if !((getPos _suicider nearEntities ["SoldierWB", 25]) isEqualTo []) then {
                 _cond = true;
@@ -139,7 +134,7 @@ _group setBehaviour (_behaviour select 0);
 _group setCombatMode (_behaviour select 1);
 _group setFormation (_behaviour select 2);
 
-if (_side isEqualTo btc_enemy_side) then {{_x call btc_fnc_mil_unit_create} forEach units _group;};
-if (_side isEqualTo civilian) then {{_x call btc_fnc_civ_unit_create} forEach units _group;};
+if (_side isEqualTo btc_enemy_side) then {[_group] call btc_fnc_mil_unit_create;};
+if (_side isEqualTo civilian) then {[_group] call btc_fnc_civ_unit_create};
 
 [leader _group, _type]

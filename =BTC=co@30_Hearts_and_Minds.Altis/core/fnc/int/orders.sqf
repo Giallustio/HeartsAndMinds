@@ -37,7 +37,7 @@ private _units = (_pos nearEntities [["Car", "Civilian_F"] + btc_civ_type_units,
 if (_units isEqualTo []) exitWith {true};
 
 if (isNull _unit) then {
-    [_units, _dir, _order] remoteExec ["btc_fnc_int_orders_give", 2];
+    [_units, _dir, _order] remoteExecCall ["btc_fnc_int_orders_give", 2];
 } else {
     if (_order isEqualTo 4) then {
 
@@ -48,37 +48,37 @@ if (isNull _unit) then {
         private _rep = btc_int_ask_data;
 
         if (_rep >= 500) then {
-            [name _unit, localize "STR_BTC_HAM_CON_INT_ORDERS_SHOWMAP"] call btc_fnc_showSubtitle; //Show me where you want to go with your map.
+            [name _unit, localize "STR_BTC_HAM_CON_INT_ORDERS_SHOWMAP"] call btc_fnc_showSubtitle;
             openMap true;
             ["1", "onMapSingleClick", {
                 if (surfaceIsWater _pos) then {
-                    [name (_this select 4), localize "STR_BTC_HAM_CON_INT_ORDERS_ONLAND"] call btc_fnc_showSubtitle; //Selected area must be on land.
+                    [name (_this select 4), localize "STR_BTC_HAM_CON_INT_ORDERS_ONLAND"] call btc_fnc_showSubtitle;
                 } else {
-                    [[_this select 4], 0, 4, _pos] remoteExec ["btc_fnc_int_orders_give", _this select 4];
+                    [[_this select 4], 0, 4, _pos] remoteExecCall ["btc_fnc_int_orders_give", _this select 4];
                     ["1", "onMapSingleClick"] call BIS_fnc_removeStackedEventHandler;
                     openMap false;
                     private _textMap = selectRandom [
-                            localize "STR_BTC_HAM_CON_INT_ORDERS_TAXI_OK1", // No problem. I'd love to do that.
-                            localize "STR_BTC_HAM_CON_INT_ORDERS_TAXI_OK2", // The ride should not take long. Let's go.
-                            localize "STR_BTC_HAM_CON_INT_ORDERS_TAXI_OK3"  // After what you've done for us, it's an honor to drive you. Let's go.
+                            localize "STR_BTC_HAM_CON_INT_ORDERS_TAXI_OK1",
+                            localize "STR_BTC_HAM_CON_INT_ORDERS_TAXI_OK2",
+                            localize "STR_BTC_HAM_CON_INT_ORDERS_TAXI_OK3"
                     ];
                     [name (_this select 4), _textMap] call btc_fnc_showSubtitle;
                 };
             }, [_unit]] call BIS_fnc_addStackedEventHandler;
         } else {
             if !(player getVariable ["interpreter", false]) exitWith {
-                [name _unit, localize "STR_BTC_HAM_CON_INFO_ASKREP_NOINTER"] call btc_fnc_showSubtitle; //I can't understand what is saying
+                [name _unit, localize "STR_BTC_HAM_CON_INFO_ASKREP_NOINTER"] call btc_fnc_showSubtitle;
             };
 
             private _text = selectRandom [
-                localize "STR_BTC_HAM_CON_INT_ORDERS_NEG1", //I hate you ! Get out !
-                localize "STR_BTC_HAM_CON_INT_ORDERS_NEG2", // Get Out of my car ! You are not welcome.
-                localize "STR_BTC_HAM_CON_INT_ORDERS_NEG3", // I am not a taxi driver !
-                localize "STR_BTC_HAM_CON_INT_ORDERS_NEG4"  //No ! I go where I want !
+                localize "STR_BTC_HAM_CON_INT_ORDERS_NEG1",
+                localize "STR_BTC_HAM_CON_INT_ORDERS_NEG2",
+                localize "STR_BTC_HAM_CON_INT_ORDERS_NEG3",
+                localize "STR_BTC_HAM_CON_INT_ORDERS_NEG4"
             ];
             [name _unit, _text] call btc_fnc_showSubtitle;
         };
     } else {
-        [[_unit], _dir, _order] remoteExec ["btc_fnc_int_orders_give", _unit];
+        [[_unit], _dir, _order] remoteExecCall ["btc_fnc_int_orders_give", _unit];
     };
 };

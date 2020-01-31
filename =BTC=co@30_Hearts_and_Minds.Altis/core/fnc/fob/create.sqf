@@ -24,15 +24,12 @@ params [
     ["_mat", objNull, [objNull]]
 ];
 
-// "Area is not flat enough!"
-if (((position _mat) isFlatEmpty [1, 0, 0.9, 1, 0, false, _mat]) isEqualTo []) exitWith {hint localize "STR_BTC_HAM_O_FOB_CREATE_H_AREA";};
+if (((position _mat) isFlatEmpty [1, 0, 0.9, 1, 0, false, _mat]) isEqualTo []) exitWith {(localize "STR_BTC_HAM_O_FOB_CREATE_H_AREA") call CBA_fnc_notify;};
 
-//"Too close at the main base!"
-if (_mat inArea [getMarkerPos "btc_base", 2000, 2000, 0, false]) exitWith {hint localize "STR_BTC_HAM_O_FOB_CREATE_H_DBASE";};
+if (_mat inArea [getMarkerPos "btc_base", 2000, 2000, 0, false]) exitWith {(localize "STR_BTC_HAM_O_FOB_CREATE_H_DBASE") call CBA_fnc_notify;};
 
-//"Clear the area before mounting the FOB, %1"
 if ((nearestObjects [position _mat, ["LandVehicle", "Air"], 10]) findIf {!(_x isKindOf "ace_fastroping_helper")} != -1) exitWith {
-    hint format [localize "STR_BTC_HAM_O_FOB_CREATE_H_CAREA", (nearestObjects [position _mat, ["LandVehicle", "Air"], 10]) apply {typeOf _x}]
+    (format [localize "STR_BTC_HAM_O_FOB_CREATE_H_CAREA", (nearestObjects [position _mat, ["LandVehicle", "Air"], 10]) apply {typeOf _x}]) call CBA_fnc_notify
 };
 
 closeDialog 0;
@@ -45,7 +42,7 @@ waitUntil {dialog};
 
 while {!btc_fob_dlg} do {
     if !(dialog) then {
-        hint localize "STR_BTC_HAM_O_FOB_CREATE_H_ESC"; //"Do not close the dialog with esc"
+        (localize "STR_BTC_HAM_O_FOB_CREATE_H_ESC") call CBA_fnc_notify;
         createDialog "btc_fob_create";
     };
     sleep 0.1;
@@ -53,7 +50,7 @@ while {!btc_fob_dlg} do {
 
 if (ctrlText 777 == "") exitWith {
     closeDialog 0;
-    hint localize "STR_BTC_HAM_O_FOB_CREATE_H_NAME"; // "Name your FOB!"
+    (localize "STR_BTC_HAM_O_FOB_CREATE_H_NAME") call CBA_fnc_notify;
     _mat spawn btc_fnc_fob_create;
 };
 
@@ -65,21 +62,25 @@ private _array_markers = allMapMarkers apply {toUpper _x};
 
 if (_name_to_check in _array_markers) exitWith {
     closeDialog 0;
-    hint localize "STR_BTC_HAM_O_FOB_CREATE_H_NAMENOTA"; //"Name already in use!"
+    (localize "STR_BTC_HAM_O_FOB_CREATE_H_NAMENOTA") call CBA_fnc_notify;
     _mat spawn btc_fnc_fob_create;
 };
 
-hint localize "STR_BTC_HAM_O_FOB_CREATE_H_WIP";//"Get back! Mounting FOB"
+(localize "STR_BTC_HAM_O_FOB_CREATE_H_WIP") call CBA_fnc_notify;
 
 closeDialog 0;
 
 [{
-    params ["_pos", "_mat", "_name"];
+    params ["_mat", "_name"];
 
     if (isNull _mat) exitWith {};
 
-    deleteVehicle _mat;
+    private _pos = getPos _mat;
+    private _direction = getDir _mat;
     private _FOB_name = "FOB " + _name;
-    [_pos, _FOB_name] remoteExecCall ["btc_fnc_fob_create_s", 2];
+
+    deleteVehicle _mat;
+
+    [_pos, _direction, _FOB_name] remoteExecCall ["btc_fnc_fob_create_s", 2];
     [7, _FOB_name] remoteExecCall ["btc_fnc_show_hint", [0, -2] select isDedicated];
-}, [getPos _mat, _mat, _name], 5] call CBA_fnc_waitAndExecute;
+}, [_mat, _name], 5] call CBA_fnc_waitAndExecute;

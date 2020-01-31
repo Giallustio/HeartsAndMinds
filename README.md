@@ -5,8 +5,8 @@
 </p>
 
 <p align="center">
-    <a href="https://github.com/Vdauphin/HeartsAndMinds/releases/tag/1.19.11">
-        <img src="https://img.shields.io/badge/Version-1.19.11-blue.svg?style=flat-square" alt="H&M Version">
+    <a href="https://github.com/Vdauphin/HeartsAndMinds/releases/tag/1.20">
+        <img src="https://img.shields.io/badge/Version-1.20-blue.svg?style=flat-square" alt="H&M Version">
     </a>
     <a href="http://www.somsubhra.com/github-release-stats/?username=vdauphin&repository=HeartsAndMinds">
         <img src="https://img.shields.io/github/downloads/Vdauphin/HeartsAndMinds/total.svg?style=flat-square&label=Downloads" alt="H&M Downloads">
@@ -23,22 +23,36 @@ Online [wiki available](http://vdauphin.github.io/HeartsAndMinds/).
 
 - **Dedicated server support only**
 - Dynamic battlefield
-- Rearm system
-- Repair wreck system
-- Logistic system
-- Interaction system
-- Realistic IED/Suicide/Drone bomber system
-- Civilian interaction/fleeing
+    - Enemies and civilian spawn randomly
+    - Random patrol and traffic
+    - Dynamic caching system to save performance
+    - Extend battlefield to sea (you are not safe on sea!)
 - Reputation system
+    - Realistic IED/Suicide/Drone bomber system
+    - Civilian interaction
+        - Orders
+        - Request a lift
+        - Discussion (interpreter)
+        - Fleeing
+    - More than 17 side mission
 - Deep ACE3 support
-- More than 267 enemies and 24 civilians factions available
-- More than 14 side mission
-- Dynamic caching system
-- Full saving Database
-- Easy map change
-- Extend battlefield to sea
-- Custom gameplay
-- Headless support
+    - Use mainly ACE interaction
+    - Rearm system
+- Logistic system
+    - Tow
+    - Lift
+    - Repair destroyed vehicles
+    - FOB/Rallypoints
+- Gameplay elements
+    - Intel about cache and hideout
+    - Chemical Warfare
+    - Spectrum devices
+- Under the hood
+    - A lot of optionnal gameplay
+    - More than 267 enemies and 24 civilians factions available
+    - Full saving Database (even player markers)
+    - Easy map change
+    - Auto Headless support
 - Something I forgot for sure
 
 

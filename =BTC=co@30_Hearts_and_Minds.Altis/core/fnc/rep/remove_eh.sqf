@@ -3,16 +3,16 @@
 Function: btc_fnc_rep_remove_eh
 
 Description:
-    Fill me when you edit me !
+    Remove event to civilian.
 
 Parameters:
-    _civilian - [Object]
+    _civilian - Civilian. [Object]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_rep_remove_eh;
+        [cursorObject] call btc_fnc_rep_remove_eh;
     (end)
 
 Author:
@@ -24,14 +24,6 @@ params [
     ["_civilian", objNull, [objNull]]
 ];
 
-private _data = _civilian getVariable ["btc_rep_eh_added", []];
-
-if (_data isEqualTo []) exitWith {true};
-
-_civilian setVariable ["btc_rep_eh_added", []];
-
-_civilian removeEventHandler ["HandleDamage", _data select 0];
-_civilian removeEventHandler ["Killed", _data select 1];
-_civilian removeEventHandler ["FiredNear", _data select 2];
-
-true
+[_civilian, "FiredNear", "btc_fnc_rep_firednear"] call btc_fnc_eh_removePersistOnLocalityChange;
+[_civilian, "HandleDamage", "btc_fnc_rep_hd"] remoteExecCall ["btc_fnc_eh_removePersistOnLocalityChange", _civilian];
+[_civilian, "Killed", "btc_fnc_rep_killed"] remoteExecCall ["btc_fnc_eh_removePersistOnLocalityChange", _civilian];

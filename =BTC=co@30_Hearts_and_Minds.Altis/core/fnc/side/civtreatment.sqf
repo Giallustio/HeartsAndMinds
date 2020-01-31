@@ -6,12 +6,13 @@ Description:
     Fill me when you edit me !
 
 Parameters:
+    _taskID - Unique task ID. [String]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_side_civtreatment;
+        [] spawn btc_fnc_side_civtreatment;
     (end)
 
 Author:
@@ -19,8 +20,12 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
+params [
+    ["_taskID", "btc_side", [""]]
+];
+
 //// Choose a clear City \\\\
-private _useful = btc_city_all select {!(_x getVariable ["occupied", false]) && !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])};
+private _useful = btc_city_all select {!(isNull _x) && !(_x getVariable ["occupied", false]) && !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])};
 if (_useful isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
 private _city = selectRandom _useful;
 private _pos = getPos _city;
@@ -39,21 +44,6 @@ if ( _r < 1)    then {
     _pos = selectRandom ((selectRandom _houses) buildingPos -1);
     _vehpos = [_pos select 0, _pos select 1, (_pos select 2) + 0.1];
 };
-
-btc_side_aborted = false;
-btc_side_done = false;
-btc_side_failed = false;
-btc_side_assigned = true;
-publicVariable "btc_side_assigned";
-
-btc_side_jip_data = [8, _pos, _city getVariable "name"];
-btc_side_jip_data remoteExec ["btc_fnc_task_create", 0];
-
-//// Create marker \\\\
-private _marker = createMarker [format ["sm_2_%1", _pos], _pos];
-_marker setMarkerType "hd_flag";
-[_marker, "STR_BTC_HAM_SIDE_CIVTREAT_MRK"] remoteExec ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker]; //Civil need help
-_marker setMarkerSize [0.6, 0.6];
 
 //// Create civ on _pos \\\\
 private _veh = objNull;
@@ -87,26 +77,27 @@ private _unit =_group createUnit [_unit_type, _pos, [], 0, "CAN_COLLIDE"];
 _unit setBehaviour "CARELESS";
 _unit setDir (random 360);
 _unit setUnitPos "DOWN";
-{_x call btc_fnc_civ_unit_create} forEach units _group;
+[_group] call btc_fnc_civ_unit_create;
+
+[_taskID, 8, _unit, [_city getVariable "name", _unit_type]] call btc_fnc_task_create;
 
 sleep 1;
 
-waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !(playableUnits inAreaArray [getPosWorld _unit, 5000, 5000] isEqualTo []))};
+waitUntil {sleep 5; (_taskID call BIS_fnc_taskCompleted || !(playableUnits inAreaArray [getPosWorld _unit, 5000, 5000] isEqualTo []))};
 
 [_unit] call btc_fnc_set_damage;
 
-waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || !Alive _unit || {_unit call ace_medical_status_fnc_isInStableCondition && [_unit] call ace_common_fnc_isAwake})};
+waitUntil {sleep 5; (_taskID call BIS_fnc_taskCompleted || !alive _unit || {_unit call ace_medical_status_fnc_isInStableCondition && [_unit] call ace_common_fnc_isAwake})};
 
-btc_side_assigned = false;
-publicVariable "btc_side_assigned";
-[[_marker], [_veh, _fx], [_group]] call btc_fnc_delete;
+[[], [_veh, _fx, _group]] call btc_fnc_delete;
 
-if (btc_side_aborted || btc_side_failed || !Alive _unit) exitWith {
-    8 remoteExec ["btc_fnc_task_fail", 0];
+if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {};
+if !(alive _unit) exitWith {
+    [_taskID, "FAILED"] call BIS_fnc_taskSetState;
 };
 
 10 call btc_fnc_rep_change;
 
-8 remoteExec ["btc_fnc_task_set_done", 0];
+[_taskID, "SUCCEEDED"] call BIS_fnc_taskSetState;
 
 _unit setUnitPos "UP";

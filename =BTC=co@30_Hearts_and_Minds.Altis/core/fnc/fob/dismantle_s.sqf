@@ -24,13 +24,15 @@ params [
     ["_flag", objNull, [objNull]]
 ];
 
-private _FOBname = _flag getVariable "btc_fob";
-private _element = (btc_fobs select 0) find _FOBname;
-private _pos = getPosASL _flag;
+[18] remoteExecCall ["btc_fnc_show_hint", (allPlayers - entities "HeadlessClient_F") inAreaArray [getPosASL _flag, 10, 10]];
 
-deleteVehicle _flag;
-deleteVehicle ((btc_fobs select 1) deleteAt _element);
+[{
+    params ["_flag"];
 
-[btc_fob_mat, _pos, surfaceNormal _pos] call btc_fnc_log_create_s;
+    private _pos = getPosASL _flag;
+    private _element = (btc_fobs select 2) find _flag;
 
-deleteMarker ((btc_fobs select 0) deleteAt _element);
+    [(btc_fobs select 1) select _element, objNull, objNull, true, true] call btc_fnc_fob_killed;
+
+    [btc_fob_mat, _pos, surfaceNormal _pos] call btc_fnc_log_create_s;
+}, [_flag], 10] call CBA_fnc_waitAndExecute;

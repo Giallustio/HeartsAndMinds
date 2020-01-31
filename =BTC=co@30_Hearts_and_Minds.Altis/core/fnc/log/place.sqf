@@ -47,7 +47,7 @@ btc_log_ptich_dir = 0;
 private _actionEH = [player, "DefaultAction", {true}, {btc_log_placing = false;}] call ace_common_fnc_addActionEventHandler;
 
 //show mouse hint for release
-[localize "STR_BTC_HAM_LOG_PLACE_RELEASE", ""] call ace_interaction_fnc_showMouseHint; //Release
+[localize "STR_BTC_HAM_LOG_PLACE_RELEASE", ""] call ace_interaction_fnc_showMouseHint;
 
 //add actions to keys
 private _place_EH_keydown = (findDisplay 46) displayAddEventHandler ["KeyDown", btc_fnc_log_place_key_down];
@@ -70,7 +70,7 @@ btc_log_placing_d = 1.5 + abs(((_bbr select 1) select 1) - ((_bbr select 0) sele
 [{
     params ["_arguments", "_idPFH"];
 
-    if (!Alive player || player getVariable ["ACE_isUnconscious", false] || !btc_log_placing) then {
+    if (!alive player || player getVariable ["ACE_isUnconscious", false] || !btc_log_placing) then {
         _arguments params ["_placing_obj", "_actionEH", "_place_EH_keydown"];
 
         //remove PFH

@@ -3,18 +3,17 @@
 Function: btc_fnc_delete
 
 Description:
-    Delete markers (and JIP data of marker) and objects or units in groups when there are far enough from players.
+    Delete markers and the JIP remoteExec associated. Delete objects when player is far from them.
 
 Parameters:
-    _markers - Array of markers. [Array]
-    _objects - Array of objects. [Array]
-    _groups - Array of groups. [Array]
+    _markers - Array of marker to delete. [Array]
+    _objects - Array of objects and or groups to delete. [Array]
 
 Returns:
 
 Examples:
     (begin example)
-        [[], [btc_helo_1]] call btc_fnc_delete;
+        [["mymarker"], [objNull, grpNull]] call btc_fnc_delete;
     (end)
 
 Author:
@@ -24,14 +23,13 @@ Author:
 
 params [
     ["_markers", [], [[""]]],
-    ["_objects", [], [[objNull]]],
-    ["_groups", [], [[grpNull]]]
+    ["_objects", [], [[]]]
 ];
 
 {
     deleteMarker _x;
     //remove JIP remoteExec
-    remoteExec ["", _x];
+    remoteExecCall ["", _x];
 } forEach _markers;
 
-[_objects + _groups] call btc_fnc_deleteEntities;
+[_objects] call btc_fnc_deleteEntities;

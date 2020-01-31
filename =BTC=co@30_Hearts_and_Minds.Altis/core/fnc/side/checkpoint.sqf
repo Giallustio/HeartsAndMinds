@@ -6,15 +6,13 @@ Description:
     Fill me when you edit me !
 
 Parameters:
-    _x - []
-    _y - []
-    _z - []
+    _taskID - Unique task ID. [String]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_side_checkpoint;
+        [false, "btc_fnc_side_checkpoint"] spawn btc_fnc_side_create;
     (end)
 
 Author:
@@ -22,20 +20,17 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
+params [
+    ["_taskID", "btc_side", [""]]
+];
+
 //// Choose an occupied City \\\\
-private _useful = btc_city_all select {_x getVariable ["occupied", false] && !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])};
+private _useful = btc_city_all select {!(isNull _x) && _x getVariable ["occupied", false] && !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])};
 if (_useful isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
 private _city = selectRandom _useful;
 private _pos = getPos _city;
 
-btc_side_aborted = false;
-btc_side_done = false;
-btc_side_failed = false;
-btc_side_assigned = true;
-publicVariable "btc_side_assigned";
-
-btc_side_jip_data = [9, _pos, _city getVariable "name"];
-btc_side_jip_data remoteExec ["btc_fnc_task_create", 0];
+[_taskID, 9, objNull, _city getVariable "name"] call btc_fnc_task_create;
 
 _city setVariable ["spawn_more", true];
 
@@ -45,7 +40,7 @@ private _radius_y = _city getVariable ["RadiusY", 0];
 private _radius = (_radius_x + _radius_y)/4;
 
 private _boxes = [];
-private _markers = [];
+private _composition = [];
 for "_i" from 1 to (1 + round random 2) do {
     //// Choose a road \\\\
     private _pos = [getPos _city, _radius] call btc_fnc_randomize_pos;
@@ -57,20 +52,14 @@ for "_i" from 1 to (1 + round random 2) do {
 
     private _direction = [_road] call btc_fnc_road_direction;
 
-    //// Create marker \\\\
-    private _marker = createMarker [format ["sm_2_%1", _pos], _pos];
-    _marker setMarkerType "hd_flag";
-    [_marker, "str_a3_timetrials_checkpoints0"] remoteExec ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker]; //Checkpoint
-    _marker setMarkerColor "ColorRed";
-    _marker setMarkerSize [0.6, 0.6];
-    _markers pushback _marker;
-
     //// Randomise composition \\\\
     private _type_barrel = selectRandom btc_type_barrel;
     private _type_barrel_canister1 = selectRandom (btc_type_barrel + btc_type_canister);
     private _type_barrel_canister2 = selectRandom (btc_type_barrel + btc_type_canister);
     private _type_pallet = selectRandom btc_type_pallet;
     private _type_box = selectRandom btc_type_box;
+    private _type_cone = selectRandom btc_type_cones;
+    private _type_barrier = selectRandom btc_type_barrier;
     private _composition_checkpoint = [
         [_type_barrel,10,[0.243652,-2.78906,0]],
         [_type_barrel,20,[-0.131836,3.12939,0]],
@@ -81,12 +70,12 @@ for "_i" from 1 to (1 + round random 2) do {
         [_type_pallet,-70,[-5,3.75342,0]],
         [_type_barrel_canister2,0,[1.83984,-4.95264,0]],
         [_type_box,180,[-1.97998,4.88574,0]],
-        ["Land_CncBarrier_stripes_F",180,[2.26367,-5.38623,0]],
-        ["RoadCone_L_F",180,[1.14771,-5.89697,0.00211954]],
-        ["Land_CncBarrier_stripes_F",0,[-2.1416,5.66553,0]],
-        ["RoadCone_L_F",0,[-1.03101,6.18164,0.00211954]],
-        ["RoadCone_L_F",180,[2.81616,-5.81689,0.00211954]],
-        ["RoadCone_L_F",0,[-2.6731,6.17773,0.00211954]]
+        [_type_barrier,180,[2.26367,-5.38623,0]],
+        [_type_cone,180,[1.14771,-5.89697,0.00211954]],
+        [_type_barrier,0,[-2.1416,5.66553,0]],
+        [_type_cone,0,[-1.03101,6.18164,0.00211954]],
+        [_type_cone,180,[2.81616,-5.81689,0.00211954]],
+        [_type_cone,0,[-2.6731,6.17773,0.00211954]]
     ];
 
     //// Create checkpoint with static at _pos \\\\
@@ -99,33 +88,38 @@ for "_i" from 1 to (1 + round random 2) do {
     private _static = [_posStatic, _statics, _direction] call btc_fnc_mil_create_static;
     _static setPos _posStatic;
 
-    [_pos, _direction, _composition_checkpoint] call btc_fnc_create_composition;
+    _composition append ([_pos, _direction, _composition_checkpoint] call btc_fnc_create_composition);
 
     private _boxe = nearestObject [_pos, _type_box];
     _boxe setVariable ["ace_cookoff_enable", false, true];
-    _boxe spawn {
-        params ["_boxe"];
+    _boxe setVariable ["ace_cookoff_enableAmmoCookoff", false, true];
+    private _destroy_taskID = _taskID + "dt" + str _i;
+    [[_destroy_taskID, _taskID], 23, _boxe, _type_box, false, false] call btc_fnc_task_create;
+    [_boxe, _destroy_taskID] spawn {
+        params ["_boxe", "_destroy_taskID"];
 
         private _pos = getPos _boxe;
-        waitUntil {sleep 5; btc_side_aborted || btc_side_failed || !(Alive _boxe)};
-        private _fx = "test_EmptyObjectForSmoke" createVehicle _pos;
-        _fx setPos _pos;
-        sleep 120;
-        _fx call CBA_fnc_deleteEntity;
+        waitUntil {sleep 5; _destroy_taskID call BIS_fnc_taskCompleted || !(alive _boxe)};
+        if !(_destroy_taskID call BIS_fnc_taskState isEqualTo "CANCELED") then {
+            [_destroy_taskID, "SUCCEEDED"] call BIS_fnc_taskSetState;
+            private _fx = "test_EmptyObjectForSmoke" createVehicle _pos;
+            _fx setPos _pos;
+            sleep 120;
+            _fx call CBA_fnc_deleteEntity;
+        };
     };
     _boxes pushBack _boxe;
 };
 
-waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || (_boxes select {Alive _x} isEqualTo []))};
-
-btc_side_assigned = false;
-publicVariable "btc_side_assigned";
-[_markers, _boxes, []] call btc_fnc_delete;
-
-if (btc_side_aborted || btc_side_failed) exitWith {
-    9 remoteExec ["btc_fnc_task_fail", 0];
+waitUntil {sleep 5; (
+    _taskID call BIS_fnc_taskCompleted ||
+    _boxes select {alive _x} isEqualTo [])
 };
+
+[[], _boxes + _composition] call btc_fnc_delete;
+
+if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {};
 
 80 call btc_fnc_rep_change;
 
-9 remoteExec ["btc_fnc_task_set_done", 0];
+[_taskID, "SUCCEEDED"] call btc_fnc_task_setState;

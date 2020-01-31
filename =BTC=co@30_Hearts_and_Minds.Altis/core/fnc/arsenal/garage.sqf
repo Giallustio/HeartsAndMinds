@@ -24,9 +24,7 @@ params [
     ["_current_garage", objNull, [objNull]]
 ];
 
-if (count (nearestObjects [_current_garage, ["All"], 5]) > 1) exitWith {
-    hint localize "STR_BTC_HAM_LOG_BASICS_CLEARAREA"; //Clear the area before create another object!
-};
+if ([_current_garage] call btc_fnc_checkArea) exitWith {};
 
 disableSerialization;
 uiNamespace setVariable ["current_garage", _current_garage];
@@ -57,7 +55,7 @@ with uiNamespace do {
         private _customization = [_x] call BIS_fnc_getVehicleCustomization;
 
         _x call CBA_fnc_deleteEntity;
-        [_type, _pos, _dir, _customization] remoteExec ["btc_fnc_log_createVehicle", 2];
-        [_type] remoteExec ["btc_fnc_eh_veh_init", -2];
+        [_type, _pos, _dir, _customization] remoteExecCall ["btc_fnc_log_createVehicle", 2];
+        [_type] remoteExecCall ["btc_fnc_eh_veh_init", -2];
     } forEach _veh_list;
 };

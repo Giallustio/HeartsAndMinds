@@ -44,12 +44,13 @@ private _cities_status = profileNamespace getVariable [format ["btc_hm_%1_cities
     _city setVariable ["has_suicider", _has_suicider];
 
     if (btc_debug) then {
+        private _marker = _city getVariable ["marker", ""];
         if (_city getVariable ["occupied", false]) then {
-            (_city getVariable ["marker", ""]) setMarkerColor "colorRed";
+            _marker setMarkerColor "colorRed";
         } else {
-            (_city getVariable ["marker", ""]) setMarkerColor "colorGreen";
+            _marker setMarkerColor "colorGreen";
         };
-        (_city getVariable ["marker", ""]) setMarkerText format ["loc_%3 %1 %2 - [%4]", _city getVariable "name", _city getVariable "type", _id, _occupied];
+        _marker setMarkerText format ["loc_%3 %1 %2 - [%4]", _city getVariable "name", _city getVariable "type", _id, _occupied];
     };
     if (btc_debug_log) then {
         [format ["ID: %1 - IsOccupied %2", _id, _occupied], __FILE__, [false]] call btc_fnc_debug_message;
@@ -75,35 +76,38 @@ if (_select_ho isEqualTo - 1) then {
 if (btc_hideouts isEqualTo []) then {[] spawn btc_fnc_final_phase;};
 
 //CACHE
-btc_cache_markers = [];
-
 private _array_cache = profileNamespace getVariable [format ["btc_hm_%1_cache", _name], []];
 
 btc_cache_pos = _array_cache select 0;
 btc_cache_n = _array_cache select 1;
 btc_cache_info = _array_cache select 2;
 
-call btc_fnc_cache_create;
+[] call btc_fnc_cache_create;
 
+btc_cache_markers = [];
 {
     _x params ["_pos", "_marker_name"];
 
-    private _marker = createMarker [format ["%1", _pos], _pos];
-    _marker setMarkerType "hd_unknown";
-    _marker setMarkerText _marker_name;
-    _marker setMarkerSize [0.5, 0.5];
-    _marker setMarkerColor "ColorRed";
-    btc_cache_markers pushBack _marker;
+    [_pos, 0, _marker_name] call btc_fnc_info_cacheMarker;
 } forEach (_array_cache select 3);
+
+btc_cache_pictures = +(_array_cache select 4);
+{
+    (btc_cache_pictures select 2) pushBack ([
+        _x,
+        btc_cache_n,
+        btc_cache_pictures select 1 select _forEachindex
+    ] remoteExecCall ["btc_fnc_info_cachePicture", [0, -2] select isDedicated, true]);
+} forEach (btc_cache_pictures select 0);
 
 //FOB
 private _fobs = profileNamespace getVariable [format ["btc_hm_%1_fobs", _name], []];
 
 {
-    _x params ["_fob_name", "_pos"];
+    _x params ["_fob_name", "_pos", ["_direction", 0, [0]]];
 
-    [_pos, _fob_name] call btc_fnc_fob_create_s;
-} forEach (_fobs select 0);
+    [_pos, _direction, _fob_name] call btc_fnc_fob_create_s;
+} forEach _fobs;
 
 //REP
 private _global_reputation = profileNamespace getVariable [format ["btc_hm_%1_rep", _name], 0];
@@ -129,14 +133,15 @@ private _vehs = profileNamespace getVariable [format ["btc_hm_%1_vehs", _name], 
             ["_isMedicalVehicle", false, [false]],
             ["_isRepairVehicle", false, [false]],
             ["_fuelSource", [], [[]]],
-            ["_pylons", [], [[]]]
+            ["_pylons", [], [[]]],
+            ["_isContaminated", false, [false]]
         ];
 
         if (btc_debug_log) then {
             [format ["_veh = %1", _x], __FILE__, [false]] call btc_fnc_debug_message;
         };
 
-        private _veh = [_veh_type, _veh_pos, _veh_dir, _customization, _isMedicalVehicle, _isRepairVehicle, _fuelSource, _pylons] call btc_fnc_log_createVehicle;
+        private _veh = [_veh_type, _veh_pos, _veh_dir, _customization, _isMedicalVehicle, _isRepairVehicle, _fuelSource, _pylons, _isContaminated] call btc_fnc_log_createVehicle;
         if ((getPos _veh) select 2 < 0) then {_veh setVectorUp surfaceNormal position _veh;};
         _veh setFuel _veh_fuel;
 

@@ -24,7 +24,8 @@ Author:
 
 params [
     ["_active_city", objNull, [objNull]],
-    ["_area", btc_patrol_area, [0]]
+    ["_area", btc_patrol_area, [0]],
+    ["_p_chem", btc_p_chem, [false]]
 ];
 
 if (isNil "btc_civilian_id") then {btc_civilian_id = -1;};
@@ -67,21 +68,21 @@ btc_civilian_id = btc_civilian_id - 1;
 (selectRandom btc_civ_type_units) createUnit [_safe_pos, _group, "this moveinDriver _veh; this assignAsDriver _veh;"];
 _veh setVariable ["btc_crews", _group];
 
-{
-    _x call btc_fnc_civ_unit_create;
-} forEach units _group;
+[_group] call btc_fnc_civ_unit_create;
 
-private _handleDamageEh = _veh addEventHandler ["HandleDamage", {
-    params ["_veh", "_selection", "_damage"];
-
-    if (_damage < 0.1) exitWith {};
-    [_veh] call btc_fnc_patrol_eh;
-}];
-private _fuelEh = _veh addEventHandler ["Fuel", btc_fnc_patrol_eh];
-private _getOutEh = _veh addEventHandler ["GetOut", btc_fnc_patrol_eh];
-private _handleDamageRepEh = _veh addEventHandler ["HandleDamage", btc_fnc_rep_hd];
-_veh setVariable ["btc_eh", [_fuelEh, _handleDamageEh, _getOutEh, _handleDamageRepEh]];
+[_veh, "HandleDamage", "btc_fnc_patrol_disabled"] call btc_fnc_eh_persistOnLocalityChange;
+[_veh, "Fuel", "btc_fnc_patrol_eh"] call btc_fnc_eh_persistOnLocalityChange;
+[_veh, "GetOut", "btc_fnc_patrol_eh"] call btc_fnc_eh_persistOnLocalityChange;
+[_veh, "HandleDamage", "btc_fnc_rep_hd"] call btc_fnc_eh_persistOnLocalityChange;
+if (_p_chem) then {
+    _veh addEventHandler ["GetIn", {
+        [_this select 0, _this select 2] call btc_fnc_chem_propagate;
+        _this
+    }];
+};
 
 [_group, [_start_city, _active_city], _area, _pos_isWater] call btc_fnc_patrol_init;
+
+[[_group]] call btc_fnc_set_groupsOwner;
 
 true

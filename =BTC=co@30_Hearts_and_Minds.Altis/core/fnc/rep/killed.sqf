@@ -3,17 +3,17 @@
 Function: btc_fnc_rep_killed
 
 Description:
-    Fill me when you edit me !
+    Change reputation when a player kill a unit.
 
 Parameters:
-    _unit - [Object]
-    _killer - [Object]
+    _unit - Unit killed. [Object]
+    _killer - Killer. [Object]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_rep_killed;
+        [cursorObject, player] call btc_fnc_rep_killed;
     (end)
 
 Author:
@@ -25,6 +25,10 @@ params [
     ["_unit", objNull, [objNull]],
     ["_killer", objNull, [objNull]]
 ];
+
+if (!isServer) exitWith {
+    _this remoteExecCall ["btc_fnc_rep_killed", 2];
+};
 
 if (isPlayer _killer) then {
     btc_rep_malus_civ_killed call btc_fnc_rep_change;
@@ -39,5 +43,5 @@ if (isPlayer _killer) then {
 
 private _vehicle = assignedVehicle _unit;
 if !(_vehicle isEqualTo objNull) then {
-    [[], [_vehicle], []] call btc_fnc_delete;
+    [[], [_vehicle]] call btc_fnc_delete;
 };

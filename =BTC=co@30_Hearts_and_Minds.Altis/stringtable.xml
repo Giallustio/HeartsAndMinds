@@ -9,13 +9,6 @@
                 <Portuguese>Corações e Mentes</Portuguese>
                 <Chinesesimp>心灵与智慧</Chinesesimp>
             </Key>
-            <Key ID="STR_BTC_HAM_DESCR_AUTHOR">
-                <Original>Giallustio</Original>
-                <Spanish>Giallustio</Spanish>
-                <German>Giallustio</German>
-                <Portuguese>Giallustio</Portuguese>
-                <Chinesesimp>Giallustio</Chinesesimp>
-            </Key>
             <Key ID="STR_BTC_HAM_DESCR_MISSION">
                 <Original>www.blacktemplars.altervista.org</Original>
                 <Spanish>www.blacktemplars.altervista.org</Spanish>
@@ -89,7 +82,7 @@
                 <Spanish>&lt;img image='\a3\ui_f\data\map\vehicleicons\iconvirtual_ca.paa' width='20' height='20'/&gt; Esta mision usa automaticamente un Headless client si está disponible .&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/&gt; Esta misión tiene un sistema de base de datos. Se guardan unidades enemigas, ciudades, escondites, caché, objetos creados por jugadores o Zeus, vehículos, marcadores de jugadores (no líneas) en el canal global. Todos los administradores pueden guardar el progreso de la misión en cualquier momento con su clave de auto interacción.</Spanish>
                 <German>&lt;img image='\a3\ui_f\data\map\vehicleicons\iconvirtual_ca.paa' width='20' height='20'/&gt; Sollte ein Headless Client vorhanden sein, so wird dieser durch die Mission automatisch genutzt.&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/&gt; Diese Mission verfügt über ein eingenes Datenbanksystem, in welcher folgende Dinge gespeichert werden: feindliche Einheiten, Städte, Verstecke, feindliche Waffenlager, Fahrzeuge, vom Spieler oder vom Zeus erstelle Objecte und Marker (keine Linien) vom Spieler im Globalen-Channel. Jeder Admin kann zu jeder Zeit den Missionsfortschritt über das Eigen-Interaktionsmenü speichern.</German>
                 <Portuguese>&lt;img image='\a3\ui_f\data\map\vehicleicons\iconvirtual_ca.paa' width='20' height='20'/&gt; Esta missão usa automaticamente um cliente Headless quando disponível.&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/&gt; Esta missão tem um sistema de banco de dados. Unidades inimigas, cidades, esconderijos, cache, objetos criados por jogadores ou Zeus, veículos, marcação de jogadores (sem linhas) no canal global são salvos. O administrador pode salvar o progresso da missão a qualquer momento usando botão de interação.</Portuguese>
-                <Chinesesimp>&lt;img image='\a3\ui_f\data\map\vehicleicons\iconvirtual_ca.paa' width='20' height='20'/&gt; 最多一台无头客户端将被任务自动使用。&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/&gt; 本任务内置独立的数据库系统。敌方单位、城市、藏匿点、武器箱、车辆、玩家或宙斯创建的物体以及公共频道中的地图标记(不含划线标记)将被存储。每个管理员都可以通过自我互动菜单随时保存任务进度。</Chinesesimp>
+                <Chinesesimp>&lt;img image='\a3\ui_f\data\map\vehicleicons\iconvirtual_ca.paa' width='20' height='20'/&gt; 任务将自动使用一台可用的无头客户端。&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/&gt; 本任务内置独立的数据库系统。敌方单位、城市、藏匿点、武器箱、车辆、玩家或宙斯创建的物体以及公共频道中的地图标记(不含划线标记)将被存储。每个管理员都可以通过自我互动菜单随时保存任务进度。</Chinesesimp>
             </Key>
         </Container>
         <Container name="Documentation: Wounds">
@@ -126,11 +119,11 @@
         </Container>
         <Container name="Documentation: Vehicles">
             <Key ID="STR_BTC_HAM_DOC_VEHICLES_TEXT">
-                <Original>&lt;marker name='blufor_base'&gt;&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\destroy_ca.paa' width='20' height='20' color='#FFBF00'/&gt; Respawn:&lt;/marker&gt;&lt;br/&gt; When a vehicle is destroyed it will not respawn in base, you need to tow or lift it back to base and repair it near the logistic point (Interact with the red box). Helicopter wrecks can only be lifted. &lt;br/&gt; The Chinook is the only exception, it will respawn after 30 seconds. &lt;br/&gt;&lt;br/&gt; &lt;marker name='blufor_base'&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\rearm_ca.paa' width='20' height='20' color='#FFBF00'/&gt; Rearm:&lt;/marker&gt;&lt;br/&gt; You can also rearm them by spawning the corresponding caliber at logistic point (Interact with the red box, select the vehicle type and caliber). Carry the ammo created and interact with the vehicle to rearm. This only works if rearming is setting on entire magazine or amount based on caliber (not for entire vehicle setting).</Original>
-                <Spanish>&lt;marker name='blufor_base'&gt;&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\destroy_ca.paa' width='20' height='20' color='#FFBF00'/&gt; Respawn:&lt;/marker&gt;&lt;br/&gt; Cuando un vehículo es destruido no va a reaparecer en la base, es necesario remolcarlo o transportarlo de vuelta a la base y repararlo cerca del punto logístico (Interactuar con la caja roja). Los destrozos de helicópteros sólo pueden ser transportados por vía aérea.. &lt;br/&gt; El Chinook es la única excepción, reaparecerá después de 30 segundos.. &lt;br/&gt;&lt;br/&gt; &lt;marker name='blufor_base'&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\rearm_ca.paa' width='20' height='20' color='#FFBF00'/&gt; Rearm:&lt;/marker&gt;&lt;br/&gt; También puede rearmarlos generando el calibre correspondiente en el punto logístico (Interactuar con la caja roja, seleccionar el tipo y calibre del vehículo). Lleva la munición creada e interactúa con el vehículo para rearmarlo. Esto sólo funciona si el rearme se está ajustando en todo el cargador o en una cantidad basada en el calibre (no para el ajuste de todo el vehículo).</Spanish>
-                <German>&lt;marker name='blufor_base'&gt;&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\destroy_ca.paa' width='20' height='20' color='#FFBF00'/&gt; Respawn:&lt;/marker&gt;&lt;br/&gt; Wenn ein Fahrzeug zersört wurde, wird dies nicht Respawnen. Es muss durch Abschleppen oder Anheben(Sling-Load) zum Logisik-Punkt gebracht und dort repariert werden (mit der roten Box interagieren). Wracks von Hubschraubern können nur angehoben werden (Sling-Load). &lt;br/&gt; Die einzigste Ausnahme hierbei ist der Chinook. Er respawnt nach 30 Sekunden. &lt;br/&gt;&lt;br/&gt; &lt;marker name='blufor_base'&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\rearm_ca.paa' width='20' height='20' color='#FFBF00'/&gt; Aufmunitionieren:&lt;/marker&gt;&lt;br/&gt; Fahrzeuge können Aufmunitioniert werden, in dem man das entsprechende Kaliber am Logisik-Punk anfordert (mit der Roten Box interagieren: Fahzeug und Kaliber auswählen). Nun muss man nur noch die erstellte Munition zum Fahrzeug bringen und mit diesem interagieren um das aufmunitionieren zu beginnen.&lt;br/&gt;ANMERKUNG: Das funktioiert nur wenn die Aufmunitionierungseinstellung auf 'Gesamtes Magazin' oder 'Kalieberbasierte Anzahl' gestellt ist (get nicht für 'Gesamtes Fahrzeug').</German>
-                <Portuguese>&lt;marker name='blufor_base'&gt;&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\destroy_ca.paa' width='20' height='20' color='#FFBF00'/&gt; Respawn:&lt;/marker&gt;&lt;br/&gt; Quando um veículo é destruído ele não reaparecerá na base, você precisa rebocá-lo/levá-lo de volta à base e repará-lo perto do ponto logístico (Interagir com a caixa vermelha). Os destroços de helicóptero só podem ser levantados. &lt;br/&gt; O Chinook é a única exceção, ele reaparecerá depois de 30 segundos. &lt;br/&gt;&lt;br/&gt; &lt;marker name='blufor_base'&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\rearm_ca.paa' width='20' height='20' color='#FFBF00'/&gt; Rearm:&lt;/marker&gt;&lt;br/&gt; Você também pode rearmar-los, gerando o calibre correspondente no ponto logístico (Interaja com a caixa vermelha, selecione o tipo de veículo e calibre). Leve a munição criada e interaja com o veículo para rearmar. Isso só funciona se o rearme estiver configurado em um depósito inteiro ou em um valor baseado em calibre (não para toda a configuração do veículo).</Portuguese>
-                <Chinesesimp>&lt;marker name='blufor_base'&gt;&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\destroy_ca.paa' width='20' height='20' color='#FFBF00'/&gt; 载具重生:&lt;/marker&gt;&lt;br/&gt; 当载具损毁时, 它不会自行在基地重生。你需要采用车辆牵引或直升机吊挂的方式将其残骸运回基地, 并在后勤点对其进行维修(与后勤点的红色箱子进行互动)。直升机的残骸只能使用吊挂的方式运输。 &lt;br/&gt; 支奴干(Chinook)是唯一的例外, 它会在损毁后30秒于基地重生。 &lt;br/&gt;&lt;br/&gt; &lt;marker name='blufor_base'&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\rearm_ca.paa' width='20' height='20' color='#FFBF00'/&gt; 弹药补给:&lt;/marker&gt;&lt;br/&gt; 你可以在后勤点生成对应口径的弹药, 对载具进行弹药补给。与红色箱子互动, 选择对应的载具类型及口径, 弹药箱将会生成。将生成的弹药箱搬到载具附近, 与载具互动, 即可执行补给。注意: 如需启用此功能, 需要将任务参数中的弹药补给选项设置为 "Total Magazine" 或 "Calibre Based Number" (而非 "Entire Vehicle")。</Chinesesimp>
+                <Original>&lt;marker name='blufor_base'&gt;&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\destroy_ca.paa' width='20' height='20'/&gt; Respawn:&lt;/marker&gt;&lt;br/&gt; When a vehicle is destroyed it will not respawn in base, you need to tow or lift it back to base and repair it near the logistic point (Interact with the red box). Helicopter wrecks can only be lifted. &lt;br/&gt; The Chinook is the only exception, it will respawn after 30 seconds. &lt;br/&gt;&lt;br/&gt; &lt;marker name='blufor_base'&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\rearm_ca.paa' width='20' height='20'/&gt; Rearm:&lt;/marker&gt;&lt;br/&gt; You can also rearm them by spawning the corresponding caliber at logistic point (Interact with the red box, select the vehicle type and caliber). Carry the ammo created and interact with the vehicle to rearm. This only works if rearming is setting on entire magazine or amount based on caliber (not for entire vehicle setting).</Original>
+                <Spanish>&lt;marker name='blufor_base'&gt;&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\destroy_ca.paa' width='20' height='20'/&gt; Respawn:&lt;/marker&gt;&lt;br/&gt; Cuando un vehículo es destruido no va a reaparecer en la base, es necesario remolcarlo o transportarlo de vuelta a la base y repararlo cerca del punto logístico (Interactuar con la caja roja). Los destrozos de helicópteros sólo pueden ser transportados por vía aérea.. &lt;br/&gt; El Chinook es la única excepción, reaparecerá después de 30 segundos.. &lt;br/&gt;&lt;br/&gt; &lt;marker name='blufor_base'&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\rearm_ca.paa' width='20' height='20'/&gt; Rearm:&lt;/marker&gt;&lt;br/&gt; También puede rearmarlos generando el calibre correspondiente en el punto logístico (Interactuar con la caja roja, seleccionar el tipo y calibre del vehículo). Lleva la munición creada e interactúa con el vehículo para rearmarlo. Esto sólo funciona si el rearme se está ajustando en todo el cargador o en una cantidad basada en el calibre (no para el ajuste de todo el vehículo).</Spanish>
+                <German>&lt;marker name='blufor_base'&gt;&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\destroy_ca.paa' width='20' height='20'/&gt; Respawn:&lt;/marker&gt;&lt;br/&gt; Wenn ein Fahrzeug zersört wurde, wird dies nicht Respawnen. Es muss durch Abschleppen oder Anheben(Sling-Load) zum Logisik-Punkt gebracht und dort repariert werden (mit der roten Box interagieren). Wracks von Hubschraubern können nur angehoben werden (Sling-Load). &lt;br/&gt; Die einzigste Ausnahme hierbei ist der Chinook. Er respawnt nach 30 Sekunden. &lt;br/&gt;&lt;br/&gt; &lt;marker name='blufor_base'&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\rearm_ca.paa' width='20' height='20'/&gt; Aufmunitionieren:&lt;/marker&gt;&lt;br/&gt; Fahrzeuge können Aufmunitioniert werden, in dem man das entsprechende Kaliber am Logisik-Punk anfordert (mit der Roten Box interagieren: Fahzeug und Kaliber auswählen). Nun muss man nur noch die erstellte Munition zum Fahrzeug bringen und mit diesem interagieren um das aufmunitionieren zu beginnen.&lt;br/&gt;ANMERKUNG: Das funktioiert nur wenn die Aufmunitionierungseinstellung auf 'Gesamtes Magazin' oder 'Kalieberbasierte Anzahl' gestellt ist (get nicht für 'Gesamtes Fahrzeug').</German>
+                <Portuguese>&lt;marker name='blufor_base'&gt;&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\destroy_ca.paa' width='20' height='20'/&gt; Respawn:&lt;/marker&gt;&lt;br/&gt; Quando um veículo é destruído ele não reaparecerá na base, você precisa rebocá-lo/levá-lo de volta à base e repará-lo perto do ponto logístico (Interagir com a caixa vermelha). Os destroços de helicóptero só podem ser levantados. &lt;br/&gt; O Chinook é a única exceção, ele reaparecerá depois de 30 segundos. &lt;br/&gt;&lt;br/&gt; &lt;marker name='blufor_base'&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\rearm_ca.paa' width='20' height='20'/&gt; Rearm:&lt;/marker&gt;&lt;br/&gt; Você também pode rearmar-los, gerando o calibre correspondente no ponto logístico (Interaja com a caixa vermelha, selecione o tipo de veículo e calibre). Leve a munição criada e interaja com o veículo para rearmar. Isso só funciona se o rearme estiver configurado em um depósito inteiro ou em um valor baseado em calibre (não para toda a configuração do veículo).</Portuguese>
+                <Chinesesimp>&lt;marker name='blufor_base'&gt;&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\destroy_ca.paa' width='20' height='20'/&gt; 载具重生:&lt;/marker&gt;&lt;br/&gt; 当载具损毁时, 它不会自行在基地重生。你需要采用车辆牵引或直升机吊挂的方式将其残骸运回基地, 并在后勤点对其进行维修(与后勤点的红色箱子进行互动)。直升机的残骸只能使用吊挂的方式运输。 &lt;br/&gt; 支奴干(Chinook)是唯一的例外, 它会在损毁后30秒于基地重生。 &lt;br/&gt;&lt;br/&gt; &lt;marker name='blufor_base'&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\rearm_ca.paa' width='20' height='20'/&gt; 弹药补给:&lt;/marker&gt;&lt;br/&gt; 你可以在后勤点生成对应口径的弹药, 对载具进行弹药补给。与红色箱子互动, 选择对应的载具类型及口径, 弹药箱将会生成。将生成的弹药箱搬到载具附近, 与载具互动, 即可执行补给。注意: 如需启用此功能, 需要将任务参数中的弹药补给选项设置为 "Total Magazine" 或 "Calibre Based Number" (而非 "Entire Vehicle")。</Chinesesimp>
             </Key>
         </Container>
         <Container name="Documentation: Side Mission">
@@ -142,7 +135,7 @@
                 <Chinesesimp>支线任务</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_DOC_SIDEMISSION_TEXT">
-                <Original>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\whiteboard_ca.paa' width='20' height='20'/&gt; Side missions are really useful to raise your reputation level.&lt;br/&gt; A side mission can be requested by the officer with his self interaction menu.&lt;br/&gt; If you don't want to complete a task, you can always abort it with the self interaction menu.</Original>
+                <Original>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\whiteboard_ca.paa' width='20' height='20'/&gt; Side missions are really useful to raise your reputation level.&lt;br/&gt; A side mission can be requested by the officer with his self interaction menu.&lt;br/&gt; If you don't want to complete a task, assigned it to you and abort it with the self interaction menu.</Original>
                 <Spanish>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\whiteboard_ca.paa' width='20' height='20'/&gt; Las misiones secundarias son realmente útiles para elevar tu nivel de reputación.&lt;br/&gt; Una misión secundaria puede ser solicitada por el oficial con su menú de auto-interacción..&lt;br/&gt; Si no desea completar una tarea, siempre puede abortarla con el menú de auto-interacción.</Spanish>
                 <German>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\whiteboard_ca.paa' width='20' height='20'/&gt; Nebenaufgaben sind sehr nütlich um das Ansehen in der Bevölkerung zu erhöhen.&lt;br/&gt;Diese Aufgaben können vom Offizier über das Eigen-Interaktionsmenü angefordert werden.&lt;br/&gt;Kann man eine Mission aus verschiedenen Gründen nicht abgeschlossen werden, so kann der Offizier sie jederzeit über das Eigen-Interaktionsmenü abbrechen.</German>
                 <Portuguese>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\whiteboard_ca.paa' width='20' height='20'/&gt; Missões secundárias são úteis para elevar o nível de reputação.&lt;br/&gt; Uma missão secundária pode ser solicitada pelo Oficial usando menu de interação pessoal.&lt;br/&gt; Se você não quiser concluir uma tarefa, poderá sempre abortá-la usando o menu de interação.</Portuguese>
@@ -150,10 +143,14 @@
             </Key>
         </Container>
         <Container name="Documentation: FOB">
+            <Key ID="STR_BTC_HAM_DOC_FOB_TITLE">
+                <Original>FOB/Rallypoint</Original>
+                <Chinesesimp>FOB/集合点</Chinesesimp>
+            </Key>
             <Key ID="STR_BTC_HAM_DOC_FOB_TEXT">
-                <Original>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move1_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\run_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move2_ca.paa' width='20' height='20' /&gt; &lt;marker name='blufor_base'&gt;FOB:&lt;/marker&gt;&lt;br/&gt; In this mission a FOB is a forward spawn point, to create a FOB approach the red box at the logistic point and require a blue container.&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\Ui_f\data\Map\Markers\NATO\b_hq.paa' width='20' height='20'/&gt;  &lt;marker name='blufor_base'&gt;Deploy:&lt;/marker&gt; &lt;br/&gt; Move it where you want to deploy a new FOB and interact with it to set it up. Keep in mind that you can not deploy a FOB close to the main base (2.500m) and the terrain needs to be flat.&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Dismantle:&lt;/marker&gt; &lt;br/&gt; You can dismantle a FOB by interacting with the flag on the HQ roof.</Original>
+                <Original>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move1_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\run_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move2_ca.paa' width='20' height='20' /&gt; &lt;marker name='blufor_base'&gt;FOB:&lt;/marker&gt;&lt;br/&gt; In this mission a FOB is a forward spawn point, to create a FOB approach the red box at the logistic point and require a blue container.&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\Ui_f\data\Map\Markers\NATO\b_hq.paa' width='20' height='20'/&gt;  &lt;marker name='blufor_base'&gt;Deploy:&lt;/marker&gt; &lt;br/&gt; Move it where you want to deploy a new FOB and interact with it to set it up. Keep in mind that you can not deploy a FOB close to the main base (2.500m) and the terrain needs to be flat.&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Dismantle:&lt;/marker&gt; &lt;br/&gt; You can dismantle a FOB by interacting with the flag on the HQ roof.&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move1_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\run_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move2_ca.paa' width='20' height='20' /&gt; &lt;marker name='blufor_base'&gt;Rallypoint:&lt;/marker&gt;&lt;br/&gt; You can also use the Zeus rallypoint backpack available in Arsenal. Those have a limited number of respawn.</Original>
                 <Spanish>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move1_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\run_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move2_ca.paa' width='20' height='20' /&gt; &lt;marker name='blufor_base'&gt;FOB:&lt;/marker&gt;&lt;br/&gt; En esta misión un FOB es un punto de respawn avanzado, para crear un FOB se aproxima a la caja roja en el punto logístico y requiere un contenedor azul.&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\Ui_f\data\Map\Markers\NATO\b_hq.paa' width='20' height='20'/&gt;  &lt;marker name='blufor_base'&gt;Deploy:&lt;/marker&gt; &lt;br/&gt; Muévelo donde quieras desplegar un nuevo FOB e interactúa con él para configurarlo. Tenga en cuenta que no puede desplegar un FOB cerca de la base principal (2.500m) y el terreno debe ser plano.&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Dismantle:&lt;/marker&gt; &lt;br/&gt; Puede desmontar un FOB interactuando con la bandera en el techo del HQ.</Spanish>
-                <German>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move1_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\run_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move2_ca.paa' width='20' height='20' /&gt; &lt;marker name='blufor_base'&gt;FOB:&lt;/marker&gt;&lt;br/&gt; Eine FOB (Forward Operating Base / vorgeschobene Operationsbasis) dient in dieser Mission als Spawn-Punkt. Um eine FOB zu erstellen muss am Logistikpunkt ein ensprechnender Frachtcontainer(Blau) angefordert werden&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\Ui_f\data\Map\Markers\NATO\b_hq.paa' width='20' height='20'/&gt;  &lt;marker name='blufor_base'&gt;Aufbau:&lt;/marker&gt; &lt;br/&gt; Der Aufbau kann nur statfinden, wenn man sich mindestens 2,5km von der Basis entfernt hat und das Gelände relativ flach ist. Um den Aufbau zu beginnen: einfach mit dem Frachtcontainer interagieren und 'FOB aufbauen' auswählen.&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Abbau:&lt;/marker&gt; &lt;br/&gt; Auf dem Dach der FOB kann man mit der Flagge interagieren um den Abbau zu beginnen.</German>
+                 <German>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move1_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\run_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move2_ca.paa' width='20' height='20' /&gt; &lt;marker name='blufor_base'&gt;FOB:&lt;/marker&gt;&lt;br/&gt; Eine FOB (Forward Operating Base / vorgeschobene Operationsbasis) dient in dieser Mission als Spawn-Punkt. Um eine FOB zu erstellen muss am Logistikpunkt ein ensprechnender Frachtcontainer(Blau) angefordert werden&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\Ui_f\data\Map\Markers\NATO\b_hq.paa' width='20' height='20'/&gt;  &lt;marker name='blufor_base'&gt;Aufbau:&lt;/marker&gt; &lt;br/&gt; Der Aufbau kann nur statfinden, wenn man sich mindestens 2,5km von der Basis entfernt hat und das Gelände relativ flach ist. Um den Aufbau zu beginnen: einfach mit dem Frachtcontainer interagieren und 'FOB aufbauen' auswählen.&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Abbau:&lt;/marker&gt; &lt;br/&gt; Auf dem Dach der FOB kann man mit der Flagge interagieren um den Abbau zu beginnen.&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move1_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\run_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move2_ca.paa' width='20' height='20' /&gt; &lt;marker name='blufor_base'&gt;Sammelpunkt:&lt;/marker&gt;&lt;br/&gt; Nutzen Sie den im Arsenal erhältlichen Lager-Rucksack aus dem Zeus-DLC. Die Anzahl der Respawns bei den Sammelpunkten ist beschränkt.</German>
                 <Portuguese>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move1_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\run_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move2_ca.paa' width='20' height='20' /&gt; &lt;marker name='blufor_base'&gt;FOB:&lt;/marker&gt;&lt;br/&gt; Nesta missão, uma FOB é um ponto de surgimento. Para criar uma FOB, aproxime-se da caixa vermelha no ponto logístico, solicite um container azul.&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\Ui_f\data\Map\Markers\NATO\b_hq.paa' width='20' height='20'/&gt;  &lt;marker name='blufor_base'&gt;Deploy:&lt;/marker&gt; &lt;br/&gt; A construção só pode acontecer se você se deslocar 2.500m da FOB principal e o terreno deve ser plano. Para começar a criar a nova FOB, basta interagir com o cônteiner e selecionar: "Build FOB" (Criar FOB).&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Dismantle:&lt;/marker&gt; &lt;br/&gt; No telhado da FOB, você pode interagir com a bandeira para iniciar a desmontagem da FOB.</Portuguese>
                 <Chinesesimp>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move1_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\run_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move2_ca.paa' width='20' height='20' /&gt; &lt;marker name='blufor_base'&gt;FOB:&lt;/marker&gt;&lt;br/&gt; FOB 可作为前线复活点使用。要创建FOB, 请在后勤点申请蓝色货运集装箱。&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\Ui_f\data\Map\Markers\NATO\b_hq.paa' width='20' height='20'/&gt;  &lt;marker name='blufor_base'&gt;部署:&lt;/marker&gt; &lt;br/&gt; 将FOB集装箱移动至部署位置并与其互动即可建造FOB。请谨记: 只有在主基地2500米范围外的地形平坦区域才能建立FOB。&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;拆除:&lt;/marker&gt; &lt;br/&gt; 你可以与指挥部(HQ)屋顶的旗杆互动, 以拆除FOB。</Chinesesimp>
             </Key>
@@ -173,24 +170,24 @@
                 <Spanish>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\repair_ca.paa' width='20' height='20'/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\rearm_ca.paa' width='20' height='20'/&gt; En el punto logístico puede requerir nuevos objetos (como municiones, fortificaciones, suministros para las misiones secundarias...) y reparar vehículos destruidos.</Spanish>
                 <German>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\repair_ca.paa' width='20' height='20'/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\rearm_ca.paa' width='20' height='20'/&gt; Am Logistikpunkt kann man neue Objekte (wie zB. Munition, Baumaterial, Nachschubgüter für Nebenaufgaben...) anfordern und zerstörte Fahrzeuge reparieren.</German>
                 <Portuguese>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\repair_ca.paa' width='20' height='20'/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\rearm_ca.paa' width='20' height='20'/&gt; No ponto logístico, você pode solicitar novos objetos (como munição, fortificações, suprimentos para as missões secundárias ...) e reparar veículos destruídos.</Portuguese>
-                <Chinesesimp>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\repair_ca.paa' width='20' height='20'/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\rearm_ca.paa' width='20' height='20'/&gt; 后勤点可以生成新的物件(如弹药、防御工事、用于支线任务的救援补给等), 也可以维修受损载具。</Chinesesimp>
+                <Chinesesimp>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\repair_ca.paa' width='20' height='20'/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\rearm_ca.paa' width='20' height='20'/&gt; 后勤点可以生成新的物件(如弹药、防御工事、用于支线任务的救援物资等), 也可以维修受损载具。</Chinesesimp>
             </Key>
         </Container>
         <Container name="Documentation: Logistic">
             <Key ID="STR_BTC_HAM_DOC_LOGISTIC_TEXT">
-                <Original>&lt;marker name='blufor_base'&gt;Cargo System:&lt;/marker&gt;&lt;br/&gt; Use ACE 3 Cargo system. &lt;br/&gt;&lt;br/&gt; &lt;marker name='blufor_base'&gt;Towing system:&lt;/marker&gt;&lt;br/&gt; To tow a vehicle interact with it and select the option 'HOOK'.&lt;br/&gt;After that place the tow vehicle in front of it and select 'TOW' in the interaction menu.&lt;br/&gt; If the two vehicles are too far away or the vehicle can't tow that load (Car can't tow truck or tank), the option will be disabled.&lt;br/&gt; To unhook interact with one of the two vehicles and select the option 'UNHOOK'.&lt;br/&gt;&lt;br/&gt; &lt;marker name='blufor_base'&gt;Place option:&lt;/marker&gt;&lt;br/&gt; With this option you can move heavy objects to build small outpost or base.&lt;br/&gt; When you select the option an hint will show all the keys required to move the object.</Original>
-                <German>&lt;marker name='blufor_base'&gt;Fracht-System:&lt;/marker&gt;&lt;br/&gt;Siehe ACE3 Dokumentation. &lt;br/&gt;&lt;br/&gt; &lt;marker name='blufor_base'&gt;Abschleppsystem:&lt;/marker&gt;&lt;br/&gt; Um ein Fahrzeug abzuschleppen muss man mit diesem interagieren und 'EINHACKEN' auswählen.&lt;br/&gt;Als nächstes muss man das Zugfahrzeug vor das abzuschleppende Fahrzeug stellen und über das Interagtionsmenü die Option 'ABSCHLEPPEN' aktivieren.&lt;br/&gt; Zu beachten ist dabei, dass die beiden Fahrzeuge nicht zu weit von einander entfernt sein dürfen. Ebenso ist daruf zu achten, dass das Zugfahrzeug auch das andere Fahrzeug abschleppen kann (zB. Autos können keine Lkw/Panzer abschleppen).&lt;br/&gt; Um das Abschleppseil wieder zu entfernen muss man einen bei einem der beiden Fahrzeuge die Option 'AUSHACKEN' auswählen.&lt;br/&gt;&lt;br/&gt; &lt;marker name='blufor_base'&gt;Platzierung von Objekten:&lt;/marker&gt;&lt;br/&gt; Mit dieser Option können Sie schwere Objekte bewegen, um einen kleinen Außenposten oder eine Basis zu bauen.&lt;br/&gt; Wenn Sie die Option auswählen, zeigt ein Hinweis alle Tasten an, die zum Verschieben des Objekts erforderlich sind.</German>
-                <Portuguese>&lt;marker name='blufor_base'&gt;Cargo System:&lt;/marker&gt;&lt;br/&gt; Use ACE 3 Cargo system. &lt;br/&gt;&lt;br/&gt;&lt;br/&gt; &lt;marker name='blufor_base'&gt;Towing system:&lt;/marker&gt;&lt;br/&gt; Para rebocar um veículo, interaja com ele e selecione a opção "GANCHO".&lt;br/&gt; Depois disso, coloque o veículo de reboque na frente dele e selecione "REBOCAR" no menu de interação.&lt;br/&gt; Se os dois veículos estiverem muito distantes ou o veículo não puder rebocar essa carga (o carro não poderá rebocar o caminhão ou o tanque), a opção será desativada.&lt;br/&gt; Para desengatar, interaja com um dos dois veículos e selecione a opção "DESENGANCHAR".&lt;br/&gt;&lt;br/&gt; &lt;marker name='blufor_base'&gt;Place option:&lt;/marker&gt;&lt;br/&gt; Com esta opção, você pode mover objetos pesados para construir um posto avançado ou uma base pequena.&lt;br/&gt; Quando você selecionar a opção, uma dica mostrará todas as ações necessárias para mover o objeto.</Portuguese>
-                <Chinesesimp>&lt;marker name='blufor_base'&gt;货运系统:&lt;/marker&gt;&lt;br/&gt; 使用ACE3货运系统。 &lt;br/&gt;&lt;br/&gt; &lt;marker name='blufor_base'&gt;牵引系统:&lt;/marker&gt;&lt;br/&gt; 如需牵引一辆载具, 与其互动并选择"启用牵引"。&lt;br/&gt;然后, 将牵引车辆(前车)置于被牵引车辆(后车)前方, 并在互动菜单中选择"牵引"。&lt;br/&gt; 如果两辆车的距离过远, 或前车无法牵引这一载荷(比如汽车(Car)无法牵引卡车(Truck)或坦克(Tank)), 则该选项不可用。&lt;br/&gt; 如需取消牵引, 与两车之一互动并选择"取消牵引"。&lt;br/&gt;&lt;br/&gt; &lt;marker name='blufor_base'&gt;物体放置:&lt;/marker&gt;&lt;br/&gt; 您可以使用该选项来移动重物，从而建造一个小的前哨或基地。&lt;br/&gt; 选择该选项后, 将会出现移动物体所需的键位提示。</Chinesesimp>
+                <Original>&lt;img image='\z\ace\addons\cargo\UI\Icon_Module_Cargo_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Cargo System:&lt;/marker&gt;&lt;br/&gt; Use ACE 3 Cargo system. &lt;br/&gt;&lt;br/&gt; &lt;img image='\z\ace\addons\attach\UI\attach_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Towing system:&lt;/marker&gt;&lt;br/&gt; To tow a vehicle interact with it and select the option 'HOOK'.&lt;br/&gt;After that place the tow vehicle in front of it and select 'TOW' in the interaction menu.&lt;br/&gt; If the two vehicles are too far away or the vehicle can't tow that load (Car can't tow truck or tank), the option will be disabled.&lt;br/&gt; To unhook interact with one of the two vehicles and select the option 'UNHOOK'.&lt;br/&gt;&lt;br/&gt; &lt;img image='\z\ace\addons\dragging\UI\icons\box_carry.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Place option:&lt;/marker&gt;&lt;br/&gt; With this option you can move heavy objects to build small outpost or base.&lt;br/&gt; When you select the option an hint will show all the keys required to move the object.</Original>
+                <German>&lt;img image='\z\ace\addons\cargo\UI\Icon_Module_Cargo_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Fracht-System:&lt;/marker&gt;&lt;br/&gt;Siehe ACE3 Dokumentation. &lt;br/&gt;&lt;br/&gt; &lt;img image='\z\ace\addons\attach\UI\attach_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Abschleppsystem:&lt;/marker&gt;&lt;br/&gt; Um ein Fahrzeug abzuschleppen muss man mit diesem interagieren und 'EINHACKEN' auswählen.&lt;br/&gt;Als nächstes muss man das Zugfahrzeug vor das abzuschleppende Fahrzeug stellen und über das Interagtionsmenü die Option 'ABSCHLEPPEN' aktivieren.&lt;br/&gt; Zu beachten ist dabei, dass die beiden Fahrzeuge nicht zu weit von einander entfernt sein dürfen. Ebenso ist daruf zu achten, dass das Zugfahrzeug auch das andere Fahrzeug abschleppen kann (zB. Autos können keine Lkw/Panzer abschleppen).&lt;br/&gt; Um das Abschleppseil wieder zu entfernen muss man einen bei einem der beiden Fahrzeuge die Option 'AUSHACKEN' auswählen.&lt;br/&gt;&lt;br/&gt; &lt;img image='\z\ace\addons\dragging\UI\icons\box_carry.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Platzierung von Objekten:&lt;/marker&gt;&lt;br/&gt; Mit dieser Option können Sie schwere Objekte bewegen, um einen kleinen Außenposten oder eine Basis zu bauen.&lt;br/&gt; Wenn Sie die Option auswählen, zeigt ein Hinweis alle Tasten an, die zum Verschieben des Objekts erforderlich sind.</German>
+                <Portuguese>&lt;img image='\z\ace\addons\cargo\UI\Icon_Module_Cargo_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Cargo System:&lt;/marker&gt;&lt;br/&gt; Use ACE 3 Cargo system. &lt;br/&gt;&lt;br/&gt;&lt;br/&gt; &lt;img image='\z\ace\addons\attach\UI\attach_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Towing system:&lt;/marker&gt;&lt;br/&gt; Para rebocar um veículo, interaja com ele e selecione a opção "GANCHO".&lt;br/&gt; Depois disso, coloque o veículo de reboque na frente dele e selecione "REBOCAR" no menu de interação.&lt;br/&gt; Se os dois veículos estiverem muito distantes ou o veículo não puder rebocar essa carga (o carro não poderá rebocar o caminhão ou o tanque), a opção será desativada.&lt;br/&gt; Para desengatar, interaja com um dos dois veículos e selecione a opção "DESENGANCHAR".&lt;br/&gt;&lt;br/&gt; &lt;img image='\z\ace\addons\dragging\UI\icons\box_carry.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Place option:&lt;/marker&gt;&lt;br/&gt; Com esta opção, você pode mover objetos pesados para construir um posto avançado ou uma base pequena.&lt;br/&gt; Quando você selecionar a opção, uma dica mostrará todas as ações necessárias para mover o objeto.</Portuguese>
+                <Chinesesimp>&lt;img image='\z\ace\addons\cargo\UI\Icon_Module_Cargo_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;货运系统:&lt;/marker&gt;&lt;br/&gt; 使用ACE3货运系统。 &lt;br/&gt;&lt;br/&gt; &lt;img image='\z\ace\addons\attach\UI\attach_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;牵引系统:&lt;/marker&gt;&lt;br/&gt; 如需牵引一辆载具, 与其互动并选择"启用牵引"。&lt;br/&gt;然后, 将牵引车辆(前车)置于被牵引车辆(后车)前方, 并在互动菜单中选择"牵引"。&lt;br/&gt; 如果两辆车的距离过远, 或前车无法牵引这一载荷(比如汽车(Car)无法牵引卡车(Truck)或坦克(Tank)), 则该选项不可用。&lt;br/&gt; 如需取消牵引, 与两车之一互动并选择"取消牵引"。&lt;br/&gt;&lt;br/&gt; &lt;img image='\z\ace\addons\dragging\UI\icons\box_carry.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;物体放置:&lt;/marker&gt;&lt;br/&gt; 您可以使用该选项来移动重物，从而建造一个小的前哨或基地。&lt;br/&gt; 选择该选项后, 移动对象所需键位的提示将会出现。</Chinesesimp>
             </Key>
         </Container>
         <Container name="Documentation: Hideout">
             <Key ID="STR_BTC_HAM_DOC_HIDEOUT_TEXT">
-                <Original>The hideouts are a place where the Oplitas organize their movements.&lt;br/&gt;They send reinforcements from here and can attack the closest city.&lt;br/&gt;If you notice a lot of activity in an area, probably there is an hideout closeby.&lt;br/&gt;If you want to defeat the Oplitas, you need to destroy all their hideouts.&lt;br/&gt;Here an example of an hideout:&lt;br/&gt;&lt;br/&gt;&lt;img image='core\img\hideout.jpg' width='256' height='256'/&gt;&lt;br/&gt;&lt;br/&gt;To destroy an hideout just place a satchel near the ammo box, it's close to the flag, and blow it off!</Original>
-                <Spanish>Los escondites son un lugar donde los Oplitas organizan sus movimientos.&lt;br/&gt;Enviarán refuerzos desde aquí y podrán atacar la ciudad más cercana.&lt;br/&gt;Si usted nota mucha actividad en un área, probablemente hay un escondite cerca.Si quieres derrotar a los Oplitas, tienes que destruir todos sus escondites.&lt;br/&gt;Aquí un ejemplo de un escondite:&lt;br/&gt;&lt;br/&gt;&lt;img image='core\img\hideout.jpg' width='256' height='256'/&gt;&lt;br/&gt;&lt;br/&gt;Para destruir un escondite sólo tienes que colocar una explosivo tipo satchel cerca de la caja de municiones, cerca de la bandera, y volarla!</Spanish>
-                <German>In den Verstecken planen und organisieren die Oplitas ihre Einstäze und Bewegungen.&lt;br/&gt;Von hier wird Verstärkung auf umliegende Gebiete verteilt. Ebenso ist ein Angriff auf die nächste Stadt von hier aus möglich.&lt;br/&gt;Sollten Sie eine erhöhte feindliche Aktivität in der Gegend festestellen, so befindet sich möglicherweise ein Versteck in der Nähe.&lt;br/&gt;Wenn Sie die Oplitas besiegen wollen, so müssen Sie alle Verstecke zerstören.&lt;br/&gt;Hier ein kleines Beispiel für ein Versteck:&lt;br/&gt;&lt;br/&gt;&lt;img image='core\img\hideout.jpg' width='256' height='256'/&gt;&lt;br/&gt;&lt;br/&gt;Das Versteck kann zerstört werden in dem man eine Sprengladung in der Nähe der Munitionskiste oder der Flagge zündet!</German>
-                <Portuguese>Os esconderijos são um lugar onde as inimigos organizam seus movimentos.&lt;br/&gt;Daqui eles enviam reforços e podem atacar as cidades mais próximas.&lt;br/&gt;Se você notar muita atividade em uma área, provavelmente há um esconderijo por perto.&lt;br/&gt;Se você quiser derrotar o inimigo, terá que destruir todos os esconderijos.&lt;br/&gt;Veja um exemplo de um esconderijo:&lt;br/&gt;&lt;br/&gt;&lt;img image='core\img\hideout.jpg' width='256' height='256'/&gt;&lt;br/&gt;&lt;br/&gt;Para destruir um esconderijo, basta colocar uma bolsa de explosivos perto da caixa de munição (que fica perto da bandeira) e explodí-lo!</Portuguese>
-                <Chinesesimp>藏匿点是Oplitas组织活动的地方。&lt;br/&gt;他们从这里派遣增援, 进攻附近的城市。&lt;br/&gt;如果你在某区域注意到了大量民兵活动, 那么藏匿点可能就在附近。&lt;br/&gt;如果你想要打败Oplitas, 你需要摧毁所有的藏匿点。&lt;br/&gt;这是一张藏匿点的示意图:&lt;br/&gt;&lt;br/&gt;&lt;img image='core\img\hideout.jpg' width='256' height='256'/&gt;&lt;br/&gt;&lt;br/&gt;要摧毁藏匿点, 只需在靠近旗帜的弹药箱上放置一个炸药包, 然后炸掉它!</Chinesesimp>
+                <Original>The hideouts are a place where the Oplitas organize their movements.&lt;br/&gt;They send reinforcements from here and can attack the closest city.&lt;br/&gt;If you notice a lot of activity in an area, probably there is an hideout closeby.&lt;br/&gt;If you want to defeat the Oplitas, you need to destroy all their hideouts.&lt;br/&gt;Here an example of an hideout:&lt;br/&gt;&lt;br/&gt;&lt;img image='core\img\hideout.jpg' width='306' height='256'/&gt;&lt;br/&gt;&lt;br/&gt;To destroy an hideout just place a satchel near the ammo box, it's close to the flag, and blow it off!</Original>
+                <Spanish>Los escondites son un lugar donde los Oplitas organizan sus movimientos.&lt;br/&gt;Enviarán refuerzos desde aquí y podrán atacar la ciudad más cercana.&lt;br/&gt;Si usted nota mucha actividad en un área, probablemente hay un escondite cerca.Si quieres derrotar a los Oplitas, tienes que destruir todos sus escondites.&lt;br/&gt;Aquí un ejemplo de un escondite:&lt;br/&gt;&lt;br/&gt;&lt;img image='core\img\hideout.jpg' width='306' height='256'/&gt;&lt;br/&gt;&lt;br/&gt;Para destruir un escondite sólo tienes que colocar una explosivo tipo satchel cerca de la caja de municiones, cerca de la bandera, y volarla!</Spanish>
+                <German>In den Verstecken planen und organisieren die Oplitas ihre Einstäze und Bewegungen.&lt;br/&gt;Von hier wird Verstärkung auf umliegende Gebiete verteilt. Ebenso ist ein Angriff auf die nächste Stadt von hier aus möglich.&lt;br/&gt;Sollten Sie eine erhöhte feindliche Aktivität in der Gegend festestellen, so befindet sich möglicherweise ein Versteck in der Nähe.&lt;br/&gt;Wenn Sie die Oplitas besiegen wollen, so müssen Sie alle Verstecke zerstören.&lt;br/&gt;Hier ein kleines Beispiel für ein Versteck:&lt;br/&gt;&lt;br/&gt;&lt;img image='core\img\hideout.jpg' width='306' height='256'/&gt;&lt;br/&gt;&lt;br/&gt;Das Versteck kann zerstört werden in dem man eine Sprengladung in der Nähe der Munitionskiste oder der Flagge zündet!</German>
+                <Portuguese>Os esconderijos são um lugar onde as inimigos organizam seus movimentos.&lt;br/&gt;Daqui eles enviam reforços e podem atacar as cidades mais próximas.&lt;br/&gt;Se você notar muita atividade em uma área, provavelmente há um esconderijo por perto.&lt;br/&gt;Se você quiser derrotar o inimigo, terá que destruir todos os esconderijos.&lt;br/&gt;Veja um exemplo de um esconderijo:&lt;br/&gt;&lt;br/&gt;&lt;img image='core\img\hideout.jpg' width='306' height='256'/&gt;&lt;br/&gt;&lt;br/&gt;Para destruir um esconderijo, basta colocar uma bolsa de explosivos perto da caixa de munição (que fica perto da bandeira) e explodí-lo!</Portuguese>
+                <Chinesesimp>藏匿点是Oplitas组织活动的地方。&lt;br/&gt;他们从这里派遣增援, 进攻附近的城市。&lt;br/&gt;如果你在某区域注意到了大量民兵活动, 那么藏匿点可能就在附近。&lt;br/&gt;如果你想要打败Oplitas, 你需要摧毁所有的藏匿点。&lt;br/&gt;这是一张藏匿点的示意图:&lt;br/&gt;&lt;br/&gt;&lt;img image='core\img\hideout.jpg' width='306' height='256'/&gt;&lt;br/&gt;&lt;br/&gt;要摧毁藏匿点, 只需在靠近旗帜的弹药箱上放置一个炸药包, 然后炸掉它!</Chinesesimp>
             </Key>
         </Container>
         <Container name="Documentation: IED">
@@ -204,7 +201,7 @@
         </Container>
         <Container name="Documentation: Intel">
             <Key ID="STR_BTC_HAM_DOC_INTEL_TEXT">
-                <Original>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\map_ca.paa' width='20' height='20'/&gt; Intel can be retrieved in the following ways:&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\search_ca.paa' width='13' height='13'/&gt; Searching dead bodies&lt;br/&gt; - &lt;img image='\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\instructor_ca.paa' width='13' height='13'/&gt; Interrogate prisoner&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='13' height='13'/&gt; Talking to civilians&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\talk_ca.paa' width='20' height='20'/&gt; Keep in mind that only the interpreter can talk to civilians and they can lie if your reputation level is low.&lt;br/&gt;&lt;br/&gt; When you find an intel from a dead body or interrogate a prisoner, a marker will appear in the map. Remember, prisoner have a random number of intel more or less interesting.&lt;br/&gt; There are two types of marker:&lt;br/&gt; - Red question mark (&lt;img image='\A3\ui_f\data\map\markers\handdrawn\unknown_CA.paa' width='13' height='13' color='#ff0000'/&gt;): ammo cache intel&lt;br/&gt; - Red exclamation mark (&lt;img image='\A3\ui_f\data\map\markers\handdrawn\warning_CA.paa' width='13' height='13' color='#ff0000'/&gt;): hideout intel&lt;br/&gt;&lt;br/&gt;&lt;br/&gt; When you destroy an hideout or an ammo cache, all the markers related to it will be deleted.</Original>
+                <Original>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\map_ca.paa' width='20' height='20'/&gt; Intel can be retrieved in the following ways:&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\search_ca.paa' width='13' height='13'/&gt; Searching dead bodies&lt;br/&gt; - &lt;img image='\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\instructor_ca.paa' width='13' height='13'/&gt; Interrogate prisoner&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='13' height='13'/&gt; Talking to civilians&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\talk_ca.paa' width='20' height='20'/&gt; Keep in mind that only the interpreter can talk to civilians and they can lie if your reputation level is low.&lt;br/&gt;&lt;br/&gt; When you find an intel from a dead body or interrogate a prisoner, a marker will appear in the map. Remember, prisoner have a random number of intel more or less interesting.&lt;br/&gt; There are two types of intel:&lt;br/&gt; - Red question mark (&lt;img image='\A3\ui_f\data\map\markers\handdrawn\unknown_CA.paa' width='13' height='13' color='#ff0000'/&gt;) and pictures under diary log map menu: ammo cache intel&lt;br/&gt; - Red exclamation mark (&lt;img image='\A3\ui_f\data\map\markers\handdrawn\warning_CA.paa' width='13' height='13' color='#ff0000'/&gt;): hideout intel&lt;br/&gt;&lt;br/&gt;&lt;br/&gt; When you destroy an hideout or an ammo cache, all the markers related to it will be deleted.</Original>
                 <Spanish>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\map_ca.paa' width='20' height='20'/&gt; La Inteligencia se puede recuperar de las siguientes maneras:&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\search_ca.paa' width='13' height='13'/&gt; Registrando cadáveres&lt;br/&gt; - &lt;img image='\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\instructor_ca.paa' width='13' height='13'/&gt; Interrogando prisioneros&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='13' height='13'/&gt; Conversando con Civiles&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\talk_ca.paa' width='20' height='20'/&gt; Tenga en cuenta que sólo el intérprete puede hablar con civiles y ellos pueden mentir si su nivel de reputación es bajo.&lt;br/&gt;&lt;br/&gt; Cuando encuentres una información de un cadáver o interrogues a un prisionero, aparecerá un marcador en el mapa. Recuerda, los prisioneros tienen un número aleatorio de información más o menos interesante.&lt;br/&gt; Hay 2 tipos de marcas:&lt;br/&gt; - Signo de interrogacion rojo (&lt;img image='\A3\ui_f\data\map\markers\handdrawn\unknown_CA.paa' width='13' height='13' color='#ff0000'/&gt;): intel sobre cache de municion&lt;br/&gt; - Signo de exclamacion rojo (&lt;img image='\A3\ui_f\data\map\markers\handdrawn\warning_CA.paa' width='13' height='13' color='#ff0000'/&gt;): intel sobre escondite&lt;br/&gt;&lt;br/&gt;&lt;br/&gt; Cuando destruyes un escondite o una caché de munición, todos los marcadores relacionados con él se borrarán.</Spanish>
                 <German>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\map_ca.paa' width='20' height='20'/&gt;  Informationen kann man auf verschiedene Arten erhalten:&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\search_ca.paa' width='13' height='13'/&gt; Durchsuchen von toten Personen&lt;br/&gt; - &lt;img image='\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\instructor_ca.paa' width='13' height='13'/&gt; Verhören von Gefangenen&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='13' height='13'/&gt; Mit Zivilisten reden&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\talk_ca.paa' width='20' height='20'/&gt; Nur der Dolmetscher kann sich mit Zivilisten unterhalten. Wenn ihr Ansehen bei der Bevölkerunge niedrig ist, so kann es auch mal vorkommen das manche Zivilisten sie belügen.&lt;br/&gt;&lt;br/&gt; Wenn Sie Information erhalten, erscheint eine Markierung auf der Karte. Zur Erinnerung: Gefangene habe mal mehr und mal weniger interessante Informationen.&lt;br/&gt; Es gibt zwei Arten von Markierungen:&lt;br/&gt; - Ein rotes Fragezeichen (&lt;img image='\A3\ui_f\data\map\markers\handdrawn\unknown_CA.paa' width='13' height='13' color='#ff0000'/&gt;): Information über ein Waffenlager &lt;br/&gt; - Ein rotes Ausrufezeichen (&lt;img image='\A3\ui_f\data\map\markers\handdrawn\warning_CA.paa' width='13' height='13' color='#ff0000'/&gt;): Information über ein Versteck &lt;br/&gt;&lt;br/&gt;&lt;br/&gt; Wenn Sie ein Versteck oder ein Waffenlager zersört haben, so werden alle relevanten Markierungen automatisch gelöscht.</German>
                 <Portuguese>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\map_ca.paa' width='20' height='20'/&gt; Informações podem ser obtidas de diferentes maneiras:&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\search_ca.paa' width='13' height='13'/&gt; Procurando nos corpos dos mortos&lt;br/&gt; - &lt;img image='\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\instructor_ca.paa' width='13' height='13'/&gt; Interrogando prisioneiros&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='13' height='13'/&gt; Falando com civis&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\talk_ca.paa' width='20' height='20'/&gt; Somente o intérprete pode conversar com os civis. Se a reputação entre a população é baixa, pode acontecer de alguns civis passarem informações mentirosas.&lt;br/&gt;&lt;br/&gt; Quando você encontrar uma informação em um cadáver ou interrogando um prisioneiro, uma marcação aparecerá no mapa. Lembre-se, os prisioneiros possuem um número aleatório de informações que são mais ou menos importante.&lt;br/&gt; Existem dois tipos de marcação:&lt;br/&gt; - Interrogação em Vermelho (&lt;img image='\A3\ui_f\data\map\markers\handdrawn\unknown_CA.paa' width='13' height='13' color='#ff0000'/&gt;): Informações sobre depósito de armas&lt;br/&gt; - Exclamação em Vermelho (&lt;img image='\A3\ui_f\data\map\markers\handdrawn\warning_CA.paa' width='13' height='13' color='#ff0000'/&gt;): Informações sobre um esconderijo&lt;br/&gt;&lt;br/&gt;&lt;br/&gt; Quando você destroí um esconderijo ou depósito de munição, o marcador será excluído.</Portuguese>
@@ -269,19 +266,32 @@
             </Key>
         </Container>
         <Container name="Documentation: Interaction">
-            <Key ID="STR_BTC_HAM_DOC_INTERACTION_TITLE">
-                <Original>Interaction</Original>
-                <Spanish>Interaccion</Spanish>
-                <German>Interaktion</German>
-                <Portuguese>Interação</Portuguese>
-                <Chinesesimp>互动</Chinesesimp>
-            </Key>
             <Key ID="STR_BTC_HAM_DOC_INTERACTION_TEXT">
                 <Original> &lt;img image='\z\ace\addons\interaction\UI\Icon_Module_Interaction_ca.paa' width='20' height='20'/&gt;Use ACE 3 interactions system.</Original>
                 <Spanish> &lt;img image='\z\ace\addons\interaction\UI\Icon_Module_Interaction_ca.paa' width='20' height='20'/&gt;Use los sistema de interaccion de ACE 3.</Spanish>
                 <German> &lt;img image='\z\ace\addons\interaction\UI\Icon_Module_Interaction_ca.paa' width='20' height='20'/&gt;Nutzen Sie das Interactions-System von ACE 3.</German>
                 <Portuguese> &lt;img image='\z\ace\addons\interaction\UI\Icon_Module_Interaction_ca.paa' width='20' height='20'/&gt;Use o sistema de interação do ACE 3.</Portuguese>
                 <Chinesesimp> &lt;img image='\z\ace\addons\interaction\UI\Icon_Module_Interaction_ca.paa' width='20' height='20'/&gt;使用 ACE 3 互动系统。</Chinesesimp>
+            </Key>
+        </Container>
+        <Container name="Documentation: Chemical warfare">
+            <Key ID="STR_BTC_HAM_DOC_CHEMICALWARFARE_TITLE">
+                <Original>Chemical Warfare</Original>
+                <German>Chemische Kriegsführung</German>
+                <Chinesesimp>化学战</Chinesesimp>
+            </Key>
+            <Key ID="STR_BTC_HAM_DOC_CHEMICALWARFARE_TEXT">
+                <Original>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\danger_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Chemical agent:&lt;/marker&gt;&lt;br/&gt; A chemical agent can be found in the battlefield at cache location for example. When an object is contaminated, the chemical agent propagates to people around (in a circle of 3m). Those people will be hurt constantly until they died or found a decontaminating shower (available at the logistic point) to clean up their body. When they are contaminated, they can propagate it to other people around (in a circle of 1.5m) or vehicle if they get inside. Keep in mind, dead body stay contaminated but body bag will isolate it. Also, a contaminated object loaded as cargo will contaminate the container or vehicle. &lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\defend_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Protection:&lt;/marker&gt;&lt;br/&gt; Use CBRN gear (uniform, mask and breather backpack) to protect you from the contamination effect. But, don't forget to take a shower for more than 5s before removing your CBRN gear. Be aware, even with a CBRN equipment you can propagate the agent to people or vehicle, you are just protected from the effect. &lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\box_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Decontaminate:&lt;/marker&gt;&lt;br/&gt; You can use a small shower to decontaminate units only. Use the big shower for objects, vehicles and objects loaded as cargo. To activate them, just stay under the shower. &lt;br/&gt;&lt;br/&gt; &lt;img image='\z\ace\addons\minedetector\ui\icon_mineDetectorOn.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Detection:&lt;/marker&gt;&lt;br/&gt; You can analyze an object, vehicle or man with ED-1E drone to determine if it is contaminated (Note: The drone will never be contaminated.). You can also check if you are in a contaminated area by using a chemical detector (THREAT from 0.1 to 0.9: contaminated objects are around, THREAT at 1: you are in the propagating range (you will be contaminated)).</Original>
+                <German>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\danger_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Chemische Wirk- bzw. Kampfstoffe:&lt;/marker&gt;&lt;br/&gt; Chemische Wirk- bzw. Kampfstoffe werden immer mal wieder im Einsatz, zum Beispiel bei den Waffenkisten, gefunden. Wenn ein Objekt kontaminiert ist, dann verbreitet sich der chemische Wirkstoff auf Personen in der näheren Umgebung (in ein Umkreis von ca. 3m). Personen, welche sich ungeschützt einem solchen Objekt nähern, werden kontaminiert und erleiden Schaden, bis Sie sterben. Man kann sich mir Hilfe einer Dekontaminationsdusche (am Logistikpunkt erhältlich) von diesem Effekt befreien. Die Kontaminierung von Personen kann untereinander weitergegeben werden, wenn man nicht aufpasst (in einem Umkreis von ca. 1,5m). Das gilt auch für die Innenräume von Fahrzeugen. Denken Sie daran, dass Leichen kontaminiert bleiben, die Leichensäcke diese jedoch isolieren. Kontaminierte Objekte können beim Verladen auch den Container und das Fahrzeug verseuchen. &lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\defend_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Schutz:&lt;/marker&gt;&lt;br/&gt; Verwenden Sie CBRN-Ausrüstung (auch ABC-Ausrüstung genannt, bestehend aus Uniform, Maske und Atemgerät), um sich vor Kontamination zu schützen. Vor dem ablegen der CBRN-Ausrüstung ist es wichtig, mindestens 5 Sekunden zu duschen, um sämtliche Verseuchungen zu entfernen. Beachten Sie, dass die CBRN-Ausrüstung nur Sie selbst vor den chemischen Kampfstoffen schütz. Sie können weiterhin andere Personen und Fahrzeuge kontaminieren. &lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\box_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Dekontaminierung:&lt;/marker&gt;&lt;br/&gt; Mit der kleinen Dekontaminationsdusche können Sie nur Personen dekontaminieren. Verwenden Sie die große Dusche für Objekte, Fahrzeuge und den Ladenraum von Fahrzeugen (oder Containern). Um die Duschen zu aktivieren, stellen Sie sich einfach darunter. &lt;br/&gt;&lt;br/&gt; &lt;img image='\z\ace\addons\minedetector\ui\icon_mineDetectorOn.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Erkennung:&lt;/marker&gt;&lt;br/&gt; Sie können ein Objekt, Fahrzeug oder eine Person mit einer ED-1E-Drohne analysieren, um festzustellen, ob es kontaminiert ist (Hinweis: Die Drohne wird niemals von einer Kontamination betroffen sein). Ebenso können Sie einen Chemischen Detektor nutzen um feststellen wie stark der nähere Bereich um Sie herum kontaminiert ist. (THREAT von 0.1 bis 0.9: kontaminierte Gegenstände sind in der Nähe, THREAT von 1: Sie befinden sich in einen verseuchten Bereich (Sie sind somit selbst kontaminiert)).</German>
+                <Chinesesimp>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\danger_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;化学试剂:&lt;/marker&gt;&lt;br/&gt; 化学试剂会在战场上的武器箱等位置出现。当一个物体受到污染时, 这种化学试剂会传播它到周围的人身上(3米范围内)。这些人将持续受到伤害直至死亡, 或找到一个净化淋浴(位于在后勤点)来清理他们的身体。当这些人受到污染时, 他们会将污染传播给周围的其他人(1.5米范围内)或车辆(如果他们进入车辆的话)。记住, 尸体将保持受到污染的状态, 但尸体袋可以将其隔离。此外, 作为货物装载受污染物体将会污染集装箱或车辆。 &lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\defend_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;防护措施:&lt;/marker&gt;&lt;br/&gt; 使用CBRN(生化核辐)装备(服装, 面具和呼吸器背包)可以保护您免受污染影响。但是, 在取下CBRN装备之前, 不要忘记进行至少5秒的净化淋浴。请注意, 即使穿戴了CBRN装备, 您也会向人员或车辆传播化学试剂, 只有你免受污染影响。 &lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\box_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;清除污染:&lt;/marker&gt;&lt;br/&gt; 小型淋浴器只能用来净化单兵单位。使用大型淋浴器来清洗物品、车辆和货物。要激活净化过程, 只需待在淋浴下即可。&lt;br/&gt;&lt;br/&gt; &lt;img image='\z\ace\addons\minedetector\ui\icon_mineDetectorOn.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;检测:&lt;/marker&gt;&lt;br/&gt; 你可以使用 ED-1E 无人机分析物体、车辆或人, 以测定其是否受到污染(注: 该无人机永远不会受到污染)。您也可以使用化学探测器检测您是否处于污染区域内(威胁度介于0.1至0.9之间: 附近存在受污染物体, 威胁度等于1: 您处于传播区域内(您将受到污染))。</Chinesesimp>
+            </Key>
+        </Container>
+        <Container name="Documentation: Spectrum devices">
+            <Key ID="STR_BTC_HAM_DOC_SPECTRUMDEVICES_TITLE">
+                <Original>Spectrum devices</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_DOC_SPECTRUMDEVICES_TEXT">
+                <Original>&lt;img image='\A3\Data_F_Enoch\Logos\arma3_enoch_logo_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Electromagnetic field:&lt;/marker&gt;&lt;br/&gt; There are two types of electromagnetic field from UAV or electromagnetic pulse (EMP). UAV emit electromagnetic field from 390MHz to 500MHz due to device transmission. Electromagnetic pulse are used as weapon to create electronic failure to vehicles. The range of frequency is from 78MHz to 89MHz and is powerfull enough to turn off light, engine and avionic devices. &lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\defend_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Protection:&lt;/marker&gt;&lt;br/&gt; Electromagnetic field from UAV are safe but EMP have a range of 500m where vehicles with engine turn ON will be affected. &lt;br/&gt;&lt;br/&gt; &lt;img image='\z\ace\addons\minedetector\ui\icon_mineDetectorOn.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Detection:&lt;/marker&gt;&lt;br/&gt; You can detect the origin of electromagnetic field with spectrum devices. The amplitude of the peak depend on the distance and angle between the emiter and the antenna. The maximum range is 1000m.</Original>
             </Key>
         </Container>
     </Package>
@@ -302,10 +312,9 @@
                 <Chinesesimp>载入存档 (如果可用)</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_DB_ASAVE">
-                <Original>Auto savegame (can break player immersion)</Original>
-                <German>Spielstand autom. sichern (kann die Immersion stören)</German>
-                <Portuguese>Salvamento do jogo automático (pode quebrar a imersão do jogador)</Portuguese>
-                <Chinesesimp>自动保存 (存档时会暂停游戏进程, 可能破坏玩家的沉浸感)</Chinesesimp>
+                <Original>Auto savegame when all players disconnected</Original>
+                <German>Spiel wird automatisch Gespeichert, wenn alle Spieler das Spiel verlassen</German>
+                <Chinesesimp>所有玩家离线后自动存档</Chinesesimp>
             </Key>
         </Container>
         <Container name="Parameters: Factions">
@@ -352,6 +361,11 @@
                 <German>Spawn Einstellungen:</German>
                 <Chinesesimp>&lt;&lt; 重生设置 &gt;&gt;</Chinesesimp>
                 <Portuguese>&lt;&lt; Opções de Spawn &gt;&gt;</Portuguese>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_SPWAN_ISFREE_PROB">
+                <Original>Probability for a city to be free:</Original>
+                <German>Wahrscheinlichkeit, dass eine Stadt unbesetzt ist:</German>
+                <Chinesesimp>城市无人居住的几率:</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_SPWAN_ENEMY_DENSITY">
                 <Original>Enemy density:</Original>
@@ -432,6 +446,21 @@
                 <German>Feindl. Drohnen mit Bomben:</German>
                 <Portuguese>Drone Bombardeiro:</Portuguese>
                 <Chinesesimp>敌方炸弹无人机:</Chinesesimp>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_IED_PLACEMENT">
+                <Original>IEDs type of placement:</Original>
+                <German>IED Art der Platzierung</German>
+                <Chinesesimp>IED放置位置</Chinesesimp>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_IED_PLACEMENT_MIDDLE">
+                <Original>Middle</Original>
+                <German>Straßenmitte</German>
+                <Chinesesimp>道路中间</Chinesesimp>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_IED_PLACEMENT_ROADSIDE">
+                <Original>Roadside</Original>
+                <German>Straßenrand</German>
+                <Chinesesimp>道路两旁</Chinesesimp>
             </Key>
         </Container>
         <Container name="Parameters: Hideout/Cache">
@@ -543,6 +572,14 @@
                 <Portuguese>Ampliar campo de batalha para o mar:</Portuguese>
                 <Chinesesimp>将战区扩展至海上:</Chinesesimp>
             </Key>
+            <Key ID="STR_BTC_HAM_PARAM_GAMEPLAY_CHEM">
+                <Original>Chemical warfare:</Original>
+                <German>Chemische Kriegsführung:</German>
+                <Chinesesimp>化学战:</Chinesesimp>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_GAMEPLAY_SPECT">
+                <Original>Spectrum devices:</Original>
+            </Key>
             <Key ID="STR_BTC_HAM_PARAM_GAMEPLAY_SIDEM">
                 <Original>Side mission cycle:</Original>
                 <German>Autom. nächste Nebenmission starten:</German>
@@ -611,6 +648,11 @@
                 <Chinesesimp>预设装备 (见 /define_mod.sqf)</Chinesesimp>
                 <Portuguese>Loadouts prédefinidos (Veja /define_mod.sqf)</Portuguese>
             </Key>
+            <Key ID="STR_BTC_HAM_PARAM_ARSENAL_RMVWEAPONS">
+                <Original>Remove all weapons</Original>
+                <German>nur Waffen entfernen</German>
+                <Chinesesimp>移除所有武器</Chinesesimp>
+            </Key>
             <Key ID="STR_BTC_HAM_PARAM_ARSENAL_ARSENALRESTR_FILTER">
                 <Original>Filter on player role (works only with ACE3-Arsenal)</Original>
                 <German>Nach der Rolle des Spielers beschränken (geht nur mit dem ACE3-Arsenal)</German>
@@ -655,6 +697,11 @@
                 <Portuguese>Desativar o surgimento de unidades na cidade quando uma aeronave ou helicóptero estiver sobrevoando em velocidade (&gt;190km/h): </Portuguese>
                 <Chinesesimp>当飞机或直升机(&gt;190Km/h)飞掠城市上空时, 不激活城市:</Chinesesimp>
             </Key>
+            <Key ID="STR_BTC_HAM_PARAM_OTHER_AUTOHEADLESS">
+                <Original>Autodetect Headless client:</Original>
+                <German>Headless-Client automatisch erkennen:</German>
+                <Chinesesimp>自动检测无头客户端</Chinesesimp>
+            </Key>
             <Key ID="STR_BTC_HAM_PARAM_OTHER_DEBUG">
                 <Original>Debug:</Original>
                 <German>Debug:</German>
@@ -671,6 +718,16 @@
     </Package>
     <Package name="Missions">
         <Container name="Mission: Defeat the Oplitas">
+            <Key ID="STR_BTC_HAM_MISSION_OBJ_DESC">
+                <Original>Objectives must be accomplished.</Original>
+                <German>Ziele müssen erreicht werden.</German>
+                <Chinesesimp>必须完成的目标。</Chinesesimp>
+            </Key>
+            <Key ID="STR_BTC_HAM_MISSION_OBJ_TITLE">
+                <Original>Main objectives</Original>
+                <German>Hauptziele</German>
+                <Chinesesimp>主要目标</Chinesesimp>
+            </Key>
             <Key ID="STR_BTC_HAM_MISSION_DEFEAT_TITLE">
                 <Original>Defeat the Oplitas</Original>
                 <Spanish>Derrotar a los Oplitas</Spanish>
@@ -694,26 +751,19 @@
             </Key>
         </Container>
         <Container name="Mission: Destroy all the hideouts">
-            <Key ID="STR_BTC_HAM_MISSION_DESTORY_TITLE">
-                <Original>Destroy all the hideouts</Original>
-                <Spanish>Destruye todos los escondites</Spanish>
-                <German>Alle Verstecke zerstören</German>
-                <Portuguese>Destrua todos os esconderijos</Portuguese>
-                <Chinesesimp>摧毁所有藏匿点</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_MISSION_DESTORY_DESC">
+            <Key ID="STR_BTC_HAM_MISSION_DESTROY_DESC">
                 <Original>Destroy all the hideouts of the Oplitas</Original>
                 <Spanish>Destruye todos los escondites de los Oplitas</Spanish>
                 <German>Zerstören Sie sämtliche Verstecke der Oplitas</German>
                 <Portuguese>Destrua todos os esconderijos dos inimigos</Portuguese>
                 <Chinesesimp>摧毁所有Oplitas藏匿点</Chinesesimp>
             </Key>
-            <Key ID="STR_BTC_HAM_MISSION_DESTORY_WIN_TEXT">
-                <Original>All the hideouts have been destroyed!</Original>
-                <Spanish>¡Todos los escondites han sido destruidos!</Spanish>
-                <German>Alle Verstecke wurden zerstört!</German>
-                <Portuguese>Todos os esconderijos foram destruídos!</Portuguese>
-                <Chinesesimp>所有藏匿点都被摧毁了!</Chinesesimp>
+            <Key ID="STR_BTC_HAM_MISSION_DESTROY_TITLE">
+                <Original>Destroy all the hideouts</Original>
+                <Spanish>Destruye todos los escondites</Spanish>
+                <German>Alle Verstecke zerstören</German>
+                <Portuguese>Destrua todos os esconderijos</Portuguese>
+                <Chinesesimp>摧毁所有藏匿点</Chinesesimp>
             </Key>
         </Container>
         <Container name="Mission: Seize the last positions">
@@ -724,39 +774,9 @@
                 <Portuguese>Conquiste as últimas posições inimigas</Portuguese>
                 <Chinesesimp>夺取最后一个Oplitas据点</Chinesesimp>
             </Key>
-            <Key ID="STR_BTC_HAM_MISSION_SEIZE_MRK">
-                <Original>Seize the last Oplitas fighters positions</Original>
-                <Spanish>Ocupen las últimas posiciones de los Oplitas.</Spanish>
-                <German>Erobern Sie die letzten Positionen der Oplitas-Kämpfer</German>
-                <Portuguese>Conquiste as últimas posições da resistência inimiga</Portuguese>
-                <Chinesesimp>夺取最后一个Oplitas战匪的据点</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_MISSION_SEIZE_DESC">
-                <Original>Seize the last positions held by Oplitas fighters</Original>
-                <Spanish>Ocupen las últimas posiciones de resistencia de los Oplitas.</Spanish>
-                <German>Erobern Sie die letzten Stellungen der Oplitas-Kämpfer zurück.</German>
-                <Portuguese>Conquiste as últimas posições da retarguarda inimiga</Portuguese>
-                <Chinesesimp>夺取最后一个被Oplitas战匪占领的据点</Chinesesimp>
-            </Key>
         </Container>
     </Package>
     <Package name="Side Missions">
-        <Container name="Basics">
-            <Key ID="STR_BTC_HAM_SIDE_BASIC_WIN_TITLE">
-                <Original>Side mission Accomplished!</Original>
-                <Spanish>Misión paralela Cumplida!</Spanish>
-                <German>Nebenmission erfolgreich!</German>
-                <Portuguese>Missão secundária Cumprida!</Portuguese>
-                <Chinesesimp>支线任务完成!</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_SIDE_BASIC_LOSE_TITLE">
-                <Original>Side mission failed!</Original>
-                <Spanish>Misión paralela Fallida!</Spanish>
-                <German>Nebenmission fehlschlagen!</German>
-                <Portuguese>Missão secundária falhou!</Portuguese>
-                <Chinesesimp>支线任务失败!</Chinesesimp>
-            </Key>
-        </Container>
         <Container name="Capture officer">
             <Key ID="STR_BTC_HAM_SIDE_CAPOFF_TITLE">
                 <Original>Capture commander in concealed convoy</Original>
@@ -770,21 +790,27 @@
                 <Spanish>Capturar a un oficial que viaja en un convoy oculto y luego llevarlo a la base para interrogarlo. ¡Él es el responsable de aterrorizar a la población local!</Spanish>
                 <German>Ein feindlicher Offizier ist in einem getarnten Konvoi unterwegs. Finden und bringen Sie ihn in die Basis für weitere Befragungen. Er ist einer der Hauptverantwortlichen für die Terrorisierung der lokalen Bevölkerung!</German>
                 <Portuguese>Um Oficial está viajando em um comboio camuflado. Encontre e traga-o para base para interrogatório. Ele é um dos principais responsáveis por aterrorizar a população local!</Portuguese>
-                <Chinesesimp>一名敌军军官已经伪装起来, 随同车队进行转移。找到他并把他带回基地, 进行进一步的审问。 他是对当地恐怖活动负责的主要人物之一!</Chinesesimp>
+                <Chinesesimp>一名敌军军官已经伪装起来, 随同车队进行转移。找到他并把他带回基地, 进行进一步的审问。他是当地恐怖主义活动的主要责任人之一!</Chinesesimp>
             </Key>
-            <Key ID="STR_BTC_HAM_SIDE_CAPOFF_FAILED_TEXT">
-                <Original>The officer was not captured</Original>
-                <Spanish>El oficial no fue capturado</Spanish>
-                <German>Der Offizier wurde nicht gefangen genommen</German>
-                <Portuguese>O oficial não foi capturado</Portuguese>
-                <Chinesesimp>敌方军官未被抓捕</Chinesesimp>
+            <Key ID="STR_BTC_HAM_SIDE_CAPOFF_SURRENDER_DESC">
+                <Original>Surrender the officer.</Original>
+                <German>Nehmen Sie den Offizier gefangen.</German>
+                <Chinesesimp>迫使这名军官投降。</Chinesesimp>
             </Key>
-            <Key ID="STR_BTC_HAM_SIDE_CAPOFF_WIN_TEXT">
-                <Original>The officer has been captured!</Original>
-                <Spanish>¡El oficial ha sido capturado!</Spanish>
-                <German>Der Offizier wurde erfolgreich gefangen genommen!</German>
-                <Portuguese>O Oficial foi capturado!</Portuguese>
-                <Chinesesimp>敌方军官已被抓捕!</Chinesesimp>
+            <Key ID="STR_BTC_HAM_SIDE_CAPOFF_SURRENDER_TITLE">
+                <Original>Surrender the officer</Original>
+                <German>Offizier gefangen nehmen</German>
+                <Chinesesimp>迫使军官投降</Chinesesimp>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_CAPOFF_HANDCUFF_DESC">
+                <Original>Handcuff the officer.</Original>
+                <German>Legen Sie dem Offizier Handschellen an.</German>
+                <Chinesesimp>给这名军官戴上手铐。</Chinesesimp>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_CAPOFF_HANDCUFF_TITLE">
+                <Original>Handcuff the officer</Original>
+                <German>Offizier gefangen nehmen</German>
+                <Chinesesimp>铐住军官</Chinesesimp>
             </Key>
         </Container>
         <Container name="Checkpoint">
@@ -802,19 +828,15 @@
                 <Portuguese>Os pontos de verificação foram localizados em %1. A população local está pedindo sua ajuda para destruidir todas as caixas de munições em todos os pontos de verificação!</Portuguese>
                 <Chinesesimp>在 %1 地区发现检查站。当地居民请求您摧毁武器箱和相应的检查站!</Chinesesimp>
             </Key>
-            <Key ID="STR_BTC_HAM_SIDE_CHECKPOINT_FAILED_TEXT">
-                <Original>Checkpoints were not destroyed</Original>
-                <Spanish>Los puestos de control no fueron destruidos</Spanish>
-                <German>Die Kontrollpunkte wurden nicht zerstört</German>
-                <Portuguese>Pontos de Verificação não foram destruídos</Portuguese>
-                <Chinesesimp>检查站未摧毁</Chinesesimp>
+            <Key ID="STR_BTC_HAM_SIDE_CHECKPOINT_DESTROY_DESC">
+                <Original>Destroy this checkpoint by destroying this object.</Original>
+                <German>Beseitigen Sie den Kontrollpunkt, indem Sie alle Objekte zerstören.</German>
+                <Chinesesimp>通过摧毁这一物件来摧毁该检查点。</Chinesesimp>
             </Key>
-            <Key ID="STR_BTC_HAM_SIDE_CHECKPOINT_WIN_TEXT">
-                <Original>Checkpoints have been destroyed!</Original>
-                <Spanish>¡Los puestos de control han sido destruidos!</Spanish>
-                <German>Die Kontrollpunkte wurden zerstört!</German>
-                <Portuguese>Pontos de Verificação foram destruídos!</Portuguese>
-                <Chinesesimp>检查站已被摧毁!</Chinesesimp>
+            <Key ID="STR_BTC_HAM_SIDE_CHECKPOINT_DESTROY_TITLE">
+                <Original>Destroy this checkpoint</Original>
+                <German>Kontrollpunkt beseitigen</German>
+                <Chinesesimp>摧毁该检查点</Chinesesimp>
             </Key>
         </Container>
         <Container name="Civ treatment boat">
@@ -831,20 +853,6 @@
                 <German>Ein Zivilist aus %1 hat einen Notruf abgesetzt. Behandeln Sie ihn umd warten Sie darauf, dass sich sein Zustand stabilisiert.</German>
                 <Portuguese>Um civil fez uma chamada médica em %1. Trate-o e aguarde a estabilização dele.</Portuguese>
                 <Chinesesimp>一位当地居民正在 %1 地区呼叫医疗支援, 治疗并护理患者, 直至其伤势稳定。</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_SIDE_CIVTREATBOAT_FAILED_TEXT">
-                <Original>The patient was not stabilized</Original>
-                <Spanish>El paciente no fue estabilizado</Spanish>
-                <German>Der Patient wurde nicht rechtzeitig stabilisiert</German>
-                <Portuguese>O paciente não foi estabilizado a tempo</Portuguese>
-                <Chinesesimp>患者的伤势未稳定</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_SIDE_CIVTREATBOAT_WIN_TEXT">
-                <Original>The civilian has been stabilized!</Original>
-                <Spanish>¡El paciente fue estabilizado!</Spanish>
-                <German>Der Patient wurde erfolgreich behandelt!</German>
-                <Portuguese>O paciente foi estabilizado com sucesso!</Portuguese>
-                <Chinesesimp>平民的伤势已经稳定!</Chinesesimp>
             </Key>
         </Container>
         <Container name="Civ treatment">
@@ -868,20 +876,6 @@
                 <German>Ein Zivilist aus %1 hat einen Notruf abgesetzt. Behandeln Sie ihn umd warten Sie darauf, dass sich sein Zustand stabilisiert </German>
                 <Portuguese>Um civil fez uma chamada médica em %1. Trate-o e aguarde a estabilização dele.</Portuguese>
                 <Chinesesimp>一位平民正在 %1 地区呼叫医疗支援, 治疗并护理患者, 直至其伤势稳定。</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_SIDE_CIVTREAT_FAILED_TEXT">
-                <Original>The patient was not stabilized</Original>
-                <Spanish>El paciente no fue estabilizado</Spanish>
-                <German>Der Patient wurde nicht rechtzeitig stabilisiert</German>
-                <Portuguese>O paciente não foi estabilizado a tempo</Portuguese>
-                <Chinesesimp>患者的伤势未稳定</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_SIDE_CIVTREAT_WIN_TEXT">
-                <Original>The civilian has been stabilized!</Original>
-                <Spanish>¡El paciente fue estabilizado!</Spanish>
-                <German>Der Patient wurde erfolgreich behandelt!</German>
-                <Portuguese>O paciente foi estabilizado com sucesso!</Portuguese>
-                <Chinesesimp>平民的伤势已经稳定!</Chinesesimp>
             </Key>
         </Container>
         <Container name="Convoy">
@@ -913,73 +907,53 @@
                 <Portuguese>Um comboio armado inimigo vai atacar %1. Proteja a população local dentruindo o comboio antes que ele chegue</Portuguese>
                 <Chinesesimp>一队Oplitas武装车队将要攻打 %1。当地居民请求在其抵达之前将其摧毁!</Chinesesimp>
             </Key>
-            <Key ID="STR_BTC_HAM_SIDE_CONVOY_FAILED_TEXT">
-                <Original>The armed convoy was not destroyed</Original>
-                <Spanish>El convoy armado no fue destruido</Spanish>
-                <German>Der bewaffnete Konvoi wurde nicht zerstört!</German>
-                <Portuguese>O comboio armado não foi destruído!</Portuguese>
-                <Chinesesimp>武装车队未被摧毁</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_SIDE_CONVOY_WIN_TEXT">
-                <Original>The armed convoy has been destroyed!</Original>
-                <Spanish>¡El convoy armado ha sido destruido!</Spanish>
-                <German>Der bewaffnete Konvoi ist zerstört worden!</German>
-                <Portuguese>O comboio armado foi destruído com sucesso!</Portuguese>
-                <Chinesesimp>武装车队已被摧毁!</Chinesesimp>
-            </Key>
         </Container>
         <Container name="Hack">
-            <Key ID="STR_BTC_HAM_SIDE_HACK_STARTCHAT">
+            <Key ID="STR_BTC_HAM_SIDE_HACK_STARTHACK">
                 <Original>Defend the terminal until the missile is hacked!</Original>
                 <Spanish>Defiende la terminal hasta que el misil sea hacekado!</Spanish>
                 <German>Verteidigt das Terminal, bis die Rakete gehackt erfolgreich gehackt ist!</German>
                 <Portuguese>Defenda o terminal até que o míssil seja hackeado!</Portuguese>
-                <Chinesesimp>保护终端机, 直到导弹系统被成功入侵!</Chinesesimp>
+                <Chinesesimp>保护终端, 直到导弹系统被成功入侵!</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_HACK_ACEACTION">
                 <Original>Start Hacking</Original>
                 <Spanish>Comenzar el hackeo</Spanish>
                 <German>Hack starten</German>
                 <Portuguese>Comece a Hackear</Portuguese>
-                <Chinesesimp>开始系统入侵</Chinesesimp>
+                <Chinesesimp>开始入侵</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_HACK_TITLE">
                 <Original>Hack missile near %1</Original>
                 <Spanish>Hackear misil cerca de %1</Spanish>
                 <German>Rakete hacken in der Nähe von %1</German>
                 <Portuguese>Hackeie o míssil em %1</Portuguese>
-                <Chinesesimp>在 %1 地区入侵导弹系统</Chinesesimp>
+                <Chinesesimp>在 %1 地区入侵导弹控制终端</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_HACK_DESC">
                 <Original>Hack a prototype missile with a terminal available in %1. Defend your position until the process is done!</Original>
                 <Spanish>Hackear un misil prototipo con un terminal disponible en %1. Defiende tu posición hasta que el proceso haya terminado!</Spanish>
                 <German>Hacke eine Prototyp-Rakete mit einem in %1 verfügbaren Terminal. Verteidige deine Position, bis der Prozess abgeschlossen ist!</German>
                 <Portuguese>Hackei o terminal de protótipo de míssil em %1. Defenda sua posição até que o processo seja concluído!</Portuguese>
-                <Chinesesimp>在 %1 地区入侵一枚带有控制终端的导弹原型的系统。守住你的位置, 直到系统入侵完成!</Chinesesimp>
+                <Chinesesimp>在 %1 地区对一枚带有控制终端的导弹原型进行黑客入侵。守住你的位置, 直到入侵完成!</Chinesesimp>
             </Key>
-            <Key ID="STR_BTC_HAM_SIDE_HACK_FAILED_TEXT">
-                <Original>The missile was not hacked</Original>
-                <Spanish>El misil no fue hackeado</Spanish>
-                <German>Die Rakete wurde nicht gehackt</German>
-                <Portuguese>O míssil não foi hackeado</Portuguese>
-                <Chinesesimp>导弹系统未被入侵</Chinesesimp>
+            <Key ID="STR_BTC_HAM_SIDE_HACK_OPEN_DESC">
+                <Original>Use the terminal to launch the hack.</Original>
+                <German>Benutzen Sie das Terminal, um den Hack zu starten.</German>
+                <Chinesesimp>使用该终端开始黑客入侵。</Chinesesimp>
             </Key>
-            <Key ID="STR_BTC_HAM_SIDE_HACK_WIN_TEXT">
-                <Original>The missile has been hacked!</Original>
-                <Spanish>El misil fue hackeado!</Spanish>
-                <German>Die Rakete wurde erfolgreich gehackt!</German>
-                <Portuguese>O míssil foi hackeado com sucesso!</Portuguese>
-                <Chinesesimp>导弹系统已被入侵!</Chinesesimp>
+            <Key ID="STR_BTC_HAM_SIDE_HACK_OPEN_TITLE">
+                <Original>Start the Hack</Original>
+                <German>Hack starten</German>
+                <Chinesesimp>进行黑客入侵</Chinesesimp>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_HACK_DEFEND_TITLE">
+                <Original>Defend the terminal</Original>
+                <German>Verteidigen Sie das Terminal</German>
+                <Chinesesimp>保护终端</Chinesesimp>
             </Key>
         </Container>
         <Container name="Hostage">
-            <Key ID="STR_BTC_HAM_SIDE_HOSTAGE_MRK">
-                <Original>Hostage</Original>
-                <Spanish>Rehén</Spanish>
-                <German>Geisel</German>
-                <Portuguese>Refém</Portuguese>
-                <Chinesesimp>人质</Chinesesimp>
-            </Key>
             <Key ID="STR_BTC_HAM_SIDE_HOSTAGE_TITLE">
                 <Original>Liberate hostage near %1</Original>
                 <Spanish>Liberar rehén cerca de %1</Spanish>
@@ -993,20 +967,6 @@
                 <German>Befreien Sie eine Geisel in %1 aus den Händen der Terroristen. Die lokale Bevölkerung bittet um Ihre Hilfe!</German>
                 <Portuguese>Liberte o civil refém em %1 das mãos dos terroristas. A população local está pedindo sua ajuda!</Portuguese>
                 <Chinesesimp>在 %1 地区解救人质。当地居民正在请求你的帮助!</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_SIDE_HOSTAGE_FAILED_TEXT">
-                <Original>The hostage was not liberated</Original>
-                <Spanish>El rehén no fue liberado</Spanish>
-                <German>Die Geisel wurde nicht befreit</German>
-                <Portuguese>O refém não foi libertado</Portuguese>
-                <Chinesesimp>人质未被解救</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_SIDE_HOSTAGE_WIN_TEXT">
-                <Original>The hostage has been liberated!</Original>
-                <Spanish>El rehén fue liberado!</Spanish>
-                <German>Die Geisel wurde befreit!</German>
-                <Portuguese>O refém foi libertado com sucesso!</Portuguese>
-                <Chinesesimp>人质已重获自由!</Chinesesimp>
             </Key>
         </Container>
         <Container name="Mines">
@@ -1024,20 +984,6 @@
                 <Portuguese>Campo minado próximo a %1. Limpe-os!</Portuguese>
                 <Chinesesimp>%1 附近有雷区, 把它们清除掉!</Chinesesimp>
             </Key>
-            <Key ID="STR_BTC_HAM_SIDE_MINES_FAILED_TEXT">
-                <Original>The minefield was not cleared</Original>
-                <Spanish>El campo minado no fue despejado</Spanish>
-                <German>Das Minenfeld wurde nicht geräumt</German>
-                <Portuguese>O campo minado não foi limpo</Portuguese>
-                <Chinesesimp>雷区未清除</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_SIDE_MINES_WIN_TEXT">
-                <Original>The minefield has been cleared</Original>
-                <Spanish>El campo minado fue despejado por completo!</Spanish>
-                <German>Alle Minen wurden entschärft</German>
-                <Portuguese>O campo minado foi limpo com sucesso!</Portuguese>
-                <Chinesesimp>雷区已被清除!</Chinesesimp>
-            </Key>
         </Container>
         <Container name="Rescue">
             <Key ID="STR_BTC_HAM_SIDE_RESC_TITLE">
@@ -1054,19 +1000,45 @@
                 <Portuguese>MAYDAY-MAYDAY, um piloto caiu com seu helicóptero próximo a %1. O comando solicitou sua ajuda para resgatá-lo e trazê-lo de volta a base!</Portuguese>
                 <Chinesesimp>MAYDAY-MAYDAY, 一架直升机在 %1 附近坠毁。指挥部正在请求你的帮助。前去搜救这名飞行员, 并将其带回基地!</Chinesesimp>
             </Key>
-            <Key ID="STR_BTC_HAM_SIDE_RESC_FAILED_TEXT">
-                <Original>The pilot was not rescued</Original>
-                <Spanish>El piloto no fue rescatado</Spanish>
-                <German>Der Pilot wurde nicht gerettet</German>
-                <Portuguese>O piloto não foi resgatado</Portuguese>
-                <Chinesesimp>飞行员未获救</Chinesesimp>
+            <Key ID="STR_BTC_HAM_SIDE_RESC_FIND_DESC">
+                <Original>Find the pilot of the helicopter. It should be around the helicopter wreck.</Original>
+                <German>Finden Sie den Piloten. Er sollte sich um Umfeld des Helikopterwracks befinden.</German>
+                <Chinesesimp>找到该直升机的飞行员。他应该在直升机残骸附近。</Chinesesimp>
             </Key>
-            <Key ID="STR_BTC_HAM_SIDE_RESC_WIN_TEXT">
-                <Original>The pilot has been rescued!</Original>
-                <Spanish>El piloto fue rescatado!</Spanish>
-                <German>Der Pilot wurde gerettet!</German>
-                <Portuguese>O piloto foi resgatado com sucesso!</Portuguese>
-                <Chinesesimp>飞行员已获救!</Chinesesimp>
+            <Key ID="STR_BTC_HAM_SIDE_RESC_FIND_TITLE">
+                <Original>Find the pilot</Original>
+                <German>Finde den Piloten</German>
+                <Chinesesimp>找到飞行员</Chinesesimp>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_RESC_BACK_DESC">
+                <Original>Get him back to base at the logistic point.</Original>
+                <German>Bringen Sie ihn zum Logistikpunkt zurück.</German>
+                <Chinesesimp>将他带回基地后勤点。</Chinesesimp>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_RESC_BACK_TITLE">
+                <Original>Get him back</Original>
+                <German>Hol ihn zurück</German>
+                <Chinesesimp>将他带回</Chinesesimp>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_RESC_BODYBAG_DESC">
+                <Original>%1 has been killed. Place %1 in a body bag.</Original>
+                <German>%1 wurde getötet. Bergen Sie seine Leiche mithilfe eines Leichsacks.</German
+                <Chinesesimp>%1 已经阵亡。将 %1 装进尸体袋。</Chinesesimp>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_RESC_BODYBAG_TITLE">
+                <Original>Place the pilot in a body bag</Original>
+                <German>Toten Piloten bergen</German>
+                <Chinesesimp>将该飞行员装进尸体袋</Chinesesimp>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_RESC_BRING_DESC">
+                <Original>Bring %1 body bag to the logistic point.</Original>
+                <German>Geben Sie den in einem Leichensack verpackten Leichnam von %1 beim Logistikpunkt ab.</German>
+                <Chinesesimp>将装有 %1 的尸体袋带回后勤点。</Chinesesimp>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_RESC_BRING_TITLE">
+                <Original>Bring the body bag to base</Original>
+                <German>Bringen Sie den Leichnam zur Basis</German>
+                <Chinesesimp>将尸体袋带回基地</Chinesesimp>
             </Key>
         </Container>
         <Container name="Supply">
@@ -1075,28 +1047,34 @@
                 <Spanish>Suministrar %1</Spanish>
                 <German>Versorgung nach %1 bringen</German>
                 <Portuguese>Envie Suprimentos para %1</Portuguese>
-                <Chinesesimp>在 %1 发放救援补给</Chinesesimp>
+                <Chinesesimp>在 %1 发放救援物资</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_SUPPLIES_DESC">
-                <Original>The citizens of %1 are on the brink starving to death, bring them some supplies present at the logistic point!</Original>
+                <Original>The citizens of %1 are on the brink starving and thirsty to death, bring them food and potable water present in the supply container at the logistic point!</Original>
                 <Spanish>Los ciudadanos de %1 están al borde de la muerte de hambre, ¡tráiganles algunos suministros presentes en el punto logístico!</Spanish>
-                <German>Die Bürger von %1 sind am verhungern. Bingen Sie ihnen Vorräte. Die Vorräte(Supplies) können beim Logistikpunkt angefordert werden.</German>
+                <German>Die Bewohner der Stadt %1 sind am verdusten und verhungern. Versorgen Sie die Bürger mit den nötigen Nahrungsmitteln. Den benötigten Nachschubcontainer finden sie am Versorgungspunkt.</German>
                 <Portuguese>O população de %1 estão passando fome! Forneça suprimentos! Os suprimentos podem ser solicitados no ponto logístico.</Portuguese>
-                <Chinesesimp>%1 的居民正在挨饿, 在后勤点生成一些救援补给并带给他们!</Chinesesimp>
+                <Chinesesimp>%1 的居民正在挨饿, 在后勤点生成一些救援物资并带给他们!</Chinesesimp>
             </Key>
-            <Key ID="STR_BTC_HAM_SIDE_SUPPLIES_FAILED_TEXT">
-                <Original>Supplies were not delivered</Original>
-                <Spanish>Los suministros no fueron entregados</Spanish>
-                <German>Die Lieferungen haben ihr Ziel nicht erreicht</German>
-                <Portuguese>Os suprimentos não foram entregues</Portuguese>
-                <Chinesesimp>救援补给未送达</Chinesesimp>
+            <Key ID="STR_BTC_HAM_SIDE_SUPPLIES_MOVE_DESC">
+                <Original>Move to the supply location with supplies available at the logistic point.</Original>
+                <German>Begeben Sie sich mir der Versorgungslieferung (erhältlich am Versorgungspunkt) zum Einsatzgebiet.</German>
+                <Chinesesimp>在后勤点申请救援物资, 并将其运送至补给区域。</Chinesesimp>
             </Key>
-            <Key ID="STR_BTC_HAM_SIDE_SUPPLIES_WIN_TEXT">
-                <Original>Supplies have been delivered</Original>
-                <Spanish>Los suministros han sido entregados</Spanish>
-                <German>Lieferungen wurden geliefert</German>
-                <Portuguese>Os suprimentos foram entregues!</Portuguese>
-                <Chinesesimp>救援补给已分发</Chinesesimp>
+            <Key ID="STR_BTC_HAM_SIDE_SUPPLIES_MOVE_TITLE">
+                <Original>Move with supplies</Original>
+                <German>Versorgungslieferung</German>
+                <Chinesesimp>运送物资</Chinesesimp>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_SUPPLIES_UNLOAD_DESC">
+                <Original>Unload supplies available inside the supplies container.</Original>
+                <German>Entladen Sie alle Nachschubgüter aus der Versorgungslieferung.</German>
+                <Chinesesimp>从集装箱中卸载救援物资。</Chinesesimp>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_SUPPLIES_UNLOAD_TITLE">
+                <Original>Unload supplies</Original>
+                <German>Nachschubgüter ausladen</German>
+                <Chinesesimp>卸载救援物资</Chinesesimp>
             </Key>
         </Container>
         <Container name="Tower">
@@ -1113,18 +1091,6 @@
                 <German>Ein Funkturm der Oplitas befindet sich in %1. Die lokale Bevölkerung bittet darum diesen zu zerstören! (Nutzen Sie die M183 Sprengladungen)</German>
                 <Portuguese>A torre de comunicação inimiga foi localizada em %1. A população local está pedindo sua ajuda para destruí-las. (Use a mochila de explosivos M183)</Portuguese>
                 <Chinesesimp>在 %1 地区发现了一座 Oplitas 通讯信号塔。当地居民请求您将其摧毁。(使用一个M183炸药包)</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_SIDE_TOWER_FAILED_TEXT">
-                <Original>The tower was not destroyed</Original>
-                <German>Der Funkturm wurde nicht zerstört</German>
-                <Portuguese>A torre não foi destruída</Portuguese>
-                <Chinesesimp>信号塔未摧毁</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_SIDE_TOWER_WIN_TEXT">
-                <Original>The tower has been destroyed!</Original>
-                <German>Der Funkturm wurde zerstört!</German>
-                <Portuguese>A torre foi destruída com sucesso!</Portuguese>
-                <Chinesesimp>信号塔已摧毁!</Chinesesimp>
             </Key>
         </Container>
         <Container name="Underwater generator">
@@ -1143,35 +1109,14 @@
                 <Chinesesimp>在 %1 地区摧毁水下发电机</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_UNDERWATER_DESC">
-                <Original>An Underwater generator has been located in %1. Local population is asking for your help to destroy it!</Original>
+                <Original>An underwater generator has been located in %1. Local population is asking for your help to destroy it!</Original>
                 <Spanish>Se ha localizado un generador submarino en %1. La población local está pidiendo tu ayuda para destruirlo!</Spanish>
                 <German>Ein Unterwassergenerator wurde in der Nähe von %1 aufgeklärt. Die zivile Bevölkerung bittet um die Zerstörung des Aggregats!</German>
                 <Portuguese>O gerador subaquático foi localizado em %1. A população local está pedindo sua ajuda para destruí-lo!</Portuguese>
                 <Chinesesimp>在 %1 地区发现了一部水下发电机。当地居民请求您将其摧毁。</Chinesesimp>
             </Key>
-            <Key ID="STR_BTC_HAM_SIDE_UNDERWATER_FAILED_TEXT">
-                <Original>The underwater generator was not destroyed</Original>
-                <Spanish>El generador submarino no fue destruido</Spanish>
-                <German>Der Unterwassergenerator wurde nicht zerstört</German>
-                <Portuguese>O gerador subaquático não foi destruído</Portuguese>
-                <Chinesesimp>水下发电机未被摧毁</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_SIDE_UNDERWATER_WIN_TEXT">
-                <Original>The underwater generator has been destroyed!</Original>
-                <Spanish>¡El generador submarino ha sido destruido!</Spanish>
-                <German>Der Generator wurde zerstört!</German>
-                <Portuguese>O gerador subaquático foi destruído com sucesso!</Portuguese>
-                <Chinesesimp>水下发电机已被摧毁!</Chinesesimp>
-            </Key>
         </Container>
         <Container name="Vehicle">
-            <Key ID="STR_BTC_HAM_SIDE_VEHICLE_MRK">
-                <Original>Vehicle needs assistance</Original>
-                <Spanish>Vehículo necesita asistencia</Spanish>
-                <German>Fahrzeug braucht Unterstützung</German>
-                <Portuguese>Veículo necessitando de assistência</Portuguese>
-                <Chinesesimp>载具需要援助</Chinesesimp>
-            </Key>
             <Key ID="STR_BTC_HAM_SIDE_VEHICLE_TITLE">
                 <Original>Vehicle needs assistance near %1</Original>
                 <Spanish>Vehículo necesita asistencia cerca de %1</Spanish>
@@ -1185,18 +1130,6 @@
                 <German>Ein Fahrzeug wurde durch eine IED beschädigt und braucht nun Unterstützung in der Nähe von %1! Repariere Sie es!</German>
                 <Portuguese>Um veículo foi danificado por um IED precisa de reparo em %1! Conserte-o!</Portuguese>
                 <Chinesesimp>一辆被IED损坏的载具在 %1 附近等待援助! 修好它!</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_SIDE_VEHICLE_FAILED_TEXT">
-                <Original>The vehicle was not repaired</Original>
-                <German>Das Fahrzeug wurde nicht repariert</German>
-                <Portuguese>O veículo não foi reparado</Portuguese>
-                <Chinesesimp>载具未被修复</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_SIDE_VEHICLE_WIN_TEXT">
-                <Original>The vehicle has been repaired</Original>
-                <German>Die Reparatur war erfolgreich</German>
-                <Portuguese>O veículo foi reparado com sucesso</Portuguese>
-                <Chinesesimp>载具已被修复</Chinesesimp>
             </Key>
         </Container>
         <Container name="Conquer">
@@ -1214,19 +1147,103 @@
                 <Portuguese>Os inimigos estão conquistando a cidade %1. A população local está sendo aterrorizada. Ajude-os!</Portuguese>
                 <Chinesesimp>%1 已被Oplitas占领! 当地居民受到恐吓, 他们正在请求帮助!</Chinesesimp>
             </Key>
-            <Key ID="STR_BTC_HAM_SIDE_CONQUER_FAILED_TEXT">
-                <Original>The city was not conquered</Original>
-                <Spanish>La ciudad no fue liberada</Spanish>
-                <German>Die Stadt wurde nicht erobert</German>
-                <Portuguese>A cidade não foi limpa</Portuguese>
-                <Chinesesimp>该城市未被夺回</Chinesesimp>
+        </Container>
+        <Container name="Kill">
+            <Key ID="STR_BTC_HAM_SIDE_KILL_TITLE">
+                <Original>Assassinate %1</Original>
+                <German>Eliminiere %1</German>
+                <Chinesesimp>刺杀 %1</Chinesesimp>
             </Key>
-            <Key ID="STR_BTC_HAM_SIDE_CONQUER_WIN_TEXT">
-                <Original>The city has been cleared!</Original>
-                <Spanish>La ciudad ha sido liberada!</Spanish>
-                <German>Die Stadt wurde erfolgreich gesichert!</German>
-                <Portuguese>A cidade foi recuperada com sucesso! </Portuguese>
-                <Chinesesimp>该城市已经安全!</Chinesesimp>
+            <Key ID="STR_BTC_HAM_SIDE_KILL_DESC">
+                <Original>Assassinate %1 in %2, then bring his dog tag to the base for identification. He is responsible for terrorizing the local population!</Original>
+                <German>Eliminieren Sie %1 in %2 und sichern Sie seine Hundemarke zur Identifizierung. Er ist der Hauptverantwortliche für den Terror in der Region!</German>
+                <Chinesesimp>在 %2 地区刺杀 %1, 然后将他的狗牌带回基地以进行身份鉴定。他是当地恐怖主义活动的主要责任人之一!</Chinesesimp>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_KILL_IN_TITLE">
+                <Original>Kill %1</Original>
+                <German>Töte %1</German>
+                <Chinesesimp>杀死 %1</Chinesesimp>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_KILL_IN_DESC">
+                <Original>Kill %1 in %2.</Original>
+                <German>Töten Sie %1 in %2.</German>
+                <Chinesesimp>在 %2 地区杀死 %1。</Chinesesimp>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_KILL_DOGTAG_TITLE">
+                <Original>Take dog tag</Original>
+                <German>Hundemarke aufnehmen</German>
+                <Chinesesimp>拿取狗牌</Chinesesimp>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_KILL_DOGTAG_DESC">
+                <Original>Take dog tag of %1.</Original>
+                <German>Nehmen Sie die Hundemarke von %1 an sich.</German>
+                <Chinesesimp>拿取 %1 的狗牌。</Chinesesimp>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_KILL_BRING_TITLE">
+                <Original>Bring dog tag to base</Original>
+                <German>Bringen Sie die Hundemarke in die Basis</German>
+                <Chinesesimp>将狗牌带回基地</Chinesesimp>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_KILL_BRING_DESC">
+                <Original>Bring %1 dog tag to the logistic point.</Original>
+                <German>Geben Sie die Hundemarke beim Logistikpunkt in der Basis ab.</German>
+                <Chinesesimp>将 %1 的狗牌带回基地后勤点。</Chinesesimp>
+            </Key>
+        </Container>
+        <Container name="Chemical Leak">
+            <Key ID="STR_BTC_HAM_SIDE_CHEM_TITLE">
+                <Original>Chemical leak in %1</Original>
+                <German>Chemieunfall in %1</German>
+                <Chinesesimp>处理 %1 地区的化学品泄露</Chinesesimp>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_CHEM_DESC">
+                <Original>Some containers with a dangerous chemical agent have been broken in %1. The civilian population reported that only some small objects are contaminated. Eliminate the contamination by moving those objects under a big shower.</Original>
+                <German>In %1 wurden einige Behälter mit gefährlichen chemischen Stoffen beschädigt. Laut Aussagen der Zivilbevölkerung scheinen aber nur kleinere Objekte mit dieser Substanz in Berührungen gekommen zu sein. Finden und beseitigen Sie die kontaminierten Objekte, in dem Sie diese unter eine große Dusche stellen.</German>
+                <Chinesesimp>在 %1 地区, 一些装有危险化学试剂的集装箱发生破损。平民报告称只有一些小物体受到污染。将这些物体移动到大型淋浴器下以消除污染。</Chinesesimp>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_CHEM_BRING_DESC">
+                <Original>Bring a container available at the logistic point to the contaminated area. You will use it to load all contaminated objects.</Original>
+                <German>Bringen Sie einen Container, welchen Sie an dem Logistikpunkt erhalten, zu dem markierten Bereich. Diesen Container können Sie verwenden um alle kontaminierten Objekte zu verlanden/transportieren.</German>
+                <Chinesesimp>在后勤点生成集装箱并将其带到受污染区域。你将使用它来装载所有的受污染物体。</Chinesesimp>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_CHEM_BRING_TITLE">
+                <Original>Bring a container</Original>
+                <German>Container bereitstellen</German>
+                <Chinesesimp>携带一个集装箱</Chinesesimp>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_CHEM_LOCATE_TITLE">
+                <Original>Locate contaminated objects</Original>
+                <German>Kontaminierte Objekte lokalisieren</German>
+                <Chinesesimp>确定受污染物体的位置</Chinesesimp>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_CHEM_LOCATE_DESC">
+                <Original>Locate contaminated objects. The ED-1E drone can help you to identify contaminated objects by biopsy.</Original>
+                <German>Lokalisieren Sie die kontaminierten Objekte mithilfe einer ED-1E-Drohne. Führen Sie mit der Drohne eine Biopsie durch, um die Objekte zu identifizieren.</German>
+                <Chinesesimp>确定受污染物体的位置。ED-1E 无人机可以通过针刺活检帮助你识别受污染物体。</Chinesesimp>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_CHEM_MOVE_TITLE">
+                <Original>Clean contaminated objects</Original>
+                <German>Kontaminierte Objekte reinigen</German>
+                <Chinesesimp>清理受污染的物体</Chinesesimp>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_CHEM_MOVE_DESC">
+                <Original>Load contaminated objects in containers. Move the container or objects inside a big shower. Note: you can load this container inside a vehicle and move the vehicle under the shower. This clean up the vehicle, crew and cargo.</Original>
+                <German>Verladen Sie kontaminierte Objekte in einen Container und bringen Sie diesen zu einer großen Dusche. Hinweis: Sie können den Container in ein Fahrzeug laden und das ganze Fahrzeug unter die Dusche stellen. Dies dekontaminiert das Fahrzeug, die Insassen und die Ladung.</German>
+                <Chinesesimp>将受污染物体装载至集装箱中。将集装箱或受污染物体移动到大型淋浴器下。注: 你可以将集装箱装载至载具, 再讲载具移动到淋浴器下。这将会净化载具、成员和货物。</Chinesesimp>
+            </Key>
+        </Container>
+        <Container name="EMP">
+            <Key ID="STR_BTC_HAM_SIDE_EMP_TITLE">
+                <Original>EMP in %1</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_EMP_DESC">
+                <Original>Civilian population reported that vehicles have electronic fail around %1. They are requesting your help to investigate the origin. %2</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_EMP_DESTROY_TITLE">
+                <Original>Find and destroy station</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_EMP_DESTROY_DESC">
+                <Original>Locate and destroy EMP station creating electronic fail.</Original>
             </Key>
         </Container>
     </Package>
@@ -1346,17 +1363,10 @@
             </Key>
         </Container>
         <Container name="Action(ACE): Side missions">
-            <Key ID="STR_BTC_HAM_ACTION_SIDEMISSION_MAIN">
-                <Original>Side mission</Original>
-                <Spanish>Mision Alternativa</Spanish>
-                <German>Nebenmission</German>
-                <Portuguese>Missão secundária</Portuguese>
-                <Chinesesimp>支线任务</Chinesesimp>
-            </Key>
             <Key ID="STR_BTC_HAM_ACTION_SIDEMISSION_ABORT">
-                <Original>Abort</Original>
+                <Original>Abort assigned</Original>
                 <Spanish>Abortar</Spanish>
-                <German>Abbrechen</German>
+                <German>Zugewiesene Mission abbrechen</German>
                 <Portuguese>Abortar</Portuguese>
                 <Chinesesimp>中止</Chinesesimp>
             </Key>
@@ -1415,20 +1425,6 @@
                 <Portuguese>Desenganchar</Portuguese>
                 <Chinesesimp>取消牵引</Chinesesimp>
             </Key>
-            <Key ID="STR_BTC_HAM_ACTION_VEHINIT_DEPLOYROPES">
-                <Original>Deploy ropes</Original>
-                <Spanish>Desplegar cuerdas</Spanish>
-                <German>Seile auswerfen</German>
-                <Portuguese>Colocar cordas</Portuguese>
-                <Chinesesimp>部署绳索</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_ACTION_VEHINIT_CUTROPES">
-                <Original>Cut ropes</Original>
-                <Spanish>Cortar cuerdas</Spanish>
-                <German>Seile trennen</German>
-                <Portuguese>Cortar cordas</Portuguese>
-                <Chinesesimp>断开绳索</Chinesesimp>
-            </Key>
         </Container>
         <Container name="Action(ACE): Copy Paste">
             <Key ID="STR_BTC_HAM_ACTION_COPYPASTE_COPY">
@@ -1476,13 +1472,6 @@
                 <German>niedrig</German>
                 <Portuguese>baixa</Portuguese>
                 <Chinesesimp>差</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_CON_INFO_ASKREP_HIGH">
-                <Original>high</Original>
-                <Spanish>alta</Spanish>
-                <German>hoch</German>
-                <Portuguese>alta</Portuguese>
-                <Chinesesimp>高</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_CON_INFO_ASKREP_ASK1">
                 <Original>Sir, your reputation is</Original>
@@ -1574,6 +1563,11 @@
                 <German>Gesprächsaufzeichnung</German>
                 <Portuguese>Relatório</Portuguese>
                 <Chinesesimp>日志</Chinesesimp>
+            </Key>
+            <Key ID="STR_BTC_HAM_CON_INFO_PICTURE">
+                <Original>Pictures of cache number %1</Original>
+                <German>Bilder des Waffenlagers %1</German>
+                <Chinesesimp>武器箱 %1 的照片</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_CON_INFO_SEARCH_BAR">
                 <Original>Searching for intel . . .</Original>
@@ -1712,14 +1706,14 @@
                 <Spanish>¡Atrás! Montando FOB</Spanish>
                 <German>Geh ein wenig zurück! Die FOB wird aufgebaut</German>
                 <Portuguese>Afaste-se! Montando a FOB</Portuguese>
-                <Chinesesimp>FOB装配中, 请远离!</Chinesesimp>
+                <Chinesesimp>后退! FOB装配中</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_O_FOB_DISMANTLE_H_PROC">
                 <Original>Dismantle, move out ...</Original>
                 <Spanish>Desmantelado, muévanse...</Spanish>
                 <German>Abbau im gange, geh ein wenig zurück...</German>
                 <Portuguese>Desmontando, se afaste...</Portuguese>
-                <Chinesesimp>已拆除, 正在搬走 ...</Chinesesimp>
+                <Chinesesimp>正在拆除, 请远离 ...</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_O_FOB_REDEPLOY_H_NOFOB">
                 <Original>No FOBs deployed</Original>
@@ -1737,6 +1731,7 @@
             </Key>
             <Key ID="STR_BTC_HAM_O_FOB_REDEPLOY_LABEL">
                 <Original>Select a FOB</Original>
+                <German>FOB auswähen</German>
                 <Chinesesimp>选择一个FOB:</Chinesesimp>
                 <Portuguese>Selecione uma FOB</Portuguese>
             </Key>
@@ -1749,6 +1744,13 @@
             </Key>
         </Container>
         <Container name="Other: Hints ">
+            <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_MU">
+                <Original>Map updated</Original>
+                <Spanish>Mapa actualizado</Spanish>
+                <German>Karte aktualisiert</German>
+                <Portuguese>Mapa atualizado</Portuguese>
+                <Chinesesimp>地图已更新</Chinesesimp>
+            </Key>
             <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_0">
                 <Original>Cache destroyed!</Original>
                 <Spanish>Cache destruido!</Spanish>
@@ -1757,11 +1759,11 @@
                 <Chinesesimp>武器箱已摧毁!</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_1">
-                <Original>Intel about an ammo cache found! Map updated</Original>
-                <Spanish>¡Inteligencia sobre una caché de munición encontrada! Mapa actualizado</Spanish>
-                <German>Informationen über ein Waffenlager gefunden! Karte aktualisiert</German>
-                <Portuguese>Informação sobre um depósito de armas encontrada! Mapa atualizado</Portuguese>
-                <Chinesesimp>发现了关于弹药箱的情报! 地图已更新</Chinesesimp>
+                <Original>Intel about an ammo cache found!</Original>
+                <Spanish>¡Inteligencia sobre una caché de munición encontrada!</Spanish>
+                <German>Informationen über ein Waffenlager gefunden!</German>
+                <Portuguese>Informação sobre um depósito de armas encontrada!</Portuguese>
+                <Chinesesimp>发现了关于弹药箱的情报!</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_2">
                 <Original>Hideout destroyed! %1 remaining</Original>
@@ -1777,19 +1779,12 @@
                 <Portuguese>Este corpo não contém informação</Portuguese>
                 <Chinesesimp>这具尸体没有任何情报</Chinesesimp>
             </Key>
-            <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_4">
-                <Original>Found intels about an ammo cache and an hideout! Map updated</Original>
-                <Spanish>¡Encontré información sobre un depósito de municiones y un escondite! Mapa actualizado</Spanish>
-                <German>Informationen über ein Waffenlager und ein Versteck gefunden! Karte aktualisiert</German>
-                <Portuguese>Encontrada informação sobre depósito de armas e esconderijo! Mapa atualizado</Portuguese>
-                <Chinesesimp>发现了关于武器箱和藏匿点的情报! 地图已更新</Chinesesimp>
-            </Key>
             <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_5">
-                <Original>Intel about an hideout found! Map updated</Original>
-                <Spanish>¡Información sobre un escondite encontrado! Mapa actualizado</Spanish>
-                <German>Informationen über ein Versteck gefunden! Karte aktualisiert</German>
-                <Portuguese>Informação sobre esconderijo encontrada! Mapa atualizado</Portuguese>
-                <Chinesesimp>发现了关于藏匿点的情报! 地图已更新</Chinesesimp>
+                <Original>Intel about an hideout found!</Original>
+                <Spanish>¡Información sobre un escondite encontrado!</Spanish>
+                <German>Informationen über ein Versteck gefunden!</German>
+                <Portuguese>Informação sobre esconderijo encontrada!</Portuguese>
+                <Chinesesimp>发现了关于藏匿点的情报!</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_6">
                 <Original>In the last hideout we found important intel about all the cities occupied by the Oplitas! Size the last positions held by the enemies and defeat them once and for all</Original>
@@ -1826,12 +1821,25 @@
                 <Portuguese>Banco de Dados deletado!</Portuguese>
                 <Chinesesimp>数据库已删除!</Chinesesimp>
             </Key>
-            <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_11">
-                <Original>One checkpoint destroyed!</Original>
-                <Spanish>¡Un puesto de control destruido!</Spanish>
-                <German>Ein Kontrollpunkt wurde zerstört!</German>
-                <Portuguese>Um ponto de verificação destruído!</Portuguese>
-                <Chinesesimp>一个检查站被摧毁!</Chinesesimp>
+            <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_14">
+                <Original>We got a picture of the building where the cache is:</Original>
+                <German>Wir haben ein Bild von dem Gebäude, in dem sich das Waffenlager befinden soll:</German>
+                <Chinesesimp>我们有一张武器箱所在房屋的照片:</Chinesesimp>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_15">
+                <Original>We got a picture of the something around the cache:</Original>
+                <German>Wir haben ein Bild von der näheren Umgebung des Waffenlagers:</German>
+                <Chinesesimp>我们有一张武器箱所在地的照片:</Chinesesimp>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_TASK_NOSIDE">
+                <Original>No side mission assigned</Original>
+                <German>Keine Nebenmission zugewiesen</German>
+                <Chinesesimp>未分配支线任务</Chinesesimp>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_TASK_NOTASIDE">
+                <Original>Isn't a side mission, can't abort</Original>
+                <German>Nur Nebenmissionen können abgebrochen werden</German>
+                <Chinesesimp>只能中止支线任务</Chinesesimp>
             </Key>
         </Container>
         <Container name="Other: Shortcuts">
@@ -1901,7 +1909,7 @@
                 <Chinesesimp>集装箱及其货物已记录! 清空该区域以创建一个复制品。</Chinesesimp>
             </Key>
         </Container>
-        <Container name="Other: Endmission ">
+        <Container name="Other: Endmission">
             <Key ID="STR_BTC_HAM_O_COMMON_ENDMISSION">
                 <Original>All the hideouts are destroyed, finally the Oplitas has been defeated! Mission accomplished</Original>
                 <Spanish>Todos los escondites fueron destruidos, finalmente el Oplitas han sido derrotados! Misión cumplida</Spanish>
@@ -1933,6 +1941,17 @@
                 <Chinesesimp>武器箱 %1 已摧毁</Chinesesimp>
             </Key>
         </Container>
+        <Container name="Other: Chemical Warfare">
+            <Key ID="STR_BTC_HAM_O_CHEM_CONTA">
+                <Original>Contaminated</Original>
+                <German>Kontaminiert</German>
+                <Chinesesimp>受到污染</Chinesesimp>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_CHEM_NOTCONTA">
+                <Original>Not contaminated</Original>
+                <Chinesesimp>未受污染</Chinesesimp>
+            </Key>
+        </Container>
     </Package>
     <Package name="Logistic">
         <Container name="Logistic: Basics ">
@@ -1946,11 +1965,11 @@
         </Container>
         <Container name="Logistic: Hook ">
             <Key ID="STR_BTC_HAM_LOG_HOOK_HINFO">
-                <Original>Interact with a vehicle to tow it! (This vehicle can't tow %1)</Original>
-                <Spanish>Interactúe con un vehículo para remolcarlo! (Este vehículo no puede remolcar %1)</Spanish>
-                <German>Interagieren Sie mit dem Zug-Fahrzeug, um es abzuschleppen! (Folgende Fahrzeuge können nicht gezogen werden: %1)</German>
-                <Portuguese>Interaja com o veículo para rebocá-lo! (Este veículo não pode rebocar %1)</Portuguese>
-                <Chinesesimp>与牵引车(前车)互动以牵引它! (当前载具(后车)无法牵引如下类型的载具: %1)</Chinesesimp>
+                <Original>Interact with a vehicle to tow it!&lt;br/&gt;(This vehicle can't tow %1)</Original>
+                <Spanish>Interactúe con un vehículo para remolcarlo!&lt;br/&gt;(Este vehículo no puede remolcar %1)</Spanish>
+                <German>Interagieren Sie mit dem Zug-Fahrzeug, um es abzuschleppen!&lt;br/&gt;(Folgende Fahrzeuge können nicht gezogen werden: %1)</German>
+                <Portuguese>Interaja com o veículo para rebocá-lo!&lt;br/&gt;(Este veículo não pode rebocar %1)</Portuguese>
+                <Chinesesimp>与牵引车(前车)互动以牵引它!&lt;br/&gt;(当前载具(后车)无法牵引如下类型的载具: %1)</Chinesesimp>
             </Key>
         </Container>
         <Container name="Logistic: Lift deploy ropes ">
@@ -1960,57 +1979,6 @@
                 <German>Hud An\Aus</German>
                 <Portuguese>Hud Ligado\Desligado</Portuguese>
                 <Chinesesimp>启用/关闭抬头显示(HUD)</Chinesesimp>
-            </Key>
-        </Container>
-        <Container name="Logistic: Load ">
-            <Key ID="STR_BTC_HAM_LOG_LOAD_TOOFAR">
-                <Original>%1 is too far from %2!</Original>
-                <Spanish>%1 está demasiado lejos de %2!</Spanish>
-                <German>%1 ist zu weit von %2 entfernt!</German>
-                <Portuguese>%1 está muito londe de %2!</Portuguese>
-                <Chinesesimp>%1 与 %2 距离过远!</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_LOG_LOAD_TOOFAST">
-                <Original>%1 is moving!</Original>
-                <Spanish>%1 se está moviendo!</Spanish>
-                <German>%1 is in Bewegung!</German>
-                <Portuguese>%1 está se movendo</Portuguese>
-                <Chinesesimp>%1 正在移动!</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_LOG_LOAD_TOOBIG">
-                <Original>Can not load %1 in %2</Original>
-                <Spanish>No se puede cargar %1 en %2</Spanish>
-                <German>Der Laderaum von %2 ist zu klein für %1</German>
-                <Portuguese>Não é possível carregar %1 em %2</Portuguese>
-                <Chinesesimp>无法将 %1 装进 %2</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_LOG_LOAD_NOSPACE">
-                <Original>There is no enough space for %1 in %2</Original>
-                <Spanish>No hay suficiente espacio para %1 en %2</Spanish>
-                <German>Es ist nicht mehr genug Platz im Laderaum von %1 vorhanden</German>
-                <Portuguese>Não há espaço suficiente para %1 em %2</Portuguese>
-                <Chinesesimp>剩余空间不足以将 %1 装进 %2</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_LOG_LOAD_BAR">
-                <Original>Loading %1 in %2. . .</Original>
-                <Spanish>Cargando %1 en %2. . .</Spanish>
-                <German>%1 wird verladen in %2 . . .</German>
-                <Portuguese>Carregando %1 em %2. . .</Portuguese>
-                <Chinesesimp>正在将 %1 装进 %2. . .</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_LOG_LOAD_FIN">
-                <Original>%1 has been loaded in %2</Original>
-                <Spanish>%1 ha sido cargado en %2</Spanish>
-                <German>%1 wurde in %2 eingeladen</German>
-                <Portuguese>%1 foi carregado com sucesso em %2</Portuguese>
-                <Chinesesimp>%1 已被装进 %2</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_LOG_LOAD_ABORT">
-                <Original>Loading aborted</Original>
-                <Spanish>Cargar abortada</Spanish>
-                <German>Ladevorgang abgebrochen</German>
-                <Portuguese>Carregamento cancelado</Portuguese>
-                <Chinesesimp>装载中止</Chinesesimp>
             </Key>
         </Container>
         <Container name="Logistic: Place ">
@@ -2070,6 +2038,18 @@
                 <Chinesesimp>此残骸将会重生</Chinesesimp>
                 <German>Dieses Wrack respawnt automatisch</German>
                 <Portuguese>Esta carcaça será respawnada</Portuguese>
+            </Key>
+        </Container>
+        <Container name="Logistic: Delete">
+            <Key ID="STR_BTC_HAM_LOG_DELETE">
+                <Original>No object to delete found</Original>
+                <German>Kein Objekt zum löschen gefunden</German>
+                <Chinesesimp>没有可删除的物件</Chinesesimp>
+            </Key>
+            <Key ID="STR_BTC_HAM_LOG_LPDELETE">
+                <Original>Can't delete object not created by Logistic Point</Original>
+                <German>Objekt konnte nicht gelöscht werden, da es nicht am Logisik-Punkt erstellt worden ist</German>
+                <Chinesesimp>只能删除由后勤点创建的物件</Chinesesimp>
             </Key>
         </Container>
         <Container name="Logistic: Tow ">

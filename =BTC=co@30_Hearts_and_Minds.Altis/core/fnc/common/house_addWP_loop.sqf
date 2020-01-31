@@ -33,7 +33,7 @@ if (btc_debug_log) then {
     [format ["count all pos %1 in %2 ", count _allpositions, _house], __FILE__, [false]] call btc_fnc_debug_message;
 };
 {
-    private _wp = [_group, _x, 0.2, "MOVE", "UNCHANGED", "NO CHANGE", "UNCHANGED", "NO CHANGE", "", [15, 20, 30]] call CBA_fnc_addWaypoint;
+    private _wp = [_group, [_x, 0.2] call CBA_fnc_randPos, -1, "MOVE", "UNCHANGED", "NO CHANGE", "UNCHANGED", "NO CHANGE", "", [15, 20, 30]] call CBA_fnc_addWaypoint;
     _wp waypointAttachObject _house;
     _wp setWaypointHousePosition _forEachIndex;
 } forEach _allpositions;

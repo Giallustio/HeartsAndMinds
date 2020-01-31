@@ -3,16 +3,17 @@
 Function: btc_fnc_db_delete
 
 Description:
-    Fill me when you edit me !
+    Delete database.
 
 Parameters:
-    _name - [String]
+    _showHint - Show the hint telling the database has been deleted. [Boolean]
+    _name - Name of the current database. [String]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_db_delete;
+        [] call btc_fnc_db_delete;
     (end)
 
 Author:
@@ -21,6 +22,7 @@ Author:
 ---------------------------------------------------------------------------- */
 
 params [
+    ["_showHint", true, [true]],
     ["_name", worldName, [""]]
 ];
 
@@ -39,4 +41,6 @@ profileNamespace setVariable [format ["btc_hm_%1_db", _name], nil];
 
 saveProfileNamespace;
 
-[10] remoteExec ["btc_fnc_show_hint", 0];
+if (_showHint) then {
+    [10] remoteExecCall ["btc_fnc_show_hint", 0];
+};

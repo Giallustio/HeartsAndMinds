@@ -14,9 +14,29 @@ Use the interaction menu to treat your wounds. Keep in mind that all the actions
 Use the earplugs to protect your ears to avoid combat deafness. You can put them on with your self interaction key.
 
 
+## Chemical Warfare
+### Chemical agent:
+A chemical agent can be found in the battlefield at cache location for example. When an object is contaminated, the chemical agent propagates to people around (in a circle of 3m). Those people will be hurt constantly until they died or found a decontaminating shower (available at the logistic point) to clean up their body. When they are contaminated, they can propagate it to other people around (in a circle of 1.5m) or vehicle if they get inside. Keep in mind, dead body stay contaminated but body bag will isolate it. Also, a contaminated object loaded as cargo will contaminate the container or vehicle.
+### Protection:
+Use CBRN gear (uniform, mask and breather backpack) to protect you from the contamination effect. But, don't forget to take a shower for more than 5s before removing your CBRN gear. Be aware, even with a CBRN equipment you can propagate the agent to people or vehicle, you are just protected from the effect.
+### Decontaminate:
+You can use a small shower to decontaminate units only. Use the big shower for objects, vehicles and objects loaded as cargo. To activate them, just stay under the shower.
+### Detection:
+You can analyze an object, vehicle or man with ED-1E drone to determine if it is contaminated (Note: The drone will never be contaminated.). You can also check if you are in a contaminated area by using a chemical detector (THREAT from 0.1 to 0.9: contaminated objects are around, THREAT at 1: you are in the propagating range (you will be contaminated)).
+
+
+## Spectrum devices
+### Electromagnetic field:
+There are two types of electromagnetic field from UAV or electromagnetic pulse (EMP). UAV emit electromagnetic field from 390MHz to 500MHz due to device transmission. Electromagnetic pulse are used as weapon to create electronic failure to vehicles. The range of frequency is from 78MHz to 89MHz and is powerfull enough to turn off light, engine and avionic devices.
+### Protection:
+Electromagnetic field from UAV are safe but EMP have a range of 500m where vehicles with engine turn ON will be affected. 
+### Detection:
+You can detect the origin of electromagnetic field with spectrum devices. The amplitude of the peak depend on the distance and angle between the emiter and the antenna. The maximum range is 1000m.
+
+
 ## Vehicles
 ### Respawn:
- When a vehicle is destroyed it will not respawn in base, you need to tow or lift it back to base and repair it near the logistic point (Interact with the red box). Helicopter wrecks can only be lifted. The Chinook is the only exception, it will respawn after 30 seconds.
+When a vehicle is destroyed it will not respawn in base, you need to tow or lift it back to base and repair it near the logistic point (Interact with the red box). Helicopter wrecks can only be lifted. The Chinook is the only exception, it will respawn after 30 seconds.
 ### Rearm:
 You can also rearm them by spawning the corresponding caliber at logistic point (Interact with the red box, select the vehicle type and caliber). Carry the ammo created and interact with the vehicle to rearm. This only works if rearming is setting on entire magazine or amount based on caliber (not for entire vehicle setting).
 
@@ -27,12 +47,16 @@ A side mission can be requested by the officer with his self interaction menu.
 If you don't want to complete a task, you can always abort it with the self interaction menu.
 
 
-## FOB
- In this mission a FOB is a forward spawn point, to create a FOB approach the red box at the logistic point and require a blue container.
-- Deploy:
-Move it where you want to deploy a new FOB and interact with it to set it up. Keep in mind that you can not deploy a FOB close to the main base (2.500m) and the terrain needs to be flat.
-- Dismantle:
-You can dismantle a FOB by interacting with the flag on the HQ roof.
+## FOB/Rallypoint
+- FOB:
+	In this mission a FOB is a forward spawn point, to create a FOB approach the red box at the logistic point and require a blue container.
+	- Deploy:
+	Move it where you want to deploy a new FOB and interact with it to set it up. Keep in mind that you can not deploy a FOB close to the main base (2.500m) and the terrain needs to be flat.
+	- Dismantle:
+	You can dismantle a FOB by interacting with the flag on the HQ roof.
+
+- Rallypoint:
+	You can also use the Zeus rallypoint backpack available in Arsenal. Those have a limited number of respawn.
 
 
 ## Sling loading
@@ -83,9 +107,9 @@ Intel can be retrieved in the following:
 Keep in mind that only the interpreter can talk to civilians and they can lie if your reputation level is low.
 When you find an intel from a dead body or interrogate a prisoner, a marker will appear in the map. Remember, prisoner have a random number of intel more or less interesting.
 
-There are two types of marker:
-- Red question mark : ammo cache intel
-- Red exclamation mark : hideout intel
+There are two types of intel:
+- Red question mark and pictures under diary log map menu: ammo cache intel
+- Red exclamation mark: hideout intel
 
 When you destroy an hideout or an ammo cache, all the markers related to it will be deleted.
 
@@ -98,7 +122,7 @@ Helping the local population, fighting the Oplitas, disarming IED will rise your
 Aborting a side mission does not affect reputation.
 
 
-## Orders
+## Civil Orders
 Any player can give orders to civilians. To do this, just open your self interaction menu and select 'ORDERS' or use one of the shortcuts. Shortcuts can changed under 'configure >> controls>> configure addons >> Hearts and Minds: Mission (drop down menu)'. Your options are:
 - STOP
 - GET DOWN

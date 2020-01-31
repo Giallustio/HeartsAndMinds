@@ -9,6 +9,7 @@ Parameters:
     _object - Object where holders are attached. [Object]
     _holder - Object attached to _object [Object]
     _pos_type - Position ("TOP", "FRONT", "CORNER_L", "CORNER_R") where holder will be attached to object. [String]
+    _offSet - Add verticale offset. [Number]
 
 Returns:
 
@@ -25,7 +26,8 @@ Author:
 params [
     ["_object", objNull, [objNull]],
     ["_holder", objNull, [objNull]],
-    ["_pos_type", "", [""]]
+    ["_pos_type", "", [""]],
+    ["_offSet", 0, [0]]
 ];
 
 private _bbr = (boundingBoxReal _object) params ["_p1", "_p2"];
@@ -38,32 +40,26 @@ private _p = 0;
 private _r = 0;
 
 switch (_pos_type) do {
-    case "TOP": {
-        _holder attachTo [_object, [0, 0, _height_box + _height_weapon]];
-        _y = random 180;
-        _p = 0;
-        _r = 0;
-    };
     case "FRONT": {
-        _holder attachTo [_object, [- _maxWidth_box/6, 0, -0.1]];
+        _holder attachTo [_object, [- _maxWidth_box/6, 0, -0.1 + _offSet]];
         _y = random [-20, 0, 20];
         _p = random [-20, 0, 20];
         _r = 255;
     };
     case "CORNER_L": {
-        _holder attachTo [_object, [- _maxWidth_box/6.5, 0, -0.1]];
+        _holder attachTo [_object, [- _maxWidth_box/6.5, 0, -0.1 + _offSet]];
         _y = 40;
         _p = random [-10, 0, 10];
         _r = 255;
     };
     case "CORNER_R": {
-        _holder attachTo [_object, [- _maxWidth_box/8.5, 0, -0.1]];
+        _holder attachTo [_object, [- _maxWidth_box/8.5, 0, -0.1 + _offSet]];
         _y = -30;
         _p = random [-10, 0, 10];
         _r = 255;
     };
-    default {
-        _holder attachTo [_object, [0, 0, _height_box + _height_weapon]];
+    default { // TOP
+        _holder attachTo [_object, [0, 0, _height_box + _height_weapon+ _offSet]];
         _y = random 180;
         _p = 0;
         _r = 0;

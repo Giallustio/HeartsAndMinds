@@ -40,7 +40,7 @@ _uav selectWeaponTurret ["Bomb_Leaflets", [_turret]];
 if (needReload _uav isEqualTo 1) then {reload _uav};
 
 if ((_uav getVariable ["btc_leaflets_eh_added" , -1]) isEqualTo -1) then {
-    private _id_f = _uav addEventHandler ["Fired", btc_fnc_eh_leaflets];
+    private _id_f = _uav addEventHandler ["Fired", btc_fnc_civ_leaflets];
     _uav setVariable ["btc_leaflets_eh_added", _id_f];
 
     if (btc_debug) then {

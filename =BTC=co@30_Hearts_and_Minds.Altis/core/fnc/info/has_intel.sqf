@@ -13,7 +13,7 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_info_has_intel;
+        [cursorObject, player] remoteExecCall ["btc_fnc_info_has_intel", 2];
     (end)
 
 Author:
@@ -35,8 +35,8 @@ if (_body getVariable ["intel", false] && !(_body getVariable ["btc_already_inte
     if (isServer) then    {
         [_asker] spawn btc_fnc_info_give_intel;
     } else {
-        [_asker] remoteExec ["btc_fnc_info_give_intel", 2];
+        [_asker] remoteExecCall ["btc_fnc_info_give_intel", 2];
     };
 } else {
-    [3] remoteExec ["btc_fnc_show_hint", _asker];
+    [3] remoteExecCall ["btc_fnc_show_hint", _asker];
 };

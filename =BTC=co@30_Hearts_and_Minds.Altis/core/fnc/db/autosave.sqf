@@ -3,15 +3,16 @@
 Function: btc_fnc_db_autosave
 
 Description:
-    Fill me when you edit me !
+    Save game when all players disconnected.
 
 Parameters:
 
 Returns:
+    _this - Passed arguments. [Array]
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_db_autosave;
+        [] call btc_fnc_db_autosave;
     (end)
 
 Author:
@@ -19,11 +20,12 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-
-if (btc_p_auto_db > 0) then {
-    // Save 5 minutes before, so it saves on time.
-    [{
-        [] spawn btc_fnc_db_save;
-        call btc_fnc_db_autosave;
-    }, [], btc_p_auto_db * 60 * 60 - 300] call CBA_fnc_waitAndExecute;
+if ((allPlayers - entities "HeadlessClient_F") isEqualTo []) then {
+    removeMissionEventHandler ["HandleDisconnect", _thisEventHandler];
+    [] spawn {
+        [] call btc_fnc_db_save;
+        addMissionEventHandler ["HandleDisconnect", btc_fnc_db_autosave];
+    };
 };
+
+_this
