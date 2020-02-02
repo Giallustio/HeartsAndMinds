@@ -3,16 +3,16 @@
 Function: btc_fnc_rep_hh
 
 Description:
-    Fill me when you edit me !
+    Change reputation when a player heal.
 
 Parameters:
-    _healer - [Object]
+    _healer - Player healing. [Object]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_rep_hh;
+        [player] call btc_fnc_rep_hh;
     (end)
 
 Author:

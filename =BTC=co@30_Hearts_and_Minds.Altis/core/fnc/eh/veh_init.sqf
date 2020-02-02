@@ -60,7 +60,7 @@ switch true do {
     };
     case (_type isKindOf "Ship") : {
         //Lift
-        private _action = ["Deploy_ropes", localize "STR_ACE_Fastroping_Interaction_deployRopes", "\A3\Structures_F_Heli\VR\Helpers\Data\VR_Symbol_Heli_Slingloading_CA.paa", {[] spawn btc_fnc_lift_deployRopes;}, {!btc_ropes_deployed && {(driver vehicle player) isEqualTo player}}] call ace_interact_menu_fnc_createAction;
+        private _action = ["Deploy_ropes", localize "STR_ACE_Fastroping_Interaction_deployRopes", "\A3\ui_f\data\igui\cfg\simpleTasks\types\container_ca.paa", {[] spawn btc_fnc_lift_deployRopes;}, {!btc_ropes_deployed && {(driver vehicle player) isEqualTo player}}] call ace_interact_menu_fnc_createAction;
         [_type, 1, ["ACE_SelfActions"], _action, true] call ace_interact_menu_fnc_addActionToClass;
         _action = ["Cut_ropes", localize "STR_ACE_Fastroping_Interaction_cutRopes", "\z\ace\addons\logistics_wirecutter\ui\wirecutter_ca.paa", {[] call btc_fnc_lift_destroyRopes;}, {btc_ropes_deployed && {(driver vehicle player) isEqualTo player}}] call ace_interact_menu_fnc_createAction;
         [_type, 1, ["ACE_SelfActions"], _action, true] call ace_interact_menu_fnc_addActionToClass;

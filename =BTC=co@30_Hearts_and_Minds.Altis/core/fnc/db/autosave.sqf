@@ -23,7 +23,7 @@ Author:
 if ((allPlayers - entities "HeadlessClient_F") isEqualTo []) then {
     removeMissionEventHandler ["HandleDisconnect", _thisEventHandler];
     [] spawn {
-        [false] call btc_fnc_db_save;
+        [] call btc_fnc_db_save;
         addMissionEventHandler ["HandleDisconnect", btc_fnc_db_autosave];
     };
 };

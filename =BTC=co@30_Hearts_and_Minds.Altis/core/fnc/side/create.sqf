@@ -3,7 +3,7 @@
 Function: btc_fnc_side_create
 
 Description:
-    Fill me when you edit me !
+    Create side mission inside the H&M task system.
 
 Parameters:
     _cycle - Cycle side mission. [Boolean]

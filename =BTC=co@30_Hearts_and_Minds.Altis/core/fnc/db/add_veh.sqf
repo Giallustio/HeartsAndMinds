@@ -3,16 +3,17 @@
 Function: btc_fnc_db_add_veh
 
 Description:
-    Fill me when you edit me !
+    Add vehicle to the wreck system.
 
 Parameters:
-    _veh - [Object]
+    _veh - Vehicle to add in wreck system. [Object]
+    _p_chem - Activate chemical propagation. [Boolean]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_db_add_veh;
+        [cursorObject] call btc_fnc_db_add_veh;
     (end)
 
 Author:

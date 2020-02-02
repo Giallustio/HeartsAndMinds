@@ -31,3 +31,5 @@ if (btc_p_chem) then {
     ["DeconShower_01_F", "init", {(_this select 0) setVariable ['bin_deconshower_disableAction',true];}] call CBA_fnc_addClassEventHandler;
     ["DeconShower_02_F", "init", {(_this select 0) setVariable ['bin_deconshower_disableAction',true]}] call CBA_fnc_addClassEventHandler;
 };
+
+["GroundWeaponHolder", "InitPost", {btc_groundWeaponHolder append _this}] call CBA_fnc_addClassEventHandler;

@@ -13,12 +13,12 @@ template: |
     - [CUP units and vehicles mod](https://forums.bistudio.com/topic/179326-community-upgrade-project-cup/), [Community Factions Project](https://github.com/tupolov/cfp/releases),
     - [3CB Factions](https://steamcommunity.com/sharedfiles/filedetails/?id=1673456286), [Project OPFOR](https://forums.bistudio.com/topic/193185-project-opfor/), [IWAR: Irregular Warfare mod](http://www.armaholic.com/page.php?id=29772), [Iraqi-Syrian Conflic](http://www.armaholic.com/page.php?id=28406), [Central African Rebels [SFF-R]](http://www.armaholic.com/page.php?id=32465),
     - [FAP Units (Foes & Allies Pack)](http://www.armaholic.com/page.php?id=30706), [VETERAN](https://steamcommunity.com/workshop/filedetails/?id=1132375156),
-    - [=BTC= Militia mod](https://forums.bistudio.com/topic/188272-btc-militia-for-a3/#entry2983674), [Taliban Fighters by EricJ](http://www.armaholic.com/page.php?id=29543),
+    - [Taliban Fighters by EricJ](http://www.armaholic.com/page.php?id=29543),
     - [The Unsung Vietnam War Mod](http://www.armaholic.com/page.php?id=29948),
     - [Iron Front 3 Lite](http://www.armaholic.com/page.php?id=24714), [Face of War WW2](http://www.armaholic.com/page.php?id=31945),
     - [Operation: TREBUCHET](http://www.armaholic.com/page.php?id=28614), [OPCAN - OPTRE Reskin Pack](http://www.armaholic.com/page.php?id=29718).
 
-    [Changelog](https://github.com/Vdauphin/HeartsAndMinds/milestone/51?closed=1):
+    [Changelog](https://github.com/Vdauphin/HeartsAndMinds/milestone/41?closed=1):
 
     - Mission.sqm/Param.hpp not changed.
     $CHANGES

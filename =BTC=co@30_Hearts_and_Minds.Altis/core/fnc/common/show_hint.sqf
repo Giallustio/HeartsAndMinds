@@ -36,7 +36,7 @@ private _text = switch (_type) do {
         [
             [localize "STR_BTC_HAM_O_COMMON_SHOWHINTS_1"],
             [localize "STR_BTC_HAM_O_COMMON_SHOWHINTS_MU"],
-            ["<img size='1' image='\A3\ui_f\data\map\markers\handdrawn\unknown_CA.paa' align='center' color='#ff0000'/>"]
+            ['\A3\ui_f\data\map\markers\handdrawn\unknown_CA.paa', 0.8, [1, 0, 0]]
         ];
     };
     case 2 : {
@@ -49,7 +49,7 @@ private _text = switch (_type) do {
         [
             [localize "STR_BTC_HAM_O_COMMON_SHOWHINTS_5"],
             [localize "STR_BTC_HAM_O_COMMON_SHOWHINTS_MU"],
-            ["<img size='1' image='\A3\ui_f\data\map\markers\handdrawn\warning_CA.paa' align='center' color='#ff0000'/>"]
+            ['\A3\ui_f\data\map\markers\handdrawn\warning_CA.paa', 0.8, [1, 0, 0]]
         ];
     };
     case 7 : {
@@ -70,27 +70,25 @@ private _text = switch (_type) do {
     case 14 : {
         [
             [localize "STR_BTC_HAM_O_COMMON_SHOWHINTS_14"],
-            [[_custom, 5, 5] call btc_fnc_typeOfPreview],
-            [" "]
+            [getText (configfile >> "CfgVehicles" >> _custom >> "editorPreview"), 8]
         ];
     };
     case 15 : {
         [
             [localize "STR_BTC_HAM_O_COMMON_SHOWHINTS_15"],
-            [[_custom, 5, 5] call btc_fnc_typeOfPreview],
-            [" "]
+            [getText (configfile >> "CfgVehicles" >> _custom >> "editorPreview"), 8]
         ];
     };
     case 16 : {
         [
             [localize "STR_BTC_HAM_LOG_RWRECK_ISHELO"],
-            ["<img size='1' image='\A3\ui_f\data\igui\cfg\simpleTasks\types\repair_ca.paa' align='center'/>"]
+            ["\A3\ui_f\data\igui\cfg\simpleTasks\types\repair_ca.paa"]
         ];
     };
     case 17 : {
         [
             [localize "STR_BTC_HAM_LOG_LPDELETE"],
-            ["<img size='1' image='\z\ace\addons\arsenal\data\iconClearContainer.paa' align='center'/>"]
+            ["\z\ace\addons\arsenal\data\iconClearContainer.paa"]
         ];
     };
     case 18 : {

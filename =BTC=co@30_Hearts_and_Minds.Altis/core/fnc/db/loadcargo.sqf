@@ -3,12 +3,12 @@
 Function: btc_fnc_db_loadCargo
 
 Description:
-    Fill me when you edit me !
+    Load ACE cargo and inventory of a vehicle/container.
 
 Parameters:
-    _obj - []
-    _cargo - []
-    _inventory - []
+    _obj - Vehicle or container. [Object]
+    _cargo - Object to load in ACE cargo. [Array]
+    _inventory - Weapon and item to load in inventory. [Array]
 
 Returns:
 

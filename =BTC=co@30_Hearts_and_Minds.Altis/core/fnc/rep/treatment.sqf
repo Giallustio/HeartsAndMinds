@@ -3,13 +3,13 @@
 Function: btc_fnc_rep_treatment
 
 Description:
-    Fill me when you edit me !
+    Change reputation when a caller is healing a civilian.
 
 Parameters:
-    _caller - [Object]
-    _target - [Object]
-    _selectionName - [String]
-    _className - [String]
+    _caller - Healer. [Object]
+    _target - Civilian heal. [Object]
+    _selectionName - Not use. [String]
+    _className - Type of healing. [String]
 
 Returns:
 

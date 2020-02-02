@@ -3,16 +3,16 @@
 Function: btc_fnc_rep_remove_eh
 
 Description:
-    Fill me when you edit me !
+    Remove event to civilian.
 
 Parameters:
-    _civilian - [Object]
+    _civilian - Civilian. [Object]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_rep_remove_eh;
+        [cursorObject] call btc_fnc_rep_remove_eh;
     (end)
 
 Author:

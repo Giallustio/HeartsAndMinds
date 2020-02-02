@@ -5,7 +5,7 @@
 [["btc_dty", "btc_m"], 1] call btc_fnc_task_create;
 
 if (btc_db_load && {profileNamespace getVariable [format ["btc_hm_%1_db", worldName], false]}) then {
-    if (btc_version isEqualTo (profileNamespace getVariable [format ["btc_hm_%1_version", worldName], 1.13])) then {
+    if ((profileNamespace getVariable [format ["btc_hm_%1_version", worldName], 1.13]) in [1.193, 1.2, btc_version select 1]) then {
         [] call compile preprocessFileLineNumbers "core\fnc\db\load.sqf";
     } else {
         [] call compile preprocessFileLineNumbers "core\fnc\db\load_old.sqf";
@@ -27,6 +27,7 @@ if (btc_db_load && {profileNamespace getVariable [format ["btc_hm_%1_db", worldN
 [btc_ied_list] call btc_fnc_ied_fired_near;
 [] call btc_fnc_chem_checkLoop;
 [] call btc_fnc_chem_handleShower;
+[] call btc_fnc_spect_checkLoop;
 
 ["Initialize"] call BIS_fnc_dynamicGroups;
 

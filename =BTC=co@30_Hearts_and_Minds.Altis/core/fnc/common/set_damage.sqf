@@ -39,7 +39,11 @@ private _type = [
     "shell"*/
 ];
 
+_unit setVariable ["ace_medical_ai_lastFired", 9999999]; //Disable AI to self healing
+
 for "_i" from 0 to (1 + floor random 2) do {
     [_unit, 0.2, selectRandom _selection, selectRandom _type] call ace_medical_fnc_addDamageToUnit;
     sleep 1;
 };
+
+if (_unit call ace_medical_status_fnc_isInStableCondition) exitWith {[_unit] call btc_fnc_set_damage;};

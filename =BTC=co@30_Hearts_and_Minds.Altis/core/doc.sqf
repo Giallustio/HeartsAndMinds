@@ -13,6 +13,9 @@ player createDiaryRecord [_MainCategory, [localize "STR_BTC_HAM_DOC_DEAFNESS_TIT
 //Chemical warfare
 player createDiaryRecord [_MainCategory, [localize "STR_BTC_HAM_DOC_CHEMICALWARFARE_TITLE", localize "STR_BTC_HAM_DOC_CHEMICALWARFARE_TEXT"]];
 
+//Spectrum devices
+player createDiaryRecord [_MainCategory, [localize "STR_BTC_HAM_DOC_SPECTRUMDEVICES_TITLE", localize "STR_BTC_HAM_DOC_SPECTRUMDEVICES_TEXT"]];
+
 //Vehicles
 player createDiaryRecord [_MainCategory, [localize "str_a3_cfghints_command_vehicles1", localize "STR_BTC_HAM_DOC_VEHICLES_TEXT"]];
 
@@ -57,6 +60,6 @@ player createDiaryRecord [_MainCategory, [localize "STR_ACE_Interaction_DisplayN
 
 //Version
 player createDiaryRecord [_MainCategory, [localize "STR_A3_FM_Welcome4",
-    format ["<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/> Version %1.9 <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/>", btc_version]
+        format (["<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/> Version %1.%2.%3 <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/>"] + btc_version)
     ]
 ];
