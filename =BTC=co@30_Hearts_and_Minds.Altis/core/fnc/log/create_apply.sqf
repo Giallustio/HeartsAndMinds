@@ -23,7 +23,7 @@ private _class = lbData [72, lbCurSel 72];
 closeDialog 0;
 
 [{
-    params ["_class", "", [""]];
+    params [["_class", "", [""]]];
 
     if (_class isEqualTo btc_supplies_cargo) then {
         btc_supplies_mat params ["_food", "_water"];
@@ -40,4 +40,4 @@ closeDialog 0;
     } else {
         [_class] remoteExecCall ["btc_fnc_log_create_s", 2];
     };
-}, 0.2, _class] call CBA_fnc_waitAndExecute;
+}, [_class], 0.2] call CBA_fnc_waitAndExecute;
