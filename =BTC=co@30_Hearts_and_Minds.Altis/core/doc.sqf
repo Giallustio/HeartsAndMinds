@@ -4,12 +4,6 @@ player createDiarySubject [_MainCategory, _MainCategory];
 //Headless and Data base
 player createDiaryRecord [_MainCategory, [localize "STR_BTC_HAM_DOC_HEADLESS_TITLE", localize "STR_BTC_HAM_DOC_HEADLESS_TEXT"]];
 
-//Wounds
-player createDiaryRecord [_MainCategory, [localize "STR_BTC_HAM_DOC_WOUNDS_TITLE", localize "STR_BTC_HAM_DOC_WOUNDS_TEXT"]];
-
-//Deafness
-player createDiaryRecord [_MainCategory, [localize "STR_BTC_HAM_DOC_DEAFNESS_TITLE", localize "STR_BTC_HAM_DOC_DEAFNESS_TEXT"]];
-
 //Chemical warfare
 player createDiaryRecord [_MainCategory, [localize "STR_BTC_HAM_DOC_CHEMICALWARFARE_TITLE", localize "STR_BTC_HAM_DOC_CHEMICALWARFARE_TEXT"]];
 
@@ -51,12 +45,6 @@ player createDiaryRecord [_MainCategory, [localize "STR_BTC_HAM_ACTION_ORDERS_MA
 
 //Traffic
 player createDiaryRecord [_MainCategory, [localize "STR_BTC_HAM_DOC_TRAFFIC_TITLE", localize "STR_BTC_HAM_DOC_TRAFFIC_TEXT"]];
-
-//Gear
-player createDiaryRecord [_MainCategory, [localize "STR_BTC_HAM_DOC_GEAR_TITLE", localize "STR_BTC_HAM_DOC_GEAR_TEXT"]];
-
-//Interaction
-player createDiaryRecord [_MainCategory, [localize "STR_ACE_Interaction_DisplayName", localize "STR_BTC_HAM_DOC_INTERACTION_TEXT"]];
 
 //Version
 player createDiaryRecord [_MainCategory, [localize "STR_A3_FM_Welcome4",

@@ -85,38 +85,6 @@
                 <Chinesesimp>&lt;img image='\a3\ui_f\data\map\vehicleicons\iconvirtual_ca.paa' width='20' height='20'/&gt; 任务将自动使用一台可用的无头客户端。&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/&gt; 本任务内置独立的数据库系统。敌方单位、城市、藏匿点、武器箱、车辆、玩家或宙斯创建的物体以及公共频道中的地图标记(不含划线标记)将被存储。每个管理员都可以通过自我互动菜单随时保存任务进度。</Chinesesimp>
             </Key>
         </Container>
-        <Container name="Documentation: Wounds">
-            <Key ID="STR_BTC_HAM_DOC_WOUNDS_TITLE">
-                <Original>Wounds</Original>
-                <Spanish>Heridas</Spanish>
-                <German>Wunden</German>
-                <Portuguese>Ferimentos</Portuguese>
-                <Chinesesimp>伤口</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_DOC_WOUNDS_TEXT">
-                <Original>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\heal_ca.paa' width='20' height='20'/&gt; Use the interaction menu to treat your wounds.&lt;br/&gt; Keep in mind that all the actions will be available, even if you do not need them. It is always recommended examine first.</Original>
-                <Spanish>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\heal_ca.paa' width='20' height='20'/&gt; Use the interaction menu to treat your wounds.&lt;br/&gt; Keep in mind that all the actions will be available, even if you do not need them. It is always recommended examine first.</Spanish>
-                <German>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\heal_ca.paa' width='20' height='20'/&gt; Mit Hilfe des Interactionsmenü können Sie ihre und die Wunden anderer versorgen.&lt;br/&gt; Denken Sie daran, dass Sie immer den vollen Zugriff auf alle Aktionen haben, egal ob Sie diese benötigen oder nicht. In jedem Fall wird empfohlen zuerst eine Diagnose zu erstellen, bevor man mit der Behandlung beginnt.</German>
-                <Portuguese>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\heal_ca.paa' width='20' height='20'/&gt; Use o menu de interação para tratar suas feridas.&lt;br/&gt; Tenha em mente que todas as ações estarão disponíveis, mesmo que você não precise delas. É sempre recomendável examinar primeiro.</Portuguese>
-                <Chinesesimp>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\heal_ca.paa' width='20' height='20'/&gt; 使用互动菜单处理你的伤口。&lt;br/&gt; 请谨记: 无论您是否需要进行治疗, 这些操作始终可用。始终建议您在开始治疗前先进行诊断。</Chinesesimp>
-            </Key>
-        </Container>
-        <Container name="Documentation: Deafness">
-            <Key ID="STR_BTC_HAM_DOC_DEAFNESS_TITLE">
-                <Original>Deafness</Original>
-                <Spanish>Sordera de Combate</Spanish>
-                <German>Taubheit</German>
-                <Portuguese>Surdez</Portuguese>
-                <Chinesesimp>耳鸣</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_DOC_DEAFNESS_TEXT">
-                <Original>&lt;img image='\z\ace\addons\hearing\UI\Icon_Module_Hearing_ca.paa' width='20' height='20'/&gt; Use the earplugs to protect your ears to avoid combat deafness.&lt;br/&gt; You can put them on with your self interaction key.&lt;br/&gt;&lt;br/&gt;</Original>
-                <Spanish>&lt;img image='\z\ace\addons\hearing\UI\Icon_Module_Hearing_ca.paa' width='20' height='20'/&gt; Utilice los tapones para proteger sus oídos para evitar la sordera de combate.&lt;br/&gt; You can put them on with your self interaction key.&lt;br/&gt;&lt;br/&gt;</Spanish>
-                <German>&lt;img image='\z\ace\addons\hearing\UI\Icon_Module_Hearing_ca.paa' width='20' height='20'/&gt; Nutzen Sie die Ohrstöpsel um sich vor Taubheit und Hörverlust zu schützen.&lt;br/&gt; Über das Eigen-Interaktionsmenü können Sie die Ohrstöpsel nutzen (sofern sich welche in Ihrem Inventar befinden).&lt;br/&gt;&lt;br/&gt;</German>
-                <Portuguese>&lt;img image='\z\ace\addons\hearing\UI\Icon_Module_Hearing_ca.paa' width='20' height='20'/&gt; Use os tampões de ouvido para proteger seus ouvidos para evitar a surdez no combate.&lt;br/&gt; Você pode colocá-los com seu botão de interação.&lt;br/&gt;&lt;br/&gt;</Portuguese>
-                <Chinesesimp>&lt;img image='\z\ace\addons\hearing\UI\Icon_Module_Hearing_ca.paa' width='20' height='20'/&gt; 在战斗中, 使用耳塞保护自己免受听力损失。&lt;br/&gt; 你可以使用自我互动菜单佩戴耳塞(前提是你在随身装备中携带了耳塞)。&lt;br/&gt;&lt;br/&gt;</Chinesesimp>
-            </Key>
-        </Container>
         <Container name="Documentation: Vehicles">
             <Key ID="STR_BTC_HAM_DOC_VEHICLES_TEXT">
                 <Original>&lt;marker name='blufor_base'&gt;&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\destroy_ca.paa' width='20' height='20'/&gt; Respawn:&lt;/marker&gt;&lt;br/&gt; When a vehicle is destroyed it will not respawn in base, you need to tow or lift it back to base and repair it near the logistic point (Interact with the red box). Helicopter wrecks can only be lifted. &lt;br/&gt; The Chinook is the only exception, it will respawn after 30 seconds. &lt;br/&gt;&lt;br/&gt; &lt;marker name='blufor_base'&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\rearm_ca.paa' width='20' height='20'/&gt; Rearm:&lt;/marker&gt;&lt;br/&gt; You can also rearm them by spawning the corresponding caliber at logistic point (Interact with the red box, select the vehicle type and caliber). Carry the ammo created and interact with the vehicle to rearm. This only works if rearming is setting on entire magazine or amount based on caliber (not for entire vehicle setting).</Original>
@@ -247,31 +215,6 @@
                 <German>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='20' height='20'/&gt; &lt;img image='\A3\soft_f_gamma\van_01\Data\UI\map_van_01_box_CA.paa' width='20' height='20'/&gt; Zivlisten sind mit Fahrzeugen in den Städten unterwegs. Wenn Sie ein hohes Ansehen in der Bevölkerung genießen, so sind Zivlisten auch gerne mal dazu bereit Sie mitzunehmen (nutzen sie die Karte um den Zivlisten zu zeigen wo sie hinwollen). Sollten Sie dabei durch Zufall auf Feinde stoßen, so wird der Zivilist sein Bestes geben um sie im Fahrzeug zu verstecken.&lt;br/&gt;</German>
                 <Portuguese>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='20' height='20'/&gt; &lt;img image='\A3\soft_f_gamma\van_01\Data\UI\map_van_01_box_CA.paa' width='20' height='20'/&gt; Civis estarão viajando de veículo pelo mapa, entre uma cidade e outra. Se sua reputação com a população local for alta, eles estarão dispostos a levá-lo a qualuqer lugar do mapa (use o mapa para mostrar onde você quer ir). Se vocês encontrarem uma patrulha inimiga, o civil fará todo possível para te esconder no veículo.&lt;br/&gt;</Portuguese>
                 <Chinesesimp>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='20' height='20'/&gt; &lt;img image='\A3\soft_f_gamma\van_01\Data\UI\map_van_01_box_CA.paa' width='20' height='20'/&gt; 平民会在城市间开车穿梭。如果你的声誉够高, 平民会乐意载你一程(用地图指出你要去的地方)。如果你在途中遭遇了Oplitas巡逻队, 不要担心, 平民会尽其所能地把你藏在车里。&lt;br/&gt;</Chinesesimp>
-            </Key>
-        </Container>
-        <Container name="Documentation: Gear">
-            <Key ID="STR_BTC_HAM_DOC_GEAR_TITLE">
-                <Original>Gear (Arsenal)</Original>
-                <Spanish>Equipamiento (Arsenal)</Spanish>
-                <German>Ausrüstung (Arsenal)</German>
-                <Portuguese>Equipamento (Arsenal)</Portuguese>
-                <Chinesesimp>装备(军火库)</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_DOC_GEAR_TEXT">
-                <Original>&lt;img image='\A3\Ui_f\data\Logos\a_64_ca.paa' width='20' height='20'/&gt;You can choose your gear at the red box inside the base. Located at the spawn point.&lt;br/&gt;</Original>
-                <Spanish>&lt;img image='\A3\Ui_f\data\Logos\a_64_ca.paa' width='20' height='20'/&gt;Puedes elegir tu equipo en las cajas dentro de la base. Ubicado en el punto de respawn.&lt;br/&gt;</Spanish>
-                <German>&lt;img image='\A3\Ui_f\data\Logos\a_64_ca.paa' width='20' height='20'/&gt;Sie können ihre Ausrüstung jederzeit an der roten Box in der Basis anpassen. Diese steht in der Nähe des Startpunktes&lt;br/&gt;</German>
-                <Portuguese>&lt;img image='\A3\Ui_f\data\Logos\a_64_ca.paa' width='20' height='20'/&gt;Você pode configurar seu equipamento na caixa vermelha dentro da BASE. Geralmente fica localizado próximo ao porto de nascimento (respawn).&lt;br/&gt;</Portuguese>
-                <Chinesesimp>&lt;img image='\A3\Ui_f\data\Logos\a_64_ca.paa' width='20' height='20'/&gt;你可以在基地内的红色箱子处选择装备, 它位于重生点附近。&lt;br/&gt;</Chinesesimp>
-            </Key>
-        </Container>
-        <Container name="Documentation: Interaction">
-            <Key ID="STR_BTC_HAM_DOC_INTERACTION_TEXT">
-                <Original> &lt;img image='\z\ace\addons\interaction\UI\Icon_Module_Interaction_ca.paa' width='20' height='20'/&gt;Use ACE 3 interactions system.</Original>
-                <Spanish> &lt;img image='\z\ace\addons\interaction\UI\Icon_Module_Interaction_ca.paa' width='20' height='20'/&gt;Use los sistema de interaccion de ACE 3.</Spanish>
-                <German> &lt;img image='\z\ace\addons\interaction\UI\Icon_Module_Interaction_ca.paa' width='20' height='20'/&gt;Nutzen Sie das Interactions-System von ACE 3.</German>
-                <Portuguese> &lt;img image='\z\ace\addons\interaction\UI\Icon_Module_Interaction_ca.paa' width='20' height='20'/&gt;Use o sistema de interação do ACE 3.</Portuguese>
-                <Chinesesimp> &lt;img image='\z\ace\addons\interaction\UI\Icon_Module_Interaction_ca.paa' width='20' height='20'/&gt;使用 ACE 3 互动系统。</Chinesesimp>
             </Key>
         </Container>
         <Container name="Documentation: Chemical warfare">
