@@ -88,7 +88,7 @@ switch (_info_type) do {
     case "REAL" : {
         switch (_info) do {
             case "TROOPS" : {
-                [name _man, true] spawn btc_fnc_info_troops;
+                [name _man, true] call btc_fnc_info_troops;
             };
             case "HIDEOUT" : {
                 [name _man, true] spawn btc_fnc_info_hideout_asked;
@@ -103,7 +103,7 @@ switch (_info_type) do {
     case "FAKE" : {
         switch (_info) do {
             case "TROOPS" : {
-                [name _man, false] spawn btc_fnc_info_troops;
+                [name _man, false] call btc_fnc_info_troops;
             };
             case "HIDEOUT" : {
                 [name _man, false] spawn btc_fnc_info_hideout_asked;

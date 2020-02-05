@@ -49,7 +49,6 @@ if (isServer) then {
     btc_fnc_civ_populate = compile preprocessFileLineNumbers "core\fnc\civ\populate.sqf";
     btc_fnc_civ_create_patrol = compile preprocessFileLineNumbers "core\fnc\civ\create_patrol.sqf";
     btc_fnc_civ_unit_create = compile preprocessFileLineNumbers "core\fnc\civ\unit_create.sqf";
-    btc_fnc_civ_CuratorCivPlaced_s = compile preprocessFileLineNumbers "core\fnc\civ\CuratorCivPlaced_s.sqf";
     btc_fnc_civ_evacuate = compile preprocessFileLineNumbers "core\fnc\civ\evacuate.sqf";
 
     //DATA
@@ -120,7 +119,6 @@ if (isServer) then {
     btc_fnc_mil_send = compile preprocessFileLineNumbers "core\fnc\mil\send.sqf";
     btc_fnc_mil_set_skill = compile preprocessFileLineNumbers "core\fnc\mil\set_skill.sqf";
     btc_fnc_mil_unit_create = compile preprocessFileLineNumbers "core\fnc\mil\unit_create.sqf";
-    btc_fnc_mil_CuratorMilPlaced_s = compile preprocessFileLineNumbers "core\fnc\mil\CuratorMilPlaced_s.sqf";
     btc_fnc_mil_getStructures = compile preprocessFileLineNumbers "core\fnc\mil\getStructures.sqf";
     btc_fnc_mil_getBuilding = compile preprocessFileLineNumbers "core\fnc\mil\getBuilding.sqf";
     btc_fnc_mil_add_eh = compile preprocessFileLineNumbers "core\fnc\mil\add_eh.sqf";
@@ -167,7 +165,6 @@ if (isServer) then {
     btc_fnc_side_EMP = compile preprocessFileLineNumbers "core\fnc\side\EMP.sqf";
 
     //LOG
-    btc_fnc_log_CuratorObjectPlaced_s = compile preprocessFileLineNumbers "core\fnc\log\CuratorObjectPlaced_s.sqf";
     btc_fnc_log_createVehicle = compile preprocessFileLineNumbers "core\fnc\log\createVehicle.sqf";
     btc_fnc_log_getRearmMagazines = compile preprocessFileLineNumbers "core\fnc\log\getRearmMagazines.sqf";
     btc_fnc_log_init = compile preprocessFileLineNumbers "core\fnc\log\init.sqf";

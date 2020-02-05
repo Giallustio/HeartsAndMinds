@@ -6,14 +6,16 @@ Description:
     Create group previously saved by btc_fnc_data_get_group.
 
 Parameters:
-    _type - Type of group (3: in house group, 4: civilian with weapon, 5: suicider ...). [Number]
-    _array_pos - Position on units. [Array]
-    _array_type - Type of units. [Array]
-    _side - Side of the group. [Side]
-    _array_dam - Damage of units. [Array]
-    _behaviour - Behaviour of units. [Array]
-    _array_wp - Waypoints of group. [Array]
-    _array_veh - Vehicle occupied by the group. [Array, String]
+    _data_unit - All data listed above. [Array]
+        _type - Type of group (3: in house group, 4: civilian with weapon, 5: suicider ...). [Number]
+        _array_pos - Position on units. [Array]
+        _array_type - Type of units. [Array]
+        _side - Side of the group. [Side]
+        _array_dam - Damage of units. [Array]
+        _behaviour - Behaviour of units. [Array]
+        _array_wp - Waypoints of group. [Array]
+        _array_veh - Vehicle occupied by the group. [Array, String]
+    _cityID - City ID. [Number]
 
 Returns:
     leader of the group and type of group. [Array]

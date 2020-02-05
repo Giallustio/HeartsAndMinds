@@ -41,7 +41,7 @@ switch (true) do {
         private _houses = [_city, _area] call btc_fnc_getHouses;
         if !(_houses isEqualTo []) then {
             private _house = selectRandom _houses;
-            [_group, _house] spawn btc_fnc_house_addWP;
+            [_group, _house] call btc_fnc_house_addWP;
             _group setVariable ["btc_inHouse", typeOf _house];
         } else {
             [_group, _rpos, _area, 2 + floor (random 4), "MOVE", "SAFE", "RED", ["LIMITED", "NORMAL"] select ((vehicle leader _group) isKindOf "Air"), "STAG COLUMN", "", [5, 10, 20]] call CBA_fnc_taskPatrol;
@@ -51,7 +51,7 @@ switch (true) do {
         [_group, _rpos, _area, 2 + floor (random 4), "MOVE", "AWARE", "RED", ["LIMITED", "NORMAL"] select ((vehicle leader _group) isKindOf "Air"), "STAG COLUMN", "", [5, 10, 20]] call CBA_fnc_taskPatrol;
     };
     case (_wp > _wp_sentry_probability) : {
-        [_group, _rpos, -1, "SENTRY", "AWARE", "RED", "UNCHANGED", "WEDGE", "(group this) spawn btc_fnc_data_add_group;", [18000, 36000, 54000]] call CBA_fnc_addWaypoint;
+        [_group, _rpos, -1, "SENTRY", "AWARE", "RED", "UNCHANGED", "WEDGE", "(group this) call btc_fnc_data_add_group;", [18000, 36000, 54000]] call CBA_fnc_addWaypoint;
     };
 };
 

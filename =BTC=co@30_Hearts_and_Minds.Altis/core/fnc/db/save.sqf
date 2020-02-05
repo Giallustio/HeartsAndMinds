@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        ["Altis"] call btc_fnc_db_save;
+        [] spawn btc_fnc_db_save;
     (end)
 
 Author:
@@ -46,7 +46,7 @@ if (btc_debug) then {
 [false] call btc_fnc_db_delete;
 
 //Version
-profileNamespace setVariable [format ["btc_hm_%1_version", _name], btc_version];
+profileNamespace setVariable [format ["btc_hm_%1_version", _name], btc_version select 1];
 
 //World Date
 profileNamespace setVariable [format ["btc_hm_%1_date", _name], date];
