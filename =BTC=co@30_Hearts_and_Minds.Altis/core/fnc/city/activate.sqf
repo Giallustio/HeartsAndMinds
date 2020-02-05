@@ -96,10 +96,7 @@ if !(_ieds isEqualTo []) then {
 
 if !(_data_units isEqualTo []) then {
     {
-        (_x call btc_fnc_data_spawn_group) params ["_leader", "_type"];
-        if (_type in [5, 7]) then {
-            [_leader, "killed", "btc_fnc_ied_suiciderKilled", [_id]] call btc_fnc_eh_persistOnLocalityChange;
-        };
+        [_x, _id] call btc_fnc_data_spawn_group;
     } forEach _data_units;
 } else {
     // Maximum number of enemy group

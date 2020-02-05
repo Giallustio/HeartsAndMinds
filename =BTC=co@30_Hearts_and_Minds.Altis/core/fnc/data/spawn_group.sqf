@@ -6,14 +6,16 @@ Description:
     Create group previously saved by btc_fnc_data_get_group.
 
 Parameters:
-    _type - Type of group (3: in house group, 4: civilian with weapon, 5: suicider ...). [Number]
-    _array_pos - Position on units. [Array]
-    _array_type - Type of units. [Array]
-    _side - Side of the group. [Side]
-    _array_dam - Damage of units. [Array]
-    _behaviour - Behaviour of units. [Array]
-    _array_wp - Waypoints of group. [Array]
-    _array_veh - Vehicle occupied by the group. [Array, String]
+    _data_unit - All data listed above. [Array]
+        _type - Type of group (3: in house group, 4: civilian with weapon, 5: suicider ...). [Number]
+        _array_pos - Position on units. [Array]
+        _array_type - Type of units. [Array]
+        _side - Side of the group. [Side]
+        _array_dam - Damage of units. [Array]
+        _behaviour - Behaviour of units. [Array]
+        _array_wp - Waypoints of group. [Array]
+        _array_veh - Vehicle occupied by the group. [Array, String]
+    _cityID - City ID. [Number]
 
 Returns:
     leader of the group and type of group. [Array]
@@ -29,6 +31,10 @@ Author:
 ---------------------------------------------------------------------------- */
 
 params [
+    ["_data_unit", [], [[]]],
+    ["_cityID", 0, [0]]
+];
+_data_unit params [
     ["_type", 1, [0]],
     ["_array_pos", [], [[]]],
     ["_array_type", [], [[]]],
@@ -38,6 +44,17 @@ params [
     ["_array_wp", [], [[]]],
     ["_array_veh", [], [[], ""]]
 ];
+
+if (_type isEqualTo 5) exitWith {
+    [
+        [objNull, 100, _array_pos select 0, _array_type select 0] call btc_fnc_ied_suicider_create,
+    "killed", "btc_fnc_ied_suiciderKilled", [_id]] call btc_fnc_eh_persistOnLocalityChange;
+};
+if (_type isEqualTo 7) exitWith {
+    [
+        [objNull, 100, _array_pos select 0] call btc_fnc_ied_drone_create,
+    "killed", "btc_fnc_ied_suiciderKilled", [_id]] call btc_fnc_eh_persistOnLocalityChange;
+};
 
 private _group = createGroup _side;
 
@@ -102,32 +119,10 @@ if (_type isEqualTo 3) then {
     _group setVariable ["btc_inHouse", _array_veh];
 };
 if (_type isEqualTo 4) then {[[0, 0, 0], 0, units _group] call btc_fnc_civ_get_weapons;};
-if (_type isEqualTo 5) then {
-    _group spawn {
-        _this setVariable ["suicider", true];
-
-        private _suicider = leader _this;
-
-        //Main check
-
-        private _cond = false;
-
-        while {alive _suicider && !isNull _suicider && !_cond} do {
-            sleep 5;
-            if !((getPos _suicider nearEntities ["SoldierWB", 25]) isEqualTo []) then {
-                _cond = true;
-                _suicider call btc_fnc_ied_suicider_active
-            };
-        };
-    };
-};
 if (_type isEqualTo 6) then {
     [_group] call CBA_fnc_clearWaypoints;
     [_group, _array_veh select 0] call btc_fnc_civ_addWP;
     _group setVariable ["btc_data_inhouse", _array_veh];
-};
-if (_type isEqualTo 7) then {
-    [objNull, 100, _array_pos select 0, _group] call btc_fnc_ied_drone_create;
 };
 
 _group setBehaviour (_behaviour select 0);
