@@ -42,6 +42,6 @@ player createDiaryRecord [
     "btc_diarylog",
     [
         format [localize "STR_BTC_HAM_CON_INFO_PICTURE", _cache_n],
-        (localize _string) + ([_classname_object] call btc_fnc_typeOfPreviewformat)
+        (localize _string) + ([_classname_object] call btc_fnc_typeOfPreview)
     ]
 ];

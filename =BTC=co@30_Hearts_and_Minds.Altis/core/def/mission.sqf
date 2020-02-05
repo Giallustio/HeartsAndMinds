@@ -1,6 +1,6 @@
 
-btc_version = 1.193;
-diag_log format ["=BTC= HEARTS AND MINDS VERSION %1.10", btc_version];
+btc_version = [1, 20, 0];
+diag_log format (["=BTC= HEARTS AND MINDS VERSION %1.%2.%3"] + btc_version);
 
 //Param
 //<< Time options >>
@@ -308,6 +308,8 @@ if (isServer) then {
     });
     _ieds = _ieds - ["Land_Garbage_line_F","Land_Garbage_square3_F","Land_Garbage_square5_F"];
     btc_model_ieds = _ieds apply {(toLower getText(_cfgVehicles >> _x >> "model")) select [1]};
+
+    btc_groundWeaponHolder = [];
 };
 
 //Civ

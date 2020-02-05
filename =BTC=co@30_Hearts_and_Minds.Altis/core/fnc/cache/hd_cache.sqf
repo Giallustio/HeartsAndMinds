@@ -46,14 +46,12 @@ if (isNil {_cache getVariable "btc_hd_cache"} && {_explosive} && {_damage > 0.6}
     //Effects
     private _pos = getPosATL btc_cache_obj;
     "Bo_GBU12_LGB_MI10" createVehicle _pos;
-    [_pos] spawn {
-        params ["_pos"];
-
-        sleep random [0.5, 2, 3];
-        "M_PG_AT" createVehicle _pos;
-        sleep random [0.5, 2, 3];
-        "M_Titan_AT" createVehicle _pos;
-    };
+    [{
+        "M_PG_AT" createVehicle _this;
+        [{
+            "M_PG_AT" createVehicle _this;
+        }, _this, random [0.5, 2, 3]] call CBA_fnc_waitAndExecute;
+    }, _pos, random [0.5, 2, 3]] call CBA_fnc_waitAndExecute;
     [_pos] call btc_fnc_deaf_earringing;
     [attachedObjects _cache, btc_cache_obj, btc_cache_markers] call CBA_fnc_deleteEntity;
 

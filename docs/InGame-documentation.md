@@ -6,14 +6,6 @@ This mission automatically uses one Headless client when available.
 This mission has a database system. Enemy units, towns, hideouts, cache, objects created by players or Zeus, vehicles, players markers (not lines) on global channel are saved. All admin can save mission progress at any time with his self interaction key.
 
 
-## Wounds
-Use the interaction menu to treat your wounds. Keep in mind that all the actions will be available, even if you do not need them. It is always recommended examine first.
-
-
-## Deafness
-Use the earplugs to protect your ears to avoid combat deafness. You can put them on with your self interaction key.
-
-
 ## Chemical Warfare
 ### Chemical agent:
 A chemical agent can be found in the battlefield at cache location for example. When an object is contaminated, the chemical agent propagates to people around (in a circle of 3m). Those people will be hurt constantly until they died or found a decontaminating shower (available at the logistic point) to clean up their body. When they are contaminated, they can propagate it to other people around (in a circle of 1.5m) or vehicle if they get inside. Keep in mind, dead body stay contaminated but body bag will isolate it. Also, a contaminated object loaded as cargo will contaminate the container or vehicle.
@@ -134,11 +126,3 @@ You can also drop leaflets to ask all civilians in a circle of 200m to evacuate 
 
 ## Traffic
 Civilians are travelling by vehicle across cities. If your reputation is higher than normal, you can ask for a lift to a location chosen on the map. If you bump into a Oplitas patrol, don't worry, the civilian driver will do their best to hide you in the car.
-
-
-## Gear
-You can choose your gear at the red box inside the base. Located at the spawn point.
-
-
-## Interaction
-Use ACE 3 interactions system.

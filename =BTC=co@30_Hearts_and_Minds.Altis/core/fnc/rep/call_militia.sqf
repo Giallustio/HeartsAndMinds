@@ -53,8 +53,8 @@ if (btc_debug_log) then {
 if ((random 1) > _ratio) then {
     //MOT
     private _group = [_start_pos, _pos, 1] call btc_fnc_mil_send;
-    [_group, _pos, 60, "UNLOAD"] call CBA_fnc_addWaypoint;
-    [_group, _pos, 60, "SAD"] call CBA_fnc_addWaypoint;
+    [_group, _pos, -1, "UNLOAD", nil, nil, nil, nil, nil, nil, 60] call CBA_fnc_addWaypoint;
+    [_group, _pos, -1, "SAD", nil, nil, nil, nil, nil, nil, 60] call CBA_fnc_addWaypoint;
 
     if (btc_debug_log) then {
         [format ["MOT %1/%2 POS %3", _group, typeOf _veh, _pos], __FILE__, [false]] call btc_fnc_debug_message;
@@ -62,7 +62,7 @@ if ((random 1) > _ratio) then {
 } else {
     //INF
     private _group = [_start_pos, _pos, 0, "", "WEDGE"] call btc_fnc_mil_send;
-    [_group, _pos, 60, "SAD"] call CBA_fnc_addWaypoint;
+    [_group, _pos, -1, "SAD", nil, nil, nil, nil, nil, nil, 60] call CBA_fnc_addWaypoint;
 
     if (btc_debug_log) then {
         [format ["INF %1", _group], __FILE__, [false]] call btc_fnc_debug_message;
