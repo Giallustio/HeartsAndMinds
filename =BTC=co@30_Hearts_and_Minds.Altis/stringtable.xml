@@ -178,7 +178,7 @@
                 <Original>&lt;img image='\z\ace\addons\cargo\UI\Icon_Module_Cargo_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Cargo System:&lt;/marker&gt;&lt;br/&gt; Use ACE 3 Cargo system. &lt;br/&gt;&lt;br/&gt; &lt;img image='\z\ace\addons\attach\UI\attach_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Towing system:&lt;/marker&gt;&lt;br/&gt; To tow a vehicle interact with it and select the option 'HOOK'.&lt;br/&gt;After that place the tow vehicle in front of it and select 'TOW' in the interaction menu.&lt;br/&gt; If the two vehicles are too far away or the vehicle can't tow that load (Car can't tow truck or tank), the option will be disabled.&lt;br/&gt; To unhook interact with one of the two vehicles and select the option 'UNHOOK'.&lt;br/&gt;&lt;br/&gt; &lt;img image='\z\ace\addons\dragging\UI\icons\box_carry.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Place option:&lt;/marker&gt;&lt;br/&gt; With this option you can move heavy objects to build small outpost or base.&lt;br/&gt; When you select the option an hint will show all the keys required to move the object.</Original>
                 <German>&lt;img image='\z\ace\addons\cargo\UI\Icon_Module_Cargo_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Fracht-System:&lt;/marker&gt;&lt;br/&gt;Siehe ACE3 Dokumentation. &lt;br/&gt;&lt;br/&gt; &lt;img image='\z\ace\addons\attach\UI\attach_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Abschleppsystem:&lt;/marker&gt;&lt;br/&gt; Um ein Fahrzeug abzuschleppen muss man mit diesem interagieren und 'EINHACKEN' auswählen.&lt;br/&gt;Als nächstes muss man das Zugfahrzeug vor das abzuschleppende Fahrzeug stellen und über das Interagtionsmenü die Option 'ABSCHLEPPEN' aktivieren.&lt;br/&gt; Zu beachten ist dabei, dass die beiden Fahrzeuge nicht zu weit von einander entfernt sein dürfen. Ebenso ist daruf zu achten, dass das Zugfahrzeug auch das andere Fahrzeug abschleppen kann (zB. Autos können keine Lkw/Panzer abschleppen).&lt;br/&gt; Um das Abschleppseil wieder zu entfernen muss man einen bei einem der beiden Fahrzeuge die Option 'AUSHACKEN' auswählen.&lt;br/&gt;&lt;br/&gt; &lt;img image='\z\ace\addons\dragging\UI\icons\box_carry.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Platzierung von Objekten:&lt;/marker&gt;&lt;br/&gt; Mit dieser Option können Sie schwere Objekte bewegen, um einen kleinen Außenposten oder eine Basis zu bauen.&lt;br/&gt; Wenn Sie die Option auswählen, zeigt ein Hinweis alle Tasten an, die zum Verschieben des Objekts erforderlich sind.</German>
                 <Portuguese>&lt;img image='\z\ace\addons\cargo\UI\Icon_Module_Cargo_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Cargo System:&lt;/marker&gt;&lt;br/&gt; Use ACE 3 Cargo system. &lt;br/&gt;&lt;br/&gt;&lt;br/&gt; &lt;img image='\z\ace\addons\attach\UI\attach_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Towing system:&lt;/marker&gt;&lt;br/&gt; Para rebocar um veículo, interaja com ele e selecione a opção "GANCHO".&lt;br/&gt; Depois disso, coloque o veículo de reboque na frente dele e selecione "REBOCAR" no menu de interação.&lt;br/&gt; Se os dois veículos estiverem muito distantes ou o veículo não puder rebocar essa carga (o carro não poderá rebocar o caminhão ou o tanque), a opção será desativada.&lt;br/&gt; Para desengatar, interaja com um dos dois veículos e selecione a opção "DESENGANCHAR".&lt;br/&gt;&lt;br/&gt; &lt;img image='\z\ace\addons\dragging\UI\icons\box_carry.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Place option:&lt;/marker&gt;&lt;br/&gt; Com esta opção, você pode mover objetos pesados para construir um posto avançado ou uma base pequena.&lt;br/&gt; Quando você selecionar a opção, uma dica mostrará todas as ações necessárias para mover o objeto.</Portuguese>
-                <Chinesesimp>&lt;img image='\z\ace\addons\cargo\UI\Icon_Module_Cargo_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;货运系统:&lt;/marker&gt;&lt;br/&gt; 使用ACE3货运系统。 &lt;br/&gt;&lt;br/&gt; &lt;img image='\z\ace\addons\attach\UI\attach_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;牵引系统:&lt;/marker&gt;&lt;br/&gt; 如需牵引一辆载具, 与其互动并选择"启用牵引"。&lt;br/&gt;然后, 将牵引车辆(前车)置于被牵引车辆(后车)前方, 并在互动菜单中选择"牵引"。&lt;br/&gt; 如果两辆车的距离过远, 或前车无法牵引这一载荷(比如汽车(Car)无法牵引卡车(Truck)或坦克(Tank)), 则该选项不可用。&lt;br/&gt; 如需取消牵引, 与两车之一互动并选择"取消牵引"。&lt;br/&gt;&lt;br/&gt; &lt;img image='\z\ace\addons\dragging\UI\icons\box_carry.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;物体放置:&lt;/marker&gt;&lt;br/&gt; 您可以使用该选项来移动重物，从而建造一个小的前哨或基地。&lt;br/&gt; 选择该选项后, 移动对象所需键位的提示将会出现。</Chinesesimp>
+                <Chinesesimp>&lt;img image='\z\ace\addons\cargo\UI\Icon_Module_Cargo_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;货运系统:&lt;/marker&gt;&lt;br/&gt; 使用ACE3货运系统。 &lt;br/&gt;&lt;br/&gt; &lt;img image='\z\ace\addons\attach\UI\attach_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;牵引系统:&lt;/marker&gt;&lt;br/&gt; 如需牵引一辆载具, 与其互动并选择"启用牵引"。&lt;br/&gt;然后, 将牵引车辆(前车)置于被牵引车辆(后车)前方, 并在互动菜单中选择"牵引"。&lt;br/&gt; 如果两辆车的距离过远, 或前车无法牵引这一载荷(比如汽车(Car)无法牵引卡车(Truck)或坦克(Tank)), 则该选项不可用。&lt;br/&gt; 如需取消牵引, 与两车之一互动并选择"取消牵引"。&lt;br/&gt;&lt;br/&gt; &lt;img image='\z\ace\addons\dragging\UI\icons\box_carry.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;物体放置:&lt;/marker&gt;&lt;br/&gt; 您可以使用该选项来移动重物, 从而建造一个小的前哨或基地。&lt;br/&gt; 选择该选项后, 移动对象所需键位的提示将会出现。</Chinesesimp>
             </Key>
         </Container>
         <Container name="Documentation: Hideout">
@@ -289,9 +289,11 @@
         <Container name="Documentation: Spectrum devices">
             <Key ID="STR_BTC_HAM_DOC_SPECTRUMDEVICES_TITLE">
                 <Original>Spectrum devices</Original>
+                <Chinesesimp>频谱探测仪</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_DOC_SPECTRUMDEVICES_TEXT">
                 <Original>&lt;img image='\A3\Data_F_Enoch\Logos\arma3_enoch_logo_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Electromagnetic field:&lt;/marker&gt;&lt;br/&gt; There are two types of electromagnetic field from UAV or electromagnetic pulse (EMP). UAV emit electromagnetic field from 390MHz to 500MHz due to device transmission. Electromagnetic pulse are used as weapon to create electronic failure to vehicles. The range of frequency is from 78MHz to 89MHz and is powerfull enough to turn off light, engine and avionic devices. &lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\defend_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Protection:&lt;/marker&gt;&lt;br/&gt; Electromagnetic field from UAV are safe but EMP have a range of 500m where vehicles with engine turn ON will be affected. &lt;br/&gt;&lt;br/&gt; &lt;img image='\z\ace\addons\minedetector\ui\icon_mineDetectorOn.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Detection:&lt;/marker&gt;&lt;br/&gt; You can detect the origin of electromagnetic field with spectrum devices. The amplitude of the peak depend on the distance and angle between the emiter and the antenna. The maximum range is 1000m.</Original>
+                <Chinesesimp>&lt;img image='\A3\Data_F_Enoch\Logos\arma3_enoch_logo_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;电磁场:&lt;/marker&gt;&lt;br/&gt; UAV 和电磁脉冲装置(EMP)会产生两种不同的电磁场。为了传输信号, UAV 会发出频率在 390MHz 到 500MHz 之间的电磁场。电磁脉冲装置是一种能使载具上的电子设备失效的武器。它的频率范围在 78MHz 到 89MHz 之间, 其能量足以使电灯、引擎和航空电子设备实效。&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\defend_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;防护:&lt;/marker&gt;&lt;br/&gt; UAV 产生的电磁场是安全的, 但电磁脉冲装置将会影响500米范围内引擎开启的载具。&lt;br/&gt;&lt;br/&gt; &lt;img image='\z\ace\addons\minedetector\ui\icon_mineDetectorOn.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;探测:&lt;/marker&gt;&lt;br/&gt; 你可以使用频谱探测仪来探测电磁场的源头。波形的峰值取决于发射器与天线之间的距离和角度。最大探测距离为1000米。</Chinesesimp>
             </Key>
         </Container>
     </Package>
@@ -826,7 +828,7 @@
                 <Spanish>Los puntos de control se han localizado en %1. La población local está pidiendo su ayuda para destruir la caja de municiones en todos los puntos de control!</Spanish>
                 <German>Kontrollpunkt wurden in der Nähe von %1 gesichtet. Die lokale Bevölkerung bittet Sie darum, alle Munitionskisten und den jeweiligen Kontrollpunkt zu beseitigen!</German>
                 <Portuguese>Os pontos de verificação foram localizados em %1. A população local está pedindo sua ajuda para destruidir todas as caixas de munições em todos os pontos de verificação!</Portuguese>
-                <Chinesesimp>在 %1 地区发现检查站。当地居民请求您摧毁武器箱和相应的检查站!</Chinesesimp>
+                <Chinesesimp>%1 地区发现了检查站。当地居民请求您摧毁所有检查站里的武器箱!</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_CHECKPOINT_DESTROY_DESC">
                 <Original>Destroy this checkpoint by destroying this object.</Original>
@@ -852,7 +854,7 @@
                 <Spanish>Un civil está llamando a un médico en %1, tratar y esperar la estabilización del paciente.</Spanish>
                 <German>Ein Zivilist aus %1 hat einen Notruf abgesetzt. Behandeln Sie ihn umd warten Sie darauf, dass sich sein Zustand stabilisiert.</German>
                 <Portuguese>Um civil fez uma chamada médica em %1. Trate-o e aguarde a estabilização dele.</Portuguese>
-                <Chinesesimp>一位当地居民正在 %1 地区呼叫医疗支援, 治疗并护理患者, 直至其伤势稳定。</Chinesesimp>
+                <Chinesesimp>%1 地区的一位平民正在呼叫医疗支援, 治疗并护理患者, 直至其伤势稳定。</Chinesesimp>
             </Key>
         </Container>
         <Container name="Civ treatment">
@@ -875,7 +877,7 @@
                 <Spanish>Un civil está llamando a un médico en %1, tratar y esperar la estabilización del paciente</Spanish>
                 <German>Ein Zivilist aus %1 hat einen Notruf abgesetzt. Behandeln Sie ihn umd warten Sie darauf, dass sich sein Zustand stabilisiert </German>
                 <Portuguese>Um civil fez uma chamada médica em %1. Trate-o e aguarde a estabilização dele.</Portuguese>
-                <Chinesesimp>一位平民正在 %1 地区呼叫医疗支援, 治疗并护理患者, 直至其伤势稳定。</Chinesesimp>
+                <Chinesesimp>%1 地区的一位平民正在呼叫医疗支援, 治疗并护理患者, 直至其伤势稳定。</Chinesesimp>
             </Key>
         </Container>
         <Container name="Convoy">
@@ -928,7 +930,7 @@
                 <Spanish>Hackear misil cerca de %1</Spanish>
                 <German>Rakete hacken in der Nähe von %1</German>
                 <Portuguese>Hackeie o míssil em %1</Portuguese>
-                <Chinesesimp>在 %1 地区入侵导弹控制终端</Chinesesimp>
+                <Chinesesimp>入侵 %1 地区的导弹控制终端</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_HACK_DESC">
                 <Original>Hack a prototype missile with a terminal available in %1. Defend your position until the process is done!</Original>
@@ -959,14 +961,14 @@
                 <Spanish>Liberar rehén cerca de %1</Spanish>
                 <German>Geisel befreien: %1</German>
                 <Portuguese>Liberte o refém próximo a %1</Portuguese>
-                <Chinesesimp>在 %1 附近解救人质</Chinesesimp>
+                <Chinesesimp>解救 %1 附近的人质</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_HOSTAGE_DESC">
                 <Original>Liberate a civilian hostage in %1. The Local population is asking for your help!</Original>
                 <Spanish>Liberar a un rehén civil en %1. La población local está pidiendo su ayuda!</Spanish>
                 <German>Befreien Sie eine Geisel in %1 aus den Händen der Terroristen. Die lokale Bevölkerung bittet um Ihre Hilfe!</German>
                 <Portuguese>Liberte o civil refém em %1 das mãos dos terroristas. A população local está pedindo sua ajuda!</Portuguese>
-                <Chinesesimp>在 %1 地区解救人质。当地居民正在请求你的帮助!</Chinesesimp>
+                <Chinesesimp>解救 %1 地区的人质。当地居民正在请求你的帮助!</Chinesesimp>
             </Key>
         </Container>
         <Container name="Mines">
@@ -1083,14 +1085,14 @@
                 <Spanish>Destruir torre de radio en %1</Spanish>
                 <German>Funkturm zerstören: %1</German>
                 <Portuguese>Destrua a torre de rádio em %1</Portuguese>
-                <Chinesesimp>在 %1 地区摧毁信号塔</Chinesesimp>
+                <Chinesesimp>摧毁 %1 地区的信号塔</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_TOWER_DESC">
                 <Original>A Oplitas communications tower has been located in %1. Local population is asking for your help to destroy it! (Use one M183 explosive satchel)</Original>
                 <Spanish>En %1 se ha ubicado una torre de comunicaciones de Oplitas. La población local está pidiendo tu ayuda para destruirlo! (Use un explosivo satchel M183)</Spanish>
                 <German>Ein Funkturm der Oplitas befindet sich in %1. Die lokale Bevölkerung bittet darum diesen zu zerstören! (Nutzen Sie die M183 Sprengladungen)</German>
                 <Portuguese>A torre de comunicação inimiga foi localizada em %1. A população local está pedindo sua ajuda para destruí-las. (Use a mochila de explosivos M183)</Portuguese>
-                <Chinesesimp>在 %1 地区发现了一座 Oplitas 通讯信号塔。当地居民请求您将其摧毁。(使用一个M183炸药包)</Chinesesimp>
+                <Chinesesimp>%1 地区发现了一座 Oplitas 通讯信号塔。当地居民请求您将其摧毁。(使用一个M183炸药包)</Chinesesimp>
             </Key>
         </Container>
         <Container name="Underwater generator">
@@ -1106,14 +1108,14 @@
                 <Spanish>Destruir el generador subacuático en %1</Spanish>
                 <German>Zerstöre den Unterwassergenerator in %1</German>
                 <Portuguese>Destrua o gerador subaquático em %1</Portuguese>
-                <Chinesesimp>在 %1 地区摧毁水下发电机</Chinesesimp>
+                <Chinesesimp>摧毁 %1 地区的水下发电机</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_UNDERWATER_DESC">
                 <Original>An underwater generator has been located in %1. Local population is asking for your help to destroy it!</Original>
                 <Spanish>Se ha localizado un generador submarino en %1. La población local está pidiendo tu ayuda para destruirlo!</Spanish>
                 <German>Ein Unterwassergenerator wurde in der Nähe von %1 aufgeklärt. Die zivile Bevölkerung bittet um die Zerstörung des Aggregats!</German>
                 <Portuguese>O gerador subaquático foi localizado em %1. A população local está pedindo sua ajuda para destruí-lo!</Portuguese>
-                <Chinesesimp>在 %1 地区发现了一部水下发电机。当地居民请求您将其摧毁。</Chinesesimp>
+                <Chinesesimp>%1 地区发现了一部水下发电机。当地居民请求您将其摧毁。</Chinesesimp>
             </Key>
         </Container>
         <Container name="Vehicle">
@@ -1235,15 +1237,19 @@
         <Container name="EMP">
             <Key ID="STR_BTC_HAM_SIDE_EMP_TITLE">
                 <Original>EMP in %1</Original>
+                <Chinesesimp>摧毁 %1 地区的 EMP 装置</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_EMP_DESC">
                 <Original>Civilian population reported that vehicles have electronic fail around %1. They are requesting your help to investigate the origin. %2</Original>
+                <Chinesesimp>平民报告称, %1 地区附近存在载具上的电子设备失效的情况。平民请求对来源进行调查。%2</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_EMP_DESTROY_TITLE">
                 <Original>Find and destroy station</Original>
+                <Chinesesimp>找到并摧毁 EMP 发射站</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_EMP_DESTROY_DESC">
                 <Original>Locate and destroy EMP station creating electronic fail.</Original>
+                <Chinesesimp>找到并摧毁导致电子设备失效的 EMP 发射站。</Chinesesimp>
             </Key>
         </Container>
     </Package>
@@ -1581,14 +1587,14 @@
                 <Spanish>Vi movimiento de milicia a %1, %2 metros de aqui</Spanish>
                 <German>Ich habe mehrer bewaffnete Personen in Richtung %1, ca. %2m entfernt, gesehen</German>
                 <Portuguese>Eu vi um movimento de milícia em %1, há %2 metros daqui</Portuguese>
-                <Chinesesimp>我在 %1 附近见到过民兵运动, 离这大约 %2 米</Chinesesimp>
+                <Chinesesimp>我在 %1 见到过民兵活动, 离这大约 %2 米</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_CON_INFO_TROOPS_FALSE">
                 <Original>I didn't see any militia movement in this area!</Original>
                 <Spanish>¡No vi ningún movimiento de milicia en esta zona!</Spanish>
                 <German>Ich habe keine bewaffneten Personen in der Nähe gesehen!</German>
                 <Portuguese>Eu não vi nenhum movimento de milícia nesta área!</Portuguese>
-                <Chinesesimp>我没有在这块地区见到过任何民兵运动!</Chinesesimp>
+                <Chinesesimp>我没有在这块地方见到过任何民兵活动!</Chinesesimp>
             </Key>
         </Container>
         <Container name="Conversations: Orders">
