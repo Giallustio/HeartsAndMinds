@@ -38,6 +38,7 @@ Online [wiki available](http://vdauphin.github.io/HeartsAndMinds/).
 - Deep ACE3 support
     - Use mainly ACE interaction
     - Rearm system
+    - ACEX Fortify
 - Logistic system
     - Tow
     - Lift
