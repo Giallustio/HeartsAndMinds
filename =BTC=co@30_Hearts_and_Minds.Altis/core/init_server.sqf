@@ -1,5 +1,9 @@
 [] call compile preprocessFileLineNumbers "core\fnc\city\init.sqf";
 
+"respawn_west" setMarkerPos btc_flag;
+["Initialize"] call BIS_fnc_dynamicGroups;
+setTimeMultiplier btc_p_acctime;
+
 ["btc_m", -1, objNull, "", false, false] call btc_fnc_task_create;
 [["btc_dft", "btc_m"], 0] call btc_fnc_task_create;
 [["btc_dty", "btc_m"], 1] call btc_fnc_task_create;
@@ -28,10 +32,6 @@ if (btc_db_load && {profileNamespace getVariable [format ["btc_hm_%1_db", worldN
 [] call btc_fnc_chem_checkLoop;
 [] call btc_fnc_chem_handleShower;
 [] call btc_fnc_spect_checkLoop;
-
-["Initialize"] call BIS_fnc_dynamicGroups;
-
-setTimeMultiplier btc_p_acctime;
 
 {[_x, 30] call btc_fnc_eh_veh_add_respawn;} forEach btc_helo;
 

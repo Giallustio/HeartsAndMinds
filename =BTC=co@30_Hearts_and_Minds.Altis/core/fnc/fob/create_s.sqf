@@ -47,7 +47,10 @@ _marker setMarkerText _FOB_name;
 _marker setMarkerColor "ColorBlue";
 _marker setMarkerShape "ICON";
 
-[_struc, _flag, _marker] call btc_fnc_fob_init;
+(_fobs select 0) pushBack _marker;
+(_fobs select 1) pushBack _structure;
+(_fobs select 2) pushBack _flag;
+_flag setVariable ["BIS_fnc_IDRespawnPosition", ([missionNamespace, _flag, _FOB_name] call BIS_fnc_addRespawnPosition) select 1];
 
 _struc addEventHandler ["Killed", btc_fnc_fob_killed];
 

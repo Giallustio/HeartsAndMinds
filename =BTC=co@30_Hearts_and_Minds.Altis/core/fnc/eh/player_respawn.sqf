@@ -24,7 +24,6 @@ params [
     ["_pos", [0, 0, 0], [[]]]
 ];
 
-player setPosASL _pos;
 player addRating 9999;
 player setCaptive false;
 
