@@ -64,7 +64,7 @@ if ((_bbr isEqualTo []) OR (_ropes_check select {!isNull _x} isEqualTo [])) then
     private _support = _cargo;
     private _bbr_z = 0;
     if (!alive _cargo) then {
-        _support = [_cargo, _chopper] call btc_fnc_lift_hookFake;
+        _support = [btc_fnc_lift_hookFake, [_cargo, _chopper]] call CBA_fnc_directCall;
         _bbr_z = _support distance _cargo;
         sleep 0.3;
     };
