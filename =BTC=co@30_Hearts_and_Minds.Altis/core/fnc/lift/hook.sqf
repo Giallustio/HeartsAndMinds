@@ -3,16 +3,16 @@
 Function: btc_fnc_lift_hook
 
 Description:
-    Fill me when you edit me !
+    Hook a cargo in a diameter of 30m.
 
 Parameters:
-    _chopper - [Object]
+    _chopper - Chopper lifting. [Object]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_lift_hook;
+        [] call btc_fnc_lift_hook;
     (end)
 
 Author:
