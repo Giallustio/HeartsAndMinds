@@ -43,7 +43,7 @@ if (_marker != "") then {
     remoteExecCall ["", _marker];
 };
 deleteVehicle _veh;
-sleep 1;
-_veh = ([_type, [_x, _y, 0.5 + _z], _dir] + _vehProperties) call btc_fnc_log_createVehicle;
 
-_veh
+[{
+    _this call btc_fnc_log_createVehicle;
+}, [_type, [_x, _y, 0.5 + _z], _dir] + _vehProperties, 1] call CBA_fnc_waitAndExecute;
