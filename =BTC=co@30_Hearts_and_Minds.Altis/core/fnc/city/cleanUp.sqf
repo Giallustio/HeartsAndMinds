@@ -48,3 +48,9 @@ if (btc_delay_createUnit < 0.001) then { // Don't remove group during units crea
 };
 
 _toRemove call CBA_fnc_deleteEntity;
+
+while {objNull in btc_chem_contaminated} do {
+    btc_chem_contaminated deleteAt (
+        btc_chem_contaminated find objNull
+    )
+};
