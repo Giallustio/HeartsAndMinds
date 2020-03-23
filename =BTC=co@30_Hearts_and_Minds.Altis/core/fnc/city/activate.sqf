@@ -36,7 +36,7 @@ params [
 _wp_ratios params ["_wp_house", "_wp_sentry"];
 
 if (btc_debug) then {
-    ("Activate " + str _id) call CBA_fnc_notify;
+    [str _id, __FILE__, [btc_debug, btc_debug_log, true]] call btc_fnc_debug_message;
 };
 
 private _city = btc_city_all select _id;
@@ -199,7 +199,7 @@ if !(_city getVariable ["has_suicider", false]) then {
 };
 
 [{
-    params ["_has_en", "_city", "_radius_x", "_radius_y"];
+    params ["_has_en", "_city", "_radius_x", "_radius_y", "_id"];
 
     if (_has_en) then {
         private _trigger = createTrigger ["EmptyDetector", getPos _city];
@@ -210,7 +210,7 @@ if !(_city getVariable ["has_suicider", false]) then {
     };
 
     _city setVariable ["activating", false];
-}, [_has_en, _city, _radius_x, _radius_y], btc_delay_createUnit] call CBA_fnc_waitAndExecute;
+}, [_has_en, _city, _radius_x, _radius_y, _id], btc_delay_createUnit] call CBA_fnc_waitAndExecute;
 
 //Patrol
 btc_patrol_active = btc_patrol_active - [grpNull];

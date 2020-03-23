@@ -61,7 +61,7 @@ if (_pos_isWater) then {
 };
 
 //Creating units
-private _group = createGroup [btc_enemy_side, true];
+private _group = createGroup btc_enemy_side;
 btc_patrol_active pushBack _group;
 _group setVariable ["no_cache", true];
 _group setVariable ["btc_patrol_id", btc_military_id, btc_debug];

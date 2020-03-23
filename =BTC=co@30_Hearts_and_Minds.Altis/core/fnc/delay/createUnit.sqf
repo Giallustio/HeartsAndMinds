@@ -36,7 +36,7 @@ btc_delay_createUnit = btc_delay_createUnit + 0.3;
     ];
 
     if (isNull _group) exitWith {
-        [format ["isNull _group _this = %1", _this], __FILE__, [btc_debug]] call btc_fnc_debug_message;
+        [format ["isNull _group _this = %1", _this], __FILE__, [btc_debug, btc_debug_log, true]] call btc_fnc_debug_message;
         btc_delay_createUnit = btc_delay_createUnit - 0.3;
     };
 

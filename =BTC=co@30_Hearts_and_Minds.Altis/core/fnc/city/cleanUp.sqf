@@ -37,7 +37,7 @@ _toRemove append (allDead select {
     (_playableUnits inAreaArray [getPosWorld _dead, 500, 500]) isEqualTo [] && !(_dead getVariable ["btc_dont_delete", false])
 });
 
-if (btc_delay_createUnit < 0.01) then { // Don't remove group during units creation.
+if (btc_delay_createUnit < 0.001) then { // Don't remove group during units creation.
     _toRemove append (allGroups select {
         units _x select {alive _x} isEqualTo [] &&
         !(

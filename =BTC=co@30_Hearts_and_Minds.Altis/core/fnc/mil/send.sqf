@@ -45,7 +45,7 @@ switch (_typeOf_patrol) do {
         [_group, _dest, -1, "MOVE", "AWARE", "RED", "FULL", _infFormation, "(group this) call btc_fnc_data_add_group;", nil, 60] call CBA_fnc_addWaypoint;
     };
     case 1 : {
-        _group = createGroup [btc_enemy_side, true];
+        _group = createGroup btc_enemy_side;
         _group setVariable ["no_cache", true];
 
         if (_veh_type isEqualTo "") then {_veh_type = selectRandom btc_type_motorized};

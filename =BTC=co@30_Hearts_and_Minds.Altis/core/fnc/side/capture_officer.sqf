@@ -72,7 +72,7 @@ _group setVariable ["no_cache", true];
 
 private _veh_types = btc_civ_type_veh select {!(_x isKindOf "air")};
 for "_i" from 0 to (1 + round random 1) do {
-    private _veh = [_group, _pos1, selectRandom _veh_types, {}, [_road] call btc_fnc_road_direction] call btc_fnc_mil_createVehicle;
+    [_group, _pos1, selectRandom _veh_types, {}, [_road] call btc_fnc_road_direction] call btc_fnc_mil_createVehicle;
 
     _road = (roadsConnectedTo _road) select 0;
     _pos1 = getPosATL _road;

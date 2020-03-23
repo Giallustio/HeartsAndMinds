@@ -57,7 +57,7 @@ if (_roads isEqualTo []) then {
     _veh_type = selectRandom btc_civ_type_veh;
 };
 
-private _group = createGroup [civilian, true];
+private _group = createGroup civilian;
 btc_civ_veh_active pushBack _group;
 _group setVariable ["no_cache", true];
 _group setVariable ["btc_patrol_id", btc_civilian_id, btc_debug];
