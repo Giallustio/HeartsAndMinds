@@ -3,7 +3,7 @@
 Function: btc_fnc_ied_deleteLoop
 
 Description:
-    Remove IED objects.
+    Remove wreck generated around IED.
 
 Parameters:
 
@@ -11,7 +11,7 @@ Returns:
 
 Examples:
     (begin example)
-        [] call btc_fnc_ied_deleteLoop;
+        [vehicle player] call btc_fnc_ied_deleteLoop;
     (end)
 
 Author:
@@ -29,18 +29,26 @@ if !(_vehicle isKindOf "B_APC_Tracked_01_CRV_F") exitWith {};
 
 if (btc_ied_deleteOn > -1) exitWith {};
 
+(0 boundingBoxReal _vehicle) params ["_p1", "_p2"];
+private _maxWidth = abs ((_p2 select 0) - (_p1 select 0));
+private _maxLength = abs ((_p2 select 1) - (_p1 select 1));
+
 btc_ied_deleteOn = [{
     params ["_arguments", "_idPFH"];
     _arguments params [
-        ["_vehicle", objNull, [objNull]]
+        ["_vehicle", objNull, [objNull]],
+        ["_minDistance", 0, [0]]
     ];
 
     private _ieds = allSimpleObjects [];
     _ieds = _ieds apply {[_x distance _vehicle, _x]};
     _ieds sort true;
 
-    private _ied = _ieds select 0;
-    if (_ied select 0 < 7 && {[getPos _vehicle, getDir _vehicle, 40, getPos (_ied select 1)] call BIS_fnc_inAngleSector}) then {
-        (_ied select 1) call CBA_fnc_deleteEntity;
+    (_ieds select 0) params ["_distance", "_ied"];
+    (0 boundingBoxReal _ied) params ["_p1", "_p2"];
+    private _maxWidth = abs ((_p2 select 0) - (_p1 select 0));
+    private _maxLength = abs ((_p2 select 1) - (_p1 select 1));
+    if (_distance < (_minDistance + (_maxWidth max _maxLength) / 2) && {[getPos _vehicle, getDir _vehicle, 40, getPos _ied] call BIS_fnc_inAngleSector}) then {
+        _ied call CBA_fnc_deleteEntity;
     };
-}, 1, [_vehicle]] call CBA_fnc_addPerFrameHandler;
+}, 1, [_vehicle, (_maxWidth max _maxLength) / 2]] call CBA_fnc_addPerFrameHandler;
