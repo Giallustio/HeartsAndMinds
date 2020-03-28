@@ -33,4 +33,4 @@ if (_array isEqualTo []) exitWith {(localize "STR_BTC_HAM_LOG_RWRECK_NOWRECK") c
 
 if (damage (_array select 0) != 1) exitWith {(localize "STR_BTC_HAM_LOG_RWRECK_NOTWRECK") call CBA_fnc_notify};
 
-[_array select 0] remoteExec ["btc_fnc_log_server_repair_wreck", 2];
+[_array select 0] remoteExecCall ["btc_fnc_log_server_repair_wreck", 2];

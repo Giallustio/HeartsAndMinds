@@ -38,4 +38,4 @@ if (_array isEqualTo []) exitWith {
     ] call CBA_fnc_notify;
 };
 
-[_array select 0] remoteExec ["btc_fnc_log_server_delete", [2]];
+[_array select 0] remoteExecCall ["btc_fnc_log_server_delete", [2]];
