@@ -143,7 +143,7 @@ if (isServer) then {
 
     //FOB
     btc_fobs = [[], [], []];
-    btc_fob_rallypointTicket = 2;
+    btc_fob_rallypointTimer = 60 * 30; // 30min
 
     //MIL
     btc_p_mil_wp_ratios = [_wp_house_probability, (1 - _wp_house_probability) / 1.5 + _wp_house_probability];

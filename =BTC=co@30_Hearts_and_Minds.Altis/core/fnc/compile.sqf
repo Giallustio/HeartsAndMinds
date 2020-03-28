@@ -101,6 +101,7 @@ if (isServer) then {
     btc_fnc_fob_create_s = compile preprocessFileLineNumbers "core\fnc\fob\create_s.sqf";
     btc_fnc_fob_dismantle_s = compile preprocessFileLineNumbers "core\fnc\fob\dismantle_s.sqf";
     btc_fnc_fob_killed = compile preprocessFileLineNumbers "core\fnc\fob\killed.sqf";
+    btc_fnc_fob_rallypointTimer = compile preprocessFileLineNumbers "core\fnc\fob\rallypointTimer.sqf";
 
     //MIL
     btc_fnc_mil_addWP = compile preprocessFileLineNumbers "core\fnc\mil\addWP.sqf";
@@ -282,6 +283,7 @@ if (!isDedicated) then {
 
     //FOB
     btc_fnc_fob_create = compile preprocessFileLineNumbers "core\fnc\fob\create.sqf";
+    btc_fnc_fob_rallypointAssemble = compile preprocessFileLineNumbers "core\fnc\fob\rallypointAssemble.sqf";
 
     //INT
     btc_fnc_int_add_actions = compile preprocessFileLineNumbers "core\fnc\int\add_actions.sqf";

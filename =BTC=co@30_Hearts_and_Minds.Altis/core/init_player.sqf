@@ -30,6 +30,8 @@ btc_respawn_marker setMarkerTextLocal localize "STR_BTC_HAM_INTRO_ARSENAL_REDEPL
         default {
         };
     };
+
+    endLoadingScreen;
 }] call CBA_fnc_waitUntilAndExecute;
 
 if (btc_debug) then {

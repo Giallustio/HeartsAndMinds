@@ -29,6 +29,8 @@ _player addEventHandler ["Respawn", {btc_rep_malus_player_respawn remoteExecCall
 _player addEventHandler ["CuratorObjectPlaced", btc_fnc_eh_CuratorObjectPlaced];
 ["ace_treatmentSucceded", btc_fnc_rep_treatment] call CBA_fnc_addEventHandler;
 _player addEventHandler ["WeaponAssembled", btc_fnc_civ_add_leaflets];
+[_player, "WeaponAssembled", {[_thisType, _this] call btc_fnc_fob_rallypointAssemble;}] call CBA_fnc_addBISEventHandler;
+[_player, "WeaponDisassembled", {[_thisType, _this] call btc_fnc_fob_rallypointAssemble;}] call CBA_fnc_addBISEventHandler;
 
 if (btc_p_chem) then {
      // Add biopsy

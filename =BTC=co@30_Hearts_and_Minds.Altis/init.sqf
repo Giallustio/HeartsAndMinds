@@ -1,3 +1,4 @@
+if (hasInterface) then {startLoadingScreen [""];};
 enableSaving [false, false];
 
 [] call compile preprocessFileLineNumbers "core\def\mission.sqf";
