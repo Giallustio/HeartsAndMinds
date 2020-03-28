@@ -45,27 +45,6 @@
                 <Portuguese>Arsenal/Ressurgir</Portuguese>
                 <Chinesesimp>军火库/重新部署</Chinesesimp>
             </Key>
-            <Key ID="STR_BTC_HAM_INTRO_LOGPOINT">
-                <Original>Rearm/Repair and Objects</Original>
-                <Spanish>Rearmado/Reparaciones y Objetos</Spanish>
-                <German>Aufmunitionieren und Reparieren von Fahrzeugen</German>
-                <Portuguese>Municiamento e Reparação de Veículos</Portuguese>
-                <Chinesesimp>弹药补给/车辆修理</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_INTRO_ONLYRESPAWN">
-                <Original>Only Respawnable</Original>
-                <Spanish>Solo Respawneable</Spanish>
-                <German>Respawnt bei Zertörung</German>
-                <Portuguese>Único Respawnável</Portuguese>
-                <Chinesesimp>可重生载具</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_INTRO_LOADINGTXT">
-                <Original>Base overview. Loading ...</Original>
-                <Spanish>Vista de la Base. Cargando ...</Spanish>
-                <German>Basisübersicht. Lade ...</German>
-                <Portuguese>Visão geral da base. Carregando...</Portuguese>
-                <Chinesesimp>基地总览. 加载中 ...</Chinesesimp>
-            </Key>
         </Container>
     </Package>
     <Package name="Documentation">
@@ -1663,26 +1642,6 @@
                 <German>Abbau im gange, geh ein wenig zurück...</German>
                 <Portuguese>Desmontando, se afaste...</Portuguese>
                 <Chinesesimp>正在拆除, 请远离 ...</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_O_FOB_REDEPLOY_H_NOFOB">
-                <Original>No FOBs deployed</Original>
-                <Spanish>No hay FOBs desplegados</Spanish>
-                <German>Es sind keine FOBs aufgebaut</German>
-                <Portuguese>Nenhuma FOB montada</Portuguese>
-                <Chinesesimp>未部署FOB</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_O_FOB_REDEPLOY_H_MOVING">
-                <Original>Moving to %1</Original>
-                <Spanish>Moviéndose a %1</Spanish>
-                <German>Verlege zu %1</German>
-                <Portuguese>Movendo para %1</Portuguese>
-                <Chinesesimp>移动到 %1</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_O_FOB_REDEPLOY_LABEL">
-                <Original>Select a FOB</Original>
-                <German>FOB auswähen</German>
-                <Chinesesimp>选择一个FOB:</Chinesesimp>
-                <Portuguese>Selecione uma FOB</Portuguese>
             </Key>
             <Key ID="STR_BTC_HAM_O_FOB_DLG_T_NAMEFOB">
                 <Original>Name the FOB:</Original>

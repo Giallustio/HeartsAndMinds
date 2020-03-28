@@ -1046,7 +1046,6 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				name="btc_flag";
 			};
 			id=21;
 			type="Flag_NATO_F";

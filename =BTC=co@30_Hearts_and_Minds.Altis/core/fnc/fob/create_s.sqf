@@ -36,9 +36,9 @@ params [
 ];
 
 private _flag = createVehicle [_fob_flag, _pos, [], 0, "CAN_COLLIDE"];
-private _struc = createVehicle [_fob_structure, _pos, [], 0, "CAN_COLLIDE"];
+private _structure = createVehicle [_fob_structure, _pos, [], 0, "CAN_COLLIDE"];
 
-_struc setDir _direction;
+_structure setDir _direction;
 
 private _marker = createMarker [_FOB_name, _pos];
 _marker setMarkerSize [1, 1];
@@ -52,6 +52,6 @@ _marker setMarkerShape "ICON";
 (_fobs select 2) pushBack _flag;
 _flag setVariable ["BIS_fnc_IDRespawnPosition", ([missionNamespace, _flag, _FOB_name] call BIS_fnc_addRespawnPosition) select 1];
 
-_struc addEventHandler ["Killed", btc_fnc_fob_killed];
+_structure addEventHandler ["Killed", btc_fnc_fob_killed];
 
-[_marker, _struc, _flag]
+[_marker, _structure, _flag]

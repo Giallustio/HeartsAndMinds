@@ -1,6 +1,5 @@
 [] call compile preprocessFileLineNumbers "core\fnc\city\init.sqf";
 
-"respawn_west" setMarkerPos btc_flag;
 ["Initialize"] call BIS_fnc_dynamicGroups;
 setTimeMultiplier btc_p_acctime;
 

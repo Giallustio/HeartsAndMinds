@@ -1,7 +1,9 @@
 [] call compile preprocessFileLineNumbers "core\doc.sqf";
 
-[{!isNull player}, {
+btc_respawn_marker setMarkerTextLocal localize "STR_BTC_HAM_INTRO_ARSENAL_REDEPLOY";
 
+[{!isNull player}, {
+    btc_respawn_marker setMarkerPosLocal player;
     player addRating 9999;
     ["InitializePlayer", [player]] call BIS_fnc_dynamicGroups;
 

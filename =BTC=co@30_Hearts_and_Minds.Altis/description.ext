@@ -50,7 +50,8 @@ class Extended_InitPost_EventHandlers {
 };
 
 respawn = "BASE";
-respawnDelay = 1;
+respawnDelay = 2;
+respawnDialog = 0;
 respawnOnStart = 1;
 respawnTemplates[] = {"MenuPosition"};
 
