@@ -45,6 +45,27 @@
                 <Portuguese>Arsenal/Ressurgir</Portuguese>
                 <Chinesesimp>军火库/重新部署</Chinesesimp>
             </Key>
+            <Key ID="STR_BTC_HAM_INTRO_LOGPOINT">
+                <Original>Rearm/Repair and Objects</Original>
+                <Spanish>Rearmado/Reparaciones y Objetos</Spanish>
+                <German>Aufmunitionieren und Reparieren von Fahrzeugen</German>
+                <Portuguese>Municiamento e Reparação de Veículos</Portuguese>
+                <Chinesesimp>弹药补给/车辆修理</Chinesesimp>
+            </Key>
+            <Key ID="STR_BTC_HAM_INTRO_ONLYRESPAWN">
+                <Original>Only Respawnable</Original>
+                <Spanish>Solo Respawneable</Spanish>
+                <German>Respawnt bei Zertörung</German>
+                <Portuguese>Único Respawnável</Portuguese>
+                <Chinesesimp>可重生载具</Chinesesimp>
+            </Key>
+            <Key ID="STR_BTC_HAM_INTRO_LOADINGTXT">
+                <Original>Base overview. Loading ...</Original>
+                <Spanish>Vista de la Base. Cargando ...</Spanish>
+                <German>Basisübersicht. Lade ...</German>
+                <Portuguese>Visão geral da base. Carregando...</Portuguese>
+                <Chinesesimp>基地总览. 加载中 ...</Chinesesimp>
+            </Key>
         </Container>
     </Package>
     <Package name="Documentation">

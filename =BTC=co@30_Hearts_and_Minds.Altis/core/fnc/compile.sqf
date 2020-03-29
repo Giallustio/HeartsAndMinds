@@ -247,6 +247,7 @@ if (!isDedicated) then {
     btc_fnc_end_mission = compile preprocessFileLineNumbers "core\fnc\common\end_mission.sqf";
     btc_fnc_get_cardinal = compile preprocessFileLineNumbers "core\fnc\common\get_cardinal.sqf";
     btc_fnc_show_hint = compile preprocessFileLineNumbers "core\fnc\common\show_hint.sqf";
+    btc_fnc_intro = compile preprocessFileLineNumbers "core\fnc\common\intro.sqf";
     btc_fnc_set_markerTextLocal = compile preprocessFileLineNumbers "core\fnc\common\set_markerTextLocal.sqf";
     btc_fnc_showSubtitle = compile preprocessFileLineNumbers "core\fnc\common\showSubtitle.sqf";
     btc_fnc_get_composition = compile preprocessFileLineNumbers "core\fnc\common\get_composition.sqf";

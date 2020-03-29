@@ -25,7 +25,14 @@ params [
     ["_player", objNull, [objNull]]
 ];
 
-_player addEventHandler ["Respawn", {btc_rep_malus_player_respawn remoteExecCall ["btc_fnc_rep_change", 2]}];
+[_player, "Respawn", {
+    player removeEventHandler [_thisType, _thisID];
+    [] spawn btc_fnc_intro;
+}] call CBA_fnc_addBISEventHandler;
+_player addEventHandler ["Killed", {
+    if (isObjectHidden player) exitWith {};
+    btc_rep_malus_player_respawn remoteExecCall ["btc_fnc_rep_change", 2];
+}];
 _player addEventHandler ["CuratorObjectPlaced", btc_fnc_eh_CuratorObjectPlaced];
 ["ace_treatmentSucceded", btc_fnc_rep_treatment] call CBA_fnc_addEventHandler;
 _player addEventHandler ["WeaponAssembled", btc_fnc_civ_add_leaflets];
