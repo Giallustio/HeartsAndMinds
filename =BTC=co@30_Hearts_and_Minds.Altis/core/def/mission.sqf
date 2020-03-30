@@ -337,6 +337,7 @@ btc_fob_id = 0;
 
 //IED
 btc_type_ieds_ace = ["IEDLandBig_F", "IEDLandSmall_F"];
+btc_ied_deleteOn = -1;
 
 //Int
 btc_int_radius_orders = 25;

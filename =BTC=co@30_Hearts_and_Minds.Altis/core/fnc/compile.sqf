@@ -278,6 +278,7 @@ if (!isDedicated) then {
     btc_fnc_ied_effect_rocks = compile preprocessFileLineNumbers "core\fnc\ied\effect_rocks.sqf";
     btc_fnc_ied_effect_blurEffect = compile preprocessFileLineNumbers "core\fnc\ied\effect_blurEffect.sqf";
     btc_fnc_ied_effect_shock_wave = compile preprocessFileLineNumbers "core\fnc\ied\effect_shock_wave.sqf";
+    btc_fnc_ied_deleteLoop = compile preprocessFileLineNumbers "core\fnc\ied\deleteLoop.sqf";
 
     //EH
     btc_fnc_eh_player_respawn = compile preprocessFileLineNumbers "core\fnc\eh\player_respawn.sqf";
