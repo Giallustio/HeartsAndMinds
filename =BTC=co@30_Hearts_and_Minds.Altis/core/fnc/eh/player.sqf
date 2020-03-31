@@ -38,6 +38,13 @@ _player addEventHandler ["CuratorObjectPlaced", btc_fnc_eh_CuratorObjectPlaced];
 _player addEventHandler ["WeaponAssembled", btc_fnc_civ_add_leaflets];
 [_player, "WeaponAssembled", {[_thisType, _this] call btc_fnc_fob_rallypointAssemble;}] call CBA_fnc_addBISEventHandler;
 [_player, "WeaponDisassembled", {[_thisType, _this] call btc_fnc_fob_rallypointAssemble;}] call CBA_fnc_addBISEventHandler;
+_player addEventHandler ["GetInMan", {_this call btc_fnc_ied_deleteLoop}];
+_player addEventHandler ["GetOutMan", {
+    if (btc_ied_deleteOn > -1) then {
+        [btc_ied_deleteOn] call CBA_fnc_removePerFrameHandler;
+        btc_ied_deleteOn = -1;
+    };
+}];
 
 if (btc_p_chem) then {
      // Add biopsy

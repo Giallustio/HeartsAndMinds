@@ -109,6 +109,7 @@ private _allClassSorted = _allClassVehicles select {getNumber (_cfgVehicles >> _
 
 if (isServer) then {
     btc_final_phase = false;
+    btc_delay_createUnit = 0;
 
     //City
     btc_city_radius = _p_city_radius;
@@ -337,6 +338,7 @@ btc_fob_id = 0;
 
 //IED
 btc_type_ieds_ace = ["IEDLandBig_F", "IEDLandSmall_F"];
+btc_ied_deleteOn = -1;
 
 //Int
 btc_int_radius_orders = 25;

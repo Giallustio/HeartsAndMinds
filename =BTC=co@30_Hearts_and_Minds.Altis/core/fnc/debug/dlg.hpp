@@ -43,7 +43,7 @@ class TER_fpscounter
         class TXT_units: RscText
         {
             idc = 1002;
-            text = "UNITS:0 NOT-ON-SERVER:0 | GROUPS:0 | Patrol:0 Traffic:0";
+            text = "DELAY:0s UNITS:0 NOT-ON-SERVER:0 | GROUPS:0 | Patrol:0 Traffic:0";
             x = (0.5525 + 0.085)  * safezoneW + safezoneX;
             y = 0.71 * safezoneH + safezoneY;
             w = (0.0590625 + 0.4) * safezoneW;

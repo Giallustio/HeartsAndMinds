@@ -25,10 +25,12 @@ params [
 ];
 
 private _units          = units _group;
+if (_units select {alive _x} isEqualTo []) exitWith {nil};
+
 private _type_db        = 0;
 private _array_pos      = [];
 private _array_type     = [];
-private _side           = side (leader _group);
+private _side           = side _group;
 private _array_dam      = [];
 private _behaviour      = [behaviour (leader _group), combatMode _group, formation _group];
 private _array_wp       = [];
@@ -37,15 +39,17 @@ private _array_veh      = [];
 private _index_wp       = 0;
 
 {
-    private _pos = getPosATL _x;
-    if (surfaceIsWater _pos) then {
-        _array_pos pushBack getPos _x;
-    } else {
-        _array_pos pushBack _pos;
-    };
+    if (getDammage _x < 1) then {
+        private _pos = getPosATL _x;
+        if (surfaceIsWater _pos) then {
+            _array_pos pushBack getPos _x;
+        } else {
+            _array_pos pushBack _pos;
+        };
 
-    _array_type pushBack typeOf _x;
-    _array_dam pushBack getDammage _x;
+        _array_type pushBack typeOf _x;
+        _array_dam pushBack getDammage _x;
+    };
 } forEach _units;
 
 _index_wp = (currentWaypoint _group) + 1;

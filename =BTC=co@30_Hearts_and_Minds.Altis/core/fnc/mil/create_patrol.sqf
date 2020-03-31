@@ -38,8 +38,6 @@ if (btc_debug_log) then {
     [format ["_random = %1 _active_city %2 _area %3 btc_patrol_active = %4", _random, _active_city, _area, count btc_patrol_active], __FILE__, [false]] call btc_fnc_debug_message;
 };
 
-sleep 5 + random 10;
-
 //Remove if too far from player
 if ([_active_city, grpNull, _area] call btc_fnc_patrol_playersInAreaCityGroup) exitWith {false};
 
@@ -63,7 +61,7 @@ if (_pos_isWater) then {
 };
 
 //Creating units
-private _group = createGroup [btc_enemy_side, true];
+private _group = createGroup btc_enemy_side;
 btc_patrol_active pushBack _group;
 _group setVariable ["no_cache", true];
 _group setVariable ["btc_patrol_id", btc_military_id, btc_debug];
@@ -91,15 +89,17 @@ switch (_random) do {
                 _pos = getPos selectRandom _roads;
             };
         };
-        private _veh = [_group, _pos, _veh_type] call btc_fnc_mil_createVehicle;
-        _veh setVariable ["btc_crews", _group];
-
-        [_veh, "Fuel", "btc_fnc_patrol_eh"] call btc_fnc_eh_persistOnLocalityChange;
+        [_group, _pos, _veh_type, {
+            params ["_veh", "_group"];
+            _veh setVariable ["btc_crews", _group];
+            [_veh, "Fuel", "btc_fnc_patrol_eh"] call btc_fnc_eh_persistOnLocalityChange;
+        }] call btc_fnc_mil_createVehicle;
     };
 };
 
-[_group, [_start_city, _active_city], _area, _pos_isWater] call btc_fnc_patrol_init;
-
-[[_group]] call btc_fnc_set_groupsOwner;
+[{
+    _this call btc_fnc_patrol_init;
+    [[_this select 0]] call btc_fnc_set_groupsOwner;
+}, [_group, [_start_city, _active_city], _area, _pos_isWater], btc_delay_createUnit] call CBA_fnc_waitAndExecute;
 
 true
