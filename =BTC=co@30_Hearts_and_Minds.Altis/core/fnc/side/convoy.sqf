@@ -73,30 +73,37 @@ _group setVariable ["no_cache", true];
 private _vehs = [];
 private _veh_types = btc_type_motorized select {!(_x isKindOf "air")};
 for "_i" from 0 to (2 + round random 2) do {
-    private _veh = [_group, _pos1, selectRandom _veh_types, [_road] call btc_fnc_road_direction] call btc_fnc_mil_createVehicle;
-
-    _vehs pushBack _veh;
+    [_group, _pos1, selectRandom _veh_types, {}, [_road] call btc_fnc_road_direction] call btc_fnc_mil_createVehicle;
 
     _road = (roadsConnectedTo _road) select 0;
     _pos1 = getPosATL _road;
 };
 
-private _agent = [leader _group, _pos2, _taskID] call btc_fnc_info_path;
-_agent addEventHandler ["PathCalculated", {
-    params ["_agent", "_path"];
+[{
+    params ["_group", "_pos2", "_taskID"];
+    private _agent = [leader _group, _pos2, _taskID] call btc_fnc_info_path;
+    _agent addEventHandler ["PathCalculated", {
+        params ["_agent", "_path"];
 
-    [12] remoteExecCall ["btc_fnc_show_hint", [0, -2] select isDedicated];
-    _agent removeEventHandler ["PathCalculated", _thisEventHandler];
-}];
+        [12] remoteExecCall ["btc_fnc_show_hint", [0, -2] select isDedicated];
+        _agent removeEventHandler ["PathCalculated", _thisEventHandler];
+    }];
+}, [_group, _pos2, _taskID], btc_delay_createUnit] call CBA_fnc_waitAndExecute;
 
 [_group, _pos2, -1, "MOVE", "SAFE", "RED", "LIMITED", "COLUMN", format ["['%1', 'FAILED'] call BIS_fnc_taskSetState;", _taskID], [0, 0, 0], _radius_x/2] call CBA_fnc_addWaypoint;
 
-waitUntil {sleep 5; (_taskID call BIS_fnc_taskCompleted || (_vehs select {canMove _x} isEqualTo []) || (_group isEqualTo grpNull))};
+waitUntil {sleep 5; (
+    _taskID call BIS_fnc_taskCompleted ||
+    ((units _group) apply {assignedVehicle _x}) select {canMove _x} isEqualTo [] ||
+    _group isEqualTo grpNull
+)};
 
 _markers append (allMapMarkers select {(_x select [0, count _taskID]) isEqualTo _taskID});
 
+private _vehs = (units _group) apply {assignedVehicle _x};
+_vehs = (_vehs arrayIntersect _vehs);
 if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {
-    [_markers, _vehs + [_group, _agent]] call btc_fnc_delete;
+    [_markers, _vehs + [_group]] call btc_fnc_delete;
 };
 
 if (_taskID call BIS_fnc_taskState isEqualTo "FAILED") exitWith {
@@ -104,12 +111,12 @@ if (_taskID call BIS_fnc_taskState isEqualTo "FAILED") exitWith {
     {
         private _group = createGroup btc_enemy_side;
         (crew _x) joinSilent _group;
-        _group call btc_fnc_data_add_group;
+        [btc_fnc_data_add_group, _group] call CBA_fnc_directCall;
     } forEach _vehs;
-    [_markers, _agent] call btc_fnc_delete;
+    [_markers] call btc_fnc_delete;
 };
 
-[_markers, _vehs + [_group, _agent]]  call btc_fnc_delete;
+[_markers, _vehs + [_group]]  call btc_fnc_delete;
 
 if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {};
 

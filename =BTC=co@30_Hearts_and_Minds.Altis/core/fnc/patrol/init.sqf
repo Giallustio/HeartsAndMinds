@@ -34,6 +34,10 @@ _cities params [
     ["_active_city", objNull, [objNull]]
 ];
 
+if !(isGroupDeletedWhenEmpty _group) then {
+    _group deleteGroupWhenEmpty true;
+};
+
 private _end_city = selectRandom ([[_start_city, _active_city], _area, _isBoat] call btc_fnc_patrol_usefulCity);
 
 private _pos = getPos _end_city;

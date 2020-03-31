@@ -36,7 +36,7 @@ if !(_city getVariable ["active", false]) exitWith {};
     params ["_city", "_id"];
 
     if (btc_debug) then {
-        ("DE-Activate " + str _id) call CBA_fnc_notify;
+        [str _id, __FILE__, [btc_debug, btc_debug_log, true]] call btc_fnc_debug_message;
     };
 
     //Save all and delete

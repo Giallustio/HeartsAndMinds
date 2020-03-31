@@ -45,14 +45,14 @@ switch (_typeOf_patrol) do {
         [_group, _dest, -1, "MOVE", "AWARE", "RED", "FULL", _infFormation, "(group this) call btc_fnc_data_add_group;", nil, 60] call CBA_fnc_addWaypoint;
     };
     case 1 : {
-        _group = createGroup [btc_enemy_side, true];
+        _group = createGroup btc_enemy_side;
         _group setVariable ["no_cache", true];
 
         if (_veh_type isEqualTo "") then {_veh_type = selectRandom btc_type_motorized};
 
         private _return_pos = [_pos, 10, 500, 13, false] call btc_fnc_findsafepos;
 
-        private _veh = [_group, _return_pos, _veh_type] call btc_fnc_mil_createVehicle;
+        [_group, _return_pos, _veh_type] call btc_fnc_mil_createVehicle;
 
         [_group, _dest, -1, "MOVE", "AWARE", "RED", "NORMAL", "NO CHANGE", "(group this) call btc_fnc_data_add_group;", nil, 60] call CBA_fnc_addWaypoint;
         [_group, _dest, -1, "GETOUT", nil, nil, nil, nil, nil, nil, 60] call CBA_fnc_addWaypoint;
@@ -61,6 +61,8 @@ switch (_typeOf_patrol) do {
     };
 };
 
-[[_group]] call btc_fnc_set_groupsOwner;
+[{
+    _this call btc_fnc_set_groupsOwner;
+}, [[_group]], btc_delay_createUnit] call CBA_fnc_waitAndExecute;
 
 _group
