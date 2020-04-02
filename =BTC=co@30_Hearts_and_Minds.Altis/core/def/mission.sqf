@@ -9,6 +9,11 @@ btc_p_acctime = "btc_p_acctime" call BIS_fnc_getParamValue;
 private _p_db = ("btc_p_load" call BIS_fnc_getParamValue) isEqualTo 1;
 btc_p_auto_db = "btc_p_auto_db" call BIS_fnc_getParamValue isEqualTo 1;
 
+//<< Respawn options >>
+btc_p_respawn_location = "btc_p_respawn_location" call BIS_fnc_getParamValue;
+btc_p_rallypointTimer = "btc_p_rallypointTimer" call BIS_fnc_getParamValue;
+btc_p_respawn_arsenal = ("btc_p_respawn_arsenal" call BIS_fnc_getParamValue) isEqualTo 1;
+
 //<< Faction options >>
 private _p_en = "btc_p_en" call BIS_fnc_getParamValue;
 private _p_en_AA = ("btc_p_AA" call BIS_fnc_getParamValue) isEqualTo 1;
@@ -27,9 +32,6 @@ private _hideout_n = "btc_p_hideout_n" call BIS_fnc_getParamValue;
 private _cache_info_def = "btc_p_cache_info_def" call BIS_fnc_getParamValue;
 private _cache_info_ratio = "btc_p_cache_info_ratio" call BIS_fnc_getParamValue;
 private _info_chance = "btc_p_info_chance" call BIS_fnc_getParamValue;
-
-//<< Medical options >>
-btc_p_redeploy = ("btc_p_redeploy" call BIS_fnc_getParamValue) isEqualTo 1;
 
 //<< Skill options >>
 btc_p_set_skill  = ("btc_p_set_skill" call BIS_fnc_getParamValue) isEqualTo 1;
@@ -144,7 +146,7 @@ if (isServer) then {
 
     //FOB
     btc_fobs = [[], [], []];
-    btc_fob_rallypointTimer = 60 * 30; // 30min
+    btc_fob_rallypointTimer = 60 * btc_p_rallypointTimer;
 
     //MIL
     btc_p_mil_wp_ratios = [_wp_house_probability, (1 - _wp_house_probability) / 1.5 + _wp_house_probability];

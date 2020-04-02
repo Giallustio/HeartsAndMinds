@@ -3,11 +3,11 @@
 Function: btc_fnc_fob_rallypointTimer
 
 Description:
-    Create a timer until the object is destroyed, ie the rallypoint is destroyed.
+    Create a timer and when timer is up, trigger self destruction.
 
 Parameters:
     _rallypoint - Rallypoint. [Object]
-    _delay - Delay before the rallypoint will be destroyed. [Number]
+    _delay - Delay before the rallypoint self-destruction. [Number]
 
 Returns:
 

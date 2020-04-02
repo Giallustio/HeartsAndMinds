@@ -1,7 +1,5 @@
 [] call compile preprocessFileLineNumbers "core\doc.sqf";
 
-btc_respawn_marker setMarkerTextLocal localize "STR_BTC_HAM_INTRO_ARSENAL_REDEPLOY";
-
 [{!isNull player}, {
     btc_respawn_marker setMarkerPosLocal player;
     player addRating 9999;

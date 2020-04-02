@@ -34,7 +34,11 @@ switch (_nameEH) do {
         ];
 
         if !(_rallyPoint isKindOf "Camping_base_F") exitWith {_this};
-        _rallyPoint remoteExecCall ["btc_fnc_fob_timer", 2];
+        _rallyPoint remoteExecCall ["btc_fnc_fob_rallypointTimer", 2];
+        [
+            [format [localize "STR_BTC_HAM_O_FOB_SELFDESTRUCTION", btc_p_rallypointTimer]],
+            ["<img size='1' image='\A3\ui_f\data\igui\cfg\simpleTasks\types\wait_ca.paa' align='center'/>"]
+        ] call CBA_fnc_notify;
     };
     case "WeaponDisassembled": {
         _args params [
@@ -45,8 +49,7 @@ switch (_nameEH) do {
         if !("_Respawn_" in typeOf _bag) exitWith {_this};
 
         private _markers = ([btc_player_side, false] call BIS_fnc_getRespawnMarkers) - [btc_respawn_marker];
-        private _playerPos = getPosWorld _player;
-        _markers = _markers apply {[_playerPos distance markerPos _x, _x]};
+        _markers = _markers apply {[_player distance markerPos _x, _x]};
         _markers sort true;
         deleteMarker (_markers select 0 select 1);
     };

@@ -110,13 +110,9 @@
                 <Chinesesimp>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\whiteboard_ca.paa' width='20' height='20'/&gt; 支线任务有利于提升声誉值。&lt;br/&gt; 军官(Officer)可以使用自我互动菜单申请支线任务。&lt;br/&gt; 军官(Officer)可以使用自我互动菜单随时取消支线任务。</Chinesesimp>
             </Key>
         </Container>
-        <Container name="Documentation: FOB">
-            <Key ID="STR_BTC_HAM_DOC_FOB_TITLE">
-                <Original>FOB/Rallypoint</Original>
-                <Chinesesimp>FOB/集合点</Chinesesimp>
-            </Key>
+        <Container name="Documentation: Respawn position">
             <Key ID="STR_BTC_HAM_DOC_FOB_TEXT">
-                <Original>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move1_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\run_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move2_ca.paa' width='20' height='20' /&gt; &lt;marker name='blufor_base'&gt;FOB:&lt;/marker&gt;&lt;br/&gt; In this mission a FOB is a forward spawn point, to create a FOB approach the red box at the logistic point and require a blue container.&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\Ui_f\data\Map\Markers\NATO\b_hq.paa' width='20' height='20'/&gt;  &lt;marker name='blufor_base'&gt;Deploy:&lt;/marker&gt; &lt;br/&gt; Move it where you want to deploy a new FOB and interact with it to set it up. Keep in mind that you can not deploy a FOB close to the main base (2.500m) and the terrain needs to be flat.&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Dismantle:&lt;/marker&gt; &lt;br/&gt; You can dismantle a FOB by interacting with the flag on the HQ roof.&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move1_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\run_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move2_ca.paa' width='20' height='20' /&gt; &lt;marker name='blufor_base'&gt;Rallypoint:&lt;/marker&gt;&lt;br/&gt; You can also use the Zeus rallypoint backpack available in Arsenal. Those have a limited number of respawn.</Original>
+                <Original>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move1_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\run_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move2_ca.paa' width='20' height='20' /&gt; &lt;marker name='blufor_base'&gt;FOB:&lt;/marker&gt;&lt;br/&gt; In this mission a FOB is a forward spawn point, to create a FOB approach the red box at the logistic point and require a blue container.&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\Ui_f\data\Map\Markers\NATO\b_hq.paa' width='20' height='20'/&gt;  &lt;marker name='blufor_base'&gt;Deploy:&lt;/marker&gt; &lt;br/&gt; Move it where you want to deploy a new FOB and interact with it to set it up. Keep in mind that you can not deploy a FOB close to the main base (2.500m) and the terrain needs to be flat.&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Dismantle:&lt;/marker&gt; &lt;br/&gt; You can dismantle a FOB by interacting with the flag on the HQ roof.&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\run_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\wait_ca.paa' width='20' height='20' /&gt; &lt;marker name='blufor_base'&gt;Rallypoint:&lt;/marker&gt;&lt;br/&gt; You can also use the Zeus rallypoint backpack available in Arsenal but they have some limitation. After some times or after player disconnected, rallypoint will self-destruct.</Original>
                 <Spanish>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move1_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\run_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move2_ca.paa' width='20' height='20' /&gt; &lt;marker name='blufor_base'&gt;FOB:&lt;/marker&gt;&lt;br/&gt; En esta misión un FOB es un punto de respawn avanzado, para crear un FOB se aproxima a la caja roja en el punto logístico y requiere un contenedor azul.&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\Ui_f\data\Map\Markers\NATO\b_hq.paa' width='20' height='20'/&gt;  &lt;marker name='blufor_base'&gt;Deploy:&lt;/marker&gt; &lt;br/&gt; Muévelo donde quieras desplegar un nuevo FOB e interactúa con él para configurarlo. Tenga en cuenta que no puede desplegar un FOB cerca de la base principal (2.500m) y el terreno debe ser plano.&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Dismantle:&lt;/marker&gt; &lt;br/&gt; Puede desmontar un FOB interactuando con la bandera en el techo del HQ.</Spanish>
                  <German>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move1_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\run_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move2_ca.paa' width='20' height='20' /&gt; &lt;marker name='blufor_base'&gt;FOB:&lt;/marker&gt;&lt;br/&gt; Eine FOB (Forward Operating Base / vorgeschobene Operationsbasis) dient in dieser Mission als Spawn-Punkt. Um eine FOB zu erstellen muss am Logistikpunkt ein ensprechnender Frachtcontainer(Blau) angefordert werden&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\Ui_f\data\Map\Markers\NATO\b_hq.paa' width='20' height='20'/&gt;  &lt;marker name='blufor_base'&gt;Aufbau:&lt;/marker&gt; &lt;br/&gt; Der Aufbau kann nur statfinden, wenn man sich mindestens 2,5km von der Basis entfernt hat und das Gelände relativ flach ist. Um den Aufbau zu beginnen: einfach mit dem Frachtcontainer interagieren und 'FOB aufbauen' auswählen.&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Abbau:&lt;/marker&gt; &lt;br/&gt; Auf dem Dach der FOB kann man mit der Flagge interagieren um den Abbau zu beginnen.&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move1_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\run_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move2_ca.paa' width='20' height='20' /&gt; &lt;marker name='blufor_base'&gt;Sammelpunkt:&lt;/marker&gt;&lt;br/&gt; Nutzen Sie den im Arsenal erhältlichen Lager-Rucksack aus dem Zeus-DLC. Die Anzahl der Respawns bei den Sammelpunkten ist beschränkt.</German>
                 <Portuguese>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move1_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\run_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move2_ca.paa' width='20' height='20' /&gt; &lt;marker name='blufor_base'&gt;FOB:&lt;/marker&gt;&lt;br/&gt; Nesta missão, uma FOB é um ponto de surgimento. Para criar uma FOB, aproxime-se da caixa vermelha no ponto logístico, solicite um container azul.&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\Ui_f\data\Map\Markers\NATO\b_hq.paa' width='20' height='20'/&gt;  &lt;marker name='blufor_base'&gt;Deploy:&lt;/marker&gt; &lt;br/&gt; A construção só pode acontecer se você se deslocar 2.500m da FOB principal e o terreno deve ser plano. Para começar a criar a nova FOB, basta interagir com o cônteiner e selecionar: "Build FOB" (Criar FOB).&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Dismantle:&lt;/marker&gt; &lt;br/&gt; No telhado da FOB, você pode interagir com a bandeira para iniciar a desmontagem da FOB.</Portuguese>
@@ -441,18 +437,30 @@
                 <Chinesesimp>敌军尸体携带情报的几率:</Chinesesimp>
             </Key>
         </Container>
-        <Container name="Parameters: Medical">
-            <Key ID="STR_BTC_HAM_MEDI_TITLE">
-                <Original>&lt;&lt; Medical options &gt;&gt;</Original>
-                <German>&lt;&lt; Sanitäts-Einstellungen &gt;&gt;</German>
-                <Portuguese>&lt;&lt; Opções Médicas &gt;&gt;</Portuguese>
-                <Chinesesimp>&lt;&lt; 医疗设置 &gt;&gt;</Chinesesimp>
+        <Container name="Parameters: Respawn">
+            <Key ID="STR_BTC_HAM_RESP_TITLE">
+                <Original>&lt;&lt; Respawn options &gt;&gt;</Original>
             </Key>
-            <Key ID="STR_BTC_HAM_MEDI_REDEPLOY">
-                <Original>Allow re-deploy?</Original>
-                <German>Verlegen erlauben?</German>
-                <Portuguese>Permitir ressurgimento?</Portuguese>
-                <Chinesesimp>允许重新部署?</Chinesesimp>
+            <Key ID="STR_BTC_HAM_RESP_LOCATION">
+                <Original>Respawn locations available:</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_RESP_FOBRALLY">
+                <Original>FOB and Rallypoint</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_RESP_FOBRALLYHELO">
+                <Original>FOB, Rallypoint and Helo</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_RESP_FOBRALLYHELI">
+                <Original>FOB, Rallypoint and Transport helicopter</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_RESP_FOBRALLYHELIVEHI">
+                <Original>FOB, Rallypoint, Transport helicopter and Transport vehicle</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_RESP_RALLYTIMER">
+                <Original>Time before rallypoint self-destruction:</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_RESP_ENABLEARSENAL">
+                <Original>ACE Arsenal available on respawn after been killed:</Original>
             </Key>
         </Container>
         <Container name="Parameters: AI Skill">
@@ -1671,6 +1679,9 @@
                 <German>FOB Benennen:</German>
                 <Portuguese>Nome da FOB:</Portuguese>
                 <Chinesesimp>命名FOB:</Chinesesimp>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_FOB_SELFDESTRUCTION">
+                <Original>This rallypoint will self-destruct in %1min.</Original>
             </Key>
         </Container>
         <Container name="Other: Hints ">

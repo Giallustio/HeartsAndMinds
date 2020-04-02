@@ -699,6 +699,7 @@ class Mission
 			dataType="Marker";
 			position[]={8300.7275,76.093613,10061.531};
 			name="respawn_west";
+			text=$STR_BTC_HAM_INTRO_ARSENAL_REDEPLOY;
 			type="Empty";
 			id=0;
 		};

@@ -13,7 +13,7 @@ Returns:
 
 Examples:
     (begin example)
-        [] spawn btc_fnc_intro;
+        [] call btc_fnc_intro;
     (end)
 
 Author:
@@ -45,4 +45,5 @@ if (!isNil "btc_helo_1") then {
 };
 
 [getMarkerPos "btc_base", localize "STR_BTC_HAM_INTRO_LOADINGTXT", 20, 30, 240, 0, _array, 0] call BIS_fnc_establishingShot;
+
 enableSaving [false, false];
