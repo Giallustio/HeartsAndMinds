@@ -147,6 +147,9 @@ if (isServer) then {
 
     //MIL
     btc_p_mil_wp_ratios = [_wp_house_probability, (1 - _wp_house_probability) / 1.5 + _wp_house_probability];
+    if ((btc_p_mil_wp_ratios select 0) isEqualTo (btc_p_mil_wp_ratios select 1)) then {
+        btc_p_mil_wp_ratios set [1, 0.1 + (btc_p_mil_wp_ratios select 1)];
+    };
 
     //Patrol
     btc_patrol_active = [];
