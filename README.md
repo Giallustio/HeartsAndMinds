@@ -50,7 +50,7 @@ Online [wiki available](http://vdauphin.github.io/HeartsAndMinds/).
     - Spectrum devices
 - Under the hood
     - A lot of optionnal gameplay
-    - More than 267 enemies and 24 civilians factions available
+    - More than 284 enemies and 24 civilians factions available
     - Full saving Database (even player markers)
     - Easy map change
     - Auto Headless support
