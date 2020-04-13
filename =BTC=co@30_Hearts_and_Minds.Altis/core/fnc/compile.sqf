@@ -63,6 +63,7 @@ if (isServer) then {
     btc_fnc_db_loadObjectStatus = compile preprocessFileLineNumbers "core\fnc\db\loadObjectStatus.sqf";
     btc_fnc_db_saveObjectStatus = compile preprocessFileLineNumbers "core\fnc\db\saveObjectStatus.sqf";
     btc_fnc_db_loadCargo = compile preprocessFileLineNumbers "core\fnc\db\loadcargo.sqf";
+    btc_fnc_db_autoRestart = compile preprocessFileLineNumbers "core\fnc\db\autoRestart.sqf";
 
     //DELAY
     btc_fnc_delay_createUnit = compile preprocessFileLineNumbers "core\fnc\delay\createUnit.sqf";
