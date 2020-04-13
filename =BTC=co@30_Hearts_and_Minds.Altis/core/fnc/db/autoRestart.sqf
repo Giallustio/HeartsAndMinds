@@ -3,17 +3,17 @@
 Function: btc_fnc_db_autoRestart
 
 Description:
-    Restart server.
+    Save or not and restart/shutdown server.
 
 Parameters:
-    _p_autoRestart - 0 no auto restart, 1 autorestart, 2 auto save and restart. [Number]
-    _serverCommandPassword - Password defineed in server.cfg. [String]
+    _p_autoRestart - 0: "Off", 1: "Restart", 2: "Shutdown", 3: "Save and restart", 4: "Save and shutdown". [Number]
+    _serverCommandPassword - Password defined in server.cfg. [String]
 
 Returns:
 
 Examples:
     (begin example)
-        [] call btc_fnc_db_autoRestart;
+        [4] call btc_fnc_db_autoRestart;
     (end)
 
 Author:
@@ -26,18 +26,27 @@ params [
     ["_serverCommandPassword", btc_db_serverCommandPassword, ""]
 ];
 
-if (_p_autoRestart isEqualTo 2) then {
+if (_p_autoRestart isEqualTo 0) exitWith {};
+
+private _serverCommand = if (_p_autoRestart in [1, 3]) then {
+    "#restartserver"
+} else {
+    "#shutdown"
+};
+
+if (_p_autoRestart > 2) then {
     if !(btc_db_is_saving) then {
         btc_db_is_saving = true;
         [] spawn btc_fnc_db_save;
     };
     [{!btc_db_is_saving}, {
-        if !(_this serverCommand "#restartserver") then {
-            ["STR_STEAM_RESULT_INVALID_PASSWORD", {systemChat localize _this}] remoteExecCall ["call", [0, -2] select isDedicated];
+        params ["_serverCommandPassword", "_serverCommand"];
+        if !(_serverCommandPassword serverCommand _serverCommand) then {
+            ["Invalid password", __FILE__, [true, true, true]] call btc_fnc_debug_message;
         };
-    }, _serverCommandPassword] call CBA_fnc_waitUntilAndExecute;
+    }, [_serverCommandPassword, _serverCommand]] call CBA_fnc_waitUntilAndExecute;
 } else {
-    if !(_serverCommandPassword serverCommand "#restartserver") then {
-        ["STR_STEAM_RESULT_INVALID_PASSWORD", {systemChat localize _this}] remoteExecCall ["call", [0, -2] select isDedicated];
+    if !(_serverCommandPassword serverCommand _serverCommand) then {
+        ["Invalid password", __FILE__, [true, true, true]] call btc_fnc_debug_message;
     };
 };

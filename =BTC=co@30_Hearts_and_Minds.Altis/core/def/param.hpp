@@ -29,6 +29,18 @@ class Params {
         texts[]={$STR_DISABLED,$STR_ENABLED}; // texts[]={"Off","On"};
         default = 0;
     };
+    class btc_p_db_autoRestart { // Auto restart/shutdown server (Must define in server.cfg: serverCommandPassword = "btc_password")
+        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_DB_ARESTART"]);
+        values[]={0,1,2,3,4};
+        texts[]={$STR_DISABLED,$STR_DISP_MP_DS_RESTART,$STR_BTC_HAM_PARAM_DB_SHUTDOWN,$STR_BTC_HAM_PARAM_DB_SAVERESTART, $STR_BTC_HAM_PARAM_DB_SAVESHUTDOWN}; // texts[]={"Off","Restart", "Shutdown","Save and restart", "Save and shutdown"};
+        default = 0;
+    };
+    class btc_p_db_autoRestartTime { // Time before auto restart/shutdown server
+        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_DB_ARESTARTTIME"]);
+        values[]={1,2,3,4,5,6,7,8,9,10,11,12,24,48,72};
+        texts[]={"1h","2h","3h","4h","5h","6h","7h","8h","9h","10h","11h","12h","24h","48h","72h"};
+        default = 72;
+    };
     class btc_p_type_title { // << Faction options >>
         title = $STR_BTC_HAM_PARAM_FAC_TITLE;
         values[]={0};

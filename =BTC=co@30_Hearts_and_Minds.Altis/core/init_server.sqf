@@ -30,8 +30,11 @@ if (btc_db_load && {profileNamespace getVariable [format ["btc_hm_%1_db", worldN
 [] call btc_fnc_spect_checkLoop;
 if (btc_p_db_autoRestart > 0) then {
     [{
-        [] call btc_fnc_db_autoRestart;
-    }, [], 24 * 60 * 60] call CBA_fnc_waitAndExecute;
+        [19] remoteExecCall ["btc_fnc_show_hint", [0, -2] select isDedicated];
+        [{
+            [] call btc_fnc_db_autoRestart;
+        }, [], 5 * 60] call CBA_fnc_waitAndExecute;
+    }, [], btc_p_db_autoRestartTime * 60 * 60 - 5 * 60] call CBA_fnc_waitAndExecute;
 };
 
 ["Initialize"] call BIS_fnc_dynamicGroups;
