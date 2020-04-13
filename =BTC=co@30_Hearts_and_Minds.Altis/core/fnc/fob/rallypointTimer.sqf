@@ -26,7 +26,6 @@ params [
     ["_delay", btc_fob_rallypointTimer, [0]]
 ];
 
-_rallypoint setVariable ["btc_fob_isAssembled", position _rallypoint];
 private _time = serverTime;
 _rallypoint setVariable ["btc_fob_assembleTime", _time];
 
@@ -40,7 +39,7 @@ _rallypoint setVariable ["btc_fob_assembleTime", _time];
         isNull _rallypoint ||
         _time != _rallypoint getVariable ["btc_fob_assembleTime", -1]
     ) exitWith {};
-    if (_rallypoint inArea [_rallypoint getVariable ["btc_fob_isAssembled", [0, 0]], 1, 1, 0, false]) then {
+    if (objectParent _rallypoint isEqualTo objNull) then {
         deleteVehicle _rallypoint;
     };
 }, [_rallypoint, _time], _delay] call CBA_fnc_waitAndExecute;
