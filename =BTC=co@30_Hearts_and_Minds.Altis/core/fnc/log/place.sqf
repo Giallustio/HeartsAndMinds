@@ -70,7 +70,7 @@ btc_log_placing_d = 1.5 + abs(((_bbr select 1) select 1) - ((_bbr select 0) sele
 [{
     params ["_arguments", "_idPFH"];
 
-    if (!alive player || player getVariable ["ACE_isUnconscious", false] || !btc_log_placing) then {
+    if (!alive player || player getVariable ["ACE_isUnconscious", false] || !btc_log_placing || (vehicle player != player)) then {
         _arguments params ["_placing_obj", "_actionEH", "_place_EH_keydown"];
 
         //remove PFH
@@ -85,12 +85,13 @@ btc_log_placing_d = 1.5 + abs(((_bbr select 1) select 1) - ((_bbr select 0) sele
         (findDisplay 46) displayRemoveEventHandler ["KeyDown", _place_EH_keydown];
 
         hintSilent "";
-
+    
         //remove mouse hint
         call ace_interaction_fnc_hideMouseHint;
 
         // remove drop action
         [player, "DefaultAction", _actionEH, -1] call ace_common_fnc_removeActionEventHandler;
 
+        btc_log_placing = false; // reset flag
     };
 }, 0.5, [_placing_obj, _actionEH, _place_EH_keydown]] call CBA_fnc_addPerFrameHandler;
