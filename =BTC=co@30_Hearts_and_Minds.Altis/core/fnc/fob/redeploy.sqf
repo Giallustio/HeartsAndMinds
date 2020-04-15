@@ -57,7 +57,12 @@ private _respawn_positions = _fobs_structure apply {
     if (_positions isEqualTo []) then {
         _x modelToWorld [0, 1.5, 0]
     } else {
-        selectRandom (_positions select {_x select 2 < 1})
+        private _availablePos = _positions select {_x select 2 < 1};
+        if (_availablePos isEqualTo []) then {
+            selectRandom _positions
+        } else {
+            selectRandom _availablePos
+        };
     };
 };
 
