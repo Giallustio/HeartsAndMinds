@@ -51,7 +51,7 @@ _player addEventHandler ["WeaponAssembled", {
     [_static] remoteExecCall ["btc_fnc_log_init", 2];
 }];
 ["ace_csw_deployWeaponSucceeded", {
-    _this remoteExecCall ["btc_fnc_fob_init", [0, 2] select isDedicated];
+    _this remoteExecCall ["btc_fnc_log_init", [0, 2] select isDedicated];
 }] call CBA_fnc_addEventHandler;
 
 if (btc_p_chem) then {
