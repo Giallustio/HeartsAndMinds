@@ -47,6 +47,14 @@ _player addEventHandler ["GetOutMan", {
         [btc_ied_deleteOn] call CBA_fnc_removePerFrameHandler;
         btc_ied_deleteOn = -1;
     };
+_player addEventHandler ["WeaponAssembled", {
+    params [
+        ["_player", objNull, [objNull]],
+        ["_static", objNull, [objNull]]
+    ];
+
+    if !(_static isKindOf "StaticWeapon") exitWith {_this};
+    [_static] remoteExecCall ["btc_fnc_log_init", 2];
 }];
 
 if (btc_p_chem) then {
