@@ -85,7 +85,7 @@ btc_log_placing_d = 1.5 + abs(((_bbr select 1) select 1) - ((_bbr select 0) sele
         (findDisplay 46) displayRemoveEventHandler ["KeyDown", _place_EH_keydown];
 
         hintSilent "";
-    
+
         //remove mouse hint
         call ace_interaction_fnc_hideMouseHint;
 
