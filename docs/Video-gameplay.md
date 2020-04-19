@@ -14,6 +14,7 @@
 
 ## [![Alt text for your video](http://img.youtube.com/vi/Xc6CWKEsq00/0.jpg)](https://www.youtube.com/watch?v=Xc6CWKEsq00)
 
+## [![Alt text for your video](http://img.youtube.com/vi/tqdYO-Fql6Q/0.jpg)](https://www.youtube.com/watch?v=tqdYO-Fql6Q)
 
 ## [![Alt text for your video](http://img.youtube.com/vi/vwbeYlypzd8/0.jpg)](https://www.youtube.com/watch?v=vwbeYlypzd8)
 
