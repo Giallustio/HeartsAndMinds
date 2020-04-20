@@ -40,7 +40,6 @@ private _data = switch (_id) do {
         _hd;
     };
     case 3 : {_target getVariable ["cargo", []];};
-    case 4 : {_target getVariable ["tow", objNull];};
     case 8 : {count btc_hideouts;};
     case 9 : {[_target] call btc_fnc_db_saveObjectStatus;};
     case 10 : {
