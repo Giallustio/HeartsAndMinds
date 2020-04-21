@@ -94,6 +94,11 @@ private _text = switch (_type) do {
     case 18 : {
         localize "STR_BTC_HAM_O_FOB_DISMANTLE_H_PROC";
     };
+    case 19 : {
+        [
+            localize "STR_BTC_HAM_O_COMMON_REBOOT", 1.5, [1, 0, 0]
+        ];
+    };
 };
 
 _text call CBA_fnc_notify;
