@@ -354,4 +354,5 @@ if (!isDedicated) then {
     btc_fnc_tow_ropeCreate = compile preprocessFileLineNumbers "core\fnc\tow\ropeCreate.sqf";
     btc_fnc_tow_hitch_points = compile preprocessFileLineNumbers "core\fnc\tow\hitch_points.sqf";
     btc_fnc_tow_unhook = compile preprocessFileLineNumbers "core\fnc\tow\unhook.sqf";
+    btc_fnc_tow_unwind = compile preprocessFileLineNumbers "core\fnc\tow\unwind.sqf";
 };

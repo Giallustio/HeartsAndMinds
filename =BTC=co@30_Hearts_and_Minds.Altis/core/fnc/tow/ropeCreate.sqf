@@ -25,45 +25,53 @@ params [
     ["_tower", objNull, [objNull]]
 ];
 
-if !((isVehicleCargo btc_log_vehicle_selected) isEqualTo objNull) exitWith {(localize "STR_BTC_HAM_LOG_TOW_ALREADYTOWED") call CBA_fnc_notify;};
+private _towing = _tower getVariable ["btc_towing", objNull];
+if (
+    !((isVehicleCargo btc_log_vehicle_selected) isEqualTo objNull) ||
+    !isNull _towing
+) exitWith {(localize "STR_BTC_HAM_LOG_TOW_ALREADYTOWED") call CBA_fnc_notify;};
 if (_tower setVehicleCargo btc_log_vehicle_selected) exitWith {};
 
-private _towing = _tower getVariable ["btc_towing", objNull];
-if (!isNull _towing) exitWith {(localize "STR_BTC_HAM_LOG_TOW_ALREADYTOWED") call CBA_fnc_notify;};
+private _flat = createVehicle ["Truck_01_Rack_F", getPosATL btc_log_vehicle_selected, [], 0, "CAN_COLLIDE"];
+_flat setDir getDir btc_log_vehicle_selected;
+//_flat setObjectTextureGlobal [0, ""];
+//_flat setObjectTextureGlobal [1, ""];
 
-private _model_rear_tower = ([_tower] call btc_fnc_tow_hitch_points) select 1;
-private _model_front_selected = ([btc_log_vehicle_selected] call btc_fnc_tow_hitch_points) select 0;
-private _relative_pos = - (_model_front_selected select 1) + (_model_rear_tower select 1) - ((btc_log_vehicle_selected modelToWorld _model_front_selected) distance (_tower modelToWorld _model_rear_tower));
+private _model_corners_tower = [_tower] call btc_fnc_log_get_corner_points;
+private _model_corners_flat = [_flat] call btc_fnc_log_get_corner_points;
+private _model_selected = (0 boundingBoxReal btc_log_vehicle_selected) select 1;
+private _model_flat = (0 boundingBoxReal _flat) select 1;
+private _attachTo = [0, (_model_flat select 1) - (_model_selected select 1), (_model_selected select 2) - (_model_flat select 2) + 0.2];
 
-btc_log_vehicle_selected attachTo [_tower, [0, _relative_pos, 0.2 + ((btc_log_vehicle_selected modelToWorld [0, 0, 0]) select 2) - ((_tower modelToWorld [0, 0, 0]) select 2)]];
-
-private _pos_rear = _tower modelToWorld _model_rear_tower;
-private _pos_front = btc_log_vehicle_selected modelToWorld _model_front_selected;
-private _distance = 0.3 + (_pos_front distance _pos_rear);
-(_tower worldToModel _pos_front) params ["_model_front_selected_x", "_model_front_selected_y", "_model_front_selected_z"];
-
-ropeCreate [_tower, _model_rear_tower, _tower, [_model_front_selected_x - 0.4, _model_front_selected_y, _model_front_selected_z], _distance];
-ropeCreate [_tower, _model_rear_tower, _tower, [_model_front_selected_x + 0.4, _model_front_selected_y, _model_front_selected_z], _distance];
+btc_log_vehicle_selected attachTo [_flat, _attachTo];
+private _rope1 = ropeCreate [_tower, (_model_corners_tower select 0) vectorAdd [0, -2, 2], _flat, (_model_corners_flat select 2) vectorAdd [0.2, 0.05, 0.6]];
+private _rope2 = ropeCreate [_tower, (_model_corners_tower select 1) vectorAdd [0, -2, 2], _flat, (_model_corners_flat select 3) vectorAdd [-0.2, 0.05, 0.6]];
+private _shortRope = [_rope1, _rope2] select (ropeLength _rope1 > ropeLength _rope2);
+ropeUnwind [_shortRope, 2, ropeLength _rope1 max ropeLength _rope2, false];
 
 _tower setVariable ["btc_towing", btc_log_vehicle_selected, true];
 btc_log_vehicle_selected setVariable ["btc_towing", _tower, true];
 
 [_tower, "RopeBreak", {
-    params ["_tower", "_rope"];
-    _thisArgs params ["_towed"];
+    params ["_tower", "_rope", "_flat"];
+    _thisArgs params ["_vehicle_selected"];
 
     _tower removeEventHandler ["RopeBreak", _thisId];
 
-    deTach _towed;
+    deleteVehicle _flat;
+    deTach _vehicle_selected;
+    _vehicle_selected setVectorUp surfaceNormal position _vehicle_selected;
 
-    (getPos _towed) params ["_x", "_y", "_z"];
-
-    if (_z < -0.05) then {
-        _towed setPosASL [_x, _y, ((getPosASL _tower) select 2) - _z];
-    } else {
-        [_towed, [0, 0, 0.01]] remoteExecCall ["setVelocity", _towed];
-    };
-
-    _towed setVariable ["btc_towing", objNull, true];
+    _vehicle_selected setVariable ["btc_towing", objNull, true];
     _tower setVariable ["btc_towing", objNull, true];
 }, [btc_log_vehicle_selected]] call CBA_fnc_addBISEventHandler;
+
+[{
+    params ["_flat", "_rope1", "_rope2"];
+
+    [_flat, _rope1, _rope2,
+         (_flat call BIS_fnc_getPitchBank) select 0
+    ] call btc_fnc_tow_unwind;
+}, [_flat, _rope1, _rope2], 2] call CBA_fnc_waitAndExecute;
+
+btc_log_vehicle_selected = objNull;
