@@ -13,7 +13,7 @@ Returns:
 
 Examples:
     (begin example)
-        [cursorObject] spawn btc_fnc_tow_ropeCreate;
+        [cursorObject] call btc_fnc_tow_ropeCreate;
     (end)
 
 Author:
@@ -28,12 +28,8 @@ params [
 if !((isVehicleCargo btc_log_vehicle_selected) isEqualTo objNull) exitWith {(localize "STR_BTC_HAM_LOG_TOW_ALREADYTOWED") call CBA_fnc_notify;};
 if (_tower setVehicleCargo btc_log_vehicle_selected) exitWith {};
 
-btc_int_ask_data = nil;
-[4, _tower] remoteExecCall ["btc_fnc_int_ask_var", 2];
-
-waitUntil {!(isNil "btc_int_ask_data")};
-
-if (!isNull btc_int_ask_data) exitWith {(localize "STR_BTC_HAM_LOG_TOW_ALREADYTOWED") call CBA_fnc_notify;};
+private _towing = _tower getVariable ["btc_towing", objNull];
+if (!isNull _towing) exitWith {(localize "STR_BTC_HAM_LOG_TOW_ALREADYTOWED") call CBA_fnc_notify;};
 
 private _model_rear_tower = ([_tower] call btc_fnc_tow_hitch_points) select 1;
 private _model_front_selected = ([btc_log_vehicle_selected] call btc_fnc_tow_hitch_points) select 0;
@@ -49,8 +45,8 @@ private _distance = 0.3 + (_pos_front distance _pos_rear);
 ropeCreate [_tower, _model_rear_tower, _tower, [_model_front_selected_x - 0.4, _model_front_selected_y, _model_front_selected_z], _distance];
 ropeCreate [_tower, _model_rear_tower, _tower, [_model_front_selected_x + 0.4, _model_front_selected_y, _model_front_selected_z], _distance];
 
-[_tower, ["tow", btc_log_vehicle_selected]] remoteExecCall ["setVariable", 2];
-[btc_log_vehicle_selected, ["tow", _tower]] remoteExecCall ["setVariable", 2];
+_tower setVariable ["btc_towing", btc_log_vehicle_selected, true];
+btc_log_vehicle_selected setVariable ["btc_towing", _tower, true];
 
 [_tower, "RopeBreak", {
     params ["_tower", "_rope"];
@@ -68,6 +64,6 @@ ropeCreate [_tower, _model_rear_tower, _tower, [_model_front_selected_x + 0.4, _
         [_towed, [0, 0, 0.01]] remoteExecCall ["setVelocity", _towed];
     };
 
-    [_towed, ["tow", objNull]] remoteExecCall ["setVariable", 2];
-    [_tower, ["tow", objNull]] remoteExecCall ["setVariable", 2];
+    _towed setVariable ["btc_towing", objNull, true];
+    _tower setVariable ["btc_towing", objNull, true];
 }, [btc_log_vehicle_selected]] call CBA_fnc_addBISEventHandler;
