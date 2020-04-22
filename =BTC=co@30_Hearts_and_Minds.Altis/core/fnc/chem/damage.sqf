@@ -38,7 +38,7 @@ private _hasProtection = [
         backpack _unit isKindOf "B_SCBA_01_base_F" ||
         backpack _unit isKindOf "B_CombinationUnitRespirator_01_Base_F"
     ),
-    uniform _unit find "CBRN" > -1
+    "cbrn" in toLower uniform _unit
 ];
 
 if !(false in _hasProtection) exitWith {_this};

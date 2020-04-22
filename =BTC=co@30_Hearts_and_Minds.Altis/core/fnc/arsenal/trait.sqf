@@ -48,6 +48,12 @@ switch (true) do {
     case ([typeOf _player, ["MachineGun", ""]] call btc_fnc_mil_ammoUsage): {
         _type_ammoUsageAllowed = [7, [["MachineGun", ""]]];
     };
+    case ("cbrn" in toLower uniform _player): {
+        _type_ammoUsageAllowed = [8, [["AssaultRifle", "", [false, "Rifle_Long_Base_F"]]]];
+    };
+    case (_player getUnitTrait "UAVHacker"): {
+        _type_ammoUsageAllowed = [9, [["AssaultRifle", "", [false, "Rifle_Long_Base_F"]]]];
+    };
     default {
         _type_ammoUsageAllowed = [0, [["AssaultRifle", "", [false, "Rifle_Long_Base_F"]], ["RocketLauncher", ""]]];
     };

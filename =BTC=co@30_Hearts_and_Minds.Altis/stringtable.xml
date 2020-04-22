@@ -258,6 +258,21 @@
                 <German>Spiel wird automatisch Gespeichert, wenn alle Spieler das Spiel verlassen</German>
                 <Chinesesimp>所有玩家离线后自动存档</Chinesesimp>
             </Key>
+            <Key ID="STR_BTC_HAM_PARAM_DB_ARESTART">
+                <Original>Auto restart/shutdown server (Must define in server.cfg: serverCommandPassword = "btc_password")</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_DB_SHUTDOWN">
+                <Original>Shutdown</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_DB_SAVERESTART">
+                <Original>Save and restart</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_DB_SAVESHUTDOWN">
+                <Original>Save and shutdown</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_DB_ARESTARTTIME">
+                <Original>Time before auto restart/shutdown server</Original>
+            </Key>
         </Container>
         <Container name="Parameters: Factions">
             <Key ID="STR_BTC_HAM_PARAM_FAC_TITLE">
@@ -1781,6 +1796,9 @@
                 <Original>Isn't a side mission, can't abort</Original>
                 <German>Nur Nebenmissionen können abgebrochen werden</German>
                 <Chinesesimp>只能中止支线任务</Chinesesimp>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_COMMON_REBOOT">
+                <Original>Server reboot in 5min, leave it NOW!</Original>
             </Key>
         </Container>
         <Container name="Other: Shortcuts">
