@@ -640,6 +640,9 @@
                 <Portuguese>Reputação inicial:</Portuguese>
                 <Chinesesimp>初始声誉:</Chinesesimp>
             </Key>
+            <Key ID="STR_BTC_HAM_PARAM_OTHER_SHOWREP">
+                <Original>Show reputation change:</Original>
+            </Key>
             <Key ID="STR_BTC_HAM_PARAM_OTHER_SPAWNRAD">
                 <Original>Spawn city radius offset:</Original>
                 <German>Radius zum Spawnen von Einheiten:</German>
