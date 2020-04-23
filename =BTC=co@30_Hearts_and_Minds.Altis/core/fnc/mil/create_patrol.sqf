@@ -98,7 +98,6 @@ switch (_random) do {
 };
 
 [{
-    [_this select 0] call btc_fnc_mil_unit_create;
     _this call btc_fnc_patrol_init;
     [[_this select 0]] call btc_fnc_set_groupsOwner;
 }, [_group, [_start_city, _active_city], _area, _pos_isWater], btc_delay_createUnit] call CBA_fnc_waitAndExecute;
