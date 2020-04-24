@@ -504,7 +504,7 @@ btc_log_main_rc = [
     "Ship", 50,
     "Helicopter", 9999,
     "Car", 35,
-    "Lamps_base_F", 3
+    "Lamps_base_F", 2
 ];
 btc_log_def_cc = [
     "Land_CargoBox_V1_F", 0,
