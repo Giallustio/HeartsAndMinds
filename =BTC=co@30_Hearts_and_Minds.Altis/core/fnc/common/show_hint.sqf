@@ -100,16 +100,18 @@ private _text = switch (_type) do {
         ];
     };
     case 20 : {
+        _custom params ["_color", "_player"];
         [
-            [" "],
-            ["\A3\Data_F_Orange\Logos\arma3_orange_picture_ca.paa", 5, _custom],
+            [[name _player], [" "]] select (isNull _player),
+            ["\A3\Data_F_Orange\Logos\arma3_orange_picture_ca.paa", 4, _color],
             [" "]
         ];
     };
     case 21 : {
+        _custom params ["_color", "_player"];
         [
-            [" "],
-            ["\a3\Ui_f\data\GUI\Cfg\Debriefing\endDefault_ca.paa", 5, _custom],
+            [[name _player], [" "]] select (isNull _player),
+            ["\a3\Ui_f\data\GUI\Cfg\Debriefing\endDefault_ca.paa", 4, _color],
             [" "]
         ];
     };

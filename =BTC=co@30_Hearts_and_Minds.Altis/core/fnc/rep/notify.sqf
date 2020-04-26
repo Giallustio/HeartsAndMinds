@@ -7,6 +7,7 @@ Description:
 
 Parameters:
     _reputation - Reputation number. [Number]
+    _players - List of players triggered the reputation change. [Array]
 
 Returns:
 
@@ -21,19 +22,26 @@ Author:
 ---------------------------------------------------------------------------- */
 
 params [
-    ["_reputation", btc_rep_delayed, [0]]
+    ["_reputation", 0, [0]],
+    ["_players", [], [[]]]
 ];
+
+_players sort (_reputation <= 0);
+private _player = _players select 0 select 1;
 
 private _hint = [];
 if (_reputation >= 0) then {
-    _hint pushBack 20;
     private _minRep = _reputation min 100;
-    _hint pushBack [1 - _minRep / 100, 1, 1 - _minRep / 100];
+
+    _hint pushBack 20;
+    _hint pushBack [[1 - _minRep / 100, 1, 1 - _minRep / 100], _player];
 } else {
-    _hint pushBack 21;
     private _minRep = _reputation max -25;
-    _hint pushBack [1, 1 + _minRep / 25, 1 + _minRep / 25];
+
+    _hint pushBack 21;
+    _hint pushBack [[1, 1 + _minRep / 25, 1 + _minRep / 25], _player];
 };
+
 _hint remoteExecCall ["btc_fnc_show_hint", [0, -2] select isDedicated];
 
-btc_rep_delayed = 0;
+btc_rep_delayed = [0, []];

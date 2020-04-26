@@ -38,7 +38,7 @@ if (_part in ["body", "wheel_1_1_steering", "wheel_1_2_steering", "wheel_2_1_ste
             _this remoteExecCall ["btc_fnc_rep_hd", 2];
         };
 
-        btc_rep_malus_civ_hd call btc_fnc_rep_change;
+        [btc_rep_malus_civ_hd, _injurer] call btc_fnc_rep_change;
 
         if (btc_global_reputation < 600) then {[getPos _unit] call btc_fnc_rep_eh_effects;};
         if (btc_debug_log) then {

@@ -31,7 +31,7 @@ if (!isServer) exitWith {
 };
 
 if (isPlayer _killer) then {
-    btc_rep_malus_civ_killed call btc_fnc_rep_change;
+    [btc_rep_malus_civ_killed, _killer] call btc_fnc_rep_change;
     if (btc_global_reputation < 600) then {
         [getPos _unit] call btc_fnc_rep_eh_effects;
     };

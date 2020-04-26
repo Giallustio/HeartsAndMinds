@@ -164,7 +164,7 @@ if (isServer) then {
     btc_global_reputation = _p_rep;
     btc_rep_militia_call_time = 600;
     btc_rep_militia_called = - btc_rep_militia_call_time;
-    btc_rep_delayed = 0;
+    btc_rep_delayed = [0, []];
 
     //Chem
     btc_chem_decontaminate = [btc_bigShower];
