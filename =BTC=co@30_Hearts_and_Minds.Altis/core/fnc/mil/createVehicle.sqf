@@ -9,17 +9,18 @@ Parameters:
     _group - Group to store crews. [Group]
     _pos - Position of creation. [Array]
     _veh_type - Vehicle type. [String]
+    _code - Code to apply on vehicle after creation. [Code]
     _dir - Direction of spawn. [Number]
     _type_units - Array of available unit type for cargo. [Array]
     _type_divers - Units used for submarine. [Array]
     _type_crewmen - Array of available crews type. [Array]
+    _p_chem - Allow chemical propagation. [Boolean]
 
 Returns:
-    _veh - Vehicle created. [Object]
 
 Examples:
     (begin example)
-        _veh = [createGroup [btc_enemy_side, true], getPosATL player] call btc_fnc_mil_createVehicle;
+        [createGroup [btc_enemy_side, true], player getPos [10, direction player]] call btc_fnc_mil_createVehicle;
     (end)
 
 Author:
@@ -31,6 +32,7 @@ params [
     ["_group", grpNull, [grpNull]],
     ["_pos", [0, 0, 0], [[]]],
     ["_veh_type", selectRandom btc_type_motorized, [""]],
+    ["_code", {}, [{}]],
     ["_dir", 0, [0]],
     ["_type_units", btc_type_units, [[]]],
     ["_type_divers", btc_type_divers, [[]]],
@@ -39,27 +41,20 @@ params [
 ];
 
 private _needdiver = getText (configFile >> "CfgVehicles" >> _veh_type >> "simulation") isEqualTo "submarinex";
-if (_veh_type isKindOf "Van_02_vehicle_base_F") then {
-    _veh_type = "I_C_Van_02_transport_F"; // https://feedback.bistudio.com/T129141
+_type_crewmen = [_type_crewmen, _type_divers select 0] select _needdiver;
+
+private _units_type = [];
+private _crewSeats = [_veh_type, false] call BIS_fnc_crewCount;
+private _totalSeats = [_veh_type, true] call BIS_fnc_crewCount;
+for "_i" from 0 to (_crewSeats - 1) do {
+    _units_type pushBack _type_crewmen
+};
+for "_i" from _crewSeats to (_totalSeats - 1) do {
+    _units_type pushBack selectRandom _type_units;
 };
 
-private _veh = createVehicle [_veh_type, _pos, [], 0, "FLY"];
-if !(_veh_type isKindOf "Plane") then {
-    _veh setDir _dir;
-    _veh setVectorUp surfaceNormal position _veh;
-};
-if (_p_chem) then {
-    _veh addEventHandler ["GetIn", {
-        [_this select 0, _this select 2] call btc_fnc_chem_propagate;
-        _this
-    }];
-};
+[_group, _veh_type, _units_type, _pos, _code, _dir] call btc_fnc_delay_createVehicle;
 
-private _units = [_veh, _group, false, "", [_type_crewmen, _type_divers select 0] select _needdiver] call BIS_fnc_spawnCrew;
-_group selectLeader (driver _veh);
-_units joinSilent _group;
-
-private _cargo = _veh emptyPositions "cargo";
-[_group, _pos, _cargo, _needdiver, _type_units, _type_divers] call btc_fnc_mil_createUnits;
-
-_veh
+[{
+    _this call btc_fnc_mil_unit_create;
+}, [_group], btc_delay_createUnit] call CBA_fnc_waitAndExecute;

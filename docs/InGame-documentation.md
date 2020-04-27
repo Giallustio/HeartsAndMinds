@@ -3,7 +3,7 @@
 ## Headless & Database
 This mission automatically uses one Headless client when available.
 
-This mission has a database system. Enemy units, towns, hideouts, cache, objects created by players or Zeus, vehicles, players markers (not lines) on global channel are saved. All admin can save mission progress at any time with his self interaction key.
+This mission has a database system. Enemy units, towns, hideouts, cache, objects created or static weapons assembled by players or Zeus, vehicles, players markers (not lines) on global channel are saved. All admin can save mission progress at any time with his self interaction key.
 
 
 ## Chemical Warfare
@@ -85,9 +85,16 @@ To destroy an hideout just place a satchel near the ammo box, it's close to the 
 
 
 ## IED
-Any object could be an IED, approach it carefully (DO NOT rotate while you are walking: prefer walk, stop, rotate, walk again etc). Turn On your mine detector (VMH3 or VMMH3) and search for a charge in a circle of 2 meter around.
-If you are an engineer and have a defusal kit, you can disarm it.
-You can also blow them off with high caliber and explosive satchels.
+Any object could be an IED or a fake IED.
+
+### Detection:
+Approach IED carefully (DO NOT rotate while you are walking: prefer walk, stop, rotate, walk again etc). Turn On your mine detector (VMH3 or VMMH3) and search for a charge in a circle of 2 meter around.
+
+### Defuse:
+If you are an engineer and have a defusal kit, you can disarm it. You can also blow them off with high caliber and explosive satchels.
+
+### Clean up
+You can remove wreck or object around IED or fake IED by driving a Nemmera in their direction.
 
 
 ## Intel

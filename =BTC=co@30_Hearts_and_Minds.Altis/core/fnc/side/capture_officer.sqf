@@ -70,81 +70,88 @@ private _markers = [_marker1, _marker2, _area];
 private _group = createGroup btc_enemy_side;
 _group setVariable ["no_cache", true];
 
-private _vehs = [];
 private _veh_types = btc_civ_type_veh select {!(_x isKindOf "air")};
 for "_i" from 0 to (1 + round random 1) do {
-    private _veh = [_group, _pos1, selectRandom _veh_types, [_road] call btc_fnc_road_direction] call btc_fnc_mil_createVehicle;
-
-    _vehs pushBack _veh;
+    [_group, _pos1, selectRandom _veh_types, {}, [_road] call btc_fnc_road_direction] call btc_fnc_mil_createVehicle;
 
     _road = (roadsConnectedTo _road) select 0;
     _pos1 = getPosATL _road;
 };
 
-private _captive = selectRandom units _group;
-removeAllWeapons _captive;
-_group selectLeader _captive;
+[{
+    _this spawn {
+        params ["_group", "_taskID", "_radius_x", "_city1", "_pos2", "_markers"];
 
-private _surrender_taskID = _taskID + "su";
-[[_surrender_taskID, _taskID], 24, objNull, typeOf _captive] call btc_fnc_task_create;
-private _handcuff_taskID = _taskID + "hc";
-private _back_taskID = _taskID + "bk";
+        private _captive = selectRandom units _group;
+        removeAllWeapons _captive;
+        _group selectLeader _captive;
 
-[_group, _pos2, -1, "MOVE", "SAFE", "RED", "LIMITED", "COLUMN", format ["['%1', 'FAILED'] call BIS_fnc_taskSetState;", _taskID], [0, 0, 0], _radius_x / 1.5] call CBA_fnc_addWaypoint;
+        private _surrender_taskID = _taskID + "su";
+        [[_surrender_taskID, _taskID], 24, objNull, typeOf _captive] call btc_fnc_task_create;
+        private _handcuff_taskID = _taskID + "hc";
+        private _back_taskID = _taskID + "bk";
 
-//// Create trigger \\\\
-private _trigger = createTrigger ["EmptyDetector", getPos _city1];
-_trigger setVariable ["captive", _captive];
-_trigger setTriggerArea [15, 15, 0, false];
-_trigger setTriggerActivation [str btc_player_side, "PRESENT", true];
-_trigger setTriggerStatements ["this", format ["_captive = thisTrigger getVariable 'captive'; deleteVehicle thisTrigger; doStop _captive; [_captive, true] call ace_captives_fnc_setSurrendered; ['%1', 'SUCCEEDED'] call BIS_fnc_taskSetState; [['%2', '%4'], 29, _captive] call btc_fnc_task_create; [['%3', '%4'], 21, btc_create_object_point, typeOf btc_create_object_point] call btc_fnc_task_create;", _surrender_taskID, _handcuff_taskID, _back_taskID, _taskID], ""];
-_trigger attachTo [_captive, [0, 0, 0]];
+        [_group, _pos2, -1, "MOVE", "SAFE", "RED", "LIMITED", "COLUMN", format ["['%1', 'FAILED'] call BIS_fnc_taskSetState;", _taskID], [0, 0, 0], _radius_x / 1.5] call CBA_fnc_addWaypoint;
 
-private _agent = [leader _group, _pos2, _taskID] call btc_fnc_info_path;
-_agent addEventHandler ["PathCalculated", {
-    params ["_agent", "_path"];
+        //// Create trigger \\\\
+        private _trigger = createTrigger ["EmptyDetector", getPos _city1];
+        _trigger setVariable ["captive", _captive];
+        _trigger setTriggerArea [15, 15, 0, false];
+        _trigger setTriggerActivation [str btc_player_side, "PRESENT", true];
+        _trigger setTriggerStatements ["this", format ["_captive = thisTrigger getVariable 'captive'; deleteVehicle thisTrigger; doStop _captive; [_captive, true] call ace_captives_fnc_setSurrendered; ['%1', 'SUCCEEDED'] call BIS_fnc_taskSetState; [['%2', '%4'], 29, _captive] call btc_fnc_task_create; [['%3', '%4'], 21, btc_create_object_point, typeOf btc_create_object_point] call btc_fnc_task_create;", _surrender_taskID, _handcuff_taskID, _back_taskID, _taskID], ""];
+        _trigger attachTo [_captive, [0, 0, 0]];
 
-    [12] remoteExecCall ["btc_fnc_show_hint", [0, -2] select isDedicated];
-    _agent removeEventHandler ["PathCalculated", _thisEventHandler];
-}];
+        private _agent = [leader _group, _pos2, _taskID] call btc_fnc_info_path;
+        _agent addEventHandler ["PathCalculated", {
+            params ["_agent", "_path"];
 
-["ace_captiveStatusChanged", {
-    params ["_unit", "_state", "_type"];
-    _thisArgs params ["_captive", "_handcuff_taskID"];
+            [12] remoteExecCall ["btc_fnc_show_hint", [0, -2] select isDedicated];
+            _agent removeEventHandler ["PathCalculated", _thisEventHandler];
+        }];
 
-    if (_captive isEqualTo objNull) then {
-        [_thisType, _thisId] call CBA_fnc_removeEventHandler;
+        ["ace_captiveStatusChanged", {
+            params ["_unit", "_state", "_type"];
+            _thisArgs params ["_captive", "_handcuff_taskID"];
+
+            if (_captive isEqualTo objNull) then {
+                [_thisType, _thisId] call CBA_fnc_removeEventHandler;
+            };
+            if (_unit isEqualTo _captive && _type isEqualTo "SetHandcuffed") then {
+                [_thisType, _thisId] call CBA_fnc_removeEventHandler;
+                [_handcuff_taskID, "SUCCEEDED"] call BIS_fnc_taskSetState;
+            };
+            _this
+        }, [_captive, _handcuff_taskID]] call CBA_fnc_addEventHandlerArgs;
+
+        waitUntil {sleep 5; (!(alive _captive) || (_captive inArea [getPosWorld btc_create_object_point, 100, 100, 0, false]) || _taskID call BIS_fnc_taskCompleted)};
+
+        _markers append (allMapMarkers select {(_x select [0, count _taskID]) isEqualTo _taskID});
+
+        private _vehs = (units _group) apply {assignedVehicle _x};
+        _vehs = (_vehs arrayIntersect _vehs);
+        if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {
+            deleteVehicle _trigger;
+            [_markers, _vehs + [_group]] call btc_fnc_delete;
+        };
+
+        if (!alive _captive || _taskID call BIS_fnc_taskState isEqualTo "FAILED") exitWith {
+            deleteVehicle _trigger;
+            [_taskID, "FAILED"] call btc_fnc_task_setState;
+            _group setVariable ["no_cache", false];
+            {
+                _group = createGroup btc_enemy_side;
+                (crew _x) joinSilent _group;
+                [btc_fnc_data_add_group, _group] call CBA_fnc_directCall;
+            } forEach _vehs;
+            [_markers, []] call btc_fnc_delete;
+        };
+
+        50 call btc_fnc_rep_change;
+
+        [_taskID, "SUCCEEDED"] call btc_fnc_task_setState;
+
+        [_markers, _vehs + [_captive, _group]] call btc_fnc_delete;
     };
-    if (_unit isEqualTo _captive && _type isEqualTo "SetHandcuffed") then {
-        [_thisType, _thisId] call CBA_fnc_removeEventHandler;
-        [_handcuff_taskID, "SUCCEEDED"] call BIS_fnc_taskSetState;
-    };
-    _this
-}, [_captive, _handcuff_taskID]] call CBA_fnc_addEventHandlerArgs;
+}, [_group, _taskID, _radius_x, _city1, _pos2, _markers], btc_delay_createUnit] call CBA_fnc_waitAndExecute;
 
-waitUntil {sleep 5; (!(alive _captive) || (_captive inArea [getPosWorld btc_create_object_point, 100, 100, 0, false]) || _taskID call BIS_fnc_taskCompleted)};
-
-_markers append (allMapMarkers select {(_x select [0, count _taskID]) isEqualTo _taskID});
-
-if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {
-    deleteVehicle _trigger;
-    [_markers, _vehs + [_group]] call btc_fnc_delete;
-};
-
-if (!alive _captive || _taskID call BIS_fnc_taskState isEqualTo "FAILED") exitWith {
-    deleteVehicle _trigger;
-    [_taskID, "FAILED"] call btc_fnc_task_setState;
-    _group setVariable ["no_cache", false];
-    {
-        _group = createGroup btc_enemy_side;
-        (crew _x) joinSilent _group;
-        _group call btc_fnc_data_add_group;
-    } forEach _vehs;
-    [_markers, []] call btc_fnc_delete;
-};
-
-50 call btc_fnc_rep_change;
-
-[_taskID, "SUCCEEDED"] call btc_fnc_task_setState;
-
-[_markers, _vehs + [_captive, _group]] call btc_fnc_delete;
+waitUntil {sleep 5; _taskID call BIS_fnc_taskCompleted};

@@ -41,6 +41,22 @@ _player addEventHandler ["WeaponAssembled", {
 
     _this
 }];
+_player addEventHandler ["GetInMan", {_this call btc_fnc_ied_deleteLoop}];
+_player addEventHandler ["GetOutMan", {
+    if (btc_ied_deleteOn > -1) then {
+        [btc_ied_deleteOn] call CBA_fnc_removePerFrameHandler;
+        btc_ied_deleteOn = -1;
+    };
+}];
+_player addEventHandler ["WeaponAssembled", {
+    params [
+        ["_player", objNull, [objNull]],
+        ["_static", objNull, [objNull]]
+    ];
+
+    if !(_static isKindOf "StaticWeapon") exitWith {_this};
+    [_static] remoteExecCall ["btc_fnc_log_init", 2];
+}];
 
 if (btc_p_chem) then {
      // Add biopsy

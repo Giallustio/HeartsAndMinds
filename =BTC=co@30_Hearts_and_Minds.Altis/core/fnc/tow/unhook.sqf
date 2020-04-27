@@ -24,16 +24,12 @@ params [
     ["_veh", objNull, [objNull]]
 ];
 
-btc_int_ask_data = nil;
-[4, _veh] remoteExecCall ["btc_fnc_int_ask_var", 2];
+private _towing = _veh getVariable ["btc_towing", objNull];
+if (isNull _towing) exitWith {(localize "STR_BTC_HAM_LOG_UNHOOK_NOROPE") call CBA_fnc_notify;};
 
-[{!(isNil "btc_int_ask_data")}, {
-    if (isNull btc_int_ask_data) exitWith {(localize "STR_BTC_HAM_LOG_UNHOOK_NOROPE") call CBA_fnc_notify;};
+private _ropes = ropes _this;
+if (_ropes isEqualTo []) then {
+    _ropes = ropes _towing;
+};
 
-    private _ropes = ropes _this;
-    if (_ropes isEqualTo []) then {
-        _ropes = ropes btc_int_ask_data;
-    };
-
-    _ropes apply {ropeDestroy _x};
-}, _veh] call CBA_fnc_waitUntilAndExecute;
+_ropes apply {ropeDestroy _x};

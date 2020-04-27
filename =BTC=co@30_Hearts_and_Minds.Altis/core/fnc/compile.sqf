@@ -63,6 +63,11 @@ if (isServer) then {
     btc_fnc_db_loadObjectStatus = compile preprocessFileLineNumbers "core\fnc\db\loadObjectStatus.sqf";
     btc_fnc_db_saveObjectStatus = compile preprocessFileLineNumbers "core\fnc\db\saveObjectStatus.sqf";
     btc_fnc_db_loadCargo = compile preprocessFileLineNumbers "core\fnc\db\loadcargo.sqf";
+    btc_fnc_db_autoRestart = compile preprocessFileLineNumbers "core\fnc\db\autoRestart.sqf";
+
+    //DELAY
+    btc_fnc_delay_createUnit = compile preprocessFileLineNumbers "core\fnc\delay\createUnit.sqf";
+    btc_fnc_delay_createVehicle = compile preprocessFileLineNumbers "core\fnc\delay\createVehicle.sqf";
 
     //EH
     btc_fnc_eh_veh_add_respawn = compile preprocessFileLineNumbers "core\fnc\eh\veh_add_respawn.sqf";
@@ -278,6 +283,7 @@ if (!isDedicated) then {
     btc_fnc_ied_effect_rocks = compile preprocessFileLineNumbers "core\fnc\ied\effect_rocks.sqf";
     btc_fnc_ied_effect_blurEffect = compile preprocessFileLineNumbers "core\fnc\ied\effect_blurEffect.sqf";
     btc_fnc_ied_effect_shock_wave = compile preprocessFileLineNumbers "core\fnc\ied\effect_shock_wave.sqf";
+    btc_fnc_ied_deleteLoop = compile preprocessFileLineNumbers "core\fnc\ied\deleteLoop.sqf";
 
     //EH
     btc_fnc_eh_player_respawn = compile preprocessFileLineNumbers "core\fnc\eh\player_respawn.sqf";
