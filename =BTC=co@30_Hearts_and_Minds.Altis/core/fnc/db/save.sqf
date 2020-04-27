@@ -169,7 +169,10 @@ private _array_obj = [];
     if !(_data isEqualTo []) then {
         _array_obj pushBack _data;
     };
-} forEach (btc_log_obj_created select {!(isObjectHidden _x)});
+} forEach (btc_log_obj_created select {
+    !(isObjectHidden _x) &&
+    (objectParent _x) isEqualTo objNull
+});
 profileNamespace setVariable [format ["btc_hm_%1_objs", _name], _array_obj];
 
 //Player Markers
