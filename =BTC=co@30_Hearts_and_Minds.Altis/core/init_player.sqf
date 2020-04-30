@@ -1,4 +1,5 @@
 [] call compile preprocessFileLineNumbers "core\doc.sqf";
+btc_map_mapIllumination = ace_map_mapIllumination;
 
 [{!isNull player}, {
     btc_respawn_marker setMarkerPosLocal player;

@@ -26,10 +26,14 @@ params [
 ];
 
 [_player, "Respawn", {
+    if !(ace_map_mapIllumination) then {ace_map_mapIllumination = btc_map_mapIllumination;};
+}] call CBA_fnc_addBISEventHandler;
+[_player, "Respawn", {
     player removeEventHandler [_thisType, _thisID];
     [] spawn btc_fnc_intro;
 }] call CBA_fnc_addBISEventHandler;
 _player addEventHandler ["Killed", {
+    if (ace_map_mapIllumination) then {ace_map_mapIllumination = false;};
     if (isObjectHidden player) exitWith {};
     btc_rep_malus_player_respawn remoteExecCall ["btc_fnc_rep_change", 2];
 }];
