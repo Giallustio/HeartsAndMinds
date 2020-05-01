@@ -1,5 +1,7 @@
 [] call compile preprocessFileLineNumbers "core\doc.sqf";
 btc_map_mapIllumination = ace_map_mapIllumination;
+endLoadingScreen;
+[] spawn btc_fnc_intro;
 
 [{!isNull player}, {
     btc_respawn_marker setMarkerPosLocal player;
@@ -29,8 +31,6 @@ btc_map_mapIllumination = ace_map_mapIllumination;
         default {
         };
     };
-
-    endLoadingScreen;
 }] call CBA_fnc_waitUntilAndExecute;
 
 if (btc_debug) then {

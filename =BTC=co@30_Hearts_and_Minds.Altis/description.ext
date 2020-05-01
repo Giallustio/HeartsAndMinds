@@ -52,7 +52,7 @@ class Extended_InitPost_EventHandlers {
 respawn = "BASE";
 respawnDelay = 2;
 respawnDialog = 0;
-respawnOnStart = 1;
+respawnOnStart = 0;
 respawnTemplates[] = {"MenuPosition"};
 
 // Disable BI wreck system (H&M handle it internally)
