@@ -22,10 +22,11 @@ Author:
 ---------------------------------------------------------------------------- */
 
 params [
-    ["_tower", objNull, [objNull]]
+    ["_tower", objNull, [objNull]],
+    ["_vehicle_selected", btc_log_vehicle_selected, [objNull]]
 ];
 
-private _distanceCheck = [_tower, btc_log_vehicle_selected] call btc_fnc_tow_check;
+private _distanceCheck = [_tower, _vehicle_selected] call btc_fnc_tow_check;
 if (false in _distanceCheck) exitWith {
     switch (_distanceCheck) do {
         case [true, false]: {
@@ -47,32 +48,37 @@ if (false in _distanceCheck) exitWith {
 
 private _towing = _tower getVariable ["btc_towing", objNull];
 if (
-    !((isVehicleCargo btc_log_vehicle_selected) isEqualTo objNull) ||
+    !((isVehicleCargo _vehicle_selected) isEqualTo objNull) ||
     !isNull _towing
 ) exitWith {(localize "STR_BTC_HAM_LOG_TOW_ALREADYTOWED") call CBA_fnc_notify;};
-if (_tower setVehicleCargo btc_log_vehicle_selected) exitWith {};
+if (_tower setVehicleCargo _vehicle_selected) exitWith {};
 
 "Towing in progress, please wait..." call CBA_fnc_notify;
 
-private _flat = createVehicle ["Truck_01_Rack_F", getPosATL btc_log_vehicle_selected, [], 0, "CAN_COLLIDE"];
-_flat setDir getDir btc_log_vehicle_selected;
-//_flat setObjectTextureGlobal [0, ""];
-//_flat setObjectTextureGlobal [1, ""];
+private _vectorUp = vectorUp _vehicle_selected;
+private _dirSelected = getDir _vehicle_selected;
+private _model_selected = (0 boundingBoxReal _vehicle_selected) select 1;
+private _model_front_selected = ([_vehicle_selected] call btc_fnc_log_get_corner_points) select 2;
+private _posFlat = _vehicle_selected getPos [(_model_front_selected select 1) - (_model_selected select 1), _dirSelected];
+_posFlat set [2, (getPosATL _vehicle_selected) select 2];
+
+private _flat = createVehicle ["Truck_01_Rack_F", _posFlat, [], 0, "CAN_COLLIDE"];
+_flat setDir _dirSelected;
+_flat setVectorUp _vectorUp;
 
 private _model_corners_tower = [_tower] call btc_fnc_log_get_corner_points;
 private _model_corners_flat = [_flat] call btc_fnc_log_get_corner_points;
-private _model_selected = (0 boundingBoxReal btc_log_vehicle_selected) select 1;
 private _model_flat = (0 boundingBoxReal _flat) select 1;
-private _attachTo = [0, (_model_flat select 1) - (_model_selected select 1), (_model_selected select 2) - (_model_flat select 2) + 0.2];
+private _attachTo = [0, (_model_flat select 1) - (_model_selected select 1), (_model_selected select 2) - (_model_flat select 2)];
 
-btc_log_vehicle_selected attachTo [_flat, _attachTo];
-private _rope1 = ropeCreate [_tower, (_model_corners_tower select 0) vectorAdd [0, -2, 2], _flat, (_model_corners_flat select 2) vectorAdd [0, 0.05, 0.6]];
-private _rope2 = ropeCreate [_tower, (_model_corners_tower select 1) vectorAdd [0, -2, 2], _flat, (_model_corners_flat select 3) vectorAdd [0, 0.05, 0.6]];
+_vehicle_selected attachTo [_flat, _attachTo];
+private _rope1 = ropeCreate [_tower, (_model_corners_tower select 0) vectorAdd [0, -1, 2], _flat, (_model_corners_flat select 2) vectorAdd [0, 0.05, 0.6]];
+private _rope2 = ropeCreate [_tower, (_model_corners_tower select 1) vectorAdd [0, -1, 2], _flat, (_model_corners_flat select 3) vectorAdd [0, 0.05, 0.6]];
 private _shortRope = [_rope1, _rope2] select (ropeLength _rope1 > ropeLength _rope2);
 ropeUnwind [_shortRope, 2, ropeLength _rope1 max ropeLength _rope2, false];
 
-_tower setVariable ["btc_towing", btc_log_vehicle_selected, true];
-btc_log_vehicle_selected setVariable ["btc_towing", _tower, true];
+_tower setVariable ["btc_towing", _vehicle_selected, true];
+_vehicle_selected setVariable ["btc_towing", _tower, true];
 
 [_tower, "RopeBreak", {
     params ["_tower", "_rope", "_flat"];
@@ -86,7 +92,7 @@ btc_log_vehicle_selected setVariable ["btc_towing", _tower, true];
 
     _vehicle_selected setVariable ["btc_towing", objNull, true];
     _tower setVariable ["btc_towing", objNull, true];
-}, [btc_log_vehicle_selected]] call CBA_fnc_addBISEventHandler;
+}, [_vehicle_selected]] call CBA_fnc_addBISEventHandler;
 
 [{
     params ["_flat", "_rope1", "_rope2"];
