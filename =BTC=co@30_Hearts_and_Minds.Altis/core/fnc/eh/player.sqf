@@ -77,3 +77,5 @@ if (btc_p_spect) then {
         [_unit, currentWeapon _unit] call btc_fnc_spect_updateDevice;
     }] call CBA_fnc_addPlayerEventHandler;
 };
+
+["btc_tow_unwindDone", {"Towing done." call CBA_fnc_notify}] call CBA_fnc_addEventHandler;

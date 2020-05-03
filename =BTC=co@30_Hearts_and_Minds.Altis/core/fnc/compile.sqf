@@ -239,7 +239,6 @@ btc_fnc_rep_hd = compile preprocessFileLineNumbers "core\fnc\rep\hd.sqf";
 btc_fnc_rep_killed = compile preprocessFileLineNumbers "core\fnc\rep\killed.sqf";
 
 //TOW
-btc_fnc_tow_hook = compile preprocessFileLineNumbers "core\fnc\tow\hook.sqf";
 btc_fnc_tow_check = compile preprocessFileLineNumbers "core\fnc\tow\check.sqf";
 
 //ARSENAL

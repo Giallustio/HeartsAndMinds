@@ -1915,7 +1915,7 @@
         </Container>
         <Container name="Logistic: Hook ">
             <Key ID="STR_BTC_HAM_LOG_HOOK_HINFO">
-                <Original>Interact with a vehicle to tow it!&lt;br/&gt;(This vehicle can't tow %1)</Original>
+                <Original>Can't tow!&lt;br/&gt;(This vehicle can't tow %1)</Original>
                 <Spanish>Interactúe con un vehículo para remolcarlo!&lt;br/&gt;(Este vehículo no puede remolcar %1)</Spanish>
                 <German>Interagieren Sie mit dem Zug-Fahrzeug, um es abzuschleppen!&lt;br/&gt;(Folgende Fahrzeuge können nicht gezogen werden: %1)</German>
                 <Portuguese>Interaja com o veículo para rebocá-lo!&lt;br/&gt;(Este veículo não pode rebocar %1)</Portuguese>

@@ -29,12 +29,12 @@ Author:
 
     private _actualPitch = (_flat call BIS_fnc_getPitchBank) select 0;
     if (0.5 in ([_rope1, _rope2] apply {ropeLength _x})) exitWith {};
-    if (_actualPitch - _initialPitch > 3) exitWith {
+    if (_actualPitch - _initialPitch > 4) exitWith {
         [{
             params ["_flat", "_rope1", "_rope2", "_initialPitch"];
 
             private _actualPitch = (_flat call BIS_fnc_getPitchBank) select 0;
-            _actualPitch - _initialPitch < 3
+            _actualPitch - _initialPitch < 4
         }, {
             _this call btc_fnc_tow_unwind;
         }, _this, 1, {

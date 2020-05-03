@@ -25,12 +25,34 @@ params [
     ["_tower", objNull, [objNull]]
 ];
 
+private _distanceCheck = [_tower, btc_log_vehicle_selected] call btc_fnc_tow_check;
+if (false in _distanceCheck) exitWith {
+    switch (_distanceCheck) do {
+        case [true, false]: {
+            "too far" call CBA_fnc_notify;
+        };
+        case [false,true]: {
+            "too close" call CBA_fnc_notify;
+        };
+        default {
+            private _string_array = "";
+            {
+                _string_array = _string_array + ", " + _x;
+            } forEach (([_tower] call btc_fnc_log_get_nottowable) - ["Truck_F"]);
+
+            (format [localize "STR_BTC_HAM_LOG_HOOK_HINFO", _string_array]) call CBA_fnc_notify;
+        };
+    };
+};
+
 private _towing = _tower getVariable ["btc_towing", objNull];
 if (
     !((isVehicleCargo btc_log_vehicle_selected) isEqualTo objNull) ||
     !isNull _towing
 ) exitWith {(localize "STR_BTC_HAM_LOG_TOW_ALREADYTOWED") call CBA_fnc_notify;};
 if (_tower setVehicleCargo btc_log_vehicle_selected) exitWith {};
+
+"Towing in progress, please wait..." call CBA_fnc_notify;
 
 private _flat = createVehicle ["Truck_01_Rack_F", getPosATL btc_log_vehicle_selected, [], 0, "CAN_COLLIDE"];
 _flat setDir getDir btc_log_vehicle_selected;
@@ -44,8 +66,8 @@ private _model_flat = (0 boundingBoxReal _flat) select 1;
 private _attachTo = [0, (_model_flat select 1) - (_model_selected select 1), (_model_selected select 2) - (_model_flat select 2) + 0.2];
 
 btc_log_vehicle_selected attachTo [_flat, _attachTo];
-private _rope1 = ropeCreate [_tower, (_model_corners_tower select 0) vectorAdd [0, -2, 2], _flat, (_model_corners_flat select 2) vectorAdd [0.2, 0.05, 0.6]];
-private _rope2 = ropeCreate [_tower, (_model_corners_tower select 1) vectorAdd [0, -2, 2], _flat, (_model_corners_flat select 3) vectorAdd [-0.2, 0.05, 0.6]];
+private _rope1 = ropeCreate [_tower, (_model_corners_tower select 0) vectorAdd [0, -2, 2], _flat, (_model_corners_flat select 2) vectorAdd [0, 0.05, 0.6]];
+private _rope2 = ropeCreate [_tower, (_model_corners_tower select 1) vectorAdd [0, -2, 2], _flat, (_model_corners_flat select 3) vectorAdd [0, 0.05, 0.6]];
 private _shortRope = [_rope1, _rope2] select (ropeLength _rope1 > ropeLength _rope2);
 ropeUnwind [_shortRope, 2, ropeLength _rope1 max ropeLength _rope2, false];
 

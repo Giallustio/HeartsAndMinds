@@ -6,14 +6,15 @@ Description:
     _tower ----rope--- (hook)_towed
 
 Parameters:
-    _tower - [Object]
-    _towed - [Object]
+    _tower - Tower vehicle. [Object]
+    _towed - Tower vehicle. [Object]
 
 Returns:
+    _canTow - . [Array]
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_tow_check;
+        _canTow = [cursorObject, btc_log_vehicle_selected] call btc_fnc_tow_check;
     (end)
 
 Author:
@@ -28,21 +29,10 @@ params [
 
 private _array = [_tower] call btc_fnc_log_get_nottowable;
 
-if ((_array findIf {_towed isKindOf _x}) != -1) exitWith {false};
+if ((_array findIf {_towed isKindOf _x}) != -1) exitWith {[false, false]};
 
 private _model_rear = ([_tower] call btc_fnc_tow_hitch_points) select 1;
 private _model_front = ([_towed] call btc_fnc_tow_hitch_points) select 0;
 private _distance = (_towed modeltoworld _model_front) distance (_tower modeltoworld _model_rear);
 
-if (btc_debug) then {
-    if (isNil "btc_arrow_1") then {
-        btc_arrow_1 = "Sign_Arrow_F" createVehicleLocal [0, 0, 0];
-        btc_arrow_2 = "Sign_Arrow_F" createVehicleLocal [0, 0, 0];
-    };
-    btc_arrow_1 setPosASL AGLtoASL (_tower modelToWorldVisual _model_rear);
-    btc_arrow_2 setPosASL AGLtoASL (_towed modelToWorldVisual _model_front);
-};
-
-private _can_tow = (_distance > 1.3) && (_distance < 5);
-
-_can_tow
+[_distance > 1.3, _distance < 5]
