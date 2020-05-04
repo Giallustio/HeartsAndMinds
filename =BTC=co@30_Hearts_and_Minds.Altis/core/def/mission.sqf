@@ -137,6 +137,7 @@ if (isServer) then {
     btc_hideout_range = 3500;
     btc_hideout_cap_time = 1800;
     btc_hideout_cap_checking = false;
+    btc_hideout_minRange = btc_hideout_range;
 
     //IED
     btc_ied_suic_time = 900;
