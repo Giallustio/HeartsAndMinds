@@ -333,7 +333,10 @@ _allclasse = [[_p_civ_veh]] call btc_fnc_civ_class;
 btc_civ_type_veh = _allclasse select 2;
 btc_civ_type_boats = _allclasse select 1;
 
-btc_w_civs = ["V_Rangemaster_belt", "arifle_Mk20_F", "30Rnd_556x45_Stanag", "hgun_ACPC2_F", "9Rnd_45ACP_Mag"];
+btc_w_civs = [
+    ["srifle_DMR_06_hunter_F", "sgun_HunterShotgun_01_F", "srifle_DMR_06_hunter_khs_F", "sgun_HunterShotgun_01_Sawedoff_F", "Hgun_PDW2000_F", "arifle_AKM_F", "arifle_AKS_F"],
+    ["hgun_Pistol_heavy_02_F", "hgun_Rook40_F", "hgun_Pistol_01_F"]
+];
 btc_g_civs = ["HandGrenade", "MiniGrenade", "ACE_M84", "ACE_M84"];
 
 //FOB
