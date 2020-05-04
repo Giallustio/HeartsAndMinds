@@ -14,7 +14,7 @@ Returns:
 
 Examples:
     (begin example)
-        _canTow = [cursorObject, btc_log_vehicle_selected] call btc_fnc_tow_check;
+        _canTow = [cursorObject, btc_tow_vehicleSelected] call btc_fnc_tow_check;
     (end)
 
 Author:
