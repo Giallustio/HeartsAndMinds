@@ -10,7 +10,7 @@ Parameters:
     _towed - Tower vehicle. [Object]
 
 Returns:
-    _canTow - . [Array]
+    _canTow - Can tow or not. [Boolean]
 
 Examples:
     (begin example)
@@ -29,10 +29,36 @@ params [
 
 private _array = [_tower] call btc_fnc_log_get_nottowable;
 
-if ((_array findIf {_towed isKindOf _x}) != -1) exitWith {[false, false]};
+if ((_array findIf {_towed isKindOf _x}) != -1) exitWith {
+    private _string_array = "";
+    {
+        _string_array = _string_array + ", " + _x;
+    } forEach (([_tower] call btc_fnc_log_get_nottowable) - ["Truck_F"]);
+
+    (format [localize "STR_BTC_HAM_LOG_HOOK_HINFO", _string_array]) call CBA_fnc_notify;
+    false
+};
 
 private _model_rear = ([_tower] call btc_fnc_tow_hitch_points) select 1;
 private _model_front = ([_towed] call btc_fnc_tow_hitch_points) select 0;
-private _distance = (_towed modeltoworld _model_front) distance (_tower modeltoworld _model_rear);
+private _distance = (_towed modelToWorld _model_front) distance (_tower modelToWorld _model_rear);
 
-[_distance > 1.3, _distance < 5]
+private _safeDistance = [_distance > 1.3, _distance < 5];
+if (_safeDistance isEqualTo [true, false]) exitWith {
+    "too far" call CBA_fnc_notify;
+    false
+};
+if (_safeDistance isEqualTo [false, true]) exitWith {
+    "too close" call CBA_fnc_notify;
+    false
+};
+
+if (
+    !((isVehicleCargo _towed) isEqualTo objNull) ||
+    !isNull (_tower getVariable ["btc_towing", objNull])
+) exitWith {
+    (localize "STR_BTC_HAM_LOG_TOW_ALREADYTOWED") call CBA_fnc_notify;
+    false
+};
+
+true

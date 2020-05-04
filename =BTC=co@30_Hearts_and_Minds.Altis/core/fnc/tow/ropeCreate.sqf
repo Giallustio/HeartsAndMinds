@@ -26,31 +26,7 @@ params [
     ["_vehicle_selected", btc_tow_vehicleSelected, [objNull]]
 ];
 
-private _distanceCheck = [_tower, _vehicle_selected] call btc_fnc_tow_check;
-if (false in _distanceCheck) exitWith {
-    switch (_distanceCheck) do {
-        case [true, false]: {
-            "too far" call CBA_fnc_notify;
-        };
-        case [false,true]: {
-            "too close" call CBA_fnc_notify;
-        };
-        default {
-            private _string_array = "";
-            {
-                _string_array = _string_array + ", " + _x;
-            } forEach (([_tower] call btc_fnc_log_get_nottowable) - ["Truck_F"]);
-
-            (format [localize "STR_BTC_HAM_LOG_HOOK_HINFO", _string_array]) call CBA_fnc_notify;
-        };
-    };
-};
-
-private _towing = _tower getVariable ["btc_towing", objNull];
-if (
-    !((isVehicleCargo _vehicle_selected) isEqualTo objNull) ||
-    !isNull _towing
-) exitWith {(localize "STR_BTC_HAM_LOG_TOW_ALREADYTOWED") call CBA_fnc_notify;};
+if !([_tower, _vehicle_selected] call btc_fnc_tow_check) exitWith {};
 if (_tower setVehicleCargo _vehicle_selected) exitWith {};
 
 "Towing in progress, please wait..." call CBA_fnc_notify;
