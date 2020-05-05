@@ -71,8 +71,9 @@ private _group = createGroup btc_enemy_side;
 _group setVariable ["no_cache", true];
 
 private _veh_types = btc_civ_type_veh select {!(_x isKindOf "air")};
+private _delay = 0;
 for "_i" from 0 to (1 + round random 1) do {
-    [_group, _pos1, selectRandom _veh_types, {}, [_road] call btc_fnc_road_direction] call btc_fnc_mil_createVehicle;
+    _delay = _delay + ([_group, _pos1, selectRandom _veh_types, {}, [_road] call btc_fnc_road_direction] call btc_fnc_mil_createVehicle);
 
     _road = (roadsConnectedTo _road) select 0;
     _pos1 = getPosATL _road;
@@ -152,6 +153,6 @@ for "_i" from 0 to (1 + round random 1) do {
 
         [_markers, _vehs + [_captive, _group]] call btc_fnc_delete;
     };
-}, [_group, _taskID, _radius_x, _city1, _pos2, _markers], btc_delay_createUnit] call CBA_fnc_waitAndExecute;
+}, [_group, _taskID, _radius_x, _city1, _pos2, _markers], btc_delay_createUnit + _delay] call CBA_fnc_waitAndExecute;
 
 waitUntil {sleep 5; _taskID call BIS_fnc_taskCompleted};
