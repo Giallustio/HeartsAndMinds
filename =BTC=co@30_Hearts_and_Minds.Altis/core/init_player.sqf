@@ -3,6 +3,14 @@ btc_map_mapIllumination = ace_map_mapIllumination;
 endLoadingScreen;
 [] spawn btc_fnc_intro;
 
+if !(isNil "btc_custom_loc") then {
+    {
+        _x params ["_pos", "_cityType", "_cityName", "_sizeX", "_sizeY"];
+        private _location = createLocation [_cityType, _pos, _sizeX, _sizeY];
+        _location setText _cityName;
+    } forEach btc_custom_loc;
+};
+
 [{!isNull player}, {
     btc_respawn_marker setMarkerPosLocal player;
     player addRating 9999;

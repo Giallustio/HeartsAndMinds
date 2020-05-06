@@ -76,7 +76,7 @@ for "_id" from 0 to (count _locations - 1) do {
 };
 
 if !(isNil "btc_custom_loc") then {
-    {_x call btc_fnc_city_create} forEach btc_custom_loc;
+    {_x call btc_fnc_city_create;} forEach btc_custom_loc;
 };
 
 btc_city_all = btc_city_all apply {if (isNil "_x") then {objNull} else {_x}};

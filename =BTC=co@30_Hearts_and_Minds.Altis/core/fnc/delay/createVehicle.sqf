@@ -93,5 +93,9 @@ btc_delay_createUnit = btc_delay_createUnit + 0.3;
         [_group, _units_type select _i, _position] call btc_fnc_delay_createUnit;
     };
 
+    [{
+        _this call btc_fnc_mil_unit_create;
+    }, [_group], btc_delay_createUnit] call CBA_fnc_waitAndExecute;
+
     btc_delay_createUnit = btc_delay_createUnit - 0.3;
 }, _this, btc_delay_createUnit - 0.01] call CBA_fnc_waitAndExecute;
