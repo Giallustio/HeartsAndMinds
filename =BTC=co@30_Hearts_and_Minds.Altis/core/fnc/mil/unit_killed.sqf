@@ -38,9 +38,9 @@ if (random 100 > btc_info_intel_chance) then {
 
 if (isPlayer _killer) then {
     if (isServer) then {
-        btc_rep_bonus_mil_killed call btc_fnc_rep_change;
+        [btc_rep_bonus_mil_killed, _killer] call btc_fnc_rep_change;
     } else {
-        btc_rep_bonus_mil_killed remoteExecCall ["btc_fnc_rep_change", 2];
+        [btc_rep_bonus_mil_killed, _killer] remoteExecCall ["btc_fnc_rep_change", 2];
     };
 };
 

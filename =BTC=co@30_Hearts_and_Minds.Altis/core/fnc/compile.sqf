@@ -144,6 +144,7 @@ if (isServer) then {
     btc_fnc_rep_remove_eh = compile preprocessFileLineNumbers "core\fnc\rep\remove_eh.sqf";
     btc_fnc_rep_buildingchanged = compile preprocessFileLineNumbers "core\fnc\rep\buildingchanged.sqf";
     btc_fnc_rep_explosives_defuse = compile preprocessFileLineNumbers "core\fnc\rep\explosives_defuse.sqf";
+    btc_fnc_rep_notify = compile preprocessFileLineNumbers "core\fnc\rep\notify.sqf";
 
     //SIDE
     btc_fnc_side_create = compile preprocessFileLineNumbers "core\fnc\side\create.sqf";

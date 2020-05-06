@@ -72,6 +72,7 @@ btc_p_autoloadout = "btc_p_autoloadout" call BIS_fnc_getParamValue;
 
 //<< Other options >>
 private _p_rep = "btc_p_rep" call BIS_fnc_getParamValue;
+btc_p_rep_notify = ("btc_p_rep_notify" call BIS_fnc_getParamValue) isEqualTo 1;
 private _p_city_radius = ("btc_p_city_radius" call BIS_fnc_getParamValue) * 100;
 btc_p_trigger = if (("btc_p_trigger" call BIS_fnc_getParamValue) isEqualTo 1) then {
     "this && !btc_db_is_saving && (false in (thisList apply {_x isKindOf 'Plane'})) && (false in (thisList apply {(_x isKindOf 'Helicopter') && (speed _x > 190)}))"
@@ -163,6 +164,7 @@ if (isServer) then {
     btc_global_reputation = _p_rep;
     btc_rep_militia_call_time = 600;
     btc_rep_militia_called = - btc_rep_militia_call_time;
+    btc_rep_delayed = [0, []];
 
     //Chem
     btc_chem_decontaminate = [btc_bigShower];

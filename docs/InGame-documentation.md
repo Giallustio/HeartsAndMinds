@@ -114,12 +114,12 @@ When you destroy an hideout or an ammo cache, all the markers related to it will
 
 
 ## Reputation
-Reputation can be ask to civilian. Bad actions cause bad effects.
-
-Helping the local population, fighting the Oplitas, disarming IED will rise your reputation; killing civilians, mutilate alive/dead civilian, firing near civilians for no reason, damaging/destroying buildings, losing vehicles, respawns will decrease your repution. At the beginning you have a very low reputation level, so civilians won't help you revealing important information about Oplitas, they will likely lie instead.
-
-Aborting a side mission does not affect reputation.
-
+### System:
+At the beginning you have a very low reputation level, so civilians won't help you in revealing important information about the Oplitas, they will likely lie instead. Reputation can be ask to civilian.
+### Good actions:
+Helping the local population by fighting the Oplitas, disarming IED's, heal civilians, succed side mission and destroy cache/hideout will rise your reputation. 
+### Bad actions:
+Bad actions cause bad effects: killing civilians, mutilating alive/dead civilians, firing near civilians for no reason, firing to civilian car, damaging/destroying buildings, losing player's vehicles and player respawns will decrease your reputation. Aborting a side mission does not affect reputation.
 
 ## Civil Orders
 Any player can give orders to civilians. To do this, just open your self interaction menu and select 'ORDERS' or use one of the shortcuts. Shortcuts can changed under 'configure >> controls>> configure addons >> Hearts and Minds: Mission (drop down menu)'. Your options are:
