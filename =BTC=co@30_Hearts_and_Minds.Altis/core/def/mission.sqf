@@ -510,7 +510,8 @@ btc_log_main_rc = [
     "Truck_F", 50,
     "Ship", 50,
     "Helicopter", 9999,
-    "Car", 35
+    "Car", 35,
+    "Lamps_base_F", 2
 ];
 btc_log_def_cc = [
     "Land_CargoBox_V1_F", 0,
@@ -537,7 +538,7 @@ btc_fnc_log_get_nottowable = {
         case (_tower isKindOf "Tank") : {["Plane", "Helicopter"];};
         case (_tower isKindOf "Truck_F") : {["Plane", "Helicopter"];};
         case (_tower isKindOf "Truck") : {["Plane", "Helicopter"];};
-        case (_tower isKindOf "Ship") : {["Car", "Truck", "Truck_F", "Tank", "Plane", "Helicopter"];};
+        case (_tower isKindOf "Ship") : {[];};
         //The tower is a car so it can't tow: truck, tank, plane and helicopter
         case (_tower isKindOf "Car") : {["Truck", "Truck_F", "Tank", "Plane", "Helicopter"];};
         default {["Car", "Truck", "Truck_F", "Tank", "Plane", "Helicopter", "Ship"];};
