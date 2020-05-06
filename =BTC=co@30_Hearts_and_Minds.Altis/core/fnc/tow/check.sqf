@@ -43,7 +43,7 @@ private _model_rear = ([_tower] call btc_fnc_tow_hitch_points) select 1;
 private _model_front = ([_towed] call btc_fnc_tow_hitch_points) select 0;
 private _distance = (_towed modelToWorld _model_front) distance (_tower modelToWorld _model_rear);
 
-private _safeDistance = [_distance > 1.3, _distance < 5];
+private _safeDistance = [_distance > 1.3, _distance < [5, 24] select (_tower isKindOf "Ship")];
 if (_safeDistance isEqualTo [true, false]) exitWith {
     "too far" call CBA_fnc_notify;
     false

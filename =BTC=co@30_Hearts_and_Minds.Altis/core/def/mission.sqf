@@ -8,6 +8,8 @@ btc_p_time = "btc_p_time" call BIS_fnc_getParamValue;
 btc_p_acctime = "btc_p_acctime" call BIS_fnc_getParamValue;
 private _p_db = ("btc_p_load" call BIS_fnc_getParamValue) isEqualTo 1;
 btc_p_auto_db = "btc_p_auto_db" call BIS_fnc_getParamValue isEqualTo 1;
+btc_p_db_autoRestart = "btc_p_db_autoRestart" call BIS_fnc_getParamValue;
+btc_p_db_autoRestartTime = "btc_p_db_autoRestartTime" call BIS_fnc_getParamValue;
 
 //<< Faction options >>
 private _p_en = "btc_p_en" call BIS_fnc_getParamValue;
@@ -70,6 +72,7 @@ btc_p_autoloadout = "btc_p_autoloadout" call BIS_fnc_getParamValue;
 
 //<< Other options >>
 private _p_rep = "btc_p_rep" call BIS_fnc_getParamValue;
+btc_p_rep_notify = ("btc_p_rep_notify" call BIS_fnc_getParamValue) isEqualTo 1;
 private _p_city_radius = ("btc_p_city_radius" call BIS_fnc_getParamValue) * 100;
 btc_p_trigger = if (("btc_p_trigger" call BIS_fnc_getParamValue) isEqualTo 1) then {
     "this && !btc_db_is_saving && (false in (thisList apply {_x isKindOf 'Plane'})) && (false in (thisList apply {(_x isKindOf 'Helicopter') && (speed _x > 190)}))"
@@ -121,6 +124,7 @@ if (isServer) then {
     //Database
     btc_db_is_saving = false;
     btc_db_load = _p_db;
+    btc_db_serverCommandPassword = "btc_password"; //Define the same password in server.cfg like this: serverCommandPassword = "btc_password";
 
     //Hideout
     btc_hideouts = [];
@@ -132,9 +136,9 @@ if (isServer) then {
     };
     btc_hideout_safezone = 4000;
     btc_hideout_range = 3500;
-    btc_hideout_rinf_time = 600;
     btc_hideout_cap_time = 1800;
     btc_hideout_cap_checking = false;
+    btc_hideout_minRange = btc_hideout_range;
 
     //IED
     btc_ied_suic_time = 900;
@@ -160,6 +164,7 @@ if (isServer) then {
     btc_global_reputation = _p_rep;
     btc_rep_militia_call_time = 600;
     btc_rep_militia_called = - btc_rep_militia_call_time;
+    btc_rep_delayed = [0, []];
 
     //Chem
     btc_chem_decontaminate = [btc_bigShower];
@@ -505,7 +510,8 @@ btc_log_main_rc = [
     "Truck_F", 50,
     "Ship", 50,
     "Helicopter", 9999,
-    "Car", 35
+    "Car", 35,
+    "Lamps_base_F", 2
 ];
 btc_log_def_cc = [
     "Land_CargoBox_V1_F", 0,
@@ -532,7 +538,7 @@ btc_fnc_log_get_nottowable = {
         case (_tower isKindOf "Tank") : {["Plane", "Helicopter"];};
         case (_tower isKindOf "Truck_F") : {["Plane", "Helicopter"];};
         case (_tower isKindOf "Truck") : {["Plane", "Helicopter"];};
-        case (_tower isKindOf "Ship") : {["Car", "Truck", "Truck_F", "Tank", "Plane", "Helicopter"];};
+        case (_tower isKindOf "Ship") : {[];};
         //The tower is a car so it can't tow: truck, tank, plane and helicopter
         case (_tower isKindOf "Car") : {["Truck", "Truck_F", "Tank", "Plane", "Helicopter"];};
         default {["Car", "Truck", "Truck_F", "Tank", "Plane", "Helicopter", "Ship"];};

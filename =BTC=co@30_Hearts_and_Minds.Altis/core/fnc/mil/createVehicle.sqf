@@ -54,7 +54,3 @@ for "_i" from _crewSeats to (_totalSeats - 1) do {
 };
 
 [_group, _veh_type, _units_type, _pos, _code, _dir] call btc_fnc_delay_createVehicle;
-
-[{
-    _this call btc_fnc_mil_unit_create;
-}, [_group], btc_delay_createUnit] call CBA_fnc_waitAndExecute;
