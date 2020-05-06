@@ -32,6 +32,8 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
+if (canSuspend) exitWith {[btc_fnc_mil_createVehicle, _this] call CBA_fnc_directCall};
+
 params [
     ["_group", grpNull, [grpNull]],
     ["_pos", [0, 0, 0], [[]]],

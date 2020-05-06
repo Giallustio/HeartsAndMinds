@@ -86,12 +86,9 @@ btc_delay_createUnit = btc_delay_createUnit + 0.3;
         [_veh, _group] call _code;
     };
 
-    private _crews_and_turret = _crews + _turretCount;
+    private _crews_and_turret = _crews + _turretCount + _cargoCount;
     for "_i" from _crews to ((_crews_and_turret min _numberOfUnits) - 1) do {
-        [_group, _units_type select _i, _position, "CAN_COLLIDE"] call btc_fnc_delay_createUnit;
-    };
-    for "_i" from _crews_and_turret to (_numberOfUnits - 1) do {
-        [_group, _units_type select _i, _position] call btc_fnc_delay_createUnit;
+        [_group, _units_type select _i, _position, "CAN_COLLIDE", _veh] call btc_fnc_delay_createUnit;
     };
 
     btc_delay_createUnit = btc_delay_createUnit - 0.3;

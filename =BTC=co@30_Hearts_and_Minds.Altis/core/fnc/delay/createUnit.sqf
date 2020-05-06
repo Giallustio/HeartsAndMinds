@@ -10,6 +10,7 @@ Parameters:
     _unit_type - Type of units to create. [Array]
     _pos - Position of creation. [Array]
     _special - Unit placement special. [String]
+    _vehicle - Vehicle where unit can be load in. [Object]
 
 Returns:
 
@@ -30,7 +31,8 @@ btc_delay_createUnit = btc_delay_createUnit + 0.3;
         ["_group", grpNull, [grpNull]],
         ["_unit_type", "", [""]],
         ["_pos", [0, 0, 0], [[]]],
-        ["_special", "CARGO", [""]]
+        ["_special", "CARGO", [""]],
+        ["_vehicle", objNull, [objNull]]
     ];
 
     if (isNull _group) exitWith {
@@ -41,11 +43,8 @@ btc_delay_createUnit = btc_delay_createUnit + 0.3;
     private _unit = _group createUnit [_unit_type, _pos, [], 0, _special];
     [_unit] joinSilent _group;
 
-    private _vehicle = assignedVehicle leader _group;
-    if (!isNull _vehicle && {isNull assignedVehicle _unit}) then {
-        if !(_unit moveInAny _vehicle) then {
-            deleteVehicle _unit;
-        };
+    if (!isNull _vehicle) then {
+        _unit moveInAny _vehicle;
     };
 
     btc_delay_createUnit = btc_delay_createUnit - 0.3;
