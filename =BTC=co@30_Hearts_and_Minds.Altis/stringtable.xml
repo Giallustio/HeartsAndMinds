@@ -1705,6 +1705,15 @@
             <Key ID="STR_BTC_HAM_O_FOB_SELFDESTRUCTION">
                 <Original>This rallypoint will self-destruct in %1min.</Original>
             </Key>
+            <Key ID="STR_BTC_HAM_O_FOB_CANTREPLOY">
+                <Original>Can't redeploy,</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_FOB_REPLOYNOTSTABLE">
+                <Original>you need to be stabilized</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_FOB_REPLOYSPLINT">
+                <Original>you need to have a splint</Original>
+            </Key>
         </Container>
         <Container name="Other: Hints ">
             <Key ID="STR_BTC_HAM_O_COMMON_SHOWHINTS_MU">
