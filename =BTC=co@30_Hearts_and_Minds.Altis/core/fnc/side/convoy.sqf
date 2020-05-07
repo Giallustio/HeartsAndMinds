@@ -72,8 +72,9 @@ _group setVariable ["no_cache", true];
 
 private _vehs = [];
 private _veh_types = btc_type_motorized select {!(_x isKindOf "air")};
+private _delay = 0;
 for "_i" from 0 to (2 + round random 2) do {
-    [_group, _pos1, selectRandom _veh_types, {}, [_road] call btc_fnc_road_direction] call btc_fnc_mil_createVehicle;
+    _delay = _delay + ([_group, _pos1, selectRandom _veh_types, {}, [_road] call btc_fnc_road_direction] call btc_fnc_mil_createVehicle);
 
     _road = (roadsConnectedTo _road) select 0;
     _pos1 = getPosATL _road;
@@ -88,7 +89,7 @@ for "_i" from 0 to (2 + round random 2) do {
         [12] remoteExecCall ["btc_fnc_show_hint", [0, -2] select isDedicated];
         _agent removeEventHandler ["PathCalculated", _thisEventHandler];
     }];
-}, [_group, _pos2, _taskID], btc_delay_createUnit] call CBA_fnc_waitAndExecute;
+}, [_group, _pos2, _taskID], btc_delay_createUnit + _delay] call CBA_fnc_waitAndExecute;
 
 [_group, _pos2, -1, "MOVE", "SAFE", "RED", "LIMITED", "COLUMN", format ["['%1', 'FAILED'] call BIS_fnc_taskSetState;", _taskID], [0, 0, 0], _radius_x/2] call CBA_fnc_addWaypoint;
 

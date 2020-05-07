@@ -14,7 +14,7 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_mil_create_patrol;
+        [2, (allPlayers#0), btc_patrol_area] call btc_fnc_mil_create_patrol;
     (end)
 
 Author:
@@ -67,12 +67,13 @@ _group setVariable ["no_cache", true];
 _group setVariable ["btc_patrol_id", btc_military_id, btc_debug];
 btc_military_id = btc_military_id + 1;
 
-switch (_random) do {
+private _delay = switch (_random) do {
     case 1 : {
         private _n_units = 5 + (round random 8);
         _pos = [_pos, 0, 50, 10, false] call btc_fnc_findsafepos;
 
         [_group, _pos, _n_units] call btc_fnc_mil_createUnits;
+        0
     };
     case 2 : {
         private _veh_type = "";
@@ -93,13 +94,13 @@ switch (_random) do {
             params ["_veh", "_group"];
             _veh setVariable ["btc_crews", _group];
             [_veh, "Fuel", "btc_fnc_patrol_eh"] call btc_fnc_eh_persistOnLocalityChange;
-        }] call btc_fnc_mil_createVehicle;
+        }] call btc_fnc_mil_createVehicle
     };
 };
 
 [{
     _this call btc_fnc_patrol_init;
     [[_this select 0]] call btc_fnc_set_groupsOwner;
-}, [_group, [_start_city, _active_city], _area, _pos_isWater], btc_delay_createUnit] call CBA_fnc_waitAndExecute;
+}, [_group, [_start_city, _active_city], _area, _pos_isWater], btc_delay_createUnit + _delay] call CBA_fnc_waitAndExecute;
 
 true

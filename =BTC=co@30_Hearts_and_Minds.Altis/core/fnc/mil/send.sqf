@@ -17,7 +17,7 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_mil_send;
+        [(allPlayers#0), getPos (allPlayers#0), 1, selectRandom btc_type_motorized] call btc_fnc_mil_send
     (end)
 
 Author:
@@ -36,6 +36,7 @@ params [
 private _pos = getPos _start;
 
 private _group = grpNull;
+private _delay = 0;
 switch (_typeOf_patrol) do {
     case 0 : {
         _group = ([_pos, 150, 3 + round random 6, 1] call btc_fnc_mil_create_group) select 0;
@@ -52,7 +53,7 @@ switch (_typeOf_patrol) do {
 
         private _return_pos = [_pos, 10, 500, 13, false] call btc_fnc_findsafepos;
 
-        [_group, _return_pos, _veh_type] call btc_fnc_mil_createVehicle;
+        _delay = [_group, _return_pos, _veh_type] call btc_fnc_mil_createVehicle;
 
         [_group, _dest, -1, "MOVE", "AWARE", "RED", "NORMAL", "NO CHANGE", "(group this) call btc_fnc_data_add_group;", nil, 60] call CBA_fnc_addWaypoint;
         [_group, _dest, -1, "GETOUT", nil, nil, nil, nil, nil, nil, 60] call CBA_fnc_addWaypoint;
@@ -63,6 +64,7 @@ switch (_typeOf_patrol) do {
 
 [{
     _this call btc_fnc_set_groupsOwner;
-}, [[_group]], btc_delay_createUnit] call CBA_fnc_waitAndExecute;
+    (_this select 0 select 0) deleteGroupWhenEmpty true;
+}, [[_group]], btc_delay_createUnit + _delay] call CBA_fnc_waitAndExecute;
 
 _group
