@@ -31,7 +31,7 @@ params [
 _player addEventHandler ["Killed", {
     if (ace_map_mapIllumination) then {ace_map_mapIllumination = false;};
     if (isObjectHidden player) exitWith {};
-    btc_rep_malus_player_respawn remoteExecCall ["btc_fnc_rep_change", 2];
+    [btc_rep_malus_player_respawn, player] remoteExecCall ["btc_fnc_rep_change", 2];
 }];
 _player addEventHandler ["CuratorObjectPlaced", btc_fnc_eh_CuratorObjectPlaced];
 ["ace_treatmentSucceded", btc_fnc_rep_treatment] call CBA_fnc_addEventHandler;
