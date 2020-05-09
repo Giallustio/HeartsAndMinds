@@ -30,23 +30,44 @@ params [
     ["_cfgGlasses", configNull, [configNull]]
 ];
 
+private _googles = goggles _unit;
+private _backpack = backpack _unit;
+private _uniform = toLower uniform _unit;
+
+private _hasMask = [
+    "G_Respirator_base_F"
+] findIf {_googles isKindOf [_x, _cfgGlasses]} > -1;
+private _hasRespirator = [
+    "G_RegulatorMask_base_F",
+    "G_AirPurifyingRespirator_01_base_F",
+    "GP21_GasmaskPS",
+    "GP5Filter_RaspiratorPS",
+    "GP7_RaspiratorPS",
+    "SE_M17",
+    "Hamster_PS",
+    "SE_S10"
+] findIf {_googles isKindOf [_x, _cfgGlasses]} > -1;
+
 private _hasProtection = [
-    (
-        goggles _unit isKindOf ["G_RegulatorMask_base_F", _cfgGlasses] ||
-        goggles _unit isKindOf ["G_AirPurifyingRespirator_01_base_F", _cfgGlasses]
+    _hasRespirator || {_hasMask && {random 1 > 0.7}}, ( // Mask are not perfect
+        [
+            "B_SCBA_01_base_F",
+            "B_CombinationUnitRespirator_01_Base_F"
+        ] findIf {_backpack isKindOf _x} > -1
     ), (
-        backpack _unit isKindOf "B_SCBA_01_base_F" ||
-        backpack _unit isKindOf "B_CombinationUnitRespirator_01_Base_F"
+        [
+            "cbrn"
+        ] findIf {_x in _uniform} > -1
     ),
-    "cbrn" in toLower uniform _unit
+    true
 ];
 
 if !(false in _hasProtection) exitWith {_this};
 
-_hasProtection append [true, true, true];
+private _probability = [0.3, 0.1, 0.1 , 0.5];
 
 // Probability of damage increase without protection
-if (_firstDamage || !(selectRandom _hasProtection)) then {
+if (_firstDamage || !(_hasProtection selectRandomWeighted _probability)) then {
     _this set [1, false];
     [_unit, random [0.05, 0.05, 0.2], selectRandom _bodyParts, "stab"] call ace_medical_fnc_addDamageToUnit; // ropeburn
 };
