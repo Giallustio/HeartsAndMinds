@@ -17,16 +17,22 @@ Parameters:
     _p_chem - Allow chemical propagation. [Boolean]
 
 Returns:
+    _delay_vehicle - Delay for unit creation. [Number]
 
 Examples:
     (begin example)
         [createGroup [btc_enemy_side, true], player getPos [10, direction player]] call btc_fnc_mil_createVehicle;
+    (end)
+    (begin example)
+        [createGroup [btc_enemy_side, true], player getPos [10, direction player], "O_G_Van_02_vehicle_F"] call btc_fnc_mil_createVehicle;
     (end)
 
 Author:
     Vdauphin
 
 ---------------------------------------------------------------------------- */
+
+if (canSuspend) exitWith {[btc_fnc_mil_createVehicle, _this] call CBA_fnc_directCall};
 
 params [
     ["_group", grpNull, [grpNull]],
@@ -53,4 +59,10 @@ for "_i" from _crewSeats to (_totalSeats - 1) do {
     _units_type pushBack selectRandom _type_units;
 };
 
-[_group, _veh_type, _units_type, _pos, _code, _dir] call btc_fnc_delay_createVehicle;
+private _delay = [_group, _veh_type, _units_type, _pos, _code, _dir] call btc_fnc_delay_createVehicle;
+
+[{
+    _this call btc_fnc_mil_unit_create;
+}, _group, btc_delay_createUnit + _delay] call CBA_fnc_waitAndExecute;
+
+_delay

@@ -41,10 +41,11 @@ btc_delay_createUnit = btc_delay_createUnit + 0.3;
     };
 
     private _unit = _group createUnit [_unit_type, _pos, [], 0, _special];
-    if !(isNull _vehicle) then {
+    [_unit] joinSilent _group;
+
+    if (!isNull _vehicle) then {
         _unit moveInAny _vehicle;
     };
-    [_unit] joinSilent _group;
 
     btc_delay_createUnit = btc_delay_createUnit - 0.3;
 }, _this, btc_delay_createUnit - 0.01] call CBA_fnc_waitAndExecute;
