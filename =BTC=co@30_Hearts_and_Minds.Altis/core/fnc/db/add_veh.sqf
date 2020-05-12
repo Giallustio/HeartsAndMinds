@@ -37,6 +37,16 @@ _veh addMPEventHandler ["MPKilled", {
 if ((isNumber (configfile >> "CfgVehicles" >> typeOf _veh >> "ace_fastroping_enabled")) && !(typeOf _veh isEqualTo "RHS_UH1Y_d")) then {
     [_veh] call ace_fastroping_fnc_equipFRIES
 };
+if (btc_p_respawn_location > 1) then {
+    if !(fullCrew [_veh, "cargo", true] isEqualTo []) then {
+        if (
+            (btc_p_respawn_location isEqualTo 2) && (_veh isKindOf "Air") ||
+            btc_p_respawn_location > 2
+        ) then {
+            [missionNamespace, _veh] call BIS_fnc_addRespawnPosition;
+        };
+    };
+};
 
 if (_p_chem) then {
     _veh addEventHandler ["GetIn", {

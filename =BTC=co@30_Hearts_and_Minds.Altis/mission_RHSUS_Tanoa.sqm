@@ -167,10 +167,7 @@ class AddonsMetaData
 randomSeed=2442963;
 class ScenarioData
 {
-	respawnDialog=0;
 	disabledAI=1;
-	respawn=3;
-	respawnDelay=5;
 	class Header
 	{
 		gameType="Coop";
@@ -661,6 +658,7 @@ class Mission
 			dataType="Marker";
 			position[]={4231.5,360.625,4011.125};
 			name="respawn_west";
+			text=$STR_BTC_HAM_INTRO_ARSENAL_REDEPLOY;
 			type="Empty";
 			angle=33.149483;
 			id=0;

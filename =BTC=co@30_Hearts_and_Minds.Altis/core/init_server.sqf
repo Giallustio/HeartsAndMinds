@@ -1,5 +1,8 @@
 [] call compile preprocessFileLineNumbers "core\fnc\city\init.sqf";
 
+["Initialize"] call BIS_fnc_dynamicGroups;
+setTimeMultiplier btc_p_acctime;
+
 ["btc_m", -1, objNull, "", false, false] call btc_fnc_task_create;
 [["btc_dft", "btc_m"], 0] call btc_fnc_task_create;
 [["btc_dty", "btc_m"], 1] call btc_fnc_task_create;
@@ -36,10 +39,6 @@ if (btc_p_db_autoRestart > 0) then {
         }, [], 5 * 60] call CBA_fnc_waitAndExecute;
     }, [], btc_p_db_autoRestartTime * 60 * 60 - 5 * 60] call CBA_fnc_waitAndExecute;
 };
-
-["Initialize"] call BIS_fnc_dynamicGroups;
-
-setTimeMultiplier btc_p_acctime;
 
 {[_x, 30] call btc_fnc_eh_veh_add_respawn;} forEach btc_helo;
 

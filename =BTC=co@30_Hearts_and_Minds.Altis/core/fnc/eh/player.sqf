@@ -25,22 +25,19 @@ params [
     ["_player", objNull, [objNull]]
 ];
 
-_player addEventHandler ["Respawn", format ["[%1] call btc_fnc_eh_player_respawn", getPosASL player]];
+[_player, "Respawn", {
+    if !(ace_map_mapIllumination) then {ace_map_mapIllumination = btc_map_mapIllumination;};
+}] call CBA_fnc_addBISEventHandler;
+_player addEventHandler ["Killed", {
+    if (ace_map_mapIllumination) then {ace_map_mapIllumination = false;};
+    if (isObjectHidden player) exitWith {};
+    [btc_rep_malus_player_respawn, player] remoteExecCall ["btc_fnc_rep_change", 2];
+}];
 _player addEventHandler ["CuratorObjectPlaced", btc_fnc_eh_CuratorObjectPlaced];
 ["ace_treatmentSucceded", btc_fnc_rep_treatment] call CBA_fnc_addEventHandler;
 _player addEventHandler ["WeaponAssembled", btc_fnc_civ_add_leaflets];
-_player addEventHandler ["WeaponAssembled", {
-    params [
-        ["_player", objNull, [objNull]],
-        ["_rallyPoint", objNull, [objNull]]
-    ];
-
-    if !(_rallyPoint isKindOf "Camping_base_F") exitWith {_this};
-
-    [_rallyPoint] remoteExecCall ["btc_fnc_fob_init", [0, 2] select isDedicated];
-
-    _this
-}];
+[_player, "WeaponAssembled", {[_thisType, _this] call btc_fnc_fob_rallypointAssemble;}] call CBA_fnc_addBISEventHandler;
+[_player, "WeaponDisassembled", {[_thisType, _this] call btc_fnc_fob_rallypointAssemble;}] call CBA_fnc_addBISEventHandler;
 _player addEventHandler ["GetInMan", {_this call btc_fnc_ied_deleteLoop}];
 _player addEventHandler ["GetOutMan", {
     if (btc_ied_deleteOn > -1) then {
@@ -65,7 +62,7 @@ if (btc_p_chem) then {
      // Add biopsy
     [missionnamespace, "probingEnded", btc_fnc_chem_biopsy] call BIS_fnc_addScriptedEventHandler;
 
-     // Disable BI shower
+    // Disable BI shower
     ["DeconShower_01_F", "init", {(_this select 0) setVariable ['bin_deconshower_disableAction', true];}] call CBA_fnc_addClassEventHandler;
     ["DeconShower_02_F", "init", {(_this select 0) setVariable ['bin_deconshower_disableAction', true];}] call CBA_fnc_addClassEventHandler;
 
@@ -79,4 +76,12 @@ if (btc_p_spect) then {
         [] call btc_fnc_spect_disableDevice;
         [_unit, currentWeapon _unit] call btc_fnc_spect_updateDevice;
     }] call CBA_fnc_addPlayerEventHandler;
+};
+
+if (btc_p_respawn_arsenal) then {
+    [_player, "Respawn", {
+        params ["_unit", "_corpse"];
+        if (isObjectHidden _corpse) exitWith {};
+        [btc_gear_object, _unit] call ace_arsenal_fnc_openBox;
+    }] call CBA_fnc_addBISEventHandler;
 };
