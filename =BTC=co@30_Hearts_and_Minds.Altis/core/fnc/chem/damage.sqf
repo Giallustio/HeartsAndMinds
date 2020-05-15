@@ -33,41 +33,53 @@ params [
 private _googles = goggles _unit;
 private _backpack = backpack _unit;
 private _uniform = toLower uniform _unit;
+private _protection = 0;
 
-private _hasMask = [
-    "G_Respirator_base_F"
-] findIf {_googles isKindOf [_x, _cfgGlasses]} > -1;
-private _hasRespirator = [
-    "G_RegulatorMask_base_F",
-    "G_AirPurifyingRespirator_01_base_F",
-    "GP21_GasmaskPS",
-    "GP5Filter_RaspiratorPS",
-    "GP7_RaspiratorPS",
-    "SE_M17",
-    "Hamster_PS",
-    "SE_S10"
-] findIf {_googles isKindOf [_x, _cfgGlasses]} > -1;
-
-private _hasProtection = [
-    _hasRespirator || {_hasMask && {random 1 > 0.7}}, ( // Mask are not perfect
+if (
+    [
+        "G_Respirator_base_F"
+    ] findIf {_googles isKindOf [_x, _cfgGlasses]} > -1
+) then {
+    _protection = _protection + selectRandom [0.15, 0.3]; // Less protection than respirator
+} else {
+    if (
         [
-            "B_SCBA_01_base_F",
-            "B_CombinationUnitRespirator_01_Base_F"
-        ] findIf {_backpack isKindOf _x} > -1
-    ), (
+            "G_RegulatorMask_base_F",
+            "G_AirPurifyingRespirator_01_base_F",
+            "GP21_GasmaskPS",
+            "GP5Filter_RaspiratorPS",
+            "GP7_RaspiratorPS",
+            "SE_M17",
+            "Hamster_PS",
+            "SE_S10",
+            "MK502"
+        ] findIf {_googles isKindOf [_x, _cfgGlasses]} > -1
+    ) then {
+        _protection = _protection + 0.3;
+    };
+};
+if (
+    [
+        "B_SCBA_01_base_F",
+        "B_CombinationUnitRespirator_01_Base_F"
+    ] findIf {_backpack isKindOf _x} > -1
+) then {
+    _protection = _protection + 0.1;
+};
+if !(_uniform isEqualTo "") then {
+    _protection = _protection + 0.5;
+    if (
         [
             "cbrn"
         ] findIf {_x in _uniform} > -1
-    ),
-    true
-];
+    ) then {
+        _protection = _protection + 0.1;
+    };
+};
 
-if !(false in _hasProtection) exitWith {_this};
+if (_protection >= 1) exitWith {_this};
 
-private _probability = [0.3, 0.1, 0.1 , 0.5];
-
-// Probability of damage increase without protection
-if (_firstDamage || !(_hasProtection selectRandomWeighted _probability)) then {
+if (_firstDamage || (random 1 > _protection)) then {
     _this set [1, false];
     [_unit, random [0.05, 0.05, 0.2], selectRandom _bodyParts, "stab"] call ace_medical_fnc_addDamageToUnit; // ropeburn
 };
