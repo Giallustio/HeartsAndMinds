@@ -120,6 +120,9 @@
         <path d="M-548.1235 -697.4982 L304.8765 -697.4982 L304.8765 258.5018 L-548.1235 258.5018 L-548.1235 -697.4982 Z"/>
       </clipPath>
     </defs>
+    <g fill="white" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" transform="translate(-41,-148)" stroke="white">
+      <rect x="41" width="853" height="956" y="148" clip-path="url(#clipPath2)" stroke="none"/>
+    </g>
     <g fill="rgb(151,209,244)" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-41,-148)" stroke="rgb(151,209,244)">
       <rect x="740.5564" y="286.0252" clip-path="url(#clipPath2)" width="100" rx="4" ry="4" height="30" stroke="none"/>
     </g>
@@ -430,6 +433,7 @@
       <path d="M374.3203 772.3799 L379.3203 760.3799 L374.3203 763.3799 L369.3203 760.3799 Z" clip-path="url(#clipPath2)" stroke="none"/>
       <path fill="none" d="M374.3203 824.1084 L374.3203 955.8173" clip-path="url(#clipPath2)"/>
       <path d="M374.3203 963.8173 L379.3203 951.8173 L374.3203 954.8173 L369.3203 951.8173 Z" clip-path="url(#clipPath2)" stroke="none"/>
+      <text fill="rgb(138,201,38)" x="333.9814" xml:space="preserve" y="898.6614" clip-path="url(#clipPath2)" stroke="none">Yes</text>
       <path fill="none" d="M572.1235 553.5615 L572.1235 569.1494" clip-path="url(#clipPath2)"/>
       <path d="M572.1235 577.1494 L577.1235 565.1494 L572.1235 568.1494 L567.1235 565.1494 Z" clip-path="url(#clipPath2)" stroke="none"/>
       <path fill="none" d="M331.8508 798.229 L280.8253 798.229" clip-path="url(#clipPath2)"/>
