@@ -50,5 +50,6 @@ btc_ied_deleteOn = [{
     private _maxLength = abs ((_p2 select 1) - (_p1 select 1));
     if (_distance < (_minDistance + (_maxWidth max _maxLength) / 2) && {[getPos _vehicle, getDir _vehicle, 40, getPos _ied] call BIS_fnc_inAngleSector}) then {
         _ied call CBA_fnc_deleteEntity;
+        [btc_rep_bonus_IEDCleanUp, _unit] remoteExecCall ["btc_fnc_rep_change", 2];
     };
 }, 1, [_vehicle, (_maxWidth max _maxLength) / 2]] call CBA_fnc_addPerFrameHandler;
