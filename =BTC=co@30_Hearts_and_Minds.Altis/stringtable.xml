@@ -1226,6 +1226,20 @@
                 <Chinesesimp>找到并摧毁导致电子设备失效的 EMP 发射站。</Chinesesimp>
             </Key>
         </Container>
+        <Container name="Clean rubbish">
+            <Key ID="STR_BTC_HAM_SIDE_RUBBISH_TITLE">
+                <Original>Remove rubbish in %1</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_RUBBISH_DESC">
+                <Original>Civilian population reported many rubbish on road making driving difficult around %1. They are requesting your help to remove them with a Nemmera.</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_RUBBISH_SPOT_TITLE">
+                <Original>Rubbish spotted</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_RUBBISH_SPOT_DESC">
+                <Original>A civilian spotted this rubbish as particularly annoying while driving.</Original>
+            </Key>
+        </Container>
     </Package>
     <Package name="Actions">
         <Container name="Action(ACE): Database handling">
