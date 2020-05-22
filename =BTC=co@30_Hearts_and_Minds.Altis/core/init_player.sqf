@@ -8,7 +8,7 @@ if !(isNil "btc_custom_loc") then {
     } forEach btc_custom_loc;
 };
 endLoadingScreen;
-[] spawn btc_fnc_intro;
+btc_intro_done = [] spawn btc_fnc_intro;
 
 [{!isNull player}, {
     btc_respawn_marker setMarkerPosLocal player;
