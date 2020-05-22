@@ -3,17 +3,19 @@
 Function: btc_fnc_tow_unwind
 
 Description:
-    Tow a vehicle.
+    Unwind rope until the pitch is increased by 3°.
 
 Parameters:
-    _tower - Vehicle. [Object]
+    _flat - Object carrying the towed vehicle. [Object]
+    _rope1 - Rope to unwind. [Object]
+    _rope2 - Rope to unwind. [Object]
+    _initialPitch - Initial pitch and bank. [Number]
 
 Returns:
-    _thisId - ID of the event handler. [Number]
 
 Examples:
     (begin example)
-        [cursorObject] call btc_fnc_tow_unwind;
+        [] call btc_fnc_tow_unwind;
     (end)
 
 Author:

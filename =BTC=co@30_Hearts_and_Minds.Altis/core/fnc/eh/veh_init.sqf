@@ -34,7 +34,7 @@ switch true do {
         [_type, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToClass;
         _action = ["log_tow", localize "STR_BTC_HAM_ACTION_VEHINIT_TOW", "\z\ace\addons\attach\UI\attach_ca.paa", {(_this select 0) call btc_fnc_tow_ropeCreate;}, {!isNull btc_tow_vehicleSelected && {btc_tow_vehicleSelected != (_this select 0)}}] call ace_interact_menu_fnc_createAction;
         [_type, 0, ["ACE_MainActions", "Logistic"], _action] call ace_interact_menu_fnc_addActionToClass;
-        _action = ["log_hook", localize "STR_BTC_HAM_ACTION_VEHINIT_HOOK", "\z\ace\addons\attach\UI\attach_ca.paa", {btc_tow_vehicleSelected = _this select 0;}, {true}] call ace_interact_menu_fnc_createAction;
+        _action = ["log_hook", localize "STR_BTC_HAM_ACTION_VEHINIT_HOOK", "\z\ace\addons\attach\UI\attach_ca.paa", {btc_tow_vehicleSelected = _this select 0; (localize "STR_BTC_HAM_TOW_HOOK") call CBA_fnc_notify;}, {true}] call ace_interact_menu_fnc_createAction;
         [_type, 0, ["ACE_MainActions", "Logistic"], _action] call ace_interact_menu_fnc_addActionToClass;
         _action = ["log_hook", localize "STR_BTC_HAM_ACTION_VEHINIT_UHOOK", "\z\ace\addons\attach\UI\detach_ca.paa", {(_this select 0) call btc_fnc_tow_unhook;}, {!isNull ((_this select 0) getVariable ["btc_towing", objNull]);}] call ace_interact_menu_fnc_createAction;
         [_type, 0, ["ACE_MainActions", "Logistic"], _action] call ace_interact_menu_fnc_addActionToClass;
@@ -44,7 +44,7 @@ switch true do {
         [_type, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToClass;
         _action = ["log_tow", localize "STR_BTC_HAM_ACTION_VEHINIT_TOW", "\z\ace\addons\attach\UI\attach_ca.paa", {(_this select 0) call btc_fnc_tow_ropeCreate;}, {!isNull btc_tow_vehicleSelected && {btc_tow_vehicleSelected != (_this select 0)}}] call ace_interact_menu_fnc_createAction;
         [_type, 0, ["ACE_MainActions", "Logistic"], _action] call ace_interact_menu_fnc_addActionToClass;
-        _action = ["log_hook", localize "STR_BTC_HAM_ACTION_VEHINIT_HOOK", "\z\ace\addons\attach\UI\attach_ca.paa", {btc_tow_vehicleSelected = _this select 0;}, {true}] call ace_interact_menu_fnc_createAction;
+        _action = ["log_hook", localize "STR_BTC_HAM_ACTION_VEHINIT_HOOK", "\z\ace\addons\attach\UI\attach_ca.paa", {btc_tow_vehicleSelected = _this select 0; (localize "STR_BTC_HAM_TOW_HOOK") call CBA_fnc_notify;}, {true}] call ace_interact_menu_fnc_createAction;
         [_type, 0, ["ACE_MainActions", "Logistic"], _action] call ace_interact_menu_fnc_addActionToClass;
         _action = ["log_hook", localize "STR_BTC_HAM_ACTION_VEHINIT_UHOOK", "\z\ace\addons\attach\UI\detach_ca.paa", {(_this select 0) call btc_fnc_tow_unhook;}, {!isNull ((_this select 0) getVariable ["btc_towing", objNull]);}] call ace_interact_menu_fnc_createAction;
         [_type, 0, ["ACE_MainActions", "Logistic"], _action] call ace_interact_menu_fnc_addActionToClass;
@@ -63,7 +63,7 @@ switch true do {
         [_type, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToClass;
         _action = ["log_tow", localize "STR_BTC_HAM_ACTION_VEHINIT_TOW", "\z\ace\addons\attach\UI\attach_ca.paa", {(_this select 0) call btc_fnc_tow_ropeCreate;}, {!isNull btc_tow_vehicleSelected && {btc_tow_vehicleSelected != (_this select 0)}}] call ace_interact_menu_fnc_createAction;
         [_type, 0, ["ACE_MainActions", "Logistic"], _action] call ace_interact_menu_fnc_addActionToClass;
-        _action = ["log_hook", localize "STR_BTC_HAM_ACTION_VEHINIT_HOOK", "\z\ace\addons\attach\UI\attach_ca.paa", {btc_tow_vehicleSelected = _this select 0;}, {true}] call ace_interact_menu_fnc_createAction;
+        _action = ["log_hook", localize "STR_BTC_HAM_ACTION_VEHINIT_HOOK", "\z\ace\addons\attach\UI\attach_ca.paa", {btc_tow_vehicleSelected = _this select 0; (localize "STR_BTC_HAM_TOW_HOOK") call CBA_fnc_notify;}, {true}] call ace_interact_menu_fnc_createAction;
         [_type, 0, ["ACE_MainActions", "Logistic"], _action] call ace_interact_menu_fnc_addActionToClass;
         _action = ["log_hook", localize "STR_BTC_HAM_ACTION_VEHINIT_UHOOK", "\z\ace\addons\attach\UI\detach_ca.paa", {(_this select 0) call btc_fnc_tow_unhook;}, {!isNull ((_this select 0) getVariable ["btc_towing", objNull]);}] call ace_interact_menu_fnc_createAction;
         [_type, 0, ["ACE_MainActions", "Logistic"], _action] call ace_interact_menu_fnc_addActionToClass;

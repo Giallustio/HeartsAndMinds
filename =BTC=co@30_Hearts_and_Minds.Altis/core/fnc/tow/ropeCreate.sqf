@@ -6,10 +6,10 @@ Description:
     Tow a vehicle.
 
 Parameters:
-    _tower - Vehicle. [Object]
+    _tower - Vehicle towing. [Object]
+    _vehicle_selected - Vehicle will be towed. [Object]
 
 Returns:
-    _thisId - ID of the event handler. [Number]
 
 Examples:
     (begin example)
@@ -29,7 +29,7 @@ params [
 if !([_tower, _vehicle_selected] call btc_fnc_tow_check) exitWith {};
 if (_tower setVehicleCargo _vehicle_selected) exitWith {};
 
-"Towing in progress, please wait..." call CBA_fnc_notify;
+(localize "STR_BTC_HAM_TOW_WAIT") call CBA_fnc_notify;
 
 // Find the position of the Flat object
 private _vectorUp = vectorUp _vehicle_selected;
@@ -113,7 +113,7 @@ btc_tow_vehicleSelected = objNull;
     _tower setVariable ["btc_towing", objNull, true];
 }, [_vehicle_selected, 2 + (_model_selected select 1) - (_model_corners_tower select 0 select 1)]] call CBA_fnc_addBISEventHandler;
 
-if (_tower isKindOf "Ship") exitWith {"Towing done." call CBA_fnc_notify};
+if (_tower isKindOf "Ship") exitWith {(localize "STR_BTC_HAM_TOW_DONE") call CBA_fnc_notify};
 
 [{
     params ["_flat", "_rope1", "_rope2"];

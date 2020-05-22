@@ -81,4 +81,4 @@ if (btc_p_spect) then {
     }] call CBA_fnc_addPlayerEventHandler;
 };
 
-["btc_tow_unwindDone", {"Towing done." call CBA_fnc_notify}] call CBA_fnc_addEventHandler;
+["btc_tow_unwindDone", {(localize "STR_BTC_HAM_TOW_DONE") call CBA_fnc_notify}] call CBA_fnc_addEventHandler;
