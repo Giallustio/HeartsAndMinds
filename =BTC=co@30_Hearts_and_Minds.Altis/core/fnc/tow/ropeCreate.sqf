@@ -88,7 +88,7 @@ btc_tow_vehicleSelected = objNull;
 
 [_tower, "RopeBreak", {
     params ["_tower", "_rope", "_flat"];
-    _thisArgs params ["_vehicle_selected", "_safeDistance"];
+    _thisArgs params ["_vehicle_selected", "_safeDistance", "_ropes"];
 
     _tower removeEventHandler ["RopeBreak", _thisId];
 
@@ -108,10 +108,15 @@ btc_tow_vehicleSelected = objNull;
     if !(_tower isKindOf "Ship") then {
         deleteVehicle _flat;
     };
+    _ropes apply {deleteVehicle _x};
 
     _vehicle_selected setVariable ["btc_towing", objNull, true];
     _tower setVariable ["btc_towing", objNull, true];
-}, [_vehicle_selected, 2 + (_model_selected select 1) - (_model_corners_tower select 0 select 1)]] call CBA_fnc_addBISEventHandler;
+}, [
+    _vehicle_selected,
+    2 + (_model_selected select 1) - (_model_corners_tower select 0 select 1),
+    [_rope1, _rope2]
+]] remoteExecCall ["CBA_fnc_addBISEventHandler", 2];
 
 if (_tower isKindOf "Ship") exitWith {(localize "STR_BTC_HAM_TOW_DONE") call CBA_fnc_notify};
 

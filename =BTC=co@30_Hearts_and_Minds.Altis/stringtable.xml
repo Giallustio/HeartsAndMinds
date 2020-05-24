@@ -1940,7 +1940,7 @@
             </Key>
         </Container>
         <Container name="Tow">
-            <Key ID="STR_BTC_HAM_LOG_HOOK_HINFO">
+            <Key ID="STR_BTC_HAM_TOW_CANT">
                 <Original>Can't tow!&lt;br/&gt;(This vehicle can't tow %1)</Original>
                 <Spanish>Can't tow!&lt;br/&gt;(Este vehículo no puede remolcar %1)</Spanish>
                 <German>Can't tow!&lt;br/&gt;(Folgende Fahrzeuge können nicht gezogen werden: %1)</German>
@@ -1963,13 +1963,6 @@
                 <German>Dieses Fahrzeug zieht bereits ein anderes Fahrzeug!</German>
                 <Portuguese>Este veículo já está atracado a outro!</Portuguese>
                 <Chinesesimp>这辆载具已经连接一辆载具了!</Chinesesimp>
-            </Key>
-            <Key ID="STR_BTC_HAM_TOW_NOROPE">
-                <Original>This vehicle is not attached to another!</Original>
-                <Spanish>Este vehículo no está unido a otro!</Spanish>
-                <German>Das Fahrzeug schleppt kein anderes Fahrzeug ab!</German>
-                <Portuguese>Este veículo não está atracado a outro!</Portuguese>
-                <Chinesesimp>该载具没有连接其他载具!</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_TOW_WAIT">
                 <Original>Towing in progress, please wait...</Original>

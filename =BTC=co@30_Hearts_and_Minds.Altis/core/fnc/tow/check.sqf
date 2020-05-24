@@ -54,7 +54,7 @@ if (_safeDistance isEqualTo [false, true]) exitWith {
 };
 
 if (
-    !((isVehicleCargo _towed) isEqualTo objNull) ||
+    !(isNull (isVehicleCargo _towed)) ||
     !isNull (_tower getVariable ["btc_towing", objNull])
 ) exitWith {
     (localize "STR_BTC_HAM_TOW_ALREADYTOWED") call CBA_fnc_notify;
