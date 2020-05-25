@@ -3,7 +3,7 @@
 Function: btc_fnc_side_removeRubbish
 
 Description:
-    Remove bargage on road in city with Nemmera.
+    Remove rubbish on road in city with Nemmera.
 
 Parameters:
     _taskID - Unique task ID. [String]
@@ -42,15 +42,17 @@ private _ieds = (_city getVariable ["ieds", []]) select {
     isOnRoad (_x select 0) ||
     {!(((_x select 0) nearRoads 6) isEqualTo [])}
 };
-private _extra_ied = round random (((count _ieds) - 1 - _minNumberOfSubTask) min 2);
+private _extra_ied = round random (((count _ieds) - _minNumberOfSubTask) min 2);
 
 [_taskID, 38, objNull, _city getVariable "name"] call btc_fnc_task_create;
 
 private _tasksID = [];
-for "_i" from 0 to (_minNumberOfSubTask + _extra_ied) do {
+for "_i" from 0 to (_minNumberOfSubTask + _extra_ied - 1) do {
     private _clear_taskID = _taskID + "cl" + str _i;
     _tasksID pushBack _clear_taskID;
-    [[_clear_taskID, _taskID], 39, _ieds select _i select 0, btc_type_ieds select (btc_model_ieds find (_ieds select _i select 1)), false, false] call btc_fnc_task_create;
+
+    private _selectedIED = _ieds select _i;
+    [[_clear_taskID, _taskID], 39, _selectedIED select 0, btc_type_ieds select (btc_model_ieds find (_selectedIED select 1)), false, false] call btc_fnc_task_create;
 
     ["btc_ied_deleted", {
         params ["_posDeleted_ied"];
@@ -62,7 +64,7 @@ for "_i" from 0 to (_minNumberOfSubTask + _extra_ied) do {
                 [_posDeleted_ied] call btc_fnc_rep_call_militia;
             };
         };
-    }, [_clear_taskID, _ieds select _i select 0]] call CBA_fnc_addEventHandlerArgs;
+    }, [_clear_taskID, _selectedIED select 0]] call CBA_fnc_addEventHandlerArgs;
     ["btc_ied_boom", {
         params ["_posDeleted_ied"];
         _thisArgs params ["_clear_taskID", "_pos_ied"];
@@ -70,7 +72,7 @@ for "_i" from 0 to (_minNumberOfSubTask + _extra_ied) do {
         if (!(_clear_taskID call BIS_fnc_taskCompleted) && {_pos_ied distance _posDeleted_ied < 5}) then {
             [_clear_taskID, "FAILED"] call BIS_fnc_taskSetState;
         };
-    }, [_clear_taskID, _ieds select _i select 0]] call CBA_fnc_addEventHandlerArgs;
+    }, [_clear_taskID, _selectedIED select 0]] call CBA_fnc_addEventHandlerArgs;
 };
 
 waitUntil {sleep 5;
