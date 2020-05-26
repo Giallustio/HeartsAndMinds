@@ -172,7 +172,7 @@ private _cargos = [
     [_backpack_big, [[_launcherMagazine, 2, _launcherCount]]],
     [_backpack, [["ACE_Sandbag_empty", 1], ["ACE_Kestrel4500", 1], ["ACE_ATragMX", 1], ["ACE_RangeCard", 1], ["ACE_EntrenchingTool", 1]]],
     [],
-    [_backpackCBRN, []],
+    [_backpackCBRN, [["G_Respirator_white_F", 5]]],
     [_backpack, [["muzzle_antenna_02_f", 1], ["muzzle_antenna_01_f", 1], [["hgun_esd_01_F", "", "", "", [], [], ""], 1]]]
 ];
 private _binocular_array = [_laserdesignator, "", "", "", ["Laserbatteries", 1], [], ""];
