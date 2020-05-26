@@ -34,7 +34,7 @@ private _pos = getPos _city;
 
 //// Choose a random position \\\\
 private _vehpos = [_pos, 0, 600, 20, 2, 60 * (pi / 180), 0] call BIS_fnc_findSafePos;
-_vehpos = [_vehpos select 0 , _vehpos select 1, 0];
+_vehpos = [_vehpos select 0, _vehpos select 1, 0];
 
 //// Create civ on _vehpos \\\\
 private _veh_type = selectRandom btc_civ_type_boats;
