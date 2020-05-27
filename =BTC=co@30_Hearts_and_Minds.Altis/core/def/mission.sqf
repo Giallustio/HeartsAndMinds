@@ -201,7 +201,7 @@ if (isServer) then {
 
     //Side
     btc_side_ID = 0;
-    btc_side_list = ["supply", "mines", "vehicle", "get_city", "tower", "civtreatment", "checkpoint", "convoy", "rescue", "capture_officer", "hostage", "hack", "kill", "EMP"]; // On ground (Side "convoy" and "capture_officer" are not design for map with different islands. Start and end city can be on different islands.)
+    btc_side_list = ["supply", "mines", "vehicle", "get_city", "tower", "civtreatment", "checkpoint", "convoy", "rescue", "capture_officer", "hostage", "hack", "kill", "EMP", "removeRubbish"]; // On ground (Side "convoy" and "capture_officer" are not design for map with different islands. Start and end city can be on different islands.)
     if (btc_p_sea) then {btc_side_list append ["civtreatment_boat", "underwater_generator"]}; // On sea
     if (btc_p_chem) then {btc_side_list pushBack "chemicalLeak"};
     btc_side_list_use = [];
@@ -317,8 +317,8 @@ if (isServer) then {
             (toLower _x find "offroad") != -1
         })
     });
-    _ieds = _ieds - ["Land_Garbage_line_F","Land_Garbage_square3_F","Land_Garbage_square5_F"];
-    btc_model_ieds = _ieds apply {(toLower getText(_cfgVehicles >> _x >> "model")) select [1]};
+    btc_type_ieds = _ieds - ["Land_Garbage_line_F","Land_Garbage_square3_F","Land_Garbage_square5_F"];
+    btc_model_ieds = btc_type_ieds apply {(toLower getText(_cfgVehicles >> _x >> "model")) select [1]};
 
     btc_groundWeaponHolder = [];
 };
@@ -642,9 +642,10 @@ btc_spect_updateOn = -1;
 //Rep
 btc_rep_bonus_cache = 100;
 btc_rep_bonus_civ_hh = 3;
-btc_rep_bonus_disarm = 25;
+btc_rep_bonus_disarm = 15;
 btc_rep_bonus_hideout = 200;
 btc_rep_bonus_mil_killed = 0.25;
+btc_rep_bonus_IEDCleanUp = 10;
 
 btc_rep_malus_civ_hd = - 10;
 btc_rep_malus_civ_killed = - 10;
