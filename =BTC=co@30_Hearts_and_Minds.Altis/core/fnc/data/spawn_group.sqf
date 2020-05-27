@@ -46,14 +46,10 @@ _data_unit params [
 ];
 
 if (_type isEqualTo 5) exitWith {
-    [
-        [objNull, 100, _array_pos select 0, _array_type select 0] call btc_fnc_ied_suicider_create,
-    "killed", "btc_fnc_ied_suiciderKilled", [_id]] call btc_fnc_eh_persistOnLocalityChange;
+    [objNull, 100, _array_pos select 0, _array_type select 0] call btc_fnc_ied_suicider_create;
 };
 if (_type isEqualTo 7) exitWith {
-    [
-        [objNull, 100, _array_pos select 0] call btc_fnc_ied_drone_create,
-    "killed", "btc_fnc_ied_suiciderKilled", [_id]] call btc_fnc_eh_persistOnLocalityChange;
+    [objNull, 100, _array_pos select 0] call btc_fnc_ied_drone_create;
 };
 
 private _group = createGroup _side;
@@ -107,6 +103,5 @@ if (_type isEqualTo 1) then {
     _group setCombatMode (_behaviour select 1);
     _group setFormation (_behaviour select 2);
 
-    if (_side isEqualTo btc_enemy_side) then {[_group] call btc_fnc_mil_unit_create;};
     if (_side isEqualTo civilian) then {[_group] call btc_fnc_civ_unit_create};
 }, [_data_unit, _group], btc_delay_createUnit + _delay] call CBA_fnc_waitAndExecute;

@@ -19,10 +19,12 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-addMissionEventHandler ["HandleDisconnect", btc_fnc_eh_handledisconnect];
 addMissionEventHandler ["BuildingChanged", btc_fnc_rep_buildingchanged];
 ["ace_explosives_defuse", btc_fnc_rep_explosives_defuse] call CBA_fnc_addEventHandler;
+["ace_killed", btc_fnc_rep_killed] call CBA_fnc_addEventHandler;
+["ace_killed", btc_fnc_mil_unit_killed] call CBA_fnc_addEventHandler;
 
+addMissionEventHandler ["HandleDisconnect", btc_fnc_eh_handledisconnect];
 if (btc_p_auto_db) then {
     addMissionEventHandler ["HandleDisconnect", btc_fnc_db_autosave];
 };
@@ -34,3 +36,6 @@ if (btc_p_chem) then {
 
 ["GroundWeaponHolder", "InitPost", {btc_groundWeaponHolder append _this}] call CBA_fnc_addClassEventHandler;
 ["acex_fortify_objectPlaced", {[_this select 2] call btc_fnc_log_CuratorObjectPlaced_s}] call CBA_fnc_addEventHandler;
+if (btc_p_set_skill) then {
+    ["CAManBase", "init", btc_fnc_mil_set_skill] call CBA_fnc_addClassEventHandler;
+};

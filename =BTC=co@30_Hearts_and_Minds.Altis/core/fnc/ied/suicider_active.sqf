@@ -24,7 +24,9 @@ params [
     ["_suicider", objNull, [objNull]]
 ];
 
-[_suicider] joinSilent createGroup [btc_enemy_side, true];
+private _group = createGroup [btc_enemy_side, true];
+[_suicider] joinSilent _group;
+_group setVariable ["suicider", true];
 
 _suicider call btc_fnc_rep_remove_eh;
 

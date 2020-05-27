@@ -67,7 +67,6 @@ private _group = [];
     [_unit] joinSilent _grp;
     _group pushBack _grp;
     _grp setVariable ["no_cache", true];
-    [_grp] call btc_fnc_mil_unit_create;
 } forEach (_buildingPos - [_pos]);
 
 _trigger = createTrigger ["EmptyDetector", _pos];

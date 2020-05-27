@@ -25,5 +25,4 @@ params [
 ];
 
 [_civilian, "HandleDamage", "btc_fnc_rep_hd"] call btc_fnc_eh_persistOnLocalityChange;
-[_civilian, "Killed", "btc_fnc_rep_killed"] call btc_fnc_eh_persistOnLocalityChange;
 [_civilian, "FiredNear", "btc_fnc_rep_firednear"] call btc_fnc_eh_persistOnLocalityChange;
