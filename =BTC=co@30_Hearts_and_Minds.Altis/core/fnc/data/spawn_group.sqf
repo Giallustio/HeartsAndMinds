@@ -102,6 +102,4 @@ if (_type isEqualTo 1) then {
     _group setBehaviour (_behaviour select 0);
     _group setCombatMode (_behaviour select 1);
     _group setFormation (_behaviour select 2);
-
-    if (_side isEqualTo civilian) then {[_group] call btc_fnc_civ_unit_create};
 }, [_data_unit, _group], btc_delay_createUnit + _delay] call CBA_fnc_waitAndExecute;

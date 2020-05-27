@@ -57,8 +57,6 @@ waitUntil {sleep 5; (_taskID call BIS_fnc_taskCompleted || !(playableUnits inAre
 
 [_unit] call btc_fnc_set_damage;
 
-[_group] call btc_fnc_civ_unit_create;
-
 waitUntil {sleep 5; (_taskID call BIS_fnc_taskCompleted || !alive _unit || {_unit call ace_medical_status_fnc_isInStableCondition && [_unit] call ace_common_fnc_isAwake})};
 
 [[], [_veh, _group]] call btc_fnc_delete;

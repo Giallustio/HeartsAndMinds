@@ -55,7 +55,6 @@ private _civType = selectRandom btc_civ_type_units;
 private _captive = _group_civ createUnit [_civType, _pos, [], 0, "CAN_COLLIDE"];
 waitUntil {local _captive};
 [_captive, true] call ACE_captives_fnc_setHandcuffed;
-[_group_civ] call btc_fnc_civ_unit_create;
 
 //// Data side mission
 [_taskID, 15, _captive, [_city getVariable "name", _civType]] call btc_fnc_task_create;

@@ -28,8 +28,6 @@ private _group = createGroup [btc_enemy_side, true];
 [_suicider] joinSilent _group;
 _group setVariable ["suicider", true];
 
-_suicider call btc_fnc_rep_remove_eh;
-
 [group _suicider] call CBA_fnc_clearWaypoints;
 
 private _trigger = createTrigger ["EmptyDetector", getPos _suicider];

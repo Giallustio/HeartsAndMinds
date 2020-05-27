@@ -93,7 +93,7 @@ private _delay = switch (_random) do {
         [_group, _pos, _veh_type, {
             params ["_veh", "_group"];
             _veh setVariable ["btc_crews", _group];
-            [_veh, "Fuel", "btc_fnc_patrol_eh"] call btc_fnc_eh_persistOnLocalityChange;
+            [_veh, "Fuel", btc_fnc_patrol_eh] call CBA_fnc_addBISEventHandler;
         }] call btc_fnc_mil_createVehicle
     };
 };
