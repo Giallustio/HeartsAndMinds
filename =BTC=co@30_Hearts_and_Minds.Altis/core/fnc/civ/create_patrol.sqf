@@ -63,14 +63,7 @@ _group setVariable ["no_cache", true];
 _group setVariable ["btc_patrol_id", btc_civilian_id, btc_debug];
 btc_civilian_id = btc_civilian_id - 1;
 
-private _delay = [_group, _veh_type, [selectRandom btc_civ_type_units], _safe_pos, {
-    params ["_veh", "_group"];
-    _veh setVariable ["btc_crews", _group];
-    [_veh, "Fuel", btc_fnc_patrol_eh] call CBA_fnc_addBISEventHandler;
-    [_veh, "GetOut", btc_fnc_patrol_eh] call CBA_fnc_addBISEventHandler;
-    [_veh, "HandleDamage", "btc_fnc_patrol_disabled"] call btc_fnc_eh_persistOnLocalityChange;
-    [_veh, "HandleDamage", "btc_fnc_rep_hd"] call btc_fnc_eh_persistOnLocalityChange;
-}] call btc_fnc_delay_createVehicle;
+private _delay = [_group, _veh_type, [selectRandom btc_civ_type_units], _safe_pos] call btc_fnc_delay_createVehicle;
 
 [{
     _this call btc_fnc_patrol_init;

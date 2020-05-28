@@ -131,6 +131,7 @@ if (isServer) then {
     btc_fnc_patrol_init = compile preprocessFileLineNumbers "core\fnc\patrol\init.sqf";
     btc_fnc_patrol_addWP = compile preprocessFileLineNumbers "core\fnc\patrol\addWP.sqf";
     btc_fnc_patrol_eh = compile preprocessFileLineNumbers "core\fnc\patrol\eh.sqf";
+    btc_fnc_patrol_addEH = compile preprocessFileLineNumbers "core\fnc\patrol\addEH.sqf";
 
     //REP
     btc_fnc_rep_call_militia = compile preprocessFileLineNumbers "core\fnc\rep\call_militia.sqf";

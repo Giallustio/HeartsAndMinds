@@ -43,3 +43,4 @@ if (btc_p_chem) then {
 if (btc_p_set_skill) then {
     ["CAManBase", "init", btc_fnc_mil_set_skill] call CBA_fnc_addClassEventHandler;
 };
+["btc_delay_vehicleInit", btc_fnc_patrol_addEH] call CBA_fnc_addEventHandler;
