@@ -48,7 +48,14 @@ btc_ied_deleteOn = [{
     (0 boundingBoxReal _ied) params ["_p1", "_p2"];
     private _maxWidth = abs ((_p2 select 0) - (_p1 select 0));
     private _maxLength = abs ((_p2 select 1) - (_p1 select 1));
-    if (_distance < (_minDistance + (_maxWidth max _maxLength) / 2) && {[getPos _vehicle, getDir _vehicle, 40, getPos _ied] call BIS_fnc_inAngleSector}) then {
+    if (
+        _distance < (_minDistance + (_maxWidth max _maxLength) / 2) &&
+        {allMines inAreaArray [getPosWorld _ied, 2.5, 2.5] isEqualTo []} &&
+        {[getPos _vehicle, getDir _vehicle, 40, getPos _ied] call BIS_fnc_inAngleSector}
+    ) then {
+        private _pos = getPosATL _ied;
         _ied call CBA_fnc_deleteEntity;
+        [btc_rep_bonus_IEDCleanUp, _unit] remoteExecCall ["btc_fnc_rep_change", 2];
+        ["btc_ied_deleted", [_pos, _unit]] call CBA_fnc_serverEvent;
     };
 }, 1, [_vehicle, (_maxWidth max _maxLength) / 2]] call CBA_fnc_addPerFrameHandler;
