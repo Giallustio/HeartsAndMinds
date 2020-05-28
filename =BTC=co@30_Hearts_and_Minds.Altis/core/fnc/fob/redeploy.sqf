@@ -31,7 +31,7 @@ if (
     [[localize "STR_BTC_HAM_O_FOB_CANTREPLOY"], [localize "STR_BTC_HAM_O_FOB_REPLOYSPLINT"]] call CBA_fnc_notify;
 };
 
-player setPos [10,10,10];
+player setPos [10, 10, 10];
 player hideObject true;
 player enableSimulation false;
 forceRespawn player;
