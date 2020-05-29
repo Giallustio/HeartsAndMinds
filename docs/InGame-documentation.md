@@ -117,7 +117,7 @@ When you destroy an hideout or an ammo cache, all the markers related to it will
 ## Reputation
 Reputation can be ask to civilian. Bad actions cause bad effects.
 
-Helping the local population, fighting the Oplitas, disarming IED will rise your reputation; killing civilians, mutilate alive/dead civilian, firing near civilians for no reason, damaging/destroying buildings, losing vehicles, respawns will decrease your repution. At the beginning you have a very low reputation level, so civilians won't help you revealing important information about Oplitas, they will likely lie instead.
+Helping the local population, fighting the Oplitas, disarming IED will rise your reputation; killing civilians, mutilate alive/dead civilian, firing near civilians for no reason, damaging/destroying buildings, losing vehicles, respawns will decrease your reputation. At the beginning you have a very low reputation level, so civilians won't help you revealing important information about Oplitas, they will likely lie instead.
 
 Aborting a side mission does not affect reputation.
 
