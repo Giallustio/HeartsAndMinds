@@ -37,3 +37,4 @@ deleteVehicle _wreck;
 
 [_pos] call btc_fnc_deaf_earringing;
 [_pos] remoteExecCall ["btc_fnc_ied_effects", [0, -2] select isDedicated];
+["btc_ied_boom", [_pos]] call CBA_fnc_localEvent;

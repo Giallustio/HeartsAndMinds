@@ -58,7 +58,6 @@ if (isNil {_cache getVariable "btc_hd_cache"} && {_explosive} && {_damage > 0.6}
     private _marker = createMarker [format ["btc_cache_%1", btc_cache_n], btc_cache_pos];
     _marker setMarkerType "hd_destroy";
     [_marker, "STR_BTC_HAM_O_EH_HDCACHE_MRK", btc_cache_n] remoteExecCall ["btc_fnc_set_markerTextLocal", [0, -2] select isDedicated, _marker]; //Cached %1 destroyed
-
     _marker setMarkerSize [1, 1];
     _marker setMarkerColor "ColorRed";
 
@@ -66,7 +65,7 @@ if (isNil {_cache getVariable "btc_hd_cache"} && {_explosive} && {_damage > 0.6}
         [format ["DESTROYED: ID %1 POS %2", btc_cache_n, btc_cache_pos], __FILE__, [false]] call btc_fnc_debug_message;
     };
 
-    btc_rep_bonus_cache call btc_fnc_rep_change;
+    [btc_rep_bonus_cache, _injurer] call btc_fnc_rep_change;
 
     //Notification
     [0] remoteExecCall ["btc_fnc_show_hint", 0];

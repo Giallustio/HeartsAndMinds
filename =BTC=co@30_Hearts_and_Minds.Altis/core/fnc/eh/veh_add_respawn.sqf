@@ -42,6 +42,11 @@ _vehicle setVariable ["data_respawn", [_type, _pos, _dir, _time, _vector] + _veh
 
 if ((isNumber (configFile >> "CfgVehicles" >> typeOf _vehicle >> "ace_fastroping_enabled")) && !(typeOf _vehicle isEqualTo "RHS_UH1Y_d")) then {[_vehicle] call ace_fastroping_fnc_equipFRIES};
 _vehicle addMPEventHandler ["MPKilled", {if (isServer) then {[_this select 0] call btc_fnc_eh_veh_respawn};}];
+if (btc_p_respawn_location > 0) then {
+    if !(fullCrew [_vehicle, "cargo", true] isEqualTo []) then {
+        [missionNamespace, _vehicle] call BIS_fnc_addRespawnPosition;
+    };
+};
 if (_p_chem) then {
     _vehicle addEventHandler ["GetIn", {
         [_this select 0, _this select 2] call btc_fnc_chem_propagate;

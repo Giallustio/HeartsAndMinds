@@ -41,6 +41,30 @@ class Params {
         texts[]={"1h","2h","3h","4h","5h","6h","7h","8h","9h","10h","11h","12h","24h","48h","72h"};
         default = 72;
     };
+    class btc_p_respawn_title { // << Respawn options >>
+        title = $STR_BTC_HAM_RESP_TITLE;
+        values[]={0};
+        texts[]={""};
+        default = 0;
+    };
+    class btc_p_respawn_location { // Respawn locations available:
+        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_RESP_LOCATION"]);
+        values[]={0,1,2,3};
+        texts[]={$STR_BTC_HAM_RESP_FOBRALLY, $STR_BTC_HAM_RESP_FOBRALLYHELO, $STR_BTC_HAM_RESP_FOBRALLYHELI, $STR_BTC_HAM_RESP_FOBRALLYHELIVEHI};
+        default = 0;
+    };
+    class btc_p_rallypointTimer { // Time before rallypoint self-destruction:
+        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_RESP_RALLYTIMER"]);
+        values[]={0,5,10,30,60};
+        texts[]={$STR_DISABLED,"5 min","10 min","30 min","60 min"};
+        default = 30;
+    };
+    class btc_p_respawn_arsenal { // ACE Arsenal available on respawn after been killed:
+        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_RESP_ENABLEARSENAL"]);
+        values[]={0,1};
+        texts[]={$STR_DISABLED,$STR_ENABLED};
+        default = 0;
+    };
     class btc_p_type_title { // << Faction options >>
         title = $STR_BTC_HAM_PARAM_FAC_TITLE;
         values[]={0};
@@ -191,18 +215,6 @@ class Params {
         texts[]={"100 %","90 %","80 %","70 %","60 %","50 %","40 %","30 %","20 %","10 %","0 %"};
         default = 70;
     };
-    class btc_p_medical_title { // << Medical options >>
-        title = $STR_BTC_HAM_MEDI_TITLE;
-        values[]={0};
-        texts[]={""};
-        default = 0;
-    };
-    class btc_p_redeploy { // Allow re-deploy?
-        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_MEDI_REDEPLOY"]);
-        values[]={0,1};
-        texts[]={$STR_DISABLED,$STR_ENABLED};
-        default = 1;
-    };
     class btc_p_skill_title { // << A3 Skill options >>
         title = $STR_BTC_HAM_PARAM_SKILL_TITLE;
         values[]={0};
@@ -346,6 +358,12 @@ class Params {
         values[]={0, 200, 500, 750};
         texts[]={$STR_ACE_ViewDistance_object_verylow,$STR_A3_TIME_TRIALS_MISCTT_ROF_25,$STR_3DEN_ATTRIBUTES_SPEEDMODE_NORMAL,$STR_A3_TIME_TRIALS_MISCTT_ROF_21}; //texts[]={"Very Low","Low","Normal","High"};
         default = 200;
+    };
+    class btc_p_rep_notify { // Show reputation change:
+        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_OTHER_SHOWREP"]);
+        values[]={0, 1};
+        texts[]={$STR_DISABLED,$STR_ENABLED};
+        default = 0;
     };
     class btc_p_city_radius { // Spawn city radius offset:
         title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_OTHER_SPAWNRAD"]);

@@ -71,4 +71,7 @@ class CfgTaskTypes {
     class Antenna {
         icon = \A3\Data_F_Enoch\Logos\arma3_enoch_logo_ca.paa;
     };
+    class Use {
+        icon = \A3\ui_f\data\igui\cfg\simpleTasks\types\use_ca.paa;
+    };
 };

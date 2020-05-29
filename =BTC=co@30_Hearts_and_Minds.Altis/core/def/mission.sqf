@@ -1,5 +1,5 @@
 
-btc_version = [1, 20, 3];
+btc_version = [1, 20, 4];
 diag_log format (["=BTC= HEARTS AND MINDS VERSION %1.%2.%3"] + btc_version);
 
 //Param
@@ -10,6 +10,11 @@ private _p_db = ("btc_p_load" call BIS_fnc_getParamValue) isEqualTo 1;
 btc_p_auto_db = "btc_p_auto_db" call BIS_fnc_getParamValue isEqualTo 1;
 btc_p_db_autoRestart = "btc_p_db_autoRestart" call BIS_fnc_getParamValue;
 btc_p_db_autoRestartTime = "btc_p_db_autoRestartTime" call BIS_fnc_getParamValue;
+
+//<< Respawn options >>
+btc_p_respawn_location = "btc_p_respawn_location" call BIS_fnc_getParamValue;
+btc_p_rallypointTimer = "btc_p_rallypointTimer" call BIS_fnc_getParamValue;
+btc_p_respawn_arsenal = ("btc_p_respawn_arsenal" call BIS_fnc_getParamValue) isEqualTo 1;
 
 //<< Faction options >>
 private _p_en = "btc_p_en" call BIS_fnc_getParamValue;
@@ -29,9 +34,6 @@ private _hideout_n = "btc_p_hideout_n" call BIS_fnc_getParamValue;
 private _cache_info_def = "btc_p_cache_info_def" call BIS_fnc_getParamValue;
 private _cache_info_ratio = "btc_p_cache_info_ratio" call BIS_fnc_getParamValue;
 private _info_chance = "btc_p_info_chance" call BIS_fnc_getParamValue;
-
-//<< Medical options >>
-btc_p_redeploy = ("btc_p_redeploy" call BIS_fnc_getParamValue) isEqualTo 1;
 
 //<< Skill options >>
 btc_p_set_skill  = ("btc_p_set_skill" call BIS_fnc_getParamValue) isEqualTo 1;
@@ -72,6 +74,7 @@ btc_p_autoloadout = "btc_p_autoloadout" call BIS_fnc_getParamValue;
 
 //<< Other options >>
 private _p_rep = "btc_p_rep" call BIS_fnc_getParamValue;
+btc_p_rep_notify = ("btc_p_rep_notify" call BIS_fnc_getParamValue) isEqualTo 1;
 private _p_city_radius = ("btc_p_city_radius" call BIS_fnc_getParamValue) * 100;
 btc_p_trigger = if (("btc_p_trigger" call BIS_fnc_getParamValue) isEqualTo 1) then {
     "this && !btc_db_is_saving && (false in (thisList apply {_x isKindOf 'Plane'})) && (false in (thisList apply {(_x isKindOf 'Helicopter') && (speed _x > 190)}))"
@@ -135,9 +138,9 @@ if (isServer) then {
     };
     btc_hideout_safezone = 4000;
     btc_hideout_range = 3500;
-    btc_hideout_rinf_time = 600;
     btc_hideout_cap_time = 1800;
     btc_hideout_cap_checking = false;
+    btc_hideout_minRange = btc_hideout_range;
 
     //IED
     btc_ied_suic_time = 900;
@@ -147,7 +150,7 @@ if (isServer) then {
 
     //FOB
     btc_fobs = [[], [], []];
-    btc_fob_rallypointTicket = 2;
+    btc_fob_rallypointTimer = 60 * btc_p_rallypointTimer;
 
     //MIL
     btc_p_mil_wp_ratios = [_wp_house_probability, (1 - _wp_house_probability) / 1.5 + _wp_house_probability];
@@ -163,6 +166,7 @@ if (isServer) then {
     btc_global_reputation = _p_rep;
     btc_rep_militia_call_time = 600;
     btc_rep_militia_called = - btc_rep_militia_call_time;
+    btc_rep_delayed = [0, []];
 
     //Chem
     btc_chem_decontaminate = [btc_bigShower];
@@ -197,7 +201,7 @@ if (isServer) then {
 
     //Side
     btc_side_ID = 0;
-    btc_side_list = ["supply", "mines", "vehicle", "get_city", "tower", "civtreatment", "checkpoint", "convoy", "rescue", "capture_officer", "hostage", "hack", "kill", "EMP"]; // On ground (Side "convoy" and "capture_officer" are not design for map with different islands. Start and end city can be on different islands.)
+    btc_side_list = ["supply", "mines", "vehicle", "get_city", "tower", "civtreatment", "checkpoint", "convoy", "rescue", "capture_officer", "hostage", "hack", "kill", "EMP", "removeRubbish"]; // On ground (Side "convoy" and "capture_officer" are not design for map with different islands. Start and end city can be on different islands.)
     if (btc_p_sea) then {btc_side_list append ["civtreatment_boat", "underwater_generator"]}; // On sea
     if (btc_p_chem) then {btc_side_list pushBack "chemicalLeak"};
     btc_side_list_use = [];
@@ -313,8 +317,8 @@ if (isServer) then {
             (toLower _x find "offroad") != -1
         })
     });
-    _ieds = _ieds - ["Land_Garbage_line_F","Land_Garbage_square3_F","Land_Garbage_square5_F"];
-    btc_model_ieds = _ieds apply {(toLower getText(_cfgVehicles >> _x >> "model")) select [1]};
+    btc_type_ieds = _ieds - ["Land_Garbage_line_F","Land_Garbage_square3_F","Land_Garbage_square5_F"];
+    btc_model_ieds = btc_type_ieds apply {(toLower getText(_cfgVehicles >> _x >> "model")) select [1]};
 
     btc_groundWeaponHolder = [];
 };
@@ -325,7 +329,7 @@ if (isServer) then {
 private _allfaction = ["AFGCIV","CIV_F","DEFAULT","CFP_C_AFG","CFP_C_AFRCHRISTIAN","CFP_C_AFRISLAMIC","CFP_C_ASIA","CFP_C_ME","CUP_C_RU","CUP_C_CHERNARUS","CUP_C_SAHRANI","CUP_C_TK","GM_FC_GC_CIV","GM_FC_GE_CIV","LIB_CIV","LOP_AFR_CIV","LOP_CHR_CIV","LOP_TAK_CIV","CIV_IDAP_F","OPTRE_UEG_CIV","RDS_RUS_CIV","UK3CB_CHC_C","UK3CB_TKC_C","UNSUNG_C"]; //All factions
 _p_civ = _allfaction select _p_civ; //Select faction selected from mission parameter
 _p_civ_veh = _allfaction select _p_civ_veh; //Select faction selected from mission parameter
-private _allclasse = [[_p_civ]] call btc_fnc_civ_class; //Create classes from factions, you can combine factions from the SAME side : [[_p_civ , "btc_ac","LOP_TAK_CIV"]] call btc_fnc_civ_class.
+private _allclasse = [[_p_civ]] call btc_fnc_civ_class; //Create classes from factions, you can combine factions from the SAME side : [[_p_civ, "btc_ac","LOP_TAK_CIV"]] call btc_fnc_civ_class.
 
 //Save class name to global variable
 btc_civ_type_units = _allclasse select 0;
@@ -333,7 +337,10 @@ _allclasse = [[_p_civ_veh]] call btc_fnc_civ_class;
 btc_civ_type_veh = _allclasse select 2;
 btc_civ_type_boats = _allclasse select 1;
 
-btc_w_civs = ["V_Rangemaster_belt", "arifle_Mk20_F", "30Rnd_556x45_Stanag", "hgun_ACPC2_F", "9Rnd_45ACP_Mag"];
+btc_w_civs = [
+    ["srifle_DMR_06_hunter_F", "sgun_HunterShotgun_01_F", "srifle_DMR_06_hunter_khs_F", "sgun_HunterShotgun_01_Sawedoff_F", "Hgun_PDW2000_F", "arifle_AKM_F", "arifle_AKS_F"],
+    ["hgun_Pistol_heavy_02_F", "hgun_Rook40_F", "hgun_Pistol_01_F"]
+];
 btc_g_civs = ["HandGrenade", "MiniGrenade", "ACE_M84", "ACE_M84"];
 
 //FOB
@@ -508,7 +515,8 @@ btc_log_main_rc = [
     "Truck_F", 50,
     "Ship", 50,
     "Helicopter", 9999,
-    "Car", 35
+    "Car", 35,
+    "Lamps_base_F", 2
 ];
 btc_log_def_cc = [
     "Land_CargoBox_V1_F", 0,
@@ -535,7 +543,7 @@ btc_fnc_log_get_nottowable = {
         case (_tower isKindOf "Tank") : {["Plane", "Helicopter"];};
         case (_tower isKindOf "Truck_F") : {["Plane", "Helicopter"];};
         case (_tower isKindOf "Truck") : {["Plane", "Helicopter"];};
-        case (_tower isKindOf "Ship") : {["Car", "Truck", "Truck_F", "Tank", "Plane", "Helicopter"];};
+        case (_tower isKindOf "Ship") : {[];};
         //The tower is a car so it can't tow: truck, tank, plane and helicopter
         case (_tower isKindOf "Car") : {["Truck", "Truck_F", "Tank", "Plane", "Helicopter"];};
         default {["Car", "Truck", "Truck_F", "Tank", "Plane", "Helicopter", "Ship"];};
@@ -634,9 +642,10 @@ btc_spect_updateOn = -1;
 //Rep
 btc_rep_bonus_cache = 100;
 btc_rep_bonus_civ_hh = 3;
-btc_rep_bonus_disarm = 25;
+btc_rep_bonus_disarm = 15;
 btc_rep_bonus_hideout = 200;
 btc_rep_bonus_mil_killed = 0.25;
+btc_rep_bonus_IEDCleanUp = 10;
 
 btc_rep_malus_civ_hd = - 10;
 btc_rep_malus_civ_killed = - 10;

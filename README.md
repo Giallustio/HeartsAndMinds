@@ -5,8 +5,8 @@
 </p>
 
 <p align="center">
-    <a href="https://github.com/Vdauphin/HeartsAndMinds/releases/tag/1.20.3">
-        <img src="https://img.shields.io/badge/Version-1.20.3-blue.svg?style=flat-square" alt="H&M Version">
+    <a href="https://github.com/Vdauphin/HeartsAndMinds/releases/tag/1.20.4">
+        <img src="https://img.shields.io/badge/Version-1.20.4-blue.svg?style=flat-square" alt="H&M Version">
     </a>
     <a href="http://www.somsubhra.com/github-release-stats/?username=vdauphin&repository=HeartsAndMinds">
         <img src="https://img.shields.io/github/downloads/Vdauphin/HeartsAndMinds/total.svg?style=flat-square&label=Downloads" alt="H&M Downloads">
@@ -34,7 +34,7 @@ Online [wiki available](http://vdauphin.github.io/HeartsAndMinds/).
         - Request a lift
         - Discussion (interpreter)
         - Fleeing
-    - More than 17 side mission
+    - More than 18 side mission
 - Deep ACE3 support
     - Use mainly ACE interaction
     - Rearm system
@@ -49,7 +49,7 @@ Online [wiki available](http://vdauphin.github.io/HeartsAndMinds/).
     - Chemical Warfare
     - Spectrum devices
 - Under the hood
-    - A lot of optionnal gameplay
+    - A lot of optional gameplay
     - More than 284 enemies and 24 civilians factions available
     - Full saving Database (even player markers)
     - Easy map change

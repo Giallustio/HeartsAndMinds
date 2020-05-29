@@ -1,6 +1,5 @@
+if (hasInterface) then {startLoadingScreen [""];};
 enableSaving [false, false];
-
-if (hasInterface) then {btc_intro_done = [] spawn btc_fnc_intro;};
 
 [] call compile preprocessFileLineNumbers "core\def\mission.sqf";
 [] call compile preprocessFileLineNumbers "define_mod.sqf";

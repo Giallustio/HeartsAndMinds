@@ -16,8 +16,8 @@ player createDiaryRecord [_MainCategory, [localize "str_a3_cfghints_command_vehi
 //Side Mission
 player createDiaryRecord [_MainCategory, [localize "STR_BTC_HAM_DOC_SIDEMISSION_TITLE", localize "STR_BTC_HAM_DOC_SIDEMISSION_TEXT"]];
 
-//FOB
-player createDiaryRecord [_MainCategory, [localize "STR_BTC_HAM_DOC_FOB_TITLE", localize "STR_BTC_HAM_DOC_FOB_TEXT"]];
+//Respawn position
+player createDiaryRecord [_MainCategory, [localize "str_a3_cfgvehicles_modulerespawnposition_f_0", localize "STR_BTC_HAM_DOC_FOB_TEXT"]];
 
 //Sling loading
 player createDiaryRecord [_MainCategory, [localize "STR_A3_SlingLoad1", localize "STR_BTC_HAM_DOC_SLING_TEXT"]];
@@ -48,6 +48,6 @@ player createDiaryRecord [_MainCategory, [localize "STR_BTC_HAM_DOC_TRAFFIC_TITL
 
 //Version
 player createDiaryRecord [_MainCategory, [localize "STR_A3_FM_Welcome4",
-        format (["<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/> Version %1.%2.%3 <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/>"] + btc_version)
+        format (["<img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/> Version %1.%2.%3 <img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/> <br/><br/> <img image='\a3\missions_f_orange\Data\Img\orange_overview_ca.paa' width='355' height='200'/>"] + btc_version)
     ]
 ];

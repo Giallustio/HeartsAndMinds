@@ -105,8 +105,8 @@ if (isServer) then {
     //FOB
     btc_fnc_fob_create_s = compile preprocessFileLineNumbers "core\fnc\fob\create_s.sqf";
     btc_fnc_fob_dismantle_s = compile preprocessFileLineNumbers "core\fnc\fob\dismantle_s.sqf";
-    btc_fnc_fob_init = compile preprocessFileLineNumbers "core\fnc\fob\init.sqf";
     btc_fnc_fob_killed = compile preprocessFileLineNumbers "core\fnc\fob\killed.sqf";
+    btc_fnc_fob_rallypointTimer = compile preprocessFileLineNumbers "core\fnc\fob\rallypointTimer.sqf";
 
     //MIL
     btc_fnc_mil_addWP = compile preprocessFileLineNumbers "core\fnc\mil\addWP.sqf";
@@ -144,6 +144,7 @@ if (isServer) then {
     btc_fnc_rep_remove_eh = compile preprocessFileLineNumbers "core\fnc\rep\remove_eh.sqf";
     btc_fnc_rep_buildingchanged = compile preprocessFileLineNumbers "core\fnc\rep\buildingchanged.sqf";
     btc_fnc_rep_explosives_defuse = compile preprocessFileLineNumbers "core\fnc\rep\explosives_defuse.sqf";
+    btc_fnc_rep_notify = compile preprocessFileLineNumbers "core\fnc\rep\notify.sqf";
 
     //SIDE
     btc_fnc_side_create = compile preprocessFileLineNumbers "core\fnc\side\create.sqf";
@@ -164,6 +165,7 @@ if (isServer) then {
     btc_fnc_side_kill = compile preprocessFileLineNumbers "core\fnc\side\kill.sqf";
     btc_fnc_side_chemicalLeak = compile preprocessFileLineNumbers "core\fnc\side\chemicalLeak.sqf";
     btc_fnc_side_EMP = compile preprocessFileLineNumbers "core\fnc\side\EMP.sqf";
+    btc_fnc_side_removeRubbish = compile preprocessFileLineNumbers "core\fnc\side\removeRubbish.sqf";
 
     //LOG
     btc_fnc_log_createVehicle = compile preprocessFileLineNumbers "core\fnc\log\createVehicle.sqf";
@@ -255,7 +257,6 @@ if (!isDedicated) then {
     btc_fnc_intro = compile preprocessFileLineNumbers "core\fnc\common\intro.sqf";
     btc_fnc_set_markerTextLocal = compile preprocessFileLineNumbers "core\fnc\common\set_markerTextLocal.sqf";
     btc_fnc_showSubtitle = compile preprocessFileLineNumbers "core\fnc\common\showSubtitle.sqf";
-    btc_fnc_strategicMapOpen = compile preprocessFileLineNumbers "core\fnc\common\strategicMapOpen.sqf";
     btc_fnc_get_composition = compile preprocessFileLineNumbers "core\fnc\common\get_composition.sqf";
     btc_fnc_checkArea = compile preprocessFileLineNumbers "core\fnc\common\checkArea.sqf";
     btc_fnc_typeOfPreview = compile preprocessFileLineNumbers "core\fnc\common\typeOfPreview.sqf";
@@ -286,12 +287,12 @@ if (!isDedicated) then {
     btc_fnc_ied_deleteLoop = compile preprocessFileLineNumbers "core\fnc\ied\deleteLoop.sqf";
 
     //EH
-    btc_fnc_eh_player_respawn = compile preprocessFileLineNumbers "core\fnc\eh\player_respawn.sqf";
     btc_fnc_eh_CuratorObjectPlaced = compile preprocessFileLineNumbers "core\fnc\eh\CuratorObjectPlaced.sqf";
     btc_fnc_eh_player = compile preprocessFileLineNumbers "core\fnc\eh\player.sqf";
 
     //FOB
     btc_fnc_fob_create = compile preprocessFileLineNumbers "core\fnc\fob\create.sqf";
+    btc_fnc_fob_rallypointAssemble = compile preprocessFileLineNumbers "core\fnc\fob\rallypointAssemble.sqf";
     btc_fnc_fob_redeploy = compile preprocessFileLineNumbers "core\fnc\fob\redeploy.sqf";
 
     //INT

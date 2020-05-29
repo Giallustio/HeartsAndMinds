@@ -57,8 +57,9 @@ if (_type isEqualTo 7) exitWith {
 };
 
 private _group = createGroup _side;
+private _delay = 0;
 if (_type isEqualTo 1) then {
-    [_group, _array_veh select 0, _array_type, _array_veh select 1, {}, _array_veh select 2, _array_veh select 3] call btc_fnc_delay_createVehicle;
+    _delay = [_group, _array_veh select 0, _array_type, _array_veh select 1, {}, _array_veh select 2, _array_veh select 3] call btc_fnc_delay_createVehicle;
 } else {
     for "_i" from 0 to (count _array_pos - 1) do {
         [_group, _array_type select _i, _array_pos select _i, "CAN_COLLIDE"] call btc_fnc_delay_createUnit;
@@ -108,4 +109,4 @@ if (_type isEqualTo 1) then {
 
     if (_side isEqualTo btc_enemy_side) then {[_group] call btc_fnc_mil_unit_create;};
     if (_side isEqualTo civilian) then {[_group] call btc_fnc_civ_unit_create};
-}, [_data_unit, _group], btc_delay_createUnit] call CBA_fnc_waitAndExecute;
+}, [_data_unit, _group], btc_delay_createUnit + _delay] call CBA_fnc_waitAndExecute;
