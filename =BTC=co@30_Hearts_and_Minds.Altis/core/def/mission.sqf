@@ -11,6 +11,11 @@ btc_p_auto_db = "btc_p_auto_db" call BIS_fnc_getParamValue isEqualTo 1;
 btc_p_db_autoRestart = "btc_p_db_autoRestart" call BIS_fnc_getParamValue;
 btc_p_db_autoRestartTime = "btc_p_db_autoRestartTime" call BIS_fnc_getParamValue;
 
+//<< Respawn options >>
+btc_p_respawn_location = "btc_p_respawn_location" call BIS_fnc_getParamValue;
+btc_p_rallypointTimer = "btc_p_rallypointTimer" call BIS_fnc_getParamValue;
+btc_p_respawn_arsenal = ("btc_p_respawn_arsenal" call BIS_fnc_getParamValue) isEqualTo 1;
+
 //<< Faction options >>
 private _p_en = "btc_p_en" call BIS_fnc_getParamValue;
 private _p_en_AA = ("btc_p_AA" call BIS_fnc_getParamValue) isEqualTo 1;
@@ -29,9 +34,6 @@ private _hideout_n = "btc_p_hideout_n" call BIS_fnc_getParamValue;
 private _cache_info_def = "btc_p_cache_info_def" call BIS_fnc_getParamValue;
 private _cache_info_ratio = "btc_p_cache_info_ratio" call BIS_fnc_getParamValue;
 private _info_chance = "btc_p_info_chance" call BIS_fnc_getParamValue;
-
-//<< Medical options >>
-btc_p_redeploy = ("btc_p_redeploy" call BIS_fnc_getParamValue) isEqualTo 1;
 
 //<< Skill options >>
 btc_p_set_skill  = ("btc_p_set_skill" call BIS_fnc_getParamValue) isEqualTo 1;
@@ -148,7 +150,7 @@ if (isServer) then {
 
     //FOB
     btc_fobs = [[], [], []];
-    btc_fob_rallypointTicket = 2;
+    btc_fob_rallypointTimer = 60 * btc_p_rallypointTimer;
 
     //MIL
     btc_p_mil_wp_ratios = [_wp_house_probability, (1 - _wp_house_probability) / 1.5 + _wp_house_probability];
@@ -199,7 +201,7 @@ if (isServer) then {
 
     //Side
     btc_side_ID = 0;
-    btc_side_list = ["supply", "mines", "vehicle", "get_city", "tower", "civtreatment", "checkpoint", "convoy", "rescue", "capture_officer", "hostage", "hack", "kill", "EMP"]; // On ground (Side "convoy" and "capture_officer" are not design for map with different islands. Start and end city can be on different islands.)
+    btc_side_list = ["supply", "mines", "vehicle", "get_city", "tower", "civtreatment", "checkpoint", "convoy", "rescue", "capture_officer", "hostage", "hack", "kill", "EMP", "removeRubbish"]; // On ground (Side "convoy" and "capture_officer" are not design for map with different islands. Start and end city can be on different islands.)
     if (btc_p_sea) then {btc_side_list append ["civtreatment_boat", "underwater_generator"]}; // On sea
     if (btc_p_chem) then {btc_side_list pushBack "chemicalLeak"};
     btc_side_list_use = [];
@@ -315,8 +317,8 @@ if (isServer) then {
             (toLower _x find "offroad") != -1
         })
     });
-    _ieds = _ieds - ["Land_Garbage_line_F","Land_Garbage_square3_F","Land_Garbage_square5_F"];
-    btc_model_ieds = _ieds apply {(toLower getText(_cfgVehicles >> _x >> "model")) select [1]};
+    btc_type_ieds = _ieds - ["Land_Garbage_line_F","Land_Garbage_square3_F","Land_Garbage_square5_F"];
+    btc_model_ieds = btc_type_ieds apply {(toLower getText(_cfgVehicles >> _x >> "model")) select [1]};
 
     btc_groundWeaponHolder = [];
 };
@@ -327,7 +329,7 @@ if (isServer) then {
 private _allfaction = ["AFGCIV","CIV_F","DEFAULT","CFP_C_AFG","CFP_C_AFRCHRISTIAN","CFP_C_AFRISLAMIC","CFP_C_ASIA","CFP_C_ME","CUP_C_RU","CUP_C_CHERNARUS","CUP_C_SAHRANI","CUP_C_TK","GM_FC_GC_CIV","GM_FC_GE_CIV","LIB_CIV","LOP_AFR_CIV","LOP_CHR_CIV","LOP_TAK_CIV","CIV_IDAP_F","OPTRE_UEG_CIV","RDS_RUS_CIV","UK3CB_CHC_C","UK3CB_TKC_C","UNSUNG_C"]; //All factions
 _p_civ = _allfaction select _p_civ; //Select faction selected from mission parameter
 _p_civ_veh = _allfaction select _p_civ_veh; //Select faction selected from mission parameter
-private _allclasse = [[_p_civ]] call btc_fnc_civ_class; //Create classes from factions, you can combine factions from the SAME side : [[_p_civ , "btc_ac","LOP_TAK_CIV"]] call btc_fnc_civ_class.
+private _allclasse = [[_p_civ]] call btc_fnc_civ_class; //Create classes from factions, you can combine factions from the SAME side : [[_p_civ, "btc_ac","LOP_TAK_CIV"]] call btc_fnc_civ_class.
 
 //Save class name to global variable
 btc_civ_type_units = _allclasse select 0;
@@ -335,7 +337,10 @@ _allclasse = [[_p_civ_veh]] call btc_fnc_civ_class;
 btc_civ_type_veh = _allclasse select 2;
 btc_civ_type_boats = _allclasse select 1;
 
-btc_w_civs = ["V_Rangemaster_belt", "arifle_Mk20_F", "30Rnd_556x45_Stanag", "hgun_ACPC2_F", "9Rnd_45ACP_Mag"];
+btc_w_civs = [
+    ["srifle_DMR_06_hunter_F", "sgun_HunterShotgun_01_F", "srifle_DMR_06_hunter_khs_F", "sgun_HunterShotgun_01_Sawedoff_F", "Hgun_PDW2000_F", "arifle_AKM_F", "arifle_AKS_F"],
+    ["hgun_Pistol_heavy_02_F", "hgun_Rook40_F", "hgun_Pistol_01_F"]
+];
 btc_g_civs = ["HandGrenade", "MiniGrenade", "ACE_M84", "ACE_M84"];
 
 //FOB
@@ -637,9 +642,10 @@ btc_spect_updateOn = -1;
 //Rep
 btc_rep_bonus_cache = 100;
 btc_rep_bonus_civ_hh = 3;
-btc_rep_bonus_disarm = 25;
+btc_rep_bonus_disarm = 15;
 btc_rep_bonus_hideout = 200;
 btc_rep_bonus_mil_killed = 0.25;
+btc_rep_bonus_IEDCleanUp = 10;
 
 btc_rep_malus_civ_hd = - 10;
 btc_rep_malus_civ_killed = - 10;

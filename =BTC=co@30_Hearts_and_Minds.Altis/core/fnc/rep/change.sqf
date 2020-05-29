@@ -35,12 +35,14 @@ btc_global_reputation = btc_global_reputation + _reputation;
 if (btc_p_rep_notify) then {
     if ((btc_rep_delayed select 0) isEqualTo 0) then {
         [{
-            abs(btc_rep_delayed select 0) > 3
-        }, {
-            btc_rep_delayed call btc_fnc_rep_notify;
-        }, [], 10 * 60, {
-            btc_rep_delayed call btc_fnc_rep_notify;
-        }] call CBA_fnc_waitUntilAndExecute;
+            [{
+                abs(btc_rep_delayed select 0) > 3
+            }, {
+                btc_rep_delayed call btc_fnc_rep_notify;
+            }, [], 10 * 60, {
+                btc_rep_delayed call btc_fnc_rep_notify;
+            }] call CBA_fnc_waitUntilAndExecute;
+        }, [], 0.5] call CBA_fnc_waitAndExecute;
     };
     btc_rep_delayed set [0, (btc_rep_delayed select 0) + _reputation];
     (btc_rep_delayed select 1) pushBack [_reputation, _player];

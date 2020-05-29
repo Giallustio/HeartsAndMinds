@@ -10,7 +10,7 @@ This mission has a database system. Enemy units, towns, hideouts, cache, objects
 ### Chemical agent:
 A chemical agent can be found in the battlefield at cache location for example. When an object is contaminated, the chemical agent propagates to people around (in a circle of 3m). Those people will be hurt constantly until they died or found a decontaminating shower (available at the logistic point) to clean up their body. When they are contaminated, they can propagate it to other people around (in a circle of 1.5m) or vehicle if they get inside. Keep in mind, dead body stay contaminated but body bag will isolate it. Also, a contaminated object loaded as cargo will contaminate the container or vehicle.
 ### Protection:
-Use CBRN gear (uniform, mask and breather backpack) to protect you from the contamination effect. But, don't forget to take a shower for more than 5s before removing your CBRN gear. Be aware, even with a CBRN equipment you can propagate the agent to people or vehicle, you are just protected from the effect.
+Use CBRN gear (uniform, respirator mask and breather backpack) for full protection from the contamination effect. But, don't forget to take a shower for more than 5s before removing your CBRN gear. Be aware, even with a CBRN equipment you can propagate the agent to people or vehicle, you are just protected from the effect. Simple mask and simple uniform can reduce from 65% to 80% the probability to take damage.
 ### Decontaminate:
 You can use a small shower to decontaminate units only. Use the big shower for objects, vehicles and objects loaded as cargo. To activate them, just stay under the shower.
 ### Detection:

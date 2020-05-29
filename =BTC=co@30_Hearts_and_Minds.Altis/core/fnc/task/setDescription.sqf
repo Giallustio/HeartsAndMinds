@@ -361,6 +361,22 @@ switch (_description) do {
         ];
         _type = "search";
     };
+    case 38 : {
+        _description = [
+            format [localize "STR_BTC_HAM_SIDE_RUBBISH_DESC", _location] + (["B_APC_Tracked_01_CRV_F"] call btc_fnc_typeOfPreview),
+            format [localize "STR_BTC_HAM_SIDE_RUBBISH_TITLE", _location],
+            format [localize "STR_BTC_HAM_SIDE_RUBBISH_TITLE", _location]
+        ];
+        _type = "use";
+    };
+    case 39 : {
+        _description = [
+            (localize "STR_BTC_HAM_SIDE_RUBBISH_SPOT_DESC") + ([_location] call btc_fnc_typeOfPreview),
+            localize "STR_BTC_HAM_SIDE_RUBBISH_SPOT_TITLE",
+            localize "STR_BTC_HAM_SIDE_RUBBISH_SPOT_TITLE"
+        ];
+        _type = "move";
+    };
 };
 
 [

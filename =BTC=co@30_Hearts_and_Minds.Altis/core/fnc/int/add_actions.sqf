@@ -31,10 +31,10 @@ _action = ["request_delete", localize "STR_3DEN_Delete", "\A3\ui_f\data\igui\cfg
 
 //Intel
 _action = ["Search_intel", localize "STR_A3_Showcase_Marksman_BIS_tskIntel_title", "\A3\ui_f\data\igui\cfg\simpleTasks\types\search_ca.paa", {
-    [btc_fnc_info_search_for_intel, [_this select 0]] call CBA_fnc_execNextFrame;
-}, {!alive (_this select 0)}] call ace_interact_menu_fnc_createAction;
+    [btc_fnc_info_search_for_intel, [_target]] call CBA_fnc_execNextFrame;
+}, {!alive _target}] call ace_interact_menu_fnc_createAction;
 {[_x, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToClass;} forEach (btc_type_units + btc_type_divers);
-_action = ["Interrogate_intel", localize "STR_BTC_HAM_ACTION_INTEL_INTERROGATE", "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\instructor_ca.paa", {[(_this select 0),true] spawn btc_fnc_info_ask;}, {alive (_this select 0) && {[_this select 0] call ace_common_fnc_isAwake} && captive (_this select 0)}] call ace_interact_menu_fnc_createAction;
+_action = ["Interrogate_intel", localize "STR_BTC_HAM_ACTION_INTEL_INTERROGATE", "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\instructor_ca.paa", {[_target,true] spawn btc_fnc_info_ask;}, {alive _target && {[_target] call ace_common_fnc_isAwake} && captive _target}] call ace_interact_menu_fnc_createAction;
 {[_x, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToClass;} forEach (btc_type_units + btc_type_divers);
 
 //Log point
@@ -58,23 +58,23 @@ _action = ["Require_delete", localize "STR_3DEN_Delete", "\z\ace\addons\arsenal\
 //Logistic
 _action = ["Logistic", localize "STR_BTC_HAM_ACTION_LOC_MAIN", "\A3\ui_f\data\igui\cfg\simpleTasks\letters\L_ca.paa", {}, {true}] call ace_interact_menu_fnc_createAction;
 {[_x, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToClass;} forEach btc_log_def_loadable;
-_action = ["Place", localize "STR_ACE_Dragging_Carry", "\z\ace\addons\dragging\UI\icons\box_carry.paa", {(_this select 0) call btc_fnc_log_place}, {!btc_log_placing}] call ace_interact_menu_fnc_createAction;
+_action = ["Place", localize "STR_ACE_Dragging_Carry", "\z\ace\addons\dragging\UI\icons\box_carry.paa", {_target call btc_fnc_log_place}, {!btc_log_placing}] call ace_interact_menu_fnc_createAction;
 {[_x, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToClass;} forEach btc_log_def_placeable;
 
 //Shower
-_action = ["Shower_act", getText(configfile >> "CfgVehicles" >> "DeconShower_01_F" >> "UserActions" >> "Activate" >> "displayName"), "", {player playActionNow 'PutDown'; [_this select 0, 1.5, 9] remoteExec ["BIN_fnc_deconShowerAnim", 0]}, {alive (_this select 0) AND {(_this select 0) animationSourcePhase 'valve_source' isEqualTo 0}}] call ace_interact_menu_fnc_createAction;
+_action = ["Shower_act", getText(configfile >> "CfgVehicles" >> "DeconShower_01_F" >> "UserActions" >> "Activate" >> "displayName"), "", {player playActionNow 'PutDown'; [_target, 1.5, 9] remoteExec ["BIN_fnc_deconShowerAnim", 0]}, {alive _target AND {_target animationSourcePhase 'valve_source' isEqualTo 0}}] call ace_interact_menu_fnc_createAction;
 ["DeconShower_01_F", 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToClass;
-_action = ["Shower_act", getText(configfile >> "CfgVehicles" >> "DeconShower_02_F" >> "UserActions" >> "Activate" >> "displayName"), "", {player playActionNow 'PutDown'; [_this select 0, 5.4, 4, 2, true] remoteExec ["BIN_fnc_deconShowerAnimLarge", 0]}, {alive (_this select 0) AND {(_this select 0) animationSourcePhase 'valve_source' isEqualTo 0}}] call ace_interact_menu_fnc_createAction;
+_action = ["Shower_act", getText(configfile >> "CfgVehicles" >> "DeconShower_02_F" >> "UserActions" >> "Activate" >> "displayName"), "", {player playActionNow 'PutDown'; [_target, 5.4, 4, 2, true] remoteExec ["BIN_fnc_deconShowerAnimLarge", 0]}, {alive _target AND {_target animationSourcePhase 'valve_source' isEqualTo 0}}] call ace_interact_menu_fnc_createAction;
 ["DeconShower_02_F", 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToClass;
 {
-    _action = ["Shower_desact", getText(configfile >> "CfgVehicles" >> "DeconShower_01_F" >> "UserActions" >> "Deactivate" >> "displayName"), "", {player playActionNow 'PutDown'; [_this select 0] remoteExecCall ["BIN_fnc_deconShowerAnimStop", 0]}, {alive (_this select 0) AND {(_this select 0) animationSourcePhase 'valve_source' > 0}}] call ace_interact_menu_fnc_createAction;
+    _action = ["Shower_desact", getText(configfile >> "CfgVehicles" >> "DeconShower_01_F" >> "UserActions" >> "Deactivate" >> "displayName"), "", {player playActionNow 'PutDown'; [_target] remoteExecCall ["BIN_fnc_deconShowerAnimStop", 0]}, {alive _target AND {_target animationSourcePhase 'valve_source' > 0}}] call ace_interact_menu_fnc_createAction;
     [_x, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToClass;
 } forEach ["DeconShower_01_F", "DeconShower_02_F"];
 
 //FOB
-_action = ["Mount_FOB", localize "STR_BTC_HAM_ACTION_FOB_MOUNT", "\A3\Ui_f\data\Map\Markers\NATO\b_hq.paa", {(_this select 0) spawn btc_fnc_fob_create}, {!btc_log_placing}] call ace_interact_menu_fnc_createAction;
+_action = ["Mount_FOB", localize "STR_BTC_HAM_ACTION_FOB_MOUNT", "\A3\Ui_f\data\Map\Markers\NATO\b_hq.paa", {_target spawn btc_fnc_fob_create}, {!btc_log_placing}] call ace_interact_menu_fnc_createAction;
 [btc_fob_mat, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToClass;
-_action = ["Dismantle_FOB", localize "STR_BTC_HAM_ACTION_FOB_DISMANTLE", "", {(_this select 0) remoteExecCall ["btc_fnc_fob_dismantle_s", 2]}, {true}, {}, [], [0, 0, -2], 5] call ace_interact_menu_fnc_createAction;
+_action = ["Dismantle_FOB", localize "STR_BTC_HAM_ACTION_FOB_DISMANTLE", "", {_target remoteExecCall ["btc_fnc_fob_dismantle_s", 2]}, {true}, {}, [], [0, 0, -2], 5] call ace_interact_menu_fnc_createAction;
 [btc_fob_flag, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToClass;
 
 //Orders
@@ -91,17 +91,17 @@ _action = ["Civil_Go_away", localize "STR_BTC_HAM_ACTION_ORDERS_GOAWAY", "\A3\ui
 { //Actions attachted to AI
     _action = ["Civil_Orders", localize "STR_BTC_HAM_ACTION_ORDERS_MAIN", "\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa", {}, {true}] call ace_interact_menu_fnc_createAction;
     [_x, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToClass;
-    _action = ["Civil_taxi", localize "STR_BTC_HAM_ACTION_ORDERS_TAXI", "\A3\ui_f\data\igui\cfg\simpleTasks\types\talk4_ca.paa", {[4, (_this select 0)] call btc_fnc_int_orders;}, {(alive (_this select 0)) && !((vehicle (_this select 0)) isEqualTo (_this select 0))}] call ace_interact_menu_fnc_createAction;
+    _action = ["Civil_taxi", localize "STR_BTC_HAM_ACTION_ORDERS_TAXI", "\A3\ui_f\data\igui\cfg\simpleTasks\types\talk4_ca.paa", {[4, _target] call btc_fnc_int_orders;}, {(alive _target) && !((vehicle _target) isEqualTo _target)}] call ace_interact_menu_fnc_createAction;
     [_x, 0, ["ACE_MainActions", "Civil_Orders"], _action] call ace_interact_menu_fnc_addActionToClass;
-    _action = ["Civil_Stop", localize "STR_BTC_HAM_ACTION_ORDERS_STOP", "\A3\ui_f\data\igui\cfg\simpleTasks\types\talk3_ca.paa", {[1, (_this select 0)] call btc_fnc_int_orders;}, {alive (_this select 0)}] call ace_interact_menu_fnc_createAction;
+    _action = ["Civil_Stop", localize "STR_BTC_HAM_ACTION_ORDERS_STOP", "\A3\ui_f\data\igui\cfg\simpleTasks\types\talk3_ca.paa", {[1, _target] call btc_fnc_int_orders;}, {alive _target}] call ace_interact_menu_fnc_createAction;
     [_x, 0, ["ACE_MainActions", "Civil_Orders"], _action] call ace_interact_menu_fnc_addActionToClass;
-    _action = ["Civil_Get_down", localize "STR_BTC_HAM_ACTION_ORDERS_GETDOWN", "\A3\ui_f\data\igui\cfg\simpleTasks\types\talk2_ca.paa", {[2, (_this select 0)] call btc_fnc_int_orders;}, {alive (_this select 0)}] call ace_interact_menu_fnc_createAction;
+    _action = ["Civil_Get_down", localize "STR_BTC_HAM_ACTION_ORDERS_GETDOWN", "\A3\ui_f\data\igui\cfg\simpleTasks\types\talk2_ca.paa", {[2, _target] call btc_fnc_int_orders;}, {alive _target}] call ace_interact_menu_fnc_createAction;
     [_x, 0, ["ACE_MainActions", "Civil_Orders"], _action] call ace_interact_menu_fnc_addActionToClass;
-    _action = ["Civil_Go_away", localize "STR_BTC_HAM_ACTION_ORDERS_GOAWAY", "\A3\ui_f\data\igui\cfg\simpleTasks\types\talk1_ca.paa", {[3, (_this select 0)] call btc_fnc_int_orders;}, {alive (_this select 0)}] call ace_interact_menu_fnc_createAction;
+    _action = ["Civil_Go_away", localize "STR_BTC_HAM_ACTION_ORDERS_GOAWAY", "\A3\ui_f\data\igui\cfg\simpleTasks\types\talk1_ca.paa", {[3, _target] call btc_fnc_int_orders;}, {alive _target}] call ace_interact_menu_fnc_createAction;
     [_x, 0, ["ACE_MainActions", "Civil_Orders"], _action] call ace_interact_menu_fnc_addActionToClass;
-    _action = ["Ask_Info", localize "STR_BTC_HAM_ACTION_ORDERS_ASKINFO", "\A3\ui_f\data\igui\cfg\simpleTasks\types\talk_ca.paa", {[(_this select 0),false] spawn btc_fnc_info_ask;}, {alive (_this select 0) && {[_this select 0] call ace_common_fnc_isAwake} && {side (_this select 0) isEqualTo civilian}}] call ace_interact_menu_fnc_createAction;
+    _action = ["Ask_Info", localize "STR_BTC_HAM_ACTION_ORDERS_ASKINFO", "\A3\ui_f\data\igui\cfg\simpleTasks\types\talk_ca.paa", {[_target,false] spawn btc_fnc_info_ask;}, {alive _target && {[_target] call ace_common_fnc_isAwake} && {side _target isEqualTo civilian}}] call ace_interact_menu_fnc_createAction;
     [_x, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToClass;
-    _action = ["Ask_Reputation", localize "STR_BTC_HAM_ACTION_ORDERS_ASKREP", "\A3\ui_f\data\igui\cfg\simpleTasks\types\talk_ca.paa", {[_this select 0] spawn btc_fnc_info_ask_reputation;}, {alive (_this select 0) && {[_this select 0] call ace_common_fnc_isAwake} && {side (_this select 0) isEqualTo civilian}}] call ace_interact_menu_fnc_createAction;
+    _action = ["Ask_Reputation", localize "STR_BTC_HAM_ACTION_ORDERS_ASKREP", "\A3\ui_f\data\igui\cfg\simpleTasks\types\talk_ca.paa", {[_target] spawn btc_fnc_info_ask_reputation;}, {alive _target && {[_target] call ace_common_fnc_isAwake} && {side _target isEqualTo civilian}}] call ace_interact_menu_fnc_createAction;
     [_x, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToClass;
 
     //remove ace3 "get down" order
@@ -127,7 +127,7 @@ if (btc_debug) then {
 };
 
 //Re-deploy
-_action = ["fob_redeploy", localize "STR_BTC_HAM_ACTION_REDEPLOY_MAIN", "\A3\ui_f\data\igui\cfg\simpleTasks\types\run_ca.paa", {[] call btc_fnc_fob_redeploy}, {btc_p_redeploy && !btc_log_placing}, {}, [], [0.4, 0, 0.4], 5] call ace_interact_menu_fnc_createAction;
+_action = ["fob_redeploy", localize "STR_BTC_HAM_ACTION_REDEPLOY_MAIN", "\A3\ui_f\data\igui\cfg\simpleTasks\types\run_ca.paa", {[] call btc_fnc_fob_redeploy;}, {!btc_log_placing}, {}, [], [0.4, 0, 0.4], 5] call ace_interact_menu_fnc_createAction;
 [btc_gear_object, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToObject;
 
 //Arsenal

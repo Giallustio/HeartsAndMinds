@@ -31,10 +31,10 @@ private _player = _players select 0 select 1;
 
 private _hint = [];
 if (_reputation >= 0) then {
-    private _minRep = _reputation min 100;
+    private _minRep = _reputation min 80;
 
     _hint pushBack 20;
-    _hint pushBack [[1 - _minRep / 100, 1, 1 - _minRep / 100], _player];
+    _hint pushBack [[1 - _minRep / 80, 1, 1 - _minRep / 80], _player];
 } else {
     private _minRep = _reputation max -25;
 
