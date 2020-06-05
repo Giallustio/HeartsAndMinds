@@ -6,9 +6,9 @@ Description:
     Initialize positions of IEDS.
 
 Parameters:
-    _city - [Object]
-    _area - [Number]
-    _n - [Number]
+    _city - City to initialise. [Object]
+    _area - Area to create IED. [Number]
+    _n - Number of IED, real and fake. [Number]
 
 Returns:
 
@@ -33,17 +33,14 @@ private _array = _city getVariable ["ieds", []];
 
 {
     for "_i" from 1 to _n do {
-        private _sel_pos = _pos;
-        _sel_pos = [_pos, _area] call btc_fnc_randomize_pos;
+        private _sel_pos = [_pos, _area] call btc_fnc_randomize_pos;
         private _dir = random 360;
 
         private _roads = _sel_pos nearRoads 50;
         if (_roads isEqualTo []) then {
             _sel_pos = [_sel_pos, 0, 100, 1, false] call btc_fnc_findsafepos;
         } else {
-            private _obj = selectRandom _roads;
-
-            private _arr = _obj call btc_fnc_ied_randomRoadPos;
+            private _arr = (selectRandom _roads) call btc_fnc_ied_randomRoadPos;
             _sel_pos = _arr select 0;
             _dir = _arr select 1;
         };
@@ -58,7 +55,7 @@ private _array = _city getVariable ["ieds", []];
             _marker setMarkerSize [0.8, 0.8];
         };
         if (btc_debug_log) then {
-            [format ["_this = %1  POS %2  N %3(%4)", _this, _sel_pos, _i, _n], __FILE__, [false]] call btc_fnc_debug_message;
+            [format ["_this = %1  POS %2 N %3(%4)", _this, _sel_pos, _i, _n], __FILE__, [false]] call btc_fnc_debug_message;
         };
     };
 } forEach [true, false];
