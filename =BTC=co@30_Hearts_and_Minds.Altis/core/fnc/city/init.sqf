@@ -57,7 +57,7 @@ for "_id" from 0 to (count _locations - 1) do {
         };
         private _name = getText(_current >> "name");
         private _radius = getNumber(_current >> "RadiusA") + getNumber(_current >> "RadiusB");
-        _radius = (_radius max 160) min btc_hideouts_radius;
+        _radius = (_radius max 160) min 800;
 
         if (btc_city_blacklist find _name >= 0) exitWith {};
 
