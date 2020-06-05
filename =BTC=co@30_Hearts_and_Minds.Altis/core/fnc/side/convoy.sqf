@@ -36,9 +36,9 @@ if (_usefuls isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
 private _city1 = selectRandom _usefuls;
 
 //// Find Road \\\\
-private _radius_x = _city1 getVariable ["RadiusX", 0];
-private _roads = _city1 nearRoads (_radius_x * 2);
-_roads = _roads select {(_x distance _city1 > _radius_x) && isOnRoad _x};
+private _radius = (_city1 getVariable ["radius", 0])/2;
+private _roads = _city1 nearRoads (_radius * 2);
+_roads = _roads select {(_x distance _city1 > _radius) && isOnRoad _x};
  if (_roads isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
 private _road = selectRandom _roads;
 private _pos1 = getPosATL _road;
@@ -60,7 +60,7 @@ _marker2 setMarkerSize [0.6, 0.6];
 private _area = createMarker [format ["sm_%1", _pos2], _pos2];
 _area setMarkerShape "ELLIPSE";
 _area setMarkerBrush "SolidBorder";
-_area setMarkerSize [_radius_x/2, _radius_x/2];
+_area setMarkerSize [_radius/2, _radius/2];
 _area setMarkerAlpha 0.3;
 _area setmarkercolor "colorBlue";
 
@@ -91,7 +91,7 @@ for "_i" from 0 to (2 + round random 2) do {
     }];
 }, [_group, _pos2, _taskID], btc_delay_createUnit + _delay] call CBA_fnc_waitAndExecute;
 
-[_group, _pos2, -1, "MOVE", "SAFE", "RED", "LIMITED", "COLUMN", format ["['%1', 'FAILED'] call BIS_fnc_taskSetState;", _taskID], [0, 0, 0], _radius_x/2] call CBA_fnc_addWaypoint;
+[_group, _pos2, -1, "MOVE", "SAFE", "RED", "LIMITED", "COLUMN", format ["['%1', 'FAILED'] call BIS_fnc_taskSetState;", _taskID], [0, 0, 0], _radius/2] call CBA_fnc_addWaypoint;
 
 waitUntil {sleep 5; (
     _taskID call BIS_fnc_taskCompleted ||

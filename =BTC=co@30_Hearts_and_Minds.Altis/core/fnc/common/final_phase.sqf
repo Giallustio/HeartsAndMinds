@@ -30,13 +30,12 @@ btc_city_remaining = [];
         if (_x getVariable ["marker", ""] != "") then {
             deleteMarker (_x getVariable ["marker", ""]);
         };
-        private _radius_x = _x getVariable ["RadiusX", 500];
-        private _radius_y = _x getVariable ["RadiusY", 500];
+        private _radius = _x getVariable ["radius", 500];
 
         private _marker = createMarker [format ["city_%1", position _x], position _x];
         _marker setMarkerShape "ELLIPSE";
         _marker setMarkerBrush "SolidBorder";
-        _marker setMarkerSize [_radius_x + _radius_y, _radius_x + _radius_y];
+        _marker setMarkerSize [_radius, _radius];
         _marker setMarkerAlpha 0.3;
         if (_x getVariable ["occupied", false]) then {
             _marker setMarkerColor "colorRed";
