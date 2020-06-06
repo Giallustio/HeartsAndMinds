@@ -127,12 +127,54 @@ if (btc_debug) then {
 };
 
 //Re-deploy
-_action = ["fob_redeploy", localize "STR_BTC_HAM_ACTION_REDEPLOY_MAIN", "\A3\ui_f\data\igui\cfg\simpleTasks\types\run_ca.paa", {[] call btc_fnc_fob_redeploy;}, {!btc_log_placing}, {}, [], [0.4, 0, 0.4], 5] call ace_interact_menu_fnc_createAction;
+_action = ["redeploy", "BI re-deploy", "\A3\ui_f\data\igui\cfg\simpleTasks\types\run_ca.paa", {[] call btc_fnc_fob_redeploy;}, {!btc_log_placing}, {}, [], [0.4, 0, 0.4], 5] call ace_interact_menu_fnc_createAction;
 [btc_gear_object, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToObject;
+_action = ["base", "Re-deploy base", "", {_player setPosATL getMarkerPos [btc_respawn_marker, true];}, {!btc_log_placing}] call ace_interact_menu_fnc_createAction;
+[btc_gear_object, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToObject;
+_insertChildren = {
+    params ["_target", "_player", "_params"];
+
+    private _actions = [];
+    {
+        private _childStatement = {
+            params ["_target", "_player", "_params"];
+
+            _player setPosATL getMarkerPos [_params, true];
+        };
+        private _action = [markerText _x, markerText _x, "\A3\ui_f\data\igui\cfg\simpleTasks\types\wait_ca.paa", _childStatement, {true}, {}, _x] call ace_interact_menu_fnc_createAction;
+        _actions pushBack [_action, [], _target];
+    } forEach (([btc_player_side, false] call BIS_fnc_getRespawnMarkers) - [btc_respawn_marker]);
+
+    _actions
+};
+_action = ["rallypoints", "Re-deploy rallypoints", "\A3\ui_f\data\igui\cfg\simpleTasks\types\wait_ca.paa", {}, {!btc_log_placing}, _insertChildren] call ace_interact_menu_fnc_createAction;
+[btc_gear_object, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToObject;
+_insertChildren = {
+    params ["_target", "_player", "_params"];
+
+    private _actions = [];
+    {
+        private _childStatement = {
+            params ["_target", "_player", "_params"];
+
+            _player setPosATL getPosATL _params;
+        };
+        private ["_identity", "_name", "_pic", "_showName", "_respawnPositions", "_respawnPositionNames", "_respawnPositionNameShow", "_pos"];
+        (_x call BIS_fnc_showRespawnMenuPositionName) params ["_FOBName", "_icon"];
+        private _action = [_FOBName, _FOBName, _icon, _childStatement, {true}, {}, _x] call ace_interact_menu_fnc_createAction;
+        _actions pushBack [_action, [], _target];
+    } forEach (btc_player_side call BIS_fnc_getRespawnPositions);
+
+    _actions
+};
+_action = ["FOB", "Redeploy FOB/vehicles", "\A3\Ui_f\data\Map\Markers\NATO\b_hq.paa", {}, {!btc_log_placing}, _insertChildren] call ace_interact_menu_fnc_createAction;
+[btc_gear_object, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToObject;
+
+/*
 if (true) then {
   [btc_fob_flag, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToClass;
 };
-
+*/
 //Arsenal
 //BIS
 if (btc_p_arsenal_Type < 3) then {
