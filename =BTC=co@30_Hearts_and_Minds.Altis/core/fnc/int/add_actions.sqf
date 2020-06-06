@@ -136,11 +136,13 @@ _action = ["redeploy", "BI re-deploy", "\A3\ui_f\data\igui\cfg\simpleTasks\types
     };
 }, {!btc_log_placing}, {}, [], [0.4, 0, 0.4], 5] call ace_interact_menu_fnc_createAction;
 [btc_gear_object, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToObject;
-_action = ["base", "Re-deploy base", "", {_player setPosATL getMarkerPos [btc_respawn_marker, true];}, {!btc_log_placing}] call ace_interact_menu_fnc_createAction;
+_action = ["base", "Re-deploy base", getText (configfile >> "CfgMarkers" >> getMarkerType "btc_base" >> "icon"), {
+    if ([] call btc_fnc_fob_redeployCheck) then {[_player, btc_respawn_marker, false] call BIS_fnc_moveToRespawnPosition};
+}, {!btc_log_placing}] call ace_interact_menu_fnc_createAction;
 [btc_gear_object, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToObject;
 _action = ["rallypoints", "Re-deploy rallypoints", "\A3\ui_f\data\igui\cfg\simpleTasks\types\wait_ca.paa", {}, {!btc_log_placing}, {_this call btc_fnc_fob_redeploy}, ""] call ace_interact_menu_fnc_createAction;
 [btc_gear_object, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToObject;
-_action = ["FOB", "Redeploy FOB/vehicles", "\A3\Ui_f\data\Map\Markers\NATO\b_hq.paa", {}, {!btc_log_placing}] call ace_interact_menu_fnc_createAction;
+_action = ["FOB", "Re-deploy FOB/vehicles", "\A3\Ui_f\data\Map\Markers\NATO\b_hq.paa", {}, {!btc_log_placing}] call ace_interact_menu_fnc_createAction;
 [btc_gear_object, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToObject;
 _action = ["FOB NE", "NE", "\A3\ui_f\data\igui\cfg\simpleTasks\types\map_ca.paa", {}, {true}, {_this call btc_fnc_fob_redeploy}, [0, 90]] call ace_interact_menu_fnc_createAction;
 [btc_gear_object, 0, ["ACE_MainActions", "FOB"], _action] call ace_interact_menu_fnc_addActionToObject;
