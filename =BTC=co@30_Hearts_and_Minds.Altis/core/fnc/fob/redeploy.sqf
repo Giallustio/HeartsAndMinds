@@ -3,11 +3,15 @@
 Function: btc_fnc_fob_redeploy
 
 Description:
-    Show A3 respawn menu.
+    Create child statement to reploy.
 
 Parameters:
+    _target - is the object being interacted with. [Object]
+    _player - is ace_player. [Object]
+    _params - is the optional action parameters. (default [])
 
 Returns:
+    _actions - Action generated for redeploy. [Boolean]
 
 Examples:
     (begin example)
@@ -19,19 +23,42 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-if !(player call ace_medical_status_fnc_isInStableCondition) exitWith {
-    [[localize "STR_BTC_HAM_O_FOB_CANTREPLOY"], [localize "STR_BTC_HAM_O_FOB_REPLOYNOTSTABLE"]] call CBA_fnc_notify;
+params [
+    "_target",
+    "_player",
+    "_params"
+];
+
+private _actions = [];
+private _childStatement = {
+    params ["_target", "_player", "_params"];
+
+    [_player, _params] call BIS_fnc_moveToRespawnPosition;
 };
 
-if (
-    ["leftarm", "rightarm", "leftleg", "rightleg"] findIf {
-        [player, player, _x] call ace_medical_treatment_fnc_canSplint
-    } > -1
-) exitWith {
-    [[localize "STR_BTC_HAM_O_FOB_CANTREPLOY"], [localize "STR_BTC_HAM_O_FOB_REPLOYSPLINT"]] call CBA_fnc_notify;
+if (_params isEqualType "") exitWith { // Redeploy on marker like rallypoints
+    {
+        private _action = [markerText _x, markerText _x, "\A3\ui_f\data\igui\cfg\simpleTasks\types\wait_ca.paa", _childStatement, {true}, {}, _x] call ace_interact_menu_fnc_createAction;
+        _actions pushBack [_action, [], _target];
+    } forEach (([btc_player_side, false] call BIS_fnc_getRespawnMarkers) - [btc_respawn_marker]);
+
+    _actions
 };
 
-player setPos [10, 10, 10];
-player hideObject true;
-player enableSimulation false;
-forceRespawn player;
+// Redeploy on object like FOB/Vehicles
+private _center = [worldSize / 2, worldsize / 2, 0];
+_params params ["_min", "_max"];
+private _positions = (btc_player_side call BIS_fnc_getRespawnPositions) select {
+    private _dir = _center getDir _x;
+    _min < _dir &&
+    {_dir < _max}
+};
+
+{
+    private ["_identity", "_name", "_pic", "_showName", "_respawnPositions", "_respawnPositionNames", "_respawnPositionNameShow", "_pos"];
+    (_x call BIS_fnc_showRespawnMenuPositionName) params ["_FOBName", "_icon"];
+    private _action = [_FOBName, _FOBName, _icon, _childStatement, {true}, {}, _x] call ace_interact_menu_fnc_createAction;
+    _actions pushBack [_action, [], _target];
+} forEach (_positions);
+
+_actions
