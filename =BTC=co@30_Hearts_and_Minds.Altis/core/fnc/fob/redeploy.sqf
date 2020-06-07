@@ -3,15 +3,15 @@
 Function: btc_fnc_fob_redeploy
 
 Description:
-    Create child statement to reploy.
+    Create child statement to redeploy.
 
 Parameters:
-    _target - is the object being interacted with. [Object]
-    _player - is ace_player. [Object]
-    _params - is the optional action parameters. (default [])
+    _target - Is the object being interacted with. [Object]
+    _player - Is ace_player. [Object]
+    _params - Is the optional action parameters. (default [])
 
 Returns:
-    _actions - Action generated for redeploy. [Boolean]
+    _actions - ACE action generated for redeploy. [Boolean]
 
 Examples:
     (begin example)

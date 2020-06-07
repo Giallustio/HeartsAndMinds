@@ -1389,12 +1389,8 @@
             </Key>
         </Container>
         <Container name="Action(ACE): Re-deploy">
-            <Key ID="STR_BTC_HAM_ACTION_BIREDEPLOY">
-                <Original>BI Re-deploy</Original>
-                <Spanish>BI Re-deploy</Spanish>
-                <German>BI Verlegen</German>
-                <Portuguese>BI Ressurgir na FOB</Portuguese>
-                <Chinesesimp>BI 重新部署</Chinesesimp>
+            <Key ID="STR_BTC_HAM_ACTION_BIRESPAWN">
+                <Original>BI respawn</Original>
             </Key>
             <Key ID="STR_BTC_HAM_ACTION_REDEPLOYBASE">
                 <Original>Re-deploy base</Original>
@@ -1745,15 +1741,15 @@
                 <Original>This rallypoint will self-destruct in %1min.</Original>
                 <Chinesesimp>该集合点将在 %1 分钟后自毁。</Chinesesimp>
             </Key>
-            <Key ID="STR_BTC_HAM_O_FOB_CANTREPLOY">
+            <Key ID="STR_BTC_HAM_O_FOB_CANTREDEPLOY">
                 <Original>Can't redeploy,</Original>
                 <Chinesesimp>无法重新部署, </Chinesesimp>
             </Key>
-            <Key ID="STR_BTC_HAM_O_FOB_REPLOYNOTSTABLE">
+            <Key ID="STR_BTC_HAM_O_FOB_REDEPLOYNOTSTABLE">
                 <Original>you need to be stabilized</Original>
                 <Chinesesimp>需要稳定伤势</Chinesesimp>
             </Key>
-            <Key ID="STR_BTC_HAM_O_FOB_REPLOYSPLINT">
+            <Key ID="STR_BTC_HAM_O_FOB_REDEPLOYSPLINT">
                 <Original>you need to have a splint</Original>
                 <Chinesesimp>需要佩戴固定夹板</Chinesesimp>
             </Key>

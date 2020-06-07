@@ -21,7 +21,7 @@ Author:
 ---------------------------------------------------------------------------- */
 
 if !(player call ace_medical_status_fnc_isInStableCondition) exitWith {
-    [[localize "STR_BTC_HAM_O_FOB_CANTREPLOY"], [localize "STR_BTC_HAM_O_FOB_REPLOYNOTSTABLE"]] call CBA_fnc_notify;
+    [[localize "STR_BTC_HAM_O_FOB_CANTREDEPLOY"], [localize "STR_BTC_HAM_O_FOB_REDEPLOYNOTSTABLE"]] call CBA_fnc_notify;
     false
 };
 
@@ -30,7 +30,7 @@ if (
         [player, player, _x] call ace_medical_treatment_fnc_canSplint
     } > -1
 ) exitWith {
-    [[localize "STR_BTC_HAM_O_FOB_CANTREPLOY"], [localize "STR_BTC_HAM_O_FOB_REPLOYSPLINT"]] call CBA_fnc_notify;
+    [[localize "STR_BTC_HAM_O_FOB_CANTREDEPLOY"], [localize "STR_BTC_HAM_O_FOB_REDEPLOYSPLINT"]] call CBA_fnc_notify;
     false
 };
 

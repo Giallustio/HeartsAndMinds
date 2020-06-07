@@ -128,7 +128,7 @@ if (btc_debug) then {
 
 //Re-deploy
 private _actions = [];
-_actions pushBack ["redeploy", localize "STR_BTC_HAM_ACTION_BIREDEPLOY", "\A3\ui_f\data\igui\cfg\simpleTasks\types\run_ca.paa", {
+_actions pushBack ["redeploy", localize "STR_BTC_HAM_ACTION_BIRESPAWN", "\A3\ui_f\data\igui\cfg\simpleTasks\types\run_ca.paa", {
     if ([] call btc_fnc_fob_redeployCheck) then {
         player setPos [10, 10, 10];
         player hideObject true;
@@ -151,12 +151,12 @@ _actions pushBack ["FOB", localize "STR_BTC_HAM_ACTION_REDEPLOYFOB", "\A3\Ui_f\d
 {
     _x params ["_cardinal", "_degrees"];
 
-    _action = ["FOB" + _cardinal, _cardinal, "\A3\ui_f\data\igui\cfg\simpleTasks\types\map_ca.paa", {}, {true}, {_this call btc_fnc_fob_redeploy}, _degrees] call ace_interact_menu_fnc_createAction;
+    _action = ["FOB" + _cardinal, localize _cardinal, "\A3\ui_f\data\igui\cfg\simpleTasks\types\map_ca.paa", {}, {true}, {_this call btc_fnc_fob_redeploy}, _degrees] call ace_interact_menu_fnc_createAction;
     [btc_gear_object, 0, ["ACE_MainActions", "FOB"], _action] call ace_interact_menu_fnc_addActionToObject;
     if (btc_p_respawn_fromFOBToBase) then {
         [btc_fob_flag, 0, ["ACE_MainActions", "FOB"], _action] call ace_interact_menu_fnc_addActionToClass;
     };
-} forEach [[localize "str_q_north_east", [0, 90]], [localize "str_q_south_east", [90, 180]], [localize "str_q_south_west", [180, 270]], [localize "str_q_north_west", [270, 360]]];
+} forEach [["str_q_north_east", [0, 90]], ["str_q_south_east", [90, 180]], ["str_q_south_west", [180, 270]], ["str_q_north_west", [270, 360]]];
 
 //Arsenal
 //BIS
