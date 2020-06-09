@@ -36,9 +36,9 @@ if (_usefuls isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
 private _city1 = selectRandom _usefuls;
 
 //// Find roads \\\\
-private _radius_x = _city1 getVariable ["RadiusX",0];
-private _roads = _city1 nearRoads (_radius_x * 2);
-_roads = _roads select {(_x distance _city1 > _radius_x) && isOnRoad _x};
+private _radius = (_city1 getVariable ["radius",0])/2;
+private _roads = _city1 nearRoads (_radius * 2);
+_roads = _roads select {(_x distance _city1 > _radius) && isOnRoad _x};
 if (_roads isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
 private _road = selectRandom _roads;
 private _pos1 = getPosATL _road;
@@ -60,7 +60,7 @@ _marker2 setMarkerSize [0.6, 0.6];
 private _area = createMarker [format ["sm_%1", _pos2], _pos2];
 _area setMarkerShape "ELLIPSE";
 _area setMarkerBrush "SolidBorder";
-_area setMarkerSize [_radius_x/1.5, _radius_x/1.5];
+_area setMarkerSize [_radius/1.5, _radius/1.5];
 _area setMarkerAlpha 0.3;
 _area setmarkercolor "colorBlue";
 
@@ -81,7 +81,7 @@ for "_i" from 0 to (1 + round random 1) do {
 
 [{
     _this spawn {
-        params ["_group", "_taskID", "_radius_x", "_city1", "_pos2", "_markers"];
+        params ["_group", "_taskID", "_radius", "_city1", "_pos2", "_markers"];
 
         private _captive = selectRandom units _group;
         removeAllWeapons _captive;
@@ -92,7 +92,7 @@ for "_i" from 0 to (1 + round random 1) do {
         private _handcuff_taskID = _taskID + "hc";
         private _back_taskID = _taskID + "bk";
 
-        [_group, _pos2, -1, "MOVE", "SAFE", "RED", "LIMITED", "COLUMN", format ["['%1', 'FAILED'] call BIS_fnc_taskSetState;", _taskID], [0, 0, 0], _radius_x / 1.5] call CBA_fnc_addWaypoint;
+        [_group, _pos2, -1, "MOVE", "SAFE", "RED", "LIMITED", "COLUMN", format ["['%1', 'FAILED'] call BIS_fnc_taskSetState;", _taskID], [0, 0, 0], _radius / 1.5] call CBA_fnc_addWaypoint;
 
         //// Create trigger \\\\
         private _trigger = createTrigger ["EmptyDetector", getPos _city1];
@@ -153,6 +153,6 @@ for "_i" from 0 to (1 + round random 1) do {
 
         [_markers, _vehs + [_captive, _group]] call btc_fnc_delete;
     };
-}, [_group, _taskID, _radius_x, _city1, _pos2, _markers], btc_delay_createUnit + _delay] call CBA_fnc_waitAndExecute;
+}, [_group, _taskID, _radius, _city1, _pos2, _markers], btc_delay_createUnit + _delay] call CBA_fnc_waitAndExecute;
 
 waitUntil {sleep 5; _taskID call BIS_fnc_taskCompleted};

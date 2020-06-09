@@ -63,8 +63,8 @@ if (_pos isEqualTo []) then {
         _city = selectRandom _usefulRange;
     };
 
-    private _radius = ((_city getVariable ["RadiusX", 0]) + (_city getVariable ["RadiusY", 0]))/2;
-    private _random_pos = [getPos _city, _radius] call btc_fnc_randomize_pos;
+    private _radius = _city getVariable ["radius", 0];
+    private _random_pos = [getPos _city, _radius/2] call btc_fnc_randomize_pos;
     _pos = [_random_pos, 0, 100, 2, false] call btc_fnc_findsafepos;
 
     _id = _city getVariable ["id", 0];
@@ -80,7 +80,7 @@ _city setVariable ["ho_pos", _pos];
 if (btc_debug) then {deleteMarker format ["loc_%1", _id];};
 deleteVehicle (_city getVariable ["trigger_player_side", objNull]);
 
-[_pos, btc_hideouts_radius, btc_hideouts_radius, _city, _city getVariable "occupied", _city getVariable "name", _city getVariable "type", _city getVariable "id"] call btc_fnc_city_trigger_player_side;
+[_pos, btc_hideouts_radius, _city, _city getVariable "occupied", _city getVariable "name", _city getVariable "type", _city getVariable "id"] call btc_fnc_city_trigger_player_side;
 
 private _hideout = [_pos] call btc_fnc_mil_create_hideout_composition;
 clearWeaponCargoGlobal _hideout;

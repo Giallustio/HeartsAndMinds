@@ -40,10 +40,7 @@ if !(_city getVariable ["active", false]) exitWith {};
     };
 
     //Save all and delete
-    private _radius_x = _city getVariable ["RadiusX", 0];
-    private _radius_y = _city getVariable ["RadiusY", 0];
-    private _radius = _radius_x + _radius_y;
-
+    private _radius = _city getVariable ["radius", 0];
     private _has_en = _city getVariable ["occupied", false];
 
     if (_has_en) then {

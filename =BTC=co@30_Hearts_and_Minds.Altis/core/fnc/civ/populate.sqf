@@ -24,23 +24,12 @@ Author:
 
 params [
     ["_city", objNull, [objNull]],
-    ["_area", 0, [0]],
+    ["_area", 50, [0]],
     ["_n", 0, [0]]
 ];
 
 private _pos = position _city;
-private _houses = [];
-
-for [{_i = 25}, {_i < _area}, {_i = _i + 50}] do {
-    private _hs = [[(_pos select 0) + _i, (_pos select 1) + _i, 0], 50] call btc_fnc_getHouses;
-    _houses append _hs;
-    _hs = [[(_pos select 0) + _i, (_pos select 1) - _i, 0], 50] call btc_fnc_getHouses;
-    _houses append _hs;
-    _hs = [[(_pos select 0) - _i, (_pos select 1) - _i, 0], 50] call btc_fnc_getHouses;
-    _houses append _hs;
-    _hs = [[(_pos select 0) - _i, (_pos select 1) + _i, 0], 50] call btc_fnc_getHouses;
-    _houses append _hs;
-};
+private _houses = [_pos, _area] call btc_fnc_getHouses;
 
 if (_houses isEqualTo []) exitWith {};
 
