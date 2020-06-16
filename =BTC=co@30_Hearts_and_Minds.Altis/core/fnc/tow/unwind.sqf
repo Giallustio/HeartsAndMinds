@@ -24,13 +24,21 @@ Author:
 ---------------------------------------------------------------------------- */
 
 [{
-    ropeUnwound (_this select 1) &&
-    ropeUnwound (_this select 2)
+    isNull (_this select 1) ||
+    {isNull (_this select 2)} ||
+    {
+        ropeUnwound (_this select 1) &&
+        ropeUnwound (_this select 2)
+    }
 }, {
     params ["_flat", "_rope1", "_rope2", "_initialPitch"];
 
     private _actualPitch = (_flat call BIS_fnc_getPitchBank) select 0;
-    if (0.5 in ([_rope1, _rope2] apply {ropeLength _x})) exitWith {};
+    if (
+        isNull _rope1 ||
+        {isNull _rope2} ||
+        {0.5 in ([_rope1, _rope2] apply {ropeLength _x})}
+    ) exitWith {};
     if (_actualPitch - _initialPitch > 3) exitWith {
         [{
             params ["_flat", "_rope1", "_rope2", "_initialPitch"];
@@ -40,6 +48,10 @@ Author:
         }, {
             _this call btc_fnc_tow_unwind;
         }, _this, 1, {
+            params ["_flat", "_rope1", "_rope2"];
+
+            private _longRope = [_rope2, _rope1] select (ropeLength _rope1 > ropeLength _rope2);
+            ropeUnwind [_longRope, 1, ropeLength _rope1 min ropeLength _rope2, false];
             ["btc_tow_unwindDone", _this] call CBA_fnc_localEvent;
         }] call CBA_fnc_waitUntilAndExecute;
     };
