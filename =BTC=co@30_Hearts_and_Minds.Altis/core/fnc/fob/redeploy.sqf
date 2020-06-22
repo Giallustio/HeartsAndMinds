@@ -36,21 +36,28 @@ private _childStatement = {
     if ([] call btc_fnc_fob_redeployCheck) then {[_player, _params, false] call BIS_fnc_moveToRespawnPosition};
 };
 
-if (_params isEqualType "") then { // Redeploy on marker like rallypoints
+if (_params isEqualTo "") then { // Redeploy on marker like rallypoints
     {
         private _action = [markerText _x, markerText _x, "\A3\ui_f\data\igui\cfg\simpleTasks\types\wait_ca.paa", _childStatement, {true}, {}, _x] call ace_interact_menu_fnc_createAction;
         _actions pushBack [_action, [], _target];
     } forEach (([btc_player_side, false] call BIS_fnc_getRespawnMarkers) - [btc_respawn_marker]);
 } else { // Redeploy on object like FOB/Vehicles
-    private _center = [worldSize / 2, worldsize / 2, 0];
-    _params params ["_min", "_max"];
-    private _positions = (btc_player_side call BIS_fnc_getRespawnPositions) select {
-        if (alive _x) then {
-            private _dir = _center getDir _x;
-            _min <= _dir &&
-            {_dir < _max}
-        } else {
-            false
+    private _getRespawnPositions = btc_player_side call BIS_fnc_getRespawnPositions;
+    private _positions = if (_params isEqualTo "Base") then {
+        _getRespawnPositions inAreaArray [getMarkerPos "btc_base", btc_fob_minDistance, btc_fob_minDistance]
+    } else {
+        private _center = [worldSize / 2, worldsize / 2, 0];
+        _params params ["_min", "_max"];
+        _getRespawnPositions select {
+            if (
+                alive _x && {!(_x inArea [getMarkerPos "btc_base", btc_fob_minDistance, btc_fob_minDistance, 0, false])}
+            ) then {
+                private _dir = _center getDir _x;
+                _min <= _dir &&
+                {_dir < _max}
+            } else {
+                false
+            };
         };
     };
 
