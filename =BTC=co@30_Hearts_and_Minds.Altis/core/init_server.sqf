@@ -43,7 +43,10 @@ if (btc_p_db_autoRestart > 0) then {
     }, [], btc_p_db_autoRestartTime * 60 * 60 - 5 * 60] call CBA_fnc_waitAndExecute;
 };
 
-{[_x, 30] call btc_fnc_eh_veh_add_respawn;} forEach btc_helo;
+{
+    _x setVariable ["btc_EDENinventory", [getWeaponCargo _x, getMagazineCargo _x, getItemCargo _x]];
+    [_x, 30] call btc_fnc_eh_veh_add_respawn;
+} forEach btc_helo;
 
 if (btc_p_side_mission_cycle > 0) then {
     for "_i" from 1 to btc_p_side_mission_cycle do {
