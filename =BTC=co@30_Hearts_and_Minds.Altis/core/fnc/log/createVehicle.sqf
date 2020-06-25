@@ -39,7 +39,8 @@ params [
     ["_fuelSource", [], [[]]],
     ["_pylons", [], [[]]],
     ["_isContaminated", false, [false]],
-    ["_supplyVehicle", [], [[]]]
+    ["_supplyVehicle", [], [[]]],
+    ["_EDENinventory", [], [[]]]
 ];
 
 private _veh  = createVehicle [_type, ASLToATL _pos, [], 0, "CAN_COLLIDE"];
@@ -47,6 +48,10 @@ _veh setDir _dir;
 _veh setPosASL _pos;
 
 [_veh, _customization, _isMedicalVehicle, _isRepairVehicle, _fuelSource, _pylons, _isContaminated, _supplyVehicle] call btc_fnc_setVehProperties;
+if !(_EDENinventory isEqualTo []) then {
+    _veh setVariable ["btc_EDENinventory", _EDENinventory];
+    [_veh, _EDENinventory] call btc_fnc_log_setCargo;
+};
 
 _veh setVariable ["btc_dont_delete", true];
 

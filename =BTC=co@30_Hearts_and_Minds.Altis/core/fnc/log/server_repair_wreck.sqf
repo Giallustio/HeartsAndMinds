@@ -35,6 +35,7 @@ private _dir = getDir _veh;
 private _marker = _veh getVariable ["marker", ""];
 private _vehProperties = [_veh] call btc_fnc_getVehProperties;
 _vehProperties set [5, false];
+private _EDENinventory = _veh getVariable ["btc_EDENinventory", []];
 
 btc_vehicles = btc_vehicles - [_veh];
 
@@ -46,4 +47,4 @@ deleteVehicle _veh;
 
 [{
     _this call btc_fnc_log_createVehicle;
-}, [_type, [_x, _y, 0.5 + _z], _dir] + _vehProperties, 1] call CBA_fnc_waitAndExecute;
+}, [_type, [_x, _y, 0.5 + _z], _dir] + _vehProperties + [_EDENinventory], 1] call CBA_fnc_waitAndExecute;
