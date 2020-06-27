@@ -22,7 +22,10 @@ if (btc_db_load && {profileNamespace getVariable [format ["btc_hm_%1_db", worldN
     setDate _date;
 
     {
-        [{!isNull _this}, {_this call btc_fnc_db_add_veh;}, _x] call CBA_fnc_waitUntilAndExecute;
+        [{!isNull _this}, {
+            _this setVariable ["btc_EDENinventory", [getWeaponCargo _this, getMagazineCargo _this, getItemCargo _this]];
+            _this call btc_fnc_db_add_veh;
+        }, _x] call CBA_fnc_waitUntilAndExecute;
     } forEach btc_vehicles;
 };
 
@@ -40,7 +43,10 @@ if (btc_p_db_autoRestart > 0) then {
     }, [], btc_p_db_autoRestartTime * 60 * 60 - 5 * 60] call CBA_fnc_waitAndExecute;
 };
 
-{[_x, 30] call btc_fnc_eh_veh_add_respawn;} forEach btc_helo;
+{
+    _x setVariable ["btc_EDENinventory", [getWeaponCargo _x, getMagazineCargo _x, getItemCargo _x]];
+    [_x, 30] call btc_fnc_eh_veh_add_respawn;
+} forEach btc_helo;
 
 if (btc_p_side_mission_cycle > 0) then {
     for "_i" from 1 to btc_p_side_mission_cycle do {

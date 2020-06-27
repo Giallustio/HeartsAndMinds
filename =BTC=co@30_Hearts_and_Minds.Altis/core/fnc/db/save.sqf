@@ -155,6 +155,7 @@ private _array_veh = [];
     private _cont = [getWeaponCargo _x, getMagazineCargo _x, getItemCargo _x];
     _data pushBack _cont;
     _data append ([_x] call btc_fnc_getVehProperties);
+    _data pushBack (_x getVariable ["btc_EDENinventory", []]);
     _array_veh pushBack _data;
     if (btc_debug_log) then {
         [format ["VEH %1 DATA %2", _x, _data], __FILE__, [false]] call btc_fnc_debug_message;
