@@ -41,7 +41,7 @@ if (btc_debug || btc_debug_log) then {
     [format ["named %1", (_fobs select 0) select _fob_index], __FILE__, [btc_debug, btc_debug_log]] call btc_fnc_debug_message;
 };
 
-[missionNamespace, ((_fobs select 2) select _fob_index) getVariable "BIS_fnc_IDRespawnPosition"] call BIS_fnc_removeRespawnPosition;
+[btc_player_side, ((_fobs select 2) select _fob_index) getVariable "BIS_fnc_IDRespawnPosition"] call BIS_fnc_removeRespawnPosition;
 deleteMarker ((_fobs select 0) deleteAt _fob_index);
 private _fob = (_fobs select 1) deleteAt _fob_index;
 deleteVehicle ((_fobs select 2) deleteAt _fob_index);

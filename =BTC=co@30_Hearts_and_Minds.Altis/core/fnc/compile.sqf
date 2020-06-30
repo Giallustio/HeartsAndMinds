@@ -294,6 +294,8 @@ if (!isDedicated) then {
     btc_fnc_fob_create = compile preprocessFileLineNumbers "core\fnc\fob\create.sqf";
     btc_fnc_fob_rallypointAssemble = compile preprocessFileLineNumbers "core\fnc\fob\rallypointAssemble.sqf";
     btc_fnc_fob_redeploy = compile preprocessFileLineNumbers "core\fnc\fob\redeploy.sqf";
+    btc_fnc_fob_redeploy = compile preprocessFileLineNumbers "core\fnc\fob\redeploy.sqf";
+    btc_fnc_fob_redeployCheck = compile preprocessFileLineNumbers "core\fnc\fob\redeployCheck.sqf";
 
     //INT
     btc_fnc_int_add_actions = compile preprocessFileLineNumbers "core\fnc\int\add_actions.sqf";
