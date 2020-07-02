@@ -30,7 +30,7 @@ params [
 ];
 
 private _group = createGroup btc_enemy_side;
-[_group, _pos, selectRandom _statics_type, {}, _dir] call btc_fnc_mil_createVehicle;
+[_group, _pos, selectRandom _statics_type, _dir] call btc_fnc_mil_createVehicle;
 
 _group setBehaviour "COMBAT";
 _group setCombatMode "RED";

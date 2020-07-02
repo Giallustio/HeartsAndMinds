@@ -9,7 +9,6 @@ Parameters:
     _group - Group to store crews. [Group]
     _pos - Position of creation. [Array]
     _veh_type - Vehicle type. [String]
-    _code - Code to apply on vehicle after creation. [Code]
     _dir - Direction of spawn. [Number]
     _type_units - Array of available unit type for cargo. [Array]
     _type_divers - Units used for submarine. [Array]
@@ -59,10 +58,4 @@ for "_i" from _crewSeats to (_totalSeats - 1) do {
     _units_type pushBack selectRandom _type_units;
 };
 
-private _delay = [_group, _veh_type, _units_type, _pos, _code, _dir] call btc_fnc_delay_createVehicle;
-
-[{
-    _this call btc_fnc_mil_unit_create;
-}, _group, btc_delay_createUnit + _delay] call CBA_fnc_waitAndExecute;
-
-_delay
+[_group, _veh_type, _units_type, _pos, _dir] call btc_fnc_delay_createVehicle

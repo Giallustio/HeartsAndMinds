@@ -44,8 +44,4 @@ for "_i" from 1 to _number do {
     [_group, _unit_type, _pos] call btc_fnc_delay_createUnit;
 };
 
-[{
-    _this call btc_fnc_mil_unit_create;
-}, [_group], btc_delay_createUnit] call CBA_fnc_waitAndExecute;
-
 _group

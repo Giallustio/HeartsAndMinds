@@ -44,9 +44,5 @@ for "_i" from 1 to _n do {
     [_group, _pos] call btc_fnc_civ_addWP;
     [_group, selectRandom btc_civ_type_units, _pos] call btc_fnc_delay_createUnit;
 
-    [{
-        _this call btc_fnc_civ_unit_create;
-    }, [_group], btc_delay_createUnit] call CBA_fnc_waitAndExecute;
-
     _houses = _houses - [_house];
 };

@@ -48,7 +48,6 @@ if (isServer) then {
     btc_fnc_civ_get_grenade = compile preprocessFileLineNumbers "core\fnc\civ\get_grenade.sqf";
     btc_fnc_civ_populate = compile preprocessFileLineNumbers "core\fnc\civ\populate.sqf";
     btc_fnc_civ_create_patrol = compile preprocessFileLineNumbers "core\fnc\civ\create_patrol.sqf";
-    btc_fnc_civ_unit_create = compile preprocessFileLineNumbers "core\fnc\civ\unit_create.sqf";
     btc_fnc_civ_evacuate = compile preprocessFileLineNumbers "core\fnc\civ\evacuate.sqf";
 
     //DATA
@@ -119,32 +118,31 @@ if (isServer) then {
     btc_fnc_mil_create_patrol = compile preprocessFileLineNumbers "core\fnc\mil\create_patrol.sqf";
     btc_fnc_mil_send = compile preprocessFileLineNumbers "core\fnc\mil\send.sqf";
     btc_fnc_mil_set_skill = compile preprocessFileLineNumbers "core\fnc\mil\set_skill.sqf";
-    btc_fnc_mil_unit_create = compile preprocessFileLineNumbers "core\fnc\mil\unit_create.sqf";
     btc_fnc_mil_getStructures = compile preprocessFileLineNumbers "core\fnc\mil\getStructures.sqf";
     btc_fnc_mil_getBuilding = compile preprocessFileLineNumbers "core\fnc\mil\getBuilding.sqf";
-    btc_fnc_mil_add_eh = compile preprocessFileLineNumbers "core\fnc\mil\add_eh.sqf";
     btc_fnc_mil_createVehicle = compile preprocessFileLineNumbers "core\fnc\mil\createVehicle.sqf";
     btc_fnc_mil_createUnits = compile preprocessFileLineNumbers "core\fnc\mil\createUnits.sqf";
+    btc_fnc_mil_unit_killed = compile preprocessFileLineNumbers "core\fnc\mil\unit_killed.sqf";
 
     //PATROL
     btc_fnc_patrol_playersInAreaCityGroup = compile preprocessFileLineNumbers "core\fnc\patrol\playersInAreaCityGroup.sqf";
-    btc_fnc_patrol_eh_remove = compile preprocessFileLineNumbers "core\fnc\patrol\eh_remove.sqf";
     btc_fnc_patrol_usefulCity = compile preprocessFileLineNumbers "core\fnc\patrol\usefulCity.sqf";
     btc_fnc_patrol_WPCheck = compile preprocessFileLineNumbers "core\fnc\patrol\WPCheck.sqf";
     btc_fnc_patrol_init = compile preprocessFileLineNumbers "core\fnc\patrol\init.sqf";
     btc_fnc_patrol_addWP = compile preprocessFileLineNumbers "core\fnc\patrol\addWP.sqf";
+    btc_fnc_patrol_eh = compile preprocessFileLineNumbers "core\fnc\patrol\eh.sqf";
+    btc_fnc_patrol_addEH = compile preprocessFileLineNumbers "core\fnc\patrol\addEH.sqf";
 
     //REP
-    btc_fnc_rep_add_eh = compile preprocessFileLineNumbers "core\fnc\rep\add_eh.sqf";
     btc_fnc_rep_call_militia = compile preprocessFileLineNumbers "core\fnc\rep\call_militia.sqf";
     btc_fnc_rep_change = compile preprocessFileLineNumbers "core\fnc\rep\change.sqf";
     btc_fnc_rep_eh_effects = compile preprocessFileLineNumbers "core\fnc\rep\eh_effects.sqf";
     btc_fnc_rep_hh = compile preprocessFileLineNumbers "core\fnc\rep\hh.sqf";
     btc_fnc_rep_firednear = compile preprocessFileLineNumbers "core\fnc\rep\firednear.sqf";
-    btc_fnc_rep_remove_eh = compile preprocessFileLineNumbers "core\fnc\rep\remove_eh.sqf";
     btc_fnc_rep_buildingchanged = compile preprocessFileLineNumbers "core\fnc\rep\buildingchanged.sqf";
     btc_fnc_rep_explosives_defuse = compile preprocessFileLineNumbers "core\fnc\rep\explosives_defuse.sqf";
     btc_fnc_rep_notify = compile preprocessFileLineNumbers "core\fnc\rep\notify.sqf";
+    btc_fnc_rep_killed = compile preprocessFileLineNumbers "core\fnc\rep\killed.sqf";
 
     //SIDE
     btc_fnc_side_create = compile preprocessFileLineNumbers "core\fnc\side\create.sqf";
@@ -218,7 +216,6 @@ btc_fnc_civ_addWP = compile preprocessFileLineNumbers "core\fnc\civ\addWP.sqf";
 
 //IED
 btc_fnc_ied_belt = compile preprocessFileLineNumbers "core\fnc\ied\belt.sqf";
-btc_fnc_ied_suiciderKilled = compile preprocessFileLineNumbers "core\fnc\ied\suiciderKilled.sqf";
 
 //INT
 btc_fnc_int_orders_give = compile preprocessFileLineNumbers "core\fnc\int\orders_give.sqf";
@@ -231,15 +228,12 @@ btc_fnc_log_place_destroy_camera = compile preprocessFileLineNumbers "core\fnc\l
 //MIL
 btc_fnc_mil_class = compile preprocessFileLineNumbers "core\fnc\mil\class.sqf";
 btc_fnc_mil_ammoUsage = compile preprocessFileLineNumbers "core\fnc\mil\ammoUsage.sqf";
-btc_fnc_mil_unit_killed = compile preprocessFileLineNumbers "core\fnc\mil\unit_killed.sqf";
 
 //PATROL
-btc_fnc_patrol_eh = compile preprocessFileLineNumbers "core\fnc\patrol\eh.sqf";
 btc_fnc_patrol_disabled = compile preprocessFileLineNumbers "core\fnc\patrol\disabled.sqf";
 
 //REP
 btc_fnc_rep_hd = compile preprocessFileLineNumbers "core\fnc\rep\hd.sqf";
-btc_fnc_rep_killed = compile preprocessFileLineNumbers "core\fnc\rep\killed.sqf";
 
 //TOW
 btc_fnc_tow_hook = compile preprocessFileLineNumbers "core\fnc\tow\hook.sqf";

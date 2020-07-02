@@ -21,17 +21,12 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-params [
-    ["_unit", objNull, [objNull]],
-    ["_killer", objNull, [objNull]]
-];
+params ["_unit", "_causeOfDeath", "_killer", "_instigator"];
 
-if (!isServer) exitWith {
-    _this remoteExecCall ["btc_fnc_rep_killed", 2];
-};
+if !(side group _unit isEqualTo civilian) exitWith {};
 
-if (isPlayer _killer) then {
-    [btc_rep_malus_civ_killed, _killer] call btc_fnc_rep_change;
+if (isPlayer _instigator) then {
+    [btc_rep_malus_civ_killed, _instigator] call btc_fnc_rep_change;
     if (btc_global_reputation < 600) then {
         [getPos _unit] call btc_fnc_rep_eh_effects;
     };

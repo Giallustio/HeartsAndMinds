@@ -74,7 +74,7 @@ private _vehs = [];
 private _veh_types = btc_type_motorized select {!(_x isKindOf "air")};
 private _delay = 0;
 for "_i" from 0 to (2 + round random 2) do {
-    _delay = _delay + ([_group, _pos1, selectRandom _veh_types, {}, [_road] call btc_fnc_road_direction] call btc_fnc_mil_createVehicle);
+    _delay = _delay + ([_group, _pos1, selectRandom _veh_types, [_road] call btc_fnc_road_direction] call btc_fnc_mil_createVehicle);
 
     _road = (roadsConnectedTo _road) select 0;
     _pos1 = getPosATL _road;
