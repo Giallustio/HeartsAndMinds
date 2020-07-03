@@ -37,7 +37,6 @@ params [
     ["_group", grpNull, [grpNull]],
     ["_pos", [0, 0, 0], [[]]],
     ["_veh_type", selectRandom btc_type_motorized, [""]],
-    ["_code", {}, [{}]],
     ["_dir", 0, [0]],
     ["_type_units", btc_type_units, [[]]],
     ["_type_divers", btc_type_divers, [[]]],
