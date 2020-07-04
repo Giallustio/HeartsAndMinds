@@ -465,6 +465,9 @@
                 <Original>Respawn locations available:</Original>
                 <Chinesesimp>可用的重生位置</Chinesesimp>
             </Key>
+            <Key ID="STR_BTC_HAM_RESP_FOBTOBASE">
+                <Original>Allow respawn from FOB to base:</Original>
+            </Key>
             <Key ID="STR_BTC_HAM_RESP_FOBRALLY">
                 <Original>FOB and Rallypoint</Original>
                 <Chinesesimp>FOB 和 集合点</Chinesesimp>
@@ -1301,6 +1304,9 @@
                 <Portuguese>Solicitar veículo</Portuguese>
                 <Chinesesimp>申请载具</Chinesesimp>
             </Key>
+            <Key ID="STR_BTC_HAM_ACTION_LOGPOINT_REFUELSOURCE">
+                <Original>Refuel fuel source</Original>
+            </Key>
         </Container>
         <Container name="Action(ACE): FOB">
             <Key ID="STR_BTC_HAM_ACTION_FOB_MOUNT">
@@ -1386,12 +1392,17 @@
             </Key>
         </Container>
         <Container name="Action(ACE): Re-deploy">
-            <Key ID="STR_BTC_HAM_ACTION_REDEPLOY_MAIN">
-                <Original>Re-deploy</Original>
-                <Spanish>Re-deploy</Spanish>
-                <German>Verlegen</German>
-                <Portuguese>Ressurgir na FOB</Portuguese>
-                <Chinesesimp>重新部署</Chinesesimp>
+            <Key ID="STR_BTC_HAM_ACTION_BIRESPAWN">
+                <Original>BI respawn</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_ACTION_REDEPLOYBASE">
+                <Original>Re-deploy base</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_ACTION_REDEPLOYRALLY">
+                <Original>Re-deploy rallypoints</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_ACTION_REDEPLOYFOB">
+                <Original>Re-deploy FOB/vehicles</Original>
             </Key>
         </Container>
         <Container name="Action : Arsenal (BIS)">
@@ -1733,15 +1744,15 @@
                 <Original>This rallypoint will self-destruct in %1min.</Original>
                 <Chinesesimp>该集合点将在 %1 分钟后自毁。</Chinesesimp>
             </Key>
-            <Key ID="STR_BTC_HAM_O_FOB_CANTREPLOY">
+            <Key ID="STR_BTC_HAM_O_FOB_CANTREDEPLOY">
                 <Original>Can't redeploy,</Original>
                 <Chinesesimp>无法重新部署, </Chinesesimp>
             </Key>
-            <Key ID="STR_BTC_HAM_O_FOB_REPLOYNOTSTABLE">
+            <Key ID="STR_BTC_HAM_O_FOB_REDEPLOYNOTSTABLE">
                 <Original>you need to be stabilized</Original>
                 <Chinesesimp>需要稳定伤势</Chinesesimp>
             </Key>
-            <Key ID="STR_BTC_HAM_O_FOB_REPLOYSPLINT">
+            <Key ID="STR_BTC_HAM_O_FOB_REDEPLOYSPLINT">
                 <Original>you need to have a splint</Original>
                 <Chinesesimp>需要佩戴固定夹板</Chinesesimp>
             </Key>

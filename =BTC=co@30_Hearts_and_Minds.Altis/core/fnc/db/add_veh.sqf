@@ -43,7 +43,7 @@ if (btc_p_respawn_location > 1) then {
             (btc_p_respawn_location isEqualTo 2) && (_veh isKindOf "Air") ||
             btc_p_respawn_location > 2
         ) then {
-            [missionNamespace, _veh] call BIS_fnc_addRespawnPosition;
+            [btc_player_side, _veh] call BIS_fnc_addRespawnPosition;
         };
     };
 };

@@ -40,10 +40,7 @@ if !(_city getVariable ["active", false]) exitWith {};
     };
 
     //Save all and delete
-    private _radius_x = _city getVariable ["RadiusX", 0];
-    private _radius_y = _city getVariable ["RadiusY", 0];
-    private _radius = _radius_x + _radius_y;
-
+    private _radius = _city getVariable ["radius", 0];
     private _has_en = _city getVariable ["occupied", false];
 
     if (_has_en) then {
@@ -54,10 +51,17 @@ if !(_city getVariable ["active", false]) exitWith {};
 
     private _pos_city = getPosWorld _city;
     private _data_units = [];
+    private _has_suicider = false;
     {
-        if ((leader _x) inArea [_pos_city, _radius, _radius, 0, false] && {side _x != btc_player_side} && {!(_x getVariable ["no_cache", false])}) then {
+        if (
+            (leader _x) inArea [_pos_city, _radius, _radius, 0, false] &&
+            {side _x != btc_player_side} &&
+            {!(_x getVariable ["no_cache", false])}
+        ) then {
             private _data_group = _x call btc_fnc_data_get_group;
             _data_units pushBack _data_group;
+
+            if ((_data_group select 0) in [5, 7]) then {_has_suicider = true;};
 
             if (btc_debug_log) then {
                 [format ["data units = %1", _data_units], __FILE__, [false]] call btc_fnc_debug_message;
@@ -65,6 +69,7 @@ if !(_city getVariable ["active", false]) exitWith {};
         };
     } forEach allGroups;
 
+    _city setVariable ["has_suicider", _has_suicider];
     _city setVariable ["data_units", _data_units];
     _city setVariable ["active", false];
 

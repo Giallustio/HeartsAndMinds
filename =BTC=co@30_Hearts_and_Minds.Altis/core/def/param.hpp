@@ -53,6 +53,12 @@ class Params {
         texts[]={$STR_BTC_HAM_RESP_FOBRALLY, $STR_BTC_HAM_RESP_FOBRALLYHELO, $STR_BTC_HAM_RESP_FOBRALLYHELI, $STR_BTC_HAM_RESP_FOBRALLYHELIVEHI};
         default = 0;
     };
+    class btc_p_respawn_fromFOBToBase { // Allow respawn from FOB to base:
+        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_RESP_FOBTOBASE"]);
+        values[]={0,1};
+        texts[]={$STR_DISABLED, $STR_ENABLED};
+        default = 0;
+    };
     class btc_p_rallypointTimer { // Time before rallypoint self-destruction:
         title = __EVAL(format ["      %1", localize "STR_BTC_HAM_RESP_RALLYTIMER"]);
         values[]={0,5,10,30,60};

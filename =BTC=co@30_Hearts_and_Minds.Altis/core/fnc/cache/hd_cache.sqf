@@ -34,14 +34,16 @@ params [
 
 private _explosive = (getNumber(configFile >> "cfgAmmo" >> _ammo >> "explosive") > 0);
 
-if (isNil {_cache getVariable "btc_hd_cache"} && {_explosive} && {_damage > 0.6}) then {
+if (
+    !(_cache getVariable ["btc_fnc_cache_hd_cache_fired", false]) &&
+    {_explosive} &&
+    {_damage > 0.6}
+) then {
+    _cache setVariable ["btc_fnc_cache_hd_cache_fired", true];
 
     if (!isServer) exitWith {
-        [_cache, "HandleDamage", "btc_fnc_cache_hd_cache"] call btc_fnc_eh_removePersistOnLocalityChange;
         _this remoteExecCall ["btc_fnc_cache_hd_cache", 2];
     };
-
-    _cache setVariable ["btc_hd_cache", true];
 
     //Effects
     private _pos = getPosATL btc_cache_obj;

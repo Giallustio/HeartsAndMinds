@@ -63,17 +63,9 @@ _group setVariable ["no_cache", true];
 _group setVariable ["btc_patrol_id", btc_civilian_id, btc_debug];
 btc_civilian_id = btc_civilian_id - 1;
 
-private _delay = [_group, _veh_type, [selectRandom btc_civ_type_units], _safe_pos, {
-    params ["_veh", "_group"];
-    _veh setVariable ["btc_crews", _group];
-    [_veh, "HandleDamage", "btc_fnc_patrol_disabled"] call btc_fnc_eh_persistOnLocalityChange;
-    [_veh, "Fuel", "btc_fnc_patrol_eh"] call btc_fnc_eh_persistOnLocalityChange;
-    [_veh, "GetOut", "btc_fnc_patrol_eh"] call btc_fnc_eh_persistOnLocalityChange;
-    [_veh, "HandleDamage", "btc_fnc_rep_hd"] call btc_fnc_eh_persistOnLocalityChange;
-}] call btc_fnc_delay_createVehicle;
+private _delay = [_group, _veh_type, [selectRandom btc_civ_type_units], _safe_pos] call btc_fnc_delay_createVehicle;
 
 [{
-    [_this select 0] call btc_fnc_civ_unit_create;
     _this call btc_fnc_patrol_init;
     [[_this select 0]] call btc_fnc_set_groupsOwner;
 }, [_group, [_start_city, _active_city], _area, _pos_isWater], btc_delay_createUnit + _delay] call CBA_fnc_waitAndExecute;

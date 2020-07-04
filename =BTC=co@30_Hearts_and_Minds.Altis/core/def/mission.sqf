@@ -1,5 +1,5 @@
 
-btc_version = [1, 20, 4];
+btc_version = [1, 20, 5];
 diag_log format (["=BTC= HEARTS AND MINDS VERSION %1.%2.%3"] + btc_version);
 
 //Param
@@ -13,6 +13,7 @@ btc_p_db_autoRestartTime = "btc_p_db_autoRestartTime" call BIS_fnc_getParamValue
 
 //<< Respawn options >>
 btc_p_respawn_location = "btc_p_respawn_location" call BIS_fnc_getParamValue;
+btc_p_respawn_fromFOBToBase = ("btc_p_respawn_fromFOBToBase" call BIS_fnc_getParamValue) isEqualTo 1;
 btc_p_rallypointTimer = "btc_p_rallypointTimer" call BIS_fnc_getParamValue;
 btc_p_respawn_arsenal = ("btc_p_respawn_arsenal" call BIS_fnc_getParamValue) isEqualTo 1;
 
@@ -131,7 +132,7 @@ if (isServer) then {
     //Hideout
     btc_hideouts = [];
     btc_hideouts_id = 0;
-    btc_hideouts_radius = 400;
+    btc_hideouts_radius = 800;
     btc_hideout_n = _hideout_n;
     if (btc_hideout_n isEqualTo 99) then {
         btc_hideout_n = round random 5;
@@ -270,7 +271,7 @@ if (isServer) then {
     btc_type_solarPanel = _allClassSorted select {_x isKindOf "Land_SolarPanel_04_base_F"};
 
     //BTC Vehicles in missions.sqm
-    btc_vehicles = [btc_veh_1, btc_veh_2, btc_veh_3, btc_veh_4, btc_veh_5, btc_veh_6, btc_veh_7, btc_veh_8, btc_veh_9, btc_veh_10, btc_veh_11, btc_veh_12, btc_veh_13, btc_veh_14, btc_veh_15, btc_veh_16];
+    btc_vehicles = [btc_veh_1, btc_veh_2, btc_veh_3, btc_veh_4, btc_veh_5, btc_veh_6, btc_veh_7, btc_veh_8, btc_veh_9, btc_veh_10, btc_veh_11, btc_veh_12, btc_veh_13, btc_veh_14, btc_veh_15, btc_veh_16, btc_veh_17, btc_veh_18];
     btc_helo = [btc_helo_1];
 
     // The two arrays below are prefixes of buildings and their multiplier.
@@ -348,6 +349,7 @@ btc_fob_mat = "Land_Cargo20_blue_F";
 btc_fob_structure = "Land_Cargo_HQ_V1_F";
 btc_fob_flag = "Flag_NATO_F";
 btc_fob_id = 0;
+btc_fob_minDistance = 1500;
 
 //IED
 btc_type_ieds_ace = ["IEDLandBig_F", "IEDLandSmall_F"];

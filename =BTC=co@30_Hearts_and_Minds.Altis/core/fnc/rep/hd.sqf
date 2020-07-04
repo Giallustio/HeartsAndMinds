@@ -32,10 +32,13 @@ params [
     ["_ammo", "", [""]]
 ];
 
+if !(side group _unit isEqualTo civilian) exitWith {_dam};
+
 if (_part in ["body", "wheel_1_1_steering", "wheel_1_2_steering", "wheel_2_1_steering", "wheel_2_2_steering", "palivo", "engine", "glass1", "glass2", "glass3", "glass4", "karoserie", "palivo", "fuel_hitpoint", "engine_hitpoint", "body_hitpoint"]) then {
     if (isPlayer _injurer && {_dam > 0.01}) then {
         if (!isServer) exitWith {
             _this remoteExecCall ["btc_fnc_rep_hd", 2];
+            _dam
         };
 
         [btc_rep_malus_civ_hd, _injurer] call btc_fnc_rep_change;

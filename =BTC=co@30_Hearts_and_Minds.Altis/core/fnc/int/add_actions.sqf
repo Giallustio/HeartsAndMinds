@@ -44,6 +44,8 @@ _action = ["Require_object", localize "STR_BTC_HAM_ACTION_LOGPOINT_REQOBJ", "\A3
 [btc_create_object, 0, ["ACE_MainActions", "Logistic"], _action] call ace_interact_menu_fnc_addActionToObject;
 _action = ["Repair_wreck", localize "STR_BTC_HAM_ACTION_LOGPOINT_REPWRECK", "\A3\ui_f\data\igui\cfg\simpleTasks\types\repair_ca.paa", {[btc_create_object_point] call btc_fnc_log_repair_wreck}, {true}, {}, [], [0, 0, 0], 5] call ace_interact_menu_fnc_createAction;
 [btc_create_object, 0, ["ACE_MainActions", "Logistic"], _action] call ace_interact_menu_fnc_addActionToObject;
+_action = ["Refuel", localize "STR_BTC_HAM_ACTION_LOGPOINT_REFUELSOURCE", "\A3\ui_f\data\igui\cfg\simpleTasks\types\refuel_ca.paa", {[btc_create_object_point] call btc_fnc_log_refuelSource}, {true}, {}, [], [0, 0, 0], 5] call ace_interact_menu_fnc_createAction;
+[btc_create_object, 0, ["ACE_MainActions", "Logistic"], _action] call ace_interact_menu_fnc_addActionToObject;
 _action = ["Require_veh", localize "STR_BTC_HAM_ACTION_LOGPOINT_REQVEH", "\A3\ui_f\data\map\vehicleicons\iconCar_ca.paa", {[btc_create_object_point] spawn btc_fnc_arsenal_garage}, {(serverCommandAvailable "#logout" || !isMultiplayer) and btc_p_garage}, {}, [], [0, 0, 0], 5] call ace_interact_menu_fnc_createAction;
 [btc_create_object, 0, ["ACE_MainActions", "Logistic"], _action] call ace_interact_menu_fnc_addActionToObject;
 _action = ["Tool", localize "str_3den_display3den_menubar_tools_text", "\A3\ui_f\data\igui\cfg\simpleTasks\letters\T_ca.paa", {}, {true}] call ace_interact_menu_fnc_createAction;
@@ -127,8 +129,36 @@ if (btc_debug) then {
 };
 
 //Re-deploy
-_action = ["fob_redeploy", localize "STR_BTC_HAM_ACTION_REDEPLOY_MAIN", "\A3\ui_f\data\igui\cfg\simpleTasks\types\run_ca.paa", {[] call btc_fnc_fob_redeploy;}, {!btc_log_placing}, {}, [], [0.4, 0, 0.4], 5] call ace_interact_menu_fnc_createAction;
-[btc_gear_object, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToObject;
+private _actions = [];
+_actions pushBack ["redeploy", localize "STR_BTC_HAM_ACTION_BIRESPAWN", "\A3\ui_f\data\igui\cfg\simpleTasks\types\run_ca.paa", {
+    if ([] call btc_fnc_fob_redeployCheck) then {
+        player setPos [10, 10, 10];
+        player hideObject true;
+        player enableSimulation false;
+        forceRespawn player;
+    };
+}, {!btc_log_placing}];
+_actions pushBack ["base", localize "STR_BTC_HAM_ACTION_REDEPLOYBASE", getText (configfile >> "CfgMarkers" >> getMarkerType "btc_base" >> "icon"), {
+    if ([] call btc_fnc_fob_redeployCheck) then {[_player, btc_respawn_marker, false] call BIS_fnc_moveToRespawnPosition};
+}, {!btc_log_placing}, {_this call btc_fnc_fob_redeploy}, "Base"];
+_actions pushBack ["rallypoints", localize "STR_BTC_HAM_ACTION_REDEPLOYRALLY", "\A3\ui_f\data\igui\cfg\simpleTasks\types\wait_ca.paa", {}, {!btc_log_placing}, {_this call btc_fnc_fob_redeploy}, ""];
+_actions pushBack ["FOB", localize "STR_BTC_HAM_ACTION_REDEPLOYFOB", "\A3\Ui_f\data\Map\Markers\NATO\b_hq.paa", {}, {!btc_log_placing}];
+{
+    private _action = _x call ace_interact_menu_fnc_createAction;
+    [btc_gear_object, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToObject;
+    if (btc_p_respawn_fromFOBToBase) then {
+        [btc_fob_flag, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToClass;
+    };
+} forEach _actions;
+{
+    _x params ["_cardinal", "_degrees"];
+
+    _action = ["FOB" + _cardinal, localize _cardinal, "\A3\ui_f\data\igui\cfg\simpleTasks\types\map_ca.paa", {}, {true}, {_this call btc_fnc_fob_redeploy}, _degrees] call ace_interact_menu_fnc_createAction;
+    [btc_gear_object, 0, ["ACE_MainActions", "FOB"], _action] call ace_interact_menu_fnc_addActionToObject;
+    if (btc_p_respawn_fromFOBToBase) then {
+        [btc_fob_flag, 0, ["ACE_MainActions", "FOB"], _action] call ace_interact_menu_fnc_addActionToClass;
+    };
+} forEach [["str_q_north_east", [0, 90]], ["str_q_south_east", [90, 180]], ["str_q_south_west", [180, 270]], ["str_q_north_west", [270, 360]]];
 
 //Arsenal
 //BIS
