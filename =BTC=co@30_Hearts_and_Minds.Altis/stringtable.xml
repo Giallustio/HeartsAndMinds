@@ -467,6 +467,7 @@
             </Key>
             <Key ID="STR_BTC_HAM_RESP_FOBTOBASE">
                 <Original>Allow respawn from FOB to base:</Original>
+                <Chinesesimp>允许从FOB重新部署至基地</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_RESP_FOBRALLY">
                 <Original>FOB and Rallypoint</Original>
@@ -1394,15 +1395,19 @@
         <Container name="Action(ACE): Re-deploy">
             <Key ID="STR_BTC_HAM_ACTION_BIRESPAWN">
                 <Original>BI respawn</Original>
+                <Chinesesimp>BI重生</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_ACTION_REDEPLOYBASE">
                 <Original>Re-deploy base</Original>
+                <Chinesesimp>重新部署至基地</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_ACTION_REDEPLOYRALLY">
                 <Original>Re-deploy rallypoints</Original>
+                <Chinesesimp>重新部署至集合点</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_ACTION_REDEPLOYFOB">
                 <Original>Re-deploy FOB/vehicles</Original>
+                <Chinesesimp>重新部署至FOB/载具</Chinesesimp>
             </Key>
         </Container>
         <Container name="Action : Arsenal (BIS)">
