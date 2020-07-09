@@ -58,6 +58,10 @@ _data pushBack (_vehicle getVariable ["btc_EDENinventory", []]);
         _vehicle setDir _dir;
         _vehicle setPosASL _pos;
         _vehicle setVectorDirAndUp _vectorPos;
+        
+        if (getNumber(configFile >> "CfgVehicles" >> _type >> "isUav") isEqualTo 1) then {
+            createVehicleCrew _vehicle;
+        };
 
         [_vehicle, _customization, _isMedicalVehicle, _isRepairVehicle, _fuelSource, _pylons, _isContaminated, _supplyVehicle] call btc_fnc_setVehProperties;
         if !(_EDENinventory isEqualTo []) then {
