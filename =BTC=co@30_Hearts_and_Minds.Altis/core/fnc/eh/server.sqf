@@ -26,6 +26,13 @@ addMissionEventHandler ["BuildingChanged", btc_fnc_rep_buildingchanged];
     [(_this select 0), "FiredNear", btc_fnc_rep_firednear] call CBA_fnc_addBISEventHandler;
     [(_this select 0), "HandleDamage", "btc_fnc_rep_hd"] call btc_fnc_eh_persistOnLocalityChange;
 }] call CBA_fnc_addClassEventHandler;
+["Animal", "InitPost", {
+    [(_this select 0), "killed", {
+        params ["_unit", "_killer", "_instigator"];
+        [_unit, "", _killer, _instigator] call btc_fnc_rep_killed;
+    }] call CBA_fnc_addBISEventHandler;
+    [(_this select 0), "HandleDamage", "btc_fnc_rep_hd"] call btc_fnc_eh_persistOnLocalityChange;
+}] call CBA_fnc_addClassEventHandler;
 ["ace_killed", btc_fnc_mil_unit_killed] call CBA_fnc_addEventHandler;
 
 addMissionEventHandler ["HandleDisconnect", btc_fnc_eh_handledisconnect];

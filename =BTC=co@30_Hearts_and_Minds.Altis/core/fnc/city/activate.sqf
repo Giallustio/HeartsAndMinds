@@ -47,6 +47,7 @@ _city setVariable ["activating", true];
 
 private _is_init = _city getVariable ["initialized", false];
 private _data_units = _city getVariable ["data_units", []];
+private _data_animals = _city getVariable ["data_animals", []];
 private _type = _city getVariable ["type", ""];
 private _radius = _city getVariable ["radius", 100];
 private _has_en = _city getVariable ["occupied", false];
@@ -111,10 +112,12 @@ if !(_data_units isEqualTo []) then {
     });
 
     if (_has_en) then {
-        for "_i" from 1 to (round (_p_mil_group_ratio * (1 + random _max_number_group))) do {[_city, _spawningRadius, 1 + round random [0, 1, 2], random 1] call btc_fnc_mil_create_group;};
+        for "_i" from 1 to (round (_p_mil_group_ratio * (1 + random _max_number_group))) do {
+            [_city, _spawningRadius, 1 + round random [0, 1, 2], random 1] call btc_fnc_mil_create_group;
+        };
     };
 
-    //Spawn civilians
+    // Spawn civilians
     if (_type != "Hill") then {
         private _max_number_group = (switch _type do {
             case "NameLocal" : {3};
@@ -125,6 +128,29 @@ if !(_data_units isEqualTo []) then {
             default {2};
         });
         [_city, _spawningRadius/3, round (_p_civ_group_ratio * random _max_number_group)] call btc_fnc_civ_populate;
+    };
+};
+if !(_data_animals isEqualTo []) then {
+    {
+        _x call btc_fnc_delay_createAgent;
+    } forEach _data_animals;
+} else {
+    // Spawn animals
+    private _max_number_animalsGroup = (switch _type do {
+        case "Hill" : {3};
+        case "NameLocal" : {3};
+        case "NameVillage" : {2};
+        case "NameCity" : {1};
+        case "NameCityCapital" : {0};
+        case "Airport" : {0};
+        case "NameMarine" : {0};
+        default {0};
+    });
+    for "_i" from 1 to (round (random _max_number_animalsGroup)) do {
+        private _pos = [_city, _spawningRadius/3] call CBA_fnc_randPos;
+        for "_i" from 1 to (round (random 3)) do {
+            [selectRandom ["Hen_random_F","Sheep_random_F"], [_pos, 6] call CBA_fnc_randPos] call btc_fnc_delay_createAgent;
+        };
     };
 };
 
