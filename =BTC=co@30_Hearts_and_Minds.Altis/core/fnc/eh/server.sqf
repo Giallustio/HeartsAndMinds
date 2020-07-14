@@ -22,10 +22,12 @@ Author:
 addMissionEventHandler ["BuildingChanged", btc_fnc_rep_buildingchanged];
 ["ace_explosives_defuse", btc_fnc_rep_explosives_defuse] call CBA_fnc_addEventHandler;
 ["ace_killed", btc_fnc_rep_killed] call CBA_fnc_addEventHandler;
-["Civilian", "InitPost", {
-    [(_this select 0), "FiredNear", btc_fnc_rep_firednear] call CBA_fnc_addBISEventHandler;
-    [(_this select 0), "HandleDamage", "btc_fnc_rep_hd"] call btc_fnc_eh_persistOnLocalityChange;
-}] call CBA_fnc_addClassEventHandler;
+{
+    [_x, "InitPost", {
+        [(_this select 0), "FiredNear", btc_fnc_rep_firednear] call CBA_fnc_addBISEventHandler;
+        [(_this select 0), "HandleDamage", "btc_fnc_rep_hd"] call btc_fnc_eh_persistOnLocalityChange;
+    }, false] call CBA_fnc_addClassEventHandler;
+} forEach btc_civ_type_units;
 ["ace_killed", btc_fnc_mil_unit_killed] call CBA_fnc_addEventHandler;
 
 addMissionEventHandler ["HandleDisconnect", btc_fnc_eh_handledisconnect];
@@ -34,7 +36,7 @@ if (btc_p_auto_db) then {
 };
 if (btc_p_chem) then {
     ["ace_cargoLoaded", btc_fnc_chem_propagate] call CBA_fnc_addEventHandler;
-    ["DeconShower_01_F", "init", {(_this select 0) setVariable ['bin_deconshower_disableAction',true];}] call CBA_fnc_addClassEventHandler;
+    ["DeconShower_01_F", "init", {(_this select 0) setVariable ['bin_deconshower_disableAction',true]}] call CBA_fnc_addClassEventHandler;
     ["DeconShower_02_F", "init", {(_this select 0) setVariable ['bin_deconshower_disableAction',true]}] call CBA_fnc_addClassEventHandler;
 };
 
