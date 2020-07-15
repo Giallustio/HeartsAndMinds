@@ -149,7 +149,7 @@ if !(_data_animals isEqualTo []) then {
     for "_i" from 1 to (round (random _max_number_animalsGroup)) do {
         private _pos = [_city, _spawningRadius/3] call CBA_fnc_randPos;
         for "_i" from 1 to (round (random 3)) do {
-            [selectRandom ["Hen_random_F","Sheep_random_F"], [_pos, 6] call CBA_fnc_randPos] call btc_fnc_delay_createAgent;
+            [selectRandom btc_animals_type, [_pos, 6] call CBA_fnc_randPos] call btc_fnc_delay_createAgent;
         };
     };
 };
