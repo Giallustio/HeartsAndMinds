@@ -340,6 +340,9 @@
                 <Chinesesimp>平民密度:</Chinesesimp>
                 <Portuguese>Densidade civil:</Portuguese>
             </Key>
+            <Key ID="STR_BTC_HAM_PARAM_SPWAN_ANIMALS_DENSITY">
+                <Original>Animal density:</Original>
+            </Key>
             <Key ID="STR_BTC_HAM_PARAM_SPWAN_MIL_INHOUSE_DENSITY">
                 <Original>Density of military in house:</Original>
                 <German>Feinddichte in Gebäuden:</German>
