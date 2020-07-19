@@ -185,8 +185,8 @@ if (isServer) then {
         ["Land_PlasticCase_01_small_black_CBRN_F", "Land_PlasticCase_01_small_olive_CBRN_F", "Land_PlasticCase_01_small_CBRN_F"]
     ];
     private _weapons_usefull = "true" configClasses (configFile >> "CfgWeapons") select {
-        getNumber (_x >> 'type') isEqualTo 1 AND
-        {!(getArray(_x >> 'magazines') isEqualTo [])} AND
+        getNumber (_x >> 'type') isEqualTo 1 ||
+        {!(getArray (_x >> 'magazines') isEqualTo [])} ||
         {getNumber (_x >> 'scope') isEqualTo 2}
     };
     btc_cache_weapons_type = _weapons_usefull apply {configName _x};
