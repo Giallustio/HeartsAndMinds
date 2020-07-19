@@ -6,6 +6,7 @@ Description:
     Fill me when you edit me !
 
 Parameters:
+    _group - Group of the patrol. [Group]
     _random - [Number]
     _active_city - [Object]
     _area - [Number]
@@ -23,6 +24,7 @@ Author:
 ---------------------------------------------------------------------------- */
 
 params [
+    ["_group", grpNull, [grpNull]],
     ["_random", 0, [0]],
     ["_active_city", objNull, [objNull]],
     ["_area", btc_patrol_area, [0]]
@@ -61,9 +63,6 @@ if (_pos_isWater) then {
 };
 
 //Creating units
-private _group = createGroup btc_enemy_side;
-btc_patrol_active pushBack _group;
-_group setVariable ["no_cache", true];
 _group setVariable ["btc_patrol_id", btc_military_id, btc_debug];
 btc_military_id = btc_military_id + 1;
 

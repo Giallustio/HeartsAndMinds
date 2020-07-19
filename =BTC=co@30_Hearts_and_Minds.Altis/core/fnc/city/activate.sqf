@@ -89,12 +89,7 @@ if (!_is_init) then {
 _city setVariable ["active", true];
 
 if !(_ieds isEqualTo []) then {
-    [[_city, _ieds], {
-        params ["_city", "_ieds"];
-
-        private _ieds_data = _ieds apply {_x call btc_fnc_ied_create};
-        [_city, _ieds_data] call btc_fnc_ied_check;
-    }] call btc_fnc_delay_exec;
+    [[_city, _ieds], btc_fnc_ied_check] call btc_fnc_delay_exec;
 };
 
 if !(_data_units isEqualTo []) then {
@@ -225,7 +220,10 @@ if (_number_patrol_active < _p_patrol_max) then {
     private _d = _n - _av;
     _r = if (_d > 0) then {_n - _d;} else {_n;};
     for "_i" from 1 to _r do {
-        [[1 + round random 1, _city, _radius + btc_patrol_area], btc_fnc_mil_create_patrol] call btc_fnc_delay_exec;
+        private _group = createGroup btc_enemy_side;
+        btc_patrol_active pushBack _group;
+        _group setVariable ["no_cache", true];
+        [[_group, 1 + round random 1, _city, _radius + btc_patrol_area], btc_fnc_mil_create_patrol] call btc_fnc_delay_exec;
     };
 
     if (btc_debug_log) then {
@@ -243,7 +241,10 @@ if (_number_civ_veh_active < _p_civ_max_veh) then {
     private _d = _n - _av;
     _r = if (_d > 0) then {_n - _d;} else {_n;};
     for "_i" from 1 to _r do {
-        [[_city, _radius + btc_patrol_area], btc_fnc_civ_create_patrol] call btc_fnc_delay_exec;
+        private _group = createGroup civilian;
+        btc_civ_veh_active pushBack _group;
+        _group setVariable ["no_cache", true];
+        [[_group, _city, _radius + btc_patrol_area], btc_fnc_civ_create_patrol] call btc_fnc_delay_exec;
     };
 
     if (btc_debug_log) then {
