@@ -32,7 +32,7 @@ params [
     ["_ammo", "", [""]]
 ];
 
-if (!isPlayer _injurer || {_dam <= 0.1}) exitWith {_dam};
+if (!isPlayer _injurer || {_dam <= 0.05}) exitWith {_dam};
 private _isAgent = isAgent teamMember _unit;
 if (
     !_isAgent && {
