@@ -6,6 +6,7 @@ Description:
     Create a civilian patrol around a city in a defined area.
 
 Parameters:
+    _group - Group of the traffic. [Group]
     _active_city - City where the patrol will be done around. [Object]
     _area - Area to search a start and an end city for the patrol [Number]
 
@@ -14,7 +15,7 @@ Returns:
 
 Examples:
     (begin example)
-        _isCreated = [_active_city] call btc_fnc_civ_create_patrol;
+        _isCreated = [createGroup civilian, _active_city] call btc_fnc_civ_create_patrol;
     (end)
 
 Author:
@@ -23,6 +24,7 @@ Author:
 ---------------------------------------------------------------------------- */
 
 params [
+    ["_group", grpNull, [grpNull]],
     ["_active_city", objNull, [objNull]],
     ["_area", btc_patrol_area, [0]],
     ["_p_chem", btc_p_chem, [false]]
@@ -57,9 +59,6 @@ if (_roads isEqualTo []) then {
     _veh_type = selectRandom btc_civ_type_veh;
 };
 
-private _group = createGroup civilian;
-btc_civ_veh_active pushBack _group;
-_group setVariable ["no_cache", true];
 _group setVariable ["btc_patrol_id", btc_civilian_id, btc_debug];
 btc_civilian_id = btc_civilian_id - 1;
 
