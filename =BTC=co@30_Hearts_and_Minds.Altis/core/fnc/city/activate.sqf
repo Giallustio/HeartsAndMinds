@@ -211,43 +211,31 @@ if !(_city getVariable ["has_suicider", false]) then {
 
 //Patrol
 btc_patrol_active = btc_patrol_active - [grpNull];
-private _number_patrol_active = count btc_patrol_active;
-if (_number_patrol_active < _p_patrol_max) then {
-    private _n = 0;
-    private _r = 0;
-    if (_has_en) then {_n = round (random 3 + (3/2));} else {_n = round random 2;};
-    private _av = _p_patrol_max - _number_patrol_active;
-    private _d = _n - _av;
-    _r = if (_d > 0) then {_n - _d;} else {_n;};
-    for "_i" from 1 to _r do {
+private _numberOfPatrol = count btc_patrol_active;
+if (_numberOfPatrol < _p_patrol_max) then {
+    private _offset = 0;
+    private _max = 2;
+    if (_has_en) then {
+        _max = 3;
+        _offset = 3/2;
+    };
+    private _r = (_offset + random _max) min (_p_patrol_max - _numberOfPatrol);
+    for "_i" from 1 to round _r do {
         private _group = createGroup btc_enemy_side;
         btc_patrol_active pushBack _group;
         _group setVariable ["no_cache", true];
         [[_group, 1 + round random 1, _city, _radius + btc_patrol_area], btc_fnc_mil_create_patrol] call btc_fnc_delay_exec;
     };
-
-    if (btc_debug_log) then {
-        [format ["(patrol) _n = %1 _av %2 _d %3 _r %4", _n, _av, _d, _r], __FILE__, [false]] call btc_fnc_debug_message;
-    };
 };
 //Traffic
 btc_civ_veh_active = btc_civ_veh_active - [grpNull];
-private _number_civ_veh_active = count btc_civ_veh_active;
-if (_number_civ_veh_active < _p_civ_max_veh) then {
-    private _n = 0;
-    private _r = 0;
-    _n = round (random 3 + (3/2));
-    private _av = _p_civ_max_veh - _number_civ_veh_active;
-    private _d = _n - _av;
-    _r = if (_d > 0) then {_n - _d;} else {_n;};
-    for "_i" from 1 to _r do {
+private _numberOfCivVeh = count btc_civ_veh_active;
+if (_numberOfCivVeh < _p_civ_max_veh) then {
+    private _r = (3/2 + random 3) min (_p_civ_max_veh - _numberOfCivVeh);
+    for "_i" from 1 to round _r do {
         private _group = createGroup civilian;
         btc_civ_veh_active pushBack _group;
         _group setVariable ["no_cache", true];
         [[_group, _city, _radius + btc_patrol_area], btc_fnc_civ_create_patrol] call btc_fnc_delay_exec;
-    };
-
-    if (btc_debug_log) then {
-        [format ["(traffic) _n = %1 _av %2 _d %3 _r %4", _n, _av, _d, _r], __FILE__, [false]] call btc_fnc_debug_message;
     };
 };
