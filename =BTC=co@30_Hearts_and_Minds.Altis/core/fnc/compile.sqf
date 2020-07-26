@@ -166,6 +166,9 @@ if (isServer) then {
     btc_fnc_side_EMP = compile preprocessFileLineNumbers "core\fnc\side\EMP.sqf";
     btc_fnc_side_removeRubbish = compile preprocessFileLineNumbers "core\fnc\side\removeRubbish.sqf";
 
+    //TAG
+    btc_fnc_tag_initArea = compile preprocessFileLineNumbers "core\fnc\tag\initArea.sqf";
+
     //LOG
     btc_fnc_log_createVehicle = compile preprocessFileLineNumbers "core\fnc\log\createVehicle.sqf";
     btc_fnc_log_getRearmMagazines = compile preprocessFileLineNumbers "core\fnc\log\getRearmMagazines.sqf";
