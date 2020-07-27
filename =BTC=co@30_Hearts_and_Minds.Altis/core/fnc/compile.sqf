@@ -169,6 +169,7 @@ if (isServer) then {
 
     //TAG
     btc_fnc_tag_initArea = compile preprocessFileLineNumbers "core\fnc\tag\initArea.sqf";
+    btc_fnc_tag_eh = compile preprocessFileLineNumbers "core\fnc\tag\eh.sqf";
 
     //LOG
     btc_fnc_log_createVehicle = compile preprocessFileLineNumbers "core\fnc\log\createVehicle.sqf";

@@ -307,6 +307,7 @@ if (isServer) then {
 
     //TAGS
     btc_type_tags = ["Land_Graffiti_01_F", "Land_Graffiti_02_F", "Land_Graffiti_03_F", "Land_Graffiti_04_F", "Land_Graffiti_05_F"];
+    btc_tags = [];
 
     //IED
     private _ieds = ["Land_GarbageContainer_closed_F", "Land_GarbageContainer_open_F", "Land_Portable_generator_F", "Land_WoodenBox_F", "Land_BarrelTrash_grey_F", "Land_Sacks_heap_F", "Land_Wreck_Skodovka_F", "Land_WheelieBin_01_F", "Land_GarbageBin_03_F"] + btc_type_pallet + btc_type_barrel + (_allClassSorted select {
@@ -327,7 +328,6 @@ if (isServer) then {
     btc_type_blacklist = btc_type_tags + ["UserTexture1m_F"];
 
     btc_groundWeaponHolder = [];
-    btc_tags = [];
 };
 
 //Civ
@@ -657,6 +657,7 @@ btc_rep_bonus_disarm = 15;
 btc_rep_bonus_hideout = 200;
 btc_rep_bonus_mil_killed = 0.25;
 btc_rep_bonus_IEDCleanUp = 10;
+btc_rep_bonus_removeTag = 3;
 
 btc_rep_malus_civ_hd = - 2;
 btc_rep_malus_animal_hd = - 1;

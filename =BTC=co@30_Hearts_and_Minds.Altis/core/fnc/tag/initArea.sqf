@@ -3,7 +3,7 @@
 Function: btc_fnc_ied_init_area
 
 Description:
-    Initialize positions of tagS.
+    Initialize positions of tags.
 
 Parameters:
     _city - City to initialise. [Object]
@@ -49,7 +49,7 @@ if (_array isEqualTo []) then {
         _n = _n * 2;
     };
 
-    for "_i" from 1 to (_n * btc_p_ied) do {
+    for "_i" from 1 to (_n * 1.5) do {
         private _sel_pos = [_city, _area] call CBA_fnc_randPos;
         if !(surfaceIsWater _sel_pos) then {
             private _roads = _sel_pos nearRoads 50;
