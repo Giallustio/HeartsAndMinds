@@ -30,7 +30,7 @@ params [
     ["_has_ho", false, [true]]
 ];
 
-private _array = _city getVariable ["tags", []];
+private _array = _city getVariable ["data_tags", []];
 if (_array isEqualTo []) then {
     private _n = (switch _type do {
         case "Hill" : {random 1};
@@ -63,22 +63,23 @@ if (_array isEqualTo []) then {
             private _v3 = _v1 vectorCrossProduct [0, 0, 1];
             private _v2 = _v3 vectorCrossProduct _v1;
 
-            _array pushBack [ATLToASL _sel_pos, [_v1, _v2], "a3\structures_f_epb\civ\graffiti\data\graffiti_ca.paa", selectRandom btc_type_tags];
+            _sel_pos set [2, 0];
+            _array pushBack [_sel_pos, [_v1, _v2], "a3\structures_f_epb\civ\graffiti\data\graffiti_ca.paa", selectRandom btc_type_tags];
 
             if (btc_debug) then {
                 private _marker = createMarker [format ["btc_tag_%1", _sel_pos], _sel_pos];
                 _marker setMarkerType "mil_dot";
-                _marker setMarkerColor "ColorBlue";
+                _marker setMarkerColor "ColorGreen";
                 _marker setMarkerText "Tag";
                 _marker setMarkerSize [0.8, 0.8];
             };
         };
     };
-    _city setVariable ["tags", _array];
+    _city setVariable ["data_tags", _array];
 };
 
 {
     _x params ["_tagPosASL", "_vectorDirAndUp", "_texture", "_tagModel"];
 
-    [_tagPosASL, _vectorDirAndUp, _texture, objNull, objNull, "", _tagModel] call ace_tagging_fnc_createTag;
+    [AGLToASL _tagPosASL, _vectorDirAndUp, _texture, objNull, objNull, "", _tagModel] call ace_tagging_fnc_createTag;
 } forEach _array;
