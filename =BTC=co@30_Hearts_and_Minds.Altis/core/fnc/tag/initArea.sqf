@@ -49,12 +49,20 @@ if (_array isEqualTo []) then {
         _n = _n * 2;
     };
 
+    private _road = objNull;
     for "_i" from 1 to (_n * 1.5) do {
         private _sel_pos = [_city, _area] call CBA_fnc_randPos;
         if !(surfaceIsWater _sel_pos) then {
-            private _roads = _sel_pos nearRoads 50;
-            if !(_roads isEqualTo []) then {
-                private _arr = [selectRandom _roads, -1] call btc_fnc_ied_randomRoadPos;
+            if (isNull _road) then {
+                private _roads = _sel_pos nearRoads 50;
+                if !(_roads isEqualTo []) then {
+                    _road = selectRandom _roads;
+                };
+            } else {
+                _road = selectRandom roadsConnectedTo _road;
+            };
+            if !(isNull _road) then {
+                private _arr = [_road, -1] call btc_fnc_ied_randomRoadPos;
                 _sel_pos = _arr select 0;
             };
 
@@ -62,6 +70,9 @@ if (_array isEqualTo []) then {
             private _v1 = vectorNormalized (_surface vectorMultiply -1);
             private _v3 = _v1 vectorCrossProduct [0, 0, 1];
             private _v2 = _v3 vectorCrossProduct _v1;
+            if (_v2 isEqualTo [0, 0, 0]) then {
+                _v2 = [0, 1, 0];
+            };
 
             _sel_pos set [2, 0];
             _array pushBack [_sel_pos, [_v1, _v2], "a3\structures_f_epb\civ\graffiti\data\graffiti_ca.paa", selectRandom btc_type_tags];
