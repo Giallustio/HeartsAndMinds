@@ -181,7 +181,7 @@ private _tags = btc_tags select {alive (_x select 0)};
 private _tags_properties = _tags apply {
     private _tag = _x select 0;
     [
-        getPosASLW _tag,
+        getPosASL _tag,
         [vectorDir _tag, vectorUp _tag],
         _x select 1,
         typeOf (_x select 2),
