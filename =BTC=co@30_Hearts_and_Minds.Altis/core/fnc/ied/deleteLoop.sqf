@@ -40,7 +40,7 @@ btc_ied_deleteOn = [{
         ["_minDistance", 0, [0]]
     ];
 
-    private _ieds = allSimpleObjects [];
+    private _ieds = allSimpleObjects [] - allSimpleObjects ["UserTexture1m_F"];
     _ieds = _ieds apply {[_x distance _vehicle, _x]};
     _ieds sort true;
 

@@ -22,6 +22,13 @@ Author:
 addMissionEventHandler ["BuildingChanged", btc_fnc_rep_buildingchanged];
 ["ace_explosives_defuse", btc_fnc_rep_explosives_defuse] call CBA_fnc_addEventHandler;
 ["ace_killed", btc_fnc_rep_killed] call CBA_fnc_addEventHandler;
+["Animal", "InitPost", {
+    [(_this select 0), "killed", {
+        params ["_unit", "_killer", "_instigator"];
+        [_unit, "", _killer, _instigator] call btc_fnc_rep_killed;
+    }] call CBA_fnc_addBISEventHandler;
+    [(_this select 0), "HandleDamage", "btc_fnc_rep_hd"] call btc_fnc_eh_persistOnLocalityChange;
+}] call CBA_fnc_addClassEventHandler;
 {
     [_x, "InitPost", {
         [(_this select 0), "FiredNear", btc_fnc_rep_firednear] call CBA_fnc_addBISEventHandler;

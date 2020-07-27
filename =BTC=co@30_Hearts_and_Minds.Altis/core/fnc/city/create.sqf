@@ -46,6 +46,7 @@ _city setVariable ["active", false];
 _city setVariable ["type", _type];
 _city setVariable ["spawn_more", false];
 _city setVariable ["data_units", []];
+_city setVariable ["data_animals", []];
 _city setVariable ["occupied", _has_en];
 
 if (btc_p_sea) then {
