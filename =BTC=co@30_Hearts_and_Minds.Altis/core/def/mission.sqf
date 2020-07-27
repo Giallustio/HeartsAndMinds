@@ -327,6 +327,7 @@ if (isServer) then {
     btc_type_blacklist = btc_type_tags + ["UserTexture1m_F"];
 
     btc_groundWeaponHolder = [];
+    btc_tags = [];
 };
 
 //Civ
