@@ -23,7 +23,7 @@ Online [wiki available](http://vdauphin.github.io/HeartsAndMinds/).
 
 - **Dedicated server support only**
 - Dynamic battlefield
-    - Enemies and civilian spawn randomly
+    - Enemies, civilian and animals spawn randomly
     - Random patrol and traffic
     - Dynamic caching system to save performance
     - Extend battlefield to sea (you are not safe on sea!)

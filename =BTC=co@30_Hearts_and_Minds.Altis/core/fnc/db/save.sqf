@@ -68,6 +68,7 @@ private _cities_status = [];
     _city_status pushBack (_x getVariable ["ho_units_spawned", false]);
     _city_status pushBack (_x getVariable ["ieds", []]);
     _city_status pushBack (_x getVariable ["has_suicider", false]);
+    _city_status pushBack (_x getVariable ["data_animals", []]);
 
     _cities_status pushBack _city_status;
     if (btc_debug_log) then {
