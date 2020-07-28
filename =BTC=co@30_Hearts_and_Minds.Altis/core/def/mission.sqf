@@ -181,23 +181,30 @@ if (isServer) then {
     btc_cache_type = [
         _allClassSorted select {
             _x isKindOf "ReammoBox_F" &&
-            getText(_cfgVehicles >> _x >> "model") isEqualTo "\A3\weapons_F\AmmoBoxes\AmmoBox_F"
+            {getText(_cfgVehicles >> _x >> "model") isEqualTo "\A3\weapons_F\AmmoBoxes\AmmoBox_F"}
         },
         ["Land_PlasticCase_01_small_black_CBRN_F", "Land_PlasticCase_01_small_olive_CBRN_F", "Land_PlasticCase_01_small_CBRN_F"]
     ];
-    private _weapons_usefull = "true" configClasses (configFile >> "CfgWeapons") select {(getNumber (_x >> 'type') isEqualTo 1) AND !(getArray(_x >> 'magazines') isEqualTo []) AND (getNumber (_x >> 'scope') isEqualTo 2)};
+    private _weapons_usefull = "true" configClasses (configFile >> "CfgWeapons") select {
+        getNumber (_x >> 'type') isEqualTo 1 ||
+        {!(getArray (_x >> 'magazines') isEqualTo [])} ||
+        {getNumber (_x >> 'scope') isEqualTo 2}
+    };
     btc_cache_weapons_type = _weapons_usefull apply {configName _x};
 
     //Hideout classname
     btc_type_campfire = ["MetalBarrel_burning_F"] + (_allClassSorted select {_x isKindOf "Land_Campfire_F"});
     btc_type_Scrapyard = _allClassSorted select {
         _x isKindOf "Scrapyard_base_F" &&
-        {(toLower _x find "scrap") isEqualTo -1}
+        {!("scrap" in toLower _x)}
     };
     btc_type_bigbox = ["Box_FIA_Ammo_F", "Box_East_AmmoVeh_F", "CargoNet_01_box_F", "O_CargoNet_01_ammo_F"] + btc_type_Scrapyard;
     btc_type_seat = ["Land_WoodenLog_F", "Land_CampingChair_V2_F", "Land_CampingChair_V1_folded_F", "Land_CampingChair_V1_F"];
     btc_type_sleepingbag = _allClassSorted select {_x isKindOf "Land_Sleeping_bag_F"};
-    btc_type_tent = ["Land_TentA_F", "Land_TentDome_F"] + (_allClassSorted select {_x isKindOf "Land_TentSolar_01_base_F" && !(_x isKindOf "Land_TentSolar_01_folded_base_F")});
+    btc_type_tent = ["Land_TentA_F", "Land_TentDome_F"] + (_allClassSorted select {
+        _x isKindOf "Land_TentSolar_01_base_F" &&
+        {!(_x isKindOf "Land_TentSolar_01_folded_base_F")}
+    });
     btc_type_camonet = ["Land_IRMaskingCover_02_F"] + (_allClassSorted select {_x isKindOf "Shelter_base_F"});
     btc_type_satelliteAntenna = _allClassSorted select {_x isKindOf "Land_SatelliteAntenna_01_F"};
 
@@ -224,14 +231,14 @@ if (isServer) then {
     btc_type_portable_light = _allClassSorted select {_x isKindOf "Land_PortableLight_single_F"};
     btc_type_portableLamp = _allClassSorted select {
         _x isKindOf "Land_PortableLight_02_base_F" ||
-        _x isKindOf "TentLamp_01_standing_base_F"
+        {_x isKindOf "TentLamp_01_standing_base_F"}
     };
     btc_type_tentLamp = _allClassSorted select {_x isKindOf "TentLamp_01_base_F"};
     btc_type_first_aid_kits = ["Land_FirstAidKit_01_open_F", "Land_FirstAidKit_01_closed_F"];
     btc_type_body_bags = _allClassSorted select {
         _x isKindOf "Land_Bodybag_01_base_F" ||
-        _x isKindOf "Land_Bodybag_01_empty_base_F" ||
-        _x isKindOf "Land_Bodybag_01_folded_base_F"
+        {_x isKindOf "Land_Bodybag_01_empty_base_F"} ||
+        {_x isKindOf "Land_Bodybag_01_folded_base_F"}
     };
     btc_type_signs = _allClassSorted select {_x isKindOf "Land_Sign_Mines_F"};
     btc_type_bloods = _allClassSorted select {_x isKindOf "Blood_01_Base_F"};
@@ -241,23 +248,26 @@ if (isServer) then {
     btc_type_foodSack = _allClassSorted select {_x isKindOf "Land_FoodSack_01_empty_base_F"};
     btc_type_PaperBox = _allClassSorted select {
         _x isKindOf "Land_PaperBox_01_small_ransacked_base_F" ||
-        _x isKindOf "Land_PaperBox_01_small_open_base_F" ||
-        _x isKindOf "Land_PaperBox_01_small_destroyed_base_F"
+        {_x isKindOf "Land_PaperBox_01_small_open_base_F"} ||
+        {_x isKindOf "Land_PaperBox_01_small_destroyed_base_F"}
     };
     btc_type_EmergencyBlanket = _allClassSorted select {_x isKindOf "Land_EmergencyBlanket_01_base_F"};
-    btc_type_Sponsor = _allClassSorted select {_x isKindOf "SignAd_Sponsor_F" && {(toLower _x find "idap") != -1}};
+    btc_type_Sponsor = _allClassSorted select {
+        _x isKindOf "SignAd_Sponsor_F" &&
+        {"idap" in toLower _x}
+    };
     btc_type_PlasticCase = _allClassSorted select {_x isKindOf "PlasticCase_01_base_F"};
     btc_type_MedicalTent = _allClassSorted select {_x isKindOf "Land_MedicalTent_01_base_F"};
     btc_type_cargo_ruins = _allClassSorted select {
         _x isKindOf "Ruins_F" &&
         {
-            (toLower _x find "cargo40") != -1 ||
-            (toLower _x find "cargo20") != -1
+            "cargo40" in toLower _x ||
+            "cargo20" in toLower _x
         }
     };
     btc_type_spill = ["Oil_Spill_F", "Land_DirtPatch_01_6x8_F"] + (_allClassSorted select {
         _x isKindOf "Land_DirtPatch_02_base_F" ||
-        _x isKindOf "WaterSpill_01_Base_F"
+        {_x isKindOf "WaterSpill_01_Base_F"}
     });
     btc_type_tarp = _allClassSorted select {_x isKindOf "Tarp_01_base_F"};
     btc_type_SCBA = _allClassSorted select {_x isKindOf "SCBACylinder_01_base_F"};
@@ -308,15 +318,15 @@ if (isServer) then {
     //IED
     private _ieds = ["Land_GarbageContainer_closed_F", "Land_GarbageContainer_open_F", "Land_Portable_generator_F", "Land_WoodenBox_F", "Land_BarrelTrash_grey_F", "Land_Sacks_heap_F", "Land_Wreck_Skodovka_F", "Land_WheelieBin_01_F", "Land_GarbageBin_03_F"] + btc_type_pallet + btc_type_barrel + (_allClassSorted select {
         _x isKindOf "GasTank_base_F" ||
-        _x isKindOf "Garbage_base_F" ||
+        {_x isKindOf "Garbage_base_F"} ||
         (_x isKindOf "Constructions_base_F" &&
         {
-            (toLower _x find "bricks") != -1
+            "bricks" in toLower _x
         }) ||
         (_x isKindOf "Wreck_base_F" &&
         {
-            (toLower _x find "car") != -1 ||
-            (toLower _x find "offroad") != -1
+            "car" in toLower _x ||
+            "offroad" in toLower _x
         })
     });
     btc_type_ieds = _ieds - ["Land_Garbage_line_F","Land_Garbage_square3_F","Land_Garbage_square5_F"];
@@ -380,10 +390,10 @@ btc_supplies_mat = [
 //Hazmat
 btc_type_hazmat = ["HazmatBag_01_F", "Land_MetalBarrel_F"] + (_allClassSorted select {
     _x isKindOf "Land_GarbageBarrel_02_base_F" ||
-    _x isKindOf "Land_FoodContainer_01_F" ||
-    _x isKindOf "Land_CanisterFuel_F" ||
-    _x isKindOf "CBRNContainer_01_base_F" ||
-    _x isKindOf "PlasticCase_01_base_F"
+    {_x isKindOf "Land_FoodContainer_01_F"} ||
+    {_x isKindOf "Land_CanisterFuel_F"} ||
+    {_x isKindOf "CBRNContainer_01_base_F"} ||
+    {_x isKindOf "PlasticCase_01_base_F"}
 });
 
 //Containers
@@ -400,12 +410,12 @@ if (isServer) then {
         //"Static"
     ] + (_allClassSorted select {(
         _x isKindOf "GMG_TriPod" ||
-        _x isKindOf "StaticMortar" ||
-        _x isKindOf "HMG_01_base_F" ||
-        _x isKindOf "AA_01_base_F" ||
-        _x isKindOf "AT_01_base_F") && (
+        {_x isKindOf "StaticMortar"} ||
+        {_x isKindOf "HMG_01_base_F"} ||
+        {_x isKindOf "AA_01_base_F"} ||
+        {_x isKindOf "AT_01_base_F"}) && {
             getNumber (_cfgVehicles >> _x >> "side") isEqualTo ([east, west, independent, civilian] find btc_player_side)
-        )
+        }
     });
     ([_rearming_static] call btc_fnc_find_veh_with_turret) params ["_rearming_static", "_magazines_static"];
 
@@ -454,7 +464,11 @@ if (isServer) then {
                 //"Ammobox"
                 "Land_WoodenBox_F"
 
-            ] + (_allClassSorted select {_x isKindOf "ReammoBox_F" && !(_x isKindOf "Slingload_01_Base_F") && !(_x isKindOf "Pod_Heli_Transport_04_base_F")}),
+            ] + (_allClassSorted select {
+                _x isKindOf "ReammoBox_F" &&
+                {!(_x isKindOf "Slingload_01_Base_F")} &&
+                {!(_x isKindOf "Pod_Heli_Transport_04_base_F")}
+            }),
             [
                 //"Containers"
 
