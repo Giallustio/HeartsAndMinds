@@ -69,8 +69,29 @@ if !(_city getVariable ["active", false]) exitWith {};
         };
     } forEach allGroups;
 
+    private _data_animals = [];
+    {
+        private _agent = agent _x;
+        if (
+            _agent inArea [_pos_city, _radius, _radius, 0, false] &&
+            {alive _agent} &&
+            {!(_x getVariable ["no_cache", false])}
+        ) then {
+            _data_animals pushBack [
+                typeOf _agent,
+                getPosATL _agent
+            ];
+            _agent call CBA_fnc_deleteEntity;
+
+            if (btc_debug_log) then {
+                [format ["data animals = %1", _data_animals], __FILE__, [false]] call btc_fnc_debug_message;
+            };
+        };
+    } forEach agents;
+
     _city setVariable ["has_suicider", _has_suicider];
     _city setVariable ["data_units", _data_units];
+    _city setVariable ["data_animals", _data_animals];
     _city setVariable ["active", false];
 
     if (!btc_hideout_cap_checking) then {

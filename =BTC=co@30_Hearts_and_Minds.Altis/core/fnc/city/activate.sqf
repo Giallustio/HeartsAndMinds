@@ -9,6 +9,7 @@ Parameters:
     _id - Number of the city will be activated. [Number]
     _p_mil_group_ratio - Enemy density. [Number]
     _p_civ_group_ratio - Civilian density. [Number]
+    _p_animals_group_ratio - Animal density. [Number]
     _p_civ_max_veh - Maximum number of civilian patrol. [Number]
     _p_patrol_max - Maximum number of enemy patrol. [Number]
     _wp_ratios - Ratio of spawned group in and out houses. [Array]
@@ -29,6 +30,7 @@ params [
     ["_id", 0, [0]],
     ["_p_mil_group_ratio", btc_p_mil_group_ratio, [0]],
     ["_p_civ_group_ratio", btc_p_civ_group_ratio, [0]],
+    ["_p_animals_group_ratio", btc_p_animals_group_ratio, [0]],
     ["_p_civ_max_veh", btc_p_civ_max_veh, [0]],
     ["_p_patrol_max", btc_p_patrol_max, [0]],
     ["_wp_ratios", btc_p_mil_wp_ratios, [[]]]
@@ -47,6 +49,7 @@ _city setVariable ["activating", true];
 
 private _is_init = _city getVariable ["initialized", false];
 private _data_units = _city getVariable ["data_units", []];
+private _data_animals = _city getVariable ["data_animals", []];
 private _type = _city getVariable ["type", ""];
 private _radius = _city getVariable ["radius", 100];
 private _has_en = _city getVariable ["occupied", false];
@@ -89,8 +92,7 @@ if (!_is_init) then {
 _city setVariable ["active", true];
 
 if !(_ieds isEqualTo []) then {
-    private _ieds_data = _ieds apply {_x call btc_fnc_ied_create};
-    [_city, _ieds_data] call btc_fnc_ied_check;
+    [[_city, _ieds], btc_fnc_ied_check] call btc_fnc_delay_exec;
 };
 
 if !(_data_units isEqualTo []) then {
@@ -111,10 +113,12 @@ if !(_data_units isEqualTo []) then {
     });
 
     if (_has_en) then {
-        for "_i" from 1 to (round (_p_mil_group_ratio * (1 + random _max_number_group))) do {[_city, _spawningRadius, 1 + round random [0, 1, 2], random 1] call btc_fnc_mil_create_group;};
+        for "_i" from 1 to (round (_p_mil_group_ratio * (1 + random _max_number_group))) do {
+            [_city, _spawningRadius, 1 + round random [0, 1, 2], random 1] call btc_fnc_mil_create_group;
+        };
     };
 
-    //Spawn civilians
+    // Spawn civilians
     if (_type != "Hill") then {
         private _max_number_group = (switch _type do {
             case "NameLocal" : {3};
@@ -125,6 +129,31 @@ if !(_data_units isEqualTo []) then {
             default {2};
         });
         [_city, _spawningRadius/3, round (_p_civ_group_ratio * random _max_number_group)] call btc_fnc_civ_populate;
+    };
+};
+if (btc_p_animals_group_ratio > 0) then {
+    if !(_data_animals isEqualTo []) then {
+        {
+            _x call btc_fnc_delay_createAgent;
+        } forEach _data_animals;
+    } else {
+        // Spawn animals
+        private _max_number_animalsGroup = (switch _type do {
+            case "Hill" : {3};
+            case "NameLocal" : {3};
+            case "NameVillage" : {2};
+            case "NameCity" : {1};
+            case "NameCityCapital" : {0};
+            case "Airport" : {0};
+            case "NameMarine" : {0};
+            default {0};
+        });
+        for "_i" from 1 to (round (random _max_number_animalsGroup)) do {
+            private _pos = [_city, _spawningRadius/3] call CBA_fnc_randPos;
+            for "_i" from 1 to (round (random 3)) do {
+                [selectRandom btc_animals_type, [_pos, 6] call CBA_fnc_randPos] call btc_fnc_delay_createAgent;
+            };
+        };
     };
 };
 
@@ -189,9 +218,9 @@ if !(_city getVariable ["has_suicider", false]) then {
         btc_ied_suic_spawned = time;
         _city setVariable ["has_suicider", true];
         if (selectRandom [false, false, btc_p_ied_drone]) then {
-            [_city, _spawningRadius] call btc_fnc_ied_drone_create;
+            [[_city, _spawningRadius], btc_fnc_ied_drone_create] call btc_fnc_delay_exec;
         } else {
-            [_city, _spawningRadius] call btc_fnc_ied_suicider_create;
+            [[_city, _spawningRadius], btc_fnc_ied_suicider_create] call btc_fnc_delay_exec;
         };
     };
 };
@@ -221,7 +250,10 @@ if (_number_patrol_active < _p_patrol_max) then {
     private _d = _n - _av;
     _r = if (_d > 0) then {_n - _d;} else {_n;};
     for "_i" from 1 to _r do {
-        [1 + round random 1, _city, _radius + btc_patrol_area] call btc_fnc_mil_create_patrol;
+        private _group = createGroup btc_enemy_side;
+        btc_patrol_active pushBack _group;
+        _group setVariable ["no_cache", true];
+        [[_group, 1 + round random 1, _city, _radius + btc_patrol_area], btc_fnc_mil_create_patrol] call btc_fnc_delay_exec;
     };
 
     if (btc_debug_log) then {
@@ -239,7 +271,10 @@ if (_number_civ_veh_active < _p_civ_max_veh) then {
     private _d = _n - _av;
     _r = if (_d > 0) then {_n - _d;} else {_n;};
     for "_i" from 1 to _r do {
-        [_city, _radius + btc_patrol_area] call btc_fnc_civ_create_patrol;
+        private _group = createGroup civilian;
+        btc_civ_veh_active pushBack _group;
+        _group setVariable ["no_cache", true];
+        [[_group, _city, _radius + btc_patrol_area], btc_fnc_civ_create_patrol] call btc_fnc_delay_exec;
     };
 
     if (btc_debug_log) then {

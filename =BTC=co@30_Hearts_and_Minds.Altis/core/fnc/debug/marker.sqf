@@ -68,3 +68,20 @@ private _cfgVehicles = configFile >> "CfgVehicles";
         0.05
     ];
 } forEach _units;
+
+{
+    private _agent = agent _x;
+    if !(isNull _agent) then {
+        _display drawIcon [
+            getText (_cfgVehicles >> typeOf _agent >> "Icon"),
+            [0.5, 0.5, 0.5, [1, 0.3] select (local _agent)],
+            visiblePosition _agent,
+            20,
+            20,
+            direction _agent,
+            "",
+            0,
+            0.05
+        ];
+    };
+} forEach agents;

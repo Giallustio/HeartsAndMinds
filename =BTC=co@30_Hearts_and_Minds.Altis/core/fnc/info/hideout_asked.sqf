@@ -29,13 +29,12 @@ params [
 ];
 
 if (_is_real) then {
-    btc_int_ask_data = nil;
-    [1, player] remoteExecCall ["btc_fnc_int_ask_var", 2];
+    private _index = btc_hideouts findIf {
+        _x inArea [getPosWorld player, 3000, 3000, 0, false]
+    };
 
-    waitUntil {!(isNil "btc_int_ask_data")};
-
-    if (!isNull btc_int_ask_data) then {
-        private _hideout = btc_int_ask_data;
+    if (_index > -1) then {
+        private _hideout = btc_hideouts select _index;
         private _dist = (player distance _hideout) + (random 500) - (random 500);
         private _dir = player getDir _hideout;
         private _card = [_dir] call btc_fnc_get_cardinal;
@@ -45,8 +44,7 @@ if (_is_real) then {
     };
 } else {
     if ((random 1) > 0.5) then {
-        private _array = ["N", "E", "W", "S", "NW", "NE", "SE", "SW"];
-        private _dir = selectRandom _array;
+        private _dir = selectRandom ["N", "E", "W", "S", "NW", "NE", "SE", "SW"];
         private _dist = 300 + (random 2000);
         _text = format [localize "STR_BTC_HAM_CON_INFO_ASKHIDEOUT_TRUE", _dir, round _dist];
     } else {

@@ -81,7 +81,7 @@ if (_type isEqualTo 1) then {
     ];
 
     //[waypointPosition _x,waypointType _x,waypointSpeed _x,waypointFormation _x,waypointCombatMode _x,waypointBehaviour _x]
-    if !(_side isEqualTo civilian && {vehicle leader _group isEqualTo leader _group}) then {
+    if !(_type in [3, 6]) then {
         if (count (_array_wp select 1) > 1) then {
             {
                 [_group, _x select 0, -1, _x select 1, _x select 5, _x select 4, _x select 2, _x select 3, "", [0, 0, 0], 20] call CBA_fnc_addWaypoint;

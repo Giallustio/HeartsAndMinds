@@ -122,5 +122,6 @@ if (btc_debug_log) then {
 
 btc_hideouts_id = btc_hideouts_id + 1;
 btc_hideouts pushBack _hideout;
+publicVariable "btc_hideouts";
 
 true

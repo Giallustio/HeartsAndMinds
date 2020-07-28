@@ -5,8 +5,8 @@
 </p>
 
 <p align="center">
-    <a href="https://github.com/Vdauphin/HeartsAndMinds/releases/tag/1.20.5">
-        <img src="https://img.shields.io/badge/Version-1.20.5-blue.svg?style=flat-square" alt="H&M Version">
+    <a href="https://github.com/Vdauphin/HeartsAndMinds/releases/tag/1.20.6">
+        <img src="https://img.shields.io/badge/Version-1.20.6-blue.svg?style=flat-square" alt="H&M Version">
     </a>
     <a href="http://www.somsubhra.com/github-release-stats/?username=vdauphin&repository=HeartsAndMinds">
         <img src="https://img.shields.io/github/downloads/Vdauphin/HeartsAndMinds/total.svg?style=flat-square&label=Downloads" alt="H&M Downloads">
@@ -23,7 +23,7 @@ Online [wiki available](http://vdauphin.github.io/HeartsAndMinds/).
 
 - **Dedicated server support only**
 - Dynamic battlefield
-    - Enemies and civilian spawn randomly
+    - Enemies, civilian and animals spawn randomly
     - Random patrol and traffic
     - Dynamic caching system to save performance
     - Extend battlefield to sea (you are not safe on sea!)

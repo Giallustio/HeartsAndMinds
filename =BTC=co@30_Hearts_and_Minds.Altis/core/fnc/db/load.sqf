@@ -30,7 +30,9 @@ setDate (profileNamespace getVariable [format ["btc_hm_%1_date", _name], date]);
 private _cities_status = profileNamespace getVariable [format ["btc_hm_%1_cities", _name], []];
 
 {
-    _x params ["_id", "_initialized", "_spawn_more", "_occupied", "_data_units", "_has_ho", "_ho_units_spawned", "_ieds", "_has_suicider"];
+    _x params ["_id", "_initialized", "_spawn_more", "_occupied", "_data_units", "_has_ho", "_ho_units_spawned", "_ieds", "_has_suicider",
+        ["_data_animals", [], [[]]]
+    ];
 
     private _city = btc_city_all select _id;
 
@@ -42,6 +44,7 @@ private _cities_status = profileNamespace getVariable [format ["btc_hm_%1_cities
     _city setVariable ["ho_units_spawned", _ho_units_spawned];
     _city setVariable ["ieds", _ieds];
     _city setVariable ["has_suicider", _has_suicider];
+    _city setVariable ["data_animals", _data_animals];
 
     if (btc_debug) then {
         private _marker = _city getVariable ["marker", ""];
