@@ -13,7 +13,6 @@ Parameters:
     _type_units - Array of available unit type for cargo. [Array]
     _type_divers - Units used for submarine. [Array]
     _type_crewmen - Array of available crews type. [Array]
-    _p_chem - Allow chemical propagation. [Boolean]
 
 Returns:
     _delay_vehicle - Delay for unit creation. [Number]
@@ -40,8 +39,7 @@ params [
     ["_dir", 0, [0]],
     ["_type_units", btc_type_units, [[]]],
     ["_type_divers", btc_type_divers, [[]]],
-    ["_type_crewmen", btc_type_crewmen, [[]]],
-    ["_p_chem", btc_p_chem, [false]]
+    ["_type_crewmen", btc_type_crewmen, [[]]]
 ];
 
 private _needdiver = getText (configFile >> "CfgVehicles" >> _veh_type >> "simulation") isEqualTo "submarinex";
