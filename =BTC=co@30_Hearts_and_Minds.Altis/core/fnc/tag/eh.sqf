@@ -27,11 +27,13 @@ if (_tag isKindOf "Graffiti_base_F") then {
 } else {
     if (_texture isEqualTo "#(rgb,8,8,3)color(0,0,0,0)") then { //Check if player want to remove a tag
         private _tags = (allSimpleObjects btc_type_blacklist) inAreaArray [getPosWorld _tag, 3, 3];
-        if !(_tags isEqualTo []) then {
-            if ((_tags select 0) isKindOf "Graffiti_base_F") then {
+        if (count _tags > 1) then {
+            _tags = _tags apply {[_x distance _tag, _x]};
+            _tags sort true;
+            if ((_tags select 1 select 1) isKindOf "Graffiti_base_F") then {
                 [btc_rep_bonus_removeTag, _unit] call btc_fnc_rep_change;
             };
-            deleteVehicle (_tags select 0);
+            deleteVehicle (_tags select 1 select 1);
         };
         deleteVehicle _tag;
     } else { //Store tag for database
