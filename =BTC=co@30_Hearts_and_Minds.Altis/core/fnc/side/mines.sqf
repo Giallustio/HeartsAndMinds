@@ -28,7 +28,7 @@ private _useful = btc_city_all select {!(isNull _x) && !((_x getVariable ["type"
 if (_useful isEqualTo []) then {_useful = + (btc_city_all select {!(isNull _x)});};
 
 private _city = selectRandom _useful;
-private _pos = [getPos _city, 0, 500, 30, false] call btc_fnc_findsafepos;
+private _pos = [getPos _city, 0, _city getVariable ["radius", 100], 30, false] call btc_fnc_findsafepos;
 if (_pos select 2 > 50) exitWith {[] spawn btc_fnc_side_create;};
 
 [_taskID, 4, _pos, _city getVariable "name"] call btc_fnc_task_create;
