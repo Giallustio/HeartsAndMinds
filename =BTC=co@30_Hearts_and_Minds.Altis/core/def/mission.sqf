@@ -333,6 +333,7 @@ if (isServer) then {
     btc_model_ieds = btc_type_ieds apply {(toLower getText(_cfgVehicles >> _x >> "model")) select [1]};
 
     btc_groundWeaponHolder = [];
+    btc_tags = [];
 };
 
 //Civ

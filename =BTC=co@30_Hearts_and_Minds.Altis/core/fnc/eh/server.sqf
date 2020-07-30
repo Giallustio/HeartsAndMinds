@@ -53,3 +53,16 @@ if (btc_p_set_skill) then {
     ["CAManBase", "InitPost", btc_fnc_mil_set_skill] call CBA_fnc_addClassEventHandler;
 };
 ["btc_delay_vehicleInit", btc_fnc_patrol_addEH] call CBA_fnc_addEventHandler;
+["ace_tagCreated", {
+    params ["_tag", "_texture", "_object"];
+    if (_texture isEqualTo "#(rgb,8,8,3)color(0,0,0,0)") then {
+        private _distance = btc_tags apply {[_tag distance (_x select 0), _x select 0]};
+        _distance sort true;
+        if (_distance select 0 select 0 < 5) then {
+            deleteVehicle (_distance select 0 select 1);
+        };
+        deleteVehicle _tag;
+    } else {
+        btc_tags pushBack [_tag, _texture, _object];
+    };
+}] call CBA_fnc_addEventHandler;
