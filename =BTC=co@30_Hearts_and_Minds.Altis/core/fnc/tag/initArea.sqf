@@ -49,21 +49,25 @@ if (_array isEqualTo []) then {
         _n = _n * 2;
     };
 
-    private _road = objNull;
+    private _roads = _city nearRoads 50;
+    private _road = if (_roads isEqualTo []) then {
+        objNull
+    } else {
+        selectRandom _roads
+    };
     for "_i" from 1 to (_n * 1.5) do {
         private _sel_pos = [_city, _area] call CBA_fnc_randPos;
         if !(surfaceIsWater _sel_pos) then {
-            if (isNull _road) then {
+            if (isNil "_road" || {isNull _road}) then {
                 private _roads = _sel_pos nearRoads 50;
                 if !(_roads isEqualTo []) then {
                     _road = selectRandom _roads;
                 };
             } else {
-                _road = selectRandom roadsConnectedTo _road;
-            };
-            if !(isNull _road) then {
                 private _arr = [_road, -1] call btc_fnc_ied_randomRoadPos;
                 _sel_pos = _arr select 0;
+                private _connected = roadsConnectedTo _road;
+                _road = _connected select selectRandomWeighted [0, 0.6, (count _connected) - 1, 0.4];
             };
 
             private _surface = surfaceNormal _sel_pos;
