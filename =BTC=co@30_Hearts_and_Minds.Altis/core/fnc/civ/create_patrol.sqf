@@ -35,7 +35,10 @@ if (isNil "btc_civilian_id") then {btc_civilian_id = -1;};
 //Find a city
 private _cities = btc_city_all inAreaArray [getPosWorld _active_city, _area, _area];
 private _usefuls = _cities select {!(_x getVariable ["active", false])};
-if (_usefuls isEqualTo []) exitWith {false};
+if (_usefuls isEqualTo []) exitWith {
+    _group call CBA_fnc_deleteEntity;
+    false
+};
 
 private _start_city = selectRandom _usefuls;
 private _pos = getPos _start_city;
