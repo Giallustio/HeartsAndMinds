@@ -41,12 +41,18 @@ if (btc_debug_log) then {
 };
 
 //Remove if too far from player
-if ([_active_city, grpNull, _area] call btc_fnc_patrol_playersInAreaCityGroup) exitWith {false};
+if ([_active_city, grpNull, _area] call btc_fnc_patrol_playersInAreaCityGroup) exitWith {
+    _group call CBA_fnc_deleteEntity;
+    false
+};
 
 //Find a city
 private _cities = btc_city_all inAreaArray [getPosWorld _active_city, _area, _area];
 private _usefuls = _cities select {!(_x getVariable ["active", false]) && _x getVariable ["occupied", false]};
-if (_usefuls isEqualTo []) exitWith {false};
+if (_usefuls isEqualTo []) exitWith {
+    _group call CBA_fnc_deleteEntity;
+    false
+};
 
 //Randomize position if city has a beach, so position could be in water
 private _start_city = selectRandom _usefuls;
