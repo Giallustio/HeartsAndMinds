@@ -80,12 +80,22 @@ if (_type isEqualTo 1) then {
         ["_array_veh", [], [[], ""]]
     ];
 
-    //[waypointPosition _x,waypointType _x,waypointSpeed _x,waypointFormation _x,waypointCombatMode _x,waypointBehaviour _x]
     if !(_type in [3, 6]) then {
-        if (count (_array_wp select 1) > 1) then {
-            {
-                [_group, _x select 0, -1, _x select 1, _x select 5, _x select 4, _x select 2, _x select 3, "", [0, 0, 0], 20] call CBA_fnc_addWaypoint;
-            } forEach (_array_wp select 1);
+        [_group] call CBA_fnc_clearWaypoints;
+        {
+            _x params [
+                "_position",
+                "_type",
+                "_speed",
+                "_formation",
+                "_combat",
+                "_behaviour",
+                ["_timeout", [0, 0, 0], [[]], 3],
+                ["_compRadius", 20, [0]]
+            ];
+            [_group, _position, -1, _type, _behaviour, _combat, _speed, _formation, "", _timeout, _compRadius] call CBA_fnc_addWaypoint;
+        } forEach (_array_wp select 1);
+        if !(_array_wp select 1 isEqualTo []) then {
             _group setCurrentWaypoint [_group, _array_wp select 0];
         };
     };
