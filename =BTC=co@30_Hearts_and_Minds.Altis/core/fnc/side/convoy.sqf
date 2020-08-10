@@ -69,6 +69,7 @@ private _markers = [_marker1, _marker2, _area];
 //// Create convoy \\\\
 private _group = createGroup btc_enemy_side;
 _group setVariable ["no_cache", true];
+[_group] call CBA_fnc_clearWaypoints;
 
 private _vehs = [];
 private _veh_types = btc_type_motorized select {!(_x isKindOf "air")};
@@ -89,9 +90,8 @@ for "_i" from 0 to (2 + round random 2) do {
         [12] remoteExecCall ["btc_fnc_show_hint", [0, -2] select isDedicated];
         _agent removeEventHandler ["PathCalculated", _thisEventHandler];
     }];
+    [_group, _pos2, -1, "MOVE", "SAFE", "RED", "LIMITED", "COLUMN", format ["['%1', 'FAILED'] call BIS_fnc_taskSetState;", _taskID], [0, 0, 0], _radius/2] call CBA_fnc_addWaypoint;
 }, [_group, _pos2, _taskID], btc_delay_createUnit + _delay] call CBA_fnc_waitAndExecute;
-
-[_group, _pos2, -1, "MOVE", "SAFE", "RED", "LIMITED", "COLUMN", format ["['%1', 'FAILED'] call BIS_fnc_taskSetState;", _taskID], [0, 0, 0], _radius/2] call CBA_fnc_addWaypoint;
 
 waitUntil {sleep 5; (
     _taskID call BIS_fnc_taskCompleted ||

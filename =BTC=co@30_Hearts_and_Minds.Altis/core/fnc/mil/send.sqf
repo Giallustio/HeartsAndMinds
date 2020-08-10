@@ -55,6 +55,7 @@ switch (_typeOf_patrol) do {
 
         _delay = [_group, _return_pos, _veh_type] call btc_fnc_mil_createVehicle;
 
+        [_group] call CBA_fnc_clearWaypoints;
         [_group, _dest, -1, "MOVE", "AWARE", "RED", "NORMAL", "NO CHANGE", "(group this) call btc_fnc_data_add_group;", nil, 60] call CBA_fnc_addWaypoint;
         [_group, _dest, -1, "GETOUT", nil, nil, nil, nil, nil, nil, 60] call CBA_fnc_addWaypoint;
         [_group, _dest, -1, "SENTRY", nil, nil, nil, nil, nil, nil, 60] call CBA_fnc_addWaypoint;

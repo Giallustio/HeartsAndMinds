@@ -52,10 +52,17 @@ private _index_wp       = 0;
     };
 } forEach _units;
 
-_index_wp = (currentWaypoint _group) + 1;
-{
-    _array_wp append [[waypointPosition _x, waypointType _x, waypointSpeed _x, waypointFormation _x, waypointCombatMode _x, waypointBehaviour _x]];
-} forEach waypoints _group;
+_index_wp = currentWaypoint _group;
+_array_wp = (waypoints _group) apply {[
+    waypointPosition _x,
+    waypointType _x,
+    waypointSpeed _x,
+    waypointFormation _x,
+    waypointCombatMode _x,
+    waypointBehaviour _x,
+    waypointTimeout _x,
+    waypointCompletionRadius _x
+]};
 
 if !(_group getVariable ["btc_inHouse", ""] isEqualTo "") then {_type_db = 3;
     _array_veh = _group getVariable ["btc_inHouse", ""];
