@@ -64,12 +64,13 @@ switch (true) do {
         };
     };
     case (_wp > _wp_house_probability && _wp <= _wp_sentry_probability) : {
-        [_group, _rpos, _n, _pos_iswater] call btc_fnc_mil_createUnits;
         [_group, _rpos, _area, 2 + floor (random 4), "MOVE", "SAFE", "RED", "LIMITED", "STAG COLUMN", "", [5, 10, 20]] call CBA_fnc_taskPatrol;
+        [_group, _rpos, _n, _pos_iswater] call btc_fnc_mil_createUnits;
     };
     case (_wp > _wp_sentry_probability) : {
-        [_group, _rpos, _n, _pos_iswater] call btc_fnc_mil_createUnits;
+        [_group] call CBA_fnc_clearWaypoints;
         [_group, _rpos, -1, "SENTRY", "AWARE", "RED"] call CBA_fnc_addWaypoint;
+        [_group, _rpos, _n, _pos_iswater] call btc_fnc_mil_createUnits;
     };
 };
 

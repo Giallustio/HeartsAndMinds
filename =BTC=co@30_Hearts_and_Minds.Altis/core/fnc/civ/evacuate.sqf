@@ -43,10 +43,7 @@ if (_position_evac isEqualTo []) then {
 };
 
 {
-    private _group = group _x;
-    [_group] call CBA_fnc_clearWaypoints;
-
-    [_group, _position_evac, 20] call btc_fnc_civ_addWP;
+    [group _x, _position_evac, 20] call btc_fnc_civ_addWP;
 } forEach _civilians;
 
 _civilians

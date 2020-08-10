@@ -37,6 +37,8 @@ if (_vehicle isKindOf "Air" || _vehicle isKindOf "LandVehicle") then {
     _vehicle setFuel 1;
 };
 
+[_group] call CBA_fnc_clearWaypoints;
+
 if (_vehicle isKindOf "Air") then {
     [_group, _pos, -1, "MOVE", "SAFE", "RED", "LIMITED", "STAG COLUMN", _waypointStatements, [0, 0, 0], 20] call CBA_fnc_addWaypoint;
 } else {
