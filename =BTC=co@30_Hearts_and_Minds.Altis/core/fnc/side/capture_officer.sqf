@@ -69,6 +69,7 @@ private _markers = [_marker1, _marker2, _area];
 //// Create convoy \\\\
 private _group = createGroup btc_enemy_side;
 _group setVariable ["no_cache", true];
+[_group] call CBA_fnc_clearWaypoints;
 
 private _veh_types = btc_civ_type_veh select {!(_x isKindOf "air")};
 private _delay = 0;
