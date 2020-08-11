@@ -26,8 +26,7 @@ Author:
 params [
     ["_vehicle", objNull, [objNull]],
     ["_time", 30, [0]],
-    ["_helo", btc_helo, [[]]],
-    ["_p_chem", btc_p_chem, [false]]
+    ["_helo", btc_helo, [[]]]
 ];
 
 _helo pushBackUnique _vehicle;
@@ -47,10 +46,4 @@ if (btc_p_respawn_location > 0) then {
     if !(fullCrew [_vehicle, "cargo", true] isEqualTo []) then {
         [btc_player_side, _vehicle] call BIS_fnc_addRespawnPosition;
     };
-};
-if (_p_chem) then {
-    _vehicle addEventHandler ["GetIn", {
-        [_this select 0, _this select 2] call btc_fnc_chem_propagate;
-        _this
-    }];
 };

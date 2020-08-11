@@ -12,7 +12,6 @@ Parameters:
     _position - Position of creation. [Array]
     _direction - Direction of spawn. [Number]
     _fuel - Fuel level. [Array]
-    _p_chem - Allow chemical propagation. [Boolean]
 
 Returns:
     _delay_vehicle - Delay for unit creation. [Number]
@@ -37,8 +36,7 @@ btc_delay_createUnit = btc_delay_createUnit + 0.3;
         ["_units_type", [], [[]]],
         ["_position", [0, 0, 0], [[]]],
         ["_direction", 0, [0]],
-        ["_fuel", 1, [0]],
-        ["_p_chem", btc_p_chem, [false]]
+        ["_fuel", 1, [0]]
     ];
 
     private _isAir = _vehicle_type isKindOf "Air";
@@ -49,12 +47,6 @@ btc_delay_createUnit = btc_delay_createUnit + 0.3;
     };
     _veh setFuel _fuel;
     [_veh, "", []] call BIS_fnc_initvehicle;
-    if (_p_chem) then {
-        _veh addEventHandler ["GetIn", {
-            [_this select 0, _this select 2] call btc_fnc_chem_propagate;
-            _this
-        }];
-    };
 
     ["driver", "commander", "gunner", "turret", "cargo"] apply {count (fullCrew [_veh, _x, true]);} params ["_driverCount", "_commanderCount", "_gunnerCount", "_turretCount", "_cargoCount"];
     private _crews = _driverCount + _commanderCount + _gunnerCount;

@@ -7,7 +7,6 @@ Description:
 
 Parameters:
     _veh - Vehicle to add in wreck system. [Object]
-    _p_chem - Activate chemical propagation. [Boolean]
 
 Returns:
 
@@ -22,8 +21,7 @@ Author:
 ---------------------------------------------------------------------------- */
 
 params [
-    ["_veh", objNull, [objNull]],
-    ["_p_chem", btc_p_chem, [false]]
+    ["_veh", objNull, [objNull]]
 ];
 
 if !(isServer) exitWith {
@@ -46,11 +44,4 @@ if (btc_p_respawn_location > 1) then {
             [btc_player_side, _veh] call BIS_fnc_addRespawnPosition;
         };
     };
-};
-
-if (_p_chem) then {
-    _veh addEventHandler ["GetIn", {
-        [_this select 0, _this select 2] call btc_fnc_chem_propagate;
-        _this
-    }];
 };
