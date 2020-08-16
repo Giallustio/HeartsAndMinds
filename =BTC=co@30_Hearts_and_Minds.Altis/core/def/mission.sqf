@@ -603,7 +603,7 @@ switch (_p_en) do {
     /*case "Myfactionexemple" : {
         btc_type_units = btc_type_units - ["Blabla","moreBlabla"];
         btc_type_divers = btc_type_divers + ["Blabla","moreBlabla"];
-        btc_type_crewmen = btc_type_crewmen + ["Blabla","moreBlabla"] - ["Blabla","moreBlabla"];
+        btc_type_crewmen = "Blabla";
         btc_type_boats = btc_type_boats;
         btc_type_motorized = btc_type_motorized;
         btc_type_mg = btc_type_mg;
