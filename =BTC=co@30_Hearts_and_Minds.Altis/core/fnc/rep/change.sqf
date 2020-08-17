@@ -33,7 +33,7 @@ if (btc_debug || btc_debug_log) then {
 btc_global_reputation = btc_global_reputation + _reputation;
 
 if (btc_p_rep_notify) then {
-    if ((btc_rep_delayed select 0) isEqualTo 0) then {
+    if ((btc_rep_delayed select 1) isEqualTo []) then {
         [{
             [{
                 abs(btc_rep_delayed select 0) > 3
