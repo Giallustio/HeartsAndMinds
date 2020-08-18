@@ -54,6 +54,14 @@ if (btc_p_set_skill) then {
     ["CAManBase", "InitPost", btc_fnc_mil_set_skill] call CBA_fnc_addClassEventHandler;
 };
 ["btc_delay_vehicleInit", btc_fnc_patrol_addEH] call CBA_fnc_addEventHandler;
+["ace_killed", {
+    params ["_unit"];
+    if (!(side group _unit isEqualTo civilian)) exitWith {};
+    private _vehicle = assignedVehicle _unit;
+    if !(_vehicle isEqualTo objNull) then {
+        [[], [_vehicle]] call btc_fnc_delete;
+    };
+}] call CBA_fnc_addEventHandler;
 ["ace_tagCreated", {
     params ["_tag", "_texture", "_object"];
     if (_texture isEqualTo "#(rgb,8,8,3)color(0,0,0,0)") then {
