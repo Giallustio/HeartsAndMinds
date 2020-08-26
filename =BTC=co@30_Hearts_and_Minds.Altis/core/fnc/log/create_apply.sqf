@@ -6,6 +6,7 @@ Description:
     Fill me when you edit me !
 
 Parameters:
+    _create_object_point - Helipad where to create the object. [Object]
 
 Returns:
 
@@ -20,11 +21,8 @@ Author:
 ---------------------------------------------------------------------------- */
 
 params [
-    ["_create_object_point", btc_create_object_point, [objNull]]
+    ["_create_object_point", btc_log_create_obj, [objNull]]
 ];
-
-private _class = lbData [72, lbCurSel 72];
-closeDialog 0;
 
 [{
     params ["_class", "_create_object_point"];
@@ -44,4 +42,6 @@ closeDialog 0;
     } else {
         [_class, getPosASL _create_object_point] remoteExecCall ["btc_fnc_log_create_s", 2];
     };
-}, [_class, _create_object_point], 0.2] call CBA_fnc_waitAndExecute;
+}, [lbData [72, lbCurSel 72], _create_object_point], 0.2] call CBA_fnc_waitAndExecute;
+
+closeDialog 0;
