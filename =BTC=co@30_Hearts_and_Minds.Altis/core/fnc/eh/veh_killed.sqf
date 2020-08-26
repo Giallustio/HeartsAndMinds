@@ -8,6 +8,7 @@ Description:
 Parameters:
     _vehicle - Vehicle object. [Object]
     _killer - Killer. [Object]
+    _instigator - Person who pulled the trigger. [Object]
     _allowRepChange - Allow reputation change. [Boolean]
 
 Returns:
@@ -25,6 +26,7 @@ Author:
 params [
     ["_vehicle", objNull, [objNull]],
     ["_killer", objNull, [objNull]],
+    ["_instigator", objNull, [objNull]],
     ["_allowRepChange", true, [false]]
 ];
 
