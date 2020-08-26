@@ -19,25 +19,29 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
+params [
+    ["_create_object_point", btc_create_object_point, [objNull]]
+];
+
 private _class = lbData [72, lbCurSel 72];
 closeDialog 0;
 
 [{
-    params [["_class", "", [""]]];
+    params ["_class", "_create_object_point"];
 
     if (_class isEqualTo btc_supplies_cargo) then {
         btc_supplies_mat params ["_food", "_water"];
-        private _position_world = getPosWorld btc_create_object_point;
+        private _position_world = getPosWorld _create_object_point;
         _position_world params ["_xx", "_yy", "_zz"];
         [[
             btc_supplies_cargo,
-            [_xx, _yy, _zz + 1.5], getDir btc_create_object_point,
+            [_xx, _yy, _zz + 1.5], getDir _create_object_point,
             "",
             [selectRandom _food, selectRandom _water] apply {[_x, "", [[[], []], [[], []], [[], []]]]},
             [[[], []], [[], []], [[], []]],
-            [vectorDir btc_create_object_point, vectorUp btc_create_object_point]
+            [vectorDir _create_object_point, vectorUp _create_object_point]
         ]] remoteExecCall ["btc_fnc_db_loadObjectStatus", 2];
     } else {
-        [_class] remoteExecCall ["btc_fnc_log_create_s", 2];
+        [_class, getPosASL _create_object_point] remoteExecCall ["btc_fnc_log_create_s", 2];
     };
-}, [_class], 0.2] call CBA_fnc_waitAndExecute;
+}, [_class, _create_object_point], 0.2] call CBA_fnc_waitAndExecute;

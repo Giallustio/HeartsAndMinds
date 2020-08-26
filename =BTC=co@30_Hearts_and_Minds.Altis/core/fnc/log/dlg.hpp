@@ -8,7 +8,7 @@ class btc_log_dlg_create {
         class btc_log_dlg_Apply : btc_dlg_button {
             idc = -1;
             text = $STR_ui_debug_but_apply; //Apply
-            action = "[] call btc_fnc_log_create_apply";
+            action = "[btc_log_create_obj] call btc_fnc_log_create_apply";
             x = 0 * safezoneW + safezoneX;
             y = 0.25 * safezoneH + safezoneY;
             default = true;
