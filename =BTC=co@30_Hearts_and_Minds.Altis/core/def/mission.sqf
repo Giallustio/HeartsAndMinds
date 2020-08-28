@@ -79,9 +79,9 @@ private _p_rep = "btc_p_rep" call BIS_fnc_getParamValue;
 btc_p_rep_notify = ("btc_p_rep_notify" call BIS_fnc_getParamValue) isEqualTo 1;
 private _p_city_radius = ("btc_p_city_radius" call BIS_fnc_getParamValue) * 100;
 btc_p_trigger = if (("btc_p_trigger" call BIS_fnc_getParamValue) isEqualTo 1) then {
-    "this && !btc_db_is_saving && (false in (thisList apply {_x isKindOf 'Plane'})) && (false in (thisList apply {(_x isKindOf 'Helicopter') && (speed _x > 190)}))"
+    "this && (false in (thisList apply {_x isKindOf 'Plane'})) && (false in (thisList apply {(_x isKindOf 'Helicopter') && (speed _x > 190)}))"
 } else {
-    "this && !btc_db_is_saving"
+    "this"
 };
 btc_p_auto_headless = ("btc_p_auto_headless" call BIS_fnc_getParamValue) isEqualTo 1;
 btc_p_debug = "btc_p_debug" call BIS_fnc_getParamValue;
@@ -126,7 +126,6 @@ if (isServer) then {
     btc_civ_veh_active = [];
 
     //Database
-    btc_db_is_saving = false;
     btc_db_load = _p_db;
     btc_db_serverCommandPassword = "btc_password"; //Define the same password in server.cfg like this: serverCommandPassword = "btc_password";
 
