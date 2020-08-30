@@ -35,6 +35,8 @@ if !(_city getVariable ["active", false]) exitWith {};
 }, {
     params ["_city", "_id"];
 
+    if !(_city getVariable ["active", false]) exitWith {};
+
     if (btc_debug) then {
         [str _id, __FILE__, [btc_debug, btc_debug_log, true]] call btc_fnc_debug_message;
     };

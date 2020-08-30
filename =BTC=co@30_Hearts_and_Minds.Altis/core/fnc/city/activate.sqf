@@ -37,13 +37,12 @@ params [
 ];
 _wp_ratios params ["_wp_house", "_wp_sentry"];
 
+private _city = btc_city_all select _id;
+if (_city getVariable "activating") exitWith {};
+
 if (btc_debug) then {
     [str _id, __FILE__, [btc_debug, btc_debug_log, true]] call btc_fnc_debug_message;
 };
-
-private _city = btc_city_all select _id;
-
-if (_city getVariable "activating") exitWith {};
 
 _city setVariable ["activating", true];
 
