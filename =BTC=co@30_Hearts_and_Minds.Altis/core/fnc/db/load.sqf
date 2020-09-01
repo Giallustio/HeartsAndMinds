@@ -120,39 +120,42 @@ btc_global_reputation = profileNamespace getVariable [format ["btc_hm_%1_rep", _
 btc_vehicles = [];
 
 private _vehs = profileNamespace getVariable [format ["btc_hm_%1_vehs", _name], []];
-{
-    _x params [
-        "_veh_type",
-        "_veh_pos",
-        "_veh_dir",
-        "_veh_fuel",
-        "_veh_AllHitPointsDamage",
-        "_veh_cargo",
-        "_veh_cont",
-        "_customization",
-        ["_isMedicalVehicle", false, [false]],
-        ["_isRepairVehicle", false, [false]],
-        ["_fuelSource", [], [[]]],
-        ["_pylons", [], [[]]],
-        ["_isContaminated", false, [false]],
-        ["_supplyVehicle", [], [[]]],
-        ["_EDENinventory", [], [[]]]
-    ];
+[{ // Can't be executed just after because we can't delete and spawn vehicle during the same frame.
+    {
+        _x params [
+            "_veh_type",
+            "_veh_pos",
+            "_veh_dir",
+            "_veh_fuel",
+            "_veh_AllHitPointsDamage",
+            "_veh_cargo",
+            "_veh_cont",
+            "_customization",
+            ["_isMedicalVehicle", false, [false]],
+            ["_isRepairVehicle", false, [false]],
+            ["_fuelSource", [], [[]]],
+            ["_pylons", [], [[]]],
+            ["_isContaminated", false, [false]],
+            ["_supplyVehicle", [], [[]]],
+            ["_EDENinventory", [], [[]]],
+            ["_vectorPos", [], [[]]]
+        ];
 
-    if (btc_debug_log) then {
-        [format ["_veh = %1", _x], __FILE__, [false]] call btc_fnc_debug_message;
-    };
+        if (btc_debug_log) then {
+            [format ["_veh = %1", _x], __FILE__, [false]] call btc_fnc_debug_message;
+        };
 
-    private _veh = [_veh_type, _veh_pos, _veh_dir, _customization, _isMedicalVehicle, _isRepairVehicle, _fuelSource, _pylons, _isContaminated, _supplyVehicle, _EDENinventory, _veh_AllHitPointsDamage] call btc_fnc_log_createVehicle;
-    if ((getPos _veh) select 2 < 0) then {_veh setVectorUp surfaceNormal position _veh;};
-    _veh setFuel _veh_fuel;
+        private _veh = [_veh_type, _veh_pos, _veh_dir, _customization, _isMedicalVehicle, _isRepairVehicle, _fuelSource, _pylons, _isContaminated, _supplyVehicle, _EDENinventory, _veh_AllHitPointsDamage] call btc_fnc_log_createVehicle;
+        _veh setVectorDirAndUp _vectorPos;
+        _veh setFuel _veh_fuel;
 
-    [_veh, _veh_cargo, _veh_cont] call btc_fnc_db_loadCargo;
+        [_veh, _veh_cargo, _veh_cont] call btc_fnc_db_loadCargo;
 
-    if !(alive _veh) then {
-        [_veh, objNull, objNull, false] call btc_fnc_eh_veh_killed;
-    };
-} forEach _vehs;
+        if !(alive _veh) then {
+            [_veh, objNull, objNull, false] call btc_fnc_eh_veh_killed;
+        };
+    } forEach _this;
+}, _vehs] call CBA_fnc_execNextFrame;
 
 //Objects
 private _objs = profileNamespace getVariable [format ["btc_hm_%1_objs", _name], []];
