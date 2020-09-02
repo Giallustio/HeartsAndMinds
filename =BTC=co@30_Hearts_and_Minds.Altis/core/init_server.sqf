@@ -55,5 +55,5 @@ if (btc_p_side_mission_cycle > 0) then {
 };
 
 {
-    ["btc_tag_remover" + _x, "STR_BTC_HAM_ACTION_REMOVETAG", _x, ["#(rgb,8,8,3)color(0,0,0,0)"], "\A3\UI_F\Data\Map\Markers\nato\b_unknown.paa"] call ace_tagging_fnc_addCustomTag;
-} forEach ["ACE_SpraypaintBlack", "ACE_SpraypaintRed", "ACE_SpraypaintGreen", "ACE_SpraypaintBlue"];
+    ["btc_tag_remover" + _x, "STR_BTC_HAM_ACTION_REMOVETAG", _x, ["#(rgb,8,8,3)color(0,0,0,0)"], "\a3\Modules_F_Curator\Data\portraitSmoke_ca.paa"] call ace_tagging_fnc_addCustomTag;
+} forEach ["ACE_SpraypaintRed"];
