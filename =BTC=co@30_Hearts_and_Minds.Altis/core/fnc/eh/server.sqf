@@ -62,16 +62,4 @@ if (btc_p_set_skill) then {
         [[], [_vehicle]] call btc_fnc_delete;
     };
 }] call CBA_fnc_addEventHandler;
-["ace_tagCreated", {
-    params ["_tag", "_texture", "_object"];
-    if (_texture isEqualTo "#(rgb,8,8,3)color(0,0,0,0)") then {
-        private _distance = btc_tags apply {[_tag distance (_x select 0), _x select 0]};
-        _distance sort true;
-        if (_distance select 0 select 0 < 5) then {
-            deleteVehicle (_distance select 0 select 1);
-        };
-        deleteVehicle _tag;
-    } else {
-        btc_tags pushBack [_tag, _texture, _object];
-    };
-}] call CBA_fnc_addEventHandler;
+["ace_tagCreated", btc_fnc_tag_eh] call CBA_fnc_addEventHandler;
