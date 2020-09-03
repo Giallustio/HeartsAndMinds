@@ -44,6 +44,9 @@ private _posFlat = _vehicleSelected getPos [_offset, _dirSelected];
 private _altitude = (getPosATL _vehicleSelected) select 2;
 _posFlat set [2, 0.2 + _altitude];
 
+private _vectorUp = vectorUp _vehicleSelected;
+private _vectorDir = vectorDir _vehicleSelected;
+
 private _flatType = ["Truck_01_Rack_F", "Truck_01_Rack_tropic_F"] select (worldName in ["Tanoa", "lingor3", "chernarus", "Enoch", "sara"]);
 private _isShipOrAir = _tower isKindOf "Ship" || _tower isKindOf "Air";
 private _flat = if (_isShipOrAir) then {
@@ -52,9 +55,7 @@ private _flat = if (_isShipOrAir) then {
     createVehicle [_flatType, _posFlat, [], 0, "CAN_COLLIDE"]
 };
 _flat setDir _dirSelected;
-if (_altitude < 0.1) then {
-    _flat setVectorUp surfaceNormal _posFlat;
-};
+[_flat, [_vectorDir, _vectorUp]] remoteExecCall ["setVectorDirAndUp", _flat];
 
 private _model_corners_tower = [_tower] call btc_fnc_log_get_corner_points;
 private _model_corners_flat = [_flat] call btc_fnc_log_get_corner_points;
