@@ -30,6 +30,7 @@ params [
 ];
 
 private _group = createGroup btc_enemy_side;
+[_group] call CBA_fnc_clearWaypoints;
 [_group, _pos, selectRandom _statics_type, _dir] call btc_fnc_mil_createVehicle;
 
 _group setBehaviour "COMBAT";

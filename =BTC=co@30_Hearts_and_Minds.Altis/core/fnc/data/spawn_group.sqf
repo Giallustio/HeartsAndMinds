@@ -62,10 +62,6 @@ if (_type isEqualTo 1) then {
     for "_i" from 0 to (count _array_pos - 1) do {
         [_group, _array_type select _i, _array_pos select _i, "CAN_COLLIDE"] call btc_fnc_delay_createUnit;
         //_u setDamage (_array_dam select _i);
-
-        if (btc_debug_log) then {
-            [format ["pos %1 in %2 ", _array_pos select _i], __FILE__, [false]] call btc_fnc_debug_message;
-        };
     };
 };
 
@@ -110,10 +106,6 @@ if (_type isEqualTo 1) then {
         [_group, _array_veh select 0] call btc_fnc_civ_addWP;
         _group setVariable ["btc_data_inhouse", _array_veh];
     };
-
-    _group setBehaviour (_behaviour select 0);
-    _group setCombatMode (_behaviour select 1);
-    _group setFormation (_behaviour select 2);
 }, [_data_unit, _group], btc_delay_createUnit + _delay] call CBA_fnc_waitAndExecute;
 
 _delay
