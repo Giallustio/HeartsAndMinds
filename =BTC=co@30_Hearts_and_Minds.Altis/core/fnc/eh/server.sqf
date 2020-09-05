@@ -39,7 +39,11 @@ addMissionEventHandler ["BuildingChanged", btc_fnc_rep_buildingchanged];
 
 addMissionEventHandler ["HandleDisconnect", btc_fnc_eh_handledisconnect];
 if (btc_p_auto_db) then {
-    addMissionEventHandler ["HandleDisconnect", btc_fnc_db_autosave];
+    addMissionEventHandler ["HandleDisconnect", {
+        if ((allPlayers - entities "HeadlessClient_F") isEqualTo []) then {
+            [] call btc_fnc_db_save;
+        };
+    }];
 };
 if (btc_p_chem) then {
     ["ace_cargoLoaded", btc_fnc_chem_propagate] call CBA_fnc_addEventHandler;

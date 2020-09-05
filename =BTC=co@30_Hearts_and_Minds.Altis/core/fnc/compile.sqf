@@ -58,7 +58,6 @@ if (isServer) then {
     //DB
     btc_fnc_db_save = compile preprocessFileLineNumbers "core\fnc\db\save.sqf";
     btc_fnc_db_delete = compile preprocessFileLineNumbers "core\fnc\db\delete.sqf";
-    btc_fnc_db_autosave = compile preprocessFileLineNumbers "core\fnc\db\autosave.sqf";
     btc_fnc_db_loadObjectStatus = compile preprocessFileLineNumbers "core\fnc\db\loadObjectStatus.sqf";
     btc_fnc_db_saveObjectStatus = compile preprocessFileLineNumbers "core\fnc\db\saveObjectStatus.sqf";
     btc_fnc_db_loadCargo = compile preprocessFileLineNumbers "core\fnc\db\loadcargo.sqf";

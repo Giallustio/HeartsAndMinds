@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        [] spawn btc_fnc_db_save;
+        [] call btc_fnc_db_save;
     (end)
 
 Author:
@@ -29,19 +29,6 @@ if (btc_debug) then {
 };
 
 [8] remoteExecCall ["btc_fnc_show_hint", 0];
-
-btc_db_is_saving = true;
-
-{
-    if (!isNull _x) then {
-        private _s = [_forEachIndex] spawn btc_fnc_city_de_activate;
-        waitUntil {scriptDone _s};
-    };
-} forEach btc_city_all;
-
-if (btc_debug) then {
-    ["...2", __FILE__, [btc_debug, false, true]] call btc_fnc_debug_message;
-};
 
 [false] call btc_fnc_db_delete;
 
@@ -105,6 +92,10 @@ private _array_ho = [];
 profileNamespace setVariable [format ["btc_hm_%1_ho", _name], _array_ho];
 
 profileNamespace setVariable [format ["btc_hm_%1_ho_sel", _name], btc_hq getVariable ["id", 0]];
+
+if (btc_debug) then {
+    ["...2", __FILE__, [btc_debug, false, true]] call btc_fnc_debug_message;
+};
 
 //CACHE
 private _array_cache = [];
@@ -206,5 +197,3 @@ if (btc_debug) then {
     ["...3", __FILE__, [btc_debug, false, true]] call btc_fnc_debug_message;
 };
 [9] remoteExecCall ["btc_fnc_show_hint", 0];
-
-btc_db_is_saving = false;
