@@ -117,10 +117,16 @@ private _fobs = profileNamespace getVariable [format ["btc_hm_%1_fobs", _name], 
 //REP
 btc_global_reputation = profileNamespace getVariable [format ["btc_hm_%1_rep", _name], 0];
 
-//VEHICLES
+//Objects
 {deleteVehicle _x} forEach btc_vehicles;
 btc_vehicles = [];
 
+private _objs = profileNamespace getVariable [format ["btc_hm_%1_objs", _name], []];
+{
+    [_x] call btc_fnc_db_loadObjectStatus;
+} forEach _objs;
+
+//VEHICLES
 private _vehs = profileNamespace getVariable [format ["btc_hm_%1_vehs", _name], []];
 [{ // Can't be executed just after because we can't delete and spawn vehicle during the same frame.
     {
@@ -157,13 +163,7 @@ private _vehs = profileNamespace getVariable [format ["btc_hm_%1_vehs", _name], 
             [_veh, objNull, objNull, false] call btc_fnc_eh_veh_killed;
         };
     } forEach _this;
-}, _vehs, 0.5] call CBA_fnc_waitAndExecute; // Need to wait more than a frame for vehicle spawning on objects created by btc_fnc_db_loadObjectStatus.
-
-//Objects
-private _objs = profileNamespace getVariable [format ["btc_hm_%1_objs", _name], []];
-{
-    [_x] call btc_fnc_db_loadObjectStatus;
-} forEach _objs;
+}, _vehs] call CBA_fnc_execNextFrame;
 
 //Player Tags
 private _tags_properties = profileNamespace getVariable [format ["btc_hm_%1_tags", _name], []];
