@@ -157,7 +157,7 @@ private _vehs = profileNamespace getVariable [format ["btc_hm_%1_vehs", _name], 
             [_veh, objNull, objNull, false] call btc_fnc_eh_veh_killed;
         };
     } forEach _this;
-}, _vehs] call CBA_fnc_execNextFrame;
+}, _vehs, 0.5] call CBA_fnc_waitAndExecute; // Need to wait more than a frame for vehicle spawning on objects created by btc_fnc_db_loadObjectStatus.
 
 //Objects
 private _objs = profileNamespace getVariable [format ["btc_hm_%1_objs", _name], []];
