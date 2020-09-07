@@ -79,9 +79,9 @@ private _p_rep = "btc_p_rep" call BIS_fnc_getParamValue;
 btc_p_rep_notify = ("btc_p_rep_notify" call BIS_fnc_getParamValue) isEqualTo 1;
 private _p_city_radius = ("btc_p_city_radius" call BIS_fnc_getParamValue) * 100;
 btc_p_trigger = if (("btc_p_trigger" call BIS_fnc_getParamValue) isEqualTo 1) then {
-    "this && !btc_db_is_saving && (false in (thisList apply {_x isKindOf 'Plane'})) && (false in (thisList apply {(_x isKindOf 'Helicopter') && (speed _x > 190)}))"
+    "this && (false in (thisList apply {_x isKindOf 'Plane'})) && (false in (thisList apply {(_x isKindOf 'Helicopter') && (speed _x > 190)}))"
 } else {
-    "this && !btc_db_is_saving"
+    "this"
 };
 btc_p_auto_headless = ("btc_p_auto_headless" call BIS_fnc_getParamValue) isEqualTo 1;
 btc_p_debug = "btc_p_debug" call BIS_fnc_getParamValue;
@@ -126,7 +126,6 @@ if (isServer) then {
     btc_civ_veh_active = [];
 
     //Database
-    btc_db_is_saving = false;
     btc_db_load = _p_db;
     btc_db_serverCommandPassword = "btc_password"; //Define the same password in server.cfg like this: serverCommandPassword = "btc_password";
 
@@ -315,6 +314,10 @@ if (isServer) then {
     ];
     btc_buildings_changed = [];
 
+    //TAGS
+    btc_type_tags = ["Land_Graffiti_01_F", "Land_Graffiti_02_F", "Land_Graffiti_03_F", "Land_Graffiti_04_F", "Land_Graffiti_05_F"];
+    btc_tags = [];
+
     //IED
     private _ieds = ["Land_GarbageContainer_closed_F", "Land_GarbageContainer_open_F", "Land_Portable_generator_F", "Land_WoodenBox_F", "Land_BarrelTrash_grey_F", "Land_Sacks_heap_F", "Land_Wreck_Skodovka_F", "Land_WheelieBin_01_F", "Land_GarbageBin_03_F"] + btc_type_pallet + btc_type_barrel + (_allClassSorted select {
         _x isKindOf "GasTank_base_F" ||
@@ -331,9 +334,9 @@ if (isServer) then {
     });
     btc_type_ieds = _ieds - ["Land_Garbage_line_F","Land_Garbage_square3_F","Land_Garbage_square5_F"];
     btc_model_ieds = btc_type_ieds apply {(toLower getText(_cfgVehicles >> _x >> "model")) select [1]};
+    btc_type_blacklist = btc_type_tags + ["UserTexture1m_F"];
 
     btc_groundWeaponHolder = [];
-    btc_tags = [];
 };
 
 //Civ
@@ -667,6 +670,7 @@ btc_rep_bonus_disarm = 15;
 btc_rep_bonus_hideout = 200;
 btc_rep_bonus_mil_killed = 0.25;
 btc_rep_bonus_IEDCleanUp = 10;
+btc_rep_bonus_removeTag = 3;
 
 btc_rep_malus_civ_hd = - 2;
 btc_rep_malus_animal_hd = - 1;

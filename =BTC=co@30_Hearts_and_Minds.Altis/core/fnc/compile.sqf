@@ -58,7 +58,6 @@ if (isServer) then {
     //DB
     btc_fnc_db_save = compile preprocessFileLineNumbers "core\fnc\db\save.sqf";
     btc_fnc_db_delete = compile preprocessFileLineNumbers "core\fnc\db\delete.sqf";
-    btc_fnc_db_autosave = compile preprocessFileLineNumbers "core\fnc\db\autosave.sqf";
     btc_fnc_db_loadObjectStatus = compile preprocessFileLineNumbers "core\fnc\db\loadObjectStatus.sqf";
     btc_fnc_db_saveObjectStatus = compile preprocessFileLineNumbers "core\fnc\db\saveObjectStatus.sqf";
     btc_fnc_db_loadCargo = compile preprocessFileLineNumbers "core\fnc\db\loadcargo.sqf";
@@ -166,6 +165,10 @@ if (isServer) then {
     btc_fnc_side_chemicalLeak = compile preprocessFileLineNumbers "core\fnc\side\chemicalLeak.sqf";
     btc_fnc_side_EMP = compile preprocessFileLineNumbers "core\fnc\side\EMP.sqf";
     btc_fnc_side_removeRubbish = compile preprocessFileLineNumbers "core\fnc\side\removeRubbish.sqf";
+
+    //TAG
+    btc_fnc_tag_initArea = compile preprocessFileLineNumbers "core\fnc\tag\initArea.sqf";
+    btc_fnc_tag_eh = compile preprocessFileLineNumbers "core\fnc\tag\eh.sqf";
 
     //LOG
     btc_fnc_log_createVehicle = compile preprocessFileLineNumbers "core\fnc\log\createVehicle.sqf";

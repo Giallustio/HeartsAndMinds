@@ -48,8 +48,8 @@ if (_units isEqualTo []) exitWith {};
 
     [_x] joinSilent createGroup [btc_enemy_side, true];
 
-    (group _x) setVariable ["getWeapons", true];
-
-    (group _x) setBehaviour "AWARE";
-    [group _x, _pos, -1, "GUARD", "UNCHANGED", "RED", nil, nil, nil, nil, 10] call CBA_fnc_addWaypoint;
+    private _group = group _x;
+    [_group] call CBA_fnc_clearWaypoints;
+    _group setVariable ["getWeapons", true];
+    [_group, _pos, -1, "GUARD", "AWARE", "RED", nil, nil, nil, nil, 10] call CBA_fnc_addWaypoint;
 } forEach [selectRandom _units];

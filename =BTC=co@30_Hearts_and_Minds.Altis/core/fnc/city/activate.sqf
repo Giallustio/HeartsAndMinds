@@ -37,13 +37,12 @@ params [
 ];
 _wp_ratios params ["_wp_house", "_wp_sentry"];
 
+private _city = btc_city_all select _id;
+if (_city getVariable "activating") exitWith {};
+
 if (btc_debug) then {
     [str _id, __FILE__, [btc_debug, btc_debug_log, true]] call btc_fnc_debug_message;
 };
-
-private _city = btc_city_all select _id;
-
-if (_city getVariable "activating") exitWith {};
 
 _city setVariable ["activating", true];
 
@@ -55,6 +54,7 @@ private _radius = _city getVariable ["radius", 100];
 private _has_en = _city getVariable ["occupied", false];
 private _has_ho = _city getVariable ["has_ho", false];
 private _ieds = _city getVariable ["ieds", []];
+private _tags = _city getVariable ["tags", []];
 private _spawningRadius = _radius/2;
 
 if (!_is_init) then {
@@ -95,9 +95,10 @@ if !(_ieds isEqualTo []) then {
     [[_city, _ieds], btc_fnc_ied_check] call btc_fnc_delay_exec;
 };
 
+private _delay = 0;
 if !(_data_units isEqualTo []) then {
     {
-        [_x, _id] call btc_fnc_data_spawn_group;
+        _delay = _delay + ([_x, _id] call btc_fnc_data_spawn_group);
     } forEach _data_units;
 } else {
     // Maximum number of enemy group
@@ -225,6 +226,8 @@ if !(_city getVariable ["has_suicider", false]) then {
     };
 };
 
+[[_city, _spawningRadius, _type, _has_en, _has_ho], btc_fnc_tag_initArea] call btc_fnc_delay_exec;
+
 [{
     params ["_has_en", "_city", "_radius", "_id"];
 
@@ -237,7 +240,7 @@ if !(_city getVariable ["has_suicider", false]) then {
     };
 
     _city setVariable ["activating", false];
-}, [_has_en, _city, _radius, _id], btc_delay_createUnit] call CBA_fnc_waitAndExecute;
+}, [_has_en, _city, _radius, _id], btc_delay_createUnit + _delay] call CBA_fnc_waitAndExecute;
 
 //Patrol
 btc_patrol_active = btc_patrol_active - [grpNull];
