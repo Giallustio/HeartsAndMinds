@@ -68,36 +68,40 @@ private _markers = [_marker1, _marker2, _area];
 
 /// Show info path\\\
 private _veh_types = btc_type_motorized select {!(_x isKindOf "air")};
-private _agent = [{
-    params ["_pos1", "_pos2", "_taskID", "_typeVehicle"];
-    private _agent = [_pos1, _pos2, _taskID, _typeVehicle, "SAFE"] call btc_fnc_info_path;
-    _agent addEventHandler ["PathCalculated", {
-        params ["_agent", "_path"];
+private _agent = [btc_fnc_info_path, [_pos1, _pos2, _taskID, _veh_types select 0]] call CBA_fnc_directCall;
 
-        [12] remoteExecCall ["btc_fnc_show_hint", [0, -2] select isDedicated];
-        _agent removeEventHandler ["PathCalculated", _thisEventHandler];
-    }];
-    _agent
-}, [_pos1, _pos2, _taskID, _veh_types select 0]] call CBA_fnc_directCall;
+waitUntil {!((_agent getVariable ["btc_path", []]) isEqualTo [])};
+private _path = _agent getVariable ["btc_path", []];
+if (count _path <= 35) exitWith {
+    _markers append (allMapMarkers select {(_x select [0, count _taskID]) isEqualTo _taskID});
+    [_taskID, "CANCELED"] call BIS_fnc_taskSetState;
+};
 
 //// Create convoy \\\\
 private _group = createGroup btc_enemy_side;
 _group setVariable ["no_cache", true];
 [_group] call CBA_fnc_clearWaypoints;
-[
-    _group, _pos2, -1, "MOVE", "SAFE", "RED", "LIMITED", "COLUMN",
-    format ["['%1', 'FAILED'] call BIS_fnc_taskSetState;", _taskID], [0, 0, 0], _radius/2
-] call CBA_fnc_addWaypoint;
-
-waitUntil {sleep 0.5; (_agent getVariable ["btc_path", []]) isEqualTo []};
-
-private _length = count (_agent getVariable ["btc_path", []]);
-private _listPositions = (_agent getVariable ["btc_path", []]) select [10 min _length, _length - 1];
+private _convoyLength = 3 + round random 2;
+private _listPositions = _path select [30, _convoyLength];
+reverse _listPositions;
 private _delay = 0;
-for "_i" from 0 to (2 + round random 2) do {
+for "_i" from 1 to _convoyLength do {
     private _pos = _listPositions deleteAt 0;
-    _delay = _delay + ([_group, _pos, selectRandom _veh_types, _pos getDir (_listPositions select 0)] call btc_fnc_mil_createVehicle);
+    _delay = _delay + ([_group, _pos, selectRandom _veh_types, (_listPositions select 0) getDir _pos] call btc_fnc_mil_createVehicle);
 };
+[{
+    params ["_group", "_pos2", "_taskID", "_radius", "_path"];
+
+    for "_i" from 35 to (count _path) - 34 step 100 do {
+        [_group, _path select _i, -1, "MOVE", "SAFE", "RED", "LIMITED", "COLUMN"] call CBA_fnc_addWaypoint;
+    };
+    [
+        _group, _pos2, -1, "MOVE", "SAFE", "RED", "LIMITED", "COLUMN",
+        format ["['%1', 'FAILED'] call BIS_fnc_taskSetState;", _taskID], [0, 0, 0], _radius/2
+    ] call CBA_fnc_addWaypoint;
+
+    [12] remoteExecCall ["btc_fnc_show_hint", [0, -2] select isDedicated];
+}, [_group, _pos2, _taskID, _radius, _path], btc_delay_createUnit + _delay] call CBA_fnc_waitAndExecute;
 
 waitUntil {sleep 5; (
     _taskID call BIS_fnc_taskCompleted ||

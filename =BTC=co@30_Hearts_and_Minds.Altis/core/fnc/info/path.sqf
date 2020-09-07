@@ -42,7 +42,7 @@ private _agent = calculatePath [_type, _behaviour, _startPos, _endPos];
     ];
 
     _agent removeEventHandler ["PathCalculated", _thisId];
-    _agent setVariable "btc_path";
+    _agent setVariable ["btc_path", _path];
 
     private _color = configName selectRandom (configProperties [configFile >> "CfgMarkerColors"]);
     private _delta = 10;
