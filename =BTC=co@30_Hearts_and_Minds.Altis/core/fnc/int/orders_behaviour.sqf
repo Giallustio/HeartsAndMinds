@@ -38,15 +38,14 @@ if (_unit isEqualTo vehicle _unit) then {
     [_group] call CBA_fnc_clearWaypoints;
 };
 
-private _behaviour = behaviour _unit;
-
 switch (_order) do {
     case 1 : {
-        _unit setBehaviour selectRandom ["CARELESS", _behaviour];
         doStop _unit;
+        _unit disableAI "MOVE";
     };
     case 2 : {
         doStop _unit;
+        _unit disableAI "MOVE";
         if (vehicle _unit != _unit) exitWith {};
         [_unit, "", 2] call ace_common_fnc_doAnimation;
         _unit setUnitPos "DOWN";
@@ -70,12 +69,13 @@ if (isNull _unit || !alive _unit) exitWith {};
 
 if (_order isEqualTo 4) then {
     doStop _unit;
+    _unit disableAI "MOVE";
     sleep (30 + random 10);
 };
 
 _unit setVariable ["order", nil];
 _unit setUnitPos "AUTO";
-_unit setBehaviour _behaviour;
+_unit enableAI "MOVE";
 _unit doMove getPos _unit;
 
 if (_unit isEqualTo vehicle _unit) then {
