@@ -49,8 +49,8 @@ class Params {
     };
     class btc_p_respawn_location { // Respawn locations available:
         title = __EVAL(format ["      %1", localize "STR_BTC_HAM_RESP_LOCATION"]);
-        values[]={0,1,2,3};
-        texts[]={$STR_BTC_HAM_RESP_FOBRALLY, $STR_BTC_HAM_RESP_FOBRALLYHELO, $STR_BTC_HAM_RESP_FOBRALLYHELI, $STR_BTC_HAM_RESP_FOBRALLYHELIVEHI};
+        values[]={0,1,2,3,4};
+        texts[]={$STR_BTC_HAM_RESP_FOBRALLY, $STR_BTC_HAM_RESP_FOBRALLYHELO, $STR_BTC_HAM_RESP_FOBRALLYHELI, $STR_BTC_HAM_RESP_FOBRALLYHELIVEHI, $STR_BTC_HAM_RESP_FOBRALLYHELIVEHILEADER};
         default = 0;
     };
     class btc_p_respawn_fromFOBToBase { // Allow respawn from FOB to base:
