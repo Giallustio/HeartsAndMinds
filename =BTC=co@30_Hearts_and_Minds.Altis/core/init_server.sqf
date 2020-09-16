@@ -8,7 +8,7 @@ setTimeMultiplier btc_p_acctime;
 [["btc_dty", "btc_m"], 1] call btc_fnc_task_create;
 
 if (btc_db_load && {profileNamespace getVariable [format ["btc_hm_%1_db", worldName], false]}) then {
-    if ((profileNamespace getVariable [format ["btc_hm_%1_version", worldName], 1.13]) in [1.193, 1.2, btc_version select 1]) then {
+    if ((profileNamespace getVariable [format ["btc_hm_%1_version", worldName], 1.13]) in [btc_version select 1]) then {
         [] call compile preprocessFileLineNumbers "core\fnc\db\load.sqf";
     } else {
         [] call compile preprocessFileLineNumbers "core\fnc\db\load_old.sqf";
@@ -22,10 +22,8 @@ if (btc_db_load && {profileNamespace getVariable [format ["btc_hm_%1_db", worldN
     setDate _date;
 
     {
-        [{!isNull _this}, {
-            _this setVariable ["btc_EDENinventory", [getWeaponCargo _this, getMagazineCargo _this, getItemCargo _this]];
-            _this call btc_fnc_db_add_veh;
-        }, _x] call CBA_fnc_waitUntilAndExecute;
+        _x setVariable ["btc_EDENinventory", [getWeaponCargo _x, getMagazineCargo _x, getItemCargo _x]];
+        _x call btc_fnc_db_add_veh;
     } forEach btc_vehicles;
 };
 
