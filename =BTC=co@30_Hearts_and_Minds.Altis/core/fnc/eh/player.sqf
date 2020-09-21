@@ -83,14 +83,6 @@ if (btc_p_respawn_arsenal) then {
     }] call CBA_fnc_addBISEventHandler;
 };
 
-if (btc_p_respawn_arsenal) then {
-    [_player, "Respawn", {
-        params ["_unit", "_corpse"];
-        if (isObjectHidden _corpse) exitWith {};
-        [btc_gear_object, _unit] call ace_arsenal_fnc_openBox;
-    }] call CBA_fnc_addBISEventHandler;
-};
-
 if (btc_p_respawn_location >= 4) then {
     [_player, "Killed", {
         private _group  = group player;
