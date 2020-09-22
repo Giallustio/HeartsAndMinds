@@ -37,17 +37,17 @@ _toRemove append (allDead select {
     (_playableUnits inAreaArray [getPosWorld _dead, 500, 500]) isEqualTo [] && !(_dead getVariable ["btc_dont_delete", false])
 });
 
+_toRemove call CBA_fnc_deleteEntity;
+
 if (btc_delay_createUnit < 0.001) then { // Don't remove group during units creation.
-    _toRemove append (allGroups select {
-        units _x select {alive _x} isEqualTo [] &&
+    (allGroups select {
+        units _x isEqualTo [] &&
         !(
             _x in btc_patrol_active ||
             _x in btc_civ_veh_active
         )
-    });
+    }) call CBA_fnc_deleteEntity;
 };
-
-_toRemove call CBA_fnc_deleteEntity;
 
 while {objNull in btc_chem_contaminated} do {
     btc_chem_contaminated deleteAt (
