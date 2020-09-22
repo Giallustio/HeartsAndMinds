@@ -81,23 +81,27 @@ if (count _path <= 35) exitWith {
 private _group = createGroup btc_enemy_side;
 _group setVariable ["no_cache", true];
 [_group] call CBA_fnc_clearWaypoints;
-private _convoyLength = 5; //3 + round random 2;
+private _convoyLength = 3 + round random 2;
 private _listPositions = _path select [40, _convoyLength + 1];
 reverse _listPositions;
+[_group, ASLToAGL (_listPositions select 0), -1, "SENTRY", "SAFE", "RED", "LIMITED", "COLUMN"] call CBA_fnc_addWaypoint; // Make sure they don't move during spawn
 private _delay = 0;
 for "_i" from 1 to _convoyLength do {
     private _pos = _listPositions deleteAt 0;
     _delay = _delay + ([_group, ASLToAGL _pos, selectRandom _veh_types, (_listPositions select 0) getDir _pos] call btc_fnc_mil_createVehicle);
 };
+
 [{
-    systemChat str waypoints (_this select 0);
-    //_this call CBA_fnc_addWaypoint;
+    params ["_group"];
+
+    _group call CBA_fnc_clearWaypoints;
+    _this call CBA_fnc_addWaypoint;
     [12] remoteExecCall ["btc_fnc_show_hint", [0, -2] select isDedicated];
 
-    private _vehs = (units (_this select 0)) apply {assignedVehicle _x};
+    private _vehs = (units _group) apply {assignedVehicle _x};
     btc_curator addCuratorEditableObjects [_vehs arrayIntersect _vehs, false];
 }, [
-    _group, _pos2, -1, "MOVE", "CARELESS", "RED", "LIMITED", "COLUMN",
+    _group, _pos2, -1, "MOVE", "SAFE", "RED", "LIMITED", "COLUMN",
     format ["['%1', 'FAILED'] call BIS_fnc_taskSetState;", _taskID], [0, 0, 0], _radius/2
 ], btc_delay_createUnit + _delay] call CBA_fnc_waitAndExecute;
 

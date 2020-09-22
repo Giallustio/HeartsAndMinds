@@ -84,20 +84,27 @@ _group setVariable ["no_cache", true];
 private _convoyLength = 2 + round random 1;
 private _listPositions = _path select [40, _convoyLength + 1];
 reverse _listPositions;
+[_group, ASLToAGL (_listPositions select 0), -1, "SENTRY", "SAFE", "RED", "LIMITED", "COLUMN"] call CBA_fnc_addWaypoint; // Make sure they don't move during spawn
 private _delay = 0;
 for "_i" from 1 to _convoyLength do {
     private _pos = _listPositions deleteAt 0;
     _delay = _delay + ([_group, ASLToAGL _pos, selectRandom _veh_types, (_listPositions select 0) getDir _pos] call btc_fnc_mil_createVehicle);
 };
+
 [{
+    params ["_group"];
+
+    _group call CBA_fnc_clearWaypoints;
     _this call CBA_fnc_addWaypoint;
     [12] remoteExecCall ["btc_fnc_show_hint", [0, -2] select isDedicated];
+
+    private _vehs = (units _group) apply {assignedVehicle _x};
+    btc_curator addCuratorEditableObjects [_vehs arrayIntersect _vehs, false];
 }, [
-    _group, _pos2, -1, "MOVE", "CARELESS", "RED", "LIMITED", "COLUMN",
+    _group, _pos2, -1, "MOVE", "SAFE", "RED", "LIMITED", "COLUMN",
     format ["['%1', 'FAILED'] call BIS_fnc_taskSetState;", _taskID], [0, 0, 0], _radius/2
 ], btc_delay_createUnit + _delay] call CBA_fnc_waitAndExecute;
 
-private _trigger = createTrigger ["EmptyDetector", _pos2];
 [{
     params ["_group", "_taskID", "_trigger"];
 
@@ -112,6 +119,7 @@ private _trigger = createTrigger ["EmptyDetector", _pos2];
     private _back_taskID = _taskID + "bk";
 
     //// Create trigger \\\\
+    private _trigger = createTrigger ["EmptyDetector", _captive];
     _trigger setVariable ["captive", _captive];
     _trigger setTriggerArea [15, 15, 0, false];
     _trigger setTriggerActivation [str btc_player_side, "PRESENT", true];
@@ -131,32 +139,36 @@ private _trigger = createTrigger ["EmptyDetector", _pos2];
         };
         _this
     }, [_captive, _handcuff_taskID]] call CBA_fnc_addEventHandlerArgs;
+
+    [{
+        !alive (_this select 0) ||
+        isNull (_this select 0)
+    }, {
+        [_this select 1, "FAILED"] call btc_fnc_task_setState;
+    }, [_captive, _taskID]] call CBA_fnc_waitUntilAndExecute;
+
+    [{
+        (_this select 0) inArea [getPosWorld btc_create_object_point, 100, 100, 0, false] ||
+        isNull (_this select 0)
+    }, {
+        [_this select 1, "SUCCEEDED"] call BIS_fnc_taskSetState;
+    }, [_captive, _taskID]] call CBA_fnc_waitUntilAndExecute;
 }, [
     _group,
-    _taskID,
-    _trigger
+    _taskID
 ], btc_delay_createUnit + _delay] call CBA_fnc_waitAndExecute;
 
-waitUntil {sleep 5; (
-    _taskID call BIS_fnc_taskCompleted ||
-    !isNull (_trigger getVariable ["captive", objNull]) && {
-        private _captive = _trigger getVariable ["captive", objNull];
-        !(alive _captive) ||
-        _captive inArea [getPosWorld btc_create_object_point, 100, 100, 0, false]
-    }
-)};
+waitUntil {sleep 5; _taskID call BIS_fnc_taskCompleted};
 
-private _captive = _trigger getVariable ["captive", objNull];
 _markers append (allMapMarkers select {(_x select [0, count _taskID]) isEqualTo _taskID});
-
 private _vehs = (units _group) apply {assignedVehicle _x};
 _vehs = (_vehs arrayIntersect _vehs);
+
 if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {
     [_markers, _vehs + [_group]] call btc_fnc_delete;
 };
 
-if (!alive _captive || _taskID call BIS_fnc_taskState isEqualTo "FAILED") exitWith {
-    deleteVehicle _trigger;
+if (_taskID call BIS_fnc_taskState isEqualTo "FAILED") exitWith {
     _group setVariable ["no_cache", false];
     {
         private _group = createGroup btc_enemy_side;
@@ -171,5 +183,3 @@ if (!alive _captive || _taskID call BIS_fnc_taskState isEqualTo "FAILED") exitWi
 if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {};
 
 50 call btc_fnc_rep_change;
-
-[_taskID, "SUCCEEDED"] call BIS_fnc_taskSetState;
