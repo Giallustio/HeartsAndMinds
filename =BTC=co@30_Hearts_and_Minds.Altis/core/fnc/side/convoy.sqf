@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        [] spawn btc_fnc_side_convoy;
+        [false, "btc_fnc_side_convoy"] spawn btc_fnc_side_create;
     (end)
 
 Author:
@@ -39,7 +39,7 @@ private _city1 = selectRandom _usefuls;
 private _radius = (_city1 getVariable ["radius", 0])/2;
 private _roads = _city1 nearRoads (_radius * 2);
 _roads = _roads select {(_x distance _city1 > _radius) && isOnRoad _x};
- if (_roads isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
+if (_roads isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
 private _road = selectRandom _roads;
 private _pos1 = getPosATL _road;
 private _pos2 = getPos _city2;
@@ -81,17 +81,21 @@ if (count _path <= 35) exitWith {
 private _group = createGroup btc_enemy_side;
 _group setVariable ["no_cache", true];
 [_group] call CBA_fnc_clearWaypoints;
-private _convoyLength = 3 + round random 2;
+private _convoyLength = 5; //3 + round random 2;
 private _listPositions = _path select [40, _convoyLength + 1];
 reverse _listPositions;
 private _delay = 0;
 for "_i" from 1 to _convoyLength do {
     private _pos = _listPositions deleteAt 0;
-    _delay = _delay + ([_group, _pos, selectRandom _veh_types, (_listPositions select 0) getDir _pos] call btc_fnc_mil_createVehicle);
+    _delay = _delay + ([_group, ASLToAGL _pos, selectRandom _veh_types, (_listPositions select 0) getDir _pos] call btc_fnc_mil_createVehicle);
 };
 [{
-    _this call CBA_fnc_addWaypoint;
+    systemChat str waypoints (_this select 0);
+    //_this call CBA_fnc_addWaypoint;
     [12] remoteExecCall ["btc_fnc_show_hint", [0, -2] select isDedicated];
+
+    private _vehs = (units (_this select 0)) apply {assignedVehicle _x};
+    btc_curator addCuratorEditableObjects [_vehs arrayIntersect _vehs, false];
 }, [
     _group, _pos2, -1, "MOVE", "CARELESS", "RED", "LIMITED", "COLUMN",
     format ["['%1', 'FAILED'] call BIS_fnc_taskSetState;", _taskID], [0, 0, 0], _radius/2
@@ -100,7 +104,7 @@ for "_i" from 1 to _convoyLength do {
 waitUntil {sleep 5; (
     _taskID call BIS_fnc_taskCompleted ||
     ((units _group) apply {assignedVehicle _x}) select {canMove _x} isEqualTo [] ||
-    _group isEqualTo grpNull
+    isNull _group
 )};
 
 _markers append (allMapMarkers select {(_x select [0, count _taskID]) isEqualTo _taskID});
