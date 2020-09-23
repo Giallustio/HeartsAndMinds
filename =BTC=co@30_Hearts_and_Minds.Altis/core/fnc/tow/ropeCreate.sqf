@@ -63,7 +63,7 @@ private _model_flat = (0 boundingBoxReal _flat) select 1;
 private _attachTo = [
     0,
     [(_model_flat select 1) - (_model_selected select 1), -(_model_flat select 1) -(_model_selected select 1)] select (_flat isEqualTo _tower),
-    (_model_selected select 2) - (_model_flat select 2)
+    -(_model_front_selected select 2)
 ];
 
 _vehicleSelected attachTo [_flat, _attachTo];
