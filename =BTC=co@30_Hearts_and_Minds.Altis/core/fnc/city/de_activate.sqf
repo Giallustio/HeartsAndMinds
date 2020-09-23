@@ -35,15 +35,14 @@ if !(_city getVariable ["active", false]) exitWith {};
 }, {
     params ["_city", "_id"];
 
+    if !(_city getVariable ["active", false]) exitWith {};
+
     if (btc_debug) then {
         [str _id, __FILE__, [btc_debug, btc_debug_log, true]] call btc_fnc_debug_message;
     };
 
     //Save all and delete
-    private _radius_x = _city getVariable ["RadiusX", 0];
-    private _radius_y = _city getVariable ["RadiusY", 0];
-    private _radius = _radius_x + _radius_y;
-
+    private _radius = _city getVariable ["radius", 0];
     private _has_en = _city getVariable ["occupied", false];
 
     if (_has_en) then {
@@ -54,18 +53,59 @@ if !(_city getVariable ["active", false]) exitWith {};
 
     private _pos_city = getPosWorld _city;
     private _data_units = [];
+    private _has_suicider = false;
     {
-        if ((leader _x) inArea [_pos_city, _radius, _radius, 0, false] && {side _x != btc_player_side} && {!(_x getVariable ["no_cache", false])}) then {
+        if (
+            (leader _x) inArea [_pos_city, _radius, _radius, 0, false] &&
+            {side _x != btc_player_side} &&
+            {!(_x getVariable ["no_cache", false])}
+        ) then {
             private _data_group = _x call btc_fnc_data_get_group;
             _data_units pushBack _data_group;
 
-            if (btc_debug_log) then {
-                [format ["data units = %1", _data_units], __FILE__, [false]] call btc_fnc_debug_message;
-            };
+            if ((_data_group select 0) in [5, 7]) then {_has_suicider = true;};
         };
     } forEach allGroups;
 
+    private _data_animals = [];
+    {
+        private _agent = agent _x;
+        if (
+            _agent inArea [_pos_city, _radius, _radius, 0, false] &&
+            {alive _agent} &&
+            {!(_x getVariable ["no_cache", false])}
+        ) then {
+            _data_animals pushBack [
+                typeOf _agent,
+                getPosATL _agent
+            ];
+            _agent call CBA_fnc_deleteEntity;
+        };
+    } forEach agents;
+
+    private _data_tags = [];
+    {
+        private _pos = getPos _x;
+        _pos set [2, 0];
+        _data_tags pushBack [
+            _pos,
+            [vectorDir _x, vectorUp _x],
+            _x getVariable "btc_texture",
+            typeOf _x
+        ];
+        _x call CBA_fnc_deleteEntity;
+    } forEach ((allSimpleObjects btc_type_tags) inAreaArray [_pos_city, _radius, _radius]);
+
+    if (btc_debug_log) then {
+        [format ["data units = %1", _data_units], __FILE__, [false]] call btc_fnc_debug_message;
+        [format ["data animals = %1", _data_animals], __FILE__, [false]] call btc_fnc_debug_message;
+        [format ["data tags = %1", _data_tags], __FILE__, [false]] call btc_fnc_debug_message;
+    };
+
+    _city setVariable ["has_suicider", _has_suicider];
     _city setVariable ["data_units", _data_units];
+    _city setVariable ["data_animals", _data_animals];
+    _city setVariable ["data_tags", _data_tags];
     _city setVariable ["active", false];
 
     if (!btc_hideout_cap_checking) then {

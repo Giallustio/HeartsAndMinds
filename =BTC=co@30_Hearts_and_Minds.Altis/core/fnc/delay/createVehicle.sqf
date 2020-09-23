@@ -10,10 +10,8 @@ Parameters:
     _vehicle_type - Vehicle type. [String]
     _units_type - Array of unit type will be use to fill the vehicle. [Array]
     _position - Position of creation. [Array]
-    _code - Code to apply on vehicle after creation. [Code]
     _direction - Direction of spawn. [Number]
     _fuel - Fuel level. [Array]
-    _p_chem - Allow chemical propagation. [Boolean]
 
 Returns:
     _delay_vehicle - Delay for unit creation. [Number]
@@ -37,10 +35,8 @@ btc_delay_createUnit = btc_delay_createUnit + 0.3;
         ["_vehicle_type", "", [""]],
         ["_units_type", [], [[]]],
         ["_position", [0, 0, 0], [[]]],
-        ["_code", {}, [{}]],
         ["_direction", 0, [0]],
-        ["_fuel", 1, [0]],
-        ["_p_chem", btc_p_chem, [false]]
+        ["_fuel", 1, [0]]
     ];
 
     private _isAir = _vehicle_type isKindOf "Air";
@@ -51,12 +47,6 @@ btc_delay_createUnit = btc_delay_createUnit + 0.3;
     };
     _veh setFuel _fuel;
     [_veh, "", []] call BIS_fnc_initvehicle;
-    if (_p_chem) then {
-        _veh addEventHandler ["GetIn", {
-            [_this select 0, _this select 2] call btc_fnc_chem_propagate;
-            _this
-        }];
-    };
 
     ["driver", "commander", "gunner", "turret", "cargo"] apply {count (fullCrew [_veh, _x, true]);} params ["_driverCount", "_commanderCount", "_gunnerCount", "_turretCount", "_cargoCount"];
     private _crews = _driverCount + _commanderCount + _gunnerCount;
@@ -82,15 +72,12 @@ btc_delay_createUnit = btc_delay_createUnit + 0.3;
     _group selectLeader (driver _veh);
     (units _group) joinSilent _group;
 
-    if !(_code isEqualTo {}) then {
-        [_veh, _group] call _code;
-    };
-
     private _crews_and_turret = _crews + _turretCount + _cargoCount;
     for "_i" from _crews to ((_crews_and_turret min _numberOfUnits) - 1) do {
         [_group, _units_type select _i, _position, "CAN_COLLIDE", _veh] call btc_fnc_delay_createUnit;
     };
 
+    ["btc_delay_vehicleInit", [_veh, _group]] call CBA_fnc_localEvent;
     btc_delay_createUnit = btc_delay_createUnit - 0.3;
 }, _this, btc_delay_createUnit - 0.01] call CBA_fnc_waitAndExecute;
 

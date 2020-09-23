@@ -75,7 +75,10 @@ if (_enemy_side isEqualTo btc_player_side) exitWith {
     private _faction = _x;
 
     //Get all vehicles of the _faction selected
-    private _allclass_f = _allclass select {(toUpper getText (_cfgVehicles >> _x >> "faction")) isEqualTo _faction};
+    private _allclass_f = _allclass select {
+        (toUpper getText (_cfgVehicles >> _x >> "faction")) isEqualTo _faction &&
+        {!(_x isKindOf "Van_02_vehicle_base_F")} // https://feedback.bistudio.com/T129141
+    };
 
     //Units
     _divers = _allclass_f select {[_x, ["AssaultRifle", "64 + 32"]] call btc_fnc_mil_ammoUsage};

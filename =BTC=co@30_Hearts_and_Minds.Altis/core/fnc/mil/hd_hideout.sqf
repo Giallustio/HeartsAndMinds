@@ -42,6 +42,7 @@ private _explosive = getNumber(configFile >> "cfgAmmo" >> _ammo >> "explosive") 
 
 if (_explosive && {_damage > 0.6}) then {
     btc_hideouts deleteAt (btc_hideouts find _hideout);
+    publicVariable "btc_hideouts";
 
     [btc_rep_bonus_hideout, _source] call btc_fnc_rep_change;
 

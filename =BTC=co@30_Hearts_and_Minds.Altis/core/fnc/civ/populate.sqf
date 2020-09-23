@@ -24,23 +24,12 @@ Author:
 
 params [
     ["_city", objNull, [objNull]],
-    ["_area", 0, [0]],
+    ["_area", 50, [0]],
     ["_n", 0, [0]]
 ];
 
 private _pos = position _city;
-private _houses = [];
-
-for [{_i = 25}, {_i < _area}, {_i = _i + 50}] do {
-    private _hs = [[(_pos select 0) + _i, (_pos select 1) + _i, 0], 50] call btc_fnc_getHouses;
-    _houses append _hs;
-    _hs = [[(_pos select 0) + _i, (_pos select 1) - _i, 0], 50] call btc_fnc_getHouses;
-    _houses append _hs;
-    _hs = [[(_pos select 0) - _i, (_pos select 1) - _i, 0], 50] call btc_fnc_getHouses;
-    _houses append _hs;
-    _hs = [[(_pos select 0) - _i, (_pos select 1) + _i, 0], 50] call btc_fnc_getHouses;
-    _houses append _hs;
-};
+private _houses = [_pos, _area] call btc_fnc_getHouses;
 
 if (_houses isEqualTo []) exitWith {};
 
@@ -54,10 +43,6 @@ for "_i" from 1 to _n do {
     _group setVariable ["btc_data_inhouse", [_pos]];
     [_group, _pos] call btc_fnc_civ_addWP;
     [_group, selectRandom btc_civ_type_units, _pos] call btc_fnc_delay_createUnit;
-
-    [{
-        _this call btc_fnc_civ_unit_create;
-    }, [_group], btc_delay_createUnit] call CBA_fnc_waitAndExecute;
 
     _houses = _houses - [_house];
 };

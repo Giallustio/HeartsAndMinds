@@ -40,14 +40,13 @@ params [
 
 if (_ammo isKindOf "SmokeShell") exitWith {};
 
-//Remove the eventHandler to prevent spamming
-[_civ, "FiredNear", "btc_fnc_rep_firednear"] call btc_fnc_eh_removePersistOnLocalityChange;
+_civ removeEventHandler ["FiredNear", _thisEventHandler];
 
-if (!(side _civ isEqualTo civilian) || (random 3 < 1)) exitWith {};
+if (!(side group _civ isEqualTo civilian) || (random 3 < 1)) exitWith {};
 
 [_civ, selectRandom ["ApanPknlMstpSnonWnonDnon_G01", "ApanPknlMstpSnonWnonDnon_G02", "ApanPknlMstpSnonWnonDnon_G03", "ApanPpneMstpSnonWnonDnon_G01", "ApanPpneMstpSnonWnonDnon_G02", "ApanPpneMstpSnonWnonDnon_G03"], 1] call ace_common_fnc_doAnimation;
 
-if (side _gunner isEqualTo btc_player_side) then {
+if (side group _gunner isEqualTo btc_player_side) then {
     if ((_gunner findNearestEnemy getPos _civ) distance _civ > 300)  then {
         if (abs((_gunner getDir _civ) - getDir _gunner) < 300/_distance) then {
             [btc_rep_malus_civ_firenear, _gunner] call btc_fnc_rep_change;

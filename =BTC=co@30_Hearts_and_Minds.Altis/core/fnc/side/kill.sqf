@@ -54,7 +54,6 @@ private _group_officer = createGroup btc_enemy_side;
 _group_officer setVariable ["no_cache", true];
 private _officerType = selectRandom btc_type_units;
 private _officer = _group_officer createUnit [_officerType, _pos, [], 0, "CAN_COLLIDE"];
-[_group_officer] call btc_fnc_mil_unit_create;
 
 //// Data side mission
 private _officerName = name _officer;
@@ -79,7 +78,6 @@ private _group = [];
     [_unit] joinSilent _grp;
     _group pushBack _grp;
     _grp setVariable ["no_cache", true];
-    [_grp] call btc_fnc_mil_unit_create;
 } forEach (_buildingPos - [_pos]);
 
 _trigger = createTrigger ["EmptyDetector", _pos];

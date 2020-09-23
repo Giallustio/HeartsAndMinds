@@ -3,7 +3,7 @@
 ## Headless & Database
 This mission automatically uses one Headless client when available.
 
-This mission has a database system. Enemy units, towns, hideouts, cache, objects created or static weapons assembled by players or Zeus, vehicles, players markers (not lines) on global channel are saved. All admin can save mission progress at any time with his self interaction key.
+This mission has a database system. Enemy units, towns, hideouts, cache, objects created or static weapons assembled by players or Zeus, vehicles, tag, players markers (not lines) on global channel are saved. All admin can save mission progress at any time with his self interaction key.
 
 
 ## Chemical Warfare
@@ -39,16 +39,15 @@ A side mission can be requested by the officer with his self interaction menu.
 If you don't want to complete a task, you can always abort it with the self interaction menu.
 
 
-## FOB/Rallypoint
+## Respawn position
 - FOB:
 	In this mission a FOB is a forward spawn point, to create a FOB approach the red box at the logistic point and require a blue container.
 	- Deploy:
-	Move it where you want to deploy a new FOB and interact with it to set it up. Keep in mind that you can not deploy a FOB close to the main base (2.500m) and the terrain needs to be flat.
+		Move it where you want to deploy a new FOB and interact with it to set it up. Keep in mind that you can not deploy a FOB close to the main base (2.500m) and the terrain needs to be flat.
 	- Dismantle:
-	You can dismantle a FOB by interacting with the flag on the HQ roof.
-
+		You can dismantle a FOB by interacting with the flag on the HQ roof.
 - Rallypoint:
-	You can also use the Zeus rallypoint backpack available in Arsenal. Those have a limited number of respawn.
+	You can also use the Zeus rallypoint backpack available in Arsenal but they have some limitation. After some times or after player disconnected, rallypoint will self-destruct.
 
 
 ## Sling loading
@@ -117,9 +116,9 @@ When you destroy an hideout or an ammo cache, all the markers related to it will
 ### System:
 At the beginning you have a very low reputation level, so civilians won't help you in revealing important information about the Oplitas, they will likely lie instead. Reputation can be ask to civilian.
 ### Good actions:
-Helping the local population by fighting the Oplitas, disarming IED's, heal civilians, succed side mission and destroy cache/hideout will rise your reputation.
+Helping the local population by fighting the Oplitas, disarming IED's, heal civilians, remove tag with spraypaint red, succed side mission and destroy cache/hideout will rise your reputation.
 ### Bad actions:
-Bad actions cause bad effects: killing civilians, mutilating alive/dead civilians, firing near civilians for no reason, firing to civilian car, damaging/destroying buildings, losing player's vehicles and player respawns will decrease your reputation. Aborting a side mission does not affect reputation.
+Bad actions cause bad effects: killing civilians/animals, mutilating alive/dead civilians/animals, firing near civilians for no reason, firing to civilian car, damaging/destroying buildings, losing player's vehicles and player respawns will decrease your reputation. Aborting a side mission does not affect reputation.
 
 ## Civil Orders
 Any player can give orders to civilians. To do this, just open your self interaction menu and select 'ORDERS' or use one of the shortcuts. Shortcuts can changed under 'configure >> controls>> configure addons >> Hearts and Minds: Mission (drop down menu)'. Your options are:

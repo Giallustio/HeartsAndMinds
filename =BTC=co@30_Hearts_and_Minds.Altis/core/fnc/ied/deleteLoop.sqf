@@ -25,7 +25,7 @@ params [
     ["_vehicle", objNull, [objNull]]
 ];
 
-if !(_vehicle isKindOf "B_APC_Tracked_01_CRV_F") exitWith {};
+if !(_vehicle isKindOf "B_APC_Tracked_01_CRV_F" || _vehicle isKindOf "rhsusf_stryker_m1132_m2_base") exitWith {};
 
 if (btc_ied_deleteOn > -1) exitWith {};
 
@@ -40,7 +40,7 @@ btc_ied_deleteOn = [{
         ["_minDistance", 0, [0]]
     ];
 
-    private _ieds = allSimpleObjects [];
+    private _ieds = allSimpleObjects [] - allSimpleObjects btc_type_blacklist;
     _ieds = _ieds apply {[_x distance _vehicle, _x]};
     _ieds sort true;
 
