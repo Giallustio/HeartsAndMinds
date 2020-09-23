@@ -82,3 +82,10 @@ if (btc_p_respawn_arsenal) then {
         [btc_gear_object, _unit] call ace_arsenal_fnc_openBox;
     }] call CBA_fnc_addBISEventHandler;
 };
+
+if (btc_p_respawn_location >= 4) then {
+    [_player, "Killed", {
+        private _group  = group player;
+        [_group, leader _group] call BIS_fnc_addRespawnPosition;
+    }] call CBA_fnc_addBISEventHandler;
+};

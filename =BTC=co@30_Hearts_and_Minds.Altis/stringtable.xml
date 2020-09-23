@@ -489,6 +489,9 @@
                 <Original>FOB, Rallypoint, Transport helicopter and Transport vehicle</Original>
                 <Chinesesimp>FOB、集合点、运输直升机和运输车辆</Chinesesimp>
             </Key>
+            <Key ID="STR_BTC_HAM_RESP_FOBRALLYHELIVEHILEADER">
+                <Original>FOB, Rallypoint, Transport helicopter, Transport vehicle and Leader</Original>
+            </Key>
             <Key ID="STR_BTC_HAM_RESP_RALLYTIMER">
                 <Original>Time before rallypoint self-destruction:</Original>
                 <Chinesesimp>集合点自毁时间:</Chinesesimp>

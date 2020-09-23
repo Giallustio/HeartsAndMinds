@@ -42,7 +42,7 @@ if (_params isEqualTo "") then { // Redeploy on marker like rallypoints
         _actions pushBack [_action, [], _target];
     } forEach (([btc_player_side, false] call BIS_fnc_getRespawnMarkers) - [btc_respawn_marker]);
 } else { // Redeploy on object like FOB/Vehicles
-    private _getRespawnPositions = btc_player_side call BIS_fnc_getRespawnPositions;
+    private _getRespawnPositions = _player call BIS_fnc_getRespawnPositions;
     private _positions = if (_params isEqualTo "Base") then {
         _getRespawnPositions inAreaArray [getMarkerPos "btc_base", btc_fob_minDistance, btc_fob_minDistance]
     } else {
