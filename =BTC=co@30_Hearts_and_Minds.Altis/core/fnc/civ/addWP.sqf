@@ -28,6 +28,7 @@ params [
     ["_radius", 50, [0]]
 ];
 
+[_group] call CBA_fnc_clearWaypoints;
 [_group, _pos, -1, "MOVE", "SAFE", "NO CHANGE", "LIMITED"] call CBA_fnc_addWaypoint;
 
 private _houses = [_pos, _radius] call btc_fnc_getHouses;

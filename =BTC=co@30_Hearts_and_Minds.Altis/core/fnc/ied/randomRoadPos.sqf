@@ -26,12 +26,13 @@ Author:
 
 ---------------------------------------------------------------------------- */
 params [
-    ["_road", objNull, [objNull]]
+    ["_road", objNull, [objNull]],
+    ["_p_ied_placement", btc_p_ied_placement, [0]]
 ];
 private _roadDir = _road call btc_fnc_road_direction;
 private _roadRadius = ((0 boundingBoxReal _road) select 2) * 0.4;
 
-switch (floor random btc_p_ied_placement) do {
+switch (floor random _p_ied_placement) do {
     case 0: {
         [_road getPos [_roadRadius, _roadDir + 90], _roadDir]
     };

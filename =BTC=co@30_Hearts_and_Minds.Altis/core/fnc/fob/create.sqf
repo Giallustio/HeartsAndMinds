@@ -26,7 +26,7 @@ params [
 
 if (((position _mat) isFlatEmpty [1, 0, 0.9, 1, 0, false, _mat]) isEqualTo []) exitWith {(localize "STR_BTC_HAM_O_FOB_CREATE_H_AREA") call CBA_fnc_notify;};
 
-if (_mat inArea [getMarkerPos "btc_base", 2000, 2000, 0, false]) exitWith {(localize "STR_BTC_HAM_O_FOB_CREATE_H_DBASE") call CBA_fnc_notify;};
+if (_mat inArea [getMarkerPos "btc_base", btc_fob_minDistance, btc_fob_minDistance, 0, false]) exitWith {(localize "STR_BTC_HAM_O_FOB_CREATE_H_DBASE") call CBA_fnc_notify;};
 
 if ((nearestObjects [position _mat, ["LandVehicle", "Air"], 10]) findIf {!(_x isKindOf "ace_fastroping_helper")} != -1) exitWith {
     (format [localize "STR_BTC_HAM_O_FOB_CREATE_H_CAREA", (nearestObjects [position _mat, ["LandVehicle", "Air"], 10]) apply {typeOf _x}]) call CBA_fnc_notify
@@ -75,7 +75,7 @@ closeDialog 0;
 
     if (isNull _mat) exitWith {};
 
-    private _pos = getPos _mat;
+    private _pos = getPosATL _mat;
     private _direction = getDir _mat;
     private _FOB_name = "FOB " + _name;
 

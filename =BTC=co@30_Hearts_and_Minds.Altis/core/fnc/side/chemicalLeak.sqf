@@ -28,7 +28,7 @@ private _useful = btc_city_all select {!(isNull _x) && !(_x getVariable ["occupi
 if (_useful isEqualTo []) then {_useful = + (btc_city_all select {!(isNull _x)});};
 
 private _city = selectRandom _useful;
-private _pos = [getPos _city, 0, 500, 30, false] call btc_fnc_findsafepos;
+private _pos = [getPos _city, 0, _city getVariable ["radius", 100], 30, false] call btc_fnc_findsafepos;
 
 [_taskID, 30, getPos _city, _city getVariable "name"] call btc_fnc_task_create;
 

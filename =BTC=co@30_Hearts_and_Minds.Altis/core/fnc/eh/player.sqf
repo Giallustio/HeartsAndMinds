@@ -54,6 +54,7 @@ _player addEventHandler ["WeaponAssembled", {
 ["ace_csw_deployWeaponSucceeded", {
     _this remoteExecCall ["btc_fnc_log_init", 2];
 }] call CBA_fnc_addEventHandler;
+["btc_tow_unwindDone", {(localize "STR_BTC_HAM_TOW_DONE") call CBA_fnc_notify}] call CBA_fnc_addEventHandler;
 
 if (btc_p_chem) then {
      // Add biopsy
@@ -83,4 +84,9 @@ if (btc_p_respawn_arsenal) then {
     }] call CBA_fnc_addBISEventHandler;
 };
 
-["btc_tow_unwindDone", {(localize "STR_BTC_HAM_TOW_DONE") call CBA_fnc_notify}] call CBA_fnc_addEventHandler;
+if (btc_p_respawn_location >= 4) then {
+    [_player, "Killed", {
+        private _group  = group player;
+        [_group, leader _group] call BIS_fnc_addRespawnPosition;
+    }] call CBA_fnc_addBISEventHandler;
+};

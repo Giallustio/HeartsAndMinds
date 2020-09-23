@@ -26,8 +26,7 @@ Author:
 params [
     ["_vehicle", objNull, [objNull]],
     ["_time", 30, [0]],
-    ["_helo", btc_helo, [[]]],
-    ["_p_chem", btc_p_chem, [false]]
+    ["_helo", btc_helo, [[]]]
 ];
 
 _helo pushBackUnique _vehicle;
@@ -37,6 +36,7 @@ private _pos = getPosASL _vehicle;
 private _dir = getDir _vehicle;
 private _vector = [vectorDir _vehicle, vectorUp _vehicle];
 private _vehProperties = [_vehicle] call btc_fnc_getVehProperties;
+_vehProperties set [5, false];
 
 _vehicle setVariable ["data_respawn", [_type, _pos, _dir, _time, _vector] + _vehProperties];
 
@@ -44,12 +44,6 @@ if ((isNumber (configFile >> "CfgVehicles" >> typeOf _vehicle >> "ace_fastroping
 _vehicle addMPEventHandler ["MPKilled", {if (isServer) then {[_this select 0] call btc_fnc_eh_veh_respawn};}];
 if (btc_p_respawn_location > 0) then {
     if !(fullCrew [_vehicle, "cargo", true] isEqualTo []) then {
-        [missionNamespace, _vehicle] call BIS_fnc_addRespawnPosition;
+        [btc_player_side, _vehicle] call BIS_fnc_addRespawnPosition;
     };
-};
-if (_p_chem) then {
-    _vehicle addEventHandler ["GetIn", {
-        [_this select 0, _this select 2] call btc_fnc_chem_propagate;
-        _this
-    }];
 };

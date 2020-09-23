@@ -30,7 +30,10 @@ params [
 
 if (_units isEqualTo []) then {
     _units = _pos nearEntities [btc_civ_type_units, _range];
-    _units = _units select {side _x isEqualTo civilian};
+    _units = _units select {
+        side group _x isEqualTo civilian &&
+        {!(lifeState _x in ["INCAPACITATED", "DEAD"])}
+    };
 };
 
 {
@@ -38,14 +41,12 @@ if (_units isEqualTo []) then {
         [format ["%1 - %2", _x, side _x], __FILE__, [false]] call btc_fnc_debug_message;
     };
 
-    _x call btc_fnc_rep_remove_eh;
     [_x, "", 2] call ace_common_fnc_doAnimation;
     [_x] call btc_fnc_civ_add_weapons;
 
     [_x] joinSilent createGroup [btc_enemy_side, true];
-
-    (group _x) setVariable ["getWeapons", true];
-
-    (group _x) setBehaviour "AWARE";
-    [group _x, getPos _x, -1, "GUARD", "UNCHANGED", "RED", nil, nil, nil, nil, 10] call CBA_fnc_addWaypoint;
+    private _group = group _x;
+    [_group] call CBA_fnc_clearWaypoints;
+    _group setVariable ["getWeapons", true];
+    [_group, getPos _x, -1, "GUARD", "AWARE", "RED", nil, nil, nil, nil, 10] call CBA_fnc_addWaypoint;
 } forEach _units;

@@ -36,21 +36,3 @@ if !((_object_placed isKindOf "AllVehicles") || (_object_placed isKindOf "Module
         [str _object_placed, __FILE__, [btc_debug, false]] call btc_fnc_debug_message;
     };
 };
-
-if (_object_placed isKindOf "Man") then {
-
-    if (side _object_placed isEqualTo btc_enemy_side) then {
-        [group _object_placed] remoteExecCall ["btc_fnc_mil_unit_create", 2];
-    };
-
-    if (side _object_placed isEqualTo civilian) then {
-        [group _object_placed] remoteExecCall ["btc_fnc_civ_unit_create", 2];
-    };
-
-    if (btc_debug_log) then {
-        [format ["MAN %1", _object_placed], __FILE__, [false]] call btc_fnc_debug_message;
-    };
-    if (btc_debug) then {
-        [str _object_placed, __FILE__, [btc_debug, false]] call btc_fnc_debug_message;
-    };
-};
