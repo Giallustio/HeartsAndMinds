@@ -26,6 +26,8 @@ params [
     ["_tower", objNull, [objNull]]
 ];
 
+if (_tower setVehicleCargo _vehicleSelected) exitWith {};
+
 private _hideVehicle = createVehicle ["Land_Cargo10_red_F", [0, 0, 0], [], 0, "CAN_COLLIDE"];
 _hideVehicle hideObjectGlobal true;
 
