@@ -31,7 +31,11 @@ deTach _vehicleSelected;
 _flat setPos [0, 0, 0]; // Avoid collision with _vehicleSelected
 
 // Handle flipped vehicle
-if ((vectorUp _vehicleSelected) select 2 < 0) then {
+private _bank = _vehicleSelected call BIS_fnc_getPitchBank select 1;
+if !(
+    (vectorUp _vehicleSelected vectorDotProduct surfaceNormal getPos _vehicleSelected) < -0.80 &&
+    55 > abs _bank
+) then {
     private _towerDir = getDir _tower;
     private _selectedSafePos = _tower getPos [- _safeDistance, _towerDir];
     _selectedSafePos set [2, 0.5 + (_selectedSafePos select 2)];

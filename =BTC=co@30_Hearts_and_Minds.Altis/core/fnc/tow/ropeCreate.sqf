@@ -31,6 +31,29 @@ if (_tower setVehicleCargo _vehicleSelected) exitWith {};
 
 (localize "STR_BTC_HAM_TOW_WAIT") call CBA_fnc_notify;
 
+private _bank = _vehicleSelected call BIS_fnc_getPitchBank select 1;
+if !(
+    !((vectorUp _vehicleSelected vectorDotProduct surfaceNormal getPos _vehicleSelected) < -0.80) &&
+    55 > abs _bank
+) exitWith {
+    [_vehicleSelected, {
+        params ["_vehicleSelected"];
+
+        private _pos = getPosWorld _vehicleSelected;
+        _vehicleSelected setVectorUp [0, 0, 1];
+        _pos set [2, 0.5 + (_pos select 2) + (_pos select 2) - ((getPosASL _vehicleSelected) select 2)];
+        _vehicleSelected setPosWorld _pos;
+    }] remoteExecCall ["call", _vehicleSelected];
+
+    [{
+        params ["_tower", "_vehicleSelected"];
+
+        private _bank = _vehicleSelected call BIS_fnc_getPitchBank select 1;
+        !((vectorUp _vehicleSelected vectorDotProduct surfaceNormal getPos _vehicleSelected) < -0.80) &&
+        55 > abs _bank
+    }, btc_fnc_tow_ropeCreate, [_tower, _vehicleSelected], 10] call CBA_fnc_waitUntilAndExecute;
+};
+
 // Find the position of the Flat object
 private _dirSelected = getDir _vehicleSelected;
 private _model_selected = (0 boundingBoxReal _vehicleSelected) select 1;
@@ -63,7 +86,7 @@ private _model_flat = (0 boundingBoxReal _flat) select 1;
 private _attachTo = [
     0,
     [(_model_flat select 1) - (_model_selected select 1), -(_model_flat select 1) -(_model_selected select 1)] select (_flat isEqualTo _tower),
-    -(_model_front_selected select 2)
+    0.1 - (_model_front_selected select 2)
 ];
 
 _vehicleSelected attachTo [_flat, _attachTo];
