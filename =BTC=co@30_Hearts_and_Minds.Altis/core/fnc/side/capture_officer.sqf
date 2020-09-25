@@ -151,7 +151,7 @@ for "_i" from 1 to _convoyLength do {
         (_this select 0) inArea [getPosWorld btc_create_object_point, 100, 100, 0, false] ||
         isNull (_this select 0)
     }, {
-        [_this select 1, "SUCCEEDED"] call BIS_fnc_taskSetState;
+        [_this select 1, "SUCCEEDED"] call btc_fnc_task_setState;
     }, [_captive, _taskID]] call CBA_fnc_waitUntilAndExecute;
 }, [
     _group,
