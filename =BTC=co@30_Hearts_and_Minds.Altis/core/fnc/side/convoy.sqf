@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        [] spawn btc_fnc_side_convoy;
+        [false, "btc_fnc_side_convoy"] spawn btc_fnc_side_create;
     (end)
 
 Author:
@@ -39,7 +39,7 @@ private _city1 = selectRandom _usefuls;
 private _radius = (_city1 getVariable ["radius", 0])/2;
 private _roads = _city1 nearRoads (_radius * 2);
 _roads = _roads select {(_x distance _city1 > _radius) && isOnRoad _x};
- if (_roads isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
+if (_roads isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
 private _road = selectRandom _roads;
 private _pos1 = getPosATL _road;
 private _pos2 = getPos _city2;
@@ -66,37 +66,49 @@ _area setmarkercolor "colorBlue";
 
 private _markers = [_marker1, _marker2, _area];
 
+/// Show info path\\\
+private _veh_types = btc_type_motorized select {!(_x isKindOf "air")};
+private _agent = [btc_fnc_info_path, [_pos1, _pos2, _taskID, _veh_types select 0]] call CBA_fnc_directCall;
+
+waitUntil {!((_agent getVariable ["btc_path", []]) isEqualTo [])};
+private _path = _agent getVariable ["btc_path", []];
+if (count _path <= 35) exitWith {
+    _markers append (allMapMarkers select {(_x select [0, count _taskID]) isEqualTo _taskID});
+    [_taskID, "CANCELED"] call BIS_fnc_taskSetState;
+};
+
 //// Create convoy \\\\
 private _group = createGroup btc_enemy_side;
 _group setVariable ["no_cache", true];
 [_group] call CBA_fnc_clearWaypoints;
-
-private _vehs = [];
-private _veh_types = btc_type_motorized select {!(_x isKindOf "air")};
+private _convoyLength = 3 + round random 2;
+private _listPositions = _path select [40, _convoyLength + 1];
+reverse _listPositions;
+[_group, ASLToAGL (_listPositions select 0), -1, "SENTRY", "SAFE", "RED", "LIMITED", "COLUMN"] call CBA_fnc_addWaypoint; // Make sure they don't move during spawn
 private _delay = 0;
-for "_i" from 0 to (2 + round random 2) do {
-    _delay = _delay + ([_group, _pos1, selectRandom _veh_types, [_road] call btc_fnc_road_direction] call btc_fnc_mil_createVehicle);
-
-    _road = (roadsConnectedTo _road) select 0;
-    _pos1 = getPosATL _road;
+for "_i" from 1 to _convoyLength do {
+    private _pos = _listPositions deleteAt 0;
+    _delay = _delay + ([_group, ASLToAGL _pos, selectRandom _veh_types, (_listPositions select 0) getDir _pos] call btc_fnc_mil_createVehicle);
 };
 
 [{
-    params ["_group", "_pos2", "_taskID"];
-    private _agent = [leader _group, _pos2, _taskID] call btc_fnc_info_path;
-    _agent addEventHandler ["PathCalculated", {
-        params ["_agent", "_path"];
+    params ["_group"];
 
-        [12] remoteExecCall ["btc_fnc_show_hint", [0, -2] select isDedicated];
-        _agent removeEventHandler ["PathCalculated", _thisEventHandler];
-    }];
-    [_group, _pos2, -1, "MOVE", "SAFE", "RED", "LIMITED", "COLUMN", format ["['%1', 'FAILED'] call BIS_fnc_taskSetState;", _taskID], [0, 0, 0], _radius/2] call CBA_fnc_addWaypoint;
-}, [_group, _pos2, _taskID], btc_delay_createUnit + _delay] call CBA_fnc_waitAndExecute;
+    _group call CBA_fnc_clearWaypoints;
+    _this call CBA_fnc_addWaypoint;
+    [12] remoteExecCall ["btc_fnc_show_hint", [0, -2] select isDedicated];
+
+    private _vehs = (units _group) apply {assignedVehicle _x};
+    btc_curator addCuratorEditableObjects [_vehs arrayIntersect _vehs, false];
+}, [
+    _group, _pos2, -1, "MOVE", "SAFE", "RED", "LIMITED", "COLUMN",
+    format ["['%1', 'FAILED'] call BIS_fnc_taskSetState;", _taskID], [0, 0, 0], _radius/2
+], btc_delay_createUnit + _delay] call CBA_fnc_waitAndExecute;
 
 waitUntil {sleep 5; (
     _taskID call BIS_fnc_taskCompleted ||
     ((units _group) apply {assignedVehicle _x}) select {canMove _x} isEqualTo [] ||
-    _group isEqualTo grpNull
+    isNull _group
 )};
 
 _markers append (allMapMarkers select {(_x select [0, count _taskID]) isEqualTo _taskID});
