@@ -31,7 +31,7 @@ btc_lifted = false;
 player removeAction btc_lift_action;
 player removeAction btc_lift_action_hud;
 
-if !(ropes _heli isEqualTo []) then {
+if (ropes _heli isNotEqualTo []) then {
     {
         ropeDestroy _x;
     } forEach ropes _heli;

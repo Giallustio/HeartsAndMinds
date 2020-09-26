@@ -25,7 +25,7 @@ params [
     ["_tower", objNull, [objNull]]
 ];
 
-if !((isVehicleCargo btc_log_vehicle_selected) isEqualTo objNull) exitWith {(localize "STR_BTC_HAM_LOG_TOW_ALREADYTOWED") call CBA_fnc_notify;};
+if ((isVehicleCargo btc_log_vehicle_selected) isNotEqualTo objNull) exitWith {(localize "STR_BTC_HAM_LOG_TOW_ALREADYTOWED") call CBA_fnc_notify;};
 if (_tower setVehicleCargo btc_log_vehicle_selected) exitWith {};
 
 private _towing = _tower getVariable ["btc_towing", objNull];

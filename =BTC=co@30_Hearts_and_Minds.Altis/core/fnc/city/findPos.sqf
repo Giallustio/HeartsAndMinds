@@ -39,7 +39,7 @@ private _rpos = [_city, _area, _p_sea] call btc_fnc_randomize_pos;
 private _pos_iswater = surfaceIsWater _rpos;
 if !(_pos_iswater) then {
     private _newpos = _rpos findEmptyPosition [0, 40, "B_soldier_AR_F"];
-    if !(_newpos isEqualTo []) then {
+    if (_newpos isNotEqualTo []) then {
         _rpos = _newpos;
     };
     _rpos = [_rpos] call btc_fnc_findPosOutsideRock;

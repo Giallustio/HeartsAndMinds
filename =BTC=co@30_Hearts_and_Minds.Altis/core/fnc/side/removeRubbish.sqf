@@ -32,7 +32,7 @@ private _useful = btc_city_all select {
         private _city = _x;
         ({
             isOnRoad (_x select 0) ||
-            {!(((_x select 0) nearRoads 6) isEqualTo [])} // Most IED are just next to road
+            {((_x select 0) nearRoads 6) isNotEqualTo []} // Most IED are just next to road
         } count (_city getVariable ["ieds", []])) >= _minNumberOfSubTask
     }
 };
@@ -40,7 +40,7 @@ if (_useful isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
 private _city = selectRandom _useful;
 private _ieds = (_city getVariable ["ieds", []]) select {
     isOnRoad (_x select 0) ||
-    {!(((_x select 0) nearRoads 6) isEqualTo [])}
+    {((_x select 0) nearRoads 6) isNotEqualTo []}
 };
 private _extra_ied = round random (((count _ieds) - _minNumberOfSubTask) min 2);
 

@@ -60,7 +60,7 @@ if (_array isEqualTo []) then {
         if !(surfaceIsWater _sel_pos) then {
             if (isNil "_road" || {isNull _road}) then {
                 private _roads = _sel_pos nearRoads 50;
-                if !(_roads isEqualTo []) then {
+                if (_roads isNotEqualTo []) then {
                     _road = selectRandom _roads;
                 };
             } else {

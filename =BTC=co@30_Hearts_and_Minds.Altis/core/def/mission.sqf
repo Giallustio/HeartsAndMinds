@@ -186,7 +186,7 @@ if (isServer) then {
     ];
     private _weapons_usefull = "true" configClasses (configFile >> "CfgWeapons") select {
         getNumber (_x >> 'type') isEqualTo 1 ||
-        {!(getArray (_x >> 'magazines') isEqualTo [])} ||
+        {getArray (_x >> 'magazines') isNotEqualTo []} ||
         {getNumber (_x >> 'scope') isEqualTo 2}
     };
     btc_cache_weapons_type = _weapons_usefull apply {configName _x};

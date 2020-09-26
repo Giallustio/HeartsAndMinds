@@ -66,7 +66,7 @@ if (
 ) then {
     _protection = _protection + 0.1;
 };
-if !(_uniform isEqualTo "") then {
+if (_uniform isNotEqualTo "") then {
     _protection = _protection + 0.5;
     if (
         [

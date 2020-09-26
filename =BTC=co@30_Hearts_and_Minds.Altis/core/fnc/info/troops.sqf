@@ -30,7 +30,7 @@ params [
 
 if (_is_real) then {
     private _array = (position player) nearEntities [btc_type_units, 2500];
-    if !(_array isEqualTo []) then {
+    if (_array isNotEqualTo []) then {
         private _man = _array select 0;
         private _dist = (player distance _man) + (random 150) - (random 150);
         private _dir = player getDir _man;

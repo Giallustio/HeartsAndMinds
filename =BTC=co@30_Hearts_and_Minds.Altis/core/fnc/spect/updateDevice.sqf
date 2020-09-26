@@ -63,7 +63,7 @@ btc_spect_updateOn = [{
         ["_player", player, [objNull]]
     ];
 
-    if !(((_player weaponAccessories currentWeapon _player) select 0) isEqualTo _accessorie) exitWith {
+    if (((_player weaponAccessories currentWeapon _player) select 0) isNotEqualTo _accessorie) exitWith {
         [] call btc_fnc_spect_disableDevice;
         [_player, currentWeapon _player] call btc_fnc_spect_updateDevice;
     };

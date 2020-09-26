@@ -32,11 +32,11 @@ btc_vehicles pushBackUnique _veh;
 _veh addMPEventHandler ["MPKilled", {
     if (isServer) then {_this call btc_fnc_eh_veh_killed};
 }];
-if ((isNumber (configfile >> "CfgVehicles" >> typeOf _veh >> "ace_fastroping_enabled")) && !(typeOf _veh isEqualTo "RHS_UH1Y_d")) then {
+if ((isNumber (configfile >> "CfgVehicles" >> typeOf _veh >> "ace_fastroping_enabled")) && (typeOf _veh isNotEqualTo "RHS_UH1Y_d")) then {
     [_veh] call ace_fastroping_fnc_equipFRIES
 };
 if (btc_p_respawn_location > 1) then {
-    if !(fullCrew [_veh, "cargo", true] isEqualTo []) then {
+    if (fullCrew [_veh, "cargo", true] isNotEqualTo []) then {
         if (
             (btc_p_respawn_location isEqualTo 2) && (_veh isKindOf "Air") ||
             btc_p_respawn_location > 2

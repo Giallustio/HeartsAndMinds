@@ -96,7 +96,7 @@ for "_i" from 0 to (1 + round random 2) do {
         if (
              _explosive &&
             {_damage > 0.6} &&
-            {!(_destroy_taskID call BIS_fnc_taskState isEqualTo "CANCELED")}
+            {_destroy_taskID call BIS_fnc_taskState isNotEqualTo "CANCELED"}
         ) then {
             private _pos = getPos _box;
             [_destroy_taskID, "SUCCEEDED"] call BIS_fnc_taskSetState;

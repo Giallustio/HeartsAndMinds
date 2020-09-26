@@ -91,12 +91,12 @@ if (!_is_init) then {
 
 _city setVariable ["active", true];
 
-if !(_ieds isEqualTo []) then {
+if (_ieds isNotEqualTo []) then {
     [[_city, _ieds], btc_fnc_ied_check] call btc_fnc_delay_exec;
 };
 
 private _delay = 0;
-if !(_data_units isEqualTo []) then {
+if (_data_units isNotEqualTo []) then {
     {
         _delay = _delay + ([_x, _id] call btc_fnc_data_spawn_group);
     } forEach _data_units;
@@ -133,7 +133,7 @@ if !(_data_units isEqualTo []) then {
     };
 };
 if (btc_p_animals_group_ratio > 0) then {
-    if !(_data_animals isEqualTo []) then {
+    if (_data_animals isNotEqualTo []) then {
         {
             _x call btc_fnc_delay_createAgent;
         } forEach _data_animals;
