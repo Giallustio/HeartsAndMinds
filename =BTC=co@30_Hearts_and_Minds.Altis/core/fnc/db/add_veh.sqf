@@ -41,7 +41,7 @@ if (btc_p_respawn_location > 1) then {
             (btc_p_respawn_location isEqualTo 2) && (_veh isKindOf "Air") ||
             btc_p_respawn_location > 2
         ) then {
-            [btc_player_side, _veh] call BIS_fnc_addRespawnPosition;
+            [_veh, "Deleted", {_thisArgs call BIS_fnc_removeRespawnPosition}, [btc_player_side, _veh] call BIS_fnc_addRespawnPosition] call CBA_fnc_addBISEventHandler;
         };
     };
 };
