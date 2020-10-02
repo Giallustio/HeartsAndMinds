@@ -44,6 +44,6 @@ if ((isNumber (configFile >> "CfgVehicles" >> typeOf _vehicle >> "ace_fastroping
 _vehicle addMPEventHandler ["MPKilled", {if (isServer) then {[_this select 0] call btc_fnc_eh_veh_respawn};}];
 if (btc_p_respawn_location > 0) then {
     if !(fullCrew [_vehicle, "cargo", true] isEqualTo []) then {
-        [btc_player_side, _vehicle] call BIS_fnc_addRespawnPosition;
+        [_vehicle, "Deleted", {_thisArgs call BIS_fnc_removeRespawnPosition}, [btc_player_side, _vehicle] call BIS_fnc_addRespawnPosition] call CBA_fnc_addBISEventHandler;
     };
 };
