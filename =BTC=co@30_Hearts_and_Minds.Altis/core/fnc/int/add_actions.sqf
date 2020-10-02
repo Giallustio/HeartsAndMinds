@@ -158,7 +158,6 @@ _actions pushBack ["redeploy", localize "STR_BTC_HAM_ACTION_BIRESPAWN", "\A3\ui_
     if ([] call btc_fnc_fob_redeployCheck) then {
         player setPos [10, 10, 10];
         player hideObject true;
-        player enableSimulation false;
         forceRespawn player;
     };
 }, {!btc_log_placing}];
