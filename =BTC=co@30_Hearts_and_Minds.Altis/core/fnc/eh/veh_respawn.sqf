@@ -6,7 +6,9 @@ Description:
     Respawn the vehicle passed in parameter.
 
 Parameters:
-    _vehicle - Vehicle to respawn. [Object]
+    _vehicle - Vehicle object. [Object]
+    _killer - Killer. [Object]
+    _instigator - Person who pulled the trigger. [Object]
 
 Returns:
 
@@ -21,7 +23,9 @@ Author:
 ---------------------------------------------------------------------------- */
 
 params [
-    ["_vehicle", objNull, [objNull]]
+    ["_vehicle", objNull, [objNull]],
+    ["_killer", objNull, [objNull]],
+    ["_instigator", objNull, [objNull]]
 ];
 
 private _data = _vehicle getVariable ["data_respawn", []];
@@ -58,7 +62,7 @@ _data pushBack (_vehicle getVariable ["btc_EDENinventory", []]);
         _vehicle setDir _dir;
         _vehicle setPosASL _pos;
         _vehicle setVectorDirAndUp _vectorPos;
-        
+
         if (getNumber(configFile >> "CfgVehicles" >> _type >> "isUav") isEqualTo 1) then {
             createVehicleCrew _vehicle;
         };
@@ -72,3 +76,9 @@ _data pushBack (_vehicle getVariable ["btc_EDENinventory", []]);
         [_vehicle, _time] call btc_fnc_eh_veh_add_respawn;
     }, _data, 1] call CBA_fnc_waitAndExecute;
 }, [_vehicle, _data], _data select 3] call CBA_fnc_waitAndExecute;
+
+if (isServer) then {
+    [btc_rep_malus_veh_killed, _killer] call btc_fnc_rep_change;
+} else {
+    [btc_rep_malus_veh_killed, _killer] remoteExecCall ["btc_fnc_rep_change", 2];
+};
