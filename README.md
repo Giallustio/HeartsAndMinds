@@ -41,6 +41,7 @@ Online [wiki available](http://vdauphin.github.io/HeartsAndMinds/).
     - ACEX Fortify
 - Logistic system
     - [Tow](http://vdauphin.github.io/HeartsAndMinds/InGame-documentation#towing-system)
+    - [Vehicle in vehicle](http://vdauphin.github.io/HeartsAndMinds/InGame-documentation#towing-system) extended
     - [Sling loading](http://vdauphin.github.io/HeartsAndMinds/InGame-documentation#sling-loading)
     - Repair [destroyed vehicles](http://vdauphin.github.io/HeartsAndMinds/InGame-documentation#respawn)
     - [FOB/Rallypoints](http://vdauphin.github.io/HeartsAndMinds/InGame-documentation#fobrallypoint)
