@@ -1,4 +1,3 @@
-[] call compile preprocessFileLineNumbers "core\doc.sqf";
 btc_map_mapIllumination = ace_map_mapIllumination;
 if !(isNil "btc_custom_loc") then {
     {
@@ -10,6 +9,8 @@ if !(isNil "btc_custom_loc") then {
 btc_intro_done = [] spawn btc_fnc_intro;
 
 [{!isNull player}, {
+    [] call compile preprocessFileLineNumbers "core\doc.sqf";
+
     btc_respawn_marker setMarkerPosLocal player;
     player addRating 9999;
     ["InitializePlayer", [player]] call BIS_fnc_dynamicGroups;
