@@ -43,6 +43,8 @@ btc_intro_done = [] spawn btc_fnc_intro;
         onMapSingleClick "vehicle player setPos _pos";
         player allowDamage false;
 
-        private _eh = ((findDisplay 12) displayCtrl 51) ctrlAddEventHandler ["Draw", btc_fnc_debug_marker];
+        [{!isNull (findDisplay 12)}, {
+            ((findDisplay 12) displayCtrl 51) ctrlAddEventHandler ["Draw", btc_fnc_debug_marker];
+        }] call CBA_fnc_waitUntilAndExecute;
     };
 }] call CBA_fnc_waitUntilAndExecute;
