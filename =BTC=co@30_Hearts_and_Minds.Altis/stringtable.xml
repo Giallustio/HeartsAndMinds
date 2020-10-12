@@ -334,6 +334,9 @@
                 <Chinesesimp>敌军密度:</Chinesesimp>
                 <Portuguese>Densidade inimiga:</Portuguese>
             </Key>
+            <Key ID="STR_BTC_HAM_PARAM_SPWAN_ENEMY_STATIC_DENSITY">
+                <Original>Enemy static density:</Original>
+            </Key>
             <Key ID="STR_BTC_HAM_PARAM_SPWAN_CIVILIAN_DENSITY">
                 <Original>Civilian density:</Original>
                 <German>Zivilistendichte:</German>

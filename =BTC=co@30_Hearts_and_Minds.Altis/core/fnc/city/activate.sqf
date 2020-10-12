@@ -8,6 +8,7 @@ Description:
 Parameters:
     _id - Number of the city will be activated. [Number]
     _p_mil_group_ratio - Enemy density. [Number]
+    _p_mil_static_group_ratio - Enemy static density. [Number]
     _p_civ_group_ratio - Civilian density. [Number]
     _p_animals_group_ratio - Animal density. [Number]
     _p_civ_max_veh - Maximum number of civilian patrol. [Number]
@@ -29,6 +30,7 @@ Author:
 params [
     ["_id", 0, [0]],
     ["_p_mil_group_ratio", btc_p_mil_group_ratio, [0]],
+    ["_p_mil_static_group_ratio", btc_p_mil_static_group_ratio, [0]],
     ["_p_civ_group_ratio", btc_p_civ_group_ratio, [0]],
     ["_p_animals_group_ratio", btc_p_animals_group_ratio, [0]],
     ["_p_civ_max_veh", btc_p_civ_max_veh, [0]],
@@ -42,6 +44,7 @@ if (_city getVariable "activating") exitWith {};
 
 if (btc_debug) then {
     [str _id, __FILE__, [btc_debug, btc_debug_log, true]] call btc_fnc_debug_message;
+    _city setVariable ["serverTime", serverTime];
 };
 
 _city setVariable ["activating", true];
@@ -119,8 +122,22 @@ if !(_data_units isEqualTo []) then {
         };
     };
 
-    // Spawn civilians
-    if (_type != "Hill") then {
+    if !(_type in ["Hill", "NameMarine"]) then {
+        private _houses = ([position _city, _spawningRadius/3] call btc_fnc_getHouses) call BIS_fnc_arrayShuffle;
+
+        if (_has_en) then {
+            private _max_number_group = (switch _type do {
+                case "NameLocal" : {1};
+                case "NameVillage" : {2};
+                case "NameCity" : {4};
+                case "NameCityCapital" : {5};
+                case "Airport" : {2};
+                default {0};
+            });
+            [+_houses, round (_p_mil_static_group_ratio * random _max_number_group)] call btc_fnc_mil_create_staticOnRoof;
+        };
+
+        // Spawn civilians
         private _max_number_group = (switch _type do {
             case "NameLocal" : {3};
             case "NameVillage" : {6};
@@ -129,7 +146,7 @@ if !(_data_units isEqualTo []) then {
             case "Airport" : {6};
             default {2};
         });
-        [_city, _spawningRadius/3, round (_p_civ_group_ratio * random _max_number_group)] call btc_fnc_civ_populate;
+        [+_houses, round (_p_civ_group_ratio * random _max_number_group)] call btc_fnc_civ_populate;
     };
 };
 if (btc_p_animals_group_ratio > 0) then {
@@ -271,4 +288,8 @@ if (_numberOfCivVeh < _p_civ_max_veh) then {
         _group setVariable ["no_cache", true];
         [[_group, _city, _radius + btc_patrol_area], btc_fnc_civ_create_patrol] call btc_fnc_delay_exec;
     };
+};
+
+if (btc_debug) then {
+    [format ["%1 - %2ms", _id, (serverTime - (_city getVariable ["serverTime", serverTime])) * 1000] , __FILE__, [btc_debug, false, true]] call btc_fnc_debug_message;
 };

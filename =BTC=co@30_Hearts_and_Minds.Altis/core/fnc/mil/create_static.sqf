@@ -9,6 +9,7 @@ Parameters:
     _pos - Position of creation. [Array]
     _statics_type - Type of static available. [Array]
     _dir - Direction of the static. [Number]
+    _surfaceNormal - Surface normal. [Array]
 
 Returns:
     _static - Created static. [Object]
@@ -26,12 +27,13 @@ Author:
 params [
     ["_pos", [0, 0, 0], [[]]],
     ["_statics_type", btc_type_mg, [[]]],
-    ["_dir", 0, [0]]
+    ["_dir", 0, [0]],
+    ["_surfaceNormal", [], [[]]]
 ];
 
 private _group = createGroup btc_enemy_side;
 [_group] call CBA_fnc_clearWaypoints;
-[_group, _pos, selectRandom _statics_type, _dir] call btc_fnc_mil_createVehicle;
+[_group, _pos, selectRandom _statics_type, _dir, _surfaceNormal] call btc_fnc_mil_createVehicle;
 
 _group setBehaviour "COMBAT";
 _group setCombatMode "RED";
