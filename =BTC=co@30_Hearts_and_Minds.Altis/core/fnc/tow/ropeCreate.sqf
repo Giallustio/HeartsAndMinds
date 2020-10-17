@@ -31,10 +31,12 @@ if (_tower setVehicleCargo _vehicleSelected) exitWith {};
 
 (localize "STR_BTC_HAM_TOW_WAIT") call CBA_fnc_notify;
 
-private _bank = _vehicleSelected call BIS_fnc_getPitchBank select 1;
+(_vehicleSelected call BIS_fnc_getPitchBank) params ["_pitch", "_bank"];
 if !(
-    !((vectorUp _vehicleSelected vectorDotProduct surfaceNormal getPos _vehicleSelected) < -0.80) &&
-    55 > abs _bank
+    _pitch < 45  &&
+    _pitch > - 45 &&
+    _bank < 45 &&
+    _bank > - 45
 ) exitWith {
     [_vehicleSelected, {
         params ["_vehicleSelected"];
@@ -48,9 +50,12 @@ if !(
     [{
         params ["_tower", "_vehicleSelected"];
 
-        private _bank = _vehicleSelected call BIS_fnc_getPitchBank select 1;
-        !((vectorUp _vehicleSelected vectorDotProduct surfaceNormal getPos _vehicleSelected) < -0.80) &&
-        55 > abs _bank
+        (_vehicleSelected call BIS_fnc_getPitchBank) params ["_pitch", "_bank"];
+
+        _pitch < 45  &&
+        _pitch > - 45 &&
+        _bank < 45 &&
+        _bank > - 45
     }, btc_fnc_tow_ropeCreate, [_tower, _vehicleSelected], 10] call CBA_fnc_waitUntilAndExecute;
 };
 

@@ -24,25 +24,28 @@ _thisArgsCBA params ["_vehicleSelected", "_safeDistance", "_ropes"];
 
 _tower removeEventHandler ["RopeBreak", _thisId];
 
+(_vehicleSelected call BIS_fnc_getPitchBank) params ["_pitch", "_bank"];
 private _vectorUp = vectorUp _flat;
 private _vectorDir = vectorDir _flat;
+
 _ropes apply {deleteVehicle _x};
 deTach _vehicleSelected;
 _flat setPos [0, 0, 0]; // Avoid collision with _vehicleSelected
 
 // Handle flipped vehicle
-private _bank = _vehicleSelected call BIS_fnc_getPitchBank select 1;
-if !(
-    (vectorUp _vehicleSelected vectorDotProduct surfaceNormal getPos _vehicleSelected) < -0.80 &&
-    55 > abs _bank
+if (
+    _pitch < 45  &&
+    _pitch > - 45 &&
+    _bank < 45 &&
+    _bank > - 45
 ) then {
+    [_vehicleSelected, [_vectorDir, _vectorUp]] remoteExecCall ["setVectorDirAndUp", _vehicleSelected];
+} else {
     private _towerDir = getDir _tower;
     private _selectedSafePos = _tower getPos [- _safeDistance, _towerDir];
     _selectedSafePos set [2, 0.5 + (_selectedSafePos select 2)];
     _vehicleSelected setPos _selectedSafePos;
     _vehicleSelected setDir _towerDir;
-} else {
-    [_vehicleSelected, [_vectorDir, _vectorUp]] remoteExecCall ["setVectorDirAndUp", _vehicleSelected];
 };
 
 if !(
