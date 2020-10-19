@@ -184,9 +184,9 @@ private _id = ["ace_tagCreated", {
 //Player Markers
 private _markers_properties = profileNamespace getVariable [format ["btc_hm_%1_markers", _name], []];
 {
-    _x params ["_markerText", "_markerPos", "_markerColor", "_markerType", "_markerSize", "_markerAlpha", "_markerBrush", "_markerDir", "_markerShape"];
+    _x params ["_markerText", "_markerPos", "_markerColor", "_markerType", "_markerSize", "_markerAlpha", "_markerBrush", "_markerDir", "_markerShape", "_markerPolyline", "_markerChannel"];
 
-    private _marker = createMarker [format ["_USER_DEFINED #0/%1/0", _forEachindex], _markerPos];
+    private _marker = createMarker [format ["_USER_DEFINED #0/%1", _forEachindex, _markerChannel], _markerPos];
     _marker setMarkerText _markerText;
     _marker setMarkerColor _markerColor;
     _marker setMarkerType _markerType;
@@ -195,4 +195,5 @@ private _markers_properties = profileNamespace getVariable [format ["btc_hm_%1_m
     _marker setMarkerBrush _markerBrush;
     _marker setMarkerDir _markerDir;
     _marker setMarkerShape _markerShape;
+    _marker setMarkerPolyline _markerPolyline;
 } forEach _markers_properties;
