@@ -70,7 +70,9 @@ private _markers = [_marker1, _marker2, _area];
 private _veh_types = btc_civ_type_veh select {!(_x isKindOf "air")};
 private _agent = [btc_fnc_info_path, [_pos1, _pos2, _taskID, _veh_types select 0]] call CBA_fnc_directCall;
 
-waitUntil {!((_agent getVariable ["btc_path", []]) isEqualTo [])};
+waitUntil {
+    !isNil {_agent getVariable "btc_path"}
+};
 private _path = _agent getVariable ["btc_path", []];
 if (count _path <= 35) exitWith {
     _markers append (allMapMarkers select {(_x select [0, count _taskID]) isEqualTo _taskID});
