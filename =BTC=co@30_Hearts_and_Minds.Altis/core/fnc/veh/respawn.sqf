@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_eh_veh_respawn
+Function: btc_fnc_veh_respawn
 
 Description:
     Respawn the vehicle passed in parameter.
@@ -14,7 +14,7 @@ Returns:
 
 Examples:
     (begin example)
-        [cursorObject] call btc_fnc_eh_veh_respawn;
+        [cursorObject] call btc_fnc_veh_respawn;
     (end)
 
 Author:
@@ -73,7 +73,7 @@ _data pushBack (_vehicle getVariable ["btc_EDENinventory", []]);
             [_vehicle, _EDENinventory] call btc_fnc_log_setCargo;
         };
 
-        [_vehicle, _time] call btc_fnc_eh_veh_add_respawn;
+        [_vehicle, _time] call btc_fnc_veh_addRespawn;
     }, _data, 1] call CBA_fnc_waitAndExecute;
 }, [_vehicle, _data], _data select 3] call CBA_fnc_waitAndExecute;
 
