@@ -37,7 +37,12 @@ addMissionEventHandler ["BuildingChanged", btc_fnc_rep_buildingchanged];
 } forEach btc_civ_type_units;
 ["ace_killed", btc_fnc_mil_unit_killed] call CBA_fnc_addEventHandler;
 
-addMissionEventHandler ["HandleDisconnect", btc_fnc_eh_handledisconnect];
+addMissionEventHandler ["HandleDisconnect", {
+    params ["_headless"];
+    if (_headless in (entities "HeadlessClient_F")) then {
+        deleteVehicle _headless;
+    };
+}];
 if (btc_p_auto_db) then {
     addMissionEventHandler ["HandleDisconnect", {
         if ((allPlayers - entities "HeadlessClient_F") isEqualTo []) then {

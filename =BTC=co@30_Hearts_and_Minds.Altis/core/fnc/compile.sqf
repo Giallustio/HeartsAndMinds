@@ -73,7 +73,6 @@ if (isServer) then {
     btc_fnc_eh_veh_add_respawn = compile preprocessFileLineNumbers "core\fnc\eh\veh_add_respawn.sqf";
     btc_fnc_eh_veh_killed = compile preprocessFileLineNumbers "core\fnc\eh\veh_killed.sqf";
     btc_fnc_eh_veh_respawn = compile preprocessFileLineNumbers "core\fnc\eh\veh_respawn.sqf";
-    btc_fnc_eh_handledisconnect = compile preprocessFileLineNumbers "core\fnc\eh\handledisconnect.sqf";
     btc_fnc_eh_server = compile preprocessFileLineNumbers "core\fnc\eh\server.sqf";
 
     //IED
