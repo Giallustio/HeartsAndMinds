@@ -66,7 +66,7 @@ At the logistic point you can require new objects (like ammo, fortifications, su
 - Use ACE 3 Cargo system.
 
 ### Towing system:
-To tow a vehicle interact with it and select the option 'HOOK'.After that place the tow vehicle in front of it and select 'TOW' in the interaction menu.
+To tow a vehicle interact with it and select the option 'HOOK'. After that place the tow vehicle in front of it and select 'TOW' in the interaction menu.
 If the two vehicles are too far away or the vehicle can't tow that load (Car can't tow truck or tank), the option will be disabled.
 To unhook interact with one of the two vehicles and select the option 'UNHOOK'.
 
