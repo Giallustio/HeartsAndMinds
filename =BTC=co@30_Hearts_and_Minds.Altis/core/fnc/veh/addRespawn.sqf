@@ -48,7 +48,7 @@ _vehicle addMPEventHandler ["MPKilled", {
         {_unit getVariable ["btc_killed", true]} // https://feedback.bistudio.com/T149510
     ) then {
         _unit setVariable ["btc_killed", false];
-        [_unit] call btc_fnc_veh_respawn;
+        _this call btc_fnc_veh_respawn;
     };
 }];
 if (btc_p_respawn_location > 0) then {
