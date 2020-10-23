@@ -70,7 +70,6 @@ if (isServer) then {
     btc_fnc_delay_exec = compile preprocessFileLineNumbers "core\fnc\delay\exec.sqf";
 
     //EH
-    btc_fnc_eh_handledisconnect = compile preprocessFileLineNumbers "core\fnc\eh\handledisconnect.sqf";
     btc_fnc_eh_server = compile preprocessFileLineNumbers "core\fnc\eh\server.sqf";
 
     //IED
