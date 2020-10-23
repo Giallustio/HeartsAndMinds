@@ -209,9 +209,8 @@ btc_fnc_debug_message = compile preprocessFileLineNumbers "core\fnc\debug\messag
 
 //DB
 btc_fnc_db_add_veh = compile preprocessFileLineNumbers "core\fnc\db\add_veh.sqf";
+
 //EH
-btc_fnc_eh_persistOnLocalityChange = compile preprocessFileLineNumbers "core\fnc\eh\persistOnLocalityChange.sqf";
-btc_fnc_eh_removePersistOnLocalityChange = compile preprocessFileLineNumbers "core\fnc\eh\removePersistOnLocalityChange.sqf";
 btc_fnc_eh_trackItem = compile preprocessFileLineNumbers "core\fnc\eh\trackItem.sqf";
 
 //CIV
@@ -356,4 +355,9 @@ if (!isDedicated) then {
     btc_fnc_tow_ropeCreate = compile preprocessFileLineNumbers "core\fnc\tow\ropeCreate.sqf";
     btc_fnc_tow_hitch_points = compile preprocessFileLineNumbers "core\fnc\tow\hitch_points.sqf";
     btc_fnc_tow_unhook = compile preprocessFileLineNumbers "core\fnc\tow\unhook.sqf";
+};
+
+/////////////////////HEADLESS\\\\\\\\\\\\\\\\\\\\\
+if (!hasInterface && !isDedicated) then {
+    btc_fnc_eh_headless = compile preprocessFileLineNumbers "core\fnc\eh\headless.sqf";
 };
