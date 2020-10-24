@@ -154,7 +154,7 @@ private _vehs = profileNamespace getVariable [format ["btc_hm_%1_vehs", _name], 
         [_veh, _veh_cargo, _veh_cont] call btc_fnc_db_loadCargo;
 
         if !(alive _veh) then {
-            [_veh, objNull, objNull, false] call btc_fnc_eh_veh_killed;
+            [_veh, objNull, objNull, false] call btc_fnc_veh_killed;
         };
     } forEach _this;
 }, _vehs, 0.5] call CBA_fnc_waitAndExecute;

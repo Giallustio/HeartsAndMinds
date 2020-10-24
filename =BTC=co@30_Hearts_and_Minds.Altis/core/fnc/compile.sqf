@@ -70,9 +70,6 @@ if (isServer) then {
     btc_fnc_delay_exec = compile preprocessFileLineNumbers "core\fnc\delay\exec.sqf";
 
     //EH
-    btc_fnc_eh_veh_add_respawn = compile preprocessFileLineNumbers "core\fnc\eh\veh_add_respawn.sqf";
-    btc_fnc_eh_veh_killed = compile preprocessFileLineNumbers "core\fnc\eh\veh_killed.sqf";
-    btc_fnc_eh_veh_respawn = compile preprocessFileLineNumbers "core\fnc\eh\veh_respawn.sqf";
     btc_fnc_eh_server = compile preprocessFileLineNumbers "core\fnc\eh\server.sqf";
 
     //IED
@@ -186,6 +183,11 @@ if (isServer) then {
     //TASK
     btc_fnc_task_create = compile preprocessFileLineNumbers "core\fnc\task\create.sqf";
     btc_fnc_task_setState = compile preprocessFileLineNumbers "core\fnc\task\setState.sqf";
+
+    //VEH
+    btc_fnc_veh_addRespawn = compile preprocessFileLineNumbers "core\fnc\veh\addRespawn.sqf";
+    btc_fnc_veh_killed = compile preprocessFileLineNumbers "core\fnc\veh\killed.sqf";
+    btc_fnc_veh_respawn = compile preprocessFileLineNumbers "core\fnc\veh\respawn.sqf";
 };
 
 /////////////////////CLIENT AND SERVER\\\\\\\\\\\\\\\\\\\\\
