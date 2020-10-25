@@ -54,7 +54,6 @@ private _radius = _city getVariable ["radius", 100];
 private _has_en = _city getVariable ["occupied", false];
 private _has_ho = _city getVariable ["has_ho", false];
 private _ieds = _city getVariable ["ieds", []];
-private _tags = _city getVariable ["tags", []];
 private _spawningRadius = _radius/2;
 
 if (!_is_init) then {
