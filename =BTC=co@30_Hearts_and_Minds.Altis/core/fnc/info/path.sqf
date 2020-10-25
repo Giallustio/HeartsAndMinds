@@ -24,14 +24,16 @@ Author:
 ---------------------------------------------------------------------------- */
 
 params [
-    ["_unit", objNull, [objNull]],
+    ["_startPos", [0, 0, 0], [[]]],
     ["_endPos", [0, 0, 0], [[]]],
-    ["_taskID", "btc_side", [""]]
+    ["_taskID", "btc_side", [""]],
+    ["_typeVehicle", "Man", [""]],
+    ["_behaviour", "safe", [""]]
 ];
 
-private _parent = [configFile >> "CfgVehicles" >> typeOf vehicle _unit, true] call BIS_fnc_returnParents;
+private _parent = [configFile >> "CfgVehicles" >> _typeVehicle, true] call BIS_fnc_returnParents;
 private _type = (_parent arrayIntersect ["Man", "Car", "Tank", "Wheeled_APC", "Boat", "Plane", "Helicopter"]) select 0;
-private _agent = calculatePath [_type, behaviour _unit, getPos _unit, _endPos];
+private _agent = calculatePath [_type, _behaviour, _startPos, _endPos];
 
 [_agent, "PathCalculated", {
     params ["_agent", "_path"];
@@ -40,6 +42,7 @@ private _agent = calculatePath [_type, behaviour _unit, getPos _unit, _endPos];
     ];
 
     _agent removeEventHandler ["PathCalculated", _thisId];
+    _agent setVariable ["btc_path", _path];
 
     private _color = configName selectRandom (configProperties [configFile >> "CfgMarkerColors"]);
     private _delta = 10;

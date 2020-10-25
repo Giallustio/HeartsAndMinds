@@ -67,7 +67,11 @@ if (_array isEqualTo []) then {
                 private _arr = [_road, -1] call btc_fnc_ied_randomRoadPos;
                 _sel_pos = _arr select 0;
                 private _connected = roadsConnectedTo _road;
-                _road = _connected select selectRandomWeighted [0, 0.6, (count _connected) - 1, 0.4];
+                if (_connected isEqualTo []) then {
+                    _road = objNull;
+                } else {
+                    _road = _connected select selectRandomWeighted [0, 0.6, (count _connected) - 1, 0.4];
+                };
             };
 
             private _surface = surfaceNormal _sel_pos;

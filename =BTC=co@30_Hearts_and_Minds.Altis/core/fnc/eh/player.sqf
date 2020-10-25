@@ -28,11 +28,13 @@ params [
 [_player, "Respawn", {
     if !(ace_map_mapIllumination) then {ace_map_mapIllumination = btc_map_mapIllumination;};
 }] call CBA_fnc_addBISEventHandler;
-_player addEventHandler ["Killed", {
+["ace_killed", {
+    params ["_unit"];
+    if !(_unit isEqualTo player) exitWith {};
     if (ace_map_mapIllumination) then {ace_map_mapIllumination = false;};
     if (isObjectHidden player) exitWith {};
     [btc_rep_malus_player_respawn, player] remoteExecCall ["btc_fnc_rep_change", 2];
-}];
+}] call CBA_fnc_addEventHandler;
 _player addEventHandler ["CuratorObjectPlaced", btc_fnc_eh_CuratorObjectPlaced];
 ["ace_treatmentSucceded", btc_fnc_rep_treatment] call CBA_fnc_addEventHandler;
 _player addEventHandler ["WeaponAssembled", btc_fnc_civ_add_leaflets];
@@ -85,8 +87,10 @@ if (btc_p_respawn_arsenal) then {
 };
 
 if (btc_p_respawn_location >= 4) then {
-    [_player, "Killed", {
+    ["ace_killed", {
+        params ["_unit"];
+        if !(_unit isEqualTo player) exitWith {};
         private _group  = group player;
         [_group, leader _group] call BIS_fnc_addRespawnPosition;
-    }] call CBA_fnc_addBISEventHandler;
+    }] call CBA_fnc_addEventHandler;
 };

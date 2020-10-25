@@ -23,7 +23,7 @@ addMissionEventHandler ["BuildingChanged", btc_fnc_rep_buildingchanged];
 ["ace_explosives_defuse", btc_fnc_rep_explosives_defuse] call CBA_fnc_addEventHandler;
 ["ace_killed", btc_fnc_rep_killed] call CBA_fnc_addEventHandler;
 ["Animal", "InitPost", {
-    [(_this select 0), "HandleDamage", "btc_fnc_rep_hd"] call btc_fnc_eh_persistOnLocalityChange;
+    [(_this select 0), "HandleDamage", btc_fnc_rep_hd] call CBA_fnc_addBISEventHandler;
 }] call CBA_fnc_addClassEventHandler;
 ["Animal", "killed", {
     params ["_unit", "_killer", "_instigator"];
@@ -32,12 +32,22 @@ addMissionEventHandler ["BuildingChanged", btc_fnc_rep_buildingchanged];
 {
     [_x, "InitPost", {
         [(_this select 0), "FiredNear", btc_fnc_rep_firednear] call CBA_fnc_addBISEventHandler;
-        [(_this select 0), "HandleDamage", "btc_fnc_rep_hd"] call btc_fnc_eh_persistOnLocalityChange;
+        [(_this select 0), "HandleDamage", btc_fnc_rep_hd] call CBA_fnc_addBISEventHandler;
     }, false] call CBA_fnc_addClassEventHandler;
 } forEach btc_civ_type_units;
+{
+    [_x, "InitPost", {
+        [(_this select 0), "HandleDamage", btc_fnc_rep_hd] call CBA_fnc_addBISEventHandler;
+    }, false] call CBA_fnc_addClassEventHandler;
+} forEach btc_civ_type_veh;
 ["ace_killed", btc_fnc_mil_unit_killed] call CBA_fnc_addEventHandler;
 
-addMissionEventHandler ["HandleDisconnect", btc_fnc_eh_handledisconnect];
+addMissionEventHandler ["HandleDisconnect", {
+    params ["_headless"];
+    if (_headless in (entities "HeadlessClient_F")) then {
+        deleteVehicle _headless;
+    };
+}];
 if (btc_p_auto_db) then {
     addMissionEventHandler ["HandleDisconnect", {
         if ((allPlayers - entities "HeadlessClient_F") isEqualTo []) then {
@@ -66,4 +76,9 @@ if (btc_p_set_skill) then {
         [[], [_vehicle]] call btc_fnc_delete;
     };
 }] call CBA_fnc_addEventHandler;
+{
+    [_x, "InitPost", {
+        [(_this select 0), "HandleDamage", btc_fnc_patrol_disabled] call CBA_fnc_addBISEventHandler;
+    }, false] call CBA_fnc_addClassEventHandler;
+} forEach btc_civ_type_veh;
 ["ace_tagCreated", btc_fnc_tag_eh] call CBA_fnc_addEventHandler;
