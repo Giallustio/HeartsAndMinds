@@ -1,4 +1,3 @@
-[] call compile preprocessFileLineNumbers "core\doc.sqf";
 btc_map_mapIllumination = ace_map_mapIllumination;
 if !(isNil "btc_custom_loc") then {
     {
@@ -7,10 +6,11 @@ if !(isNil "btc_custom_loc") then {
         _location setText _cityName;
     } forEach btc_custom_loc;
 };
-endLoadingScreen;
 btc_intro_done = [] spawn btc_fnc_intro;
 
 [{!isNull player}, {
+    [] call compile preprocessFileLineNumbers "core\doc.sqf";
+
     btc_respawn_marker setMarkerPosLocal player;
     player addRating 9999;
     ["InitializePlayer", [player]] call BIS_fnc_dynamicGroups;
@@ -38,13 +38,13 @@ btc_intro_done = [] spawn btc_fnc_intro;
         default {
         };
     };
+
+    if (btc_debug) then {
+        onMapSingleClick "vehicle player setPos _pos";
+        player allowDamage false;
+
+        [{!isNull (findDisplay 12)}, {
+            ((findDisplay 12) displayCtrl 51) ctrlAddEventHandler ["Draw", btc_fnc_debug_marker];
+        }] call CBA_fnc_waitUntilAndExecute;
+    };
 }] call CBA_fnc_waitUntilAndExecute;
-
-if (btc_debug) then {
-
-    onMapSingleClick "vehicle player setPos _pos";
-    player allowDamage false;
-
-    waitUntil {!isNull (findDisplay 12)};
-    private _eh = ((findDisplay 12) displayCtrl 51) ctrlAddEventHandler ["Draw", btc_fnc_debug_marker];
-};

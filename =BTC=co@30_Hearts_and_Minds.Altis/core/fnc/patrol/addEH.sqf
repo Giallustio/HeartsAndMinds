@@ -31,6 +31,4 @@ _veh setVariable ["btc_crews", _group];
 [_veh, "Fuel", btc_fnc_patrol_eh] call CBA_fnc_addBISEventHandler;
 if (side _group isEqualTo civilian) then {
     [_veh, "GetOut", btc_fnc_patrol_eh] call CBA_fnc_addBISEventHandler;
-    [_veh, "HandleDamage", "btc_fnc_patrol_disabled"] call btc_fnc_eh_persistOnLocalityChange;
-    [_veh, "HandleDamage", "btc_fnc_rep_hd"] call btc_fnc_eh_persistOnLocalityChange;
 };
