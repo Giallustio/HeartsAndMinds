@@ -82,21 +82,12 @@ if (_array isEqualTo []) then {
                 };
             };
 
-            if (!isNull _road && {/*random 1 > 0.5*/ true}) then {
-                private _sentences = [
-                    "GET OUT",
-                    "LEAVE NOW",
-                    "WE WILL KILL YOU",
-                    "BE AFRAID"
-                ];
-                private _i = 0;
+            if (!isNull _road && {random 1 > 0.6}) then { // Draw sentences
+                private _sentences = ((localize (selectRandom btc_type_tags_sentences)) splitString " ");
                 {
-                    if (_x isEqualTo " ") then {
-                        _sel_pos = _sel_pos getPos [1.4, _sel_dir + 90];
-                        _i = 0;
-                    } else {
-                        private _letterPos = _sel_pos getPos [_i * 0.8, _sel_dir];
-                        _i = _i + 1;
+                    private _word = _x;
+                    {
+                        private _letterPos = _sel_pos getPos [_forEachIndex * (0.7 + random 0.2), _sel_dir];
 
                         private _surface = surfaceNormal _letterPos;
                         private _v1 = vectorNormalized (_surface vectorMultiply -1);
@@ -108,9 +99,10 @@ if (_array isEqualTo []) then {
 
                         _letterPos set [2, 0];
                         _array pushBack [_letterPos, [_v1, _v2], format ["\a3\ui_f\data\igui\cfg\simpletasks\letters\%1_ca.paa", _x], "UserTexture1m_F"];
-                    };
-                } forEach ((selectRandom _sentences) splitString "");
-            } else {
+                    } forEach (_word splitString "");
+                    _sel_pos = _sel_pos getPos [1.4, _sel_dir + 90];
+                } forEach _sentences;
+            } else { // Draw simple tag
                 private _surface = surfaceNormal _sel_pos;
                 private _v1 = vectorNormalized (_surface vectorMultiply -1);
                 private _v3 = _v1 vectorCrossProduct [0, 0, 1];
@@ -138,5 +130,5 @@ if (_array isEqualTo []) then {
 {
     _x params ["_tagPosASL", "_vectorDirAndUp", "_texture", "_tagModel"];
 
-    [AGLToASL _tagPosASL, _vectorDirAndUp, _texture, objNull, objNull, "", _tagModel] call ace_tagging_fnc_createTag;
+    [AGLToASL _tagPosASL, _vectorDirAndUp, _texture, objNull, _city, "", _tagModel] call ace_tagging_fnc_createTag;
 } forEach _array;
