@@ -76,7 +76,7 @@ if (
     {!(_type_db isEqualTo 7)}
 ) then {
     _type_db = 1;
-    _array_veh = [typeOf _vehicle, getPosATL _vehicle, getDir _vehicle, fuel _vehicle];
+    _array_veh = [typeOf _vehicle, getPosATL _vehicle, getDir _vehicle, fuel _vehicle, vectorUp _vehicle];
 };
 
 [_vehicle, _group] call CBA_fnc_deleteEntity;
