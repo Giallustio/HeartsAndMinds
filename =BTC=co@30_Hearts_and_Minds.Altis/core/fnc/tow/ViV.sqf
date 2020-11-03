@@ -28,7 +28,7 @@ params [
 
 if (_tower setVehicleCargo _vehicleSelected) exitWith {};
 
-private _hideVehicle = createVehicle ["Land_Cargo10_red_F", [0, 0, 0], [], 0, "CAN_COLLIDE"];
+private _hideVehicle = createVehicle ["Land_WaterTank_F", [0, 0, 0], [], 0, "CAN_COLLIDE"];
 _hideVehicle hideObjectGlobal true;
 
 private _model_selected = (0 boundingBoxReal _vehicleSelected) select 1;
@@ -36,7 +36,7 @@ private _model_hide = (0 boundingBoxReal _hideVehicle) select 1;
 private _attachTo = [
     0,
     ((_model_hide select 1) - (_model_selected select 1)) + 0.9,
-    (_model_selected select 2) - (_model_hide select 2) - 0.2
+    (_model_selected select 2) - (_model_hide select 2)
 ];
 _vehicleSelected attachTo [_hideVehicle, _attachTo];
 
