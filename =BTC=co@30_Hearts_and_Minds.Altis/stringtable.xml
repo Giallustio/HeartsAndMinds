@@ -1696,6 +1696,35 @@
                 <Chinesesimp>不! 老子想去哪就去哪!</Chinesesimp>
             </Key>
         </Container>
+        <Container name="Tags: Sentences">
+            <Key ID="STR_BTC_HAM_TAG_GO">
+                <Original>GET OUT</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_TAG_LN">
+                <Original>LEAVE NOW</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_TAG_WWKY">
+                <Original>WE WILL KILL YOU</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_TAG_BA">
+                <Original>BE AFRAID</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_TAG_GH">
+                <Original>GO HOME</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_TAG_IE">
+                <Original>IED EVERYWHERE</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_TAG_DWY">
+                <Original>DRONE WATCHING YOU</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_TAG_WHY">
+                <Original>WE HATE YOU</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_TAG_YGD">
+                <Original>YOU GONNA DIE</Original>
+            </Key>
+        </Container>
     </Package>
     <Package name="Other">
         <Container name="Other: FOB Actions">

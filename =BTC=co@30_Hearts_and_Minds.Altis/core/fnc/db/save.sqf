@@ -171,7 +171,7 @@ private _array_obj = [];
 profileNamespace setVariable [format ["btc_hm_%1_objs", _name], _array_obj];
 
 //Player Tags
-private _tags = btc_tags select {alive (_x select 0)};
+private _tags = btc_tags_player select {alive (_x select 0)};
 private _tags_properties = _tags apply {
     private _tag = _x select 0;
     [

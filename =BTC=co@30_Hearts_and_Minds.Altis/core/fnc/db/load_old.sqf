@@ -169,7 +169,7 @@ private _objs = profileNamespace getVariable [format ["btc_hm_%1_objs", _name], 
 private _tags_properties = profileNamespace getVariable [format ["btc_hm_%1_tags", _name], []];
 private _id = ["ace_tagCreated", {
     params ["_tag", "_texture", "_object"];
-    btc_tags pushBack [_tag, _texture, _object];
+    btc_tags_player pushBack [_tag, _texture, _object];
 }] call CBA_fnc_addEventHandler;
 {
     _x params ["_tagPosASL", "_vectorDirAndUp", "_texture", "_typeObject", "_tagModel"];
