@@ -111,6 +111,7 @@ private _cache_markers = [];
 } forEach btc_cache_markers;
 _array_cache pushBack _cache_markers;
 _array_cache pushBack [btc_cache_pictures select 0, btc_cache_pictures select 1, []];
+_array_cache pushBack (btc_cache_obj in btc_chem_contaminated);
 profileNamespace setVariable [format ["btc_hm_%1_cache", _name], +_array_cache];
 
 //REPUTATION
@@ -171,7 +172,7 @@ private _array_obj = [];
 profileNamespace setVariable [format ["btc_hm_%1_objs", _name], +_array_obj];
 
 //Player Tags
-private _tags = btc_tags select {alive (_x select 0)};
+private _tags = btc_tags_player select {alive (_x select 0)};
 private _tags_properties = _tags apply {
     private _tag = _x select 0;
     [

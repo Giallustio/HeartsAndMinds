@@ -94,7 +94,8 @@ if !(_city getVariable ["active", false]) exitWith {};
             typeOf _x
         ];
         _x call CBA_fnc_deleteEntity;
-    } forEach ((allSimpleObjects btc_type_tags) inAreaArray [_pos_city, _radius, _radius]);
+    } forEach (btc_tags_server inAreaArray [_pos_city, _radius, _radius]);
+    btc_tags_server = btc_tags_server - [objNull];
 
     if (btc_debug_log) then {
         [format ["data units = %1", _data_units], __FILE__, [false]] call btc_fnc_debug_message;
