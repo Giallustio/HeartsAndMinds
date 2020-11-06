@@ -63,7 +63,7 @@ private _cities_status = [];
         [format ["ID %1 - IsOccupied %2", _x getVariable "id", _x getVariable "occupied"], __FILE__, [false]] call btc_fnc_debug_message;
     };
 } forEach (btc_city_all select {!(isNull _x)});
-profileNamespace setVariable [format ["btc_hm_%1_cities", _name], _cities_status];
+profileNamespace setVariable [format ["btc_hm_%1_cities", _name], +_cities_status];
 
 //HIDEOUT
 private _array_ho = [];
@@ -89,7 +89,7 @@ private _array_ho = [];
     };
     _array_ho pushBack _data;
 } forEach btc_hideouts;
-profileNamespace setVariable [format ["btc_hm_%1_ho", _name], _array_ho];
+profileNamespace setVariable [format ["btc_hm_%1_ho", _name], +_array_ho];
 
 profileNamespace setVariable [format ["btc_hm_%1_ho_sel", _name], btc_hq getVariable ["id", 0]];
 
@@ -126,7 +126,7 @@ private _fobs = [];
         _fobs pushBack [markerText _x, _pos, _direction];
     };
 } forEach (btc_fobs select 0);
-profileNamespace setVariable [format ["btc_hm_%1_fobs", _name], _fobs];
+profileNamespace setVariable [format ["btc_hm_%1_fobs", _name], +_fobs];
 
 //Vehicles status
 private _array_veh = [];
@@ -156,7 +156,7 @@ private _array_veh = [];
         [format ["VEH %1 DATA %2", _x, _data], __FILE__, [false]] call btc_fnc_debug_message;
     };
 } forEach (btc_vehicles - [objNull]);
-profileNamespace setVariable [format ["btc_hm_%1_vehs", _name], _array_veh];
+profileNamespace setVariable [format ["btc_hm_%1_vehs", _name], +_array_veh];
 
 //Objects status
 private _array_obj = [];
@@ -169,7 +169,7 @@ private _array_obj = [];
     !(isObjectHidden _x) &&
     (objectParent _x) isEqualTo objNull
 });
-profileNamespace setVariable [format ["btc_hm_%1_objs", _name], _array_obj];
+profileNamespace setVariable [format ["btc_hm_%1_objs", _name], +_array_obj];
 
 //Player Tags
 private _tags = btc_tags_player select {alive (_x select 0)};
@@ -183,14 +183,14 @@ private _tags_properties = _tags apply {
         typeOf _tag
     ]
 };
-profileNamespace setVariable [format ["btc_hm_%1_tags", _name], _tags_properties];
+profileNamespace setVariable [format ["btc_hm_%1_tags", _name], +_tags_properties];
 
 //Player Markers
 private _player_markers = allMapMarkers select {(_x select [0, 15]) isEqualTo "_USER_DEFINED #"};
 private _markers_properties = _player_markers apply {
     [markerText _x, markerPos _x, markerColor _x, markerType _x, markerSize _x, markerAlpha _x, markerBrush _x, markerDir _x, markerShape _x]
 };
-profileNamespace setVariable [format ["btc_hm_%1_markers", _name], _markers_properties];
+profileNamespace setVariable [format ["btc_hm_%1_markers", _name], +_markers_properties];
 
 //End
 profileNamespace setVariable [format ["btc_hm_%1_db", _name], true];

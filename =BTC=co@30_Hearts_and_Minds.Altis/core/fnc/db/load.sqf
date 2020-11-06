@@ -24,10 +24,10 @@ params [
     ["_name", worldName, [""]]
 ];
 
-setDate (profileNamespace getVariable [format ["btc_hm_%1_date", _name], date]);
+setDate +(profileNamespace getVariable [format ["btc_hm_%1_date", _name], date]);
 
 //CITIES
-private _cities_status = profileNamespace getVariable [format ["btc_hm_%1_cities", _name], []];
+private _cities_status = +(profileNamespace getVariable [format ["btc_hm_%1_cities", _name], []]);
 
 {
     _x params ["_id", "_initialized", "_spawn_more", "_occupied", "_data_units", "_has_ho", "_ho_units_spawned", "_ieds", "_has_suicider",
@@ -64,7 +64,7 @@ private _cities_status = profileNamespace getVariable [format ["btc_hm_%1_cities
 } forEach _cities_status;
 
 //HIDEOUT
-private _array_ho = profileNamespace getVariable [format ["btc_hm_%1_ho", _name], []];
+private _array_ho = +(profileNamespace getVariable [format ["btc_hm_%1_ho", _name], []]);
 
 {
     _x call btc_fnc_mil_create_hideout;
@@ -81,7 +81,7 @@ if (_select_ho isEqualTo - 1) then {
 if (btc_hideouts isEqualTo []) then {[] spawn btc_fnc_final_phase;};
 
 //CACHE
-private _array_cache = profileNamespace getVariable [format ["btc_hm_%1_cache", _name], []];
+private _array_cache = +(profileNamespace getVariable [format ["btc_hm_%1_cache", _name], []]);
 _array_cache params ["_cache_pos", "_cache_n", "_cache_info", "_cache_markers", "_cache_pictures",
     ["_isChem", false, [true]]
 ];
@@ -109,7 +109,7 @@ btc_cache_pictures = _cache_pictures;
 } forEach (btc_cache_pictures select 0);
 
 //FOB
-private _fobs = profileNamespace getVariable [format ["btc_hm_%1_fobs", _name], []];
+private _fobs = +(profileNamespace getVariable [format ["btc_hm_%1_fobs", _name], []]);
 
 {
     _x params ["_fob_name", "_pos", ["_direction", 0, [0]]];
@@ -124,13 +124,13 @@ btc_global_reputation = profileNamespace getVariable [format ["btc_hm_%1_rep", _
 {deleteVehicle _x} forEach btc_vehicles;
 btc_vehicles = [];
 
-private _objs = profileNamespace getVariable [format ["btc_hm_%1_objs", _name], []];
+private _objs = +(profileNamespace getVariable [format ["btc_hm_%1_objs", _name], []]);
 {
     [_x] call btc_fnc_db_loadObjectStatus;
 } forEach _objs;
 
 //VEHICLES
-private _vehs = profileNamespace getVariable [format ["btc_hm_%1_vehs", _name], []];
+private _vehs = +(profileNamespace getVariable [format ["btc_hm_%1_vehs", _name], []]);
 [{ // Can't be executed just after because we can't delete and spawn vehicle during the same frame.
     {
         _x params [
@@ -169,7 +169,7 @@ private _vehs = profileNamespace getVariable [format ["btc_hm_%1_vehs", _name], 
 }, _vehs] call CBA_fnc_execNextFrame;
 
 //Player Tags
-private _tags_properties = profileNamespace getVariable [format ["btc_hm_%1_tags", _name], []];
+private _tags_properties = +(profileNamespace getVariable [format ["btc_hm_%1_tags", _name], []]);
 private _id = ["ace_tagCreated", {
     params ["_tag", "_texture", "_object"];
     btc_tags_player pushBack [_tag, _texture, _object];
@@ -185,7 +185,7 @@ private _id = ["ace_tagCreated", {
 ["ace_tagCreated", _id] call CBA_fnc_removeEventHandler;
 
 //Player Markers
-private _markers_properties = profileNamespace getVariable [format ["btc_hm_%1_markers", _name], []];
+private _markers_properties = +(profileNamespace getVariable [format ["btc_hm_%1_markers", _name], []]);
 {
     _x params ["_markerText", "_markerPos", "_markerColor", "_markerType", "_markerSize", "_markerAlpha", "_markerBrush", "_markerDir", "_markerShape"];
 
