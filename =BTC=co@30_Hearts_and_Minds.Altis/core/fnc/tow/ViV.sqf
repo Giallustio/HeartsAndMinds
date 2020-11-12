@@ -26,7 +26,7 @@ params [
     ["_tower", objNull, [objNull]]
 ];
 
-if (_tower setVehicleCargo _vehicleSelected) exitWith {};
+if (_tower setVehicleCargo _vehicleSelected) exitWith {true};
 
 private _hideVehicle = createVehicle ["Land_WaterTank_F", [0, 0, 0], [], 0, "CAN_COLLIDE"];
 _hideVehicle hideObjectGlobal true;
@@ -55,6 +55,8 @@ if (_tower setVehicleCargo _hideVehicle) then {
         _vehicleSelected setPosWorld _pos;
         [_vehicleSelected, [0, 0, 0.01]] remoteExecCall ["setVelocity", _vehicleSelected]; // Activate physic
     }, [_hideVehicle, _vehicleSelected]] call CBA_fnc_waitUntilAndExecute;
+    true
 } else {
     deleteVehicle _hideVehicle;
+    false
 };

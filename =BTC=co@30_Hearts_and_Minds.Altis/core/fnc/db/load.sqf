@@ -168,7 +168,14 @@ private _vehs = +(profileNamespace getVariable [format ["btc_hm_%1_vehs", _name]
         };
         if !(_ViV isEqualTo []) then {
             {
-                [_x call _loadVehicle, _veh] call btc_fnc_tow_ViV;
+                private _vehToLoad = _x call _loadVehicle;
+                if !([_vehToLoad, _veh] call btc_fnc_tow_ViV) then {
+                    _vehToLoad setVehiclePosition [_veh, [], 100, "NONE"];
+                    private _marker = _vehToLoad getVariable ["marker", ""];
+                    if !(_marker isEqualTo "") then {
+                        _marker setMarkerPos _vehToLoad;
+                    };
+                };
             } forEach _ViV;
         };
 
