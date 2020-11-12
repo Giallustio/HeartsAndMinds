@@ -33,10 +33,12 @@ _hideVehicle hideObjectGlobal true;
 
 private _model_selected = (0 boundingBoxReal _vehicleSelected) select 1;
 private _model_hide = (0 boundingBoxReal _hideVehicle) select 1;
+private _model_selected_z = ((0 boundingBoxReal _vehicleSelected) select 0) select 2;
+private _model_hide_z = ((0 boundingBoxReal _hideVehicle) select 0) select 2;
 private _attachTo = [
     0,
     ((_model_hide select 1) - (_model_selected select 1)) + 0.9,
-    (_model_selected select 2) - (_model_hide select 2)
+    -(abs _model_hide_z - abs _model_selected_z) + 0.1
 ];
 _vehicleSelected attachTo [_hideVehicle, _attachTo];
 
