@@ -248,7 +248,7 @@ if !(_city getVariable ["has_suicider", false]) then {
     params ["_has_en", "_city", "_radius", "_id"];
 
     if (_has_en) then {
-        private _trigger = createTrigger ["EmptyDetector", getPos _city];
+        private _trigger = createTrigger ["EmptyDetector", getPos _city, false];
         _trigger setTriggerArea [_radius, _radius, 0, false];
         _trigger setTriggerActivation [str btc_enemy_side, "NOT PRESENT", false];
         _trigger setTriggerStatements ["this", format ["[%1] call btc_fnc_city_set_clear", _id], ""];
