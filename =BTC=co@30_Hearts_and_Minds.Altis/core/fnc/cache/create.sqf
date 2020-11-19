@@ -8,7 +8,7 @@ Description:
 Parameters:
     _cache_pos - Position of the cache. [Array]
     _p_chem - Create a chemical cache. [Boolean]
-    _probilityOfChemical - Probability to create a chemical cache. [Number]
+    _probilityNotChemical - Probability to not create a chemical cache. [Number]
 
 Returns:
 
@@ -29,12 +29,12 @@ Author:
 params [
     ["_cache_pos", btc_cache_pos, [[]]],
     ["_p_chem", btc_p_chem, [true]],
-    ["_probilityOfChemical", 0.7, [0]]
+    ["_probilityNotChemical", 0.7, [0]]
 ];
 
 private _isChem = false;
 if (_p_chem) then {
-    _isChem = random 1 > _probilityOfChemical;
+    _isChem = random 1 > _probilityNotChemical;
 };
 private _cacheType = selectRandom (btc_cache_type select 0);
 btc_cache_obj = _cacheType createVehicle _cache_pos;
@@ -45,7 +45,7 @@ clearWeaponCargoGlobal btc_cache_obj;
 clearItemCargoGlobal btc_cache_obj;
 clearMagazineCargoGlobal btc_cache_obj;
 
-[btc_cache_obj, "HandleDamage", "btc_fnc_cache_hd_cache"] call btc_fnc_eh_persistOnLocalityChange;
+[btc_cache_obj, "HandleDamage", btc_fnc_cache_hd_cache] remoteExecCall ["CBA_fnc_addBISEventHandler", 0, true];
 
 if (_isChem) then {
     btc_chem_contaminated pushBack btc_cache_obj;

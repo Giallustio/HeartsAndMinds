@@ -334,6 +334,9 @@
                 <Chinesesimp>敌军密度:</Chinesesimp>
                 <Portuguese>Densidade inimiga:</Portuguese>
             </Key>
+            <Key ID="STR_BTC_HAM_PARAM_SPWAN_ENEMY_STATIC_DENSITY">
+                <Original>Enemy static density:</Original>
+            </Key>
             <Key ID="STR_BTC_HAM_PARAM_SPWAN_CIVILIAN_DENSITY">
                 <Original>Civilian density:</Original>
                 <German>Zivilistendichte:</German>
@@ -1691,6 +1694,35 @@
                 <German>Nein! Ich gehe wohin ich will!</German>
                 <Portuguese>Não! Eu vou onde quero!</Portuguese>
                 <Chinesesimp>不! 老子想去哪就去哪!</Chinesesimp>
+            </Key>
+        </Container>
+        <Container name="Tags: Sentences">
+            <Key ID="STR_BTC_HAM_TAG_GO">
+                <Original>GET OUT</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_TAG_LN">
+                <Original>LEAVE NOW</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_TAG_WWKY">
+                <Original>WE WILL KILL YOU</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_TAG_BA">
+                <Original>BE AFRAID</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_TAG_GH">
+                <Original>GO HOME</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_TAG_IE">
+                <Original>IED EVERYWHERE</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_TAG_DWY">
+                <Original>DRONE WATCHING YOU</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_TAG_WHY">
+                <Original>WE HATE YOU</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_TAG_YGD">
+                <Original>YOU GONNA DIE</Original>
             </Key>
         </Container>
     </Package>

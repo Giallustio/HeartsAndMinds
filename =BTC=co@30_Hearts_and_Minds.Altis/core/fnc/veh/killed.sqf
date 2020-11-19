@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_eh_veh_killed
+Function: btc_fnc_veh_killed
 
 Description:
     Create marker wreck and change reputation on vehicle destruction.
@@ -15,7 +15,7 @@ Returns:
 
 Examples:
     (begin example)
-        [btc_veh_12] call btc_fnc_eh_veh_killed;
+        [btc_veh_12] call btc_fnc_veh_killed;
     (end)
 
 Author:
