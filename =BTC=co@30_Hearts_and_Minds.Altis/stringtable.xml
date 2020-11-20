@@ -2032,13 +2032,36 @@
                 <Chinesesimp>在创建新的物件前, 该区域必须清空!</Chinesesimp>
             </Key>
         </Container>
-        <Container name="Logistic: Hook ">
-            <Key ID="STR_BTC_HAM_LOG_HOOK_HINFO">
-                <Original>Interact with a vehicle to tow it!&lt;br/&gt;(This vehicle can't tow %1)</Original>
-                <Spanish>Interactúe con un vehículo para remolcarlo!&lt;br/&gt;(Este vehículo no puede remolcar %1)</Spanish>
-                <German>Interagieren Sie mit dem Zug-Fahrzeug, um es abzuschleppen!&lt;br/&gt;(Folgende Fahrzeuge können nicht gezogen werden: %1)</German>
-                <Portuguese>Interaja com o veículo para rebocá-lo!&lt;br/&gt;(Este veículo não pode rebocar %1)</Portuguese>
-                <Chinesesimp>与牵引车(前车)互动以牵引它!&lt;br/&gt;(当前载具(后车)无法牵引如下类型的载具: %1)</Chinesesimp>
+        <Container name="Tow">
+            <Key ID="STR_BTC_HAM_TOW_CANT">
+                <Original>Can't tow!&lt;br/&gt;(This vehicle can't tow %1)</Original>
+                <Spanish>Can't tow!&lt;br/&gt;(Este vehículo no puede remolcar %1)</Spanish>
+                <German>Can't tow!&lt;br/&gt;(Folgende Fahrzeuge können nicht gezogen werden: %1)</German>
+                <Portuguese>Can't tow!&lt;br/&gt;(Este veículo não pode rebocar %1)</Portuguese>
+                <Chinesesimp>Can't tow!&lt;br/&gt;(当前载具(后车)无法牵引如下类型的载具: %1)</Chinesesimp>
+            </Key>
+            <Key ID="STR_BTC_HAM_TOW_HOOK">
+                <Original>Interact with a vehicle to tow it!</Original>
+                <Spanish>Interactúe con un vehículo para remolcarlo!</Spanish>
+                <German>Interagieren Sie mit dem Zug-Fahrzeug, um es abzuschleppen!</German>
+                <Portuguese>Interaja com o veículo para rebocá-lo!</Portuguese>
+                <Chinesesimp>与牵引车(前车)互动以牵引它!</Chinesesimp>
+            </Key>
+            <Key ID="STR_BTC_HAM_TOW_TFAR">
+                <Original>Too far!</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_TOW_ALREADYTOWED">
+                <Original>This vehicle is already attached to another!</Original>
+                <Spanish>Este vehículo ya está unido a otro!</Spanish>
+                <German>Dieses Fahrzeug zieht bereits ein anderes Fahrzeug!</German>
+                <Portuguese>Este veículo já está atracado a outro!</Portuguese>
+                <Chinesesimp>这辆载具已经连接一辆载具了!</Chinesesimp>
+            </Key>
+            <Key ID="STR_BTC_HAM_TOW_WAIT">
+                <Original>Towing in progress, please wait...</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_TOW_DONE">
+                <Original>Towing done</Original>
             </Key>
         </Container>
         <Container name="Logistic: Lift deploy ropes ">
@@ -2119,24 +2142,6 @@
                 <Original>Can't delete object not created by Logistic Point</Original>
                 <German>Objekt konnte nicht gelöscht werden, da es nicht am Logisik-Punkt erstellt worden ist</German>
                 <Chinesesimp>只能删除由后勤点创建的物件</Chinesesimp>
-            </Key>
-        </Container>
-        <Container name="Logistic: Tow ">
-            <Key ID="STR_BTC_HAM_LOG_TOW_ALREADYTOWED">
-                <Original>This vehicle is already attached to another!</Original>
-                <Spanish>Este vehículo ya está unido a otro!</Spanish>
-                <German>Dieses Fahrzeug zieht bereits ein anderes Fahrzeug!</German>
-                <Portuguese>Este veículo já está atracado a outro!</Portuguese>
-                <Chinesesimp>这辆载具已经连接一辆载具了!</Chinesesimp>
-            </Key>
-        </Container>
-        <Container name="Logistic: Unhook ">
-            <Key ID="STR_BTC_HAM_LOG_UNHOOK_NOROPE">
-                <Original>This vehicle is not attached to another!</Original>
-                <Spanish>Este vehículo no está unido a otro!</Spanish>
-                <German>Das Fahrzeug schleppt kein anderes Fahrzeug ab!</German>
-                <Portuguese>Este veículo não está atracado a outro!</Portuguese>
-                <Chinesesimp>该载具没有连接其他载具!</Chinesesimp>
             </Key>
         </Container>
     </Package>
