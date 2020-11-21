@@ -50,7 +50,7 @@ _marker setMarkerShape "ICON";
 (_fobs select 0) pushBack _marker;
 (_fobs select 1) pushBack _structure;
 (_fobs select 2) pushBack _flag;
-_flag setVariable ["BIS_fnc_IDRespawnPosition", ([btc_player_side, _flag, _FOB_name] call BIS_fnc_addRespawnPosition) select 1];
+[_flag, "Deleted", {[_thisArgs select 0, _thisArgs select 1] call BIS_fnc_removeRespawnPosition}, [btc_player_side, _flag, _FOB_name] call BIS_fnc_addRespawnPosition] call CBA_fnc_addBISEventHandler;
 
 _structure addEventHandler ["Killed", btc_fnc_fob_killed];
 

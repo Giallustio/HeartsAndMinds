@@ -66,7 +66,7 @@ At the logistic point you can require new objects (like ammo, fortifications, su
 - Use ACE 3 Cargo system.
 
 ### Towing system:
-To tow a vehicle interact with it and select the option 'HOOK'.After that place the tow vehicle in front of it and select 'TOW' in the interaction menu.
+To tow a vehicle interact with it and select the option 'HOOK'. After that place the tow vehicle in front of it and select 'TOW' in the interaction menu.
 If the two vehicles are too far away or the vehicle can't tow that load (Car can't tow truck or tank), the option will be disabled.
 To unhook interact with one of the two vehicles and select the option 'UNHOOK'.
 
@@ -116,7 +116,7 @@ When you destroy an hideout or an ammo cache, all the markers related to it will
 ### System:
 At the beginning you have a very low reputation level, so civilians won't help you in revealing important information about the Oplitas, they will likely lie instead. Reputation can be ask to civilian.
 ### Good actions:
-Helping the local population by fighting the Oplitas, disarming IED's, heal civilians, succed side mission and destroy cache/hideout will rise your reputation.
+Helping the local population by fighting the Oplitas, disarming IED's, heal civilians, remove tag with spraypaint red, succed side mission and destroy cache/hideout will rise your reputation.
 ### Bad actions:
 Bad actions cause bad effects: killing civilians/animals, mutilating alive/dead civilians/animals, firing near civilians for no reason, firing to civilian car, damaging/destroying buildings, losing player's vehicles and player respawns will decrease your reputation. Aborting a side mission does not affect reputation.
 

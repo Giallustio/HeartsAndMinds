@@ -41,8 +41,3 @@ if (isPlayer _instigator) then {
         [format ["GREP %1 THIS = %2", btc_global_reputation, _this], __FILE__, [false]] call btc_fnc_debug_message;
     };
 };
-
-private _vehicle = assignedVehicle _unit;
-if !(_vehicle isEqualTo objNull) then {
-    [[], [_vehicle]] call btc_fnc_delete;
-};

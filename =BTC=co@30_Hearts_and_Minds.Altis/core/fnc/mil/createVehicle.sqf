@@ -13,7 +13,7 @@ Parameters:
     _type_units - Array of available unit type for cargo. [Array]
     _type_divers - Units used for submarine. [Array]
     _type_crewmen - Array of available crews type. [Array]
-    _p_chem - Allow chemical propagation. [Boolean]
+    _surfaceNormal - Surface normal. [Array]
 
 Returns:
     _delay_vehicle - Delay for unit creation. [Number]
@@ -38,10 +38,10 @@ params [
     ["_pos", [0, 0, 0], [[]]],
     ["_veh_type", selectRandom btc_type_motorized, [""]],
     ["_dir", 0, [0]],
+    ["_surfaceNormal", [], [[]]],
     ["_type_units", btc_type_units, [[]]],
     ["_type_divers", btc_type_divers, [[]]],
-    ["_type_crewmen", btc_type_crewmen, [[]]],
-    ["_p_chem", btc_p_chem, [false]]
+    ["_type_crewmen", btc_type_crewmen, [[]]]
 ];
 
 private _needdiver = getText (configFile >> "CfgVehicles" >> _veh_type >> "simulation") isEqualTo "submarinex";
@@ -57,4 +57,4 @@ for "_i" from _crewSeats to (_totalSeats - 1) do {
     _units_type pushBack selectRandom _type_units;
 };
 
-[_group, _veh_type, _units_type, _pos, _dir] call btc_fnc_delay_createVehicle
+[_group, _veh_type, _units_type, _pos, _dir, 1, _surfaceNormal] call btc_fnc_delay_createVehicle

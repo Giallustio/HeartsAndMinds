@@ -35,18 +35,9 @@ private _serverCommand = if (_p_autoRestart in [1, 3]) then {
 };
 
 if (_p_autoRestart > 2) then {
-    if !(btc_db_is_saving) then {
-        btc_db_is_saving = true;
-        [] spawn btc_fnc_db_save;
-    };
-    [{!btc_db_is_saving}, {
-        params ["_serverCommandPassword", "_serverCommand"];
-        if !(_serverCommandPassword serverCommand _serverCommand) then {
-            ["Invalid password", __FILE__, [true, true, true]] call btc_fnc_debug_message;
-        };
-    }, [_serverCommandPassword, _serverCommand]] call CBA_fnc_waitUntilAndExecute;
-} else {
-    if !(_serverCommandPassword serverCommand _serverCommand) then {
-        ["Invalid password", __FILE__, [true, true, true]] call btc_fnc_debug_message;
-    };
+    [] call btc_fnc_db_save;
+};
+
+if !(_serverCommandPassword serverCommand _serverCommand) then {
+    ["Invalid password", __FILE__, [true, true, true]] call btc_fnc_debug_message;
 };

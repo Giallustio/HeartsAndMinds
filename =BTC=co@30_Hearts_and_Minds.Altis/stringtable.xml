@@ -181,7 +181,7 @@
                 <Chinesesimp>声誉</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_DOC_REPUTATION_TEXT">
-                <Original>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;System:&lt;/marker&gt;&lt;br/&gt; At the beginning you have a very low reputation level, so civilians won't help you in revealing important information about the Oplitas, they will likely lie instead. Reputation can be ask to civilian. &lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\Data_F_Orange\Logos\arma3_orange_picture_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Good actions:&lt;/marker&gt;&lt;br/&gt; Helping the local population by fighting the Oplitas, disarming IED's, heal civilians, succed side mission and destroy cache/hideout will rise your reputation. &lt;br/&gt;&lt;br/&gt; &lt;img image='\a3\missions_f_orange\Data\Img\AAN\aan_3_4_co.paa' width='355' height='200' /&gt; &lt;br/&gt;&lt;br/&gt; &lt;img image='\a3\Ui_f\data\GUI\Cfg\Debriefing\endDefault_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Bad actions:&lt;/marker&gt;&lt;br/&gt; Bad actions cause bad effects: killing civilians/animals, mutilating alive/dead civilians/animals, firing near civilians for no reason, firing to civilian car, damaging/destroying buildings, losing player's vehicles and player respawns will decrease your reputation. Aborting a side mission does not affect reputation. &lt;br/&gt;&lt;br/&gt; &lt;img image='\a3\missions_f_orange\Data\Img\AAN\aan_3_3_co.paa' width='355' height='200'/&gt; &lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\Data_F_Orange\Logos\arma3_orange_artwork.jpg' width='362' height='512' /&gt; &lt;br/&gt;&lt;br/&gt;</Original>
+                <Original>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;System:&lt;/marker&gt;&lt;br/&gt; At the beginning you have a very low reputation level, so civilians won't help you in revealing important information about the Oplitas, they will likely lie instead. Reputation can be ask to civilian. &lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\Data_F_Orange\Logos\arma3_orange_picture_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Good actions:&lt;/marker&gt;&lt;br/&gt; Helping the local population by fighting the Oplitas, disarming IED's, heal civilians, remove tag with spraypaint red, succed side mission and destroy cache/hideout will rise your reputation. &lt;br/&gt;&lt;br/&gt; &lt;img image='\a3\missions_f_orange\Data\Img\AAN\aan_3_4_co.paa' width='355' height='200' /&gt; &lt;br/&gt;&lt;br/&gt; &lt;img image='\a3\Ui_f\data\GUI\Cfg\Debriefing\endDefault_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Bad actions:&lt;/marker&gt;&lt;br/&gt; Bad actions cause bad effects: killing civilians/animals, mutilating alive/dead civilians/animals, firing near civilians for no reason, firing to civilian car, damaging/destroying buildings, losing player's vehicles and player respawns will decrease your reputation. Aborting a side mission does not affect reputation. &lt;br/&gt;&lt;br/&gt; &lt;img image='\a3\missions_f_orange\Data\Img\AAN\aan_3_3_co.paa' width='355' height='200'/&gt; &lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\Data_F_Orange\Logos\arma3_orange_artwork.jpg' width='362' height='512' /&gt; &lt;br/&gt;&lt;br/&gt;</Original>
                 <Spanish>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\talk_ca.paa' width='20' height='20'/&gt; La reputación se puede solicitar a los civiles&lt;br/&gt; Las malas acciones causan malos efectos sobre la reputacion.&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='20' height='20'/&gt; Ayudar a la población local luchando contra los Oplitas y desarmando los artefactos explosivos improvisados aumentará tu reputación; matar civiles, mutilar civiles vivos/muertos, disparar cerca de civiles sin razón alguna, disparar a vehículos civiles, dañar/destruir edificios, perder vehículos, respawns de jugadores disminuirá tu reputación. Al principio tienes un nivel de reputación muy bajo, por lo que los civiles no te ayudarán a revelar información importante sobre los Oplitas, es probable que mientan en su lugar.&lt;br/&gt; Abortar una misión secundaria no afecta a la reputación.</Spanish>
                 <German>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\talk_ca.paa' width='20' height='20'/&gt; Ihr Ansehen bei der Bevölkerung können Sie bei Zivilisten erfragen &lt;br/&gt; Schlechte bzw. böse Handlungen habe zur Folge das ihr Ansehen sinkt. &lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='20' height='20'/&gt; Das Unterstützen der lokalen Bevölkerung, das Entschärfen von IEDs und der aktive Kampf gegen die Oplitas wird sich positiv auf ihr Ansehen auswirken. Negative Aktionen wie zb. das Töten oder verstümmeln von Zivlisten, das grundlose Abfeueren einer Waffe in der Nähe von Zivilisten, das Zerstören oder Beschädigen von Gebäuden, der Angriff auf zivile Fahrzeuge, der Verlust von Fahrzeugen im Allgemeinen oder das Respawnen haben hingegen einen nicht so guten Effekt. Zu Beginn ist Ihr Ansehen nur recht gering, weshalb es sein kann das Zivlisten eher zruückhaltend mit Informationen sind. In manchen Fällen werden die Zivilisten Sie auch einfach belügen.&lt;br/&gt; Das Abbrechen von Nebenaufgaben hat keine Auswirkung auf Ihr Ansehen.</German>
                 <Portuguese>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\talk_ca.paa' width='20' height='20'/&gt; A Reputação entre a população é obtida por meio dos civis &lt;br/&gt; Ações ruins ou más fazem a reputação diminuir. &lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='20' height='20'/&gt; Ajudar a população local combatendo os inimigos e desarmando os IED's aumentará sua reputação. Matar civis, mutilar civis vivos/mortos, atirar perto de civis sem motivo, atirar nos veículos civis, danificar/destruir prédios, perder veículos civis, respawns de jogadores diminuirão a reputação. No começo, o nível de reputação é muito baixo, então, os civis não irão ajudá-lo a revelar informações importantes sobre os inimigos ou provavelmente irão mentir.&lt;br/&gt; Cancelar tarefas secundárias não afeta a reputação.</Portuguese>
@@ -333,6 +333,9 @@
                 <German>Feinddichte:</German>
                 <Chinesesimp>敌军密度:</Chinesesimp>
                 <Portuguese>Densidade inimiga:</Portuguese>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_SPWAN_ENEMY_STATIC_DENSITY">
+                <Original>Enemy static density:</Original>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_SPWAN_CIVILIAN_DENSITY">
                 <Original>Civilian density:</Original>
@@ -488,6 +491,9 @@
             <Key ID="STR_BTC_HAM_RESP_FOBRALLYHELIVEHI">
                 <Original>FOB, Rallypoint, Transport helicopter and Transport vehicle</Original>
                 <Chinesesimp>FOB、集合点、运输直升机和运输车辆</Chinesesimp>
+            </Key>
+            <Key ID="STR_BTC_HAM_RESP_FOBRALLYHELIVEHILEADER">
+                <Original>FOB, Rallypoint, Transport helicopter, Transport vehicle and Leader</Original>
             </Key>
             <Key ID="STR_BTC_HAM_RESP_RALLYTIMER">
                 <Original>Time before rallypoint self-destruction:</Original>
@@ -1690,6 +1696,35 @@
                 <Chinesesimp>不! 老子想去哪就去哪!</Chinesesimp>
             </Key>
         </Container>
+        <Container name="Tags: Sentences">
+            <Key ID="STR_BTC_HAM_TAG_GO">
+                <Original>GET OUT</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_TAG_LN">
+                <Original>LEAVE NOW</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_TAG_WWKY">
+                <Original>WE WILL KILL YOU</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_TAG_BA">
+                <Original>BE AFRAID</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_TAG_GH">
+                <Original>GO HOME</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_TAG_IE">
+                <Original>IED EVERYWHERE</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_TAG_DWY">
+                <Original>DRONE WATCHING YOU</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_TAG_WHY">
+                <Original>WE HATE YOU</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_TAG_YGD">
+                <Original>YOU GONNA DIE</Original>
+            </Key>
+        </Container>
     </Package>
     <Package name="Other">
         <Container name="Other: FOB Actions">
@@ -1997,13 +2032,36 @@
                 <Chinesesimp>在创建新的物件前, 该区域必须清空!</Chinesesimp>
             </Key>
         </Container>
-        <Container name="Logistic: Hook ">
-            <Key ID="STR_BTC_HAM_LOG_HOOK_HINFO">
-                <Original>Interact with a vehicle to tow it!&lt;br/&gt;(This vehicle can't tow %1)</Original>
-                <Spanish>Interactúe con un vehículo para remolcarlo!&lt;br/&gt;(Este vehículo no puede remolcar %1)</Spanish>
-                <German>Interagieren Sie mit dem Zug-Fahrzeug, um es abzuschleppen!&lt;br/&gt;(Folgende Fahrzeuge können nicht gezogen werden: %1)</German>
-                <Portuguese>Interaja com o veículo para rebocá-lo!&lt;br/&gt;(Este veículo não pode rebocar %1)</Portuguese>
-                <Chinesesimp>与牵引车(前车)互动以牵引它!&lt;br/&gt;(当前载具(后车)无法牵引如下类型的载具: %1)</Chinesesimp>
+        <Container name="Tow">
+            <Key ID="STR_BTC_HAM_TOW_CANT">
+                <Original>Can't tow!&lt;br/&gt;(This vehicle can't tow %1)</Original>
+                <Spanish>Can't tow!&lt;br/&gt;(Este vehículo no puede remolcar %1)</Spanish>
+                <German>Can't tow!&lt;br/&gt;(Folgende Fahrzeuge können nicht gezogen werden: %1)</German>
+                <Portuguese>Can't tow!&lt;br/&gt;(Este veículo não pode rebocar %1)</Portuguese>
+                <Chinesesimp>Can't tow!&lt;br/&gt;(当前载具(后车)无法牵引如下类型的载具: %1)</Chinesesimp>
+            </Key>
+            <Key ID="STR_BTC_HAM_TOW_HOOK">
+                <Original>Interact with a vehicle to tow it!</Original>
+                <Spanish>Interactúe con un vehículo para remolcarlo!</Spanish>
+                <German>Interagieren Sie mit dem Zug-Fahrzeug, um es abzuschleppen!</German>
+                <Portuguese>Interaja com o veículo para rebocá-lo!</Portuguese>
+                <Chinesesimp>与牵引车(前车)互动以牵引它!</Chinesesimp>
+            </Key>
+            <Key ID="STR_BTC_HAM_TOW_TFAR">
+                <Original>Too far!</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_TOW_ALREADYTOWED">
+                <Original>This vehicle is already attached to another!</Original>
+                <Spanish>Este vehículo ya está unido a otro!</Spanish>
+                <German>Dieses Fahrzeug zieht bereits ein anderes Fahrzeug!</German>
+                <Portuguese>Este veículo já está atracado a outro!</Portuguese>
+                <Chinesesimp>这辆载具已经连接一辆载具了!</Chinesesimp>
+            </Key>
+            <Key ID="STR_BTC_HAM_TOW_WAIT">
+                <Original>Towing in progress, please wait...</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_TOW_DONE">
+                <Original>Towing done</Original>
             </Key>
         </Container>
         <Container name="Logistic: Lift deploy ropes ">
@@ -2084,24 +2142,6 @@
                 <Original>Can't delete object not created by Logistic Point</Original>
                 <German>Objekt konnte nicht gelöscht werden, da es nicht am Logisik-Punkt erstellt worden ist</German>
                 <Chinesesimp>只能删除由后勤点创建的物件</Chinesesimp>
-            </Key>
-        </Container>
-        <Container name="Logistic: Tow ">
-            <Key ID="STR_BTC_HAM_LOG_TOW_ALREADYTOWED">
-                <Original>This vehicle is already attached to another!</Original>
-                <Spanish>Este vehículo ya está unido a otro!</Spanish>
-                <German>Dieses Fahrzeug zieht bereits ein anderes Fahrzeug!</German>
-                <Portuguese>Este veículo já está atracado a outro!</Portuguese>
-                <Chinesesimp>这辆载具已经连接一辆载具了!</Chinesesimp>
-            </Key>
-        </Container>
-        <Container name="Logistic: Unhook ">
-            <Key ID="STR_BTC_HAM_LOG_UNHOOK_NOROPE">
-                <Original>This vehicle is not attached to another!</Original>
-                <Spanish>Este vehículo no está unido a otro!</Spanish>
-                <German>Das Fahrzeug schleppt kein anderes Fahrzeug ab!</German>
-                <Portuguese>Este veículo não está atracado a outro!</Portuguese>
-                <Chinesesimp>该载具没有连接其他载具!</Chinesesimp>
             </Key>
         </Container>
     </Package>
