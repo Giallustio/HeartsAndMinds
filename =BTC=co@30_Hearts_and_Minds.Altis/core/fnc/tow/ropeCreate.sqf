@@ -29,6 +29,17 @@ params [
 if !([_tower, _vehicleSelected] call btc_fnc_tow_check) exitWith {};
 if (_tower setVehicleCargo _vehicleSelected) exitWith {};
 
+private _canViV_wreck = false;
+if ((getVehicleCargo _tower) findIf {isObjectHidden _x} isEqualTo -1) then {
+    private _fakeVehicle = "Land_WaterTank_F" createVehicleLocal [0, 0, 0];
+    _canViV_wreck = _tower canVehicleCargo _fakeVehicle isEqualTo [true, true];
+    deleteVehicle _fakeVehicle;
+};
+if (_canViV_wreck) exitWith {
+    [_vehicleSelected, _tower] remoteExecCall ["btc_fnc_tow_ViV", 2];
+    btc_tow_vehicleSelected = objNull;
+};
+
 (localize "STR_BTC_HAM_TOW_WAIT") call CBA_fnc_notify;
 
 (_vehicleSelected call BIS_fnc_getPitchBank) params ["_pitch", "_bank"];

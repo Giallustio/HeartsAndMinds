@@ -130,6 +130,12 @@ profileNamespace setVariable [format ["btc_hm_%1_fobs", _name], +_fobs];
 
 //Vehicles status
 private _array_veh = [];
+private _vehicles = btc_vehicles - [objNull];
+private _vehiclesNotInCargo = _vehicles select {
+    isNull isVehicleCargo _x &&
+    {isNull isVehicleCargo attachedTo _x}
+};
+private _vehiclesInCargo = _vehicles - _vehiclesNotInCargo;
 {
     private _data = [];
     _data pushBack (typeOf _x);
@@ -151,11 +157,28 @@ private _array_veh = [];
     _data append ([_x] call btc_fnc_getVehProperties);
     _data pushBack (_x getVariable ["btc_EDENinventory", []]);
     _data pushBack ([vectorDir _x, vectorUp _x]);
-    _array_veh pushBack _data;
+    _data pushBack []; // ViV
+
+    private _fakeViV = isVehicleCargo attachedTo _x;
+    if (
+        isNull _fakeViV &&
+        {isNull isVehicleCargo _x}
+    ) then {
+         _array_veh pushBack _data;
+    } else {
+        private _vehicleCargo = if (isNull _fakeViV) then {
+            isVehicleCargo _x
+        } else {
+            _fakeViV
+        };
+        private _index = _vehiclesNotInCargo find _vehicleCargo;
+        ((_array_veh select _index) select 16) pushBack _data;
+    };
+
     if (btc_debug_log) then {
         [format ["VEH %1 DATA %2", _x, _data], __FILE__, [false]] call btc_fnc_debug_message;
     };
-} forEach (btc_vehicles - [objNull]);
+} forEach (_vehiclesNotInCargo + _vehiclesInCargo);
 profileNamespace setVariable [format ["btc_hm_%1_vehs", _name], +_array_veh];
 
 //Objects status

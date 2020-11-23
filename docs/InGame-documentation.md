@@ -3,8 +3,7 @@
 ## Headless & Database
 This mission automatically uses one Headless client when available.
 
-This mission has a database system. Enemy units, towns, hideouts, cache, objects created or static weapons assembled by players or Zeus, vehicles, tag, players markers (not lines) on global channel are saved. All admin can save mission progress at any time with his self interaction key.
-
+This mission has a database system. Enemy units, towns, hideouts, cache, objects created or static weapons assembled by players or Zeus, vehicles, vehicle in vehicle, tag, players markers (not lines) on global channel are saved. All admin can save mission progress at any time with his self interaction key.
 
 ## Chemical Warfare
 ### Chemical agent:
@@ -28,7 +27,7 @@ You can detect the origin of electromagnetic field with spectrum devices. The am
 
 ## Vehicles
 ### Respawn:
-When a vehicle is destroyed it will not respawn in base, you need to tow or lift it back to base and repair it near the logistic point (Interact with the red box). Helicopter wrecks can only be lifted. The Chinook is the only exception, it will respawn after 30 seconds.
+When a vehicle is destroyed it will not respawn in base, you need to tow, use vehicle in vehicle or lift it back to base and repair it near the logistic point (Interact with the red box). Helicopter wrecks can only be lifted. The Chinook is the only exception, it will respawn after 30 seconds.
 ### Rearm:
 You can also rearm them by spawning the corresponding caliber at logistic point (Interact with the red box, select the vehicle type and caliber). Carry the ammo created and interact with the vehicle to rearm. This only works if rearming is setting on entire magazine or amount based on caliber (not for entire vehicle setting).
 
@@ -69,6 +68,9 @@ At the logistic point you can require new objects (like ammo, fortifications, su
 To tow a vehicle interact with it and select the option 'HOOK'. After that place the tow vehicle in front of it and select 'TOW' in the interaction menu.
 If the two vehicles are too far away or the vehicle can't tow that load (Car can't tow truck or tank), the option will be disabled.
 To unhook interact with one of the two vehicles and select the option 'UNHOOK'.
+
+### Vehicle in vehicle system:
+BI Vehicle in Vehicle (ViV) system is extended to allow load of any vehicle in a vehicle. To move ViV use the towing system. To unload, move in driver seat of the tower vehicle and select in scroll menu "unload all objects".
 
 ### Place option:
 With this option you can move heavy objects to build small outpost or base.

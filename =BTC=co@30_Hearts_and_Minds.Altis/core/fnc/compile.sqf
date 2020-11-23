@@ -188,6 +188,7 @@ if (isServer) then {
 
     //TOW
     btc_fnc_tow_ropeBreak = compile preprocessFileLineNumbers "core\fnc\tow\ropeBreak.sqf";
+    btc_fnc_tow_ViV = compile preprocessFileLineNumbers "core\fnc\tow\ViV.sqf";
 
     //VEH
     btc_fnc_veh_addRespawn = compile preprocessFileLineNumbers "core\fnc\veh\addRespawn.sqf";

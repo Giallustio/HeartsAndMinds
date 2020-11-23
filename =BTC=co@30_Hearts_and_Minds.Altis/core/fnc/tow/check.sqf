@@ -63,7 +63,10 @@ if (_distanceTowed < _offset + 3 || _safeDistance isEqualTo [false, true]) exitW
 };
 
 if (
-    !(isNull (isVehicleCargo _towed)) ||
+    !(isNull isVehicleCargo attachedto _tower) ||
+    !(isNull isVehicleCargo attachedto _towed) ||
+    !(isNull isVehicleCargo _tower) ||
+    !(isNull isVehicleCargo _towed) ||
     !isNull (_tower getVariable ["btc_towing", objNull])
 ) exitWith {
     (localize "STR_BTC_HAM_TOW_ALREADYTOWED") call CBA_fnc_notify;
