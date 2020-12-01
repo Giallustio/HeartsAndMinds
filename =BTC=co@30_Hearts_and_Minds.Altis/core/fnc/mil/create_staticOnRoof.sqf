@@ -28,25 +28,23 @@ params [
 
 private _housesTypes = [_houses] call btc_fnc_typeOf;
 
-private _j = 1;
-for "_i" from 1 to _n do {
-    if (_houses isEqualTo []) exitWith {};
-
+private _i = 1;
+while {
+    _i <= _n &&
+    {!(_houses isEqualTo [])}
+} do {
     private _house = _houses deleteAt 0;
     private _houseType = _housesTypes deleteAt 0;
     if (
         !(_houseType isKindOf "Ruins") &&
-        {!(_houseType isKindOf "Church")}
+        {!(_houseType isKindOf "Church")} &&
+        {!("Chapel" in _houseType)}
     ) then {
         ([_house] call btc_fnc_roof) params ["_spawnPos", "_surfaceNormal"];
 
         if (acos (_surfaceNormal vectorCos [0, 0, 1]) < 30) then {
             [ASLToATL _spawnPos, btc_type_mg + btc_type_gl, (_house getDir _spawnPos) + (random [-15, 0, 15]), _surfaceNormal] call btc_fnc_mil_create_static;
-            _j = _i;
-        } else {
-            _i = _j;
+            _i = _i + 1;
         };
-    } else {
-        _i = _j;
     };
 };
