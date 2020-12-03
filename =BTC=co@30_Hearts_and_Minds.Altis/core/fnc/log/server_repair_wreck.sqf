@@ -43,7 +43,14 @@ if (_marker != "") then {
     deleteMarker _marker;
     remoteExecCall ["", _marker];
 };
-deleteVehicle _veh;
+
+if !((getVehicleCargo _veh) isEqualTo []) then {
+    _veh setVehicleCargo objNull;
+};
+
+[{
+    deleteVehicle _this;
+}, _veh] call CBA_fnc_execNextFrame;
 
 [{
     _this call btc_fnc_log_createVehicle;

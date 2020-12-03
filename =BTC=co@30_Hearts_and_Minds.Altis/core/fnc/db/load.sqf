@@ -132,8 +132,8 @@ private _objs = +(profileNamespace getVariable [format ["btc_hm_%1_objs", _name]
 //VEHICLES
 private _vehs = +(profileNamespace getVariable [format ["btc_hm_%1_vehs", _name], []]);
 [{ // Can't be executed just after because we can't delete and spawn vehicle during the same frame.
-    {
-        _x params [
+    private _loadVehicle = {
+        params [
             "_veh_type",
             "_veh_pos",
             "_veh_dir",
@@ -149,7 +149,8 @@ private _vehs = +(profileNamespace getVariable [format ["btc_hm_%1_vehs", _name]
             ["_isContaminated", false, [false]],
             ["_supplyVehicle", [], [[]]],
             ["_EDENinventory", [], [[]]],
-            ["_vectorPos", [], [[]]]
+            ["_vectorPos", [], [[]]],
+            ["_ViV", [], [[]]]
         ];
 
         if (btc_debug_log) then {
@@ -165,6 +166,23 @@ private _vehs = +(profileNamespace getVariable [format ["btc_hm_%1_vehs", _name]
         if !(alive _veh) then {
             [_veh, objNull, objNull, false] call btc_fnc_veh_killed;
         };
+        if !(_ViV isEqualTo []) then {
+            {
+                private _vehToLoad = _x call _loadVehicle;
+                if !([_vehToLoad, _veh] call btc_fnc_tow_ViV) then {
+                    _vehToLoad setVehiclePosition [_veh, [], 100, "NONE"];
+                    private _marker = _vehToLoad getVariable ["marker", ""];
+                    if !(_marker isEqualTo "") then {
+                        _marker setMarkerPos _vehToLoad;
+                    };
+                };
+            } forEach _ViV;
+        };
+
+        _veh
+    };
+    {
+        _x call _loadVehicle;
     } forEach _this;
 }, _vehs] call CBA_fnc_execNextFrame;
 
