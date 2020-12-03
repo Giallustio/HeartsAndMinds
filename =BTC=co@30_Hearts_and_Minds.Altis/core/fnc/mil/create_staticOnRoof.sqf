@@ -26,15 +26,13 @@ params [
     ["_n", 0, [0]]
 ];
 
-private _housesTypes = [_houses] call btc_fnc_typeOf;
-
 private _i = 1;
 while {
     _i <= _n &&
     {!(_houses isEqualTo [])}
 } do {
     private _house = _houses deleteAt 0;
-    private _houseType = _housesTypes deleteAt 0;
+    private _houseType = typeOf _house;
     if (
         !(_houseType isKindOf "Ruins") &&
         {!(_houseType isKindOf "Church")} &&
