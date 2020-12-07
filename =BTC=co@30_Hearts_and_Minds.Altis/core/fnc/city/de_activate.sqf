@@ -85,15 +85,17 @@ if !(_city getVariable ["active", false]) exitWith {};
 
     private _data_tags = [];
     {
-        private _pos = getPos _x;
-        _pos set [2, 0];
-        _data_tags pushBack [
-            _pos,
-            [vectorDir _x, vectorUp _x],
-            _x getVariable "btc_texture",
-            typeOf _x
-        ];
-        _x call CBA_fnc_deleteEntity;
+        if (_x getVariable ["btc_city", _city] isEqualTo _city) then {
+            private _pos = getPos _x;
+            _pos set [2, 0];
+            _data_tags pushBack [
+                _pos,
+                [vectorDir _x, vectorUp _x],
+                _x getVariable "btc_texture",
+                typeOf _x
+            ];
+            _x call CBA_fnc_deleteEntity;
+        };
     } forEach (btc_tags_server inAreaArray [_pos_city, _radius, _radius]);
     btc_tags_server = btc_tags_server - [objNull];
 
