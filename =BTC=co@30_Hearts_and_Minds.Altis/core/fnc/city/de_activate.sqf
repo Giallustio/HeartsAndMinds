@@ -58,7 +58,8 @@ if !(_city getVariable ["active", false]) exitWith {};
         if (
             (leader _x) inArea [_pos_city, _radius, _radius, 0, false] &&
             {side _x != btc_player_side} &&
-            {!(_x getVariable ["no_cache", false])}
+            {!(_x getVariable ["no_cache", false])} &&
+            {_x getVariable ["btc_city", _city] in [_city, objNull]}
         ) then {
             private _data_group = _x call btc_fnc_data_get_group;
             _data_units pushBack _data_group;
@@ -73,7 +74,8 @@ if !(_city getVariable ["active", false]) exitWith {};
         if (
             _agent inArea [_pos_city, _radius, _radius, 0, false] &&
             {alive _agent} &&
-            {!(_x getVariable ["no_cache", false])}
+            {!(_x getVariable ["no_cache", false])} &&
+            {_x getVariable ["btc_city", _city] in [_city, objNull]}
         ) then {
             _data_animals pushBack [
                 typeOf _agent,

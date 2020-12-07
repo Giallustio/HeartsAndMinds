@@ -52,7 +52,9 @@ private _wp = if (vehicle leader _group isEqualTo leader _group) then {
 
 [_group, _city, 200, _wp] call btc_fnc_mil_addWP;
 
-if !(_city getVariable ["active", false]) then {
+if (_city getVariable ["active", false]) then {
+    _group setVariable ["btc_city", _city];
+} else {
     private _data_units = _city getVariable ["data_units", []];
     private _data_group = _group call btc_fnc_data_get_group;
 
