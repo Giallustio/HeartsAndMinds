@@ -48,8 +48,8 @@ if (btc_debug) then {
 };
 
 _city setVariable ["activating", true];
+_city setVariable ["active", true];
 
-private _is_init = _city getVariable ["initialized", false];
 private _data_units = _city getVariable ["data_units", []];
 private _data_animals = _city getVariable ["data_animals", []];
 private _type = _city getVariable ["type", ""];
@@ -59,7 +59,7 @@ private _has_ho = _city getVariable ["has_ho", false];
 private _ieds = _city getVariable ["ieds", []];
 private _spawningRadius = _radius/2;
 
-if (!_is_init) then {
+if (!(_city getVariable ["initialized", false])) then {
     private _ratio = (switch _type do {
         case "Hill" : {random 1};
         case "NameLocal" : {random 2.5};
@@ -85,17 +85,13 @@ if (!_is_init) then {
     };
 
     _ratio_ied = _ratio_ied * btc_p_ied;
-    if (_ratio_ied > 0) then {[_city, _spawningRadius, (_ratio_ied / 2) + (random _ratio_ied)] call btc_fnc_ied_init_area};
+    if (_ratio_ied > 0) then {
+        [[_city, _spawningRadius, (_ratio_ied / 2) + (random _ratio_ied)], btc_fnc_ied_initArea] call btc_fnc_delay_exec;
+    };
 
-    _ieds = _city getVariable ["ieds", []];
     _city setVariable ["initialized", true];
 };
-
-_city setVariable ["active", true];
-
-if !(_ieds isEqualTo []) then {
-    [[_city, _ieds], btc_fnc_ied_check] call btc_fnc_delay_exec;
-};
+[_city, btc_fnc_ied_check] call btc_fnc_delay_exec;
 
 private _delay = 0;
 if !(_data_units isEqualTo []) then {
@@ -242,7 +238,29 @@ if !(_city getVariable ["has_suicider", false]) then {
     };
 };
 
-[[_city, _spawningRadius, _type, _has_en, _has_ho], btc_fnc_tag_initArea] call btc_fnc_delay_exec;
+if (_city getVariable ["data_tags", []] isEqualTo []) then {
+    private _tag_number = (switch _type do {
+        case "Hill" : {random 1};
+        case "NameLocal" : {random 2.5};
+        case "NameVillage" : {random 3.5};
+        case "NameCity" : {random 5};
+        case "NameCityCapital" : {random 6};
+        case "Airport" : {random 6};
+        case "NameMarine" : {0};
+    });
+
+    if (_has_en) then {
+        _tag_number = _tag_number * 1.5;
+    };
+    if (_has_ho) then {
+        _tag_number = _tag_number * 2;
+    };
+
+    if (_tag_number > 0) then {
+        [[_city, _spawningRadius, _type, _tag_number], btc_fnc_tag_initArea] call btc_fnc_delay_exec;
+    };
+};
+[_city, btc_fnc_tag_create] call btc_fnc_delay_exec;
 
 [{
     params ["_has_en", "_city", "_radius", "_id"];

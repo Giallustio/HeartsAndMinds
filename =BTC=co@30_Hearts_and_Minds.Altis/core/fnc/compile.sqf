@@ -79,7 +79,7 @@ if (isServer) then {
     btc_fnc_ied_checkLoop = compile preprocessFileLineNumbers "core\fnc\ied\checkLoop.sqf";
     btc_fnc_ied_create = compile preprocessFileLineNumbers "core\fnc\ied\create.sqf";
     btc_fnc_ied_fired_near = compile preprocessFileLineNumbers "core\fnc\ied\fired_near.sqf";
-    btc_fnc_ied_init_area = compile preprocessFileLineNumbers "core\fnc\ied\init_area.sqf";
+    btc_fnc_ied_initArea = compile preprocessFileLineNumbers "core\fnc\ied\initArea.sqf";
     btc_fnc_ied_suicider_active = compile preprocessFileLineNumbers "core\fnc\ied\suicider_active.sqf";
     btc_fnc_ied_suicider_activeLoop = compile preprocessFileLineNumbers "core\fnc\ied\suicider_activeLoop.sqf";
     btc_fnc_ied_suicider_create = compile preprocessFileLineNumbers "core\fnc\ied\suicider_create.sqf";
@@ -167,6 +167,7 @@ if (isServer) then {
     //TAG
     btc_fnc_tag_initArea = compile preprocessFileLineNumbers "core\fnc\tag\initArea.sqf";
     btc_fnc_tag_eh = compile preprocessFileLineNumbers "core\fnc\tag\eh.sqf";
+    btc_fnc_tag_create = compile preprocessFileLineNumbers "core\fnc\tag\create.sqf";
 
     //LOG
     btc_fnc_log_createVehicle = compile preprocessFileLineNumbers "core\fnc\log\createVehicle.sqf";
