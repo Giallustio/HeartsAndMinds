@@ -257,7 +257,7 @@ if (_city getVariable ["data_tags", []] isEqualTo []) then {
     };
 
     if (_tag_number > 0) then {
-        [[_city, _spawningRadius, _type, _tag_number], btc_fnc_tag_initArea] call btc_fnc_delay_exec;
+        [[_city, _spawningRadius, _tag_number], btc_fnc_tag_initArea] call btc_fnc_delay_exec;
     };
 };
 [_city, btc_fnc_tag_create] call btc_fnc_delay_exec;
