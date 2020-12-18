@@ -10,6 +10,7 @@ Parameters:
     _statics_type - Type of static available. [Array]
     _dir - Direction of the static. [Number]
     _surfaceNormal - Surface normal. [Array]
+    _city - City where the static is created. [Object]
 
 Returns:
     _static - Created static. [Object]
@@ -28,10 +29,12 @@ params [
     ["_pos", [0, 0, 0], [[]]],
     ["_statics_type", btc_type_mg, [[]]],
     ["_dir", 0, [0]],
-    ["_surfaceNormal", [], [[]]]
+    ["_surfaceNormal", [], [[]]],
+    ["_city", objNull, [objNull]]
 ];
 
 private _group = createGroup btc_enemy_side;
+_group setVariable ["btc_city", _city];
 [_group] call CBA_fnc_clearWaypoints;
 [_group, _pos, selectRandom _statics_type, _dir, _surfaceNormal] call btc_fnc_mil_createVehicle;
 

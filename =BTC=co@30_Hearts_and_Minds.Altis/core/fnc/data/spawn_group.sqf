@@ -15,7 +15,7 @@ Parameters:
         _behaviour - Behaviour of units. [Array]
         _array_wp - Waypoints of group. [Array]
         _array_veh - Vehicle occupied by the group. [Array, String]
-    _cityID - City ID. [Number]
+    _city - City. [Object]
 
 Returns:
     _delay - Delay due to vehicle spawn. [Number]
@@ -32,7 +32,7 @@ Author:
 
 params [
     ["_data_unit", [], [[]]],
-    ["_cityID", 0, [0]]
+    ["_city", objNull, [objNull]]
 ];
 _data_unit params [
     ["_type", 1, [0]],
@@ -47,15 +47,16 @@ _data_unit params [
 
 private _delay = 0;
 if (_type isEqualTo 5) exitWith {
-    [objNull, 100, _array_pos select 0, _array_type select 0] call btc_fnc_ied_suicider_create;
+    [_city, 100, _array_pos select 0, _array_type select 0] call btc_fnc_ied_suicider_create;
     _delay
 };
 if (_type isEqualTo 7) exitWith {
-    [objNull, 100, _array_pos select 0] call btc_fnc_ied_drone_create;
+    [_city, 100, _array_pos select 0] call btc_fnc_ied_drone_create;
     _delay
 };
 
 private _group = createGroup _side;
+_group setVariable ["btc_city", _city];
 if (_type isEqualTo 1) then {
     _array_veh params ["_typeOf", "_posATL", "_dir", "_fuel", ["_vectorUp", []]];
     _delay = [_group, _typeOf, _array_type, _posATL, _dir, _fuel, _vectorUp] call btc_fnc_delay_createVehicle;

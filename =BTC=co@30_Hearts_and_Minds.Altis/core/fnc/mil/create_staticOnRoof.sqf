@@ -8,6 +8,7 @@ Description:
 Parameters:
     _house - House to find the roof. [Group]
     _n - Number of static to generate. [Number]
+    _city - City where the static is created. [Object]
 
 Returns:
 
@@ -23,7 +24,8 @@ Author:
 
 params [
     ["_houses", [], [[]]],
-    ["_n", 0, [0]]
+    ["_n", 0, [0]],
+    ["_city", objNull, [objNull]]
 ];
 
 private _i = 1;
@@ -41,7 +43,7 @@ while {
         ([_house] call btc_fnc_roof) params ["_spawnPos", "_surfaceNormal"];
 
         if (acos (_surfaceNormal vectorCos [0, 0, 1]) < 30) then {
-            [ASLToATL _spawnPos, btc_type_mg + btc_type_gl, (_house getDir _spawnPos) + (random [-15, 0, 15]), _surfaceNormal] call btc_fnc_mil_create_static;
+            [ASLToATL _spawnPos, btc_type_mg + btc_type_gl, (_house getDir _spawnPos) + (random [-15, 0, 15]), _surfaceNormal, _city] call btc_fnc_mil_create_static;
             _i = _i + 1;
         };
     };

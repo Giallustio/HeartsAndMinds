@@ -8,6 +8,7 @@ Description:
 Parameters:
     _houses - Houses to populate around a city. [Number]
     _n - Number of civilians to generate. [Number]
+    _city - City where the civilian is created. [Object]
 
 Returns:
 
@@ -23,7 +24,8 @@ Author:
 
 params [
     ["_houses", [], [[]]],
-    ["_n", 0, [0]]
+    ["_n", 0, [0]],
+    ["_city", objNull, [objNull]]
 ];
 
 if (_houses isEqualTo []) exitWith {};
@@ -34,6 +36,7 @@ for "_i" from 1 to _n do {
     private _pos = (_houses deleteAt 0) buildingPos 0;
 
     private _group = createGroup civilian;
+    _group setVariable ["btc_city", _city];
     _group setVariable ["btc_data_inhouse", [_pos]];
     [_group, _pos] call btc_fnc_civ_addWP;
     [_group, selectRandom btc_civ_type_units, _pos] call btc_fnc_delay_createUnit;

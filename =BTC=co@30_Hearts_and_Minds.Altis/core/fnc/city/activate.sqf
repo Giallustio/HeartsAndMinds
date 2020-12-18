@@ -100,7 +100,7 @@ if !(_ieds isEqualTo []) then {
 private _delay = 0;
 if !(_data_units isEqualTo []) then {
     {
-        _delay = _delay + ([_x, _id] call btc_fnc_data_spawn_group);
+        _delay = _delay + ([_x, _city] call btc_fnc_data_spawn_group);
     } forEach _data_units;
 } else {
     // Maximum number of enemy group
@@ -133,7 +133,7 @@ if !(_data_units isEqualTo []) then {
                 case "Airport" : {2};
                 default {0};
             });
-            [+_houses, round (_p_mil_static_group_ratio * random _max_number_group)] call btc_fnc_mil_create_staticOnRoof;
+            [+_houses, round (_p_mil_static_group_ratio * random _max_number_group), _city] call btc_fnc_mil_create_staticOnRoof;
         };
 
         // Spawn civilians
@@ -151,7 +151,7 @@ if !(_data_units isEqualTo []) then {
 if (btc_p_animals_group_ratio > 0) then {
     if !(_data_animals isEqualTo []) then {
         {
-            _x call btc_fnc_delay_createAgent;
+            (_x + [nil, _city]) call btc_fnc_delay_createAgent;
         } forEach _data_animals;
     } else {
         // Spawn animals
@@ -168,7 +168,7 @@ if (btc_p_animals_group_ratio > 0) then {
         for "_i" from 1 to (round (random _max_number_animalsGroup)) do {
             private _pos = [_city, _spawningRadius/3] call CBA_fnc_randPos;
             for "_i" from 1 to (round (random 3)) do {
-                [selectRandom btc_animals_type, [_pos, 6] call CBA_fnc_randPos] call btc_fnc_delay_createAgent;
+                [selectRandom btc_animals_type, [_pos, 6] call CBA_fnc_randPos, nil, _city] call btc_fnc_delay_createAgent;
             };
         };
     };
@@ -213,12 +213,12 @@ if (_has_ho && {!(_city getVariable ["ho_units_spawned", false])}) then {
         case (_random <= 0.3) : {};
         case (_random > 0.3 && _random <= 0.75) : {
             private _statics = btc_type_gl + btc_type_mg;
-            [[(_pos select 0) + 7, (_pos select 1) + 7, 0], _statics, 45] call btc_fnc_mil_create_static;
+            [[(_pos select 0) + 7, (_pos select 1) + 7, 0], _statics, 45, [], _city] call btc_fnc_mil_create_static;
         };
         case (_random > 0.75) : {
             private _statics = btc_type_gl + btc_type_mg;
-            [[(_pos select 0) + 7, (_pos select 1) + 7, 0], _statics, 45] call btc_fnc_mil_create_static;
-            [[(_pos select 0) - 7, (_pos select 1) - 7, 0], _statics, 225] call btc_fnc_mil_create_static;
+            [[(_pos select 0) + 7, (_pos select 1) + 7, 0], _statics, 45, [], _city] call btc_fnc_mil_create_static;
+            [[(_pos select 0) - 7, (_pos select 1) - 7, 0], _statics, 225, [], _city] call btc_fnc_mil_create_static;
         };
     };
     if (btc_p_veh_armed_ho) then {
