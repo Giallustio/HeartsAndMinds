@@ -7,7 +7,6 @@ Description:
 
 Parameters:
     _city - City where IED has been created. [Object]
-    _ieds - All IED to create (even FACK IED). [Array]
 
 Returns:
 
@@ -22,11 +21,13 @@ Author:
 ---------------------------------------------------------------------------- */
 
 params [
-    ["_city", objNull, [objNull]],
-    ["_ieds", [objNull], [[]]]
+    ["_city", objNull, [objNull]]
 ];
 
-private _ieds = _ieds apply {_x call btc_fnc_ied_create};
+private _array = _city getVariable ["ieds", []];
+if (_array isEqualTo []) exitWith {};
+
+private _ieds = _array apply {_x call btc_fnc_ied_create};
 
 if (btc_debug) then {
     [format ["START CITY ID %1", _city getVariable "id"], __FILE__, [btc_debug, false]] call btc_fnc_debug_message;

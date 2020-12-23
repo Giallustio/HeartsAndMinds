@@ -25,7 +25,7 @@ btc_delay_createUnit = btc_delay_createUnit + 0.2;
 
 [{
     params [
-        ["_parameters", [], [[]]],
+        "_parameters",
         ["_code", {}, [{}]]
     ];
 

@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_ied_init_area
+Function: btc_fnc_ied_initArea
 
 Description:
     Initialize positions of IEDS.
@@ -14,7 +14,7 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_ied_init_area;
+        _result = [] call btc_fnc_ied_initArea;
     (end)
 
 Author:
