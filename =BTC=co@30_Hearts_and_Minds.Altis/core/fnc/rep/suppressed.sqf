@@ -40,15 +40,20 @@ if (!(side group _civ isEqualTo civilian) || (random 3 < 1)) exitWith {};
 
 [_civ, selectRandom ["ApanPknlMstpSnonWnonDnon_G01", "ApanPknlMstpSnonWnonDnon_G02", "ApanPknlMstpSnonWnonDnon_G03", "ApanPpneMstpSnonWnonDnon_G01", "ApanPpneMstpSnonWnonDnon_G02", "ApanPpneMstpSnonWnonDnon_G03"], 1] call ace_common_fnc_doAnimation;
 
-if (side group _instigator isEqualTo btc_player_side) then {
-    if ((_shooter findNearestEnemy _civ) distance _civ > 300)  then {
-        if (abs((_shooter getDir _civ) - getDir _shooter) < 300/_distance) then {
-            [btc_rep_malus_civ_suppressed, _shooter] call btc_fnc_rep_change;
-            [getPos _civ] call btc_fnc_rep_eh_effects;
+if (
+    side group _instigator isEqualTo btc_player_side &&
+    {(_shooter findNearestEnemy _civ) distance _civ > 300} &&
+    {abs((_shooter getDir _civ) - getDir _shooter) < 300/_distance}
+) then {
+    if (isServer)  then {
+        [btc_rep_malus_civ_suppressed, _shooter] call btc_fnc_rep_change;
+        [getPos _civ] call btc_fnc_rep_eh_effects;
+    } else {
+        [btc_rep_malus_civ_suppressed, _shooter] remoteExecCall ["btc_fnc_rep_change", 2];
+        [getPos _civ] remoteExecCall ["btc_fnc_rep_eh_effects", 2];
+    };
 
-            if (btc_debug_log) then {
-                [format ["GREP %1 THIS = %2", btc_global_reputation, _this], __FILE__, [false]] call btc_fnc_debug_message;
-            };
-        };
+    if (btc_debug_log) then {
+        [format ["GREP %1 THIS = %2", btc_global_reputation, _this], __FILE__, [false]] call btc_fnc_debug_message;
     };
 };

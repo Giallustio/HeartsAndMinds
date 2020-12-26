@@ -25,6 +25,7 @@ Author:
 
 {
     [_x, "InitPost", {
+        [(_this select 0), "Suppressed", btc_fnc_rep_suppressed] call CBA_fnc_addBISEventHandler;
         [(_this select 0), "HandleDamage", btc_fnc_rep_hd] call CBA_fnc_addBISEventHandler;
     }, false, [], true] call CBA_fnc_addClassEventHandler;
 } forEach btc_civ_type_units;
