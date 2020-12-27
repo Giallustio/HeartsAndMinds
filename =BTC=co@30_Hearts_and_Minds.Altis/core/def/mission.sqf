@@ -172,10 +172,10 @@ if (isServer) then {
 
     //Chem
     btc_chem_decontaminate = [btc_bigShower];
-    missionNamespace setVariable ["btc_chem_contaminated", [], true];
+    btc_chem_contaminated = []; publicVariable "btc_chem_contaminated"; //Preserve reference
 
     //Spect
-    missionNamespace setVariable ["btc_spect_emp", [], true];
+    btc_spect_emp = []; publicVariable "btc_spect_emp"; //Preserve reference
 
     //Cache
     btc_cache_type = [
