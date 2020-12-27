@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_cache_hd_cache
+Function: btc_fnc_cache_hd
 
 Description:
     Destroy an ammo cache only when an explposive with damage > 0.6 is used.
@@ -16,7 +16,7 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_cache_hd_cache;
+        _result = [] call btc_fnc_cache_hd;
     (end)
 
 Author:
@@ -35,14 +35,14 @@ params [
 private _explosive = (getNumber(configFile >> "cfgAmmo" >> _ammo >> "explosive") > 0);
 
 if (
-    !(_cache getVariable ["btc_fnc_cache_hd_cache_fired", false]) &&
+    !(_cache getVariable ["btc_fnc_cache_hd_fired", false]) &&
     {_explosive} &&
     {_damage > 0.6}
 ) then {
-    _cache setVariable ["btc_fnc_cache_hd_cache_fired", true];
+    _cache setVariable ["btc_fnc_cache_hd_fired", true];
 
     if (!isServer) exitWith {
-        _this remoteExecCall ["btc_fnc_cache_hd_cache", 2];
+        _this remoteExecCall ["btc_fnc_cache_hd", 2];
     };
 
     //Effects
