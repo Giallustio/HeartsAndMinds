@@ -200,7 +200,7 @@ if (isServer) then {
 /////////////////////CLIENT AND SERVER\\\\\\\\\\\\\\\\\\\\\
 
 //CACHE
-btc_fnc_cache_hd_cache = compile preprocessFileLineNumbers "core\fnc\cache\hd_cache.sqf";
+btc_fnc_cache_hd = compile preprocessFileLineNumbers "core\fnc\cache\hd.sqf";
 
 //COMMON
 btc_fnc_find_veh_with_turret = compile preprocessFileLineNumbers "core\fnc\common\find_veh_with_turret.sqf";
