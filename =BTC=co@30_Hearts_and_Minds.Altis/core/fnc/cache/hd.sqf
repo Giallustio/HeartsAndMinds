@@ -11,6 +11,8 @@ Parameters:
     _damage - Amount of damage get by the object. [Number]
     _injurer - Not use. [Object]
     _ammo - Type of ammo use to make damage. [String]
+    _hitIndex - Hit part index of the hit point, -1 otherwise. [Number]
+    _instigator - Person who pulled the trigger. [Object]
 
 Returns:
 
@@ -29,7 +31,9 @@ params [
     ["_part", "", [""]],
     ["_damage", 0, [0]],
     ["_injurer", objNull, [objNull]],
-    ["_ammo", "", [""]]
+    ["_ammo", "", [""]],
+    ["_hitIndex", 0, [0]], 
+    ["_instigator", objNull, [objNull]]
 ];
 
 private _explosive = (getNumber(configFile >> "cfgAmmo" >> _ammo >> "explosive") > 0);
@@ -67,7 +71,7 @@ if (
         [format ["DESTROYED: ID %1 POS %2", btc_cache_n, btc_cache_pos], __FILE__, [false]] call btc_fnc_debug_message;
     };
 
-    [btc_rep_bonus_cache, _injurer] call btc_fnc_rep_change;
+    [btc_rep_bonus_cache, _instigator] call btc_fnc_rep_change;
 
     //Notification
     [0] remoteExecCall ["btc_fnc_show_hint", 0];
