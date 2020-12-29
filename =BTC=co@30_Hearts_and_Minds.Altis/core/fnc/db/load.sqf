@@ -83,7 +83,8 @@ if (btc_hideouts isEqualTo []) then {[] spawn btc_fnc_final_phase;};
 //CACHE
 private _array_cache = +(profileNamespace getVariable [format ["btc_hm_%1_cache", _name], []]);
 _array_cache params ["_cache_pos", "_cache_n", "_cache_info", "_cache_markers", "_cache_pictures",
-    ["_isChem", false, [true]]
+    ["_isChem", false, [true]],
+    ["_cache_unitsSpawned", false, [true]]
 ];
 
 btc_cache_pos = _cache_pos;
@@ -91,6 +92,7 @@ btc_cache_n = _cache_n;
 btc_cache_info = _cache_info;
 
 [_cache_pos, btc_p_chem, [1, 0] select _isChem] call btc_fnc_cache_create;
+btc_cache_obj setVariable ["btc_cache_unitsSpawned", _cache_unitsSpawned];
 
 btc_cache_markers = [];
 {

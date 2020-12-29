@@ -112,6 +112,7 @@ private _cache_markers = [];
 _array_cache pushBack _cache_markers;
 _array_cache pushBack [btc_cache_pictures select 0, btc_cache_pictures select 1, []];
 _array_cache pushBack (btc_cache_obj in btc_chem_contaminated);
+_array_cache pushBack (btc_cache_obj getVariable ["btc_cache_unitsSpawned", false]);
 profileNamespace setVariable [format ["btc_hm_%1_cache", _name], +_array_cache];
 
 //REPUTATION
