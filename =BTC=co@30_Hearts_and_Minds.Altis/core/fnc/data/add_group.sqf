@@ -28,7 +28,7 @@ params [
 if (btc_debug_log) then {
     [format ["%1", _group], __FILE__, [false]] call btc_fnc_debug_message;
 };
-_group setVariable ["no_cache", Nil];
+_group setVariable ["no_cache", nil];
 [_group] call CBA_fnc_clearWaypoints;
 
 private _city = [leader _group, btc_city_all, false] call btc_fnc_find_closecity;
