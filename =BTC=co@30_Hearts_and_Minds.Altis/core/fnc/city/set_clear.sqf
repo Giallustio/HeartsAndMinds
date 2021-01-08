@@ -7,6 +7,7 @@ Description:
 
 Parameters:
     _id - ID of the city no more occupied. [Number]
+    _remainEnemyUnits - Remaining enemy units assigned to the city. [Array]
 
 Returns:
 
@@ -21,11 +22,26 @@ Author:
 ---------------------------------------------------------------------------- */
 
 params [
-    ["_id", 0, [0]]
+    ["_id", 0, [0]],
+    ["_remainEnemyUnits", [], [[]]]
 ];
 
 private _city = btc_city_all select _id;
 _city setVariable ["occupied", false];
+
+if !(_remainEnemyUnits isEqualTo []) then {
+    {
+        private _vehicle = vehicle _x;
+        if (getNumber (_cfgVehicles >> _vehicle >> "isUav") isEqualTo 1) then {
+            _x setDamage 1;
+        } else {
+            if !(_vehicle isEqualTo _x) then {
+                doGetOut _x;
+            };
+            [_x, true] call ace_captives_setSurrendered;
+        };
+    } forEach _remainEnemyUnits;
+};
 
 if (_city getVariable ["marker", ""] != "") then {
     (_city getVariable ["marker", ""]) setMarkerColor "ColorGreen";
@@ -38,15 +54,3 @@ if (btc_final_phase) then {
 if (btc_debug) then {
     (format ["loc_%1", _id]) setMarkerColor "ColorGreen";
 };
-
-{
-    private _vehicle = vehicle _x;
-    if (getNumber (_cfgVehicles >> _vehicle >> "isUav") isEqualTo 1) then {
-        _x setDamage 1;
-    } else {
-        if !(_vehicle isEqualTo _x) then {
-            doGetOut _x;
-        };
-        [_x, true] call ace_captives_setSurrendered;
-    };
-} forEach (_city getVariable ["data_units", []]);

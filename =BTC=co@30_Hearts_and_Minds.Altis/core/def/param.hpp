@@ -395,6 +395,12 @@ class Params {
         texts[]={$STR_DISABLED,$STR_ENABLED};
         default = 0;
     };
+    class btc_p_city_free_trigger { // City will be free if number of enemies is equal or lower than:
+        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_OTHER_CITYFREE"]);
+        values[]={0,1,2,3,4,5};
+        texts[]={$STR_DISABLED,"1","2","3","4","5"};
+        default = 0;
+    };
     class btc_p_auto_headless { // Autodetect Headless client:
         title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_OTHER_AUTOHEADLESS"]);
         values[]={0,1};

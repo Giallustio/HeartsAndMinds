@@ -84,6 +84,7 @@ btc_p_trigger = if (("btc_p_trigger" call BIS_fnc_getParamValue) isEqualTo 1) th
 } else {
     "this"
 };
+btc_p_city_free_trigger = "btc_p_city_free_trigger" call BIS_fnc_getParamValue;
 btc_p_auto_headless = ("btc_p_auto_headless" call BIS_fnc_getParamValue) isEqualTo 1;
 btc_p_debug = "btc_p_debug" call BIS_fnc_getParamValue;
 
