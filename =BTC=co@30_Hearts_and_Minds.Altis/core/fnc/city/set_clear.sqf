@@ -38,7 +38,7 @@ if !(_remainEnemyUnits isEqualTo []) then {
             if !(_vehicle isEqualTo _x) then {
                 doGetOut _x;
             };
-            [_x, true] call ace_captives_setSurrendered;
+            [_x, true] call ace_captives_fnc_setSurrendered;
         };
     } forEach _remainEnemyUnits;
 };
