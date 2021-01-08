@@ -14,7 +14,6 @@ Parameters:
     _p_civ_max_veh - Maximum number of civilian patrol. [Number]
     _p_patrol_max - Maximum number of enemy patrol. [Number]
     _wp_ratios - Ratio of spawned group in and out houses. [Array]
-    _p_city_free_trigger - City will be free if number of enemy is equal or lower than this value. [Number]
 
 Returns:
 
@@ -36,8 +35,7 @@ params [
     ["_p_animals_group_ratio", btc_p_animals_group_ratio, [0]],
     ["_p_civ_max_veh", btc_p_civ_max_veh, [0]],
     ["_p_patrol_max", btc_p_patrol_max, [0]],
-    ["_wp_ratios", btc_p_mil_wp_ratios, [[]]],
-    ["_p_city_free_trigger", btc_p_city_free_trigger, [0]]
+    ["_wp_ratios", btc_p_mil_wp_ratios, [[]]]
 ];
 _wp_ratios params ["_wp_house", "_wp_sentry"];
 
