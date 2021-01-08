@@ -272,7 +272,7 @@ if (_city getVariable ["data_tags", []] isEqualTo []) then {
         _trigger setTriggerArea [_radius, _radius, 0, false];
         _trigger setTriggerActivation [str btc_enemy_side, "PRESENT", false];
         _trigger setTriggerInterval 2;
-        _trigger setTriggerStatements [format ["(count thisList) <= %1", _p_city_free_trigger], format ["[%1, _thisList] call btc_fnc_city_set_clear", _id], ""];
+        _trigger setTriggerStatements ["(count thisList) <= btc_p_city_free_trigger", format ["[%1, _thisList] call btc_fnc_city_set_clear", _id], ""];
         _city setVariable ["trigger", _trigger];
     };
 
