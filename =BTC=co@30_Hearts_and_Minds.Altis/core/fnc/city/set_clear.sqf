@@ -30,13 +30,14 @@ private _city = btc_city_all select _id;
 _city setVariable ["occupied", false];
 
 if !(_remainEnemyUnits isEqualTo []) then {
+    private _cfgVehicles = configFile >> "CfgVehicles";
     {
         private _vehicle = vehicle _x;
-        if (getNumber (_cfgVehicles >> _vehicle >> "isUav") isEqualTo 1) then {
+        if (getNumber (_cfgVehicles >> typeOf _vehicle >> "isUav") isEqualTo 1) then {
             _x setDamage 1;
         } else {
             if !(_vehicle isEqualTo _x) then {
-                doGetOut _x;
+                doStop _x;
             };
             [_x, true] call ace_captives_fnc_setSurrendered;
         };
