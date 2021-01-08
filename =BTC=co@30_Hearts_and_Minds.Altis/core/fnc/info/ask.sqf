@@ -3,17 +3,17 @@
 Function: btc_fnc_info_ask
 
 Description:
-    Fill me when you edit me !
+    Ask information to an IA.
 
 Parameters:
-    _man - [Object]
-    _isInterrogate - [Boolean]
+    _man - Man giving information. [Object]
+    _isInterrogate - Is interrogated. [Boolean]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_info_ask;
+        [cursorObject] call btc_fnc_info_ask;
     (end)
 
 Author:
@@ -40,7 +40,10 @@ if !(_man call ace_medical_status_fnc_isInStableCondition) exitWith {
     [name _man, _complain] call btc_fnc_showSubtitle;
 };
 
-if ((_man getVariable ["btc_already_asked", false]) || (_man getVariable ["btc_already_interrogated", false])) exitWith {
+if (
+    _man getVariable ["btc_already_asked", false] ||
+    _man getVariable ["btc_already_interrogated", false]
+) exitWith {
     [name _man, localize "STR_BTC_HAM_CON_INFO_ASK_ALLREADYANS"] call btc_fnc_showSubtitle;
 };
 
@@ -59,7 +62,6 @@ waitUntil {!(isNil "btc_int_ask_data")};
 private _rep = btc_int_ask_data;
 
 private _chance = (random 300) + (random _rep) + _rep/2;
-private _info = "";
 private _info_type = "";
 switch !(_isInterrogate) do {
     case (_chance < 200) : {_info_type = "NO";};
@@ -78,35 +80,17 @@ private _info = selectRandomWeighted [
     "CACHE", 0.2
 ];
 
-switch (_info_type) do {
-    case "REAL" : {
-        switch (_info) do {
-            case "TROOPS" : {
-                [name _man, true] call btc_fnc_info_troops;
-            };
-            case "HIDEOUT" : {
-                [name _man, true] call btc_fnc_info_hideout_asked;
-            };
-            case "CACHE" : {
-                [name _man, localize "STR_BTC_HAM_CON_INFO_ASK_CACHEMAP"] call btc_fnc_showSubtitle;
-                sleep 2;
-                [true] remoteExecCall ["btc_fnc_info_cache", 2];
-            };
-        };
+_info_type = _info_type isEqualTo "REAL";
+switch (_info) do {
+    case "TROOPS" : {
+        [_man, _info_type] call btc_fnc_info_troops;
     };
-    case "FAKE" : {
-        switch (_info) do {
-            case "TROOPS" : {
-                [name _man, false] call btc_fnc_info_troops;
-            };
-            case "HIDEOUT" : {
-                [name _man, false] call btc_fnc_info_hideout_asked;
-            };
-            case "CACHE" : {
-                [name _man, localize "STR_BTC_HAM_CON_INFO_ASK_CACHEMAP"] call btc_fnc_showSubtitle;
-                sleep 2;
-                [false] remoteExecCall ["btc_fnc_info_cache", 2];
-            };
-        };
+    case "HIDEOUT" : {
+        [name _man, _info_type] call btc_fnc_info_hideout_asked;
+    };
+    case "CACHE" : {
+        [name _man, localize "STR_BTC_HAM_CON_INFO_ASK_CACHEMAP"] call btc_fnc_showSubtitle;
+        sleep 2;
+        [_info_type] remoteExecCall ["btc_fnc_info_cache", 2];
     };
 };
