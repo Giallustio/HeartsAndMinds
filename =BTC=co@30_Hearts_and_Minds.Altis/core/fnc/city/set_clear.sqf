@@ -33,13 +33,24 @@ if !(_remainEnemyUnits isEqualTo []) then {
     private _cfgVehicles = configFile >> "CfgVehicles";
     {
         private _vehicle = vehicle _x;
-        if (getNumber (_cfgVehicles >> typeOf _vehicle >> "isUav") isEqualTo 1) then {
+        if (getNumber (configOf _vehicle >> "isUav") isEqualTo 1) then {
             _x setDamage 1;
         } else {
-            if !(_vehicle isEqualTo _x) then {
-                doStop _x;
+            if (_vehicle isKindOf "Air" || {_vehicle isKindOf "Ship"}) then {
+                _remainEnemyUnits = _remainEnemyUnits - crew _vehicle;
+            } else {
+                if (_vehicle isKindOf "LandVehicle") then {
+                    private _crew = crew _vehicle;
+                    _crew allowGetIn false;
+                    {
+                        moveOut _x;
+                        [_x, true] call ace_captives_fnc_setSurrendered;
+                    } forEach _crew;
+                    _remainEnemyUnits = _remainEnemyUnits - _crew;
+                } else {
+                    [_x, true] call ace_captives_fnc_setSurrendered;
+                };
             };
-            [_x, true] call ace_captives_fnc_setSurrendered;
         };
     } forEach _remainEnemyUnits;
 };
