@@ -86,7 +86,7 @@ btc_p_trigger = if (("btc_p_trigger" call BIS_fnc_getParamValue) isEqualTo 1) th
 };
 private _p_city_free_trigger = "btc_p_city_free_trigger" call BIS_fnc_getParamValue;
 btc_p_city_free_trigger_condition = if (_p_city_free_trigger isEqualTo 0) then {
-    "count thisList <= 0"
+    thisList isEqualTo = []"
 } else {
     format ["if (count thisList > %1) exitWith {false}; private _remainEnemyUnits = []; {_remainEnemyUnits append (crew vehicle _x);} forEach thisList; _remainEnemyUnits arrayIntersect _remainEnemyUnits; count _remainEnemyUnits <= %2", _p_city_free_trigger, _p_city_free_trigger]
 };
