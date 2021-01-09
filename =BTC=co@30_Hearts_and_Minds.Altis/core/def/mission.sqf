@@ -84,10 +84,11 @@ btc_p_trigger = if (("btc_p_trigger" call BIS_fnc_getParamValue) isEqualTo 1) th
 } else {
     "this"
 };
-btc_p_city_free_trigger = if (("btc_p_city_free_trigger" call BIS_fnc_getParamValue) isEqualTo 0) then {
+private _p_city_free_trigger = "btc_p_city_free_trigger" call BIS_fnc_getParamValue;
+btc_p_city_free_trigger_condition = if (_p_city_free_trigger isEqualTo 0) then {
     "count thisList <= 0"
 } else {
-    format ["if (count thisList > %1) exitWith {false}; private _remainEnemyUnits = []; {_remainEnemyUnits pushBackUnique (crew vehicle _x);} forEach thisList; count _remainEnemyUnits <= %1", btc_p_city_free_trigger]
+    format ["if (count thisList > %1) exitWith {false}; private _remainEnemyUnits = []; {_remainEnemyUnits append (crew vehicle _x);} forEach thisList; _remainEnemyUnits arrayIntersect _remainEnemyUnits; count _remainEnemyUnits <= %2", _p_city_free_trigger, _p_city_free_trigger]
 };
 btc_p_auto_headless = ("btc_p_auto_headless" call BIS_fnc_getParamValue) isEqualTo 1;
 btc_p_debug = "btc_p_debug" call BIS_fnc_getParamValue;
