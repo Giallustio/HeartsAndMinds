@@ -30,7 +30,6 @@ private _city = btc_city_all select _id;
 _city setVariable ["occupied", false];
 
 if !(_remainEnemyUnits isEqualTo []) then {
-    private _cfgVehicles = configFile >> "CfgVehicles";
     {
         private _vehicle = vehicle _x;
         if (getNumber (configOf _vehicle >> "isUav") isEqualTo 1) then {
