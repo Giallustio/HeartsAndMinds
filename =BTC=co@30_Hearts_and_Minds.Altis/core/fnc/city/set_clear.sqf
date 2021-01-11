@@ -32,7 +32,7 @@ _city setVariable ["occupied", false];
 if !(_remainEnemyUnits isEqualTo []) then {
     {
         private _vehicle = vehicle _x;
-        if (getNumber (configOf _vehicle >> "isUav") isEqualTo 1) then {
+        if (unitIsUAV _vehicle) then {
             _x setDamage 1;
         } else {
             if (_vehicle isKindOf "Air" || {_vehicle isKindOf "Ship"}) then {
