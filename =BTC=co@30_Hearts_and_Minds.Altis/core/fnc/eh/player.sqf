@@ -26,6 +26,8 @@ params [
 ];
 
 [_player, "Respawn", {
+    params ["_unit", "_corpse"];
+    _corpse connectTerminalToUAV objNull;
     if !(ace_map_mapIllumination) then {ace_map_mapIllumination = btc_map_mapIllumination;};
 }] call CBA_fnc_addBISEventHandler;
 ["ace_killed", {

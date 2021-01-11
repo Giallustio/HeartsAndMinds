@@ -48,10 +48,6 @@ addMissionEventHandler ["HandleDisconnect", {
         deleteVehicle _headless;
     };
 }];
-addMissionEventHandler ["entityRespawned", {
-    params ["_entity", "_corpse"];
-    _corpse connectTerminalToUAV objNull;
-}];
 if (btc_p_auto_db) then {
     addMissionEventHandler ["HandleDisconnect", {
         if ((allPlayers - entities "HeadlessClient_F") isEqualTo []) then {
