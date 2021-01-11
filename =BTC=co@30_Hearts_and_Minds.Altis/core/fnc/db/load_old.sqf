@@ -154,7 +154,7 @@ private _vehs = profileNamespace getVariable [format ["btc_hm_%1_vehs", _name], 
         [_veh, _veh_cargo, _veh_cont] call btc_fnc_db_loadCargo;
 
         if !(alive _veh) then {
-            [_veh, objNull, objNull, false] call btc_fnc_eh_veh_killed;
+            [_veh, objNull, objNull, false] call btc_fnc_veh_killed;
         };
     } forEach _this;
 }, _vehs, 0.5] call CBA_fnc_waitAndExecute;
@@ -169,7 +169,7 @@ private _objs = profileNamespace getVariable [format ["btc_hm_%1_objs", _name], 
 private _tags_properties = profileNamespace getVariable [format ["btc_hm_%1_tags", _name], []];
 private _id = ["ace_tagCreated", {
     params ["_tag", "_texture", "_object"];
-    btc_tags pushBack [_tag, _texture, _object];
+    btc_tags_player pushBack [_tag, _texture, _object];
 }] call CBA_fnc_addEventHandler;
 {
     _x params ["_tagPosASL", "_vectorDirAndUp", "_texture", "_typeObject", "_tagModel"];

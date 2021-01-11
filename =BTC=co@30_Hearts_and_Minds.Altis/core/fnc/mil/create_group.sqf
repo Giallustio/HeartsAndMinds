@@ -45,6 +45,9 @@ _wp_ratios params ["_wp_house_probability", "_wp_sentry_probability"];
 ([_city, _area] call btc_fnc_city_findPos) params ["_rpos", "_pos_iswater"];
 
 private _group = createGroup _enemy_side;
+if (_city isEqualType objNull) then {
+    _group setVariable ["btc_city", _city];
+};
 private _groups = [];
 _groups pushBack _group;
 
@@ -57,6 +60,9 @@ switch (true) do {
         };
         for "_i" from 1 to _n do {
             private _grp = createGroup _enemy_side;
+            if (_city isEqualType objNull) then {
+                _grp setVariable ["btc_city", _city];
+            };
             [_grp, _rpos, 1] call btc_fnc_mil_createUnits;
             _grp setVariable ["btc_inHouse", typeOf _structure];
             [_grp, _structure] call btc_fnc_house_addWP;

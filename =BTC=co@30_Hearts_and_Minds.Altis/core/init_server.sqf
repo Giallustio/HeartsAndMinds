@@ -43,7 +43,7 @@ if (btc_p_db_autoRestart > 0) then {
 
 {
     _x setVariable ["btc_EDENinventory", [getWeaponCargo _x, getMagazineCargo _x, getItemCargo _x]];
-    [_x, 30] call btc_fnc_eh_veh_add_respawn;
+    [_x, 30] call btc_fnc_veh_addRespawn;
 } forEach btc_helo;
 
 if (btc_p_side_mission_cycle > 0) then {

@@ -5,8 +5,8 @@
 </p>
 
 <p align="center">
-    <a href="https://github.com/Vdauphin/HeartsAndMinds/releases/tag/1.20.7">
-        <img src="https://img.shields.io/badge/Version-1.20.7-blue.svg?style=flat-square" alt="H&M Version">
+    <a href="https://github.com/Vdauphin/HeartsAndMinds/releases/tag/1.20.9">
+        <img src="https://img.shields.io/badge/Version-1.20.9-blue.svg?style=flat-square" alt="H&M Version">
     </a>
     <a href="http://www.somsubhra.com/github-release-stats/?username=vdauphin&repository=HeartsAndMinds">
         <img src="https://img.shields.io/github/downloads/Vdauphin/HeartsAndMinds/total.svg?style=flat-square&label=Downloads" alt="H&M Downloads">
@@ -41,6 +41,7 @@ Online [wiki available](http://vdauphin.github.io/HeartsAndMinds/).
     - ACEX Fortify
 - Logistic system
     - [Tow](http://vdauphin.github.io/HeartsAndMinds/InGame-documentation#towing-system)
+    - [Vehicle in vehicle](http://vdauphin.github.io/HeartsAndMinds/InGame-documentation#towing-system) extended
     - [Sling loading](http://vdauphin.github.io/HeartsAndMinds/InGame-documentation#sling-loading)
     - Repair [destroyed vehicles](http://vdauphin.github.io/HeartsAndMinds/InGame-documentation#respawn)
     - [FOB/Rallypoints](http://vdauphin.github.io/HeartsAndMinds/InGame-documentation#fobrallypoint)

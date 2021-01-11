@@ -46,9 +46,10 @@ if (_units isEqualTo []) exitWith {};
 
     [_x] call btc_fnc_civ_add_grenade;
 
-    [_x] joinSilent createGroup [btc_enemy_side, true];
+    private _group = createGroup [btc_enemy_side, true];
+    _group setVariable ["btc_city", group _x getVariable ["btc_city", objNull]];
+    [_x] joinSilent _group;
 
-    private _group = group _x;
     [_group] call CBA_fnc_clearWaypoints;
     _group setVariable ["getWeapons", true];
     [_group, _pos, -1, "GUARD", "AWARE", "RED", nil, nil, nil, nil, 10] call CBA_fnc_addWaypoint;

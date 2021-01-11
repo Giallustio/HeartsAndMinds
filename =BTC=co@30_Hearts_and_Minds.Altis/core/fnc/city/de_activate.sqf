@@ -58,7 +58,8 @@ if !(_city getVariable ["active", false]) exitWith {};
         if (
             (leader _x) inArea [_pos_city, _radius, _radius, 0, false] &&
             {side _x != btc_player_side} &&
-            {!(_x getVariable ["no_cache", false])}
+            {!(_x getVariable ["no_cache", false])} &&
+            {_x getVariable ["btc_city", _city] in [_city, objNull]}
         ) then {
             private _data_group = _x call btc_fnc_data_get_group;
             _data_units pushBack _data_group;
@@ -73,7 +74,8 @@ if !(_city getVariable ["active", false]) exitWith {};
         if (
             _agent inArea [_pos_city, _radius, _radius, 0, false] &&
             {alive _agent} &&
-            {!(_x getVariable ["no_cache", false])}
+            {!(_x getVariable ["no_cache", false])} &&
+            {_x getVariable ["btc_city", _city] in [_city, objNull]}
         ) then {
             _data_animals pushBack [
                 typeOf _agent,
@@ -85,16 +87,19 @@ if !(_city getVariable ["active", false]) exitWith {};
 
     private _data_tags = [];
     {
-        private _pos = getPos _x;
-        _pos set [2, 0];
-        _data_tags pushBack [
-            _pos,
-            [vectorDir _x, vectorUp _x],
-            _x getVariable "btc_texture",
-            typeOf _x
-        ];
-        _x call CBA_fnc_deleteEntity;
-    } forEach ((allSimpleObjects btc_type_tags) inAreaArray [_pos_city, _radius, _radius]);
+        if (_x getVariable ["btc_city", _city] isEqualTo _city) then {
+            private _pos = getPos _x;
+            _pos set [2, 0];
+            _data_tags pushBack [
+                _pos,
+                [vectorDir _x, vectorUp _x],
+                _x getVariable "btc_texture",
+                typeOf _x
+            ];
+            _x call CBA_fnc_deleteEntity;
+        };
+    } forEach (btc_tags_server inAreaArray [_pos_city, _radius, _radius]);
+    btc_tags_server = btc_tags_server - [objNull];
 
     if (btc_debug_log) then {
         [format ["data units = %1", _data_units], __FILE__, [false]] call btc_fnc_debug_message;

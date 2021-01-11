@@ -26,7 +26,7 @@ params [
 
 //// Choose two Cities \\\\
 private _usefuls = btc_city_all select {!(isNull _x) && !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"]) && !(_x getVariable ["occupied", false])};
-if (_usefuls isEqualTo []) then {_usefuls = + (btc_city_all select {!(isNull _x)});};
+if (_usefuls isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
 private _city2 = selectRandom _usefuls;
 
 private _area = (getNumber (configFile >> "CfgWorlds" >> worldName >> "MapSize"))/4;
@@ -70,7 +70,10 @@ private _markers = [_marker1, _marker2, _area];
 private _veh_types = btc_civ_type_veh select {!(_x isKindOf "air")};
 private _agent = [btc_fnc_info_path, [_pos1, _pos2, _taskID, _veh_types select 0]] call CBA_fnc_directCall;
 
-waitUntil {(_agent getVariable ["btc_path", []]) isNotEqualTo []};
+waitUntil {
+    !isNil {_agent getVariable "btc_path"}
+};
+
 private _path = _agent getVariable ["btc_path", []];
 if (count _path <= 35) exitWith {
     _markers append (allMapMarkers select {(_x select [0, count _taskID]) isEqualTo _taskID});

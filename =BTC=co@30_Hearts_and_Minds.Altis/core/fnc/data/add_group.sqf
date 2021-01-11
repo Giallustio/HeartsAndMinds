@@ -28,7 +28,7 @@ params [
 if (btc_debug_log) then {
     [format ["%1", _group], __FILE__, [false]] call btc_fnc_debug_message;
 };
-_group setVariable ["no_cache", Nil];
+_group setVariable ["no_cache", nil];
 [_group] call CBA_fnc_clearWaypoints;
 
 private _city = [leader _group, btc_city_all, false] call btc_fnc_find_closecity;
@@ -52,7 +52,9 @@ private _wp = if (vehicle leader _group isEqualTo leader _group) then {
 
 [_group, _city, 200, _wp] call btc_fnc_mil_addWP;
 
-if !(_city getVariable ["active", false]) then {
+if (_city getVariable ["active", false]) then {
+    _group setVariable ["btc_city", _city];
+} else {
     private _data_units = _city getVariable ["data_units", []];
     private _data_group = _group call btc_fnc_data_get_group;
 

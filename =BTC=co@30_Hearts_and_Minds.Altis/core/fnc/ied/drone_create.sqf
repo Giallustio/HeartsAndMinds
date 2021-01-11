@@ -38,6 +38,7 @@ if (_rpos isEqualTo []) then {
 };
 
 private _group = createGroup [btc_enemy_side, true];
+_group setVariable ["btc_city", _city];
 private _drone = createVehicle ["C_IDAP_UAV_06_antimine_F", _rpos, [], 0, "FLY"];
 createVehicleCrew _drone;
 [driver _drone] joinSilent _group;

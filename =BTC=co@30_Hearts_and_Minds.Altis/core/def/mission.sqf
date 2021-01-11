@@ -1,5 +1,5 @@
 
-btc_version = [1, 20.1, 7];
+btc_version = [1, 20.1, 9];
 diag_log format (["=BTC= HEARTS AND MINDS VERSION %1.%2.%3"] + btc_version);
 
 //Param
@@ -54,6 +54,7 @@ private _p_skill = [
 //<< Spawn options >>
 btc_p_is_free_prob = ("btc_p_is_free_prob" call BIS_fnc_getParamValue)/100;
 btc_p_mil_group_ratio = ("btc_p_mil_group_ratio" call BIS_fnc_getParamValue)/100;
+btc_p_mil_static_group_ratio = ("btc_p_mil_static_group_ratio" call BIS_fnc_getParamValue)/100;
 btc_p_civ_group_ratio = ("btc_p_civ_group_ratio" call BIS_fnc_getParamValue)/100;
 btc_p_animals_group_ratio = ("btc_p_animals_group_ratio" call BIS_fnc_getParamValue)/100;
 private _wp_house_probability = ("btc_p_wp_house_probability" call BIS_fnc_getParamValue)/100;
@@ -171,10 +172,10 @@ if (isServer) then {
 
     //Chem
     btc_chem_decontaminate = [btc_bigShower];
-    missionNamespace setVariable ["btc_chem_contaminated", [], true];
+    btc_chem_contaminated = []; publicVariable "btc_chem_contaminated"; //Preserve reference
 
     //Spect
-    missionNamespace setVariable ["btc_spect_emp", [], true];
+    btc_spect_emp = []; publicVariable "btc_spect_emp"; //Preserve reference
 
     //Cache
     btc_cache_type = [
@@ -185,8 +186,8 @@ if (isServer) then {
         ["Land_PlasticCase_01_small_black_CBRN_F", "Land_PlasticCase_01_small_olive_CBRN_F", "Land_PlasticCase_01_small_CBRN_F"]
     ];
     private _weapons_usefull = "true" configClasses (configFile >> "CfgWeapons") select {
-        getNumber (_x >> 'type') isEqualTo 1 ||
-        {getArray (_x >> 'magazines') isNotEqualTo []} ||
+        getNumber (_x >> 'type') isEqualTo 1 &&
+        {getArray (_x >> 'magazines') isNotEqualTo []} &&
         {getNumber (_x >> 'scope') isEqualTo 2}
     };
     btc_cache_weapons_type = _weapons_usefull apply {configName _x};
@@ -316,7 +317,19 @@ if (isServer) then {
 
     //TAGS
     btc_type_tags = ["Land_Graffiti_01_F", "Land_Graffiti_02_F", "Land_Graffiti_03_F", "Land_Graffiti_04_F", "Land_Graffiti_05_F"];
-    btc_tags = [];
+    btc_type_tags_sentences = [
+        "STR_BTC_HAM_TAG_GO",
+        "STR_BTC_HAM_TAG_LN",
+        "STR_BTC_HAM_TAG_WWKY",
+        "STR_BTC_HAM_TAG_BA",
+        "STR_BTC_HAM_TAG_GH",
+        "STR_BTC_HAM_TAG_IE",
+        "STR_BTC_HAM_TAG_DWY",
+        "STR_BTC_HAM_TAG_WHY",
+        "STR_BTC_HAM_TAG_YGD"
+    ];
+    btc_tags_player = [];
+    btc_tags_server = [];
 
     //IED
     private _ieds = ["Land_GarbageContainer_closed_F", "Land_GarbageContainer_open_F", "Land_Portable_generator_F", "Land_WoodenBox_F", "Land_BarrelTrash_grey_F", "Land_Sacks_heap_F", "Land_Wreck_Skodovka_F", "Land_WheelieBin_01_F", "Land_GarbageBin_03_F"] + btc_type_pallet + btc_type_barrel + (_allClassSorted select {
@@ -506,7 +519,7 @@ btc_log_def_can_load = (_c_array select 3);
 btc_log_def_placeable = ((_c_array select 0) + (_c_array select 3) + (_c_array select 4) + (_c_array select 5) + (_c_array select 6) + _food + _water + btc_type_hazmat) select {
     getNumber(_cfgVehicles >> _x >> "ace_dragging_canCarry") isEqualTo 0
 };
-btc_log_vehicle_selected = objNull;
+btc_tow_vehicleSelected = objNull;
 btc_log_placing_max_h = 12;
 btc_log_placing = false;
 btc_log_obj_created = [];
@@ -671,6 +684,7 @@ btc_rep_bonus_hideout = 200;
 btc_rep_bonus_mil_killed = 0.25;
 btc_rep_bonus_IEDCleanUp = 10;
 btc_rep_bonus_removeTag = 3;
+btc_rep_bonus_removeTagLetter = 0.5;
 
 btc_rep_malus_civ_hd = - 2;
 btc_rep_malus_animal_hd = - 1;

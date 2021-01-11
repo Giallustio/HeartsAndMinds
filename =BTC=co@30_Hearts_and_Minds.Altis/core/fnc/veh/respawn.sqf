@@ -1,18 +1,20 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_eh_veh_respawn
+Function: btc_fnc_veh_respawn
 
 Description:
     Respawn the vehicle passed in parameter.
 
 Parameters:
-    _vehicle - Vehicle to respawn. [Object]
+    _vehicle - Vehicle object. [Object]
+    _killer - Killer. [Object]
+    _instigator - Person who pulled the trigger. [Object]
 
 Returns:
 
 Examples:
     (begin example)
-        [cursorObject] call btc_fnc_eh_veh_respawn;
+        [cursorObject] call btc_fnc_veh_respawn;
     (end)
 
 Author:
@@ -21,7 +23,9 @@ Author:
 ---------------------------------------------------------------------------- */
 
 params [
-    ["_vehicle", objNull, [objNull]]
+    ["_vehicle", objNull, [objNull]],
+    ["_killer", objNull, [objNull]],
+    ["_instigator", objNull, [objNull]]
 ];
 
 private _data = _vehicle getVariable ["data_respawn", []];
@@ -69,6 +73,12 @@ _data pushBack (_vehicle getVariable ["btc_EDENinventory", []]);
             [_vehicle, _EDENinventory] call btc_fnc_log_setCargo;
         };
 
-        [_vehicle, _time] call btc_fnc_eh_veh_add_respawn;
+        [_vehicle, _time] call btc_fnc_veh_addRespawn;
     }, _data, 1] call CBA_fnc_waitAndExecute;
 }, [_vehicle, _data], _data select 3] call CBA_fnc_waitAndExecute;
+
+if (isServer) then {
+    [btc_rep_malus_veh_killed, _instigator] call btc_fnc_rep_change;
+} else {
+    [btc_rep_malus_veh_killed, _instigator] remoteExecCall ["btc_fnc_rep_change", 2];
+};

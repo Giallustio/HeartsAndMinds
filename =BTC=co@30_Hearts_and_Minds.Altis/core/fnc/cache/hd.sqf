@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_cache_hd_cache
+Function: btc_fnc_cache_hd
 
 Description:
     Destroy an ammo cache only when an explposive with damage > 0.6 is used.
@@ -11,12 +11,14 @@ Parameters:
     _damage - Amount of damage get by the object. [Number]
     _injurer - Not use. [Object]
     _ammo - Type of ammo use to make damage. [String]
+    _hitIndex - Hit part index of the hit point, -1 otherwise. [Number]
+    _instigator - Person who pulled the trigger. [Object]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_cache_hd_cache;
+        _result = [] call btc_fnc_cache_hd;
     (end)
 
 Author:
@@ -29,20 +31,22 @@ params [
     ["_part", "", [""]],
     ["_damage", 0, [0]],
     ["_injurer", objNull, [objNull]],
-    ["_ammo", "", [""]]
+    ["_ammo", "", [""]],
+    ["_hitIndex", 0, [0]], 
+    ["_instigator", objNull, [objNull]]
 ];
 
 private _explosive = (getNumber(configFile >> "cfgAmmo" >> _ammo >> "explosive") > 0);
 
 if (
-    !(_cache getVariable ["btc_fnc_cache_hd_cache_fired", false]) &&
+    !(_cache getVariable ["btc_fnc_cache_hd_fired", false]) &&
     {_explosive} &&
     {_damage > 0.6}
 ) then {
-    _cache setVariable ["btc_fnc_cache_hd_cache_fired", true];
+    _cache setVariable ["btc_fnc_cache_hd_fired", true];
 
     if (!isServer) exitWith {
-        _this remoteExecCall ["btc_fnc_cache_hd_cache", 2];
+        _this remoteExecCall ["btc_fnc_cache_hd", 2];
     };
 
     //Effects
@@ -67,7 +71,7 @@ if (
         [format ["DESTROYED: ID %1 POS %2", btc_cache_n, btc_cache_pos], __FILE__, [false]] call btc_fnc_debug_message;
     };
 
-    [btc_rep_bonus_cache, _injurer] call btc_fnc_rep_change;
+    [btc_rep_bonus_cache, _instigator] call btc_fnc_rep_change;
 
     //Notification
     [0] remoteExecCall ["btc_fnc_show_hint", 0];
