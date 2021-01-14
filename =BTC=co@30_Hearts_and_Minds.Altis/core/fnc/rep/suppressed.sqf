@@ -32,18 +32,23 @@ params [
     ["_ammoObject", objNull, [objNull]]
 ];
 
+if (_civ getVariable ["btc_fnc_rep_suppressed_fired", false] isEqualTo 2) exitWith {};
 if (_ammoObject isKindOf "SmokeShell") exitWith {};
-
-_civ removeEventHandler ["Suppressed", _thisEventHandler];
-
-if (!(side group _civ isEqualTo civilian) || (random 3 < 1)) exitWith {};
-
-[_civ, selectRandom ["ApanPknlMstpSnonWnonDnon_G01", "ApanPknlMstpSnonWnonDnon_G02", "ApanPknlMstpSnonWnonDnon_G03", "ApanPpneMstpSnonWnonDnon_G01", "ApanPpneMstpSnonWnonDnon_G02", "ApanPpneMstpSnonWnonDnon_G03"], 1] call ace_common_fnc_doAnimation;
+if !(side group _civ isEqualTo civilian) exitWith {_civ setVariable ["btc_fnc_rep_suppressed_fired", 2]};
 
 if (
-    side group _instigator isEqualTo btc_player_side &&
-    {(_shooter findNearestEnemy _civ) distance _civ > 300} &&
-    {abs((_shooter getDir _civ) - getDir _shooter) < 300/_distance}
+    _civ getVariable ["btc_fnc_rep_suppressed_fired", 0] isEqualTo 0 &&
+    {random 3 < 1}
+) then {
+    _civ setVariable ["btc_fnc_rep_suppressed_fired", 1];
+    [_civ, selectRandom ["ApanPknlMstpSnonWnonDnon_G01", "ApanPknlMstpSnonWnonDnon_G02", "ApanPknlMstpSnonWnonDnon_G03", "ApanPpneMstpSnonWnonDnon_G01", "ApanPpneMstpSnonWnonDnon_G02", "ApanPpneMstpSnonWnonDnon_G03"], 1] call ace_common_fnc_doAnimation;
+};
+
+if (
+    _distance < 2 &&
+    {side group _instigator isEqualTo btc_player_side} &&
+    {(_shooter findNearestEnemy _civ) distance _civ > 200} &&
+    {abs((_shooter getDir _civ) - getDir _shooter) < 150/(_shooter distance _civ)}
 ) then {
     if (isServer)  then {
         [btc_rep_malus_civ_suppressed, _shooter] call btc_fnc_rep_change;
