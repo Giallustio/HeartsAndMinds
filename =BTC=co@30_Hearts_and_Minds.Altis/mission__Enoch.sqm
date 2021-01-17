@@ -2126,7 +2126,7 @@ class Mission
 						isPlayable=1;
 					};
 					id=118;
-					type="B_Soldier_F";
+					type="B_Sharpshooter_F";
 				};
 			};
 			class Attributes
@@ -2156,7 +2156,7 @@ class Mission
 						isPlayable=1;
 					};
 					id=120;
-					type="B_Soldier_F";
+					type="B_Sharpshooter_F";
 				};
 			};
 			class Attributes
