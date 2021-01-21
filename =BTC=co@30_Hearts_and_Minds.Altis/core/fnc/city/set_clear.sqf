@@ -31,27 +31,17 @@ _city setVariable ["occupied", false];
 
 if !(_remainEnemyUnits isEqualTo []) then {
     {
+        private _enemyUnitsToSurrender = _remainEnemyUnits;
         private _vehicle = vehicle _x;
         if (unitIsUAV _vehicle) then {
             _x setDamage 1;
         } else {
-            if (_vehicle isKindOf "Air" || {_vehicle isKindOf "Ship"}) then {
-                _remainEnemyUnits = _remainEnemyUnits - crew _vehicle;
-            } else {
-                if (_vehicle isKindOf "LandVehicle") then {
-                    private _crew = crew _vehicle;
-                    _crew allowGetIn false;
-                    {
-                        moveOut _x;
-                        [_x, true] call ace_captives_fnc_setSurrendered;
-                    } forEach _crew;
-                    _remainEnemyUnits = _remainEnemyUnits - _crew;
-                } else {
-                    [_x, true] call ace_captives_fnc_setSurrendered;
-                };
+            if (_vehicle isKindOf "LandVehicle" || {_vehicle isKindOf "Air" || {_vehicle isKindOf "Ship"}}) then {
+                _enemyUnitsToSurrender = _enemyUnitsToSurrender - crew _vehicle;
             };
         };
     } forEach _remainEnemyUnits;
+    {[_x, true] call ace_captives_fnc_setSurrendered;} forEach _enemyUnitsToSurrender;
 };
 
 if (_city getVariable ["marker", ""] != "") then {
