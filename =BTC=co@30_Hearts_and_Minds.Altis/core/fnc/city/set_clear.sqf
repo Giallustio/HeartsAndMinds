@@ -31,20 +31,10 @@ _city setVariable ["occupied", false];
 
 if !(_remainEnemyUnits isEqualTo []) then {
     {
-        private _vehicle = vehicle _x;
-        if (unitIsUAV _vehicle) then {
+        if (unitIsUAV _x) then {
             _x setDamage 1;
         } else {
-            if (_vehicle isKindOf "StaticWeapon") then {
-                private _crew = crew _vehicle;
-                _crew allowGetIn false;
-                {
-                    moveOut _x;
-                    [_x, true] call ace_captives_fnc_setSurrendered;
-                } forEach _crew;
-            } else {
-                [_x, true] call ace_captives_fnc_setSurrendered;
-            };
+            [_x, true] call ace_captives_fnc_setSurrendered;
         };
     } forEach _remainEnemyUnits;
 };
