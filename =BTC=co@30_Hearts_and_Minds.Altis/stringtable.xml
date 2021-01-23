@@ -10,11 +10,11 @@
                 <Chinesesimp>心灵与智慧</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_DESCR_MISSION">
-                <Original>www.blacktemplars.altervista.org</Original>
-                <Spanish>www.blacktemplars.altervista.org</Spanish>
-                <German>www.blacktemplars.altervista.org</German>
-                <Portuguese>www.blacktemplars.altervista.org</Portuguese>
-                <Chinesesimp>www.blacktemplars.altervista.org</Chinesesimp>
+                <Original>github.com/Vdauphin/HeartsAndMinds</Original>
+                <Spanish>github.com/Vdauphin/HeartsAndMinds</Spanish>
+                <German>github.com/Vdauphin/HeartsAndMinds</German>
+                <Portuguese>github.com/Vdauphin/HeartsAndMinds</Portuguese>
+                <Chinesesimp>github.com/Vdauphin/HeartsAndMinds</Chinesesimp>
             </Key>
         </Container>
     </Package>
