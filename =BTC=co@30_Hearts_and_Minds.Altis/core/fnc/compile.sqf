@@ -41,6 +41,7 @@ if (isServer) then {
     btc_fnc_city_trigger_player_side = compile preprocessFileLineNumbers "core\fnc\city\trigger_player_side.sqf";
     btc_fnc_city_findPos = compile preprocessFileLineNumbers "core\fnc\city\findPos.sqf";
     btc_fnc_city_cleanUp = compile preprocessFileLineNumbers "core\fnc\city\cleanUp.sqf";
+    btc_fnc_city_trigger_free_condition = compile preprocessFileLineNumbers "core\fnc\city\trigger_free_condition.sqf";
 
     //CIV
     btc_fnc_civ_add_weapons = compile preprocessFileLineNumbers "core\fnc\civ\add_weapons.sqf";
