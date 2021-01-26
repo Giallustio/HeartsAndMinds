@@ -28,17 +28,12 @@ params [
 if (btc_p_city_free_trigger isEqualTo 0) then {
     _remainEnemyUnits isEqualTo []
 } else {
-    if (count _remainEnemyUnits > btc_p_city_free_trigger) exitWith {
-        false
-    };
-
-    private _return = true;
-    private _veh;
-    {
-        _veh = vehicle _x;
-        if !(_veh isKindOf 'Man' || {unitIsUAV _veh}) exitWith {
-            _return = false;
-        };
-    } forEach _remainEnemyUnits;
-    _return
+    if (count _remainEnemyUnits > btc_p_city_free_trigger) exitWith {false};
+    _remainEnemyUnits findIf {
+        private _veh = vehicle _x;
+        !(
+            _veh isKindOf 'Man' ||
+            {unitIsUAV _veh}
+        )
+    } isEqualTo -1
 }
