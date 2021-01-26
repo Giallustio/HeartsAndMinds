@@ -32,8 +32,8 @@ if (btc_p_city_free_trigger isEqualTo 0) then {
     _remainEnemyUnits findIf {
         private _veh = vehicle _x;
         !(
-            _veh isKindOf 'Man' ||
+            _veh isKindOf "Man" ||
             {unitIsUAV _veh}
         )
     } isEqualTo -1
-}
+};
