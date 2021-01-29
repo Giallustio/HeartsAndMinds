@@ -78,6 +78,7 @@ waitUntil {
 private _path = _agent getVariable ["btc_path", []];
 if (count _path <= 35) exitWith {
     _markers append (allMapMarkers select {(_x select [0, count _taskID]) isEqualTo _taskID});
+    [_markers, [_agent]]  call btc_fnc_delete;
     [_taskID, "CANCELED"] call BIS_fnc_taskSetState;
 };
 
