@@ -69,13 +69,16 @@ private _markers = [_marker1, _marker2, _area];
 /// Show info path\\\
 private _veh_types = btc_civ_type_veh select {!(_x isKindOf "air")};
 private _agent = [btc_fnc_info_path, [_pos1, _pos2, _taskID, _veh_types select 0]] call CBA_fnc_directCall;
+private _startingPath = serverTime;
 
 waitUntil {
-    !isNil {_agent getVariable "btc_path"}
+    !isNil {_agent getVariable "btc_path"} ||
+    {serverTime > _startingPath + 10}
 };
 private _path = _agent getVariable ["btc_path", []];
 if (count _path <= 35) exitWith {
     _markers append (allMapMarkers select {(_x select [0, count _taskID]) isEqualTo _taskID});
+    [_markers, [_agent]]  call btc_fnc_delete;
     [_taskID, "CANCELED"] call BIS_fnc_taskSetState;
 };
 
