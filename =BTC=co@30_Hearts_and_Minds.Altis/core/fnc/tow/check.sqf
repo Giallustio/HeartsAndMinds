@@ -49,6 +49,7 @@ private _offset = if (_model_selected select 1 > 3.06) then {
     (_model_front_selected select 1) - (_model_selected select 1)
 };
 private _posFlat = _towed getPos [_offset + 3 /*size of Truck_01_Rack_F*/, _dirSelected];
+_posFlat set [2, 0.2 + ((getPosATL _towed) select 2)];
 private _distance = _posFlat distance (_tower modelToWorld _model_rear);
 private _distanceTowed = _towed distance (_tower modelToWorld _model_rear);
 
