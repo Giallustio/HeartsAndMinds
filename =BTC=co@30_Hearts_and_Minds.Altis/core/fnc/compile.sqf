@@ -50,6 +50,7 @@ if (isServer) then {
     btc_fnc_civ_populate = compile preprocessFileLineNumbers "core\fnc\civ\populate.sqf";
     btc_fnc_civ_create_patrol = compile preprocessFileLineNumbers "core\fnc\civ\create_patrol.sqf";
     btc_fnc_civ_evacuate = compile preprocessFileLineNumbers "core\fnc\civ\evacuate.sqf";
+    btc_fnc_civ_createFlower = compile preprocessFileLineNumbers "core\fnc\civ\createFlower.sqf";
 
     //DATA
     btc_fnc_data_add_group = compile preprocessFileLineNumbers "core\fnc\data\add_group.sqf";

@@ -262,6 +262,11 @@ if (_city getVariable ["data_tags", []] isEqualTo []) then {
 };
 [_city, btc_fnc_tag_create] call btc_fnc_delay_exec;
 
+private _civKilled = _city getVariable ["btc_rep_civKilled", []];
+if !(_civKilled isEqualTo []) then {
+    [[_city, _civKilled], btc_fnc_civ_createFlower] call btc_fnc_delay_exec;
+};
+
 [{
     params ["_has_en", "_city", "_radius", "_id"];
 

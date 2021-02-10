@@ -349,6 +349,10 @@ if (isServer) then {
     btc_model_ieds = btc_type_ieds apply {(toLower getText(_cfgVehicles >> _x >> "model")) select [1]};
     btc_type_blacklist = btc_type_tags + ["UserTexture1m_F"];
 
+    //Flowers
+    btc_type_flowers = _allClassSorted select {_x isKindOf "FlowerBouquet_base_F"};
+    btc_model_flowers = btc_type_flowers apply {(toLower getText(_cfgVehicles >> _x >> "model")) select [1]};
+
     btc_groundWeaponHolder = [];
 };
 
