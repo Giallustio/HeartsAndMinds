@@ -351,7 +351,6 @@ if (isServer) then {
 
     //Flowers
     btc_type_flowers = _allClassSorted select {_x isKindOf "FlowerBouquet_base_F"};
-    btc_model_flowers = btc_type_flowers apply {(toLower getText(_cfgVehicles >> _x >> "model")) select [1]};
 
     btc_groundWeaponHolder = [];
 };

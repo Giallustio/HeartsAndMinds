@@ -32,7 +32,8 @@ private _cities_status = +(profileNamespace getVariable [format ["btc_hm_%1_citi
 {
     _x params ["_id", "_initialized", "_spawn_more", "_occupied", "_data_units", "_has_ho", "_ho_units_spawned", "_ieds", "_has_suicider",
         ["_data_animals", [], [[]]],
-        ["_data_tags", [], [[]]]
+        ["_data_tags", [], [[]]],
+        ["_civKilled", [], [[]]]
     ];
 
     private _city = btc_city_all select _id;
@@ -47,6 +48,7 @@ private _cities_status = +(profileNamespace getVariable [format ["btc_hm_%1_citi
     _city setVariable ["has_suicider", _has_suicider];
     _city setVariable ["data_animals", _data_animals];
     _city setVariable ["data_tags", _data_tags];
+    _city setVariable ["btc_rep_civKilled", _civKilled];
 
     if (btc_debug) then {
         private _marker = _city getVariable ["marker", ""];

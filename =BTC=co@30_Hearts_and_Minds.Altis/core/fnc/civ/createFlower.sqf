@@ -31,7 +31,7 @@ _city setVariable [
     _civKilled apply {
         _x params ["_posASL", "_dir"];
 
-        private _flowers = createSimpleObject [selectRandom btc_model_flowers, _posASL];
+        private _flowers = createSimpleObject [selectRandom btc_type_flowers, _posASL];
         _flowers setDir _dir;
 
         _flowers
