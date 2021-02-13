@@ -69,11 +69,11 @@ private _markers = [_marker1, _marker2, _area];
 /// Show info path\\\
 private _veh_types = btc_type_motorized select {!(_x isKindOf "air")};
 private _agent = [btc_fnc_info_path, [_pos1, _pos2, _taskID, _veh_types select 0]] call CBA_fnc_directCall;
-private _startingPath = serverTime;
+private _startingPath = time;
 
 waitUntil {
     !isNil {_agent getVariable "btc_path"} ||
-    {serverTime > _startingPath + 10}
+    {time > _startingPath + 10}
 };
 private _path = _agent getVariable ["btc_path", []];
 if (count _path <= 35) exitWith {
