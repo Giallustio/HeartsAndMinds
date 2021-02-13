@@ -1,5 +1,5 @@
 
-btc_version = [1, 20, 9];
+btc_version = [1, 20, 10];
 diag_log format (["=BTC= HEARTS AND MINDS VERSION %1.%2.%3"] + btc_version);
 
 //Param
