@@ -55,7 +55,7 @@ btc_ied_deleteOn = [{
     ) then {
         private _pos = getPosATL _ied;
         _ied call CBA_fnc_deleteEntity;
-        [btc_rep_bonus_IEDCleanUp, _unit] remoteExecCall ["btc_fnc_rep_change", 2];
-        ["btc_ied_deleted", [_pos, _unit]] call CBA_fnc_serverEvent;
+        [btc_rep_bonus_IEDCleanUp, player] remoteExecCall ["btc_fnc_rep_change", 2];
+        ["btc_ied_deleted", [_pos, player]] call CBA_fnc_serverEvent;
     };
 }, 1, [_vehicle, (_maxWidth max _maxLength) / 2]] call CBA_fnc_addPerFrameHandler;
