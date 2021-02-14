@@ -45,7 +45,7 @@ if (count _houses > 3) then {
 };
 private _buildingPos = _house buildingPos -1;
 private _pos_number = count _buildingPos - 1;
-private _pos = _buildingPos select (_pos_number - round random 1);
+private _pos = _buildingPos select (_pos_number - ((round random 1) min _pos_number));
 
 _city setVariable ["spawn_more", true];
 
