@@ -41,6 +41,11 @@ btc_ied_deleteOn = [{
     ];
 
     private _ieds = allSimpleObjects [] - allSimpleObjects btc_type_blacklist;
+    _ieds = (_ieds inAreaArray [getPosWorld _vehicle, 50, 50]) select {
+        !("ace_drop" in ((getModelInfo _x) select 0))
+    };
+    if (_ieds isEqualTo []) exitWith {};
+
     _ieds = _ieds apply {[_x distance _vehicle, _x]};
     _ieds sort true;
 
