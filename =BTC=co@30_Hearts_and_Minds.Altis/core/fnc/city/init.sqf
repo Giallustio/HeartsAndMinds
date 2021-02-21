@@ -26,7 +26,7 @@ params [
 
 private _locations = configfile >> "cfgworlds" >> worldname >> "names";
 
-private _cities = ["NameVillage", "NameCity", "NameCityCapital", "NameLocal", "Hill", "Airport"];
+private _cities = ["NameVillage", "NameCity", "NameCityCapital", "NameLocal", "Hill", "Airport", "StrongpointArea", "BorderCrossing", "VegetationFir"];
 if (btc_p_sea) then {_cities pushBack "NameMarine";};
 
 btc_city_all = [];
