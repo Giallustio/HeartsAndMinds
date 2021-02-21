@@ -38,7 +38,7 @@ _trigger setVariable ["suicider", _suicider];
 
 _trigger attachTo [_suicider, [0, 0, 0]];
 
-private _array = getPos _suicider nearEntities ["SoldierWB", 30];
+private _array = getPos _suicider nearEntities [btc_player_type, 30];
 
 if (_array isEqualTo []) exitWith {};
 
