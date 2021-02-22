@@ -67,8 +67,6 @@ if !(_allHitPointsDamage isEqualTo []) then {
         [_veh, _forEachindex, _x, false] call ace_repair_fnc_setHitPointDamage;
     } forEach (_allHitPointsDamage select 2);
     if ((_allHitPointsDamage select 2) select {_x < 1} isEqualTo []) then {
-        _veh setVariable ["ace_cookoff_enable", false, true];
-        _veh setVariable ["ace_cookoff_enableAmmoCookoff", false, true];
         _veh setDamage [1, false];
     };
 };
