@@ -648,4 +648,4 @@ btc_AI_skill = _p_skill;
 //Headless
 btc_units_owners = [];
 
-btc_player_type = ["SoldierWB", "SoldierEB", "SoldierGB"] select ([west, east, independent] find btc_player_side)
+btc_player_type = ["SoldierWB", "SoldierEB", "SoldierGB"] select ([west, east, independent] find btc_player_side);
