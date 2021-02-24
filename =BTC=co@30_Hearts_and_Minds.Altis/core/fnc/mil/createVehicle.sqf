@@ -13,13 +13,17 @@ Parameters:
     _type_units - Array of available unit type for cargo. [Array]
     _type_divers - Units used for submarine. [Array]
     _type_crewmen - Array of available crews type. [Array]
+    _surfaceNormal - Surface normal. [Array]
 
 Returns:
-    _veh - Vehicle created. [Object]
+    _delay_vehicle - Delay for unit creation. [Number]
 
 Examples:
     (begin example)
-        _veh = [createGroup [btc_enemy_side, true], getPosATL player] call btc_fnc_mil_createVehicle;
+        [createGroup [btc_enemy_side, true], player getPos [10, direction player]] call btc_fnc_mil_createVehicle;
+    (end)
+    (begin example)
+        [createGroup [btc_enemy_side, true], player getPos [10, direction player], "O_G_Van_02_vehicle_F"] call btc_fnc_mil_createVehicle;
     (end)
 
 Author:
@@ -27,39 +31,30 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
+if (canSuspend) exitWith {[btc_fnc_mil_createVehicle, _this] call CBA_fnc_directCall};
+
 params [
     ["_group", grpNull, [grpNull]],
     ["_pos", [0, 0, 0], [[]]],
     ["_veh_type", selectRandom btc_type_motorized, [""]],
     ["_dir", 0, [0]],
+    ["_surfaceNormal", [], [[]]],
     ["_type_units", btc_type_units, [[]]],
     ["_type_divers", btc_type_divers, [[]]],
-    ["_type_crewmen", btc_type_crewmen, [[]]],
-    ["_p_chem", btc_p_chem, [false]]
+    ["_type_crewmen", btc_type_crewmen, [[]]]
 ];
 
 private _needdiver = getText (configFile >> "CfgVehicles" >> _veh_type >> "simulation") isEqualTo "submarinex";
-if (_veh_type isKindOf "Van_02_vehicle_base_F") then {
-    _veh_type = "I_C_Van_02_transport_F"; // https://feedback.bistudio.com/T129141
+_type_crewmen = [_type_crewmen, _type_divers select 0] select _needdiver;
+
+private _units_type = [];
+private _crewSeats = [_veh_type, false] call BIS_fnc_crewCount;
+private _totalSeats = [_veh_type, true] call BIS_fnc_crewCount;
+for "_i" from 0 to (_crewSeats - 1) do {
+    _units_type pushBack _type_crewmen
+};
+for "_i" from _crewSeats to (_totalSeats - 1) do {
+    _units_type pushBack selectRandom _type_units;
 };
 
-private _veh = createVehicle [_veh_type, _pos, [], 0, "FLY"];
-if !(_veh_type isKindOf "Plane") then {
-    _veh setDir _dir;
-    _veh setVectorUp surfaceNormal position _veh;
-};
-if (_p_chem) then {
-    _veh addEventHandler ["GetIn", {
-        [_this select 0, _this select 2] call btc_fnc_chem_propagate;
-        _this
-    }];
-};
-
-private _units = [_veh, _group, false, "", [_type_crewmen, _type_divers select 0] select _needdiver] call BIS_fnc_spawnCrew;
-_group selectLeader (driver _veh);
-_units joinSilent _group;
-
-private _cargo = _veh emptyPositions "cargo";
-[_group, _pos, _cargo, _needdiver, _type_units, _type_divers] call btc_fnc_mil_createUnits;
-
-_veh
+[_group, _veh_type, _units_type, _pos, _dir, 1, _surfaceNormal] call btc_fnc_delay_createVehicle

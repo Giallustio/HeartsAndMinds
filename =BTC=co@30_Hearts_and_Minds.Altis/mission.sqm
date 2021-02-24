@@ -8,7 +8,7 @@ class EditorData
 	toggles=521;
 	class ItemIDProvider
 	{
-		nextID=226;
+		nextID=232;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={8380.7012,98.929726,10101.742};
-		dir[]={-0.82167125,-0.56283653,-0.089907967};
-		up[]={-0.5595513,0.82653111,-0.061226442};
-		aside[]={-0.1087717,-3.2095704e-007,0.99407214};
+		pos[]={8314.7744,91.116623,10084.846};
+		dir[]={-0.80029076,-0.58512336,0.13129118};
+		up[]={-0.57747674,0.81089264,0.09473715};
+		aside[]={0.16189197,-1.5887781e-007,0.98683923};
 	};
 };
 binarizationWanted=0;
@@ -39,9 +39,10 @@ addons[]=
 	"A3_Characters_F",
 	"ace_explosives",
 	"A3_Modules_F_Curator_Curator",
-	"A3_Characters_F_Mark",
+	"A3_Characters_F_Enoch",
 	"A3_Air_F_Heli_Heli_Transport_03",
 	"A3_Soft_F_Beta_Truck_01",
+	"A3_Soft_F_Enoch_Truck_01",
 	"A3_Soft_F_Exp_LSV_01",
 	"A3_Soft_F_MRAP_01",
 	"A3_Armor_F_Beta_APC_Wheeled_01",
@@ -49,7 +50,7 @@ addons[]=
 	"A3_Air_F_Beta_Heli_Attack_01",
 	"A3_Props_F_Enoch_Military_Decontamination",
 	"A3_Signs_F",
-	"A3_Soft_F_Enoch_Truck_01"
+	"A3_Armor_F_Beta_APC_Tracked_01"
 };
 class AddonsMetaData
 {
@@ -142,8 +143,8 @@ class AddonsMetaData
 		};
 		class Item12
 		{
-			className="A3_Characters_F_Mark";
-			name="Arma 3 Marksmen - Characters and Clothing";
+			className="A3_Characters_F_Enoch";
+			name="Arma 3 Contact Platform - Characters and Clothing";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
@@ -163,43 +164,43 @@ class AddonsMetaData
 		};
 		class Item15
 		{
+			className="A3_Soft_F_Enoch";
+			name="Arma 3 Contact Platform - Unarmored Land Vehicles";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item16
+		{
 			className="A3_Soft_F";
 			name="Arma 3 Alpha - Unarmored Land Vehicles";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item16
+		class Item17
 		{
 			className="A3_Armor_F_Beta";
 			name="Arma 3 Beta - Armored Land Vehicles";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item17
+		class Item18
 		{
 			className="A3_Air_F_Beta";
 			name="Arma 3 Beta - Aircraft";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item18
-		{
-			className="A3_Props_F_Enoch";
-			name="Arma 3 Enoch - Decorative and Mission Objects";
-			author="Bohemia Interactive";
-			url="https://www.arma3.com";
-		};
 		class Item19
 		{
-			className="A3_Signs_F";
-			name="Arma 3 - Signs";
+			className="A3_Props_F_Enoch";
+			name="Arma 3 Contact Platform - Decorative and Mission Objects";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
 		class Item20
 		{
-			className="A3_Soft_F_Enoch";
-			name="Arma 3 Enoch - Unarmored Land Vehicles";
+			className="A3_Signs_F";
+			name="Arma 3 - Signs";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
@@ -208,10 +209,7 @@ class AddonsMetaData
 randomSeed=2442963;
 class ScenarioData
 {
-	respawnDialog=0;
 	disabledAI=1;
-	respawn=3;
-	respawnDelay=5;
 	class Header
 	{
 		gameType="Coop";
@@ -225,24 +223,6 @@ class CustomAttributes
 	{
 		name="Multiplayer";
 		class Attribute0
-		{
-			property="RespawnTemplates";
-			expression="true";
-			class Value
-			{
-				class data
-				{
-					class type
-					{
-						type[]=
-						{
-							"ARRAY"
-						};
-					};
-				};
-			};
-		};
-		class Attribute1
 		{
 			property="RespawnButton";
 			expression="true";
@@ -258,6 +238,24 @@ class CustomAttributes
 						};
 					};
 					value=1;
+				};
+			};
+		};
+		class Attribute1
+		{
+			property="RespawnTemplates";
+			expression="true";
+			class Value
+			{
+				class data
+				{
+					class type
+					{
+						type[]=
+						{
+							"ARRAY"
+						};
+					};
 				};
 			};
 		};
@@ -696,12 +694,13 @@ class Mission
 	};
 	class Entities
 	{
-		items=59;
+		items=61;
 		class Item0
 		{
 			dataType="Marker";
 			position[]={8300.7275,76.093613,10061.531};
 			name="respawn_west";
+			text=$STR_BTC_HAM_INTRO_ARSENAL_REDEPLOY;
 			type="Empty";
 			id=0;
 		};
@@ -1936,8 +1935,8 @@ class Mission
 					{
 						isPlayable=1;
 					};
-					id=198;
-					type="B_Sharpshooter_F";
+					id=226;
+					type="B_soldier_UAV_F";
 					class CustomAttributes
 					{
 						class Attribute0
@@ -2008,8 +2007,8 @@ class Mission
 					{
 						isPlayable=1;
 					};
-					id=197;
-					type="B_Sharpshooter_F";
+					id=227;
+					type="B_soldier_UAV_F";
 					class CustomAttributes
 					{
 						class Attribute0
@@ -2075,13 +2074,55 @@ class Mission
 						angles[]={0,5.701921,0};
 					};
 					side="West";
-					flags=7;
+					flags=6;
 					class Attributes
 					{
 						isPlayable=1;
 					};
-					id=114;
-					type="B_Soldier_F";
+					id=228;
+					type="B_W_Soldier_CBRN_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male05ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1;
+								};
+							};
+						};
+						nAttributes=2;
+					};
 				};
 			};
 			class Attributes
@@ -2105,13 +2146,55 @@ class Mission
 						angles[]={0,5.701921,0};
 					};
 					side="West";
-					flags=7;
+					flags=6;
 					class Attributes
 					{
 						isPlayable=1;
 					};
-					id=116;
-					type="B_Soldier_F";
+					id=229;
+					type="B_W_Soldier_CBRN_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male06ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=0.95999998;
+								};
+							};
+						};
+						nAttributes=2;
+					};
 				};
 			};
 			class Attributes
@@ -2141,7 +2224,7 @@ class Mission
 						isPlayable=1;
 					};
 					id=118;
-					type="B_Soldier_F";
+					type="B_Sharpshooter_F";
 				};
 			};
 			class Attributes
@@ -2171,7 +2254,7 @@ class Mission
 						isPlayable=1;
 					};
 					id=120;
-					type="B_Soldier_F";
+					type="B_Sharpshooter_F";
 				};
 			};
 			class Attributes
@@ -2464,8 +2547,8 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={8299.2021,78.316971,10089.534};
-				angles[]={0.0013439035,0.94247776,6.232553};
+				position[]={8299.4082,78.879608,10089.423};
+				angles[]={0.0013372133,0.94247776,6.2325611};
 			};
 			side="Empty";
 			flags=4;
@@ -2475,8 +2558,8 @@ class Mission
 				name="btc_veh_15";
 			};
 			id=160;
-			type="B_Truck_01_covered_F";
-			atlOffset=-0.095001221;
+			type="B_Truck_01_flatbed_F";
+			atlOffset=5.3405762e-005;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -2762,7 +2845,7 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={8295.166,78.402695,10052.533};
+				position[]={8295.166,78.402374,10052.533};
 				angles[]={0,5.7184839,0};
 			};
 			side="Empty";
@@ -2775,7 +2858,7 @@ class Mission
 			};
 			id=170;
 			type="B_APC_Wheeled_01_cannon_F";
-			atlOffset=-0.076683044;
+			atlOffset=-0.077003479;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -3130,6 +3213,89 @@ class Mission
 								};
 							};
 							value="[[[[""FirstAidKit""],[10]],[[],[]],[[],[]],[[],[]]],false]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item59
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={8368.6865,74.666542,10110.126};
+				angles[]={0.012007865,5.5935359,6.1861625};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				init="call{this setVariable [""btc_dont_delete"",true]}";
+				name="btc_veh_17";
+			};
+			id=230;
+			type="B_Truck_01_medical_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[""FirstAidKit""],[10]],[[],[]],[[],[]],[[],[]]],false]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item60
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={8373.0576,74.504128,10115.97};
+				angles[]={6.279171,5.5569015,6.1848359};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				init="call{this setVariable [""btc_dont_delete"",true]}";
+				name="btc_veh_18";
+			};
+			id=231;
+			type="B_APC_Tracked_01_CRV_F";
+			atlOffset=7.6293945e-006;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[""arifle_MX_F"",""arifle_MX_SW_F"",""launch_NLAW_F"",""FirstAidKit""],[2,1,1,10]],[[""30Rnd_65x39_caseless_mag"",""100Rnd_65x39_caseless_mag"",""HandGrenade"",""MiniGrenade"",""1Rnd_HE_Grenade_shell"",""1Rnd_Smoke_Grenade_shell"",""1Rnd_SmokeGreen_Grenade_shell"",""1Rnd_SmokeOrange_Grenade_shell"",""1Rnd_SmokeBlue_Grenade_shell"",""SmokeShell"",""SmokeShellGreen"",""SmokeShellOrange"",""SmokeShellBlue"",""NLAW_F"",""Titan_AT"",""Titan_AP"",""Titan_AA""],[24,12,6,6,6,3,3,3,3,8,8,8,8,5,2,2,2]],[[],[]],[[],[]]],false]";
 						};
 					};
 				};

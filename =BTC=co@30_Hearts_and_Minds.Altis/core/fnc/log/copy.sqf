@@ -32,8 +32,9 @@ if (_objects isEqualTo []) exitWith {(localize "STR_BTC_HAM_O_COPY_NOCONTAINER")
 
 btc_int_ask_data = nil;
 [9, _objects select 0] remoteExecCall ["btc_fnc_int_ask_var", 2];
-waitUntil {!(isNil "btc_int_ask_data")};
 
-btc_copy_container = +btc_int_ask_data;
+[{!(isNil "btc_int_ask_data")}, {
+    btc_copy_container = +btc_int_ask_data;
 
-(localize "STR_BTC_HAM_O_COPY_SUCCSESS") call CBA_fnc_notify;
+    (localize "STR_BTC_HAM_O_COPY_SUCCSESS") call CBA_fnc_notify;
+}] call CBA_fnc_waitUntilAndExecute;

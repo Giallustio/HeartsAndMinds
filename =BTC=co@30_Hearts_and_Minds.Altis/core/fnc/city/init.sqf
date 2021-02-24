@@ -26,7 +26,7 @@ params [
 
 private _locations = configfile >> "cfgworlds" >> worldname >> "names";
 
-private _cities = ["NameVillage", "NameCity", "NameCityCapital", "NameLocal", "Hill", "Airport"];
+private _cities = ["NameVillage", "NameCity", "NameCityCapital", "NameLocal", "Hill", "Airport", "StrongpointArea", "BorderCrossing", "VegetationFir"];
 if (btc_p_sea) then {_cities pushBack "NameMarine";};
 
 btc_city_all = [];
@@ -56,8 +56,8 @@ for "_id" from 0 to (count _locations - 1) do {
             };
         };
         private _name = getText(_current >> "name");
-        private _radius_x = getNumber(_current >> "RadiusA");
-        private _radius_y = getNumber(_current >> "RadiusB");
+        private _radius = getNumber(_current >> "RadiusA") + getNumber(_current >> "RadiusB");
+        _radius = (_radius max 160) min 800;
 
         if (btc_city_blacklist find _name >= 0) exitWith {};
 
@@ -66,17 +66,12 @@ for "_id" from 0 to (count _locations - 1) do {
         if ((getMarkerPos "YOUR_MARKER_AREA") inArea [_position, 500, 500, 0, false]) exitWith {};
         */
 
-        if (_radius_x < 80 || _radius_y < 80) then {
-            _radius_x = 80;
-            _radius_y = 80;
-        };
-
-        [_position, _type, _name, _radius_x, _radius_y, random 1 > _is_free_probability, _id] call btc_fnc_city_create;
+        [_position, _type, _name, _radius, random 1 > _is_free_probability, _id] call btc_fnc_city_create;
     };
 };
 
 if !(isNil "btc_custom_loc") then {
-    {_x call btc_fnc_city_create} forEach btc_custom_loc;
+    {_x call btc_fnc_city_create;} forEach btc_custom_loc;
 };
 
 btc_city_all = btc_city_all apply {if (isNil "_x") then {objNull} else {_x}};

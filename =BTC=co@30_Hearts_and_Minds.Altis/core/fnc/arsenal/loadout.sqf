@@ -6,7 +6,7 @@ Description:
     Generate a loadout from an array of defined loadout depending on trait, medical level, color and hour of the day.
 
 Parameters:
-    _type - Type of loadout: 0 - Rifleman, 1 - Medic, 2 - Repair, 3 - Engineer, 4 - Anti-Tank, 5 - Anti Air, 6 - Sniper, 7 - Machine gunner. [Number]
+    _type - Type of loadout: 0 - Rifleman, 1 - Medic, 2 - Repair, 3 - Engineer, 4 - Anti-Tank, 5 - Anti Air, 6 - Sniper, 7 - Machine gunner, 8 - CBRN, 9 - Drone hacker. [Number]
     _color - Color of skin loadout: 0 - Desert, 1 - Tropic, 2 - Black, 3 - Forest. [Number]
     _isDay - Select night (false) or day (true) loadout. [Boolean]
     _medicalParameters - Select the correct medical stuff depends on ACE3 medical parameters. [Array]
@@ -30,7 +30,7 @@ Examples:
                         sleep 1;
                     } forEach [false,true];
                 } forEach [0,1,2,3];
-            } forEach [0,1,2,3,4,5,6,7];
+            } forEach [0,1,2,3,4,5,6,7,8,9];
         };
     (end)
 
@@ -55,7 +55,7 @@ if (_color < 0) then {
             case (worldName in ["Tanoa", "lingor3"]): {
                 1
             };
-            case (worldName in ["chernarus", "Enoch", "sara"]): {
+            case (worldName in ["chernarus", "Enoch", "sara", "vt7"]): {
                 3
             };
             default {
@@ -65,7 +65,7 @@ if (_color < 0) then {
     }
 };
 
-(_arsenal_loadout apply {_x select _color}) params ["_uniform", "_vest", "_helmet", "_hood", "_laserdesignator", "_night_vision", "_weapon", "_weapon_sniper", "_weapon_machineGunner", "_bipod", "_pistol", "_launcher_AT", "_launcher_AA", "_backpack", "_backpack_big", "_radio"];
+(_arsenal_loadout apply {_x select _color}) params ["_uniform", "_uniformCBRN", "_uniformSniper", "_vest", "_helmet", "_hood", "_hoodCBRN", "_laserdesignator", "_night_vision", "_weapon", "_weapon_sniper", "_weapon_machineGunner", "_bipod", "_pistol", "_launcher_AT", "_launcher_AA", "_backpack", "_backpack_big", "_backpackCBRN", "_radio"];
 
 if (_isDay isEqualType 0) then {
     (date call BIS_fnc_sunriseSunsetTime) params ["_sunrise", "_sunset"];
@@ -95,7 +95,28 @@ if (_fractures > 0) then {
 };
 _cargo_uniform append _medical;
 
-//Choose appropriats weapon/optics depends on _type
+private _uniform = switch (_type) do {
+    case 6: {
+        _uniformSniper
+    };
+    case 8: {
+        _uniformCBRN
+    };
+    default {
+        _uniform
+    };
+};
+
+private _hood = switch (_type) do {
+    case 8: {
+        _hoodCBRN
+    };
+    default {
+        _hood
+    };
+};
+
+//Choose appropriate weapon/optics depends on _type
 private _array = switch (_type) do {
     case 6: {
         [_weapon_sniper, ["ACE_optic_Hamr_2D", "ACE_optic_LRPS_2D"]];
@@ -150,7 +171,9 @@ private _cargos = [
     [_backpack, [[_launcherMagazines param [1, _launcherMagazine], 1, _launcherCount], [_launcherMagazine, 1, _launcherCount]]],
     [_backpack_big, [[_launcherMagazine, 2, _launcherCount]]],
     [_backpack, [["ACE_Sandbag_empty", 1], ["ACE_Kestrel4500", 1], ["ACE_ATragMX", 1], ["ACE_RangeCard", 1], ["ACE_EntrenchingTool", 1]]],
-    []
+    [],
+    [_backpackCBRN, [["G_Respirator_white_F", 5]]],
+    [_backpack, [["muzzle_antenna_02_f", 1], ["muzzle_antenna_01_f", 1], [["hgun_esd_01_F", "", "", "", [], [], ""], 1]]]
 ];
 private _binocular_array = [_laserdesignator, "", "", "", ["Laserbatteries", 1], [], ""];
 private _launcher_array = [_launcher, "", "", "", [_launcherMagazine, _launcherCount], [], ""];

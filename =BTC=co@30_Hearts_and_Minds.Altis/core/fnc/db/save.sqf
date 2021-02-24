@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        [] spawn btc_fnc_db_save;
+        [] call btc_fnc_db_save;
     (end)
 
 Author:
@@ -29,19 +29,6 @@ if (btc_debug) then {
 };
 
 [8] remoteExecCall ["btc_fnc_show_hint", 0];
-
-btc_db_is_saving = true;
-
-{
-    if (!isNull _x) then {
-        private _s = [_forEachIndex] spawn btc_fnc_city_de_activate;
-        waitUntil {scriptDone _s};
-    };
-} forEach btc_city_all;
-
-if (btc_debug) then {
-    ["...2", __FILE__, [btc_debug, false, true]] call btc_fnc_debug_message;
-};
 
 [false] call btc_fnc_db_delete;
 
@@ -68,13 +55,15 @@ private _cities_status = [];
     _city_status pushBack (_x getVariable ["ho_units_spawned", false]);
     _city_status pushBack (_x getVariable ["ieds", []]);
     _city_status pushBack (_x getVariable ["has_suicider", false]);
+    _city_status pushBack (_x getVariable ["data_animals", []]);
+    _city_status pushBack (_x getVariable ["data_tags", []]);
 
     _cities_status pushBack _city_status;
     if (btc_debug_log) then {
         [format ["ID %1 - IsOccupied %2", _x getVariable "id", _x getVariable "occupied"], __FILE__, [false]] call btc_fnc_debug_message;
     };
 } forEach (btc_city_all select {!(isNull _x)});
-profileNamespace setVariable [format ["btc_hm_%1_cities", _name], _cities_status];
+profileNamespace setVariable [format ["btc_hm_%1_cities", _name], +_cities_status];
 
 //HIDEOUT
 private _array_ho = [];
@@ -100,9 +89,13 @@ private _array_ho = [];
     };
     _array_ho pushBack _data;
 } forEach btc_hideouts;
-profileNamespace setVariable [format ["btc_hm_%1_ho", _name], _array_ho];
+profileNamespace setVariable [format ["btc_hm_%1_ho", _name], +_array_ho];
 
 profileNamespace setVariable [format ["btc_hm_%1_ho_sel", _name], btc_hq getVariable ["id", 0]];
+
+if (btc_debug) then {
+    ["...2", __FILE__, [btc_debug, false, true]] call btc_fnc_debug_message;
+};
 
 //CACHE
 private _array_cache = [];
@@ -118,6 +111,8 @@ private _cache_markers = [];
 } forEach btc_cache_markers;
 _array_cache pushBack _cache_markers;
 _array_cache pushBack [btc_cache_pictures select 0, btc_cache_pictures select 1, []];
+_array_cache pushBack (btc_cache_obj in btc_chem_contaminated);
+_array_cache pushBack (btc_cache_obj getVariable ["btc_cache_unitsSpawned", false]);
 profileNamespace setVariable [format ["btc_hm_%1_cache", _name], +_array_cache];
 
 //REPUTATION
@@ -132,10 +127,16 @@ private _fobs = [];
         _fobs pushBack [markerText _x, _pos, _direction];
     };
 } forEach (btc_fobs select 0);
-profileNamespace setVariable [format ["btc_hm_%1_fobs", _name], _fobs];
+profileNamespace setVariable [format ["btc_hm_%1_fobs", _name], +_fobs];
 
 //Vehicles status
 private _array_veh = [];
+private _vehicles = btc_vehicles - [objNull];
+private _vehiclesNotInCargo = _vehicles select {
+    isNull isVehicleCargo _x &&
+    {isNull isVehicleCargo attachedTo _x}
+};
+private _vehiclesInCargo = _vehicles - _vehiclesNotInCargo;
 {
     private _data = [];
     _data pushBack (typeOf _x);
@@ -155,12 +156,31 @@ private _array_veh = [];
     private _cont = [getWeaponCargo _x, getMagazineCargo _x, getItemCargo _x];
     _data pushBack _cont;
     _data append ([_x] call btc_fnc_getVehProperties);
-    _array_veh pushBack _data;
+    _data pushBack (_x getVariable ["btc_EDENinventory", []]);
+    _data pushBack ([vectorDir _x, vectorUp _x]);
+    _data pushBack []; // ViV
+
+    private _fakeViV = isVehicleCargo attachedTo _x;
+    if (
+        isNull _fakeViV &&
+        {isNull isVehicleCargo _x}
+    ) then {
+         _array_veh pushBack _data;
+    } else {
+        private _vehicleCargo = if (isNull _fakeViV) then {
+            isVehicleCargo _x
+        } else {
+            _fakeViV
+        };
+        private _index = _vehiclesNotInCargo find _vehicleCargo;
+        ((_array_veh select _index) select 16) pushBack _data;
+    };
+
     if (btc_debug_log) then {
         [format ["VEH %1 DATA %2", _x, _data], __FILE__, [false]] call btc_fnc_debug_message;
     };
-} forEach (btc_vehicles - [objNull]);
-profileNamespace setVariable [format ["btc_hm_%1_vehs", _name], _array_veh];
+} forEach (_vehiclesNotInCargo + _vehiclesInCargo);
+profileNamespace setVariable [format ["btc_hm_%1_vehs", _name], +_array_veh];
 
 //Objects status
 private _array_obj = [];
@@ -174,14 +194,28 @@ private _array_obj = [];
     isNull objectParent _x &&
     isNull isVehicleCargo _x
 });
-profileNamespace setVariable [format ["btc_hm_%1_objs", _name], _array_obj];
+profileNamespace setVariable [format ["btc_hm_%1_objs", _name], +_array_obj];
+
+//Player Tags
+private _tags = btc_tags_player select {alive (_x select 0)};
+private _tags_properties = _tags apply {
+    private _tag = _x select 0;
+    [
+        getPosASL _tag,
+        [vectorDir _tag, vectorUp _tag],
+        _x select 1,
+        typeOf (_x select 2),
+        typeOf _tag
+    ]
+};
+profileNamespace setVariable [format ["btc_hm_%1_tags", _name], +_tags_properties];
 
 //Player Markers
-private _player_markers = allMapMarkers select {(_x select [0, 15]) isEqualTo "_USER_DEFINED #"};
+private _player_markers = allMapMarkers select {"_USER_DEFINED" in _x};
 private _markers_properties = _player_markers apply {
-    [markerText _x, markerPos _x, markerColor _x, markerType _x, markerSize _x, markerAlpha _x, markerBrush _x, markerDir _x, markerShape _x]
+    [markerText _x, markerPos _x, markerColor _x, markerType _x, markerSize _x, markerAlpha _x, markerBrush _x, markerDir _x, markerShape _x, markerPolyline _x, markerChannel _x]
 };
-profileNamespace setVariable [format ["btc_hm_%1_markers", _name], _markers_properties];
+profileNamespace setVariable [format ["btc_hm_%1_markers", _name], +_markers_properties];
 
 //End
 profileNamespace setVariable [format ["btc_hm_%1_db", _name], true];
@@ -190,5 +224,3 @@ if (btc_debug) then {
     ["...3", __FILE__, [btc_debug, false, true]] call btc_fnc_debug_message;
 };
 [9] remoteExecCall ["btc_fnc_show_hint", 0];
-
-btc_db_is_saving = false;

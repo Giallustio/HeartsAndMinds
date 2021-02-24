@@ -32,9 +32,7 @@ private _city = selectRandom _useful;
 
 _city setVariable ["spawn_more", true];
 
-private _radius_x = _city getVariable ["RadiusX", 0];
-private _radius_y = _city getVariable ["RadiusY", 0];
-private _radius = _radius_x + _radius_y;
+private _radius = _city getVariable ["radius", 0];
 private _composition = [];
 private _tasksID = [];
 

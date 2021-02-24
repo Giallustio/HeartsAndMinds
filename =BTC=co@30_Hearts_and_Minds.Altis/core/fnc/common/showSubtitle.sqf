@@ -42,7 +42,7 @@ disableSerialization;
     params [
         ["_from", "", [""]],
         ["_text", "", [""]],
-        ["_lineBreak", false , [false]],
+        ["_lineBreak", false, [false]],
         ["_colorFrom", "#d4cd00", [""]], //default color: gold
         ["_colorText", "#FFFFFF", [""]], //default color: white
         ["_fontText", "RobotoCondensedBold", [""]]

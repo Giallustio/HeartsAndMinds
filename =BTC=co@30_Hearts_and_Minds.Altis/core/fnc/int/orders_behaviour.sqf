@@ -78,7 +78,6 @@ if (_order isEqualTo 4) then {
 _unit setVariable ["order", nil];
 _unit setUnitPos "AUTO";
 _unit enableAI "PATH";
-_unit doMove getPos _unit;
 
 if (_unit isEqualTo vehicle _unit) then {
     [_group] call btc_fnc_civ_addWP;

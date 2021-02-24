@@ -32,7 +32,10 @@ if (_units isEqualTo []) then {
     _units = _pos nearEntities [btc_civ_type_units, _range];
 };
 
-_units = _units select {side _x isEqualTo civilian};
+_units = _units select {
+    side group _x isEqualTo civilian &&
+    {!(lifeState _x in ["INCAPACITATED", "DEAD"])}
+};
 
 if (_units isEqualTo []) exitWith {};
 
@@ -41,14 +44,13 @@ if (_units isEqualTo []) exitWith {};
         [format ["%1 - %2", _x, side _x], __FILE__, [false]] call btc_fnc_debug_message;
     };
 
-    _x call btc_fnc_rep_remove_eh;
-
     [_x] call btc_fnc_civ_add_grenade;
 
-    [_x] joinSilent createGroup [btc_enemy_side, true];
+    private _group = createGroup [btc_enemy_side, true];
+    _group setVariable ["btc_city", group _x getVariable ["btc_city", objNull]];
+    [_x] joinSilent _group;
 
-    (group _x) setVariable ["getWeapons", true];
-
-    (group _x) setBehaviour "AWARE";
-    [group _x, _pos, -1, "GUARD", "UNCHANGED", "RED", nil, nil, nil, nil, 10] call CBA_fnc_addWaypoint;
+    [_group] call CBA_fnc_clearWaypoints;
+    _group setVariable ["getWeapons", true];
+    [_group, _pos, -1, "GUARD", "AWARE", "RED", nil, nil, nil, nil, 10] call CBA_fnc_addWaypoint;
 } forEach [selectRandom _units];

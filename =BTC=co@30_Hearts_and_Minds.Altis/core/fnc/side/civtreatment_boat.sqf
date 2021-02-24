@@ -34,7 +34,7 @@ private _pos = getPos _city;
 
 //// Choose a random position \\\\
 private _vehpos = [_pos, 0, 600, 20, 2, 60 * (pi / 180), 0] call BIS_fnc_findSafePos;
-_vehpos = [_vehpos select 0 , _vehpos select 1, 0];
+_vehpos = [_vehpos select 0, _vehpos select 1, 0];
 
 //// Create civ on _vehpos \\\\
 private _veh_type = selectRandom btc_civ_type_boats;
@@ -56,8 +56,6 @@ sleep 1;
 waitUntil {sleep 5; (_taskID call BIS_fnc_taskCompleted || !(playableUnits inAreaArray [getPosWorld _unit, 5000, 5000] isEqualTo []))};
 
 [_unit] call btc_fnc_set_damage;
-
-[_group] call btc_fnc_civ_unit_create;
 
 waitUntil {sleep 5; (_taskID call BIS_fnc_taskCompleted || !alive _unit || {_unit call ace_medical_status_fnc_isInStableCondition && [_unit] call ace_common_fnc_isAwake})};
 

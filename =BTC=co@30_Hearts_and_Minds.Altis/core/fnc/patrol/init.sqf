@@ -34,11 +34,15 @@ _cities params [
     ["_active_city", objNull, [objNull]]
 ];
 
+if !(isGroupDeletedWhenEmpty _group) then {
+    _group deleteGroupWhenEmpty true;
+};
+
 private _end_city = selectRandom ([[_start_city, _active_city], _area, _isBoat] call btc_fnc_patrol_usefulCity);
 
 private _pos = getPos _end_city;
 if (_isBoat) then {
-    ((selectBestPlaces [_pos, (_end_city getVariable ["RadiusX", 0]) + (_end_city getVariable ["RadiusY", 0]), "sea", 10, 1]) select 0 select 0) params ["_x", "_y"];
+    ((selectBestPlaces [_pos, _end_city getVariable ["radius", 100], "sea", 10, 1]) select 0 select 0) params ["_x", "_y"];
     _pos = [_x, _y, 0];
 };
 

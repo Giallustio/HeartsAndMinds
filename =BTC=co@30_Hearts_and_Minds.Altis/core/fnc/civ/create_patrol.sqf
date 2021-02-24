@@ -6,6 +6,7 @@ Description:
     Create a civilian patrol around a city in a defined area.
 
 Parameters:
+    _group - Group of the traffic. [Group]
     _active_city - City where the patrol will be done around. [Object]
     _area - Area to search a start and an end city for the patrol [Number]
 
@@ -14,7 +15,7 @@ Returns:
 
 Examples:
     (begin example)
-        _isCreated = [_active_city] call btc_fnc_civ_create_patrol;
+        _isCreated = [createGroup civilian, _active_city] call btc_fnc_civ_create_patrol;
     (end)
 
 Author:
@@ -23,6 +24,7 @@ Author:
 ---------------------------------------------------------------------------- */
 
 params [
+    ["_group", grpNull, [grpNull]],
     ["_active_city", objNull, [objNull]],
     ["_area", btc_patrol_area, [0]],
     ["_p_chem", btc_p_chem, [false]]
@@ -33,7 +35,10 @@ if (isNil "btc_civilian_id") then {btc_civilian_id = -1;};
 //Find a city
 private _cities = btc_city_all inAreaArray [getPosWorld _active_city, _area, _area];
 private _usefuls = _cities select {!(_x getVariable ["active", false])};
-if (_usefuls isEqualTo []) exitWith {false};
+if (_usefuls isEqualTo []) exitWith {
+    _group call CBA_fnc_deleteEntity;
+    false
+};
 
 private _start_city = selectRandom _usefuls;
 private _pos = getPos _start_city;
@@ -57,32 +62,14 @@ if (_roads isEqualTo []) then {
     _veh_type = selectRandom btc_civ_type_veh;
 };
 
-private _veh = createVehicle [_veh_type, _safe_pos, [], 0, "FLY"];
-[_veh, "", []] call BIS_fnc_initvehicle;
-
-private _group = createGroup [civilian, true];
-btc_civ_veh_active pushBack _group;
-_group setVariable ["no_cache", true];
 _group setVariable ["btc_patrol_id", btc_civilian_id, btc_debug];
 btc_civilian_id = btc_civilian_id - 1;
-(selectRandom btc_civ_type_units) createUnit [_safe_pos, _group, "this moveinDriver _veh; this assignAsDriver _veh;"];
-_veh setVariable ["btc_crews", _group];
 
-[_group] call btc_fnc_civ_unit_create;
+private _delay = [_group, _veh_type, [selectRandom btc_civ_type_units], _safe_pos] call btc_fnc_delay_createVehicle;
 
-[_veh, "HandleDamage", "btc_fnc_patrol_disabled"] call btc_fnc_eh_persistOnLocalityChange;
-[_veh, "Fuel", "btc_fnc_patrol_eh"] call btc_fnc_eh_persistOnLocalityChange;
-[_veh, "GetOut", "btc_fnc_patrol_eh"] call btc_fnc_eh_persistOnLocalityChange;
-[_veh, "HandleDamage", "btc_fnc_rep_hd"] call btc_fnc_eh_persistOnLocalityChange;
-if (_p_chem) then {
-    _veh addEventHandler ["GetIn", {
-        [_this select 0, _this select 2] call btc_fnc_chem_propagate;
-        _this
-    }];
-};
-
-[_group, [_start_city, _active_city], _area, _pos_isWater] call btc_fnc_patrol_init;
-
-[[_group]] call btc_fnc_set_groupsOwner;
+[{
+    _this call btc_fnc_patrol_init;
+    [[_this select 0]] call btc_fnc_set_groupsOwner;
+}, [_group, [_start_city, _active_city], _area, _pos_isWater], btc_delay_createUnit + _delay] call CBA_fnc_waitAndExecute;
 
 true

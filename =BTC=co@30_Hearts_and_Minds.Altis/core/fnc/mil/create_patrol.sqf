@@ -6,6 +6,7 @@ Description:
     Fill me when you edit me !
 
 Parameters:
+    _group - Group of the patrol. [Group]
     _random - [Number]
     _active_city - [Object]
     _area - [Number]
@@ -14,7 +15,7 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_mil_create_patrol;
+        [2, (allPlayers#0), btc_patrol_area] call btc_fnc_mil_create_patrol;
     (end)
 
 Author:
@@ -23,6 +24,7 @@ Author:
 ---------------------------------------------------------------------------- */
 
 params [
+    ["_group", grpNull, [grpNull]],
     ["_random", 0, [0]],
     ["_active_city", objNull, [objNull]],
     ["_area", btc_patrol_area, [0]]
@@ -38,21 +40,25 @@ if (btc_debug_log) then {
     [format ["_random = %1 _active_city %2 _area %3 btc_patrol_active = %4", _random, _active_city, _area, count btc_patrol_active], __FILE__, [false]] call btc_fnc_debug_message;
 };
 
-sleep 5 + random 10;
-
 //Remove if too far from player
-if ([_active_city, grpNull, _area] call btc_fnc_patrol_playersInAreaCityGroup) exitWith {false};
+if ([_active_city, grpNull, _area] call btc_fnc_patrol_playersInAreaCityGroup) exitWith {
+    _group call CBA_fnc_deleteEntity;
+    false
+};
 
 //Find a city
 private _cities = btc_city_all inAreaArray [getPosWorld _active_city, _area, _area];
 private _usefuls = _cities select {!(_x getVariable ["active", false]) && _x getVariable ["occupied", false]};
-if (_usefuls isEqualTo []) exitWith {false};
+if (_usefuls isEqualTo []) exitWith {
+    _group call CBA_fnc_deleteEntity;
+    false
+};
 
 //Randomize position if city has a beach, so position could be in water
 private _start_city = selectRandom _usefuls;
 private _pos = [];
 if (_start_city getVariable ["hasbeach", false]) then {
-    _pos = [getPos _start_city, (_start_city getVariable ["RadiusX", 0]) + (_start_city getVariable ["RadiusY", 0]), btc_p_sea] call btc_fnc_randomize_pos;
+    _pos = [getPos _start_city, _start_city getVariable ["radius", 100], btc_p_sea] call btc_fnc_randomize_pos;
 } else {
     _pos = getPos _start_city;
 };
@@ -63,17 +69,15 @@ if (_pos_isWater) then {
 };
 
 //Creating units
-private _group = createGroup [btc_enemy_side, true];
-btc_patrol_active pushBack _group;
-_group setVariable ["no_cache", true];
 _group setVariable ["btc_patrol_id", btc_military_id, btc_debug];
 btc_military_id = btc_military_id + 1;
 
-switch (_random) do {
+private _delay = switch (_random) do {
     case 1 : {
         _pos = [_pos, 0, 150, 10, false] call btc_fnc_findsafepos;
 
         [_group, _pos, 5 + (round random 8)] call btc_fnc_mil_createUnits;
+        0
     };
     case 2 : {
         private _veh_type = "";
@@ -90,15 +94,13 @@ switch (_random) do {
                 _pos = getPos selectRandom _roads;
             };
         };
-        private _veh = [_group, _pos, _veh_type] call btc_fnc_mil_createVehicle;
-        _veh setVariable ["btc_crews", _group];
-
-        [_veh, "Fuel", "btc_fnc_patrol_eh"] call btc_fnc_eh_persistOnLocalityChange;
+        [_group, _pos, _veh_type] call btc_fnc_mil_createVehicle
     };
 };
 
-[_group, [_start_city, _active_city], _area, _pos_isWater] call btc_fnc_patrol_init;
-
-[[_group]] call btc_fnc_set_groupsOwner;
+[{
+    _this call btc_fnc_patrol_init;
+    [[_this select 0]] call btc_fnc_set_groupsOwner;
+}, [_group, [_start_city, _active_city], _area, _pos_isWater], btc_delay_createUnit + _delay] call CBA_fnc_waitAndExecute;
 
 true

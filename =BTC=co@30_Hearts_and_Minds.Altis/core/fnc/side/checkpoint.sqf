@@ -35,15 +35,13 @@ private _pos = getPos _city;
 _city setVariable ["spawn_more", true];
 
 private _statics = btc_type_gl + btc_type_mg;
-private _radius_x = _city getVariable ["RadiusX", 0];
-private _radius_y = _city getVariable ["RadiusY", 0];
-private _radius = (_radius_x + _radius_y)/4;
+private _radius = _city getVariable ["radius", 0];
 
 private _boxes = [];
 private _composition = [];
 for "_i" from 1 to (1 + round random 2) do {
     //// Choose a road \\\\
-    private _pos = [getPos _city, _radius] call btc_fnc_randomize_pos;
+    private _pos = [getPos _city, _radius/4] call btc_fnc_randomize_pos;
     private _roads = _pos nearRoads 200;
     _roads = _roads select {isOnRoad _x};
     if (_roads isEqualTo []) exitWith {_boxes pushBack objNull};
@@ -81,12 +79,10 @@ for "_i" from 1 to (1 + round random 2) do {
     //// Create checkpoint with static at _pos \\\\
     _pos params ["_x", "_y", "_z"];
     private _posStatic = [_x -2.39185*cos(-_direction) - 2.33984*sin(-_direction), _y  + 2.33984 *cos(-_direction) -2.39185*sin(-_direction), _z];
-    private _static = [_posStatic, _statics, _direction + 180] call btc_fnc_mil_create_static;
-    _static setPos _posStatic;
+    [_posStatic, _statics, _direction + 180] call btc_fnc_mil_create_static;
 
     private _posStatic = [_x + 2.72949*cos(-_direction) - -2.03857*sin(-_direction), _y -2.03857*cos(-_direction) +2.72949*sin(-_direction), _z];
-    private _static = [_posStatic, _statics, _direction] call btc_fnc_mil_create_static;
-    _static setPos _posStatic;
+    [_posStatic, _statics, _direction] call btc_fnc_mil_create_static;
 
     _composition append ([_pos, _direction, _composition_checkpoint] call btc_fnc_create_composition);
 

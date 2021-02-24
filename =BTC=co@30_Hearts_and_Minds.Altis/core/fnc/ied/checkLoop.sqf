@@ -41,7 +41,10 @@ Author:
                             speed _x > 5
                         }
                     }) then {
-                        [_wreck, _ied] spawn btc_fnc_ied_boom;
+                        [_wreck, _ied] call btc_fnc_ied_boom;
+                        if (0.5 < random 1) then {
+                            [getPos _wreck] call btc_fnc_rep_call_militia;
+                        };
                     };
                 } forEach (_ied nearEntities ["allvehicles", 10]);
             } else {

@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_eh_veh_add_respawn
+Function: btc_fnc_veh_addRespawn
 
 Description:
     Add a vehicle to the respawn system and save vehicle parameters.
@@ -15,7 +15,7 @@ Returns:
 
 Examples:
     (begin example)
-        [cursorObject, 30] call btc_fnc_eh_veh_add_respawn;
+        [cursorObject, 30] call btc_fnc_veh_addRespawn;
     (end)
 
 Author:
@@ -26,8 +26,7 @@ Author:
 params [
     ["_vehicle", objNull, [objNull]],
     ["_time", 30, [0]],
-    ["_helo", btc_helo, [[]]],
-    ["_p_chem", btc_p_chem, [false]]
+    ["_helo", btc_helo, [[]]]
 ];
 
 _helo pushBackUnique _vehicle;
@@ -49,12 +48,11 @@ _vehicle addMPEventHandler ["MPKilled", {
         {_unit getVariable ["btc_killed", true]} // https://feedback.bistudio.com/T149510
     ) then {
         _unit setVariable ["btc_killed", false];
-        [_unit] call btc_fnc_eh_veh_respawn;
+        _this call btc_fnc_veh_respawn;
     };
 }];
-if (_p_chem) then {
-    _vehicle addEventHandler ["GetIn", {
-        [_this select 0, _this select 2] call btc_fnc_chem_propagate;
-        _this
-    }];
+if (btc_p_respawn_location > 0) then {
+    if !(fullCrew [_vehicle, "cargo", true] isEqualTo []) then {
+        [_vehicle, "Deleted", {_thisArgs call BIS_fnc_removeRespawnPosition}, [btc_player_side, _vehicle] call BIS_fnc_addRespawnPosition] call CBA_fnc_addBISEventHandler;
+    };
 };

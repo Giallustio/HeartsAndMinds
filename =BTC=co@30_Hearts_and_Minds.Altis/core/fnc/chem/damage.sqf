@@ -30,23 +30,56 @@ params [
     ["_cfgGlasses", configNull, [configNull]]
 ];
 
-private _hasProtection = [
-    (
-        goggles _unit isKindOf ["G_RegulatorMask_base_F", _cfgGlasses] ||
-        goggles _unit isKindOf ["G_AirPurifyingRespirator_01_base_F", _cfgGlasses]
-    ), (
-        backpack _unit isKindOf "B_SCBA_01_base_F" ||
-        backpack _unit isKindOf "B_CombinationUnitRespirator_01_Base_F"
-    ),
-    uniform _unit find "CBRN" > -1
-];
+private _googles = goggles _unit;
+private _backpack = backpack _unit;
+private _uniform = toLower uniform _unit;
+private _protection = 0;
 
-if !(false in _hasProtection) exitWith {_this};
+if (
+    [
+        "G_Respirator_base_F"
+    ] findIf {_googles isKindOf [_x, _cfgGlasses]} > -1
+) then {
+    _protection = _protection + selectRandom [0.15, 0.3]; // Less protection than respirator
+} else {
+    if (
+        [
+            "G_RegulatorMask_base_F",
+            "G_AirPurifyingRespirator_01_base_F",
+            "GP21_GasmaskPS",
+            "GP5Filter_RaspiratorPS",
+            "GP7_RaspiratorPS",
+            "SE_M17",
+            "Hamster_PS",
+            "SE_S10",
+            "MK502"
+        ] findIf {_googles isKindOf [_x, _cfgGlasses]} > -1
+    ) then {
+        _protection = _protection + 0.3;
+    };
+};
+if (
+    [
+        "B_SCBA_01_base_F",
+        "B_CombinationUnitRespirator_01_Base_F"
+    ] findIf {_backpack isKindOf _x} > -1
+) then {
+    _protection = _protection + 0.1;
+};
+if !(_uniform isEqualTo "") then {
+    _protection = _protection + 0.5;
+    if (
+        [
+            "cbrn"
+        ] findIf {_x in _uniform} > -1
+    ) then {
+        _protection = _protection + 0.1;
+    };
+};
 
-_hasProtection append [true, true, true];
+if (_protection >= 1) exitWith {_this};
 
-// Probability of damage increase without protection
-if (_firstDamage || !(selectRandom _hasProtection)) then {
+if (_firstDamage || (random 1 > _protection)) then {
     _this set [1, false];
     [_unit, random [0.05, 0.05, 0.2], selectRandom _bodyParts, "stab"] call ace_medical_fnc_addDamageToUnit; // ropeburn
 };

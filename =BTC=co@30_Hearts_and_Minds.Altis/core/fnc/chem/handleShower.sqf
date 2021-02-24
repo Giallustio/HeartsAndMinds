@@ -50,7 +50,7 @@ params [
         };
     } forEach _needActivate;
     {
-        remoteExec ["", _x];
+        remoteExecCall ["", _x];
         [_x] remoteExecCall ["BIN_fnc_deconShowerAnimStop", 0];
     } forEach _needDesactivate;
 }, 2, [btc_chem_decontaminate, _minDistance]] call CBA_fnc_addPerFrameHandler;

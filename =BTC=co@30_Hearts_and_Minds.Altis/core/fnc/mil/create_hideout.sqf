@@ -3,21 +3,27 @@
 Function: btc_fnc_mil_create_hideout
 
 Description:
-    Fill me when you edit me !
+    Create hideout randomnly or with defined position.
 
 Parameters:
-    _pos - [Array]
-    _id_hideout - [Number]
-    _rinf_time - [Number]
-    _cap_time - [Number]
-    _id - [Number]
-    _markers_saved - [Array]
+    _pos - Poisition of the hideout. [Array]
+    _id_hideout - Id of the hideout. [Number]
+    _rinf_time - Not used. [Number]
+    _cap_time - Time for next capture of city around. [Number]
+    _id - Id of the city where the hideout is. [Number]
+    _markers_saved - Merkers find by player. [Array]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_mil_create_hideout;
+        [] call btc_fnc_mil_create_hideout;
+    (end)
+    (begin example)
+        selectMin (btc_hideouts apply {
+            private _ho = _x;
+            selectMin ((btc_hideouts - [_ho]) apply {_x distance _ho})
+        })
     (end)
 
 Author:
@@ -37,16 +43,28 @@ params [
 private _city = objNull;
 if (_pos isEqualTo []) then {
     private _useful = btc_city_all select {(
-            !(isNull _x) &&
-            {!(_x getVariable ["active", false])} &&
-            {_x distance (getMarkerPos btc_respawn_marker) > btc_hideout_safezone} &&
-            {!(_x getVariable ["has_ho", false])} &&
-            {_x getVariable ["type", ""] in ["NameLocal", "Hill", "NameVillage", "Airport"]}
-        )};
-    _city = selectRandom _useful;
+        !(isNull _x) &&
+        {!(_x getVariable ["active", false])} &&
+        {_x distance (getMarkerPos btc_respawn_marker) > btc_hideout_safezone} &&
+        {!(_x getVariable ["has_ho", false])} &&
+        {_x getVariable ["type", ""] in ["NameLocal", "Hill", "NameVillage", "Airport"]}
+    )};
+    private _inHoRange = btc_city_all select {
+        !(isNull _x) &&
+        {
+            private _city = _x;
+            (selectMin (btc_hideouts apply {_x distance _city})) < btc_hideout_minRange
+        }
+    };
+    private _usefulRange = _useful - _inHoRange;
+    if (_usefulRange isEqualTo []) then {
+        _city = selectRandom _useful;
+    } else {
+        _city = selectRandom _usefulRange;
+    };
 
-    private _radius = ((_city getVariable ["RadiusX", 0]) + (_city getVariable ["RadiusY", 0]))/2;
-    private _random_pos = [getPos _city, _radius] call btc_fnc_randomize_pos;
+    private _radius = _city getVariable ["radius", 0];
+    private _random_pos = [getPos _city, _radius/2] call btc_fnc_randomize_pos;
     _pos = [_random_pos, 0, 100, 2, false] call btc_fnc_findsafepos;
 
     _id = _city getVariable ["id", 0];
@@ -62,7 +80,7 @@ _city setVariable ["ho_pos", _pos];
 if (btc_debug) then {deleteMarker format ["loc_%1", _id];};
 deleteVehicle (_city getVariable ["trigger_player_side", objNull]);
 
-[_pos, btc_hideouts_radius, btc_hideouts_radius, _city, _city getVariable "occupied", _city getVariable "name", _city getVariable "type", _city getVariable "id"] call btc_fnc_city_trigger_player_side;
+[_pos, btc_hideouts_radius, _city, _city getVariable "occupied", _city getVariable "name", _city getVariable "type", _city getVariable "id"] call btc_fnc_city_trigger_player_side;
 
 private _hideout = [_pos] call btc_fnc_mil_create_hideout_composition;
 clearWeaponCargoGlobal _hideout;
@@ -104,5 +122,6 @@ if (btc_debug_log) then {
 
 btc_hideouts_id = btc_hideouts_id + 1;
 btc_hideouts pushBack _hideout;
+publicVariable "btc_hideouts";
 
 true

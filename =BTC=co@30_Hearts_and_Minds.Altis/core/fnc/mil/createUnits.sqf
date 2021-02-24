@@ -41,13 +41,7 @@ for "_i" from 1 to _number do {
         selectRandom _type_units;
     };
 
-    private _unit = _group createUnit [_unit_type, _pos, [], 0, "CARGO"];
-    [_unit] joinSilent _group;
-
-    if (canSuspend) then {
-        sleep 1;
-    };
+    [_group, _unit_type, _pos] call btc_fnc_delay_createUnit;
 };
-[_group] call btc_fnc_mil_unit_create;
 
 _group

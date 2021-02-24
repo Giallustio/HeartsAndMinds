@@ -31,11 +31,14 @@ _unit addEventHandler ["Fired", {
 
     if (_weapon isEqualTo "Throw") then {
         _unit removeEventHandler ["Fired", _thisEventHandler];
-        [_unit] joinSilent createGroup [civilian, true];
+
+        private _group = createGroup [civilian, true];
+        _group setVariable ["btc_city", group _unit getVariable ["btc_city", objNull]];
+        [_unit] joinSilent _group;
+
         [{
             params ["_unit"];
 
-            _unit call btc_fnc_rep_add_eh;
             [group _unit] call btc_fnc_civ_addWP;
         }, [_unit], 20] call CBA_fnc_waitAndExecute;
     };

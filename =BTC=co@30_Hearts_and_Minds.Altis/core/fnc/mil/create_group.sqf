@@ -45,6 +45,9 @@ _wp_ratios params ["_wp_house_probability", "_wp_sentry_probability"];
 ([_city, _area] call btc_fnc_city_findPos) params ["_rpos", "_pos_iswater"];
 
 private _group = createGroup _enemy_side;
+if (_city isEqualType objNull) then {
+    _group setVariable ["btc_city", _city];
+};
 private _groups = [];
 _groups pushBack _group;
 
@@ -57,6 +60,9 @@ switch (true) do {
         };
         for "_i" from 1 to _n do {
             private _grp = createGroup _enemy_side;
+            if (_city isEqualType objNull) then {
+                _grp setVariable ["btc_city", _city];
+            };
             [_grp, _rpos, 1] call btc_fnc_mil_createUnits;
             _grp setVariable ["btc_inHouse", typeOf _structure];
             [_grp, _structure] call btc_fnc_house_addWP;
@@ -64,12 +70,13 @@ switch (true) do {
         };
     };
     case (_wp > _wp_house_probability && _wp <= _wp_sentry_probability) : {
-        [_group, _rpos, _n, _pos_iswater] call btc_fnc_mil_createUnits;
         [_group, _rpos, _area, 2 + floor (random 4), "MOVE", "SAFE", "RED", "LIMITED", "STAG COLUMN", "", [5, 10, 20]] call CBA_fnc_taskPatrol;
+        [_group, _rpos, _n, _pos_iswater] call btc_fnc_mil_createUnits;
     };
     case (_wp > _wp_sentry_probability) : {
-        [_group, _rpos, _n, _pos_iswater] call btc_fnc_mil_createUnits;
+        [_group] call CBA_fnc_clearWaypoints;
         [_group, _rpos, -1, "SENTRY", "AWARE", "RED"] call CBA_fnc_addWaypoint;
+        [_group, _rpos, _n, _pos_iswater] call btc_fnc_mil_createUnits;
     };
 };
 

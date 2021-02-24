@@ -77,7 +77,6 @@ private _unit =_group createUnit [_unit_type, _pos, [], 0, "CAN_COLLIDE"];
 _unit setBehaviour "CARELESS";
 _unit setDir (random 360);
 _unit setUnitPos "DOWN";
-[_group] call btc_fnc_civ_unit_create;
 
 [_taskID, 8, _unit, [_city getVariable "name", _unit_type]] call btc_fnc_task_create;
 
