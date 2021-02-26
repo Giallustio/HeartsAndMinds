@@ -24,6 +24,7 @@ params ["_tag", "_texture", "_object", "_unit"];
 
 if (_unit in btc_city_all) then {
     _tag setVariable ["btc_texture", _texture]; //Store texture for city de_activation
+    _tag setVariable ["btc_city", _unit];
     btc_tags_server pushBack _tag;
 } else {
     if (_texture isEqualTo "#(rgb,8,8,3)color(0,0,0,0)") then { //Check if player want to remove a tag

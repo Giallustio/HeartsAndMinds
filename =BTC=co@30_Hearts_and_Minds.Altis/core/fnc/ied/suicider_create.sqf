@@ -43,6 +43,7 @@ if (_type_units isEqualTo "") then {
 };
 
 private _group = createGroup [civilian, true];
+_group setVariable ["btc_city", _city];
 private _suicider = _group createUnit [_type_units, _rpos, [], 0, "CAN_COLLIDE"];
 
 [_group] call btc_fnc_civ_addWP;

@@ -41,6 +41,7 @@ if (isServer) then {
     btc_fnc_city_trigger_player_side = compile preprocessFileLineNumbers "core\fnc\city\trigger_player_side.sqf";
     btc_fnc_city_findPos = compile preprocessFileLineNumbers "core\fnc\city\findPos.sqf";
     btc_fnc_city_cleanUp = compile preprocessFileLineNumbers "core\fnc\city\cleanUp.sqf";
+    btc_fnc_city_trigger_free_condition = compile preprocessFileLineNumbers "core\fnc\city\trigger_free_condition.sqf";
 
     //CIV
     btc_fnc_civ_add_weapons = compile preprocessFileLineNumbers "core\fnc\civ\add_weapons.sqf";
@@ -79,7 +80,7 @@ if (isServer) then {
     btc_fnc_ied_checkLoop = compile preprocessFileLineNumbers "core\fnc\ied\checkLoop.sqf";
     btc_fnc_ied_create = compile preprocessFileLineNumbers "core\fnc\ied\create.sqf";
     btc_fnc_ied_fired_near = compile preprocessFileLineNumbers "core\fnc\ied\fired_near.sqf";
-    btc_fnc_ied_init_area = compile preprocessFileLineNumbers "core\fnc\ied\init_area.sqf";
+    btc_fnc_ied_initArea = compile preprocessFileLineNumbers "core\fnc\ied\initArea.sqf";
     btc_fnc_ied_suicider_active = compile preprocessFileLineNumbers "core\fnc\ied\suicider_active.sqf";
     btc_fnc_ied_suicider_activeLoop = compile preprocessFileLineNumbers "core\fnc\ied\suicider_activeLoop.sqf";
     btc_fnc_ied_suicider_create = compile preprocessFileLineNumbers "core\fnc\ied\suicider_create.sqf";
@@ -137,7 +138,6 @@ if (isServer) then {
     btc_fnc_rep_change = compile preprocessFileLineNumbers "core\fnc\rep\change.sqf";
     btc_fnc_rep_eh_effects = compile preprocessFileLineNumbers "core\fnc\rep\eh_effects.sqf";
     btc_fnc_rep_hh = compile preprocessFileLineNumbers "core\fnc\rep\hh.sqf";
-    btc_fnc_rep_firednear = compile preprocessFileLineNumbers "core\fnc\rep\firednear.sqf";
     btc_fnc_rep_buildingchanged = compile preprocessFileLineNumbers "core\fnc\rep\buildingchanged.sqf";
     btc_fnc_rep_explosives_defuse = compile preprocessFileLineNumbers "core\fnc\rep\explosives_defuse.sqf";
     btc_fnc_rep_notify = compile preprocessFileLineNumbers "core\fnc\rep\notify.sqf";
@@ -167,6 +167,7 @@ if (isServer) then {
     //TAG
     btc_fnc_tag_initArea = compile preprocessFileLineNumbers "core\fnc\tag\initArea.sqf";
     btc_fnc_tag_eh = compile preprocessFileLineNumbers "core\fnc\tag\eh.sqf";
+    btc_fnc_tag_create = compile preprocessFileLineNumbers "core\fnc\tag\create.sqf";
 
     //LOG
     btc_fnc_log_createVehicle = compile preprocessFileLineNumbers "core\fnc\log\createVehicle.sqf";
@@ -186,6 +187,10 @@ if (isServer) then {
     btc_fnc_task_create = compile preprocessFileLineNumbers "core\fnc\task\create.sqf";
     btc_fnc_task_setState = compile preprocessFileLineNumbers "core\fnc\task\setState.sqf";
 
+    //TOW
+    btc_fnc_tow_ropeBreak = compile preprocessFileLineNumbers "core\fnc\tow\ropeBreak.sqf";
+    btc_fnc_tow_ViV = compile preprocessFileLineNumbers "core\fnc\tow\ViV.sqf";
+
     //VEH
     btc_fnc_veh_addRespawn = compile preprocessFileLineNumbers "core\fnc\veh\addRespawn.sqf";
     btc_fnc_veh_killed = compile preprocessFileLineNumbers "core\fnc\veh\killed.sqf";
@@ -195,7 +200,7 @@ if (isServer) then {
 /////////////////////CLIENT AND SERVER\\\\\\\\\\\\\\\\\\\\\
 
 //CACHE
-btc_fnc_cache_hd_cache = compile preprocessFileLineNumbers "core\fnc\cache\hd_cache.sqf";
+btc_fnc_cache_hd = compile preprocessFileLineNumbers "core\fnc\cache\hd.sqf";
 
 //COMMON
 btc_fnc_find_veh_with_turret = compile preprocessFileLineNumbers "core\fnc\common\find_veh_with_turret.sqf";
@@ -241,10 +246,7 @@ btc_fnc_patrol_disabled = compile preprocessFileLineNumbers "core\fnc\patrol\dis
 
 //REP
 btc_fnc_rep_hd = compile preprocessFileLineNumbers "core\fnc\rep\hd.sqf";
-
-//TOW
-btc_fnc_tow_hook = compile preprocessFileLineNumbers "core\fnc\tow\hook.sqf";
-btc_fnc_tow_check = compile preprocessFileLineNumbers "core\fnc\tow\check.sqf";
+btc_fnc_rep_suppressed = compile preprocessFileLineNumbers "core\fnc\rep\suppressed.sqf";
 
 //ARSENAL
 btc_fnc_arsenal_ammoUsage = compile preprocessFileLineNumbers "core\fnc\arsenal\ammoUsage.sqf";
@@ -359,6 +361,8 @@ if (!isDedicated) then {
     btc_fnc_tow_ropeCreate = compile preprocessFileLineNumbers "core\fnc\tow\ropeCreate.sqf";
     btc_fnc_tow_hitch_points = compile preprocessFileLineNumbers "core\fnc\tow\hitch_points.sqf";
     btc_fnc_tow_unhook = compile preprocessFileLineNumbers "core\fnc\tow\unhook.sqf";
+    btc_fnc_tow_unwind = compile preprocessFileLineNumbers "core\fnc\tow\unwind.sqf";
+    btc_fnc_tow_check = compile preprocessFileLineNumbers "core\fnc\tow\check.sqf";
 };
 
 /////////////////////HEADLESS\\\\\\\\\\\\\\\\\\\\\

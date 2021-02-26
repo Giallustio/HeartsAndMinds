@@ -25,7 +25,7 @@ Author:
     params ["_suicider", "_trigger"];
 
     if (alive _suicider) then {
-        private _array = _suicider nearEntities ["SoldierWB", 30];
+        private _array = _suicider nearEntities [btc_player_type, 30];
         if !(_array isEqualTo []) then {
             _suicider doMove (position (_array select 0));
         };

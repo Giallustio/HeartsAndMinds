@@ -26,6 +26,8 @@ params [
 ];
 
 [_player, "Respawn", {
+    params ["_unit", "_corpse"];
+    _corpse connectTerminalToUAV objNull;
     if !(ace_map_mapIllumination) then {ace_map_mapIllumination = btc_map_mapIllumination;};
 }] call CBA_fnc_addBISEventHandler;
 ["ace_killed", {
@@ -56,6 +58,7 @@ _player addEventHandler ["WeaponAssembled", {
 ["ace_csw_deployWeaponSucceeded", {
     _this remoteExecCall ["btc_fnc_log_init", 2];
 }] call CBA_fnc_addEventHandler;
+["btc_tow_unwindDone", {(localize "STR_BTC_HAM_TOW_DONE") call CBA_fnc_notify}] call CBA_fnc_addEventHandler;
 
 if (btc_p_chem) then {
      // Add biopsy
