@@ -34,7 +34,7 @@ params [
 
 if (_civ getVariable ["btc_fnc_rep_suppressed_fired", false] isEqualTo 2) exitWith {};
 if (_ammoObject isKindOf "SmokeShell") exitWith {};
-if !(side group _civ isEqualTo civilian) exitWith {_civ setVariable ["btc_fnc_rep_suppressed_fired", 2]};
+if (side group _civ isNotEqualTo civilian) exitWith {_civ setVariable ["btc_fnc_rep_suppressed_fired", 2]};
 
 if (
     _civ getVariable ["btc_fnc_rep_suppressed_fired", 0] isEqualTo 0 &&

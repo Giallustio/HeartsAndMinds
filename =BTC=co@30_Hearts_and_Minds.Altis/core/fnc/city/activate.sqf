@@ -198,7 +198,10 @@ if (_city getVariable ["spawn_more", false]) then {
     };
 };
 
-if (!(btc_cache_pos isEqualTo []) && {!(btc_cache_obj getVariable ["btc_cache_unitsSpawned", false])}) then {
+if (
+    (btc_cache_pos isNotEqualTo []) &&
+    {!(btc_cache_obj getVariable ["btc_cache_unitsSpawned", false])}
+) then {
     if (_city inArea [btc_cache_pos, _radius, _radius, 0, false]) then {
         btc_cache_obj setVariable ["btc_cache_unitsSpawned", true];
 
