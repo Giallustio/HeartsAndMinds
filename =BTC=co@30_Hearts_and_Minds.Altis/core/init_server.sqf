@@ -8,7 +8,7 @@ setTimeMultiplier btc_p_acctime;
 [["btc_dty", "btc_m"], 1] call btc_fnc_task_create;
 
 if (btc_db_load && {profileNamespace getVariable [format ["btc_hm_%1_db", worldName], false]}) then {
-    if ((profileNamespace getVariable [format ["btc_hm_%1_version", worldName], 1.13]) in [btc_version select 1]) then {
+    if ((profileNamespace getVariable [format ["btc_hm_%1_version", worldName], 1.13]) in [btc_version select 1, 20.1]) then {
         [] call compile preprocessFileLineNumbers "core\fnc\db\load.sqf";
     } else {
         [] call compile preprocessFileLineNumbers "core\fnc\db\load_old.sqf";

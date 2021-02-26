@@ -41,6 +41,11 @@ btc_ied_deleteOn = [{
     ];
 
     private _ieds = allSimpleObjects [] - allSimpleObjects btc_type_blacklist;
+    _ieds = (_ieds inAreaArray [getPosWorld _vehicle, 50, 50]) select {
+        !("ace_drop" in ((getModelInfo _x) select 0))
+    };
+    if (_ieds isEqualTo []) exitWith {};
+
     _ieds = _ieds apply {[_x distance _vehicle, _x]};
     _ieds sort true;
 
@@ -55,7 +60,7 @@ btc_ied_deleteOn = [{
     ) then {
         private _pos = getPosATL _ied;
         _ied call CBA_fnc_deleteEntity;
-        [btc_rep_bonus_IEDCleanUp, _unit] remoteExecCall ["btc_fnc_rep_change", 2];
-        ["btc_ied_deleted", [_pos, _unit]] call CBA_fnc_serverEvent;
+        [btc_rep_bonus_IEDCleanUp, player] remoteExecCall ["btc_fnc_rep_change", 2];
+        ["btc_ied_deleted", [_pos, player]] call CBA_fnc_serverEvent;
     };
 }, 1, [_vehicle, (_maxWidth max _maxLength) / 2]] call CBA_fnc_addPerFrameHandler;
