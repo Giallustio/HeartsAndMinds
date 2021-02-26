@@ -285,8 +285,9 @@ if (_city getVariable ["data_tags", []] isEqualTo []) then {
     if (_has_en) then {
         private _trigger = createTrigger ["EmptyDetector", getPos _city];
         _trigger setTriggerArea [_radius, _radius, 0, false];
-        _trigger setTriggerActivation [str btc_enemy_side, "NOT PRESENT", false];
-        _trigger setTriggerStatements ["this", format ["[%1] call btc_fnc_city_set_clear", _id], ""];
+        _trigger setTriggerActivation [str btc_enemy_side, "PRESENT", false];
+        _trigger setTriggerStatements [btc_p_city_free_trigger_condition, format ["[%1, thisList] call btc_fnc_city_set_clear", _id], ""];
+        _trigger setTriggerInterval 2;
         _city setVariable ["trigger", _trigger];
     };
 
