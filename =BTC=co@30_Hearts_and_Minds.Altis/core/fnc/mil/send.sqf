@@ -17,7 +17,7 @@ Returns:
 
 Examples:
     (begin example)
-        [(allPlayers#0), getPos (allPlayers#0), 1, selectRandom btc_type_motorized] call btc_fnc_mil_send
+        [allPlayers#0, getPos (allPlayers#0), 1, selectRandom btc_type_motorized] call btc_fnc_mil_send
     (end)
 
 Author:
