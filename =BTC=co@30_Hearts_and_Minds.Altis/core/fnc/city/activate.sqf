@@ -95,7 +95,6 @@ if (!(_city getVariable ["initialized", false])) then {
 
     _city setVariable ["initialized", true];
 };
-
 [_city, btc_fnc_ied_check] call btc_fnc_delay_exec;
 
 private _delay = 0;
