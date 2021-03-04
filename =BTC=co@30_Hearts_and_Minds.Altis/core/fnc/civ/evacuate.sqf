@@ -26,7 +26,7 @@ params [
     ["_position_evac", [], [[]]]
 ];
 
-private _civilians = (allUnits select {side _x isEqualTo civilian}) inAreaArray [_position, 200, 200];
+private _civilians = (units civilian) inAreaArray [_position, 200, 200];
 
 if (_position_evac isEqualTo []) then {
     private _safe = (nearestTerrainObjects [_position, ["CHURCH", "CHAPEL"], 400]);
