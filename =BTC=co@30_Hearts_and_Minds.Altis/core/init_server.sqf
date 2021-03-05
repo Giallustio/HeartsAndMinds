@@ -1,4 +1,4 @@
-[] call compile preprocessFileLineNumbers "core\fnc\city\init.sqf";
+[] call compileScript ["core\fnc\city\init.sqf"];
 
 ["Initialize"] call BIS_fnc_dynamicGroups;
 setTimeMultiplier btc_p_acctime;
@@ -9,9 +9,9 @@ setTimeMultiplier btc_p_acctime;
 
 if (btc_db_load && {profileNamespace getVariable [format ["btc_hm_%1_db", worldName], false]}) then {
     if ((profileNamespace getVariable [format ["btc_hm_%1_version", worldName], 1.13]) in [btc_version select 1, 20.1]) then {
-        [] call compile preprocessFileLineNumbers "core\fnc\db\load.sqf";
+        [] call compileScript ["core\fnc\db\load.sqf"];
     } else {
-        [] call compile preprocessFileLineNumbers "core\fnc\db\load_old.sqf";
+        [] call compileScript ["core\fnc\db\load_old.sqf"];
     };
 } else {
     for "_i" from 1 to btc_hideout_n do {[] call btc_fnc_mil_create_hideout;};

@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        [] call compile preprocessFileLineNumbers "core\fnc\db\load_old.sqf";
+        [] call compileScript ["core\fnc\db\load_old.sqf"];
     (end)
 
 Author:
