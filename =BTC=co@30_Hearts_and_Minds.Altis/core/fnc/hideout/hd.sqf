@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_mil_hd_hideout
+Function: btc_fnc_hideout_hd
 
 Description:
     Fill me when you edit me !
@@ -18,7 +18,7 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_mil_hd_hideout;
+        _result = [] call btc_fnc_hideout_hd;
     (end)
 
 Author:

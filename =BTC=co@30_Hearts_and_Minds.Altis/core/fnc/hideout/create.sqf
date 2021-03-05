@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_mil_create_hideout
+Function: btc_fnc_hideout_create
 
 Description:
     Create hideout randomnly or with defined position.
@@ -17,7 +17,7 @@ Returns:
 
 Examples:
     (begin example)
-        [] call btc_fnc_mil_create_hideout;
+        [] call btc_fnc_hideout_create;
     (end)
     (begin example)
         selectMin (btc_hideouts apply {
@@ -82,7 +82,7 @@ deleteVehicle (_city getVariable ["trigger_player_side", objNull]);
 
 [_pos, btc_hideouts_radius, _city, _city getVariable "occupied", _city getVariable "name", _city getVariable "type", _city getVariable "id"] call btc_fnc_city_trigger_player_side;
 
-private _hideout = [_pos] call btc_fnc_mil_create_hideout_composition;
+private _hideout = [_pos] call btc_fnc_hideout_create_composition;
 clearWeaponCargoGlobal _hideout;
 clearItemCargoGlobal _hideout;
 clearMagazineCargoGlobal _hideout;
@@ -92,7 +92,7 @@ _hideout setVariable ["rinf_time", _rinf_time];
 _hideout setVariable ["cap_time", _cap_time];
 _hideout setVariable ["assigned_to", _city];
 
-_hideout addEventHandler ["HandleDamage", btc_fnc_mil_hd_hideout];
+_hideout addEventHandler ["HandleDamage", btc_fnc_hideout_hd];
 
 private _markers = [];
 {
