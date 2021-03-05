@@ -46,7 +46,7 @@ if (_isContaminated) then {
     };
 };
 if !(_magClass isEqualTo "") then {_obj setVariable ["ace_rearm_magazineClass", _magClass, true]};
-if (getNumber(configFile >> "CfgVehicles" >> _type >> "isUav") isEqualTo 1) then {
+if (unitIsUAV _obj) then {
     createVehicleCrew _obj;
 };
 

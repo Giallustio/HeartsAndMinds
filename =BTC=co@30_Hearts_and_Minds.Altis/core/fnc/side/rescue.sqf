@@ -39,7 +39,7 @@ _city setVariable ["spawn_more", true];
 
 private _heli_type = typeOf selectRandom ((btc_vehicles + btc_helo) select {
     _x isKindOf "air" &&
-    getNumber(configFile >> "CfgVehicles" >> typeOf _x >> "isUav") isEqualTo 0
+    {!(unitIsUAV _x)}
 });
 private _heli = createVehicle [_heli_type, _pos, [], 0, "NONE"];
 _heli setVariable ["btc_dont_delete", true];
