@@ -124,7 +124,7 @@ for "_i" from 1 to _convoyLength do {
     private _back_taskID = _taskID + "bk";
 
     //// Create trigger \\\\
-    private _trigger = createTrigger ["EmptyDetector", _captive];
+    private _trigger = createTrigger ["EmptyDetector", _captive, false];
     _trigger setVariable ["captive", _captive];
     _trigger setTriggerArea [15, 15, 0, false];
     _trigger setTriggerActivation [str btc_player_side, "PRESENT", true];

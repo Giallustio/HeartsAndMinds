@@ -39,7 +39,7 @@ _city setVariable ["spawn_more", true];
 
 private _heli_type = typeOf selectRandom ((btc_vehicles + btc_helo) select {
     _x isKindOf "air" &&
-    getNumber(configOf _x >> "isUav") isEqualTo 0
+    {!(unitIsUAV _x)}
 });
 private _heli = createVehicle [_heli_type, _pos, [], 0, "NONE"];
 _heli setVariable ["btc_dont_delete", true];
@@ -80,7 +80,7 @@ private _triggers = [];
     _x setUnitPos "DOWN";
     _units pushBack _x;
     //// Create trigger \\\\
-    private _trigger = createTrigger ["EmptyDetector", getPos _city];
+    private _trigger = createTrigger ["EmptyDetector", getPos _city, false];
     _trigger setVariable ["unit", _x];
     _trigger setTriggerArea [50, 50, 0, false, 10];
     _trigger setTriggerActivation [str btc_player_side, "PRESENT", false];

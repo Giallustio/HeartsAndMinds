@@ -30,7 +30,7 @@ _group setVariable ["suicider", true];
 
 [group _suicider] call CBA_fnc_clearWaypoints;
 
-private _trigger = createTrigger ["EmptyDetector", getPos _suicider];
+private _trigger = createTrigger ["EmptyDetector", getPos _suicider, false];
 _trigger setTriggerArea [5, 5, 0, false];
 _trigger setTriggerActivation [str btc_player_side, "PRESENT", false];
 _trigger setTriggerStatements ["this", "thisTrigger call btc_fnc_ied_allahu_akbar;", ""];
