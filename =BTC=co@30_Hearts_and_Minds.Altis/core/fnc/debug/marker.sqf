@@ -73,7 +73,7 @@ private _cfgVehicles = configFile >> "CfgVehicles";
     private _agent = agent _x;
     if !(isNull _agent) then {
         _display drawIcon [
-            getText (_cfgVehicles >> typeOf _agent >> "Icon"),
+            getText (configOf _agent >> "Icon"),
             [0.5, 0.5, 0.5, [1, 0.3] select (local _agent)],
             visiblePosition _agent,
             20,

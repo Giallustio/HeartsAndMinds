@@ -26,8 +26,7 @@ params [
     ["_radius", 100, [0]]
 ];
 
-private _cfgVehicles = configFile >> "CfgVehicles";
-private _structures = (nearestTerrainObjects [_pos, ["House", "BUNKER", "FORTRESS"], _radius]) select {getText(_cfgVehicles >> typeOf _x >> "editorSubcategory") isEqualTo "EdSubcat_Military"};
+private _structures = (nearestTerrainObjects [_pos, ["House", "BUNKER", "FORTRESS"], _radius]) select {getText(configOf _x >> "editorSubcategory") isEqualTo "EdSubcat_Military"};
 
 private _useful = _structures select {(
     !((_x buildingPos -1) isEqualTo []) &&
