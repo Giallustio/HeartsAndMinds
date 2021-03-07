@@ -39,7 +39,7 @@ _veh addMPEventHandler ["MPKilled", {
         _this call btc_fnc_veh_killed;
     };
 }];
-if ((isNumber (configfile >> "CfgVehicles" >> typeOf _veh >> "ace_fastroping_enabled")) && (typeOf _veh isNotEqualTo "RHS_UH1Y_d")) then {
+if ((isNumber (configOf _veh >> "ace_fastroping_enabled")) && (typeOf _veh isNotEqualTo "RHS_UH1Y_d")) then {
     [_veh] call ace_fastroping_fnc_equipFRIES
 };
 if (btc_p_respawn_location > 1) then {

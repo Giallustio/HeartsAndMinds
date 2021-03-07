@@ -68,7 +68,7 @@ private _group = [];
     _grp setVariable ["no_cache", true];
 } forEach (_buildingPos - [_pos]);
 
-_trigger = createTrigger ["EmptyDetector", _pos];
+_trigger = createTrigger ["EmptyDetector", _pos, false];
 _trigger setVariable ["group", _group];
 _trigger setTriggerArea [20, 20, 0, false];
 _trigger setTriggerActivation [str btc_player_side, "PRESENT", true];

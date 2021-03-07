@@ -58,7 +58,7 @@ if (_EDENinventory isNotEqualTo []) then {
 
 _veh setVariable ["btc_dont_delete", true];
 
-if (getNumber(configFile >> "CfgVehicles" >> typeOf _veh >> "isUav") isEqualTo 1) then {
+if (unitIsUAV _veh) then {
     createVehicleCrew _veh;
 };
 
