@@ -42,6 +42,8 @@ if (isServer) then {
     btc_fnc_city_findPos = compile preprocessFileLineNumbers "core\fnc\city\findPos.sqf";
     btc_fnc_city_cleanUp = compile preprocessFileLineNumbers "core\fnc\city\cleanUp.sqf";
     btc_fnc_city_trigger_free_condition = compile preprocessFileLineNumbers "core\fnc\city\trigger_free_condition.sqf";
+    btc_fnc_city_getHouses = compileScript ["core\fnc\city\getHouses.sqf"];
+    btc_fnc_city_disableDoor = compileScript ["core\fnc\city\disableDoor.sqf"];
 
     //CIV
     btc_fnc_civ_add_weapons = compile preprocessFileLineNumbers "core\fnc\civ\add_weapons.sqf";
