@@ -29,7 +29,7 @@ params [
 private _city = btc_city_all select _id;
 _city setVariable ["occupied", false];
 
-if !(_remainEnemyUnits isEqualTo []) then {
+if (_remainEnemyUnits isNotEqualTo []) then {
     {
         if (unitIsUAV _x) then {
             _x setDamage 1;

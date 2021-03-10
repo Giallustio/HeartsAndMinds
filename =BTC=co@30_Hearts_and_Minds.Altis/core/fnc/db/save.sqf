@@ -186,7 +186,7 @@ profileNamespace setVariable [format ["btc_hm_%1_vehs", _name], +_array_veh];
 private _array_obj = [];
 {
     private _data = [_x] call btc_fnc_db_saveObjectStatus;
-    if !(_data isEqualTo []) then {
+    if (_data isNotEqualTo []) then {
         _array_obj pushBack _data;
     };
 } forEach (btc_log_obj_created select {

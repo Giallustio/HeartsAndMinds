@@ -34,7 +34,7 @@ params [
 
     _needActivate = _shower select {
         _x animationSourcePhase "valve_source" isEqualTo 0 &&
-        {!((nearestObjects [_x, ["Car_F", "Man", "Strategic", "Constructions_base_F", "Cargo_base_F"], _minDistance]) isEqualTo [])}
+        {(nearestObjects [_x, ["Car_F", "Man", "Strategic", "Constructions_base_F", "Cargo_base_F"], _minDistance]) isNotEqualTo []}
     };
 
     _needDesactivate = _shower select {

@@ -39,7 +39,7 @@ private _rpos = [_pos, _area] call btc_fnc_randomize_pos;
 switch (true) do {
     case (_wp <= _wp_house_probability) : {
         private _houses = [_city, _area] call btc_fnc_getHouses;
-        if !(_houses isEqualTo []) then {
+        if (_houses isNotEqualTo []) then {
             private _house = selectRandom _houses;
             [_group, _house] call btc_fnc_house_addWP;
             _group setVariable ["btc_inHouse", typeOf _house];

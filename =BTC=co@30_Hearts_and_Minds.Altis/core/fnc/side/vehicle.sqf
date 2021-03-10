@@ -30,7 +30,7 @@ private _city = selectRandom _useful;
 
 private _pos = [getPos _city, 100] call btc_fnc_randomize_pos;
 private _roads = _pos nearRoads 300;
-if !(_roads isEqualTo []) then {_pos = getPos (selectRandom _roads);};
+if (_roads isNotEqualTo []) then {_pos = getPos (selectRandom _roads);};
 
 private _veh_type = selectRandom btc_civ_type_veh;
 private _veh = createVehicle [_veh_type, _pos, [], 0, "NONE"];

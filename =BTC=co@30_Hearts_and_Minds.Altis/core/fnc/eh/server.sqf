@@ -70,9 +70,9 @@ if (btc_p_set_skill) then {
 ["btc_delay_vehicleInit", btc_fnc_patrol_addEH] call CBA_fnc_addEventHandler;
 ["ace_killed", {
     params ["_unit"];
-    if (!(side group _unit isEqualTo civilian)) exitWith {};
+    if (side group _unit isNotEqualTo civilian) exitWith {};
     private _vehicle = assignedVehicle _unit;
-    if !(_vehicle isEqualTo objNull) then {
+    if (_vehicle isNotEqualTo objNull) then {
         [[], [_vehicle]] call btc_fnc_delete;
     };
 }] call CBA_fnc_addEventHandler;

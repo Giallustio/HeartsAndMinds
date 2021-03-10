@@ -24,7 +24,7 @@ Author:
     params ["_suicider"];
 
     if (alive _suicider && !isNull _suicider) then {
-        if !((_suicider nearEntities [btc_player_type, 25]) isEqualTo []) exitWith {
+        if ((_suicider nearEntities [btc_player_type, 25]) isNotEqualTo []) exitWith {
             _suicider call btc_fnc_ied_suicider_active;
         };
         _this call btc_fnc_ied_suiciderLoop;

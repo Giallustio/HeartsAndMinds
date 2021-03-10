@@ -41,7 +41,7 @@ private _isAgent = isAgent teamMember _unit;
 if (
     !_isAgent && {
         _part isEqualTo "" ||
-        {!(side group _unit isEqualTo civilian)}
+        {side group _unit isNotEqualTo civilian}
     }
 ) exitWith {_dam};
 

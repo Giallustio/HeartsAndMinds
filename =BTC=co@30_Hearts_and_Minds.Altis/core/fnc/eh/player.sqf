@@ -32,7 +32,7 @@ params [
 }] call CBA_fnc_addBISEventHandler;
 ["ace_killed", {
     params ["_unit"];
-    if !(_unit isEqualTo player) exitWith {};
+    if (_unit isNotEqualTo player) exitWith {};
     if (ace_map_mapIllumination) then {ace_map_mapIllumination = false;};
     if (isObjectHidden player) exitWith {};
     [btc_rep_malus_player_respawn, player] remoteExecCall ["btc_fnc_rep_change", 2];
@@ -91,7 +91,7 @@ if (btc_p_respawn_arsenal) then {
 if (btc_p_respawn_location >= 4) then {
     ["ace_killed", {
         params ["_unit"];
-        if !(_unit isEqualTo player) exitWith {};
+        if (_unit isNotEqualTo player) exitWith {};
         private _group  = group player;
         [_group, leader _group] call BIS_fnc_addRespawnPosition;
     }] call CBA_fnc_addEventHandler;
