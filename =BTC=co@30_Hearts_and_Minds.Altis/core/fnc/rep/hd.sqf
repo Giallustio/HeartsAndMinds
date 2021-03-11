@@ -26,6 +26,8 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
+if ((_this select 1) isEqualType []) exitWith {}; // Some agents return an array when tacking damage 
+
 params [
     ["_unit", objNull, [objNull]],
     ["_part", "", [""]],
