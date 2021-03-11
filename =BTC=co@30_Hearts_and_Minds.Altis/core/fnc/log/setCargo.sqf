@@ -3,10 +3,11 @@
 Function: btc_fnc_log_setCargo
 
 Description:
-    Clear cargo of all item weapon.
+    Set cargo inventory.
 
 Parameters:
-    _object - Object which cargo will be cleared. [Object]
+    _object - Object which inventory. [Object]
+    _inventory - Inventory to set. [Array]
 
 Returns:
 
@@ -19,7 +20,7 @@ Author:
     Vdauphin
 
 ---------------------------------------------------------------------------- */
-btc_fnc_log_setCargo = {
+
 params [
     ["_object", objNull, [objNull]],
     ["_inventory", [], [[]]]
@@ -53,6 +54,7 @@ _inventory params [
     } else {
         _object addBackpackCargoGlobal [_containerType, 1];
     };
+
     private _newContainer = everyContainer _object;
     [(_newContainer select (count _newContainer -1)) select 1, _x select 1] call btc_fnc_log_setCargo;
 } forEach _everyContainer;
@@ -60,6 +62,3 @@ _inventory params [
 {
     _object addItemCargoGlobal [_x, 1];
 } forEach _items;
-
-};
-[cursorObject, [cursorObject] call btc_fnc_log_getCargo] call btc_fnc_log_setCargo;

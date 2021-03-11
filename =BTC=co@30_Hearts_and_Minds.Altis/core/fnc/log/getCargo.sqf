@@ -3,10 +3,10 @@
 Function: btc_fnc_log_getCargo
 
 Description:
-    Clear cargo of all item weapon.
+    Get cargo inventory of an object.
 
 Parameters:
-    _object - Object which cargo will be cleared. [Object]
+    _object - Object which inventory. [Object]
 
 Returns:
 
@@ -19,7 +19,7 @@ Author:
     Vdauphin
 
 ---------------------------------------------------------------------------- */
-btc_fnc_log_getCargo = {
+
 params [
     ["_object", objNull, [objNull]]
 ];
@@ -35,5 +35,3 @@ private _everyContainer = everyContainer _object;
     itemCargo _object,
     _everyContainer
 ]
-};
-[cursorObject] call btc_fnc_log_getCargo;
