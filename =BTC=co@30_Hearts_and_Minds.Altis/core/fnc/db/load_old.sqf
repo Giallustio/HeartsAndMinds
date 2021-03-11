@@ -128,7 +128,40 @@ btc_vehicles = [];
 
 private _objs = +(profileNamespace getVariable [format ["btc_hm_%1_objs", _name], []]);
 {
-    [_x] call btc_fnc_db_loadObjectStatus;
+    [_x] call {
+        params [
+            ["_object_data", [], [[]]]
+        ];
+        _object_data params [
+            "_type",
+            "_posWorld",
+            "_dir",
+            "_magClass",
+            "_cargo",
+            "_inventory",
+            "_vectorPos",
+            ["_isContaminated", false, [false]]
+        ];
+
+        private _obj =  _type createVehicle _posWorld;
+
+        _obj setDir _dir;
+        _obj setPosWorld _posWorld;
+        _obj setVectorDirAndUp _vectorPos;
+
+        if (_isContaminated) then {
+            if ((btc_chem_contaminated pushBackUnique _obj) > -1) then {
+                publicVariable "btc_chem_contaminated";
+            };
+        };
+        if (_magClass isNotEqualTo "") then {_obj setVariable ["ace_rearm_magazineClass", _magClass, true]};
+        if (unitIsUAV _obj) then {
+            createVehicleCrew _obj;
+        };
+
+        [_obj] call btc_fnc_log_init;
+        [_obj, _cargo, _inventory] call btc_fnc_db_loadCargo;
+    };
 } forEach _objs;
 
 //VEHICLES

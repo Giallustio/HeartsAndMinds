@@ -27,7 +27,7 @@ params [
 
 private _data = [];
 _data pushBack (typeOf _object);
-_data pushBack (getPosWorld _object);
+_data pushBack (getPosASL _object);
 _data pushBack (getDir _object);
 _data pushBack (_object getVariable ["ace_rearm_magazineClass", ""]);
 //Cargo
