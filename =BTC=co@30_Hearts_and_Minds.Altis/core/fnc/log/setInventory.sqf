@@ -1,9 +1,9 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_log_setCargo
+Function: btc_fnc_log_setInventory
 
 Description:
-    Set cargo inventory.
+    Set inventory of an object.
 
 Parameters:
     _object - Object which inventory. [Object]
@@ -13,7 +13,7 @@ Returns:
 
 Examples:
     (begin example)
-        [cursorObject, [cursorObject] call btc_fnc_log_getCargo] call btc_fnc_log_setCargo;
+        [cursorObject, [cursorObject] call btc_fnc_log_getInventory] call btc_fnc_log_setInventory;
     (end)
 
 Author:

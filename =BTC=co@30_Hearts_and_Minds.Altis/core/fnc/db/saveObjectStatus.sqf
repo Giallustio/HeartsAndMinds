@@ -39,14 +39,14 @@ private _cargo = [];
         [
             typeOf _x,
             _x getVariable ["ace_rearm_magazineClass", ""],
-            _x call btc_fnc_log_getCargo,
+            _x call btc_fnc_log_getInventory,
             _x in btc_chem_contaminated
         ]
     });
 } forEach (_object getVariable ["ace_cargo_loaded", []]);
 _data pushBack _cargo;
 //Inventory
-private _cont = _x call btc_fnc_log_getCargo;
+private _cont = _x call btc_fnc_log_getInventory;
 _data pushBack _cont;
 _data pushBack [vectorDir _object, vectorUp _object];
 _data pushBack (_object in btc_chem_contaminated);

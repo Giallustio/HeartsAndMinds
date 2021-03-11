@@ -173,12 +173,13 @@ if (isServer) then {
     btc_fnc_log_createVehicle = compile preprocessFileLineNumbers "core\fnc\log\createVehicle.sqf";
     btc_fnc_log_getRearmMagazines = compile preprocessFileLineNumbers "core\fnc\log\getRearmMagazines.sqf";
     btc_fnc_log_init = compile preprocessFileLineNumbers "core\fnc\log\init.sqf";
-    btc_fnc_log_setCargo = compile preprocessFileLineNumbers "core\fnc\log\setCargo.sqf";
+    btc_fnc_log_setInventory = compile preprocessFileLineNumbers "core\fnc\log\setInventory.sqf";
     btc_fnc_log_server_delete = compile preprocessFileLineNumbers "core\fnc\log\server_delete.sqf";
     btc_fnc_log_create_s = compile preprocessFileLineNumbers "core\fnc\log\create_s.sqf";
     btc_fnc_log_get_cc = compile preprocessFileLineNumbers "core\fnc\log\get_cc.sqf";
     btc_fnc_log_get_rc = compile preprocessFileLineNumbers "core\fnc\log\get_rc.sqf";
     btc_fnc_log_server_repair_wreck = compile preprocessFileLineNumbers "core\fnc\log\server_repair_wreck.sqf";
+    btc_fnc_log_getInventory = compile preprocessFileLineNumbers "core\fnc\log\getInventory.sqf";
 
     //DEAF
     btc_fnc_deaf_earringing = compile preprocessFileLineNumbers "core\fnc\deaf\earringing.sqf";

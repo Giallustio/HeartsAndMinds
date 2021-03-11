@@ -1,9 +1,9 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_log_getCargo
+Function: btc_fnc_log_getInventory
 
 Description:
-    Get cargo inventory of an object.
+    Get inventory of an object.
 
 Parameters:
     _object - Object which inventory. [Object]
@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        [cursorObject] call btc_fnc_log_getCargo;
+        [cursorObject] call btc_fnc_log_getInventory;
     (end)
 
 Author:
@@ -26,7 +26,7 @@ params [
 
 private _everyContainer = everyContainer _object;
 {
-    _x set [1, (_x select 1) call btc_fnc_log_getCargo];
+    _x set [1, (_x select 1) call btc_fnc_log_getInventory];
 } forEach _everyContainer;
 
 [
