@@ -26,32 +26,29 @@ params [
 ];
 
 private _data = [];
-
-if !(!alive _object || isNull _object) then {
-
-    _data pushBack (typeOf _object);
-    _data pushBack (getPosWorld _object);
-    _data pushBack (getDir _object);
-    _data pushBack (_object getVariable ["ace_rearm_magazineClass", ""]);
-    //Cargo
-    private _cargo = [];
-    {
-        _cargo pushBack (if (_x isEqualType "") then {
-            [_x, "", [[], [], []]]
-        } else {
-            [
-                typeOf _x,
-                _x getVariable ["ace_rearm_magazineClass", ""],
-                _x call btc_fnc_log_getCargo
-            ]
-        });
-    } forEach (_object getVariable ["ace_cargo_loaded", []]);
-    _data pushBack _cargo;
-    //Inventory
-    private _cont = _x call btc_fnc_log_getCargo;
-    _data pushBack _cont;
-    _data pushBack [vectorDir _object, vectorUp _object];
-    _data pushBack (_object in btc_chem_contaminated);
-};
+_data pushBack (typeOf _object);
+_data pushBack (getPosWorld _object);
+_data pushBack (getDir _object);
+_data pushBack (_object getVariable ["ace_rearm_magazineClass", ""]);
+//Cargo
+private _cargo = [];
+{
+    _cargo pushBack (if (_x isEqualType "") then {
+        [_x, "", [[], [], []]]
+    } else {
+        [
+            typeOf _x,
+            _x getVariable ["ace_rearm_magazineClass", ""],
+            _x call btc_fnc_log_getCargo,
+            _x in btc_chem_contaminated
+        ]
+    });
+} forEach (_object getVariable ["ace_cargo_loaded", []]);
+_data pushBack _cargo;
+//Inventory
+private _cont = _x call btc_fnc_log_getCargo;
+_data pushBack _cont;
+_data pushBack [vectorDir _object, vectorUp _object];
+_data pushBack (_object in btc_chem_contaminated);
 
 _data
