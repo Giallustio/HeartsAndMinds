@@ -43,7 +43,7 @@ _inventory params [
 } forEach (_magazines select 0);
 
 {
-    _object addWeaponWithAttachmentsCargoGlobal [_weapons, 1];
+    _object addWeaponWithAttachmentsCargoGlobal [_x, 1];
 } forEach _weapons;
 
 {
@@ -56,7 +56,7 @@ _inventory params [
     };
 
     private _newContainer = everyContainer _object;
-    [(_newContainer select (count _newContainer -1)) select 1, _x select 1] call btc_fnc_log_setCargo;
+    [(_newContainer select (count _newContainer -1)) select 1, _x select 1] call btc_fnc_log_setInventory;
 } forEach _everyContainer;
 
 {

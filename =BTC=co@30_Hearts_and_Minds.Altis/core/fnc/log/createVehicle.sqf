@@ -7,7 +7,7 @@ Description:
 
 Parameters:
     _type - Vehicle className. [String]
-    _pos -  Desired placement position. If the exact position is occupied, nearest empty position is used. [Array]
+    _pos - Desired placement position. [Array]
     _dir - Desired direction. [Number]
     _customization - Customized appearance [Array]
     _isMedicalVehicle - Set the ACE parameter is a medical vehicle. [Boolean]

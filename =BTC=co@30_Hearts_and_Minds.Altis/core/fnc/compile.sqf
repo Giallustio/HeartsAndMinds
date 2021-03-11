@@ -179,7 +179,7 @@ if (isServer) then {
     btc_fnc_log_get_cc = compile preprocessFileLineNumbers "core\fnc\log\get_cc.sqf";
     btc_fnc_log_get_rc = compile preprocessFileLineNumbers "core\fnc\log\get_rc.sqf";
     btc_fnc_log_server_repair_wreck = compile preprocessFileLineNumbers "core\fnc\log\server_repair_wreck.sqf";
-    btc_fnc_log_getInventory = compile preprocessFileLineNumbers "core\fnc\log\getInventory.sqf";
+    btc_fnc_log_getInventory = compileScript ["core\fnc\log\getInventory.sqf"];
 
     //DEAF
     btc_fnc_deaf_earringing = compile preprocessFileLineNumbers "core\fnc\deaf\earringing.sqf";
