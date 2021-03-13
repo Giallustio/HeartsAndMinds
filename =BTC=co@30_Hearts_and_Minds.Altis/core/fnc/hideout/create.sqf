@@ -6,7 +6,7 @@ Description:
     Create hideout randomnly or with defined position.
 
 Parameters:
-    _pos - Poisition of the hideout. [Array]
+    _pos - Position of the hideout. [Array]
     _id_hideout - Id of the hideout. [Number]
     _rinf_time - Not used. [Number]
     _cap_time - Time for next capture of city around. [Number]
