@@ -24,7 +24,7 @@ Author:
 params ["_unit", "_causeOfDeath", "_killer", "_instigator"];
 
 if (
-    !(side group _unit isEqualTo civilian) &&
+    (side group _unit isNotEqualTo civilian) &&
     {!isAgent teamMember _unit}
 ) exitWith {};
 

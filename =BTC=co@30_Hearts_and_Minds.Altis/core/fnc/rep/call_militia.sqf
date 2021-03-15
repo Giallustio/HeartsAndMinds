@@ -31,9 +31,9 @@ private _players = if (isMultiplayer) then {playableUnits} else {switchableunits
 //is there an hideout close by?
 private _start_pos = objNull;
 private _hideouts = btc_hideouts inAreaArray [_pos, 2000, 2000];
-if !(_hideouts isEqualTo []) then {
+if (_hideouts isNotEqualTo []) then {
     _hideouts = _hideouts select {_players inAreaArray [getPosWorld _hideout, 500, 500] isEqualTo []};
-    if !(_hideouts isEqualTo []) then {_start_pos = selectRandom _hideouts};
+    if (_hideouts isNotEqualTo []) then {_start_pos = selectRandom _hideouts};
 };
 
 if (btc_debug_log) then {

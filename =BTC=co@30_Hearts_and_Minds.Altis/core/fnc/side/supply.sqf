@@ -91,10 +91,10 @@ private _direction_composition = random 360;
 private _composition_objects = [_pos, _direction_composition, _composition] call btc_fnc_create_composition;
 
 btc_supplies_mat params ["_food", "_water"];
-waitUntil {sleep 5; (_move_taskID call BIS_fnc_taskCompleted || !((nearestObjects [_pos, [btc_supplies_cargo] + _food + _water, 30]) isEqualTo []))};
+waitUntil {sleep 5; (_move_taskID call BIS_fnc_taskCompleted || (nearestObjects [_pos, [btc_supplies_cargo] + _food + _water, 30]) isNotEqualTo [])};
 
 private _drop_taskID = _taskID + "dr";
-if !(_move_taskID call BIS_fnc_taskState isEqualTo "CANCELED") then {
+if (_move_taskID call BIS_fnc_taskState isNotEqualTo "CANCELED") then {
     [_move_taskID, "SUCCEEDED"] call BIS_fnc_taskSetState;
     [
         [_drop_taskID, _taskID], 19,

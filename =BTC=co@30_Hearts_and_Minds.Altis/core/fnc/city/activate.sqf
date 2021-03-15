@@ -98,7 +98,7 @@ if (!(_city getVariable ["initialized", false])) then {
 [_city, btc_fnc_ied_check] call btc_fnc_delay_exec;
 
 private _delay = 0;
-if !(_data_units isEqualTo []) then {
+if (_data_units isNotEqualTo []) then {
     {
         _delay = _delay + ([_x, _city] call btc_fnc_data_spawn_group);
     } forEach _data_units;
@@ -158,7 +158,7 @@ if !(_data_units isEqualTo []) then {
     };
 };
 if (btc_p_animals_group_ratio > 0) then {
-    if !(_data_animals isEqualTo []) then {
+    if (_data_animals isNotEqualTo []) then {
         {
             (_x + [nil, _city]) call btc_fnc_delay_createAgent;
         } forEach _data_animals;
@@ -197,7 +197,10 @@ if (_city getVariable ["spawn_more", false]) then {
     };
 };
 
-if (!(btc_cache_pos isEqualTo []) && {!(btc_cache_obj getVariable ["btc_cache_unitsSpawned", false])}) then {
+if (
+    (btc_cache_pos isNotEqualTo []) &&
+    {!(btc_cache_obj getVariable ["btc_cache_unitsSpawned", false])}
+) then {
     if (_city inArea [btc_cache_pos, _radius, _radius, 0, false]) then {
         btc_cache_obj setVariable ["btc_cache_unitsSpawned", true];
 

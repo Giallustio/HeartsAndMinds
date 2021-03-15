@@ -168,13 +168,13 @@ private _vehs = +(profileNamespace getVariable [format ["btc_hm_%1_vehs", _name]
         if !(alive _veh) then {
             [_veh, objNull, objNull, false] call btc_fnc_veh_killed;
         };
-        if !(_ViV isEqualTo []) then {
+        if (_ViV isNotEqualTo []) then {
             {
                 private _vehToLoad = _x call _loadVehicle;
                 if !([_vehToLoad, _veh] call btc_fnc_tow_ViV) then {
                     _vehToLoad setVehiclePosition [_veh, [], 100, "NONE"];
                     private _marker = _vehToLoad getVariable ["marker", ""];
-                    if !(_marker isEqualTo "") then {
+                    if (_marker isNotEqualTo "") then {
                         _marker setMarkerPos _vehToLoad;
                     };
                 };
@@ -197,7 +197,7 @@ private _id = ["ace_tagCreated", {
 {
     _x params ["_tagPosASL", "_vectorDirAndUp", "_texture", "_typeObject", "_tagModel"];
     private _object = objNull;
-    if !(_typeObject isEqualTo "") then {
+    if (_typeObject isNotEqualTo "") then {
         _object = nearestObject [ASLToATL _tagPosASL, _typeObject];
     };
     [_tagPosASL, _vectorDirAndUp, _texture, _object, objNull, "",_tagModel] call ace_tagging_fnc_createTag;
@@ -221,7 +221,7 @@ private _markers_properties = +(profileNamespace getVariable [format ["btc_hm_%1
     _marker setMarkerBrush _markerBrush;
     _marker setMarkerDir _markerDir;
     _marker setMarkerShape _markerShape;
-    if !(_markerPolyline isEqualTo []) then {
+    if (_markerPolyline isNotEqualTo []) then {
         _marker setMarkerPolyline _markerPolyline;
     };
 } forEach _markers_properties;

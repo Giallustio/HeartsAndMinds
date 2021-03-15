@@ -193,7 +193,7 @@ if (isServer) then {
     ];
     private _weapons_usefull = "true" configClasses (configFile >> "CfgWeapons") select {
         getNumber (_x >> 'type') isEqualTo 1 &&
-        {!(getArray (_x >> 'magazines') isEqualTo [])} &&
+        {getArray (_x >> 'magazines') isNotEqualTo []} &&
         {getNumber (_x >> 'scope') isEqualTo 2}
     };
     btc_cache_weapons_type = _weapons_usefull apply {configName _x};
@@ -603,7 +603,7 @@ btc_fnc_lift_getLiftable = {
             _array = ["Motorcycle", "ReammoBox", "ReammoBox_F", "StaticWeapon", "Car", "Truck", "Wheeled_APC_F", "Tracked_APC", "APC_Tracked_01_base_F", "APC_Tracked_02_base_F", "Air", "Ship", "Tank"] + ((btc_construction_array select 1) select 3) + ((btc_construction_array select 1) select 4) + ((btc_construction_array select 1) select 5);
         };
         default {
-            private _MaxCargoMass = getNumber (configFile >> "CfgVehicles" >> typeOf _chopper >> "slingLoadMaxCargoMass");
+            private _MaxCargoMass = getNumber (configOf _chopper >> "slingLoadMaxCargoMass");
             switch (true) do {
                 case (_MaxCargoMass <= 510) : {
                     _array = ["Motorcycle", "ReammoBox", "ReammoBox_F", "Quadbike_01_base_F", "Strategic"];
