@@ -31,7 +31,7 @@ params [
 private _i = 1;
 while {
     _i <= _n &&
-    {!(_houses isEqualTo [])}
+    {_houses isNotEqualTo []}
 } do {
     private _house = _houses deleteAt 0;
     private _houseType = typeOf _house;

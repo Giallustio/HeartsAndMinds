@@ -33,7 +33,11 @@ private _city = selectRandom _useful;
 //// Choose a random position \\\\
 private _objects = nearestObjects [getPos _city, [], 200];
 
-_objects = _objects select {!((str (_x) find "wreck") isEqualTo -1) || !((str (_x) find "broken") isEqualTo -1) || !((str (_x) find "rock") isEqualTo -1)};
+_objects = _objects select {
+    (str (_x) find "wreck") isNotEqualTo -1 ||
+    (str (_x) find "broken") isNotEqualTo -1 ||
+    (str (_x) find "rock") isNotEqualTo -1
+};
 _objects = _objects select {(getPos _x select 2 < -3) && (((str (_x) find "car") isEqualTo -1) || ((str (_x) find "uaz") isEqualTo -1))};
 private _wrecks = _objects select {(str (_x) find "rock") isEqualTo -1};
 

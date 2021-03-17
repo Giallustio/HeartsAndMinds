@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        [] call compile preprocessFileLineNumbers "core\fnc\db\load_old.sqf";
+        [] call compileScript ["core\fnc\db\load_old.sqf"];
     (end)
 
 Author:
@@ -197,7 +197,7 @@ private _id = ["ace_tagCreated", {
 {
     _x params ["_tagPosASL", "_vectorDirAndUp", "_texture", "_typeObject", "_tagModel"];
     private _object = objNull;
-    if !(_typeObject isEqualTo "") then {
+    if (_typeObject isNotEqualTo "") then {
         _object = nearestObject [ASLToATL _tagPosASL, _typeObject];
     };
     [_tagPosASL, _vectorDirAndUp, _texture, _object, objNull, "",_tagModel] call ace_tagging_fnc_createTag;

@@ -42,7 +42,7 @@ private _rearming_magazines = [];
         private _pylonMagazine = (getPylonMagazines _vehicle) select (_pylonIndex - 1);
 
         // Only care about pylons that have a magazine.
-        if (!(_pylonMagazine isEqualTo "")) then {
+        if ((_pylonMagazine isNotEqualTo "")) then {
             _magazineInfo pushBack _pylonMagazine;
         };
     } forEach _pylonConfigs;

@@ -34,4 +34,4 @@ if (btc_debug_log) then {
     [format ["%1 Weapons: %2 isAmmoUsage: %3", _typeof_unit, _weapons, _weapons_ammoUsage], __FILE__, [false]] call btc_fnc_debug_message;
 };
 
-!(_weapons_ammoUsage isEqualTo [])
+_weapons_ammoUsage isNotEqualTo []

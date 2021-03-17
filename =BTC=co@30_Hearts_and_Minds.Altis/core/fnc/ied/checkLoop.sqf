@@ -59,7 +59,7 @@ Author:
         _x params ["_wreck", "_type", "_ied"];
 
         if (!isNull _wreck && {alive _wreck}) then {
-            _data pushBack [getPosATL _wreck, _type, getDir _wreck, !(_ied isEqualTo objNull)];
+            _data pushBack [getPosATL _wreck, _type, getDir _wreck, _ied isNotEqualTo objNull];
 
             deleteVehicle _ied;
             deleteVehicle _wreck;

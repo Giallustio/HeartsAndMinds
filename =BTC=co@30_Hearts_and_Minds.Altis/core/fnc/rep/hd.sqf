@@ -26,6 +26,8 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
+if ((_this select 1) isEqualType []) exitWith {}; // Some agents return an array when tacking damage 
+
 params [
     ["_unit", objNull, [objNull]],
     ["_part", "", [""]],
@@ -41,7 +43,7 @@ private _isAgent = isAgent teamMember _unit;
 if (
     !_isAgent && {
         _part isEqualTo "" ||
-        {!(side group _unit isEqualTo civilian)}
+        {side group _unit isNotEqualTo civilian}
     }
 ) exitWith {_dam};
 
