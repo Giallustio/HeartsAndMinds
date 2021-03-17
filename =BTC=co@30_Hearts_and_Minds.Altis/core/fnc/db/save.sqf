@@ -150,11 +150,11 @@ private _vehiclesInCargo = _vehicles - _vehiclesNotInCargo;
         _cargo pushBack (if (_x isEqualType "") then {
             [_x, "", [[], [], []]]
         } else {
-            [typeOf _x, _x getVariable ["ace_rearm_magazineClass", ""], [getWeaponCargo _x, getMagazineCargo _x, getItemCargo _x], _x in btc_chem_contaminated]
+            [typeOf _x, _x getVariable ["ace_rearm_magazineClass", ""], [getWeaponCargo _x, getMagazineCargo _x, getItemCargo _x, getBackpackCargo _x], _x in btc_chem_contaminated]
         });
     } forEach (_x getVariable ["ace_cargo_loaded", []]);
     _data pushBack _cargo;
-    private _cont = [getWeaponCargo _x, getMagazineCargo _x, getItemCargo _x];
+    private _cont = [getWeaponCargo _x, getMagazineCargo _x, getItemCargo _x, getBackpackCargo _x];
     _data pushBack _cont;
     _data append ([_x] call btc_fnc_getVehProperties);
     _data pushBack (_x getVariable ["btc_EDENinventory", []]);
@@ -187,7 +187,7 @@ profileNamespace setVariable [format ["btc_hm_%1_vehs", _name], +_array_veh];
 private _array_obj = [];
 {
     private _data = [_x] call btc_fnc_db_saveObjectStatus;
-    if !(_data isEqualTo []) then {
+    if (_data isNotEqualTo []) then {
         _array_obj pushBack _data;
     };
 } forEach (btc_log_obj_created select {
@@ -212,9 +212,9 @@ private _tags_properties = _tags apply {
 profileNamespace setVariable [format ["btc_hm_%1_tags", _name], +_tags_properties];
 
 //Player Markers
-private _player_markers = allMapMarkers select {(_x select [0, 15]) isEqualTo "_USER_DEFINED #"};
+private _player_markers = allMapMarkers select {"_USER_DEFINED" in _x};
 private _markers_properties = _player_markers apply {
-    [markerText _x, markerPos _x, markerColor _x, markerType _x, markerSize _x, markerAlpha _x, markerBrush _x, markerDir _x, markerShape _x]
+    [markerText _x, markerPos _x, markerColor _x, markerType _x, markerSize _x, markerAlpha _x, markerBrush _x, markerDir _x, markerShape _x, markerPolyline _x, markerChannel _x]
 };
 profileNamespace setVariable [format ["btc_hm_%1_markers", _name], +_markers_properties];
 

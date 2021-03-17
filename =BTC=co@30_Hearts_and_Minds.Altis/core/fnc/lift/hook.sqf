@@ -38,10 +38,9 @@ private _cargo = _cargo_array select 0;
 
 {ropeDestroy _x;} forEach ropes _chopper;
 
-private _cfgVehicles = configFile >> "CfgVehicles";
-private _bbr = getArray (_cfgVehicles >> typeOf _cargo >> "slingLoadCargoMemoryPoints");
+private _bbr = getArray (configOf _cargo >> "slingLoadCargoMemoryPoints");
 private _ropes_check = [];
-if !(_bbr isEqualTo []) then {
+if (_bbr isNotEqualTo []) then {
     {
         _ropes_check pushBack (ropeCreate [_chopper, "slingload0", _cargo, _x, 11]);
     } forEach _bbr;
@@ -79,7 +78,7 @@ if (btc_debug) then {
     [format ["boundingBoxReal : %1 rope length : %2", _bbr, _rope_length], __FILE__, [btc_debug, false]] call btc_fnc_debug_message;
 };
 
-private _max_cargo  = getNumber (_cfgVehicles >> typeOf _chopper >> "slingLoadMaxCargoMass");
+private _max_cargo  = getNumber (configOf _chopper >> "slingLoadMaxCargoMass");
 private _mass = getMass _cargo;
 
 [_cargo, clientOwner] remoteExecCall ["setOwner", 2];

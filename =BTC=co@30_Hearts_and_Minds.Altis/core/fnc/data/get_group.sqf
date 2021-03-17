@@ -60,20 +60,20 @@ private _array_wp = (waypoints _group) apply {[
     _array_dam pushBack getDammage _x;
 } forEach _units;
 
-if !(_group getVariable ["btc_inHouse", ""] isEqualTo "") then {
+if (_group getVariable ["btc_inHouse", ""] isNotEqualTo "") then {
     _type_db = 3;
     _array_veh = _group getVariable ["btc_inHouse", ""];
 };
 if (_group getVariable ["getWeapons", false]) then {_type_db = 4;};
 if (_group getVariable ["suicider", false]) then {_type_db = 5;};
-if !(_group getVariable ["btc_data_inhouse", []] isEqualTo []) then {
+if (_group getVariable ["btc_data_inhouse", []] isNotEqualTo []) then {
     _type_db = 6;
     _array_veh = _group getVariable ["btc_data_inhouse", []];
 };
 if (_group getVariable ["btc_ied_drone", false]) then {_type_db = 7;};
 if (
     _vehicle != _leader &&
-    {!(_type_db isEqualTo 7)}
+    {_type_db isNotEqualTo 7}
 ) then {
     _type_db = 1;
     _array_veh = [typeOf _vehicle, getPosATL _vehicle, getDir _vehicle, fuel _vehicle, vectorUp _vehicle];

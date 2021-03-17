@@ -95,7 +95,7 @@ if (_type isEqualTo 1) then {
             ];
             [_group, _position, -1, _type, _behaviour, _combat, _speed, _formation, "", _timeout, _compRadius] call CBA_fnc_addWaypoint;
         } forEach (_array_wp select 1);
-        if !(_array_wp select 1 isEqualTo []) then {
+        if (_array_wp select 1 isNotEqualTo []) then {
             _group setCurrentWaypoint [_group, _array_wp select 0];
         };
     };

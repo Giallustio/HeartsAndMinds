@@ -62,12 +62,16 @@ private _spawningRadius = _radius/2;
 if (!(_city getVariable ["initialized", false])) then {
     private _ratio = (switch _type do {
         case "Hill" : {random 1};
+        case "VegetationFir" : {random 1};
+        case "BorderCrossing" : {random 2};
         case "NameLocal" : {random 2.5};
+        case "StrongpointArea" : {random 3};
         case "NameVillage" : {random 3.5};
         case "NameCity" : {random 5};
         case "NameCityCapital" : {random 6};
         case "Airport" : {0};
         case "NameMarine" : {0};
+        default {0};
     });
 
     private _ratio_ied = _ratio;
@@ -94,7 +98,7 @@ if (!(_city getVariable ["initialized", false])) then {
 [_city, btc_fnc_ied_check] call btc_fnc_delay_exec;
 
 private _delay = 0;
-if !(_data_units isEqualTo []) then {
+if (_data_units isNotEqualTo []) then {
     {
         _delay = _delay + ([_x, _city] call btc_fnc_data_spawn_group);
     } forEach _data_units;
@@ -102,7 +106,10 @@ if !(_data_units isEqualTo []) then {
     // Maximum number of enemy group
     private _max_number_group = (switch _type do {
         case "Hill" : {1};
+        case "VegetationFir" : {1};
+        case "BorderCrossing" : {2};
         case "NameLocal" : {2};
+        case "StrongpointArea" : {3};
         case "NameVillage" : {3};
         case "NameCity" : {7};
         case "NameCityCapital" : {15};
@@ -122,7 +129,10 @@ if !(_data_units isEqualTo []) then {
 
         if (_has_en) then {
             private _max_number_group = (switch _type do {
+                case "VegetationFir" : {1};
+                case "BorderCrossing" : {2};
                 case "NameLocal" : {1};
+                case "StrongpointArea" : {2};
                 case "NameVillage" : {2};
                 case "NameCity" : {4};
                 case "NameCityCapital" : {5};
@@ -134,7 +144,10 @@ if !(_data_units isEqualTo []) then {
 
         // Spawn civilians
         private _max_number_group = (switch _type do {
+            case "VegetationFir" : {1};
+            case "BorderCrossing" : {0};
             case "NameLocal" : {3};
+            case "StrongpointArea" : {0};
             case "NameVillage" : {6};
             case "NameCity" : {10};
             case "NameCityCapital" : {19};
@@ -145,7 +158,7 @@ if !(_data_units isEqualTo []) then {
     };
 };
 if (btc_p_animals_group_ratio > 0) then {
-    if !(_data_animals isEqualTo []) then {
+    if (_data_animals isNotEqualTo []) then {
         {
             (_x + [nil, _city]) call btc_fnc_delay_createAgent;
         } forEach _data_animals;
@@ -153,6 +166,7 @@ if (btc_p_animals_group_ratio > 0) then {
         // Spawn animals
         private _max_number_animalsGroup = (switch _type do {
             case "Hill" : {3};
+            case "VegetationFir" : {3};
             case "NameLocal" : {3};
             case "NameVillage" : {2};
             case "NameCity" : {1};
@@ -183,7 +197,10 @@ if (_city getVariable ["spawn_more", false]) then {
     };
 };
 
-if (!(btc_cache_pos isEqualTo []) && {!(btc_cache_obj getVariable ["btc_cache_unitsSpawned", false])}) then {
+if (
+    (btc_cache_pos isNotEqualTo []) &&
+    {!(btc_cache_obj getVariable ["btc_cache_unitsSpawned", false])}
+) then {
     if (_city inArea [btc_cache_pos, _radius, _radius, 0, false]) then {
         btc_cache_obj setVariable ["btc_cache_unitsSpawned", true];
 
@@ -241,12 +258,15 @@ if !(_city getVariable ["has_suicider", false]) then {
 if (_city getVariable ["data_tags", []] isEqualTo []) then {
     private _tag_number = (switch _type do {
         case "Hill" : {random 1};
+        case "BorderCrossing" : {random 1};
         case "NameLocal" : {random 2.5};
+        case "StrongpointArea" : {random 3};
         case "NameVillage" : {random 3.5};
         case "NameCity" : {random 5};
         case "NameCityCapital" : {random 6};
         case "Airport" : {random 6};
         case "NameMarine" : {0};
+        default {0};
     });
 
     if (_has_en) then {
@@ -271,10 +291,11 @@ if !(_civKilled isEqualTo []) then {
     params ["_has_en", "_city", "_radius", "_id"];
 
     if (_has_en) then {
-        private _trigger = createTrigger ["EmptyDetector", getPos _city];
+        private _trigger = createTrigger ["EmptyDetector", getPos _city, false];
         _trigger setTriggerArea [_radius, _radius, 0, false];
-        _trigger setTriggerActivation [str btc_enemy_side, "NOT PRESENT", false];
-        _trigger setTriggerStatements ["this", format ["[%1] call btc_fnc_city_set_clear", _id], ""];
+        _trigger setTriggerActivation [str btc_enemy_side, "PRESENT", false];
+        _trigger setTriggerStatements [btc_p_city_free_trigger_condition, format ["[%1, thisList] call btc_fnc_city_set_clear", _id], ""];
+        _trigger setTriggerInterval 2;
         _city setVariable ["trigger", _trigger];
     };
 

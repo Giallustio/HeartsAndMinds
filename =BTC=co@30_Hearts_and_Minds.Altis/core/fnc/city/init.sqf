@@ -26,7 +26,7 @@ params [
 
 private _locations = configfile >> "cfgworlds" >> worldname >> "names";
 
-private _cities = ["NameVillage", "NameCity", "NameCityCapital", "NameLocal", "Hill", "Airport"];
+private _cities = ["NameVillage", "NameCity", "NameCityCapital", "NameLocal", "Hill", "Airport", "StrongpointArea", "BorderCrossing", "VegetationFir"];
 if (btc_p_sea) then {_cities pushBack "NameMarine";};
 
 btc_city_all = [];
@@ -39,7 +39,7 @@ for "_id" from 0 to (count _locations - 1) do {
     if (_type in _cities) then {
         private _position = getArray (_current >> "position");
         if (surfaceIsWater _position) then {
-            if !(_type isEqualTo "NameMarine") then {
+            if (_type isNotEqualTo "NameMarine") then {
                 private _church = nearestTerrainObjects [_position, ["CHURCH"], 470];
                 if (_church isEqualTo []) then {
                     private _area = 50;

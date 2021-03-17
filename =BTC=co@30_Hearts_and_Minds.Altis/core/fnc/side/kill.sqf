@@ -45,7 +45,7 @@ if (count _houses > 3) then {
 };
 private _buildingPos = _house buildingPos -1;
 private _pos_number = count _buildingPos - 1;
-private _pos = _buildingPos select (_pos_number - round random 1);
+private _pos = _buildingPos select (_pos_number - ((round random 1) min _pos_number));
 
 _city setVariable ["spawn_more", true];
 
@@ -80,7 +80,7 @@ private _group = [];
     _grp setVariable ["no_cache", true];
 } forEach (_buildingPos - [_pos]);
 
-_trigger = createTrigger ["EmptyDetector", _pos];
+_trigger = createTrigger ["EmptyDetector", _pos, false];
 _trigger setVariable ["group", _group];
 _trigger setTriggerArea [20, 20, 0, false];
 _trigger setTriggerActivation [str btc_player_side, "PRESENT", true];

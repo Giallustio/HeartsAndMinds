@@ -44,7 +44,7 @@ if (_marker != "") then {
     remoteExecCall ["", _marker];
 };
 
-if !((getVehicleCargo _veh) isEqualTo []) then {
+if ((getVehicleCargo _veh) isNotEqualTo []) then {
     _veh setVehicleCargo objNull;
 };
 

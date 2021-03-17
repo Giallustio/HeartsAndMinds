@@ -30,7 +30,7 @@ params [
 private _subTasks = _task call BIS_fnc_taskChildren;
 if (_subTasks isEqualTo []) then {
     private _taskParent = _task call BIS_fnc_taskParent;
-    if !(_taskParent isEqualTo "") then {
+    if (_taskParent isNotEqualTo "") then {
         _task = _taskParent;
         _subTasks = _task call BIS_fnc_taskChildren;
     };
