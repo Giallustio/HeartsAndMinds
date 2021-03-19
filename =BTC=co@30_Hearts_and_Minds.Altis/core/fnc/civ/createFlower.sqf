@@ -27,7 +27,7 @@ params [
 ];
 
 _city setVariable [
-    "btc_city_flowers", 
+    "btc_civ_flowers", 
     _civKilled apply {
         _x params ["_posASL", "_dir"];
 
