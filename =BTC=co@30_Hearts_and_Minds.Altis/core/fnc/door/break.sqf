@@ -11,7 +11,7 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_door_break;
+        [] call btc_fnc_door_break;
     (end)
 
 Author:
@@ -21,10 +21,10 @@ Author:
 
 ([2] call ace_interaction_fnc_getDoor) params ["_house", "_door"];
 if (_door isEqualTo "") exitWith {
-    "No door" call CBA_fnc_notify;
+    (localize "STR_BTC_HAM_O_DOOR_NO") call CBA_fnc_notify;
 };
 
-["Breaking door lock...", btc_door_breaking_time, {
+[localize "STR_BTC_HAM_O_DOOR_BREAKING", btc_door_breaking_time, {
     [player, objNull, ["isnotinside"]] call ace_common_fnc_canInteractWith
 }, {
     params ["_args"];
