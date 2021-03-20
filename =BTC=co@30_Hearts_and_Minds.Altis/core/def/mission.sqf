@@ -701,6 +701,7 @@ btc_rep_malus_player_respawn = - 10;
 btc_rep_malus_veh_killed = - 25;
 btc_rep_malus_building_damaged = - 2.5;
 btc_rep_malus_building_destroyed = - 5;
+btc_rep_malus_doorLockpick = - 1;
 
 //Skill
 btc_AI_skill = _p_skill;
@@ -709,3 +710,6 @@ btc_AI_skill = _p_skill;
 btc_units_owners = [];
 
 btc_player_type = ["SoldierWB", "SoldierEB", "SoldierGB"] select ([west, east, independent] find btc_player_side);
+
+//Door
+btc_door_breaking_time = 60;

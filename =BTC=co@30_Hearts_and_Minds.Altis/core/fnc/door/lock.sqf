@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_city_disableDoor
+Function: btc_fnc_door_lock
 
 Description:
     Disable door in a city.
@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        [player] call btc_fnc_city_disableDoor;
+        [player] call btc_fnc_door_lock;
     (end)
 
 Author:

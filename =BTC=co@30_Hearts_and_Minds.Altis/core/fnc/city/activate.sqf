@@ -288,7 +288,7 @@ if (
 ) then {
     [[_city, _spawningRadius/3], btc_fnc_city_getHouses] call btc_fnc_delay_exec;
 };
-[_city, btc_fnc_city_disableDoor] call btc_fnc_delay_exec;
+[_city, btc_fnc_door_lock] call btc_fnc_delay_exec;
 
 [{
     params ["_has_en", "_city", "_radius", "_id"];
