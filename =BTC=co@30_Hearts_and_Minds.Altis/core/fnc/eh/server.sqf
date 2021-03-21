@@ -23,7 +23,7 @@ addMissionEventHandler ["BuildingChanged", btc_fnc_rep_buildingchanged];
 ["ace_explosives_defuse", btc_fnc_rep_explosives_defuse] call CBA_fnc_addEventHandler;
 ["ace_killed", btc_fnc_rep_killed] call CBA_fnc_addEventHandler;
 ["Animal", "InitPost", {
-    [(_this select 0), "HandleDamage", btc_fnc_rep_hd] call CBA_fnc_addBISEventHandler;
+    [_this select 0, "HandleDamage", btc_fnc_rep_hd] call CBA_fnc_addBISEventHandler;
 }] call CBA_fnc_addClassEventHandler;
 ["Animal", "killed", {
     params ["_unit", "_killer", "_instigator"];
@@ -31,13 +31,13 @@ addMissionEventHandler ["BuildingChanged", btc_fnc_rep_buildingchanged];
 }] call CBA_fnc_addClassEventHandler;
 {
     [_x, "InitPost", {
-        [(_this select 0), "Suppressed", btc_fnc_rep_suppressed] call CBA_fnc_addBISEventHandler;
-        [(_this select 0), "HandleDamage", btc_fnc_rep_hd] call CBA_fnc_addBISEventHandler;
+        [_this select 0, "Suppressed", btc_fnc_rep_suppressed] call CBA_fnc_addBISEventHandler;
+        [_this select 0, "HandleDamage", btc_fnc_rep_hd] call CBA_fnc_addBISEventHandler;
     }, false] call CBA_fnc_addClassEventHandler;
 } forEach btc_civ_type_units;
 {
     [_x, "InitPost", {
-        [(_this select 0), "HandleDamage", btc_fnc_rep_hd] call CBA_fnc_addBISEventHandler;
+        [_this select 0, "HandleDamage", btc_fnc_rep_hd] call CBA_fnc_addBISEventHandler;
     }, false] call CBA_fnc_addClassEventHandler;
 } forEach btc_civ_type_veh;
 ["ace_killed", btc_fnc_mil_unit_killed] call CBA_fnc_addEventHandler;
@@ -70,15 +70,15 @@ if (btc_p_set_skill) then {
 ["btc_delay_vehicleInit", btc_fnc_patrol_addEH] call CBA_fnc_addEventHandler;
 ["ace_killed", {
     params ["_unit"];
-    if (!(side group _unit isEqualTo civilian)) exitWith {};
+    if (side group _unit isNotEqualTo civilian) exitWith {};
     private _vehicle = assignedVehicle _unit;
-    if !(_vehicle isEqualTo objNull) then {
+    if (_vehicle isNotEqualTo objNull) then {
         [[], [_vehicle]] call btc_fnc_delete;
     };
 }] call CBA_fnc_addEventHandler;
 {
     [_x, "InitPost", {
-        [(_this select 0), "HandleDamage", btc_fnc_patrol_disabled] call CBA_fnc_addBISEventHandler;
+        [_this select 0, "HandleDamage", btc_fnc_patrol_disabled] call CBA_fnc_addBISEventHandler;
     }, false] call CBA_fnc_addClassEventHandler;
 } forEach btc_civ_type_veh;
 ["ace_tagCreated", btc_fnc_tag_eh] call CBA_fnc_addEventHandler;

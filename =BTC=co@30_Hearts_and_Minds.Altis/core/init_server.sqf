@@ -1,4 +1,4 @@
-[] call compile preprocessFileLineNumbers "core\fnc\city\init.sqf";
+[] call compileScript ["core\fnc\city\init.sqf"];
 
 ["Initialize"] call BIS_fnc_dynamicGroups;
 setTimeMultiplier btc_p_acctime;
@@ -9,9 +9,9 @@ setTimeMultiplier btc_p_acctime;
 
 if (btc_db_load && {profileNamespace getVariable [format ["btc_hm_%1_db", worldName], false]}) then {
     if ((profileNamespace getVariable [format ["btc_hm_%1_version", worldName], 1.13]) in [btc_version select 1, 20.1]) then {
-        [] call compile preprocessFileLineNumbers "core\fnc\db\load.sqf";
+        [] call compileScript ["core\fnc\db\load.sqf"];
     } else {
-        [] call compile preprocessFileLineNumbers "core\fnc\db\load_old.sqf";
+        [] call compileScript ["core\fnc\db\load_old.sqf"];
     };
 } else {
     for "_i" from 1 to btc_hideout_n do {[] call btc_fnc_mil_create_hideout;};
@@ -22,7 +22,7 @@ if (btc_db_load && {profileNamespace getVariable [format ["btc_hm_%1_db", worldN
     setDate _date;
 
     {
-        _x setVariable ["btc_EDENinventory", [getWeaponCargo _x, getMagazineCargo _x, getItemCargo _x]];
+        _x setVariable ["btc_EDENinventory", [getWeaponCargo _x, getMagazineCargo _x, getItemCargo _x, getBackpackCargo _x]];
         _x call btc_fnc_db_add_veh;
     } forEach btc_vehicles;
 };
@@ -42,7 +42,7 @@ if (btc_p_db_autoRestart > 0) then {
 };
 
 {
-    _x setVariable ["btc_EDENinventory", [getWeaponCargo _x, getMagazineCargo _x, getItemCargo _x]];
+    _x setVariable ["btc_EDENinventory", [getWeaponCargo _x, getMagazineCargo _x, getItemCargo _x, getBackpackCargo _x]];
     [_x, 30] call btc_fnc_veh_addRespawn;
 } forEach btc_helo;
 

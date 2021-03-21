@@ -48,7 +48,7 @@ if (
 };
 
 if ((round random 3) >= 2 || !_isInterrogate) then {
-    _man setVariable ["btc_already_asked", true];
+    _man setVariable ["btc_already_asked", true, true];
     if (_isInterrogate) then {_man setVariable ["btc_already_interrogated", true, true];};
 };
 

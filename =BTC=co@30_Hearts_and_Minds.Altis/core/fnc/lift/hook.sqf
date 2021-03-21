@@ -40,7 +40,7 @@ private _cargo = _cargo_array select 0;
 
 private _bbr = getArray (configOf _cargo >> "slingLoadCargoMemoryPoints");
 private _ropes_check = [];
-if !(_bbr isEqualTo []) then {
+if (_bbr isNotEqualTo []) then {
     {
         _ropes_check pushBack (ropeCreate [_chopper, "slingload0", _cargo, _x, 11]);
     } forEach _bbr;

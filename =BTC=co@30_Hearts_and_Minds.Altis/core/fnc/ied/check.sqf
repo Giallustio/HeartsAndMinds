@@ -36,6 +36,6 @@ if (btc_debug_log) then {
     [format ["START CITY ID %1", _city getVariable "id"], __FILE__, [false]] call btc_fnc_debug_message;
 };
 
-private _ieds_check = _ieds select {!((_x select 2) isEqualTo objNull)};
+private _ieds_check = _ieds select {(_x select 2) isNotEqualTo objNull};
 
 [_city, _ieds, _ieds_check] call btc_fnc_ied_checkLoop;
