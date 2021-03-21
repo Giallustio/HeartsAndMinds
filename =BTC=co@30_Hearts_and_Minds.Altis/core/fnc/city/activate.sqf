@@ -279,17 +279,7 @@ if (_city getVariable ["data_tags", []] isEqualTo []) then {
 };
 [_city, btc_fnc_tag_create] call btc_fnc_delay_exec;
 
-[_city, {
-    params ["_city"];
-    private _houses = +(_city getVariable ["btc_city_houses", []]);
-
-    _houses = _houses select [0, count _houses];
-
-    private _intels = _houses apply {
-        createVehicle [selectRandom btc_info_intels, ASLToATL AGLToASL selectRandom (_x buildingPos -1), [], 0, "CAN_COLLIDE"];
-    };
-    _city setVariable ["btc_city_intels", _intels];
-}] call btc_fnc_delay_exec;
+[_city, btc_fnc_info_createIntels] call btc_fnc_delay_exec;
 
 [{
     params ["_has_en", "_city", "_radius", "_id"];
