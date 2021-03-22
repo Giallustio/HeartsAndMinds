@@ -110,9 +110,6 @@ if (isServer) then {
     btc_fnc_mil_addWP = compileScript ["core\fnc\mil\addWP.sqf"];
     btc_fnc_mil_check_cap = compileScript ["core\fnc\mil\check_cap.sqf"];
     btc_fnc_mil_create_group = compileScript ["core\fnc\mil\create_group.sqf"];
-    btc_fnc_mil_hd_hideout = compileScript ["core\fnc\mil\hd_hideout.sqf"];
-    btc_fnc_mil_create_hideout = compileScript ["core\fnc\mil\create_hideout.sqf"];
-    btc_fnc_mil_create_hideout_composition = compileScript ["core\fnc\mil\create_hideout_composition.sqf"];
     btc_fnc_mil_create_static = compileScript ["core\fnc\mil\create_static.sqf"];
     btc_fnc_mil_create_patrol = compileScript ["core\fnc\mil\create_patrol.sqf"];
     btc_fnc_mil_send = compileScript ["core\fnc\mil\send.sqf"];
@@ -123,6 +120,11 @@ if (isServer) then {
     btc_fnc_mil_createUnits = compileScript ["core\fnc\mil\createUnits.sqf"];
     btc_fnc_mil_unit_killed = compileScript ["core\fnc\mil\unit_killed.sqf"];
     btc_fnc_mil_create_staticOnRoof = compileScript ["core\fnc\mil\create_staticOnRoof.sqf"];
+
+    //HIDEOUT
+    btc_fnc_hideout_hd = compileScript ["core\fnc\hideout\hd.sqf"];
+    btc_fnc_hideout_create = compileScript ["core\fnc\hideout\create.sqf"];
+    btc_fnc_hideout_create_composition = compileScript ["core\fnc\hideout\create_composition.sqf"];
 
     //PATROL
     btc_fnc_patrol_playersInAreaCityGroup = compileScript ["core\fnc\patrol\playersInAreaCityGroup.sqf"];
