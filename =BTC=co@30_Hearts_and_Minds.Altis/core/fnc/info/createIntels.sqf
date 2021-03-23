@@ -3,7 +3,7 @@
 Function: btc_fnc_info_createIntels
 
 Description:
-    Create intel.
+    Create intels in a city.
 
 Parameters:
     _city - City to create intels. [Object]
