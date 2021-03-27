@@ -173,7 +173,7 @@ if (isServer) then {
     btc_fnc_log_createVehicle = compileScript ["core\fnc\log\createVehicle.sqf"];
     btc_fnc_log_getRearmMagazines = compileScript ["core\fnc\log\getRearmMagazines.sqf"];
     btc_fnc_log_init = compileScript ["core\fnc\log\init.sqf"];
-    btc_fnc_log_setCargo = compileScript ["core\fnc\log\setCargo.sqf"];
+    btc_fnc_log_setInventory = compileScript ["core\fnc\log\setInventory.sqf"];
     btc_fnc_log_server_delete = compileScript ["core\fnc\log\server_delete.sqf"];
     btc_fnc_log_create_s = compileScript ["core\fnc\log\create_s.sqf"];
     btc_fnc_log_get_cc = compileScript ["core\fnc\log\get_cc.sqf"];
