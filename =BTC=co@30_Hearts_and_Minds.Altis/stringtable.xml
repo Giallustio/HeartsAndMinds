@@ -1608,6 +1608,9 @@
                 <Chinesesimp>询问声誉情况</Chinesesimp>
                 <French>Demander la réputation</French>
             </Key>
+            <Key ID="STR_BTC_HAM_ACTION_GIVEFOOD">
+                <Original>Give a banana</Original>
+            </Key>
         </Container>
         <Container name="Action(ACE): Side missions">
             <Key ID="STR_BTC_HAM_ACTION_SIDEMISSION_ABORT">
@@ -1960,6 +1963,9 @@
                 <Portuguese>Não! Eu vou onde quero!</Portuguese>
                 <Chinesesimp>不! 老子想去哪就去哪!</Chinesesimp>
                 <French>Non ! Je vais où je veux !</French>
+            </Key>
+            <Key ID="STR_BTC_HAM_CON_INT_ALRGIVEFOOD">
+                <Original>Thank you but I already have food</Original>
             </Key>
         </Container>
         <Container name="Tags: Sentences">

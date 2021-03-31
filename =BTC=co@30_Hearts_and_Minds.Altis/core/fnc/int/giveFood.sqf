@@ -31,10 +31,13 @@ if (
     [player, "ACE_Banana"] call CBA_fnc_removeItem &&
     {[_target, "ACE_Banana", true] call CBA_fnc_addItem}
 ) then {
+    _player switchMove "ainvpknlmstpslaywrfldnon_1";
+
+    private _isInterpreter = player getVariable ["interpreter", false];
     if (_hadFood) then {
-        systemChat "Thank you but I already have food";
+        [name _target, localize (["STR_BTC_HAM_CON_INFO_ASKREP_NOINTER", "STR_BTC_HAM_CON_INT_ALRGIVEFOOD"] select _isInterpreter)] call btc_fnc_showSubtitle;
     } else {
-        systemChat "Thank you";
+        [name _target, localize (["STR_BTC_HAM_CON_INFO_ASKREP_NOINTER", "str_a3_rscdisplaywelcome_kart_pard_footer2"] select _isInterpreter)] call btc_fnc_showSubtitle;
         [btc_rep_bonus_giveFood, _player] remoteExecCall ["btc_fnc_rep_change", 2];
     };
 };
