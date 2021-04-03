@@ -3,7 +3,7 @@
 Function: btc_fnc_door_break
 
 Description:
-    Break lock door action.
+    Break locked door action.
 
 Parameters:
 

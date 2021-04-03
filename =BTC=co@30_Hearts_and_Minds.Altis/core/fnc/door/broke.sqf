@@ -27,8 +27,8 @@ params [
 ];
 
 _house setVariable [format ["bis_disabled_%1", _door], 0, true];
-playSound "ACE_Sound_Click";
-[btc_rep_malus_doorLockpick, player] remoteExecCall ["btc_fnc_rep_change", 2];
+playSound3D ["\z\ace\addons\logistics_wirecutter\sound\wirecut.ogg", player];
+[btc_rep_malus_breakDoor, player] remoteExecCall ["btc_fnc_rep_change", 2];
 
 private _getDoorAnimations = [_house, _door] call ace_interaction_fnc_getDoorAnimations;
 _getDoorAnimations params ["_animations"];

@@ -264,6 +264,15 @@
                 <French>&lt;img image='\A3\Data_F_Enoch\Logos\arma3_enoch_logo_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Champ électromagnétique:&lt;/marker&gt;&lt;br/&gt;Il existe deux types de champ électromagnétique provenant d'un UAV ou d'une impulsion électromagnétique (EMP). Les drones émettent un champ électromagnétique de 390 MHz à 500 MHz en raison de la transmission de l'appareil. Les impulsions électromagnétiques sont utilisées comme arme pour créer une défaillance électronique des véhicules. La gamme de fréquences va de 78 MHz à 89 MHz et est suffisamment puissante pour éteindre la lumière, le moteur et les appareils avioniques. &lt;img image='\A3\Data_F_Mark\Images\watermarkInfo_page14_ca.paa' width='355' height='200'/&gt; &lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\defend_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Protection:&lt;/marker&gt;&lt;br/&gt;Les champs électromagnétiques des drones sont inoffensifs, mais les EMP affectent le moteur des véhicules dans un rayon de 500 m. &lt;br/&gt;&lt;br/&gt; &lt;img image='\z\ace\addons\minedetector\ui\icon_mineDetectorOn.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Détection:&lt;/marker&gt;&lt;br/&gt; Vous pouvez détecter l'origine du champ électromagnétique avec des appareils spectraux. L'amplitude du pic dépend de la distance et de l'angle entre l'émetteur et l'antenne. La portée maximale est de 1000 m. &lt;img image='\a3\Data_F_Enoch\Images\SpectrumDevice_ca.paa' width='355' height='200'/&gt;</French>
             </Key>
         </Container>
+        <Container name="Documentation: Door locked">
+            <Key ID="STR_BTC_HAM_DOC_DOOR_TITLE">
+                <Original>Door locked</Original>
+                <French>Porte verrouillée</French>
+            </Key>
+            <Key ID="STR_BTC_HAM_DOC_DOOR_TEXT">
+                <Original>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;House doors:&lt;/marker&gt;&lt;br/&gt; Civilian house door can be close. Depend on reputation level, civilian will lock their door and stay inside. Under low, all doors are locked, above normal, all door are unlocked. &lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\Ui_f\data\IGUI\Cfg\Actions\open_door_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Break locked door:&lt;/marker&gt;&lt;br/&gt; You can still enter by breaking door lock with a wirecutter. &lt;img image='\z\ace\addons\logistics_wirecutter\ui\item_wirecutter_ca.paa' width='355' height='200'/&gt;</Original>
+            </Key>
+        </Container>
     </Package>
     <Package name="Parameters">
         <Container name="Parameters: Time">

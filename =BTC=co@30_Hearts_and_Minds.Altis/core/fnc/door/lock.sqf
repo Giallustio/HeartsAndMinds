@@ -3,7 +3,7 @@
 Function: btc_fnc_door_lock
 
 Description:
-    Disable door in a city.
+    Lock door in a city.
 
 Parameters:
     _city - City. [Array]
