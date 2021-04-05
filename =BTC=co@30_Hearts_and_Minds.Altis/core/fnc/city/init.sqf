@@ -41,7 +41,7 @@ for "_id" from 0 to (count _locations - 1) do {
         if (
             surfaceIsWater _position &&
             {!(_type isEqualTo "NameMarine")} &&
-            {getTerrainHeightASL _position < - 3}
+            {getTerrainHeightASL _position < - 1}
         ) then {
             private _church = nearestTerrainObjects [_position, ["CHURCH"], 470];
             if (_church isEqualTo []) then {
