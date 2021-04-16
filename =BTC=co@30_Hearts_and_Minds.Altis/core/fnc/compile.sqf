@@ -51,6 +51,7 @@ if (isServer) then {
     btc_fnc_civ_populate = compileScript ["core\fnc\civ\populate.sqf"];
     btc_fnc_civ_create_patrol = compileScript ["core\fnc\civ\create_patrol.sqf"];
     btc_fnc_civ_evacuate = compileScript ["core\fnc\civ\evacuate.sqf"];
+    btc_fnc_civ_createFlower = compileScript ["core\fnc\civ\createFlower.sqf"];
 
     //DATA
     btc_fnc_data_add_group = compileScript ["core\fnc\data\add_group.sqf"];
