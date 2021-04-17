@@ -14,7 +14,7 @@ if (btc_db_load && {profileNamespace getVariable [format ["btc_hm_%1_db", worldN
         [] call compileScript ["core\fnc\db\load_old.sqf"];
     };
 } else {
-    for "_i" from 1 to btc_hideout_n do {[] call btc_fnc_mil_create_hideout;};
+    for "_i" from 1 to btc_hideout_n do {[] call btc_fnc_hideout_create;};
     [] call btc_fnc_cache_init;
 
     private _date = date;

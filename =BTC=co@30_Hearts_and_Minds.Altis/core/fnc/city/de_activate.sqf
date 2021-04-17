@@ -101,6 +101,8 @@ if !(_city getVariable ["active", false]) exitWith {};
     } forEach (btc_tags_server inAreaArray [_pos_city, _radius, _radius]);
     btc_tags_server = btc_tags_server - [objNull];
 
+    (_city getVariable ["btc_civ_flowers", []]) call CBA_fnc_deleteEntity;
+
     if (btc_debug_log) then {
         [format ["data units = %1", _data_units], __FILE__, [false]] call btc_fnc_debug_message;
         [format ["data animals = %1", _data_animals], __FILE__, [false]] call btc_fnc_debug_message;

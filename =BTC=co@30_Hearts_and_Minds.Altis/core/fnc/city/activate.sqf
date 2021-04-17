@@ -290,6 +290,11 @@ if (
 };
 [_city, btc_fnc_door_lock] call btc_fnc_delay_exec;
 
+private _civKilled = _city getVariable ["btc_rep_civKilled", []];
+if !(_civKilled isEqualTo []) then {
+    [[_city, _civKilled], btc_fnc_civ_createFlower] call btc_fnc_delay_exec;
+};
+
 [{
     params ["_has_en", "_city", "_radius", "_id"];
 
