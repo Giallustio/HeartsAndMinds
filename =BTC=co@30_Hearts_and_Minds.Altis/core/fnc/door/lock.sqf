@@ -44,8 +44,10 @@ while {
     private _numberOfDoors = getNumber (configOf _house >> "numberOfDoors");
 
     if (_numberOfDoors isNotEqualTo 0) then {
-        for "_door" from 1 to _numberOfDoors do {
-            _house setVariable [format ["bis_disabled_Door_%1", _door], 1, true];
+        if (isNil {_house getVariable "bis_disabled_Door_1"}) then {
+            for "_door" from 1 to _numberOfDoors do {
+                _house setVariable [format ["bis_disabled_Door_%1", _door], 1, true];
+            };
         };
         _i = _i + 1;
     };
