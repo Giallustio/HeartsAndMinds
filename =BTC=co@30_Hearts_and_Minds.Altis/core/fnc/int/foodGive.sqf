@@ -31,7 +31,7 @@ if (
     [player, "ACE_Banana"] call CBA_fnc_removeItem &&
     {[_target, "ACE_Banana", true] call CBA_fnc_addItem}
 ) then {
-    _player switchMove "ainvpknlmstpslaywrfldnon_1";
+    [_player, "PutDown"] call ace_common_fnc_doGesture;
 
     private _isInterpreter = player getVariable ["interpreter", false];
     if (_hadFood) then {
