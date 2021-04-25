@@ -307,7 +307,7 @@ if (!isDedicated) then {
     btc_fnc_int_orders = compileScript ["core\fnc\int\orders.sqf"];
     btc_fnc_int_shortcuts = compileScript ["core\fnc\int\shortcuts.sqf"];
     btc_fnc_int_terminal = compileScript ["core\fnc\int\terminal.sqf"];
-    btc_fnc_int_giveFood = compileScript ["core\fnc\int\giveFood.sqf"];
+    btc_fnc_int_foodGive = compileScript ["core\fnc\int\foodGive.sqf"];
 
     //INFO
     btc_fnc_info_ask = compileScript ["core\fnc\info\ask.sqf"];
