@@ -364,7 +364,6 @@ if (!isDedicated) then {
     btc_fnc_tow_ropeCreate = compileScript ["core\fnc\tow\ropeCreate.sqf"];
     btc_fnc_tow_hitch_points = compileScript ["core\fnc\tow\hitch_points.sqf"];
     btc_fnc_tow_unhook = compileScript ["core\fnc\tow\unhook.sqf"];
-    btc_fnc_tow_unwind = compileScript ["core\fnc\tow\unwind.sqf"];
     btc_fnc_tow_check = compileScript ["core\fnc\tow\check.sqf"];
 };
 
