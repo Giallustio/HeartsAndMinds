@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_task_setDescription
+Function: btc_task_fnc_setDescription
 
 Description:
     Set description to created task accordingly to player language.
@@ -18,7 +18,7 @@ Returns:
 
 Examples:
     (begin example)
-        ["btc_1", btc_player_side, -1] remoteExecCall ["btc_fnc_task_setDescription", [0, -2] select isDedicated, true];
+        ["btc_1", btc_player_side, -1] remoteExecCall ["btc_task_fnc_setDescription", [0, -2] select isDedicated, true];
     (end)
 
 Author:

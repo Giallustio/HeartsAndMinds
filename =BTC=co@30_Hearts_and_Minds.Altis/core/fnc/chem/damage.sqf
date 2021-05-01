@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_chem_damage
+Function: btc_chem_fnc_damage
 
 Description:
     Apply chemical damage.
@@ -15,7 +15,7 @@ Returns:
 
 Examples:
     (begin example)
-        [cursorObject, true, ["head","body","hand_l","hand_r","leg_l","leg_r"], configFile >> "CfgGlasses"] call btc_fnc_chem_damage;
+        [cursorObject, true, ["head","body","hand_l","hand_r","leg_l","leg_r"], configFile >> "CfgGlasses"] call btc_chem_fnc_damage;
     (end)
 
 Author:

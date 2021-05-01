@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_city_findPos
+Function: btc_city_fnc_findPos
 
 Description:
     Find a random and safe position in a city (not inside rock).
@@ -16,7 +16,7 @@ Returns:
 
 Examples:
     (begin example)
-        _results = [[0, 0, 0], 100, true] call btc_fnc_city_findPos;
+        _results = [[0, 0, 0], 100, true] call btc_city_fnc_findPos;
     (end)
 
 Author:

@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_side_tower
+Function: btc_side_fnc_tower
 
 Description:
     Fill me when you edit me !
@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        ["btc_9999"] spawn btc_fnc_side_tower;
+        ["btc_9999"] spawn btc_side_fnc_tower;
     (end)
 
 Author:
@@ -25,13 +25,13 @@ params [
 ];
 
 private _useful = btc_city_all select {!(isNull _x) && _x getVariable ["occupied", false] && !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])};
-if (_useful isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
+if (_useful isEqualTo []) exitWith {[] spawn btc_side_fnc_create;};
 
 private _city = selectRandom _useful;
 private _pos = [getPos _city, 100] call btc_fnc_randomize_pos;
 private _roads = _pos nearRoads 100;
 _roads = _roads select {isOnRoad _x};
-if (_roads isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
+if (_roads isEqualTo []) exitWith {[] spawn btc_side_fnc_create;};
 
 private _road = selectRandom _roads;
 _pos = getPos _road;
@@ -52,13 +52,13 @@ private _btc_composition_tower = [
 
 //// Create tower with static at _pos \\\\
 private _statics = btc_type_gl + btc_type_mg;
-[_pos getPos [5, _direction], _statics, _direction] call btc_fnc_mil_create_static;
-[_pos getPos [- 5, _direction], _statics, _direction + 180] call btc_fnc_mil_create_static;
+[_pos getPos [5, _direction], _statics, _direction] call btc_mil_fnc_create_static;
+[_pos getPos [- 5, _direction], _statics, _direction + 180] call btc_mil_fnc_create_static;
 
 private _btc_composition = [_pos, _direction, _btc_composition_tower] call btc_fnc_create_composition;
 private _tower = _btc_composition select ((_btc_composition apply {typeOf _x}) find _tower_type);
 
-[_taskID, 7, _tower, [_city getVariable "name", _tower_type]] call btc_fnc_task_create;
+[_taskID, 7, _tower, [_city getVariable "name", _tower_type]] call btc_task_fnc_create;
 
 waitUntil {sleep 5; (!alive _tower || _taskID call BIS_fnc_taskCompleted)};
 
@@ -66,6 +66,6 @@ waitUntil {sleep 5; (!alive _tower || _taskID call BIS_fnc_taskCompleted)};
 
 if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {};
 
-80 call btc_fnc_rep_change;
+80 call btc_rep_fnc_change;
 
 [_taskID, "SUCCEEDED"] call BIS_fnc_taskSetState;

@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_side_supply
+Function: btc_side_fnc_supply
 
 Description:
     Fill me when you edit me !
@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        [false, "btc_fnc_side_supply"] spawn btc_fnc_side_create;
+        [false, "btc_side_fnc_supply"] spawn btc_side_fnc_create;
     (end)
 
 Author:
@@ -32,9 +32,9 @@ private _city = selectRandom _useful;
 private _pos = [getPos _city, 100] call btc_fnc_randomize_pos;
 _pos = [_pos, 0, _city getVariable ["radius", 100], 20, false] call btc_fnc_findsafepos;
 
-[_taskID, 3, getPos _city, _city getVariable "name"] call btc_fnc_task_create;
+[_taskID, 3, getPos _city, _city getVariable "name"] call btc_task_fnc_create;
 private _move_taskID = _taskID + "mv";
-[[_move_taskID, _taskID], 18, _pos, btc_supplies_cargo] call btc_fnc_task_create;
+[[_move_taskID, _taskID], 18, _pos, btc_supplies_cargo] call btc_task_fnc_create;
 
 private _area = createMarker [format ["sm_%1", _pos], _pos];
 _area setMarkerShape "ELLIPSE";
@@ -100,10 +100,10 @@ if (_move_taskID call BIS_fnc_taskState isNotEqualTo "CANCELED") then {
         [_drop_taskID, _taskID], 19,
         (nearestObjects [_pos, [btc_supplies_cargo] + _food + _water, 30]) select 0,
         selectRandom(_food + _water), true
-    ] call btc_fnc_task_create;
+    ] call btc_task_fnc_create;
 };
 
-[getPos _city, _pos getPos [10, _direction_composition]] call btc_fnc_civ_evacuate;
+[getPos _city, _pos getPos [10, _direction_composition]] call btc_civ_fnc_evacuate;
 
 waitUntil {sleep 5; (_taskID call BIS_fnc_taskCompleted || (count (nearestObjects [_pos, _food + _water, 30]) >= 2))};
 
@@ -111,8 +111,8 @@ if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {
     [[_area], _composition_objects] call btc_fnc_delete;
 };
 
-50 call btc_fnc_rep_change;
+50 call btc_rep_fnc_change;
 
-[_taskID, "SUCCEEDED"] call btc_fnc_task_setState;
+[_taskID, "SUCCEEDED"] call btc_task_fnc_setState;
 
 [[_area], _composition_objects + nearestObjects [_pos, _food + _water + [btc_supplies_cargo], 30]] call btc_fnc_delete;

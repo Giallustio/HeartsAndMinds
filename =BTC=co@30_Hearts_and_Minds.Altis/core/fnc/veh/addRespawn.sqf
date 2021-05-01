@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_veh_addRespawn
+Function: btc_veh_fnc_addRespawn
 
 Description:
     Add a vehicle to the respawn system and save vehicle parameters.
@@ -15,7 +15,7 @@ Returns:
 
 Examples:
     (begin example)
-        [cursorObject, 30] call btc_fnc_veh_addRespawn;
+        [cursorObject, 30] call btc_veh_fnc_addRespawn;
     (end)
 
 Author:
@@ -48,7 +48,7 @@ _vehicle addMPEventHandler ["MPKilled", {
         {_unit getVariable ["btc_killed", true]} // https://feedback.bistudio.com/T149510
     ) then {
         _unit setVariable ["btc_killed", false];
-        _this call btc_fnc_veh_respawn;
+        _this call btc_veh_fnc_respawn;
     };
 }];
 if (btc_p_respawn_location > 0) then {

@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_intro
+Function: btc_int_fncro
 
 Description:
     Introduction camera.
@@ -13,7 +13,7 @@ Returns:
 
 Examples:
     (begin example)
-        [] call btc_fnc_intro;
+        [] call btc_int_fncro;
     (end)
 
 Author:

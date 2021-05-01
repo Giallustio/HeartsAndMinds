@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_db_saveObjectStatus
+Function: btc_db_fnc_saveObjectStatus
 
 Description:
     Save all data from an object like position, ACE cargo, inventory ...
@@ -13,7 +13,7 @@ Returns:
 
 Examples:
     (begin example)
-        [cursorObject] call btc_fnc_db_saveObjectStatus;
+        [cursorObject] call btc_db_fnc_saveObjectStatus;
     (end)
 
 Author:

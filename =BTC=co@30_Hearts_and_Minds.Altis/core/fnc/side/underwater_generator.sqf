@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_side_underwater_generator
+Function: btc_side_fnc_underwater_generator
 
 Description:
     Fill me when you edit me !
@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        [] spawn btc_fnc_side_underwater_generator;
+        [] spawn btc_side_fnc_underwater_generator;
     (end)
 
 Author:
@@ -26,7 +26,7 @@ params [
 
 //// Choose a Marine location occupied \\\\
 private _useful = btc_city_all select {!(isNull _x) && (_x getVariable ["occupied", false]) && (_x getVariable ["type", ""] isEqualTo "NameMarine")};
-if (_useful isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
+if (_useful isEqualTo []) exitWith {[] spawn btc_side_fnc_create;};
 
 private _city = selectRandom _useful;
 
@@ -60,10 +60,10 @@ private _generator = (selectRandom btc_type_generator) createVehicle _pos;
 _pos params ["_x", "_y", "_z"];
 private _storagebladder = (selectRandom btc_type_storagebladder) createVehicle [_x + 5, _y, _z];
 
-[_taskID, 11, _generator, [_city getVariable "name", typeOf _generator]] call btc_fnc_task_create;
+[_taskID, 11, _generator, [_city getVariable "name", typeOf _generator]] call btc_task_fnc_create;
 
-private _group = [_pos, 8, 1 + round random 5,0.8] call btc_fnc_mil_create_group;
-[_pos, 20, 2 + round random 4, 0.5] call btc_fnc_mil_create_group;
+private _group = [_pos, 8, 1 + round random 5,0.8] call btc_mil_fnc_create_group;
+[_pos, 20, 2 + round random 4, 0.5] call btc_mil_fnc_create_group;
 
 _pos = getPosASL _generator;
 (leader (_group select 0)) setPosASL [_x, _y, _z + 1 + random 1];
@@ -74,6 +74,6 @@ waitUntil {sleep 5; (_taskID call BIS_fnc_taskCompleted || !alive _generator)};
 
 if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {};
 
-80 call btc_fnc_rep_change;
+80 call btc_rep_fnc_change;
 
 [_taskID, "SUCCEEDED"] call BIS_fnc_taskSetState;

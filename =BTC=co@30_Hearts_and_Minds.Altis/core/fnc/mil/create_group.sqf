@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_mil_create_group
+Function: btc_mil_fnc_create_group
 
 Description:
     Fill me when you edit me !
@@ -20,7 +20,7 @@ Returns:
 
 Examples:
     (begin example)
-        [player, 50, 1, (btc_p_mil_wp_ratios#0) - 0.1] call btc_fnc_mil_create_group;
+        [player, 50, 1, (btc_p_mil_wp_ratios#0) - 0.1] call btc_mil_fnc_create_group;
     (end)
 
 Author:
@@ -41,10 +41,10 @@ params [
 ];
 _wp_ratios params ["_wp_house_probability", "_wp_sentry_probability"];
 
-([_city, _area] call btc_fnc_city_findPos) params ["_rpos", "_pos_iswater"];
+([_city, _area] call btc_city_fnc_findPos) params ["_rpos", "_pos_iswater"];
 private _group_structure = [1, objNull];
 if (_wp <= _wp_house_probability) then { // Find building
-    ([_rpos, _n] call btc_fnc_mil_getBuilding) params ["_numberOfGroup", "_structure"];
+    ([_rpos, _n] call btc_mil_fnc_getBuilding) params ["_numberOfGroup", "_structure"];
     if (_structure isNotEqualTo "") then {
         _group_structure = [_numberOfGroup, _structure];
     } else {
@@ -76,11 +76,11 @@ for "_i" from 1 to _numberOfGroup do {
         };
     };
 
-    [_group, _rpos, _n, _pos_iswater] call btc_fnc_mil_createUnits;
+    [_group, _rpos, _n, _pos_iswater] call btc_mil_fnc_createUnits;
 };
 
 if (btc_debug_log) then {
-    [format ["_this = %1 ; POS %2 UNITS N %3 _wp_ratios %4", _this, _rpos, _n, _wp_ratios], __FILE__, [false]] call btc_fnc_debug_message;
+    [format ["_this = %1 ; POS %2 UNITS N %3 _wp_ratios %4", _this, _rpos, _n, _wp_ratios], __FILE__, [false]] call btc_debug_fnc_message;
 };
 
 _groups

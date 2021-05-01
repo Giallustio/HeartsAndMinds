@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_rep_killed
+Function: btc_rep_fnc_killed
 
 Description:
     Change reputation when a player kill a unit.
@@ -13,7 +13,7 @@ Returns:
 
 Examples:
     (begin example)
-        [cursorObject, player] call btc_fnc_rep_killed;
+        [cursorObject, player] call btc_rep_fnc_killed;
     (end)
 
 Author:
@@ -33,9 +33,9 @@ if (isPlayer _instigator) then {
     [
         [btc_rep_malus_civ_killed, btc_rep_malus_animal_killed] select _isAgent,
         _instigator
-    ] call btc_fnc_rep_change;
+    ] call btc_rep_fnc_change;
     if (btc_global_reputation < 600) then {
-        [getPos _unit] call btc_fnc_rep_eh_effects;
+        [getPos _unit] call btc_rep_fnc_eh_effects;
     };
 
     if !(_isAgent) then {
@@ -48,6 +48,6 @@ if (isPlayer _instigator) then {
     };
 
     if (btc_debug_log) then {
-        [format ["GREP %1 THIS = %2", btc_global_reputation, _this], __FILE__, [false]] call btc_fnc_debug_message;
+        [format ["GREP %1 THIS = %2", btc_global_reputation, _this], __FILE__, [false]] call btc_debug_fnc_message;
     };
 };

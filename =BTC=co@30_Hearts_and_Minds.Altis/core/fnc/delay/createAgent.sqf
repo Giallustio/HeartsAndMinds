@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_delay_createAgent
+Function: btc_delay_fnc_createAgent
 
 Description:
     Create agent when all previous agents have been created. btc_delay_createagent define the time (in second) when the agent will be created.
@@ -15,7 +15,7 @@ Returns:
 
 Examples:
     (begin example)
-        ["Sheep_random_F", getPosATL player] call btc_fnc_delay_createAgent;
+        ["Sheep_random_F", getPosATL player] call btc_delay_fnc_createAgent;
     (end)
 
 Author:

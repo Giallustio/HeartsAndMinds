@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_db_loadObjectStatus
+Function: btc_db_fnc_loadObjectStatus
 
 Description:
     Load object status like ACE cargo, inventory and position.
@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_db_loadObjectStatus;
+        _result = [] call btc_db_fnc_loadObjectStatus;
     (end)
 
 Author:
@@ -50,5 +50,5 @@ if (unitIsUAV _obj) then {
     createVehicleCrew _obj;
 };
 
-[_obj] call btc_fnc_log_init;
-[_obj, _cargo, _inventory] call btc_fnc_db_loadCargo;
+[_obj] call btc_log_fnc_init;
+[_obj, _cargo, _inventory] call btc_db_fnc_loadCargo;

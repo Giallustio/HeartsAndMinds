@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_log_setCargo
+Function: btc_log_fnc_setCargo
 
 Description:
     Clear cargo of all item weapon.
@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        [vehicle player] call btc_fnc_log_setCargo;
+        [vehicle player] call btc_log_fnc_setCargo;
     (end)
 
 Author:

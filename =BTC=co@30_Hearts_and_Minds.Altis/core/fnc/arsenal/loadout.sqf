@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_arsenal_loadout
+Function: btc_arsenal_fnc_loadout
 
 Description:
     Generate a loadout from an array of defined loadout depending on trait, medical level, color and hour of the day.
@@ -17,7 +17,7 @@ Returns:
 
 Examples:
     (begin example)
-        _rifleman_loadout = [0] call btc_fnc_arsenal_loadout;
+        _rifleman_loadout = [0] call btc_arsenal_fnc_loadout;
     (end)
     (begin example)
         [] spawn {
@@ -26,7 +26,7 @@ Examples:
                 {
                     private _j = _x;
                     {
-                        player setUnitLoadout ([_i, _j, _x] call btc_fnc_arsenal_loadout);
+                        player setUnitLoadout ([_i, _j, _x] call btc_arsenal_fnc_loadout);
                         sleep 1;
                     } forEach [false,true];
                 } forEach [0,1,2,3];
