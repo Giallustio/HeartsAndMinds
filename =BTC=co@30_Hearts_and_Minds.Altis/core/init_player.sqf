@@ -6,7 +6,7 @@ if !(isNil "btc_custom_loc") then {
         _location setText _cityName;
     } forEach btc_custom_loc;
 };
-btc_intro_done = [] spawn btc_int_fncro;
+btc_intro_done = [] spawn btc_fnc_intro;
 
 [{!isNull player}, {
     [] call compileScript ["core\doc.sqf"];

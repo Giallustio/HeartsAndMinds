@@ -260,7 +260,7 @@ if (!isDedicated) then {
     btc_fnc_end_mission = compileScript ["core\fnc\common\end_mission.sqf"];
     btc_fnc_get_cardinal = compileScript ["core\fnc\common\get_cardinal.sqf"];
     btc_fnc_show_hint = compileScript ["core\fnc\common\show_hint.sqf"];
-    btc_int_fncro = compileScript ["core\fnc\common\intro.sqf"];
+    btc_fnc_intro = compileScript ["core\fnc\common\intro.sqf"];
     btc_fnc_set_markerTextLocal = compileScript ["core\fnc\common\set_markerTextLocal.sqf"];
     btc_fnc_showSubtitle = compileScript ["core\fnc\common\showSubtitle.sqf"];
     btc_fnc_get_composition = compileScript ["core\fnc\common\get_composition.sqf"];
