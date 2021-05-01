@@ -783,9 +783,9 @@
                 <French>Réputation de départ:</French>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_OTHER_SHOWREP">
-                <Original>Show reputation change:</Original>
+                <Original>Show reputation change above of:</Original>
                 <Chinesesimp>显示声誉变化:</Chinesesimp>
-                <French>Afficher le changement de réputation:</French>
+                <French>Afficher un changement de réputation au dessus de:</French>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_OTHER_SPAWNRAD">
                 <Original>Spawn city radius offset:</Original>
