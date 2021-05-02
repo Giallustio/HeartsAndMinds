@@ -41,11 +41,11 @@ params [
 ];
 _wp_ratios params ["_wp_house_probability", "_wp_sentry_probability"];
 
-private _rpos = [_city call CBA_fnc_getPos, _area, _p_sea] call btc_fnc_randomize_pos;
+private _pos = [_city call CBA_fnc_getPos, _area, _p_sea] call btc_fnc_randomize_pos;
 private _group_structure = [1, objNull];
 if (_wp <= _wp_house_probability) then { // Find building
-    ([_rpos, _n] call btc_fnc_mil_getBuilding) params ["_numberOfGroup", "_structure"];
-    if (_structure isNotEqualTo "") then {
+    ([_pos, _n] call btc_fnc_mil_getBuilding) params ["_numberOfGroup", "_structure"];
+    if (_structure isNotEqualTo objNull) then {
         _group_structure = [_numberOfGroup, _structure];
     } else {
         _wp = _wp_sentry_probability; // Handle the case there is no building
@@ -53,16 +53,22 @@ if (_wp <= _wp_house_probability) then { // Find building
 };
 
 _group_structure params ["_numberOfGroup", "_structure"];
-private _pos_iswater = surfaceIsWater _rpos;
+private _pos_iswater = surfaceIsWater _pos;
+private _hashMapGroup = createHashMap;
+_hashMapGroup set ["_pos", _pos];
 if (
-    _structure isNotEqualTo "" &&
+    _structure isEqualTo objNull &&
     {!_pos_iswater}
 ) then {
-    private _newpos = _rpos findEmptyPosition [0, 40, "B_soldier_AR_F"];
-    if (_newpos isNotEqualTo []) then {
-        _rpos = _newpos;
-    };
-    _rpos = [_rpos] call btc_fnc_findPosOutsideRock;
+    [_hashMapGroup, {
+        private _pos = _this get "_pos";
+        private _newPos = _pos findEmptyPosition [0, 40, "B_soldier_AR_F"];
+        if (_newPos isNotEqualTo []) then {
+            _pos = _newPos;
+        };
+        _pos = [_pos] call btc_fnc_findPosOutsideRock;
+        _this set ["_pos", _pos];
+    }] call btc_fnc_delay_exec;
 };
 
 private _groups = [];
@@ -80,19 +86,25 @@ for "_i" from 1 to _numberOfGroup do {
             _group setVariable ["btc_inHouse", typeOf _structure];
         };
         case (_wp > _wp_house_probability && _wp <= _wp_sentry_probability) : {
-            [_group, _rpos, _area, 2 + floor (random 4), "MOVE", "SAFE", "RED", "LIMITED", "STAG COLUMN", "", [5, 10, 20]] call CBA_fnc_taskPatrol;
+            [{
+                params ["_group", "_hashMapGroup", "_area"];
+                [_group, _hashMapGroup get "_pos", _area, 2 + floor (random 4), "MOVE", "SAFE", "RED", "LIMITED", "STAG COLUMN", "", [5, 10, 20]] call CBA_fnc_taskPatrol;
+            }, [_group, _hashMapGroup, _area], btc_delay_createUnit] call CBA_fnc_waitAndExecute;
         };
         case (_wp > _wp_sentry_probability) : {
             [_group] call CBA_fnc_clearWaypoints;
-            [_group, _rpos, -1, "SENTRY", "AWARE", "RED"] call CBA_fnc_addWaypoint;
+            [{
+                params ["_group", "_hashMapGroup"];
+                [_group, _hashMapGroup get "_pos", -1, "SENTRY", "AWARE", "RED"] call CBA_fnc_addWaypoint;
+            }, [_group, _hashMapGroup], btc_delay_createUnit] call CBA_fnc_waitAndExecute;            
         };
     };
 
-    [_group, _rpos, _n, _pos_iswater] call btc_fnc_mil_createUnits;
+    [_group, _hashMapGroup, _n, _pos_iswater] call btc_fnc_mil_createUnits;
 };
 
 if (btc_debug_log) then {
-    [format ["_this = %1 ; POS %2 UNITS N %3 _wp_ratios %4", _this, _rpos, _n, _wp_ratios], __FILE__, [false]] call btc_fnc_debug_message;
+    [format ["_this = %1 ; POS %2 UNITS N %3 _wp_ratios %4", _this, _pos, _n, _wp_ratios], __FILE__, [false]] call btc_fnc_debug_message;
 };
 
 _groups
