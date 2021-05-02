@@ -24,7 +24,7 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-btc_delay_createUnit = btc_delay_createUnit + 0.3;
+btc_delay_createUnit = btc_delay_createUnit + 0.2;
 
 [{
     params [
@@ -37,7 +37,7 @@ btc_delay_createUnit = btc_delay_createUnit + 0.3;
 
     if (isNull _group) exitWith {
         [format ["isNull _group _this = %1", _this], __FILE__, [btc_debug, btc_debug_log, true]] call btc_fnc_debug_message;
-        btc_delay_createUnit = btc_delay_createUnit - 0.3;
+        btc_delay_createUnit = btc_delay_createUnit - 0.2;
     };
 
     private _unit = _group createUnit [_unit_type, _pos, [], 0, _special];
@@ -47,5 +47,5 @@ btc_delay_createUnit = btc_delay_createUnit + 0.3;
         _unit moveInAny _vehicle;
     };
 
-    btc_delay_createUnit = btc_delay_createUnit - 0.3;
+    btc_delay_createUnit = btc_delay_createUnit - 0.2;
 }, _this, btc_delay_createUnit - 0.01] call CBA_fnc_waitAndExecute;

@@ -86,4 +86,4 @@ btc_delay_createUnit = btc_delay_createUnit + 0.3;
     btc_delay_createUnit = btc_delay_createUnit - 0.3;
 }, _this, btc_delay_createUnit - 0.01] call CBA_fnc_waitAndExecute;
 
-count (_this select 2) * 0.3
+count (_this select 2) * 0.2
