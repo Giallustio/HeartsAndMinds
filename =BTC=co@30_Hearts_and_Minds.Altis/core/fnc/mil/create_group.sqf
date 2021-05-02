@@ -53,18 +53,17 @@ if (_wp <= _wp_house_probability) then { // Find building
 };
 
 _group_structure params ["_numberOfGroup", "_structure"];
-private _time = serverTime;
 private _pos_iswater = surfaceIsWater _rpos;
-if (_structure isNotEqualTo "") then {
-    if !(_pos_iswater) then {
-        private _newpos = _rpos findEmptyPosition [0, 40, "B_soldier_AR_F"];
-        if (_newpos isNotEqualTo []) then {
-            _rpos = _newpos;
-        };
-        _rpos = [_rpos] call btc_fnc_findPosOutsideRock;
+if (
+    _structure isNotEqualTo "" &&
+    {!_pos_iswater}
+) then {
+    private _newpos = _rpos findEmptyPosition [0, 40, "B_soldier_AR_F"];
+    if (_newpos isNotEqualTo []) then {
+        _rpos = _newpos;
     };
+    _rpos = [_rpos] call btc_fnc_findPosOutsideRock;
 };
-format ["%1 %2", -1, (serverTime - _time) * 1000] remoteExecCall ["systemChat", 0];
 
 private _groups = [];
 for "_i" from 1 to _numberOfGroup do {
