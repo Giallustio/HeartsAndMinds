@@ -42,6 +42,7 @@ if (isServer) then {
     btc_fnc_city_findPos = compileScript ["core\fnc\city\findPos.sqf"];
     btc_fnc_city_cleanUp = compileScript ["core\fnc\city\cleanUp.sqf"];
     btc_fnc_city_trigger_free_condition = compileScript ["core\fnc\city\trigger_free_condition.sqf"];
+    btc_fnc_city_getHouses = compileScript ["core\fnc\city\getHouses.sqf"];
 
     //CIV
     btc_fnc_civ_add_weapons = compileScript ["core\fnc\civ\add_weapons.sqf"];
@@ -71,6 +72,9 @@ if (isServer) then {
     btc_fnc_delay_createVehicle = compileScript ["core\fnc\delay\createVehicle.sqf"];
     btc_fnc_delay_createAgent = compileScript ["core\fnc\delay\createAgent.sqf"];
     btc_fnc_delay_exec = compileScript ["core\fnc\delay\exec.sqf"];
+
+    //DOOR
+    btc_fnc_door_lock = compileScript ["core\fnc\door\lock.sqf"];
 
     //EH
     btc_fnc_eh_server = compileScript ["core\fnc\eh\server.sqf"];
@@ -282,6 +286,10 @@ if (!isDedicated) then {
     //CIV
     btc_fnc_civ_add_leaflets = compileScript ["core\fnc\civ\add_leaflets.sqf"];
     btc_fnc_civ_leaflets = compileScript ["core\fnc\civ\leaflets.sqf"];
+
+    //DOOR
+    btc_fnc_door_break = compileScript ["core\fnc\door\break.sqf"];
+    btc_fnc_door_broke = compileScript ["core\fnc\door\broke.sqf"];
 
     //IED
     btc_fnc_ied_effects = compileScript ["core\fnc\ied\effects.sqf"];

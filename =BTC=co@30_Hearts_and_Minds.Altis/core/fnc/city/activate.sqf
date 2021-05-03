@@ -125,7 +125,7 @@ if (_data_units isNotEqualTo []) then {
     };
 
     if !(_type in ["Hill", "NameMarine"]) then {
-        private _houses = ([position _city, _spawningRadius/3] call btc_fnc_getHouses) call BIS_fnc_arrayShuffle;
+        private _houses = [_city, _spawningRadius/3] call btc_fnc_city_getHouses;
 
         if (_has_en) then {
             private _max_number_group = (switch _type do {
@@ -281,6 +281,14 @@ if (_city getVariable ["data_tags", []] isEqualTo []) then {
     };
 };
 [_city, btc_fnc_tag_create] call btc_fnc_delay_exec;
+
+if (
+    !(_type in ["Hill", "NameMarine"]) &&
+    _city getVariable ["btc_city_houses", []] isEqualTo []
+) then {
+    [[_city, _spawningRadius/3], btc_fnc_city_getHouses] call btc_fnc_delay_exec;
+};
+[_city, btc_fnc_door_lock] call btc_fnc_delay_exec;
 
 private _civKilled = _city getVariable ["btc_rep_civKilled", []];
 if !(_civKilled isEqualTo []) then {
