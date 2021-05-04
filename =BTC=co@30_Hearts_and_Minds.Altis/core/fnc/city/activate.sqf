@@ -282,19 +282,20 @@ if (_city getVariable ["data_tags", []] isEqualTo []) then {
 };
 [_city, btc_fnc_tag_create] call btc_fnc_delay_exec;
 
-
 if (
     !(_type in ["Hill", "NameMarine"]) &&
     _city getVariable ["btc_city_houses", []] isEqualTo []
 ) then {
     [[_city, _spawningRadius/3], btc_fnc_city_getHouses] call btc_fnc_delay_exec;
 };
-[_city, btc_fnc_door_lock] call btc_fnc_delay_exec;
 
-[_city, btc_fnc_info_createIntels] call btc_fnc_delay_exec;
+if (_city getVariable ["btc_city_houses", []] isNotEqualTo []) then {
+    [_city, btc_fnc_door_lock] call btc_fnc_delay_exec;
+    [_city, btc_fnc_info_createIntels] call btc_fnc_delay_exec;
+};
 
 private _civKilled = _city getVariable ["btc_rep_civKilled", []];
-if !(_civKilled isEqualTo []) then {
+if (_civKilled isNotEqualTo []) then {
     [[_city, _civKilled], btc_fnc_civ_createFlower] call btc_fnc_delay_exec;
 };
 
