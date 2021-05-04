@@ -103,6 +103,8 @@ if !(_city getVariable ["active", false]) exitWith {};
 
     (_city getVariable ["btc_city_intels", []]) call CBA_fnc_deleteEntity;
 
+    (_city getVariable ["btc_civ_flowers", []]) call CBA_fnc_deleteEntity;
+
     if (btc_debug_log) then {
         [format ["data units = %1", _data_units], __FILE__, [false]] call btc_fnc_debug_message;
         [format ["data animals = %1", _data_animals], __FILE__, [false]] call btc_fnc_debug_message;

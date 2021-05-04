@@ -1,5 +1,5 @@
 
-btc_version = [1, 21, 0];
+btc_version = [1, 21, 3];
 diag_log format (["=BTC= HEARTS AND MINDS VERSION %1.%2.%3"] + btc_version);
 
 //Param
@@ -77,7 +77,7 @@ btc_p_autoloadout = "btc_p_autoloadout" call BIS_fnc_getParamValue;
 
 //<< Other options >>
 private _p_rep = "btc_p_rep" call BIS_fnc_getParamValue;
-btc_p_rep_notify = ("btc_p_rep_notify" call BIS_fnc_getParamValue) isEqualTo 1;
+btc_p_rep_notify = "btc_p_rep_notify" call BIS_fnc_getParamValue;
 private _p_city_radius = ("btc_p_city_radius" call BIS_fnc_getParamValue) * 100;
 btc_p_trigger = if (("btc_p_trigger" call BIS_fnc_getParamValue) isEqualTo 1) then {
     "this && (false in (thisList apply {_x isKindOf 'Plane'})) && (false in (thisList apply {(_x isKindOf 'Helicopter') && (speed _x > 190)}))"
@@ -337,6 +337,9 @@ if (isServer) then {
     btc_tags_player = [];
     btc_tags_server = [];
 
+    //Flowers
+    btc_type_flowers = _allClassSorted select {_x isKindOf "FlowerBouquet_base_F"};
+
     //IED
     private _ieds = ["Land_GarbageContainer_closed_F", "Land_GarbageContainer_open_F", "Land_Portable_generator_F", "Land_WoodenBox_F", "Land_BarrelTrash_grey_F", "Land_Sacks_heap_F", "Land_Wreck_Skodovka_F", "Land_WheelieBin_01_F", "Land_GarbageBin_03_F"] + btc_type_pallet + btc_type_barrel + (_allClassSorted select {
         _x isKindOf "GasTank_base_F" ||
@@ -353,7 +356,7 @@ if (isServer) then {
     });
     btc_type_ieds = _ieds - ["Land_Garbage_line_F","Land_Garbage_square3_F","Land_Garbage_square5_F"];
     btc_model_ieds = btc_type_ieds apply {(toLower getText(_cfgVehicles >> _x >> "model")) select [1]};
-    btc_type_blacklist = btc_type_tags + ["UserTexture1m_F"]; publicVariable "btc_type_blacklist";
+    btc_type_blacklist = btc_type_tags + btc_type_flowers + ["UserTexture1m_F"]; publicVariable "btc_type_blacklist";
 
     btc_groundWeaponHolder = [];
 };
@@ -702,6 +705,7 @@ btc_rep_malus_player_respawn = - 10;
 btc_rep_malus_veh_killed = - 25;
 btc_rep_malus_building_damaged = - 2.5;
 btc_rep_malus_building_destroyed = - 5;
+btc_rep_malus_breakDoor = - 2;
 
 //Skill
 btc_AI_skill = _p_skill;
@@ -710,3 +714,6 @@ btc_AI_skill = _p_skill;
 btc_units_owners = [];
 
 btc_player_type = ["SoldierWB", "SoldierEB", "SoldierGB"] select ([west, east, independent] find btc_player_side);
+
+//Door
+btc_door_breaking_time = 60;
