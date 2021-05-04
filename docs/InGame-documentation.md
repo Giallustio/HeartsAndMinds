@@ -108,6 +108,7 @@ Intel can be retrieved in the following:
 - Searching dead bodies
 - Interrogate prisoner
 - Talking to civilians
+- Search house for camera
 
 Keep in mind that only the interpreter can talk to civilians and they can lie if your reputation level is low.
 When you find an intel from a dead body or interrogate a prisoner, a marker will appear in the map. Remember, prisoner have a random number of intel more or less interesting.
