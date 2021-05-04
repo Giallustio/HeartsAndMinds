@@ -26,7 +26,8 @@ params [
 
 private _houses = +(_city getVariable ["btc_city_houses", []]);
 
-_houses = _houses select [0, count _houses];
+private _numberOfHouses = count _houses;
+_houses = _houses select [0, round (_numberOfHouses * btc_p_info_houseDensity / 100)];
 
 private _intels = _houses apply {
     createVehicle [selectRandom btc_info_intels, ASLToATL AGLToASL selectRandom (_x buildingPos -1), [], 0, "CAN_COLLIDE"];

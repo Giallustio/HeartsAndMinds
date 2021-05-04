@@ -35,6 +35,7 @@ private _hideout_n = "btc_p_hideout_n" call BIS_fnc_getParamValue;
 private _cache_info_def = "btc_p_cache_info_def" call BIS_fnc_getParamValue;
 private _cache_info_ratio = "btc_p_cache_info_ratio" call BIS_fnc_getParamValue;
 private _info_chance = "btc_p_info_chance" call BIS_fnc_getParamValue;
+btc_p_info_houseDensity = "btc_p_info_houseDensity" call BIS_fnc_getParamValue;
 
 //<< Skill options >>
 btc_p_set_skill  = ("btc_p_set_skill" call BIS_fnc_getParamValue) isEqualTo 1;

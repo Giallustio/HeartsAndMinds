@@ -540,6 +540,9 @@
                 <Chinesesimp>敌军尸体携带情报的几率:</Chinesesimp>
                 <French>Chance de trouver des intel sur les corps:</French>
             </Key>
+            <Key ID="STR_BTC_HAM_PARAM_CACHE_HOUSEINFO">
+                <Original>Density of intel in house:</Original>
+            </Key>
         </Container>
         <Container name="Parameters: Respawn">
             <Key ID="STR_BTC_HAM_RESP_TITLE">
