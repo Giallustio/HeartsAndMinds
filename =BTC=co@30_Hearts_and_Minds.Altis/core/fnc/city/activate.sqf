@@ -288,10 +288,17 @@ if (
 ) then {
     [[_city, _spawningRadius/3], btc_fnc_city_getHouses] call btc_fnc_delay_exec;
 };
-[_city, btc_fnc_door_lock] call btc_fnc_delay_exec;
+
+if (_city getVariable ["btc_city_houses", []] isNotEqualTo []) then {
+    [_city, btc_fnc_door_lock] call btc_fnc_delay_exec;
+
+    if (btc_p_info_houseDensity > 0) then {
+        [_city, btc_fnc_info_createIntels] call btc_fnc_delay_exec;
+    };   
+};
 
 private _civKilled = _city getVariable ["btc_rep_civKilled", []];
-if !(_civKilled isEqualTo []) then {
+if (_civKilled isNotEqualTo []) then {
     [[_city, _civKilled], btc_fnc_civ_createFlower] call btc_fnc_delay_exec;
 };
 

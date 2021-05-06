@@ -104,6 +104,7 @@ if (isServer) then {
     btc_fnc_info_hideout = compileScript ["core\fnc\info\hideout.sqf"];
     btc_fnc_info_cacheMarker = compileScript ["core\fnc\info\cacheMarker.sqf"];
     btc_fnc_info_path = compileScript ["core\fnc\info\path.sqf"];
+    btc_fnc_info_createIntels = compileScript ["core\fnc\info\createIntels.sqf"];
 
     //FOB
     btc_fnc_fob_create_s = compileScript ["core\fnc\fob\create_s.sqf"];
