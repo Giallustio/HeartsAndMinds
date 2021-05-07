@@ -796,7 +796,7 @@
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_OTHER_SHOWREP">
                 <Original>Show reputation change above of:</Original>
-                <Chinesesimp>显示声誉变化:</Chinesesimp>
+                <Chinesesimp>显示声誉变化, 当声誉变化大于:</Chinesesimp>
                 <French>Afficher un changement de réputation au dessus de:</French>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_OTHER_SPAWNRAD">
