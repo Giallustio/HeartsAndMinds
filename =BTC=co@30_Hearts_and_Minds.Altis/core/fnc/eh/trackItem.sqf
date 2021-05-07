@@ -68,7 +68,7 @@ params [
             ];
             _thisArgs params ["_dogTag", "_taskID"];
 
-            if (!(_taskID call BIS_fnc_taskCompleted) && {(allunits + vehicles) findif {_dogTag in itemCargo _x} isEqualTo -1}) then {
+            if (!(_taskID call BIS_fnc_taskCompleted) && {(allUnits + vehicles) findif {_dogTag in itemCargo _x} isEqualTo -1}) then {
                 [_taskID, "FAILED"] call BIS_fnc_taskSetState;
             };
         }, [_dogTag, _taskID]] remoteExecCall ["CBA_fnc_addBISEventHandler", 0];

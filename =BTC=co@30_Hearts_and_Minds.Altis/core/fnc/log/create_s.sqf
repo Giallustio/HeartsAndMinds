@@ -37,7 +37,7 @@ if (getText (configFile >> "cfgVehicles" >> _objec_type >> "displayName") isEqua
 _obj setVectorUp _vector;
 _obj setPosASL _pos;
 
-if (getNumber(configFile >> "CfgVehicles" >> _objec_type >> "isUav") isEqualTo 1) then {
+if (unitIsUAV _obj) then {
     createVehicleCrew _obj;
 };
 

@@ -32,7 +32,8 @@ private _cities_status = +(profileNamespace getVariable [format ["btc_hm_%1_citi
 {
     _x params ["_id", "_initialized", "_spawn_more", "_occupied", "_data_units", "_has_ho", "_ho_units_spawned", "_ieds", "_has_suicider",
         ["_data_animals", [], [[]]],
-        ["_data_tags", [], [[]]]
+        ["_data_tags", [], [[]]],
+        ["_civKilled", [], [[]]]
     ];
 
     private _city = btc_city_all select _id;
@@ -47,6 +48,7 @@ private _cities_status = +(profileNamespace getVariable [format ["btc_hm_%1_citi
     _city setVariable ["has_suicider", _has_suicider];
     _city setVariable ["data_animals", _data_animals];
     _city setVariable ["data_tags", _data_tags];
+    _city setVariable ["btc_rep_civKilled", _civKilled];
 
     if (btc_debug) then {
         private _marker = _city getVariable ["marker", ""];
@@ -67,7 +69,7 @@ private _cities_status = +(profileNamespace getVariable [format ["btc_hm_%1_citi
 private _array_ho = +(profileNamespace getVariable [format ["btc_hm_%1_ho", _name], []]);
 
 {
-    _x call btc_fnc_mil_create_hideout;
+    _x call btc_fnc_hideout_create;
 } forEach _array_ho;
 
 private _ho = profileNamespace getVariable [format ["btc_hm_%1_ho_sel", _name], 0];
@@ -83,7 +85,8 @@ if (btc_hideouts isEqualTo []) then {[] spawn btc_fnc_final_phase;};
 //CACHE
 private _array_cache = +(profileNamespace getVariable [format ["btc_hm_%1_cache", _name], []]);
 _array_cache params ["_cache_pos", "_cache_n", "_cache_info", "_cache_markers", "_cache_pictures",
-    ["_isChem", false, [true]]
+    ["_isChem", false, [true]],
+    ["_cache_unitsSpawned", false, [true]]
 ];
 
 btc_cache_pos = _cache_pos;
@@ -91,6 +94,7 @@ btc_cache_n = _cache_n;
 btc_cache_info = _cache_info;
 
 [_cache_pos, btc_p_chem, [1, 0] select _isChem] call btc_fnc_cache_create;
+btc_cache_obj setVariable ["btc_cache_unitsSpawned", _cache_unitsSpawned];
 
 btc_cache_markers = [];
 {
@@ -132,8 +136,8 @@ private _objs = +(profileNamespace getVariable [format ["btc_hm_%1_objs", _name]
 //VEHICLES
 private _vehs = +(profileNamespace getVariable [format ["btc_hm_%1_vehs", _name], []]);
 [{ // Can't be executed just after because we can't delete and spawn vehicle during the same frame.
-    {
-        _x params [
+    private _loadVehicle = {
+        params [
             "_veh_type",
             "_veh_pos",
             "_veh_dir",
@@ -149,7 +153,8 @@ private _vehs = +(profileNamespace getVariable [format ["btc_hm_%1_vehs", _name]
             ["_isContaminated", false, [false]],
             ["_supplyVehicle", [], [[]]],
             ["_EDENinventory", [], [[]]],
-            ["_vectorPos", [], [[]]]
+            ["_vectorPos", [], [[]]],
+            ["_ViV", [], [[]]]
         ];
 
         if (btc_debug_log) then {
@@ -165,6 +170,23 @@ private _vehs = +(profileNamespace getVariable [format ["btc_hm_%1_vehs", _name]
         if !(alive _veh) then {
             [_veh, objNull, objNull, false] call btc_fnc_veh_killed;
         };
+        if (_ViV isNotEqualTo []) then {
+            {
+                private _vehToLoad = _x call _loadVehicle;
+                if !([_vehToLoad, _veh] call btc_fnc_tow_ViV) then {
+                    _vehToLoad setVehiclePosition [_veh, [], 100, "NONE"];
+                    private _marker = _vehToLoad getVariable ["marker", ""];
+                    if (_marker isNotEqualTo "") then {
+                        _marker setMarkerPos _vehToLoad;
+                    };
+                };
+            } forEach _ViV;
+        };
+
+        _veh
+    };
+    {
+        _x call _loadVehicle;
     } forEach _this;
 }, _vehs] call CBA_fnc_execNextFrame;
 
@@ -177,7 +199,7 @@ private _id = ["ace_tagCreated", {
 {
     _x params ["_tagPosASL", "_vectorDirAndUp", "_texture", "_typeObject", "_tagModel"];
     private _object = objNull;
-    if !(_typeObject isEqualTo "") then {
+    if (_typeObject isNotEqualTo "") then {
         _object = nearestObject [ASLToATL _tagPosASL, _typeObject];
     };
     [_tagPosASL, _vectorDirAndUp, _texture, _object, objNull, "",_tagModel] call ace_tagging_fnc_createTag;
@@ -187,9 +209,12 @@ private _id = ["ace_tagCreated", {
 //Player Markers
 private _markers_properties = +(profileNamespace getVariable [format ["btc_hm_%1_markers", _name], []]);
 {
-    _x params ["_markerText", "_markerPos", "_markerColor", "_markerType", "_markerSize", "_markerAlpha", "_markerBrush", "_markerDir", "_markerShape"];
+    _x params ["_markerText", "_markerPos", "_markerColor", "_markerType", "_markerSize", "_markerAlpha", "_markerBrush", "_markerDir", "_markerShape",
+        ["_markerPolyline", [], [[]]],
+        ["_markerChannel", 0, [0]]
+    ];
 
-    private _marker = createMarker [format ["_USER_DEFINED #0/%1/0", _forEachindex], _markerPos];
+    private _marker = createMarker [format ["_USER_DEFINED #0/%1/%2", _forEachindex, _markerChannel], _markerPos, _markerChannel];
     _marker setMarkerText _markerText;
     _marker setMarkerColor _markerColor;
     _marker setMarkerType _markerType;
@@ -198,4 +223,7 @@ private _markers_properties = +(profileNamespace getVariable [format ["btc_hm_%1
     _marker setMarkerBrush _markerBrush;
     _marker setMarkerDir _markerDir;
     _marker setMarkerShape _markerShape;
+    if (_markerPolyline isNotEqualTo []) then {
+        _marker setMarkerPolyline _markerPolyline;
+    };
 } forEach _markers_properties;

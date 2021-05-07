@@ -62,7 +62,7 @@ for "_i" from -_number_of_fences to _number_of_fences do {
         [_barrier, 0, [_i * _distance_between_fences, _offset, 0]],
         [_barrier, 90, [ -_offset, _i * _distance_between_fences, 0]]
     ];
-    if !(_i isEqualTo 4) then {
+    if (_i isNotEqualTo 4) then {
         _composition_pattern pushBack [_barrier, 90, [_offset, _i * _distance_between_fences, 0]];
         if (random 1 > 0.7) then {
             _composition_pattern append [
@@ -158,7 +158,7 @@ private _bring_taskID = _taskID + "br";
 
 waitUntil {sleep 5; (
     _taskID call BIS_fnc_taskCompleted ||
-    !((nearestObjects [_pos, btc_containers_mat, 200]) isEqualTo [])
+    (nearestObjects [_pos, btc_containers_mat, 200]) isNotEqualTo []
 )};
 
 if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {[[], _composition_objects + _chemical] call btc_fnc_delete;};

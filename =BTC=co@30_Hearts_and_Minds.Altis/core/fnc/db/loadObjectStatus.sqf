@@ -45,8 +45,8 @@ if (_isContaminated) then {
         publicVariable "btc_chem_contaminated";
     };
 };
-if !(_magClass isEqualTo "") then {_obj setVariable ["ace_rearm_magazineClass", _magClass, true]};
-if (getNumber(configFile >> "CfgVehicles" >> _type >> "isUav") isEqualTo 1) then {
+if (_magClass isNotEqualTo "") then {_obj setVariable ["ace_rearm_magazineClass", _magClass, true]};
+if (unitIsUAV _obj) then {
     createVehicleCrew _obj;
 };
 

@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={8310.1777,98.629913,10084.459};
-		dir[]={0.098348215,-0.70036846,-0.70702177};
-		up[]={0.096501924,0.7137264,-0.69374603};
-		aside[]={-0.99049145,-7.9450547e-007,-0.13778168};
+		pos[]={8314.7744,91.116623,10084.846};
+		dir[]={-0.80029076,-0.58512336,0.13129118};
+		up[]={-0.57747674,0.81089264,0.09473715};
+		aside[]={0.16189197,-1.5887781e-007,0.98683923};
 	};
 };
 binarizationWanted=0;
@@ -42,6 +42,7 @@ addons[]=
 	"A3_Characters_F_Enoch",
 	"A3_Air_F_Heli_Heli_Transport_03",
 	"A3_Soft_F_Beta_Truck_01",
+	"A3_Soft_F_Enoch_Truck_01",
 	"A3_Soft_F_Exp_LSV_01",
 	"A3_Soft_F_MRAP_01",
 	"A3_Armor_F_Beta_APC_Wheeled_01",
@@ -49,7 +50,6 @@ addons[]=
 	"A3_Air_F_Beta_Heli_Attack_01",
 	"A3_Props_F_Enoch_Military_Decontamination",
 	"A3_Signs_F",
-	"A3_Soft_F_Enoch_Truck_01",
 	"A3_Armor_F_Beta_APC_Tracked_01"
 };
 class AddonsMetaData
@@ -164,43 +164,43 @@ class AddonsMetaData
 		};
 		class Item15
 		{
+			className="A3_Soft_F_Enoch";
+			name="Arma 3 Contact Platform - Unarmored Land Vehicles";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item16
+		{
 			className="A3_Soft_F";
 			name="Arma 3 Alpha - Unarmored Land Vehicles";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item16
+		class Item17
 		{
 			className="A3_Armor_F_Beta";
 			name="Arma 3 Beta - Armored Land Vehicles";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item17
+		class Item18
 		{
 			className="A3_Air_F_Beta";
 			name="Arma 3 Beta - Aircraft";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item18
-		{
-			className="A3_Props_F_Enoch";
-			name="Arma 3 Enoch - Decorative and Mission Objects";
-			author="Bohemia Interactive";
-			url="https://www.arma3.com";
-		};
 		class Item19
 		{
-			className="A3_Signs_F";
-			name="Arma 3 - Signs";
+			className="A3_Props_F_Enoch";
+			name="Arma 3 Contact Platform - Decorative and Mission Objects";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
 		class Item20
 		{
-			className="A3_Soft_F_Enoch";
-			name="Arma 3 Enoch - Unarmored Land Vehicles";
+			className="A3_Signs_F";
+			name="Arma 3 - Signs";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
@@ -2224,7 +2224,7 @@ class Mission
 						isPlayable=1;
 					};
 					id=118;
-					type="B_Soldier_F";
+					type="B_Sharpshooter_F";
 				};
 			};
 			class Attributes
@@ -2254,7 +2254,7 @@ class Mission
 						isPlayable=1;
 					};
 					id=120;
-					type="B_Soldier_F";
+					type="B_Sharpshooter_F";
 				};
 			};
 			class Attributes
@@ -2547,8 +2547,8 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={8299.2021,78.316971,10089.534};
-				angles[]={0.0013439035,0.94247776,6.232553};
+				position[]={8299.4082,78.879608,10089.423};
+				angles[]={0.0013372133,0.94247776,6.2325611};
 			};
 			side="Empty";
 			flags=4;
@@ -2558,8 +2558,8 @@ class Mission
 				name="btc_veh_15";
 			};
 			id=160;
-			type="B_Truck_01_covered_F";
-			atlOffset=-0.095001221;
+			type="B_Truck_01_flatbed_F";
+			atlOffset=5.3405762e-005;
 			class CustomAttributes
 			{
 				class Attribute0

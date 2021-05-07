@@ -41,10 +41,10 @@ Author:
                             speed _x > 5
                         }
                     }) then {
+                        [_wreck, _ied] call btc_fnc_ied_boom;
                         if (0.5 < random 1) then {
                             [getPos _wreck] call btc_fnc_rep_call_militia;
                         };
-                        [_wreck, _ied] call btc_fnc_ied_boom;
                     };
                 } forEach (_ied nearEntities ["allvehicles", 10]);
             } else {
@@ -59,7 +59,7 @@ Author:
         _x params ["_wreck", "_type", "_ied"];
 
         if (!isNull _wreck && {alive _wreck}) then {
-            _data pushBack [getPosATL _wreck, _type, getDir _wreck, !(_ied isEqualTo objNull)];
+            _data pushBack [getPosATL _wreck, _type, getDir _wreck, _ied isNotEqualTo objNull];
 
             deleteVehicle _ied;
             deleteVehicle _wreck;

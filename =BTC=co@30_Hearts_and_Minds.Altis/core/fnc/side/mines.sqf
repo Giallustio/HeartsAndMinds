@@ -74,7 +74,7 @@ for "_i" from -_number_of_fences to _number_of_fences do {
         [_fence, 0, [_i * _distance_between_fences, _offset, 0]],
         [_fence, 90, [ -_offset, _i * _distance_between_fences, 0]]
     ];
-    if !(_i isEqualTo 1) then {
+    if (_i isNotEqualTo 1) then {
         _composition_pattern pushBack [_fence, 90, [_offset, _i * _distance_between_fences, 0]];
     };
 
@@ -105,7 +105,7 @@ for "_i" from 1 to (5 + round random 5) do {
     };
 };
 
-waitUntil {sleep 5; (_taskID call BIS_fnc_taskCompleted || !(playableUnits inAreaArray [_pos, 100, 100] isEqualTo []))};
+waitUntil {sleep 5; (_taskID call BIS_fnc_taskCompleted || playableUnits inAreaArray [_pos, 100, 100] isNotEqualTo [])};
 
 private _closest = [_city, btc_city_all select {!(_x getVariable ["active", false])}, false] call btc_fnc_find_closecity;
 for "_i" from 1 to (round random 2) do {

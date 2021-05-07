@@ -53,7 +53,12 @@ private _cfgAmmo = configFile >> "cfgAmmo";
                         [{!alive (_this select 2)}, {
                             params ["_wreck", "_ied", "_bullet", "_detected_grenade"];
 
-                            if (alive _ied) then {[_wreck, _ied] call btc_fnc_ied_boom;};
+                            if (alive _ied) then {
+                                [_wreck, _ied] call btc_fnc_ied_boom;
+                                if (0.5 < random 1) then {
+                                    [getPos _wreck] call btc_fnc_rep_call_militia;
+                                };
+                            };
                             {
                                 if (isNull _x) then {
                                     _detected_grenade deleteAt _forEachIndex;
@@ -68,6 +73,9 @@ private _cfgAmmo = configFile >> "cfgAmmo";
                     if (_explosive || _caliber) then {
                         if (alive _ied) then {
                             [_wreck, _ied] call btc_fnc_ied_boom;
+                            if (0.5 < random 1) then {
+                                [getPos _wreck] call btc_fnc_rep_call_militia;
+                            };
                         };
                     };
                 };

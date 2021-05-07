@@ -36,7 +36,7 @@ params [
     ["_id", 0, [0]]
 ];
 
-private _trigger = createTrigger ["EmptyDetector", _position];
+private _trigger = createTrigger ["EmptyDetector", _position, false];
 _trigger setTriggerArea [_radius + btc_city_radius, _radius + btc_city_radius, 0, false];
 _trigger setTriggerActivation ["ANYPLAYER", "PRESENT", true];
 _trigger setTriggerStatements [btc_p_trigger, format ["[%1] call btc_fnc_city_activate", _id], format ["[%1] call btc_fnc_city_de_activate", _id]];

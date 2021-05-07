@@ -59,7 +59,7 @@ if (!isNull _cargo) then {
     _obj_img ctrlSetPosition [_hud_x_1, _hud_y_1];
     _obj_img ctrlCommit 0;
     private _pic_cargo = "";
-    private _cfgVehicles_cargo = configFile >> "CfgVehicles" >> typeOf _cargo;
+    private _cfgVehicles_cargo = configOf _cargo;
     if (_cargo isKindOf "LandVehicle") then {
         _pic_cargo = getText (_cfgVehicles_cargo >> "picture");
     };

@@ -3,8 +3,7 @@
 ## Headless & Database
 This mission automatically uses one Headless client when available.
 
-This mission has a database system. Enemy units, towns, hideouts, cache, objects created or static weapons assembled by players or Zeus, vehicles, tag, players markers (not lines) on global channel are saved. All admin can save mission progress at any time with his self interaction key.
-
+This mission has a database system. Enemy units, towns, hideouts, cache, objects created or static weapons assembled by players or Zeus, vehicles, vehicle in vehicle, tag, players markers on global channel are saved. All admin can save mission progress at any time with his self interaction key.
 
 ## Chemical Warfare
 ### Chemical agent:
@@ -25,10 +24,15 @@ Electromagnetic field from UAV are safe but EMP have a range of 500m where vehic
 ### Detection:
 You can detect the origin of electromagnetic field with spectrum devices. The amplitude of the peak depend on the distance and angle between the emiter and the antenna. The maximum range is 1000m.
 
+## Door locked
+###House doors:
+Civilian house door can be close. Depend on reputation level, civilian will lock their door and stay inside. Under low, all doors are locked, above normal, all door are unlocked. 
+###Break locked door:
+You can still enter by breaking door lock with a wirecutter.
 
 ## Vehicles
 ### Respawn:
-When a vehicle is destroyed it will not respawn in base, you need to tow or lift it back to base and repair it near the logistic point (Interact with the red box). Helicopter wrecks can only be lifted. The Chinook is the only exception, it will respawn after 30 seconds.
+When a vehicle is destroyed it will not respawn in base, you need to tow, use vehicle in vehicle or lift it back to base and repair it near the logistic point (Interact with the red box). Helicopter wrecks can only be lifted. The Chinook is the only exception, it will respawn after 30 seconds.
 ### Rearm:
 You can also rearm them by spawning the corresponding caliber at logistic point (Interact with the red box, select the vehicle type and caliber). Carry the ammo created and interact with the vehicle to rearm. This only works if rearming is setting on entire magazine or amount based on caliber (not for entire vehicle setting).
 
@@ -70,6 +74,9 @@ To tow a vehicle interact with it and select the option 'HOOK'. After that place
 If the two vehicles are too far away or the vehicle can't tow that load (Car can't tow truck or tank), the option will be disabled.
 To unhook interact with one of the two vehicles and select the option 'UNHOOK'.
 
+### Vehicle in vehicle system:
+BI Vehicle in Vehicle (ViV) system is extended to allow load of any vehicle in a vehicle. To move ViV use the towing system. To unload, move in driver seat of the tower vehicle and select in scroll menu "unload all objects".
+
 ### Place option:
 With this option you can move heavy objects to build small outpost or base.
 When you select the option an hint will show all the keys required to move the object.
@@ -101,6 +108,7 @@ Intel can be retrieved in the following:
 - Searching dead bodies
 - Interrogate prisoner
 - Talking to civilians
+- Search house for camera
 
 Keep in mind that only the interpreter can talk to civilians and they can lie if your reputation level is low.
 When you find an intel from a dead body or interrogate a prisoner, a marker will appear in the map. Remember, prisoner have a random number of intel more or less interesting.
@@ -118,7 +126,7 @@ At the beginning you have a very low reputation level, so civilians won't help y
 ### Good actions:
 Helping the local population by fighting the Oplitas, disarming IED's, heal civilians, remove tag with spraypaint red, succed side mission and destroy cache/hideout will rise your reputation.
 ### Bad actions:
-Bad actions cause bad effects: killing civilians/animals, mutilating alive/dead civilians/animals, firing near civilians for no reason, firing to civilian car, damaging/destroying buildings, losing player's vehicles and player respawns will decrease your reputation. Aborting a side mission does not affect reputation.
+Bad actions cause bad effects: killing civilians/animals, mutilating alive/dead civilians/animals, firing near civilians for no reason, firing to civilian car, damaging/destroying buildings, breaking locked door, losing player's vehicles and player respawns will decrease your reputation. Aborting a side mission does not affect reputation.
 
 ## Civil Orders
 Any player can give orders to civilians. To do this, just open your self interaction menu and select 'ORDERS' or use one of the shortcuts. Shortcuts can changed under 'configure >> controls>> configure addons >> Hearts and Minds: Mission (drop down menu)'. Your options are:

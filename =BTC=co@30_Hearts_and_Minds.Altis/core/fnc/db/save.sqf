@@ -57,6 +57,7 @@ private _cities_status = [];
     _city_status pushBack (_x getVariable ["has_suicider", false]);
     _city_status pushBack (_x getVariable ["data_animals", []]);
     _city_status pushBack (_x getVariable ["data_tags", []]);
+    _city_status pushBack (_x getVariable ["btc_rep_civKilled", []]);
 
     _cities_status pushBack _city_status;
     if (btc_debug_log) then {
@@ -112,6 +113,7 @@ private _cache_markers = [];
 _array_cache pushBack _cache_markers;
 _array_cache pushBack [btc_cache_pictures select 0, btc_cache_pictures select 1, []];
 _array_cache pushBack (btc_cache_obj in btc_chem_contaminated);
+_array_cache pushBack (btc_cache_obj getVariable ["btc_cache_unitsSpawned", false]);
 profileNamespace setVariable [format ["btc_hm_%1_cache", _name], +_array_cache];
 
 //REPUTATION
@@ -130,6 +132,12 @@ profileNamespace setVariable [format ["btc_hm_%1_fobs", _name], +_fobs];
 
 //Vehicles status
 private _array_veh = [];
+private _vehicles = btc_vehicles - [objNull];
+private _vehiclesNotInCargo = _vehicles select {
+    isNull isVehicleCargo _x &&
+    {isNull isVehicleCargo attachedTo _x}
+};
+private _vehiclesInCargo = _vehicles - _vehiclesNotInCargo;
 {
     private _data = [];
     _data pushBack (typeOf _x);
@@ -142,32 +150,50 @@ private _array_veh = [];
         _cargo pushBack (if (_x isEqualType "") then {
             [_x, "", [[], [], []]]
         } else {
-            [typeOf _x, _x getVariable ["ace_rearm_magazineClass", ""], [getWeaponCargo _x, getMagazineCargo _x, getItemCargo _x], _x in btc_chem_contaminated]
+            [typeOf _x, _x getVariable ["ace_rearm_magazineClass", ""], [getWeaponCargo _x, getMagazineCargo _x, getItemCargo _x, getBackpackCargo _x], _x in btc_chem_contaminated]
         });
     } forEach (_x getVariable ["ace_cargo_loaded", []]);
     _data pushBack _cargo;
-    private _cont = [getWeaponCargo _x, getMagazineCargo _x, getItemCargo _x];
+    private _cont = [getWeaponCargo _x, getMagazineCargo _x, getItemCargo _x, getBackpackCargo _x];
     _data pushBack _cont;
     _data append ([_x] call btc_fnc_getVehProperties);
     _data pushBack (_x getVariable ["btc_EDENinventory", []]);
     _data pushBack ([vectorDir _x, vectorUp _x]);
-    _array_veh pushBack _data;
+    _data pushBack []; // ViV
+
+    private _fakeViV = isVehicleCargo attachedTo _x;
+    if (
+        isNull _fakeViV &&
+        {isNull isVehicleCargo _x}
+    ) then {
+         _array_veh pushBack _data;
+    } else {
+        private _vehicleCargo = if (isNull _fakeViV) then {
+            isVehicleCargo _x
+        } else {
+            _fakeViV
+        };
+        private _index = _vehiclesNotInCargo find _vehicleCargo;
+        ((_array_veh select _index) select 16) pushBack _data;
+    };
+
     if (btc_debug_log) then {
         [format ["VEH %1 DATA %2", _x, _data], __FILE__, [false]] call btc_fnc_debug_message;
     };
-} forEach (btc_vehicles - [objNull]);
+} forEach (_vehiclesNotInCargo + _vehiclesInCargo);
 profileNamespace setVariable [format ["btc_hm_%1_vehs", _name], +_array_veh];
 
 //Objects status
 private _array_obj = [];
 {
     private _data = [_x] call btc_fnc_db_saveObjectStatus;
-    if !(_data isEqualTo []) then {
+    if (_data isNotEqualTo []) then {
         _array_obj pushBack _data;
     };
 } forEach (btc_log_obj_created select {
     !(isObjectHidden _x) &&
-    (objectParent _x) isEqualTo objNull
+    isNull objectParent _x &&
+    isNull isVehicleCargo _x
 });
 profileNamespace setVariable [format ["btc_hm_%1_objs", _name], +_array_obj];
 
@@ -186,9 +212,9 @@ private _tags_properties = _tags apply {
 profileNamespace setVariable [format ["btc_hm_%1_tags", _name], +_tags_properties];
 
 //Player Markers
-private _player_markers = allMapMarkers select {(_x select [0, 15]) isEqualTo "_USER_DEFINED #"};
+private _player_markers = allMapMarkers select {"_USER_DEFINED" in _x};
 private _markers_properties = _player_markers apply {
-    [markerText _x, markerPos _x, markerColor _x, markerType _x, markerSize _x, markerAlpha _x, markerBrush _x, markerDir _x, markerShape _x]
+    [markerText _x, markerPos _x, markerColor _x, markerType _x, markerSize _x, markerAlpha _x, markerBrush _x, markerDir _x, markerShape _x, markerPolyline _x, markerChannel _x]
 };
 profileNamespace setVariable [format ["btc_hm_%1_markers", _name], +_markers_properties];
 

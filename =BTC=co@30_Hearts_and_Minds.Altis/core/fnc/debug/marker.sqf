@@ -32,7 +32,7 @@ private _cfgVehicles = configFile >> "CfgVehicles";
     private _typeof = typeOf _x;
 
     private _alpha = 1;
-    if !((_owners select _forEachindex) isEqualTo 2) then {
+    if ((_owners select _forEachindex) isNotEqualTo 2) then {
         _alpha = 0.3;
     };
 
@@ -73,7 +73,7 @@ private _cfgVehicles = configFile >> "CfgVehicles";
     private _agent = agent _x;
     if !(isNull _agent) then {
         _display drawIcon [
-            getText (_cfgVehicles >> typeOf _agent >> "Icon"),
+            getText (configOf _agent >> "Icon"),
             [0.5, 0.5, 0.5, [1, 0.3] select (local _agent)],
             visiblePosition _agent,
             20,

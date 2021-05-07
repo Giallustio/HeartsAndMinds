@@ -40,7 +40,7 @@ _vehProperties set [5, false];
 
 _vehicle setVariable ["data_respawn", [_type, _pos, _dir, _time, _vector] + _vehProperties];
 
-if ((isNumber (configFile >> "CfgVehicles" >> typeOf _vehicle >> "ace_fastroping_enabled")) && !(typeOf _vehicle isEqualTo "RHS_UH1Y_d")) then {[_vehicle] call ace_fastroping_fnc_equipFRIES};
+if ((isNumber (configOf _vehicle >> "ace_fastroping_enabled")) && (typeOf _vehicle isNotEqualTo "RHS_UH1Y_d")) then {[_vehicle] call ace_fastroping_fnc_equipFRIES};
 _vehicle addMPEventHandler ["MPKilled", {
     params ["_unit"];
     if (
@@ -52,7 +52,7 @@ _vehicle addMPEventHandler ["MPKilled", {
     };
 }];
 if (btc_p_respawn_location > 0) then {
-    if !(fullCrew [_vehicle, "cargo", true] isEqualTo []) then {
+    if (fullCrew [_vehicle, "cargo", true] isNotEqualTo []) then {
         [_vehicle, "Deleted", {_thisArgs call BIS_fnc_removeRespawnPosition}, [btc_player_side, _vehicle] call BIS_fnc_addRespawnPosition] call CBA_fnc_addBISEventHandler;
     };
 };

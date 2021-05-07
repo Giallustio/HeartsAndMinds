@@ -42,7 +42,7 @@ if (_object in nearestTerrainObjects [_object, ["HIDE", "ROCK", "ROCKS"], 1]) th
 
 if (btc_debug_log) then {
     _objects = lineIntersectsObjs [[_x, _y, (getTerrainHeightASL _rpos) + 1], [_x, _y, (getTerrainHeightASL _rpos) + 100], objNull, objNull, false, 16];
-    if !(_objects isEqualTo []) then {
+    if (_objects isNotEqualTo []) then {
         _object = _objects select 0;
         if (_object in nearestTerrainObjects [_object, ["HIDE", "ROCK", "ROCKS"], 1]) then {
             [format ["POS %1 Still inside rock", _rpos], __FILE__, [false]] call btc_fnc_debug_message;

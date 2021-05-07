@@ -25,8 +25,8 @@ Author:
     params ["_suicider", "_trigger"];
 
     if (alive _suicider) then {
-        private _array = _suicider nearEntities ["SoldierWB", 30];
-        if !(_array isEqualTo []) then {
+        private _array = _suicider nearEntities [btc_player_type, 30];
+        if (_array isNotEqualTo []) then {
             _suicider doMove (position (_array select 0));
         };
         _this call btc_fnc_ied_suicider_activeLoop;

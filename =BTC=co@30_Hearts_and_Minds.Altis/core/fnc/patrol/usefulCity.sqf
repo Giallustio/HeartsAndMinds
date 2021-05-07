@@ -49,7 +49,7 @@ _cities_dirTo = _cities select {
     private _ang = _active_city getDir _x;
     (abs(_ang - _dirTo) min (360 - abs(_ang - _dirTo)) < 45);
 };
-if !(_cities_dirTo isEqualTo []) then {
+if (_cities_dirTo isNotEqualTo []) then {
     _cities = _cities_dirTo;
 };
 

@@ -123,14 +123,14 @@ if !(_en_AA) then {
     _type_units = _type_units select {!([_x, ["MissileLauncher", "256"]] call btc_fnc_mil_ammoUsage)};
 };
 _type_units = _type_units select {
-    !(getText (_cfgVehicles >> _x >> "role") isEqualTo "Crewman") &&
+    (getText (_cfgVehicles >> _x >> "role") isNotEqualTo "Crewman") &&
     ((_x find "_Survivor_") isEqualTo -1) &&
     ((_x find "_Story") isEqualTo -1) &&
     ((_x find "_unarmed_") isEqualTo -1) &&
-    !(getText (_cfgVehicles >> _x >> "vehicleClass") isEqualTo "MenVR")
+    (getText (_cfgVehicles >> _x >> "vehicleClass") isNotEqualTo "MenVR")
 };
 _type_crewmen = _type_units select 0;
-_type_motorized = _type_motorized select {!(getNumber (_cfgVehicles >> _x >> "isUav") isEqualTo 1)};
-_type_motorized_armed = _type_motorized_armed select {!(getNumber (_cfgVehicles >> _x >> "isUav") isEqualTo 1)};
+_type_motorized = _type_motorized select {getNumber (_cfgVehicles >> _x >> "isUav") isNotEqualTo 1};
+_type_motorized_armed = _type_motorized_armed select {getNumber (_cfgVehicles >> _x >> "isUav") isNotEqualTo 1};
 
 [_enemy_side, _type_units, _type_divers, _type_crewmen, _type_boats, _type_motorized, _type_motorized_armed, _type_mg, _type_gl]

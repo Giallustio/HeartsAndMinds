@@ -32,11 +32,11 @@ if (btc_debug || btc_debug_log) then {
 
 btc_global_reputation = btc_global_reputation + _reputation;
 
-if (btc_p_rep_notify) then {
+if (btc_p_rep_notify >= 0) then {
     if ((btc_rep_delayed select 1) isEqualTo []) then {
         [{
             [{
-                abs(btc_rep_delayed select 0) > 3
+                abs(btc_rep_delayed select 0) > btc_p_rep_notify
             }, {
                 btc_rep_delayed call btc_fnc_rep_notify;
             }, [], 10 * 60, {

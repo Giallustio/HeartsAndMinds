@@ -1,25 +1,24 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_mil_hd_hideout
+Function: btc_fnc_hideout_hd
 
 Description:
     Fill me when you edit me !
 
 Parameters:
-    _hideout - [Object]
-    _selection - [String]
-    _damage - [Number]
-    _source - [Object]
-    _ammo - [String]
-    _hitIndex - [Number]
-    _instigator - [Object]
-    _hitPoint - [String]
+    _hideout - Object to destroy. [Object]
+    _selection - Not use. [String]
+    _damage - Amount of damage get by the object. [Number]
+    _source - Not use. [Object]
+    _ammo - Type of ammo use to make damage. [String]
+    _hitIndex - Hit part index of the hit point, -1 otherwise. [Number]
+    _instigator - Person who pulled the trigger. [Object]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_mil_hd_hideout;
+        _result = [] call btc_fnc_hideout_hd;
     (end)
 
 Author:
@@ -34,17 +33,22 @@ params [
     ["_source", objNull, [objNull]],
     ["_ammo", "", [""]],
     ["_hitIndex", 0, [0]],
-    ["_instigator", objNull, [objNull]],
-    ["_hitPoint", "", [""]]
+    ["_instigator", objNull, [objNull]]
 ];
 
 private _explosive = getNumber(configFile >> "cfgAmmo" >> _ammo >> "explosive") > 0;
 
-if (_explosive && {_damage > 0.6}) then {
+if (
+    _explosive &&
+    {!(_hideout getVariable ["btc_fnc_mil_hd_hideout_fired", false])} &&
+    {_damage > 0.6}
+) then {
+    _hideout setVariable ["btc_fnc_mil_hd_hideout_fired", true];
+
     btc_hideouts deleteAt (btc_hideouts find _hideout);
     publicVariable "btc_hideouts";
 
-    [btc_rep_bonus_hideout, _source] call btc_fnc_rep_change;
+    [btc_rep_bonus_hideout, _instigator] call btc_fnc_rep_change;
 
     private _id = _hideout getVariable "id";
     private _marker = createMarker [format ["btc_hideout_%1_destroyed", _id], getPos _hideout];

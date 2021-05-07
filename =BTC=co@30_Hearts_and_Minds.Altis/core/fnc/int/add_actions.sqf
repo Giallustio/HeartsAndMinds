@@ -36,6 +36,10 @@ _action = ["Search_intel", localize "STR_A3_Showcase_Marksman_BIS_tskIntel_title
 {[_x, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToClass;} forEach (btc_type_units + btc_type_divers);
 _action = ["Interrogate_intel", localize "STR_BTC_HAM_ACTION_INTEL_INTERROGATE", "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\instructor_ca.paa", {[_target,true] spawn btc_fnc_info_ask;}, {alive _target && {[_target] call ace_common_fnc_isAwake} && captive _target}] call ace_interact_menu_fnc_createAction;
 {[_x, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToClass;} forEach (btc_type_units + btc_type_divers);
+_action = ["Search_intel", localize "STR_A3_Showcase_Marksman_BIS_tskIntel_title", "\A3\ui_f\data\igui\cfg\simpleTasks\types\search_ca.paa", {
+    [btc_fnc_info_search_for_intel, [_target]] call CBA_fnc_execNextFrame;
+}, {true}] call ace_interact_menu_fnc_createAction;
+{[_x, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToClass;} forEach btc_info_intels;
 
 //Log point
 {
@@ -117,7 +121,7 @@ _action = ["Civil_Go_away", localize "STR_BTC_HAM_ACTION_ORDERS_GOAWAY", "\A3\ui
 { //Actions attachted to AI
     _action = ["Civil_Orders", localize "STR_BTC_HAM_ACTION_ORDERS_MAIN", "\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa", {}, {true}] call ace_interact_menu_fnc_createAction;
     [_x, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToClass;
-    _action = ["Civil_taxi", localize "STR_BTC_HAM_ACTION_ORDERS_TAXI", "\A3\ui_f\data\igui\cfg\simpleTasks\types\talk4_ca.paa", {[4, _target] call btc_fnc_int_orders;}, {(alive _target) && !((vehicle _target) isEqualTo _target)}] call ace_interact_menu_fnc_createAction;
+    _action = ["Civil_taxi", localize "STR_BTC_HAM_ACTION_ORDERS_TAXI", "\A3\ui_f\data\igui\cfg\simpleTasks\types\talk4_ca.paa", {[4, _target] call btc_fnc_int_orders;}, {(alive _target) && (vehicle _target) isNotEqualTo _target}] call ace_interact_menu_fnc_createAction;
     [_x, 0, ["ACE_MainActions", "Civil_Orders"], _action] call ace_interact_menu_fnc_addActionToClass;
     _action = ["Civil_Stop", localize "STR_BTC_HAM_ACTION_ORDERS_STOP", "\A3\ui_f\data\igui\cfg\simpleTasks\types\talk3_ca.paa", {[1, _target] call btc_fnc_int_orders;}, {alive _target}] call ace_interact_menu_fnc_createAction;
     [_x, 0, ["ACE_MainActions", "Civil_Orders"], _action] call ace_interact_menu_fnc_addActionToClass;
@@ -186,13 +190,19 @@ _actions pushBack ["FOB", localize "STR_BTC_HAM_ACTION_REDEPLOYFOB", "\A3\Ui_f\d
 //Arsenal
 //BIS
 if (btc_p_arsenal_Type < 3) then {
-    btc_gear_object addAction [localize "STR_BTC_HAM_ACTION_ARSENAL_OPEN_BIS", "['Open', [!(btc_p_arsenal_Restrict isEqualTo 1), _this select 0]] call bis_fnc_arsenal;"];
+    btc_gear_object addAction [localize "STR_BTC_HAM_ACTION_ARSENAL_OPEN_BIS", "['Open', [btc_p_arsenal_Restrict isNotEqualTo 1, _this select 0]] call bis_fnc_arsenal;"];
 };
 //ACE
 if (btc_p_arsenal_Type > 0) then {
-    [btc_gear_object, !(btc_p_arsenal_Restrict isEqualTo 1), false] call ace_arsenal_fnc_initBox;
+    [btc_gear_object, btc_p_arsenal_Restrict isNotEqualTo 1, false] call ace_arsenal_fnc_initBox;
     if (btc_p_arsenal_Type in [2, 4]) then {
         btc_gear_object addAction [localize "STR_BTC_HAM_ACTION_ARSENAL_OPEN_ACE", "[btc_gear_object, player] call ace_arsenal_fnc_openBox;"];
     };
 };
-if !(btc_p_arsenal_Restrict isEqualTo 0) then {[btc_gear_object, btc_p_arsenal_Type, btc_p_arsenal_Restrict, btc_custom_arsenal] call btc_fnc_arsenal_data;};
+if (btc_p_arsenal_Restrict isNotEqualTo 0) then {[btc_gear_object, btc_p_arsenal_Type, btc_p_arsenal_Restrict, btc_custom_arsenal] call btc_fnc_arsenal_data;};
+
+//Door
+_action = ["door_break", localize "STR_BTC_HAM_ACTION_DOOR_BREAK", "\A3\Ui_f\data\IGUI\Cfg\Actions\open_door_ca.paa", {
+    [btc_fnc_door_break] call CBA_fnc_execNextFrame;
+}, {"ACE_wirecutter" in items player}] call ace_interact_menu_fnc_createAction;
+[player, 1, ["ACE_SelfActions", "ACE_Equipment"], _action] call ace_interact_menu_fnc_addActionToObject;
