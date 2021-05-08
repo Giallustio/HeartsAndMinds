@@ -9,12 +9,13 @@ Parameters:
     _caller - Caller (player). [Object]
     _unit - Target. [Object]
     _listOfItemsToRemove - Classnames. [Array]
+    _listOfTextItems - Array of number of removed items. [Array]
 
 Returns:
 
 Examples:
     (begin example)
-        [player, cursorObject, ["ACE_Banana"]] call btc_fnc_rep_foodRemoved;
+        [player, cursorObject, ["ACE_Banana"], ["2"]] call btc_fnc_rep_foodRemoved;
     (end)
 
 Author:
@@ -22,15 +23,20 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-params ["_caller", "_target", "_listOfItemsToRemove"];
+params ["_caller", "_target", "_listOfItemsToRemove",
+    ["_listOfTextItems", ["2"], [[]]]
+];
 
 if (
     (side group _target) isEqualTo civilian &&
     {"ACE_Banana" in _listOfItemsToRemove}
 ) then {
+    private _cfgWeapons = configFile >> "CfgWeapons";
+    private _posItemInArray = _listOfItemsToRemove findIf {_x isKindOf ["ACE_Banana", _cfgWeapons]};
+    private _repChange = btc_rep_bonus_removeFood * parseNumber (_listOfTextItems select _posItemInArray);
     if (isServer) then {
-        [btc_rep_bonus_removeFood, _caller] call btc_fnc_rep_change;
+        [_repChange, _caller] call btc_fnc_rep_change;
     } else {
-        [btc_rep_bonus_removeFood, _caller] remoteExecCall ["btc_fnc_rep_change", 2];
+        [_repChange, _caller] remoteExecCall ["btc_fnc_rep_change", 2];
     };
 };
