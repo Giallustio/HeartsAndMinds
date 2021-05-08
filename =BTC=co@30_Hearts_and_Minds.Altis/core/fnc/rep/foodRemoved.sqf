@@ -33,7 +33,7 @@ if (
 ) then {
     private _cfgWeapons = configFile >> "CfgWeapons";
     private _posItemInArray = _listOfItemsToRemove findIf {_x isKindOf ["ACE_Banana", _cfgWeapons]};
-    private _repChange = btc_rep_bonus_removeFood * parseNumber (_listOfTextItems select _posItemInArray);
+    private _repChange = btc_rep_malus_removeFood * parseNumber (_listOfTextItems select _posItemInArray);
     if (isServer) then {
         [_repChange, _caller] call btc_fnc_rep_change;
     } else {
