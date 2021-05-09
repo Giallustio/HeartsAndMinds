@@ -31,9 +31,7 @@ private _structures = [_rpos, 70] call btc_fnc_mil_getStructures;
 
 if (_structures isEqualTo []) then {
     private _houses = [_rpos, 50] call btc_fnc_getHouses;
-    if (_houses isEqualTo []) then {
-        _structure = "";
-    } else {
+    if (_houses isNotEqualTo []) then {
         _structure = selectRandom _houses;
         _n = 1;
     };
