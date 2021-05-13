@@ -27,7 +27,7 @@ Author:
 
     //handle cargo
     {
-        _x params ["_type", "_magClass", "_cargo_obj", ["_isContaminated", false, [false]]];
+        _x params ["_type", "_magClass", "_inventory", ["_isContaminated", false, [false]]];
 
         private _l = createVehicle [_type, getPosATL _obj, [], 0, "CAN_COLLIDE"];
         [_l] call btc_fnc_log_init;
@@ -40,7 +40,7 @@ Author:
             _l setVariable ["ace_rearm_magazineClass", _magClass, true]
         };
 
-        [_l, _cargo_obj] call btc_fnc_log_setInventory;
+        [_l, _inventory] call btc_fnc_log_setInventory;
 
         if (_isContaminated) then {
             btc_chem_contaminated pushBack _l;

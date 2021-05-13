@@ -45,9 +45,7 @@ private _cargo = [];
     });
 } forEach (_object getVariable ["ace_cargo_loaded", []]);
 _data pushBack _cargo;
-//Inventory
-private _cont = _x call btc_fnc_log_getInventory;
-_data pushBack _cont;
+_data pushBack (_object call btc_fnc_log_getInventory);
 _data pushBack [vectorDir _object, vectorUp _object];
 _data pushBack (_object in btc_chem_contaminated);
 

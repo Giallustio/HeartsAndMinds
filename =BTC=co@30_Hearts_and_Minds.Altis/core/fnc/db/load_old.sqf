@@ -126,6 +126,43 @@ btc_global_reputation = profileNamespace getVariable [format ["btc_hm_%1_rep", _
 {deleteVehicle _x} forEach btc_vehicles;
 btc_vehicles = [];
 
+private _fnc_migrateOldToNew_inventory = {
+    params [
+        ["_weap_obj", [[],[]], [[]]],
+        ["_mags_obj", [], [[]]],
+        ["_items_obj", [], [[]]],
+        ["_backpack_obj", [], [[]]]
+    ];
+
+    private _weaponsItemsCargo = [];
+    {
+        for "_i" from 1 to (_weap_obj select 1 select _forEachindex) do {
+            _weaponsItemsCargo pushBack [_x,"","","",[],[],""];
+        };
+    } forEach (_weap_obj select 0);
+
+    private _itemCargo = [];
+    {
+        for "_i" from 1 to (_items_obj select 1 select _forEachindex) do {
+            _itemCargo pushBack _x;
+        };
+    } forEach (_items_obj select 0);
+
+    private _everyContainer = [];
+    {
+        for "_i" from 1 to (_backpack_obj select 1 select _forEachindex) do {
+            _everyContainer pushBack [_x,[[[],[]],[],[],[]];
+        };
+    } forEach (_backpack_obj select 0);
+
+    [
+        _mags_obj,
+        _weaponsItemsCargo,
+        _itemCargo,
+        _everyContainer
+    ]
+};
+
 private _objs = +(profileNamespace getVariable [format ["btc_hm_%1_objs", _name], []]);
 [{ // Can't use ace_cargo for objects created during first frame.
     {
@@ -161,7 +198,7 @@ private _objs = +(profileNamespace getVariable [format ["btc_hm_%1_objs", _name]
             };
 
             [_obj] call btc_fnc_log_init;
-            [_obj, _cargo, _inventory] call btc_fnc_db_loadCargo;
+            [_obj, _cargo, _inventory call _fnc_migrateOldToNew_inventory] call btc_fnc_db_loadCargo;
         };
     } forEach _this;
 }, _objs] call CBA_fnc_execNextFrame;
@@ -194,11 +231,11 @@ private _vehs = +(profileNamespace getVariable [format ["btc_hm_%1_vehs", _name]
             [format ["_veh = %1", _x], __FILE__, [false]] call btc_fnc_debug_message;
         };
 
-        private _veh = [_veh_type, _veh_pos, _veh_dir, _customization, _isMedicalVehicle, _isRepairVehicle, _fuelSource, _pylons, _isContaminated, _supplyVehicle, _EDENinventory, _veh_AllHitPointsDamage] call btc_fnc_log_createVehicle;
+        private _veh = [_veh_type, _veh_pos, _veh_dir, _customization, _isMedicalVehicle, _isRepairVehicle, _fuelSource, _pylons, _isContaminated, _supplyVehicle, _EDENinventory call _fnc_migrateOldToNew_inventory, _veh_AllHitPointsDamage] call btc_fnc_log_createVehicle;
         _veh setVectorDirAndUp _vectorPos;
         _veh setFuel _veh_fuel;
 
-        [_veh, _veh_cargo, _veh_cont] call btc_fnc_db_loadCargo;
+        [_veh, _veh_cargo, _veh_cont call _fnc_migrateOldToNew_inventory] call btc_fnc_db_loadCargo;
 
         if !(alive _veh) then {
             [_veh, objNull, objNull, false] call btc_fnc_veh_killed;
