@@ -126,7 +126,7 @@ btc_global_reputation = profileNamespace getVariable [format ["btc_hm_%1_rep", _
 {deleteVehicle _x} forEach btc_vehicles;
 btc_vehicles = [];
 
-private _fnc_migrateOldToNew_inventory = {
+btc_load_fnc_migrateOldToNew_inventory = {
     params [
         ["_weap_obj", [[],[]], [[]]],
         ["_mags_obj", [], [[]]],
@@ -151,7 +151,7 @@ private _fnc_migrateOldToNew_inventory = {
     private _everyContainer = [];
     {
         for "_i" from 1 to (_backpack_obj select 1 select _forEachindex) do {
-            _everyContainer pushBack [_x,[[[],[]],[],[],[]];
+            _everyContainer pushBack [_x,[[[],[]],[],[],[]]];
         };
     } forEach (_backpack_obj select 0);
 
@@ -198,7 +198,10 @@ private _objs = +(profileNamespace getVariable [format ["btc_hm_%1_objs", _name]
             };
 
             [_obj] call btc_fnc_log_init;
-            [_obj, _cargo, _inventory call _fnc_migrateOldToNew_inventory] call btc_fnc_db_loadCargo;
+            {
+                _x set [2, (_x select 2) call btc_load_fnc_migrateOldToNew_inventory];
+            } forEach _cargo;
+            [_obj, _cargo, _inventory call btc_load_fnc_migrateOldToNew_inventory] call btc_fnc_db_loadCargo;
         };
     } forEach _this;
 }, _objs] call CBA_fnc_execNextFrame;
@@ -231,11 +234,14 @@ private _vehs = +(profileNamespace getVariable [format ["btc_hm_%1_vehs", _name]
             [format ["_veh = %1", _x], __FILE__, [false]] call btc_fnc_debug_message;
         };
 
-        private _veh = [_veh_type, _veh_pos, _veh_dir, _customization, _isMedicalVehicle, _isRepairVehicle, _fuelSource, _pylons, _isContaminated, _supplyVehicle, _EDENinventory call _fnc_migrateOldToNew_inventory, _veh_AllHitPointsDamage] call btc_fnc_log_createVehicle;
+        private _veh = [_veh_type, _veh_pos, _veh_dir, _customization, _isMedicalVehicle, _isRepairVehicle, _fuelSource, _pylons, _isContaminated, _supplyVehicle, _EDENinventory call btc_load_fnc_migrateOldToNew_inventory, _veh_AllHitPointsDamage] call btc_fnc_log_createVehicle;
         _veh setVectorDirAndUp _vectorPos;
         _veh setFuel _veh_fuel;
 
-        [_veh, _veh_cargo, _veh_cont call _fnc_migrateOldToNew_inventory] call btc_fnc_db_loadCargo;
+        {
+            _x set [2, (_x select 2) call btc_load_fnc_migrateOldToNew_inventory];
+        } forEach _veh_cargo;
+        [_veh, _veh_cargo, _veh_cont call btc_load_fnc_migrateOldToNew_inventory] call btc_fnc_db_loadCargo;
 
         if !(alive _veh) then {
             [_veh, objNull, objNull, false] call btc_fnc_veh_killed;
