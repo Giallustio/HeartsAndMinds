@@ -24,22 +24,25 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-btc_delay_createUnit = btc_delay_createUnit + 0.3;
+btc_delay_createUnit = btc_delay_createUnit + 0.2;
 
 [{
     params [
         ["_group", grpNull, [grpNull]],
         ["_unit_type", "", [""]],
-        ["_pos", [0, 0, 0], [[]]],
+        ["_pos", [0, 0, 0], [[], createHashMap]],
         ["_special", "CARGO", [""]],
         ["_vehicle", objNull, [objNull]]
     ];
 
     if (isNull _group) exitWith {
         [format ["isNull _group _this = %1", _this], __FILE__, [btc_debug, btc_debug_log, true]] call btc_fnc_debug_message;
-        btc_delay_createUnit = btc_delay_createUnit - 0.3;
+        btc_delay_createUnit = btc_delay_createUnit - 0.2;
     };
 
+    if !(_pos isEqualType []) then {
+        _pos = _pos get "_pos";
+    };
     private _unit = _group createUnit [_unit_type, _pos, [], 0, _special];
     [_unit] joinSilent _group;
 
@@ -47,5 +50,5 @@ btc_delay_createUnit = btc_delay_createUnit + 0.3;
         _unit moveInAny _vehicle;
     };
 
-    btc_delay_createUnit = btc_delay_createUnit - 0.3;
+    btc_delay_createUnit = btc_delay_createUnit - 0.2;
 }, _this, btc_delay_createUnit - 0.01] call CBA_fnc_waitAndExecute;

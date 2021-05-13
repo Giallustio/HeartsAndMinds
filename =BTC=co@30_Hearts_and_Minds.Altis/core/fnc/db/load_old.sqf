@@ -67,7 +67,7 @@ private _cities_status = +(profileNamespace getVariable [format ["btc_hm_%1_citi
 private _array_ho = +(profileNamespace getVariable [format ["btc_hm_%1_ho", _name], []]);
 
 {
-    _x call btc_fnc_mil_create_hideout;
+    _x call btc_fnc_hideout_create;
 } forEach _array_ho;
 
 private _ho = profileNamespace getVariable [format ["btc_hm_%1_ho_sel", _name], 0];

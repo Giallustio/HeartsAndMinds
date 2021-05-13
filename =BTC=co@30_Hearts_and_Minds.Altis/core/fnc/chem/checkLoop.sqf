@@ -40,13 +40,12 @@ private _bodyParts = ["head","body","hand_l","hand_r","leg_l","leg_r"];
         (0 boundingBoxReal _x) params ["_p1", "_p2"];
         private _maxWidth = abs ((_p2 select 0) - (_p1 select 0));
         private _maxLength = abs ((_p2 select 1) - (_p1 select 1));
-        private _pos = getPosWorld _x;
-        private _maxHeight = abs ((_p2 select 2) - (_p1 select 2)) + (_pos select 2);
+        private _maxHeight = abs ((_p2 select 2) - (_p1 select 2));
         private _sorted = _contaminated;
         if (_x isKindOf "DeconShower_01_F") then {
             _sorted = _unitsContaminated; // Small shower can only decontaminate units
         };
-        _objtToDecontaminate append (_sorted inAreaArray [_pos, _maxWidth/2, _maxLength/2, getDir _x, true, _maxHeight]);
+        _objtToDecontaminate append (_sorted inAreaArray [ASLToAGL getPosASL _x, _maxWidth/2, _maxLength/2, getDir _x, true, _maxHeight]);
     } forEach (_decontaminate select {_x animationSourcePhase "valve_source" isEqualTo 1});
     {
         if (!(local _x) && {_x in _units}) then {
@@ -72,8 +71,7 @@ private _bodyParts = ["head","body","hand_l","hand_r","leg_l","leg_r"];
         if (_x in _units) then {
             _range = _range / 2;
         };
-        private _pos = getPosWorld _x;
-        _unitContaminate append (_units inAreaArray [_pos, _range, _range, 0, false, 2 + (_pos select 2)]);
+        _unitContaminate append (_units inAreaArray [ASLToAGL getPosASL _x, _range, _range, 0, false, 2]);
     } forEach _contaminated;
 
     if (_unitContaminate isEqualTo []) exitWith {};
