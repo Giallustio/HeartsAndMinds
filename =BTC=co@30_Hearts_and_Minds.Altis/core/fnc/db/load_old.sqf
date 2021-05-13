@@ -127,42 +127,44 @@ btc_global_reputation = profileNamespace getVariable [format ["btc_hm_%1_rep", _
 btc_vehicles = [];
 
 private _objs = +(profileNamespace getVariable [format ["btc_hm_%1_objs", _name], []]);
-{
-    [_x] call {
-        params [
-            ["_object_data", [], [[]]]
-        ];
-        _object_data params [
-            "_type",
-            "_posWorld",
-            "_dir",
-            "_magClass",
-            "_cargo",
-            "_inventory",
-            "_vectorPos",
-            ["_isContaminated", false, [false]]
-        ];
+[{ // Can't use ace_cargo for objects created during first frame.
+    {
+        [_x] call {
+            params [
+                ["_object_data", [], [[]]]
+            ];
+            _object_data params [
+                "_type",
+                "_posWorld",
+                "_dir",
+                "_magClass",
+                "_cargo",
+                "_inventory",
+                "_vectorPos",
+                ["_isContaminated", false, [false]]
+            ];
 
-        private _obj =  _type createVehicle _posWorld;
+            private _obj =  _type createVehicle _posWorld;
 
-        _obj setDir _dir;
-        _obj setPosWorld _posWorld;
-        _obj setVectorDirAndUp _vectorPos;
+            _obj setDir _dir;
+            _obj setPosWorld _posWorld;
+            _obj setVectorDirAndUp _vectorPos;
 
-        if (_isContaminated) then {
-            if ((btc_chem_contaminated pushBackUnique _obj) > -1) then {
-                publicVariable "btc_chem_contaminated";
+            if (_isContaminated) then {
+                if ((btc_chem_contaminated pushBackUnique _obj) > -1) then {
+                    publicVariable "btc_chem_contaminated";
+                };
             };
-        };
-        if (_magClass isNotEqualTo "") then {_obj setVariable ["ace_rearm_magazineClass", _magClass, true]};
-        if (unitIsUAV _obj) then {
-            createVehicleCrew _obj;
-        };
+            if (_magClass isNotEqualTo "") then {_obj setVariable ["ace_rearm_magazineClass", _magClass, true]};
+            if (unitIsUAV _obj) then {
+                createVehicleCrew _obj;
+            };
 
-        [_obj] call btc_fnc_log_init;
-        [_obj, _cargo, _inventory] call btc_fnc_db_loadCargo;
-    };
-} forEach _objs;
+            [_obj] call btc_fnc_log_init;
+            [_obj, _cargo, _inventory] call btc_fnc_db_loadCargo;
+        };
+    } forEach _this;
+}, _objs] call CBA_fnc_execNextFrame;
 
 //VEHICLES
 private _vehs = +(profileNamespace getVariable [format ["btc_hm_%1_vehs", _name], []]);
