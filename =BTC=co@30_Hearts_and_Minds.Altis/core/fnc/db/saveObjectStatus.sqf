@@ -30,10 +30,8 @@ _data pushBack (typeOf _object);
 _data pushBack (getPosASL _object);
 _data pushBack (getDir _object);
 _data pushBack (_object getVariable ["ace_rearm_magazineClass", ""]);
-//Cargo
-private _cargo = [];
-{
-    _cargo pushBack (if (_x isEqualType "") then {
+private _cargo = (_object getVariable ["ace_cargo_loaded", []]) apply {
+    if (_x isEqualType "") then {
         [_x, "", [[], [], []]]
     } else {
         [
@@ -42,8 +40,8 @@ private _cargo = [];
             _x call btc_fnc_log_inventoryGet,
             _x in btc_chem_contaminated
         ]
-    });
-} forEach (_object getVariable ["ace_cargo_loaded", []]);
+    };    
+};
 _data pushBack _cargo;
 _data pushBack (_object call btc_fnc_log_inventoryGet);
 _data pushBack [vectorDir _object, vectorUp _object];
