@@ -53,7 +53,7 @@ _veh setPosASL _pos;
 [_veh, _customization, _isMedicalVehicle, _isRepairVehicle, _fuelSource, _pylons, _isContaminated, _supplyVehicle] call btc_fnc_setVehProperties;
 if (_EDENinventory isNotEqualTo []) then {
     _veh setVariable ["btc_EDENinventory", _EDENinventory];
-    [_veh, _EDENinventory] call btc_fnc_log_setInventory;
+    [_veh, _EDENinventory] call btc_fnc_log_inventorySet;
 };
 
 _veh setVariable ["btc_dont_delete", true];

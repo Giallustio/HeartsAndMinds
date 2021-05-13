@@ -40,7 +40,7 @@ Author:
             _l setVariable ["ace_rearm_magazineClass", _magClass, true]
         };
 
-        [_l, _inventory] call btc_fnc_log_setInventory;
+        [_l, _inventory] call btc_fnc_log_inventorySet;
 
         if (_isContaminated) then {
             btc_chem_contaminated pushBack _l;
@@ -49,5 +49,5 @@ Author:
     } forEach _cargo;
 
     //set inventory content for weapons, magazines and items
-    [_obj, _inventory] call btc_fnc_log_setInventory;
+    [_obj, _inventory] call btc_fnc_log_inventorySet;
 }, _this] call CBA_fnc_execNextFrame;

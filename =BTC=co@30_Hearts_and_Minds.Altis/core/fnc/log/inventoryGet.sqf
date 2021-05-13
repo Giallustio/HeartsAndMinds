@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_log_getInventory
+Function: btc_fnc_log_inventoryGet
 
 Description:
     Get inventory of an object.
@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        [cursorObject] call btc_fnc_log_getInventory;
+        [cursorObject] call btc_fnc_log_inventoryGet;
     (end)
 
 Author:
@@ -26,7 +26,7 @@ params [
 
 private _everyContainer = everyContainer _object;
 {
-    _x set [1, (_x select 1) call btc_fnc_log_getInventory];
+    _x set [1, (_x select 1) call btc_fnc_log_inventoryGet];
 } forEach _everyContainer;
 
 [

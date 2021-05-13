@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_log_setInventory
+Function: btc_fnc_log_inventorySet
 
 Description:
     Set inventory of an object.
@@ -13,7 +13,7 @@ Returns:
 
 Examples:
     (begin example)
-        [cursorObject, [cursorObject] call btc_fnc_log_getInventory] call btc_fnc_log_setInventory;
+        [cursorObject, [cursorObject] call btc_fnc_log_inventoryGet] call btc_fnc_log_inventorySet;
     (end)
 
 Author:
@@ -56,7 +56,7 @@ _inventory params [
     };
 
     private _newContainer = everyContainer _object;
-    [(_newContainer select (count _newContainer -1)) select 1, _x select 1] call btc_fnc_log_setInventory;
+    [(_newContainer select (count _newContainer -1)) select 1, _x select 1] call btc_fnc_log_inventorySet;
 } forEach _everyContainer;
 
 {
