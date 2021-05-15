@@ -27,7 +27,7 @@ Author:
 
 params [
     ["_group", grpNull, [grpNull]],
-    ["_pos", [0, 0, 0], [[]]],
+    ["_pos", [0, 0, 0], [[], createHashMap]],
     ["_number", 0, [0]],
     ["_pos_iswater", false, [false]],
     ["_type_units", btc_type_units, [[]]],

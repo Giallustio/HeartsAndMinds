@@ -36,6 +36,10 @@ _action = ["Search_intel", localize "STR_A3_Showcase_Marksman_BIS_tskIntel_title
 {[_x, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToClass;} forEach (btc_type_units + btc_type_divers);
 _action = ["Interrogate_intel", localize "STR_BTC_HAM_ACTION_INTEL_INTERROGATE", "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\instructor_ca.paa", {[_target,true] spawn btc_info_fnc_ask;}, {alive _target && {[_target] call ace_common_fnc_isAwake} && captive _target}] call ace_interact_menu_fnc_createAction;
 {[_x, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToClass;} forEach (btc_type_units + btc_type_divers);
+_action = ["Search_intel", localize "STR_A3_Showcase_Marksman_BIS_tskIntel_title", "\A3\ui_f\data\igui\cfg\simpleTasks\types\search_ca.paa", {
+    [btc_fnc_info_search_for_intel, [_target]] call CBA_fnc_execNextFrame;
+}, {true}] call ace_interact_menu_fnc_createAction;
+{[_x, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToClass;} forEach btc_info_intels;
 
 //Log point
 {
@@ -129,6 +133,8 @@ _action = ["Civil_Go_away", localize "STR_BTC_HAM_ACTION_ORDERS_GOAWAY", "\A3\ui
     [_x, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToClass;
     _action = ["Ask_Reputation", localize "STR_BTC_HAM_ACTION_ORDERS_ASKREP", "\A3\ui_f\data\igui\cfg\simpleTasks\types\talk_ca.paa", {[_target] spawn btc_info_fnc_ask_reputation;}, {alive _target && {[_target] call ace_common_fnc_isAwake} && {side _target isEqualTo civilian}}] call ace_interact_menu_fnc_createAction;
     [_x, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToClass;
+    _action = ["Give_food", localize "STR_BTC_HAM_ACTION_GIVEFOOD", "\z\ace\addons\common\data\icon_banana_ca.paa", {[player, _target] call btc_int_fnc_foodGive}, {alive _target && {"ACE_Banana" in items player}}] call ace_interact_menu_fnc_createAction;
+    [_x, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToClass;
 
     //remove ace3 "get down" order
     [_x, 0, ["ACE_MainActions", "ACE_GetDown"]] call ace_interact_menu_fnc_removeActionFromClass;
@@ -196,3 +202,9 @@ if (btc_p_arsenal_Type > 0) then {
     };
 };
 if (btc_p_arsenal_Restrict isNotEqualTo 0) then {[btc_gear_object, btc_p_arsenal_Type, btc_p_arsenal_Restrict, btc_custom_arsenal] call btc_arsenal_fnc_data;};
+
+//Door
+_action = ["door_break", localize "STR_BTC_HAM_ACTION_DOOR_BREAK", "\A3\Ui_f\data\IGUI\Cfg\Actions\open_door_ca.paa", {
+    [btc_door_fnc_break] call CBA_fnc_execNextFrame;
+}, {"ACE_wirecutter" in items player}] call ace_interact_menu_fnc_createAction;
+[player, 1, ["ACE_SelfActions", "ACE_Equipment"], _action] call ace_interact_menu_fnc_addActionToObject;

@@ -166,7 +166,7 @@ if (_fractures > 0) then {
 private _cargos = [
     [],
     [_backpack, [["SmokeShellGreen", 3, 1], ["SmokeShellPurple", 1, 1]] + _backpackMedical],
-    [_backpack, [["ToolKit", 1], ["ACE_EntrenchingTool", 1]]],
+    [_backpack, [["ToolKit", 1], ["ACE_EntrenchingTool", 1], ["ACE_wirecutter", 1]]],
     [_backpack, [["ACE_DefusalKit", 1], ["ACE_Clacker", 2], ["ACE_SpraypaintRed", 1], ["DemoCharge_Remote_Mag", 2, 1], [["ACE_VMM3", "", "", "", [], [], ""], 1], ["ACE_EntrenchingTool", 1]]],
     [_backpack, [[_launcherMagazines param [1, _launcherMagazine], 1, _launcherCount], [_launcherMagazine, 1, _launcherCount]]],
     [_backpack_big, [[_launcherMagazine, 2, _launcherCount]]],

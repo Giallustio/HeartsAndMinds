@@ -30,8 +30,15 @@ if (btc_debug_log) then {
     [format ["%1", _body getVariable "intel"], __FILE__, [false]] call btc_debug_fnc_message;
 };
 
-if (_body getVariable ["intel", false] && !(_body getVariable ["btc_already_interrogated", false])) then {
+if (
+    _body isKindOf "Items_base_F" || (
+    _body getVariable ["intel", false] &&
+    !(_body getVariable ["btc_already_interrogated", false]))
+) then {
     _body setVariable ["intel", false];
+    if (_body isKindOf "Items_base_F") then {
+        _body call CBA_fnc_deleteEntity;
+    };
     if (isServer) then    {
         [_asker] call btc_info_fnc_give_intel;
     } else {
