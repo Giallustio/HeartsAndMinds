@@ -39,7 +39,6 @@ if (isServer) then {
     btc_fnc_city_de_activate = compileScript ["core\fnc\city\de_activate.sqf"];
     btc_fnc_city_set_clear = compileScript ["core\fnc\city\set_clear.sqf"];
     btc_fnc_city_trigger_player_side = compileScript ["core\fnc\city\trigger_player_side.sqf"];
-    btc_fnc_city_findPos = compileScript ["core\fnc\city\findPos.sqf"];
     btc_fnc_city_cleanUp = compileScript ["core\fnc\city\cleanUp.sqf"];
     btc_fnc_city_trigger_free_condition = compileScript ["core\fnc\city\trigger_free_condition.sqf"];
     btc_fnc_city_getHouses = compileScript ["core\fnc\city\getHouses.sqf"];
@@ -255,6 +254,7 @@ btc_fnc_patrol_disabled = compileScript ["core\fnc\patrol\disabled.sqf"];
 //REP
 btc_fnc_rep_hd = compileScript ["core\fnc\rep\hd.sqf"];
 btc_fnc_rep_suppressed = compileScript ["core\fnc\rep\suppressed.sqf"];
+btc_fnc_rep_foodRemoved = compileScript ["core\fnc\rep\foodRemoved.sqf"];
 
 //ARSENAL
 btc_fnc_arsenal_ammoUsage = compileScript ["core\fnc\arsenal\ammoUsage.sqf"];
@@ -316,6 +316,7 @@ if (!isDedicated) then {
     btc_fnc_int_orders = compileScript ["core\fnc\int\orders.sqf"];
     btc_fnc_int_shortcuts = compileScript ["core\fnc\int\shortcuts.sqf"];
     btc_fnc_int_terminal = compileScript ["core\fnc\int\terminal.sqf"];
+    btc_fnc_int_foodGive = compileScript ["core\fnc\int\foodGive.sqf"];
 
     //INFO
     btc_fnc_info_ask = compileScript ["core\fnc\info\ask.sqf"];

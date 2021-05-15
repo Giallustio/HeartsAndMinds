@@ -120,7 +120,7 @@ if (_data_units isNotEqualTo []) then {
 
     if (_has_en) then {
         for "_i" from 1 to (round (_p_mil_group_ratio * (1 + random _max_number_group))) do {
-            [_city, _spawningRadius, 1 + round random [0, 1, 2], random 1] call btc_fnc_mil_create_group;
+            [_city, _spawningRadius, 1 + round random 2, random 1] call btc_fnc_mil_create_group;
         };
     };
 
@@ -289,13 +289,11 @@ if (
     [[_city, _spawningRadius/3], btc_fnc_city_getHouses] call btc_fnc_delay_exec;
 };
 
-if (_city getVariable ["btc_city_houses", []] isNotEqualTo []) then {
-    [_city, btc_fnc_door_lock] call btc_fnc_delay_exec;
+[_city, btc_fnc_door_lock] call btc_fnc_delay_exec;
 
-    if (btc_p_info_houseDensity > 0) then {
-        [_city, btc_fnc_info_createIntels] call btc_fnc_delay_exec;
-    };   
-};
+if (btc_p_info_houseDensity > 0) then {
+    [_city, btc_fnc_info_createIntels] call btc_fnc_delay_exec;
+};   
 
 private _civKilled = _city getVariable ["btc_rep_civKilled", []];
 if (_civKilled isNotEqualTo []) then {

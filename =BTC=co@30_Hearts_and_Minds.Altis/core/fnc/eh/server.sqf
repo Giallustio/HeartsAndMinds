@@ -82,3 +82,4 @@ if (btc_p_set_skill) then {
     }, false] call CBA_fnc_addClassEventHandler;
 } forEach btc_civ_type_veh;
 ["ace_tagCreated", btc_fnc_tag_eh] call CBA_fnc_addEventHandler;
+["ace_disarming_dropItems", btc_fnc_rep_foodRemoved] call CBA_fnc_addEventHandler; 

@@ -51,7 +51,7 @@ Online [wiki available](http://vdauphin.github.io/HeartsAndMinds/).
     - [Spectrum devices](http://vdauphin.github.io/HeartsAndMinds/InGame-documentation#spectrum-devices)
 - Under the hood
     - A lot of optional gameplay
-    - More than 321 enemies and 27 civilians factions available
+    - More than 326 enemies and 29 civilians factions available
     - Full saving Database ([even player markers](http://vdauphin.github.io/HeartsAndMinds/InGame-documentation#headless--database))
     - Easy map change (See [here](http://vdauphin.github.io/HeartsAndMinds/Change-MAP-of-Hearts-and-Minds))
     - Auto Headless support
@@ -63,7 +63,7 @@ The militia has an unknown number of hideouts in the island that need to be dest
 They have also ammo caches in various locations, destroy them to weaken its power.
 
 Bad actions cause bad effects.
-Infact there's a reputation system: helping the local population, fighting the "Oplitas", disarming IED will rise your reputation; killing civilians, mutilate alive/dead civilian, firing near civilians for no reason, damaging/destroying buildings, breaking locked door, losing vehicles, respawns will decrease your reputation.
+Infact there's a reputation system: helping the local population, fighting the "Oplitas", disarming IED will rise your reputation; killing civilians, mutilate alive/dead civilian, firing near civilians for no reason, remove banana, damaging/destroying buildings, breaking locked door, losing vehicles, respawns will decrease your reputation.
 At the beginning you have a very low reputation level, so civilians won't help you revealing important information about Oplitas, they will likely lie instead.
 
 <p align="center">
