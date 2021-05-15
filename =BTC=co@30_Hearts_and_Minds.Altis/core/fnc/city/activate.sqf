@@ -286,13 +286,13 @@ if (
     !(_type in ["Hill", "NameMarine"]) &&
     _city getVariable ["btc_city_houses", []] isEqualTo []
 ) then {
-    [[_city, _spawningRadius/3], btc_city_fnc_getHouses] call btc_fnc_delay_exec;
+    [[_city, _spawningRadius/3], btc_city_fnc_getHouses] call btc_delay_fnc_exec;
 };
 
-[_city, btc_fnc_door_lock] call btc_fnc_delay_exec;
+[_city, btc_fnc_door_lock] call btc_delay_fnc_exec;
 
 if (btc_p_info_houseDensity > 0) then {
-    [_city, btc_info_fnc_createIntels] call btc_fnc_delay_exec;
+    [_city, btc_info_fnc_createIntels] call btc_delay_fnc_exec;
 };   
 
 private _civKilled = _city getVariable ["btc_rep_civKilled", []];

@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_door_break
+Function: btc_door_fnc_break
 
 Description:
     Break locked door action.
@@ -11,7 +11,7 @@ Returns:
 
 Examples:
     (begin example)
-        [] call btc_fnc_door_break;
+        [] call btc_door_fnc_break;
     (end)
 
 Author:
@@ -28,5 +28,5 @@ if (_door isEqualTo "") exitWith {
     [player, objNull, ["isnotinside"]] call ace_common_fnc_canInteractWith
 }, {
     params ["_args"];
-    _args call btc_fnc_door_broke;
+    _args call btc_door_fnc_broke;
 }, {}, [_house, _door]] call CBA_fnc_progressBar;

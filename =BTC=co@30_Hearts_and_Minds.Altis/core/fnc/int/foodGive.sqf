@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_int_foodGive
+Function: btc_int_fnc_foodGive
 
 Description:
     Give food to a unit.
@@ -13,7 +13,7 @@ Returns:
 
 Examples:
     (begin example)
-        [player, cursorObject] call btc_fnc_int_foodGive;
+        [player, cursorObject] call btc_int_fnc_foodGive;
     (end)
 
 Author:

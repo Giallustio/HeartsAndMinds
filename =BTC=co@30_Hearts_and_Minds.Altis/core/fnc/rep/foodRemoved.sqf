@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_rep_foodRemoved
+Function: btc_rep_fnc_foodRemoved
 
 Description:
     Change reputation if food is removed.
@@ -15,7 +15,7 @@ Returns:
 
 Examples:
     (begin example)
-        [player, cursorObject, ["ACE_Banana"], ["2"]] call btc_fnc_rep_foodRemoved;
+        [player, cursorObject, ["ACE_Banana"], ["2"]] call btc_rep_fnc_foodRemoved;
     (end)
 
 Author:

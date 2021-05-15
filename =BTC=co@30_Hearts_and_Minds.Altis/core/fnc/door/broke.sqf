@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_door_broke
+Function: btc_door_fnc_broke
 
 Description:
     Unlock door.
@@ -13,7 +13,7 @@ Returns:
 
 Examples:
     (begin example)
-        ([2] call ace_interaction_fnc_getDoor) call btc_fnc_door_broke;
+        ([2] call ace_interaction_fnc_getDoor) call btc_door_fnc_broke;
     (end)
 
 Author:

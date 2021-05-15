@@ -68,7 +68,7 @@ if (
         };
         _pos = [_pos] call btc_fnc_findPosOutsideRock;
         _this set ["_pos", _pos];
-    }] call btc_fnc_delay_exec;
+    }] call btc_delay_fnc_exec;
 };
 
 private _groups = [];
