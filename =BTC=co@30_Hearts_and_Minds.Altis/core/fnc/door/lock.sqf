@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_door_lock
+Function: btc_door_fnc_lock
 
 Description:
     Lock door in a city.
@@ -13,7 +13,7 @@ Returns:
 
 Examples:
     (begin example)
-        [player] call btc_fnc_door_lock;
+        [player] call btc_door_fnc_lock;
     (end)
 
 Author:

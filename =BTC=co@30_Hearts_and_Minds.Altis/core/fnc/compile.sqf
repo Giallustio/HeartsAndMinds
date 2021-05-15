@@ -73,7 +73,7 @@ if (isServer) then {
     btc_delay_fnc_exec = compileScript ["core\fnc\delay\exec.sqf"];
 
     //DOOR
-    btc_fnc_door_lock = compileScript ["core\fnc\door\lock.sqf"];
+    btc_door_fnc_lock = compileScript ["core\fnc\door\lock.sqf"];
 
     //EH
     btc_eh_fnc_server = compileScript ["core\fnc\eh\server.sqf"];
