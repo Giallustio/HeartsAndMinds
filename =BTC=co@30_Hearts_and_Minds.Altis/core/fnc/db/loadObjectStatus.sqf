@@ -25,7 +25,7 @@ params [
 ];
 _object_data params [
     "_type",
-    "_posWorld",
+    "_pos",
     "_dir",
     "_magClass",
     "_cargo",
@@ -34,10 +34,10 @@ _object_data params [
     ["_isContaminated", false, [false]]
 ];
 
-private _obj = _type createVehicle _posWorld;
+private _obj = createVehicle [_type, ASLToATL _pos, [], 0, "CAN_COLLIDE"];
 
 _obj setDir _dir;
-_obj setPosWorld _posWorld;
+_obj setPosASL _pos;
 _obj setVectorDirAndUp _vectorPos;
 
 if (_isContaminated) then {
