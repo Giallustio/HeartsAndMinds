@@ -139,26 +139,19 @@ private _vehiclesNotInCargo = _vehicles select {
 };
 private _vehiclesInCargo = _vehicles - _vehiclesNotInCargo;
 {
+    (_x call btc_fnc_db_saveObjectStatus) params ["_type", "_pos", "_dir", "", "_cargo", "_inventory", "_vectorPos", "_isContaminated"];
+
     private _data = [];
-    _data pushBack (typeOf _x);
-    _data pushBack (getPosASL _x);
-    _data pushBack (getDir _x);
+    _data pushBack _type;
+    _data pushBack _pos;
+    _data pushBack _dir;
     _data pushBack (fuel _x);
     _data pushBack (getAllHitPointsDamage _x);
-    private _cargo = [];
-    {
-        _cargo pushBack (if (_x isEqualType "") then {
-            [_x, "", [[], [], []]]
-        } else {
-            [typeOf _x, _x getVariable ["ace_rearm_magazineClass", ""], [getWeaponCargo _x, getMagazineCargo _x, getItemCargo _x, getBackpackCargo _x], _x in btc_chem_contaminated]
-        });
-    } forEach (_x getVariable ["ace_cargo_loaded", []]);
     _data pushBack _cargo;
-    private _cont = [getWeaponCargo _x, getMagazineCargo _x, getItemCargo _x, getBackpackCargo _x];
-    _data pushBack _cont;
+    _data pushBack _inventory;
     _data append ([_x] call btc_fnc_getVehProperties);
     _data pushBack (_x getVariable ["btc_EDENinventory", []]);
-    _data pushBack ([vectorDir _x, vectorUp _x]);
+    _data pushBack _vectorPos;
     _data pushBack []; // ViV
 
     private _fakeViV = isVehicleCargo attachedTo _x;
@@ -186,7 +179,10 @@ profileNamespace setVariable [format ["btc_hm_%1_vehs", _name], +_array_veh];
 //Objects status
 private _array_obj = [];
 {
-    private _data = [_x] call btc_fnc_db_saveObjectStatus;
+    private _data = [];
+    if !(!alive _x || isNull _x) then {
+        _data = [_x] call btc_fnc_db_saveObjectStatus;
+    };
     if (_data isNotEqualTo []) then {
         _array_obj pushBack _data;
     };

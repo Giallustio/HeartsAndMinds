@@ -180,12 +180,13 @@ if (isServer) then {
     btc_fnc_log_createVehicle = compileScript ["core\fnc\log\createVehicle.sqf"];
     btc_fnc_log_getRearmMagazines = compileScript ["core\fnc\log\getRearmMagazines.sqf"];
     btc_fnc_log_init = compileScript ["core\fnc\log\init.sqf"];
-    btc_fnc_log_setCargo = compileScript ["core\fnc\log\setCargo.sqf"];
+    btc_fnc_log_inventorySet = compileScript ["core\fnc\log\inventorySet.sqf"];
     btc_fnc_log_server_delete = compileScript ["core\fnc\log\server_delete.sqf"];
     btc_fnc_log_create_s = compileScript ["core\fnc\log\create_s.sqf"];
     btc_fnc_log_get_cc = compileScript ["core\fnc\log\get_cc.sqf"];
     btc_fnc_log_get_rc = compileScript ["core\fnc\log\get_rc.sqf"];
     btc_fnc_log_server_repair_wreck = compileScript ["core\fnc\log\server_repair_wreck.sqf"];
+    btc_fnc_log_inventoryGet = compileScript ["core\fnc\log\inventoryGet.sqf"];
 
     //DEAF
     btc_fnc_deaf_earringing = compileScript ["core\fnc\deaf\earringing.sqf"];
