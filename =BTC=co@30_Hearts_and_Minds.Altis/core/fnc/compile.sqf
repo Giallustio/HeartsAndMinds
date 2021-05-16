@@ -260,6 +260,9 @@ btc_rep_fnc_foodRemoved = compileScript ["core\fnc\rep\foodRemoved.sqf"];
 //ARSENAL
 btc_arsenal_fnc_ammoUsage = compileScript ["core\fnc\arsenal\ammoUsage.sqf"];
 
+//VEH
+btc_veh_fnc_init = compileScript ["core\fnc\veh\init.sqf"];
+
 /////////////////////CLIENT\\\\\\\\\\\\\\\\\\\\\
 if (!isDedicated) then {
     //COMMON
