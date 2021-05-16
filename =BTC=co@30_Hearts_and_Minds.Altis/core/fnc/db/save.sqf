@@ -139,7 +139,7 @@ private _vehiclesNotInCargo = _vehicles select {
 };
 private _vehiclesInCargo = _vehicles - _vehiclesNotInCargo;
 {
-    (_x call btc_fnc_db_saveObjectStatus) params ["_type", "_pos", "_dir", "", "_cargo", "_inventory", "_vectorPos", "_isContaminated"];
+    (_x call btc_db_fnc_saveObjectStatus) params ["_type", "_pos", "_dir", "", "_cargo", "_inventory", "_vectorPos", "_isContaminated"];
 
     private _data = [];
     _data pushBack _type;
