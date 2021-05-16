@@ -167,7 +167,6 @@ private _vehs = +(profileNamespace getVariable [format ["btc_hm_%1_vehs", _name]
         _veh setVectorDirAndUp _vectorPos;
         _veh setFuel _veh_fuel;
 
-        [_veh, _veh_cargo, _veh_cont] call btc_db_fnc_loadCargo;
         [_veh, _veh_cargo, _veh_inventory] call btc_db_fnc_loadCargo;
 
         if !(alive _veh) then {
