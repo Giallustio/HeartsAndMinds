@@ -146,7 +146,7 @@ private _vehs = +(profileNamespace getVariable [format ["btc_hm_%1_vehs", _name]
             "_veh_fuel",
             "_veh_AllHitPointsDamage",
             "_veh_cargo",
-            "_veh_cont",
+            "_veh_inventory",
             "_customization",
             ["_isMedicalVehicle", false, [false]],
             ["_isRepairVehicle", false, [false]],
@@ -167,7 +167,7 @@ private _vehs = +(profileNamespace getVariable [format ["btc_hm_%1_vehs", _name]
         _veh setVectorDirAndUp _vectorPos;
         _veh setFuel _veh_fuel;
 
-        [_veh, _veh_cargo, _veh_cont] call btc_fnc_db_loadCargo;
+        [_veh, _veh_cargo, _veh_inventory] call btc_fnc_db_loadCargo;
 
         if !(alive _veh) then {
             [_veh, objNull, objNull, false] call btc_fnc_veh_killed;

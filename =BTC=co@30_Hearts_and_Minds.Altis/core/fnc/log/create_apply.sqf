@@ -35,8 +35,8 @@ params [
             btc_supplies_cargo,
             [_xx, _yy, _zz + 1.5], getDir _create_object_point,
             "",
-            [selectRandom _food, selectRandom _water] apply {[_x, "", [[[], []], [[], []], [[], []]]]},
-            [[[], []], [[], []], [[], []]],
+            [selectRandom _food, selectRandom _water] apply {[_x, "", []]},
+            [],
             [vectorDir _create_object_point, vectorUp _create_object_point]
         ]] remoteExecCall ["btc_fnc_db_loadObjectStatus", 2];
     } else {

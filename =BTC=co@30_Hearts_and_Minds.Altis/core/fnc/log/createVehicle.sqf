@@ -7,7 +7,7 @@ Description:
 
 Parameters:
     _type - Vehicle className. [String]
-    _pos -  Desired placement position. If the exact position is occupied, nearest empty position is used. [Array]
+    _pos - Desired placement position. [Array]
     _dir - Desired direction. [Number]
     _customization - Customized appearance [Array]
     _isMedicalVehicle - Set the ACE parameter is a medical vehicle. [Boolean]
@@ -53,7 +53,7 @@ _veh setPosASL _pos;
 [_veh, _customization, _isMedicalVehicle, _isRepairVehicle, _fuelSource, _pylons, _isContaminated, _supplyVehicle] call btc_fnc_setVehProperties;
 if (_EDENinventory isNotEqualTo []) then {
     _veh setVariable ["btc_EDENinventory", _EDENinventory];
-    [_veh, _EDENinventory] call btc_fnc_log_setCargo;
+    [_veh, _EDENinventory] call btc_fnc_log_inventorySet;
 };
 
 _veh setVariable ["btc_dont_delete", true];
