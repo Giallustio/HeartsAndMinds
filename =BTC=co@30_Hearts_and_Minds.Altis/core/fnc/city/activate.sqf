@@ -313,7 +313,7 @@ if (_civKilled isNotEqualTo []) then {
     };
 
     _city setVariable ["activating", false];
-}, [_has_en, _city, _radius, _id], btc_delay_createUnit + _delay] call CBA_fnc_waitAndExecute;
+}, [_has_en, _city, _radius, _id], btc_delay_time + _delay] call CBA_fnc_waitAndExecute;
 
 //Patrol
 btc_patrol_active = btc_patrol_active - [grpNull];
