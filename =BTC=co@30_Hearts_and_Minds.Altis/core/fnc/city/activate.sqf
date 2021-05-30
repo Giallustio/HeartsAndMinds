@@ -104,22 +104,22 @@ if (_data_units isNotEqualTo []) then {
     } forEach _data_units;
 } else {
     // Maximum number of enemy group
-    private _max_number_group = (switch _type do {
-        case "Hill" : {1};
-        case "VegetationFir" : {1};
-        case "BorderCrossing" : {2};
-        case "NameLocal" : {2};
-        case "StrongpointArea" : {3};
-        case "NameVillage" : {3};
-        case "NameCity" : {7};
-        case "NameCityCapital" : {15};
-        case "Airport" : {15};
-        case "NameMarine" : {1};
+    private _numberOfGroup = (switch _type do {
+        case "Hill" : {2};
+        case "VegetationFir" : {2};
+        case "BorderCrossing" : {3};
+        case "NameLocal" : {3};
+        case "StrongpointArea" : {4};
+        case "NameVillage" : {4};
+        case "NameCity" : {8};
+        case "NameCityCapital" : {16};
+        case "Airport" : {16};
+        case "NameMarine" : {2};
         default {0};
     });
 
     if (_has_en) then {
-        for "_i" from 1 to (round (_p_mil_group_ratio * (1 + random _max_number_group))) do {
+        for "_i" from 1 to (round (_p_mil_group_ratio * _numberOfGroup)) do {
             [_city, _spawningRadius, 1 + round random 2, random 1] call btc_mil_fnc_create_group;
         };
     };
@@ -128,7 +128,7 @@ if (_data_units isNotEqualTo []) then {
         private _houses = [_city, _spawningRadius/3] call btc_city_fnc_getHouses;
 
         if (_has_en) then {
-            private _max_number_group = (switch _type do {
+            private _numberOfStatic = (switch _type do {
                 case "VegetationFir" : {1};
                 case "BorderCrossing" : {2};
                 case "NameLocal" : {1};
@@ -139,11 +139,11 @@ if (_data_units isNotEqualTo []) then {
                 case "Airport" : {2};
                 default {0};
             });
-            [+_houses, round (_p_mil_static_group_ratio * random _max_number_group), _city] call btc_mil_fnc_create_staticOnRoof;
+            [+_houses, round (_p_mil_static_group_ratio * _numberOfStatic), _city] call btc_mil_fnc_create_staticOnRoof;
         };
 
         // Spawn civilians
-        private _max_number_group = (switch _type do {
+        private _numberOfCivi = (switch _type do {
             case "VegetationFir" : {1};
             case "BorderCrossing" : {0};
             case "NameLocal" : {3};
@@ -154,7 +154,7 @@ if (_data_units isNotEqualTo []) then {
             case "Airport" : {6};
             default {2};
         });
-        [+_houses, round (_p_civ_group_ratio * _max_number_group), _city] call btc_civ_fnc_populate;
+        [+_houses, round (_p_civ_group_ratio * _numberOfCivi), _city] call btc_civ_fnc_populate;
     };
 };
 if (btc_p_animals_group_ratio > 0) then {
@@ -164,7 +164,7 @@ if (btc_p_animals_group_ratio > 0) then {
         } forEach _data_animals;
     } else {
         // Spawn animals
-        private _max_number_animalsGroup = (switch _type do {
+        private _numberOfAnimalsGroup = (switch _type do {
             case "Hill" : {3};
             case "VegetationFir" : {3};
             case "NameLocal" : {3};
@@ -175,7 +175,7 @@ if (btc_p_animals_group_ratio > 0) then {
             case "NameMarine" : {0};
             default {0};
         });
-        for "_i" from 1 to (round (random _max_number_animalsGroup)) do {
+        for "_i" from 1 to _numberOfAnimalsGroup do {
             private _pos = [_city, _spawningRadius/3] call CBA_fnc_randPos;
             for "_i" from 1 to (round (random 3)) do {
                 [selectRandom btc_animals_type, [_pos, 6] call CBA_fnc_randPos, nil, _city] call btc_delay_fnc_createAgent;
@@ -186,7 +186,7 @@ if (btc_p_animals_group_ratio > 0) then {
 
 if (_city getVariable ["spawn_more", false]) then {
     _city setVariable ["spawn_more", false];
-    for "_i" from 1 to (round (_p_mil_group_ratio * (2 + random 3))) do {
+    for "_i" from 1 to (round (_p_mil_group_ratio * 5)) do {
         [_city, _spawningRadius, 4 + round random 3, random 1] call btc_mil_fnc_create_group;
     };
     if (btc_p_veh_armed_spawn_more) then {
