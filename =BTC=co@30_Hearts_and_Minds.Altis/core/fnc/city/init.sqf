@@ -26,17 +26,17 @@ params [
 
 private _locations = configfile >> "cfgworlds" >> worldname >> "names";
 
-private _cities = ["NameVillage", "NameCity", "NameCityCapital", "NameLocal", "Hill", "Airport", "StrongpointArea", "BorderCrossing", "VegetationFir"];
-if (btc_p_sea) then {_cities pushBack "NameMarine";};
+private _citiesType = ["NameVillage", "NameCity", "NameCityCapital", "NameLocal", "Hill", "Airport", "StrongpointArea", "BorderCrossing", "VegetationFir"];
+if (btc_p_sea) then {_citiesType pushBack "NameMarine";};
 
 btc_city_all = [];
-
+private _cities = [];
 for "_id" from 0 to (count _locations - 1) do {
     private _current = _locations select _id;
 
     private _type = getText (_current >> "type");
 
-    if (_type in _cities) then {
+    if (_type in _citiesType) then {
         private _position = getArray (_current >> "position");
         if (
             surfaceIsWater _position &&
@@ -68,9 +68,19 @@ for "_id" from 0 to (count _locations - 1) do {
         if ((getMarkerPos "YOUR_MARKER_AREA") inArea [_position, 500, 500, 0, false]) exitWith {};
         */
 
-        [_position, _type, _name, _radius, random 1 > _is_free_probability, _id] call btc_city_fnc_create;
+        private _city = [_position, _type, _name, _radius, false, _id] call btc_city_fnc_create;
+        _cities pushBack _city;
     };
 };
+
+[_cities, true] call CBA_fnc_shuffle;
+private _numberOfCity = (round ((count _cities) * _is_free_probability)) - btc_hideout_n;
+{
+    _x setVariable ["occupied", true];
+    if (btc_debug) then {
+        (format ["loc_%1", _x getVariable "id"]) setMarkerColor "colorRed";
+    };
+} forEach (_cities select [0, _numberOfCity]);
 
 if !(isNil "btc_custom_loc") then {
     {_x call btc_city_fnc_create;} forEach btc_custom_loc;
