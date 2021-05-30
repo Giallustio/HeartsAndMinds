@@ -25,7 +25,11 @@ params [
 ];
 
 //// Choose an occupied City \\\\
-private _useful = btc_city_all select {!(isNull _x) && _x getVariable ["occupied", false] && !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])};
+private _useful = btc_city_all select {
+    !isNull _x &&
+    _x getVariable ["occupied", false] &&
+    !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])
+};
 
 if (_useful isEqualTo []) exitWith {[] spawn btc_side_fnc_create;};
 
@@ -88,7 +92,10 @@ _trigger setTriggerStatements ["this", "private _group = thisTrigger getVariable
 
 private _toDelete = _group + [_group_officer, _trigger];
 
-waitUntil {sleep 5; (_taskID call BIS_fnc_taskCompleted || !alive _officer)};
+waitUntil {sleep 5; 
+    _taskID call BIS_fnc_taskCompleted ||
+    !alive _officer
+};
 if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {
     [[], _toDelete] call btc_fnc_delete;
 };
@@ -137,13 +144,13 @@ private _IDEH_HandleDisconnect = [missionNamespace, "HandleDisconnect", {
     };
 }, [_globalVariableName, _taskID]] call CBA_fnc_addBISEventHandler;
 
-waitUntil {sleep 5; (
+waitUntil {sleep 5; 
     true in (
         (
             allPlayers inAreaArray [getPosWorld btc_create_object_point, 100, 100]
         ) apply {(missionNamespace getVariable [_globalVariableName, ""]) in itemCargo vehicle _x}
     ) ||
-    _taskID call BIS_fnc_taskCompleted)
+    _taskID call BIS_fnc_taskCompleted
 };
 
 _group_officer setVariable ["no_cache", false];

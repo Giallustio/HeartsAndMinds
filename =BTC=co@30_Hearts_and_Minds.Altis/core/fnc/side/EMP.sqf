@@ -24,7 +24,11 @@ params [
     ["_taskID", "btc_side", [""]]
 ];
 
-private _useful = btc_city_all select {!(isNull _x) && _x getVariable ["occupied", false] && !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])};
+private _useful = btc_city_all select {
+    !isNull _x &&
+    _x getVariable ["occupied", false] &&
+    !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])
+};
 if (_useful isEqualTo []) exitWith {[] spawn btc_side_fnc_create;};
 private _city = selectRandom _useful;
 
@@ -115,10 +119,10 @@ for "_i" from 0 to (1 + round random 2) do {
     }, [_destroy_taskID]] call CBA_fnc_addBISEventHandler;
 };
 
-waitUntil {sleep 5;(
+waitUntil {sleep 5;
     _taskID call BIS_fnc_taskCompleted ||
     !(false in (_tasksID apply {_x call BIS_fnc_taskCompleted}))
-)};
+};
 
 [[], _composition] call btc_fnc_delete;
 

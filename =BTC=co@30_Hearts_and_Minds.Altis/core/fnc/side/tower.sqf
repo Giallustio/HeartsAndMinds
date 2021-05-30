@@ -24,7 +24,11 @@ params [
     ["_taskID", "btc_side", [""]]
 ];
 
-private _useful = btc_city_all select {!(isNull _x) && _x getVariable ["occupied", false] && !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])};
+private _useful = btc_city_all select {
+    !isNull _x &&
+    _x getVariable ["occupied", false] &&
+    !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])
+};
 if (_useful isEqualTo []) exitWith {[] spawn btc_side_fnc_create;};
 
 private _city = selectRandom _useful;
@@ -60,7 +64,10 @@ private _tower = _btc_composition select ((_btc_composition apply {typeOf _x}) f
 
 [_taskID, 7, _tower, [_city getVariable "name", _tower_type]] call btc_task_fnc_create;
 
-waitUntil {sleep 5; (!alive _tower || _taskID call BIS_fnc_taskCompleted)};
+waitUntil {sleep 5;
+    !alive _tower ||
+    _taskID call BIS_fnc_taskCompleted
+};
 
 [[], _btc_composition] call btc_fnc_delete;
 

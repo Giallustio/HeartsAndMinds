@@ -25,7 +25,11 @@ params [
 ];
 
 //// Choose a clear City \\\\
-private _useful = btc_city_all select {!(isNull _x) && !(_x getVariable ["occupied", false]) && !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])};
+private _useful = btc_city_all select {
+    !isNull _x &&
+    !(_x getVariable ["occupied", false]) &&
+    !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])
+};
 if (_useful isEqualTo []) exitWith {[] spawn btc_side_fnc_create;};
 private _city = selectRandom _useful;
 private _pos = getPos _city;
@@ -82,11 +86,21 @@ _unit setUnitPos "DOWN";
 
 sleep 1;
 
-waitUntil {sleep 5; (_taskID call BIS_fnc_taskCompleted || playableUnits inAreaArray [getPosWorld _unit, 5000, 5000] isNotEqualTo [])};
+waitUntil {sleep 5;
+    _taskID call BIS_fnc_taskCompleted ||
+    playableUnits inAreaArray [getPosWorld _unit, 5000, 5000] isNotEqualTo []
+};
 
 [_unit] call btc_fnc_set_damage;
 
-waitUntil {sleep 5; (_taskID call BIS_fnc_taskCompleted || !alive _unit || {_unit call ace_medical_status_fnc_isInStableCondition && [_unit] call ace_common_fnc_isAwake})};
+waitUntil {sleep 5; 
+    _taskID call BIS_fnc_taskCompleted ||
+    !alive _unit ||
+    {
+        _unit call ace_medical_status_fnc_isInStableCondition &&
+        [_unit] call ace_common_fnc_isAwake
+    }
+};
 
 [[], [_veh, _fx, _group]] call btc_fnc_delete;
 

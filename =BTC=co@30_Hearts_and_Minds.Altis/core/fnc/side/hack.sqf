@@ -26,7 +26,11 @@ params [
     ["_taskID", "btc_side", [""]]
 ];
 
-private _useful = btc_city_all select {!(isNull _x) && _x getVariable ["occupied", false] && !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])};
+private _useful = btc_city_all select {
+    !isNull _x &&
+    _x getVariable ["occupied", false] &&
+    !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])
+};
 
 if (_useful isEqualTo []) exitWith {[] spawn btc_side_fnc_create;};
 
@@ -72,7 +76,11 @@ for "_i" from 1 to (2 + round random 1) do {
 
 [_terminal, _launchsite modelToWorld [0, 100, 10]] remoteExecCall ["btc_log_fnc_place_create_camera", [0, -2] select isDedicated];
 
-waitUntil {sleep 5; (_defend_taskID call BIS_fnc_taskCompleted || (grpNull in _groups) || !(_city getVariable ["active", false]))};
+waitUntil {sleep 5; 
+    _defend_taskID call BIS_fnc_taskCompleted ||
+    grpNull in _groups ||
+    !(_city getVariable ["active", false])
+};
 
 if (_defend_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {
     [[], [_terminal]] call btc_fnc_delete;

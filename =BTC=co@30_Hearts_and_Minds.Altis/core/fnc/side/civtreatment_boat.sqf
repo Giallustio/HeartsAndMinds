@@ -25,7 +25,11 @@ params [
 ];
 
 //// Choose a Marine location \\\\
-private _useful = btc_city_all select {!(isNull _x) && _x getVariable ["type", ""] isEqualTo "NameMarine" || _x getVariable ["hasbeach", false]};
+private _useful = btc_city_all select {
+    !isNull _x &&
+    _x getVariable ["type", ""] isEqualTo "NameMarine" ||
+    _x getVariable ["hasbeach", false]
+};
 
 if (_useful isEqualTo []) exitWith {[] spawn btc_side_fnc_create;};
 
@@ -53,11 +57,21 @@ _unit moveinCargo [_veh, _index];
 [_taskID, 10, _unit, [_city getVariable "name", _veh_type]] call btc_task_fnc_create;
 
 sleep 1;
-waitUntil {sleep 5; (_taskID call BIS_fnc_taskCompleted || playableUnits inAreaArray [getPosWorld _unit, 5000, 5000] isNotEqualTo [])};
+waitUntil {sleep 5; 
+    _taskID call BIS_fnc_taskCompleted ||
+    playableUnits inAreaArray [getPosWorld _unit, 5000, 5000] isNotEqualTo []
+};
 
 [_unit] call btc_fnc_set_damage;
 
-waitUntil {sleep 5; (_taskID call BIS_fnc_taskCompleted || !alive _unit || {_unit call ace_medical_status_fnc_isInStableCondition && [_unit] call ace_common_fnc_isAwake})};
+waitUntil {sleep 5; 
+    _taskID call BIS_fnc_taskCompleted ||
+    !alive _unit ||
+    {
+        _unit call ace_medical_status_fnc_isInStableCondition &&
+        [_unit] call ace_common_fnc_isAwake
+    }
+};
 
 [[], [_veh, _group]] call btc_fnc_delete;
 

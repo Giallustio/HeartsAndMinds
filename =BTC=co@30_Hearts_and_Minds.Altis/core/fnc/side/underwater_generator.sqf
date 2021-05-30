@@ -25,7 +25,11 @@ params [
 ];
 
 //// Choose a Marine location occupied \\\\
-private _useful = btc_city_all select {!(isNull _x) && (_x getVariable ["occupied", false]) && (_x getVariable ["type", ""] isEqualTo "NameMarine")};
+private _useful = btc_city_all select {
+    !isNull _x &&
+    _x getVariable ["occupied", false] &&
+    _x getVariable ["type", ""] isEqualTo "NameMarine"
+};
 if (_useful isEqualTo []) exitWith {[] spawn btc_side_fnc_create;};
 
 private _city = selectRandom _useful;
@@ -68,7 +72,10 @@ private _group = [_pos, 8, 1 + round random 5,0.8] call btc_mil_fnc_create_group
 _pos = getPosASL _generator;
 (leader (_group select 0)) setPosASL [_x, _y, _z + 1 + random 1];
 
-waitUntil {sleep 5; (_taskID call BIS_fnc_taskCompleted || !alive _generator)};
+waitUntil {sleep 5;
+    _taskID call BIS_fnc_taskCompleted ||
+    !alive _generator
+};
 
 [[], [_generator, _storagebladder]] call btc_fnc_delete;
 

@@ -43,14 +43,14 @@ params [
 private _city = objNull;
 if (_pos isEqualTo []) then {
     private _useful = btc_city_all select {(
-        !(isNull _x) &&
+        !isNull _x &&
         {!(_x getVariable ["active", false])} &&
         {_x distance (getMarkerPos btc_respawn_marker) > btc_hideout_safezone} &&
         {!(_x getVariable ["has_ho", false])} &&
         {_x getVariable ["type", ""] in ["NameLocal", "Hill", "NameVillage", "Airport"]}
     )};
     private _inHoRange = btc_city_all select {
-        !(isNull _x) &&
+        !isNull _x &&
         {
             private _city = _x;
             (selectMin (btc_hideouts apply {_x distance _city})) < btc_hideout_minRange
