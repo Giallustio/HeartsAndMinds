@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_delay_createUnit
+Function: btc_delay_fnc_createUnit
 
 Description:
     Create unit when all previous units have been created. btc_delay_createUnit define the time (in second) when the unit will be created.
@@ -16,7 +16,7 @@ Returns:
 
 Examples:
     (begin example)
-        [createGroup (side player), typeOf player, getPosATL player] call btc_fnc_delay_createUnit;
+        [createGroup (side player), typeOf player, getPosATL player] call btc_delay_fnc_createUnit;
     (end)
 
 Author:
@@ -36,7 +36,7 @@ btc_delay_createUnit = btc_delay_createUnit + 0.2;
     ];
 
     if (isNull _group) exitWith {
-        [format ["isNull _group _this = %1", _this], __FILE__, [btc_debug, btc_debug_log, true]] call btc_fnc_debug_message;
+        [format ["isNull _group _this = %1", _this], __FILE__, [btc_debug, btc_debug_log, true]] call btc_debug_fnc_message;
         btc_delay_createUnit = btc_delay_createUnit - 0.2;
     };
 

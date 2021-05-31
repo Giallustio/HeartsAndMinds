@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_mil_create_staticOnRoof
+Function: btc_mil_fnc_create_staticOnRoof
 
 Description:
     Create static on roof.
@@ -14,7 +14,7 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [[position player, 30] call btc_fnc_getHouses, 3] call btc_fnc_mil_create_staticOnRoof;
+        _result = [[position player, 30] call btc_fnc_getHouses, 3] call btc_mil_fnc_create_staticOnRoof;
     (end)
 
 Author:
@@ -43,7 +43,7 @@ while {
         ([_house] call btc_fnc_roof) params ["_spawnPos", "_surfaceNormal"];
 
         if (acos (_surfaceNormal vectorCos [0, 0, 1]) < 30) then {
-            [ASLToATL _spawnPos, btc_type_mg + btc_type_gl, (_house getDir _spawnPos) + (random [-15, 0, 15]), _surfaceNormal, _city] call btc_fnc_mil_create_static;
+            [ASLToATL _spawnPos, btc_type_mg + btc_type_gl, (_house getDir _spawnPos) + (random [-15, 0, 15]), _surfaceNormal, _city] call btc_mil_fnc_create_static;
             _i = _i + 1;
         };
     };

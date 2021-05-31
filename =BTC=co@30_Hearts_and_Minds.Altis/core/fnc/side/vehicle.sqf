@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_side_vehicle
+Function: btc_side_fnc_vehicle
 
 Description:
     Fill me when you edit me !
@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        [] spawn btc_fnc_side_vehicle;
+        [] spawn btc_side_fnc_vehicle;
     (end)
 
 Author:
@@ -25,7 +25,7 @@ params [
 ];
 
 private _useful = btc_city_all select {!(isNull _x) && _x getVariable ["type", ""] != "NameMarine"};
-if (_useful isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
+if (_useful isEqualTo []) exitWith {[] spawn btc_side_fnc_create;};
 private _city = selectRandom _useful;
 
 private _pos = [getPos _city, 100] call btc_fnc_randomize_pos;
@@ -38,7 +38,7 @@ _veh setDir (random 360);
 _veh setDamage 0.7;
 _veh setHit ["wheel_1_1_steering", 1];
 
-[_taskID, 5, _veh, [_city getVariable "name", _veh_type]] call btc_fnc_task_create;
+[_taskID, 5, _veh, [_city getVariable "name", _veh_type]] call btc_task_fnc_create;
 
 waitUntil {sleep 5; (_taskID call BIS_fnc_taskCompleted || (_veh getHit "wheel_1_1_steering" < 1) || !alive _veh)};
 
@@ -49,6 +49,6 @@ if (!alive _veh) exitWith {
     [_taskID, "FAILED"] call BIS_fnc_taskSetState;
 };
 
-15 call btc_fnc_rep_change;
+15 call btc_rep_fnc_change;
 
 [_taskID, "SUCCEEDED"] call BIS_fnc_taskSetState;

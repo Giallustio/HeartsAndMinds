@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_rep_hd
+Function: btc_rep_fnc_hd
 
 Description:
     Handle damage.
@@ -18,7 +18,7 @@ Returns:
 
 Examples:
     (begin example)
-        [cursorObject, "body", 0.1, player] call btc_fnc_rep_hd;
+        [cursorObject, "body", 0.1, player] call btc_rep_fnc_hd;
     (end)
 
 Author:
@@ -48,18 +48,18 @@ if (
 ) exitWith {_dam};
 
 if (!isServer) exitWith {
-    _this remoteExecCall ["btc_fnc_rep_hd", 2];
+    _this remoteExecCall ["btc_rep_fnc_hd", 2];
     _dam
 };
 
 [
     [btc_rep_malus_civ_hd, btc_rep_malus_animal_hd] select _isAgent,
     _instigator
-] call btc_fnc_rep_change;
-if (btc_global_reputation < 600) then {[getPos _unit] call btc_fnc_rep_eh_effects;};
+] call btc_rep_fnc_change;
+if (btc_global_reputation < 600) then {[getPos _unit] call btc_rep_fnc_eh_effects;};
 
 if (btc_debug_log) then {
-    [format ["REP HD = GREP %1 THIS = %2", btc_global_reputation, _this], __FILE__, [false]] call btc_fnc_debug_message;
+    [format ["REP HD = GREP %1 THIS = %2", btc_global_reputation, _this], __FILE__, [false]] call btc_debug_fnc_message;
 };
 
 _dam

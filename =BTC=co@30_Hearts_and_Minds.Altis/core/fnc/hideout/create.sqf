@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_hideout_create
+Function: btc_hideout_fnc_create
 
 Description:
     Create hideout randomnly or with defined position.
@@ -17,7 +17,7 @@ Returns:
 
 Examples:
     (begin example)
-        [] call btc_fnc_hideout_create;
+        [] call btc_hideout_fnc_create;
     (end)
     (begin example)
         selectMin (btc_hideouts apply {
@@ -80,12 +80,12 @@ _city setVariable ["ho_pos", _pos];
 if (btc_debug) then {deleteMarker format ["loc_%1", _id];};
 deleteVehicle (_city getVariable ["trigger_player_side", objNull]);
 
-[_pos, btc_hideouts_radius, _city, _city getVariable "occupied", _city getVariable "name", _city getVariable "type", _city getVariable "id"] call btc_fnc_city_trigger_player_side;
+[_pos, btc_hideouts_radius, _city, _city getVariable "occupied", _city getVariable "name", _city getVariable "type", _city getVariable "id"] call btc_city_fnc_trigger_player_side;
 [{
     (_this select 0) findEmptyPositionReady (_this select 1)
 }, {}, [_pos, [0, _city getVariable ["radius", 100]]], 5 * 60] call CBA_fnc_waitUntilAndExecute;
 
-private _hideout = [_pos] call btc_fnc_hideout_create_composition;
+private _hideout = [_pos] call btc_hideout_fnc_create_composition;
 clearWeaponCargoGlobal _hideout;
 clearItemCargoGlobal _hideout;
 clearMagazineCargoGlobal _hideout;
@@ -96,7 +96,7 @@ _hideout setVariable ["rinf_time", _rinf_time];
 _hideout setVariable ["cap_time", _cap_time];
 _hideout setVariable ["assigned_to", _city];
 
-_hideout addEventHandler ["HandleDamage", btc_fnc_hideout_hd];
+_hideout addEventHandler ["HandleDamage", btc_hideout_fnc_hd];
 
 private _markers = [];
 {
@@ -121,7 +121,7 @@ if (btc_debug) then {
 };
 
 if (btc_debug_log) then {
-    [format ["_this = %1 ; POS %2 ID %3", _this, _pos, btc_hideouts_id], __FILE__, [false]] call btc_fnc_debug_message;
+    [format ["_this = %1 ; POS %2 ID %3", _this, _pos, btc_hideouts_id], __FILE__, [false]] call btc_debug_fnc_message;
 };
 
 btc_hideouts_id = btc_hideouts_id + 1;

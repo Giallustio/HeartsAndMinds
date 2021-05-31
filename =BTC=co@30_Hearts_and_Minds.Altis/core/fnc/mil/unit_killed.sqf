@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_mil_unit_killed
+Function: btc_mil_fnc_unit_killed
 
 Description:
     Fill me when you edit me !
@@ -14,7 +14,7 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_mil_unit_killed;
+        _result = [] call btc_mil_fnc_unit_killed;
     (end)
 
 Author:
@@ -31,5 +31,5 @@ if (random 100 > btc_info_intel_chance) then {
 };
 
 if (isPlayer _instigator) then {
-    [btc_rep_bonus_mil_killed, _instigator] call btc_fnc_rep_change;
+    [btc_rep_bonus_mil_killed, _instigator] call btc_rep_fnc_change;
 };

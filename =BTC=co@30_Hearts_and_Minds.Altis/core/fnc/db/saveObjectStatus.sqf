@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_db_saveObjectStatus
+Function: btc_db_fnc_saveObjectStatus
 
 Description:
     Save all data from an object like position, ACE cargo, inventory ...
@@ -13,7 +13,7 @@ Returns:
 
 Examples:
     (begin example)
-        [cursorObject] call btc_fnc_db_saveObjectStatus;
+        [cursorObject] call btc_db_fnc_saveObjectStatus;
     (end)
 
 Author:
@@ -37,13 +37,13 @@ private _cargo = (_object getVariable ["ace_cargo_loaded", []]) apply {
         [
             typeOf _x,
             _x getVariable ["ace_rearm_magazineClass", ""],
-            _x call btc_fnc_log_inventoryGet,
+            _x call btc_log_fnc_inventoryGet,
             _x in btc_chem_contaminated
         ]
     };    
 };
 _data pushBack _cargo;
-_data pushBack (_object call btc_fnc_log_inventoryGet);
+_data pushBack (_object call btc_log_fnc_inventoryGet);
 _data pushBack [vectorDir _object, vectorUp _object];
 _data pushBack (_object in btc_chem_contaminated);
 

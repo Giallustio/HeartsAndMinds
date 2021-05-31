@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_info_createIntels
+Function: btc_info_fnc_createIntels
 
 Description:
     Create intels in a city.
@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        [] call btc_fnc_info_createIntels;
+        [] call btc_info_fnc_createIntels;
     (end)
 
 Author:

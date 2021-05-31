@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_city_trigger_free_condition
+Function: btc_city_fnc_trigger_free_condition
 
 Description:
     Check if a city should be free.
@@ -14,7 +14,7 @@ Returns:
 
 Examples:
     (begin example)
-        [allUnits inAreaArray [getPos player, 100, 100], 2] call btc_fnc_city_trigger_free_condition;
+        [allUnits inAreaArray [getPos player, 100, 100], 2] call btc_city_fnc_trigger_free_condition;
     (end)
 
 Author:

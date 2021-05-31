@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_side_hostage
+Function: btc_side_fnc_hostage
 
 Description:
     Fill me when you edit me !
@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        [] spawn btc_fnc_side_hostage;
+        [] spawn btc_side_fnc_hostage;
     (end)
 
 Author:
@@ -27,13 +27,13 @@ params [
 //// Choose an occupied City \\\\
 private _useful = btc_city_all select {!(isNull _x) && _x getVariable ["occupied", false] && !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])};
 
-if (_useful isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
+if (_useful isEqualTo []) exitWith {[] spawn btc_side_fnc_create;};
 
 private _city = selectRandom _useful;
 
 //// Randomise position \\\\
 private _houses = [getPos _city, 100] call btc_fnc_getHouses;
-if (_houses isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
+if (_houses isEqualTo []) exitWith {[] spawn btc_side_fnc_create;};
 _houses = _houses apply {[count (_x buildingPos -1), _x]};
 _houses sort false;
 private _house = objNull;
@@ -57,7 +57,7 @@ waitUntil {local _captive};
 [_captive, true] call ACE_captives_fnc_setHandcuffed;
 
 //// Data side mission
-[_taskID, 15, _captive, [_city getVariable "name", _civType]] call btc_fnc_task_create;
+[_taskID, 15, _captive, [_city getVariable "name", _civType]] call btc_task_fnc_create;
 
 private _group = [];
 {
@@ -100,6 +100,6 @@ if !(alive _captive) exitWith {
     [[], _group + [_group_civ, _trigger, _mine]] call btc_fnc_delete;
 };
 
-40 call btc_fnc_rep_change;
+40 call btc_rep_fnc_change;
 
 [_taskID, "SUCCEEDED"] call BIS_fnc_taskSetState;

@@ -20,7 +20,7 @@ Author:
 ---------------------------------------------------------------------------- */
 
 ["btc_dty", "SUCCEEDED"] call BIS_fnc_taskSetState;
-[["btc_sze", "btc_m"], 2] call btc_fnc_task_create;
+[["btc_sze", "btc_m"], 2] call btc_task_fnc_create;
 
 btc_final_phase = true;
 
@@ -50,7 +50,7 @@ btc_city_remaining = [];
 
 waitUntil {sleep 15; (btc_city_remaining isEqualTo [])};
 
-["btc_m", "SUCCEEDED"] call btc_fnc_task_setState;
+["btc_m", "SUCCEEDED"] call btc_task_fnc_setState;
 
 //END
 [] remoteExec ["btc_fnc_end_mission", 0, true];

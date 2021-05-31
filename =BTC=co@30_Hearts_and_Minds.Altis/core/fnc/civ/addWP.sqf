@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_civ_addWP
+Function: btc_civ_fnc_addWP
 
 Description:
     Add waypoints to a group. The group will patrol inside a first house, then 4 waypoints outside are added and finally the group will patrol again in an other house.
@@ -14,7 +14,7 @@ Returns:
 
 Examples:
     (begin example)
-        [_group] call btc_fnc_civ_addWP;
+        [_group] call btc_civ_fnc_addWP;
     (end)
 
 Author:

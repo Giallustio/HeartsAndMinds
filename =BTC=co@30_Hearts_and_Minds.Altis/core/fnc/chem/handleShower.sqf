@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_chem_handleShower
+Function: btc_chem_fnc_handleShower
 
 Description:
     Loop over shower and activate or desactivate them if objects are around.
@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        [] call btc_fnc_chem_handleShower;
+        [] call btc_chem_fnc_handleShower;
     (end)
 
 Author:
@@ -46,7 +46,7 @@ params [
         if (_x isKindOf "DeconShower_01_F") then {
             [_x, 1.5, 9] remoteExec ["BIN_fnc_deconShowerAnim", 0, _x];
         } else {
-            [_x, 5.4, 4, 2, true] remoteExec ["btc_fnc_chem_deconShowerAnimLarge", 0, _x];
+            [_x, 5.4, 4, 2, true] remoteExec ["btc_chem_fnc_deconShowerAnimLarge", 0, _x];
         };
     } forEach _needActivate;
     {

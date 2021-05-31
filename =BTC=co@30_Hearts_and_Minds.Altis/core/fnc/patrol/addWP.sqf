@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_patrol_addWP
+Function: btc_patrol_fnc_addWP
 
 Description:
     Add waypoint to the end city.
@@ -14,7 +14,7 @@ Returns:
 
 Examples:
     (begin example)
-        [group cursorTarget, getPos player, "[group this, 1000, [0, 0, 0], [0, 1, 2], false] call btc_fnc_patrol_WPCheck;"] call btc_fnc_patrol_addWP;
+        [group cursorTarget, getPos player, "[group this, 1000, [0, 0, 0], [0, 1, 2], false] call btc_patrol_fnc_WPCheck;"] call btc_patrol_fnc_addWP;
     (end)
 
 Author:
@@ -29,7 +29,7 @@ params [
 ];
 
 if (isNull _group) exitWith {
-    [format ["_group isNull %1, waypointStatements = %2 ", isNull _group, _waypointStatements], __FILE__] call btc_fnc_debug_message;
+    [format ["_group isNull %1, waypointStatements = %2 ", isNull _group, _waypointStatements], __FILE__] call btc_debug_fnc_message;
 };
 
 private _vehicle = vehicle leader _group;

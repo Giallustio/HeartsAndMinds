@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_debug_marker
+Function: btc_debug_fnc_marker
 
 Description:
     Fill me when you edit me !
@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_debug_marker;
+        _result = [] call btc_debug_fnc_marker;
     (end)
 
 Author:

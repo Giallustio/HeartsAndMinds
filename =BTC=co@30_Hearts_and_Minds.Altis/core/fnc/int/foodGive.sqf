@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_int_foodGive
+Function: btc_int_fnc_foodGive
 
 Description:
     Give food to a unit.
@@ -13,7 +13,7 @@ Returns:
 
 Examples:
     (begin example)
-        [player, cursorObject] call btc_fnc_int_foodGive;
+        [player, cursorObject] call btc_int_fnc_foodGive;
     (end)
 
 Author:
@@ -38,6 +38,6 @@ if (
         [name _target, localize (["STR_BTC_HAM_CON_INFO_ASKREP_NOINTER", "STR_BTC_HAM_CON_INT_ALRGIVEFOOD"] select _isInterpreter)] call btc_fnc_showSubtitle;
     } else {
         [name _target, localize (["STR_BTC_HAM_CON_INFO_ASKREP_NOINTER", "str_a3_rscdisplaywelcome_kart_pard_footer2"] select _isInterpreter)] call btc_fnc_showSubtitle;
-        [btc_rep_bonus_foodGive, _player] remoteExecCall ["btc_fnc_rep_change", 2];
+        [btc_rep_bonus_foodGive, _player] remoteExecCall ["btc_rep_fnc_change", 2];
     };
 };

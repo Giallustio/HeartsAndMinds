@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_delay_exec
+Function: btc_delay_fnc_exec
 
 Description:
     Execute a function when all previous units have been created.
@@ -13,7 +13,7 @@ Returns:
 
 Examples:
     (begin example)
-        [[btc_city_all select 0, 100], btc_fnc_ied_drone_create] call btc_fnc_delay_exec;
+        [[btc_city_all select 0, 100], btc_ied_fnc_drone_create] call btc_delay_fnc_exec;
     (end)
 
 Author:

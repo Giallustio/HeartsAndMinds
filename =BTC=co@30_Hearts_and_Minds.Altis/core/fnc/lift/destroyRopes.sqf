@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_lift_destroyRopes
+Function: btc_lift_fnc_destroyRopes
 
 Description:
     Fill me when you edit me !
@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_lift_destroyRopes;
+        _result = [] call btc_lift_fnc_destroyRopes;
     (end)
 
 Author:

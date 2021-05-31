@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_city_create
+Function: btc_city_fnc_create
 
 Description:
     Create a city at the desired position with all necessary variable and the trigger to detect player presence.
@@ -18,7 +18,7 @@ Returns:
 
 Examples:
     (begin example)
-        _city = [[0, 0, 0], "NameCityCapital", "BTC Capital", 500, true] call btc_fnc_city_create;
+        _city = [[0, 0, 0], "NameCityCapital", "BTC Capital", 500, true] call btc_city_fnc_create;
     (end)
 
 Author:
@@ -58,6 +58,6 @@ if (btc_p_sea) then {
 }, {}, [_position, [0, _radius]], 5 * 60] call CBA_fnc_waitUntilAndExecute;
 
 btc_city_all set [_id, _city];
-[_position, _radius, _city, _has_en, _name, _type, _id] call btc_fnc_city_trigger_player_side;
+[_position, _radius, _city, _has_en, _name, _type, _id] call btc_city_fnc_trigger_player_side;
 
 _city
