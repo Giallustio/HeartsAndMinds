@@ -36,7 +36,7 @@ if (_usefuls isEqualTo []) exitWith {[] spawn btc_side_fnc_create;};
 private _city1 = selectRandom _usefuls;
 
 //// Find Road \\\\
-private _radius = (_city1 getVariable ["radius", 0])/2;
+private _radius = (_city1 getVariable ["cachingRadius", 0])/2;
 private _roads = _city1 nearRoads (_radius * 2);
 _roads = _roads select {(_x distance _city1 > _radius) && isOnRoad _x};
 if (_roads isEqualTo []) exitWith {[] spawn btc_side_fnc_create;};

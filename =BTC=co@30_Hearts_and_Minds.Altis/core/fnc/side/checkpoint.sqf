@@ -35,7 +35,7 @@ private _pos = getPos _city;
 _city setVariable ["spawn_more", true];
 
 private _statics = btc_type_gl + btc_type_mg;
-private _radius = _city getVariable ["radius", 0];
+private _radius = _city getVariable ["cachingRadius", 0];
 
 private _boxes = [];
 private _composition = [];

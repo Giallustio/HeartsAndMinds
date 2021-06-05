@@ -32,7 +32,7 @@ if (_useful isEqualTo []) exitWith {[] spawn btc_side_fnc_create;};
 private _city = selectRandom _useful;
 
 //// Randomise position \\\\
-private _pos = [getPos _city, (_city getVariable ["radius", 0])/2 - 100] call btc_fnc_randomize_pos;
+private _pos = [getPos _city, (_city getVariable ["cachingRadius", 0])/2 - 100] call btc_fnc_randomize_pos;
 _pos = [_pos, 0, 50, 13, 0, 60 * (pi / 180), 0] call btc_fnc_findsafepos;
 
 _city setVariable ["spawn_more", true];
