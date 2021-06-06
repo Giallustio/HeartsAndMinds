@@ -13,7 +13,6 @@ Parameters:
     _p_animals_group_ratio - Animal density. [Number]
     _p_civ_max_veh - Maximum number of civilian patrol. [Number]
     _p_patrol_max - Maximum number of enemy patrol. [Number]
-    _wp_ratios - Ratio of spawned group in and out houses. [Array]
 
 Returns:
 
@@ -34,10 +33,8 @@ params [
     ["_p_civ_group_ratio", btc_p_civ_group_ratio, [0]],
     ["_p_animals_group_ratio", btc_p_animals_group_ratio, [0]],
     ["_p_civ_max_veh", btc_p_civ_max_veh, [0]],
-    ["_p_patrol_max", btc_p_patrol_max, [0]],
-    ["_wp_ratios", btc_p_mil_wp_ratios, [[]]]
+    ["_p_patrol_max", btc_p_patrol_max, [0]]
 ];
-_wp_ratios params ["_wp_house", "_wp_sentry"];
 
 private _city = btc_city_all select _id;
 if (_city getVariable "activating") exitWith {};
@@ -119,8 +116,15 @@ if (_data_units isNotEqualTo []) then {
     });
 
     if (_has_en) then {
-        for "_i" from 1 to (round (_p_mil_group_ratio * _numberOfGroup)) do {
-            [_city, _spawningRadius, 1 + round random 2, random 1] call btc_mil_fnc_create_group;
+        private _finalNumberOfGroup = _p_mil_group_ratio * _numberOfGroup;
+        private _numberOfHouseGroup = _finalNumberOfGroup * btc_p_mil_wp_houseDensity;
+        for "_i" from 1 to round _finalNumberOfGroup do {
+            [
+                _city,
+                [_spawningRadius, _spawningRadius/3] select (_i <= _numberOfHouseGroup),
+                2 + round random 1,
+                [[1,2] selectRandomWeighted [0.7, 0.3], 0] select (_i <= _numberOfHouseGroup)
+            ] call btc_mil_fnc_create_group;
         };
     };
 
@@ -186,8 +190,15 @@ if (btc_p_animals_group_ratio > 0) then {
 
 if (_city getVariable ["spawn_more", false]) then {
     _city setVariable ["spawn_more", false];
-    for "_i" from 1 to (round (_p_mil_group_ratio * 5)) do {
-        [_city, _spawningRadius, 4 + round random 3, random 1] call btc_mil_fnc_create_group;
+    private _finalNumberOfGroup = _p_mil_group_ratio * 5;
+    private _numberOfHouseGroup = _finalNumberOfGroup * btc_p_mil_wp_houseDensity;
+    for "_i" from 1 to round _finalNumberOfGroup do {
+        [
+            _city,
+            [_spawningRadius, _spawningRadius/3] select (_i <= _numberOfHouseGroup),
+            4 + round random 3,
+            [1, 0] select (_i <= _numberOfHouseGroup)
+        ] call btc_mil_fnc_create_group;
     };
     if (btc_p_veh_armed_spawn_more) then {
         private _closest = [_city, btc_city_all select {!(_x getVariable ["active", false])}, false] call btc_fnc_find_closecity;
@@ -204,8 +215,8 @@ if (
     if (_city inArea [btc_cache_pos, _radius, _radius, 0, false]) then {
         btc_cache_obj setVariable ["btc_cache_unitsSpawned", true];
 
-        [btc_cache_pos, 8, 3, _wp_house] call btc_mil_fnc_create_group;
-        [btc_cache_pos, 60, 4, _wp_sentry] call btc_mil_fnc_create_group;
+        [btc_cache_pos, 8, 3, 0] call btc_mil_fnc_create_group;
+        [btc_cache_pos, 60, 4, 2] call btc_mil_fnc_create_group;
         if (btc_p_veh_armed_spawn_more) then {
             private _closest = [_city, btc_city_all select {!(_x getVariable ["active", false])}, false] call btc_fnc_find_closecity;
             for "_i" from 1 to (1 + round random 3) do {
@@ -218,9 +229,9 @@ if (
 if (_has_ho && {!(_city getVariable ["ho_units_spawned", false])}) then {
     _city setVariable ["ho_units_spawned", true];
     private _pos = _city getVariable ["ho_pos", getPos _city];
-    [_pos, 20, 10 + round (_p_mil_group_ratio * random 6), 1.1] call btc_mil_fnc_create_group;
-    [_pos, 120, 1 + round random 2, _wp_sentry] call btc_mil_fnc_create_group;
-    [_pos, 120, 1 + round random 2, _wp_sentry] call btc_mil_fnc_create_group;
+    [_pos, 20, 10 + round (_p_mil_group_ratio * random 6), 2] call btc_mil_fnc_create_group;
+    [_pos, 120, 1 + round random 2, 2] call btc_mil_fnc_create_group;
+    [_pos, 120, 1 + round random 2, 2] call btc_mil_fnc_create_group;
     private _random = random 1;
     switch (true) do {
         case (_random <= 0.3) : {};
