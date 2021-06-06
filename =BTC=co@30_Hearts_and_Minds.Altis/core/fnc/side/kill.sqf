@@ -44,6 +44,7 @@ if (count _houses > 3) then {
     _house = _houses select 0 select 1;
 };
 private _buildingPos = _house buildingPos -1;
+_buildingPos = _buildingPos select [0, count _buildingPos min 20];
 private _pos_number = count _buildingPos - 1;
 private _pos = _buildingPos select (_pos_number - ((round random 1) min _pos_number));
 
