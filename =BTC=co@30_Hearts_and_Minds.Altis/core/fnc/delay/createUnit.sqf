@@ -3,7 +3,7 @@
 Function: btc_delay_fnc_createUnit
 
 Description:
-    Create unit when all previous units have been created. btc_delay_createUnit define the time (in second) when the unit will be created.
+    Create unit when all previous units have been created. btc_delay_time define the time (in second) when the unit will be created.
 
 Parameters:
     _group - Group to add unit. [Group]
@@ -24,7 +24,7 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-btc_delay_createUnit = btc_delay_createUnit + 0.2;
+btc_delay_time = btc_delay_time + 0.2;
 
 [{
     params [
@@ -37,7 +37,7 @@ btc_delay_createUnit = btc_delay_createUnit + 0.2;
 
     if (isNull _group) exitWith {
         [format ["isNull _group _this = %1", _this], __FILE__, [btc_debug, btc_debug_log, true]] call btc_debug_fnc_message;
-        btc_delay_createUnit = btc_delay_createUnit - 0.2;
+        btc_delay_time = btc_delay_time - 0.2;
     };
 
     if !(_pos isEqualType []) then {
@@ -50,5 +50,5 @@ btc_delay_createUnit = btc_delay_createUnit + 0.2;
         _unit moveInAny _vehicle;
     };
 
-    btc_delay_createUnit = btc_delay_createUnit - 0.2;
-}, _this, btc_delay_createUnit - 0.01] call CBA_fnc_waitAndExecute;
+    btc_delay_time = btc_delay_time - 0.2;
+}, _this, btc_delay_time - 0.01] call CBA_fnc_waitAndExecute;
