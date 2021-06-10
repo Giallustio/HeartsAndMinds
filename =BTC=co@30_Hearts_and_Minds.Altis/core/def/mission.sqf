@@ -124,7 +124,7 @@ private _allClassSorted = _allClassVehicles select {getNumber (_cfgVehicles >> _
 
 if (isServer) then {
     btc_final_phase = false;
-    btc_delay_createUnit = 0;
+    btc_delay_time = 0;
 
     //City
     btc_city_radiusOffset = _p_city_radiusOffset;

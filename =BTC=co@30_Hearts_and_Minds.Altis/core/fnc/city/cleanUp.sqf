@@ -39,7 +39,7 @@ _toRemove append (allDead select {
 
 _toRemove call CBA_fnc_deleteEntity;
 
-if (btc_delay_createUnit < 0.001) then { // Don't remove group during units creation.
+if (btc_delay_time < 0.001) then { // Don't remove group during units creation.
     (allGroups select {
         units _x isEqualTo [] &&
         !(

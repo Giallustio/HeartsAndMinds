@@ -89,14 +89,14 @@ for "_i" from 1 to _numberOfGroup do {
             [{
                 params ["_group", "_hashMapGroup", "_area"];
                 [_group, _hashMapGroup get "_pos", _area, 2 + floor (random 4), "MOVE", "SAFE", "RED", "LIMITED", "STAG COLUMN", "", [5, 10, 20]] call CBA_fnc_taskPatrol;
-            }, [_group, _hashMapGroup, _area], btc_delay_createUnit] call CBA_fnc_waitAndExecute;
+            }, [_group, _hashMapGroup, _area], btc_delay_time] call CBA_fnc_waitAndExecute;
         };
         case (_wp > _wp_sentry_probability) : {
             [_group] call CBA_fnc_clearWaypoints;
             [{
                 params ["_group", "_hashMapGroup"];
                 [_group, _hashMapGroup get "_pos", -1, "SENTRY", "AWARE", "RED"] call CBA_fnc_addWaypoint;
-            }, [_group, _hashMapGroup], btc_delay_createUnit] call CBA_fnc_waitAndExecute;            
+            }, [_group, _hashMapGroup], btc_delay_time] call CBA_fnc_waitAndExecute;            
         };
     };
     [_group, _hashMapGroup, _n, _pos_iswater] call btc_mil_fnc_createUnits;

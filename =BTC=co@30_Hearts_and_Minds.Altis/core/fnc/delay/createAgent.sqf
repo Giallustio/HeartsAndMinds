@@ -23,7 +23,7 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-btc_delay_createUnit = btc_delay_createUnit + 0.1;
+btc_delay_time = btc_delay_time + 0.1;
 
 [{
     params [
@@ -35,5 +35,5 @@ btc_delay_createUnit = btc_delay_createUnit + 0.1;
 
     (createAgent [_agentType, _pos, [], 0, _special]) setVariable ["btc_city", _city];
 
-    btc_delay_createUnit = btc_delay_createUnit - 0.1;
-}, _this, btc_delay_createUnit - 0.01] call CBA_fnc_waitAndExecute;
+    btc_delay_time = btc_delay_time - 0.1;
+}, _this, btc_delay_time - 0.01] call CBA_fnc_waitAndExecute;
