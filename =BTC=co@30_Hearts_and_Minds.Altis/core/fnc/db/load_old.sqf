@@ -197,7 +197,7 @@ private _objs = +(profileNamespace getVariable [format ["btc_hm_%1_objs", _name]
                 createVehicleCrew _obj;
             };
 
-            [_obj] call btc_fnc_log_init;
+            [_obj] call btc_log_fnc_init;
             {
                 _x set [2, (_x select 2) call btc_load_fnc_migrateOldToNew_inventory];
             } forEach _cargo;
