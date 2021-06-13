@@ -53,11 +53,11 @@ _city setVariable ["active", true];
 private _data_units = _city getVariable ["data_units", []];
 private _data_animals = _city getVariable ["data_animals", []];
 private _type = _city getVariable ["type", ""];
-private _radius = _city getVariable ["radius", 100];
+private _cachingRadius = _city getVariable ["cachingRadius", 100];
 private _has_en = _city getVariable ["occupied", false];
 private _has_ho = _city getVariable ["has_ho", false];
 private _ieds = _city getVariable ["ieds", []];
-private _spawningRadius = _radius/2;
+private _spawningRadius = _cachingRadius/2;
 
 if (!(_city getVariable ["initialized", false])) then {
     private _ratio = (switch _type do {
@@ -201,7 +201,7 @@ if (
     (btc_cache_pos isNotEqualTo []) &&
     {!(btc_cache_obj getVariable ["btc_cache_unitsSpawned", false])}
 ) then {
-    if (_city inArea [btc_cache_pos, _radius, _radius, 0, false]) then {
+    if (_city inArea [btc_cache_pos, _cachingRadius, _cachingRadius, 0, false]) then {
         btc_cache_obj setVariable ["btc_cache_unitsSpawned", true];
 
         [btc_cache_pos, 8, 3, _wp_house] call btc_mil_fnc_create_group;
@@ -301,11 +301,11 @@ if (_civKilled isNotEqualTo []) then {
 };
 
 [{
-    params ["_has_en", "_city", "_radius", "_id"];
+    params ["_has_en", "_city", "_cachingRadius", "_id"];
 
     if (_has_en) then {
         private _trigger = createTrigger ["EmptyDetector", getPos _city, false];
-        _trigger setTriggerArea [_radius, _radius, 0, false];
+        _trigger setTriggerArea [_cachingRadius, _cachingRadius, 0, false];
         _trigger setTriggerActivation [str btc_enemy_side, "PRESENT", false];
         _trigger setTriggerStatements [btc_p_city_free_trigger_condition, format ["[%1, thisList] call btc_city_fnc_set_clear", _id], ""];
         _trigger setTriggerInterval 2;
@@ -313,7 +313,7 @@ if (_civKilled isNotEqualTo []) then {
     };
 
     _city setVariable ["activating", false];
-}, [_has_en, _city, _radius, _id], btc_delay_time + _delay] call CBA_fnc_waitAndExecute;
+}, [_has_en, _city, _cachingRadius, _id], btc_delay_time + _delay] call CBA_fnc_waitAndExecute;
 
 //Patrol
 btc_patrol_active = btc_patrol_active - [grpNull];
@@ -330,7 +330,7 @@ if (_numberOfPatrol < _p_patrol_max) then {
         private _group = createGroup btc_enemy_side;
         btc_patrol_active pushBack _group;
         _group setVariable ["no_cache", true];
-        [[_group, 1 + round random 1, _city, _radius + btc_patrol_area], btc_mil_fnc_create_patrol] call btc_delay_fnc_exec;
+        [[_group, 1 + round random 1, _city, _cachingRadius + btc_patrol_area], btc_mil_fnc_create_patrol] call btc_delay_fnc_exec;
     };
 };
 //Traffic
@@ -342,7 +342,7 @@ if (_numberOfCivVeh < _p_civ_max_veh) then {
         private _group = createGroup civilian;
         btc_civ_veh_active pushBack _group;
         _group setVariable ["no_cache", true];
-        [[_group, _city, _radius + btc_patrol_area], btc_civ_fnc_create_patrol] call btc_delay_fnc_exec;
+        [[_group, _city, _cachingRadius + btc_patrol_area], btc_civ_fnc_create_patrol] call btc_delay_fnc_exec;
     };
 };
 

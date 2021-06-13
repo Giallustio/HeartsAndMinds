@@ -58,7 +58,7 @@ if (_usefuls isEqualTo []) exitWith {
 private _start_city = selectRandom _usefuls;
 private _pos = [];
 if (_start_city getVariable ["hasbeach", false]) then {
-    _pos = [getPos _start_city, _start_city getVariable ["radius", 100], btc_p_sea] call btc_fnc_randomize_pos;
+    _pos = [getPos _start_city, _start_city getVariable ["cachingRadius", 100], btc_p_sea] call btc_fnc_randomize_pos;
 } else {
     _pos = getPos _start_city;
 };

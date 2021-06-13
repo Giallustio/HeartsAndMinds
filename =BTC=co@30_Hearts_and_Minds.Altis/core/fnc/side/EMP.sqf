@@ -32,7 +32,7 @@ private _city = selectRandom _useful;
 
 _city setVariable ["spawn_more", true];
 
-private _radius = _city getVariable ["radius", 0];
+private _radius = _city getVariable ["cachingRadius", 0];
 private _composition = [];
 private _tasksID = [];
 

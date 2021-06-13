@@ -30,7 +30,7 @@ if (_useful isEqualTo []) then {_useful = + (btc_city_all select {!(isNull _x)})
 
 private _city = selectRandom _useful;
 private _pos = [getPos _city, 100] call btc_fnc_randomize_pos;
-_pos = [_pos, 0, _city getVariable ["radius", 100], 20, false] call btc_fnc_findsafepos;
+_pos = [_pos, 0, _city getVariable ["cachingRadius", 100], 20, false] call btc_fnc_findsafepos;
 
 [_taskID, 3, getPos _city, _city getVariable "name"] call btc_task_fnc_create;
 private _move_taskID = _taskID + "mv";

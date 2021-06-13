@@ -42,7 +42,7 @@ if !(_city getVariable ["active", false]) exitWith {};
     };
 
     //Save all and delete
-    private _radius = _city getVariable ["radius", 0];
+    private _cachingRadius = _city getVariable ["cachingRadius", 0];
     private _has_en = _city getVariable ["occupied", false];
 
     if (_has_en) then {
@@ -56,7 +56,7 @@ if !(_city getVariable ["active", false]) exitWith {};
     private _has_suicider = false;
     {
         if (
-            (leader _x) inArea [_pos_city, _radius, _radius, 0, false] &&
+            (leader _x) inArea [_pos_city, _cachingRadius, _cachingRadius, 0, false] &&
             {side _x != btc_player_side} &&
             {!(_x getVariable ["no_cache", false])} &&
             {_x getVariable ["btc_city", _city] in [_city, objNull]}
@@ -72,7 +72,7 @@ if !(_city getVariable ["active", false]) exitWith {};
     {
         private _agent = agent _x;
         if (
-            _agent inArea [_pos_city, _radius, _radius, 0, false] &&
+            _agent inArea [_pos_city, _cachingRadius, _cachingRadius, 0, false] &&
             {alive _agent} &&
             {!(_x getVariable ["no_cache", false])} &&
             {_x getVariable ["btc_city", _city] in [_city, objNull]}
@@ -98,7 +98,7 @@ if !(_city getVariable ["active", false]) exitWith {};
             ];
             _x call CBA_fnc_deleteEntity;
         };
-    } forEach (btc_tags_server inAreaArray [_pos_city, _radius, _radius]);
+    } forEach (btc_tags_server inAreaArray [_pos_city, _cachingRadius, _cachingRadius]);
     btc_tags_server = btc_tags_server - [objNull];
 
     (_city getVariable ["btc_city_intels", []]) call CBA_fnc_deleteEntity;
