@@ -24,7 +24,11 @@ params [
     ["_taskID", "btc_side", [""]]
 ];
 
-private _useful = btc_city_all select {!(isNull _x) && (_x getVariable ["occupied", false]) && !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])};
+private _useful = btc_city_all select {
+    !isNull _x &&
+    _x getVariable ["occupied", false] &&
+    !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])
+};
 if (_useful isEqualTo []) exitWith {[] spawn btc_side_fnc_create;};
 
 private _city = selectRandom _useful;
@@ -34,7 +38,10 @@ private _pos = getPos _city;
 
 _city setVariable ["spawn_more", true];
 
-waitUntil {sleep 5; (_taskID call BIS_fnc_taskCompleted || !(_city getVariable ["occupied", false]))};
+waitUntil {sleep 5; 
+    _taskID call BIS_fnc_taskCompleted ||
+    !(_city getVariable ["occupied", false])
+};
 
 if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {};
 

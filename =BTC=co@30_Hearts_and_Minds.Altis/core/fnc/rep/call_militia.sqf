@@ -42,7 +42,7 @@ if (btc_debug_log) then {
 
 if (_start_pos isEqualTo objNull) then {
     _start_pos = [_pos, btc_city_all select {
-        !(isNull _x) &&
+        !isNull _x &&
         !(_x getVariable ["active", false]) &&
         _x getVariable ["type", ""] != "NameMarine"
     }, false] call btc_fnc_find_closecity;

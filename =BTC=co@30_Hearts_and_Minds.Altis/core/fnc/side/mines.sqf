@@ -24,7 +24,10 @@ params [
     ["_taskID", "btc_side", [""]]
 ];
 
-private _useful = btc_city_all select {!(isNull _x) && !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])};
+private _useful = btc_city_all select {
+    !isNull _x &&
+    !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])
+};
 if (_useful isEqualTo []) then {_useful = + (btc_city_all select {!(isNull _x)});};
 
 private _city = selectRandom _useful;
@@ -105,14 +108,20 @@ for "_i" from 1 to (5 + round random 5) do {
     };
 };
 
-waitUntil {sleep 5; (_taskID call BIS_fnc_taskCompleted || playableUnits inAreaArray [_pos, 100, 100] isNotEqualTo [])};
+waitUntil {sleep 5; 
+    _taskID call BIS_fnc_taskCompleted ||
+    playableUnits inAreaArray [_pos, 100, 100] isNotEqualTo []
+};
 
 private _closest = [_city, btc_city_all select {!(_x getVariable ["active", false])}, false] call btc_fnc_find_closecity;
 for "_i" from 1 to (round random 2) do {
     [btc_mil_fnc_send, [_closest, _pos, 1, selectRandom btc_type_motorized]] call CBA_fnc_directCall;
 };
 
-waitUntil {sleep 5; (_taskID call BIS_fnc_taskCompleted || (_mines select {!isNull _x} isEqualTo []))};
+waitUntil {sleep 5; 
+    _taskID call BIS_fnc_taskCompleted ||
+    _mines select {!isNull _x} isEqualTo []
+};
 
 [[_area], _mines + _composition_objects] call btc_fnc_delete;
 

@@ -25,13 +25,20 @@ params [
 ];
 
 //// Choose two Cities \\\\
-private _usefuls = btc_city_all select {!(isNull _x) && !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"]) && !(_x getVariable ["occupied", false])};
+private _usefuls = btc_city_all select {
+    !isNull _x &&
+    !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"]) &&
+    !(_x getVariable ["occupied", false])
+};
 if (_usefuls isEqualTo []) exitWith {[] spawn btc_side_fnc_create;};
 private _city2 = selectRandom _usefuls;
 
 private _area = (getNumber (configFile >> "CfgWorlds" >> worldName >> "MapSize"))/4;
-private _cities = btc_city_all select {!(isNull _x) && _x distance _city2 > _area};
-_usefuls = _cities select {!((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"]) && (_x getVariable ["occupied", false])};
+private _cities = btc_city_all select {!isNull _x && _x distance _city2 > _area};
+_usefuls = _cities select {
+    !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"]) &&
+    _x getVariable ["occupied", false]
+};
 if (_usefuls isEqualTo []) exitWith {[] spawn btc_side_fnc_create;};
 private _city1 = selectRandom _usefuls;
 
@@ -111,11 +118,11 @@ for "_i" from 1 to _convoyLength do {
     format ["['%1', 'FAILED'] call BIS_fnc_taskSetState;", _taskID], [0, 0, 0], _radius/2
 ], btc_delay_time + _delay] call CBA_fnc_waitAndExecute;
 
-waitUntil {sleep 5; (
+waitUntil {sleep 5; 
     _taskID call BIS_fnc_taskCompleted ||
     ((units _group) apply {assignedVehicle _x}) select {canMove _x} isEqualTo [] ||
     isNull _group
-)};
+};
 
 _markers append (allMapMarkers select {(_x select [0, count _taskID]) isEqualTo _taskID});
 
