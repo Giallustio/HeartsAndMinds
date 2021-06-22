@@ -25,7 +25,11 @@ params [
 ];
 
 //// Choose an occupied City \\\\
-private _useful = btc_city_all select {!(isNull _x) && _x getVariable ["occupied", false] && !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])};
+private _useful = btc_city_all select {
+    !isNull _x &&
+    _x getVariable ["occupied", false] &&
+    !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])
+};
 
 if (_useful isEqualTo []) exitWith {[] spawn btc_side_fnc_create;};
 
@@ -80,7 +84,11 @@ if (random 1 > 0.5) then {
     _mine = createMine [selectRandom btc_type_mines, getPosATL _captive, [], 0];
 };
 
-waitUntil {sleep 5; (_taskID call BIS_fnc_taskCompleted || !(_captive getVariable ["ace_captives_isHandcuffed", false]) || !alive _captive)};
+waitUntil {sleep 5; 
+    _taskID call BIS_fnc_taskCompleted ||
+    !(_captive getVariable ["ace_captives_isHandcuffed", false]) ||
+    !alive _captive
+};
 
 if (!(_captive getVariable ["ace_captives_isHandcuffed", false])) then {
     _mine setDamage 1;

@@ -58,7 +58,7 @@ if (_usefuls isEqualTo []) exitWith {
 private _start_city = selectRandom _usefuls;
 private _pos = [];
 if (_start_city getVariable ["hasbeach", false]) then {
-    _pos = [getPos _start_city, _start_city getVariable ["radius", 100], btc_p_sea] call btc_fnc_randomize_pos;
+    _pos = [getPos _start_city, _start_city getVariable ["cachingRadius", 100], btc_p_sea] call btc_fnc_randomize_pos;
 } else {
     _pos = getPos _start_city;
 };
@@ -101,6 +101,6 @@ private _delay = switch (_random) do {
 [{
     _this call btc_patrol_fnc_init;
     [[_this select 0]] call btc_fnc_set_groupsOwner;
-}, [_group, [_start_city, _active_city], _area, _pos_isWater], btc_delay_createUnit + _delay] call CBA_fnc_waitAndExecute;
+}, [_group, [_start_city, _active_city], _area, _pos_isWater], btc_delay_time + _delay] call CBA_fnc_waitAndExecute;
 
 true

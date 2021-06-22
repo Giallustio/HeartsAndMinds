@@ -1,5 +1,5 @@
 
-btc_version = [1, 21.1, 3];
+btc_version = [1, 21.1, 4];
 diag_log format (["=BTC= HEARTS AND MINDS VERSION %1.%2.%3"] + btc_version);
 
 //Param
@@ -79,7 +79,7 @@ btc_p_autoloadout = "btc_p_autoloadout" call BIS_fnc_getParamValue;
 //<< Other options >>
 private _p_rep = "btc_p_rep" call BIS_fnc_getParamValue;
 btc_p_rep_notify = "btc_p_rep_notify" call BIS_fnc_getParamValue;
-private _p_city_radius = ("btc_p_city_radius" call BIS_fnc_getParamValue) * 100;
+private _p_city_radiusOffset = ("btc_p_city_radiusOffset" call BIS_fnc_getParamValue) * 100;
 btc_p_trigger = if (("btc_p_trigger" call BIS_fnc_getParamValue) isEqualTo 1) then {
     "this && (false in (thisList apply {_x isKindOf 'Plane'})) && (false in (thisList apply {(_x isKindOf 'Helicopter') && (speed _x > 190)}))"
 } else {
@@ -124,10 +124,10 @@ private _allClassSorted = _allClassVehicles select {getNumber (_cfgVehicles >> _
 
 if (isServer) then {
     btc_final_phase = false;
-    btc_delay_createUnit = 0;
+    btc_delay_time = 0;
 
     //City
-    btc_city_radius = _p_city_radius;
+    btc_city_radiusOffset = _p_city_radiusOffset;
     btc_city_blacklist = [];//NAME FROM CFG
 
     //Civ

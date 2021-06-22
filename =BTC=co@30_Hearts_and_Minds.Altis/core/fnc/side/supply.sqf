@@ -24,13 +24,16 @@ params [
     ["_taskID", "btc_side", [""]]
 ];
 
-private _useful = btc_city_all select {!(isNull _x) && !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])} ;
+private _useful = btc_city_all select {
+    !isNull _x &&
+    !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])
+};
 
 if (_useful isEqualTo []) then {_useful = + (btc_city_all select {!(isNull _x)});};
 
 private _city = selectRandom _useful;
 private _pos = [getPos _city, 100] call btc_fnc_randomize_pos;
-_pos = [_pos, 0, _city getVariable ["radius", 100], 20, false] call btc_fnc_findsafepos;
+_pos = [_pos, 0, _city getVariable ["cachingRadius", 100], 20, false] call btc_fnc_findsafepos;
 
 [_taskID, 3, getPos _city, _city getVariable "name"] call btc_task_fnc_create;
 private _move_taskID = _taskID + "mv";
@@ -105,7 +108,10 @@ if (_move_taskID call BIS_fnc_taskState isNotEqualTo "CANCELED") then {
 
 [getPos _city, _pos getPos [10, _direction_composition]] call btc_civ_fnc_evacuate;
 
-waitUntil {sleep 5; (_taskID call BIS_fnc_taskCompleted || (count (nearestObjects [_pos, _food + _water, 30]) >= 2))};
+waitUntil {sleep 5; 
+    _taskID call BIS_fnc_taskCompleted ||
+    count (nearestObjects [_pos, _food + _water, 30]) >= 2
+};
 
 if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {
     [[_area], _composition_objects] call btc_fnc_delete;

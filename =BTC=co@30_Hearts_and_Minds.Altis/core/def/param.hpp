@@ -389,7 +389,7 @@ class Params {
         texts[]={$STR_DISABLED, 0, 1, 2, 3, 5, 10, 25, 50, 100, 200};
         default = 3;
     };
-    class btc_p_city_radius { // Spawn city radius offset:
+    class btc_p_city_radiusOffset { // Spawn city radius offset:
         title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_OTHER_SPAWNRAD"]);
         values[]={0,1,2,3,4,5,6,7,8};
         texts[]={"0 m","100 m","200 m",$STR_BTC_HAM_PARAM_OTHER_SPAWNRAD_DEF,"400 m","500 m (Takistan)","600 m","700 m","800 m"}; // texts[]={"0 m","100 m","200 m","300 m","400 m","500 m (Takistan)","600 m","700 m","800 m"};

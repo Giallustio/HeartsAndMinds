@@ -36,7 +36,7 @@ if (_city getVariable ["type", ""] in ["NameLocal", "Hill", "NameMarine"]) exitW
     [] call btc_cache_fnc_find_pos;
 };
 
-private _radius = _city getVariable ["radius", 200];
+private _radius = _city getVariable ["cachingRadius", 200];
 private _pos = [getPos _city, _radius] call btc_fnc_randomize_pos;
 private _houses = [_pos, 50] call btc_fnc_getHouses;
 

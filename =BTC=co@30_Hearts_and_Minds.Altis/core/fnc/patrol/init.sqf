@@ -42,7 +42,7 @@ private _end_city = selectRandom ([[_start_city, _active_city], _area, _isBoat] 
 
 private _pos = getPos _end_city;
 if (_isBoat) then {
-    ((selectBestPlaces [_pos, _end_city getVariable ["radius", 100], "sea", 10, 1]) select 0 select 0) params ["_x", "_y"];
+    ((selectBestPlaces [_pos, _end_city getVariable ["cachingRadius", 100], "sea", 10, 1]) select 0 select 0) params ["_x", "_y"];
     _pos = [_x, _y, 0];
 };
 

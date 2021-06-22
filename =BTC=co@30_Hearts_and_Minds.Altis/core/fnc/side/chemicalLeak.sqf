@@ -24,11 +24,15 @@ params [
     ["_taskID", "btc_side", [""]]
 ];
 
-private _useful = btc_city_all select {!(isNull _x) && !(_x getVariable ["occupied", false]) && !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])};
+private _useful = btc_city_all select {
+    !isNull _x &&
+    !(_x getVariable ["occupied", false]) &&
+    !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])
+};
 if (_useful isEqualTo []) then {_useful = + (btc_city_all select {!(isNull _x)});};
 
 private _city = selectRandom _useful;
-private _pos = [getPos _city, 0, _city getVariable ["radius", 100], 30, false] call btc_fnc_findsafepos;
+private _pos = [getPos _city, 0, _city getVariable ["cachingRadius", 100], 30, false] call btc_fnc_findsafepos;
 
 [_taskID, 30, getPos _city, _city getVariable "name"] call btc_task_fnc_create;
 
@@ -156,12 +160,14 @@ for "_i" from 1 to (5 + round random 5) do {
 private _bring_taskID = _taskID + "br";
 [[_bring_taskID, _taskID], 31, _pos, btc_containers_mat select 0] call btc_task_fnc_create;
 
-waitUntil {sleep 5; (
+waitUntil {sleep 5; 
     _taskID call BIS_fnc_taskCompleted ||
     (nearestObjects [_pos, btc_containers_mat, 200]) isNotEqualTo []
-)};
+};
 
-if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {[[], _composition_objects + _chemical] call btc_fnc_delete;};
+if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {
+    [[], _composition_objects + _chemical] call btc_fnc_delete;
+};
 
 [_bring_taskID, "SUCCEEDED"] call BIS_fnc_taskSetState;
 
@@ -172,10 +178,10 @@ private _locate_taskID = _taskID + "lc";
 private _clean_taskID = _taskID + "cl";
 [[_clean_taskID, _taskID], 33, btc_bigShower, typeOf btc_bigShower] call btc_task_fnc_create;
 
-waitUntil {sleep 5; (
+waitUntil {sleep 5; 
     _taskID call BIS_fnc_taskCompleted ||
     (_chemical arrayIntersect btc_chem_contaminated) select {!isNull _x} isEqualTo []
-)};
+};
 
 [[], _composition_objects + _chemical] call btc_fnc_delete;
 

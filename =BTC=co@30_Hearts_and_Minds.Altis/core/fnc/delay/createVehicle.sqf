@@ -3,7 +3,7 @@
 Function: btc_delay_fnc_createVehicle
 
 Description:
-    Create vehicle and crew when all previous units have been created. btc_delay_createUnit define the time (in second) when the vehicle and crew will be created.
+    Create vehicle and crew when all previous units have been created. btc_delay_time define the time (in second) when the vehicle and crew will be created.
 
 Parameters:
     _group - Group to store crews. [Group]
@@ -28,7 +28,7 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-btc_delay_createUnit = btc_delay_createUnit + 0.3;
+btc_delay_time = btc_delay_time + 0.3;
 
 [{
     params [
@@ -83,7 +83,7 @@ btc_delay_createUnit = btc_delay_createUnit + 0.3;
     };
 
     ["btc_delay_vehicleInit", [_veh, _group]] call CBA_fnc_localEvent;
-    btc_delay_createUnit = btc_delay_createUnit - 0.3;
-}, _this, btc_delay_createUnit - 0.01] call CBA_fnc_waitAndExecute;
+    btc_delay_time = btc_delay_time - 0.3;
+}, _this, btc_delay_time - 0.01] call CBA_fnc_waitAndExecute;
 
 count (_this select 2) * 0.2
