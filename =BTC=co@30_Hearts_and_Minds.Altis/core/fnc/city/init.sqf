@@ -74,7 +74,7 @@ for "_id" from 0 to (count _locations - 1) do {
 };
 
 [_cities, true] call CBA_fnc_shuffle;
-private _numberOfCity = (round ((count _cities) * _density_of_occupiedCity)) - btc_hideout_n;
+private _numberOfCity = round ((count _cities) * _density_of_occupiedCity);
 {
     _x setVariable ["occupied", true];
     if (btc_debug) then {
