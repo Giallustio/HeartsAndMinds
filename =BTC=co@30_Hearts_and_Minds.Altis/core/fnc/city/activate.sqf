@@ -58,20 +58,20 @@ private _spawningRadius = _radius/2;
 
 if (!(_city getVariable ["initialized", false])) then {
     private _ratio = (switch _type do {
-        case "Hill" : {random 1};
-        case "VegetationFir" : {random 1};
-        case "BorderCrossing" : {random 2};
-        case "NameLocal" : {random 2.5};
-        case "StrongpointArea" : {random 3};
-        case "NameVillage" : {random 3.5};
-        case "NameCity" : {random 5};
-        case "NameCityCapital" : {random 6};
+        case "Hill" : {1};
+        case "VegetationFir" : {1};
+        case "BorderCrossing" : {2};
+        case "NameLocal" : {2.5};
+        case "StrongpointArea" : {3};
+        case "NameVillage" : {3.5};
+        case "NameCity" : {5};
+        case "NameCityCapital" : {6};
         case "Airport" : {0};
         case "NameMarine" : {0};
         default {0};
     });
 
-    private _ratio_ied = _ratio;
+    private _ratio_ied = random _ratio;
     if (_has_en) then {
         _ratio_ied = _ratio_ied * 1.5;
     } else {
