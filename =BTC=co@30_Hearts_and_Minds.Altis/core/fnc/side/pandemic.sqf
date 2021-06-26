@@ -3,7 +3,7 @@
 Function: btc_side_fnc_pandemic
 
 Description:
-    Decontaminate civilian with a little shower. To localise civilian go to the subtask, follow red blood drop and use your chemical detector.
+    Decontaminate civilian with a little shower. To locate civilian go to the subtask, follow red blood drop and use your chemical detector.
 
 Parameters:
     _taskID - Unique task ID. [String]
@@ -44,7 +44,7 @@ private _dataCivilian = (_city getVariable ["data_units", []]) select {
 };
 private _extraCiv = round random (((count _dataCivilian) - _minNumberOfSubTask) min 2);
 
-[_taskID, 38, objNull, _city getVariable "name"] call btc_task_fnc_create;
+[_taskID, 40, objNull, _city getVariable "name"] call btc_task_fnc_create;
 
 private _tasksID = [];
 for "_i" from 0 to (_minNumberOfSubTask + _extraCiv - 1) do {
@@ -52,7 +52,7 @@ for "_i" from 0 to (_minNumberOfSubTask + _extraCiv - 1) do {
     _tasksID pushBack _deconta_taskID;
 
     private _selectedCiv = _dataCivilian select _i;
-    [[_deconta_taskID, _taskID], 15, _selectedCiv select 1 select 0, [_city getVariable "name", _selectedCiv select 2 select 0], false, false] call btc_task_fnc_create;
+    [[_deconta_taskID, _taskID], 41, _selectedCiv select 1 select 0, _selectedCiv select 2 select 0, false, false] call btc_task_fnc_create;
  
     [{
         params ["_city", "_civPos", "_civType"];
@@ -70,7 +70,6 @@ for "_i" from 0 to (_minNumberOfSubTask + _extraCiv - 1) do {
             !(_civ in btc_chem_contaminated)
         }, {
             params ["_civ", "_deconta_taskID"];
-            systemChat str _this;
             if (_deconta_taskID call BIS_fnc_taskCompleted) exitWith {};
             if (!alive _civ) exitWith {
                 [_deconta_taskID, "FAILED"] call BIS_fnc_taskSetState;

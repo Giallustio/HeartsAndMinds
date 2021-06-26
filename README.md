@@ -34,7 +34,7 @@ Online [wiki available](http://vdauphin.github.io/HeartsAndMinds/).
         - Request a lift
         - Discussion ([interpreter](http://vdauphin.github.io/HeartsAndMinds/InGame-documentation#intel))
         - Fleeing
-    - More than 18 [side mission](http://vdauphin.github.io/HeartsAndMinds/InGame-documentation#side-mission)
+    - More than 19 [side mission](http://vdauphin.github.io/HeartsAndMinds/InGame-documentation#side-mission)
 - Deep ACE3 support
     - Use mainly ACE interaction
     - Rearm system
