@@ -28,6 +28,7 @@ private _minNumberOfSubTask = 2;
 private _useful = btc_city_all select {
     !(isNull _x) &&
     {_x getVariable ["type", ""] != "NameMarine"} &&
+    {!(_x getVariable ["active", false])} &&
     {
         private _city = _x;
         ({
