@@ -381,7 +381,7 @@
             <Key ID="STR_BTC_HAM_PARAM_SPWAN_ISOCCUPIED_DENSITY">
                 <Original>Density of occupied city:</Original>
                 <German>Density of occupied city:</German>
-                <Chinesesimp>Density of occupied city:</Chinesesimp>
+                <Chinesesimp>被敌军占领城市的密度:</Chinesesimp>
                 <French>Densité de villes occupées:</French>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_SPWAN_ENEMY_DENSITY">
