@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_lift_hook
+Function: btc_lift_fnc_hook
 
 Description:
     Hook a cargo in a diameter of 30m.
@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        [] call btc_fnc_lift_hook;
+        [] call btc_lift_fnc_hook;
     (end)
 
 Author:
@@ -24,7 +24,7 @@ params [
     ["_chopper", vehicle player, [objNull]]
 ];
 
-private _array = [_chopper] call btc_fnc_lift_getLiftable;
+private _array = [_chopper] call btc_lift_fnc_getLiftable;
 private _cargo_array = nearestObjects [_chopper, _array, 30];
 _cargo_array = _cargo_array - [_chopper];
 _cargo_array = _cargo_array select {
@@ -53,7 +53,7 @@ if ((_bbr isEqualTo []) OR (_ropes_check select {!isNull _x} isEqualTo [])) then
     if (abs((_bbr select 0) select 0) > 5) then {
         _rope_length = 10 + abs((_bbr select 0) select 0);
     };
-    ([_cargo] call btc_fnc_log_get_corner_points) params [
+    ([_cargo] call btc_log_fnc_get_corner_points) params [
         "_rearCorner",
         "_rearCorner2",
         "_frontCorner",
@@ -63,7 +63,7 @@ if ((_bbr isEqualTo []) OR (_ropes_check select {!isNull _x} isEqualTo [])) then
     private _support = _cargo;
     private _bbr_z = 0;
     if (!alive _cargo) then {
-        _support = [btc_fnc_lift_hookFake, [_cargo, _chopper]] call CBA_fnc_directCall;
+        _support = [btc_lift_fnc_hookFake, [_cargo, _chopper]] call CBA_fnc_directCall;
         _bbr_z = _support distance _cargo;
         sleep 0.3;
     };
@@ -75,7 +75,7 @@ if ((_bbr isEqualTo []) OR (_ropes_check select {!isNull _x} isEqualTo [])) then
 };
 
 if (btc_debug) then {
-    [format ["boundingBoxReal : %1 rope length : %2", _bbr, _rope_length], __FILE__, [btc_debug, false]] call btc_fnc_debug_message;
+    [format ["boundingBoxReal : %1 rope length : %2", _bbr, _rope_length], __FILE__, [btc_debug, false]] call btc_debug_fnc_message;
 };
 
 private _max_cargo  = getNumber (configOf _chopper >> "slingLoadMaxCargoMass");

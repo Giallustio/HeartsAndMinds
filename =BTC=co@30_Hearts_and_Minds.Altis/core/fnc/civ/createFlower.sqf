@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_civ_createFlower
+Function: btc_civ_fnc_createFlower
 
 Description:
     Add flower bouquets next to killed civilians.
@@ -13,7 +13,7 @@ Returns:
 
 Examples:
     (begin example)
-        [btc_city_all#0, [[getPosASL player, getDir player]]] call btc_fnc_civ_createFlower;
+        [btc_city_all#0, [[getPosASL player, getDir player]]] call btc_civ_fnc_createFlower;
     (end)
 
 Author:

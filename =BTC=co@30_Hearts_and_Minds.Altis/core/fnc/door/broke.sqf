@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_door_broke
+Function: btc_door_fnc_broke
 
 Description:
     Unlock door.
@@ -13,7 +13,7 @@ Returns:
 
 Examples:
     (begin example)
-        ([2] call ace_interaction_fnc_getDoor) call btc_fnc_door_broke;
+        ([2] call ace_interaction_fnc_getDoor) call btc_door_fnc_broke;
     (end)
 
 Author:
@@ -28,7 +28,7 @@ params [
 
 _house setVariable [format ["bis_disabled_%1", _door], 0, true];
 playSound3D ["\z\ace\addons\logistics_wirecutter\sound\wirecut.ogg", player];
-[btc_rep_malus_breakDoor, player] remoteExecCall ["btc_fnc_rep_change", 2];
+[btc_rep_malus_breakDoor, player] remoteExecCall ["btc_rep_fnc_change", 2];
 
 private _getDoorAnimations = [_house, _door] call ace_interaction_fnc_getDoorAnimations;
 _getDoorAnimations params ["_animations"];

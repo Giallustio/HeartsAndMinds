@@ -378,11 +378,11 @@
                 <Portuguese>&lt;&lt; Opções de Spawn &gt;&gt;</Portuguese>
                 <French>&lt;&lt; Options de spawn &gt;&gt;</French>
             </Key>
-            <Key ID="STR_BTC_HAM_PARAM_SPWAN_ISFREE_PROB">
-                <Original>Probability for a city to be free:</Original>
-                <German>Wahrscheinlichkeit, dass eine Stadt unbesetzt ist:</German>
-                <Chinesesimp>城市无人居住的几率:</Chinesesimp>
-                <French>Chance pour qu'une ville soit sans occupation ennemies:</French>
+            <Key ID="STR_BTC_HAM_PARAM_SPWAN_ISOCCUPIED_DENSITY">
+                <Original>Density of occupied city:</Original>
+                <German>Density of occupied city:</German>
+                <Chinesesimp>Density of occupied city:</Chinesesimp>
+                <French>Densité de villes occupées:</French>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_SPWAN_ENEMY_DENSITY">
                 <Original>Enemy density:</Original>

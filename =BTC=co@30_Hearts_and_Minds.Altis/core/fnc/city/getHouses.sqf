@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_city_getHouses
+Function: btc_city_fnc_getHouses
 
 Description:
     Get random open houses around a position.
@@ -14,7 +14,7 @@ Returns:
 
 Examples:
     (begin example)
-        [player] call btc_fnc_city_getHouses;
+        [player] call btc_city_fnc_getHouses;
     (end)
 
 Author:

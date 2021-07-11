@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_mil_getStructures
+Function: btc_mil_fnc_getStructures
 
 Description:
     Fill me when you edit me !
@@ -13,7 +13,7 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_mil_getStructures;
+        _result = [] call btc_mil_fnc_getStructures;
     (end)
 
 Author:

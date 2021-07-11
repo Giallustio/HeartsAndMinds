@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_log_createVehicle
+Function: btc_log_fnc_createVehicle
 
 Description:
     Creates an empty object of given classname type.
@@ -23,7 +23,7 @@ Returns:
 
 Examples:
     (begin example)
-        _veh = ["vehicle_class_name", getPos player] call btc_fnc_log_createVehicle;
+        _veh = ["vehicle_class_name", getPos player] call btc_log_fnc_createVehicle;
     (end)
 
 Author:
@@ -53,7 +53,7 @@ _veh setPosASL _pos;
 [_veh, _customization, _isMedicalVehicle, _isRepairVehicle, _fuelSource, _pylons, _isContaminated, _supplyVehicle] call btc_fnc_setVehProperties;
 if (_EDENinventory isNotEqualTo []) then {
     _veh setVariable ["btc_EDENinventory", _EDENinventory];
-    [_veh, _EDENinventory] call btc_fnc_log_inventorySet;
+    [_veh, _EDENinventory] call btc_log_fnc_inventorySet;
 };
 
 _veh setVariable ["btc_dont_delete", true];
@@ -71,6 +71,6 @@ if (_allHitPointsDamage isNotEqualTo []) then {
     };
 };
 
-_veh call btc_fnc_db_add_veh;
+_veh call btc_db_fnc_add_veh;
 
 _veh
