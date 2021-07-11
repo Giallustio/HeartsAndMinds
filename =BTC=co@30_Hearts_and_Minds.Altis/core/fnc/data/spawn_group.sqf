@@ -108,6 +108,6 @@ if (_type isEqualTo 1) then {
         [_group, _array_veh select 0] call btc_civ_fnc_addWP;
         _group setVariable ["btc_data_inhouse", _array_veh];
     };
-}, [_data_unit, _group], btc_delay_createUnit + _delay] call CBA_fnc_waitAndExecute;
+}, [_data_unit, _group], btc_delay_time + _delay] call CBA_fnc_waitAndExecute;
 
 _delay

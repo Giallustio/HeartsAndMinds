@@ -24,7 +24,11 @@ params [
     ["_taskID", "btc_side", [""]]
 ];
 
-private _useful = btc_city_all select {!(isNull _x) && _x getVariable ["occupied", false] && !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])};
+private _useful = btc_city_all select {
+    !isNull _x &&
+    _x getVariable ["occupied", false] &&
+    !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])
+};
 if (_useful isEqualTo []) exitWith {[] spawn btc_side_fnc_create;};
 
 private _city = selectRandom _useful;
@@ -52,15 +56,18 @@ private _btc_composition_tower = [
 
 //// Create tower with static at _pos \\\\
 private _statics = btc_type_gl + btc_type_mg;
-[_pos getPos [5, _direction], _statics, _direction] call btc_mil_fnc_create_static;
-[_pos getPos [- 5, _direction], _statics, _direction + 180] call btc_mil_fnc_create_static;
+[_pos getPos [5, _direction], _statics, _direction, [], _city] call btc_mil_fnc_create_static;
+[_pos getPos [- 5, _direction], _statics, _direction + 180, [], _city] call btc_mil_fnc_create_static;
 
 private _btc_composition = [_pos, _direction, _btc_composition_tower] call btc_fnc_create_composition;
 private _tower = _btc_composition select ((_btc_composition apply {typeOf _x}) find _tower_type);
 
 [_taskID, 7, _tower, [_city getVariable "name", _tower_type]] call btc_task_fnc_create;
 
-waitUntil {sleep 5; (!alive _tower || _taskID call BIS_fnc_taskCompleted)};
+waitUntil {sleep 5;
+    !alive _tower ||
+    _taskID call BIS_fnc_taskCompleted
+};
 
 [[], _btc_composition] call btc_fnc_delete;
 

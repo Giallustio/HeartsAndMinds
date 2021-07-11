@@ -25,14 +25,18 @@ params [
 ];
 
 //// Choose an occupied City \\\\
-private _useful = btc_city_all select {!(isNull _x) && _x getVariable ["occupied", false] && !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])};
+private _useful = btc_city_all select {
+    !isNull _x &&
+    _x getVariable ["occupied", false] &&
+    !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])
+};
 
 if (_useful isEqualTo []) exitWith {[] spawn btc_side_fnc_create;};
 
 private _city = selectRandom _useful;
 
 //// Randomise position \\\\
-private _pos = [getPos _city, (_city getVariable ["radius", 0])/2 - 100] call btc_fnc_randomize_pos;
+private _pos = [getPos _city, (_city getVariable ["cachingRadius", 0])/2 - 100] call btc_fnc_randomize_pos;
 _pos = [_pos, 0, 50, 13, 0, 60 * (pi / 180), 0] call btc_fnc_findsafepos;
 
 _city setVariable ["spawn_more", true];
@@ -89,11 +93,11 @@ private _triggers = [];
     _triggers pushBack _trigger;
 } forEach units _group;
 
-waitUntil {sleep 5; (
+waitUntil {sleep 5; 
     _taskID call BIS_fnc_taskCompleted ||
     _units select {_x distance btc_create_object_point > 100} isEqualTo [] ||
     _units select {alive _x} isEqualTo []
-)};
+};
 
 private _rep = 50;
 if (_units select {alive _x} isEqualTo []) then {
@@ -141,12 +145,12 @@ if (_units select {alive _x} isEqualTo []) then {
 
     private _dogTagList = _units apply {([_x] call ace_dogtags_fnc_getDogtagData) select 0};
 
-    waitUntil {sleep 5; (
+    waitUntil {sleep 5; 
         _taskID call BIS_fnc_taskCompleted ||
         {
             (([_x] call ace_dogtags_fnc_getDogtagData) select 0) in _dogTagList
         } count (nearestObjects [btc_create_object_point, ["ACE_bodyBagObject"], 100]) >= count _units
-    )};
+    };
     _rep = 40;
 };
 

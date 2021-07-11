@@ -25,18 +25,25 @@ params [
 ];
 
 //// Choose two Cities \\\\
-private _usefuls = btc_city_all select {!(isNull _x) && !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"]) && !(_x getVariable ["occupied", false])};
+private _usefuls = btc_city_all select {
+    !isNull _x &&
+    !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"]) &&
+    !(_x getVariable ["occupied", false])
+};
 if (_usefuls isEqualTo []) exitWith {[] spawn btc_side_fnc_create;};
 private _city2 = selectRandom _usefuls;
 
 private _area = (getNumber (configFile >> "CfgWorlds" >> worldName >> "MapSize"))/4;
-private _cities = btc_city_all select {!(isNull _x) && _x distance _city2 > _area};
-_usefuls = _cities select {!((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"]) && (_x getVariable ["occupied", false])};
+private _cities = btc_city_all select {!isNull _x && _x distance _city2 > _area};
+_usefuls = _cities select {
+    !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"]) &&
+    _x getVariable ["occupied", false]
+};
 if (_usefuls isEqualTo []) exitWith {[] spawn btc_side_fnc_create;};
 private _city1 = selectRandom _usefuls;
 
 //// Find Road \\\\
-private _radius = (_city1 getVariable ["radius", 0])/2;
+private _radius = (_city1 getVariable ["cachingRadius", 0])/2;
 private _roads = _city1 nearRoads (_radius * 2);
 _roads = _roads select {(_x distance _city1 > _radius) && isOnRoad _x};
 if (_roads isEqualTo []) exitWith {[] spawn btc_side_fnc_create;};
@@ -109,7 +116,7 @@ for "_i" from 1 to _convoyLength do {
 }, [
     _group, _pos2, -1, "MOVE", "SAFE", "RED", "LIMITED", "COLUMN",
     format ["['%1', 'FAILED'] call BIS_fnc_taskSetState;", _taskID], [0, 0, 0], _radius/2
-], btc_delay_createUnit + _delay] call CBA_fnc_waitAndExecute;
+], btc_delay_time + _delay] call CBA_fnc_waitAndExecute;
 
 [{
     params ["_group", "_taskID", "_trigger"];
@@ -162,7 +169,7 @@ for "_i" from 1 to _convoyLength do {
 }, [
     _group,
     _taskID
-], btc_delay_createUnit + _delay] call CBA_fnc_waitAndExecute;
+], btc_delay_time + _delay] call CBA_fnc_waitAndExecute;
 
 waitUntil {sleep 5; _taskID call BIS_fnc_taskCompleted};
 

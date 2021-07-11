@@ -32,7 +32,7 @@ private _players = if (isMultiplayer) then {playableUnits} else {switchableunits
 private _start_pos = objNull;
 private _hideouts = btc_hideouts inAreaArray [_pos, 2000, 2000];
 if (_hideouts isNotEqualTo []) then {
-    _hideouts = _hideouts select {_players inAreaArray [getPosWorld _hideout, 500, 500] isEqualTo []};
+    _hideouts = _hideouts select {_players inAreaArray [getPosWorld _x, 500, 500] isEqualTo []};
     if (_hideouts isNotEqualTo []) then {_start_pos = selectRandom _hideouts};
 };
 
@@ -42,7 +42,7 @@ if (btc_debug_log) then {
 
 if (_start_pos isEqualTo objNull) then {
     _start_pos = [_pos, btc_city_all select {
-        !(isNull _x) &&
+        !isNull _x &&
         !(_x getVariable ["active", false]) &&
         _x getVariable ["type", ""] != "NameMarine"
     }, false] call btc_fnc_find_closecity;

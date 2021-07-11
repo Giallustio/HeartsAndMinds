@@ -25,7 +25,11 @@ params [
 ];
 
 //// Choose an occupied City \\\\
-private _useful = btc_city_all select {!(isNull _x) && _x getVariable ["occupied", false] && !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])};
+private _useful = btc_city_all select {
+    !isNull _x &&
+    _x getVariable ["occupied", false] &&
+    !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])
+};
 if (_useful isEqualTo []) exitWith {[] spawn btc_side_fnc_create;};
 private _city = selectRandom _useful;
 private _pos = getPos _city;
@@ -35,7 +39,7 @@ private _pos = getPos _city;
 _city setVariable ["spawn_more", true];
 
 private _statics = btc_type_gl + btc_type_mg;
-private _radius = _city getVariable ["radius", 0];
+private _radius = _city getVariable ["cachingRadius", 0];
 
 private _boxes = [];
 private _composition = [];
@@ -79,10 +83,10 @@ for "_i" from 1 to (1 + round random 2) do {
     //// Create checkpoint with static at _pos \\\\
     _pos params ["_x", "_y", "_z"];
     private _posStatic = [_x -2.39185*cos(-_direction) - 2.33984*sin(-_direction), _y  + 2.33984 *cos(-_direction) -2.39185*sin(-_direction), _z];
-    [_posStatic, _statics, _direction + 180] call btc_mil_fnc_create_static;
+    [_posStatic, _statics, _direction + 180, [], _city] call btc_mil_fnc_create_static;
 
     private _posStatic = [_x + 2.72949*cos(-_direction) - -2.03857*sin(-_direction), _y -2.03857*cos(-_direction) +2.72949*sin(-_direction), _z];
-    [_posStatic, _statics, _direction] call btc_mil_fnc_create_static;
+    [_posStatic, _statics, _direction, [], _city] call btc_mil_fnc_create_static;
 
     _composition append ([_pos, _direction, _composition_checkpoint] call btc_fnc_create_composition);
 
@@ -107,9 +111,9 @@ for "_i" from 1 to (1 + round random 2) do {
     _boxes pushBack _boxe;
 };
 
-waitUntil {sleep 5; (
+waitUntil {sleep 5; 
     _taskID call BIS_fnc_taskCompleted ||
-    _boxes select {alive _x} isEqualTo [])
+    _boxes select {alive _x} isEqualTo []
 };
 
 [[], _boxes + _composition] call btc_fnc_delete;

@@ -25,7 +25,11 @@ params [
 ];
 
 //// Choose an occupied City \\\\
-private _useful = btc_city_all select {!(isNull _x) && _x getVariable ["occupied", false] && !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])};
+private _useful = btc_city_all select {
+    !isNull _x &&
+    _x getVariable ["occupied", false] &&
+    !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])
+};
 
 if (_useful isEqualTo []) exitWith {[] spawn btc_side_fnc_create;};
 
@@ -43,6 +47,7 @@ if (count _houses > 3) then {
     _house = _houses select 0 select 1;
 };
 private _buildingPos = _house buildingPos -1;
+_buildingPos = _buildingPos select [0, count _buildingPos min 20];
 private _pos_number = count _buildingPos - 1;
 private _pos = _buildingPos select (_pos_number - round random 1);
 
@@ -66,6 +71,7 @@ private _group = [];
     [_unit] joinSilent _grp;
     _group pushBack _grp;
     _grp setVariable ["no_cache", true];
+    _grp setVariable ["btc_city", _city];
 } forEach (_buildingPos - [_pos]);
 
 _trigger = createTrigger ["EmptyDetector", _pos, false];
@@ -80,7 +86,11 @@ if (random 1 > 0.5) then {
     _mine = createMine [selectRandom btc_type_mines, getPosATL _captive, [], 0];
 };
 
-waitUntil {sleep 5; (_taskID call BIS_fnc_taskCompleted || !(_captive getVariable ["ace_captives_isHandcuffed", false]) || !alive _captive)};
+waitUntil {sleep 5; 
+    _taskID call BIS_fnc_taskCompleted ||
+    !(_captive getVariable ["ace_captives_isHandcuffed", false]) ||
+    !alive _captive
+};
 
 if (!(_captive getVariable ["ace_captives_isHandcuffed", false])) then {
     _mine setDamage 1;
