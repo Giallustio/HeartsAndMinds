@@ -1488,6 +1488,20 @@
                 <French>Un civil a repéré ces déchets comme particulièrement ennuyeux en conduisant.</French>
             </Key>
         </Container>
+        <Container name="Pandemic">
+            <Key ID="STR_BTC_HAM_SIDE_PANDEMIC_TITLE">
+                <Original>Contaminate civilians in %1</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_PANDEMIC_DESC">
+                <Original>Civilians get contaminated by a chemical agent around %1. They are requesting your help to decontaminate those civilans with a little shower. To locate civilians go to the subtask, follow red blood drop and use your chemical detector.</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_PANDEMIC_DECON_TITLE">
+                <Original>Decontaminate this civilian</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_SIDE_PANDEMIC_DECON_DESC">
+                <Original>Search and decontaminate this civilian. Follow red blood drop and use your chemical detector.</Original>
+            </Key>
+        </Container>
     </Package>
     <Package name="Actions">
         <Container name="Action(ACE): Database handling">

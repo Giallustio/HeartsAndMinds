@@ -377,6 +377,22 @@ switch (_description) do {
         ];
         _type = "move";
     };
+    case 40 : {
+        _description = [
+            format [localize "STR_BTC_HAM_SIDE_PANDEMIC_DESC", _location] + (["DeconShower_01_F"] call btc_fnc_typeOfPreview),
+            format [localize "STR_BTC_HAM_SIDE_PANDEMIC_TITLE", _location],
+            format [localize "STR_BTC_HAM_SIDE_PANDEMIC_TITLE", _location]
+        ];
+        _type = "danger";
+    };
+    case 41 : {
+        _description = [
+            (localize "STR_BTC_HAM_SIDE_PANDEMIC_DECON_DESC") + ([_location] call btc_fnc_typeOfPreview),
+            localize "STR_BTC_HAM_SIDE_PANDEMIC_DECON_TITLE",
+            localize "STR_BTC_HAM_SIDE_PANDEMIC_DECON_TITLE"
+        ];
+        _type = "search";
+    };
 };
 
 [
