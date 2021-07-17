@@ -169,8 +169,8 @@ class Params {
     };
     class btc_p_civ_max_veh { // Maximum number of civilian patrol:
         title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_SPWAN_CIV_MAX_VEH"]);
-        values[]={0,1,2,3,4,5,6,7,8,9,10};
-        texts[]={"1","2","3","4","5","6","7","8","9","10"};
+        values[]={0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
+        texts[]={"1","2","3","4","5","6","7","8","9","10","11","12","13","14","15"};
         default = 10;
     };
     class btc_p_IED_title { // << IED options >>
