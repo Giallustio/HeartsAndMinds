@@ -83,3 +83,11 @@ if (btc_p_set_skill) then {
 } forEach btc_civ_type_veh;
 ["ace_tagCreated", btc_tag_fnc_eh] call CBA_fnc_addEventHandler;
 ["ace_disarming_dropItems", btc_rep_fnc_foodRemoved] call CBA_fnc_addEventHandler; 
+["btc_respawn_player", {
+    params ["_unit", "_player"];
+    [btc_rep_malus_player_respawn, _player] call btc_rep_fnc_change;
+    if (btc_p_respawn_ticketsAtStart >= 0) then {
+        _unit setVariable ["btc_dont_delete", true];
+        btc_fob_deadBodyPlayers pushBack _unit;
+    }; 
+}] call CBA_fnc_addEventHandler;

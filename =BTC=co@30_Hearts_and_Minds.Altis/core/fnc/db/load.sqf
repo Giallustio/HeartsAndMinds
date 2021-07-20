@@ -211,6 +211,16 @@ private _id = ["ace_tagCreated", {
 //Player respawn tickets
 if (btc_p_respawn_ticketsAtStart >= 0) then {
     btc_p_respawn_ticketsAtStart = profileNamespace getVariable [format ["btc_hm_%1_respawnTickets", _name], btc_p_respawn_ticketsAtStart];
+
+    private _deadBodyPlayers = profileNamespace getVariable [format ["btc_hm_%1_deadBodyPlayers", _name], []];
+    btc_fob_deadBodyPlayers = _deadBodyPlayers apply {
+        _x params ["_type", "_pos", "_dir", "_loadout"];
+        private _body = createAgent [_type, ASLToAGL _pos, [], 0, "CAN_COLLIDE"];
+        _body setDir _dir;
+        _body setUnitLoadout _loadout;
+        _body setDamage 1;
+        _body
+    };
 };
 
 //Player Markers

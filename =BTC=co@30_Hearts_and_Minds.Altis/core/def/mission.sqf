@@ -162,6 +162,7 @@ if (isServer) then {
     //FOB
     btc_fobs = [[], [], []];
     btc_fob_rallypointTimer = 60 * btc_p_rallypointTimer;
+    btc_fob_deadBodyPlayers = [];
 
     //MIL
     btc_p_mil_wp_ratios = [_wp_house_probability, (1 - _wp_house_probability) / 1.5 + _wp_house_probability];
@@ -722,3 +723,6 @@ btc_player_type = ["SoldierWB", "SoldierEB", "SoldierGB"] select ([west, east, i
 
 //Door
 btc_door_breaking_time = 60;
+
+//Respawn
+btc_fob_recoverBodyBag = 1;

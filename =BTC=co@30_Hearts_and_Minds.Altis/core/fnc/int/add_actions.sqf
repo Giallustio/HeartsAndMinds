@@ -83,7 +83,7 @@ _action = ["Search_intel", localize "STR_A3_Showcase_Marksman_BIS_tskIntel_title
         _params call btc_log_fnc_delete
     }, {true}, {}, [_helipad], [0, 0, 0.4], 5] call ace_interact_menu_fnc_createAction;
     [_object, 0, ["ACE_MainActions", "Logistic"], _action] call ace_interact_menu_fnc_addActionToObject;
-    _action = ["Bodybag", "Get body bag", "\A3\ui_f\data\igui\cfg\simpleTasks\types\repair_ca.paa", {
+    _action = ["Bodybag", "Get body bag", "\A3\Data_F_AoW\Logos\arma3_aow_logo_ca.paa", {
         params ["", "", "_params"];
         _params call btc_fob_fnc_recoverBodyBag;
     }, {true}, {}, [_helipad], [0, 0, 0], 5] call ace_interact_menu_fnc_createAction;

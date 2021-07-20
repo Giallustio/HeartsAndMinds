@@ -25,7 +25,17 @@ params [
 ];
 
 private _array = nearestObjects [_object, ["ACE_bodyBagObject"], 10];
-if (_array isEqualTo []) exitWith {(localize "STR_BTC_HAM_LOG_RWRECK_NOWRECK") call CBA_fnc_notify;};
+if (_array isEqualTo []) exitWith {
+    [
+        ["No body bag around"],
+        [format ["%1 respawn tickets left", [btc_player_side] call BIS_fnc_respawnTickets]]
+    ] call CBA_fnc_notify;
+};
 
-[btc_player_side, 1] call BIS_fnc_respawnTickets;
+[btc_player_side, btc_fob_recoverBodyBag] call BIS_fnc_respawnTickets;
 deleteVehicle (_array select 0);
+
+[
+    ["Respawn ticket added"],
+    [format ["%1 respawn tickets left", [btc_player_side] call BIS_fnc_respawnTickets]]
+] call CBA_fnc_notify;

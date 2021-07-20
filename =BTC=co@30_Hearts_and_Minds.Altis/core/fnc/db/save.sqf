@@ -211,6 +211,14 @@ profileNamespace setVariable [format ["btc_hm_%1_tags", _name], +_tags_propertie
 if (btc_p_respawn_ticketsAtStart >= 0) then {
     private _respawnTickets = [btc_player_side] call BIS_fnc_respawnTickets;
     profileNamespace setVariable [format ["btc_hm_%1_respawnTickets", _name], _respawnTickets];
+
+    private _deadBodyPlayers = (btc_fob_deadBodyPlayers - [objNull]) apply {[
+        typeOf _x,
+        getPosASL _x,
+        getDir _x,
+        getUnitLoadout _x
+    ]};
+    profileNamespace setVariable [format ["btc_hm_%1_deadBodyPlayers", _name], _deadBodyPlayers];
 };
 
 //Player Markers
