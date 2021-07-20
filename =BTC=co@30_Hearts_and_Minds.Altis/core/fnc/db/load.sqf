@@ -219,6 +219,9 @@ if (btc_p_respawn_ticketsAtStart >= 0) then {
         _body setDir _dir;
         _body setUnitLoadout _loadout;
         _body setDamage 1;
+        private _marker = createMarker [format ["btc_fob_deadBody_%1", _body], _body];
+        _marker setMarkerType "KIA";
+        _marker setMarkerSize [0.7, 0.7];
         _body
     };
 };

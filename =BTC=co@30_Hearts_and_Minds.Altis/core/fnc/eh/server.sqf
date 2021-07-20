@@ -89,5 +89,9 @@ if (btc_p_set_skill) then {
     if (btc_p_respawn_ticketsAtStart >= 0) then {
         _unit setVariable ["btc_dont_delete", true];
         btc_fob_deadBodyPlayers pushBack _unit;
+
+        private _marker = createMarker [format ["btc_fob_deadBody_%1", _unit], _unit];
+        _marker setMarkerType "KIA";
+        _marker setMarkerSize [0.7, 0.7];
     }; 
 }] call CBA_fnc_addEventHandler;
