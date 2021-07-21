@@ -214,14 +214,21 @@ if (btc_p_respawn_ticketsAtStart >= 0) then {
 
     private _deadBodyPlayers = profileNamespace getVariable [format ["btc_hm_%1_deadBodyPlayers", _name], []];
     btc_fob_deadBodyPlayers = _deadBodyPlayers apply {
-        _x params ["_type", "_pos", "_dir", "_loadout"];
+        _x params ["_type", "_pos", "_dir", "_loadout", "_isContaminated"];
         private _body = createAgent [_type, ASLToAGL _pos, [], 0, "CAN_COLLIDE"];
         _body setDir _dir;
         _body setUnitLoadout _loadout;
+        if (_isContaminated) then {
+            if ((btc_chem_contaminated pushBackUnique _body) > -1) then {
+                publicVariable "btc_chem_contaminated";
+            };
+        };
         _body setDamage 1;
+
         private _marker = createMarker [format ["btc_fob_deadBody_%1", _body], _body];
         _marker setMarkerType "KIA";
         _marker setMarkerSize [0.7, 0.7];
+        _body setVariable ["btc_deadBody_marker", _marker];
         _body
     };
 };

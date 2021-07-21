@@ -216,7 +216,8 @@ if (btc_p_respawn_ticketsAtStart >= 0) then {
         typeOf _x,
         getPosASL _x,
         getDir _x,
-        getUnitLoadout _x
+        getUnitLoadout _x,
+        _x in btc_chem_contaminated
     ]};
     profileNamespace setVariable [format ["btc_hm_%1_deadBodyPlayers", _name], _deadBodyPlayers];
 };
