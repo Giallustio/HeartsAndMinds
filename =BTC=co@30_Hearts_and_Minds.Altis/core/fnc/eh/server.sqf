@@ -88,9 +88,9 @@ if (btc_p_set_skill) then {
     [btc_rep_malus_player_respawn, _player] call btc_rep_fnc_change;
     if (btc_p_respawn_ticketsAtStart >= 0) then {
         _unit setVariable ["btc_dont_delete", true];
-        btc_fob_deadBodyPlayers pushBack _unit;
+        private _index = btc_fob_deadBodyPlayers pushBack _unit;
 
-        private _marker = createMarker [format ["btc_fob_deadBody_%1", _unit], _unit];
+        private _marker = createMarker [format ["btc_fob_deadBody_%1", _index], _unit];
         _marker setMarkerType "KIA";
         _marker setMarkerSize [0.7, 0.7];
         _unit setVariable ["btc_deadBody_marker", _marker];
@@ -99,4 +99,5 @@ if (btc_p_set_skill) then {
 ["ace_placedInBodyBag", {
     params ["_patient", "_bodyBag"];
     deleteMarker (_patient getVariable ["btc_deadBody_marker", ""]);
+    [_bodyBag] call btc_log_fnc_init;
 }] call CBA_fnc_addEventHandler;

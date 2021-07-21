@@ -212,18 +212,23 @@ private _id = ["ace_tagCreated", {
 if (btc_p_respawn_ticketsAtStart >= 0) then {
     btc_p_respawn_ticketsAtStart = profileNamespace getVariable [format ["btc_hm_%1_respawnTickets", _name], btc_p_respawn_ticketsAtStart];
 
-    private _deadBodyPlayers = profileNamespace getVariable [format ["btc_hm_%1_deadBodyPlayers", _name], []];
+    private _deadBodyPlayers = +(profileNamespace getVariable [format ["btc_hm_%1_deadBodyPlayers", _name], []]);
     btc_fob_deadBodyPlayers = _deadBodyPlayers apply {
-        _x params ["_type", "_pos", "_dir", "_loadout", "_isContaminated"];
+        _x params ["_type", "_pos", "_dir", "_loadout", "_dogtagData", "_dogtagTaken", "_isContaminated"];
         private _body = createAgent [_type, ASLToAGL _pos, [], 0, "CAN_COLLIDE"];
         _body setDir _dir;
         _body setUnitLoadout _loadout;
+        _body setVariable ["ace_dogtags_dogtagData", _dogtagData, true];
+        if (_dogtagTaken) then {
+            _body setVariable ["ace_dogtags_dogtagTaken", _body, true];
+        };
         if (_isContaminated) then {
             if ((btc_chem_contaminated pushBackUnique _body) > -1) then {
                 publicVariable "btc_chem_contaminated";
             };
         };
         _body setDamage 1;
+        _body setVariable ["btc_dont_delete", true];
 
         private _marker = createMarker [format ["btc_fob_deadBody_%1", _body], _body];
         _marker setMarkerType "KIA";

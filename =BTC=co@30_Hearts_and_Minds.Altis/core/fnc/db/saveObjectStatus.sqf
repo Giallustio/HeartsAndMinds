@@ -46,5 +46,9 @@ _data pushBack _cargo;
 _data pushBack (_object call btc_log_fnc_inventoryGet);
 _data pushBack [vectorDir _object, vectorUp _object];
 _data pushBack (_object in btc_chem_contaminated);
+_data pushBack [
+    _object call ace_dogtags_fnc_getDogtagData,
+    !isNull (_object getVariable ["ace_dogtags_dogtagTaken", objNull])
+];
 
 _data
