@@ -90,10 +90,15 @@ if (btc_p_set_skill) then {
         _unit setVariable ["btc_dont_delete", true];
         private _index = btc_fob_deadBodyPlayers pushBack _unit;
 
-        private _marker = createMarker [format ["btc_fob_deadBody_%1", _index], _unit];
-        _marker setMarkerType "KIA";
-        _marker setMarkerSize [0.7, 0.7];
-        _unit setVariable ["btc_deadBody_marker", _marker];
+        if (btc_p_respawn_timeBeforeShowKIA isEqualTo -1) exitwith {};
+        [{
+            if (isNull _unit) exitwith {};
+
+            private _marker = createMarker [format ["btc_fob_deadBody_%1", _index], _unit];
+            _marker setMarkerType "KIA";
+            _marker setMarkerSize [0.7, 0.7];
+            _unit setVariable ["btc_deadBody_marker", _marker];
+        }, [_unit, _index], btc_p_respawn_timeBeforeShowKIA * 60] call CBA_fnc_waitAndExecute;
     }; 
 }] call CBA_fnc_addEventHandler;
 ["ace_placedInBodyBag", {
