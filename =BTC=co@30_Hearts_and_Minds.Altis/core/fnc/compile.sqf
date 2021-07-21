@@ -110,6 +110,7 @@ if (isServer) then {
     btc_fob_fnc_dismantle_s = compileScript ["core\fnc\fob\dismantle_s.sqf"];
     btc_fob_fnc_killed = compileScript ["core\fnc\fob\killed.sqf"];
     btc_fob_fnc_rallypointTimer = compileScript ["core\fnc\fob\rallypointTimer.sqf"];
+    btc_fob_fnc_recoverBodyBag_s = compileScript ["core\fnc\fob\recoverBodyBag_s.sqf"];
 
     //MIL
     btc_mil_fnc_addWP = compileScript ["core\fnc\mil\addWP.sqf"];

@@ -115,6 +115,12 @@ private _text = switch (_type) do {
             [" "]
         ];
     };
+    case 22 : {
+        [
+            ["Respawn ticket added"],
+            [format ["%1 respawn tickets left", _custom]]
+        ];
+    };
 };
 
 _text call CBA_fnc_notify;

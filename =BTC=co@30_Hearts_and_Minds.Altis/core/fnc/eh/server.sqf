@@ -104,5 +104,8 @@ if (btc_p_set_skill) then {
 ["ace_placedInBodyBag", {
     params ["_patient", "_bodyBag"];
     deleteMarker (_patient getVariable ["btc_deadBody_marker", ""]);
+    if (_patient getVariable ["btc_dont_delete", false]) then {
+        _bodyBag setVariable ["btc_isDeadPlayer", true];
+    };
     [_bodyBag] call btc_log_fnc_init;
 }] call CBA_fnc_addEventHandler;
