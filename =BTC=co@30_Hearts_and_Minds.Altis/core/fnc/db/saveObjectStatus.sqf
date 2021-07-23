@@ -38,7 +38,12 @@ private _cargo = (_object getVariable ["ace_cargo_loaded", []]) apply {
             typeOf _x,
             _x getVariable ["ace_rearm_magazineClass", ""],
             _x call btc_log_fnc_inventoryGet,
-            _x in btc_chem_contaminated
+            _x in btc_chem_contaminated,
+            [
+                _x call ace_dogtags_fnc_getDogtagData,
+                !isNull (_x getVariable ["ace_dogtags_dogtagTaken", objNull]),
+                _x getVariable ["btc_isDeadPlayer", false]
+            ]
         ]
     };    
 };

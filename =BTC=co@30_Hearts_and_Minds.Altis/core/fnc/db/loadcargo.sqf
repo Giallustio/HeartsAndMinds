@@ -27,7 +27,10 @@ Author:
 
     //handle cargo
     {
-        _x params ["_type", "_magClass", "_inventory", ["_isContaminated", false, [false]]];
+        _x params ["_type", "_magClass", "_inventory",
+            ["_isContaminated", false, [false]],
+            ["_dogtagDataTaken", [], [[]]]
+        ];
 
         private _l = createVehicle [_type, getPosATL _obj, [], 0, "CAN_COLLIDE"];
         [_l] call btc_log_fnc_init;
@@ -45,6 +48,19 @@ Author:
         if (_isContaminated) then {
             btc_chem_contaminated pushBack _l;
             publicVariable "btc_chem_contaminated";
+        };
+
+        _dogtagDataTaken params [
+            ["_dogtagData", [], [[]]],
+            ["_dogtagTaken", false, [false]],
+            ["_isDeadPlayer", false, [false]]
+        ];
+        if (_dogtagData isNotEqualTo []) then {
+            _l setVariable ["ace_dogtags_dogtagData", _dogtagData, true];
+            if (_dogtagTaken) then {
+                _l setVariable ["ace_dogtags_dogtagTaken", _l, true];
+            };
+            _l setVariable ["btc_isDeadPlayer", _isDeadPlayer];
         };
     } forEach _cargo;
 
