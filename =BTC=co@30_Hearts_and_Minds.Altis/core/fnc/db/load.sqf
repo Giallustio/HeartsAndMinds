@@ -215,9 +215,10 @@ if (btc_p_respawn_ticketsAtStart >= 0) then {
     btc_respawn_ticketDecimal = _ticket select 1;
     publicVariable "btc_respawn_ticketDecimal";
     private _deadBodyPlayers = +(profileNamespace getVariable [format ["btc_hm_%1_deadBodyPlayers", _name], []]);
+    private _group = createGroup btc_player_side;
     btc_fob_deadBodyPlayers = _deadBodyPlayers apply {
         _x params ["_type", "_pos", "_dir", "_loadout", "_dogtagData", "_dogtagTaken", "_isContaminated"];
-        private _body = createVehicle [_type, ASLToAGL _pos, [], 0, "CAN_COLLIDE"];
+        private _body = _group createUnit [_type, ASLToAGL _pos, [], 0, "CAN_COLLIDE"];
         _body setUnitLoadout _loadout;
         _body setVariable ["ace_dogtags_dogtagData", _dogtagData, true];
         if (_dogtagTaken) then {
@@ -244,6 +245,7 @@ if (btc_p_respawn_ticketsAtStart >= 0) then {
         _body setVariable ["btc_deadBody_marker", _marker];
         _body
     };
+    deleteGroup _group;
 };
 
 //Player Markers
