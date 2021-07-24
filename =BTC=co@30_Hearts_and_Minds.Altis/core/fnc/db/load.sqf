@@ -240,8 +240,8 @@ if (btc_p_respawn_ticketsAtStart >= 0) then {
 
         private _marker = createMarker [format ["btc_fob_deadBody_%1", _body], _pos];
         _marker setMarkerType "KIA";
-        _marker setMarkerSize [0.6, 0.6];
-        _marker setMarkerAlpha 0.8;
+        _marker setMarkerSize [0.5, 0.5];
+        _marker setMarkerAlpha 0.5;
         _body setVariable ["btc_deadBody_marker", _marker];
         _body
     };
