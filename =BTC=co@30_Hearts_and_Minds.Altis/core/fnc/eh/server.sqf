@@ -96,7 +96,8 @@ if (btc_p_set_skill) then {
 
             private _marker = createMarker [format ["btc_fob_deadBody_%1", _index], _unit];
             _marker setMarkerType "KIA";
-            _marker setMarkerSize [0.7, 0.7];
+            _marker setMarkerSize [0.6, 0.6];
+            _marker setMarkerAlpha 0.8;
             _unit setVariable ["btc_deadBody_marker", _marker];
         }, [_unit, _index], btc_p_respawn_timeBeforeShowKIA * 60] call CBA_fnc_waitAndExecute;
     }; 
