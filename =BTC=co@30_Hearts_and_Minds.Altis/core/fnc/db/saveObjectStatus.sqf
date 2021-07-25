@@ -46,5 +46,6 @@ _data pushBack _cargo;
 _data pushBack (_object call btc_log_fnc_inventoryGet);
 _data pushBack [vectorDir _object, vectorUp _object];
 _data pushBack (_object in btc_chem_contaminated);
+_data pushBack (getForcedFlagTexture _object);
 
 _data

@@ -31,7 +31,8 @@ _object_data params [
     "_cargo",
     "_inventory",
     "_vectorPos",
-    ["_isContaminated", false, [false]]
+    ["_isContaminated", false, [false]],
+    ["_flagTexture", "", [""]]
 ];
 
 private _obj = createVehicle [_type, ASLToATL _pos, [], 0, "CAN_COLLIDE"];
@@ -48,6 +49,9 @@ if (_isContaminated) then {
 if (_magClass isNotEqualTo "") then {_obj setVariable ["ace_rearm_magazineClass", _magClass, true]};
 if (unitIsUAV _obj) then {
     createVehicleCrew _obj;
+};
+if (_flagTexture isNotEqualTo "") then {
+    _obj forceFlagTexture _flagTexture;
 };
 
 [_obj] call btc_log_fnc_init;
