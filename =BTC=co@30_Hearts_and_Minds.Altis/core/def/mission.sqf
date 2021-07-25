@@ -17,6 +17,8 @@ btc_p_respawn_location = "btc_p_respawn_location" call BIS_fnc_getParamValue;
 btc_p_respawn_fromFOBToBase = ("btc_p_respawn_fromFOBToBase" call BIS_fnc_getParamValue) isEqualTo 1;
 btc_p_rallypointTimer = "btc_p_rallypointTimer" call BIS_fnc_getParamValue;
 btc_p_respawn_arsenal = ("btc_p_respawn_arsenal" call BIS_fnc_getParamValue) isEqualTo 1;
+btc_p_respawn_ticketsAtStart = 100;
+btc_p_respawn_timeBeforeShowKIA = 10;
 
 //<< Faction options >>
 private _p_en = "btc_p_en" call BIS_fnc_getParamValue;
@@ -162,6 +164,8 @@ if (isServer) then {
     //FOB
     btc_fobs = [[], [], []];
     btc_fob_rallypointTimer = 60 * btc_p_rallypointTimer;
+    btc_fob_deadBodyPlayers = [];
+    btc_respawn_ticketDecimal = 0; publicVariable "btc_respawn_ticketDecimal";
 
     //MIL
     btc_p_mil_wp_ratios = [_wp_house_probability, (1 - _wp_house_probability) / 1.5 + _wp_house_probability];
@@ -731,3 +735,7 @@ btc_flag_textures = [
     '#(argb,8,8,3)color(0.9,0.9,0,1)',
     "\A3\Data_F\Flags\flag_NATO_CO.paa"
 ];
+
+//Respawn
+btc_fob_ticketPlayerBodyBag = 1;
+btc_fob_ticketAIBodyBag = 0.1;

@@ -32,6 +32,7 @@ _object_data params [
     "_inventory",
     "_vectorPos",
     ["_isContaminated", false, [false]],
+    ["_dogtagDataTaken", [], [[]]],
     ["_flagTexture", "", [""]]
 ];
 
@@ -52,6 +53,19 @@ if (unitIsUAV _obj) then {
 };
 if (_flagTexture isNotEqualTo "") then {
     _obj forceFlagTexture _flagTexture;
+};
+
+_dogtagDataTaken params [
+    ["_dogtagData", [], [[]]],
+    ["_dogtagTaken", false, [false]],
+    ["_isDeadPlayer", false, [false]]
+];
+if (_dogtagData isNotEqualTo []) then {
+    _obj setVariable ["ace_dogtags_dogtagData", _dogtagData, true];
+    if (_dogtagTaken) then {
+        _obj setVariable ["ace_dogtags_dogtagTaken", _obj, true];
+    };
+    _obj setVariable ["btc_isDeadPlayer", _isDeadPlayer];
 };
 
 [_obj] call btc_log_fnc_init;

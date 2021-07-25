@@ -34,6 +34,10 @@ btc_int_ask_data = nil;
 [9, _objects select 0] remoteExecCall ["btc_int_fnc_ask_var", 2];
 
 [{!(isNil "btc_int_ask_data")}, {
+    if ("ACE_bodyBagObject" in flatten btc_int_ask_data) exitWith {
+        ("You can't copy body bag") call CBA_fnc_notify;
+    };
+
     btc_copy_container = +btc_int_ask_data;
 
     (localize "STR_BTC_HAM_O_COPY_SUCCSESS") call CBA_fnc_notify;
