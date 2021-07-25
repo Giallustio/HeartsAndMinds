@@ -40,21 +40,14 @@ switch true do {
         _action = ["log_hook", localize "STR_BTC_HAM_ACTION_VEHINIT_UHOOK", "\z\ace\addons\attach\UI\detach_ca.paa", {_target call btc_tow_fnc_unhook;}, {!isNull (_target getVariable ["btc_towing", objNull]);}] call ace_interact_menu_fnc_createAction;
         [_type, 0, ["ACE_MainActions", "Logistic"], _action] call ace_interact_menu_fnc_addActionToClass;
 
-        _action = ["Deploy_flag", "Deploy_flag", "\A3\ui_f\data\igui\cfg\simpleTasks\types\container_ca.paa", {
-            private _texture = switch (assignedTeam player) do {
-                case "RED": {"\A3\Data_F\Flags\flag_red_CO.paa"};
-                case "GREEN": {"\A3\Data_F\Flags\flag_green_CO.paa"};
-                case "BLUE": {"\A3\Data_F\Flags\flag_blue_CO.paa"};
-                case "YELLOW": {"#(argb,8,8,3)color(0.9,0.9,0,1)"};
-                default {"\A3\Data_F\Flags\flag_NATO_CO.paa"};
-            };
-            _target forceFlagTexture _texture;
-        }, {(getForcedFlagTexture _target isEqualTo "") && {(driver vehicle player) isEqualTo player}}] call ace_interact_menu_fnc_createAction;
-        [_type, 1, ["ACE_SelfActions"], _action, true] call ace_interact_menu_fnc_addActionToClass;
-        _action = ["Cut_flag", "Cut_flag", "\z\ace\addons\logistics_wirecutter\ui\wirecutter_ca.paa", {
-            _target forceFlagTexture "";
-        }, {(getForcedFlagTexture _target isNotEqualTo "") && {(driver vehicle player) isEqualTo player}}] call ace_interact_menu_fnc_createAction;
-        [_type, 1, ["ACE_SelfActions"], _action, true] call ace_interact_menu_fnc_addActionToClass;
+        if (btc_p_flag > 0) then {
+            private _action = ["Deploy_flag", "Deploy_flag", "\A3\ui_f\data\map\markers\handdrawn\flag_CA.paa", {}, {(getForcedFlagTexture _target isEqualTo "") && {(driver vehicle player) isEqualTo player}}, btc_flag_fnc_deploy] call ace_interact_menu_fnc_createAction;
+            [_type, 1, ["ACE_SelfActions"], _action, true] call ace_interact_menu_fnc_addActionToClass;
+            _action = ["Cut_flag", "Cut_flag", "\A3\ui_f\data\map\markers\handdrawn\flag_CA.paa", {
+                _target forceFlagTexture "";
+            }, {(getForcedFlagTexture _target isNotEqualTo "") && {(driver vehicle player) isEqualTo player}}] call ace_interact_menu_fnc_createAction;
+            [_type, 1, ["ACE_SelfActions"], _action, true] call ace_interact_menu_fnc_addActionToClass;
+        };
     };
     case (_type isKindOf "Helicopter") : {
         private _action = ["Logistic", localize "STR_BTC_HAM_ACTION_LOC_MAIN", "\A3\ui_f\data\igui\cfg\simpleTasks\letters\L_ca.paa", {}, {true}] call ace_interact_menu_fnc_createAction;
@@ -65,21 +58,15 @@ switch true do {
         _action = ["Cut_ropes", localize "STR_ACE_Fastroping_Interaction_cutRopes", "\z\ace\addons\logistics_wirecutter\ui\wirecutter_ca.paa", {[] call btc_lift_fnc_destroyRopes;}, {btc_ropes_deployed && {(driver vehicle player) isEqualTo player}}] call ace_interact_menu_fnc_createAction;
         [_type, 1, ["ACE_SelfActions"], _action, true] call ace_interact_menu_fnc_addActionToClass;
 
-
-        _action = ["Deploy_flag", "Deploy_flag", "\A3\ui_f\data\igui\cfg\simpleTasks\types\container_ca.paa", {
-            private _texture = switch (assignedTeam player) do {
-                case "RED": {"\A3\Data_F\Flags\flag_red_CO.paa"};
-                case "GREEN": {"\A3\Data_F\Flags\flag_green_CO.paa"};
-                case "BLUE": {"\A3\Data_F\Flags\flag_blue_CO.paa"};
-                case "YELLOW": {"#(argb,8,8,3)color(0.9,0.9,0,1)"};
-                default {"\A3\Data_F\Flags\flag_NATO_CO.paa"};
-            };
-            _target forceFlagTexture _texture;
-        }, {(getForcedFlagTexture _target isEqualTo "") && {(driver vehicle player) isEqualTo player}}] call ace_interact_menu_fnc_createAction;
-        [_type, 1, ["ACE_SelfActions"], _action, true] call ace_interact_menu_fnc_addActionToClass;
-        _action = ["Cut_flag", "Cut_flag", "\z\ace\addons\logistics_wirecutter\ui\wirecutter_ca.paa", {
-            _target forceFlagTexture "";
-        }, {(getForcedFlagTexture _target isNotEqualTo "") && {(driver vehicle player) isEqualTo player}}] call ace_interact_menu_fnc_createAction;
-        [_type, 1, ["ACE_SelfActions"], _action, true] call ace_interact_menu_fnc_addActionToClass;
+        if (btc_p_flag > 0) then {
+            private _action = ["Deploy_flag", "Deploy_flag", "\A3\ui_f\data\map\markers\handdrawn\flag_CA.paa", {}, {(getForcedFlagTexture _target isEqualTo "") && {(driver vehicle player) isEqualTo player}}, btc_flag_fnc_deploy] call ace_interact_menu_fnc_createAction;
+            [_type, 1, ["ACE_SelfActions"], _action, true] call ace_interact_menu_fnc_addActionToClass;
+            _action = ["Cut_flag", "Cut_flag", "\A3\ui_f\data\map\markers\handdrawn\flag_CA.paa", {
+                _target forceFlagTexture "";
+            }, {(getForcedFlagTexture _target isNotEqualTo "") && {(driver vehicle player) isEqualTo player}}] call ace_interact_menu_fnc_createAction;
+            [_type, 1, ["ACE_SelfActions"], _action, true] call ace_interact_menu_fnc_addActionToClass;
+        };
     };
 };
+
+
