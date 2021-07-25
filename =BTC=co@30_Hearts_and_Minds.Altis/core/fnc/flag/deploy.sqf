@@ -30,7 +30,7 @@ params [
 ];
 
 private _childStatement = {
-    params ["_target", "", "_params"];
+    params ["_target", "_player", "_params"];
     _target forceFlagTexture _params;
 };
 

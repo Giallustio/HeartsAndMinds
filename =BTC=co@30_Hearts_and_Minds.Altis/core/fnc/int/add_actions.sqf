@@ -211,10 +211,10 @@ _action = ["door_break", localize "STR_BTC_HAM_ACTION_DOOR_BREAK", "\A3\Ui_f\dat
 
 //Flag
 if (btc_p_flag > 1) then {
-    private _action = ["Deploy_flag", "Deploy_flag", "\A3\ui_f\data\map\markers\handdrawn\flag_CA.paa", {}, {(getForcedFlagTexture _target isEqualTo "") && {(driver vehicle player) isEqualTo player}}, btc_flag_fnc_deploy] call ace_interact_menu_fnc_createAction;
+    private _action = ["btc_flag_deployPlayer", "Deploy_flag", "\A3\ui_f\data\map\markers\handdrawn\flag_CA.paa", {}, {getForcedFlagTexture _target isEqualTo ""}, btc_flag_fnc_deploy] call ace_interact_menu_fnc_createAction;
     [player, 1, ["ACE_SelfActions", "ACE_Equipment"], _action] call ace_interact_menu_fnc_addActionToObject;
-    _action = ["Cut_flag", "Cut_flag", "\A3\ui_f\data\map\markers\handdrawn\flag_CA.paa", {
+    _action = ["btc_flag_cutPlayer", "Cut_flag", "\A3\ui_f\data\map\markers\handdrawn\flag_CA.paa", {
         _target forceFlagTexture "";
-    }, {(getForcedFlagTexture _target isNotEqualTo "") && {(driver vehicle player) isEqualTo player}}] call ace_interact_menu_fnc_createAction;
+    }, {getForcedFlagTexture _target isNotEqualTo ""}] call ace_interact_menu_fnc_createAction;
     [player, 1, ["ACE_SelfActions", "ACE_Equipment"], _action] call ace_interact_menu_fnc_addActionToObject;
 };
