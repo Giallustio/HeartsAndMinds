@@ -100,7 +100,7 @@ for "_i" from 1 to _numberOfGroup do {
 };
 
 if (btc_debug_log) then {
-    [format ["_this = %1 ; POS %2 UNITS N %3 _wp_ratios %4", _this, _pos, _n, _wp_ratios], __FILE__, [false]] call btc_debug_fnc_message;
+    [format ["_this = %1 ; POS %2 UNITS N %3", _this, _pos, _n], __FILE__, [false]] call btc_debug_fnc_message;
 };
 
 _groups
