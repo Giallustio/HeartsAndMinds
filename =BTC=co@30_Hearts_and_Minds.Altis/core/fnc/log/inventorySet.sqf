@@ -6,7 +6,7 @@ Description:
     Set inventory of an object.
 
 Parameters:
-    _object - Object which inventory. [Object]
+    _object - Object with inventory. [Object]
     _inventory - Inventory to set. [Array]
 
 Returns:

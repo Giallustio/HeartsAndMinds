@@ -1,6 +1,5 @@
 
-btc_version = [1, 21.1, 5];
-
+btc_version = [1, 21.1, 6];
 diag_log format (["=BTC= HEARTS AND MINDS VERSION %1.%2.%3"] + btc_version);
 
 //Param
@@ -59,7 +58,7 @@ btc_p_mil_group_ratio = ("btc_p_mil_group_ratio" call BIS_fnc_getParamValue)/100
 btc_p_mil_static_group_ratio = ("btc_p_mil_static_group_ratio" call BIS_fnc_getParamValue)/100;
 btc_p_civ_group_ratio = ("btc_p_civ_group_ratio" call BIS_fnc_getParamValue)/100;
 btc_p_animals_group_ratio = ("btc_p_animals_group_ratio" call BIS_fnc_getParamValue)/100;
-private _wp_house_probability = ("btc_p_wp_house_probability" call BIS_fnc_getParamValue)/100;
+btc_p_mil_wp_houseDensity = ("btc_p_wp_houseDensity" call BIS_fnc_getParamValue)/100;
 btc_p_veh_armed_ho = ("btc_p_veh_armed_ho" call BIS_fnc_getParamValue) isEqualTo 1;
 btc_p_veh_armed_spawn_more = ("btc_p_veh_armed_spawn_more" call BIS_fnc_getParamValue) isEqualTo 1;
 btc_p_patrol_max = "btc_p_patrol_max" call BIS_fnc_getParamValue;
@@ -149,7 +148,6 @@ if (isServer) then {
     btc_hideout_safezone = 4000;
     btc_hideout_range = 3500;
     btc_hideout_cap_time = 1800;
-    btc_hideout_cap_checking = false;
     btc_hideout_minRange = btc_hideout_range;
 
     //IED
@@ -161,12 +159,6 @@ if (isServer) then {
     //FOB
     btc_fobs = [[], [], []];
     btc_fob_rallypointTimer = 60 * btc_p_rallypointTimer;
-
-    //MIL
-    btc_p_mil_wp_ratios = [_wp_house_probability, (1 - _wp_house_probability) / 1.5 + _wp_house_probability];
-    if ((btc_p_mil_wp_ratios select 0) isEqualTo (btc_p_mil_wp_ratios select 1)) then {
-        btc_p_mil_wp_ratios set [1, 0.1 + (btc_p_mil_wp_ratios select 1)];
-    };
 
     //Patrol
     btc_patrol_active = [];
