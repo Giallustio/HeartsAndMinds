@@ -48,13 +48,21 @@ if (side _group isEqualTo civilian) then {
 if (_vehicle isKindOf "Air") then {
     [_group, _pos, -1, "MOVE", _behaviorMode, _combatMode, "LIMITED", "STAG COLUMN", _waypointStatements, [0, 0, 0], 20] call CBA_fnc_addWaypoint;
 } else {
-    [_group, _pos, -1, "MOVE", _behaviorMode, _combatMode, "LIMITED", "STAG COLUMN", "", [0, 0, 0], 20] call CBA_fnc_addWaypoint;
+    [_group, _pos, -1, "MOVE", _behaviorMode, _combatMode, "LIMITED", "STAG COLUMN", "", [0, 0, 0], 50] call CBA_fnc_addWaypoint;
 
+    private _roadBlackList = [];
     for "_i" from 0 to (2 + (floor (random 3))) do {
-        private _newPos = [_pos, 150] call CBA_fnc_randPos;
+        private _nearestRoad = [_pos getPos [100, random 360], 100, _roadBlackList] call BIS_fnc_nearestRoad;
+        private _newPos = [];
+        if (isNull _nearestRoad) then {
+            _newPos = [_pos, 150] call CBA_fnc_randPos;
+        } else {
+            _roadBlackList pushBackUnique _nearestRoad;
+            _newPos = getPosASL _nearestRoad;
+        };
         [_group, _newPos, -1, "MOVE", "UNCHANGED", "RED", "UNCHANGED", "NO CHANGE", "", [0, 0, 0], 20] call CBA_fnc_addWaypoint;
     };
-    [_group, _pos, -1, "MOVE", "UNCHANGED", "NO CHANGE", "UNCHANGED", "NO CHANGE", _waypointStatements, [0, 0, 0], 20] call CBA_fnc_addWaypoint;
+    [_group, _pos, -1, "MOVE", "UNCHANGED", "NO CHANGE", "UNCHANGED", "NO CHANGE", _waypointStatements, [0, 0, 0], 50] call CBA_fnc_addWaypoint;
 };
 
 if (btc_debug) then {
