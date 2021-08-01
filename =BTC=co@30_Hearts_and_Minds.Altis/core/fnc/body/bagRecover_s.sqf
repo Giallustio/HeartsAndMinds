@@ -30,7 +30,21 @@ if (_bodyBag getVariable ["btc_isDeadPlayer", false]) then {
 } else {
     btc_respawn_ticketDecimal = btc_respawn_ticketDecimal + btc_body_bagTicketAI;
 };
-private _ticketValue = [btc_player_side, _ticket + btc_respawn_ticketDecimal] call BIS_fnc_respawnTickets;
+
+private _ticketValue = 0;
+if (btc_p_respawn_ticketsShare) then {
+    _ticketValue = [btc_player_side, _ticket + btc_respawn_ticketDecimal] call BIS_fnc_respawnTickets;
+} else {
+    private _uid = _bodyBag getVariable ["btc_UID", ""];
+    private _player = _uid call BIS_fnc_getUnitByUID;
+    if !(isNull _player) then {
+        [_player, _ticket + btc_respawn_ticketDecimal] call BIS_fnc_respawnTickets;
+    };
+    btc_respawn_tickets set [
+        _uid,
+        _ticket + btc_respawn_ticketDecimal + (btc_respawn_tickets getOrDefault [_uid, 0])
+    ];
+};
 btc_respawn_ticketDecimal = btc_respawn_ticketDecimal - floor btc_respawn_ticketDecimal;
 publicVariable "btc_respawn_ticketDecimal";
 

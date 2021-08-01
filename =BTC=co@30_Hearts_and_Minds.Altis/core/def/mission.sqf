@@ -17,6 +17,7 @@ btc_p_respawn_fromFOBToBase = ("btc_p_respawn_fromFOBToBase" call BIS_fnc_getPar
 btc_p_rallypointTimer = "btc_p_rallypointTimer" call BIS_fnc_getParamValue;
 btc_p_respawn_arsenal = ("btc_p_respawn_arsenal" call BIS_fnc_getParamValue) isEqualTo 1;
 btc_p_respawn_ticketsAtStart = 100;
+btc_p_respawn_ticketsShare = false;
 btc_p_body_timeBeforeShowMarker = 10 * 60;
 
 //<< Faction options >>
@@ -163,6 +164,7 @@ if (isServer) then {
     btc_fobs = [[], [], []];
     btc_fob_rallypointTimer = 60 * btc_p_rallypointTimer;
     btc_body_deadPlayers  = [];
+    btc_respawn_tickets = createHashMap;
     btc_respawn_ticketDecimal = 0; publicVariable "btc_respawn_ticketDecimal";
 
     //MIL

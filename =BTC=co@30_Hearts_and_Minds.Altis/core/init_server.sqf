@@ -57,5 +57,7 @@ if (btc_p_side_mission_cycle > 0) then {
 } forEach ["ACE_SpraypaintRed"];
 
 if (btc_p_respawn_ticketsAtStart >= 0) then {
-    [btc_player_side, btc_p_respawn_ticketsAtStart] call BIS_fnc_respawnTickets;
+    if (btc_p_respawn_ticketsShare) then {
+        [btc_player_side, btc_p_respawn_ticketsAtStart] call BIS_fnc_respawnTickets;
+    };
 };
