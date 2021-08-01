@@ -165,7 +165,6 @@ if (isServer) then {
     btc_fob_rallypointTimer = 60 * btc_p_rallypointTimer;
     btc_body_deadPlayers  = [];
     btc_respawn_tickets = createHashMap;
-    btc_respawn_ticketDecimal = 0; publicVariable "btc_respawn_ticketDecimal";
 
     //MIL
     btc_p_mil_wp_ratios = [_wp_house_probability, (1 - _wp_house_probability) / 1.5 + _wp_house_probability];

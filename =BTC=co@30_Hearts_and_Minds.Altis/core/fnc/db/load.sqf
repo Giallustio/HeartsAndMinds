@@ -210,10 +210,7 @@ private _id = ["ace_tagCreated", {
 
 //Player respawn tickets
 if (btc_p_respawn_ticketsAtStart >= 0) then {
-    private _ticket = profileNamespace getVariable [format ["btc_hm_%1_respawnTickets", _name], [btc_p_respawn_ticketsAtStart, btc_respawn_ticketDecimal]];
-    btc_p_respawn_ticketsAtStart = _ticket select 0;
-    btc_respawn_ticketDecimal = _ticket select 1;
-    publicVariable "btc_respawn_ticketDecimal";
+    btc_p_respawn_ticketsAtStart = profileNamespace getVariable [format ["btc_hm_%1_respawnTickets", _name], btc_p_respawn_ticketsAtStart];
 
     private _deadBodyPlayers = +(profileNamespace getVariable [format ["btc_hm_%1_deadBodyPlayers", _name], []]);
     private _group = createGroup btc_player_side;
