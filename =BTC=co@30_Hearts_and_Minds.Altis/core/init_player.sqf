@@ -53,19 +53,7 @@ btc_intro_done = [] spawn btc_fnc_intro;
                 if ([player] call BIS_fnc_respawnTickets > 0) exitWith {};
                 [
                     {scriptDone btc_intro_done},
-                    BIS_fnc_EGSpectator,
-                    ["Initialize", [
-                        player, 
-                        [btc_player_side],
-                        BIS_respSpecAi,
-                        BIS_respSpecAllowFreeCamera,
-                        BIS_respSpecAllow3PPCamera,
-                        BIS_respSpecShowFocus,
-                        BIS_respSpecShowCameraButtons,
-                        BIS_respSpecShowControlsHelper,
-                        BIS_respSpecShowHeader,
-                        BIS_respSpecLists]
-                    ]
+                    btc_fob_fnc_forceRespawn
                 ] call CBA_fnc_waitUntilAndExecute;
             }
         ] call CBA_fnc_waitUntilAndExecute;
