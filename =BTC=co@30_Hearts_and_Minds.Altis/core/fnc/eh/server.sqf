@@ -91,7 +91,7 @@ if (btc_p_set_skill) then {
         btc_body_deadPlayers pushBack _unit;
         if !(btc_p_respawn_ticketsShare) then {
             _unit setVariable ["btc_UID", getPlayerUID _player];
-            btc_respawn_tickets set [getPlayerUID _player, [_player] call BIS_fnc_respawnTickets];
+            btc_respawn_tickets set [getPlayerUID _player, ([_player] call BIS_fnc_respawnTickets) - 1];
         };
 
         if (btc_p_body_timeBeforeShowMarker isEqualTo -1) exitwith {};
@@ -112,8 +112,16 @@ if (btc_p_respawn_ticketsAtStart >= 0) then {
     if !(btc_p_respawn_ticketsShare) then {
         addMissionEventHandler ["PlayerConnected", {
             params ["_id", "_uid", "_name", "_jip", "_owner", "_idstr"];
-            private _player = _uid call BIS_fnc_getUnitByUID;
-            [_player, btc_respawn_tickets getOrDefault [_uid, btc_p_respawn_ticketsAtStart]] call BIS_fnc_respawnTickets;
+            if (_name isEqualTo "__SERVER__") exitWith {};
+
+            [{
+                !isNull (_this call BIS_fnc_getUnitByUID)
+            }, {
+                [
+                    _this call BIS_fnc_getUnitByUID,
+                    btc_respawn_tickets getOrDefault [_this, btc_p_respawn_ticketsAtStart]
+                ] call BIS_fnc_respawnTickets;
+            }, _uid, 4 * 60] call CBA_fnc_waitUntilAndExecute;
         }];
     };
 };
