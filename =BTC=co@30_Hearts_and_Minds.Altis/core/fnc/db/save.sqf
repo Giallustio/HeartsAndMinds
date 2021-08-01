@@ -212,7 +212,7 @@ if (btc_p_respawn_ticketsAtStart >= 0) then {
     private _respawnTickets = [btc_player_side] call BIS_fnc_respawnTickets;
     profileNamespace setVariable [format ["btc_hm_%1_respawnTickets", _name], +[_respawnTickets, btc_respawn_ticketDecimal]];
 
-    private _deadBodyPlayers = (btc_fob_deadBodyPlayers - [objNull]) apply {[
+    private _deadBodyPlayers = (btc_body_deadPlayers  - [objNull]) apply {[
         typeOf _x,
         getPosASL _x,
         getDir _x,

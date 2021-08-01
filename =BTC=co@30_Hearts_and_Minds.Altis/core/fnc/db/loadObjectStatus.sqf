@@ -51,18 +51,7 @@ if (unitIsUAV _obj) then {
     createVehicleCrew _obj;
 };
 
-_dogtagDataTaken params [
-    ["_dogtagData", [], [[]]],
-    ["_dogtagTaken", false, [false]],
-    ["_isDeadPlayer", false, [false]]
-];
-if (_dogtagData isNotEqualTo []) then {
-    _obj setVariable ["ace_dogtags_dogtagData", _dogtagData, true];
-    if (_dogtagTaken) then {
-        _obj setVariable ["ace_dogtags_dogtagTaken", _obj, true];
-    };
-    _obj setVariable ["btc_isDeadPlayer", _isDeadPlayer];
-};
+[_obj, _dogtagDataTaken] call btc_body_fnc_dogtagSet;
 
 [_obj] call btc_log_fnc_init;
 [_obj, _cargo, _inventory] call btc_db_fnc_loadCargo;

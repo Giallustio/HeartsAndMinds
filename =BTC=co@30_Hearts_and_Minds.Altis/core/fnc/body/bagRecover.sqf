@@ -1,18 +1,18 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fob_fnc_recoverBodyBag
+Function: btc_body_fnc_bagRecover
 
 Description:
     Add respawn tickets when a body bag is provided.
 
 Parameters:
-    _logistic - [Object]
+    _logistic - Logistic pad. [Object]
 
 Returns:
 
 Examples:
     (begin example)
-        [cursorObject] call btc_fob_fnc_recoverBodyBag;
+        [cursorObject] call btc_body_fnc_bagRecover;
     (end)
 
 Author:
@@ -32,4 +32,4 @@ if (_array isEqualTo []) exitWith {
     ] call CBA_fnc_notify;
 };
 
-[_array select 0] remoteExecCall ["btc_fob_fnc_recoverBodyBag_s", 2];
+[_array select 0] remoteExecCall ["btc_body_fnc_bagRecover_s", 2];

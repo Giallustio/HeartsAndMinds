@@ -88,23 +88,15 @@ if (btc_p_set_skill) then {
     [btc_rep_malus_player_respawn, _player] call btc_rep_fnc_change;
     if (btc_p_respawn_ticketsAtStart >= 0) then {
         _unit setVariable ["btc_dont_delete", true];
-        private _index = btc_fob_deadBodyPlayers pushBack _unit;
+        btc_body_deadPlayers pushBack _unit;
 
-        if (btc_p_respawn_timeBeforeShowKIA isEqualTo -1) exitwith {};
-        [{
-            if (isNull _unit) exitwith {};
-
-            private _marker = createMarker [format ["btc_fob_deadBody_%1", _index], _unit];
-            _marker setMarkerType "KIA";
-            _marker setMarkerSize [0.5, 0.5];
-            _marker setMarkerAlpha 0.5;
-            _unit setVariable ["btc_deadBody_marker", _marker];
-        }, [_unit, _index], btc_p_respawn_timeBeforeShowKIA * 60] call CBA_fnc_waitAndExecute;
+        if (btc_p_body_timeBeforeShowMarker isEqualTo -1) exitwith {};
+        [btc_body_fnc_createMarker, _unit, btc_p_body_timeBeforeShowMarker] call CBA_fnc_waitAndExecute;
     }; 
 }] call CBA_fnc_addEventHandler;
 ["ace_placedInBodyBag", {
     params ["_patient", "_bodyBag"];
-    deleteMarker (_patient getVariable ["btc_deadBody_marker", ""]);
+    deleteMarker (_patient getVariable ["btc_body_deadMarker", ""]);
     if (_patient getVariable ["btc_dont_delete", false]) then {
         _bodyBag setVariable ["btc_isDeadPlayer", true];
     };

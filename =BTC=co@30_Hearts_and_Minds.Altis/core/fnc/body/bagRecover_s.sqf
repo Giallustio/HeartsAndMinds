@@ -1,18 +1,18 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fob_fnc_recoverBodyBag_s
+Function: btc_body_fnc_bagRecover_s
 
 Description:
     Add respawn tickets when a body bag is provided.
 
 Parameters:
-    _bodyBag - [Object]
+    _bodyBag - Body bag. [Object]
 
 Returns:
 
 Examples:
     (begin example)
-        [cursorObject] call btc_fob_fnc_recoverBodyBag_s;
+        [cursorObject] call btc_body_fnc_bagRecover_s;
     (end)
 
 Author:
@@ -26,9 +26,9 @@ params [
 
 private _ticket = 0;
 if (_bodyBag getVariable ["btc_isDeadPlayer", false]) then {
-    _ticket = btc_fob_ticketPlayerBodyBag;
+    _ticket = btc_body_bagTicketPlayer;
 } else {
-    btc_respawn_ticketDecimal = btc_respawn_ticketDecimal + btc_fob_ticketAIBodyBag;
+    btc_respawn_ticketDecimal = btc_respawn_ticketDecimal + btc_body_bagTicketAI;
 };
 private _ticketValue = [btc_player_side, _ticket + btc_respawn_ticketDecimal] call BIS_fnc_respawnTickets;
 btc_respawn_ticketDecimal = btc_respawn_ticketDecimal - floor btc_respawn_ticketDecimal;

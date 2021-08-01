@@ -214,16 +214,15 @@ if (btc_p_respawn_ticketsAtStart >= 0) then {
     btc_p_respawn_ticketsAtStart = _ticket select 0;
     btc_respawn_ticketDecimal = _ticket select 1;
     publicVariable "btc_respawn_ticketDecimal";
+
     private _deadBodyPlayers = +(profileNamespace getVariable [format ["btc_hm_%1_deadBodyPlayers", _name], []]);
     private _group = createGroup btc_player_side;
-    btc_fob_deadBodyPlayers = _deadBodyPlayers apply {
+    btc_body_deadPlayers  = _deadBodyPlayers apply {
         _x params ["_type", "_pos", "_dir", "_loadout", "_dogtagData", "_dogtagTaken", "_isContaminated"];
         private _body = _group createUnit [_type, ASLToAGL _pos, [], 0, "CAN_COLLIDE"];
         _body setUnitLoadout _loadout;
-        _body setVariable ["ace_dogtags_dogtagData", _dogtagData, true];
-        if (_dogtagTaken) then {
-            _body setVariable ["ace_dogtags_dogtagTaken", _body, true];
-        };
+        [_body, [_dogtagData, _dogtagTaken]] call btc_body_fnc_dogtagSet;
+
         if (_isContaminated) then {
             if ((btc_chem_contaminated pushBackUnique _body) > -1) then {
                 publicVariable "btc_chem_contaminated";
@@ -238,11 +237,7 @@ if (btc_p_respawn_ticketsAtStart >= 0) then {
             _body setPosASL _pos;
         }, [_body, _dir, _pos], 3] call CBA_fnc_waitAndExecute;
 
-        private _marker = createMarker [format ["btc_fob_deadBody_%1", _body], _pos];
-        _marker setMarkerType "KIA";
-        _marker setMarkerSize [0.5, 0.5];
-        _marker setMarkerAlpha 0.5;
-        _body setVariable ["btc_deadBody_marker", _marker];
+        _body call btc_body_fnc_createMarker;
         _body
     };
     deleteGroup _group;

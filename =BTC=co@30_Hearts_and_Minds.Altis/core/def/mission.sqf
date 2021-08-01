@@ -1,6 +1,5 @@
 
 btc_version = [1, 21.1, 5];
-
 diag_log format (["=BTC= HEARTS AND MINDS VERSION %1.%2.%3"] + btc_version);
 
 //Param
@@ -18,7 +17,7 @@ btc_p_respawn_fromFOBToBase = ("btc_p_respawn_fromFOBToBase" call BIS_fnc_getPar
 btc_p_rallypointTimer = "btc_p_rallypointTimer" call BIS_fnc_getParamValue;
 btc_p_respawn_arsenal = ("btc_p_respawn_arsenal" call BIS_fnc_getParamValue) isEqualTo 1;
 btc_p_respawn_ticketsAtStart = 100;
-btc_p_respawn_timeBeforeShowKIA = 10;
+btc_p_body_timeBeforeShowMarker = 10 * 60;
 
 //<< Faction options >>
 private _p_en = "btc_p_en" call BIS_fnc_getParamValue;
@@ -163,7 +162,7 @@ if (isServer) then {
     //FOB
     btc_fobs = [[], [], []];
     btc_fob_rallypointTimer = 60 * btc_p_rallypointTimer;
-    btc_fob_deadBodyPlayers = [];
+    btc_body_deadPlayers  = [];
     btc_respawn_ticketDecimal = 0; publicVariable "btc_respawn_ticketDecimal";
 
     //MIL
@@ -727,5 +726,5 @@ btc_player_type = ["SoldierWB", "SoldierEB", "SoldierGB"] select ([west, east, i
 btc_door_breaking_time = 60;
 
 //Respawn
-btc_fob_ticketPlayerBodyBag = 1;
-btc_fob_ticketAIBodyBag = 0.1;
+btc_body_bagTicketPlayer = 1;
+btc_body_bagTicketAI = 0.1;
