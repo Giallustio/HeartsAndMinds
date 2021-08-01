@@ -167,10 +167,7 @@ if (btc_debug) then {
 private _actions = [];
 _actions pushBack ["redeploy", localize "STR_BTC_HAM_ACTION_BIRESPAWN", "\A3\ui_f\data\igui\cfg\simpleTasks\types\run_ca.paa", {
     if ([] call btc_fob_fnc_redeployCheck) then {
-        player setPos [10, 10, 10];
-        player hideObject true;
-        [btc_player_side, 1] call BIS_fnc_respawnTickets;
-        forceRespawn player;
+        [] call btc_fob_fnc_forceRespawn;
     };
 }, {!btc_log_placing}];
 _actions pushBack ["base", localize "STR_BTC_HAM_ACTION_REDEPLOYBASE", getText (configfile >> "CfgMarkers" >> getMarkerType "btc_base" >> "icon"), {

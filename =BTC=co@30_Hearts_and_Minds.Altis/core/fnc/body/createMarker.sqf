@@ -27,8 +27,8 @@ params [
 if (isNull _unit) exitwith {};
 
 private _marker = createMarker [
-	format ["btc_body_dead_%1", {"btc_body_dead" in _x} count allMapMarkers],
-	_unit
+    format ["btc_body_dead_%1", {"btc_body_dead" in _x} count allMapMarkers],
+    _unit
 ];
 _marker setMarkerType "KIA";
 _marker setMarkerSize [0.5, 0.5];
