@@ -38,10 +38,8 @@ if (btc_p_respawn_ticketsShare) then {
     if !(isNull _player) then {
         [_player, _ticket] call BIS_fnc_respawnTickets;
     };
-    btc_respawn_tickets set [
-        _uid,
-        _ticket + (btc_respawn_tickets getOrDefault [_uid, 0])
-    ];
+    _ticketValue = _ticket + (btc_respawn_tickets getOrDefault [_uid, 0]);
+    btc_respawn_tickets set [_uid, _ticketValue];
 };
 
 deleteVehicle _bodyBag;

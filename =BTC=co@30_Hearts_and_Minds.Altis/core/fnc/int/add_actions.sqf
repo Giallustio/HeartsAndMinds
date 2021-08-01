@@ -169,7 +169,11 @@ _actions pushBack ["redeploy", localize "STR_BTC_HAM_ACTION_BIRESPAWN", "\A3\ui_
     if ([] call btc_fob_fnc_redeployCheck) then {
         player setPos [10, 10, 10];
         player hideObject true;
-        [btc_player_side, 1] call BIS_fnc_respawnTickets;
+        if (btc_p_respawn_ticketsShare) then {
+            [btc_player_side, 1] call BIS_fnc_respawnTickets;
+        } else {
+            [player, 1] call BIS_fnc_respawnTickets;
+        };
         forceRespawn player;
     };
 }, {!btc_log_placing}];

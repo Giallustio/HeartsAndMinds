@@ -27,8 +27,7 @@ params [
 private _array = nearestObjects [_logistic, ["ACE_bodyBagObject"], 10];
 if (_array isEqualTo []) exitWith {
     [
-        ["No body bag around"],
-        [format ["%1 respawn tickets left", [btc_player_side] call BIS_fnc_respawnTickets]]
+        ["No body bag around"]
     ] call CBA_fnc_notify;
 };
 
