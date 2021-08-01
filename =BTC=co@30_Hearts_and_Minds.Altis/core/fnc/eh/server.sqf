@@ -117,9 +117,13 @@ if (btc_p_respawn_ticketsAtStart >= 0) then {
             [{
                 !isNull (_this call BIS_fnc_getUnitByUID)
             }, {
+                private _tickets = btc_respawn_tickets getOrDefault [_this, btc_p_respawn_ticketsAtStart];
+                if (_tickets isEqualTo 0) then {
+                    _tickets = -1;
+                };
                 [
                     _this call BIS_fnc_getUnitByUID,
-                    btc_respawn_tickets getOrDefault [_this, btc_p_respawn_ticketsAtStart]
+                    _tickets
                 ] call BIS_fnc_respawnTickets;
             }, _uid, 4 * 60] call CBA_fnc_waitUntilAndExecute;
         }];

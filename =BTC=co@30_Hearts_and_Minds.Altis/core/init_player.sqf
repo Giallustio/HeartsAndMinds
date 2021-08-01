@@ -58,6 +58,31 @@ btc_intro_done = [] spawn btc_fnc_intro;
         ] call CBA_fnc_waitUntilAndExecute;
     };
 
+    if !(btc_p_respawn_ticketsShare) then {
+        [
+            {[player] call BIS_fnc_respawnTickets isNotEqualTo -1},
+            {
+                if ([player] call BIS_fnc_respawnTickets > 0) exitWith {};
+                [
+                    {scriptDone btc_intro_done},
+                    BIS_fnc_EGSpectator,
+                    ["Initialize", [
+                        player, 
+                        [btc_player_side],
+                        BIS_respSpecAi,
+                        BIS_respSpecAllowFreeCamera,
+                        BIS_respSpecAllow3PPCamera,
+                        BIS_respSpecShowFocus,
+                        BIS_respSpecShowCameraButtons,
+                        BIS_respSpecShowControlsHelper,
+                        BIS_respSpecShowHeader,
+                        BIS_respSpecLists]
+                    ]
+                ] call CBA_fnc_waitUntilAndExecute;
+            }
+        ] call CBA_fnc_waitUntilAndExecute;
+    };
+
     if (btc_debug) then {
         onMapSingleClick "vehicle player setPos _pos";
         player allowDamage false;
