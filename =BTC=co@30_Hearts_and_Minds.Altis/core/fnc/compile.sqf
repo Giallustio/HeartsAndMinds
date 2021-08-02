@@ -5,6 +5,7 @@ if (isServer) then {
     btc_body_fnc_createMarker = compileScript ["core\fnc\body\createMarker.sqf"];
     btc_body_fnc_dogtagGet = compileScript ["core\fnc\body\dogtagGet.sqf"];
     btc_body_fnc_dogtagSet = compileScript ["core\fnc\body\dogtagSet.sqf"];
+    btc_body_fnc_addTicket = compileScript ["core\fnc\body\addTicket.sqf"];
 
     //CACHE
     btc_cache_fnc_find_pos = compileScript ["core\fnc\cache\find_pos.sqf"];

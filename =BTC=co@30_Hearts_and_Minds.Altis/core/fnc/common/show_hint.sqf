@@ -121,6 +121,11 @@ private _text = switch (_type) do {
             [format ["%1 respawn tickets left", _custom]]
         ];
     };
+    case 23 : {
+        [
+            ["No body bag from a player"]
+        ];
+    };
 };
 
 _text call CBA_fnc_notify;

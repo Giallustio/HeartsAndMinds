@@ -728,4 +728,4 @@ btc_door_breaking_time = 60;
 
 //Respawn
 btc_body_bagTicketPlayer = 1;
-btc_body_bagTicketAI = 0.1;
+btc_body_enemyTicket = 1;

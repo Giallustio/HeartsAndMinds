@@ -24,10 +24,17 @@ params [
     ["_logistic", objNull, [objNull]]
 ];
 
-private _array = nearestObjects [_logistic, ["ACE_bodyBagObject"], 10];
+private _array = nearestObjects [_logistic, ["ACE_bodyBagObject", "CAManBase"], 10];
+_array = _array select {
+    alive _x && (
+        (_x isKindOf "CAManBase" &&
+        side group _x isEqualTo btc_enemy_side) ||
+        _x isKindOf "ACE_bodyBagObject"
+    )
+};
 if (_array isEqualTo []) exitWith {
     [
-        ["No body bag around"]
+        ["No body bag around or alive enemy"]
     ] call CBA_fnc_notify;
 };
 
