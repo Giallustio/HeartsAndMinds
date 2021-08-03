@@ -16,6 +16,10 @@ Examples:
     (begin example)
         [cursorObject, 1, getPlayerUID cursorObject] remoteExecCall ["btc_body_fnc_addTicket", 2];
     (end)
+    (begin example)
+        [player, 1, getPlayerUID player] remoteExecCall ["btc_body_fnc_addTicket", 2];
+    (end)
+
 
 Author:
     Vdauphin
@@ -28,7 +32,7 @@ params [
     ["_uid", "", [""]]
 ];
 
-if !(isNull _player) then {
+if !(_player isEqualTo objNull) then {
     private _ticketValue = [_player, _ticket] call BIS_fnc_respawnTickets;
     [22, _ticketValue] remoteExecCall ["btc_fnc_show_hint", _player];
 };

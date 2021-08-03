@@ -16,7 +16,7 @@ btc_p_respawn_location = "btc_p_respawn_location" call BIS_fnc_getParamValue;
 btc_p_respawn_fromFOBToBase = ("btc_p_respawn_fromFOBToBase" call BIS_fnc_getParamValue) isEqualTo 1;
 btc_p_rallypointTimer = "btc_p_rallypointTimer" call BIS_fnc_getParamValue;
 btc_p_respawn_arsenal = ("btc_p_respawn_arsenal" call BIS_fnc_getParamValue) isEqualTo 1;
-btc_p_respawn_ticketsAtStart = 100;
+btc_p_respawn_ticketsAtStart = 10;
 btc_p_respawn_ticketsShare = false;
 btc_p_body_timeBeforeShowMarker = 10 * 60;
 

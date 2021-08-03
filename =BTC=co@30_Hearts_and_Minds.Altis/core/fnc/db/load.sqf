@@ -210,12 +210,17 @@ private _id = ["ace_tagCreated", {
 
 //Player respawn tickets
 if (btc_p_respawn_ticketsAtStart >= 0) then {
-    btc_p_respawn_ticketsAtStart = profileNamespace getVariable [format ["btc_hm_%1_respawnTickets", _name], btc_p_respawn_ticketsAtStart];
+    btc_respawn_tickets = +(profileNamespace getVariable [format ["btc_hm_%1_respawnTickets", _name], btc_respawn_tickets]);
+    if (btc_p_respawn_ticketsShare) then {
+        btc_p_respawn_ticketsAtStart = btc_respawn_tickets getOrDefault [str btc_player_side, btc_p_respawn_ticketsAtStart];
+    };
 
     private _deadBodyPlayers = +(profileNamespace getVariable [format ["btc_hm_%1_deadBodyPlayers", _name], []]);
     private _group = createGroup btc_player_side;
     btc_body_deadPlayers  = _deadBodyPlayers apply {
-        _x params ["_type", "_pos", "_dir", "_loadout", "_dogtagData", "_dogtagTaken", "_isContaminated"];
+        _x params ["_type", "_pos", "_dir", "_loadout", "_dogtagData", "_dogtagTaken", "_isContaminated",
+            ["_uid", "", [""]]
+        ];
         private _body = _group createUnit [_type, ASLToAGL _pos, [], 0, "CAN_COLLIDE"];
         _body setUnitLoadout _loadout;
         [_body, [_dogtagData, _dogtagTaken]] call btc_body_fnc_dogtagSet;
@@ -227,6 +232,7 @@ if (btc_p_respawn_ticketsAtStart >= 0) then {
         };
         _body setDamage 1;
         _body setVariable ["btc_dont_delete", true];
+        _body setVariable ["btc_UID", _uid];
 
         [{
             params ["_body", "_dir", "_pos"];

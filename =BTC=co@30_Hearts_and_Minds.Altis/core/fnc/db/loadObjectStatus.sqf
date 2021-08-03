@@ -32,7 +32,8 @@ _object_data params [
     "_inventory",
     "_vectorPos",
     ["_isContaminated", false, [false]],
-    ["_dogtagDataTaken", [], [[]]]
+    ["_dogtagDataTaken", [], [[]]],
+    ["_uid", "", [""]]
 ];
 
 private _obj = createVehicle [_type, ASLToATL _pos, [], 0, "CAN_COLLIDE"];
@@ -52,6 +53,7 @@ if (unitIsUAV _obj) then {
 };
 
 [_obj, _dogtagDataTaken] call btc_body_fnc_dogtagSet;
+_obj setVariable ["btc_UID", _uid];
 
 [_obj] call btc_log_fnc_init;
 [_obj, _cargo, _inventory] call btc_db_fnc_loadCargo;
