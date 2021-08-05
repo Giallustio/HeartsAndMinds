@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        [cursorObject] call btc_body_fnc_bagRecover;
+        [btc_log_create_obj] call btc_body_fnc_bagRecover;
     (end)
 
 Author:

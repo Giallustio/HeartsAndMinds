@@ -7,7 +7,7 @@ Description:
 
 Parameters:
     _deadBody - Dead body or body bag. [Object]
-    _dogtagDataTaken - Dogtag data and if he is taken. [Array]
+    _dogtagDataTaken - Dogtag data and if it has been taken. [Array]
 
 Returns:
 

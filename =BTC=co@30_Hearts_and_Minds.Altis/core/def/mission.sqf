@@ -164,7 +164,6 @@ if (isServer) then {
     btc_fobs = [[], [], []];
     btc_fob_rallypointTimer = 60 * btc_p_rallypointTimer;
     btc_body_deadPlayers  = [];
-    btc_respawn_tickets = createHashMap;
 
     //MIL
     btc_p_mil_wp_ratios = [_wp_house_probability, (1 - _wp_house_probability) / 1.5 + _wp_house_probability];
@@ -365,6 +364,9 @@ if (isServer) then {
     btc_type_blacklist = btc_type_tags + btc_type_flowers + ["UserTexture1m_F"]; publicVariable "btc_type_blacklist";
 
     btc_groundWeaponHolder = [];
+
+    //Respawn
+    btc_respawn_tickets = createHashMap;
 };
 
 //Civ

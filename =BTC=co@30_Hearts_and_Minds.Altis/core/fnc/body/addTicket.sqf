@@ -20,7 +20,6 @@ Examples:
         [player, 1, getPlayerUID player] remoteExecCall ["btc_body_fnc_addTicket", 2];
     (end)
 
-
 Author:
     Vdauphin
 
