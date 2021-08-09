@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_body_fnc_addTicket
+Function: btc_respawn_fnc_addTicket
 
 Description:
     Add respawn tickets to a player or a side.
@@ -14,10 +14,13 @@ Returns:
 
 Examples:
     (begin example)
-        [cursorObject, 1, getPlayerUID cursorObject] remoteExecCall ["btc_body_fnc_addTicket", 2];
+        [cursorObject, 1, getPlayerUID cursorObject] remoteExecCall ["btc_respawn_fnc_addTicket", 2];
     (end)
     (begin example)
-        [player, 1, getPlayerUID player] remoteExecCall ["btc_body_fnc_addTicket", 2];
+        [player, 1, getPlayerUID player] remoteExecCall ["btc_respawn_fnc_addTicket", 2];
+    (end)
+    (begin example)
+        [btc_player_side, 1] remoteExecCall ["btc_respawn_fnc_addTicket", 2];
     (end)
 
 Author:

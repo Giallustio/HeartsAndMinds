@@ -65,6 +65,24 @@ class Params {
         texts[]={$STR_DISABLED,"5 min","10 min","30 min","60 min"};
         default = 30;
     };
+    class btc_p_respawn_ticketsAtStart { // Number of tickets at mission start:
+        title = __EVAL(format ["      %1", "Number of tickets at mission start:"]);
+        values[]={-1,0,1,2,3,4,5,10,30,50,100,200};
+        texts[]={$STR_DISABLED,"0","1","2","3","4","5","10","30","50","100","200"};
+        default = 10;
+    };
+    class btc_p_respawn_ticketsShare { // Tickets are share between:
+        title = __EVAL(format ["      %1", "Tickets are share between:"]);
+        values[]={0,1};
+        texts[]={"Players of the same faction", "Not share"};
+        default = 1;
+    };
+    class btc_p_body_timeBeforeShowMarker { // Time before showing marker of dead player's body:
+        title = __EVAL(format ["      %1", "Time before showing marker of dead player's body:"]);
+        values[]={-1,0,5,10,30,60};
+        texts[]={$STR_DISABLED,"0 min","5 min","10 min","30 min","60 min"};
+        default = 10;
+    };
     class btc_p_respawn_arsenal { // ACE Arsenal available on respawn after been killed:
         title = __EVAL(format ["      %1", localize "STR_BTC_HAM_RESP_ENABLEARSENAL"]);
         values[]={0,1};
@@ -417,6 +435,6 @@ class Params {
         title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_OTHER_DEBUG"]);
         values[]={0,1,2};
         texts[]={$STR_DISABLED,$STR_ENABLED, $STR_BTC_HAM_PARAM_OTHER_DEBUG_LOGONLY}; // texts[]={"Off","On","Log only"};
-        default = 0;
+        default = 1;
     };
 };

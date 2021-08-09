@@ -84,9 +84,13 @@ if (btc_p_set_skill) then {
 ["ace_tagCreated", btc_tag_fnc_eh] call CBA_fnc_addEventHandler;
 ["ace_disarming_dropItems", btc_rep_fnc_foodRemoved] call CBA_fnc_addEventHandler; 
 ["btc_respawn_player", {
-    params ["_unit", "_player"];
+    params ["", "_player"];
     [btc_rep_malus_player_respawn, _player] call btc_rep_fnc_change;
-    if (btc_p_respawn_ticketsAtStart >= 0) then {
+}] call CBA_fnc_addEventHandler;
+
+if (btc_p_respawn_ticketsAtStart >= 0) then {
+    ["btc_respawn_player", {
+        params ["_unit", "_player"];
         _unit setVariable ["btc_dont_delete", true];
         btc_body_deadPlayers pushBack _unit;
         _unit setVariable ["btc_UID", getPlayerUID _player];
@@ -96,19 +100,18 @@ if (btc_p_set_skill) then {
 
         if (btc_p_body_timeBeforeShowMarker isEqualTo -1) exitwith {};
         [btc_body_fnc_createMarker, _unit, btc_p_body_timeBeforeShowMarker] call CBA_fnc_waitAndExecute;
-    }; 
-}] call CBA_fnc_addEventHandler;
-["ace_placedInBodyBag", {
-    params ["_patient", "_bodyBag"];
-    deleteMarker (_patient getVariable ["btc_body_deadMarker", ""]);
-    if (_patient getVariable ["btc_dont_delete", false]) then {
-        _bodyBag setVariable ["btc_isDeadPlayer", true];
-        _bodyBag setVariable ["btc_UID", _patient getVariable ["btc_UID", ""]];
-    };
-    [_bodyBag] call btc_log_fnc_init;
-}] call CBA_fnc_addEventHandler;
 
-if (btc_p_respawn_ticketsAtStart >= 0) then {
+    }] call CBA_fnc_addEventHandler;
+    ["ace_placedInBodyBag", {
+        params ["_patient", "_bodyBag"];
+        deleteMarker (_patient getVariable ["btc_body_deadMarker", ""]);
+        if (_patient getVariable ["btc_dont_delete", false]) then {
+            _bodyBag setVariable ["btc_isDeadPlayer", true];
+            _bodyBag setVariable ["btc_UID", _patient getVariable ["btc_UID", ""]];
+        };
+        [_bodyBag] call btc_log_fnc_init;
+    }] call CBA_fnc_addEventHandler;
+
     if !(btc_p_respawn_ticketsShare) then {
         addMissionEventHandler ["PlayerConnected", {
             params ["_id", "_uid", "_name", "_jip", "_owner", "_idstr"];

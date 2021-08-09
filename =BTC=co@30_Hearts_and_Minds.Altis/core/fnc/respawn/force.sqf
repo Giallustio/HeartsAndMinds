@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fob_fnc_forceRespawn
+Function: btc_respawn_fnc_force
 
 Description:
     Force player respawn.
@@ -11,7 +11,7 @@ Returns:
 
 Examples:
     (begin example)
-        [] call btc_fob_fnc_forceRespawn;
+        [] call btc_respawn_fnc_force;
     (end)
 
 Author:

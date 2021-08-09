@@ -6,7 +6,7 @@ if !(isNil "btc_custom_loc") then {
         _location setText _cityName;
     } forEach btc_custom_loc;
 };
-btc_intro_done = [] spawn btc_fnc_intro;
+btc_intro_done = [] spawn btc_respawn_fnc_intro;
 
 [{!isNull player}, {
     [] call compileScript ["core\doc.sqf"];
@@ -39,25 +39,7 @@ btc_intro_done = [] spawn btc_fnc_intro;
         };
     };
 
-    if ([btc_player_side] call BIS_fnc_respawnTickets isEqualTo 0) then {
-        [
-            {scriptDone btc_intro_done},
-            btc_fob_fnc_forceRespawn
-        ] call CBA_fnc_waitUntilAndExecute;
-    };
-
-    if !(btc_p_respawn_ticketsShare) then {
-        [
-            {[player] call BIS_fnc_respawnTickets isNotEqualTo -1},
-            {
-                if ([player] call BIS_fnc_respawnTickets > 0) exitWith {};
-                [
-                    {scriptDone btc_intro_done},
-                    btc_fob_fnc_forceRespawn
-                ] call CBA_fnc_waitUntilAndExecute;
-            }
-        ] call CBA_fnc_waitUntilAndExecute;
-    };
+    [] call btc_respawn_fnc_screen;
 
     if (btc_debug) then {
         onMapSingleClick "vehicle player setPos _pos";

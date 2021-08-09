@@ -37,16 +37,16 @@ if (_ticket isEqualTo 0) exitWith {
 };
 
 if (btc_p_respawn_ticketsShare) then {
-    [btc_player_side, _ticket] call btc_body_fnc_addTicket;
+    [btc_player_side, _ticket] call btc_respawn_fnc_addTicket;
 } else {
     if (_bodyBag isKindOf "ACE_bodyBagObject") then {
         private _uid = _bodyBag getVariable ["btc_UID", ""];
         private _player = _uid call BIS_fnc_getUnitByUID;
-        [_player, _ticket, _uid] call btc_body_fnc_addTicket;
+        [_player, _ticket, _uid] call btc_respawn_fnc_addTicket;
     } else {
         private _players = (units btc_player_side) select {isPlayer _x};
         {
-            [_x, _ticket, getPlayerUID _x] call btc_body_fnc_addTicket;
+            [_x, _ticket, getPlayerUID _x] call btc_respawn_fnc_addTicket;
         } forEach _players;
     };
 };

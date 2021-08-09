@@ -5,7 +5,6 @@ if (isServer) then {
     btc_body_fnc_createMarker = compileScript ["core\fnc\body\createMarker.sqf"];
     btc_body_fnc_dogtagGet = compileScript ["core\fnc\body\dogtagGet.sqf"];
     btc_body_fnc_dogtagSet = compileScript ["core\fnc\body\dogtagSet.sqf"];
-    btc_body_fnc_addTicket = compileScript ["core\fnc\body\addTicket.sqf"];
 
     //CACHE
     btc_cache_fnc_find_pos = compileScript ["core\fnc\cache\find_pos.sqf"];
@@ -157,6 +156,9 @@ if (isServer) then {
     btc_rep_fnc_notify = compileScript ["core\fnc\rep\notify.sqf"];
     btc_rep_fnc_killed = compileScript ["core\fnc\rep\killed.sqf"];
 
+    //RESPAWN
+    btc_respawn_fnc_addTicket = compileScript ["core\fnc\respawn\addTicket.sqf"];
+
     //SIDE
     btc_side_fnc_create = compileScript ["core\fnc\side\create.sqf"];
     btc_side_fnc_get_city = compileScript ["core\fnc\side\get_city.sqf"];
@@ -280,7 +282,6 @@ if (!isDedicated) then {
     btc_fnc_end_mission = compileScript ["core\fnc\common\end_mission.sqf"];
     btc_fnc_get_cardinal = compileScript ["core\fnc\common\get_cardinal.sqf"];
     btc_fnc_show_hint = compileScript ["core\fnc\common\show_hint.sqf"];
-    btc_fnc_intro = compileScript ["core\fnc\common\intro.sqf"];
     btc_fnc_set_markerTextLocal = compileScript ["core\fnc\common\set_markerTextLocal.sqf"];
     btc_fnc_showSubtitle = compileScript ["core\fnc\common\showSubtitle.sqf"];
     btc_fnc_get_composition = compileScript ["core\fnc\common\get_composition.sqf"];
@@ -325,7 +326,6 @@ if (!isDedicated) then {
     btc_fob_fnc_rallypointAssemble = compileScript ["core\fnc\fob\rallypointAssemble.sqf"];
     btc_fob_fnc_redeploy = compileScript ["core\fnc\fob\redeploy.sqf"];
     btc_fob_fnc_redeployCheck = compileScript ["core\fnc\fob\redeployCheck.sqf"];
-    btc_fob_fnc_forceRespawn = compileScript ["core\fnc\fob\forceRespawn.sqf"];
 
     //INT
     btc_int_fnc_add_actions = compileScript ["core\fnc\int\add_actions.sqf"];
@@ -368,6 +368,11 @@ if (!isDedicated) then {
 
     //REP
     btc_rep_fnc_treatment = compileScript ["core\fnc\rep\treatment.sqf"];
+
+    //RESPAWN
+    btc_respawn_fnc_screen = compileScript ["core\fnc\respawn\screen.sqf"];
+    btc_respawn_fnc_force = compileScript ["core\fnc\respawn\force.sqf"];
+    btc_respawn_fnc_intro = compileScript ["core\fnc\respawn\intro.sqf"];
 
     //SPECT
     btc_spect_fnc_updateDevice = compileScript ["core\fnc\spect\updateDevice.sqf"];
