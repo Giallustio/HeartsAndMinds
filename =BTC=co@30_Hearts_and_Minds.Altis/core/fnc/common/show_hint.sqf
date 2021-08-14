@@ -116,15 +116,13 @@ private _text = switch (_type) do {
         ];
     };
     case 22 : {
-        [
-            ["Respawn ticket added"],
-            [format ["%1 respawn tickets left", _custom]]
-        ];
+        "Respawn ticket added"
     };
     case 23 : {
-        [
-            ["No body bag from a player"]
-        ];
+        "No body bag from a player";
+    };
+    case 24 : {
+        format ["%1 respawn tickets left", _custom];
     };
 };
 

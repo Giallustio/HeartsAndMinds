@@ -35,6 +35,7 @@ if (_bodyBag isKindOf "CAManBase") then {
 if (_ticket isEqualTo 0) exitWith {
     [23] remoteExecCall ["btc_fnc_show_hint", remoteExecutedOwner];
 };
+[22] remoteExecCall ["btc_fnc_show_hint", remoteExecutedOwner];
 
 if (btc_p_respawn_ticketsShare) then {
     [btc_player_side, _ticket] call btc_respawn_fnc_addTicket;

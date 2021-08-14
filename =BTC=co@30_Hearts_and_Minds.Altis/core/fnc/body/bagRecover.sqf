@@ -33,9 +33,7 @@ _array = _array select {
     )
 };
 if (_array isEqualTo []) exitWith {
-    [
-        ["No body bag around or alive enemy"]
-    ] call CBA_fnc_notify;
+    "No body bag around or alive enemy" call CBA_fnc_notify;
 };
 
 [_array select 0] remoteExecCall ["btc_body_fnc_bagRecover_s", 2];
