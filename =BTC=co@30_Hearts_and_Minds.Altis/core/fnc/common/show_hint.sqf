@@ -116,13 +116,13 @@ private _text = switch (_type) do {
         ];
     };
     case 22 : {
-        "Respawn ticket added"
+        localize "STR_BTC_HAM_O_COMMON_TICKETADD"
     };
     case 23 : {
-        "No body bag from a player";
+        localize "STR_BTC_HAM_O_COMMON_NOBODYBAG";
     };
     case 24 : {
-        format ["%1 respawn tickets left", _custom];
+        format [localize "STR_BTC_HAM_O_COMMON_TICKETSLEFT", _custom];
     };
 };
 

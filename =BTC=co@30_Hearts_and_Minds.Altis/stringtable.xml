@@ -598,6 +598,21 @@
                 <Chinesesimp>集合点自毁时间:</Chinesesimp>
                 <French>Temps avant l'autodestruction du point de ralliement:</French>
             </Key>
+            <Key ID="STR_BTC_HAM_RESP_TIMEBEFORESHOWMARKER">
+                <Original>Number of tickets at mission start:</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_RESP_TICKETSHARE">
+                <Original>Tickets are share between:</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_RESP_SAMEFACTION">
+                <Original>Players of the same faction</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_RESP_NOTSHARE">
+                <Original>Not share"</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_RESP_TICKETSATSTART">
+                <Original>Time before showing marker of dead player's body:</Original>
+            </Key>
             <Key ID="STR_BTC_HAM_RESP_ENABLEARSENAL">
                 <Original>ACE Arsenal available on respawn after been killed:</Original>
                 <Chinesesimp>ACE军火库在玩家死亡重生后可用:</Chinesesimp>
@@ -2258,6 +2273,15 @@
                 <Chinesesimp>服务器将在5分钟后重启, 请立即离开服务器!</Chinesesimp>
                 <French>Redémarrage du serveur dans 5min, décconectez-vous maintenant !</French>
             </Key>
+            <Key ID="STR_BTC_HAM_O_COMMON_TICKETADD">
+                <Original>Respawn ticket added</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_COMMON_NOBODYBAG">
+                <Original>No body bag from a player</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_COMMON_TICKETSLEFT">
+                <Original>%1 respawn tickets left</Original>
+            </Key>
         </Container>
         <Container name="Other: Shortcuts">
             <Key ID="STR_BTC_HAM_O_SHORTC_STOP_TITLE">
@@ -2394,6 +2418,14 @@
                 <Original>Breaking door lock...</Original>
                 <French>Casser la serrure ...</French>
                 <Chinesesimp>正在撬锁...</Chinesesimp>
+            </Key>
+        </Container>
+        <Container name="Other: Bodybag">
+            <Key ID="STR_BTC_HAM_O_BODYBAG_NO">
+                <Original>No body bag around or alive enemy</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_BODYBAG_COPY">
+                <Original>You can't copy body bag</Original>
             </Key>
         </Container>
     </Package>
