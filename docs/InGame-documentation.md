@@ -55,7 +55,7 @@ If you don't want to complete a task, you can always abort it with the self inte
 
 ## Respawn tickets
 ### Introduction:
-By default, each player has a limited number of respawn tickets. On first join, you get the default number of tickets (10). After, each time you respawn, your number of tickets will decrease by one and a kill in action (KIA) marker will appear after 10 minutes. 
+By default, each player has a limited number of respawn tickets. On first join, you get the default number of tickets (20). After, each time you respawn, your number of tickets will decrease by one and a kill in action (KIA) marker will appear after 10 minutes. 
 ### Get new tickets:
 Players can increase by one ticket if they retrieve their dead body back to base. Prisoners also increase by one ticket, but to all currently connected players. 
 ### Dead player body:
