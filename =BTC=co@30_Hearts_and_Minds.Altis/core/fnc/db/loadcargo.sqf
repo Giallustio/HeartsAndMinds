@@ -29,7 +29,8 @@ Author:
     {
         _x params ["_type", "_magClass", "_inventory",
             ["_isContaminated", false, [false]],
-            ["_dogtagDataTaken", [], [[]]]
+            ["_dogtagDataTaken", [], [[]]],
+            ["_uid", "", [""]]
         ];
 
         private _l = createVehicle [_type, getPosATL _obj, [], 0, "CAN_COLLIDE"];
@@ -50,18 +51,8 @@ Author:
             publicVariable "btc_chem_contaminated";
         };
 
-        _dogtagDataTaken params [
-            ["_dogtagData", [], [[]]],
-            ["_dogtagTaken", false, [false]],
-            ["_isDeadPlayer", false, [false]]
-        ];
-        if (_dogtagData isNotEqualTo []) then {
-            _l setVariable ["ace_dogtags_dogtagData", _dogtagData, true];
-            if (_dogtagTaken) then {
-                _l setVariable ["ace_dogtags_dogtagTaken", _l, true];
-            };
-            _l setVariable ["btc_isDeadPlayer", _isDeadPlayer];
-        };
+        [_l, _dogtagDataTaken] call btc_body_fnc_dogtagSet;
+        _l setVariable ["btc_UID", _uid];
     } forEach _cargo;
 
     //set inventory content for weapons, magazines and items

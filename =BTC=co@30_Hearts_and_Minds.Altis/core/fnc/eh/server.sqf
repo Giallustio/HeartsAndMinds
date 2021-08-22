@@ -84,29 +84,50 @@ if (btc_p_set_skill) then {
 ["ace_tagCreated", btc_tag_fnc_eh] call CBA_fnc_addEventHandler;
 ["ace_disarming_dropItems", btc_rep_fnc_foodRemoved] call CBA_fnc_addEventHandler; 
 ["btc_respawn_player", {
-    params ["_unit", "_player"];
+    params ["", "_player"];
     [btc_rep_malus_player_respawn, _player] call btc_rep_fnc_change;
-    if (btc_p_respawn_ticketsAtStart >= 0) then {
+}] call CBA_fnc_addEventHandler;
+
+if (btc_p_respawn_ticketsAtStart >= 0) then {
+    ["btc_respawn_player", {
+        params ["_unit", "_player"];
         _unit setVariable ["btc_dont_delete", true];
-        private _index = btc_fob_deadBodyPlayers pushBack _unit;
+        btc_body_deadPlayers pushBack _unit;
+        _unit setVariable ["btc_UID", getPlayerUID _player];
+        if !(btc_p_respawn_ticketsShare) then {
+            btc_respawn_tickets set [getPlayerUID _player, ([_player] call BIS_fnc_respawnTickets) - 1];
+        };
 
-        if (btc_p_respawn_timeBeforeShowKIA isEqualTo -1) exitwith {};
-        [{
-            if (isNull _unit) exitwith {};
+        if (btc_p_body_timeBeforeShowMarker isEqualTo -1) exitwith {};
+        [btc_body_fnc_createMarker, _unit, btc_p_body_timeBeforeShowMarker] call CBA_fnc_waitAndExecute;
+    }] call CBA_fnc_addEventHandler;
+    ["ace_placedInBodyBag", {
+        params ["_patient", "_bodyBag"];
+        deleteMarker (_patient getVariable ["btc_body_deadMarker", ""]);
+        if (_patient getVariable ["btc_dont_delete", false]) then {
+            _bodyBag setVariable ["btc_isDeadPlayer", true];
+            _bodyBag setVariable ["btc_UID", _patient getVariable ["btc_UID", ""]];
+        };
+        [_bodyBag] call btc_log_fnc_init;
+    }] call CBA_fnc_addEventHandler;
 
-            private _marker = createMarker [format ["btc_fob_deadBody_%1", _index], _unit];
-            _marker setMarkerType "KIA";
-            _marker setMarkerSize [0.5, 0.5];
-            _marker setMarkerAlpha 0.5;
-            _unit setVariable ["btc_deadBody_marker", _marker];
-        }, [_unit, _index], btc_p_respawn_timeBeforeShowKIA * 60] call CBA_fnc_waitAndExecute;
-    }; 
-}] call CBA_fnc_addEventHandler;
-["ace_placedInBodyBag", {
-    params ["_patient", "_bodyBag"];
-    deleteMarker (_patient getVariable ["btc_deadBody_marker", ""]);
-    if (_patient getVariable ["btc_dont_delete", false]) then {
-        _bodyBag setVariable ["btc_isDeadPlayer", true];
+    if !(btc_p_respawn_ticketsShare) then {
+        addMissionEventHandler ["PlayerConnected", {
+            params ["_id", "_uid", "_name", "_jip", "_owner", "_idstr"];
+            if (_name isEqualTo "__SERVER__") exitWith {};
+
+            [{
+                !isNull (_this call BIS_fnc_getUnitByUID)
+            }, {
+                private _tickets = btc_respawn_tickets getOrDefault [_this, btc_p_respawn_ticketsAtStart];
+                if (_tickets isEqualTo 0) then {
+                    _tickets = -1;
+                };
+                [
+                    _this call BIS_fnc_getUnitByUID,
+                    _tickets
+                ] call BIS_fnc_respawnTickets;
+            }, _uid, 4 * 60] call CBA_fnc_waitUntilAndExecute;
+        }];
     };
-    [_bodyBag] call btc_log_fnc_init;
-}] call CBA_fnc_addEventHandler;
+};

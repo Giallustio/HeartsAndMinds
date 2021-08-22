@@ -48,6 +48,8 @@ if ((getVehicleCargo _veh) isNotEqualTo []) then {
     _veh setVehicleCargo objNull;
 };
 
+{moveOut _x} forEach crew _veh;
+
 [{
     deleteVehicle _this;
 }, _veh] call CBA_fnc_execNextFrame;

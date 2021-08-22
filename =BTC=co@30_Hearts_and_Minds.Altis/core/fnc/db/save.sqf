@@ -212,17 +212,20 @@ profileNamespace setVariable [format ["btc_hm_%1_tags", _name], +_tags_propertie
 
 //Player respawn tickets
 if (btc_p_respawn_ticketsAtStart >= 0) then {
-    private _respawnTickets = [btc_player_side] call BIS_fnc_respawnTickets;
-    profileNamespace setVariable [format ["btc_hm_%1_respawnTickets", _name], +[_respawnTickets, btc_respawn_ticketDecimal]];
+    if (btc_p_respawn_ticketsShare) then {
+        btc_respawn_tickets set [str btc_player_side, [btc_player_side] call BIS_fnc_respawnTickets];
+    };
+    profileNamespace setVariable [format ["btc_hm_%1_respawnTickets", _name], +btc_respawn_tickets];
 
-    private _deadBodyPlayers = (btc_fob_deadBodyPlayers - [objNull]) apply {[
+    private _deadBodyPlayers = (btc_body_deadPlayers  - [objNull]) apply {[
         typeOf _x,
         getPosASL _x,
         getDir _x,
         getUnitLoadout _x,
         _x call ace_dogtags_fnc_getDogtagData,
         !isNull (_x getVariable ["ace_dogtags_dogtagTaken", objNull]),
-        _x in btc_chem_contaminated
+        _x in btc_chem_contaminated,
+        _x getVariable ["btc_UID", ""]
     ]};
     profileNamespace setVariable [format ["btc_hm_%1_deadBodyPlayers", _name], +_deadBodyPlayers];
 };

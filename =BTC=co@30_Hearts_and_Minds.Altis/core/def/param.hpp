@@ -65,6 +65,24 @@ class Params {
         texts[]={$STR_DISABLED,"5 min","10 min","30 min","60 min"};
         default = 30;
     };
+    class btc_p_respawn_ticketsAtStart { // Number of tickets at mission start:
+        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_RESP_TICKETSATSTART"]);
+        values[]={-1,0,1,2,3,4,5,10,15,20,25,30,50,70,100,150,200};
+        texts[]={$STR_DISABLED,"0","1","2","3","4","5","10","15","20","25","30","50","70","100","150","200"};
+        default = 20;
+    };
+    class btc_p_respawn_ticketsShare { // Tickets are share between:
+        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_RESP_TICKETSHARE"]);
+        values[]={0,1};
+        texts[]={$STR_BTC_HAM_RESP_SAMEFACTION, $STR_BTC_HAM_RESP_NOTSHARE};
+        default = 1;
+    };
+    class btc_p_body_timeBeforeShowMarker { // Time before showing marker of dead player's body:
+        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_RESP_TIMEBEFORESHOWMARKER"]);
+        values[]={-1,0,5,10,30,60};
+        texts[]={$STR_DISABLED,"0 min","5 min","10 min","30 min","60 min"};
+        default = 10;
+    };
     class btc_p_respawn_arsenal { // ACE Arsenal available on respawn after been killed:
         title = __EVAL(format ["      %1", localize "STR_BTC_HAM_RESP_ENABLEARSENAL"]);
         values[]={0,1};
@@ -123,13 +141,13 @@ class Params {
         title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_SPWAN_ENEMY_DENSITY"]);
         values[]={0,10,20,30,40,50,60,70,80,90,100};
         texts[]={"0%","10%","20%","30%","40%","50%","60%","70%","80%","90%","100%"};
-        default = 100;
+        default = 60;
     };
     class btc_p_mil_static_group_ratio { // Enemy static density:
         title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_SPWAN_ENEMY_STATIC_DENSITY"]);
         values[]={0,10,20,30,40,50,60,70,80,90,100};
         texts[]={"0%","10%","20%","30%","40%","50%","60%","70%","80%","90%","100%"};
-        default = 100;
+        default = 50;
     };
     class btc_p_civ_group_ratio { // Civilian density:
         title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_SPWAN_CIVILIAN_DENSITY"]);
@@ -143,11 +161,11 @@ class Params {
         texts[]={"0%","10%","20%","30%","40%","50%","60%","70%","80%","90%","100%"};
         default = 100;
     };
-    class btc_p_wp_house_probability { // Density of military in house:
+    class btc_p_wp_houseDensity { // Density of military in house:
         title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_SPWAN_MIL_INHOUSE_DENSITY"]);
         values[]={0,10,20,30,40,50,60,70,80,90,100};
         texts[]={"0%","10%","20%","30%","40%","50%","60%","70%","80%","90%","100%"};
-        default = 30;
+        default = 50;
     };
     class btc_p_veh_armed_ho { // Add armed vehicles in Hideout:
         title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_SPAWN_ARMEDHIDEOUT"]);
@@ -165,12 +183,12 @@ class Params {
         title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_SPWAN_PATROL_MAX"]);
         values[]={0,1,2,3,4,5,6,7,8,9,10};
         texts[]={"1","2","3","4","5","6","7","8","9","10"};
-        default = 8;
+        default = 9;
     };
     class btc_p_civ_max_veh { // Maximum number of civilian patrol:
         title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_SPWAN_CIV_MAX_VEH"]);
-        values[]={0,1,2,3,4,5,6,7,8,9,10};
-        texts[]={"1","2","3","4","5","6","7","8","9","10"};
+        values[]={0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
+        texts[]={"1","2","3","4","5","6","7","8","9","10","11","12","13","14","15"};
         default = 10;
     };
     class btc_p_IED_title { // << IED options >>
@@ -211,8 +229,8 @@ class Params {
     };
     class btc_p_hideout_n { // Hideout numbers:
         title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_HIDE_NUMBERS"]);
-        values[]={99,1,2,3,4,5};
-        texts[]={$STR_3DEN_ATTRIBUTES_OBJECTTEXTURE_RANDOM_TEXT,"1","2","3","4","5"}; //texts[]={"Random","1","2","3","4","5"};
+        values[]={99,0,1,2,3,4,5};
+        texts[]={$STR_3DEN_ATTRIBUTES_OBJECTTEXTURE_RANDOM_TEXT,"0","1","2","3","4","5","6","7","8","9","10"}; //texts[]={"Random","0","1","2","3","4","5"};
         default = 5;
     };
     class btc_p_cache_info_def { // Info cache distance:

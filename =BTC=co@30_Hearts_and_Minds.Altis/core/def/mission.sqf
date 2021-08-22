@@ -1,6 +1,5 @@
 
-btc_version = [1, 21.1, 5];
-
+btc_version = [1, 21.1, 6];
 diag_log format (["=BTC= HEARTS AND MINDS VERSION %1.%2.%3"] + btc_version);
 
 //Param
@@ -17,8 +16,9 @@ btc_p_respawn_location = "btc_p_respawn_location" call BIS_fnc_getParamValue;
 btc_p_respawn_fromFOBToBase = ("btc_p_respawn_fromFOBToBase" call BIS_fnc_getParamValue) isEqualTo 1;
 btc_p_rallypointTimer = "btc_p_rallypointTimer" call BIS_fnc_getParamValue;
 btc_p_respawn_arsenal = ("btc_p_respawn_arsenal" call BIS_fnc_getParamValue) isEqualTo 1;
-btc_p_respawn_ticketsAtStart = 100;
-btc_p_respawn_timeBeforeShowKIA = 10;
+btc_p_respawn_ticketsAtStart = "btc_p_respawn_ticketsAtStart" call BIS_fnc_getParamValue;
+btc_p_respawn_ticketsShare = ("btc_p_respawn_ticketsShare" call BIS_fnc_getParamValue) isEqualTo 0;
+btc_p_body_timeBeforeShowMarker = ("btc_p_body_timeBeforeShowMarker" call BIS_fnc_getParamValue) * 60;
 
 //<< Faction options >>
 private _p_en = "btc_p_en" call BIS_fnc_getParamValue;
@@ -61,7 +61,7 @@ btc_p_mil_group_ratio = ("btc_p_mil_group_ratio" call BIS_fnc_getParamValue)/100
 btc_p_mil_static_group_ratio = ("btc_p_mil_static_group_ratio" call BIS_fnc_getParamValue)/100;
 btc_p_civ_group_ratio = ("btc_p_civ_group_ratio" call BIS_fnc_getParamValue)/100;
 btc_p_animals_group_ratio = ("btc_p_animals_group_ratio" call BIS_fnc_getParamValue)/100;
-private _wp_house_probability = ("btc_p_wp_house_probability" call BIS_fnc_getParamValue)/100;
+btc_p_mil_wp_houseDensity = ("btc_p_wp_houseDensity" call BIS_fnc_getParamValue)/100;
 btc_p_veh_armed_ho = ("btc_p_veh_armed_ho" call BIS_fnc_getParamValue) isEqualTo 1;
 btc_p_veh_armed_spawn_more = ("btc_p_veh_armed_spawn_more" call BIS_fnc_getParamValue) isEqualTo 1;
 btc_p_patrol_max = "btc_p_patrol_max" call BIS_fnc_getParamValue;
@@ -147,12 +147,11 @@ if (isServer) then {
     btc_hideouts_radius = 800;
     btc_hideout_n = _hideout_n;
     if (btc_hideout_n isEqualTo 99) then {
-        btc_hideout_n = round random 5;
+        btc_hideout_n = round random 10;
     };
     btc_hideout_safezone = 4000;
     btc_hideout_range = 3500;
     btc_hideout_cap_time = 1800;
-    btc_hideout_cap_checking = false;
     btc_hideout_minRange = btc_hideout_range;
 
     //IED
@@ -164,14 +163,7 @@ if (isServer) then {
     //FOB
     btc_fobs = [[], [], []];
     btc_fob_rallypointTimer = 60 * btc_p_rallypointTimer;
-    btc_fob_deadBodyPlayers = [];
-    btc_respawn_ticketDecimal = 0; publicVariable "btc_respawn_ticketDecimal";
-
-    //MIL
-    btc_p_mil_wp_ratios = [_wp_house_probability, (1 - _wp_house_probability) / 1.5 + _wp_house_probability];
-    if ((btc_p_mil_wp_ratios select 0) isEqualTo (btc_p_mil_wp_ratios select 1)) then {
-        btc_p_mil_wp_ratios set [1, 0.1 + (btc_p_mil_wp_ratios select 1)];
-    };
+    btc_body_deadPlayers  = [];
 
     //Patrol
     btc_patrol_active = [];
@@ -366,6 +358,9 @@ if (isServer) then {
     btc_type_blacklist = btc_type_tags + btc_type_flowers + ["UserTexture1m_F"]; publicVariable "btc_type_blacklist";
 
     btc_groundWeaponHolder = [];
+
+    //Respawn
+    btc_respawn_tickets = createHashMap;
 };
 
 //Civ
@@ -737,5 +732,5 @@ btc_flag_textures = [
 ];
 
 //Respawn
-btc_fob_ticketPlayerBodyBag = 1;
-btc_fob_ticketAIBodyBag = 0.1;
+btc_body_bagTicketPlayer = 1;
+btc_body_enemyTicket = 1;

@@ -35,7 +35,7 @@ btc_int_ask_data = nil;
 
 [{!(isNil "btc_int_ask_data")}, {
     if ("ACE_bodyBagObject" in flatten btc_int_ask_data) exitWith {
-        ("You can't copy body bag") call CBA_fnc_notify;
+        localize "STR_BTC_HAM_O_BODYBAG_COPY" call CBA_fnc_notify;
     };
 
     btc_copy_container = +btc_int_ask_data;

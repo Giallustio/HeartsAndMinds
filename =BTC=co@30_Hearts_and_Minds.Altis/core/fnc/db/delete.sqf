@@ -38,6 +38,7 @@ profileNamespace setVariable [format ["btc_hm_%1_vehs", _name], nil];
 profileNamespace setVariable [format ["btc_hm_%1_objs", _name], nil];
 profileNamespace setVariable [format ["btc_hm_%1_tags", _name], nil];
 profileNamespace setVariable [format ["btc_hm_%1_respawnTickets", _name], nil];
+profileNamespace setVariable [format ["btc_hm_%1_deadBodyPlayers", _name], nil];
 profileNamespace setVariable [format ["btc_hm_%1_markers", _name], nil];
 profileNamespace setVariable [format ["btc_hm_%1_db", _name], nil];
 

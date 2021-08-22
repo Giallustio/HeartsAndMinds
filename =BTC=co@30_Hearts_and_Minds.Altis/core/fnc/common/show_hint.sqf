@@ -116,10 +116,13 @@ private _text = switch (_type) do {
         ];
     };
     case 22 : {
-        [
-            ["Respawn ticket added"],
-            [format ["%1 respawn tickets left", _custom]]
-        ];
+        localize "STR_BTC_HAM_O_COMMON_TICKETADD"
+    };
+    case 23 : {
+        localize "STR_BTC_HAM_O_COMMON_NOBODYBAG";
+    };
+    case 24 : {
+        format [localize "STR_BTC_HAM_O_COMMON_TICKETSLEFT", _custom];
     };
 };
 
