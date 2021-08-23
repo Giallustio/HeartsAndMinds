@@ -43,11 +43,7 @@ _vehicle setVariable ["data_respawn", [_type, _pos, _dir, _time, _vector] + _veh
 if ((isNumber (configOf _vehicle >> "ace_fastroping_enabled")) && (typeOf _vehicle isNotEqualTo "RHS_UH1Y_d")) then {[_vehicle] call ace_fastroping_fnc_equipFRIES};
 _vehicle addMPEventHandler ["MPKilled", {
     params ["_unit"];
-    if (
-        isServer &&
-        {_unit getVariable ["btc_killed", true]} // https://feedback.bistudio.com/T149510
-    ) then {
-        _unit setVariable ["btc_killed", false];
+    if (isServer) then {
         _this call btc_veh_fnc_respawn;
     };
 }];

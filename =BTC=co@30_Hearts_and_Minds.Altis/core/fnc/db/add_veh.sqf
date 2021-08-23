@@ -31,11 +31,7 @@ if !(isServer) exitWith {
 btc_vehicles pushBackUnique _veh;
 _veh addMPEventHandler ["MPKilled", {
     params ["_unit"];
-    if (
-        isServer &&
-        {_unit getVariable ["btc_killed", true]} // https://feedback.bistudio.com/T149510
-    ) then {
-        _unit setVariable ["btc_killed", false];
+    if (isServer) then {
         _this call btc_veh_fnc_killed;
     };
 }];
