@@ -30,7 +30,6 @@ if !(isServer) exitWith {
 
 btc_vehicles pushBackUnique _veh;
 _veh addMPEventHandler ["MPKilled", {
-    params ["_unit"];
     if (isServer) then {
         _this call btc_veh_fnc_killed;
     };
