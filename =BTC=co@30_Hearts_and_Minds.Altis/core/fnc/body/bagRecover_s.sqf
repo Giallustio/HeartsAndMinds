@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        [cursorObject] call btc_body_fnc_bagRecover_s;
+        cursorObject remoteExecCall ["btc_body_fnc_bagRecover_s", 2];
     (end)
 
 Author:

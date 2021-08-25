@@ -12,6 +12,7 @@ Returns:
 
 Examples:
     (begin example)
+        btc_curator addCuratorEditableObjects [btc_body_deadPlayers, false];
         [btc_log_create_obj] call btc_body_fnc_bagRecover;
     (end)
 
