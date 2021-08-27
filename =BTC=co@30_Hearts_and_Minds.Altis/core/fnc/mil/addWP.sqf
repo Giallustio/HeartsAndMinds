@@ -3,14 +3,13 @@
 Function: btc_mil_fnc_addWP
 
 Description:
-    Add waypoint to allready created units.
+    Add waypoint to already created units.
 
 Parameters:
     _group - Group of enemies. [Group]
     _city - City to patrol around. [Object]
     _area - Area to patrol around. [Number]
-    _wp - Type of wp: in house, patrol or sentry. [Number]
-    _wp_ratios - Ratios between each type of waypoints. [Array]
+    _wp - Type of wp: in house, patrol or sentry. [String]
 
 Returns:
 
@@ -28,14 +27,14 @@ params [
     ["_group", grpNull, [grpNull]],
     ["_city", objNull, [objNull]],
     ["_area", 0, [0]],
-    ["_wp", 0, [0]]
+    ["_wp", "PATROL", [""]]
 ];
 
 private _pos = position _city;
 private _rpos = [_pos, _area] call btc_fnc_randomize_pos;
 
 switch (_wp) do {
-    case (0) : {
+    case ("HOUSE") : {
         private _houses = [_city, _area] call btc_fnc_getHouses;
         if (_houses isNotEqualTo []) then {
             private _house = selectRandom _houses;
@@ -45,10 +44,10 @@ switch (_wp) do {
             [_group, _rpos, _area, 2 + floor (random 4), "MOVE", "SAFE", "RED", ["LIMITED", "NORMAL"] select ((vehicle leader _group) isKindOf "Air"), "STAG COLUMN", "", [5, 10, 20]] call CBA_fnc_taskPatrol;
         };
     };
-    case (1) : {
+    case ("PATROL") : {
         [_group, _rpos, _area, 2 + floor (random 4), "MOVE", "AWARE", "RED", ["LIMITED", "NORMAL"] select ((vehicle leader _group) isKindOf "Air"), "STAG COLUMN", "", [5, 10, 20]] call CBA_fnc_taskPatrol;
     };
-    case (2) : {
+    case ("SENTRY") : {
         [_group] call CBA_fnc_clearWaypoints;
         [_group, _rpos, -1, "SENTRY", "AWARE", "RED", "UNCHANGED", "WEDGE", "(group this) call btc_data_fnc_add_group;", [18000, 36000, 54000]] call CBA_fnc_addWaypoint;
     };
