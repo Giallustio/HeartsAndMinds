@@ -123,7 +123,7 @@ if (_data_units isNotEqualTo []) then {
                 _city,
                 [_spawningRadius, _spawningRadius/3] select (_i <= _numberOfHouseGroup),
                 2 + round random 1,
-                [[1,2] selectRandomWeighted [0.7, 0.3], 0] select (_i <= _numberOfHouseGroup)
+                [[1, 2] selectRandomWeighted [0.7, 0.3], 0] select (_i <= _numberOfHouseGroup)
             ] call btc_mil_fnc_create_group;
         };
     };

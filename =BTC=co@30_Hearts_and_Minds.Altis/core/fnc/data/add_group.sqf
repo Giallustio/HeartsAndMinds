@@ -41,12 +41,12 @@ if (_city getVariable ["marker", ""] != "") then {
 };
 
 private _wp = if (vehicle leader _group isEqualTo leader _group) then {
-    random 1;
+    selectRandom [0, 1, 2];
 } else {
     if ((vehicle leader _group) isKindOf "Air") then {
-        0.7;
+        1;
     } else {
-        0.3 + random 0.7;
+        selectRandom [1, 2];
     };
 };
 
