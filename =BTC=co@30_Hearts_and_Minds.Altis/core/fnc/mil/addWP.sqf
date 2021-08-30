@@ -9,7 +9,7 @@ Parameters:
     _group - Group of enemies. [Group]
     _city - City to patrol around. [Object]
     _area - Area to patrol around. [Number]
-    _wp - Type of wp: in house, patrol or sentry. [String]
+    _wp - Type of wp: in "HOUSE", "PATROL" or "SENTRY". [String]
 
 Returns:
 
