@@ -1766,7 +1766,7 @@
                 <French>Décrocher</French>
             </Key>
             <Key ID="STR_BTC_HAM_ACTION_VEHINIT_DEPLOYFLAG">
-                <Original>Cut flag</Original>
+                <Original>Deploy flag</Original>
             </Key>
             <Key ID="STR_BTC_HAM_ACTION_VEHINIT_CUTFLAG">
                 <Original>Cut flag</Original>
