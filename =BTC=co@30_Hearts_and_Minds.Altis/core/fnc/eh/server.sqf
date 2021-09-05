@@ -82,4 +82,16 @@ if (btc_p_set_skill) then {
     }, false] call CBA_fnc_addClassEventHandler;
 } forEach btc_civ_type_veh;
 ["ace_tagCreated", btc_tag_fnc_eh] call CBA_fnc_addEventHandler;
-["ace_disarming_dropItems", btc_rep_fnc_foodRemoved] call CBA_fnc_addEventHandler; 
+["ace_disarming_dropItems", btc_rep_fnc_foodRemoved] call CBA_fnc_addEventHandler;
+
+//Cargo
+[btc_fob_mat, "InitPost", {
+    params ["_obj"];
+    [_obj, -1] call ace_cargo_fnc_setSpace;
+}] call CBA_fnc_addClassEventHandler;
+{
+    [_x, "InitPost", {
+        params ["_obj"];
+        [_obj, 50] call ace_cargo_fnc_setSpace;
+    }] call CBA_fnc_addClassEventHandler;
+} forEach ["CUP_MTVR_Base", "Truck_01_base_F", btc_supplies_cargo /*FIX: https://github.com/acemod/ACE3/pull/8344*/];
