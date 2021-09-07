@@ -27,7 +27,11 @@ Author:
 
     //handle cargo
     {
-        _x params ["_type", "_magClass", "_inventory", ["_isContaminated", false, [false]]];
+        _x params ["_type", "_magClass", "_inventory",
+            ["_isContaminated", false, [false]],
+            ["_dogtagDataTaken", [], [[]]],
+            ["_uid", "", [""]]
+        ];
 
         private _l = createVehicle [_type, getPosATL _obj, [], 0, "CAN_COLLIDE"];
         [_l] call btc_log_fnc_init;
@@ -46,6 +50,9 @@ Author:
             btc_chem_contaminated pushBack _l;
             publicVariable "btc_chem_contaminated";
         };
+
+        [_l, _dogtagDataTaken] call btc_body_fnc_dogtagSet;
+        _l setVariable ["btc_UID", _uid];
     } forEach _cargo;
 
     //set inventory content for weapons, magazines and items

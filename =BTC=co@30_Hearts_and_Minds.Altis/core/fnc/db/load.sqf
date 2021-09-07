@@ -208,6 +208,44 @@ private _id = ["ace_tagCreated", {
 } forEach _tags_properties;
 ["ace_tagCreated", _id] call CBA_fnc_removeEventHandler;
 
+//Player respawn tickets
+if (btc_p_respawn_ticketsAtStart >= 0) then {
+    btc_respawn_tickets = +(profileNamespace getVariable [format ["btc_hm_%1_respawnTickets", _name], btc_respawn_tickets]);
+    if (btc_p_respawn_ticketsShare) then {
+        btc_p_respawn_ticketsAtStart = btc_respawn_tickets getOrDefault [str btc_player_side, btc_p_respawn_ticketsAtStart];
+    };
+
+    private _deadBodyPlayers = +(profileNamespace getVariable [format ["btc_hm_%1_deadBodyPlayers", _name], []]);
+    private _group = createGroup btc_player_side;
+    btc_body_deadPlayers  = _deadBodyPlayers apply {
+        _x params ["_type", "_pos", "_dir", "_loadout", "_dogtagData", "_dogtagTaken", "_isContaminated",
+            ["_uid", "", [""]]
+        ];
+        private _body = _group createUnit [_type, ASLToAGL _pos, [], 0, "CAN_COLLIDE"];
+        _body setUnitLoadout _loadout;
+        [_body, [_dogtagData, _dogtagTaken]] call btc_body_fnc_dogtagSet;
+
+        if (_isContaminated) then {
+            if ((btc_chem_contaminated pushBackUnique _body) > -1) then {
+                publicVariable "btc_chem_contaminated";
+            };
+        };
+        _body setDamage 1;
+        _body setVariable ["btc_dont_delete", true];
+        _body setVariable ["btc_UID", _uid];
+
+        [{
+            params ["_body", "_dir", "_pos"];
+            _body setDir _dir;
+            _body setPosASL _pos;
+        }, [_body, _dir, _pos], 3] call CBA_fnc_waitAndExecute;
+
+        _body call btc_body_fnc_createMarker;
+        _body
+    };
+    deleteGroup _group;
+};
+
 //Player Markers
 private _markers_properties = +(profileNamespace getVariable [format ["btc_hm_%1_markers", _name], []]);
 {

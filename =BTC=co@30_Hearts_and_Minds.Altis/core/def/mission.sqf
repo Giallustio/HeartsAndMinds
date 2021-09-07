@@ -20,6 +20,9 @@ btc_p_respawn_location = "btc_p_respawn_location" call BIS_fnc_getParamValue;
 btc_p_respawn_fromFOBToBase = ("btc_p_respawn_fromFOBToBase" call BIS_fnc_getParamValue) isEqualTo 1;
 btc_p_rallypointTimer = "btc_p_rallypointTimer" call BIS_fnc_getParamValue;
 btc_p_respawn_arsenal = ("btc_p_respawn_arsenal" call BIS_fnc_getParamValue) isEqualTo 1;
+btc_p_respawn_ticketsAtStart = "btc_p_respawn_ticketsAtStart" call BIS_fnc_getParamValue;
+btc_p_respawn_ticketsShare = ("btc_p_respawn_ticketsShare" call BIS_fnc_getParamValue) isEqualTo 0;
+btc_p_body_timeBeforeShowMarker = ("btc_p_body_timeBeforeShowMarker" call BIS_fnc_getParamValue) * 60;
 
 //<< Faction options >>
 private _p_en = "btc_p_en" call BIS_fnc_getParamValue;
@@ -163,6 +166,7 @@ if (isServer) then {
     //FOB
     btc_fobs = [[], [], []];
     btc_fob_rallypointTimer = 60 * btc_p_rallypointTimer;
+    btc_body_deadPlayers  = [];
 
     //Patrol
     btc_patrol_active = [];
@@ -357,6 +361,9 @@ if (isServer) then {
     btc_type_blacklist = btc_type_tags + btc_type_flowers + ["UserTexture1m_F"]; publicVariable "btc_type_blacklist";
 
     btc_groundWeaponHolder = [];
+
+    //Respawn
+    btc_respawn_tickets = createHashMap;
 };
 
 //Civ
@@ -717,3 +724,7 @@ btc_player_type = ["SoldierWB", "SoldierEB", "SoldierGB"] select ([west, east, i
 
 //Door
 btc_door_breaking_time = 60;
+
+//Respawn
+btc_body_bagTicketPlayer = 1;
+btc_body_enemyTicket = 1;

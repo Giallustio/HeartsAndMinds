@@ -35,7 +35,7 @@ params [
     if (_unit isNotEqualTo player) exitWith {};
     if (ace_map_mapIllumination) then {ace_map_mapIllumination = false;};
     if (isObjectHidden player) exitWith {};
-    [btc_rep_malus_player_respawn, player] remoteExecCall ["btc_rep_fnc_change", 2];
+    ["btc_respawn_player", [_unit, player]] call CBA_fnc_serverEvent;
 }] call CBA_fnc_addEventHandler;
 _player addEventHandler ["CuratorObjectPlaced", btc_eh_fnc_CuratorObjectPlaced];
 ["ace_treatmentSucceded", btc_rep_fnc_treatment] call CBA_fnc_addEventHandler;

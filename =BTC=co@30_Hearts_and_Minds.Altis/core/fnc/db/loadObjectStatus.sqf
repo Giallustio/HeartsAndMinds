@@ -31,7 +31,9 @@ _object_data params [
     "_cargo",
     "_inventory",
     "_vectorPos",
-    ["_isContaminated", false, [false]]
+    ["_isContaminated", false, [false]],
+    ["_dogtagDataTaken", [], [[]]],
+    ["_uid", "", [""]]
 ];
 
 private _obj = createVehicle [_type, ASLToATL _pos, [], 0, "CAN_COLLIDE"];
@@ -49,6 +51,9 @@ if (_magClass isNotEqualTo "") then {_obj setVariable ["ace_rearm_magazineClass"
 if (unitIsUAV _obj) then {
     createVehicleCrew _obj;
 };
+
+[_obj, _dogtagDataTaken] call btc_body_fnc_dogtagSet;
+_obj setVariable ["btc_UID", _uid];
 
 [_obj] call btc_log_fnc_init;
 [_obj, _cargo, _inventory] call btc_db_fnc_loadCargo;
