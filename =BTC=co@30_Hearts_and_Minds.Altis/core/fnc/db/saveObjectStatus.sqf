@@ -38,7 +38,9 @@ private _cargo = (_object getVariable ["ace_cargo_loaded", []]) apply {
             typeOf _x,
             _x getVariable ["ace_rearm_magazineClass", ""],
             _x call btc_log_fnc_inventoryGet,
-            _x in btc_chem_contaminated
+            _x in btc_chem_contaminated,
+            _x call btc_body_fnc_dogtagGet,
+            _x getVariable ["btc_UID", ""]
         ]
     };    
 };
@@ -46,5 +48,7 @@ _data pushBack _cargo;
 _data pushBack (_object call btc_log_fnc_inventoryGet);
 _data pushBack [vectorDir _object, vectorUp _object];
 _data pushBack (_object in btc_chem_contaminated);
+_data pushBack (_object call btc_body_fnc_dogtagGet);
+_data pushBack (_object getVariable ["btc_UID", ""]);
 
 _data

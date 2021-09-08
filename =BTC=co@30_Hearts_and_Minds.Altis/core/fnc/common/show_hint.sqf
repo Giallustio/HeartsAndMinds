@@ -115,6 +115,15 @@ private _text = switch (_type) do {
             [" "]
         ];
     };
+    case 22 : {
+        localize "STR_BTC_HAM_O_COMMON_TICKETADD";
+    };
+    case 23 : {
+        localize "STR_BTC_HAM_O_COMMON_NOBODYBAG";
+    };
+    case 24 : {
+        format [localize "STR_BTC_HAM_O_COMMON_TICKETSLEFT", _custom];
+    };
 };
 
 _text call CBA_fnc_notify;

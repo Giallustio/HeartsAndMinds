@@ -38,6 +38,7 @@ _data pushBack (_vehicle getVariable ["btc_EDENinventory", []]);
         ["_helo", btc_helo, [[]]]
     ];
 
+    {moveOut _x} forEach crew _vehicle;
     deleteVehicle _vehicle;
     _helo deleteAt (_helo find _vehicle);
 

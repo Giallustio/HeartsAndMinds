@@ -123,6 +123,11 @@
                 <French>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\whiteboard_ca.paa' width='20' height='20'/&gt; Les missions secondaires sont vraiment utiles pour élever votre niveau de réputation.&lt;br/&gt; Une mission secondaire peut être demandée par l'officier avec son menu ACE.&lt;br/&gt; Si vous ne souhaitez pas terminer une tâche, attribuez-la à vous et abandonnez-la avec le menu ACE.&lt;br/&gt;&lt;br/&gt; &lt;img image='\a3\Missions_F_Beta\data\img\Challenges_overview_CA.paa' width='355' height='200' /&gt;</French>
             </Key>
         </Container>
+        <Container name="Documentation: Respawn tickets">
+            <Key ID="STR_BTC_HAM_DOC_RESPAWN_TEXT">
+                <Original>&lt;img image='\a3\Ui_F_Curator\Data\CfgMarkers\kia_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Introduction:&lt;/marker&gt;&lt;br/&gt; By default, each player has a limited number of respawn tickets. On first join, you get the default number of tickets (20). After, each time you respawn, your number of tickets will decrease by one and a kill in action (KIA) marker will appear after 10 minutes.&lt;br/&gt;&lt;br/&gt; &lt;img image='a3\Missions_F_AoW\Data\Img\Artwork\Landscape\showcase_aow_picture_104_co.paa' width='355' height='200'/&gt; &lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\Data_F_AoW\Logos\arma3_aow_logo_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Get new tickets:&lt;/marker&gt;&lt;br/&gt; Players can increase by one ticket if they retrieve their dead body back to base. Prisoners also increase by one ticket but to all currently connected players.&lt;br/&gt;&lt;br/&gt; &lt;img image='a3\Missions_F_AoW\Data\Img\Artwork\Landscape\showcase_aow_picture_118_co.paa' width='355' height='200'/&gt; &lt;br/&gt;&lt;br/&gt; &lt;img image='\z\ace\addons\medical_gui\ui\bodybag.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Dead player body:&lt;/marker&gt;&lt;br/&gt; Any player can retrieve dead player body by:&lt;br/&gt; - &lt;img image='\z\ace\addons\medical_treatment\ui\bodybag_ca.paa' width='13' height='13'/&gt; Putting dead body in a body bag. Watch out if your vehicle get destroyed, all body bag will be lost!&lt;br/&gt; - Carry it to the logistic point&lt;br/&gt; - Interact with the logistic point&lt;br/&gt; - &lt;img image='\A3\Data_F_AoW\Logos\arma3_aow_logo_ca.paa' width='13' height='13'/&gt; Select "Get tickets from body bag or prisoner"&lt;br/&gt; The ticket from the body bag will go to the player owned the dead body (even if he is not connected).&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\EditorPreviews_F_Orange\Data\CfgVehicles\Land_Bodybag_01_black_F.jpg' width='355' height='200'/&gt; &lt;br/&gt;&lt;br/&gt; &lt;img image='\z\ace\addons\captives\UI\handcuff_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Prisoners:&lt;/marker&gt;&lt;br/&gt; Prisoners &lt;img image='\z\ace\addons\captives\UI\Surrender_ca.paa' width='13' height='13'/&gt; follow the same process as dead player body without the need of body bag. The prisonner need to be alive but it could be unconcious.&lt;br/&gt;&lt;br/&gt; &lt;img image='a3\Missions_F_AoW\Data\Img\Artwork\Landscape\showcase_aow_picture_106_co.paa' width='355' height='200'/&gt;</Original>
+            </Key>
+        </Container>
         <Container name="Documentation: Respawn position">
             <Key ID="STR_BTC_HAM_DOC_FOB_TEXT">
                 <Original>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move1_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\run_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\move2_ca.paa' width='20' height='20' /&gt; &lt;marker name='blufor_base'&gt;FOB:&lt;/marker&gt;&lt;br/&gt; In this mission a FOB is a forward spawn point, to create a FOB approach the red box at the logistic point and require a blue container.&lt;br/&gt;&lt;br/&gt; &lt;img image='\a3\data_f_warlords\Data\preview_ft_owned.jpg' width='355' height='180'/&gt; &lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\Ui_f\data\Map\Markers\NATO\b_hq.paa' width='20' height='20'/&gt;  &lt;marker name='blufor_base'&gt;Deploy:&lt;/marker&gt; &lt;br/&gt; Move it where you want to deploy a new FOB and interact with it to set it up. Keep in mind that you can not deploy a FOB close to the main base (2.500m) and the terrain needs to be flat.&lt;br/&gt;&lt;br/&gt; - &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\interact_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Dismantle:&lt;/marker&gt; &lt;br/&gt; You can dismantle a FOB by interacting with the flag on the HQ roof.&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\run_ca.paa' width='20' height='20' /&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\wait_ca.paa' width='20' height='20' /&gt; &lt;marker name='blufor_base'&gt;Rallypoint:&lt;/marker&gt;&lt;br/&gt; You can also use the Zeus rallypoint backpack available in Arsenal but they have some limitation. After some times or after player disconnected, rallypoint will self-destruct.&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\Data_F_Exp\Images\FeatureRespawn_co.paa' width='355' height='180'/&gt;</Original>
@@ -592,6 +597,21 @@
                 <Original>Time before rallypoint self-destruction:</Original>
                 <Chinesesimp>集合点自毁时间:</Chinesesimp>
                 <French>Temps avant l'autodestruction du point de ralliement:</French>
+            </Key>
+            <Key ID="STR_BTC_HAM_RESP_TIMEBEFORESHOWMARKER">
+                <Original>Number of tickets at mission start:</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_RESP_TICKETSHARE">
+                <Original>Tickets are share between:</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_RESP_SAMEFACTION">
+                <Original>Players of the same faction</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_RESP_NOTSHARE">
+                <Original>Not share</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_RESP_TICKETSATSTART">
+                <Original>Time before showing marker of dead player's body:</Original>
             </Key>
             <Key ID="STR_BTC_HAM_RESP_ENABLEARSENAL">
                 <Original>ACE Arsenal available on respawn after been killed:</Original>
@@ -1565,6 +1585,9 @@
                 <Chinesesimp>为燃油卡车补给燃料</Chinesesimp>
                 <French>Ravitailler la source de carburant</French>
             </Key>
+            <Key ID="STR_BTC_HAM_ACTION_LOGPOINT_BODYBAG">
+                <Original>Get tickets from body bag or prisoner</Original>
+            </Key>
         </Container>
         <Container name="Action(ACE): FOB">
             <Key ID="STR_BTC_HAM_ACTION_FOB_MOUNT">
@@ -2253,6 +2276,15 @@
                 <Chinesesimp>服务器将在5分钟后重启, 请立即离开服务器!</Chinesesimp>
                 <French>Redémarrage du serveur dans 5min, décconectez-vous maintenant !</French>
             </Key>
+            <Key ID="STR_BTC_HAM_O_COMMON_TICKETADD">
+                <Original>Respawn ticket added</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_COMMON_NOBODYBAG">
+                <Original>No body bag from a player</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_COMMON_TICKETSLEFT">
+                <Original>%1 respawn tickets left</Original>
+            </Key>
         </Container>
         <Container name="Other: Shortcuts">
             <Key ID="STR_BTC_HAM_O_SHORTC_STOP_TITLE">
@@ -2389,6 +2421,14 @@
                 <Original>Breaking door lock...</Original>
                 <French>Casser la serrure ...</French>
                 <Chinesesimp>正在撬锁...</Chinesesimp>
+            </Key>
+        </Container>
+        <Container name="Other: Bodybag">
+            <Key ID="STR_BTC_HAM_O_BODYBAG_NO">
+                <Original>No body bag around or alive enemy</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_BODYBAG_COPY">
+                <Original>You can't copy body bag</Original>
             </Key>
         </Container>
     </Package>
