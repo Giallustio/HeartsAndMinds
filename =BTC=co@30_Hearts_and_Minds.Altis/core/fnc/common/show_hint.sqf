@@ -116,7 +116,7 @@ private _text = switch (_type) do {
         ];
     };
     case 22 : {
-        localize "STR_BTC_HAM_O_COMMON_TICKETADD"
+        localize "STR_BTC_HAM_O_COMMON_TICKETADD";
     };
     case 23 : {
         localize "STR_BTC_HAM_O_COMMON_NOBODYBAG";

@@ -1594,6 +1594,9 @@
                 <Chinesesimp>为燃油卡车补给燃料</Chinesesimp>
                 <French>Ravitailler la source de carburant</French>
             </Key>
+            <Key ID="STR_BTC_HAM_ACTION_LOGPOINT_BODYBAG">
+                <Original>Get tickets from body bag or prisoner</Original>
+            </Key>
         </Container>
         <Container name="Action(ACE): FOB">
             <Key ID="STR_BTC_HAM_ACTION_FOB_MOUNT">
