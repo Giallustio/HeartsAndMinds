@@ -26,7 +26,7 @@ params [
     ["_blackList", [btc_create_object], [[]]]
 ];
 
-private _array = ((nearestObjects [_object, ["Strategic", "Thing", "StaticWeapon"/*put thing spawned by the logistic point*/], 6]) select {!(
+private _array = ((nearestObjects [_object, flatten (btc_construction_array select 1), 6]) select {!(
     _x isKindOf "ACE_friesBase" OR
     _x isKindOf "ace_fastroping_helper"
 )}) - _blackList;

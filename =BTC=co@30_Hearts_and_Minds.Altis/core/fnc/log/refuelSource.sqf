@@ -24,7 +24,7 @@ params [
     ["_object", objNull, [objNull]]
 ];
 
-private _array = (nearestObjects [_object, ["LandVehicle", "Air", "Ship"] + ["Thing"/*put thing spawned by the logistic point*/], 10]) select {!(
+private _array = (nearestObjects [_object, ["LandVehicle", "Air", "Ship", "Thing"], 10]) select {!(
     _x isKindOf "ACE_friesBase" OR
     _x isKindOf "ace_fastroping_helper"
 )};
