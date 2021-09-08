@@ -39,7 +39,7 @@ private _group = grpNull;
 private _delay = 0;
 switch (_typeOf_patrol) do {
     case 0 : {
-        _group = ([_pos, 150, 3 + round random 6, 1] call btc_mil_fnc_create_group) select 0;
+        _group = ([_pos, 150, 3 + round random 6, "PATROL"] call btc_mil_fnc_create_group) select 0;
         _group setVariable ["no_cache", true];
     };
     case 1 : {

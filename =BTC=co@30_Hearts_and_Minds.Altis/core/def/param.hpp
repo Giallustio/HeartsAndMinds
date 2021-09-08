@@ -65,6 +65,24 @@ class Params {
         texts[]={$STR_DISABLED,"5 min","10 min","30 min","60 min"};
         default = 30;
     };
+    class btc_p_respawn_ticketsAtStart { // Number of tickets at mission start:
+        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_RESP_TICKETSATSTART"]);
+        values[]={-1,0,1,2,3,4,5,10,15,20,25,30,50,70,100,150,200};
+        texts[]={$STR_DISABLED,"0","1","2","3","4","5","10","15","20","25","30","50","70","100","150","200"};
+        default = 20;
+    };
+    class btc_p_respawn_ticketsShare { // Tickets are share between:
+        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_RESP_TICKETSHARE"]);
+        values[]={0,1};
+        texts[]={$STR_BTC_HAM_RESP_SAMEFACTION, $STR_BTC_HAM_RESP_NOTSHARE};
+        default = 1;
+    };
+    class btc_p_body_timeBeforeShowMarker { // Time before showing marker of dead player's body:
+        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_RESP_TIMEBEFORESHOWMARKER"]);
+        values[]={-1,0,5,10,30,60};
+        texts[]={$STR_DISABLED,"0 min","5 min","10 min","30 min","60 min"};
+        default = 10;
+    };
     class btc_p_respawn_arsenal { // ACE Arsenal available on respawn after been killed:
         title = __EVAL(format ["      %1", localize "STR_BTC_HAM_RESP_ENABLEARSENAL"]);
         values[]={0,1};
@@ -211,8 +229,8 @@ class Params {
     };
     class btc_p_hideout_n { // Hideout numbers:
         title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_HIDE_NUMBERS"]);
-        values[]={99,1,2,3,4,5};
-        texts[]={$STR_3DEN_ATTRIBUTES_OBJECTTEXTURE_RANDOM_TEXT,"1","2","3","4","5"}; //texts[]={"Random","1","2","3","4","5"};
+        values[]={99,0,1,2,3,4,5};
+        texts[]={$STR_3DEN_ATTRIBUTES_OBJECTTEXTURE_RANDOM_TEXT,"0","1","2","3","4","5","6","7","8","9","10"}; //texts[]={"Random","0","1","2","3","4","5"};
         default = 5;
     };
     class btc_p_cache_info_def { // Info cache distance:

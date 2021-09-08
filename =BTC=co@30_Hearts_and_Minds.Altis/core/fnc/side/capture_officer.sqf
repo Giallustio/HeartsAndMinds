@@ -158,7 +158,8 @@ for "_i" from 1 to _convoyLength do {
         isNull (_this select 0)
     }, {
         [_this select 1, "FAILED"] call btc_task_fnc_setState;
-    }, [_captive, _taskID]] call CBA_fnc_waitUntilAndExecute;
+        deleteVehicle (_this select 2);
+    }, [_captive, _taskID, _trigger]] call CBA_fnc_waitUntilAndExecute;
 
     [{
         (_this select 0) inArea [getPosWorld btc_create_object_point, 100, 100, 0, false] ||

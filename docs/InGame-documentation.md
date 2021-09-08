@@ -53,6 +53,21 @@ If you don't want to complete a task, you can always abort it with the self inte
 - Rallypoint:
 	You can also use the Zeus rallypoint backpack available in Arsenal but they have some limitation. After some times or after player disconnected, rallypoint will self-destruct.
 
+## Respawn tickets
+### Introduction:
+By default, each player has a limited number of respawn tickets. On first join, you get the default number of tickets (20). After, each time you respawn, your number of tickets will decrease by one and a kill in action (KIA) marker will appear after 10 minutes. 
+### Get new tickets:
+Players can increase by one ticket if they retrieve their dead body back to base. Prisoners also increase by one ticket, but to all currently connected players. 
+### Dead player body:
+Any player can retrieve dead player's body by:
+   - Putting dead body in a body bag. Watch out if your vehicle get destroyed, all body bag will be lost!
+   - Carry it to the logistic point
+   - Interact with the logistic point
+   - Select "Get tickets from body bag or prisoner"
+
+The ticket from the body bag will go to the player owned the dead body (even if he is not connected). 
+### Prisoners:
+Prisoners follow the same process as dead player body without the need of body bag. The prisonner need to be alive but it could be unconcious.
 
 ## Sling loading
 =BTC= Lift will not replace the A3 sling loading, you can use both.

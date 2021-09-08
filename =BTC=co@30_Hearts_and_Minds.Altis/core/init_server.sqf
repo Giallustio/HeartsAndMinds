@@ -14,7 +14,12 @@ if (btc_db_load && {profileNamespace getVariable [format ["btc_hm_%1_db", worldN
         [] call compileScript ["core\fnc\db\load_old.sqf"];
     };
 } else {
-    for "_i" from 1 to btc_hideout_n do {[] call btc_hideout_fnc_create;};
+    if (btc_hideout_n > 0) then {
+        for "_i" from 1 to btc_hideout_n do {[] call btc_hideout_fnc_create;};
+    } else {
+        [] spawn btc_fnc_final_phase;
+    };
+    
     [] call btc_cache_fnc_init;
 
     private _date = date;
@@ -55,3 +60,13 @@ if (btc_p_side_mission_cycle > 0) then {
 {
     ["btc_tag_remover" + _x, "STR_BTC_HAM_ACTION_REMOVETAG", _x, ["#(rgb,8,8,3)color(0,0,0,0)"], "\a3\Modules_F_Curator\Data\portraitSmoke_ca.paa"] call ace_tagging_fnc_addCustomTag;
 } forEach ["ACE_SpraypaintRed"];
+
+if (btc_p_respawn_ticketsAtStart >= 0) then {
+    if (btc_p_respawn_ticketsShare) then {
+        private _tickets = btc_p_respawn_ticketsAtStart;
+        if (btc_p_respawn_ticketsAtStart isEqualTo 0) then {
+            _tickets = -1;
+        };
+        [btc_player_side, _tickets] call BIS_fnc_respawnTickets;
+    };
+};
