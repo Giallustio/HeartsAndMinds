@@ -432,100 +432,98 @@ btc_type_hazmat = ["HazmatBag_01_F", "Land_MetalBarrel_F"] + (_allClassSorted se
 //Containers
 btc_containers_mat = ["Land_Cargo20_military_green_F", "Land_Cargo40_military_green_F"];
 
-if (isServer) then {
-    //Player
-    missionNamespace setVariable ["btc_player_side", west, true];
-    missionNamespace setVariable ["btc_respawn_marker", "respawn_west", true];
 
-    //Log
-    private _rearming_static =
+//Player
+btc_player_side = west;
+btc_respawn_marker = "respawn_west";
+
+//Log
+private _rearming_static =
+[
+    //"Static"
+] + (_allClassSorted select {(
+    _x isKindOf "GMG_TriPod" ||
+    {_x isKindOf "StaticMortar"} ||
+    {_x isKindOf "HMG_01_base_F"} ||
+    {_x isKindOf "AA_01_base_F"} ||
+    {_x isKindOf "AT_01_base_F"}) && {
+        getNumber (_cfgVehicles >> _x >> "side") isEqualTo ([east, west, independent, civilian] find btc_player_side)
+    }
+});
+([_rearming_static] call btc_fnc_find_veh_with_turret) params ["_rearming_static"];
+
+btc_construction_array =
+[
     [
-        //"Static"
-    ] + (_allClassSorted select {(
-        _x isKindOf "GMG_TriPod" ||
-        {_x isKindOf "StaticMortar"} ||
-        {_x isKindOf "HMG_01_base_F"} ||
-        {_x isKindOf "AA_01_base_F"} ||
-        {_x isKindOf "AT_01_base_F"}) && {
-            getNumber (_cfgVehicles >> _x >> "side") isEqualTo ([east, west, independent, civilian] find btc_player_side)
-        }
-    });
-    ([_rearming_static] call btc_fnc_find_veh_with_turret) params ["_rearming_static"];
-
-    btc_construction_array =
+        "Fortifications",
+        "Static",
+        "Ammobox",
+        "Containers",
+        "Supplies",
+        "FOB",
+        "Decontamination",
+        "Vehicle Logistic"
+    ],
     [
         [
-            "Fortifications",
-            "Static",
-            "Ammobox",
-            "Containers",
-            "Supplies",
-            "FOB",
-            "Decontamination",
-            "Vehicle Logistic"
+            //"Fortifications"
+            "Land_BagBunker_Small_F",
+            "Land_BagFence_Corner_F",
+            "Land_BagFence_End_F",
+            "Land_BagFence_Long_F",
+            "Land_BagFence_Round_F",
+            "Land_BagFence_Short_F",
+            "Land_HBarrier_1_F",
+            "Land_HBarrier_3_F",
+            "Land_HBarrier_5_F",
+            "Land_HBarrierBig_F",
+            "Land_Razorwire_F",
+            "Land_CncBarrier_F",
+            "Land_CncBarrierMedium_F",
+            "Land_CncBarrierMedium4_F",
+            "Land_CncWall1_F",
+            "Land_CncWall4_F",
+            "Land_Mil_ConcreteWall_F",
+            "Land_Mil_WallBig_4m_F",
+            "Land_Mil_WallBig_Corner_F",
+            "Land_PortableLight_double_F",
+            "Land_Pod_Heli_Transport_04_medevac_black_F"
+        ],
+        _rearming_static,
+        [
+            //"Ammobox"
+            "Land_WoodenBox_F"
+
+        ] + (_allClassSorted select {
+            _x isKindOf "ReammoBox_F" &&
+            {!(_x isKindOf "Slingload_01_Base_F")} &&
+            {!(_x isKindOf "Pod_Heli_Transport_04_base_F")}
+        }),
+        [
+            //"Containers"
+
+        ] + btc_containers_mat,
+        [
+            //"Supplies"
+            btc_supplies_cargo
         ],
         [
-            [
-                //"Fortifications"
-                "Land_BagBunker_Small_F",
-                "Land_BagFence_Corner_F",
-                "Land_BagFence_End_F",
-                "Land_BagFence_Long_F",
-                "Land_BagFence_Round_F",
-                "Land_BagFence_Short_F",
-                "Land_HBarrier_1_F",
-                "Land_HBarrier_3_F",
-                "Land_HBarrier_5_F",
-                "Land_HBarrierBig_F",
-                "Land_Razorwire_F",
-                "Land_CncBarrier_F",
-                "Land_CncBarrierMedium_F",
-                "Land_CncBarrierMedium4_F",
-                "Land_CncWall1_F",
-                "Land_CncWall4_F",
-                "Land_Mil_ConcreteWall_F",
-                "Land_Mil_WallBig_4m_F",
-                "Land_Mil_WallBig_Corner_F",
-                "Land_PortableLight_double_F",
-                "Land_Pod_Heli_Transport_04_medevac_black_F"
-            ],
-            _rearming_static,
-            [
-                //"Ammobox"
-                "Land_WoodenBox_F"
-
-            ] + (_allClassSorted select {
-                _x isKindOf "ReammoBox_F" &&
-                {!(_x isKindOf "Slingload_01_Base_F")} &&
-                {!(_x isKindOf "Pod_Heli_Transport_04_base_F")}
-            }),
-            [
-                //"Containers"
-
-            ] + btc_containers_mat,
-            [
-                //"Supplies"
-                btc_supplies_cargo
-            ],
-            [
-                //"FOB"
-                btc_fob_mat
-            ],
-            [
-                //"Decontamination"
-                "DeconShower_01_F"
-            ],
-            [
-                //"Vehicle logistic"
-                "ACE_Wheel",
-                "ACE_Track",
-                "B_Slingload_01_Ammo_F",
-                "B_Slingload_01_Fuel_F"
-            ]
+            //"FOB"
+            btc_fob_mat
+        ],
+        [
+            //"Decontamination"
+            "DeconShower_01_F"
+        ],
+        [
+            //"Vehicle logistic"
+            "ACE_Wheel",
+            "ACE_Track",
+            "B_Slingload_01_Ammo_F",
+            "B_Slingload_01_Fuel_F"
         ]
-    ];
-    publicVariable "btc_construction_array";
-};
+    ]
+];
 
 btc_supplies_mat params ["_food", "_water"];
 private _c_array = btc_construction_array select 1;
