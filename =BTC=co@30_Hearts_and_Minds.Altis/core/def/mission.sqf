@@ -450,7 +450,7 @@ if (isServer) then {
             getNumber (_cfgVehicles >> _x >> "side") isEqualTo ([east, west, independent, civilian] find btc_player_side)
         }
     });
-    ([_rearming_static] call btc_fnc_find_veh_with_turret) params ["_rearming_static", "_magazines_static"];
+    ([_rearming_static] call btc_fnc_find_veh_with_turret) params ["_rearming_static"];
 
     btc_construction_array =
     [
@@ -489,7 +489,7 @@ if (isServer) then {
                 "Land_PortableLight_double_F",
                 "Land_Pod_Heli_Transport_04_medevac_black_F"
             ],
-            _rearming_static + _magazines_static,
+            _rearming_static,
             [
                 //"Ammobox"
                 "Land_WoodenBox_F"
