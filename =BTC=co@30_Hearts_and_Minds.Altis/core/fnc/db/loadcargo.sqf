@@ -41,10 +41,6 @@ Author:
             [format ["Object loaded: %1 in veh/container %2 IsLoaded: %3", _l, _obj, _isloaded], __FILE__, [false]] call btc_debug_fnc_message;
         };
 
-        if (_magClass != "") then {
-            _l setVariable ["ace_rearm_magazineClass", _magClass, true]
-        };
-
         [_l, _inventory] call btc_log_fnc_inventorySet;
 
         if (_isContaminated) then {
