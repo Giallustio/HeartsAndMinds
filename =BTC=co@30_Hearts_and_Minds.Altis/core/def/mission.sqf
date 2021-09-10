@@ -489,8 +489,7 @@ if (isServer) then {
                 "Land_Mil_WallBig_4m_F",
                 "Land_Mil_WallBig_Corner_F",
                 "Land_PortableLight_double_F",
-                "Land_Pod_Heli_Transport_04_medevac_black_F",
-                "B_Slingload_01_Fuel_F"
+                "Land_Pod_Heli_Transport_04_medevac_black_F"
             ],
             _rearming_static + _magazines_static,
             [
@@ -521,7 +520,9 @@ if (isServer) then {
             [
                 //"Vehicle logistic"
                 "ACE_Wheel",
-                "ACE_Track"
+                "ACE_Track",
+                "B_Slingload_01_Ammo_F",
+                "B_Slingload_01_Fuel_F"
             ]
         ] + _rearming_magazines
     ];
