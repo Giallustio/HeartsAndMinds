@@ -30,7 +30,8 @@ Author:
         _x params ["_type", "_magClass", "_inventory",
             ["_isContaminated", false, [false]],
             ["_dogtagDataTaken", [], [[]]],
-            ["_uid", "", [""]]
+            ["_uid", "", [""]],
+            ["_turretMagazines", [], [[]]]
         ];
 
         private _l = createVehicle [_type, getPosATL _obj, [], 0, "CAN_COLLIDE"];
@@ -53,6 +54,10 @@ Author:
 
         [_l, _dogtagDataTaken] call btc_body_fnc_dogtagSet;
         _l setVariable ["btc_UID", _uid];
+
+        if (_turretMagazines isNotEqualTo []) then {
+            [_l, _turretMagazines] call btc_db_fnc_setTurretMagazines;
+        };
     } forEach _cargo;
 
     //set inventory content for weapons, magazines and items
