@@ -452,8 +452,6 @@ if (isServer) then {
     });
     ([_rearming_static] call btc_fnc_find_veh_with_turret) params ["_rearming_static", "_magazines_static"];
 
-    ([btc_vehicles + btc_helo] call btc_log_fnc_getRearmMagazines) params ["_rearming_vehicles", "_rearming_magazines"];
-
     btc_construction_array =
     [
         [
@@ -465,7 +463,7 @@ if (isServer) then {
             "FOB",
             "Decontamination",
             "Vehicle Logistic"
-        ] + (_rearming_vehicles apply {getText (_cfgVehicles >> _x >> "displayName")}),
+        ],
         [
             [
                 //"Fortifications"
@@ -524,7 +522,7 @@ if (isServer) then {
                 "B_Slingload_01_Ammo_F",
                 "B_Slingload_01_Fuel_F"
             ]
-        ] + _rearming_magazines
+        ]
     ];
     publicVariable "btc_construction_array";
 };
