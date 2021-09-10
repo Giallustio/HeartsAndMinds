@@ -540,54 +540,6 @@ btc_log_placing_max_h = 12;
 btc_log_placing = false;
 btc_log_obj_created = [];
 
-btc_log_main_cc = [
-    "Helicopter", 6,
-    "Ship", 3,
-    "Tank", 5,
-    "Wheeled_APC", 5,
-    "Truck", 10,
-    "Truck_F", 10,
-    "Motorcycle", 1,
-    "Car", 3
-];
-btc_log_main_rc = [
-    "Items_base_F", 2,
-    "ReammoBox_F", 2,
-    "thingX", 3,
-    "StaticWeapon", 3,
-    "Strategic", 2,
-    "Motorcycle", 3,
-    "Land_BarGate_F", 3,
-    "HBarrier_base_F", 5,
-    "Land_BagFence_Long_F", 3,
-    "Wall_F", 5,
-    "BagBunker_base_F", 5,
-    "Wheeled_APC", 50,
-    "Tank", 75,
-    "Truck", 50,
-    "Truck_F", 50,
-    "Ship", 50,
-    "Helicopter", 9999,
-    "Car", 35,
-    "Lamps_base_F", 2
-];
-btc_log_def_cc = [
-    "Land_CargoBox_V1_F", 0,
-    btc_supplies_cargo, 20,
-    btc_fob_mat, 0,
-    "Land_Cargo20_military_green_F", 20,
-    "Land_Cargo40_military_green_F", 40
-];
-btc_log_def_rc = [
-    "Land_BagBunker_Small_F", 5,
-    "Land_CargoBox_V1_F", 9999,
-    btc_supplies_cargo, 8,
-    btc_fob_mat, 8,
-    "Land_Cargo20_military_green_F", 8,
-    "B_Slingload_01_Fuel_F", 20,
-    "Land_Pod_Heli_Transport_04_medevac_black_F", 8
-];
-
 btc_log_fnc_get_nottowable = {
     params ["_tower"];
 

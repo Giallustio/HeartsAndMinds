@@ -26,7 +26,7 @@ params [
     ["_blackList", [btc_create_object], [[]]]
 ];
 
-private _array = ((nearestObjects [_object, btc_log_main_rc select {_x isEqualType ""}, 6]) select {!(
+private _array = ((nearestObjects [_object, flatten (btc_construction_array select 1), 6]) select {!(
     _x isKindOf "ACE_friesBase" OR
     _x isKindOf "ace_fastroping_helper"
 )}) - _blackList;
