@@ -26,8 +26,6 @@ if (isServer) then {
     btc_fnc_findPosOutsideRock = compileScript ["core\fnc\common\findposoutsiderock.sqf"];
     btc_fnc_set_groupsOwner = compileScript ["core\fnc\common\set_groupsOwner.sqf"];
     btc_fnc_typeOf = compileScript ["core\fnc\common\typeOf.sqf"];
-    btc_fnc_getVehProperties = compileScript ["core\fnc\common\getVehProperties.sqf"];
-    btc_fnc_setVehProperties = compileScript ["core\fnc\common\setVehProperties.sqf"];
     btc_fnc_roof = compileScript ["core\fnc\common\roof.sqf"];
 
     //CHEM
@@ -211,6 +209,8 @@ if (isServer) then {
     btc_veh_fnc_addRespawn = compileScript ["core\fnc\veh\addRespawn.sqf"];
     btc_veh_fnc_killed = compileScript ["core\fnc\veh\killed.sqf"];
     btc_veh_fnc_respawn = compileScript ["core\fnc\veh\respawn.sqf"];
+    btc_veh_fnc_propertiesGet = compileScript ["core\fnc\veh\propertiesGet.sqf"];
+    btc_veh_fnc_propertiesSet = compileScript ["core\fnc\veh\propertiesSet.sqf"];
 };
 
 /////////////////////CLIENT AND SERVER\\\\\\\\\\\\\\\\\\\\\

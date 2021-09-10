@@ -151,7 +151,7 @@ private _vehiclesInCargo = _vehicles - _vehiclesNotInCargo;
     _data pushBack (getAllHitPointsDamage _x);
     _data pushBack _cargo;
     _data pushBack _inventory;
-    _data append ([_x] call btc_fnc_getVehProperties);
+    _data append ([_x] call btc_veh_fnc_propertiesGet);
     _data pushBack (_x getVariable ["btc_EDENinventory", []]);
     _data pushBack _vectorPos;
     _data pushBack []; // ViV

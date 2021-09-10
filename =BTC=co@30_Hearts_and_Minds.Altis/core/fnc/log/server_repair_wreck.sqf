@@ -33,7 +33,7 @@ private _type = typeOf _veh;
 (getPosASL _veh) params ["_x", "_y", "_z"];
 private _dir = getDir _veh;
 private _marker = _veh getVariable ["marker", ""];
-private _vehProperties = [_veh] call btc_fnc_getVehProperties;
+private _vehProperties = [_veh] call btc_veh_fnc_propertiesGet;
 _vehProperties set [5, false];
 private _EDENinventory = _veh getVariable ["btc_EDENinventory", []];
 
