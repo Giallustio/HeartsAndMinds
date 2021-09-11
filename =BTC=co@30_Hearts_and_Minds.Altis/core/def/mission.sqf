@@ -525,11 +525,14 @@ btc_construction_array =
     ]
 ];
 
-btc_supplies_mat params ["_food", "_water"];
-private _c_array = btc_construction_array select 1;
-btc_log_def_loadable = (_c_array select 0) + (_c_array select 1) + (_c_array select 2) + (_c_array select 3) + (_c_array select 4) + (_c_array select 5) + (_c_array select 6) + (_c_array select 7) + _food + _water + btc_type_hazmat;
-btc_log_def_can_load = (_c_array select 3);
-btc_log_def_placeable = ((_c_array select 0) + (_c_array select 3) + (_c_array select 4) + (_c_array select 5) + (_c_array select 6) + (_c_array select 7) + _food + _water + btc_type_hazmat) select {
+(btc_construction_array select 1) params [
+    "_cFortifications", "_cStatics", "_cAmmobox",
+    "_cContainers", "_cSupplies", "_cFOB",
+    "_cDecontamination", "_cVehicle_logistic"
+];
+btc_log_def_loadable = flatten (btc_construction_array select 1) + flatten btc_supplies_mat + btc_type_hazmat;
+btc_log_def_can_load = _cContainers;
+btc_log_def_placeable = (_cFortifications + _cContainers + _cSupplies + _cFOB + _cDecontamination + _cVehicle_logistic + flatten btc_supplies_mat + btc_type_hazmat) select {
     getNumber(_cfgVehicles >> _x >> "ace_dragging_canCarry") isEqualTo 0
 };
 btc_tow_vehicleSelected = objNull;
@@ -556,7 +559,7 @@ btc_log_fnc_get_nottowable = {
 btc_lift_fnc_getLiftable = {
     params ["_chopper"];
 
-    private _array   = [];
+    private _array = [];
     switch (typeOf _chopper) do {
         case "B_SDV_01_F" : {
             _array = ["Motorcycle", "ReammoBox", "ReammoBox_F", "StaticWeapon", "Car", "Truck", "Wheeled_APC_F", "Tracked_APC", "APC_Tracked_01_base_F", "APC_Tracked_02_base_F", "Air", "Ship", "Tank"] + ((btc_construction_array select 1) select 3) + ((btc_construction_array select 1) select 4) + ((btc_construction_array select 1) select 5);
