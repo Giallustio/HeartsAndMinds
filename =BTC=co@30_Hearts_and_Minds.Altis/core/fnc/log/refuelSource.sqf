@@ -24,7 +24,7 @@ params [
     ["_object", objNull, [objNull]]
 ];
 
-private _array = (nearestObjects [_object, ["LandVehicle", "Air", "Ship"] + btc_log_main_rc select {_x isEqualType ""}, 10]) select {!(
+private _array = (nearestObjects [_object, ["LandVehicle", "Air", "Ship", "Thing", "NonStrategic"], 10]) select {!(
     _x isKindOf "ACE_friesBase" OR
     _x isKindOf "ace_fastroping_helper"
 )};
