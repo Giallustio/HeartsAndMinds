@@ -319,6 +319,9 @@ if (!isDedicated) then {
     btc_eh_fnc_CuratorObjectPlaced = compileScript ["core\fnc\eh\CuratorObjectPlaced.sqf"];
     btc_eh_fnc_player = compileScript ["core\fnc\eh\player.sqf"];
 
+    //FLAG
+    btc_flag_fnc_deploy = compileScript ["core\fnc\flag\deploy.sqf"];
+
     //FOB
     btc_fob_fnc_create = compileScript ["core\fnc\fob\create.sqf"];
     btc_fob_fnc_rallypointAssemble = compileScript ["core\fnc\fob\rallypointAssemble.sqf"];

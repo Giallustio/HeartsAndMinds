@@ -98,6 +98,7 @@ btc_p_city_free_trigger_condition = if (_p_city_free_trigger isEqualTo 0) then {
 } else {
     format ["[thisList, %1] call btc_city_fnc_trigger_free_condition", _p_city_free_trigger]
 };
+btc_p_flag = "btc_p_flag" call BIS_fnc_getParamValue;
 btc_p_auto_headless = ("btc_p_auto_headless" call BIS_fnc_getParamValue) isEqualTo 1;
 btc_p_debug = "btc_p_debug" call BIS_fnc_getParamValue;
 
@@ -676,6 +677,15 @@ btc_player_type = ["SoldierWB", "SoldierEB", "SoldierGB"] select ([west, east, i
 
 //Door
 btc_door_breaking_time = 60;
+
+//Flag
+btc_flag_textures = [
+    "\A3\Data_F\Flags\flag_red_CO.paa",
+    "\A3\Data_F\Flags\flag_green_CO.paa",
+    "\A3\Data_F\Flags\flag_blue_CO.paa",
+    '#(argb,8,8,3)color(0.9,0.9,0,1)',
+    "\A3\Data_F\Flags\flag_NATO_CO.paa"
+];
 
 //Respawn
 btc_body_bagTicketPlayer = 1;

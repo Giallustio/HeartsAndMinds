@@ -33,7 +33,8 @@ _object_data params [
     "_vectorPos",
     ["_isContaminated", false, [false]],
     ["_dogtagDataTaken", [], [[]]],
-    ["_uid", "", [""]]
+    ["_uid", "", [""]],
+    ["_flagTexture", "", [""]]
 ];
 
 private _obj = createVehicle [_type, ASLToATL _pos, [], 0, "CAN_COLLIDE"];
@@ -50,6 +51,9 @@ if (_isContaminated) then {
 if (_magClass isNotEqualTo "") then {_obj setVariable ["ace_rearm_magazineClass", _magClass, true]};
 if (unitIsUAV _obj) then {
     createVehicleCrew _obj;
+};
+if (_flagTexture isNotEqualTo "") then {
+    _obj forceFlagTexture _flagTexture;
 };
 
 [_obj, _dogtagDataTaken] call btc_body_fnc_dogtagSet;

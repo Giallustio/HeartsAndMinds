@@ -156,14 +156,15 @@ private _vehs = +(profileNamespace getVariable [format ["btc_hm_%1_vehs", _name]
             ["_supplyVehicle", [], [[]]],
             ["_EDENinventory", [], [[]]],
             ["_vectorPos", [], [[]]],
-            ["_ViV", [], [[]]]
+            ["_ViV", [], [[]]],
+            ["_flagTexture", "", [""]]
         ];
 
         if (btc_debug_log) then {
             [format ["_veh = %1", _x], __FILE__, [false]] call btc_debug_fnc_message;
         };
 
-        private _veh = [_veh_type, _veh_pos, _veh_dir, _customization, _isMedicalVehicle, _isRepairVehicle, _fuelSource, _pylons, _isContaminated, _supplyVehicle, _EDENinventory, _veh_AllHitPointsDamage] call btc_log_fnc_createVehicle;
+        private _veh = [_veh_type, _veh_pos, _veh_dir, _customization, _isMedicalVehicle, _isRepairVehicle, _fuelSource, _pylons, _isContaminated, _supplyVehicle, _EDENinventory, _veh_AllHitPointsDamage, _flagTexture] call btc_log_fnc_createVehicle;
         _veh setVectorDirAndUp _vectorPos;
         _veh setFuel _veh_fuel;
 
@@ -219,7 +220,8 @@ if (btc_p_respawn_ticketsAtStart >= 0) then {
     private _group = createGroup btc_player_side;
     btc_body_deadPlayers  = _deadBodyPlayers apply {
         _x params ["_type", "_pos", "_dir", "_loadout", "_dogtagData", "_dogtagTaken", "_isContaminated",
-            ["_uid", "", [""]]
+            ["_uid", "", [""]],
+            ["_flagTexture", "", [""]]
         ];
         private _body = _group createUnit [_type, ASLToAGL _pos, [], 0, "CAN_COLLIDE"];
         _body setUnitLoadout _loadout;
@@ -233,6 +235,7 @@ if (btc_p_respawn_ticketsAtStart >= 0) then {
         _body setDamage 1;
         _body setVariable ["btc_dont_delete", true];
         _body setVariable ["btc_UID", _uid];
+        _body forceFlagTexture _flagTexture;
 
         [{
             params ["_body", "_dir", "_pos"];
@@ -241,6 +244,7 @@ if (btc_p_respawn_ticketsAtStart >= 0) then {
         }, [_body, _dir, _pos], 3] call CBA_fnc_waitAndExecute;
 
         _body call btc_body_fnc_createMarker;
+
         _body
     };
     deleteGroup _group;

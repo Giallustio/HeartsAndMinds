@@ -425,6 +425,12 @@ class Params {
         texts[]={$STR_DISABLED,"1","2","3"};
         default = 0;
     };
+    class btc_p_flag { // Allow the use of flag:
+        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_OTHER_ALLOWFLAG"]);
+        values[]={0,1,2};
+        texts[]={$STR_DISABLED,$STR_BTC_HAM_PARAM_OTHER_FLAGVEH,$STR_BTC_HAM_PARAM_OTHER_FLAGVEHPLAYER};
+        default = 2;
+    };
     class btc_p_auto_headless { // Autodetect Headless client:
         title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_OTHER_AUTOHEADLESS"]);
         values[]={0,1};
