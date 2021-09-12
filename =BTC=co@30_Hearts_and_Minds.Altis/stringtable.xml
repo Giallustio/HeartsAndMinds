@@ -126,6 +126,7 @@
         <Container name="Documentation: Respawn tickets">
             <Key ID="STR_BTC_HAM_DOC_RESPAWN_TEXT">
                 <Original>&lt;img image='\a3\Ui_F_Curator\Data\CfgMarkers\kia_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Introduction:&lt;/marker&gt;&lt;br/&gt; By default, each player has a limited number of respawn tickets. On first join, you get the default number of tickets (20). After, each time you respawn, your number of tickets will decrease by one and a kill in action (KIA) marker will appear after 10 minutes.&lt;br/&gt;&lt;br/&gt; &lt;img image='a3\Missions_F_AoW\Data\Img\Artwork\Landscape\showcase_aow_picture_104_co.paa' width='355' height='200'/&gt; &lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\Data_F_AoW\Logos\arma3_aow_logo_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Get new tickets:&lt;/marker&gt;&lt;br/&gt; Players can increase by one ticket if they retrieve their dead body back to base. Prisoners also increase by one ticket but to all currently connected players.&lt;br/&gt;&lt;br/&gt; &lt;img image='a3\Missions_F_AoW\Data\Img\Artwork\Landscape\showcase_aow_picture_118_co.paa' width='355' height='200'/&gt; &lt;br/&gt;&lt;br/&gt; &lt;img image='\z\ace\addons\medical_gui\ui\bodybag.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Dead player body:&lt;/marker&gt;&lt;br/&gt; Any player can retrieve dead player body by:&lt;br/&gt; - &lt;img image='\z\ace\addons\medical_treatment\ui\bodybag_ca.paa' width='13' height='13'/&gt; Putting dead body in a body bag. Watch out if your vehicle get destroyed, all body bag will be lost!&lt;br/&gt; - Carry it to the logistic point&lt;br/&gt; - Interact with the logistic point&lt;br/&gt; - &lt;img image='\A3\Data_F_AoW\Logos\arma3_aow_logo_ca.paa' width='13' height='13'/&gt; Select "Get tickets from body bag or prisoner"&lt;br/&gt; The ticket from the body bag will go to the player owned the dead body (even if he is not connected).&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\EditorPreviews_F_Orange\Data\CfgVehicles\Land_Bodybag_01_black_F.jpg' width='355' height='200'/&gt; &lt;br/&gt;&lt;br/&gt; &lt;img image='\z\ace\addons\captives\UI\handcuff_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Prisoners:&lt;/marker&gt;&lt;br/&gt; Prisoners &lt;img image='\z\ace\addons\captives\UI\Surrender_ca.paa' width='13' height='13'/&gt; follow the same process as dead player body without the need of body bag. The prisonner need to be alive but it could be unconcious.&lt;br/&gt;&lt;br/&gt; &lt;img image='a3\Missions_F_AoW\Data\Img\Artwork\Landscape\showcase_aow_picture_106_co.paa' width='355' height='200'/&gt;</Original>
+                <Chinesesimp>&lt;img image='\a3\Ui_F_Curator\Data\CfgMarkers\kia_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;介绍:&lt;/marker&gt;&lt;br/&gt; 默认情况下, 每名玩家都有受限的重生票数。首次进入服务器时, 你会获得默认的重生票数(20)。此后，每次重生都会使你的重生票数减一，且地图上将于10分钟后出现阵亡(KIA)标记。&lt;br/&gt;&lt;br/&gt; &lt;img image='a3\Missions_F_AoW\Data\Img\Artwork\Landscape\showcase_aow_picture_104_co.paa' width='355' height='200'/&gt; &lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\Data_F_AoW\Logos\arma3_aow_logo_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;获得新的重生票数:&lt;/marker&gt;&lt;br/&gt; 玩家可以通过将他们的尸体带回基地，来获得一枚重生票数。带回囚犯也可以为全体在线玩家每人增加一枚重生票数。&lt;br/&gt;&lt;br/&gt; &lt;img image='a3\Missions_F_AoW\Data\Img\Artwork\Landscape\showcase_aow_picture_118_co.paa' width='355' height='200'/&gt; &lt;br/&gt;&lt;br/&gt; &lt;img image='\z\ace\addons\medical_gui\ui\bodybag.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;阵亡玩家的尸体:&lt;/marker&gt;&lt;br/&gt; 玩家都可以通过以下方式回收尸体:&lt;br/&gt; - &lt;img image='\z\ace\addons\medical_treatment\ui\bodybag_ca.paa' width='13' height='13'/&gt; 将尸体放进尸体袋。小心，如果你的载具被摧毁，其中所有尸体袋都会丢失!&lt;br/&gt; - 将尸体搬运到后勤点&lt;br/&gt; - 与后勤点互动&lt;br/&gt; - &lt;img image='\A3\Data_F_AoW\Logos\arma3_aow_logo_ca.paa' width='13' height='13'/&gt; 选择"回收尸体袋或囚犯以获得重生票数"&lt;br/&gt; 获得的重生票数将会发放给该尸体对应的玩家(即使他不在线)。&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\EditorPreviews_F_Orange\Data\CfgVehicles\Land_Bodybag_01_black_F.jpg' width='355' height='200'/&gt; &lt;br/&gt;&lt;br/&gt; &lt;img image='\z\ace\addons\captives\UI\handcuff_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Prisoners:&lt;/marker&gt;&lt;br/&gt; 囚犯 &lt;img image='\z\ace\addons\captives\UI\Surrender_ca.paa' width='13' height='13'/&gt; 遵循与回收玩家尸体相同的流程，但无需尸体袋。被回收的囚犯必须活着，但可以出于昏迷状态。&lt;br/&gt;&lt;br/&gt; &lt;img image='a3\Missions_F_AoW\Data\Img\Artwork\Landscape\showcase_aow_picture_106_co.paa' width='355' height='200'/&gt;</Chinesesimp>
             </Key>
         </Container>
         <Container name="Documentation: Respawn position">
@@ -600,18 +601,23 @@
             </Key>
             <Key ID="STR_BTC_HAM_RESP_TIMEBEFORESHOWMARKER">
                 <Original>Number of tickets at mission start:</Original>
+                <Chinesesimp>任务开始时的重生票数:</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_RESP_TICKETSHARE">
                 <Original>Tickets are share between:</Original>
+                <Chinesesimp>重生票数在以下玩家间共享:</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_RESP_SAMEFACTION">
                 <Original>Players of the same faction</Original>
+                <Chinesesimp>相同阵营的玩家</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_RESP_NOTSHARE">
                 <Original>Not share</Original>
+                <Chinesesimp>不共享</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_RESP_TICKETSATSTART">
                 <Original>Time before showing marker of dead player's body:</Original>
+                <Chinesesimp>显示阵亡玩家尸体标记前的时间:</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_RESP_ENABLEARSENAL">
                 <Original>ACE Arsenal available on respawn after been killed:</Original>
@@ -1587,6 +1593,7 @@
             </Key>
             <Key ID="STR_BTC_HAM_ACTION_LOGPOINT_BODYBAG">
                 <Original>Get tickets from body bag or prisoner</Original>
+                <Chinesesimp>回收尸体袋或囚犯以获得重生票数</Chinesesimp>
             </Key>
         </Container>
         <Container name="Action(ACE): FOB">
@@ -2278,12 +2285,15 @@
             </Key>
             <Key ID="STR_BTC_HAM_O_COMMON_TICKETADD">
                 <Original>Respawn ticket added</Original>
+                <Chinesesimp>重生票数已增加</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_O_COMMON_NOBODYBAG">
                 <Original>No body bag from a player</Original>
+                <Chinesesimp>这不是玩家的尸体袋</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_O_COMMON_TICKETSLEFT">
                 <Original>%1 respawn tickets left</Original>
+                <Chinesesimp>剩余 %1 枚重生票数</Chinesesimp>
             </Key>
         </Container>
         <Container name="Other: Shortcuts">
@@ -2426,9 +2436,11 @@
         <Container name="Other: Bodybag">
             <Key ID="STR_BTC_HAM_O_BODYBAG_NO">
                 <Original>No body bag around or alive enemy</Original>
+                <Chinesesimp>附近没有尸体袋或存活的敌军</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_O_BODYBAG_COPY">
                 <Original>You can't copy body bag</Original>
+                <Chinesesimp>你不能复制尸体袋</Chinesesimp>
             </Key>
         </Container>
     </Package>
