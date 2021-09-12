@@ -132,3 +132,15 @@ if (btc_p_respawn_ticketsAtStart >= 0) then {
         }];
     };
 };
+
+//Cargo
+[btc_fob_mat, "InitPost", {
+    params ["_obj"];
+    [_obj, -1] call ace_cargo_fnc_setSpace;
+}] call CBA_fnc_addClassEventHandler;
+{
+    [_x, "InitPost", {
+        params ["_obj"];
+        [_obj, 50] call ace_cargo_fnc_setSpace;
+    }] call CBA_fnc_addClassEventHandler;
+} forEach ["CUP_MTVR_Base", "Truck_01_base_F", btc_supplies_cargo /*FIX: https://github.com/acemod/ACE3/pull/8344*/];
