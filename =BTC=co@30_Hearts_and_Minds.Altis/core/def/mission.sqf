@@ -98,7 +98,7 @@ btc_p_city_free_trigger_condition = if (_p_city_free_trigger isEqualTo 0) then {
 } else {
     format ["[thisList, %1] call btc_city_fnc_trigger_free_condition", _p_city_free_trigger]
 };
-btc_p_flag = 2;
+btc_p_flag = "btc_p_flag" call BIS_fnc_getParamValue;
 btc_p_auto_headless = ("btc_p_auto_headless" call BIS_fnc_getParamValue) isEqualTo 1;
 btc_p_debug = "btc_p_debug" call BIS_fnc_getParamValue;
 
