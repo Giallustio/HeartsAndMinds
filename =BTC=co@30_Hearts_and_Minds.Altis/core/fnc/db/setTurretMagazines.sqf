@@ -26,6 +26,7 @@ params [
     ["_turretMagazines", [], [[]]]
 ];
 
+if (_turretMagazines isEqualTo []) exitWith {};
 
 {
     _x params ["_magazineClass", "_turretPath"];

@@ -1,7 +1,7 @@
 
 btc_version = [
     1,
-    21.2,
+    21.1,
     7
 ];
 diag_log format (["=BTC= HEARTS AND MINDS VERSION %1.%2.%3"] + btc_version);
@@ -521,7 +521,7 @@ btc_construction_array =
             "ACE_Track",
             "B_Slingload_01_Ammo_F",
             "B_Slingload_01_Fuel_F"
-        ]
+        ] + (_allClassSorted select {_x isKindOf "FlexibleTank_base_F"})
     ]
 ];
 
