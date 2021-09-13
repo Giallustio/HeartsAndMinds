@@ -50,5 +50,6 @@ _data pushBack [vectorDir _object, vectorUp _object];
 _data pushBack (_object in btc_chem_contaminated);
 _data pushBack (_object call btc_body_fnc_dogtagGet);
 _data pushBack (_object getVariable ["btc_UID", ""]);
+_data pushBack (getForcedFlagTexture _object);
 
 _data

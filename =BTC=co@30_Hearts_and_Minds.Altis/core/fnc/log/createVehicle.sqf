@@ -43,7 +43,8 @@ params [
     ["_isContaminated", false, [false]],
     ["_supplyVehicle", [], [[]]],
     ["_EDENinventory", [], [[]]],
-    ["_allHitPointsDamage", [], [[]]]
+    ["_allHitPointsDamage", [], [[]]],
+    ["_flagTexture", "", [""]]
 ];
 
 private _veh  = createVehicle [_type, ASLToATL _pos, [], 0, "CAN_COLLIDE"];
@@ -69,6 +70,10 @@ if (_allHitPointsDamage isNotEqualTo []) then {
     if ((_allHitPointsDamage select 2) select {_x < 1} isEqualTo []) then {
         _veh setDamage [1, false];
     };
+};
+
+if (_flagTexture isNotEqualTo "") then {
+    _veh forceFlagTexture _flagTexture;
 };
 
 _veh call btc_db_fnc_add_veh;

@@ -100,7 +100,6 @@ if (btc_p_respawn_ticketsAtStart >= 0) then {
 
         if (btc_p_body_timeBeforeShowMarker isEqualTo -1) exitwith {};
         [btc_body_fnc_createMarker, _unit, btc_p_body_timeBeforeShowMarker] call CBA_fnc_waitAndExecute;
-
     }] call CBA_fnc_addEventHandler;
     ["ace_placedInBodyBag", {
         params ["_patient", "_bodyBag"];

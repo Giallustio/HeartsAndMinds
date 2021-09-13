@@ -853,6 +853,15 @@
                 <Original>City will be free if number of enemies is equal or lower than:</Original>
                 <Chinesesimp>城镇将会被解放, 当敌军数量小于或等于:</Chinesesimp>
             </Key>
+            <Key ID="STR_BTC_HAM_PARAM_OTHER_ALLOWFLAG">
+                <Original>Allow the use of flag:</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_OTHER_FLAGVEH">
+                <Original>On vehicle</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_OTHER_FLAGVEHPLAYER">
+                <Original>On vehicle and players</Original>
+            </Key>
             <Key ID="STR_BTC_HAM_PARAM_OTHER_AUTOHEADLESS">
                 <Original>Autodetect Headless client:</Original>
                 <German>Headless-Client automatisch erkennen:</German>
@@ -1765,6 +1774,12 @@
                 <Portuguese>Desenganchar</Portuguese>
                 <Chinesesimp>取消牵引</Chinesesimp>
                 <French>Décrocher</French>
+            </Key>
+            <Key ID="STR_BTC_HAM_ACTION_VEHINIT_DEPLOYFLAG">
+                <Original>Deploy flag</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_ACTION_VEHINIT_CUTFLAG">
+                <Original>Cut flag</Original>
             </Key>
         </Container>
         <Container name="Action(ACE): Copy Paste">
