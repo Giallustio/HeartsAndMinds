@@ -855,12 +855,15 @@
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_OTHER_ALLOWFLAG">
                 <Original>Allow the use of flag:</Original>
+                <Chinesesimp>允许悬挂旗帜</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_OTHER_FLAGVEH">
                 <Original>On vehicle</Original>
+                <Chinesesimp>仅限载具</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_OTHER_FLAGVEHPLAYER">
                 <Original>On vehicle and players</Original>
+                <Chinesesimp>载具和玩家</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_OTHER_AUTOHEADLESS">
                 <Original>Autodetect Headless client:</Original>
@@ -1777,9 +1780,11 @@
             </Key>
             <Key ID="STR_BTC_HAM_ACTION_VEHINIT_DEPLOYFLAG">
                 <Original>Deploy flag</Original>
+                <Chinesesimp>悬挂旗帜</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_ACTION_VEHINIT_CUTFLAG">
                 <Original>Cut flag</Original>
+                <Chinesesimp>剪断旗帜</Chinesesimp>
             </Key>
         </Container>
         <Container name="Action(ACE): Copy Paste">
