@@ -106,11 +106,7 @@ for "_i" from 0 to (1 + round random 2) do {
             [_destroy_taskID, "SUCCEEDED"] call BIS_fnc_taskSetState;
             private _fx = "test_EmptyObjectForSmoke" createVehicle _pos;
             _fx setPos _pos;
-            [{
-                params ["_fx"];
-
-                _fx call CBA_fnc_deleteEntity;
-            }, [_fx], 120] call CBA_fnc_waitAndExecute;
+            [CBA_fnc_deleteEntity, [_fx], 120] call CBA_fnc_waitAndExecute;
             btc_spect_emp deleteAt (btc_spect_emp find _box);
             publicVariable "btc_spect_emp";
         } else {

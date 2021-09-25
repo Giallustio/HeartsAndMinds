@@ -42,7 +42,7 @@ _player addEventHandler ["CuratorObjectPlaced", btc_eh_fnc_CuratorObjectPlaced];
 _player addEventHandler ["WeaponAssembled", btc_civ_fnc_add_leaflets];
 [_player, "WeaponAssembled", {[_thisType, _this] call btc_fob_fnc_rallypointAssemble;}] call CBA_fnc_addBISEventHandler;
 [_player, "WeaponDisassembled", {[_thisType, _this] call btc_fob_fnc_rallypointAssemble;}] call CBA_fnc_addBISEventHandler;
-_player addEventHandler ["GetInMan", {_this call btc_ied_fnc_deleteLoop}];
+_player addEventHandler ["GetInMan", btc_ied_fnc_deleteLoop];
 _player addEventHandler ["GetOutMan", {
     if (btc_ied_deleteOn > -1) then {
         [btc_ied_deleteOn] call CBA_fnc_removePerFrameHandler;
@@ -71,7 +71,7 @@ if (btc_p_chem) then {
 };
 
 if (btc_p_spect) then {
-    ["weapon", {_this call btc_spect_fnc_updateDevice}] call CBA_fnc_addPlayerEventHandler;
+    ["weapon", btc_spect_fnc_updateDevice] call CBA_fnc_addPlayerEventHandler;
     ["vehicle", {
         params ["_unit", "_newVehicle"];
         [] call btc_spect_fnc_disableDevice;

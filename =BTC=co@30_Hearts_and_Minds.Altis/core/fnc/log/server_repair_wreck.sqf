@@ -54,6 +54,4 @@ if ((getVehicleCargo _veh) isNotEqualTo []) then {
     deleteVehicle _this;
 }, _veh] call CBA_fnc_execNextFrame;
 
-[{
-    _this call btc_log_fnc_createVehicle;
-}, [_type, [_x, _y, 0.5 + _z], _dir] + _vehProperties + [_EDENinventory], 1] call CBA_fnc_waitAndExecute;
+[btc_log_fnc_createVehicle, [_type, [_x, _y, 0.5 + _z], _dir] + _vehProperties + [_EDENinventory], 1] call CBA_fnc_waitAndExecute;

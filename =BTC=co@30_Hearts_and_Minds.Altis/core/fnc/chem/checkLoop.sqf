@@ -82,9 +82,7 @@ private _bodyParts = ["head","body","hand_l","hand_r","leg_l","leg_r"];
             publicVariable "btc_chem_contaminated";
         };
         if (local _x) then {
-            [{
-                _this call btc_chem_fnc_damage;
-            }, [_x, _notAlready, _bodyParts, _cfgGlasses], _forEachIndex * _periode] call CBA_fnc_waitAndExecute;
+            [btc_chem_fnc_damage, [_x, _notAlready, _bodyParts, _cfgGlasses], _forEachIndex * _periode] call CBA_fnc_waitAndExecute;
         } else {
             if (_notAlready) then {
                 [_x] remoteExecCall ["btc_chem_fnc_damageLoop", _x];

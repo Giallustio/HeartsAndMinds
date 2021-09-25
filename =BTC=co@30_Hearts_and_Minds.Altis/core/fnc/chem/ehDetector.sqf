@@ -33,9 +33,7 @@ Author:
             private _ui = uiNamespace getVariable "RscWeaponChemicalDetector";
             private _obj = _ui displayCtrl 101;
 
-            [{visibleWatch}, {
-                _this call btc_chem_fnc_updateDetector;
-            }, [_obj]] call CBA_fnc_waitUntilAndExecute;
+            [{visibleWatch}, btc_chem_fnc_updateDetector, [_obj]] call CBA_fnc_waitUntilAndExecute;
         };
     }];
 }] call CBA_fnc_waitUntilAndExecute;
