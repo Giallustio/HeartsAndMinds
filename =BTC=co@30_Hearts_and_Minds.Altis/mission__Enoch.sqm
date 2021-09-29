@@ -2375,7 +2375,6 @@ class Mission
 			{
 				skill=0.60000002;
 				init="[this, 30] call btc_veh_fnc_addRespawn;"
-				name="btc_helo_1";
 			};
 			id=156;
 			type="B_Heli_Transport_03_F";
@@ -2418,7 +2417,6 @@ class Mission
 			{
 				skill=0.60000002;
 				init="this call btc_db_fnc_add_veh;"
-				name="btc_veh_14";
 			};
 			id=174;
 			type="B_Heli_Transport_01_camo_F";
@@ -2480,7 +2478,6 @@ class Mission
 			{
 				skill=0.60000002;
 				init="this call btc_db_fnc_add_veh;"
-				name="btc_veh_10";
 			};
 			id=175;
 			type="B_Heli_Attack_01_dynamicLoadout_F";
@@ -2667,8 +2664,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="this setVariable [""btc_dont_delete"",true];";
-				name="btc_veh_1";
+				init="this call btc_db_fnc_add_veh;";
 			};
 			id=232;
 			type="B_T_APC_Wheeled_01_cannon_F";
@@ -2711,7 +2707,6 @@ class Mission
 			{
 				skill=0.60000002;
 				init="this call btc_db_fnc_add_veh;"
-				name="btc_veh_5";
 			};
 			id=233;
 			type="B_T_MRAP_01_hmg_F";
@@ -2754,7 +2749,6 @@ class Mission
 			{
 				skill=0.60000002;
 				init="this call btc_db_fnc_add_veh;"
-				name="btc_veh_6";
 			};
 			id=234;
 			type="B_T_MRAP_01_hmg_F";
@@ -2797,7 +2791,6 @@ class Mission
 			{
 				skill=0.60000002;
 				init="this call btc_db_fnc_add_veh;"
-				name="btc_veh_7";
 			};
 			id=237;
 			type="B_T_LSV_01_armed_F";
@@ -2840,7 +2833,6 @@ class Mission
 			{
 				skill=0.60000002;
 				init="this call btc_db_fnc_add_veh;"
-				name="btc_veh_2";
 			};
 			id=238;
 			type="B_T_LSV_01_armed_F";
@@ -2883,7 +2875,6 @@ class Mission
 			{
 				skill=0.60000002;
 				init="this call btc_db_fnc_add_veh;"
-				name="btc_veh_3";
 			};
 			id=239;
 			type="B_T_LSV_01_armed_F";
@@ -2926,7 +2917,6 @@ class Mission
 			{
 				skill=0.60000002;
 				init="this call btc_db_fnc_add_veh;"
-				name="btc_veh_4";
 			};
 			id=240;
 			type="B_T_LSV_01_armed_F";
@@ -2969,7 +2959,6 @@ class Mission
 			{
 				skill=0.60000002;
 				init="this call btc_db_fnc_add_veh;"
-				name="btc_veh_8";
 			};
 			id=241;
 			type="B_T_Truck_01_transport_F";
@@ -3011,7 +3000,6 @@ class Mission
 			class Attributes
 			{
 				init="this call btc_db_fnc_add_veh;"
-				name="btc_veh_15";
 			};
 			id=243;
 			type="B_T_Truck_01_flatbed_F";
@@ -3053,7 +3041,6 @@ class Mission
 			{
 				skill=0.60000002;
 				init="this call btc_db_fnc_add_veh;"
-				name="btc_veh_9";
 			};
 			id=244;
 			type="B_T_Truck_01_transport_F";
@@ -3095,7 +3082,6 @@ class Mission
 			{
 				skill=0.60000002;
 				init="this call btc_db_fnc_add_veh;"
-				name="btc_veh_13";
 			};
 			id=245;
 			type="B_T_Truck_01_Repair_F";
@@ -3138,7 +3124,6 @@ class Mission
 			{
 				skill=0.60000002;
 				init="this call btc_db_fnc_add_veh;"
-				name="btc_veh_12";
 			};
 			id=246;
 			type="B_T_Truck_01_fuel_F";
@@ -3181,7 +3166,6 @@ class Mission
 			{
 				skill=0.60000002;
 				init="this call btc_db_fnc_add_veh;"
-				name="btc_veh_11";
 			};
 			id=247;
 			type="B_T_Truck_01_ammo_F";
@@ -3224,7 +3208,6 @@ class Mission
 			{
 				skill=0.60000002;
 				init="this call btc_db_fnc_add_veh;"
-				name="btc_veh_16";
 			};
 			id=248;
 			type="B_T_Truck_01_flatbed_F";
@@ -3265,8 +3248,7 @@ class Mission
 			flags=4;
 			class Attributes
 			{
-				init="call{this setVariable [""btc_dont_delete"",true]}";
-				name="btc_veh_17";
+				init="this call btc_db_fnc_add_veh;";
 			};
 			id=249;
 			type="B_T_Truck_01_medical_F";
@@ -3307,8 +3289,7 @@ class Mission
 			flags=4;
 			class Attributes
 			{
-				init="call{this setVariable [""btc_dont_delete"",true]}";
-				name="btc_veh_18";
+				init="this call btc_db_fnc_add_veh;";
 			};
 			id=250;
 			type="B_T_APC_Tracked_01_CRV_F";
