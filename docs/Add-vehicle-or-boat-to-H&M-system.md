@@ -6,11 +6,7 @@ If the vehicle is destroyed, a wreck will be left. You will need to tow or lift 
 You can add new vehicle in the mision.sqm :
 - Open the mission in the editor (mission.sqm).
 - Add vehicles.
-- Give a unique name like: `btc_veh_16`,`btc_veh_17` ...
-- Add in the init field : `this setVariable ["btc_dont_delete",true]`
-- Save.
-- Open the [/core/def/mission.sqf L285](https://github.com/Vdauphin/HeartsAndMinds/blob/master/%3DBTC%3Dco%4030_Hearts_and_Minds.Altis/core/def/mission.sqf#L285)
-- Add names you gave to your vehicles.
+- Add in the init field: `this call btc_db_fnc_add_veh;`
 - Save.
 
 #### 2: In game

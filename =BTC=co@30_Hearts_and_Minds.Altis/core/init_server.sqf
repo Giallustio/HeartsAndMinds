@@ -28,7 +28,6 @@ if (btc_db_load && {profileNamespace getVariable [format ["btc_hm_%1_db", worldN
 
     {
         _x setVariable ["btc_EDENinventory", _x call btc_log_fnc_inventoryGet];
-        _x call btc_db_fnc_add_veh;
     } forEach btc_vehicles;
 };
 

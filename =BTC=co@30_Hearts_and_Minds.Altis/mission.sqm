@@ -919,7 +919,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="this setVariable [""btc_dont_delete"",true]";
+				init="this call btc_db_fnc_add_veh;"
 				name="btc_veh_11";
 			};
 			id=18;
@@ -939,7 +939,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="this setVariable [""btc_dont_delete"",true]";
+				init="this call btc_db_fnc_add_veh;"
 				name="btc_veh_12";
 			};
 			id=19;
@@ -959,7 +959,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="this setVariable [""btc_dont_delete"",true]";
+				init="this call btc_db_fnc_add_veh;"
 				name="btc_veh_13";
 			};
 			id=20;
@@ -2512,7 +2512,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="this setVariable [""btc_dont_delete"",true]";
+				init="this call btc_db_fnc_add_veh;"
 				name="btc_veh_9";
 			};
 			id=158;
@@ -2554,7 +2554,7 @@ class Mission
 			flags=4;
 			class Attributes
 			{
-				init="this setVariable [""btc_dont_delete"",true]";
+				init="this call btc_db_fnc_add_veh;"
 				name="btc_veh_15";
 			};
 			id=160;
@@ -2597,7 +2597,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="this setVariable [""btc_dont_delete"",true]";
+				init="this call btc_db_fnc_add_veh;"
 				name="btc_veh_8";
 			};
 			id=161;
@@ -2639,7 +2639,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="this setVariable [""btc_dont_delete"",true]";
+				init="this call btc_db_fnc_add_veh;"
 				name="btc_veh_4";
 			};
 			id=164;
@@ -2682,7 +2682,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="this setVariable [""btc_dont_delete"",true]";
+				init="this call btc_db_fnc_add_veh;"
 				name="btc_veh_3";
 			};
 			id=165;
@@ -2724,7 +2724,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="this setVariable [""btc_dont_delete"",true]";
+				init="this call btc_db_fnc_add_veh;"
 				name="btc_veh_2";
 			};
 			id=166;
@@ -2767,7 +2767,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="this setVariable [""btc_dont_delete"",true]";
+				init="this call btc_db_fnc_add_veh;"
 				name="btc_veh_6";
 			};
 			id=168;
@@ -2810,7 +2810,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="this setVariable [""btc_dont_delete"",true]";
+				init="this call btc_db_fnc_add_veh;"
 				name="btc_veh_5";
 			};
 			id=169;
@@ -2896,7 +2896,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="this setVariable [""btc_dont_delete"",true]";
+				init="this call btc_db_fnc_add_veh;"
 				name="btc_veh_14";
 			};
 			id=174;
@@ -2958,7 +2958,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="this setVariable [""btc_dont_delete"",true]";
+				init="this call btc_db_fnc_add_veh;"
 				name="btc_veh_10";
 			};
 			id=175;
@@ -3001,7 +3001,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="this setVariable [""btc_dont_delete"",true]";
+				init="this call btc_db_fnc_add_veh;"
 				name="btc_veh_7";
 			};
 			id=178;
@@ -3190,7 +3190,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="this setVariable [""btc_dont_delete"",true]";
+				init="this call btc_db_fnc_add_veh;"
 				name="btc_veh_16";
 			};
 			id=225;

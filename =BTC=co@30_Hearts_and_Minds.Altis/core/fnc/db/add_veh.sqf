@@ -28,7 +28,12 @@ if !(isServer) exitWith {
     _veh remoteExecCall ["btc_db_fnc_add_veh", 2];
 };
 
+if (isNil "btc_vehicles") then {
+    btc_vehicles = [];
+};
 btc_vehicles pushBackUnique _veh;
+_veh setVariable ["btc_dont_delete", true];
+
 _veh addMPEventHandler ["MPKilled", {
     if (isServer) then {
         _this call btc_veh_fnc_killed;
