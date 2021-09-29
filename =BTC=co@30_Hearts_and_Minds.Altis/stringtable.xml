@@ -599,7 +599,7 @@
                 <Chinesesimp>集合点自毁时间:</Chinesesimp>
                 <French>Temps avant l'autodestruction du point de ralliement:</French>
             </Key>
-            <Key ID="STR_BTC_HAM_RESP_TIMEBEFORESHOWMARKER">
+            <Key ID="STR_BTC_HAM_RESP_TICKETSATSTART">
                 <Original>Number of tickets at mission start:</Original>
                 <Chinesesimp>任务开始时的重生票数:</Chinesesimp>
             </Key>
@@ -615,7 +615,7 @@
                 <Original>Not share</Original>
                 <Chinesesimp>不共享</Chinesesimp>
             </Key>
-            <Key ID="STR_BTC_HAM_RESP_TICKETSATSTART">
+            <Key ID="STR_BTC_HAM_RESP_TIMEBEFORESHOWMARKER">
                 <Original>Time before showing marker of dead player's body:</Original>
                 <Chinesesimp>显示阵亡玩家尸体标记前的时间:</Chinesesimp>
             </Key>
