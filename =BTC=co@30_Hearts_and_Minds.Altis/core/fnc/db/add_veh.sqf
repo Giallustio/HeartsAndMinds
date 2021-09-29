@@ -31,7 +31,13 @@ if !(isServer) exitWith {
 if (isNil "btc_vehicles") then {
     btc_vehicles = [];
 };
-btc_vehicles pushBackUnique _veh;
+private _index = btc_vehicles pushBackUnique _veh;
+if (_index isEqualTo -1) exitWith {
+    if (btc_debug || btc_debug_log) then {
+        ["Vehicle added more than once in btc_vehicles", __FILE__, [btc_debug, btc_debug_log, true]] call btc_debug_fnc_message;
+    }; 
+};
+
 _veh setVariable ["btc_dont_delete", true];
 
 _veh addMPEventHandler ["MPKilled", {

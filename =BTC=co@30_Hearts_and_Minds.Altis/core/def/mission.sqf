@@ -290,9 +290,6 @@ if (isServer) then {
     btc_type_antenna = _allClassSorted select {_x isKindOf "OmniDirectionalAntenna_01_base_F"};
     btc_type_solarPanel = _allClassSorted select {_x isKindOf "Land_SolarPanel_04_base_F"};
 
-    //BTC Vehicles in missions.sqm
-    btc_helo = [btc_helo_1];
-
     // The two arrays below are prefixes of buildings and their multiplier.
     // They will multiply the values of btc_rep_malus_building_destroyed and btc_rep_malus_building_damaged,
     // if a building is not present here it will be multiplied by 1.0.

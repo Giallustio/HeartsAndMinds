@@ -8,7 +8,6 @@ Description:
 Parameters:
     _vehicle - Vehicle to add inside the respawn system. [Object]
     _time - Time before respawn. [Number]
-    _helo - Array of respawning vehicles. [Array]
 
 Returns:
     _handle - Value of the MPEventhandle. [Number]
@@ -25,11 +24,19 @@ Author:
 
 params [
     ["_vehicle", objNull, [objNull]],
-    ["_time", 30, [0]],
-    ["_helo", btc_helo, [[]]]
+    ["_time", 30, [0]]
 ];
 
-_helo pushBackUnique _vehicle;
+if (isNil "btc_helo") then {
+    btc_helo = [];
+};
+
+private _index = btc_helo pushBackUnique _vehicle;
+if (_index isEqualTo -1) exitWith {
+    if (btc_debug || btc_debug_log) then {
+        ["Helo added more than once in btc_helo", __FILE__, [btc_debug, btc_debug_log, true]] call btc_debug_fnc_message;
+    }; 
+};
 
 private _type = typeOf _vehicle;
 private _pos = getPosASL _vehicle;

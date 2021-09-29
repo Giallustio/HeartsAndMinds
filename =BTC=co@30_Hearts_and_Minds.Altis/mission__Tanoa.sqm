@@ -2382,6 +2382,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
+				init="[this, 30] call btc_veh_fnc_addRespawn;"
 				name="btc_helo_1";
 			};
 			id=156;
