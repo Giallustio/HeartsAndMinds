@@ -14,7 +14,7 @@ Returns:
 
 Examples:
     (begin example)
-        [cursorObject, 30] call btc_veh_fnc_addRespawn;
+        [cursorObject, 30] remoteExecCall ["btc_veh_fnc_addRespawn", 2];
     (end)
 
 Author:
@@ -30,7 +30,6 @@ params [
 if (isNil "btc_helo") then {
     btc_helo = [];
 };
-
 private _index = btc_helo pushBackUnique _vehicle;
 if (_index isEqualTo -1) exitWith {
     if (btc_debug || btc_debug_log) then {

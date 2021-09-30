@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        [cursorObject] call btc_db_fnc_add_veh;
+        cursorObject remoteExecCall ["btc_db_fnc_add_veh", 2];
     (end)
 
 Author:
@@ -23,10 +23,6 @@ Author:
 params [
     ["_veh", objNull, [objNull]]
 ];
-
-if !(isServer) exitWith {
-    _veh remoteExecCall ["btc_db_fnc_add_veh", 2];
-};
 
 if (isNil "btc_vehicles") then {
     btc_vehicles = [];
