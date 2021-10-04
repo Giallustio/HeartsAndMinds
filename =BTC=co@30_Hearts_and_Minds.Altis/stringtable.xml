@@ -38,6 +38,18 @@
                 <Chinesesimp>后勤点</Chinesesimp>
                 <French>Point logistique</French>
             </Key>
+            <Key ID="STR_BTC_HAM_MSQM_MRK_VEH">
+                <Original>Sync all vehicles to this logic</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_MSQM_MRK_VEHDESC">
+                <Original>Sync all vehicles that should NOT automatically respawn to this logic. If a vehicle SHOULD automatically respawn, sync it to the logic named ""Sync all respawnable vehicles to this logic"".</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_MSQM_MRK_HELO">
+                <Original>Sync all respawnable vehicles to this logic</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_MSQM_MRK_HELODESC">
+                <Original>Sync all vehicles that automatically respawn to this logic. If a vehicle should NOT automatically respawn, sync it to the logic named ""Sync all vehicles to this logic"".</Original>
+            </Key>
         </Container>
     </Package>
     <Package name="Intro">
