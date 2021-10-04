@@ -1,4 +1,4 @@
-version=53;
+version=54;
 class EditorData
 {
 	moveGridStep=1;
@@ -8,7 +8,7 @@ class EditorData
 	toggles=521;
 	class ItemIDProvider
 	{
-		nextID=232;
+		nextID=234;
 	};
 	class MarkerIDProvider
 	{
@@ -23,6 +23,7 @@ class EditorData
 	};
 };
 binarizationWanted=0;
+sourceName="=BTC=co@30_Hearts_and_Minds";
 addons[]=
 {
 	"A3_Ui_F",
@@ -40,6 +41,7 @@ addons[]=
 	"ace_explosives",
 	"A3_Modules_F_Curator_Curator",
 	"A3_Characters_F_Enoch",
+	"A3_Characters_F_Mark",
 	"A3_Air_F_Heli_Heli_Transport_03",
 	"A3_Soft_F_Beta_Truck_01",
 	"A3_Soft_F_Enoch_Truck_01",
@@ -50,13 +52,14 @@ addons[]=
 	"A3_Air_F_Beta_Heli_Attack_01",
 	"A3_Props_F_Enoch_Military_Decontamination",
 	"A3_Signs_F",
-	"A3_Armor_F_Beta_APC_Tracked_01"
+	"A3_Armor_F_Beta_APC_Tracked_01",
+	"A3_Modules_F"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=21;
+		items=23;
 		class Item0
 		{
 			className="A3_Ui_F";
@@ -150,57 +153,71 @@ class AddonsMetaData
 		};
 		class Item13
 		{
+			className="A3_Characters_F_Mark";
+			name="Arma 3 Marksmen - Characters and Clothing";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item14
+		{
 			className="A3_Air_F_Heli";
 			name="Arma 3 Helicopters - Aircraft";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item14
+		class Item15
 		{
 			className="A3_Soft_F_Beta";
 			name="Arma 3 Beta - Unarmored Land Vehicles";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item15
+		class Item16
 		{
 			className="A3_Soft_F_Enoch";
 			name="Arma 3 Contact Platform - Unarmored Land Vehicles";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item16
+		class Item17
 		{
 			className="A3_Soft_F";
 			name="Arma 3 Alpha - Unarmored Land Vehicles";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item17
+		class Item18
 		{
 			className="A3_Armor_F_Beta";
 			name="Arma 3 Beta - Armored Land Vehicles";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item18
+		class Item19
 		{
 			className="A3_Air_F_Beta";
 			name="Arma 3 Beta - Aircraft";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item19
+		class Item20
 		{
 			className="A3_Props_F_Enoch";
 			name="Arma 3 Contact Platform - Decorative and Mission Objects";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item20
+		class Item21
 		{
 			className="A3_Signs_F";
 			name="Arma 3 - Signs";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item22
+		{
+			className="A3_Modules_F";
+			name="Arma 3 Alpha - Scripted Modules";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
@@ -694,7 +711,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=61;
+		items=63;
 		class Item0
 		{
 			dataType="Marker";
@@ -767,7 +784,7 @@ class Mission
 				class Attribute1
 				{
 					property="ace_cargo_size";
-					expression="[_this,_value] call ace_cargo_fnc_setSize;";
+					expression="[_this, _value] call ace_cargo_fnc_setSize;";
 					class Value
 					{
 						class data
@@ -808,7 +825,7 @@ class Mission
 				class Attribute0
 				{
 					property="ace_isRepairFacility";
-					expression="if (_value != (if (isNumber (configFile >> 'CfgVehicles' >> typeOf _this >> ""ace_repair_canRepair"")) then {getNumber (configFile >> 'CfgVehicles' >> typeOf _this >> ""ace_repair_canRepair"")} else {0})) then {_this setVariable ['ace_isRepairFacility', _value, true]}";
+					expression="if (_value != (if (isNumber (configOf _this >> ""ace_repair_canRepair"")) then {getNumber (configOf _this >> ""ace_repair_canRepair"")} else {0})) then {_this setVariable ['ace_isRepairFacility', _value, true]}";
 					class Value
 					{
 						class data
@@ -870,7 +887,7 @@ class Mission
 				class Attribute1
 				{
 					property="ace_cargo_size";
-					expression="[_this,_value] call ace_cargo_fnc_setSize;";
+					expression="[_this, _value] call ace_cargo_fnc_setSize;";
 					class Value
 					{
 						class data
@@ -895,7 +912,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={8213.54,76.510483,10025.129};
-				angles[]={6.2631893,0.89397335,6.2139621};
+				angles[]={6.2631893,5.5869522,6.2139621};
 			};
 			side="Empty";
 			flags=4;
@@ -911,57 +928,51 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={8358.7637,75.2911,10101.058};
-				angles[]={0.078505196,5.6318169,6.2445364};
+				position[]={8358.7637,75.290886,10101.058};
+				angles[]={0.078504913,5.6318107,6.244544};
 			};
 			side="Empty";
 			flags=4;
 			class Attributes
 			{
 				skill=0.60000002;
-				init="this call btc_db_fnc_add_veh;"
 			};
 			id=18;
 			type="B_Truck_01_ammo_F";
-			atlOffset=0.00021362305;
 		};
 		class Item8
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={8353.5449,75.482399,10097.687};
-				angles[]={0.025327841,5.6318169,6.247201};
+				position[]={8353.5449,75.482193,10097.687};
+				angles[]={0.025324726,5.6318107,6.2471962};
 			};
 			side="Empty";
 			flags=4;
 			class Attributes
 			{
 				skill=0.60000002;
-				init="this call btc_db_fnc_add_veh;"
 			};
 			id=19;
 			type="B_Truck_01_fuel_F";
-			atlOffset=0.00020599365;
 		};
 		class Item9
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={8348.8496,76.13974,10094.677};
-				angles[]={6.247201,5.6318169,6.2418756};
+				position[]={8348.8496,76.139534,10094.677};
+				angles[]={6.2471962,5.6318107,6.2418733};
 			};
 			side="Empty";
 			flags=4;
 			class Attributes
 			{
 				skill=0.60000002;
-				init="this call btc_db_fnc_add_veh;"
 			};
 			id=20;
 			type="B_Truck_01_Repair_F";
-			atlOffset=0.00020599365;
 		};
 		class Item10
 		{
@@ -987,7 +998,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={8240.2227,77.387703,10049.465};
-				angles[]={6.2591896,0.89397335,0.017332481};
+				angles[]={6.2591896,5.6124601,0.017332481};
 			};
 			side="Empty";
 			flags=4;
@@ -1097,7 +1108,7 @@ class Mission
 						class Attribute0
 						{
 							property="ace_isEngineer";
-							expression="if !(_value == ([0,1] select (_this getUnitTrait 'engineer'))|| {_value == -1}) then {_this setVariable ['ace_isEngineer', _value, true]}";
+							expression="if !(_value == ([0, 1] select (_this getUnitTrait 'engineer')) || {_value == -1}) then {_this setVariable ['ace_isEngineer', _value, true]}";
 							class Value
 							{
 								class data
@@ -2468,7 +2479,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="[this, 30] call btc_veh_fnc_addRespawn;"
+				init="[this, 30] call btc_veh_fnc_addRespawn;";
 			};
 			id=156;
 			type="B_Heli_Transport_03_F";
@@ -2501,19 +2512,17 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={8309.2617,77.484642,10096.77};
-				angles[]={0.06656827,0.94293159,6.2405434};
+				position[]={8309.2617,77.485207,10096.77};
+				angles[]={0.066566855,0.94293159,6.2405472};
 			};
 			side="Empty";
 			flags=4;
 			class Attributes
 			{
 				skill=0.60000002;
-				init="this call btc_db_fnc_add_veh;"
 			};
 			id=158;
 			type="B_Truck_01_transport_F";
-			atlOffset=-0.0005645752;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -2543,18 +2552,16 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={8299.4082,78.879608,10089.423};
-				angles[]={0.0013372133,0.94247776,6.2325611};
+				position[]={8299.4082,78.879555,10089.423};
+				angles[]={0.0013439035,0.94247776,6.232553};
 			};
 			side="Empty";
 			flags=4;
 			class Attributes
 			{
-				init="this call btc_db_fnc_add_veh;"
 			};
 			id=160;
 			type="B_Truck_01_flatbed_F";
-			atlOffset=5.3405762e-005;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -2592,7 +2599,6 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="this call btc_db_fnc_add_veh;"
 			};
 			id=161;
 			type="B_Truck_01_transport_F";
@@ -2633,7 +2639,6 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="this call btc_db_fnc_add_veh;"
 			};
 			id=164;
 			type="B_LSV_01_armed_F";
@@ -2675,7 +2680,6 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="this call btc_db_fnc_add_veh;"
 			};
 			id=165;
 			type="B_LSV_01_armed_F";
@@ -2716,7 +2720,6 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="this call btc_db_fnc_add_veh;"
 			};
 			id=166;
 			type="B_LSV_01_armed_F";
@@ -2750,7 +2753,7 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={8272.083,80.947021,10065.467};
+				position[]={8272.083,80.946983,10065.467};
 				angles[]={0.17032668,0.95726073,6.2392201};
 			};
 			side="Empty";
@@ -2758,11 +2761,10 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="this call btc_db_fnc_add_veh;"
 			};
 			id=168;
 			type="B_MRAP_01_hmg_F";
-			atlOffset=0.0020370483;
+			atlOffset=0.0019989014;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -2792,7 +2794,7 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={8277.1621,80.921341,10059.937};
+				position[]={8277.1621,80.921516,10059.937};
 				angles[]={0.12205087,0.3543193,6.1297359};
 			};
 			side="Empty";
@@ -2800,11 +2802,9 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="this call btc_db_fnc_add_veh;"
 			};
 			id=169;
 			type="B_MRAP_01_hmg_F";
-			atlOffset=-0.00017547607;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -2842,7 +2842,6 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="this call btc_db_fnc_add_veh;";
 			};
 			id=170;
 			type="B_APC_Wheeled_01_cannon_F";
@@ -2877,14 +2876,13 @@ class Mission
 			class PositionInfo
 			{
 				position[]={8241.4209,79.516441,10048.122};
-				angles[]={6.2591867,5.7956276,0.01733112};
+				angles[]={6.2591867,5.6199079,0.01733112};
 			};
 			side="Empty";
 			flags=4;
 			class Attributes
 			{
 				skill=0.60000002;
-				init="this call btc_db_fnc_add_veh;"
 			};
 			id=174;
 			type="B_Heli_Transport_01_camo_F";
@@ -2937,19 +2935,17 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={8213.6719,78.245605,10023.996};
-				angles[]={6.2631841,5.7956276,6.2139654};
+				position[]={8213.7646,78.413101,10024.694};
+				angles[]={6.2631841,5.5749655,6.2139654};
 			};
 			side="Empty";
 			flags=4;
 			class Attributes
 			{
 				skill=0.60000002;
-				init="this call btc_db_fnc_add_veh;"
 			};
 			id=175;
 			type="B_Heli_Attack_01_dynamicLoadout_F";
-			atlOffset=-0.16000366;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -2987,7 +2983,6 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="this call btc_db_fnc_add_veh;"
 			};
 			id=178;
 			type="B_LSV_01_armed_F";
@@ -3175,7 +3170,6 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="this call btc_db_fnc_add_veh;"
 			};
 			id=225;
 			type="B_Truck_01_flatbed_F";
@@ -3215,7 +3209,6 @@ class Mission
 			flags=4;
 			class Attributes
 			{
-				init="this call btc_db_fnc_add_veh;";
 			};
 			id=230;
 			type="B_Truck_01_medical_F";
@@ -3255,7 +3248,6 @@ class Mission
 			flags=4;
 			class Attributes
 			{
-				init="this call btc_db_fnc_add_veh;";
 			};
 			id=231;
 			type="B_APC_Tracked_01_CRV_F";
@@ -3282,6 +3274,221 @@ class Mission
 					};
 				};
 				nAttributes=1;
+			};
+		};
+		class Item61
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={8393.7305,64.774879,9653.8418};
+			};
+			init="{" \n "    _x call btc_db_fnc_add_veh;" \n "} forEach (synchronizedObjects this);";
+			id=232;
+			type="Logic";
+			atlOffset=64.103569;
+		};
+		class Item62
+		{
+			dataType="Comment";
+			class PositionInfo
+			{
+				position[]={8393.583,48.884048,9654.0801};
+			};
+			title="Sync all vehicles to this logic";
+			description="Sync all vehicles that should NOT automatically respawn to this logic. If a vehicle SHOULD automatically respawn, add ""[this, <RESPAWN_DELAY>] call btc_veh_fnc_addRespawn;"" to its init field and NOT sync it to the logic.";
+			id=233;
+			atlOffset=48.228989;
+		};
+	};
+	class Connections
+	{
+		class LinkIDProvider
+		{
+			nextID=18;
+		};
+		class Links
+		{
+			items=18;
+			class Item0
+			{
+				linkID=0;
+				item0=174;
+				item1=232;
+				class CustomData
+				{
+					type="Sync";
+				};
+			};
+			class Item1
+			{
+				linkID=1;
+				item0=175;
+				item1=232;
+				class CustomData
+				{
+					type="Sync";
+				};
+			};
+			class Item2
+			{
+				linkID=2;
+				item0=168;
+				item1=232;
+				class CustomData
+				{
+					type="Sync";
+				};
+			};
+			class Item3
+			{
+				linkID=3;
+				item0=169;
+				item1=232;
+				class CustomData
+				{
+					type="Sync";
+				};
+			};
+			class Item4
+			{
+				linkID=4;
+				item0=170;
+				item1=232;
+				class CustomData
+				{
+					type="Sync";
+				};
+			};
+			class Item5
+			{
+				linkID=5;
+				item0=178;
+				item1=232;
+				class CustomData
+				{
+					type="Sync";
+				};
+			};
+			class Item6
+			{
+				linkID=6;
+				item0=165;
+				item1=232;
+				class CustomData
+				{
+					type="Sync";
+				};
+			};
+			class Item7
+			{
+				linkID=7;
+				item0=166;
+				item1=232;
+				class CustomData
+				{
+					type="Sync";
+				};
+			};
+			class Item8
+			{
+				linkID=8;
+				item0=158;
+				item1=232;
+				class CustomData
+				{
+					type="Sync";
+				};
+			};
+			class Item9
+			{
+				linkID=9;
+				item0=160;
+				item1=232;
+				class CustomData
+				{
+					type="Sync";
+				};
+			};
+			class Item10
+			{
+				linkID=10;
+				item0=161;
+				item1=232;
+				class CustomData
+				{
+					type="Sync";
+				};
+			};
+			class Item11
+			{
+				linkID=11;
+				item0=18;
+				item1=232;
+				class CustomData
+				{
+					type="Sync";
+				};
+			};
+			class Item12
+			{
+				linkID=12;
+				item0=19;
+				item1=232;
+				class CustomData
+				{
+					type="Sync";
+				};
+			};
+			class Item13
+			{
+				linkID=13;
+				item0=20;
+				item1=232;
+				class CustomData
+				{
+					type="Sync";
+				};
+			};
+			class Item14
+			{
+				linkID=14;
+				item0=225;
+				item1=232;
+				class CustomData
+				{
+					type="Sync";
+				};
+			};
+			class Item15
+			{
+				linkID=15;
+				item0=230;
+				item1=232;
+				class CustomData
+				{
+					type="Sync";
+				};
+			};
+			class Item16
+			{
+				linkID=16;
+				item0=231;
+				item1=232;
+				class CustomData
+				{
+					type="Sync";
+				};
+			};
+			class Item17
+			{
+				linkID=17;
+				item0=164;
+				item1=232;
+				class CustomData
+				{
+					type="Sync";
+				};
 			};
 		};
 	};
