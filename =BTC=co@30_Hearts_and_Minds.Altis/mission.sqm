@@ -3309,7 +3309,7 @@ class Mission
 			{
 				position[]={8374,132,10056};
 			};
-			init="{" \n "    [this, 30] call btc_veh_fnc_addRespawn;" \n "} forEach (synchronizedObjects this);";
+			init="{" \n "    [_x, 30] call btc_veh_fnc_addRespawn;" \n "} forEach (synchronizedObjects this);";
 			id=235;
 			type="Logic";
 			atlOffset=62.830055;
