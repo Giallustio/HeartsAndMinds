@@ -27,7 +27,6 @@ class EditorData
 	};
 };
 binarizationWanted=0;
-sourceName="=BTC=co@30_Hearts_and_Minds";
 addons[]=
 {
 	"A3_Ui_F",
@@ -2483,7 +2482,6 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="[this, 30] call btc_veh_fnc_addRespawn;";
 			};
 			id=156;
 			type="B_Heli_Transport_03_F";
