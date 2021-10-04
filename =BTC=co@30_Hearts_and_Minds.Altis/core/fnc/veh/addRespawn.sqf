@@ -35,7 +35,7 @@ private _type = typeOf _vehicle;
 private _pos = getPosASL _vehicle;
 private _dir = getDir _vehicle;
 private _vector = [vectorDir _vehicle, vectorUp _vehicle];
-private _vehProperties = [_vehicle] call btc_fnc_getVehProperties;
+private _vehProperties = [_vehicle] call btc_veh_fnc_propertiesGet;
 _vehProperties set [5, false];
 
 _vehicle setVariable ["data_respawn", [_type, _pos, _dir, _time, _vector] + _vehProperties];

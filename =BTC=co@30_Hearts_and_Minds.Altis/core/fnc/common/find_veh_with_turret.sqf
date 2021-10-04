@@ -38,8 +38,8 @@ private _magazines = _typeOf_vehicles apply {
     [
         _vehicle,
         [_vehicle] call ace_rearm_fnc_getAllRearmTurrets apply {
-                [_vehicle, _x] call ace_rearm_fnc_getTurretConfigMagazines;
-            }
+            [_vehicle, _x] call ace_rearm_fnc_getTurretConfigMagazines;
+        }
     ]
 };
 

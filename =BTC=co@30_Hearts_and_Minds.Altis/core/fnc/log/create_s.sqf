@@ -28,12 +28,7 @@ params [
     ["_vector", vectorUp btc_create_object_point, [[]]]
 ];
 
-private _obj = objNull;
-if (getText (configFile >> "cfgVehicles" >> _objec_type >> "displayName") isEqualTo "") then {
-    _obj = [btc_create_object_point, _objec_type] call ace_rearm_fnc_createDummy;
-} else {
-    _obj = _objec_type createVehicle [0, 0, 0];
-};
+private _obj = _objec_type createVehicle [0, 0, 0];
 _obj setVectorUp _vector;
 _obj setPosASL _pos;
 
