@@ -6,7 +6,8 @@ If the vehicle is destroyed, a wreck will be left. You will need to tow or lift 
 You can add new vehicle in the mision.sqm :
 - Open the mission in the editor (mission.sqm).
 - Add vehicles.
-- Add in the init field: `this call btc_db_fnc_add_veh;`
+  - Sync it to the module with the comment "Sync all vehicles to this logic"
+  - OR add in the init field: `this call btc_db_fnc_add_veh;`
 - Save.
 
 #### 2: In game
@@ -15,6 +16,7 @@ A garage is available for admin only. Activate the garage through mission parame
 ### 2: Add respawn to vehicle or boat
 
 You can add a new vehicle/boat to respawn system by:
-- Add in the init field: `[this, 30] call btc_veh_fnc_addRespawn;`
+- Sync it to the module with the comment "Sync all respawnable vehicles to this logic"
+- OR add in the init field: `[this, 30] call btc_veh_fnc_addRespawn;`
 
 Note: you can tweak respawn time here by changing 30 (s) to what you want.
