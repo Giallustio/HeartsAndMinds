@@ -30,7 +30,8 @@ Author:
         _x params ["_type", "_magClass", "_inventory",
             ["_isContaminated", false, [false]],
             ["_dogtagDataTaken", [], [[]]],
-            ["_uid", "", [""]]
+            ["_uid", "", [""]],
+            ["_turretMagazines", [], [[]]]
         ];
 
         private _l = createVehicle [_type, getPosATL _obj, [], 0, "CAN_COLLIDE"];
@@ -38,10 +39,6 @@ Author:
         private _isloaded = [_l, _obj, false] call ace_cargo_fnc_loadItem;
         if (btc_debug_log) then {
             [format ["Object loaded: %1 in veh/container %2 IsLoaded: %3", _l, _obj, _isloaded], __FILE__, [false]] call btc_debug_fnc_message;
-        };
-
-        if (_magClass != "") then {
-            _l setVariable ["ace_rearm_magazineClass", _magClass, true]
         };
 
         [_l, _inventory] call btc_log_fnc_inventorySet;
@@ -53,6 +50,10 @@ Author:
 
         [_l, _dogtagDataTaken] call btc_body_fnc_dogtagSet;
         _l setVariable ["btc_UID", _uid];
+
+        if (_turretMagazines isNotEqualTo []) then {
+            [_l, _turretMagazines] call btc_db_fnc_setTurretMagazines;
+        };
     } forEach _cargo;
 
     //set inventory content for weapons, magazines and items

@@ -29,7 +29,7 @@ params [
 ];
 
 if !(player diarySubjectExists "btc_diarylog") then {
-    player createDiarySubject ["btc_diarylog", localize "STR_BTC_HAM_CON_INFO_ASKHIDEOUT_DIARYLOG"];
+    player createDiarySubject ["btc_diarylog", localize "STR_BTC_HAM_CON_INFO_ASKHIDEOUT_DIARYLOG", '\A3\ui_f\data\igui\cfg\simpleTasks\types\talk_ca.paa'];
 };
 
 private _string = if (_is_building_with_the_cache) then {

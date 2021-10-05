@@ -34,7 +34,8 @@ _object_data params [
     ["_isContaminated", false, [false]],
     ["_dogtagDataTaken", [], [[]]],
     ["_uid", "", [""]],
-    ["_flagTexture", "", [""]]
+    ["_flagTexture", "", [""]],
+    ["_turretMagazines", [], [[]]]
 ];
 
 private _obj = createVehicle [_type, ASLToATL _pos, [], 0, "CAN_COLLIDE"];
@@ -48,12 +49,15 @@ if (_isContaminated) then {
         publicVariable "btc_chem_contaminated";
     };
 };
-if (_magClass isNotEqualTo "") then {_obj setVariable ["ace_rearm_magazineClass", _magClass, true]};
 if (unitIsUAV _obj) then {
     createVehicleCrew _obj;
 };
 if (_flagTexture isNotEqualTo "") then {
     _obj forceFlagTexture _flagTexture;
+};
+
+if (_turretMagazines isNotEqualTo []) then {
+    [_obj, _turretMagazines] call btc_db_fnc_setTurretMagazines;
 };
 
 [_obj, _dogtagDataTaken] call btc_body_fnc_dogtagSet;

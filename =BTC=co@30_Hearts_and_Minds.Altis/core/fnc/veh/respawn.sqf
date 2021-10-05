@@ -68,7 +68,7 @@ _data pushBack (_vehicle getVariable ["btc_EDENinventory", []]);
             createVehicleCrew _vehicle;
         };
 
-        [_vehicle, _customization, _isMedicalVehicle, _isRepairVehicle, _fuelSource, _pylons, _isContaminated, _supplyVehicle] call btc_fnc_setVehProperties;
+        [_vehicle, _customization, _isMedicalVehicle, _isRepairVehicle, _fuelSource, _pylons, _isContaminated, _supplyVehicle] call btc_veh_fnc_propertiesSet;
         if (_EDENinventory isNotEqualTo []) then {
             _vehicle setVariable ["btc_EDENinventory", _EDENinventory];
             [_vehicle, _EDENinventory] call btc_log_fnc_inventorySet;
