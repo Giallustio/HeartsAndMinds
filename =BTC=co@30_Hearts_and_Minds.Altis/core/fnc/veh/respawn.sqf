@@ -35,7 +35,7 @@ _data pushBack (_vehicle getVariable ["btc_EDENinventory", []]);
     params [
         "_vehicle",
         "_data",
-        ["_helo", btc_helo, [[]]]
+        ["_helo", btc_veh_respawnable, [[]]]
     ];
 
     {moveOut _x} forEach crew _vehicle;

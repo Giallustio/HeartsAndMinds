@@ -27,13 +27,13 @@ params [
     ["_time", 30, [0]]
 ];
 
-if (isNil "btc_helo") then {
-    btc_helo = [];
+if (isNil "btc_veh_respawnable") then {
+    btc_veh_respawnable = [];
 };
-private _index = btc_helo pushBackUnique _vehicle;
+private _index = btc_veh_respawnable pushBackUnique _vehicle;
 if (_index isEqualTo -1) exitWith {
     if (btc_debug || btc_debug_log) then {
-        ["Helo added more than once in btc_helo", __FILE__, [btc_debug, btc_debug_log, true]] call btc_debug_fnc_message;
+        ["Helo added more than once in btc_veh_respawnable", __FILE__, [btc_debug, btc_debug_log, true]] call btc_debug_fnc_message;
     }; 
 };
 

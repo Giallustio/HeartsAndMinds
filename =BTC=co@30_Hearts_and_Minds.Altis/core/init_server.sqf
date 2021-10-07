@@ -45,7 +45,7 @@ if (btc_p_db_autoRestart > 0) then {
 
 {
     _x setVariable ["btc_EDENinventory", _x call btc_log_fnc_inventoryGet];
-} forEach btc_helo;
+} forEach btc_veh_respawnable;
 
 if (btc_p_side_mission_cycle > 0) then {
     for "_i" from 1 to btc_p_side_mission_cycle do {
