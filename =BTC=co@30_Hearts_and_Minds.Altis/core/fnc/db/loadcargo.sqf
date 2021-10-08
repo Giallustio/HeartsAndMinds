@@ -54,6 +54,10 @@ Author:
         if (_turretMagazines isNotEqualTo []) then {
             [_l, _turretMagazines] call btc_db_fnc_setTurretMagazines;
         };
+
+        if (unitIsUAV _l) then {
+            createVehicleCrew _l;
+        };
     } forEach _cargo;
 
     //set inventory content for weapons, magazines and items
