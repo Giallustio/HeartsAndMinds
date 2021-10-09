@@ -58,11 +58,16 @@ _vehicleSelected attachTo [_tower, _attachTo];
 private _model_rear_tower = ([_tower] call btc_fnc_tow_hitch_points) select 1;
 private _model_front_selected = ([_vehicleSelected] call btc_fnc_tow_hitch_points) select 0;
 private _selected_front_relativeToTower = _tower worldToModel (_vehicleSelected modelToWorld _model_front_selected);
-private _rope1 = ropeCreate [_tower, _model_rear_tower, _tower, _selected_front_relativeToTower vectorAdd [-0.4, 0, 0]];
-private _rope2 = ropeCreate [_tower, _model_rear_tower, _tower, _selected_front_relativeToTower vectorAdd [0.4, 0, 0]];
+private _helper = createVehicle ["CBA_NamespaceDummy", _vehicleSelected modelToWorld _model_front_selected, [], 0, "CAN_COLLIDE"]; // Need helper since 2.06 https://feedback.bistudio.com/T161256
+_helper attachTo [_tower, _selected_front_relativeToTower];
+private _rope1 = ropeCreate [_tower, _model_rear_tower, _helper, [-0.4, 0, 0]];
+private _rope2 = ropeCreate [_tower, _model_rear_tower, _helper, [0.4, 0, 0]];
 
-[_tower, "RopeBreak", {[_this, _thisArgs] call btc_fnc_tow_ropeBreak},
-    [_vehicleSelected, [_rope1, _rope2]]
+[_tower, "RopeBreak", {
+    [_this, _thisArgs] call btc_fnc_tow_ropeBreak;
+    deleteVehicle (_thisArgs select 2)
+},
+    [_vehicleSelected, [_rope1, _rope2], _helper]
 ] remoteExecCall ["CBA_fnc_addBISEventHandler", 2];
 
 [_tower, getMass _tower + (getMass _vehicleSelected)/1.5] remoteExecCall ["setMass", _tower];
