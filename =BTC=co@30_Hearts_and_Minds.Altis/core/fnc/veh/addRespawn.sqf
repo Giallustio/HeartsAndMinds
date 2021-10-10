@@ -27,15 +27,7 @@ params [
     ["_time", 30, [0]]
 ];
 
-if (isNil "btc_veh_respawnable") then {
-    btc_veh_respawnable = [];
-};
-private _index = btc_veh_respawnable pushBackUnique _vehicle;
-if (_index isEqualTo -1) exitWith {
-    if (btc_debug || btc_debug_log) then {
-        ["Helo added more than once in btc_veh_respawnable", __FILE__, [btc_debug, btc_debug_log, true]] call btc_debug_fnc_message;
-    }; 
-};
+btc_veh_respawnable pushBackUnique _vehicle;
 
 private _type = typeOf _vehicle;
 private _pos = getPosASL _vehicle;
@@ -54,6 +46,11 @@ _vehicle addMPEventHandler ["MPKilled", {
 }];
 if (btc_p_respawn_location > 0) then {
     if (fullCrew [_vehicle, "cargo", true] isNotEqualTo []) then {
-        [_vehicle, "Deleted", {_thisArgs call BIS_fnc_removeRespawnPosition}, [btc_player_side, _vehicle] call BIS_fnc_addRespawnPosition] call CBA_fnc_addBISEventHandler;
+        [
+            _vehicle,
+            "Deleted",
+            {_thisArgs call BIS_fnc_removeRespawnPosition},
+            [btc_player_side, _vehicle] call BIS_fnc_addRespawnPosition
+        ] call CBA_fnc_addBISEventHandler;
     };
 };

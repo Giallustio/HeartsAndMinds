@@ -7,7 +7,7 @@ You can add new vehicle in the mision.sqm :
 - Open the mission in the editor (mission.sqm).
 - Add vehicles.
   - Sync it to the module with the comment "Sync all vehicles to this logic"
-  - OR add in the init field: `this call btc_db_fnc_add_veh;`
+  - OR add in the init field: `this call btc_veh_fnc_addVehFromSQM;`
 - Save.
 
 #### 2: In game
@@ -17,6 +17,6 @@ A garage is available for admin only. Activate the garage through mission parame
 
 You can add a new vehicle/boat to respawn system by:
 - Sync it to the module with the comment "Sync all respawnable vehicles to this logic"
-- OR add in the init field: `[this, 30] call btc_veh_fnc_addRespawn;`
+- OR add in the init field: `this call btc_veh_fnc_addRespawnableFromSQM;`
 
-Note: you can tweak respawn time here by changing 30 (s) to what you want.
+Note: you can tweak respawn time here: [/core/init_server.sqf L46](https://github.com/Vdauphin/HeartsAndMinds/blob/master/%3DBTC%3Dco%4030_Hearts_and_Minds.Altis/core/init_server.sqf#L46) by changing 30s to what you want.

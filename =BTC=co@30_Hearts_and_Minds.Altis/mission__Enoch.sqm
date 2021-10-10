@@ -3322,7 +3322,7 @@ class Mission
 			{
 				position[]={7119.1475,319.94186,1145.6367};
 			};
-			init="{" \n "    _x call btc_db_fnc_add_veh;" \n "} forEach (synchronizedObjects this);";
+			init="{" \n "    _x call btc_veh_fnc_addRespawnableFromSQM;" \n "} forEach (synchronizedObjects this);";
 			id=251;
 			type="Logic";
 			atlOffset=57.17511;
@@ -3346,7 +3346,7 @@ class Mission
 			{
 				position[]={7056.625,334.03586,1003.625};
 			};
-			init="{" \n "    [_x, 30] call btc_veh_fnc_addRespawn;" \n "} forEach (synchronizedObjects this);";
+			init="{" \n "    _x call btc_veh_fnc_addRespawnableFromSQM;" \n "} forEach (synchronizedObjects this);";
 			id=253;
 			type="Logic";
 			atlOffset=55.541168;
