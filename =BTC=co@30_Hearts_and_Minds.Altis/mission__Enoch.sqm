@@ -2394,9 +2394,6 @@ class Mission
 			id=156;
 			type="B_Heli_Transport_03_F";
 			atlOffset=-0.31341553;
-			class CustomAttributes
-			{
-			};
 		};
 		class Item37
 		{
@@ -2456,9 +2453,6 @@ class Mission
 			id=175;
 			type="B_Heli_Attack_01_dynamicLoadout_F";
 			atlOffset=-0.012207031;
-			class CustomAttributes
-			{
-			};
 		};
 		class Item39
 		{
@@ -2603,9 +2597,6 @@ class Mission
 			id=232;
 			type="B_T_APC_Wheeled_01_cannon_F";
 			atlOffset=-0.0048522949;
-			class CustomAttributes
-			{
-			};
 		};
 		class Item46
 		{
@@ -2624,9 +2615,6 @@ class Mission
 			id=233;
 			type="B_T_MRAP_01_hmg_F";
 			atlOffset=0.10321045;
-			class CustomAttributes
-			{
-			};
 		};
 		class Item47
 		{
@@ -2645,9 +2633,6 @@ class Mission
 			id=234;
 			type="B_T_MRAP_01_hmg_F";
 			atlOffset=-0.54574585;
-			class CustomAttributes
-			{
-			};
 		};
 		class Item48
 		{
@@ -2666,9 +2651,6 @@ class Mission
 			id=237;
 			type="B_T_LSV_01_armed_F";
 			atlOffset=-0.054992676;
-			class CustomAttributes
-			{
-			};
 		};
 		class Item49
 		{
@@ -2687,9 +2669,6 @@ class Mission
 			id=238;
 			type="B_T_LSV_01_armed_F";
 			atlOffset=0.070037842;
-			class CustomAttributes
-			{
-			};
 		};
 		class Item50
 		{
@@ -2708,9 +2687,6 @@ class Mission
 			id=239;
 			type="B_T_LSV_01_armed_F";
 			atlOffset=-0.12496948;
-			class CustomAttributes
-			{
-			};
 		};
 		class Item51
 		{
@@ -2729,9 +2705,6 @@ class Mission
 			id=240;
 			type="B_T_LSV_01_armed_F";
 			atlOffset=-0.092956543;
-			class CustomAttributes
-			{
-			};
 		};
 		class Item52
 		{
@@ -2750,9 +2723,6 @@ class Mission
 			id=241;
 			type="B_T_Truck_01_transport_F";
 			atlOffset=0.00048828125;
-			class CustomAttributes
-			{
-			};
 		};
 		class Item53
 		{
@@ -2769,9 +2739,6 @@ class Mission
 			};
 			id=243;
 			type="B_T_Truck_01_flatbed_F";
-			class CustomAttributes
-			{
-			};
 		};
 		class Item54
 		{
@@ -2789,9 +2756,6 @@ class Mission
 			};
 			id=244;
 			type="B_T_Truck_01_transport_F";
-			class CustomAttributes
-			{
-			};
 		};
 		class Item55
 		{
@@ -2810,9 +2774,6 @@ class Mission
 			id=245;
 			type="B_T_Truck_01_Repair_F";
 			atlOffset=-0.10299683;
-			class CustomAttributes
-			{
-			};
 		};
 		class Item56
 		{
@@ -2831,9 +2792,6 @@ class Mission
 			id=246;
 			type="B_T_Truck_01_fuel_F";
 			atlOffset=-0.058990479;
-			class CustomAttributes
-			{
-			};
 		};
 		class Item57
 		{
@@ -2852,9 +2810,6 @@ class Mission
 			id=247;
 			type="B_T_Truck_01_ammo_F";
 			atlOffset=-0.050994873;
-			class CustomAttributes
-			{
-			};
 		};
 		class Item58
 		{
@@ -2873,9 +2828,6 @@ class Mission
 			id=248;
 			type="B_T_Truck_01_flatbed_F";
 			atlOffset=-0.050994873;
-			class CustomAttributes
-			{
-			};
 		};
 		class Item59
 		{
@@ -2893,9 +2845,6 @@ class Mission
 			id=249;
 			type="B_T_Truck_01_medical_F";
 			atlOffset=-0.091003418;
-			class CustomAttributes
-			{
-			};
 		};
 		class Item60
 		{
@@ -2913,9 +2862,6 @@ class Mission
 			id=250;
 			type="B_T_APC_Tracked_01_CRV_F";
 			atlOffset=-0.092987061;
-			class CustomAttributes
-			{
-			};
 		};
 		class Item61
 		{
