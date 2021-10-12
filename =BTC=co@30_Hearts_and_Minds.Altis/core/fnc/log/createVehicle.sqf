@@ -57,8 +57,6 @@ if (_EDENinventory isNotEqualTo []) then {
     [_veh, _EDENinventory] call btc_log_fnc_inventorySet;
 };
 
-_veh setVariable ["btc_dont_delete", true];
-
 if (unitIsUAV _veh) then {
     createVehicleCrew _veh;
 };

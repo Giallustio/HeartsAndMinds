@@ -12,7 +12,8 @@ Returns:
 
 Examples:
     (begin example)
-        [cursorObject] call btc_db_fnc_add_veh;
+        cursorObject remoteExecCall ["btc_db_fnc_add_veh", 2];
+        btc_curator addCuratorEditableObjects [btc_vehicles, false];
     (end)
 
 Author:
@@ -24,11 +25,15 @@ params [
     ["_veh", objNull, [objNull]]
 ];
 
-if !(isServer) exitWith {
-    _veh remoteExecCall ["btc_db_fnc_add_veh", 2];
+if (_veh getVariable ["btc_dont_delete", false]) exitWith {
+    if (btc_debug || btc_debug_log) then {
+        ["Vehicle added more than once in btc_vehicles", __FILE__, [btc_debug, btc_debug_log, true]] call btc_debug_fnc_message;
+    }; 
 };
 
+_veh setVariable ["btc_dont_delete", true];
 btc_vehicles pushBackUnique _veh;
+
 _veh addMPEventHandler ["MPKilled", {
     if (isServer) then {
         _this call btc_veh_fnc_killed;
@@ -43,7 +48,12 @@ if (btc_p_respawn_location > 1) then {
             (btc_p_respawn_location isEqualTo 2) && (_veh isKindOf "Air") ||
             btc_p_respawn_location > 2
         ) then {
-            [_veh, "Deleted", {_thisArgs call BIS_fnc_removeRespawnPosition}, [btc_player_side, _veh] call BIS_fnc_addRespawnPosition] call CBA_fnc_addBISEventHandler;
+            [
+                _veh,
+                "Deleted",
+                {_thisArgs call BIS_fnc_removeRespawnPosition},
+                [btc_player_side, _veh] call BIS_fnc_addRespawnPosition
+            ] call CBA_fnc_addBISEventHandler;
         };
     };
 };

@@ -22,7 +22,7 @@ Author:
 
 params [
     ["_veh", objNull, [objNull]],
-    ["_blacklist", btc_helo, [[]]]
+    ["_blacklist", btc_veh_respawnable, [[]]]
 ];
 
 if (_veh in _blacklist) exitWith {

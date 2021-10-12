@@ -69,6 +69,7 @@ if (isServer) then {
     btc_db_fnc_saveObjectStatus = compileScript ["core\fnc\db\saveObjectStatus.sqf"];
     btc_db_fnc_loadCargo = compileScript ["core\fnc\db\loadcargo.sqf"];
     btc_db_fnc_autoRestart = compileScript ["core\fnc\db\autoRestart.sqf"];
+    btc_db_fnc_add_veh = compileScript ["core\fnc\db\add_veh.sqf"];
     btc_db_fnc_setTurretMagazines = compileScript ["core\fnc\db\setTurretMagazines.sqf"];
 
     //DELAY
@@ -211,6 +212,8 @@ if (isServer) then {
     btc_veh_fnc_respawn = compileScript ["core\fnc\veh\respawn.sqf"];
     btc_veh_fnc_propertiesGet = compileScript ["core\fnc\veh\propertiesGet.sqf"];
     btc_veh_fnc_propertiesSet = compileScript ["core\fnc\veh\propertiesSet.sqf"];
+    btc_veh_fnc_addVehFromSQM = compileScript ["core\fnc\veh\addVehFromSQM.sqf"];
+    btc_veh_fnc_addRespawnableFromSQM = compileScript ["core\fnc\veh\addRespawnableFromSQM.sqf"];
 };
 
 /////////////////////CLIENT AND SERVER\\\\\\\\\\\\\\\\\\\\\
@@ -231,9 +234,6 @@ btc_chem_fnc_deconShowerAnimLarge = {(_this select 0) setVariable ["BIN_Shower_S
 
 //DEBUG
 btc_debug_fnc_message = compileScript ["core\fnc\debug\message.sqf"];
-
-//DB
-btc_db_fnc_add_veh = compileScript ["core\fnc\db\add_veh.sqf"];
 
 //EH
 btc_eh_fnc_trackItem = compileScript ["core\fnc\eh\trackItem.sqf"];
