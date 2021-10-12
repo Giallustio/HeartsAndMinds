@@ -792,19 +792,6 @@ class Mission
 						};
 						class Attribute1
 						{
-							property="speaker";
-							expression="_this setspeaker _value;";
-							class Value
-							{
-								class data
-								{
-									singleType="STRING";
-									value="Male02ENG";
-								};
-							};
-						};
-						class Attribute2
-						{
 							property="pitch";
 							expression="_this setpitch _value;";
 							class Value
@@ -816,7 +803,7 @@ class Mission
 								};
 							};
 						};
-						nAttributes=3;
+						nAttributes=2;
 					};
 				};
 			};
@@ -995,19 +982,6 @@ class Mission
 					{
 						class Attribute0
 						{
-							property="speaker";
-							expression="_this setspeaker _value;";
-							class Value
-							{
-								class data
-								{
-									singleType="STRING";
-									value="Male03ENG";
-								};
-							};
-						};
-						class Attribute1
-						{
 							property="pitch";
 							expression="_this setpitch _value;";
 							class Value
@@ -1019,7 +993,7 @@ class Mission
 								};
 							};
 						};
-						nAttributes=2;
+						nAttributes=1;
 					};
 				};
 			};
@@ -1056,19 +1030,6 @@ class Mission
 					{
 						class Attribute0
 						{
-							property="speaker";
-							expression="_this setspeaker _value;";
-							class Value
-							{
-								class data
-								{
-									singleType="STRING";
-									value="Male09ENG";
-								};
-							};
-						};
-						class Attribute1
-						{
 							property="pitch";
 							expression="_this setpitch _value;";
 							class Value
@@ -1080,7 +1041,7 @@ class Mission
 								};
 							};
 						};
-						nAttributes=2;
+						nAttributes=1;
 					};
 				};
 			};
@@ -1116,19 +1077,6 @@ class Mission
 					{
 						class Attribute0
 						{
-							property="speaker";
-							expression="_this setspeaker _value;";
-							class Value
-							{
-								class data
-								{
-									singleType="STRING";
-									value="Male12ENG";
-								};
-							};
-						};
-						class Attribute1
-						{
 							property="pitch";
 							expression="_this setpitch _value;";
 							class Value
@@ -1140,7 +1088,7 @@ class Mission
 								};
 							};
 						};
-						nAttributes=2;
+						nAttributes=1;
 					};
 				};
 			};
@@ -1177,19 +1125,6 @@ class Mission
 					{
 						class Attribute0
 						{
-							property="speaker";
-							expression="_this setspeaker _value;";
-							class Value
-							{
-								class data
-								{
-									singleType="STRING";
-									value="Male09ENG";
-								};
-							};
-						};
-						class Attribute1
-						{
 							property="pitch";
 							expression="_this setpitch _value;";
 							class Value
@@ -1201,7 +1136,7 @@ class Mission
 								};
 							};
 						};
-						nAttributes=2;
+						nAttributes=1;
 					};
 				};
 			};
@@ -1238,19 +1173,6 @@ class Mission
 					{
 						class Attribute0
 						{
-							property="speaker";
-							expression="_this setspeaker _value;";
-							class Value
-							{
-								class data
-								{
-									singleType="STRING";
-									value="Male01ENG";
-								};
-							};
-						};
-						class Attribute1
-						{
 							property="pitch";
 							expression="_this setpitch _value;";
 							class Value
@@ -1262,7 +1184,7 @@ class Mission
 								};
 							};
 						};
-						nAttributes=2;
+						nAttributes=1;
 					};
 				};
 			};
@@ -1298,19 +1220,6 @@ class Mission
 					{
 						class Attribute0
 						{
-							property="speaker";
-							expression="_this setspeaker _value;";
-							class Value
-							{
-								class data
-								{
-									singleType="STRING";
-									value="Male12ENG";
-								};
-							};
-						};
-						class Attribute1
-						{
 							property="pitch";
 							expression="_this setpitch _value;";
 							class Value
@@ -1322,7 +1231,7 @@ class Mission
 								};
 							};
 						};
-						nAttributes=2;
+						nAttributes=1;
 					};
 				};
 			};
@@ -1358,19 +1267,6 @@ class Mission
 					{
 						class Attribute0
 						{
-							property="speaker";
-							expression="_this setspeaker _value;";
-							class Value
-							{
-								class data
-								{
-									singleType="STRING";
-									value="Male11ENG";
-								};
-							};
-						};
-						class Attribute1
-						{
 							property="pitch";
 							expression="_this setpitch _value;";
 							class Value
@@ -1382,7 +1278,7 @@ class Mission
 								};
 							};
 						};
-						nAttributes=2;
+						nAttributes=1;
 					};
 				};
 			};
@@ -1418,19 +1314,6 @@ class Mission
 					{
 						class Attribute0
 						{
-							property="speaker";
-							expression="_this setspeaker _value;";
-							class Value
-							{
-								class data
-								{
-									singleType="STRING";
-									value="Male02ENG";
-								};
-							};
-						};
-						class Attribute1
-						{
 							property="pitch";
 							expression="_this setpitch _value;";
 							class Value
@@ -1442,7 +1325,7 @@ class Mission
 								};
 							};
 						};
-						nAttributes=2;
+						nAttributes=1;
 					};
 				};
 			};
@@ -1479,19 +1362,6 @@ class Mission
 					{
 						class Attribute0
 						{
-							property="speaker";
-							expression="_this setspeaker _value;";
-							class Value
-							{
-								class data
-								{
-									singleType="STRING";
-									value="Male08ENG";
-								};
-							};
-						};
-						class Attribute1
-						{
 							property="pitch";
 							expression="_this setpitch _value;";
 							class Value
@@ -1503,7 +1373,7 @@ class Mission
 								};
 							};
 						};
-						nAttributes=2;
+						nAttributes=1;
 					};
 				};
 			};
@@ -1541,19 +1411,6 @@ class Mission
 					{
 						class Attribute0
 						{
-							property="speaker";
-							expression="_this setspeaker _value;";
-							class Value
-							{
-								class data
-								{
-									singleType="STRING";
-									value="Male08ENG";
-								};
-							};
-						};
-						class Attribute1
-						{
 							property="pitch";
 							expression="_this setpitch _value;";
 							class Value
@@ -1565,7 +1422,7 @@ class Mission
 								};
 							};
 						};
-						nAttributes=2;
+						nAttributes=1;
 					};
 				};
 			};
@@ -1602,19 +1459,6 @@ class Mission
 					{
 						class Attribute0
 						{
-							property="speaker";
-							expression="_this setspeaker _value;";
-							class Value
-							{
-								class data
-								{
-									singleType="STRING";
-									value="Male05ENG";
-								};
-							};
-						};
-						class Attribute1
-						{
 							property="pitch";
 							expression="_this setpitch _value;";
 							class Value
@@ -1626,7 +1470,7 @@ class Mission
 								};
 							};
 						};
-						nAttributes=2;
+						nAttributes=1;
 					};
 				};
 			};
@@ -1662,19 +1506,6 @@ class Mission
 					{
 						class Attribute0
 						{
-							property="speaker";
-							expression="_this setspeaker _value;";
-							class Value
-							{
-								class data
-								{
-									singleType="STRING";
-									value="Male06ENG";
-								};
-							};
-						};
-						class Attribute1
-						{
 							property="pitch";
 							expression="_this setpitch _value;";
 							class Value
@@ -1686,7 +1517,7 @@ class Mission
 								};
 							};
 						};
-						nAttributes=2;
+						nAttributes=1;
 					};
 				};
 			};

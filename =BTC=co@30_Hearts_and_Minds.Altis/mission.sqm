@@ -1311,7 +1311,7 @@ class Mission
 					type="B_soldier_AT_F";
 					class CustomAttributes
 					{
-						class Attribute1
+						class Attribute0
 						{
 							property="pitch";
 							expression="_this setpitch _value;";
@@ -1324,7 +1324,7 @@ class Mission
 								};
 							};
 						};
-						nAttributes=2;
+						nAttributes=1;
 					};
 				};
 			};
