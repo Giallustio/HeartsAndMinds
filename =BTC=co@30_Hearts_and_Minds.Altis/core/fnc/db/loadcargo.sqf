@@ -55,6 +55,10 @@ Author:
             [_l, _turretMagazines] call btc_db_fnc_setTurretMagazines;
         };
 
+        if (_customName isNotEqualTo "") then {
+            _l setVariable ["ace_cargo_customName", _customName, true];
+        };
+
         if (unitIsUAV _l) then {
             createVehicleCrew _l;
         };
