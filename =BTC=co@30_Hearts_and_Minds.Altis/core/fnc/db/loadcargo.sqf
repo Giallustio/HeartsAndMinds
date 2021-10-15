@@ -31,7 +31,8 @@ Author:
             ["_isContaminated", false, [false]],
             ["_dogtagDataTaken", [], [[]]],
             ["_uid", "", [""]],
-            ["_turretMagazines", [], [[]]]
+            ["_turretMagazines", [], [[]]],
+            ["_customName", "", [""]]
         ];
 
         private _l = createVehicle [_type, getPosATL _obj, [], 0, "CAN_COLLIDE"];
