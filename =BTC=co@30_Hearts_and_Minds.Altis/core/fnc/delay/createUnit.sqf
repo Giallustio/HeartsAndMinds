@@ -37,11 +37,6 @@ btc_delay_time = btc_delay_time + 0.2;
         ["_vehicle", objNull, [objNull]]
     ];
 
-    if (isNull _group) exitWith {
-        [format ["isNull _group _this = %1", _this], __FILE__, [btc_debug, btc_debug_log, true]] call btc_debug_fnc_message;
-        btc_delay_time = btc_delay_time - 0.2;
-    };
-
     if !(_pos isEqualType []) then {
         _pos = _pos get "_pos";
     };
