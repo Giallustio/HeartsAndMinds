@@ -27,6 +27,8 @@ Author:
 btc_delay_time = btc_delay_time + 0.2;
 
 [{
+    btc_delay_time = btc_delay_time - 0.2;
+
     params [
         ["_group", grpNull, [grpNull]],
         ["_unit_type", "", [""]],
@@ -49,6 +51,4 @@ btc_delay_time = btc_delay_time + 0.2;
     if (!isNull _vehicle) then {
         _unit moveInAny _vehicle;
     };
-
-    btc_delay_time = btc_delay_time - 0.2;
 }, _this, btc_delay_time - 0.01] call CBA_fnc_waitAndExecute;
