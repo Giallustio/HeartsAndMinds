@@ -116,7 +116,7 @@ for "_i" from 1 to _convoyLength do {
 }, [
     _group, _pos2, -1, "MOVE", "SAFE", "RED", "LIMITED", "COLUMN",
     format ["['%1', 'FAILED'] call BIS_fnc_taskSetState;", _taskID], [0, 0, 0], _radius/2
-], btc_delay_time + _delay] call CBA_fnc_waitAndExecute;
+], _delay] call btc_delay_fnc_waitAndExecute;
 
 [{
     params ["_group", "_taskID", "_trigger"];
@@ -170,7 +170,7 @@ for "_i" from 1 to _convoyLength do {
 }, [
     _group,
     _taskID
-], btc_delay_time + _delay] call CBA_fnc_waitAndExecute;
+], _delay] call btc_delay_fnc_waitAndExecute;
 
 waitUntil {sleep 5; _taskID call BIS_fnc_taskCompleted};
 

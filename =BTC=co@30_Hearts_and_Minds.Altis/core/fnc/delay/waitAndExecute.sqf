@@ -1,0 +1,35 @@
+
+/* ----------------------------------------------------------------------------
+Function: btc_delay_fnc_waitAndExecute
+
+Description:
+    Wait and execute a function with a _delay. Usefull when used after btc_delay_fnc_createVehicle.
+
+Parameters:
+    _parameters - Parameters to the function. [Array]
+    _code - Code to execute. [Code]
+    _delay - Delay of execution. [Number]
+
+Returns:
+
+Examples:
+    (begin example)
+        [] call btc_delay_fnc_waitAndExecute;
+    (end)
+
+Author:
+    Vdauphin
+
+---------------------------------------------------------------------------- */
+
+[{
+    params [
+        ["_code", {}, [{}]],
+        ["_parameter", [], [[]]],
+        ["_delay", 0, [0]]
+    ];
+
+    if (_delay isEqualTo 0) exitWith {_parameters call _code};
+
+    [_code, _parameter, btc_delay_time + _delay] call CBA_fnc_waitAndExecute;
+}, _this, btc_delay_time] call CBA_fnc_waitAndExecute;
