@@ -140,7 +140,8 @@ private _vehiclesNotInCargo = _vehicles select {
 private _vehiclesInCargo = _vehicles - _vehiclesNotInCargo;
 {
     (_x call btc_db_fnc_saveObjectStatus) params ["_type", "_pos", "_dir", "", "_cargo", "_inventory", "_vectorPos", "_isContaminated", "", "",
-        ["_flagTexture", "", [""]]
+        ["_flagTexture", "", [""]],
+        ["_turretMagazines", [], [[]]]
     ];
 
     private _data = [];
@@ -151,11 +152,12 @@ private _vehiclesInCargo = _vehicles - _vehiclesNotInCargo;
     _data pushBack (getAllHitPointsDamage _x);
     _data pushBack _cargo;
     _data pushBack _inventory;
-    _data append ([_x] call btc_fnc_getVehProperties);
+    _data append ([_x] call btc_veh_fnc_propertiesGet);
     _data pushBack (_x getVariable ["btc_EDENinventory", []]);
     _data pushBack _vectorPos;
     _data pushBack []; // ViV
-    _data pushBack _flagTexture; 
+    _data pushBack _flagTexture;
+    _data pushBack _turretMagazines;
 
     private _fakeViV = isVehicleCargo attachedTo _x;
     if (

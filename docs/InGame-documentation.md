@@ -34,7 +34,7 @@ You can still enter by breaking door lock with a wirecutter.
 ### Respawn:
 When a vehicle is destroyed it will not respawn in base, you need to tow, use vehicle in vehicle or lift it back to base and repair it near the logistic point (Interact with the red box). Helicopter wrecks can only be lifted. The Chinook is the only exception, it will respawn after 30 seconds.
 ### Rearm:
-You can also rearm them by spawning the corresponding caliber at logistic point (Interact with the red box, select the vehicle type and caliber). Carry the ammo created and interact with the vehicle to rearm. This only works if rearming is setting on entire magazine or amount based on caliber (not for entire vehicle setting).
+You can also rearm them by using a rearm vehicle or spawning a rearm container.
 
 
 ## Side Mission
