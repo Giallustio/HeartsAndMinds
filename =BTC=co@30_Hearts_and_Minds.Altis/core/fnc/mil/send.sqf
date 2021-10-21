@@ -69,6 +69,6 @@ switch (_typeOf_patrol) do {
     [[_group]] call btc_fnc_set_groupsOwner;
 
     _group deleteGroupWhenEmpty true;
-}, [_group, _typeOf_patrol, _dest, _infFormation], btc_delay_time + _delay] call CBA_fnc_waitAndExecute;
+}, [_group, _typeOf_patrol, _dest, _infFormation], _delay] call btc_delay_fnc_waitAndExecute;
 
 _group
