@@ -31,7 +31,8 @@ Author:
             ["_isContaminated", false, [false]],
             ["_dogtagDataTaken", [], [[]]],
             ["_uid", "", [""]],
-            ["_turretMagazines", [], [[]]]
+            ["_turretMagazines", [], [[]]],
+            ["_customName", "", [""]]
         ];
 
         private _l = createVehicle [_type, getPosATL _obj, [], 0, "CAN_COLLIDE"];
@@ -53,6 +54,10 @@ Author:
 
         if (_turretMagazines isNotEqualTo []) then {
             [_l, _turretMagazines] call btc_db_fnc_setTurretMagazines;
+        };
+
+        if (_customName isNotEqualTo "") then {
+            _l setVariable ["ace_cargo_customName", _customName, true];
         };
 
         if (unitIsUAV _l) then {

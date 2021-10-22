@@ -41,7 +41,8 @@ private _cargo = (_object getVariable ["ace_cargo_loaded", []]) apply {
             _x in btc_chem_contaminated,
             _x call btc_body_fnc_dogtagGet,
             _x getVariable ["btc_UID", ""],
-            magazinesAllTurrets _x
+            magazinesAllTurrets _x,
+            _x getVariable ["ace_cargo_customName", ""]
         ]
     };    
 };
@@ -53,5 +54,6 @@ _data pushBack (_object call btc_body_fnc_dogtagGet);
 _data pushBack (_object getVariable ["btc_UID", ""]);
 _data pushBack (getForcedFlagTexture _object);
 _data pushBack (magazinesAllTurrets _object);
+_data pushBack (_object getVariable ["ace_cargo_customName", ""]);
 
 _data
