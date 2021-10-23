@@ -210,7 +210,7 @@ if (
     {_city inArea [btc_cache_pos, _cachingRadius, _cachingRadius, 0, false]}
 ) then {  
     if (btc_cache_obj getVariable ["btc_cache_unitsSpawned", false]) then {
-        [[_city, _spawningRadius/3], {
+        [[btc_cache_pos, 5], {
             if (count (btc_cache_pos nearEntities ["Man", 30]) > 3) exitWith {};
             _this call btc_city_fnc_send;
         }] call btc_delay_fnc_exec;
