@@ -46,6 +46,7 @@ if (isServer) then {
     btc_city_fnc_cleanUp = compileScript ["core\fnc\city\cleanUp.sqf"];
     btc_city_fnc_trigger_free_condition = compileScript ["core\fnc\city\trigger_free_condition.sqf"];
     btc_city_fnc_getHouses = compileScript ["core\fnc\city\getHouses.sqf"];
+    btc_city_fnc_send = compileScript ["core\fnc\city\send.sqf"];
 
     //CIV
     btc_civ_fnc_add_weapons = compileScript ["core\fnc\civ\add_weapons.sqf"];
