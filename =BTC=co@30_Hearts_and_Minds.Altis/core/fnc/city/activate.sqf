@@ -211,7 +211,7 @@ if (
 ) then {  
     if (btc_cache_obj getVariable ["btc_cache_unitsSpawned", false]) then {
         [[btc_cache_pos, 5], {
-            if (count (btc_cache_pos nearEntities ["Man", 30]) > 3) exitWith {};
+            if (count (btc_cache_pos nearEntities ["Man", 200]) > 6) exitWith {};
             _this call btc_city_fnc_send;
         }] call btc_delay_fnc_exec;
     } else {
