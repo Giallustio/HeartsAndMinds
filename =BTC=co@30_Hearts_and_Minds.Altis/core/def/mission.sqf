@@ -433,20 +433,6 @@ btc_player_side = west;
 btc_respawn_marker = "respawn_west";
 
 //Log
-private _rearming_static =
-[
-    //"Static"
-] + (_allClassSorted select {(
-    _x isKindOf "GMG_TriPod" ||
-    {_x isKindOf "StaticMortar"} ||
-    {_x isKindOf "HMG_01_base_F"} ||
-    {_x isKindOf "AA_01_base_F"} ||
-    {_x isKindOf "AT_01_base_F"}) && {
-        getNumber (_cfgVehicles >> _x >> "side") isEqualTo ([east, west, independent, civilian] find btc_player_side)
-    }
-});
-([_rearming_static] call btc_fnc_find_veh_with_turret) params ["_rearming_static"];
-
 btc_construction_array =
 [
     [
@@ -484,7 +470,17 @@ btc_construction_array =
             "Land_PortableLight_double_F",
             "Land_Pod_Heli_Transport_04_medevac_black_F"
         ],
-        _rearming_static,
+        [
+            //"Static"
+        ] + (_allClassSorted select {(
+            _x isKindOf "GMG_TriPod" ||
+            {_x isKindOf "StaticMortar"} ||
+            {_x isKindOf "HMG_01_base_F"} ||
+            {_x isKindOf "AA_01_base_F"} ||
+            {_x isKindOf "AT_01_base_F"}) && {
+                getNumber (_cfgVehicles >> _x >> "side") isEqualTo ([east, west, independent, civilian] find btc_player_side)
+            }
+        }),
         [
             //"Ammobox"
             "Land_WoodenBox_F"
