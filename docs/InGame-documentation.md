@@ -25,9 +25,9 @@ Electromagnetic field from UAV are safe but EMP have a range of 500m where vehic
 You can detect the origin of electromagnetic field with spectrum devices. The amplitude of the peak depend on the distance and angle between the emiter and the antenna. The maximum range is 1000m.
 
 ## Door locked
-###House doors:
+### House doors:
 Civilian house door can be close. Depend on reputation level, civilian will lock their door and stay inside. Under low, all doors are locked, above normal, all door are unlocked. 
-###Break locked door:
+### Break locked door:
 You can still enter by breaking door lock with a wirecutter.
 
 ## Vehicles
