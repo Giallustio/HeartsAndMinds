@@ -211,14 +211,15 @@ if (
 ) then {  
     if (btc_cache_obj getVariable ["btc_cache_unitsSpawned", false]) then {
         [[btc_cache_pos, 5], {
-            if (count (btc_cache_pos nearEntities ["Man", 200]) > 6) exitWith {};
-            _this call btc_city_fnc_send;
+            if (count (btc_cache_pos nearEntities ["Man", 50]) > 3) exitWith {};
+            [btc_cache_pos, 8, 3, "HOUSE"] call btc_mil_fnc_create_group;
+            [btc_cache_pos, 50, 4, "SENTRY"] call btc_mil_fnc_create_group;
         }] call btc_delay_fnc_exec;
     } else {
         btc_cache_obj setVariable ["btc_cache_unitsSpawned", true];
 
         [btc_cache_pos, 8, 3, "HOUSE"] call btc_mil_fnc_create_group;
-        [btc_cache_pos, 60, 4, "SENTRY"] call btc_mil_fnc_create_group;
+        [btc_cache_pos, 50, 4, "SENTRY"] call btc_mil_fnc_create_group;
         if (btc_p_veh_armed_spawn_more) then {
             [[_city, _spawningRadius/3, 1, btc_type_motorized_armed, 1 + round random 3], btc_city_fnc_send] call btc_delay_fnc_exec;
         };
