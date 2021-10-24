@@ -105,9 +105,10 @@ if (_enemy_side isEqualTo btc_player_side) exitWith {
         }
     );
     _type_motorized_armed append (
-        [_allclass_f select {
-            ((_x isKindOf "Air") || (_x isKindOf "Helicopter") || (_x isKindOf "Tank") || (_x isKindOf "Car"))
-        }] call BIS_fnc_allTurrets isNotEqualTo []
+        _allclass_f select {
+            ((_x isKindOf "Air") || (_x isKindOf "Helicopter") || (_x isKindOf "Tank") || (_x isKindOf "Car")) &&
+            {_x call BIS_fnc_allTurrets isNotEqualTo []}
+        }
     );
 
     //Static
