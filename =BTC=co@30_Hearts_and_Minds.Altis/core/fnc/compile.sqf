@@ -223,7 +223,6 @@ if (isServer) then {
 btc_cache_fnc_hd = compileScript ["core\fnc\cache\hd.sqf"];
 
 //COMMON
-btc_fnc_find_veh_with_turret = compileScript ["core\fnc\common\find_veh_with_turret.sqf"];
 btc_fnc_get_class = compileScript ["core\fnc\common\get_class.sqf"];
 btc_fnc_randomize_pos = compileScript ["core\fnc\common\randomize_pos.sqf"];
 btc_fnc_getHouses = compileScript ["core\fnc\common\getHouses.sqf"];
