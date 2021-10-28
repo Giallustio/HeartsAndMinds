@@ -6,8 +6,8 @@ Description:
     Wait and execute a function with a _delay. Usefull when used after btc_delay_fnc_createVehicle.
 
 Parameters:
-    _parameters - Parameters to the function. [Array]
     _code - Code to execute. [Code]
+    _parameters - Parameters to the function. [Array]
     _delay - Delay of execution. [Number]
 
 Returns:
