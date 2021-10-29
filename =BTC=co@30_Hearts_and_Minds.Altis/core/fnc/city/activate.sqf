@@ -181,7 +181,7 @@ if (btc_p_animals_group_ratio > 0) then {
         });
         for "_i" from 1 to _numberOfAnimalsGroup do {
             private _pos = [_city, _spawningRadius/3] call CBA_fnc_randPos;
-            for "_i" from 1 to (round (random 3)) do {
+            for "_i" from 1 to (round random 3) do {
                 [selectRandom btc_animals_type, [_pos, 6] call CBA_fnc_randPos, nil, _city] call btc_delay_fnc_createAgent;
             };
         };
@@ -354,6 +354,6 @@ if (_numberOfCivVeh < _p_civ_max_veh) then {
     };
 };
 
-if (btc_debug) then {
-    [format ["%1 - %2ms", _id, (serverTime - (_city getVariable ["serverTime", serverTime])) * 1000] , __FILE__, [btc_debug, false, true]] call btc_debug_fnc_message;
+if (btc_debug || btc_debug_log) then {
+    [format ["%1 - %2ms", _id, (serverTime - (_city getVariable ["serverTime", serverTime])) * 1000] , __FILE__, [btc_debug, btc_debug_log, true]] call btc_debug_fnc_message;
 };

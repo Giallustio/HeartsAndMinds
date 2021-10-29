@@ -63,7 +63,7 @@ private _cities_status = [];
     if (btc_debug_log) then {
         [format ["ID %1 - IsOccupied %2", _x getVariable "id", _x getVariable "occupied"], __FILE__, [false]] call btc_debug_fnc_message;
     };
-} forEach (btc_city_all select {!(isNull _x)});
+} forEach (btc_city_all select {!isNull _x});
 profileNamespace setVariable [format ["btc_hm_%1_cities", _name], +_cities_status];
 
 //HIDEOUT

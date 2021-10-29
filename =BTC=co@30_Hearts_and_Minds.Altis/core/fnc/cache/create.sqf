@@ -39,7 +39,7 @@ if (_p_chem) then {
 private _cacheType = selectRandom (btc_cache_type select 0);
 btc_cache_obj = _cacheType createVehicle _cache_pos;
 btc_cache_obj setPosATL _cache_pos;
-btc_cache_obj setDir (random 360);
+btc_cache_obj setDir random 360;
 
 clearWeaponCargoGlobal btc_cache_obj;
 clearItemCargoGlobal btc_cache_obj;

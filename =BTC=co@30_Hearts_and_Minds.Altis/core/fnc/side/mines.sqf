@@ -28,7 +28,7 @@ private _useful = btc_city_all select {
     !isNull _x &&
     !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])
 };
-if (_useful isEqualTo []) then {_useful = + (btc_city_all select {!(isNull _x)});};
+if (_useful isEqualTo []) then {_useful = + (btc_city_all select {!isNull _x});};
 
 private _city = selectRandom _useful;
 private _pos = [getPos _city, 0, _city getVariable ["cachingRadius", 100], 30, false] call btc_fnc_findsafepos;
