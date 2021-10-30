@@ -60,7 +60,7 @@ _player addEventHandler ["WeaponAssembled", {
 }] call CBA_fnc_addEventHandler;
 
 if (btc_p_chem) then {
-     // Add biopsy
+    // Add biopsy
     [missionNamespace, "probingEnded", btc_chem_fnc_biopsy] call BIS_fnc_addScriptedEventHandler;
 
     // Disable BI shower

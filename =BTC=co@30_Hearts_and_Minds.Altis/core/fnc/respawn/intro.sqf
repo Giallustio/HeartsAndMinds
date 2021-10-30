@@ -40,7 +40,7 @@ private _array = [
     ['\A3\ui_f\data\igui\cfg\simpleTasks\types\repair_ca.paa', _color, [_create_object_pos_x, _create_object_pos_y, _create_object_pos_z + 2.5], 0.9, 0.9, 0, "", 1],
     ['\A3\ui_f\data\igui\cfg\simpleTasks\types\rearm_ca.paa', _color, _create_object_pos, 0.9, 0.9, 0, localize "STR_BTC_HAM_INTRO_LOGPOINT", 1] //Rearm/Repair and Objects
 ];
-if (!isNil "btc_veh_respawnable_1") then {
+if !(isNil "btc_veh_respawnable_1") then {
     _array pushBack ['\A3\ui_f\data\map\vehicleicons\iconhelicopter_ca.paa', [0.7, 0, 0,1], getPos btc_veh_respawnable_1, 1.1, 1.1, 0, localize "STR_BTC_HAM_INTRO_ONLYRESPAWN", 1]; //Only Respawnable
 };
 
