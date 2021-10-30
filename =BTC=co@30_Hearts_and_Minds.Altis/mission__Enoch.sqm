@@ -2265,7 +2265,7 @@ class Mission
 			{
 				position[]={7119.1475,319.94186,1145.6367};
 			};
-			init="{" \n "    _x call btc_veh_fnc_addRespawnableFromSQM;" \n "} forEach (synchronizedObjects this);";
+			init="{" \n "    _x call btc_veh_fnc_addVehFromSQM;" \n "} forEach (synchronizedObjects this);";
 			id=251;
 			type="Logic";
 			atlOffset=57.17511;
