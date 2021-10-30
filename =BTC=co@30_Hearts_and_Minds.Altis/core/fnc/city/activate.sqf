@@ -327,14 +327,9 @@ if (_civKilled isNotEqualTo []) then {
 btc_patrol_active = btc_patrol_active - [grpNull];
 private _numberOfPatrol = count btc_patrol_active;
 if (_numberOfPatrol < _p_patrol_max) then {
-    private _offset = 0;
-    private _max = 2;
-    if (_has_en) then {
-        _max = 3;
-        _offset = 3/2;
-    };
-    private _r = (_offset + random _max) min (_p_patrol_max - _numberOfPatrol);
-    for "_i" from 1 to round _r do {
+    private _min = [0, 1] select _has_en;
+    private _addMilPatrol = (_min + random 1) min (_p_patrol_max - _numberOfPatrol);
+    for "_i" from 1 to round _addMilPatrol do {
         private _group = createGroup btc_enemy_side;
         btc_patrol_active pushBack _group;
         _group setVariable ["no_cache", true];
@@ -345,8 +340,8 @@ if (_numberOfPatrol < _p_patrol_max) then {
 btc_civ_veh_active = btc_civ_veh_active - [grpNull];
 private _numberOfCivVeh = count btc_civ_veh_active;
 if (_numberOfCivVeh < _p_civ_max_veh) then {
-    private _r = (3/2 + random 3) min (_p_civ_max_veh - _numberOfCivVeh);
-    for "_i" from 1 to round _r do {
+    private _addCivVeh = (random 2) min (_p_civ_max_veh - _numberOfCivVeh);
+    for "_i" from 1 to round _addCivVeh do {
         private _group = createGroup civilian;
         btc_civ_veh_active pushBack _group;
         _group setVariable ["no_cache", true];
