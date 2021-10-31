@@ -23,7 +23,7 @@ Author:
 
 params [
     ["_tower", objNull, [objNull]],
-    ["_vehicleSelected", btc_tow_vehicleSelected, [objNull]]
+    ["_vehicleSelected", objNull, [objNull]]
 ];
 
 if !([_tower, _vehicleSelected] call btc_tow_fnc_check) exitWith {};
@@ -41,7 +41,7 @@ if (_alreadyLoaded) then {
 };
 if (_canViV_wreck) exitWith {
     [_vehicleSelected, _tower] remoteExecCall ["btc_tow_fnc_ViV", 2];
-    btc_tow_vehicleSelected = objNull;
+    btc_tow_vehicleTowing = objNull;
 };
 
 private _model_selected = (0 boundingBoxReal _vehicleSelected) select 1;
@@ -73,4 +73,4 @@ private _rope2 = ropeCreate [_tower, _model_rear_tower, _helper, [0.4, 0, 0]];
 [_tower, getMass _tower + (getMass _vehicleSelected)/1.5] remoteExecCall ["setMass", _tower];
 _tower setVariable ["btc_towing", _vehicleSelected, true];
 _vehicleSelected setVariable ["btc_towing", _tower, true];
-btc_tow_vehicleSelected = objNull;
+btc_tow_vehicleTowing = objNull;

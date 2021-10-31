@@ -528,7 +528,7 @@ btc_log_def_can_load = _cContainers;
 btc_log_def_placeable = (_cFortifications + _cContainers + _cSupplies + _cFOB + _cDecontamination + _cVehicle_logistic + flatten btc_supplies_mat + btc_type_hazmat) select {
     getNumber(_cfgVehicles >> _x >> "ace_dragging_canCarry") isEqualTo 0
 };
-btc_tow_vehicleSelected = objNull;
+btc_tow_vehicleTowing = objNull;
 btc_log_placing_max_h = 12;
 btc_log_placing = false;
 btc_log_obj_created = [];
