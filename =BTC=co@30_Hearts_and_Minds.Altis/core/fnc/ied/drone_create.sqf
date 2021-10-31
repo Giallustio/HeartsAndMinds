@@ -44,7 +44,7 @@ createVehicleCrew _drone;
 [driver _drone] joinSilent _group;
 _group setVariable ["btc_ied_drone", true];
 
-[_group, _rpos, _area, 4] call CBA_fnc_taskPatrol;
+[[_group, _rpos, _area, 4], CBA_fnc_taskPatrol] call btc_delay_fnc_exec;
 _drone flyInHeight 10;
 
 [driver _drone, _rpos, _area, []] call btc_ied_fnc_droneLoop;
