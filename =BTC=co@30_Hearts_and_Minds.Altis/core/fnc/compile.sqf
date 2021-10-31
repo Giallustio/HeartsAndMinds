@@ -269,6 +269,9 @@ btc_rep_fnc_foodRemoved = compileScript ["core\fnc\rep\foodRemoved.sqf"];
 //ARSENAL
 btc_arsenal_fnc_ammoUsage = compileScript ["core\fnc\arsenal\ammoUsage.sqf"];
 
+//TOW
+btc_tow_fnc_int = compileScript ["core\fnc\tow\int.sqf"];
+
 //VEH
 btc_veh_fnc_init = compileScript ["core\fnc\veh\init.sqf"];
 
