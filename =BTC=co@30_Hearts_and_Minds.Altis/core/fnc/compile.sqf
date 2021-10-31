@@ -239,6 +239,9 @@ btc_debug_fnc_message = compileScript ["core\fnc\debug\message.sqf"];
 //EH
 btc_eh_fnc_trackItem = compileScript ["core\fnc\eh\trackItem.sqf"];
 
+//FLAG
+btc_flag_fnc_int = compileScript ["core\fnc\flag\int.sqf"];
+
 //CIV
 btc_civ_fnc_class = compileScript ["core\fnc\civ\class.sqf"];
 btc_civ_fnc_addWP = compileScript ["core\fnc\civ\addWP.sqf"];
