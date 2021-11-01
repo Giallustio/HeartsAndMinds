@@ -58,7 +58,7 @@ if (_vehicle isKindOf "Air") then {
             _newPos = [_pos, 150] call CBA_fnc_randPos;
         } else {
             _roadBlackList pushBackUnique _nearestRoad;
-            _newPos = getPosASL _nearestRoad;
+            _newPos = _nearestRoad;
         };
         [_group, _newPos, -1, "MOVE", "UNCHANGED", "RED", "UNCHANGED", "NO CHANGE", "", [0, 0, 0], 20] call CBA_fnc_addWaypoint;
     };
