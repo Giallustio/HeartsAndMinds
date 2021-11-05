@@ -33,20 +33,7 @@ switch true do {
     case (_type isKindOf "LandVehicle" || {_type isKindOf "Ship"}) : {
         _type call btc_tow_fnc_int;
 
-        private _action = ["btc_flag_deployVeh", localize "STR_BTC_HAM_ACTION_VEHINIT_DEPLOYFLAG", "\A3\ui_f\data\map\markers\handdrawn\flag_CA.paa", {}, {
-            btc_p_flag > 0 &&
-            {getForcedFlagTexture _target isEqualTo ""} &&
-            {(driver vehicle player) isEqualTo player}
-        }, btc_flag_fnc_deploy] call ace_interact_menu_fnc_createAction;
-        [_type, 1, ["ACE_SelfActions"], _action] call ace_interact_menu_fnc_addActionToClass;
-        _action = ["btc_flag_cutVeh", localize "STR_BTC_HAM_ACTION_VEHINIT_CUTFLAG", "\A3\ui_f\data\map\markers\handdrawn\flag_CA.paa", {
-            _target forceFlagTexture "";
-        }, {
-            btc_p_flag > 0 &&
-            {getForcedFlagTexture _target isNotEqualTo ""} &&
-            {(driver vehicle player) isEqualTo player}
-        }] call ace_interact_menu_fnc_createAction;
-        [_type, 1, ["ACE_SelfActions"], _action] call ace_interact_menu_fnc_addActionToClass;
+        _type call btc_flag_fnc_int;
     };
     case (_type isKindOf "Helicopter") : {
         _type call btc_tow_fnc_int;
@@ -57,20 +44,7 @@ switch true do {
         _action = ["Cut_ropes", localize "STR_ACE_Fastroping_Interaction_cutRopes", "\z\ace\addons\logistics_wirecutter\ui\wirecutter_ca.paa", {[] call btc_lift_fnc_destroyRopes;}, {btc_ropes_deployed && {(driver vehicle player) isEqualTo player}}] call ace_interact_menu_fnc_createAction;
         [_type, 1, ["ACE_SelfActions"], _action] call ace_interact_menu_fnc_addActionToClass;
 
-        private _action = ["btc_flag_deployVeh", localize "STR_BTC_HAM_ACTION_VEHINIT_DEPLOYFLAG", "\A3\ui_f\data\map\markers\handdrawn\flag_CA.paa", {}, {
-            btc_p_flag > 0 &&
-            {getForcedFlagTexture _target isEqualTo ""} &&
-            {(driver vehicle player) isEqualTo player}
-        }, btc_flag_fnc_deploy] call ace_interact_menu_fnc_createAction;
-        [_type, 1, ["ACE_SelfActions"], _action] call ace_interact_menu_fnc_addActionToClass;
-        _action = ["btc_flag_cutVeh", localize "STR_BTC_HAM_ACTION_VEHINIT_CUTFLAG", "\A3\ui_f\data\map\markers\handdrawn\flag_CA.paa", {
-            _target forceFlagTexture "";
-        }, {
-            btc_p_flag > 0 &&
-            {getForcedFlagTexture _target isNotEqualTo ""} &&
-            {(driver vehicle player) isEqualTo player}
-        }] call ace_interact_menu_fnc_createAction;
-        [_type, 1, ["ACE_SelfActions"], _action] call ace_interact_menu_fnc_addActionToClass;
+        _type call btc_flag_fnc_int;
     };
     case (_type isKindOf "Plane") : {
         _type call btc_tow_fnc_int;
