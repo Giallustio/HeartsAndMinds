@@ -97,7 +97,7 @@ if (!(_city getVariable ["initialized", false])) then {
 private _delay = 0;
 if (_data_units isNotEqualTo []) then {
     {
-        _delay = _delay + ([_x, _city] call btc_data_fnc_spawn_group);
+        _delay = _delay + ([_x, _city, _spawningRadius] call btc_data_fnc_spawn_group);
     } forEach _data_units;
 } else {
     // Maximum number of enemy group
@@ -256,7 +256,7 @@ if !(_city getVariable ["has_suicider", false]) then {
         btc_ied_suic_spawned = time;
         _city setVariable ["has_suicider", true];
         if (selectRandom [false, false, btc_p_ied_drone]) then {
-            [[_city, _spawningRadius], btc_ied_fnc_drone_create] call btc_delay_fnc_exec;
+            [[_city, _spawningRadius, getPosATL _city], btc_ied_fnc_drone_create] call btc_delay_fnc_exec;
         } else {
             [[_city, _spawningRadius], btc_ied_fnc_suicider_create] call btc_delay_fnc_exec;
         };
