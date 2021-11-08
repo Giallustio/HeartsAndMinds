@@ -40,6 +40,10 @@ if (_rpos isEqualTo []) then {
 private _group = createGroup [btc_enemy_side, true];
 _group setVariable ["btc_city", _city];
 private _drone = createVehicle ["C_IDAP_UAV_06_antimine_F", _rpos, [], 0, "FLY"];
+[_drone, "Fuel", {
+    params ["_drone", "_hasFuel"];
+    [{_this setFuel 1;}, _drone, random 120] call CBA_fnc_waitAndExecute;
+}] call CBA_fnc_addBISEventHandler;
 createVehicleCrew _drone;
 [driver _drone] joinSilent _group;
 _group setVariable ["btc_ied_drone", true];
