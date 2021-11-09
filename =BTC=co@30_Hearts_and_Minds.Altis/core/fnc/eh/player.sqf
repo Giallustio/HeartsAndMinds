@@ -102,30 +102,28 @@ if (btc_p_respawn_location >= 4) then {
 }] call CBA_fnc_addEventHandler;
 ["btc_inGameUISetEventHandler", {
     params ["_target", "_caller", "_index", "_engineName", "_text", "_priority", "_showWindow", "_hideOnUse", "_shortcut", "_visibleMenu", "_eventName"];
-    if (
-        _index isEqualTo 10
-        {isText(configOf _target >> "UserActions" >> "siren_Start" >> "displayName") isEqualTo _text}
-    ) exitWith {
-        systemChat "siren_Start";
-        btc_int_sirenStart = true;
-        /*[{
-            params ["_arguments", "_idPFH"];
-            _arguments params [
-                ["_obj", controlNull, [controlNull]]
-            ];
 
-            if !(visibleWatch) exitWith {
+    private _userActions = configOf _target >> "UserActions";
+    if (
+        getText (_userActions >> "siren_Start" >> "displayName") isEqualTo _text
+    ) exitWith {
+        _target setVariable ["btc_int_sirenStart", true, true];
+        systemChat "pfd on";
+        [{
+            params ["_arguments", "_idPFH"];
+            _arguments params ["_veh"];
+
+            if !(_veh getVariable "btc_int_sirenStart") exitWith {
+                systemChat "pfd off";
                 [_idPFH] call CBA_fnc_removePerFrameHandler;
             };
-            [1, objNull, btc_int_sirenRadius_orders] call btc_int_fnc_orders;
-        }, 1] call CBA_fnc_addPerFrameHandler;*/
+            [1, objNull, btc_int_sirenRadius, _veh] call btc_int_fnc_orders;
+        }, 0.5, _target] call CBA_fnc_addPerFrameHandler;
     };
     if (
-        _index isEqualTo 11
-        {isText(configOf _target >> "UserActions" >> "siren_stop" >> "displayName") isEqualTo _text}
+        getText (_userActions >> "siren_stop" >> "displayName") isEqualTo _text
     ) exitWith {
-        systemChat "siren_stop";
-        btc_int_isSiren = true;
+        _target setVariable ["btc_int_sirenStart", false, true];
     };
 }] call CBA_fnc_addEventHandler;
-inGameUISetEventHandler ["Action", '["btc_inGameUISetEventHandler", _this] call CBA_fnc_localEvent;'];
+inGameUISetEventHandler ["Action", '["btc_inGameUISetEventHandler", _this] call CBA_fnc_localEvent; false'];
