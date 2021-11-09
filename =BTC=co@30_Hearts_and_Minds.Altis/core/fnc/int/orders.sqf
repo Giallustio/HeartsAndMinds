@@ -23,7 +23,8 @@ Author:
 
 params [
     ["_order", 0, [0]],
-    ["_unit", objNull, [objNull]]
+    ["_unit", objNull, [objNull]],
+    ["_radius", btc_int_radius_orders, [0]]
 ];
 
 private _gesture = ["", "gestureFreeze", "gestureCover", "gestureGo", "gestureGo"] select _order;
@@ -32,7 +33,7 @@ player playActionNow _gesture;
 
 private _pos = getPos player;
 private _dir = getDir player;
-private _units = (_pos nearEntities [["Car", "Civilian_F"] + btc_civ_type_units, btc_int_radius_orders]) apply {driver _x};
+private _units = (_pos nearEntities [["Car", "Civilian_F"] + btc_civ_type_units, _radius]) apply {driver _x};
 
 if (_units isEqualTo []) exitWith {true};
 

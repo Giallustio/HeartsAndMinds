@@ -91,7 +91,41 @@ if (btc_p_respawn_location >= 4) then {
     ["ace_killed", {
         params ["_unit"];
         if (_unit isNotEqualTo player) exitWith {};
-        private _group  = group player;
+        private _group = group player;
         [_group, leader _group] call BIS_fnc_addRespawnPosition;
     }] call CBA_fnc_addEventHandler;
 };
+
+["btc_inGameUISetEventHandler", {
+    params ["_target", "_caller", "_index", "_engineName", "_text", "_priority", "_showWindow", "_hideOnUse", "_shortcut", "_visibleMenu", "_eventName"];
+    systemChat str [_index, _engineName, _text, _eventName];
+}] call CBA_fnc_addEventHandler;
+["btc_inGameUISetEventHandler", {
+    params ["_target", "_caller", "_index", "_engineName", "_text", "_priority", "_showWindow", "_hideOnUse", "_shortcut", "_visibleMenu", "_eventName"];
+    if (
+        _index isEqualTo 10
+        {isText(configOf _target >> "UserActions" >> "siren_Start" >> "displayName") isEqualTo _text}
+    ) exitWith {
+        systemChat "siren_Start";
+        btc_int_sirenStart = true;
+        /*[{
+            params ["_arguments", "_idPFH"];
+            _arguments params [
+                ["_obj", controlNull, [controlNull]]
+            ];
+
+            if !(visibleWatch) exitWith {
+                [_idPFH] call CBA_fnc_removePerFrameHandler;
+            };
+            [1, objNull, btc_int_sirenRadius_orders] call btc_int_fnc_orders;
+        }, 1] call CBA_fnc_addPerFrameHandler;*/
+    };
+    if (
+        _index isEqualTo 11
+        {isText(configOf _target >> "UserActions" >> "siren_stop" >> "displayName") isEqualTo _text}
+    ) exitWith {
+        systemChat "siren_stop";
+        btc_int_isSiren = true;
+    };
+}] call CBA_fnc_addEventHandler;
+inGameUISetEventHandler ["Action", '["btc_inGameUISetEventHandler", _this] call CBA_fnc_localEvent;'];
