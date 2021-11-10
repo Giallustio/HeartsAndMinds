@@ -105,3 +105,7 @@ if (btc_p_respawn_location >= 4) then {
     [_target, _text, ["beacons_start", "beacons_stop"], "btc_int_beaconsStart"] call btc_int_fnc_checkSirenBeacons;
 }] call CBA_fnc_addEventHandler;
 inGameUISetEventHandler ["Action", '["btc_inGameUISetEventHandler", _this] call CBA_fnc_localEvent; false'];
+
+[{!isNull (findDisplay 46)}, {
+    (findDisplay 46) displayAddEventHandler ["MouseButtonDown", btc_int_fnc_horn];
+}] call CBA_fnc_waitUntilAndExecute;
