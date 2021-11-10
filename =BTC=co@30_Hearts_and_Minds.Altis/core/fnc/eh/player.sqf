@@ -97,11 +97,11 @@ if (btc_p_respawn_location >= 4) then {
 };
 
 ["btc_inGameUISetEventHandler", {
-    params ["_target", "_caller", "_index", "_engineName", "_text", "_priority", "_showWindow", "_hideOnUse", "_shortcut", "_visibleMenu", "_eventName"];
-    [_target, _text, ["siren_Start", "siren_stop"] , "btc_int_sirenStart"] call btc_int_fnc_ordersLoop;
+    params ["_target", "", "", "", "_text"];
+    [_target, _text, ["siren_Start", "siren_stop"], "btc_int_sirenStart"] call btc_int_fnc_checkSirenBeacons;
 }] call CBA_fnc_addEventHandler;
 ["btc_inGameUISetEventHandler", {
-    params ["_target", "_caller", "_index", "_engineName", "_text", "_priority", "_showWindow", "_hideOnUse", "_shortcut", "_visibleMenu", "_eventName"];
-    [_target, _text, ["beacons_start", "beacons_stop"] , "btc_int_beaconsStart"] call btc_int_fnc_ordersLoop;
+    params ["_target", "", "", "", "_text"];
+    [_target, _text, ["beacons_start", "beacons_stop"], "btc_int_beaconsStart"] call btc_int_fnc_checkSirenBeacons;
 }] call CBA_fnc_addEventHandler;
 inGameUISetEventHandler ["Action", '["btc_inGameUISetEventHandler", _this] call CBA_fnc_localEvent; false'];
