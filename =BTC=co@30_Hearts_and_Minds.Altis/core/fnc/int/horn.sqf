@@ -11,7 +11,7 @@ Returns:
 
 Examples:
     (begin example)
-        cursorObject call btc_int_fnc_horn;
+        [] call btc_int_fnc_horn;
     (end)
 
 Author:
@@ -19,18 +19,22 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-systemChat str _this;
-if (vehicle player isEqualTo player) exitWith {};
-if (driver vehicle player isNotEqualTo player) exitWith {};
+private _veh = vehicle player;
+if (_veh isEqualTo player) exitWith {};
+if (driver _veh isNotEqualTo player) exitWith {};
 
 params ["_displayOrControl", "_button"];
-
 if (_button isNotEqualTo 0) exitWith {};
 
-systemChat str [_displayOrControl, _button];
+private _weapon = currentWeapon _veh;
+if (
+    _weapon isNotEqualTo "" &&
+    {!(_weapon isKindOf ["CarHorn", configFile >> "CfgWeapons"])}
+) exitWith {};
+
 [
     1,
     objNull,
     btc_int_beaconRadius,
-    vehicle player
+    _veh
 ] call btc_int_fnc_orders;
