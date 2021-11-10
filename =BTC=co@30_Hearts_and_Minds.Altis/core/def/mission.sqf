@@ -402,7 +402,8 @@ btc_ied_deleteOn = -1;
 //Int
 btc_int_ordersRadius = 25;
 btc_int_search_intel_time = 4;
-btc_int_sirenRadius = 50;
+btc_int_sirenRadius = 35;
+btc_int_beaconRadius = 15;
 
 //Info
 btc_info_intel_chance = _info_chance;

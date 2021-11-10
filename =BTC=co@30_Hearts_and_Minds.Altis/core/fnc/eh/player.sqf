@@ -98,32 +98,10 @@ if (btc_p_respawn_location >= 4) then {
 
 ["btc_inGameUISetEventHandler", {
     params ["_target", "_caller", "_index", "_engineName", "_text", "_priority", "_showWindow", "_hideOnUse", "_shortcut", "_visibleMenu", "_eventName"];
-    systemChat str [_index, _engineName, _text, _eventName];
+    [_target, _text, ["siren_Start", "siren_stop"] , "btc_int_sirenStart"] call btc_int_fnc_ordersLoop;
 }] call CBA_fnc_addEventHandler;
 ["btc_inGameUISetEventHandler", {
     params ["_target", "_caller", "_index", "_engineName", "_text", "_priority", "_showWindow", "_hideOnUse", "_shortcut", "_visibleMenu", "_eventName"];
-
-    private _userActions = configOf _target >> "UserActions";
-    if (
-        getText (_userActions >> "siren_Start" >> "displayName") isEqualTo _text
-    ) exitWith {
-        _target setVariable ["btc_int_sirenStart", true, true];
-        systemChat "pfd on";
-        [{
-            params ["_arguments", "_idPFH"];
-            _arguments params ["_veh"];
-
-            if !(_veh getVariable "btc_int_sirenStart") exitWith {
-                systemChat "pfd off";
-                [_idPFH] call CBA_fnc_removePerFrameHandler;
-            };
-            [1, objNull, btc_int_sirenRadius, _veh] call btc_int_fnc_orders;
-        }, 0.5, _target] call CBA_fnc_addPerFrameHandler;
-    };
-    if (
-        getText (_userActions >> "siren_stop" >> "displayName") isEqualTo _text
-    ) exitWith {
-        _target setVariable ["btc_int_sirenStart", false, true];
-    };
+    [_target, _text, ["beacons_start", "beacons_stop"] , "btc_int_beaconsStart"] call btc_int_fnc_ordersLoop;
 }] call CBA_fnc_addEventHandler;
 inGameUISetEventHandler ["Action", '["btc_inGameUISetEventHandler", _this] call CBA_fnc_localEvent; false'];
