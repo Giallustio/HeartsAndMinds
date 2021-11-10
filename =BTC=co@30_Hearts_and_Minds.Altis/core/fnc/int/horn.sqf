@@ -35,6 +35,6 @@ if (
 [
     1,
     objNull,
-    btc_int_beaconRadius,
+    btc_int_hornRadius,
     _veh
 ] call btc_int_fnc_orders;
