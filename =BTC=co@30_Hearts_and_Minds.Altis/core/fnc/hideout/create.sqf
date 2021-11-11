@@ -75,8 +75,8 @@ if (_pos isEqualTo []) then {
     _city = btc_city_all select _id;
 };
 
+_city setVariable ["city_realPos", getPos _city];
 _city setPos _pos;
-_city setVariable ["ho_pos", _pos];
 if (btc_debug) then {deleteMarker format ["loc_%1", _id];};
 deleteVehicle (_city getVariable ["trigger_player_side", objNull]);
 

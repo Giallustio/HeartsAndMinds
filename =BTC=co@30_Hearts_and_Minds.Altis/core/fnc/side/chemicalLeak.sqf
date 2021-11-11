@@ -34,7 +34,7 @@ if (_useful isEqualTo []) then {_useful = + (btc_city_all select {!isNull _x});}
 private _city = selectRandom _useful;
 private _pos = [getPos _city, 0, _city getVariable ["cachingRadius", 100], 30, false] call btc_fnc_findsafepos;
 
-[_taskID, 30, getPos _city, _city getVariable "name"] call btc_task_fnc_create;
+[_taskID, 30, _city, _city getVariable "name"] call btc_task_fnc_create;
 
 private _distance_between_fences = 3;
 private _number_of_fences = 2 * (3 + floor random 2);
