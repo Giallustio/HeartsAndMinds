@@ -20,8 +20,11 @@ Author:
 ---------------------------------------------------------------------------- */
 
 private _veh = vehicle player;
-if (_veh isEqualTo player) exitWith {};
-if (driver _veh isNotEqualTo player) exitWith {};
+if (
+    _veh isEqualTo player ||
+    {driver _veh isNotEqualTo player} ||
+    {time < btc_int_hornDelay + 1}
+) exitWith {};
 
 params ["_displayOrControl", "_button"];
 if (_button isNotEqualTo 0) exitWith {};
@@ -31,7 +34,8 @@ if (
     _weapon isNotEqualTo "" &&
     {!(_weapon isKindOf ["CarHorn", configFile >> "CfgWeapons"])}
 ) exitWith {};
-
+ 
+btc_int_hornDelay = time;
 [
     1,
     objNull,

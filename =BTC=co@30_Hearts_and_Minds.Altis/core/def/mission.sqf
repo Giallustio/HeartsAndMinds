@@ -405,6 +405,7 @@ btc_int_search_intel_time = 4;
 btc_int_sirenRadius = 35;
 btc_int_beaconRadius = 15;
 btc_int_hornRadius = 20;
+btc_int_hornDelay = time;
 
 //Info
 btc_info_intel_chance = _info_chance;
