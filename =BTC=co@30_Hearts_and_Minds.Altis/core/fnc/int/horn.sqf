@@ -21,7 +21,8 @@ Author:
 
 private _veh = vehicle player;
 if (
-    _veh isEqualTo player ||
+    _veh isEqualTo player || 
+    {visibleMap} ||
     {driver _veh isNotEqualTo player} ||
     {time < btc_int_hornDelay + 1}
 ) exitWith {};
