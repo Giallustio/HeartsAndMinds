@@ -35,7 +35,10 @@ params [
     ["_showNotification", true, [true]]
 ];
 
-if (_destination in btc_city_all) then {
+if (
+    _destination isNotEqualTo objNull &&
+    {_destination in btc_city_all}
+) then {
     _destination = _destination getVariable ["city_realPos", getPos _destination];
 };
 [btc_player_side, _task_ids, nil, _destination, ["CREATED", "ASSIGNED" ] select _isCurrent] call BIS_fnc_taskCreate;
