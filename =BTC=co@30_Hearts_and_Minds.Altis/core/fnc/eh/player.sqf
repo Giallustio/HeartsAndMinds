@@ -91,7 +91,21 @@ if (btc_p_respawn_location >= 4) then {
     ["ace_killed", {
         params ["_unit"];
         if (_unit isNotEqualTo player) exitWith {};
-        private _group  = group player;
+        private _group = group player;
         [_group, leader _group] call BIS_fnc_addRespawnPosition;
     }] call CBA_fnc_addEventHandler;
 };
+
+["btc_inGameUISetEventHandler", {
+    params ["_target", "", "", "", "_text"];
+    [_target, _text, ["siren_Start", "siren_stop"], "btc_int_sirenStart"] call btc_int_fnc_checkSirenBeacons;
+}] call CBA_fnc_addEventHandler;
+["btc_inGameUISetEventHandler", {
+    params ["_target", "", "", "", "_text"];
+    [_target, _text, ["beacons_start", "beacons_stop"], "btc_int_beaconsStart"] call btc_int_fnc_checkSirenBeacons;
+}] call CBA_fnc_addEventHandler;
+inGameUISetEventHandler ["Action", '["btc_inGameUISetEventHandler", _this] call CBA_fnc_localEvent; false'];
+
+[{!isNull (findDisplay 46)}, {
+    (findDisplay 46) displayAddEventHandler ["MouseButtonDown", btc_int_fnc_horn];
+}] call CBA_fnc_waitUntilAndExecute;

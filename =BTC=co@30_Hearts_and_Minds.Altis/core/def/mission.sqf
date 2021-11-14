@@ -400,8 +400,12 @@ btc_type_ieds_ace = ["IEDLandBig_F", "IEDLandSmall_F"];
 btc_ied_deleteOn = -1;
 
 //Int
-btc_int_radius_orders = 25;
+btc_int_ordersRadius = 25;
 btc_int_search_intel_time = 4;
+btc_int_sirenRadius = 35;
+btc_int_beaconRadius = 15;
+btc_int_hornRadius = 20;
+btc_int_hornDelay = time;
 
 //Info
 btc_info_intel_chance = _info_chance;
