@@ -56,6 +56,4 @@ if (!alive _veh) exitWith {
     [_taskID, "FAILED"] call BIS_fnc_taskSetState;
 };
 
-15 call btc_rep_fnc_change;
-
 [_taskID, "SUCCEEDED"] call BIS_fnc_taskSetState;

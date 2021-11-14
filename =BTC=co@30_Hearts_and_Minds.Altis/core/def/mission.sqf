@@ -651,6 +651,7 @@ btc_rep_bonus_IEDCleanUp = 10;
 btc_rep_bonus_removeTag = 3;
 btc_rep_bonus_removeTagLetter = 0.5;
 btc_rep_bonus_foodGive = 0.5;
+btc_rep_bonus_wheelChange = 15;
 
 btc_rep_malus_civ_hd = - 2;
 btc_rep_malus_animal_hd = - 1;
@@ -663,6 +664,7 @@ btc_rep_malus_building_damaged = - 2.5;
 btc_rep_malus_building_destroyed = - 5;
 btc_rep_malus_foodRemove = - btc_rep_bonus_foodGive;
 btc_rep_malus_breakDoor = - 2;
+btc_rep_malus_wheelChange = - btc_rep_bonus_wheelChange;
 
 //Skill
 btc_AI_skill = _p_skill;
