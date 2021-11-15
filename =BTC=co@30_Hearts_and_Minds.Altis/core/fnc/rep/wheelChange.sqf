@@ -29,14 +29,15 @@ params [
 ];
 
 if (
-    _object in btc_veh_respawnable ||
+    _damage < 1 ||
+    {_object in btc_veh_respawnable} ||
     {_object in btc_vehicles} ||
     {getNumber(configOf _object >> "side") isNotEqualTo 3}
 ) exitWith {};
 
 private _instigator = nearestObject [_object, btc_player_type];
 [
-    [btc_rep_bonus_wheelChange, btc_rep_malus_wheelChange] select _damage,
+    btc_rep_malus_wheelChange,
     _instigator
 ] call btc_rep_fnc_change;
 
