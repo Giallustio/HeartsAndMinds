@@ -97,6 +97,7 @@ _hideout setVariable ["cap_time", _cap_time];
 _hideout setVariable ["assigned_to", _city];
 
 _hideout addEventHandler ["HandleDamage", btc_hideout_fnc_hd];
+_hideout setVariable ["ace_cookoff_enable", false, true];
 
 private _markers = [];
 {
