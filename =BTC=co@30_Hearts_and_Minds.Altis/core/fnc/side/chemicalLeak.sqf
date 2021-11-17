@@ -140,7 +140,6 @@ _composition_pattern append [
 ];
 
 private _composition_objects = [_pos, random 360, _composition_pattern] call btc_fnc_create_composition;
-btc_chem_decontaminate append (_composition_objects select {_x isKindOf "DeconShower_01_F"});
 
 private _chemical = [];
 for "_i" from 1 to (5 + round random 5) do {
