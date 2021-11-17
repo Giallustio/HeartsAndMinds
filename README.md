@@ -1,7 +1,23 @@
 <p align="center">
+➡️
+<a href="http://vdauphin.github.io/HeartsAndMinds/">
+📖 Documentation</a> |
+<a href="https://github.com/Vdauphin/HeartsAndMinds/discussions">💬 Discussions</a> |
+ <a href="https://www.battlemetrics.com/servers/arma3?q=hearts%2Band%2Bminds&status=online&sort=-players">
+🕹️ Play</a>
+ ⬅️
+</p>
+
+<p align="center">
     <img src="https://data.bistudio.com/assets/img/badges/medal/MWFMP.png" width="85">
     <img src="https://user-images.githubusercontent.com/14364400/120066018-bd52ed80-c074-11eb-87d6-61cdeada32f8.png" width="210">
     <img src="https://data.bistudio.com/assets/img/badges/medal/MWFMP.png" width="85">
+</p>
+
+<p align="center">
+<b>
+Post war anti insurgency dynamic mission with focus on good relations with civilian population.
+</b>
 </p>
 
 <p align="center">
@@ -13,13 +29,30 @@
     </a>
 </p>
 
+______________________________________________
+
+# 🤔 What is this?
+### 📝 Introduction
 Hearts and Minds is a cooperative Military Simulation (MilSim) mission that aims to recreate a post war environment based on an insurgency gameplay.
 CSAT forces retreated from Altis and NATO deployed units and vehicles to help the local population.
 A new formed group, known as "Oplitas", is against the NATO intervention and is ready to fight.
 
-Online [wiki available](http://vdauphin.github.io/HeartsAndMinds/).
+### ✔️ Goal
+Your main task is to defeat the "Oplitas" group and restore peace and order in Altis.
+The militia has an unknown number of hideouts in the island that need to be destroyed.
+They have also ammo caches in various locations, destroy them to weaken its power.
 
-### The mission has a lot of features:
+### 💞 Actions 
+Bad actions cause bad effects.
+Infact there's a reputation system: helping the local population, fighting the "Oplitas", disarming IED will rise your reputation; killing civilians, mutilate alive/dead civilian, firing near civilians for no reason, damaging/destroying buildings, losing vehicles, respawns will decrease your reputation.
+At the beginning you have a very low reputation level, so civilians won't help you revealing important information about Oplitas, they will likely lie instead.
+
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/14364400/28997116-bfcec8a6-7a0d-11e7-911f-b52edb841ae3.png" width="400">
+    <img src="https://user-images.githubusercontent.com/14364400/29193966-d8306378-7e27-11e7-97cb-df76dfc08e53.png" width="400">
+</p>
+
+# ✨ Features:
 
 - **Dedicated server support only**
 - Dynamic battlefield
@@ -57,22 +90,9 @@ Online [wiki available](http://vdauphin.github.io/HeartsAndMinds/).
     - Auto Headless support
 - Something I forgot for sure
 
-
-Your main task is to defeat the "Oplitas" group and restore peace and order in Altis.
-The militia has an unknown number of hideouts in the island that need to be destroyed.
-They have also ammo caches in various locations, destroy them to weaken its power.
-
-Bad actions cause bad effects.
-Infact there's a reputation system: helping the local population, fighting the "Oplitas", disarming IED will rise your reputation; killing civilians, mutilate alive/dead civilian, firing near civilians for no reason, damaging/destroying buildings, losing vehicles, respawns will decrease your reputation.
-At the beginning you have a very low reputation level, so civilians won't help you revealing important information about Oplitas, they will likely lie instead.
-
-<p align="center">
-    <img src="https://user-images.githubusercontent.com/14364400/28997116-bfcec8a6-7a0d-11e7-911f-b52edb841ae3.png" width="400">
-    <img src="https://user-images.githubusercontent.com/14364400/29193966-d8306378-7e27-11e7-97cb-df76dfc08e53.png" width="400">
-</p>
-
-Any support or feedback is always welcome and appreciated!
-
-### Credits:
+# 🪖 Credits:
 - =BTC= clan
 - [Contributors](https://github.com/Vdauphin/HeartsAndMinds/graphs/contributors)
+
+
+Any support or feedback is always welcome and appreciated!
