@@ -157,6 +157,7 @@ if (isServer) then {
     btc_rep_fnc_explosives_defuse = compileScript ["core\fnc\rep\explosives_defuse.sqf"];
     btc_rep_fnc_notify = compileScript ["core\fnc\rep\notify.sqf"];
     btc_rep_fnc_killed = compileScript ["core\fnc\rep\killed.sqf"];
+    btc_rep_fnc_wheelChange = compileScript ["core\fnc\rep\wheelChange.sqf"];
 
     //RESPAWN
     btc_respawn_fnc_addTicket = compileScript ["core\fnc\respawn\addTicket.sqf"];

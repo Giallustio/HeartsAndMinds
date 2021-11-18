@@ -41,6 +41,14 @@ addMissionEventHandler ["BuildingChanged", btc_rep_fnc_buildingchanged];
     }, false] call CBA_fnc_addClassEventHandler;
 } forEach btc_civ_type_veh;
 ["ace_killed", btc_mil_fnc_unit_killed] call CBA_fnc_addEventHandler;
+["ace_repair_setWheelHitPointDamage", {
+    _this remoteExecCall ["btc_rep_fnc_wheelChange", 2];
+}] call CBA_fnc_addEventHandler;
+["ace_disarming_dropItems", btc_rep_fnc_foodRemoved] call CBA_fnc_addEventHandler;
+["btc_respawn_player", {
+    params ["", "_player"];
+    [btc_rep_malus_player_respawn, _player] call btc_rep_fnc_change;
+}] call CBA_fnc_addEventHandler;
 
 addMissionEventHandler ["HandleDisconnect", {
     params ["_headless"];
@@ -87,12 +95,7 @@ if (btc_p_set_skill) then {
         [_this select 0, "HandleDamage", btc_patrol_fnc_disabled] call CBA_fnc_addBISEventHandler;
     }, false] call CBA_fnc_addClassEventHandler;
 } forEach btc_civ_type_veh;
-["ace_tagCreated", btc_tag_fnc_eh] call CBA_fnc_addEventHandler;
-["ace_disarming_dropItems", btc_rep_fnc_foodRemoved] call CBA_fnc_addEventHandler; 
-["btc_respawn_player", {
-    params ["", "_player"];
-    [btc_rep_malus_player_respawn, _player] call btc_rep_fnc_change;
-}] call CBA_fnc_addEventHandler;
+["ace_tagCreated", btc_tag_fnc_eh] call CBA_fnc_addEventHandler; 
 
 if (btc_p_respawn_ticketsAtStart >= 0) then {
     ["btc_respawn_player", {
