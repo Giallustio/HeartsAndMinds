@@ -1,11 +1,11 @@
 <p align="center">
-➡️
+:arrow_right:
 <a href="http://vdauphin.github.io/HeartsAndMinds/">
-📖 Documentation</a> |
-<a href="https://github.com/Vdauphin/HeartsAndMinds/discussions">💬 Discussions</a> |
+:book: Documentation</a> |
+<a href="https://github.com/Vdauphin/HeartsAndMinds/discussions">:speech_balloon: Discussions</a> |
  <a href="https://www.battlemetrics.com/servers/arma3?q=hearts%2Band%2Bminds&status=online&sort=-players">
-🕹️ Play</a>
- ⬅️
+:video_game: Play</a>
+ :arrow_left:
 </p>
 
 <p align="center">
@@ -37,12 +37,12 @@ Hearts and Minds is a cooperative Military Simulation (MilSim) mission that aims
 CSAT forces retreated from Altis and NATO deployed units and vehicles to help the local population.
 A new formed group, known as "Oplitas", is against the NATO intervention and is ready to fight.
 
-### ✔️ Goal
+### :white_check_mark: Goal
 Your main task is to defeat the "Oplitas" group and restore peace and order in Altis.
 The militia has an unknown number of hideouts in the island that need to be destroyed.
 They have also ammo caches in various locations, destroy them to weaken its power.
 
-### 💞 Actions 
+### :revolving_hearts: Actions 
 Bad actions cause bad effects.
 Infact there's a reputation system: helping the local population, fighting the "Oplitas", disarming IED will rise your reputation; killing civilians, mutilate alive/dead civilian, firing near civilians for no reason, damaging/destroying buildings, losing vehicles, respawns will decrease your reputation.
 At the beginning you have a very low reputation level, so civilians won't help you revealing important information about Oplitas, they will likely lie instead.
