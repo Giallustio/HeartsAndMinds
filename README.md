@@ -32,7 +32,7 @@ Post war anti insurgency dynamic mission with focus on good relations with civil
 ______________________________________________
 
 # 🤔 What is this?
-### 📝 Introduction
+### :memo: Introduction
 Hearts and Minds is a cooperative Military Simulation (MilSim) mission that aims to recreate a post war environment based on an insurgency gameplay.
 CSAT forces retreated from Altis and NATO deployed units and vehicles to help the local population.
 A new formed group, known as "Oplitas", is against the NATO intervention and is ready to fight.
@@ -52,7 +52,7 @@ At the beginning you have a very low reputation level, so civilians won't help y
     <img src="https://user-images.githubusercontent.com/14364400/29193966-d8306378-7e27-11e7-97cb-df76dfc08e53.png" width="400">
 </p>
 
-# ✨ Features:
+# :sparkles: Features:
 
 - **Dedicated server support only**
 - Dynamic battlefield
@@ -90,9 +90,8 @@ At the beginning you have a very low reputation level, so civilians won't help y
     - Auto Headless support
 - Something I forgot for sure
 
-# 🪖 Credits:
+# :clap: Credits:
 - =BTC= clan
 - [Contributors](https://github.com/Vdauphin/HeartsAndMinds/graphs/contributors)
-
 
 Any support or feedback is always welcome and appreciated!
