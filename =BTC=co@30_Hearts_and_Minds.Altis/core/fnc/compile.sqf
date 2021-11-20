@@ -5,6 +5,7 @@ if (isServer) then {
     btc_body_fnc_createMarker = compileScript ["core\fnc\body\createMarker.sqf"];
     btc_body_fnc_dogtagGet = compileScript ["core\fnc\body\dogtagGet.sqf"];
     btc_body_fnc_dogtagSet = compileScript ["core\fnc\body\dogtagSet.sqf"];
+    btc_body_fnc_setBodyBag = compileScript ["core\fnc\body\setBodyBag.sqf"];
 
     //CACHE
     btc_cache_fnc_find_pos = compileScript ["core\fnc\cache\find_pos.sqf"];
@@ -161,6 +162,8 @@ if (isServer) then {
 
     //RESPAWN
     btc_respawn_fnc_addTicket = compileScript ["core\fnc\respawn\addTicket.sqf"];
+    btc_respawn_fnc_playerConnected = compileScript ["core\fnc\respawn\playerConnected.sqf"];
+    btc_respawn_fnc_player = compileScript ["core\fnc\respawn\player.sqf"];
 
     //SIDE
     btc_side_fnc_create = compileScript ["core\fnc\side\create.sqf"];
