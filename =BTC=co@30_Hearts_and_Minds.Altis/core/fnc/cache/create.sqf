@@ -8,7 +8,7 @@ Description:
 Parameters:
     _cache_pos - Position of the cache. [Array]
     _p_chem - Create a chemical cache. [Boolean]
-    _probilityNotChemical - Probability to not create a chemical cache. [Number]
+    _probabilityNotChemical - Probability to not create a chemical cache. [Number]
 
 Returns:
 
@@ -29,12 +29,12 @@ Author:
 params [
     ["_cache_pos", btc_cache_pos, [[]]],
     ["_p_chem", btc_p_chem, [true]],
-    ["_probilityNotChemical", 0.7, [0]]
+    ["_probabilityNotChemical", 0.7, [0]]
 ];
 
 private _isChem = false;
 if (_p_chem) then {
-    _isChem = random 1 > _probilityNotChemical;
+    _isChem = random 1 > _probabilityNotChemical;
 };
 private _cacheType = selectRandom (btc_cache_type select 0);
 btc_cache_obj = _cacheType createVehicle _cache_pos;
@@ -73,7 +73,6 @@ if (btc_debug_log) then {
 
 if (btc_debug) then {
     [format ["in %1", _cache_pos], __FILE__, [btc_debug, false]] call btc_debug_fnc_message;
-    //Marker
     private _marker = createMarker [format ["%1", _cache_pos], _cache_pos];
     _marker setMarkerType "mil_unknown";
     _marker setMarkerText format ["Cache %1", btc_cache_n];
