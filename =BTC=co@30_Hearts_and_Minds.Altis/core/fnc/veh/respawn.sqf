@@ -38,8 +38,8 @@ _data pushBack (_vehicle getVariable ["btc_EDENinventory", []]);
         ["_helo", btc_veh_respawnable, [[]]]
     ];
 
-    {moveOut _x} forEach crew _vehicle;
-    deleteVehicle _vehicle;
+    crew _vehicle call btc_fnc_moveOut;
+    [{crew _this isEqualTo []}, CBA_fnc_deleteEntity, _vehicle] call CBA_fnc_waitUntilAndExecute;
     _helo deleteAt (_helo find _vehicle);
 
     [{
