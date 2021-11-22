@@ -51,7 +51,10 @@ if ((getVehicleCargo _veh) isNotEqualTo []) then {
 {
     _x call btc_body_fnc_bagRecover_s;
 } forEach crew _veh;
-deleteVehicle _veh;
+
+[{
+    deleteVehicle _this;
+}, _veh] call CBA_fnc_execNextFrame;
 
 private _serialisedVeh = [_type, [_x, _y, 0.5 + _z], _dir] + _vehProperties + [_EDENinventory];
 [btc_log_fnc_createVehicle, _serialisedVeh, 1] call CBA_fnc_waitAndExecute;
