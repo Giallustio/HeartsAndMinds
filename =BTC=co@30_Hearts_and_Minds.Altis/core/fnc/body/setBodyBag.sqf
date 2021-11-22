@@ -21,8 +21,9 @@ Author:
 
 params ["_patient", "_bodyBag"];
 
+if (_patient getVariable ["btc_UID", ""] isEqualTo "") exitWith {};
+
 deleteMarker (_patient getVariable ["btc_body_deadMarker", ""]);
-if (_patient getVariable ["btc_UID", ""] isNotEqualTo "") then {
-    _bodyBag setVariable ["btc_UID", _patient getVariable ["btc_UID", ""]];
-};
+_bodyBag setVariable ["btc_UID", _patient getVariable ["btc_UID", ""]];
+
 [_bodyBag] call btc_log_fnc_init;

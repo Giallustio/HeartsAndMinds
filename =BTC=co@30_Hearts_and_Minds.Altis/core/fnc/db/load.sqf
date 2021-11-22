@@ -222,7 +222,7 @@ if (btc_p_respawn_ticketsAtStart >= 0) then {
     private _deadBodyPlayers = +(profileNamespace getVariable [format ["btc_hm_%1_deadBodyPlayers", _name], []]);
     private _group = createGroup btc_player_side;
     btc_body_deadPlayers  = _deadBodyPlayers apply {
-        _x params ["_type", "_pos", "_dir", "_loadout", "_dogtag", "", "_isContaminated", "",
+        _x params ["_type", "_pos", "_dir", "_loadout", "_dogtag", "_isContaminated",
             ["_flagTexture", "", [""]]
         ];
         private _body = _group createUnit [_type, ASLToAGL _pos, [], 0, "CAN_COLLIDE"];

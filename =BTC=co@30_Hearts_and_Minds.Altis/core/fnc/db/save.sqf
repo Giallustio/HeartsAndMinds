@@ -139,7 +139,9 @@ private _vehiclesNotInCargo = _vehicles select {
 };
 private _vehiclesInCargo = _vehicles - _vehiclesNotInCargo;
 {
-    (_x call btc_db_fnc_saveObjectStatus) params ["_type", "_pos", "_dir", "", "_cargo", "_inventory", "_vectorPos", "_isContaminated", "", "",
+    (_x call btc_db_fnc_saveObjectStatus) params [
+        "_type", "_pos", "_dir", "", "_cargo",
+        "_inventory", "_vectorPos", "_isContaminated", "",
         ["_flagTexture", "", [""]],
         ["_turretMagazines", [], [[]]]
     ];
@@ -225,9 +227,7 @@ if (btc_p_respawn_ticketsAtStart >= 0) then {
         getDir _x,
         getUnitLoadout _x,
         _x call btc_body_fnc_dogtagGet,
-        nil,
         _x in btc_chem_contaminated,
-        nil,
         getForcedFlagTexture _x
     ]};
     profileNamespace setVariable [format ["btc_hm_%1_deadBodyPlayers", _name], +_deadBodyPlayers];
