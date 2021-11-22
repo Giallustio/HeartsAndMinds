@@ -22,8 +22,7 @@ Author:
 params ["_patient", "_bodyBag"];
 
 deleteMarker (_patient getVariable ["btc_body_deadMarker", ""]);
-if (_patient getVariable ["btc_dont_delete", false]) then {
-    _bodyBag setVariable ["btc_isDeadPlayer", true];
+if (_patient getVariable ["btc_UID", ""] isNotEqualTo "") then {
     _bodyBag setVariable ["btc_UID", _patient getVariable ["btc_UID", ""]];
 };
 [_bodyBag] call btc_log_fnc_init;

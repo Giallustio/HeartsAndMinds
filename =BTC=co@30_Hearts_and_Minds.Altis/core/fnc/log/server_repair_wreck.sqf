@@ -48,7 +48,10 @@ if ((getVehicleCargo _veh) isNotEqualTo []) then {
     _veh setVehicleCargo objNull;
 };
 
-crew _veh call btc_fnc_moveOut;
-[{crew _this isEqualTo []}, CBA_fnc_deleteEntity, _veh] call CBA_fnc_waitUntilAndExecute;
+{
+    _x call btc_body_fnc_bagRecover_s;
+} forEach crew _veh;
+deleteVehicle _veh;
 
-[btc_log_fnc_createVehicle, [_type, [_x, _y, 0.5 + _z], _dir] + _vehProperties + [_EDENinventory], 1] call CBA_fnc_waitAndExecute;
+private _serialisedVeh = [_type, [_x, _y, 0.5 + _z], _dir] + _vehProperties + [_EDENinventory];
+[btc_log_fnc_createVehicle, _serialisedVeh, 1] call CBA_fnc_waitAndExecute;

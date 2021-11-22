@@ -224,10 +224,10 @@ if (btc_p_respawn_ticketsAtStart >= 0) then {
         getPosASL _x,
         getDir _x,
         getUnitLoadout _x,
-        _x call ace_dogtags_fnc_getDogtagData,
-        !isNull (_x getVariable ["ace_dogtags_dogtagTaken", objNull]),
+        _x call btc_body_fnc_dogtagGet,
+        nil,
         _x in btc_chem_contaminated,
-        _x getVariable ["btc_UID", ""],
+        nil,
         getForcedFlagTexture _x
     ]};
     profileNamespace setVariable [format ["btc_hm_%1_deadBodyPlayers", _name], +_deadBodyPlayers];

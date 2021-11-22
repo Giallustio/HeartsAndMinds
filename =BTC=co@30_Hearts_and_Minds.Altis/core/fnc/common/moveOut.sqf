@@ -23,4 +23,4 @@ Author:
 if (_this isEqualTo []) exitWith {};
 
 moveOut (_this deleteAt 0);
-[btc_fnc_mouveOut, _this] call CBA_fnc_execNextFrame;
+[btc_fnc_moveOut, _this] call CBA_fnc_execNextFrame;
