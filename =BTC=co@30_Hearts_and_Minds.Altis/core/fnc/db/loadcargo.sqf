@@ -27,10 +27,9 @@ Author:
 
     //handle cargo
     {
-        _x params ["_type", "_magClass", "_inventory",
+        _x params ["_type", "", "_inventory",
             ["_isContaminated", false, [false]],
             ["_dogtagDataTaken", [], [[]]],
-            ["_uid", "", [""]],
             ["_turretMagazines", [], [[]]],
             ["_customName", "", [""]]
         ];
@@ -50,7 +49,6 @@ Author:
         };
 
         [_l, _dogtagDataTaken] call btc_body_fnc_dogtagSet;
-        _l setVariable ["btc_UID", _uid];
 
         if (_turretMagazines isNotEqualTo []) then {
             [_l, _turretMagazines] call btc_db_fnc_setTurretMagazines;
