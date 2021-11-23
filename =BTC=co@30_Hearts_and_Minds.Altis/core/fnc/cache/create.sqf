@@ -16,7 +16,7 @@ Examples:
     (begin example)
         [] call {
             for [{_i=1},{_i<=360},{_i=_i+10}] do {
-                [player getpos [10, _i], true, 0.7] call btc_fnc_cache_create;
+                [(allPlayers#0) getpos [10, _i], true, 0.7] call btc_fnc_cache_create;
             };
         };
     (end)
