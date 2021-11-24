@@ -35,5 +35,7 @@ btc_delay_time = btc_delay_time + 0.1;
         ["_city", objNull, [objNull]]
     ];
 
-    (createAgent [_agentType, _pos, [], 0, _special]) setVariable ["btc_city", _city];
-}, _this, btc_delay_time - 0.01] call CBA_fnc_waitAndExecute;
+    private _agent = createAgent [_agentType, _pos, [], 0, _special];
+    _agent setVariable ["btc_city", _city];
+    _agent setDir random 360; // https://feedback.bistudio.com/T155634
+}, _this, btc_delay_createUnit - 0.01] call CBA_fnc_waitAndExecute;
