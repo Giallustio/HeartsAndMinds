@@ -42,7 +42,10 @@ if (
         localize "STR_ACE_Towing_displayName",
         "",
         {btc_tow_vehicleTowing = _target; (localize "STR_BTC_HAM_TOW_HOOK") call CBA_fnc_notify;},
-        {isNull (_target getVariable ["btc_towing", objNull]);}
+        {
+            isNull (_target getVariable ["btc_towing", objNull]) &&
+            alive _target
+        }
     ] call ace_interact_menu_fnc_createAction;
     [_type, 0, ["ACE_MainActions", "Logistic"], _action] call ace_interact_menu_fnc_addActionToClass;
 };
