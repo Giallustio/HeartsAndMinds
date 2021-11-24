@@ -14,9 +14,9 @@ Returns:
 
 Examples:
     (begin example)
-        [] spawn {
+        [] call {
             for [{_i=1},{_i<=360},{_i=_i+10}] do {
-                [player getpos [10, _i], true, 0.7] call btc_fnc_cache_create;
+                [(allPlayers#0) getpos [10, _i], true, 0.7] call btc_fnc_cache_create;
             };
         };
     (end)
@@ -52,18 +52,18 @@ if (_isChem) then {
     btc_chem_contaminated pushBack btc_cache_obj;
     publicVariable "btc_chem_contaminated";
     private _holder = createSimpleObject [selectRandom (btc_cache_type select 1), _cache_pos];
-    [btc_cache_obj, _holder, "TOP", -0.47] call btc_fnc_cache_create_attachto;
+    [btc_cache_obj, _holder, "TOP", 0.1] call btc_fnc_cache_create_attachto;
+    _holder setVectorDirAndUp [[0, 1, 0], [0, 0, 1]];
 } else {
     private _pos_type_array = ["TOP", "FRONT", "CORNER_L", "CORNER_R"];
 
     for "_i" from 1 to (1 + round random 3) do {
-        private _holder = createVehicle ["groundWeaponHolder", _cache_pos, [], 0, "can_collide"];
-        _holder addWeaponCargoGlobal [selectRandom btc_cache_weapons_type, 1];
-        _holder setVariable ["no_cache", true];
+        private _holder = createSimpleObject [selectRandom btc_cache_weapons_type, _cache_pos];
 
         private _pos_type = selectRandom _pos_type_array;
         _pos_type_array = _pos_type_array - [_pos_type];
         [btc_cache_obj, _holder, _pos_type] call btc_fnc_cache_create_attachto;
+        _holder hideSelection ["zasleh", true];
     };
 };
 

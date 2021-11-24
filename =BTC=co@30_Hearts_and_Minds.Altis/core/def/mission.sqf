@@ -190,7 +190,7 @@ if (isServer) then {
         {!(getArray (_x >> 'magazines') isEqualTo [])} &&
         {getNumber (_x >> 'scope') isEqualTo 2}
     };
-    btc_cache_weapons_type = _weapons_usefull apply {configName _x};
+    btc_cache_weapons_type = _weapons_usefull apply {(toLower getText (_x >> "model")) select [1]};
 
     //Hideout classname
     btc_type_campfire = ["MetalBarrel_burning_F"] + (_allClassSorted select {_x isKindOf "Land_Campfire_F"});
