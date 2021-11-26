@@ -41,7 +41,8 @@ private _explosive = getNumber(configFile >> "cfgAmmo" >> _ammo >> "explosive") 
 if (
     _explosive &&
     {!(_hideout getVariable ["btc_fnc_mil_hd_hideout_fired", false])} &&
-    {_damage > 0.6}
+    {_damage > 0.6} &&
+    {isPlayer [_instigator]}
 ) then {
     _hideout setVariable ["btc_fnc_mil_hd_hideout_fired", true];
 
