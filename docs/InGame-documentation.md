@@ -1,7 +1,7 @@
 # InGame Documentation
 
 ## Headless & Database
-This mission automatically uses one Headless client when available.
+This mission support ACE Headless.
 
 This mission has a database system. Enemy units, towns, hideouts, cache, objects created or static weapons assembled by players or Zeus, vehicles, vehicle in vehicle, tag, players markers on global channel are saved. All admin can save mission progress at any time with his self interaction key.
 

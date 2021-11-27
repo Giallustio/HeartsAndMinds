@@ -66,8 +66,6 @@ _group setVariable ["acex_headless_blacklist", true];
         };
     };
 
-
-    [[_group]] call btc_fnc_set_groupsOwner;
     _group setVariable ["acex_headless_blacklist", false];
     _group deleteGroupWhenEmpty true;
 }, [_group, _typeOf_patrol, _dest, _infFormation], _delay] call btc_delay_fnc_waitAndExecute;

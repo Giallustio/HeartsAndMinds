@@ -87,7 +87,7 @@ At the beginning you have a very low reputation level, so civilians won't help y
     - More than 291 enemies and 27 civilians factions available
     - Full saving Database ([even player markers](http://vdauphin.github.io/HeartsAndMinds/InGame-documentation#headless--database))
     - Easy map change (See [here](http://vdauphin.github.io/HeartsAndMinds/Change-MAP-of-Hearts-and-Minds))
-    - Auto Headless support
+    - ACE Headless support
 - Something I forgot for sure
 
 # :clap: Credits:

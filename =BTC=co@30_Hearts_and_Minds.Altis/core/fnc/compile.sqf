@@ -25,7 +25,6 @@ if (isServer) then {
     btc_fnc_deleteEntities = compileScript ["core\fnc\common\deleteEntities.sqf"];
     btc_fnc_final_phase = compileScript ["core\fnc\common\final_phase.sqf"];
     btc_fnc_findPosOutsideRock = compileScript ["core\fnc\common\findposoutsiderock.sqf"];
-    btc_fnc_set_groupsOwner = compileScript ["core\fnc\common\set_groupsOwner.sqf"];
     btc_fnc_typeOf = compileScript ["core\fnc\common\typeOf.sqf"];
     btc_fnc_roof = compileScript ["core\fnc\common\roof.sqf"];
     btc_fnc_moveOut = compileScript ["core\fnc\common\moveOut.sqf"];
