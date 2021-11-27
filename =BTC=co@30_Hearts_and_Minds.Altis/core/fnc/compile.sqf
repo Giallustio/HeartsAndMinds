@@ -51,7 +51,6 @@ if (isServer) then {
     btc_city_fnc_send = compileScript ["core\fnc\city\send.sqf"];
 
     //CIV
-    btc_civ_fnc_add_weapons = compileScript ["core\fnc\civ\add_weapons.sqf"];
     btc_civ_fnc_add_grenade = compileScript ["core\fnc\civ\add_grenade.sqf"];
     btc_civ_fnc_get_weapons = compileScript ["core\fnc\civ\get_weapons.sqf"];
     btc_civ_fnc_get_grenade = compileScript ["core\fnc\civ\get_grenade.sqf"];
@@ -250,6 +249,7 @@ btc_flag_fnc_int = compileScript ["core\fnc\flag\int.sqf"];
 //CIV
 btc_civ_fnc_class = compileScript ["core\fnc\civ\class.sqf"];
 btc_civ_fnc_addWP = compileScript ["core\fnc\civ\addWP.sqf"];
+btc_civ_fnc_add_weapons = compileScript ["core\fnc\civ\add_weapons.sqf"];
 
 //IED
 btc_ied_fnc_belt = compileScript ["core\fnc\ied\belt.sqf"];
