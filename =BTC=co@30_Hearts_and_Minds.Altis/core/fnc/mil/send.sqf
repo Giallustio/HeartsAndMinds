@@ -51,6 +51,7 @@ switch (_typeOf_patrol) do {
     };
 };
 _group setVariable ["no_cache", true];
+_group setVariable ["acex_headless_blacklist", true];
 
 [{
     params ["_group", "_typeOf_patrol", "_dest", "_infFormation"];
@@ -65,8 +66,9 @@ _group setVariable ["no_cache", true];
         };
     };
 
-    [[_group]] call btc_fnc_set_groupsOwner;
 
+    [[_group]] call btc_fnc_set_groupsOwner;
+    _group setVariable ["acex_headless_blacklist", false];
     _group deleteGroupWhenEmpty true;
 }, [_group, _typeOf_patrol, _dest, _infFormation], _delay] call btc_delay_fnc_waitAndExecute;
 
