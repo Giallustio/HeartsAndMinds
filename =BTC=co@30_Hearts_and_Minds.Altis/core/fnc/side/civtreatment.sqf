@@ -77,6 +77,7 @@ if (_r < 1) then {
 private _unit_type = selectRandom btc_civ_type_units;
 private _group = createGroup civilian;
 _group setVariable ["no_cache", true];
+_group setVariable ["acex_headless_blacklist", true];
 private _unit =_group createUnit [_unit_type, _pos, [], 0, "CAN_COLLIDE"];
 _unit setBehaviour "CARELESS";
 _unit setDir (random 360);

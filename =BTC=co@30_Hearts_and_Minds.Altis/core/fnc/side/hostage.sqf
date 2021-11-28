@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        [] spawn btc_side_fnc_hostage;
+        [false, "btc_side_fnc_hostage"] spawn btc_side_fnc_create;
     (end)
 
 Author:
