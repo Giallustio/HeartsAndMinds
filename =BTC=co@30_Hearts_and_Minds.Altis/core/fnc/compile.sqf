@@ -235,6 +235,7 @@ btc_fnc_house_addWP_loop = compileScript ["core\fnc\common\house_addWP_loop.sqf"
 //CHEM
 btc_chem_fnc_damage = compileScript ["core\fnc\chem\damage.sqf"];
 btc_chem_fnc_deconShowerAnimLarge = {(_this select 0) setVariable ["BIN_Shower_Stop",false]; _this call BIN_fnc_deconShowerAnimLarge;};
+btc_chem_fnc_damageLoop = compileScript ["core\fnc\chem\damageLoop.sqf"];
 
 //DEBUG
 btc_debug_fnc_message = compileScript ["core\fnc\debug\message.sqf"];
@@ -299,7 +300,6 @@ if (!isDedicated) then {
 
     //CHEM
     btc_chem_fnc_biopsy = compileScript ["core\fnc\chem\biopsy.sqf"];
-    btc_chem_fnc_damageLoop = compileScript ["core\fnc\chem\damageLoop.sqf"];
     btc_chem_fnc_ehDetector = compileScript ["core\fnc\chem\ehDetector.sqf"];
     btc_chem_fnc_updateDetector = compileScript ["core\fnc\chem\updateDetector.sqf"];
 
