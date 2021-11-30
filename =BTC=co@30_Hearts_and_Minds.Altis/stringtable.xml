@@ -83,12 +83,12 @@
                 <French>Seul à réapparaitre</French>
             </Key>
             <Key ID="STR_BTC_HAM_INTRO_LOADINGTXT">
-                <Original>Base overview. Loading ...</Original>
-                <Spanish>Vista de la Base. Cargando ...</Spanish>
-                <German>Basisübersicht. Lade ...</German>
-                <Portuguese>Visão geral da base. Carregando...</Portuguese>
-                <Chinesesimp>基地总览. 加载中 ...</Chinesesimp>
-                <French>Aperçu de la base. Chargement en cours ...</French>
+                <Original>Day %1. Base overview.</Original>
+                <Spanish>Day %1. Vista de la Base.</Spanish>
+                <German>Day %1. Basisübersicht.</German>
+                <Portuguese>Day %1. Visão geral da base.</Portuguese>
+                <Chinesesimp>Day %1. 基地总览.</Chinesesimp>
+                <French>Jour %1. Aperçu de la base.</French>
             </Key>
         </Container>
     </Package>
