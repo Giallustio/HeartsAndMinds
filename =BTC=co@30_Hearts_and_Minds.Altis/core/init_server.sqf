@@ -22,9 +22,8 @@ if (btc_db_load && {profileNamespace getVariable [format ["btc_hm_%1_db", worldN
     
     [] call btc_cache_fnc_init;
 
-    private _date = date;
-    _date set [3, btc_p_time];
-    setDate _date;
+    btc_startDate set [3, btc_p_time];
+    setDate btc_startDate;
 
     {
         _x setVariable ["btc_EDENinventory", _x call btc_log_fnc_inventoryGet];

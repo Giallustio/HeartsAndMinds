@@ -44,6 +44,15 @@ if !(isNil "btc_veh_respawnable_1") then {
     _array pushBack ['\A3\ui_f\data\map\vehicleicons\iconhelicopter_ca.paa', [0.7, 0, 0,1], getPos btc_veh_respawnable_1, 1.1, 1.1, 0, localize "STR_BTC_HAM_INTRO_ONLYRESPAWN", 1]; //Only Respawnable
 };
 
-[getMarkerPos "btc_base", localize "STR_BTC_HAM_INTRO_LOADINGTXT", 20, 30, 240, 0, _array, 0] call BIS_fnc_establishingShot;
+waitUntil {time > 0}; //Wait for date synchronisation
+
+private _startingDate = btc_startDate select [0, 3];
+private _date = date select [0, 3];
+private _days = (_date vectorDiff _startingDate) vectorDotProduct [365, 30.5, 1];
+[
+    getMarkerPos "btc_base",
+    format [localize "STR_BTC_HAM_INTRO_LOADINGTXT", round _days],
+    20, 30, 240, 0, _array, 0
+] call BIS_fnc_establishingShot;
 
 enableSaving [false, false];
