@@ -338,6 +338,7 @@ if (_numberOfPatrol < _p_patrol_max) then {
         private _group = createGroup btc_enemy_side;
         btc_patrol_active pushBack _group;
         _group setVariable ["no_cache", true];
+        _group setVariable ["acex_headless_blacklist", true];
         [[_group, 1 + round random 1, _city, _cachingRadius + btc_patrol_area], btc_mil_fnc_create_patrol] call btc_delay_fnc_exec;
     };
 };
@@ -350,6 +351,7 @@ if (_numberOfCivVeh < _p_civ_max_veh) then {
         private _group = createGroup civilian;
         btc_civ_veh_active pushBack _group;
         _group setVariable ["no_cache", true];
+        _group setVariable ["acex_headless_blacklist", true];
         [[_group, _city, _cachingRadius + btc_patrol_area], btc_civ_fnc_create_patrol] call btc_delay_fnc_exec;
     };
 };

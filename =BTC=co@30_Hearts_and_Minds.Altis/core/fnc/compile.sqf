@@ -25,7 +25,6 @@ if (isServer) then {
     btc_fnc_deleteEntities = compileScript ["core\fnc\common\deleteEntities.sqf"];
     btc_fnc_final_phase = compileScript ["core\fnc\common\final_phase.sqf"];
     btc_fnc_findPosOutsideRock = compileScript ["core\fnc\common\findposoutsiderock.sqf"];
-    btc_fnc_set_groupsOwner = compileScript ["core\fnc\common\set_groupsOwner.sqf"];
     btc_fnc_typeOf = compileScript ["core\fnc\common\typeOf.sqf"];
     btc_fnc_roof = compileScript ["core\fnc\common\roof.sqf"];
     btc_fnc_moveOut = compileScript ["core\fnc\common\moveOut.sqf"];
@@ -51,7 +50,6 @@ if (isServer) then {
     btc_city_fnc_send = compileScript ["core\fnc\city\send.sqf"];
 
     //CIV
-    btc_civ_fnc_add_weapons = compileScript ["core\fnc\civ\add_weapons.sqf"];
     btc_civ_fnc_add_grenade = compileScript ["core\fnc\civ\add_grenade.sqf"];
     btc_civ_fnc_get_weapons = compileScript ["core\fnc\civ\get_weapons.sqf"];
     btc_civ_fnc_get_grenade = compileScript ["core\fnc\civ\get_grenade.sqf"];
@@ -237,6 +235,7 @@ btc_fnc_house_addWP_loop = compileScript ["core\fnc\common\house_addWP_loop.sqf"
 //CHEM
 btc_chem_fnc_damage = compileScript ["core\fnc\chem\damage.sqf"];
 btc_chem_fnc_deconShowerAnimLarge = {(_this select 0) setVariable ["BIN_Shower_Stop",false]; _this call BIN_fnc_deconShowerAnimLarge;};
+btc_chem_fnc_damageLoop = compileScript ["core\fnc\chem\damageLoop.sqf"];
 
 //DEBUG
 btc_debug_fnc_message = compileScript ["core\fnc\debug\message.sqf"];
@@ -250,6 +249,7 @@ btc_flag_fnc_int = compileScript ["core\fnc\flag\int.sqf"];
 //CIV
 btc_civ_fnc_class = compileScript ["core\fnc\civ\class.sqf"];
 btc_civ_fnc_addWP = compileScript ["core\fnc\civ\addWP.sqf"];
+btc_civ_fnc_add_weapons = compileScript ["core\fnc\civ\add_weapons.sqf"];
 
 //IED
 btc_ied_fnc_belt = compileScript ["core\fnc\ied\belt.sqf"];
@@ -300,7 +300,6 @@ if (!isDedicated) then {
 
     //CHEM
     btc_chem_fnc_biopsy = compileScript ["core\fnc\chem\biopsy.sqf"];
-    btc_chem_fnc_damageLoop = compileScript ["core\fnc\chem\damageLoop.sqf"];
     btc_chem_fnc_ehDetector = compileScript ["core\fnc\chem\ehDetector.sqf"];
     btc_chem_fnc_updateDetector = compileScript ["core\fnc\chem\updateDetector.sqf"];
 

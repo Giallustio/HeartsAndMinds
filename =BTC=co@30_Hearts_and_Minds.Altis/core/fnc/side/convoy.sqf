@@ -93,6 +93,7 @@ if (count _path <= 35) exitWith {
 //// Create convoy \\\\
 private _group = createGroup btc_enemy_side;
 _group setVariable ["no_cache", true];
+_group setVariable ["acex_headless_blacklist", true];
 [_group] call CBA_fnc_clearWaypoints;
 private _convoyLength = 3 + round random 2;
 private _listPositions = _path select [40, _convoyLength + 1];

@@ -201,18 +201,6 @@ class CustomAttributes
 		name="Multiplayer";
 		class Attribute0
 		{
-			property="RespawnTemplates";
-			expression="true";
-			class Value
-			{
-				class data
-				{
-					singleType="ARRAY";
-				};
-			};
-		};
-		class Attribute1
-		{
 			property="RespawnButton";
 			expression="true";
 			class Value
@@ -221,6 +209,18 @@ class CustomAttributes
 				{
 					singleType="SCALAR";
 					value=1;
+				};
+			};
+		};
+		class Attribute1
+		{
+			property="RespawnTemplates";
+			expression="true";
+			class Value
+			{
+				class data
+				{
+					singleType="ARRAY";
 				};
 			};
 		};
@@ -468,7 +468,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=66;
+		items=68;
 		class Item0
 		{
 			dataType="Marker";
@@ -1791,8 +1791,8 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={4203.4429,19.608423,4027.6301};
-				angles[]={0.010664274,1.7987723,6.2511988};
+				position[]={4344,27.657982,4136};
+				angles[]={0.22036223,1.7987711,6.2378831};
 			};
 			name="btc_hc_1";
 			isPlayable=1;
@@ -1882,7 +1882,6 @@ class Mission
 			flags=4;
 			class Attributes
 			{
-				init="";
 			};
 			id=200;
 			type="DeconShower_02_F";
@@ -2578,6 +2577,32 @@ class Mission
 				};
 				nAttributes=2;
 			};
+		};
+		class Item66
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={4320,24.015329,4136};
+				angles[]={0.061256282,1.7987711,0.09570726};
+			};
+			name="btc_hc_2";
+			isPlayable=1;
+			id=256;
+			type="HeadlessClient_F";
+		};
+		class Item67
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={4296,22.001394,4136};
+				angles[]={0.013332055,1.7987711,0.16644555};
+			};
+			name="btc_hc_3";
+			isPlayable=1;
+			id=257;
+			type="HeadlessClient_F";
 		};
 	};
 	class Connections
