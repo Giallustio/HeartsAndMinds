@@ -82,6 +82,7 @@ if (isServer) then {
 
     //DOOR
     btc_door_fnc_lock = compileScript ["core\fnc\door\lock.sqf"];
+    btc_door_fnc_get = compileScript ["core\fnc\door\get.sqf"];
 
     //EH
     btc_eh_fnc_server = compileScript ["core\fnc\eh\server.sqf"];
@@ -237,6 +238,9 @@ btc_chem_fnc_damage = compileScript ["core\fnc\chem\damage.sqf"];
 btc_chem_fnc_deconShowerAnimLarge = {(_this select 0) setVariable ["BIN_Shower_Stop",false]; _this call BIN_fnc_deconShowerAnimLarge;};
 btc_chem_fnc_damageLoop = compileScript ["core\fnc\chem\damageLoop.sqf"];
 
+//DOOR
+btc_door_fnc_broke = compileScript ["core\fnc\door\broke.sqf"];
+
 //DEBUG
 btc_debug_fnc_message = compileScript ["core\fnc\debug\message.sqf"];
 
@@ -315,7 +319,6 @@ if (!isDedicated) then {
 
     //DOOR
     btc_door_fnc_break = compileScript ["core\fnc\door\break.sqf"];
-    btc_door_fnc_broke = compileScript ["core\fnc\door\broke.sqf"];
 
     //IED
     btc_ied_fnc_effects = compileScript ["core\fnc\ied\effects.sqf"];

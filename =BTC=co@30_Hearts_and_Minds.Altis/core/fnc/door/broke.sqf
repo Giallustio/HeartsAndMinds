@@ -8,6 +8,8 @@ Description:
 Parameters:
     _house - House. [Object]
     _door - Door name. [String]
+    _instigator - Who broke the door. [Object]
+    _phase -  Range 0 (start point of the animation) to 1 (end point of the animation). [Number]
 
 Returns:
 
@@ -23,12 +25,13 @@ Author:
 
 params [
     ["_house", objNull, [objNull]],
-    ["_door", "", [""]]
+    ["_door", "", [""]],
+    ["_player", player, [objNull]],
+    ["_phase", 1, [0]]
 ];
 
 _house setVariable [format ["bis_disabled_%1", _door], 0, true];
-playSound3D ["\z\ace\addons\logistics_wirecutter\sound\wirecut.ogg", player];
-[btc_rep_malus_breakDoor, player] remoteExecCall ["btc_rep_fnc_change", 2];
+[btc_rep_malus_breakDoor, _player] remoteExecCall ["btc_rep_fnc_change", 2];
 
 private _getDoorAnimations = [_house, _door] call ace_interaction_fnc_getDoorAnimations;
 _getDoorAnimations params ["_animations"];
@@ -41,5 +44,5 @@ if (typeOf _house == "Land_Carrier_01_island_01_F") then {
 };
 // do incremental door opening
 {
-    _house animate [_x, 0.2];
+    _house animate [_x, _phase];
 } forEach _animations;
