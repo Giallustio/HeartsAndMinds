@@ -28,7 +28,7 @@ You can detect the origin of electromagnetic field with spectrum devices. The am
 ### House doors:
 Civilian house door can be close. Depend on reputation level, civilian will lock their door and stay inside. Under low, all doors are locked, above normal, all door are unlocked. 
 ### Break locked door:
-You can still enter by breaking door lock with a wirecutter.
+You can still enter by breaking door lock with a wirecutter. Or by using explosive.
 
 ## Vehicles
 ### Respawn:

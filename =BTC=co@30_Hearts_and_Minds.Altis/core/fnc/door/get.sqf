@@ -8,6 +8,7 @@ Description:
 Parameters:
     _distance - Distance to check intersect. [Number]
     _object - From which ojects. [Object]
+    _offset - Off set for explosive. [Number]
 
 Returns:
 
@@ -17,16 +18,17 @@ Examples:
     (end)
 
 Author:
-    Vdauphin
+    commy2
 
 ---------------------------------------------------------------------------- */
 
 params [
     "_distance",
-    ["_object", cameraOn, [objNull]]
+    ["_object", cameraOn, [objNull]],
+    ["_offset", 0, [0]]
 ];
 
-private _position0 = _object modelToWorld [0, 0, 0];
+private _position0 = _object modelToWorld [0, 0, _offset];
 private _position1 = _object modelToWorld [0, _distance, 0];
 
 private _intersections = lineIntersectsSurfaces [AGLToASL _position0, AGLToASL _position1, _object, objNull, true, 1, "GEOM"];
