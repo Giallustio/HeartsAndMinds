@@ -53,7 +53,7 @@ addMissionEventHandler ["BuildingChanged", btc_rep_fnc_buildingchanged];
 ["ace_explosives_detonate", {
     params ["_player", "_explosive", "_delay"];
     [
-        {_this + [player] call btc_door_fnc_broke},
+        {_this + [player, 1, 3] call btc_door_fnc_broke},
         [3, _explosive, 0.2] call btc_door_fnc_get,
         _delay
     ] call CBA_fnc_waitAndExecute;

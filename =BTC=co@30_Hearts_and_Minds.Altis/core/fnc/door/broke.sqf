@@ -10,6 +10,7 @@ Parameters:
     _door - Door name. [String]
     _instigator - Who broke the door. [Object]
     _phase -  Range 0 (start point of the animation) to 1 (end point of the animation). [Number]
+    _speed - Boolean or Number: When true animation is instant. Since Arma 3 v1.66 Number > 0 is treated as config speed value multiplier.
 
 Returns:
 
@@ -27,7 +28,8 @@ params [
     ["_house", objNull, [objNull]],
     ["_door", "", [""]],
     ["_player", player, [objNull]],
-    ["_phase", 1, [0]]
+    ["_phase", 1, [0]],
+    ["_speed", false, [0, true]]
 ];
 
 _house setVariable [format ["bis_disabled_%1", _door], 0, true];
@@ -44,5 +46,5 @@ if (typeOf _house == "Land_Carrier_01_island_01_F") then {
 };
 // do incremental door opening
 {
-    _house animate [_x, _phase];
+    _house animate [_x, _phase, _speed];
 } forEach _animations;
