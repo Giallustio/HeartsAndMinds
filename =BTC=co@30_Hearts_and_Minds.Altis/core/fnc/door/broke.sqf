@@ -31,6 +31,7 @@ params [
     ["_phase", 1, [0]],
     ["_speed", false, [0, true]]
 ];
+if (_door isEqualTo "") exitWith {};
 
 _house setVariable [format ["bis_disabled_%1", _door], 0, true];
 [btc_rep_malus_breakDoor, _player] remoteExecCall ["btc_rep_fnc_change", 2];

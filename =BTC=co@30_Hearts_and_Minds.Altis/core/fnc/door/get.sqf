@@ -29,7 +29,7 @@ params [
 ];
 
 private _position0 = _object modelToWorld [0, 0, _offset];
-private _position1 = _object modelToWorld [0, _distance, 0];
+private _position1 = _object modelToWorld [0, _distance, _offset];
 
 private _intersections = lineIntersectsSurfaces [AGLToASL _position0, AGLToASL _position1, _object, objNull, true, 1, "GEOM"];
 
