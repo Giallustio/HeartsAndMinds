@@ -834,7 +834,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={8305.25,160.00143,10066.55};
+						position[]={8305.25,76.060417,10066.55};
 						angles[]={0,2.5247488,0};
 					};
 					side="West";
@@ -848,14 +848,12 @@ class Mission
 					};
 					id=29;
 					type="B_Soldier_F";
-					atlOffset=83.997978;
 				};
 			};
 			class Attributes
 			{
 			};
 			id=28;
-			atlOffset=83.997978;
 		};
 		class Item14
 		{
