@@ -50,6 +50,15 @@ addMissionEventHandler ["BuildingChanged", btc_rep_fnc_buildingchanged];
     [btc_rep_malus_player_respawn, _player] call btc_rep_fnc_change;
 }] call CBA_fnc_addEventHandler;
 
+["ace_explosives_detonate", {
+    params ["_player", "_explosive", "_delay"];
+    [
+        btc_door_fnc_broke,
+        ([3, _explosive, 0.5] call btc_door_fnc_get) + [_player, 1, 2],
+        _delay
+    ] call CBA_fnc_waitAndExecute;
+}] call CBA_fnc_addEventHandler;
+
 addMissionEventHandler ["HandleDisconnect", {
     params ["_headless"];
     if (_headless in (entities "HeadlessClient_F")) then {
