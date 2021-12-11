@@ -151,7 +151,7 @@ Any player can give orders to civilians. To do this, just open your self interac
 
 If you want to give an order to just one unit, interact with it (object interaction).
 
-You can also use a horn to ask civilians to stop their mouvement from a vehicle. Turning ON beacons or siren will continuously ask civilians to let you pass first. Combining beacons and siren will increase the range of effectiveness.
+You can also use a horn to ask civilians to stop their movement from a vehicle. Turning ON beacons or siren will continuously ask civilians to let you pass first. Combining beacons and siren will increase the range of effectiveness.
 
 You can also drop leaflets to ask all civilians in a circle of 200m to evacuate to a religious building (if not available a safe area) with a AR-2 drone.
 
