@@ -23,19 +23,15 @@ private _veh = vehicle player;
 if (
     _veh isEqualTo player || 
     {visibleMap} ||
-    {driver _veh isNotEqualTo player} ||
     {time < btc_int_hornDelay + 1}
 ) exitWith {};
 
 params ["_displayOrControl", "_button"];
 if (_button isNotEqualTo 0) exitWith {};
 
-private _weapon = currentWeapon _veh;
-if (
-    _weapon isNotEqualTo "" &&
-    {!(_weapon isKindOf ["CarHorn", configFile >> "CfgWeapons"])}
-) exitWith {};
- 
+private _weapon = (weaponState [_veh, _veh unitTurret player]) select 0;
+if !(_weapon isKindOf ["CarHorn", configFile >> "CfgWeapons"]) exitWith {};
+
 [
     1,
     objNull,
