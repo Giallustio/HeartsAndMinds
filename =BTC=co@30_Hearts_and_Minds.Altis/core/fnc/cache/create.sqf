@@ -29,7 +29,7 @@ Author:
 params [
     ["_cache_pos", btc_cache_pos, [[]]],
     ["_p_chem", btc_p_chem, [true]],
-    ["_probabilityNotChemical", 0.7, [0]]
+    ["_probabilityNotChemical", 0.5, [0]]
 ];
 
 private _isChem = false;
