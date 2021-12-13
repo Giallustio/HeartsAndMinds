@@ -33,13 +33,17 @@ private _type = typeOf _vehicle;
 private _pos = getPosASL _vehicle;
 private _dir = getDir _vehicle;
 private _vector = [vectorDir _vehicle, vectorUp _vehicle];
-private _vehProperties = [_vehicle] call btc_veh_fnc_propertiesGet;
+private _vehProperties = _vehicle call btc_veh_fnc_propertiesGet;
+
+// Reset properties
 _vehProperties set [5, false];
+(_vehProperties select 3) set [0, getNumber (configOf _veh >> "ace_refuel_fuelCargo")];
+(_vehProperties select 6) set [1, getNumber (configOf _veh >> "ace_rearm_defaultSupply")];
 
 _vehicle setVariable ["data_respawn", [_type, _pos, _dir, _time, _vector] + _vehProperties];
 _vehicle setVariable ["btc_dont_delete", true];
 
-if ((isNumber (configOf _vehicle >> "ace_fastroping_enabled")) && (typeOf _vehicle isNotEqualTo "RHS_UH1Y_d")) then {[_vehicle] call ace_fastroping_fnc_equipFRIES};
+if ((isNumber (configOf _vehicle >> "ace_fastroping_enabled")) && (typeOf _vehicle isNotEqualTo "RHS_UH1Y_d")) then {_vehicle call ace_fastroping_fnc_equipFRIES};
 _vehicle addMPEventHandler ["MPKilled", {
     if (isServer) then {
         params ["_vehicle", "_killer", "_instigator"];

@@ -33,8 +33,13 @@ private _type = typeOf _veh;
 (getPosASL _veh) params ["_x", "_y", "_z"];
 private _dir = getDir _veh;
 private _marker = _veh getVariable ["marker", ""];
-private _vehProperties = [_veh] call btc_veh_fnc_propertiesGet;
+private _vehProperties = _veh call btc_veh_fnc_propertiesGet;
+
+// Reset properties
 _vehProperties set [5, false];
+(_vehProperties select 3) set [0, getNumber (configOf _veh >> "ace_refuel_fuelCargo")];
+(_vehProperties select 6) set [1, getNumber (configOf _veh >> "ace_rearm_defaultSupply")];
+
 private _EDENinventory = _veh getVariable ["btc_EDENinventory", []];
 
 btc_vehicles = btc_vehicles - [_veh];

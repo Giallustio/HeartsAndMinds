@@ -1,18 +1,18 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_log_fnc_refuelSource
+Function: btc_log_fnc_rearmSource
 
 Description:
-    Refuel a fuel source.
+    Rearm a rearm source.
 
 Parameters:
-    _object - Fuel truck. [Object]
+    _object - Rearm truck. [Object]
 
 Returns:
 
 Examples:
     (begin example)
-        [] call btc_log_fnc_refuelSource;
+        [] call btc_log_fnc_rearmSource;
     (end)
 
 Author:
@@ -31,14 +31,14 @@ private _array = (nearestObjects [_object, ["LandVehicle", "Air", "Ship", "Thing
 
 private _failNotify = [
     [localize "STR_ACE_Refuel_Failed"],
-    ["<img size='1' image='\A3\ui_f\data\igui\cfg\simpleTasks\types\refuel_ca.paa' align='center'/>"]
+    ["<img size='1' image='\A3\ui_f\data\igui\cfg\simpleTasks\types\rearm_ca.paa' align='center'/>"]
 ];
 if (_array isEqualTo []) exitWith {_failNotify call CBA_fnc_notify;};
 
-private _fuelSource = _array select 0;
-private _default_fuelCargo = getNumber (configOf _fuelSource >> "ace_refuel_fuelCargo");
+private _rearmSource = _array select 0;
+private _default_rearmCargo = getNumber (configOf _rearmSource >> "ace_rearm_defaultSupply");
 
-if (_default_fuelCargo <= 0) exitWith {_failNotify call CBA_fnc_notify;};
+if (_default_rearmCargo <= 0) exitWith {_failNotify call CBA_fnc_notify;};
 
-[_fuelSource, _default_fuelCargo] call ace_refuel_fnc_setFuel;
+[_rearmSource, _default_rearmCargo] call ace_rearm_fnc_makeSource;
 (localize "STR_ACE_Refuel_Hint_Completed") call CBA_fnc_notify;
