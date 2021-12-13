@@ -102,16 +102,16 @@ if (_data_units isNotEqualTo []) then {
 } else {
     // Maximum number of enemy group
     private _numberOfGroup = (switch _type do {
-        case "Hill" : {3};
-        case "VegetationFir" : {3};
-        case "BorderCrossing" : {5};
-        case "NameLocal" : {5};
-        case "StrongpointArea" : {6};
-        case "NameVillage" : {6};
-        case "NameCity" : {12};
-        case "NameCityCapital" : {24};
-        case "Airport" : {24};
-        case "NameMarine" : {3};
+        case "Hill" : {4};
+        case "VegetationFir" : {4};
+        case "BorderCrossing" : {7};
+        case "NameLocal" : {7};
+        case "StrongpointArea" : {8};
+        case "NameVillage" : {8};
+        case "NameCity" : {16};
+        case "NameCityCapital" : {32};
+        case "Airport" : {32};
+        case "NameMarine" : {4};
         default {0};
     });
 
@@ -133,14 +133,14 @@ if (_data_units isNotEqualTo []) then {
 
         if (_has_en) then {
             private _numberOfStatic = (switch _type do {
-                case "VegetationFir" : {2};
-                case "BorderCrossing" : {4};
-                case "NameLocal" : {2};
-                case "StrongpointArea" : {4};
-                case "NameVillage" : {4};
-                case "NameCity" : {8};
-                case "NameCityCapital" : {10};
-                case "Airport" : {4};
+                case "VegetationFir" : {3};
+                case "BorderCrossing" : {6};
+                case "NameLocal" : {3};
+                case "StrongpointArea" : {6};
+                case "NameVillage" : {6};
+                case "NameCity" : {12};
+                case "NameCityCapital" : {15};
+                case "Airport" : {6};
                 default {0};
             });
             [+_houses, round (_p_mil_static_group_ratio * _numberOfStatic), _city] call btc_mil_fnc_create_staticOnRoof;
