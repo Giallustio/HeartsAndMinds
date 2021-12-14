@@ -174,7 +174,7 @@ private _vehs = +(profileNamespace getVariable [format ["btc_hm_%1_vehs", _name]
         [_veh, _veh_cargo, _veh_inventory] call btc_db_fnc_loadCargo;
 
         if !(alive _veh) then {
-            [_veh, objNull, objNull, false] call btc_veh_fnc_killed;
+            [_veh, objNull, objNull, nil, false] call btc_veh_fnc_killed;
         };
         if (_ViV isNotEqualTo []) then {
             {
