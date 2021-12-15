@@ -383,6 +383,7 @@ if (!isDedicated) then {
     btc_log_fnc_copy = compileScript ["core\fnc\log\copy.sqf"];
     btc_log_fnc_paste = compileScript ["core\fnc\log\paste.sqf"];
     btc_log_fnc_refuelSource = compileScript ["core\fnc\log\refuelSource.sqf"];
+    btc_log_fnc_rearmSource = compileScript ["core\fnc\log\rearmSource.sqf"];
 
     //REP
     btc_rep_fnc_treatment = compileScript ["core\fnc\rep\treatment.sqf"];
