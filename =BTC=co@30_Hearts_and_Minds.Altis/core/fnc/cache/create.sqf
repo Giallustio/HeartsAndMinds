@@ -7,7 +7,7 @@ Description:
 
 Parameters:
     _cache_pos - Position of the cache. [Array]
-    _p_chem - Create a chemical cache. [Boolean]
+    _p_chem - Allow chemical cache. [Boolean]
     _probabilityNotChemical - Probability to not create a chemical cache. [Number]
 
 Returns:
