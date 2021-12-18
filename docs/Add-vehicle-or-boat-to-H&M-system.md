@@ -17,4 +17,4 @@ A garage is available for admin only. Activate the garage through mission parame
 You can add a new vehicle/boat to respawn system by:
 - Drag and drop them to [EDEN layers](https://community.bistudio.com/wiki/Eden_Editor:_Layer) named "btc_veh_respawnable".
 
-Note: you can tweak respawn time here: [/core/init_server.sqf L50](https://github.com/Vdauphin/HeartsAndMinds/blob/master/%3DBTC%3Dco%4030_Hearts_and_Minds.Altis/core/init_server.sqf#L48) by changing 30s to what you want.
+Note: you can tweak respawn time here: [/core/init_server.sqf L48](https://github.com/Vdauphin/HeartsAndMinds/blob/master/%3DBTC%3Dco%4030_Hearts_and_Minds.Altis/core/init_server.sqf#L48) by changing 30s to what you want.

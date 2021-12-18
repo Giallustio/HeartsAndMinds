@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_db_fnc_add_veh
+Function: btc_veh_fnc_add
 
 Description:
     Add vehicle to the wreck system.
@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        cursorObject remoteExecCall ["btc_db_fnc_add_veh", 2];
+        cursorObject remoteExecCall ["btc_veh_fnc_add", 2];
         btc_curator addCuratorEditableObjects [btc_vehicles, false];
     (end)
 
