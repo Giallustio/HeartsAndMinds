@@ -25,14 +25,17 @@ params [
     ["_veh", objNull, [objNull]]
 ];
 
-if (_veh getVariable ["btc_dont_delete", false]) exitWith {
+if (isNil "btc_vehicles") then {
+    btc_vehicles = [];
+};
+
+if (btc_vehicles pushBackUnique _veh isEqualTo -1) exitWith {
     if (btc_debug || btc_debug_log) then {
         ["Vehicle added more than once in btc_vehicles", __FILE__, [btc_debug, btc_debug_log, true]] call btc_debug_fnc_message;
     }; 
 };
 
 _veh setVariable ["btc_dont_delete", true];
-btc_vehicles pushBackUnique _veh;
 
 _veh addMPEventHandler ["MPKilled", {
     if (isServer) then {

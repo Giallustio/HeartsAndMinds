@@ -123,7 +123,7 @@ private _fobs = +(profileNamespace getVariable [format ["btc_hm_%1_fobs", _name]
 btc_global_reputation = profileNamespace getVariable [format ["btc_hm_%1_rep", _name], 0];
 
 //Objects
-{deleteVehicle _x} forEach btc_vehicles;
+{deleteVehicle _x} forEach (getMissionLayerEntities "btc_vehicles" select 0);
 btc_vehicles = [];
 
 btc_load_fnc_migrateOldToNew_inventory = {
