@@ -71,7 +71,7 @@ At the beginning you have a very low reputation level, so civilians won't help y
 - Deep ACE3 support
     - Use mainly ACE interaction
     - Rearm system
-    - ACEX Fortify
+    - ACE Fortify
 - Logistic system
     - [Tow](http://vdauphin.github.io/HeartsAndMinds/InGame-documentation#towing-system)
     - [Vehicle in vehicle](http://vdauphin.github.io/HeartsAndMinds/InGame-documentation#towing-system) extended
