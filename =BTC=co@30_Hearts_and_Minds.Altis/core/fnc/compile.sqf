@@ -72,6 +72,7 @@ if (isServer) then {
     btc_db_fnc_autoRestart = compileScript ["core\fnc\db\autoRestart.sqf"];
     btc_db_fnc_add_veh = compileScript ["core\fnc\db\add_veh.sqf"];
     btc_db_fnc_setTurretMagazines = compileScript ["core\fnc\db\setTurretMagazines.sqf"];
+    btc_db_fnc_autoRestartLoop = compileScript ["core\fnc\db\autoRestartLoop.sqf"];
 
     //DELAY
     btc_delay_fnc_createUnit = compileScript ["core\fnc\delay\createUnit.sqf"];

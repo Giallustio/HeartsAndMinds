@@ -36,12 +36,7 @@ if (btc_db_load && {profileNamespace getVariable [format ["btc_hm_%1_db", worldN
 [] call btc_chem_fnc_checkLoop;
 [] call btc_chem_fnc_handleShower;
 [] call btc_spect_fnc_checkLoop;
-if (btc_p_db_autoRestart > 0) then {
-    [{
-        [19] remoteExecCall ["btc_fnc_show_hint", [0, -2] select isDedicated];
-        [btc_db_fnc_autoRestart, [], 5 * 60] call CBA_fnc_waitAndExecute;
-    }, [], btc_p_db_autoRestartTime * 60 * 60 - 5 * 60] call CBA_fnc_waitAndExecute;
-};
+[] call btc_db_fnc_autoRestartLoop;
 
 {
     _x setVariable ["btc_EDENinventory", _x call btc_log_fnc_inventoryGet];
