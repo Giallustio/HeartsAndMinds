@@ -11,7 +11,7 @@ Parameters:
     _rinf_time - Not used. [Number]
     _cap_time - Time for next capture of city around. [Number]
     _id - Id of the city where the hideout is. [Number]
-    _markers_saved - Merkers find by player. [Array]
+    _markers_saved - Markers found by players. [Array]
 
 Returns:
 

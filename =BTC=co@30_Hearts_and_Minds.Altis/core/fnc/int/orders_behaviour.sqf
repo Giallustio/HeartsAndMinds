@@ -3,18 +3,18 @@
 Function: btc_int_fnc_orders_behaviour
 
 Description:
-    Fill me when you edit me !
+    Change the behaviour of a unit accordingly to the type of order.
 
 Parameters:
-    _unit - [Object]
-    _order - [Number]
-    _wp_pos - [Array]
+    _unit - Unit targeted. [Object]
+    _order - Type of order. [Number]
+    _wp_pos - Position the unit must go. [Array]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_int_fnc_orders_behaviour;
+        [cursorObject, 0] remoteExec ["btc_int_fnc_orders_behaviour", cursorObject];
     (end)
 
 Author:
