@@ -405,7 +405,16 @@ btc_int_hornDelay = time;
 //Info
 btc_info_intel_type = [80, 95];//cache - hd - both
 btc_info_hideout_radius = 4000;
-btc_info_intels = ["Land_Camera_01_F", "Land_HandyCam_F"];
+btc_info_intels = ["Land_Camera_01_F", "Land_HandyCam_F", "Land_File1_F", "Land_FilePhotos_F", "Land_File2_F", "Land_File_research_F", "Land_MobilePhone_old_F", "Land_PortableLongRangeRadio_F", "Land_Laptop_02_unfolded_F"];
+private _mapsIntel = switch (worldName) do {
+    case "Altis": {["Land_Map_altis_F", "Land_Map_unfolded_Altis_F"]};
+    case "Stratis": {["Land_Map_stratis_F", "Land_Map_unfolded_F"]};
+    case "Tanoa": {["Land_Map_Tanoa_F", "Land_Map_unfolded_Tanoa_F"]};
+    case "Malden": {["Land_Map_Malden_F", "Land_Map_unfolded_Malden_F"]};
+    case "Enoch": {["Land_Map_Enoch_F", "Land_Map_unfolded_Enoch_F"]};
+    default {["Land_Map_blank_F"]};
+};
+btc_info_intels append _mapsIntel;
 
 //Supplies
 btc_supplies_cargo = "Land_Cargo20_IDAP_F";
