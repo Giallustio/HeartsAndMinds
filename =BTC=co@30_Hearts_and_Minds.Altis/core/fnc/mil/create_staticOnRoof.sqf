@@ -14,7 +14,7 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [[position player, 30] call btc_fnc_getHouses, 3] call btc_mil_fnc_create_staticOnRoof;
+        _result = [flatten ([position player, 30] call btc_fnc_getHouses), 3] call btc_mil_fnc_create_staticOnRoof;
     (end)
 
 Author:

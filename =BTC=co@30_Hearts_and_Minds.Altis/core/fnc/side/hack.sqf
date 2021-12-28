@@ -36,7 +36,7 @@ if (_useful isEqualTo []) exitWith {[] spawn btc_side_fnc_create;};
 
 private _city = selectRandom _useful;
 private _pos = [getPos _city, 100] call btc_fnc_randomize_pos;
-private _house = selectRandom ([_pos, 100] call btc_fnc_getHouses);
+private _house = selectRandom (([_pos, 100] call btc_fnc_getHouses) select 0);
 if (isNil "_house") exitWith {[] spawn btc_side_fnc_create;};
 _pos = selectRandom (_house buildingPos -1);
 

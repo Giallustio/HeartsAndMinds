@@ -36,7 +36,7 @@ if (_useful isEqualTo []) exitWith {[] spawn btc_side_fnc_create;};
 private _city = selectRandom _useful;
 
 //// Randomise position \\\\
-private _houses = [getPos _city, 100] call btc_fnc_getHouses;
+private _houses = ([getPos _city, 100] call btc_fnc_getHouses) select 0;
 if (_houses isEqualTo []) exitWith {[] spawn btc_side_fnc_create;};
 
 _houses = _houses apply {[count (_x buildingPos -1), _x]};
