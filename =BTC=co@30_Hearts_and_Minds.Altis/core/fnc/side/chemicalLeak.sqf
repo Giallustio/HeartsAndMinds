@@ -175,7 +175,8 @@ if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {
 private _locate_taskID = _taskID + "lc";
 [[_locate_taskID, _taskID], 32, _pos, typeOf((_chemical arrayIntersect btc_chem_contaminated) select 0)] call btc_task_fnc_create;
 private _clean_taskID = _taskID + "cl";
-[[_clean_taskID, _taskID], 33, btc_bigShower, typeOf btc_bigShower] call btc_task_fnc_create;
+private _bigShower = selectRandom (btc_chem_decontaminate select {_x isKindOf "DeconShower_02_F"});
+[[_clean_taskID, _taskID], 33, _bigShower, typeOf _bigShower] call btc_task_fnc_create;
 
 waitUntil {sleep 5; 
     _taskID call BIS_fnc_taskCompleted ||
