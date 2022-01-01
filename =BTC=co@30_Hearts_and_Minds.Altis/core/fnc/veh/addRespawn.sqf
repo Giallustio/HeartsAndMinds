@@ -30,6 +30,9 @@ params [
 if (isNil "btc_veh_respawnable") then {
     btc_veh_respawnable = [];
 };
+if (isNil {_vehicle getVariable "btc_EDENinventory"}) then {
+    _vehicle setVariable ["btc_EDENinventory", _vehicle call btc_log_fnc_inventoryGet];
+};
 
 if (btc_veh_respawnable pushBackUnique _vehicle isEqualTo -1) exitWith {
     if (btc_debug || btc_debug_log) then {

@@ -126,7 +126,10 @@ btc_global_reputation = profileNamespace getVariable [format ["btc_hm_%1_rep", _
 
 //Objects
 {deleteVehicle _x} forEach (getMissionLayerEntities "btc_vehicles" select 0);
-btc_vehicles = [];
+if !(isNil "btc_vehicles") then {
+    {deleteVehicle _x} forEach btc_vehicles;
+    btc_vehicles = [];
+};
 
 private _objs = +(profileNamespace getVariable [format ["btc_hm_%1_objs", _name], []]);
 [{ // Can't use ace_cargo for objects created during first frame.

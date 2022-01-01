@@ -28,6 +28,9 @@ params [
 if (isNil "btc_vehicles") then {
     btc_vehicles = [];
 };
+if (isNil {_veh getVariable "btc_EDENinventory"}) then {
+    _veh setVariable ["btc_EDENinventory", _veh call btc_log_fnc_inventoryGet];
+};
 
 if (btc_vehicles pushBackUnique _veh isEqualTo -1) exitWith {
     if (btc_debug || btc_debug_log) then {
