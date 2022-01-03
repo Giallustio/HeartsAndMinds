@@ -34,11 +34,10 @@ while {
     {_houses isNotEqualTo []}
 } do {
     private _house = _houses deleteAt 0;
-    private _houseType = typeOf _house;
     if (
-        !(_houseType isKindOf "Ruins") &&
-        {!(_houseType isKindOf "Church")} &&
-        {!("Chapel" in _houseType)}
+        !(_house isKindOf "Ruins") &&
+        {!(_house isKindOf "Church")} &&
+        {!("Chapel" in typeOf _house)}
     ) then {
         ([_house] call btc_fnc_roof) params ["_spawnPos", "_surfaceNormal"];
 

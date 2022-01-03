@@ -33,6 +33,11 @@ private _notEnterable = [];
 {
     if (damage _x isNotEqualTo 0) then {continue;};
     if ((_x buildingPos -1) isEqualTo []) then {
+        if (
+            _x isKindOf "Lamps_base_F" ||
+            {_x isKindOf "PowerLines_Small_base_F"} ||
+            {_x isKindOf "PowerLines_Wires_base_F"}
+        ) then {continue;};
         _notEnterable pushBack _x;
     } else {
         _enterable pushBack _x;

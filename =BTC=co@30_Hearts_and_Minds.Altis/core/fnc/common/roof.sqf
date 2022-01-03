@@ -27,6 +27,7 @@ params [
 ];
 
 private _positions = _house buildingPos -1;
+private "_ASL";
 if (_positions isEqualTo []) then {
     private _bbr = (0 boundingBoxReal _house);
     private _p1 = _bbr select 0;
@@ -54,7 +55,7 @@ if (_surface isEqualTo []) then { // Try to find again the roof with house posit
 if (_surface isNotEqualTo []) then {
     private _intersect = _surface select 0;
     if (
-        (_intersect select 2) isEqualTo _house &&
+        _house in _intersect &&
         {(_spawnPos select 2) + 0.5 < (_intersect select 0 select 2)}
     ) then {
         _spawnPos = (_intersect select 0) vectorAdd [0, 0, 0.2];
