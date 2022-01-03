@@ -36,7 +36,8 @@ private _notEnterable = [];
         if (
             _x isKindOf "Lamps_base_F" ||
             {_x isKindOf "PowerLines_Small_base_F"} ||
-            {_x isKindOf "PowerLines_Wires_base_F"}
+            {_x isKindOf "PowerLines_Wires_base_F"} ||
+            {_x isKindOf "Wall"}
         ) then {continue;};
         _notEnterable pushBack _x;
     } else {
