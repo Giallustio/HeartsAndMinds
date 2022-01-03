@@ -832,8 +832,8 @@ class Mission
 				position[]={4159.5,14.44014,4017.5};
 				angles[]={0.023993526,0,0.47951955};
 			};
-			name="btc_curator";
-			init="this addEventHandler ['CuratorObjectPlaced',{_this call btc_eh_fnc_CuratorObjectPlaced}];";
+			name="";
+			init="";
 			id=71;
 			type="ModuleCurator_F";
 			class CustomAttributes

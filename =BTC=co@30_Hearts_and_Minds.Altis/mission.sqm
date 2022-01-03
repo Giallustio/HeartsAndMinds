@@ -924,8 +924,8 @@ class Mission
 			{
 				position[]={8255.6289,55.908749,9942.9063};
 			};
-			name="btc_curator";
-			init="this addEventHandler ['CuratorObjectPlaced',{_this call btc_eh_fnc_CuratorObjectPlaced}];";
+			name="";
+			init="";
 			id=71;
 			type="ModuleCurator_F";
 			class CustomAttributes
