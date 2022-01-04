@@ -13,7 +13,7 @@ Returns:
 Examples:
     (begin example)
         cursorObject remoteExecCall ["btc_db_fnc_add_veh", 2];
-        btc_curator addCuratorEditableObjects [btc_vehicles, false];
+        {_x addCuratorEditableObjects [btc_vehicles, false];} forEach allCurators;
     (end)
 
 Author:
