@@ -3,7 +3,7 @@
 <a href="http://vdauphin.github.io/HeartsAndMinds/">
 :book: Documentation</a> |
 <a href="https://github.com/Vdauphin/HeartsAndMinds/discussions">:speech_balloon: Discussions</a> |
- <a href="https://www.battlemetrics.com/servers/arma3?q=hearts%2Band%2Bminds%20OR%20%22H%26M%22&status=online&sort=-players">
+ <a href="https://www.battlemetrics.com/servers/arma3?q=hearts%2Band%2Bminds%20||%20%22H%26M%22&status=online&sort=-players">
 :video_game: Play</a>
  :arrow_left:
 </p>
