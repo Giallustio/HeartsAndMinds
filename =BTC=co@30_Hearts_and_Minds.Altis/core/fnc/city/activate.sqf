@@ -57,7 +57,7 @@ private _ieds = _city getVariable ["ieds", []];
 private _spawningRadius = _cachingRadius/2;
 
 if (!(_city getVariable ["initialized", false])) then {
-    private _ratio = (switch _type do {
+    private _numberOfIED = (switch _type do {
         case "Hill" : {1};
         case "VegetationFir" : {1};
         case "BorderCrossing" : {2};
@@ -71,23 +71,22 @@ if (!(_city getVariable ["initialized", false])) then {
         default {0};
     });
 
-    private _ratio_ied = random _ratio;
     if (_has_en) then {
-        _ratio_ied = _ratio_ied * 1.5;
+        _numberOfIED = _numberOfIED * 1.5;
     } else {
-        _ratio_ied = _ratio_ied * 0.75;
+        _numberOfIED = _numberOfIED * 0.75;
     };
     if (_has_ho) then {
-        _ratio_ied = _ratio_ied * 2;
+        _numberOfIED = _numberOfIED * 2;
     };
 
     if (btc_debug_log) then {
-        [format ["_ratio_ied %1 - p %2", _ratio_ied, _ratio_ied * btc_p_ied], __FILE__, [false]] call btc_debug_fnc_message;
+        [format ["_numberOfIED %1 - p %2", _numberOfIED, _numberOfIED * btc_p_ied], __FILE__, [false]] call btc_debug_fnc_message;
     };
 
-    _ratio_ied = _ratio_ied * btc_p_ied;
-    if (_ratio_ied > 0) then {
-        [[_city, _spawningRadius, (_ratio_ied / 2) + (random _ratio_ied)], btc_ied_fnc_initArea] call btc_delay_fnc_exec;
+    _numberOfIED = _numberOfIED * btc_p_ied / 2;
+    if (_numberOfIED > 0) then {
+        [[_city, _spawningRadius, _numberOfIED + (random _numberOfIED)], btc_ied_fnc_initArea] call btc_delay_fnc_exec;
     };
 
     _city setVariable ["initialized", true];
@@ -265,14 +264,14 @@ if !(_city getVariable ["has_suicider", false]) then {
 
 if (_city getVariable ["data_tags", []] isEqualTo []) then {
     private _tag_number = (switch _type do {
-        case "Hill" : {random 1};
-        case "BorderCrossing" : {random 1};
-        case "NameLocal" : {random 2.5};
-        case "StrongpointArea" : {random 3};
-        case "NameVillage" : {random 3.5};
-        case "NameCity" : {random 5};
-        case "NameCityCapital" : {random 6};
-        case "Airport" : {random 6};
+        case "Hill" : {1};
+        case "BorderCrossing" : {1};
+        case "NameLocal" : {2.5};
+        case "StrongpointArea" : {3};
+        case "NameVillage" : {3.5};
+        case "NameCity" : {5};
+        case "NameCityCapital" : {6};
+        case "Airport" : {6};
         case "NameMarine" : {0};
         default {0};
     });
@@ -285,7 +284,7 @@ if (_city getVariable ["data_tags", []] isEqualTo []) then {
     };
 
     if (_tag_number > 0) then {
-        [[_city, _spawningRadius, _tag_number], btc_tag_fnc_initArea] call btc_delay_fnc_exec;
+        [[_city, _spawningRadius, _tag_number / 2 + random _tag_number / 2], btc_tag_fnc_initArea] call btc_delay_fnc_exec;
     };
 };
 [_city, btc_tag_fnc_create] call btc_delay_fnc_exec;
