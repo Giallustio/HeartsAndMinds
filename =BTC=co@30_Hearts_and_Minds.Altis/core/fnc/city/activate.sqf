@@ -128,7 +128,7 @@ if (_data_units isNotEqualTo []) then {
     };
 
     if !(_type in ["Hill", "NameMarine"]) then {
-        private _houses = [_city, _spawningRadius/3] call btc_city_fnc_getHouses;
+        ([_city, _spawningRadius/3] call btc_city_fnc_getHouses) params ["_housesEntrerable", "_housesNotEntrerable"];
 
         if (_has_en) then {
             private _numberOfStatic = (switch _type do {
@@ -142,7 +142,7 @@ if (_data_units isNotEqualTo []) then {
                 case "Airport" : {6};
                 default {0};
             });
-            [+_houses, round (_p_mil_static_group_ratio * _numberOfStatic), _city] call btc_mil_fnc_create_staticOnRoof;
+            [_housesEntrerable+_housesNotEntrerable, round (_p_mil_static_group_ratio * _numberOfStatic), _city] call btc_mil_fnc_create_staticOnRoof;
         };
 
         // Spawn civilians
@@ -157,7 +157,7 @@ if (_data_units isNotEqualTo []) then {
             case "Airport" : {6};
             default {2};
         });
-        [+_houses, round (_p_civ_group_ratio * _numberOfCivi), _city] call btc_civ_fnc_populate;
+        [+_housesEntrerable, round (_p_civ_group_ratio * _numberOfCivi), _city] call btc_civ_fnc_populate;
     };
 };
 if (btc_p_animals_group_ratio > 0) then {
@@ -291,7 +291,7 @@ if (_city getVariable ["data_tags", []] isEqualTo []) then {
 
 if (
     !(_type in ["Hill", "NameMarine"]) &&
-    _city getVariable ["btc_city_houses", []] isEqualTo []
+    _city getVariable ["btc_city_housesEntrerable", []] isEqualTo []
 ) then {
     [[_city, _spawningRadius/3], btc_city_fnc_getHouses] call btc_delay_fnc_exec;
 };
