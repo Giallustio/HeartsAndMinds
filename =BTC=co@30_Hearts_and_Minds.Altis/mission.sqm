@@ -16,11 +16,11 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=3;
+		nextID=5;
 	};
 	class Camera
 	{
-		pos[]={8456.0693,183.07834,10202.41};
+		pos[]={8441.1865,179.74254,10200.943};
 		dir[]={-0.71679336,-0.51150566,-0.47391981};
 		up[]={-0.42668703,0.85927457,-0.28211212};
 		aside[]={-0.55152744,4.9441587e-007,0.83417183};
@@ -39,12 +39,10 @@ addons[]=
 	"A3_Modules_F_Curator_Curator",
 	"A3_Characters_F_Enoch",
 	"A3_Characters_F_Mark",
-	"A3_Armor_F_Beta_APC_Wheeled_01",
-	"ace_realisticnames",
-	"ace_vehicle_damage",
 	"A3_Props_F_Enoch_Military_Decontamination",
 	"A3_Signs_F",
 	"A3_Air_F_Heli_Heli_Transport_03",
+	"ace_realisticnames",
 	"A3_Soft_F_Gamma_Truck_01",
 	"A3_Soft_F_Exp_Truck_01",
 	"ace_refuel",
@@ -54,10 +52,12 @@ addons[]=
 	"A3_Soft_F_Beta_Truck_01",
 	"A3_Soft_F_MRAP_01",
 	"A3_Armor_F_Beta_APC_Tracked_01",
+	"ace_vehicle_damage",
 	"A3_Soft_F_Exp_LSV_01",
 	"A3_Air_F_Beta_Heli_Attack_01",
 	"A3_Soft_F_Offroad_01",
-	"A3_Air_F_Beta_Heli_Transport_01"
+	"A3_Air_F_Beta_Heli_Transport_01",
+	"A3_Armor_F_Beta_APC_Wheeled_01"
 };
 class AddonsMetaData
 {
@@ -129,94 +129,94 @@ class AddonsMetaData
 		};
 		class Item9
 		{
-			className="A3_Armor_F_Beta";
-			name="Arma 3 Beta - Armored Land Vehicles";
-			author="Bohemia Interactive";
-			url="https://www.arma3.com";
-		};
-		class Item10
-		{
-			className="ace_vehicle_damage";
-			name="ACE3 - Vehicle Damage";
-			author="ACE-Team";
-			url="http://ace3mod.com/";
-		};
-		class Item11
-		{
 			className="A3_Props_F_Enoch";
 			name="Arma 3 Contact Platform - Decorative and Mission Objects";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item12
+		class Item10
 		{
 			className="A3_Signs_F";
 			name="Arma 3 - Signs";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item13
+		class Item11
 		{
 			className="A3_Air_F_Heli";
 			name="Arma 3 Helicopters - Aircraft";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item14
+		class Item12
 		{
 			className="A3_Soft_F_Gamma";
 			name="Arma 3 - Unarmored Land Vehicles";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item15
+		class Item13
 		{
 			className="A3_Soft_F_Exp";
 			name="Arma 3 Apex - Unarmored Land Vehicles";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item16
+		class Item14
 		{
 			className="ace_refuel";
 			name="ACE3 - Refuel";
 			author="ACE-Team";
 			url="http://ace3mod.com/";
 		};
-		class Item17
+		class Item15
 		{
 			className="ace_repair";
 			name="ACE3 - Repair";
 			author="ACE-Team";
 			url="http://ace3mod.com/";
 		};
-		class Item18
+		class Item16
 		{
 			className="ace_rearm";
 			name="ACE3 - Rearm";
 			author="ACE-Team";
 			url="http://ace3mod.com/";
 		};
-		class Item19
+		class Item17
 		{
 			className="A3_Soft_F_Enoch";
 			name="Arma 3 Contact Platform - Unarmored Land Vehicles";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item20
+		class Item18
 		{
 			className="A3_Soft_F_Beta";
 			name="Arma 3 Beta - Unarmored Land Vehicles";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item21
+		class Item19
 		{
 			className="A3_Soft_F";
 			name="Arma 3 Alpha - Unarmored Land Vehicles";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
+		};
+		class Item20
+		{
+			className="A3_Armor_F_Beta";
+			name="Arma 3 Beta - Armored Land Vehicles";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item21
+		{
+			className="ace_vehicle_damage";
+			name="ACE3 - Vehicle Damage";
+			author="ACE-Team";
+			url="http://ace3mod.com/";
 		};
 		class Item22
 		{
@@ -245,6 +245,18 @@ class CustomAttributes
 		name="Multiplayer";
 		class Attribute0
 		{
+			property="RespawnTemplates";
+			expression="true";
+			class Value
+			{
+				class data
+				{
+					singleType="ARRAY";
+				};
+			};
+		};
+		class Attribute1
+		{
 			property="RespawnButton";
 			expression="true";
 			class Value
@@ -253,18 +265,6 @@ class CustomAttributes
 				{
 					singleType="SCALAR";
 					value=1;
-				};
-			};
-		};
-		class Attribute1
-		{
-			property="RespawnTemplates";
-			expression="true";
-			class Value
-			{
-				class data
-				{
-					singleType="ARRAY";
 				};
 			};
 		};
@@ -512,7 +512,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=47;
+		items=46;
 		class Item0
 		{
 			dataType="Marker";
@@ -867,8 +867,6 @@ class Mission
 			{
 				position[]={8255.6289,55.908749,9942.9063};
 			};
-			name="";
-			init="";
 			id=71;
 			type="ModuleCurator_F";
 			class CustomAttributes
@@ -1831,24 +1829,6 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={8295.166,78.402374,10052.533};
-				angles[]={0,5.7184839,0};
-			};
-			side="Empty";
-			flags=4;
-			class Attributes
-			{
-				skill=0.60000002;
-			};
-			id=170;
-			type="B_APC_Wheeled_01_cannon_F";
-			atlOffset=-0.077003479;
-		};
-		class Item37
-		{
-			dataType="Object";
-			class PositionInfo
-			{
 				position[]={8346.3516,77.140343,10107.095};
 				angles[]={0.0066671576,5.5850534,6.2485409};
 			};
@@ -1891,7 +1871,7 @@ class Mission
 				nAttributes=2;
 			};
 		};
-		class Item38
+		class Item37
 		{
 			dataType="Object";
 			class PositionInfo
@@ -1908,7 +1888,7 @@ class Mission
 			type="Tarp_01_Large_Black_F";
 			atlOffset=7.6293945e-006;
 		};
-		class Item39
+		class Item38
 		{
 			dataType="Object";
 			class PositionInfo
@@ -1925,7 +1905,7 @@ class Mission
 			type="RoadCone_L_F";
 			atlOffset=7.6293945e-006;
 		};
-		class Item40
+		class Item39
 		{
 			dataType="Object";
 			class PositionInfo
@@ -1942,7 +1922,7 @@ class Mission
 			type="RoadCone_L_F";
 			atlOffset=5.3405762e-005;
 		};
-		class Item41
+		class Item40
 		{
 			dataType="Object";
 			class PositionInfo
@@ -1959,7 +1939,7 @@ class Mission
 			type="RoadCone_L_F";
 			atlOffset=6.1035156e-005;
 		};
-		class Item42
+		class Item41
 		{
 			dataType="Object";
 			class PositionInfo
@@ -1976,7 +1956,7 @@ class Mission
 			type="RoadCone_L_F";
 			atlOffset=0.00016784668;
 		};
-		class Item43
+		class Item42
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -1990,7 +1970,7 @@ class Mission
 			type="HeadlessClient_F";
 			atlOffset=-0.59116364;
 		};
-		class Item44
+		class Item43
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -2003,7 +1983,7 @@ class Mission
 			id=245;
 			type="HeadlessClient_F";
 		};
-		class Item45
+		class Item44
 		{
 			dataType="Layer";
 			name="btc_veh_respawnable";
@@ -2043,13 +2023,13 @@ class Mission
 			id=246;
 			atlOffset=-0.41073608;
 		};
-		class Item46
+		class Item45
 		{
 			dataType="Layer";
 			name="btc_vehicles";
 			class Entities
 			{
-				items=19;
+				items=20;
 				class Item0
 				{
 					dataType="Comment";
@@ -2616,9 +2596,27 @@ class Mission
 						nAttributes=1;
 					};
 				};
+				class Item19
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={8295.166,78.402374,10052.533};
+						angles[]={0,5.7184839,0};
+					};
+					side="Empty";
+					flags=4;
+					class Attributes
+					{
+						skill=0.60000002;
+					};
+					id=170;
+					type="B_APC_Wheeled_01_cannon_F";
+					atlOffset=-0.077003479;
+				};
 			};
 			id=247;
-			atlOffset=-2.0925522;
+			atlOffset=-1.5446167;
 		};
 	};
 };
