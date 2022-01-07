@@ -113,7 +113,9 @@ for "_i" from 1 to _convoyLength do {
     [12] remoteExecCall ["btc_fnc_show_hint", [0, -2] select isDedicated];
 
     private _vehs = (units _group) apply {assignedVehicle _x};
-    btc_curator addCuratorEditableObjects [_vehs arrayIntersect _vehs, false];
+    {
+        _x addCuratorEditableObjects [_vehs arrayIntersect _vehs, false];
+    } forEach allCurators;
 }, [
     _group, _pos2, -1, "MOVE", "SAFE", "RED", "LIMITED", "COLUMN",
     format ["['%1', 'FAILED'] call BIS_fnc_taskSetState;", _taskID], [0, 0, 0], _radius/2
@@ -125,7 +127,9 @@ for "_i" from 1 to _convoyLength do {
     private _captive = leader _group;
     removeAllWeapons _captive;
     private _vehs = (units _group) apply {assignedVehicle _x};
-    btc_curator addCuratorEditableObjects [_vehs arrayIntersect _vehs, false];
+    {
+        _x addCuratorEditableObjects [_vehs arrayIntersect _vehs, false];
+    } forEach allCurators;
 
     private _surrender_taskID = _taskID + "su";
     [[_surrender_taskID, _taskID], 24, objNull, typeOf _captive] call btc_task_fnc_create;
