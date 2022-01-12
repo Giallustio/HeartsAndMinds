@@ -41,6 +41,8 @@ _pos = [_pos, 0, 50, 13, 0, 60 * (pi / 180), 0] call btc_fnc_findsafepos;
 
 _city setVariable ["spawn_more", true];
 
+waitUntil {!isNil "btc_vehicles"}; // Wait for loading vehicles from db
+
 private _heli_type = typeOf selectRandom ((btc_vehicles + btc_veh_respawnable) select {
     _x isKindOf "air" &&
     {!(unitIsUAV _x)}
