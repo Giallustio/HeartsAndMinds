@@ -15,7 +15,7 @@ Returns:
 
 Examples:
     (begin example)
-        [[selectRandom btc_city_all, selectRandom btc_city_all]] call btc_patrol_fnc_usefulCity;
+        [[selectRandom values btc_city_all, selectRandom values btc_city_all]] call btc_patrol_fnc_usefulCity;
     (end)
 
 Author:

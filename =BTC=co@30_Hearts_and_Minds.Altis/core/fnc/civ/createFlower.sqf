@@ -13,7 +13,7 @@ Returns:
 
 Examples:
     (begin example)
-        [btc_city_all#0, [[getPosASL player, getDir player]]] call btc_civ_fnc_createFlower;
+        [btc_city_all get 0, [[getPosASL player, getDir player]]] call btc_civ_fnc_createFlower;
     (end)
 
 Author:
