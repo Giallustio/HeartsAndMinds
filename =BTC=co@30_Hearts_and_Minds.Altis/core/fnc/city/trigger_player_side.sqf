@@ -56,6 +56,10 @@ if (btc_debug) then {
     _city setVariable ["marker", _marker];
 
     private _marke = createMarker [format ["locn_%1", _id], _position];
-    _marke setMarkerType "mil_dot";
-    _marke setMarkerText format ["loc_%3 %1 %2 - [%4] - [%5]", _name, _type, _id, _has_en, _city getVariable ["hasbeach", "empty"]];
+    _marke setMarkerType "Contact_dot1";
+    private _spaces = "";
+    for "_i" from 0 to count _name -1 do {
+        _spaces = _spaces + " ";
+    };
+    _marke setMarkerText format [_spaces + "%1 ID %2 - [%3]", _type, _id, _city getVariable ["hasbeach", "empty"]];
 };
