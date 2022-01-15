@@ -26,7 +26,7 @@ params [
     ["_remainEnemyUnits", [], [[]]]
 ];
 
-private _city = btc_city_all select _id;
+private _city = btc_city_all get _id;
 _city setVariable ["occupied", false];
 
 if (_remainEnemyUnits isNotEqualTo []) then {

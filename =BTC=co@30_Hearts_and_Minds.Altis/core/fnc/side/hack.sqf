@@ -26,8 +26,7 @@ params [
     ["_taskID", "btc_side", [""]]
 ];
 
-private _useful = btc_city_all select {
-    !isNull _x &&
+private _useful = values btc_city_all select {
     _x getVariable ["occupied", false] &&
     !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine", "StrongpointArea"])
 };
@@ -65,7 +64,7 @@ private _defend_taskID = _taskID + "df";
 [[_defend_taskID, _taskID], 22, _terminal, _terminalType, true] call btc_task_fnc_create;
 
 private _groups = [];
-private _closest = [_city, btc_city_all select {!(_x getVariable ["active", false])}, false] call btc_fnc_find_closecity;
+private _closest = [_city, values btc_city_all select {!(_x getVariable ["active", false])}, false] call btc_fnc_find_closecity;
 for "_i" from 1 to (2 + round random 1) do {
     _groups pushBack ([btc_mil_fnc_send, [_closest, getPos _terminal, 1, selectRandom btc_type_motorized]] call CBA_fnc_directCall);
 };
