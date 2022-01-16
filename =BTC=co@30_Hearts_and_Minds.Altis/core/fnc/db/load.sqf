@@ -57,7 +57,6 @@ private _cities_status = +(profileNamespace getVariable [format ["btc_hm_%1_citi
         } else {
             _marker setMarkerColor "colorGreen";
         };
-        _marker setMarkerText format ["loc_%3 %1 %2 - [%4]", _city getVariable "name", _city getVariable "type", _id, _occupied];
     };
     if (btc_debug_log) then {
         [format ["ID: %1 - IsOccupied %2", _id, _occupied], __FILE__, [false]] call btc_debug_fnc_message;

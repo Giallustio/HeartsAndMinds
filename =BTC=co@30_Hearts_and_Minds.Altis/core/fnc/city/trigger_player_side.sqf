@@ -61,5 +61,5 @@ if (btc_debug) then {
     for "_i" from 0 to count _name -1 do {
         _spaces = _spaces + " ";
     };
-    _marke setMarkerText format [_spaces + "%1 ID %2 - [%3]", _type, _id, _city getVariable ["hasbeach", "empty"]];
+    _marke setMarkerText format [_spaces + "%1 ID %2 - %3", _type, _id, _city getVariable ["hasbeach", "empty"]];
 };
