@@ -2479,6 +2479,9 @@
                 <Chinesesimp>距离太远!</Chinesesimp>
                 <French>Trop loin !</French>
             </Key>
+            <Key ID="STR_BTC_HAM_TOW_NOTA">
+                <Original>Not align!</Original>
+            </Key>
             <Key ID="STR_BTC_HAM_TOW_ALREADYTOWED">
                 <Original>This vehicle is already attached to another!</Original>
                 <Spanish>Este vehículo ya está unido a otro!</Spanish>
