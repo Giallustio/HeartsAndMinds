@@ -875,6 +875,9 @@
                 <Original>On vehicle</Original>
                 <Chinesesimp>仅限载具</Chinesesimp>
             </Key>
+            <Key ID="STR_BTC_HAM_PARAM_OTHER_FLAGVEHLEADER">
+                <Original>On vehicle and team leader</Original>
+            </Key>
             <Key ID="STR_BTC_HAM_PARAM_OTHER_FLAGVEHPLAYER">
                 <Original>On vehicle and players</Original>
                 <Chinesesimp>载具和玩家</Chinesesimp>
