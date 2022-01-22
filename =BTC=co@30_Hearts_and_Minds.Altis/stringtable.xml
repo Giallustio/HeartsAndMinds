@@ -39,20 +39,20 @@
                 <French>Point logistique</French>
             </Key>
             <Key ID="STR_BTC_HAM_MSQM_MRK_VEH">
-                <Original>Sync all vehicles to this logic</Original>
-                <Chinesesimp>将所有载具同步与此逻辑同步</Chinesesimp>
+                <Original>Add vehicles to this layer</Original>
+                <Chinesesimp>Add vehicles to this layer</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_MSQM_MRK_VEHDESC">
-                <Original>Sync all vehicles that should NOT automatically respawn to this logic. If a vehicle SHOULD automatically respawn, sync it to the logic named "Sync all respawnable vehicles to this logic".</Original>
-                <Chinesesimp>将所有不应该自动重生的载具同步至此逻辑。如果一辆载具应该自动重生, 将其同步至名为"将所有可重生载具与此逻辑同步"的逻辑。</Chinesesimp>
+                <Original>Add all vehicles that should NOT automatically respawn to "btc_vehicles" layer. If a vehicle SHOULD automatically respawn, add it to the layer named "btc_veh_respawnable".</Original>
+                <Chinesesimp>Add all vehicles that should NOT automatically respawn to "btc_vehicles" layer. If a vehicle SHOULD automatically respawn, add it to the layer named "btc_veh_respawnable"</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_MSQM_MRK_HELO">
-                <Original>Sync all respawnable vehicles to this logic</Original>
-                <Chinesesimp>将所有可重生载具与此逻辑同步</Chinesesimp>
+                <Original>Add respawnable vehicles to this layer</Original>
+                <Chinesesimp>Add respawnable vehicles to this layer</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_MSQM_MRK_HELODESC">
-                <Original>Sync all vehicles that should automatically respawn to this logic. If a vehicle should NOT automatically respawn, sync it to the logic named "Sync all vehicles to this logic".</Original>
-                <Chinesesimp>将所有应该自动重生的载具同步至此逻辑。如果一辆载具不应该自动重生, 将其同步至名为"将所有载具与此逻辑同步"的逻辑。</Chinesesimp>
+                <Original>Add all vehicles that should automatically respawn to "btc_veh_respawnable" layer. If a vehicle should NOT automatically respawn, add it to the layer named "btc_vehicles".</Original>
+                <Chinesesimp>Add all vehicles that should automatically respawn to "btc_veh_respawnable" layer. If a vehicle should NOT automatically respawn, add it to the layer named "btc_vehicles".</Chinesesimp>
             </Key>
         </Container>
     </Package>
