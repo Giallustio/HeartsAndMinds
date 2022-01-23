@@ -118,6 +118,8 @@ inGameUISetEventHandler ["Action", '["btc_inGameUISetEventHandler", _this] call 
     (findDisplay 46) displayAddEventHandler ["MouseButtonDown", btc_int_fnc_horn];
 }] call CBA_fnc_waitUntilAndExecute;
 
-["btc_respawn_player", { // Need to be handle locally
-    [[player, btc_player_side] select btc_p_respawn_ticketsShare, btc_p_respawn_ticketsLost] call BIS_fnc_respawnTickets;
-}] call CBA_fnc_addEventHandler;
+if (btc_p_respawn_ticketsAtStart >= 0) then {
+    ["btc_respawn_player", { // Need to be handle locally
+        [[player, btc_player_side] select btc_p_respawn_ticketsShare, btc_p_respawn_ticketsLost] call BIS_fnc_respawnTickets;
+    }] call CBA_fnc_addEventHandler;
+};
