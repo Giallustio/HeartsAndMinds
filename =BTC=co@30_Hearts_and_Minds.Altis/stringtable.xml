@@ -617,6 +617,9 @@
                 <Original>Number of tickets at mission start:</Original>
                 <Chinesesimp>任务开始时的重生票数:</Chinesesimp>
             </Key>
+            <Key ID="STR_BTC_HAM_RESP_TICKETSLOST">
+                <Original>Number of tickets lost per death:</Original>
+            </Key>
             <Key ID="STR_BTC_HAM_RESP_TICKETSHARE">
                 <Original>Tickets are share between:</Original>
                 <Chinesesimp>重生票数在以下玩家间共享:</Chinesesimp>

@@ -35,6 +35,7 @@ params [
     if (_unit isNotEqualTo player) exitWith {};
     if (ace_map_mapIllumination) then {ace_map_mapIllumination = false;};
     if (isObjectHidden player) exitWith {};
+    ["btc_respawn_player", [_unit, player]] call CBA_fnc_localEvent;
     ["btc_respawn_player", [_unit, player]] call CBA_fnc_serverEvent;
 }] call CBA_fnc_addEventHandler;
 {
@@ -116,3 +117,7 @@ inGameUISetEventHandler ["Action", '["btc_inGameUISetEventHandler", _this] call 
 [{!isNull (findDisplay 46)}, {
     (findDisplay 46) displayAddEventHandler ["MouseButtonDown", btc_int_fnc_horn];
 }] call CBA_fnc_waitUntilAndExecute;
+
+["btc_respawn_player", { // Need to be handle locally
+    [[player, btc_player_side] select btc_p_respawn_ticketsShare, btc_p_respawn_ticketsLost] call BIS_fnc_respawnTickets;
+}] call CBA_fnc_addEventHandler;

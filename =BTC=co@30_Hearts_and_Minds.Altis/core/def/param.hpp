@@ -71,6 +71,12 @@ class Params {
         texts[]={$STR_DISABLED,"0","1","2","3","4","5","10","15","20","25","30","50","70","100","150","200"};
         default = 20;
     };
+    class btc_p_respawn_ticketsLost { // Number of tickets lost per death:
+        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_RESP_TICKETSLOST"]);
+        values[]={1,2,3,4,5,6,7,8,9,10};
+        texts[]={"1","2","3","4","5","6","7","8","9","10"};
+        default = 1;
+    };
     class btc_p_respawn_ticketsShare { // Tickets are share between:
         title = __EVAL(format ["      %1", localize "STR_BTC_HAM_RESP_TICKETSHARE"]);
         values[]={0,1};
