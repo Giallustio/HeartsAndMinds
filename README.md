@@ -3,7 +3,7 @@
 <a href="http://vdauphin.github.io/HeartsAndMinds/">
 :book: Documentation</a> |
 <a href="https://github.com/Vdauphin/HeartsAndMinds/discussions">:speech_balloon: Discussions</a> |
- <a href="https://www.battlemetrics.com/servers/arma3?q=hearts%2Band%2Bminds&status=online&sort=-players">
+ <a href="https://www.battlemetrics.com/servers/arma3?q=hearts%2Band%2Bminds%20||%20%22H%26M%22&status=online&sort=-players">
 :video_game: Play</a>
  :arrow_left:
 </p>
@@ -71,7 +71,7 @@ At the beginning you have a very low reputation level, so civilians won't help y
 - Deep ACE3 support
     - Use mainly ACE interaction
     - Rearm system
-    - ACEX Fortify
+    - ACE Fortify
 - Logistic system
     - [Tow](http://vdauphin.github.io/HeartsAndMinds/InGame-documentation#towing-system)
     - [Vehicle in vehicle](http://vdauphin.github.io/HeartsAndMinds/InGame-documentation#towing-system) extended
