@@ -351,13 +351,15 @@ if (_numberOfCivVeh < _p_civ_max_veh) then {
 };
 
 // https://feedback.bistudio.com/T162941
-private _hcs = entities "HeadlessClient_F";
-if (/*_hcs isNotEqualTo []*/ true) then {
+private _HCs = entities "HeadlessClient_F";
+if (_HCs isNotEqualTo []) then {
     private _triggerZSize = (triggerArea (_city getVariable "trigger_player_side")) select 4;
     if (_triggerZSize isNotEqualTo -1) then {
+        private _cityPos = getPosASL _city;
+        private _HCPos = _cityPos vectorAdd [0, 0, -(_triggerZSize + 50)];
         {
-            _x attachTo [_city, [0, 0, -(_triggerZSize + 50)]];
-        } forEach _hcs;
+            _x setPosASL _HCPos;
+        } forEach _HCs;
     };
 };
 
