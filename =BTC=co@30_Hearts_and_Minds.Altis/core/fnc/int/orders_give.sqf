@@ -1,21 +1,21 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_int_orders_give
+Function: btc_int_fnc_orders_give
 
 Description:
-    Fill me when you edit me !
+    Send order to units
 
 Parameters:
-    _units - [Array]
-    _dir - [Number]
-    _order - [Number]
-    _wp_pos - [Array]
+    _units - Units. [Array]
+    _dir - Direction of the order. [Number]
+    _order - Type of order. [Number]
+    _wp_pos - Position to reach (taxi). [Array]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_int_orders_give;
+        _result = [] call btc_int_fnc_orders_give;
     (end)
 
 Author:
@@ -38,7 +38,7 @@ _units = _units select {!(group _x getVariable ["suicider", false]) && ((side _x
     } else {
         _wp_pos
     };
-    [_x, _order, _wp_pos_i] remoteExec ["btc_fnc_int_orders_behaviour", _x];
+    [_x, _order, _wp_pos_i] remoteExec ["btc_int_fnc_orders_behaviour", _x];
 } forEach _units;
 
 true

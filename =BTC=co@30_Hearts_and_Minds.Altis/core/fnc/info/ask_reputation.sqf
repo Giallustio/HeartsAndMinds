@@ -1,18 +1,18 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_info_ask_reputation
+Function: btc_info_fnc_ask_reputation
 
 Description:
-    Fill me when you edit me !
+    Ask reputation level and display it.
 
 Parameters:
-    _man - [Object]
+    _man - Man. [Object]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_info_ask_reputation;
+        cursorObject call btc_info_fnc_ask_reputation;
     (end)
 
 Author:
@@ -29,7 +29,7 @@ if !(player getVariable ["interpreter", false]) exitWith {
 };
 
 btc_int_ask_data = nil;
-["btc_global_reputation"] remoteExecCall ["btc_fnc_int_ask_var", 2];
+["btc_global_reputation"] remoteExecCall ["btc_int_fnc_ask_var", 2];
 
 waitUntil {!(isNil "btc_int_ask_data")};
 

@@ -1,20 +1,20 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_int_orders_behaviour
+Function: btc_int_fnc_orders_behaviour
 
 Description:
-    Fill me when you edit me !
+    Change the behaviour of a unit accordingly to the type of order.
 
 Parameters:
-    _unit - [Object]
-    _order - [Number]
-    _wp_pos - [Array]
+    _unit - Unit targeted. [Object]
+    _order - Type of order. [Number]
+    _wp_pos - Position the unit must go. [Array]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_int_orders_behaviour;
+        [cursorObject, 0] remoteExec ["btc_int_fnc_orders_behaviour", cursorObject];
     (end)
 
 Author:
@@ -64,7 +64,11 @@ switch (_order) do {
 if (_order isEqualTo 4) then {
     waitUntil {sleep 3; (isNull _unit || !alive _unit || (_unit inArea [_wp_pos, 10, 10, 0, false]))};
 } else {
-    waitUntil {sleep 3; (isNull _unit || !alive _unit || (count (getPos _unit nearEntities [btc_player_type, 50]) isEqualTo 0))};
+    waitUntil {sleep 3; (
+        isNull _unit ||
+        {!alive _unit} ||
+        {allPlayers inAreaArray [getPosWorld _unit, 50, 50] isEqualTo []}
+    )};
 };
 
 if (isNull _unit || !alive _unit) exitWith {};
@@ -81,5 +85,5 @@ _unit enableAI "PATH";
 _unit doMove getPos _unit;
 
 if (_unit isEqualTo vehicle _unit) then {
-    [_group] call btc_fnc_civ_addWP;
+    [_group] call btc_civ_fnc_addWP;
 };

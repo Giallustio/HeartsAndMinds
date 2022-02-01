@@ -1,18 +1,18 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_info_search_for_intel
+Function: btc_info_fnc_search_for_intel
 
 Description:
-    Fill me when you edit me !
+    Search a body for intel.
 
 Parameters:
-    _target - [Object]
+    _target - Body to search. [Object]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_info_search_for_intel;
+        _result = [] call btc_info_fnc_search_for_intel;
     (end)
 
 Author:
@@ -32,7 +32,7 @@ private _onFinish = {
     params ["_args"];
     _args params ["_target", "_player"];
 
-    [_target, _player] remoteExecCall ["btc_fnc_info_has_intel", 2];
+    [_target, _player] remoteExecCall ["btc_info_fnc_has_intel", 2];
 };
 private _condition = {
     params ["_args"];

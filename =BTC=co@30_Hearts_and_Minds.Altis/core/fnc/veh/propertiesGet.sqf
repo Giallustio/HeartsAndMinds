@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_getVehProperties
+Function: btc_veh_fnc_propertiesGet
 
 Description:
     Get properties of a vehicle.
@@ -19,7 +19,7 @@ Returns:
 
 Examples:
     (begin example)
-        [vehicle player] call btc_fnc_getVehProperties;
+        [vehicle player] call btc_veh_fnc_propertiesGet;
     (end)
 
 Author:
@@ -31,18 +31,18 @@ params [
     ["_vehicle", objNull, [objNull]]
 ];
 
-private _customization = [_vehicle] call BIS_fnc_getVehicleCustomization;
-private _isMedicalVehicle = [_vehicle] call ace_medical_treatment_fnc_isMedicalVehicle;
-private _isRepairVehicle = [_vehicle] call ace_repair_fnc_isRepairVehicle;
+private _customization = _vehicle call BIS_fnc_getVehicleCustomization;
+private _isMedicalVehicle = _vehicle call ace_medical_treatment_fnc_isMedicalVehicle;
+private _isRepairVehicle = _vehicle call ace_repair_fnc_isRepairVehicle;
 private _fuelSource = [
-    [_vehicle] call ace_refuel_fnc_getFuel,
+    _vehicle call ace_refuel_fnc_getFuel,
     _vehicle getVariable ["ace_refuel_hooks", []]
 ];
 private _pylons = getPylonMagazines _vehicle;
 private _isContaminated = _vehicle in btc_chem_contaminated;
 private _supplyVehicle = [
-    [_vehicle] call ace_rearm_fnc_isSource,
-    _vehicle getVariable ["ace_rearm_currentSupply", -1]
+    _vehicle call ace_rearm_fnc_isSource,
+    _vehicle call ace_rearm_fnc_getSupplyCount
 ];
 
 [_customization, _isMedicalVehicle, _isRepairVehicle, _fuelSource, _pylons, _isContaminated, _supplyVehicle]

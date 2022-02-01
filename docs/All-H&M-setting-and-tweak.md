@@ -2,7 +2,6 @@ You can change all setting and tweak all parameters in [core/def/mission.sqf](ht
 
 You can found for exemple:
 
-- Vehicle's player array (btc_veh and btc_helo).
 - Logistic class name.
 - Maximum civil and enemy traffic.
 - Spawning traffic distance

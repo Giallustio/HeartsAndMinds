@@ -1,18 +1,18 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_int_terminal
+Function: btc_int_fnc_terminal
 
 Description:
-    Fill me when you edit me !
+    Create interaction to terminal. Only used to side mission hack.
 
 Parameters:
-    _terminal - [Object]
+    _terminal - Terminal to interact. [Object]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_int_terminal;
+        _result = [] call btc_int_fnc_terminal;
     (end)
 
 Author:

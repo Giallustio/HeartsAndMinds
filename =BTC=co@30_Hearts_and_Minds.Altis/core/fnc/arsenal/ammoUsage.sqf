@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_arsenal_ammoUsage
+Function: btc_arsenal_fnc_ammoUsage
 
 Description:
     Select weapons if:
@@ -9,7 +9,7 @@ Description:
         - and is not/is parent to a parent
 
 Parameters:
-    _weapons - Array of weapopns. [Array]
+    _weapons - Array of weapons. [Array]
     _itemType_ammo_usageAllowed - Weapons allowed filter: array of item type ("AssaultRifle", "MissileLauncher"...), allowed ammo usage ("128 + 512": ammo against vehicles and armored vehicles) and array to check if weapons are parent to a parent. [Array]
 
 Returns:
@@ -17,7 +17,7 @@ Returns:
 
 Examples:
     (begin example)
-        _weapons_selected = [["launch_RPG7_F"], ["MissileLauncher", "256", []]] call btc_fnc_arsenal_ammoUsage;
+        _weapons_selected = [["launch_RPG7_F"], ["MissileLauncher", "256", []]] call btc_arsenal_fnc_ammoUsage;
     (end)
 
 Author:
@@ -55,7 +55,7 @@ _weapons select {
 
         if (btc_debug_log) then {
             if ("" in _aiAmmoUsage_magazines) then {
-                [format ["Weapons: %1 AiAmmoUsage Magazines: %2", _weapon, _aiAmmoUsage_magazines], __FILE__, [false]] call btc_fnc_debug_message;
+                [format ["Weapons: %1 AiAmmoUsage Magazines: %2", _weapon, _aiAmmoUsage_magazines], __FILE__, [false]] call btc_debug_fnc_message;
             };
         };
 

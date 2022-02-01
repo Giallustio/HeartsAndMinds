@@ -1,20 +1,20 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_info_hideout_asked
+Function: btc_info_fnc_hideout_asked
 
 Description:
-    Fill me when you edit me !
+    Send real or false information about a hideout around.
 
 Parameters:
-    _name - [String]
-    _is_real - [Boolean]
-    _text - [String]
+    _name - Name of the player. [String]
+    _is_real - If the information is true or not. [Boolean]
+    _text - Not used. [String]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_fnc_info_hideout_asked;
+        _result = [] call btc_info_fnc_hideout_asked;
     (end)
 
 Author:

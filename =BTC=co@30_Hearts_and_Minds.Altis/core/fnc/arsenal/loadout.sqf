@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_arsenal_loadout
+Function: btc_arsenal_fnc_loadout
 
 Description:
     Generate a loadout from an array of defined loadout depending on trait, medical level, color and hour of the day.
@@ -17,7 +17,7 @@ Returns:
 
 Examples:
     (begin example)
-        _rifleman_loadout = [0] call btc_fnc_arsenal_loadout;
+        _rifleman_loadout = [0] call btc_arsenal_fnc_loadout;
     (end)
     (begin example)
         [] spawn {
@@ -26,7 +26,7 @@ Examples:
                 {
                     private _j = _x;
                     {
-                        player setUnitLoadout ([_i, _j, _x] call btc_fnc_arsenal_loadout);
+                        player setUnitLoadout ([_i, _j, _x] call btc_arsenal_fnc_loadout);
                         sleep 1;
                     } forEach [false,true];
                 } forEach [0,1,2,3];
@@ -166,7 +166,7 @@ if (_fractures > 0) then {
 private _cargos = [
     [],
     [_backpack, [["SmokeShellGreen", 3, 1], ["SmokeShellPurple", 1, 1]] + _backpackMedical],
-    [_backpack, [["ToolKit", 1], ["ACE_EntrenchingTool", 1]]],
+    [_backpack, [["ToolKit", 1], ["ACE_EntrenchingTool", 1], ["ACE_wirecutter", 1]]],
     [_backpack, [["ACE_DefusalKit", 1], ["ACE_Clacker", 2], ["ACE_SpraypaintRed", 1], ["DemoCharge_Remote_Mag", 2, 1], [["ACE_VMM3", "", "", "", [], [], ""], 1], ["ACE_EntrenchingTool", 1]]],
     [_backpack, [[_launcherMagazines param [1, _launcherMagazine], 1, _launcherCount], [_launcherMagazine, 1, _launcherCount]]],
     [_backpack_big, [[_launcherMagazine, 2, _launcherCount]]],
@@ -176,16 +176,27 @@ private _cargos = [
     [_backpack, [["muzzle_antenna_02_f", 1], ["muzzle_antenna_01_f", 1], [["hgun_esd_01_F", "", "", "", [], [], ""], 1]]]
 ];
 private _binocular_array = [_laserdesignator, "", "", "", ["Laserbatteries", 1], [], ""];
-private _launcher_array = [_launcher, "", "", "", [_launcherMagazine, _launcherCount], [], ""];
-private _radio_item = [["ItemRadio", ""] select (isClass(_cfgPatches >> "acre_main")), _radio] select (isClass (_cfgPatches >> "task_force_radio"));
+private _launcher_array = [[_launcher, "", "", "", [_launcherMagazine, _launcherCount], [], ""], []] select (_launcher isEqualTo "");
+private _radio_item = [
+    ["ItemRadio", ""] select (isClass(_cfgPatches >> "acre_main")),
+    _radio
+] select (isClass (_cfgPatches >> "task_force_radio"));
 
-if (_isDay) then {
+private _loadout = if (_isDay) then {
     [
         [_weapon, "", "", _optics select _isDay, [_weaponMagazine, _weaponCount], [], _bipod_item],
         _launcher_array,
         [_pistol, "", "", "", [_pistolMagazine, _pistolCount], [], ""],
         [_uniform, _cargo_uniform],
-        [_vest, [["SmokeShellGreen", 2, 1], [_weaponMagazine, 7, _weaponCount], ["SmokeShellPurple", 2, 1], ["SmokeShellYellow", 1, 1], [_pistolMagazine, 1, _pistolCount], ["ACE_M84", 1, 1], ["HandGrenade", 3, 1], [["", _radio] select (isClass(_cfgPatches >> "acre_main")), 1]]],
+        [_vest, [
+            ["SmokeShellGreen", 2, 1],
+            [_weaponMagazine, 7, _weaponCount],
+            ["SmokeShellPurple", 2, 1],
+            ["SmokeShellYellow", 1, 1],
+            [_pistolMagazine, 1, _pistolCount],
+            ["ACE_M84", 1, 1],
+            ["HandGrenade", 3, 1]
+        ]],
         _cargos select _type, _helmet, _hood, _binocular_array,
         ["ItemMap", "B_UavTerminal", _radio_item, "ItemCompass", "ChemicalDetector_01_watch_F", ""]
     ]
@@ -195,8 +206,23 @@ if (_isDay) then {
         _launcher_array,
         [_pistol, "", "", "", [_pistolMagazine, _pistolCount], [], ""],
         [_uniform, _cargo_uniform],
-        [_vest, [["SmokeShellGreen", 1, 1], ["B_IR_Grenade", 2, 1], [_weaponMagazines param [1, _weaponMagazine], 7, _weaponCount], ["Chemlight_green", 1, 1], ["Chemlight_blue", 1, 1], ["ACE_HandFlare_Green", 1, 1], ["HandGrenade", 3, 1], ["ACE_M84", 1, 1], [["", _radio] select (isClass(_cfgPatches >> "acre_main")), 1]]],
+        [_vest, [
+            ["SmokeShellGreen", 1, 1],
+            ["B_IR_Grenade", 2, 1],
+            [_weaponMagazines param [1, _weaponMagazine], 7, _weaponCount],
+            ["Chemlight_green", 1, 1],
+            ["Chemlight_blue", 1, 1],
+            ["ACE_HandFlare_Green", 1, 1],
+            ["HandGrenade", 3, 1],
+            ["ACE_M84", 1, 1]
+        ]],
         _cargos select _type, _helmet, _hood, _binocular_array,
         ["ItemMap", "B_UavTerminal", _radio_item, "ItemCompass", "ChemicalDetector_01_watch_F", _night_vision]
     ]
-}
+};
+
+if (isClass(_cfgPatches >> "acre_main")) then {
+    (_loadout select 4 select 1) pushBack [_radio, 1];
+};
+
+_loadout

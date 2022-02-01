@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_intro
+Function: btc_respawn_fnc_intro
 
 Description:
     Introduction camera.
@@ -13,7 +13,7 @@ Returns:
 
 Examples:
     (begin example)
-        [] call btc_fnc_intro;
+        [] call btc_respawn_fnc_intro;
     (end)
 
 Author:
@@ -40,10 +40,19 @@ private _array = [
     ['\A3\ui_f\data\igui\cfg\simpleTasks\types\repair_ca.paa', _color, [_create_object_pos_x, _create_object_pos_y, _create_object_pos_z + 2.5], 0.9, 0.9, 0, "", 1],
     ['\A3\ui_f\data\igui\cfg\simpleTasks\types\rearm_ca.paa', _color, _create_object_pos, 0.9, 0.9, 0, localize "STR_BTC_HAM_INTRO_LOGPOINT", 1] //Rearm/Repair and Objects
 ];
-if (!isNil "btc_helo_1") then {
-    _array pushBack ['\A3\ui_f\data\map\vehicleicons\iconhelicopter_ca.paa', [0.7, 0, 0,1], getPos btc_helo_1, 1.1, 1.1, 0, localize "STR_BTC_HAM_INTRO_ONLYRESPAWN", 1]; //Only Respawnable
+if !(isNil "btc_veh_respawnable_1") then {
+    _array pushBack ['\A3\ui_f\data\map\vehicleicons\iconhelicopter_ca.paa', [0.7, 0, 0,1], getPos btc_veh_respawnable_1, 1.1, 1.1, 0, localize "STR_BTC_HAM_INTRO_ONLYRESPAWN", 1]; //Only Respawnable
 };
 
-[getMarkerPos "btc_base", localize "STR_BTC_HAM_INTRO_LOADINGTXT", 20, 30, 240, 0, _array, 0] call BIS_fnc_establishingShot;
+waitUntil {time > 0}; //Wait for date synchronisation
+
+private _startingDate = btc_startDate select [0, 3];
+private _date = date select [0, 3];
+private _days = (_date vectorDiff _startingDate) vectorDotProduct [365, 30.5, 1];
+[
+    getMarkerPos "btc_base",
+    format [localize "STR_BTC_HAM_INTRO_LOADINGTXT", round _days],
+    20, 30, 240, 0, _array, 0
+] call BIS_fnc_establishingShot;
 
 enableSaving [false, false];

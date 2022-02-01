@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_mil_create_staticOnRoof
+Function: btc_mil_fnc_create_staticOnRoof
 
 Description:
     Create static on roof.
@@ -14,7 +14,7 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [[position player, 30] call btc_fnc_getHouses, 3] call btc_fnc_mil_create_staticOnRoof;
+        _result = [flatten ([position player, 30] call btc_fnc_getHouses), 3] call btc_mil_fnc_create_staticOnRoof;
     (end)
 
 Author:
@@ -31,19 +31,18 @@ params [
 private _i = 1;
 while {
     _i <= _n &&
-    {!(_houses isEqualTo [])}
+    {_houses isNotEqualTo []}
 } do {
     private _house = _houses deleteAt 0;
-    private _houseType = typeOf _house;
     if (
-        !(_houseType isKindOf "Ruins") &&
-        {!(_houseType isKindOf "Church")} &&
-        {!("Chapel" in _houseType)}
+        !(_house isKindOf "Ruins") &&
+        {!(_house isKindOf "Church")} &&
+        {!("Chapel" in typeOf _house)}
     ) then {
         ([_house] call btc_fnc_roof) params ["_spawnPos", "_surfaceNormal"];
 
-        if (acos (_surfaceNormal vectorCos [0, 0, 1]) < 30) then {
-            [ASLToATL _spawnPos, btc_type_mg + btc_type_gl, (_house getDir _spawnPos) + (random [-15, 0, 15]), _surfaceNormal, _city] call btc_fnc_mil_create_static;
+        if (acos (_surfaceNormal vectorCos [0, 0, 1]) < 37) then {
+            [ASLToATL _spawnPos, btc_type_mg + btc_type_gl, (_house getDir _spawnPos) + (random [-15, 0, 15]), _surfaceNormal, _city] call btc_mil_fnc_create_static;
             _i = _i + 1;
         };
     };

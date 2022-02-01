@@ -1,9 +1,9 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_fnc_side_civtreatment
+Function: btc_side_fnc_civtreatment
 
 Description:
-    Fill me when you edit me !
+    Heal a civilian.
 
 Parameters:
     _taskID - Unique task ID. [String]
@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        [] spawn btc_fnc_side_civtreatment;
+        [false, "btc_side_fnc_civtreatment"] spawn btc_side_fnc_create;
     (end)
 
 Author:
@@ -25,32 +25,36 @@ params [
 ];
 
 //// Choose a clear City \\\\
-private _useful = btc_city_all select {!(isNull _x) && !(_x getVariable ["occupied", false]) && !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])};
-if (_useful isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
+private _useful = btc_city_all select {
+    !isNull _x &&
+    !(_x getVariable ["occupied", false]) &&
+    !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine", "StrongpointArea"])
+};
+if (_useful isEqualTo []) exitWith {[] spawn btc_side_fnc_create;};
 private _city = selectRandom _useful;
 private _pos = getPos _city;
 
 //// Choose spawn in house or on road \\\\
 private _r = random 2;
-private _vehpos = [];
-if ( _r < 1)    then {
+private _objects = [];
+if ( _r < 1) then {
     private _roads = _pos nearRoads 200;
-    _roads = _roads select {isOnRoad _x};
-    if (_roads isEqualTo []) exitWith {[] spawn btc_fnc_side_create;};
-    _pos = getPos (selectRandom _roads);
-    _vehpos = [_pos, 10] call btc_fnc_randomize_pos;
+    _objects = _roads select {isOnRoad _x};
 } else {
-    _houses = [[_pos select 0, _pos select 1, 0], 200] call btc_fnc_getHouses;
-    _pos = selectRandom ((selectRandom _houses) buildingPos -1);
-    _vehpos = [_pos select 0, _pos select 1, (_pos select 2) + 0.1];
+    _objects = ([[_pos select 0, _pos select 1, 0], 200] call btc_fnc_getHouses) select 0;
 };
+
+if (_objects isEqualTo []) exitWith {[] spawn btc_side_fnc_create;};
 
 //// Create civ on _pos \\\\
 private _veh = objNull;
 private _fx = objNull;
 if (_r < 1) then {
+    _pos = getPos (selectRandom _objects);
+    private _vehPos = [_pos, 10] call btc_fnc_randomize_pos;
+
     private _veh_type = selectRandom btc_civ_type_veh;
-    _veh = createVehicle [_veh_type, _vehpos, [], 0, "NONE"];
+    _veh = createVehicle [_veh_type, _vehPos, [], 0, "NONE"];
     _veh setDir (random 360);
     _veh setDamage 0.7;
     //// Random wheel hit \\\\
@@ -64,8 +68,11 @@ if (_r < 1) then {
     _fx = "test_EmptyObjectForSmoke" createVehicle (getPosATL _veh);
     _fx attachTo [_veh, [0, 0, 0]];
 } else {
+    _pos = selectRandom ((selectRandom _objects) buildingPos -1);
+    private _phonePos = [_pos select 0, _pos select 1, (_pos select 2) + 0.1];
+
     _phone_type = selectRandom btc_type_phone;
-    _veh = createVehicle [_phone_type, _vehpos, [], 0, "NONE"];
+    _veh = createVehicle [_phone_type, _phonePos, [], 0, "NONE"];
     _veh setDir (random 360);
     _fx = objNull;
 };
@@ -73,20 +80,31 @@ if (_r < 1) then {
 private _unit_type = selectRandom btc_civ_type_units;
 private _group = createGroup civilian;
 _group setVariable ["no_cache", true];
+_group setVariable ["acex_headless_blacklist", true];
 private _unit =_group createUnit [_unit_type, _pos, [], 0, "CAN_COLLIDE"];
 _unit setBehaviour "CARELESS";
 _unit setDir (random 360);
 _unit setUnitPos "DOWN";
 
-[_taskID, 8, _unit, [_city getVariable "name", _unit_type]] call btc_fnc_task_create;
+[_taskID, 8, _unit, [_city getVariable "name", _unit_type]] call btc_task_fnc_create;
 
 sleep 1;
 
-waitUntil {sleep 5; (_taskID call BIS_fnc_taskCompleted || !(playableUnits inAreaArray [getPosWorld _unit, 5000, 5000] isEqualTo []))};
+waitUntil {sleep 5;
+    _taskID call BIS_fnc_taskCompleted ||
+    playableUnits inAreaArray [getPosWorld _unit, 5000, 5000] isNotEqualTo []
+};
 
 [_unit] call btc_fnc_set_damage;
 
-waitUntil {sleep 5; (_taskID call BIS_fnc_taskCompleted || !alive _unit || {_unit call ace_medical_status_fnc_isInStableCondition && [_unit] call ace_common_fnc_isAwake})};
+waitUntil {sleep 5; 
+    _taskID call BIS_fnc_taskCompleted ||
+    !alive _unit ||
+    {
+        _unit call ace_medical_status_fnc_isInStableCondition &&
+        [_unit] call ace_common_fnc_isAwake
+    }
+};
 
 [[], [_veh, _fx, _group]] call btc_fnc_delete;
 
@@ -95,7 +113,7 @@ if !(alive _unit) exitWith {
     [_taskID, "FAILED"] call BIS_fnc_taskSetState;
 };
 
-10 call btc_fnc_rep_change;
+10 call btc_rep_fnc_change;
 
 [_taskID, "SUCCEEDED"] call BIS_fnc_taskSetState;
 
