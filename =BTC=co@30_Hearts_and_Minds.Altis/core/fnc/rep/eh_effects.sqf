@@ -20,7 +20,7 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-if (btc_global_reputation >= 600) exitWith {};
+if (btc_global_reputation >= btc_rep_level_normal + 100) exitWith {};
 
 params [
     ["_pos", [0, 0, 0], [[]]]
@@ -36,7 +36,7 @@ if (time > (btc_rep_militia_called + btc_rep_militia_call_time)) then {
         [_pos] call btc_rep_fnc_call_militia;
     };
 };
-if (btc_global_reputation < 300) then {
+if (btc_global_reputation < (btc_rep_level_low + 100)) then {
     if (_random > 4) then { //GET WEAPONS
         [btc_civ_fnc_get_weapons, [_pos, 300], 5] call CBA_fnc_waitAndExecute;
     };

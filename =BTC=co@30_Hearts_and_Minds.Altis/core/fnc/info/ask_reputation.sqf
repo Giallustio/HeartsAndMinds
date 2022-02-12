@@ -41,10 +41,10 @@ if ((round random 1) isEqualTo 1) then {
 };
 
 private _info_type = switch (true) do {
-    case (_rep < 200): {localize "STR_BTC_HAM_CON_INFO_ASKREP_VLOW"};
-    case (_rep >= 200 && _rep < 500): {localize "STR_BTC_HAM_CON_INFO_ASKREP_LOW"};
-    case (_rep >= 500 && _rep < 750): {toLower localize "str_terrain_12_5"};
-    case (_rep >= 750): {localize "str_terrain_6_25"};
+    case (_rep < btc_rep_level_low): {localize "STR_BTC_HAM_CON_INFO_ASKREP_VLOW"};
+    case (_rep >= btc_rep_level_low && _rep < btc_rep_level_normal): {localize "STR_BTC_HAM_CON_INFO_ASKREP_LOW"};
+    case (_rep >= btc_rep_level_normal && _rep < btc_rep_level_high): {toLower localize "str_terrain_12_5"};
+    case (_rep >= btc_rep_level_high): {localize "str_terrain_6_25"};
 };
 
 private _text = selectRandom [

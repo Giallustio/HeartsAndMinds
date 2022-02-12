@@ -669,6 +669,11 @@ btc_rep_malus_foodRemove = - btc_rep_bonus_foodGive;
 btc_rep_malus_breakDoor = - 2;
 btc_rep_malus_wheelChange = - 7;
 
+btc_rep_level_veryLow = 0;
+btc_rep_level_low = 200;
+btc_rep_level_normal = 500;
+btc_rep_level_high = 750;
+
 //Headless
 btc_units_owners = [];
 
