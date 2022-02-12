@@ -13,7 +13,7 @@ Returns:
 
 Examples:
     (begin example)
-        [[btc_city_all select 0, 100], btc_ied_fnc_drone_create] call btc_delay_fnc_exec;
+        [[btc_city_all get 0, 100], btc_ied_fnc_drone_create] call btc_delay_fnc_exec;
     (end)
 
 Author:
