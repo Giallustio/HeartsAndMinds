@@ -25,7 +25,9 @@ params [
 ];
 
 if (btc_log_obj_created pushBackUnique _obj isEqualTo -1) exitWith {};
-btc_curator addCuratorEditableObjects [[_obj], false];
+{
+    _x addCuratorEditableObjects [[_obj], false];
+} forEach allCurators;
 
 private _type = typeOf _obj;
 if (

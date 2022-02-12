@@ -8,7 +8,7 @@ setTimeMultiplier btc_p_acctime;
 [["btc_dty", "btc_m"], 1] call btc_task_fnc_create;
 
 if (btc_db_load && {profileNamespace getVariable [format ["btc_hm_%1_db", worldName], false]}) then {
-    if ((profileNamespace getVariable [format ["btc_hm_%1_version", worldName], 1.13]) in [btc_version select 1, 20.1]) then {
+    if ((profileNamespace getVariable [format ["btc_hm_%1_version", worldName], 1.13]) in [btc_version select 1, 21.1]) then {
         [] call compileScript ["core\fnc\db\load.sqf"];
     } else {
         [] call compileScript ["core\fnc\db\load_old.sqf"];
@@ -26,9 +26,8 @@ if (btc_db_load && {profileNamespace getVariable [format ["btc_hm_%1_db", worldN
     setDate btc_startDate;
 
     {
-        _x setVariable ["btc_EDENinventory", _x call btc_log_fnc_inventoryGet];
-        _x call btc_db_fnc_add_veh;
-    } forEach btc_vehicles;
+        _x call btc_veh_fnc_add;
+    } forEach (getMissionLayerEntities "btc_vehicles" select 0);
 };
 
 [] call btc_eh_fnc_server;
@@ -44,12 +43,11 @@ if (btc_p_db_autoRestart > 0) then {
 };
 
 {
-    _x setVariable ["btc_EDENinventory", _x call btc_log_fnc_inventoryGet];
     [_x, 30] call btc_veh_fnc_addRespawn;
     if (_forEachIndex isEqualTo 0) then {
         missionNamespace setVariable ["btc_veh_respawnable_1", _x, true];
     };
-} forEach btc_veh_respawnable;
+} forEach (getMissionLayerEntities "btc_veh_respawnable" select 0);
 
 if (btc_p_side_mission_cycle > 0) then {
     for "_i" from 1 to btc_p_side_mission_cycle do {

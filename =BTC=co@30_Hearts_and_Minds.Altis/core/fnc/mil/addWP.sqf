@@ -35,7 +35,7 @@ private _rpos = [_pos, _area] call btc_fnc_randomize_pos;
 
 switch (_wp) do {
     case ("HOUSE") : {
-        private _houses = [_city, _area] call btc_fnc_getHouses;
+        private _houses = ([_city, _area] call btc_fnc_getHouses) select 0;
         if (_houses isNotEqualTo []) then {
             private _house = selectRandom _houses;
             [_group, _house] call btc_fnc_house_addWP;

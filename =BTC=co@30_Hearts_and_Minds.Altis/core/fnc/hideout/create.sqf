@@ -11,7 +11,7 @@ Parameters:
     _rinf_time - Not used. [Number]
     _cap_time - Time for next capture of city around. [Number]
     _id - Id of the city where the hideout is. [Number]
-    _markers_saved - Merkers find by player. [Array]
+    _markers_saved - Markers found by players. [Array]
 
 Returns:
 
@@ -80,7 +80,7 @@ _city setPos _pos;
 if (btc_debug) then {deleteMarker format ["loc_%1", _id];};
 deleteVehicle (_city getVariable ["trigger_player_side", objNull]);
 
-[_pos, btc_hideouts_radius, _city, _city getVariable "occupied", _city getVariable "name", _city getVariable "type", _city getVariable "id"] call btc_city_fnc_trigger_player_side;
+[_city, btc_hideouts_radius, _city, _city getVariable "occupied", _city getVariable "name", _city getVariable "type", _city getVariable "id"] call btc_city_fnc_trigger_player_side;
 [{
     (_this select 0) findEmptyPositionReady (_this select 1)
 }, {}, [_pos, [0, _city getVariable ["cachingRadius", 100]]], 5 * 60] call CBA_fnc_waitUntilAndExecute;

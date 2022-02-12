@@ -3,7 +3,7 @@
 Function: btc_int_fnc_add_actions
 
 Description:
-    Fill me when you edit me !
+    Add actions use in game.
 
 Parameters:
 
