@@ -316,7 +316,7 @@ if (_civKilled isNotEqualTo []) then {
         _trigger setTriggerActivation [str btc_enemy_side, "PRESENT", false];
         _trigger setTriggerStatements [btc_p_city_free_trigger_condition, format ["[%1, thisList] call btc_city_fnc_set_clear", _id], ""];
         _trigger setTriggerInterval 2;
-        _city setVariable ["trigger", _trigger];
+        _city setVariable ["enTrigger", _trigger];
     };
 
     _city setVariable ["activating", false];
@@ -353,7 +353,7 @@ if (_numberOfCivVeh < _p_civ_max_veh) then {
 // https://feedback.bistudio.com/T162941
 private _HCs = entities "HeadlessClient_F";
 if (_HCs isNotEqualTo []) then {
-    private _triggerZSize = (triggerArea (_city getVariable "trigger_player_side")) select 4;
+    private _triggerZSize = (triggerArea _city) select 4;
     if (_triggerZSize isNotEqualTo -1) then {
         private _cityPos = getPosASL _city;
         private _HCPos = _cityPos vectorAdd [0, 0, -(_triggerZSize + 50)];

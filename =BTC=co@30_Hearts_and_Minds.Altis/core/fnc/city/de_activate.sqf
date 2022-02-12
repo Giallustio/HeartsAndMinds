@@ -46,9 +46,8 @@ if !(_city getVariable ["active", false]) exitWith {};
     private _has_en = _city getVariable ["occupied", false];
 
     if (_has_en) then {
-        private _trigger = _city getVariable ["trigger", objNull];
+        private _trigger = _city getVariable ["enTrigger", objNull];
         deleteVehicle _trigger;
-        _city setVariable ["trigger", objNull];
     };
 
     private _pos_city = getPosWorld _city;
