@@ -13,7 +13,10 @@ btc_p_acctime = "btc_p_acctime" call BIS_fnc_getParamValue;
 private _p_db = ("btc_p_load" call BIS_fnc_getParamValue) isEqualTo 1;
 btc_p_auto_db = "btc_p_auto_db" call BIS_fnc_getParamValue isEqualTo 1;
 btc_p_db_autoRestartTime = "btc_p_db_autoRestartTime" call BIS_fnc_getParamValue;
-btc_p_db_autoRestartHour = "btc_p_db_autoRestartHour" call BIS_fnc_getParamValue;
+btc_p_db_autoRestartHour = [
+    "btc_p_db_autoRestartHour1" call BIS_fnc_getParamValue,
+    "btc_p_db_autoRestartHour2" call BIS_fnc_getParamValue
+];
 btc_p_db_autoRestartType = "btc_p_db_autoRestartType" call BIS_fnc_getParamValue;
 
 //<< Respawn options >>
@@ -144,6 +147,7 @@ if (isServer) then {
     //Database
     btc_db_load = _p_db;
     btc_db_serverCommandPassword = "btc_password"; //Define the same password in server.cfg like this: serverCommandPassword = "btc_password";
+    btc_db_warningTimeAutoRestart = 5;
 
     //Hideout
     btc_hideouts = []; publicVariable "btc_hideouts";
