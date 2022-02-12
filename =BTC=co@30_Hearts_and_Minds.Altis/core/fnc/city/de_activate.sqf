@@ -3,10 +3,10 @@
 Function: btc_city_fnc_de_activate
 
 Description:
-    Desactivate the city with the corresponding ID by storing all groups present inside and clean up dead bodies.
+    Desactivate the city by storing all groups present inside and clean up dead bodies.
 
 Parameters:
-    _id - ID of the city to desactivate. [Number]
+    _city - City to desactivate. [Number]
 
 Returns:
 
@@ -21,10 +21,8 @@ Author:
 ---------------------------------------------------------------------------- */
 
 params [
-    ["_id", 0, [0]]
+    ["_city", objNull, [objNull]]
 ];
-
-private _city = btc_city_all select _id;
 
 if !(_city getVariable ["active", false]) exitWith {};
 
@@ -33,11 +31,12 @@ if !(_city getVariable ["active", false]) exitWith {};
 
     !(_city getVariable ["activating", false])
 }, {
-    params ["_city", "_id"];
+    params ["_city"];
 
     if !(_city getVariable ["active", false]) exitWith {};
 
     if (btc_debug) then {
+        private _id = _city getVariable "id";
         [str _id, __FILE__, [btc_debug, btc_debug_log, true]] call btc_debug_fnc_message;
     };
 
@@ -120,4 +119,4 @@ if !(_city getVariable ["active", false]) exitWith {};
 
     [] call btc_city_fnc_cleanUp;
 
-}, [_city, _id]] call CBA_fnc_waitUntilAndExecute;
+}, [_city]] call CBA_fnc_waitUntilAndExecute;

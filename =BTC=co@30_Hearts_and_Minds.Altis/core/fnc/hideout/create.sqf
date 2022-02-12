@@ -79,7 +79,7 @@ _city setVariable ["city_realPos", getPos _city];
 _city setPos _pos;
 if (btc_debug) then {deleteMarker format ["loc_%1", _id];};
 
-[_city, btc_hideouts_radius, _city getVariable "occupied", _city getVariable "name", _city getVariable "type", _city getVariable "id"] call btc_city_fnc_setPlayerTrigger;
+[_city, btc_hideouts_radius] call btc_city_fnc_setPlayerTrigger;
 [{
     (_this select 0) findEmptyPositionReady (_this select 1)
 }, {}, [_pos, [0, _city getVariable ["cachingRadius", 100]]], 5 * 60] call CBA_fnc_waitUntilAndExecute;

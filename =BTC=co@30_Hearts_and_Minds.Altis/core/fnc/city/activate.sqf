@@ -6,7 +6,7 @@ Description:
     Activate the city with the current id passed. This generate IED, random group, populate city with civilian and suicider. It also spawn military patrol and civilian.
 
 Parameters:
-    _id - Number of the city will be activated. [Number]
+    _city - City will be activating. [Number]
     _p_mil_group_ratio - Enemy density. [Number]
     _p_mil_static_group_ratio - Enemy static density. [Number]
     _p_civ_group_ratio - Civilian density. [Number]
@@ -27,7 +27,7 @@ Author:
 ---------------------------------------------------------------------------- */
 
 params [
-    ["_id", 0, [0]],
+    ["_city", objNull, [objNull]],
     ["_p_mil_group_ratio", btc_p_mil_group_ratio, [0]],
     ["_p_mil_static_group_ratio", btc_p_mil_static_group_ratio, [0]],
     ["_p_civ_group_ratio", btc_p_civ_group_ratio, [0]],
@@ -36,10 +36,10 @@ params [
     ["_p_patrol_max", btc_p_patrol_max, [0]]
 ];
 
-private _city = btc_city_all select _id;
 if (_city getVariable "activating") exitWith {};
 
 if (btc_debug) then {
+    private _id = _city getVariable "id";
     [str _id, __FILE__, [btc_debug, btc_debug_log, true]] call btc_debug_fnc_message;
     _city setVariable ["serverTime", serverTime];
 };
@@ -308,19 +308,20 @@ if (_civKilled isNotEqualTo []) then {
 };
 
 [{
-    params ["_has_en", "_city", "_cachingRadius", "_id"];
+    params ["_has_en", "_city", "_cachingRadius"];
 
     if (_has_en) then {
-        private _trigger = createTrigger ["EmptyDetector", getPos _city, false];
+        private _trigger = createTrigger ["EmptyDetector", _city, false];
         _trigger setTriggerArea [_cachingRadius, _cachingRadius, 0, false];
         _trigger setTriggerActivation [str btc_enemy_side, "PRESENT", false];
-        _trigger setTriggerStatements [btc_p_city_free_trigger_condition, format ["[%1, thisList] call btc_city_fnc_set_clear", _id], ""];
+        _trigger setTriggerStatements [btc_p_city_free_trigger_condition, "[thisTrigger, thisList] call btc_city_fnc_setClear", ""];
         _trigger setTriggerInterval 2;
+        _trigger setVariable ["playerTrigger", _city];
         _city setVariable ["enTrigger", _trigger];
     };
 
     _city setVariable ["activating", false];
-}, [_has_en, _city, _cachingRadius, _id], _delay] call btc_delay_fnc_waitAndExecute;
+}, [_has_en, _city, _cachingRadius], _delay] call btc_delay_fnc_waitAndExecute;
 
 //Patrol
 btc_patrol_active = btc_patrol_active - [grpNull];
@@ -364,5 +365,6 @@ if (_HCs isNotEqualTo []) then {
 };
 
 if (btc_debug || btc_debug_log) then {
+    private _id = _city getVariable "id";
     [format ["%1 - %2ms", _id, (serverTime - (_city getVariable ["serverTime", serverTime])) * 1000] , __FILE__, [btc_debug, btc_debug_log, true]] call btc_debug_fnc_message;
 };

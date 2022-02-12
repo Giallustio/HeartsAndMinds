@@ -58,6 +58,6 @@ if (btc_p_sea) then {
 }, {}, [_position, [0, _cachingRadius]], 5 * 60] call CBA_fnc_waitUntilAndExecute;
 
 btc_city_all set [_id, _city];
-[_city, _cachingRadius, _has_en, _name, _type, _id] call btc_city_fnc_setPlayerTrigger;
+[_city, _cachingRadius] call btc_city_fnc_setPlayerTrigger;
 
 _city
