@@ -36,15 +36,13 @@ params [
     ["_p_patrol_max", btc_p_patrol_max, [0]]
 ];
 
-if (_city getVariable "activating") exitWith {};
-
 if (btc_debug) then {
     private _id = _city getVariable "id";
     [str _id, __FILE__, [btc_debug, btc_debug_log, true]] call btc_debug_fnc_message;
     _city setVariable ["serverTime", serverTime];
 };
 
-_city setVariable ["activating", true];
+_city enableSimulation false;
 _city setVariable ["active", true];
 
 private _data_units = _city getVariable ["data_units", []];
@@ -320,7 +318,7 @@ if (_civKilled isNotEqualTo []) then {
         _city setVariable ["enTrigger", _trigger];
     };
 
-    _city setVariable ["activating", false];
+    _city enableSimulation true;
 }, [_has_en, _city, _cachingRadius], _delay] call btc_delay_fnc_waitAndExecute;
 
 //Patrol

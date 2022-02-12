@@ -37,7 +37,6 @@ params [
 
 private _city = createTrigger ["EmptyDetector", [_position select 0, _position select 1, getTerrainHeightASL _position], false];
 
-_city setVariable ["activating", false];
 _city setVariable ["initialized", false];
 _city setVariable ["id", _id];
 _city setVariable ["name", _name];
