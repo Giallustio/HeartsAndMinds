@@ -39,20 +39,20 @@
                 <French>Point logistique</French>
             </Key>
             <Key ID="STR_BTC_HAM_MSQM_MRK_VEH">
-                <Original>Sync all vehicles to this logic</Original>
-                <Chinesesimp>将所有载具同步与此逻辑同步</Chinesesimp>
+                <Original>Add vehicles to this layer</Original>
+                <Chinesesimp>Add vehicles to this layer</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_MSQM_MRK_VEHDESC">
-                <Original>Sync all vehicles that should NOT automatically respawn to this logic. If a vehicle SHOULD automatically respawn, sync it to the logic named "Sync all respawnable vehicles to this logic".</Original>
-                <Chinesesimp>将所有不应该自动重生的载具同步至此逻辑。如果一辆载具应该自动重生, 将其同步至名为"将所有可重生载具与此逻辑同步"的逻辑。</Chinesesimp>
+                <Original>Add all vehicles that should NOT automatically respawn to "btc_vehicles" layer. If a vehicle SHOULD automatically respawn, add it to the layer named "btc_veh_respawnable".</Original>
+                <Chinesesimp>Add all vehicles that should NOT automatically respawn to "btc_vehicles" layer. If a vehicle SHOULD automatically respawn, add it to the layer named "btc_veh_respawnable"</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_MSQM_MRK_HELO">
-                <Original>Sync all respawnable vehicles to this logic</Original>
-                <Chinesesimp>将所有可重生载具与此逻辑同步</Chinesesimp>
+                <Original>Add respawnable vehicles to this layer</Original>
+                <Chinesesimp>Add respawnable vehicles to this layer</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_MSQM_MRK_HELODESC">
-                <Original>Sync all vehicles that should automatically respawn to this logic. If a vehicle should NOT automatically respawn, sync it to the logic named "Sync all vehicles to this logic".</Original>
-                <Chinesesimp>将所有应该自动重生的载具同步至此逻辑。如果一辆载具不应该自动重生, 将其同步至名为"将所有载具与此逻辑同步"的逻辑。</Chinesesimp>
+                <Original>Add all vehicles that should automatically respawn to "btc_veh_respawnable" layer. If a vehicle should NOT automatically respawn, add it to the layer named "btc_vehicles".</Original>
+                <Chinesesimp>Add all vehicles that should automatically respawn to "btc_veh_respawnable" layer. If a vehicle should NOT automatically respawn, add it to the layer named "btc_vehicles".</Chinesesimp>
             </Key>
         </Container>
     </Package>
@@ -291,7 +291,7 @@
                 <Chinesesimp>上锁的门</Chinesesimp>
             </Key>
             <Key ID="STR_BTC_HAM_DOC_DOOR_TEXT">
-                <Original>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;House doors:&lt;/marker&gt;&lt;br/&gt; Civilian house door can be close. Depend on reputation level, civilian will lock their door and stay inside. Under low, all doors are locked, above normal, all door are unlocked. &lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\Ui_f\data\IGUI\Cfg\Actions\open_door_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Break locked door:&lt;/marker&gt;&lt;br/&gt; You can still enter by breaking door lock with a wirecutter. &lt;img image='\z\ace\addons\logistics_wirecutter\ui\item_wirecutter_ca.paa' width='355' height='200'/&gt; Or by using explosive.</Original>
+                <Original>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;House doors:&lt;/marker&gt;&lt;br/&gt; Civilian house door can be close. Depend on reputation level, civilian will lock their door and stay inside. Under low, all doors are locked, above normal, all door are unlocked. &lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\Ui_f\data\IGUI\Cfg\Actions\open_door_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;Break locked door:&lt;/marker&gt;&lt;br/&gt; You can still enter by breaking door lock with a wirecutter. &lt;img image='\z\ace\addons\logistics_wirecutter\ui\item_wirecutter_ca.paa' width='355' height='200'/&gt; Or by using explosive. &lt;img image='\A3\EditorPreviews_F\Data\CfgVehicles\Claymore_F.jpg' width='355' height='200'/&gt; &lt;br/&gt;&lt;br/&gt;</Original>
                 <Chinesesimp>&lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;屋门:&lt;/marker&gt;&lt;br/&gt; 平民居住的房屋可能会锁门。基于声誉水平, 平民将会锁上他们的屋门并待在屋里。在声誉低时, 所有屋门均会上锁, 在声誉一般时, 所有屋门均不会上锁。&lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\Ui_f\data\IGUI\Cfg\Actions\open_door_ca.paa' width='20' height='20'/&gt; &lt;marker name='blufor_base'&gt;撬锁:&lt;/marker&gt;&lt;br/&gt; 你仍然可以使用剪线钳来撬锁, 从而进入房屋。&lt;img image='\z\ace\addons\logistics_wirecutter\ui\item_wirecutter_ca.paa' width='355' height='200'/&gt;</Chinesesimp>
             </Key>
         </Container>
@@ -2478,6 +2478,9 @@
                 <Original>Too far!</Original>
                 <Chinesesimp>距离太远!</Chinesesimp>
                 <French>Trop loin !</French>
+            </Key>
+            <Key ID="STR_BTC_HAM_TOW_NOTA">
+                <Original>Not align!</Original>
             </Key>
             <Key ID="STR_BTC_HAM_TOW_ALREADYTOWED">
                 <Original>This vehicle is already attached to another!</Original>
