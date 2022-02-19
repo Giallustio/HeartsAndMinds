@@ -1,22 +1,46 @@
 
-if (btc_side_assigned) exitWith {};
+/* ----------------------------------------------------------------------------
+Function: btc_side_fnc_create
 
-if (count btc_side_list_use == 0) then {btc_side_list_use = + btc_side_list;};
+Description:
+    Create side mission inside the H&M task system.
 
-_side = btc_side_list_use select (floor random count btc_side_list_use);
+Parameters:
+    _cycle - Cycle side mission. [Boolean]
+    _side_fnc_name - Side mission function name. [String]
 
-btc_side_list_use = btc_side_list_use - [_side];
+Returns:
 
-btc_side_aborted = false;
-btc_side_done = false;
-btc_side_failed = false;
+Examples:
+    (begin example)
+        [false, "btc_side_fnc_supply"] spawn btc_side_fnc_create;
+    (end)
 
-switch (_side) do {
-	case 0 : {[] spawn btc_fnc_side_supply;};
-	case 1 : {[] spawn btc_fnc_side_mines;};
-	case 2 : {[] spawn btc_fnc_side_vehicle;};
-	case 3 : {[] spawn btc_fnc_side_get_city;};
-	case 4 : {[] spawn btc_fnc_side_tower;};
-	case 5 : {[] spawn btc_fnc_side_civtreatment;};
-	case 6 : {[] spawn btc_fnc_side_checkpoint;};
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
+params [
+    ["_cycle", false, [false]],
+    ["_side_fnc_name", "", [""]]
+];
+
+if (_side_fnc_name isEqualTo "") then {
+    if (btc_side_list_use isEqualTo []) then {
+        btc_side_list_use = btc_side_list call BIS_fnc_arrayShuffle;
+    };
+    _side_fnc_name = format ["btc_side_fnc_%1", btc_side_list_use deleteAt 0];
+};
+
+btc_side_ID = btc_side_ID + 1;
+private _tskID = format ["btc_tsk_%1", btc_side_ID];
+if ([_tskID] call BIS_fnc_taskExists) exitWith {
+    _this call btc_side_fnc_create;
+};
+
+[_tskID] call (missionNamespace getVariable [_side_fnc_name, {}]);
+
+if (_cycle) then {
+    [true] spawn btc_side_fnc_create;
 };

@@ -1,34 +1,45 @@
 
-private ["_useful","_house","_id","_city","_xx","_y","_pos","_houses","_house"];
+/* ----------------------------------------------------------------------------
+Function: btc_cache_fnc_find_pos
 
-if (count btc_hideouts == 0) exitWith {};
+Description:
+    Find a house in a city and spawn in it an ammo cache.
 
-_useful = [];
-_house = objNull;
-{if (_x getVariable ["occupied",false] && {_x getVariable ["type",""] != "NameLocal"} && {_x getVariable ["type",""] != "Hill"} && {_x getVariable ["type",""] != "NameMarine"}) then {_useful = _useful + [_x];};} foreach btc_city_all;
+Parameters:
+    _city_all - Array of cities where the ammo cache can be spawn. [Array]
 
-if (count _useful == 0) then {_useful = btc_city_all;};
+Returns:
+    - Position of the cache. [Array]
 
-_id = floor random count _useful;
-_city = _useful select _id;
-if (_city getVariable ["type",""] == "NameLocal" || _city getVariable ["type",""] == "Hill" || _city getVariable ["type",""] == "NameMarine") exitWith {[] call btc_fnc_cache_find_pos;};
-btc_cache_cities set [_id,0];
-btc_cache_cities = btc_cache_cities - [0];
-/*
-_xx = _city getVariable ["RadiusX",500];
-_y = _city getVariable ["RadiusY",500];
-_houses = [_city,(_xx + _y)/2] call btc_fnc_getHouses;
-*/
+Examples:
+    (begin example)
+        [] call btc_cache_fnc_find_pos;
+    (end)
 
-_xx = _city getVariable ["RadiusX",500];
-_y = _city getVariable ["RadiusY",500];
-_pos = [getPos _city, (_xx + _y)] call btc_fnc_randomize_pos;
-_houses = [_pos,50] call btc_fnc_getHouses;
+Author:
+    Giallustio
 
-if (count _houses == 0) then {
-	[] call btc_fnc_cache_find_pos;
-} else {
-	//private ["_isAct","_cache"];
-	_house = _houses select (floor random count _houses);
-	_house spawn btc_fnc_cache_spawn;
+---------------------------------------------------------------------------- */
+
+params [
+    ["_city_all", btc_city_all, [[]]]
+];
+
+private _useful = _city_all select {_x getVariable ["occupied", false] && {!(_x getVariable ["type", ""] in ["NameLocal", "Hill", "NameMarine"])}};
+
+if (_useful isEqualTo []) then {_useful = _city_all;};
+
+private _city = selectRandom _useful;
+
+if (_city getVariable ["type", ""] in ["NameLocal", "Hill", "NameMarine"]) exitWith {
+    [] call btc_cache_fnc_find_pos;
 };
+
+private _cachingRadius = _city getVariable ["cachingRadius", 200];
+private _houses = ([getPos _city, _cachingRadius/2] call btc_fnc_getHouses) select 0;
+
+if (_houses isEqualTo []) then {
+    [] call btc_cache_fnc_find_pos
+} else {
+    ASLToATL AGLToASL selectRandom (selectRandom _houses buildingPos -1)
+}

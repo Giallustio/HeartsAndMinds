@@ -1,42 +1,55 @@
-_city = _this select 0;
-_area = _this select 1;
 
-if (btc_debug_log) then
-{
-	diag_log format ["btc_fnc_ied_suicider_create:  _name = %1 _area %2",_city getVariable ["name","name"],_area];
+/* ----------------------------------------------------------------------------
+Function: btc_ied_fnc_suicider_create
+
+Description:
+    Create a suicider in a city under a random area.
+
+Parameters:
+    _city - City where the suicider is created. [Object]
+    _area - Area around the city the suicider is created randomly. [Number]
+    _rpos - Create the suicider at this position. [Array]
+    _type_units - Type of units. [Group]
+
+Returns:
+    _suicider - Created suicider. [Object]
+
+Examples:
+    (begin example)
+        _suicider = [allplayers select 0, 100] call btc_ied_fnc_suicider_create;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
+params [
+    ["_city", objNull, [objNull]],
+    ["_area", 100, [0]],
+    ["_rpos", [], [[]]],
+    ["_type_units", "", [""]]
+];
+
+if (btc_debug_log) then {
+    [format ["_name = %1 _area %2", _city getVariable ["name", "name"], _area], __FILE__, [false]] call btc_debug_fnc_message;
 };
 
-_pos = [];
-
-switch (typeName _city) do
-{
-	case "ARRAY" :{_pos = _city;};
-	case "STRING":{_pos = getMarkerPos _city;};
-	case "OBJECT":{_pos = position _city;};
+if (_rpos isEqualTo []) then {
+    _rpos = [position _city, _area] call btc_fnc_randomize_pos;
+};
+if (_type_units isEqualTo "") then {
+    _type_units = selectRandom btc_civ_type_units;
 };
 
-_rpos = [_pos, _area] call btc_fnc_randomize_pos;
+private _group = createGroup [civilian, true];
+_group setVariable ["btc_city", _city];
+_group setVariable ["acex_headless_blacklist", true];
+private _suicider = _group createUnit [_type_units, _rpos, [], 0, "CAN_COLLIDE"];
 
-_unit_type = btc_civ_type_units select (floor random count btc_civ_type_units);
+[_group, btc_civ_fnc_addWP] call btc_delay_fnc_exec;
+_group setVariable ["suicider", true];
 
-_group = createGroup civilian;
-_group createUnit [_unit_type, _rpos, [], 0, "NONE"];
-(leader _group) setpos _rpos;
+[_suicider] call btc_ied_fnc_suiciderLoop;
 
-_group spawn btc_fnc_civ_addWP;
-
-_group setVariable ["suicider",true];
-
-_suicider = leader _group;
-
-//Main check
-_suicider spawn
-{
-	_cond = false;
-
-	while {Alive _this && !isNull _this && !_cond} do
-	{
-		sleep 5;
-		if (count (getpos _this nearEntities ["SoldierWB", 25]) > 0) then {_cond = true;_this spawn btc_fnc_ied_suicider_active};
-	};
-};
+_suicider

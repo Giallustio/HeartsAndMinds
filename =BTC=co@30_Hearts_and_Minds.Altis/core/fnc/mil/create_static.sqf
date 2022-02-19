@@ -1,22 +1,46 @@
 
-private ["_pos","_type","_dir","_static","_group","_unit_type","_gunner"];
+/* ----------------------------------------------------------------------------
+Function: btc_mil_fnc_create_static
 
-_pos  = _this select 0;
-_type = _this select 1;
-_dir = 0; if (count _this > 2) then {_dir = _this select 2;};
-if (typeName _type == "ARRAY") then {_type = _type select (floor random count _type);};
+Description:
+    Create a static.
 
-_static = _type createVehicle _pos;
-_static setDir _dir;
-_static setpos _pos;
+Parameters:
+    _pos - Position of creation. [Array]
+    _statics_type - Type of static available. [Array]
+    _dir - Direction of the static. [Number]
+    _surfaceNormal - Surface normal. [Array]
+    _city - City where the static is created. [Object]
 
-_group = createGroup btc_enemy_side;
-_unit_type = btc_type_units select (floor (random (count btc_type_units)));
-_gunner = _group createUnit [_unit_type, _pos, [], 0, "NONE"];
-_gunner moveInGunner _static;
-_gunner setBehaviour "COMBAT";
-_gunner setCombatMode "RED";
+Returns:
+    _static - Created static. [Object]
 
-_gunner call btc_fnc_mil_unit_create;
+Examples:
+    (begin example)
+        _static = [getPosATL player] call btc_mil_fnc_create_static;
+    (end)
 
-if (btc_debug_log) then {diag_log format ["btc_fnc_mil_create_static: _this = %1 ; POS %2 _type %3",_this,_pos,_type];};	
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
+params [
+    ["_pos", [0, 0, 0], [[]]],
+    ["_statics_type", btc_type_mg, [[]]],
+    ["_dir", 0, [0]],
+    ["_surfaceNormal", [], [[]]],
+    ["_city", objNull, [objNull]]
+];
+
+private _group = createGroup btc_enemy_side;
+_group setVariable ["btc_city", _city];
+[_group] call CBA_fnc_clearWaypoints;
+[_group, _pos, selectRandom _statics_type, _dir, _surfaceNormal] call btc_mil_fnc_createVehicle;
+
+_group setBehaviour "COMBAT";
+_group setCombatMode "RED";
+
+if (btc_debug_log) then {
+    [format ["POS %1", _pos], __FILE__, [false]] call btc_debug_fnc_message;
+};

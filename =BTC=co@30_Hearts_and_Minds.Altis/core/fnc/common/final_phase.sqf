@@ -1,30 +1,56 @@
 
-[[6],"btc_fnc_show_hint"] spawn BIS_fnc_MP;
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_final_phase
 
-[1,"btc_fnc_task_set_done",true,true] spawn BIS_fnc_MP;
+Description:
+    Start the final mission process by waiting until all cities are free, then trigger the mission end.
+
+Parameters:
+
+Returns:
+
+Examples:
+    (begin example)
+        [] call btc_fnc_final_phase;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
+["btc_dty", "SUCCEEDED"] call BIS_fnc_taskSetState;
+[["btc_sze", "btc_m"], 2] call btc_task_fnc_create;
 
 btc_final_phase = true;
 
 btc_city_remaining = [];
-
 {
-	if (_x getVariable ["type",""] != "NameMarine") then {
-		if (_x getVariable ["marker",""] != "") then {deleteMarker (_x getVariable ["marker",""]);};
-		_radius_x = _x getVariable ["RadiusX",500];
-		_radius_y = _x getVariable ["RadiusY",500];
-		_marker = createmarker [format ["city_%1",position _x],position _x];
-		_marker setMarkerShape "ELLIPSE";
-		_marker setMarkerBrush "SolidBorder";
-		_marker setMarkerSize [(_radius_x+_radius_y), (_radius_x+_radius_y)];
-		_marker setMarkerAlpha 0.3;
-		if (_x getVariable ["occupied",false]) then {_marker setmarkercolor "colorRed";btc_city_remaining = btc_city_remaining + [_x];} else {_marker setmarkercolor "colorGreen";_marker setMarkerAlpha 0;};
-		_x setVariable ["marker",_marker];
-	};
-} foreach btc_city_all;
+    if (_x getVariable ["type", ""] != "NameMarine") then {
+        if (_x getVariable ["marker", ""] != "") then {
+            deleteMarker (_x getVariable ["marker", ""]);
+        };
+        private _cachingRadius = _x getVariable ["cachingRadius", 500];
 
-waitUntil {sleep 15; (count btc_city_remaining == 0)};
+        private _marker = createMarker [format ["city_%1", position _x], position _x];
+        _marker setMarkerShape "ELLIPSE";
+        _marker setMarkerBrush "SolidBorder";
+        _marker setMarkerSize [_cachingRadius, _cachingRadius];
+        _marker setMarkerAlpha 0.3;
+        if (_x getVariable ["occupied", false]) then {
+            _marker setMarkerColor "colorRed";
+            btc_city_remaining pushBack _x;
+        } else {
+            _marker setMarkerColor "colorGreen";
+            _marker setMarkerAlpha 0;
+        };
+        _x setVariable ["marker", _marker];
+    };
+} forEach (btc_city_all select {!(isNull _x)});
 
-[0,"btc_fnc_task_set_done",true,true] spawn BIS_fnc_MP;
+waitUntil {sleep 15; (btc_city_remaining isEqualTo [])};
+
+["btc_m", "SUCCEEDED"] call btc_task_fnc_setState;
 
 //END
-[[],"btc_fnc_end_mission",true,true] spawn BIS_fnc_MP;
+[] remoteExec ["btc_fnc_end_mission", 0, true];

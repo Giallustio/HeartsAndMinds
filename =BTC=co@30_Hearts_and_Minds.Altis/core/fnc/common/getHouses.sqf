@@ -1,11 +1,48 @@
-_pos       = _this select 0;
-_radius    = _this select 1;
-_buildings = nearestObjects [_pos, ["Building"], _radius];
-_useful    = [];
-{ 
-	if (format["%1", _x buildingPos 2] != "[0,0,0]" && {damage _x == 0} && {isNil {_x getVariable "btc_house_taken"}}) then
-	{ 
-		_useful set [count _useful, _x]; 
-	}; 
-} forEach _buildings; 
-_useful	
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_getHouses
+
+Description:
+    Get enterable and not enterable houses around a position.
+
+Parameters:
+    _pos - Position to search for houses. [Array]
+    _radius - Radius of search. [Number]
+
+Returns:
+	_enterable - Useful open houses. [Array]
+    _notEnterable - Useful not open houses. [Array]
+
+Examples:
+    (begin example)
+        _useful = [getPos player] call btc_fnc_getHouses;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
+params [
+    ["_pos", [0, 0, 0], [[], objNull]],
+    ["_radius", 100, [0]]
+];
+
+private _enterable = [];
+private _notEnterable = [];
+{
+    if (damage _x isNotEqualTo 0) then {continue;};
+    if ((_x buildingPos -1) isEqualTo []) then {
+        if (
+            _x isKindOf "Lamps_base_F" ||
+            {_x isKindOf "PowerLines_Small_base_F"} ||
+            {_x isKindOf "PowerLines_Wires_base_F"} ||
+            {_x isKindOf "Wall"}
+        ) then {continue;};
+        _notEnterable pushBack _x;
+    } else {
+        _enterable pushBack _x;
+    };
+} forEach (nearestObjects [_pos, ["Building"], _radius]);
+
+[_enterable, _notEnterable]

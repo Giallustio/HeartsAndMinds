@@ -1,69 +1,89 @@
 
-private ["_locations","_cities"];
+/* ----------------------------------------------------------------------------
+Function: btc_city_fnc_init
 
-_locations = configfile >> "cfgworlds" >> worldname >> "names";
+Description:
+    Create cities all over the map and store those properties.
 
-_cities = ["NameVillage","NameCity","NameCityCapital","NameLocal","Hill","NameMarine"];//
+Parameters:
+    _density_of_occupiedCity - Density of occupied city. [Number]
+
+Returns:
+
+Examples:
+    (begin example)
+        [] call btc_city_fnc_init;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
+params [
+    ["_density_of_occupiedCity", btc_p_density_of_occupiedCity, [0]]
+];
+
+private _locations = configfile >> "cfgworlds" >> worldname >> "names";
+
+private _citiesType = ["NameVillage", "NameCity", "NameCityCapital", "NameLocal", "Hill", "Airport", "StrongpointArea", "BorderCrossing", "VegetationFir"];
+if (btc_p_sea) then {_citiesType pushBack "NameMarine";};
+
 btc_city_all = [];
-for "_i" from 0 to (count _locations - 1) do {
-	private ["_current","_type"];
-	_current = _locations select _i;
+private _cities = [];
+for "_id" from 0 to (count _locations - 1) do {
+    private _current = _locations select _id;
 
-	_type = gettext(_current >> "type");
-	if (_type in _cities) then {
-		private ["_id","_city","_position","_name","_position","_radius_x","_radius_y","_has_en","_trigger"];
-		_id = count btc_city_all;
-		_position = getarray(_current >> "position");
-		_name = getText(_current >> "name");
-		_radius_x = getNumber(_current >> "RadiusA");
-		_radius_y = getNumber(_current >> "RadiusB");
+    private _type = getText (_current >> "type");
 
-		if (btc_city_blacklist find _name >= 0) exitWith {};
+    if (_type in _citiesType) then {
+        private _position = getArray (_current >> "position");
+        if (
+            surfaceIsWater _position &&
+            {_type isNotEqualTo "NameMarine"} &&
+            {getTerrainHeightASL _position < - 1}
+        ) then {
+            private _church = nearestTerrainObjects [_position, ["CHURCH"], 470];
+            if (_church isEqualTo []) then {
+                private _area = 50;
+                for "_i" from 0 to 3 do {
+                    private _new_position = [_position, 0, _area, 0.5, 0, -1, 0] call BIS_fnc_findSafePos;
+                    if (count _new_position isEqualTo 2) exitWith {
+                        _position = _new_position;
+                    };
+                    _area = _area * 2;
+                };
+            } else {
+                _position = getPos (_church select 0);
+            };
+        };
+        private _name = getText(_current >> "name");
+        private _cachingRadius = getNumber(_current >> "RadiusA") + getNumber(_current >> "RadiusB");
+        _cachingRadius = (_cachingRadius max 160) min 800;
 
-	/*
-		//if you want a safe area
-		if (_position distance getMarkerPos "YOUR_MARKER_AREA" < 500) exitWith {};
-	*/
+        if (btc_city_blacklist find _name >= 0) exitWith {};
 
-		_city = "Land_Ammobox_rounds_F" createVehicle _position;
-		_city hideObjectGlobal true;
-		_city allowDamage false;
-		_city enableSimulation false;
-		_city setVariable ["activating",false];
-		_city setVariable ["initialized",false];
-		_city setVariable ["id",_id];
-		_city setVariable ["name",_name];
-		_city setVariable ["RadiusX",_radius_x];
-		_city setVariable ["RadiusY",_radius_y];
-		_city setVariable ["active",false];
-		_city setVariable ["type",_type];
-		_city setVariable ["spawn_more",false];
-		_city setVariable ["data_units",[]];
-		_has_en = false;if (random 1 > 0.45) then {_has_en = true;};
-		_city setVariable ["occupied",_has_en];
-		btc_city_all set [_id,_city];
-		_trigger = createTrigger["EmptyDetector",getPos _city];
-		_trigger setTriggerArea[(_radius_x+_radius_y) + btc_city_radius,(_radius_x+_radius_y) + btc_city_radius,0,false];
-		_trigger setTriggerActivation[str(btc_player_side),"PRESENT",true];
-		_trigger setTriggerStatements ["this && !btc_db_is_saving", format ["[%1] spawn btc_fnc_city_activate",_id], format ["[%1] spawn btc_fnc_city_de_activate",_id]];
+        /*
+        //if you want a safe area
+        if ((getMarkerPos "YOUR_MARKER_AREA") inArea [_position, 500, 500, 0, false]) exitWith {};
+        */
 
-		if (btc_debug) then	{//_debug
-			private ["_marker"];
-			_marker = createmarker [format ["loc_%1",_id],_position];
-			_marker setMarkerShape "ELLIPSE";
-			_marker setMarkerBrush "SolidBorder";
-			_marker setMarkerSize [(_radius_x+_radius_y) + btc_city_radius, (_radius_x+_radius_y) + btc_city_radius];
-			_marker setMarkerAlpha 0.3;
-			//_marker setmarkertype "mil_dot";
-			if (_has_en) then {_marker setmarkercolor "colorRed";} else {_marker setmarkercolor "colorGreen";};
-			//_marker setmarkeralpha 0.5;
-			_marke = createmarker [format ["locn_%1",_id],_position];
-			_marke setmarkertype "mil_dot";
-			_marke setmarkertext format ["loc_%3 %1 %2 - [%4]",_name,_type,_id,_has_en];
-		};
-	};
+        private _city = [_position, _type, _name, _cachingRadius, false, _id] call btc_city_fnc_create;
+        _cities pushBack _city;
+    };
 };
+
+[_cities, true] call CBA_fnc_shuffle;
+private _numberOfCity = round ((count _cities) * _density_of_occupiedCity);
+{
+    _x setVariable ["occupied", true];
+    if (btc_debug) then {
+        (format ["loc_%1", _x getVariable "id"]) setMarkerColor "colorRed";
+    };
+} forEach (_cities select [0, _numberOfCity]);
 
 if !(isNil "btc_custom_loc") then {
-	{_x call btc_fnc_city_create} foreach btc_custom_loc;
+    {_x call btc_city_fnc_create;} forEach btc_custom_loc;
 };
+
+btc_city_all = btc_city_all apply {if (isNil "_x") then {objNull} else {_x}};

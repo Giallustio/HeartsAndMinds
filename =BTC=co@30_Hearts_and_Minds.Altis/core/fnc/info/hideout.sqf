@@ -1,30 +1,46 @@
 
-private ["_ho","_pos","_marker","_array"];
+/* ----------------------------------------------------------------------------
+Function: btc_info_fnc_hideout
 
-if (count btc_hideouts == 0) exitWith {};
+Description:
+    Add an random intel marker for the current hideout.
 
-private ["_ho","_pos","_marker","_array"];
+Parameters:
+    _ho - Current hideout. [Object]
 
-_ho = btc_hq getVariable ["info_hideout",objNull];
+Returns:
 
-if (isNull _ho) then {
-	_ho = btc_hideouts select (floor random count btc_hideouts);
-	btc_hq setVariable ["info_hideout",_ho];
-};
+Examples:
+    (begin example)
+        [] call btc_info_fnc_hideout;
+    (end)
 
-_pos = [
-	(((getPos _ho) select 0) + (random btc_info_hideout_radius - random btc_info_hideout_radius)),
-	(((getPos _ho) select 1) + (random btc_info_hideout_radius - random btc_info_hideout_radius))
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
+params [
+    ["_ho", btc_hq, [objNull]]
 ];
 
-_marker = createmarker [format ["%1", _pos], _pos];
-_marker setmarkertype "hd_warning";
+if (btc_hideouts isEqualTo []) exitWith {};
+
+if (isNull _ho) then {
+    _ho = selectRandom btc_hideouts;
+    btc_hq = _ho;
+};
+
+private _pos = [getPos _ho, btc_info_hideout_radius] call CBA_fnc_randPos;
+
+private _marker = createMarker [format ["%1", _pos], _pos];
+_marker setMarkerType "hd_warning";
 _marker setMarkerText format ["%1m", btc_info_hideout_radius];
 _marker setMarkerSize [0.5, 0.5];
 _marker setMarkerColor "ColorRed";
 
-_array = _ho getVariable ["markers",[]];
+private _array = _ho getVariable ["markers", []];
 
 _array pushBack _marker;
 
-_ho setVariable ["markers",_array];
+_ho setVariable ["markers", _array];
