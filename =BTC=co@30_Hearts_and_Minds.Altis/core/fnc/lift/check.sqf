@@ -26,7 +26,7 @@ params [
 
 if (
     !(_chopper isKindOf "Helicopter" || (_chopper isKindOf "Ship")) ||
-    !isNull ((_chopper) getVariable ["cargo", objNull]) ||
+    !isNull (_chopper getVariable ["cargo", objNull]) ||
     !btc_ropes_deployed
 ) exitWith {false};
 
