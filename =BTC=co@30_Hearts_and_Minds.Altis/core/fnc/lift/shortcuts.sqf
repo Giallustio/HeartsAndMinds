@@ -23,8 +23,9 @@ Author:
 #define BTC_PLAY_FBSOUND true    //set false if you do not want a "key-pressed-feedback" (sound)
 #define BTC_FBSOUND "ClickSoft"  //really quiet sound
 
+private _menuString = "Hearts and Minds " + localize "STR_HOOKCARGO";
 [
-    "Hearts and Minds: Mission",
+    _menuString,
     "btc_HaM_lift_deployRopes",
     [localize "STR_ACE_Fastroping_Interaction_deployRopes", "deploy ropes from helicopter"],
     {
@@ -42,7 +43,7 @@ Author:
 {}] call CBA_fnc_addKeybind;
 
 [
-    "Hearts and Minds: Mission",
+    _menuString,
     "btc_HaM_lift_cutRopes",
     [localize "STR_ACE_Fastroping_Interaction_cutRopes", "Cut ropes from helicopter"],
     {
@@ -59,7 +60,7 @@ Author:
 {}] call CBA_fnc_addKeybind;
 
 [
-    "Hearts and Minds: Mission",
+    _menuString,
     "btc_HaM_lift_HUD",
     [localize "STR_BTC_HAM_LOG_LDR_ACTIONHUD", "On / Off HUD"],
     {
@@ -74,7 +75,7 @@ Author:
 
 
 [
-    "Hearts and Minds: Mission",
+    _menuString,
     "btc_HaM_lift_hook",
     [localize "STR_BTC_HAM_LOG_HOOK", "Hook a vehicle"],
     {
