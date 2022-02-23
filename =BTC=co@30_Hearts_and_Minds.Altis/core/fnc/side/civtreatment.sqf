@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        [] spawn btc_side_fnc_civtreatment;
+        [false, "btc_side_fnc_civtreatment"] spawn btc_side_fnc_create;
     (end)
 
 Author:
@@ -67,11 +67,6 @@ if (_r < 1) then {
     //// Add smoke effect on car \\\\
     _fx = "test_EmptyObjectForSmoke" createVehicle (getPosATL _veh);
     _fx attachTo [_veh, [0, 0, 0]];
-} else {
-    _phone_type = selectRandom btc_type_phone;
-    _veh = createVehicle [_phone_type, _vehpos, [], 0, "NONE"];
-    _veh setDir (random 360);
-    _fx = objNull;
 };
 
 private _unit_type = selectRandom btc_civ_type_units;
