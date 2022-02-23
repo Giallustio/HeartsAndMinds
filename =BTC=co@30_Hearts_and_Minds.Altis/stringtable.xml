@@ -345,6 +345,9 @@
                 <Chinesesimp>自动重启/关闭服务器前的时间</Chinesesimp>
                 <French>Temps avant le redémarrage / arrêt automatique du serveur</French>
             </Key>
+            <Key ID="STR_BTC_HAM_PARAM_DB_HRESTARTTIME">
+                <Original>Hour of auto restart/shutdown server</Original>
+            </Key>
         </Container>
         <Container name="Parameters: Factions">
             <Key ID="STR_BTC_HAM_PARAM_FAC_TITLE">
