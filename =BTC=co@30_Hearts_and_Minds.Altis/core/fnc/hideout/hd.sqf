@@ -3,7 +3,7 @@
 Function: btc_hideout_fnc_hd
 
 Description:
-    Fill me when you edit me !
+    Trigger hideout explosion if all condition are met.
 
 Parameters:
     _hideout - Object to destroy. [Object]

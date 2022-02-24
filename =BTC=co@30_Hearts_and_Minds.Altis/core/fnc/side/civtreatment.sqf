@@ -3,7 +3,7 @@
 Function: btc_side_fnc_civtreatment
 
 Description:
-    Fill me when you edit me !
+    Heal a civilian.
 
 Parameters:
     _taskID - Unique task ID. [String]
@@ -28,7 +28,7 @@ params [
 private _useful = btc_city_all select {
     !isNull _x &&
     !(_x getVariable ["occupied", false]) &&
-    !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])
+    !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine", "StrongpointArea"])
 };
 if (_useful isEqualTo []) exitWith {[] spawn btc_side_fnc_create;};
 private _city = selectRandom _useful;
@@ -36,25 +36,25 @@ private _pos = getPos _city;
 
 //// Choose spawn in house or on road \\\\
 private _r = random 2;
-private _vehpos = [];
-if ( _r < 1)    then {
+private _objects = [];
+if ( _r < 1) then {
     private _roads = _pos nearRoads 200;
-    _roads = _roads select {isOnRoad _x};
-    if (_roads isEqualTo []) exitWith {[] spawn btc_side_fnc_create;};
-    _pos = getPos (selectRandom _roads);
-    _vehpos = [_pos, 10] call btc_fnc_randomize_pos;
+    _objects = _roads select {isOnRoad _x};
 } else {
-    _houses = [[_pos select 0, _pos select 1, 0], 200] call btc_fnc_getHouses;
-    _pos = selectRandom ((selectRandom _houses) buildingPos -1);
-    _vehpos = [_pos select 0, _pos select 1, (_pos select 2) + 0.1];
+    _objects = ([[_pos select 0, _pos select 1, 0], 200] call btc_fnc_getHouses) select 0;
 };
+
+if (_objects isEqualTo []) exitWith {[] spawn btc_side_fnc_create;};
 
 //// Create civ on _pos \\\\
 private _veh = objNull;
 private _fx = objNull;
 if (_r < 1) then {
+    _pos = getPos (selectRandom _objects);
+    private _vehPos = [_pos, 10] call btc_fnc_randomize_pos;
+
     private _veh_type = selectRandom btc_civ_type_veh;
-    _veh = createVehicle [_veh_type, _vehpos, [], 0, "NONE"];
+    _veh = createVehicle [_veh_type, _vehPos, [], 0, "NONE"];
     _veh setDir (random 360);
     _veh setDamage 0.7;
     //// Random wheel hit \\\\

@@ -3,11 +3,13 @@
 Function: btc_int_fnc_orders
 
 Description:
-    Fill me when you edit me !
+    Send order to a unit or multiple units.
 
 Parameters:
-    _order - [Number]
-    _unit - [Object]
+    _order - Type of order [Number]
+    _unit - Unit targeted or not. [Object]
+    _radius - Radius of units search. [Number]
+    _vehicle - Who sent the order, player or vehicle. [Object]
 
 Returns:
 

@@ -3,7 +3,7 @@
 Function: btc_delay_fnc_waitAndExecute
 
 Description:
-    Wait and execute a function with a _delay. Usefull when used after btc_delay_fnc_createVehicle.
+    Wait and execute a function with a _delay. Usefull when used after btc_delay_fnc_createVehicle that return a delay.
 
 Parameters:
     _code - Code to execute. [Code]
