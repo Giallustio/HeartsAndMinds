@@ -50,11 +50,11 @@ _data_unit params [
 private _delay = 0;
 if (_type isEqualTo 5) exitWith {
     [[_city, _spawningRadius, _array_pos select 0, _array_type select 0], btc_ied_fnc_suicider_create] call btc_delay_fnc_exec;
-    _delay + 0.2
+    _delay + btc_delay_unit
 };
 if (_type isEqualTo 7) exitWith {
     [[_city, _spawningRadius, _array_pos select 0], btc_ied_fnc_drone_create] call btc_delay_fnc_exec;
-    _delay + 0.2
+    _delay + btc_delay_unit
 };
 
 private _group = createGroup _side;
