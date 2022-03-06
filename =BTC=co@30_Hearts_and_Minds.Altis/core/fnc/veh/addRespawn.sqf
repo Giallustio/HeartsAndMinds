@@ -27,7 +27,18 @@ params [
     ["_time", 30, [0]]
 ];
 
-btc_veh_respawnable pushBackUnique _vehicle;
+if (isNil "btc_veh_respawnable") then {
+    btc_veh_respawnable = [];
+};
+if (isNil {_vehicle getVariable "btc_EDENinventory"}) then {
+    _vehicle setVariable ["btc_EDENinventory", _vehicle call btc_log_fnc_inventoryGet];
+};
+
+if (btc_veh_respawnable pushBackUnique _vehicle isEqualTo -1) exitWith {
+    if (btc_debug || btc_debug_log) then {
+        ["Vehicle added more than once in btc_veh_respawnable", __FILE__, [btc_debug, btc_debug_log, true]] call btc_debug_fnc_message;
+    }; 
+};
 
 private _type = typeOf _vehicle;
 private _pos = getPosASL _vehicle;

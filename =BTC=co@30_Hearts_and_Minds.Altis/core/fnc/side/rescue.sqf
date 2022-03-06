@@ -28,7 +28,7 @@ params [
 private _useful = btc_city_all select {
     !isNull _x &&
     _x getVariable ["occupied", false] &&
-    !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine"])
+    !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine", "StrongpointArea"])
 };
 
 if (_useful isEqualTo []) exitWith {[] spawn btc_side_fnc_create;};
@@ -40,6 +40,8 @@ private _pos = [getPos _city, (_city getVariable ["cachingRadius", 0])/2 - 100] 
 _pos = [_pos, 0, 50, 13, 0, 60 * (pi / 180), 0] call btc_fnc_findsafepos;
 
 _city setVariable ["spawn_more", true];
+
+waitUntil {!isNil "btc_vehicles"}; // Wait for loading vehicles from db
 
 private _heli_type = typeOf selectRandom ((btc_vehicles + btc_veh_respawnable) select {
     _x isKindOf "air" &&

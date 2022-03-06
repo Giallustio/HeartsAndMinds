@@ -70,7 +70,6 @@ if (isServer) then {
     btc_db_fnc_saveObjectStatus = compileScript ["core\fnc\db\saveObjectStatus.sqf"];
     btc_db_fnc_loadCargo = compileScript ["core\fnc\db\loadcargo.sqf"];
     btc_db_fnc_autoRestart = compileScript ["core\fnc\db\autoRestart.sqf"];
-    btc_db_fnc_add_veh = compileScript ["core\fnc\db\add_veh.sqf"];
     btc_db_fnc_setTurretMagazines = compileScript ["core\fnc\db\setTurretMagazines.sqf"];
     btc_db_fnc_autoRestartLoop = compileScript ["core\fnc\db\autoRestartLoop.sqf"];
 
@@ -219,8 +218,7 @@ if (isServer) then {
     btc_veh_fnc_respawn = compileScript ["core\fnc\veh\respawn.sqf"];
     btc_veh_fnc_propertiesGet = compileScript ["core\fnc\veh\propertiesGet.sqf"];
     btc_veh_fnc_propertiesSet = compileScript ["core\fnc\veh\propertiesSet.sqf"];
-    btc_veh_fnc_addVehFromSQM = compileScript ["core\fnc\veh\addVehFromSQM.sqf"];
-    btc_veh_fnc_addRespawnableFromSQM = compileScript ["core\fnc\veh\addRespawnableFromSQM.sqf"];
+    btc_veh_fnc_add = compileScript ["core\fnc\veh\add.sqf"];
 };
 
 /////////////////////CLIENT AND SERVER\\\\\\\\\\\\\\\\\\\\\

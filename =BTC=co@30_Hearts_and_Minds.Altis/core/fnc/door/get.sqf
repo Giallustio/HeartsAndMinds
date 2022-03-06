@@ -3,7 +3,7 @@
 Function: btc_door_fnc_get
 
 Description:
-    Get door infront of an object.
+    Get door in front of an object.
 
 Parameters:
     _distance - Distance to check intersect. [Number]

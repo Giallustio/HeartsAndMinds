@@ -1,6 +1,6 @@
 ### Here you can find some _Hearts and Minds_ video gameplay :
 
-Last video on Youtube: [recent gameplay](https://www.youtube.com/results?search_query=%22h%26m%22+OR+%22hearts+and+minds%22+arma+3&sp=CAI%253D)
+Last video on Youtube: [recent gameplay](https://www.youtube.com/results?search_query=%22h%26m%22+OR+%22hearts+and+minds%22+OR+%22hearts+%26+minds%22+arma+3&sp=CAI%253D)
 
 ## [![Alt text for your video](http://img.youtube.com/vi/FPnpk7J5nUg/0.jpg)](https://www.youtube.com/watch?v=FPnpk7J5nUg)
 
