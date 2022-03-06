@@ -2,7 +2,7 @@
 btc_version = [
     1,
     22,
-    0
+    1
 ];
 diag_log format (["=BTC= HEARTS AND MINDS VERSION %1.%2.%3"] + btc_version);
 
@@ -10,7 +10,7 @@ diag_log format (["=BTC= HEARTS AND MINDS VERSION %1.%2.%3"] + btc_version);
 //<< Time options >>
 btc_p_time = "btc_p_time" call BIS_fnc_getParamValue;
 btc_p_acctime = "btc_p_acctime" call BIS_fnc_getParamValue;
-private _p_db = ("btc_p_load" call BIS_fnc_getParamValue) isEqualTo 1;
+btc_db_load = ("btc_p_load" call BIS_fnc_getParamValue) isEqualTo 1;
 btc_p_auto_db = "btc_p_auto_db" call BIS_fnc_getParamValue isEqualTo 1;
 btc_p_db_autoRestart = "btc_p_db_autoRestart" call BIS_fnc_getParamValue;
 btc_p_db_autoRestartTime = "btc_p_db_autoRestartTime" call BIS_fnc_getParamValue;
@@ -38,15 +38,15 @@ btc_p_ied_placement = "btc_p_ied_placement" call BIS_fnc_getParamValue;
 btc_p_ied_drone = ("btc_p_ied_drone" call BIS_fnc_getParamValue) isEqualTo 1;
 
 //<< Hideout/Cache options >>
-private _hideout_n = "btc_p_hideout_n" call BIS_fnc_getParamValue;
-private _cache_info_def = "btc_p_cache_info_def" call BIS_fnc_getParamValue;
-private _cache_info_ratio = "btc_p_cache_info_ratio" call BIS_fnc_getParamValue;
-private _info_chance = "btc_p_info_chance" call BIS_fnc_getParamValue;
+btc_hideout_n = "btc_p_hideout_n" call BIS_fnc_getParamValue;
+btc_info_cache_def = "btc_p_cache_info_def" call BIS_fnc_getParamValue;
+btc_info_cache_ratio = "btc_p_cache_info_ratio" call BIS_fnc_getParamValue;
+btc_info_intel_chance = "btc_p_info_chance" call BIS_fnc_getParamValue;
 btc_p_info_houseDensity = "btc_p_info_houseDensity" call BIS_fnc_getParamValue;
 
 //<< Skill options >>
 btc_p_set_skill  = ("btc_p_set_skill" call BIS_fnc_getParamValue) isEqualTo 1;
-private _p_skill = [
+btc_AI_skill = [
     ("btc_p_set_skill_general" call BIS_fnc_getParamValue)/10,//general
     ("btc_p_set_skill_aimingAccuracy" call BIS_fnc_getParamValue)/10,//aimingAccuracy
     ("btc_p_set_skill_aimingShake" call BIS_fnc_getParamValue)/10,//aimingShake
@@ -84,20 +84,15 @@ btc_p_garage = ("btc_p_garage" call BIS_fnc_getParamValue) isEqualTo 1;
 btc_p_autoloadout = "btc_p_autoloadout" call BIS_fnc_getParamValue;
 
 //<< Other options >>
-private _p_rep = "btc_p_rep" call BIS_fnc_getParamValue;
+btc_global_reputation = "btc_p_rep" call BIS_fnc_getParamValue;
 btc_p_rep_notify = "btc_p_rep_notify" call BIS_fnc_getParamValue;
-private _p_city_radiusOffset = ("btc_p_city_radiusOffset" call BIS_fnc_getParamValue) * 100;
+btc_city_radiusOffset = ("btc_p_city_radiusOffset" call BIS_fnc_getParamValue) * 100;
 btc_p_trigger = if (("btc_p_trigger" call BIS_fnc_getParamValue) isEqualTo 1) then {
     "this && (false in (thisList apply {_x isKindOf 'Plane'})) && (false in (thisList apply {(_x isKindOf 'Helicopter') && (speed _x > 190)}))"
 } else {
     "this"
 };
 private _p_city_free_trigger = "btc_p_city_free_trigger" call BIS_fnc_getParamValue;
-btc_p_city_free_trigger_condition = if (_p_city_free_trigger isEqualTo 0) then {
-    "thisList isEqualTo []"
-} else {
-    format ["[thisList, %1] call btc_city_fnc_trigger_free_condition", _p_city_free_trigger]
-};
 btc_p_flag = "btc_p_flag" call BIS_fnc_getParamValue;
 btc_p_debug = "btc_p_debug" call BIS_fnc_getParamValue;
 
@@ -134,21 +129,23 @@ if (isServer) then {
     btc_delay_time = 0;
 
     //City
-    btc_city_radiusOffset = _p_city_radiusOffset;
     btc_city_blacklist = [];//NAME FROM CFG
+    btc_p_city_free_trigger_condition = if (_p_city_free_trigger isEqualTo 0) then {
+        "thisList isEqualTo []"
+    } else {
+        format ["[thisList, %1] call btc_city_fnc_trigger_free_condition", _p_city_free_trigger]
+    };
 
     //Civ
     btc_civ_veh_active = [];
 
     //Database
-    btc_db_load = _p_db;
     btc_db_serverCommandPassword = "btc_password"; //Define the same password in server.cfg like this: serverCommandPassword = "btc_password";
 
     //Hideout
     btc_hideouts = []; publicVariable "btc_hideouts";
     btc_hideouts_id = 0;
     btc_hideouts_radius = 800;
-    btc_hideout_n = _hideout_n;
     if (btc_hideout_n isEqualTo 99) then {
         btc_hideout_n = round random 10;
     };
@@ -162,6 +159,7 @@ if (isServer) then {
     btc_ied_suic_spawned = - btc_ied_suic_time;
     btc_ied_offset = [0, -0.03, -0.07] select _p_ied_spot;
     btc_ied_list = [];
+    btc_ied_range = 10;
 
     //FOB
     btc_fobs = [[], [], []];
@@ -173,7 +171,6 @@ if (isServer) then {
     btc_patrol_area = 2500;
 
     //Rep
-    btc_global_reputation = _p_rep;
     btc_rep_militia_call_time = 600;
     btc_rep_militia_called = - btc_rep_militia_call_time;
     btc_rep_delayed = [0, []];
@@ -407,10 +404,7 @@ btc_int_hornRadius = 20;
 btc_int_hornDelay = time;
 
 //Info
-btc_info_intel_chance = _info_chance;
 btc_info_intel_type = [80, 95];//cache - hd - both
-btc_info_cache_def = _cache_info_def;
-btc_info_cache_ratio = _cache_info_ratio;
 btc_info_hideout_radius = 4000;
 btc_info_intels = ["Land_Camera_01_F", "Land_HandyCam_F"];
 
@@ -436,6 +430,7 @@ btc_containers_mat = ["Land_Cargo20_military_green_F", "Land_Cargo40_military_gr
 //Player
 btc_player_side = west;
 btc_respawn_marker = "respawn_west";
+btc_player_type = ["SoldierWB", "SoldierEB", "SoldierGB"] select ([west, east, independent] find btc_player_side);
 
 //Log
 btc_construction_array =
@@ -540,14 +535,24 @@ btc_log_fnc_get_nottowable = {
     params ["_tower"];
 
     switch (true) do {
-        //The tower is a tank so it can't tow: plane and helicopter
-        case (_tower isKindOf "Tank") : {["Plane", "Helicopter"];};
-        case (_tower isKindOf "Truck_F") : {["Plane", "Helicopter"];};
-        case (_tower isKindOf "Truck") : {["Plane", "Helicopter"];};
-        case (_tower isKindOf "Ship") : {[];};
-        //The tower is a car so it can't tow: truck, tank, plane and helicopter
-        case (_tower isKindOf "Car") : {["Truck", "Truck_F", "Tank", "Plane", "Helicopter"];};
-        default {["Car", "Truck", "Truck_F", "Tank", "Plane", "Helicopter", "Ship"];};
+        case (_tower isKindOf "Tank") : {
+            ["Plane", "Helicopter"]; //The tower is a tank so it can't tow: plane and helicopter
+        };
+        case (_tower isKindOf "Truck_F") : {
+            ["Plane", "Helicopter"];
+        };
+        case (_tower isKindOf "Truck") : {
+            ["Plane", "Helicopter"];
+        };
+        case (_tower isKindOf "Ship") : {
+            [];
+        };
+        case (_tower isKindOf "Car") : {
+            ["Truck", "Truck_F", "Tank", "Plane", "Helicopter"]; //The tower is a car so it can't tow: truck, tank, plane and helicopter
+        }; 
+        default {
+            ["Car", "Truck", "Truck_F", "Tank", "Plane", "Helicopter", "Ship"];
+        };
     };
 };
 
@@ -664,13 +669,8 @@ btc_rep_malus_foodRemove = - btc_rep_bonus_foodGive;
 btc_rep_malus_breakDoor = - 2;
 btc_rep_malus_wheelChange = - 7;
 
-//Skill
-btc_AI_skill = _p_skill;
-
 //Headless
 btc_units_owners = [];
-
-btc_player_type = ["SoldierWB", "SoldierEB", "SoldierGB"] select ([west, east, independent] find btc_player_side);
 
 //Door
 btc_door_breaking_time = 60;
