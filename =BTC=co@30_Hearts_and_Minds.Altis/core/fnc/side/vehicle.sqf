@@ -56,11 +56,11 @@ waitUntil {sleep 5;
 
 [[], [_veh]] call btc_fnc_delete;
 
-(- btc_rep_malus_wheelChange * _damagedWheel) call btc_rep_fnc_change;
-
 if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {};
 if (!alive _veh) exitWith {
     [_taskID, "FAILED"] call BIS_fnc_taskSetState;
 };
+
+(- btc_rep_malus_wheelChange * _damagedWheel) call btc_rep_fnc_change;
 
 [_taskID, "SUCCEEDED"] call BIS_fnc_taskSetState;

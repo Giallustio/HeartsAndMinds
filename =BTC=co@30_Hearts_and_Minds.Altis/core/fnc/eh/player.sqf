@@ -123,3 +123,8 @@ if (btc_p_respawn_ticketsAtStart >= 0) then {
         [[player, btc_player_side] select btc_p_respawn_ticketsShare, btc_p_respawn_ticketsLost] call BIS_fnc_respawnTickets;
     }] call CBA_fnc_addEventHandler;
 };
+
+["ace_marker_flags_placed", {
+    params ["_unit", "_flag"];
+    _flag remoteExecCall ["btc_log_fnc_init", 2];
+}] call CBA_fnc_addEventHandler; 

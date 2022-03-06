@@ -259,6 +259,7 @@ if !(_city getVariable ["has_suicider", false]) then {
         } else {
             [[_city, _spawningRadius], btc_ied_fnc_suicider_create] call btc_delay_fnc_exec;
         };
+        _delay = _delay + 0.2;
     };
 };
 
@@ -347,6 +348,19 @@ if (_numberOfCivVeh < _p_civ_max_veh) then {
         _group setVariable ["no_cache", true];
         _group setVariable ["acex_headless_blacklist", true];
         [[_group, _city, _cachingRadius + btc_patrol_area], btc_civ_fnc_create_patrol] call btc_delay_fnc_exec;
+    };
+};
+
+// https://feedback.bistudio.com/T162941
+private _HCs = entities "HeadlessClient_F";
+if (_HCs isNotEqualTo []) then {
+    private _triggerZSize = (triggerArea (_city getVariable "trigger_player_side")) select 4;
+    if (_triggerZSize isNotEqualTo -1) then {
+        private _cityPos = getPosASL _city;
+        private _HCPos = _cityPos vectorAdd [0, 0, -(_triggerZSize + 50)];
+        {
+            _x setPosASL _HCPos;
+        } forEach _HCs;
     };
 };
 

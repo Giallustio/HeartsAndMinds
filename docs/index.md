@@ -1,7 +1,7 @@
 ## Introduction :
 This mission is built for **dedicated server only**. You will found here some basic and specific informations related to _Hearts and Minds_ mission.
 
-Servers list : [battlemetrics.com](https://www.battlemetrics.com/servers/arma3?q=hearts%2Band%2Bminds&status=online&sort=-players)
+Servers list : [battlemetrics.com](https://www.battlemetrics.com/servers/arma3?q=hearts%2Band%2Bminds%20%20%22H%26M%22&status=online&sort=-players)
 
 ## Mission gameplay documentation
   - [InGame Documentation](http://vdauphin.github.io/HeartsAndMinds/InGame-documentation)
