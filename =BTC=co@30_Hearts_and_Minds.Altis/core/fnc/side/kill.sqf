@@ -36,6 +36,7 @@ private _city = selectRandom _useful;
 
 //// Randomise position \\\\
 private _houses = ([getPos _city, 100] call btc_fnc_getHouses) select 0;
+_houses = _houses select {count (_x buildingPos -1) > 1}; // Building with low enterable positions are not interesting
 if (_houses isEqualTo []) exitWith {[] spawn btc_side_fnc_create;};
 
 _houses = _houses apply {[count (_x buildingPos -1), _x]};

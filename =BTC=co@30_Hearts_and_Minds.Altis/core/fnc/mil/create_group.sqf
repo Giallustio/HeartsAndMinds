@@ -79,7 +79,7 @@ for "_i" from 1 to _numberOfGroup do {
     switch (_wp) do {
         case ("HOUSE") : {
             _n = 1;
-            [_group, _structure] call btc_fnc_house_addWP;
+            [[_group, _structure], btc_fnc_house_addWP] call btc_delay_fnc_exec;
             _group setVariable ["btc_inHouse", typeOf _structure];
         };
         case ("PATROL") : {

@@ -59,6 +59,6 @@ if (btc_p_sea) then {
     (_this select 0) findEmptyPositionReady (_this select 1)
 }, {}, [_position, [0, _cachingRadius]], 5 * 60] call CBA_fnc_waitUntilAndExecute;
 
-[_position, _cachingRadius, _city, _has_en, _name, _type, _id] call btc_city_fnc_trigger_player_side;
+[_city, _cachingRadius, _city, _has_en, _name, _type, _id] call btc_city_fnc_trigger_player_side;
 
 _city

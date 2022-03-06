@@ -3,7 +3,7 @@
 <a href="http://vdauphin.github.io/HeartsAndMinds/">
 :book: Documentation</a> |
 <a href="https://github.com/Vdauphin/HeartsAndMinds/discussions">:speech_balloon: Discussions</a> |
- <a href="https://www.battlemetrics.com/servers/arma3?q=hearts%2Band%2Bminds&status=online&sort=-players">
+ <a href="https://www.battlemetrics.com/servers/arma3?q=hearts%2Band%2Bminds%20||%20%22H%26M%22&status=online&sort=-players">
 :video_game: Play</a>
  :arrow_left:
 </p>
@@ -21,8 +21,8 @@ Post war anti insurgency dynamic mission with focus on good relations with civil
 </p>
 
 <p align="center">
-    <a href="https://github.com/Vdauphin/HeartsAndMinds/releases/tag/1.21.9">
-        <img src="https://img.shields.io/badge/Version-1.21.9-blue.svg?style=flat-square" alt="H&M Version">
+    <a href="https://github.com/Vdauphin/HeartsAndMinds/releases/tag/1.22.1">
+        <img src="https://img.shields.io/badge/Version-1.22.1-blue.svg?style=flat-square" alt="H&M Version">
     </a>
     <a href="https://somsubhra.github.io/github-release-stats/?username=vdauphin&repository=HeartsAndMinds&page=1&per_page=300">
         <img src="https://img.shields.io/github/downloads/Vdauphin/HeartsAndMinds/total.svg?style=flat-square&label=Downloads" alt="H&M Downloads">
@@ -71,7 +71,7 @@ At the beginning you have a very low reputation level, so civilians won't help y
 - Deep ACE3 support
     - Use mainly ACE interaction
     - Rearm system
-    - ACEX Fortify
+    - ACE Fortify
 - Logistic system
     - [Tow](http://vdauphin.github.io/HeartsAndMinds/InGame-documentation#towing-system)
     - [Vehicle in vehicle](http://vdauphin.github.io/HeartsAndMinds/InGame-documentation#towing-system) extended
@@ -84,7 +84,7 @@ At the beginning you have a very low reputation level, so civilians won't help y
     - [Spectrum devices](http://vdauphin.github.io/HeartsAndMinds/InGame-documentation#spectrum-devices)
 - Under the hood
     - A lot of optional gameplay
-    - More than 291 enemies and 27 civilians factions available
+    - More than 308 enemies and 27 civilians factions available
     - Full saving Database ([even player markers](http://vdauphin.github.io/HeartsAndMinds/InGame-documentation#headless--database))
     - Easy map change (See [here](http://vdauphin.github.io/HeartsAndMinds/Change-MAP-of-Hearts-and-Minds))
     - ACE Headless support

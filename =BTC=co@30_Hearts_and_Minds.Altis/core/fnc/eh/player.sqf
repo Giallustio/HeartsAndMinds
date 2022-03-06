@@ -116,3 +116,8 @@ inGameUISetEventHandler ["Action", '["btc_inGameUISetEventHandler", _this] call 
 [{!isNull (findDisplay 46)}, {
     (findDisplay 46) displayAddEventHandler ["MouseButtonDown", btc_int_fnc_horn];
 }] call CBA_fnc_waitUntilAndExecute;
+
+["ace_marker_flags_placed", {
+    params ["_unit", "_flag"];
+    _flag remoteExecCall ["btc_log_fnc_init", 2];
+}] call CBA_fnc_addEventHandler; 
