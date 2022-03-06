@@ -80,7 +80,7 @@ private _menuString = "Hearts and Minds " + localize "STR_HOOKCARGO";
     [localize "STR_BTC_HAM_LOG_HOOK", "Hook a vehicle"],
     {
         if ([] call btc_lift_fnc_check) then {
-            [] call btc_lift_fnc_hook;
+            [] spawn btc_lift_fnc_hook;
             if (BTC_PLAY_FBSOUND) then {
                 playSound BTC_FBSOUND;
             };
