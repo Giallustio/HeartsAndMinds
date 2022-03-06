@@ -30,5 +30,5 @@ btc_p_db_autoRestartHour = btc_p_db_autoRestartHour - [-1];
 if (btc_p_db_autoRestartHour isNotEqualTo []) then {
     [{
         [{systemTime select 3 in btc_p_db_autoRestartHour}, btc_db_fnc_autoRestart] call CBA_fnc_waitUntilAndExecute;
-    }, [], 1 * 60 * 60] call CBA_fnc_waitAndExecute;
+    }, [], 1 * (60 - (systemTime select 4)) * 60] call CBA_fnc_waitAndExecute;
 };
