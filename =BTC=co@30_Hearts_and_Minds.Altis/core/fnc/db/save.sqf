@@ -216,9 +216,6 @@ profileNamespace setVariable [format ["btc_hm_%1_tags", _name], +_tags_propertie
 
 //Player respawn tickets
 if (btc_p_respawn_ticketsAtStart >= 0) then {
-    if (btc_p_respawn_ticketsShare) then {
-        btc_respawn_tickets set [str btc_player_side, [btc_player_side] call BIS_fnc_respawnTickets];
-    };
     profileNamespace setVariable [format ["btc_hm_%1_respawnTickets", _name], +btc_respawn_tickets];
 
     private _deadBodyPlayers = (btc_body_deadPlayers  - [objNull]) apply {[

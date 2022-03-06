@@ -34,7 +34,7 @@ params [
     ["_uid", "", [""]]
 ];
 
-if !(_player isEqualTo objNull) then {
+if (_player isNotEqualTo objNull) then {
     private _ticketValue = [_player, _ticket] call BIS_fnc_respawnTickets;
     [24, _ticketValue] remoteExecCall ["btc_fnc_show_hint", _player];
 };
