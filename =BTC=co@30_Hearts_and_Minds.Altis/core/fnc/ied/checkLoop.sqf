@@ -46,7 +46,7 @@ Author:
                             [getPos _wreck] call btc_rep_fnc_call_militia;
                         };
                     };
-                } forEach (_ied nearEntities ["allvehicles", 10]);
+                } forEach (_ied nearEntities ["allVehicles", btc_ied_range]);
             } else {
                 _ieds_check = _ieds_check - [_ied];
             };

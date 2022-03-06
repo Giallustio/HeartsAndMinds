@@ -26,7 +26,7 @@ params [
 
 private _useful = btc_city_all select {
     !isNull _x &&
-    _x getVariable ["type", ""] != "NameMarine"
+    !((_x getVariable ["type", ""]) in ["NameMarine", "StrongpointArea"])
 };
 if (_useful isEqualTo []) exitWith {[] spawn btc_side_fnc_create;};
 private _city = selectRandom _useful;
@@ -56,11 +56,11 @@ waitUntil {sleep 5;
 
 [[], [_veh]] call btc_fnc_delete;
 
-(- btc_rep_malus_wheelChange * _damagedWheel) call btc_rep_fnc_change;
-
 if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {};
 if (!alive _veh) exitWith {
     [_taskID, "FAILED"] call BIS_fnc_taskSetState;
 };
+
+(- btc_rep_malus_wheelChange * _damagedWheel) call btc_rep_fnc_change;
 
 [_taskID, "SUCCEEDED"] call BIS_fnc_taskSetState;

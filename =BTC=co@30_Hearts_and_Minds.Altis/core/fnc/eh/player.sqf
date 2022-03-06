@@ -37,7 +37,9 @@ params [
     if (isObjectHidden player) exitWith {};
     ["btc_respawn_player", [_unit, player]] call CBA_fnc_serverEvent;
 }] call CBA_fnc_addEventHandler;
-_player addEventHandler ["CuratorObjectPlaced", btc_eh_fnc_CuratorObjectPlaced];
+{
+    _x addEventHandler ["CuratorObjectPlaced", btc_eh_fnc_CuratorObjectPlaced];
+} forEach allCurators;
 ["ace_treatmentSucceded", btc_rep_fnc_treatment] call CBA_fnc_addEventHandler;
 if !(isServer) then { // Don't add twice the event in player host
     ["ace_repair_setWheelHitPointDamage", {
@@ -114,3 +116,8 @@ inGameUISetEventHandler ["Action", '["btc_inGameUISetEventHandler", _this] call 
 [{!isNull (findDisplay 46)}, {
     (findDisplay 46) displayAddEventHandler ["MouseButtonDown", btc_int_fnc_horn];
 }] call CBA_fnc_waitUntilAndExecute;
+
+["ace_marker_flags_placed", {
+    params ["_unit", "_flag"];
+    _flag remoteExecCall ["btc_log_fnc_init", 2];
+}] call CBA_fnc_addEventHandler; 
