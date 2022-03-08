@@ -366,6 +366,7 @@ if (!isDedicated) then {
     btc_lift_fnc_hookFake = compileScript ["core\fnc\lift\hookFake.sqf"];
     btc_lift_fnc_hud = compileScript ["core\fnc\lift\hud.sqf"];
     btc_lift_fnc_hudLoop = compileScript ["core\fnc\lift\hudLoop.sqf"];
+    btc_lift_fnc_shortcuts = compileScript ["core\fnc\lift\shortcuts.sqf"];
 
     //LOG
     btc_log_fnc_get_corner_points = compileScript ["core\fnc\log\get_corner_points.sqf"];

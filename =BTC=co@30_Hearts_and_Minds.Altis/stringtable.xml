@@ -2690,15 +2690,6 @@
             </Key>
         </Container>
         <Container name="Other: Shortcuts">
-            <Key ID="STR_BTC_HAM_O_SHORTC_STOP_TITLE">
-                <Original>Civil Order: Stop!</Original>
-                <Spanish>Orden a Civil: Alto!</Spanish>
-                <German>Befehle (Zivilisten): Stopp!</German>
-                <Portuguese>Ordem ao civil: Pare!</Portuguese>
-                <Chinesesimp>命令平民: 站住!</Chinesesimp>
-                <French>Ordre civil: halte !</French>
-                <Czech>Občane: Stop!</Czech>
-            </Key>
             <Key ID="STR_BTC_HAM_O_SHORTC_STOP_NOTE">
                 <Original>Order a civilian to stop</Original>
                 <Spanish>Ordena a un civil se detenga</Spanish>
@@ -2708,15 +2699,6 @@
                 <French>Ordonner à un civil de s'arrêter</French>
                 <Czech>Nařiďte civilistovi, aby zastavil</Czech>
             </Key>
-            <Key ID="STR_BTC_HAM_O_SHORTC_GETDOWN_TITLE">
-                <Original>Civil Order: Get down!</Original>
-                <Spanish>Orden a Civil: ¡Agáchate!</Spanish>
-                <German>Befehle (Zivilisten): Auf den Boden!</German>
-                <Portuguese>Ordem ao Civil: Pro chão!</Portuguese>
-                <Chinesesimp>命令平民: 趴下!</Chinesesimp>
-                <French>Ordre civil: à terre !</French>
-                <Czech>Občane: Slez!</Czech>
-            </Key>
             <Key ID="STR_BTC_HAM_O_SHORTC_GETDOWN_NOTE">
                 <Original>Order a civilian to get down</Original>
                 <Spanish>Ordena a un civil que se ponga a cubierto</Spanish>
@@ -2725,15 +2707,6 @@
                 <Chinesesimp>命令平民趴下</Chinesesimp>
                 <French>Ordonner à un civil de se mettre à terre</French>
                 <Czech>Přikazuje okolním civilistům, aby si lehli</Czech>
-            </Key>
-            <Key ID="STR_BTC_HAM_O_SHORTC_GOAWAY_TITLE">
-                <Original>Civil Order: Go Away!</Original>
-                <Spanish>Orden a Civil: Vete de aquí!</Spanish>
-                <German>Befehle (Zivilisten): Geh weg!</German>
-                <Portuguese>Ordem ao Civil: Vá embora!</Portuguese>
-                <Chinesesimp>命令平民: 走开!</Chinesesimp>
-                <French>Ordre civil: partez !</French>
-                <Czech>Občane: Jdi pryč!</Czech>
             </Key>
             <Key ID="STR_BTC_HAM_O_SHORTC_GOAWAY_NOTE">
                 <Original>Order a civilian to go away</Original>
