@@ -348,7 +348,10 @@
                 <Czech>&lt;&lt; Časové možnosti &gt;&gt;</Czech>
             </Key>
         </Container>
-        <Container name="Parameters: Database">
+        <Container name="Parameters: Server management">
+            <Key ID="STR_BTC_HAM_PARAM_DB_TITLE">
+                <Original>&lt;&lt; Server management &gt;&gt;</Original>
+            </Key>
             <Key ID="STR_BTC_HAM_PARAM_DB_LOAD">
                 <Original>Load the savegame (if available)</Original>
                 <German>Spielstand wird geladen (wenn verfügbar)</German>
