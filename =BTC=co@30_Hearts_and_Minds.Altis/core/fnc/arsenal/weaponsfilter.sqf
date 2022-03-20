@@ -3,7 +3,7 @@
 Function: btc_arsenal_fnc_weaponsFilter
 
 Description:
-    Filter weapons allowed with the weapons allowed filter: array of item type ("AssaultRifle", "MissileLauncher"...), allowed ammo usage ("128 + 512": ammo against vehicles and armored vehicles) and array to check if weapons are parent to a parent.
+    Filter weapons allowed with the weapons allowed filter: array of item type ("AssaultRifle", "MissileLauncher"...), allowed ammo usage ("128 + 512": ammo against vehicles and armored vehicles).
 
 Parameters:
     _itemType_ammo_usageAllowed - Array of weapons allowed filter. [Array]
@@ -16,7 +16,7 @@ Returns:
 
 Examples:
     (begin example)
-        _allowedWeapons = [["AssaultRifle", ""], ["RocketLauncher", ""]] call btc_arsenal_fnc_weaponsFilter;
+        _allowedWeapons = [[["AssaultRifle", ""], ["RocketLauncher", ""]]] call btc_arsenal_fnc_weaponsFilter;
     (end)
 
 Author:
