@@ -71,6 +71,7 @@ if (isServer) then {
     btc_db_fnc_loadCargo = compileScript ["core\fnc\db\loadcargo.sqf"];
     btc_db_fnc_autoRestart = compileScript ["core\fnc\db\autoRestart.sqf"];
     btc_db_fnc_setTurretMagazines = compileScript ["core\fnc\db\setTurretMagazines.sqf"];
+    btc_db_fnc_autoRestartLoop = compileScript ["core\fnc\db\autoRestartLoop.sqf"];
 
     //DELAY
     btc_delay_fnc_createUnit = compileScript ["core\fnc\delay\createUnit.sqf"];
@@ -366,6 +367,7 @@ if (!isDedicated) then {
     btc_lift_fnc_hookFake = compileScript ["core\fnc\lift\hookFake.sqf"];
     btc_lift_fnc_hud = compileScript ["core\fnc\lift\hud.sqf"];
     btc_lift_fnc_hudLoop = compileScript ["core\fnc\lift\hudLoop.sqf"];
+    btc_lift_fnc_shortcuts = compileScript ["core\fnc\lift\shortcuts.sqf"];
 
     //LOG
     btc_log_fnc_get_corner_points = compileScript ["core\fnc\log\get_corner_points.sqf"];
