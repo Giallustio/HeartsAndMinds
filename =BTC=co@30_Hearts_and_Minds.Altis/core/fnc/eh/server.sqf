@@ -59,11 +59,24 @@ addMissionEventHandler ["BuildingChanged", btc_rep_fnc_buildingchanged];
     ] call CBA_fnc_waitAndExecute;
 }] call CBA_fnc_addEventHandler;
 
+addMissionEventHandler ["PlayerConnected", btc_eh_fnc_playerConnected];
 addMissionEventHandler ["HandleDisconnect", {
     params ["_headless"];
     if (_headless in (entities "HeadlessClient_F")) then {
         deleteVehicle _headless;
     };
+}];
+["btc_playerConnected", {
+    params ["_player"];
+    private _pos = position _player;
+    _player setVariable ["btc_respawn_slotName", _pos];
+    private _previousPos = btc_respawn_players getOrDefault [_pos, []];
+    if (_previousPos isEqualTo []) exitWith {};
+    player setPosASL _previousPos;
+}] call CBA_fnc_addEventHandler;
+addMissionEventHandler ["HandleDisconnect", {
+    params ["_unit", "_id", "_uid", "_name"];
+    btc_respawn_players set [_unit getVariable ["btc_respawn_slotName", [0, 0, 0]], getPosASL _unit];
 }];
 if (btc_p_auto_db) then {
     addMissionEventHandler ["HandleDisconnect", {
@@ -111,7 +124,7 @@ if (btc_p_respawn_ticketsAtStart >= 0) then {
     ["ace_placedInBodyBag", btc_body_fnc_setBodyBag] call CBA_fnc_addEventHandler;
 
     if !(btc_p_respawn_ticketsShare) then {
-        addMissionEventHandler ["PlayerConnected", btc_respawn_fnc_playerConnected];
+        ["btc_playerConnected", btc_respawn_fnc_playerConnected] call CBA_fnc_addEventHandler;
     };
 };
 

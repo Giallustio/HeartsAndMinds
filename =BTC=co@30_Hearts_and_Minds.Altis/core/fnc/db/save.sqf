@@ -233,6 +233,8 @@ if (btc_p_respawn_ticketsAtStart >= 0) then {
     profileNamespace setVariable [format ["btc_hm_%1_deadBodyPlayers", _name], +_deadBodyPlayers];
 };
 
+profileNamespace setVariable [format ["btc_hm_%1_respawnPlayers", _name], +btc_respawn_players];
+
 //Player Markers
 private _player_markers = allMapMarkers select {"_USER_DEFINED" in _x};
 private _markers_properties = _player_markers apply {
