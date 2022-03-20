@@ -24,7 +24,11 @@ params [
     ["_chopper", vehicle player, [objNull]]
 ];
 
-if (!(_chopper isKindOf "Helicopter" || (_chopper isKindOf "Ship")) || !isNull ((_chopper) getVariable ["cargo", objNull])) exitWith {false};
+if (
+    !(_chopper isKindOf "Helicopter" || (_chopper isKindOf "Ship")) ||
+    !isNull (_chopper getVariable ["cargo", objNull]) ||
+    !btc_ropes_deployed
+) exitWith {false};
 
 private _array = [_chopper] call btc_lift_fnc_getLiftable;
 if (_array isEqualTo []) exitWith {false};

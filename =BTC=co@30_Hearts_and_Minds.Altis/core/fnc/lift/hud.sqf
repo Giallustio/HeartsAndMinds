@@ -19,6 +19,9 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
+btc_lift_hud = !btc_lift_hud;
+if !(btc_lift_hud) exitWith {};
+
 disableSerialization;
 
 939996 cutRsc ["btc_lift_hud", "PLAIN"];
