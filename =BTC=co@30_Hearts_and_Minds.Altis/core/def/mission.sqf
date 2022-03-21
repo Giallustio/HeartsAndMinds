@@ -363,7 +363,8 @@ if (isServer) then {
 
     //Respawn
     btc_respawn_tickets = createHashMap;
-    btc_respawn_players = createHashMap;
+
+    btc_player_serialize = createHashMap;
 };
 
 //Civ

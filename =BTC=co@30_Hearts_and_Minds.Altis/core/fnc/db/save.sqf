@@ -233,6 +233,7 @@ if (btc_p_respawn_ticketsAtStart >= 0) then {
     profileNamespace setVariable [format ["btc_hm_%1_deadBodyPlayers", _name], +_deadBodyPlayers];
 };
 
+{_x call btc_player_fnc_serializeState} forEach (allPlayers - entities "HeadlessClient_F");
 profileNamespace setVariable [format ["btc_hm_%1_respawnPlayers", _name], +btc_respawn_players];
 
 //Player Markers

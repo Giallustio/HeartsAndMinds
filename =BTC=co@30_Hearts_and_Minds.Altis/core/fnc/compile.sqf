@@ -150,6 +150,9 @@ if (isServer) then {
     btc_patrol_fnc_eh = compileScript ["core\fnc\patrol\eh.sqf"];
     btc_patrol_fnc_addEH = compileScript ["core\fnc\patrol\addEH.sqf"];
 
+    //PLAYER
+    btc_player_fnc_serializeState = compileScript ["core\fnc\player\serializeState.sqf"];
+
     //REP
     btc_rep_fnc_call_militia = compileScript ["core\fnc\rep\call_militia.sqf"];
     btc_rep_fnc_change = compileScript ["core\fnc\rep\change.sqf"];
@@ -416,6 +419,9 @@ if (!isDedicated) then {
     btc_tow_fnc_hitch_points = compileScript ["core\fnc\tow\hitch_points.sqf"];
     btc_tow_fnc_unhook = compileScript ["core\fnc\tow\unhook.sqf"];
     btc_tow_fnc_check = compileScript ["core\fnc\tow\check.sqf"];
+
+    //PLAYER
+    btc_player_fnc_deserializeState = compileScript ["core\fnc\player\deserializeState.sqf"];
 };
 
 /////////////////////HEADLESS\\\\\\\\\\\\\\\\\\\\\
