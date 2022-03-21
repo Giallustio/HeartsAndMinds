@@ -61,10 +61,12 @@ addMissionEventHandler ["BuildingChanged", btc_rep_fnc_buildingchanged];
 
 addMissionEventHandler ["PlayerConnected", btc_eh_fnc_playerConnected];
 addMissionEventHandler ["HandleDisconnect", {
-    params ["_headless"];
-    if (_headless in (entities "HeadlessClient_F")) then {
-        deleteVehicle _headless;
+    params ["_player"];
+    if (_player in (entities "HeadlessClient_F")) then {
+        deleteVehicle _player;
     };
+    _player call btc_player_fnc_serializeState;
+    false
 }];
 ["btc_playerConnected", { 
     params ["_player"];
@@ -80,7 +82,6 @@ addMissionEventHandler ["HandleDisconnect", {
     _data remoteExecCall ["btc_player_fnc_deserializeState", _player];
 }] call CBA_fnc_addEventHandler;
 ["ace_unconscious", btc_player_fnc_serializeState] call CBA_fnc_addEventHandler;
-addMissionEventHandler ["HandleDisconnect", btc_player_fnc_serializeState];
 if (btc_p_auto_db) then {
     addMissionEventHandler ["HandleDisconnect", {
         if ((allPlayers - entities "HeadlessClient_F") isEqualTo []) then {

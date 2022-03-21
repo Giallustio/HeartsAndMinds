@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        ((value btc_player_serialize)#0) remoteExecCall ["btc_player_fnc_deserializeState", allPlayers#0]; ;
+        ((values btc_player_serialize)#0) remoteExecCall ["btc_player_fnc_deserializeState", allPlayers#0];
     (end)
 
 Author:
@@ -38,7 +38,7 @@ if ((isNull _vehicle) || {!(player moveInAny _vehicle)}) then {
 };
 player setDir _dir;
 player forceFlagTexture _flagTexture;
-[ace_medical_fnc_deserializeState, [player, _medicalDeserializeState], 0.1] call CBA_fnc_waitAndExecute;
+[ace_medical_fnc_deserializeState, [player, _medicalDeserializeState], 0.2] call CBA_fnc_waitAndExecute;
 
 if (_isContaminated) then {
     player call btc_chem_fnc_damageLoop;
