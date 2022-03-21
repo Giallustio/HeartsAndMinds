@@ -72,6 +72,11 @@ addMissionEventHandler ["HandleDisconnect", {
     _player setVariable ["btc_respawn_slotName", _pos];
     private _data = btc_player_serialize getOrDefault [_pos, []];
     if (_data isEqualTo []) exitWith {};
+    if (_data select 4) then {
+        if ((btc_chem_contaminated pushBackUnique _player) > -1) then {
+            publicVariable "btc_chem_contaminated";
+        };
+    };
     _data remoteExecCall ["btc_player_fnc_deserializeState", _player];
 }] call CBA_fnc_addEventHandler;
 addMissionEventHandler ["HandleDisconnect", btc_player_fnc_serializeState];
