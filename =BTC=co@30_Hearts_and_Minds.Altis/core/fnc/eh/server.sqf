@@ -66,7 +66,7 @@ addMissionEventHandler ["HandleDisconnect", {
         deleteVehicle _headless;
     };
 }];
-["btc_playerConnected",{ 
+["btc_playerConnected", { 
     params ["_player"];
     private _pos = position _player;
     _player setVariable ["btc_respawn_slotName", _pos];
@@ -79,6 +79,7 @@ addMissionEventHandler ["HandleDisconnect", {
     };
     _data remoteExecCall ["btc_player_fnc_deserializeState", _player];
 }] call CBA_fnc_addEventHandler;
+["ace_unconscious", btc_player_fnc_serializeState] call CBA_fnc_addEventHandler;
 addMissionEventHandler ["HandleDisconnect", btc_player_fnc_serializeState];
 if (btc_p_auto_db) then {
     addMissionEventHandler ["HandleDisconnect", {
