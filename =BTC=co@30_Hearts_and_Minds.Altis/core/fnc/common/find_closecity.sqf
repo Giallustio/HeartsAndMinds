@@ -15,7 +15,7 @@ Returns:
 
 Examples:
     (begin example)
-        _closer_city = [player, btc_city_all] call btc_fnc_find_closecity;
+        _closer_city = [player, values btc_city_all] call btc_fnc_find_closecity;
     (end)
 
 Author:

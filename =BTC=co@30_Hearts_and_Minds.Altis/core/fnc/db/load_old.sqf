@@ -35,7 +35,7 @@ private _cities_status = +(profileNamespace getVariable [format ["btc_hm_%1_citi
         ["_data_tags", [], [[]]]
     ];
 
-    private _city = btc_city_all select _id;
+    private _city = btc_city_all get _id;
 
     _city setVariable ["initialized", _initialized];
     _city setVariable ["spawn_more", _spawn_more];

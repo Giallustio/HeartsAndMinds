@@ -24,7 +24,7 @@ params [
     ["_id", 0, [0]]
 ];
 
-private _city = btc_city_all select _id;
+private _city = btc_city_all get _id;
 
 if !(_city getVariable ["active", false]) exitWith {};
 
