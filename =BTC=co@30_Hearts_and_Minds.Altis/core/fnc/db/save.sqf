@@ -234,7 +234,7 @@ if (btc_p_respawn_ticketsAtStart >= 0) then {
 };
 
 {_x call btc_player_fnc_serializeState} forEach (allPlayers - entities "HeadlessClient_F");
-profileNamespace setVariable [format ["btc_hm_%1_respawnPlayers", _name], +btc_respawn_players];
+profileNamespace setVariable [format ["btc_hm_%1_respawnPlayers", _name], +btc_player_serialize];
 
 //Player Markers
 private _player_markers = allMapMarkers select {"_USER_DEFINED" in _x};
