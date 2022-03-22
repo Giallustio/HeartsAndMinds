@@ -35,4 +35,4 @@ private _data = [
     [_unit] call ace_medical_fnc_serializeState,
     vehicle _unit
 ];
-btc_player_serialize set [_unit getVariable ["btc_respawn_slotName", [0, 0, 0]], _data];
+btc_players_serialized set [_unit getVariable ["btc_player_slotName", [0, 0, 0]], _data];

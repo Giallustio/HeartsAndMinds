@@ -6,13 +6,19 @@ Description:
     Deserialize player slot.
 
 Parameters:
-    _unit - Unit. [Object]
+    _previousPos - Position of the player. [Array]
+    _dir - Direction of the player. [Number]
+    _loadout - Loadout of the player. [Array]
+    _flagTexture - Flag raised. [String]
+    _isContaminated - Chemically contaminated. [Boolean]
+    _medicalDeserializeState - Medical ACE state. [String]
+    _vehicle - Vehicle occupied by player. [Object]
 
 Returns:
 
 Examples:
     (begin example)
-        ((values btc_player_serialize)#0) remoteExecCall ["btc_player_fnc_deserializeState", allPlayers#0];
+        (btc_players_serialized getOrDefault [(keys btc_players_serialized)#0, []]) remoteExecCall ["btc_player_fnc_deserializeState", allPlayers#0];
     (end)
 
 Author:
@@ -20,26 +26,28 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-params [
-    "_previousPos",
-    "_dir",
-    "_loadout",
-    "_flagTexture",
-    "_isContaminated",
-    "_medicalDeserializeState",
-    ["_vehicle", objNull, [objNull]]
-];
+[{
+    params [
+        "_previousPos",
+        "_dir",
+        "_loadout",
+        "_flagTexture",
+        "_isContaminated",
+        "_medicalDeserializeState",
+        ["_vehicle", objNull, [objNull]]
+    ];
 
-if (player distance _previousPos > 100) then {
-    player setUnitLoadout _loadout;
-};
-if ((isNull _vehicle) || {!(player moveInAny _vehicle)}) then {
-    player setPosASL _previousPos;
-};
-player setDir _dir;
-player forceFlagTexture _flagTexture;
-[ace_medical_fnc_deserializeState, [player, _medicalDeserializeState], 0.2] call CBA_fnc_waitAndExecute;
+    if (player distance _previousPos > 100) then { // Don't set loadout when near main base
+        [{player setUnitLoadout _this;}, _loadout] call CBA_fnc_execNextFrame;
+    };
+    if ((isNull _vehicle) || {!(player moveInAny _vehicle)}) then {
+        player setPosASL _previousPos;
+    };
+    player setDir _dir;
+    player forceFlagTexture _flagTexture;
+    [player, _medicalDeserializeState] call ace_medical_fnc_deserializeState;
 
-if (_isContaminated) then {
-    player call btc_chem_fnc_damageLoop;
-};
+    if (_isContaminated) then {
+        player call btc_chem_fnc_damageLoop;
+    };
+}, _this] call CBA_fnc_execNextFrame;

@@ -71,8 +71,8 @@ addMissionEventHandler ["HandleDisconnect", {
 ["btc_playerConnected", { 
     params ["_player"];
     private _pos = position _player;
-    _player setVariable ["btc_respawn_slotName", _pos];
-    private _data = btc_player_serialize getOrDefault [_pos, []];
+    _player setVariable ["btc_player_slotName", _pos];
+    private _data = btc_players_serialized getOrDefault [_pos, []];
     if (_data isEqualTo []) exitWith {};
     if (_data select 4) then {
         if ((btc_chem_contaminated pushBackUnique _player) > -1) then {

@@ -253,7 +253,7 @@ if (btc_p_respawn_ticketsAtStart >= 0) then {
     deleteGroup _group;
 };
 
-btc_player_serialize = +(profileNamespace getVariable [format ["btc_hm_%1_playerSerialize", _name], btc_player_serialize]);
+btc_players_serialized = +(profileNamespace getVariable [format ["btc_hm_%1_playersSerialized", _name], btc_players_serialized]);
 
 //Player Markers
 private _markers_properties = +(profileNamespace getVariable [format ["btc_hm_%1_markers", _name], []]);
