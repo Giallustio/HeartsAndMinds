@@ -36,7 +36,7 @@ params [
     ["_p_patrol_max", btc_p_patrol_max, [0]]
 ];
 
-private _city = btc_city_all select _id;
+private _city = btc_city_all get _id;
 if (_city getVariable "activating") exitWith {};
 
 if (btc_debug) then {

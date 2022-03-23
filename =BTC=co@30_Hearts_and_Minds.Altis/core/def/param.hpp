@@ -17,6 +17,12 @@ class Params {
         texts[]={"1","2","3","4","5","6","7","8","9","10","11","12"};
         default = 5;
     };
+    class btc_p_db_title { // << Server management >>
+        title = $STR_BTC_HAM_PARAM_DB_TITLE;
+        values[]={0};
+        texts[]={""};
+        default = 0;
+    };
     class btc_p_load { // Load the savegame (if available)
         title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_DB_LOAD"]);
         values[]={0,1};
@@ -29,17 +35,29 @@ class Params {
         texts[]={$STR_DISABLED,$STR_ENABLED}; // texts[]={"Off","On"};
         default = 0;
     };
-    class btc_p_db_autoRestart { // Auto restart/shutdown server (Must define in server.cfg: serverCommandPassword = "btc_password")
-        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_DB_ARESTART"]);
-        values[]={0,1,2,3,4};
-        texts[]={$STR_DISABLED,$STR_DISP_MP_DS_RESTART,$STR_BTC_HAM_PARAM_DB_SHUTDOWN,$STR_BTC_HAM_PARAM_DB_SAVERESTART, $STR_BTC_HAM_PARAM_DB_SAVESHUTDOWN}; // texts[]={"Off","Restart", "Shutdown","Save and restart", "Save and shutdown"};
-        default = 0;
-    };
     class btc_p_db_autoRestartTime { // Time before auto restart/shutdown server
         title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_DB_ARESTARTTIME"]);
-        values[]={1,2,3,4,5,6,7,8,9,10,11,12,24,48,72};
-        texts[]={"1h","2h","3h","4h","5h","6h","7h","8h","9h","10h","11h","12h","24h","48h","72h"};
-        default = 72;
+        values[]={0,1,2,3,4,5,6,7,8,9,10,11,12,24,48,72};
+        texts[]={$STR_DISABLED, "1h","2h","3h","4h","5h","6h","7h","8h","9h","10h","11h","12h","24h","48h","72h"};
+        default = 0;
+    };
+    class btc_p_db_autoRestartHour1 { // Hour of auto restart/shutdown server
+        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_DB_HRESTARTTIME"]);
+        values[]={-1,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23};
+        texts[]={$STR_DISABLED,"00h00","01h00","02h00","03h00","04h00","05h00","06h00","07h00","08h00","09h00","10h00","11h00","12h00","13h00","14h00","15h00","16h00","17h00","18h00","19h00","20h00","21h00","22h00","23h00"};
+        default = -1;
+    };
+    class btc_p_db_autoRestartHour2 { // Hour of auto restart/shutdown server
+        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_DB_HRESTARTTIME"]);
+        values[]={-1,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23};
+        texts[]={$STR_DISABLED,"00h00","01h00","02h00","03h00","04h00","05h00","06h00","07h00","08h00","09h00","10h00","11h00","12h00","13h00","14h00","15h00","16h00","17h00","18h00","19h00","20h00","21h00","22h00","23h00"};
+        default = -1;
+    };
+    class btc_p_db_autoRestartType { // Auto restart/shutdown server (Must define in server.cfg: serverCommandPassword = "btc_password")
+        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_DB_ARESTART"]);
+        values[]={1,2,3,4};
+        texts[]={$STR_DISP_MP_DS_RESTART,$STR_BTC_HAM_PARAM_DB_SHUTDOWN,$STR_BTC_HAM_PARAM_DB_SAVERESTART, $STR_BTC_HAM_PARAM_DB_SAVESHUTDOWN}; // texts[]={"Off","Restart", "Shutdown","Save and restart", "Save and shutdown"};
+        default = 4;
     };
     class btc_p_respawn_title { // << Respawn options >>
         title = $STR_BTC_HAM_RESP_TITLE;
@@ -229,7 +247,7 @@ class Params {
     };
     class btc_p_hideout_n { // Hideout numbers:
         title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_HIDE_NUMBERS"]);
-        values[]={99,0,1,2,3,4,5};
+        values[]={99,0,1,2,3,4,5,6,7,8,9,10};
         texts[]={$STR_3DEN_ATTRIBUTES_OBJECTTEXTURE_RANDOM_TEXT,"0","1","2","3","4","5","6","7","8","9","10"}; //texts[]={"Random","0","1","2","3","4","5"};
         default = 5;
     };
@@ -427,9 +445,9 @@ class Params {
     };
     class btc_p_flag { // Allow the use of flag:
         title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_OTHER_ALLOWFLAG"]);
-        values[]={0,1,2};
-        texts[]={$STR_DISABLED,$STR_BTC_HAM_PARAM_OTHER_FLAGVEH,$STR_BTC_HAM_PARAM_OTHER_FLAGVEHPLAYER};
-        default = 2;
+        values[]={0,1,2,3};
+        texts[]={$STR_DISABLED,$STR_BTC_HAM_PARAM_OTHER_FLAGVEH,$STR_BTC_HAM_PARAM_OTHER_FLAGVEHLEADER,$STR_BTC_HAM_PARAM_OTHER_FLAGVEHPLAYER};
+        default = 3;
     };
     class btc_p_debug { // Debug:
         title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_OTHER_DEBUG"]);

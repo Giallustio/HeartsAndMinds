@@ -24,12 +24,11 @@ params [
     ["_taskID", "btc_side", [""]]
 ];
 
-private _useful = btc_city_all select {
-    !isNull _x &&
+private _useful = values btc_city_all select {
     !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine", "StrongpointArea"])
 };
 
-if (_useful isEqualTo []) then {_useful = + (btc_city_all select {!isNull _x});};
+if (_useful isEqualTo []) then {_useful = values btc_city_all;};
 
 private _city = selectRandom _useful;
 private _pos = [getPos _city, 100] call btc_fnc_randomize_pos;

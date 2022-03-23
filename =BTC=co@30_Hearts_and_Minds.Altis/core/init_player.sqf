@@ -7,6 +7,8 @@ if !(isNil "btc_custom_loc") then {
     } forEach btc_custom_loc;
 };
 btc_intro_done = [] spawn btc_respawn_fnc_intro;
+[] call btc_int_fnc_shortcuts;
+[] call btc_lift_fnc_shortcuts;
 
 [{!isNull player}, {
     [] call compileScript ["core\doc.sqf"];
@@ -22,7 +24,6 @@ btc_intro_done = [] spawn btc_respawn_fnc_intro;
         [_arsenal_trait select 1] call btc_arsenal_fnc_weaponsFilter;
     };
     [] call btc_int_fnc_add_actions;
-    [] call btc_int_fnc_shortcuts;
 
     if (player getVariable ["interpreter", false]) then {
         player createDiarySubject ["btc_diarylog", localize "STR_BTC_HAM_CON_INFO_ASKHIDEOUT_DIARYLOG", '\A3\ui_f\data\igui\cfg\simpleTasks\types\talk_ca.paa'];

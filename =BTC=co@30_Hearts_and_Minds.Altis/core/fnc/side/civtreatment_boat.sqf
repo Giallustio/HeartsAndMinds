@@ -25,8 +25,7 @@ params [
 ];
 
 //// Choose a Marine location \\\\
-private _useful = btc_city_all select {
-    !isNull _x &&
+private _useful = values btc_city_all select {
     _x getVariable ["type", ""] isEqualTo "NameMarine" ||
     _x getVariable ["hasbeach", false]
 };

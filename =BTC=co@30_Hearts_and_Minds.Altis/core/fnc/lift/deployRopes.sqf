@@ -32,15 +32,14 @@ _heli setVariable ["cargo", nil];
 
 ropeCreate [_heli, "slingload0", 10, []];
 
-btc_lift_action_hud = player addAction ["<t color=""#ED2744"">" + (localize "STR_BTC_HAM_LOG_LDR_ACTIONHUD") + "</t>", {
-    if (btc_lift_hud) then {
-        btc_lift_hud = false;
-    } else {
-        btc_lift_hud = true;
-        [] call btc_lift_fnc_hud;
-    };
-}, [], -8, false, false, "", "true"]; //"<t color=""#ED2744"">" + ("Hud On\Off") + "</t>"
-btc_lift_action = player addAction ["<t color=""#ED2744"">" + (localize "STR_BTC_HAM_LOG_HOOK") + "</t>",{[] call btc_lift_fnc_hook}, [], 9, true, false, "", "[] call btc_lift_fnc_check"]; //"<t color=""#ED2744"">" + ("Hook") + "</t>"
+btc_lift_action_hud = player addAction [
+    "<t color=""#ED2744"">" + (localize "STR_BTC_HAM_LOG_LDR_ACTIONHUD") + "</t>", // Hud On\Off
+    btc_lift_fnc_hud, [], -8, false, false, "", "btc_ropes_deployed"
+];
+btc_lift_action = player addAction [
+    "<t color=""#ED2744"">" + (localize "STR_BTC_HAM_LOG_HOOK") + "</t>", // Hook
+    btc_lift_fnc_hook, [], 9, true, false, "", "[] call btc_lift_fnc_check"
+];
 
 waitUntil {sleep 5; (vehicle player isEqualTo player)};
 

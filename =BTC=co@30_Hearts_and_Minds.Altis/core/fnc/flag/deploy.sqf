@@ -34,7 +34,13 @@ private _childStatement = {
     _target forceFlagTexture _params;
 };
 
+private _condition = if (btc_p_flag isEqualTo 2) then {
+    {leader player isEqualTo player};
+} else {
+    {true};
+};
+
 btc_flag_textures apply {
-    private _action = ["btc_flag" + _x, "", _x, _childStatement, {true}, {}, _x] call ace_interact_menu_fnc_createAction;
+    private _action = ["btc_flag" + _x, "", _x, _childStatement, _condition, {}, _x] call ace_interact_menu_fnc_createAction;
     [_action, [], _target]
 }

@@ -35,7 +35,7 @@ params [
 
 private _closest = [
     _dest,
-    btc_city_all select {!(_x getVariable ["active", false])},
+    values btc_city_all select {!(_x getVariable ["active", false])},
     false
 ] call btc_fnc_find_closecity;
 

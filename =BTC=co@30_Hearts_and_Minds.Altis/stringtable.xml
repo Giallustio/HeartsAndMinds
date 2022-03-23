@@ -348,7 +348,10 @@
                 <Czech>&lt;&lt; Časové možnosti &gt;&gt;</Czech>
             </Key>
         </Container>
-        <Container name="Parameters: Database">
+        <Container name="Parameters: Server management">
+            <Key ID="STR_BTC_HAM_PARAM_DB_TITLE">
+                <Original>&lt;&lt; Server management &gt;&gt;</Original>
+            </Key>
             <Key ID="STR_BTC_HAM_PARAM_DB_LOAD">
                 <Original>Load the savegame (if available)</Original>
                 <German>Spielstand wird geladen (wenn verfügbar)</German>
@@ -398,6 +401,9 @@
                 <Chinesesimp>自动重启/关闭服务器前的时间</Chinesesimp>
                 <French>Temps avant le redémarrage / arrêt automatique du serveur</French>
                 <Czech>Čas před automatickým restartem/vypnutím serveru</Czech>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_DB_HRESTARTTIME">
+                <Original>Hour of auto restart/shutdown server</Original>
             </Key>
         </Container>
         <Container name="Parameters: Factions">
@@ -1029,6 +1035,9 @@
                 <German>An Fahrzeugen</German>
                 <Chinesesimp>仅限载具</Chinesesimp>
                 <Czech>na vozidle</Czech>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_OTHER_FLAGVEHLEADER">
+                <Original>On vehicle and team leader</Original>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_OTHER_FLAGVEHPLAYER">
                 <Original>On vehicle and players</Original>
@@ -2664,11 +2673,11 @@
                 <Czech>Není to vedlejší mise, nelze ji zrušit</Czech>
             </Key>
             <Key ID="STR_BTC_HAM_O_COMMON_REBOOT">
-                <Original>Server reboot in 5min, leave it NOW!</Original>
-                <German>Serverneustart in 5 Minuten. JETZT den Server verlassen</German>
-                <Chinesesimp>服务器将在5分钟后重启, 请立即离开服务器!</Chinesesimp>
-                <French>Redémarrage du serveur dans 5min, décconectez-vous maintenant !</French>
-                <Czech>Server se restartuje za 5 minut</Czech>
+                <Original>Server reboot in %1min, leave it NOW!</Original>
+                <German>Serverneustart in %1 Minuten. JETZT den Server verlassen</German>
+                <Chinesesimp>Server reboot in %1min, leave it NOW!</Chinesesimp>
+                <French>Redémarrage du serveur dans %1min, décconectez-vous maintenant !</French>
+                <Czech>Server se restartuje za %1 minut</Czech>
             </Key>
             <Key ID="STR_BTC_HAM_O_COMMON_TICKETADD">
                 <Original>Respawn ticket added</Original>
@@ -2690,15 +2699,6 @@
             </Key>
         </Container>
         <Container name="Other: Shortcuts">
-            <Key ID="STR_BTC_HAM_O_SHORTC_STOP_TITLE">
-                <Original>Civil Order: Stop!</Original>
-                <Spanish>Orden a Civil: Alto!</Spanish>
-                <German>Befehle (Zivilisten): Stopp!</German>
-                <Portuguese>Ordem ao civil: Pare!</Portuguese>
-                <Chinesesimp>命令平民: 站住!</Chinesesimp>
-                <French>Ordre civil: halte !</French>
-                <Czech>Občane: Stop!</Czech>
-            </Key>
             <Key ID="STR_BTC_HAM_O_SHORTC_STOP_NOTE">
                 <Original>Order a civilian to stop</Original>
                 <Spanish>Ordena a un civil se detenga</Spanish>
@@ -2708,15 +2708,6 @@
                 <French>Ordonner à un civil de s'arrêter</French>
                 <Czech>Nařiďte civilistovi, aby zastavil</Czech>
             </Key>
-            <Key ID="STR_BTC_HAM_O_SHORTC_GETDOWN_TITLE">
-                <Original>Civil Order: Get down!</Original>
-                <Spanish>Orden a Civil: ¡Agáchate!</Spanish>
-                <German>Befehle (Zivilisten): Auf den Boden!</German>
-                <Portuguese>Ordem ao Civil: Pro chão!</Portuguese>
-                <Chinesesimp>命令平民: 趴下!</Chinesesimp>
-                <French>Ordre civil: à terre !</French>
-                <Czech>Občane: Slez!</Czech>
-            </Key>
             <Key ID="STR_BTC_HAM_O_SHORTC_GETDOWN_NOTE">
                 <Original>Order a civilian to get down</Original>
                 <Spanish>Ordena a un civil que se ponga a cubierto</Spanish>
@@ -2725,15 +2716,6 @@
                 <Chinesesimp>命令平民趴下</Chinesesimp>
                 <French>Ordonner à un civil de se mettre à terre</French>
                 <Czech>Přikazuje okolním civilistům, aby si lehli</Czech>
-            </Key>
-            <Key ID="STR_BTC_HAM_O_SHORTC_GOAWAY_TITLE">
-                <Original>Civil Order: Go Away!</Original>
-                <Spanish>Orden a Civil: Vete de aquí!</Spanish>
-                <German>Befehle (Zivilisten): Geh weg!</German>
-                <Portuguese>Ordem ao Civil: Vá embora!</Portuguese>
-                <Chinesesimp>命令平民: 走开!</Chinesesimp>
-                <French>Ordre civil: partez !</French>
-                <Czech>Občane: Jdi pryč!</Czech>
             </Key>
             <Key ID="STR_BTC_HAM_O_SHORTC_GOAWAY_NOTE">
                 <Original>Order a civilian to go away</Original>

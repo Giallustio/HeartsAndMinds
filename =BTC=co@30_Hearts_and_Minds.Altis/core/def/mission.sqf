@@ -2,7 +2,7 @@
 btc_version = [
     1,
     22,
-    0
+    1
 ];
 diag_log format (["=BTC= HEARTS AND MINDS VERSION %1.%2.%3"] + btc_version);
 
@@ -12,8 +12,12 @@ btc_p_time = "btc_p_time" call BIS_fnc_getParamValue;
 btc_p_acctime = "btc_p_acctime" call BIS_fnc_getParamValue;
 btc_db_load = ("btc_p_load" call BIS_fnc_getParamValue) isEqualTo 1;
 btc_p_auto_db = "btc_p_auto_db" call BIS_fnc_getParamValue isEqualTo 1;
-btc_p_db_autoRestart = "btc_p_db_autoRestart" call BIS_fnc_getParamValue;
 btc_p_db_autoRestartTime = "btc_p_db_autoRestartTime" call BIS_fnc_getParamValue;
+btc_p_db_autoRestartHour = [
+    "btc_p_db_autoRestartHour1" call BIS_fnc_getParamValue,
+    "btc_p_db_autoRestartHour2" call BIS_fnc_getParamValue
+];
+btc_p_db_autoRestartType = "btc_p_db_autoRestartType" call BIS_fnc_getParamValue;
 
 //<< Respawn options >>
 btc_p_respawn_location = "btc_p_respawn_location" call BIS_fnc_getParamValue;
@@ -141,6 +145,7 @@ if (isServer) then {
 
     //Database
     btc_db_serverCommandPassword = "btc_password"; //Define the same password in server.cfg like this: serverCommandPassword = "btc_password";
+    btc_db_warningTimeAutoRestart = 5;
 
     //Hideout
     btc_hideouts = []; publicVariable "btc_hideouts";
@@ -220,7 +225,6 @@ if (isServer) then {
     if (btc_p_chem) then {btc_side_list append ["chemicalLeak", "pandemic"]};
     btc_side_list_use = [];
     btc_type_tower = ["Land_Communication_F", "Land_TTowerBig_1_F", "Land_TTowerBig_2_F"];
-    btc_type_phone = ["Land_PortableLongRangeRadio_F", "Land_MobilePhone_smart_F", "Land_MobilePhone_old_F"];
     btc_type_barrel = ["Land_GarbageBarrel_01_F", "Land_BarrelSand_grey_F", "MetalBarrel_burning_F", "Land_BarrelWater_F", "Land_MetalBarrel_F", "Land_MetalBarrel_empty_F"];
     btc_type_canister = ["Land_CanisterPlastic_F"];
     btc_type_pallet = ["Land_Pallets_stack_F", "Land_Pallets_F", "Land_Pallet_F"];
@@ -412,7 +416,16 @@ btc_int_hornDelay = time;
 //Info
 btc_info_intel_type = [80, 95];//cache - hd - both
 btc_info_hideout_radius = 4000;
-btc_info_intels = ["Land_Camera_01_F", "Land_HandyCam_F"];
+btc_info_intels = ["Land_Camera_01_F", "Land_HandyCam_F", "Land_File1_F", "Land_FilePhotos_F", "Land_File2_F", "Land_File_research_F", "Land_MobilePhone_old_F", "Land_PortableLongRangeRadio_F", "Land_Laptop_02_unfolded_F"];
+private _mapsIntel = switch (worldName) do {
+    case "Altis": {["Land_Map_altis_F", "Land_Map_unfolded_Altis_F"]};
+    case "Stratis": {["Land_Map_stratis_F", "Land_Map_unfolded_F"]};
+    case "Tanoa": {["Land_Map_Tanoa_F", "Land_Map_unfolded_Tanoa_F"]};
+    case "Malden": {["Land_Map_Malden_F", "Land_Map_unfolded_Malden_F"]};
+    case "Enoch": {["Land_Map_Enoch_F", "Land_Map_unfolded_Enoch_F"]};
+    default {["Land_Map_blank_F"]};
+};
+btc_info_intels append _mapsIntel;
 
 //Supplies
 btc_supplies_cargo = "Land_Cargo20_IDAP_F";

@@ -26,7 +26,7 @@ if (_cap_to isEqualTo []) exitWith {};
 
 {
     private _hideout = _x;
-    private _city_inRange = btc_city_all inAreaArray [getPosWorld _hideout, btc_hideout_range, btc_hideout_range];
+    private _city_inRange = values btc_city_all inAreaArray [getPosWorld _hideout, btc_hideout_range, btc_hideout_range];
     if (_city_inRange isEqualTo []) then {continue};
 
     private _closest = [_hideout, _city_inRange, true] call btc_fnc_find_closecity;

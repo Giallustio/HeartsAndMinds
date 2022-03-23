@@ -15,7 +15,7 @@ Returns:
 
 Examples:
     (begin example)
-        [group cursorObject, btc_city_all select 0, 200] call btc_mil_fnc_addWP;
+        [group cursorObject, btc_city_all get 0, 200] call btc_mil_fnc_addWP;
     (end)
 
 Author:
