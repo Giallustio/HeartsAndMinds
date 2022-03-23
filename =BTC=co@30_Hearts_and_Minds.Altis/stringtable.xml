@@ -1036,6 +1036,9 @@
                 <Chinesesimp>仅限载具</Chinesesimp>
                 <Czech>na vozidle</Czech>
             </Key>
+            <Key ID="STR_BTC_HAM_PARAM_OTHER_FLAGVEHLEADER">
+                <Original>On vehicle and team leader</Original>
+            </Key>
             <Key ID="STR_BTC_HAM_PARAM_OTHER_FLAGVEHPLAYER">
                 <Original>On vehicle and players</Original>
                 <German>An Fahrzeugen und Spielern</German>
