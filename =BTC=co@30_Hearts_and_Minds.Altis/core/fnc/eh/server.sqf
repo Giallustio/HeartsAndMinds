@@ -48,6 +48,7 @@ addMissionEventHandler ["BuildingChanged", btc_rep_fnc_buildingchanged];
 ["btc_respawn_player", {
     params ["", "_player"];
     [btc_rep_malus_player_respawn, _player] call btc_rep_fnc_change;
+    _player call btc_player_fnc_serializeState;
 }] call CBA_fnc_addEventHandler;
 
 ["ace_explosives_detonate", {
@@ -65,15 +66,17 @@ addMissionEventHandler ["HandleDisconnect", {
     if (_player in (entities "HeadlessClient_F")) then {
         deleteVehicle _player;
     };
-    _player call btc_player_fnc_serializeState;
+    if (alive _player) then {
+        _player call btc_player_fnc_serializeState;
+    };
     false
 }];
 ["ace_unconscious", btc_player_fnc_serializeState] call CBA_fnc_addEventHandler;
 ["btc_playerConnected", { 
     params ["_player"];
-    private _pos = position _player;
-    _player setVariable ["btc_player_slotName", _pos];
-    private _data = btc_players_serialized getOrDefault [_pos, []];
+    private _slotName = position _player;
+    _player setVariable ["btc_player_slotName", _slotName];
+    private _data = btc_players_serialized getOrDefault [_slotName, []];
     if (_data isEqualTo []) exitWith {};
     if (_data select 4) then {
         if ((btc_chem_contaminated pushBackUnique _player) > -1) then {
