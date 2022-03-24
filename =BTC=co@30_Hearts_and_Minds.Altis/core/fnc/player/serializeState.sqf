@@ -24,7 +24,13 @@ params [
     ["_unit", objNull, [objNull]]
 ];
 
-if (_unit in (entities "HeadlessClient_F")) exitWith {};
+if (
+    isNil {_unit getVariable "btc_player_slotName"}
+) exitWith {};
+
+if (btc_debug || btc_debug_log) then {
+    [format ["Saved %1", _unit], __FILE__, [btc_debug, btc_debug_log, true]] call btc_debug_fnc_message;
+};
 
 private _data = [
     getPosASL _unit,

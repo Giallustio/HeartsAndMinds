@@ -50,11 +50,13 @@ _player addEventHandler ["WeaponAssembled", btc_civ_fnc_add_leaflets];
 [_player, "WeaponAssembled", {[_thisType, _this] call btc_fob_fnc_rallypointAssemble;}] call CBA_fnc_addBISEventHandler;
 [_player, "WeaponDisassembled", {[_thisType, _this] call btc_fob_fnc_rallypointAssemble;}] call CBA_fnc_addBISEventHandler;
 _player addEventHandler ["GetInMan", btc_ied_fnc_deleteLoop];
+_player addEventHandler ["GetInMan", {_this remoteExecCall ["btc_player_fnc_serializeState", 2]}];
 _player addEventHandler ["GetOutMan", {
     if (btc_ied_deleteOn > -1) then {
         [btc_ied_deleteOn] call CBA_fnc_removePerFrameHandler;
         btc_ied_deleteOn = -1;
     };
+    _this remoteExecCall ["btc_player_fnc_serializeState", 2];
 }];
 _player addEventHandler ["WeaponAssembled", {
     params ["_player", "_static"];

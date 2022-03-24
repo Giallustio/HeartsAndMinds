@@ -68,6 +68,7 @@ addMissionEventHandler ["HandleDisconnect", {
     _player call btc_player_fnc_serializeState;
     false
 }];
+["ace_unconscious", btc_player_fnc_serializeState] call CBA_fnc_addEventHandler;
 ["btc_playerConnected", { 
     params ["_player"];
     private _pos = position _player;
@@ -81,7 +82,6 @@ addMissionEventHandler ["HandleDisconnect", {
     };
     _data remoteExecCall ["btc_player_fnc_deserializeState", _player];
 }] call CBA_fnc_addEventHandler;
-["ace_unconscious", btc_player_fnc_serializeState] call CBA_fnc_addEventHandler;
 if (btc_p_auto_db) then {
     addMissionEventHandler ["HandleDisconnect", {
         if ((allPlayers - entities "HeadlessClient_F") isEqualTo []) then {
