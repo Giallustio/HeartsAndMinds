@@ -28,21 +28,18 @@ if (
     isNil {_unit getVariable "btc_slot_name"}
 ) exitWith {};
 
-private _data = [];
-if (alive _unit) then { // Reset serialized data if in respawn screen
-    _data = [
-        getPosASL _unit,
-        getDir _unit,
-        getUnitLoadout _unit,
-        getForcedFlagTexture _unit,
-        _unit in btc_chem_contaminated,
-        [_unit] call ace_medical_fnc_serializeState,
-        vehicle _unit
-    ];
-};
+private _data = [
+    getPosASL _unit,
+    getDir _unit,
+    getUnitLoadout _unit,
+    getForcedFlagTexture _unit,
+    _unit in btc_chem_contaminated,
+    [_unit] call ace_medical_fnc_serializeState,
+    vehicle _unit
+];
 
 if (btc_debug || btc_debug_log) then {
-    [format ["%1 _data size %2", name _unit, count _data], __FILE__, [btc_debug, btc_debug_log, true]] call btc_debug_fnc_message;
+    [format ["%1", name _unit], __FILE__, [btc_debug, btc_debug_log, true]] call btc_debug_fnc_message;
 };
 
 btc_slots_serialized set [_unit getVariable ["btc_slot_name", [0, 0, 0]], _data];

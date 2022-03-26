@@ -48,7 +48,10 @@ addMissionEventHandler ["BuildingChanged", btc_rep_fnc_buildingchanged];
 ["btc_respawn_player", {
     params ["", "_player"];
     [btc_rep_malus_player_respawn, _player] call btc_rep_fnc_change;
-    _player call btc_slot_fnc_serializeState;
+    btc_slots_serialized set [
+        _player getVariable ["btc_slot_name", [0, 0, 0]],
+        [] // Reset serialized data if slot died
+    ];
 }] call CBA_fnc_addEventHandler;
 
 ["ace_explosives_detonate", {
@@ -76,14 +79,7 @@ addMissionEventHandler ["HandleDisconnect", {
     params ["_player"];
     private _slotName = position _player;
     _player setVariable ["btc_slot_name", _slotName];
-    private _data = btc_slots_serialized getOrDefault [_slotName, []];
-    if (_data isEqualTo []) exitWith {};
-    if (_data select 4) then {
-        if ((btc_chem_contaminated pushBackUnique _player) > -1) then {
-            publicVariable "btc_chem_contaminated";
-        };
-    };
-    _data remoteExecCall ["btc_slot_fnc_deserializeState", _player];
+    [_player, _slotName] call btc_slot_fnc_deserializeState_s;
 }] call CBA_fnc_addEventHandler;
 if (btc_p_auto_db) then {
     addMissionEventHandler ["HandleDisconnect", {
