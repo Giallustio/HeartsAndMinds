@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_player_fnc_deserializeState
+Function: btc_slot_fnc_deserializeState
 
 Description:
     Deserialize player slot.
@@ -18,7 +18,7 @@ Returns:
 
 Examples:
     (begin example)
-        (btc_players_serialized getOrDefault [(keys btc_players_serialized)#0, []]) remoteExecCall ["btc_player_fnc_deserializeState", allPlayers#0];
+        (btc_slots_serialized getOrDefault [(keys btc_slots_serialized)#0, []]) remoteExecCall ["btc_slot_fnc_deserializeState", allPlayers#0];
     (end)
 
 Author:

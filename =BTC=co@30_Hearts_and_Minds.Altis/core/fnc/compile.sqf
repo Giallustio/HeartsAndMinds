@@ -151,7 +151,7 @@ if (isServer) then {
     btc_patrol_fnc_addEH = compileScript ["core\fnc\patrol\addEH.sqf"];
 
     //PLAYER
-    btc_player_fnc_serializeState = compileScript ["core\fnc\player\serializeState.sqf"];
+    btc_slot_fnc_serializeState = compileScript ["core\fnc\slot\serializeState.sqf"];
 
     //REP
     btc_rep_fnc_call_militia = compileScript ["core\fnc\rep\call_militia.sqf"];
@@ -421,7 +421,7 @@ if (!isDedicated) then {
     btc_tow_fnc_check = compileScript ["core\fnc\tow\check.sqf"];
 
     //PLAYER
-    btc_player_fnc_deserializeState = compileScript ["core\fnc\player\deserializeState.sqf"];
+    btc_slot_fnc_deserializeState = compileScript ["core\fnc\slot\deserializeState.sqf"];
 };
 
 /////////////////////HEADLESS\\\\\\\\\\\\\\\\\\\\\

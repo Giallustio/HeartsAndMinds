@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_player_fnc_serializeState
+Function: btc_slot_fnc_serializeState
 
 Description:
     Serialize player slot.
@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        [allPlayers#0] call btc_player_fnc_serializeState;
+        [allPlayers#0] call btc_slot_fnc_serializeState;
     (end)
 
 Author:
@@ -25,7 +25,7 @@ params [
 ];
 
 if (
-    isNil {_unit getVariable "btc_player_slotName"}
+    isNil {_unit getVariable "btc_slot_name"}
 ) exitWith {};
 
 private _data = [];
@@ -45,4 +45,4 @@ if (btc_debug || btc_debug_log) then {
     [format ["%1 _data size %2", name _unit, count _data], __FILE__, [btc_debug, btc_debug_log, true]] call btc_debug_fnc_message;
 };
 
-btc_players_serialized set [_unit getVariable ["btc_player_slotName", [0, 0, 0]], _data];
+btc_slots_serialized set [_unit getVariable ["btc_slot_name", [0, 0, 0]], _data];
