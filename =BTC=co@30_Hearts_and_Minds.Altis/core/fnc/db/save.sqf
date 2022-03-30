@@ -233,8 +233,13 @@ if (btc_p_respawn_ticketsAtStart >= 0) then {
     profileNamespace setVariable [format ["btc_hm_%1_deadBodyPlayers", _name], +_deadBodyPlayers];
 };
 
+//Player slots
 {_x call btc_slot_fnc_serializeState} forEach (allPlayers - entities "HeadlessClient_F");
-profileNamespace setVariable [format ["btc_hm_%1_slotsSerialized", _name], +btc_slots_serialized];
+private _slots_serialized = +btc_slots_serialized;
+{
+    _y set [6, typeOf (_y select 6)];
+} forEach _slots_serialized;
+profileNamespace setVariable [format ["btc_hm_%1_slotsSerialized", _name], +_slots_serialized];
 
 //Player Markers
 private _player_markers = allMapMarkers select {"_USER_DEFINED" in _x};

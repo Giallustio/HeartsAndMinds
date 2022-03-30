@@ -253,7 +253,20 @@ if (btc_p_respawn_ticketsAtStart >= 0) then {
     deleteGroup _group;
 };
 
-btc_slots_serialized = +(profileNamespace getVariable [format ["btc_hm_%1_slotsSerialized", _name], btc_slots_serialized]);
+//Player slots
+private _slots_serialized = +(profileNamespace getVariable [format ["btc_hm_%1_slotsSerialized", _name], createHashMap]);
+[{
+    {
+        private _objtClass = _y select 6;
+        if (_objtClass isEqualTo "") then {
+            _objtClass = objNull;
+        } else {
+            _objtClass = nearestObject [ASLToATL (_y select 0), _objtClass];
+        };
+        _y set [6, _objtClass];
+    } forEach _this;
+}, _slots_serialized] call CBA_fnc_execNextFrame; // Need to wait for vehicle creation
+btc_slots_serialized = _slots_serialized;
 
 //Player Markers
 private _markers_properties = +(profileNamespace getVariable [format ["btc_hm_%1_markers", _name], []]);
@@ -271,6 +284,7 @@ private _markers_properties = +(profileNamespace getVariable [format ["btc_hm_%1
     _marker setMarkerAlpha _markerAlpha;
     _marker setMarkerBrush _markerBrush;
     _marker setMarkerDir _markerDir;
+
     _marker setMarkerShape _markerShape;
     if (_markerPolyline isNotEqualTo []) then {
         _marker setMarkerPolyline _markerPolyline;
