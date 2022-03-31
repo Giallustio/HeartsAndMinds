@@ -26,7 +26,7 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-[{
+[{!isNull player}, {
     params [
         "_previousPos",
         "_dir",
@@ -53,4 +53,4 @@ Author:
     if (_isContaminated) then {
         player call btc_chem_fnc_damageLoop;
     };
-}, _this] call CBA_fnc_execNextFrame;
+}, _this] call CBA_fnc_waitUntilAndExecute;
