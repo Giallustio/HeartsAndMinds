@@ -55,7 +55,7 @@ if (_color < 0) then {
             case (worldName in ["Tanoa", "lingor3"]): {
                 1
             };
-            case (worldName in ["chernarus", "Enoch", "sara", "vt7"]): {
+            case (worldName in ["chernarus", "Enoch", "sara", "vt7", "cup_chernarus_A3", "chernarus_summer"]): {
                 3
             };
             default {

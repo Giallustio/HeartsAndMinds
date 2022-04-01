@@ -39,7 +39,9 @@ def main():
         # Mod and terrain detection
         sqmName = missionSourcePath.name.split("_")
         if len(sqmName) != 1:
-            m, mod, terrainSqf = sqmName
+            m = sqmName.pop(0)
+            mod = sqmName.pop(0)
+            terrainSqf = "_".join(sqmName)
             terrain, sqf = terrainSqf.split(".")
 
         print("{:15}".format(terrain), end="")
