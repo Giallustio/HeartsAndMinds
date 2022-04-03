@@ -38,7 +38,7 @@ btc_lift_action_hud = player addAction [
 ];
 btc_lift_action = player addAction [
     "<t color=""#ED2744"">" + (localize "STR_BTC_HAM_LOG_HOOK") + "</t>", // Hook
-    btc_lift_fnc_hook, [], 9, true, false, "", "[] call btc_lift_fnc_check"
+    {[] call btc_lift_fnc_hook}, [], 9, true, false, "", "[] call btc_lift_fnc_check"
 ];
 
 waitUntil {sleep 5; (vehicle player isEqualTo player)};
