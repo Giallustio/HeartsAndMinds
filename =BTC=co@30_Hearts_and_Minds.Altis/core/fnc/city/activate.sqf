@@ -37,8 +37,6 @@ params [
 ];
 
 if (btc_debug) then {
-    private _id = _city getVariable "id";
-    [str _id, __FILE__, [btc_debug, btc_debug_log, true]] call btc_debug_fnc_message;
     _city setVariable ["serverTime", serverTime];
 };
 
