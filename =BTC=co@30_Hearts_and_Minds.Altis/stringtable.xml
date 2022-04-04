@@ -729,6 +729,9 @@
                 <Chinesesimp>任务开始时的重生票数:</Chinesesimp>
                 <Czech>Počet životu na začátku mise:</Czech>
             </Key>
+            <Key ID="STR_BTC_HAM_RESP_TICKETSLOST">
+                <Original>Number of tickets lost per death:</Original>
+            </Key>
             <Key ID="STR_BTC_HAM_RESP_TICKETSHARE">
                 <Original>Tickets are share between:</Original>
                 <German>Tickets werden aufgeteilt zwischen?</German>
