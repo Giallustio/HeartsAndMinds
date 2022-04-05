@@ -760,6 +760,9 @@
                 <French>Arsenal ACE disponible après avoir était tué:</French>
                 <Czech>ACE Arsenal dostupný při respawnu po zabití:</Czech>
             </Key>
+            <Key ID="STR_BTC_HAM_PARAM_SLOT_ISSHARE">
+                <Original>Each slot is share between players</Original>
+            </Key>
         </Container>
         <Container name="Parameters: AI Skill">
             <Key ID="STR_BTC_HAM_PARAM_SKILL_TITLE">
