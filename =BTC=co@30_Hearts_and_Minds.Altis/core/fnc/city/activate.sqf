@@ -251,7 +251,7 @@ if (_has_ho && {!(_city getVariable ["ho_units_spawned", false])}) then {
 
 //Suicider
 if !(_city getVariable ["has_suicider", false]) then {
-    if ((time - btc_ied_suic_spawned) > btc_ied_suic_time && {random 1000 > btc_global_reputation}) then {
+    if ((time - btc_ied_suic_spawned) > btc_ied_suic_time && {random (btc_rep_level_high + 250) > btc_global_reputation}) then {
         btc_ied_suic_spawned = time;
         _city setVariable ["has_suicider", true];
         if (selectRandom [false, false, btc_p_ied_drone]) then {
