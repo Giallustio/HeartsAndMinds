@@ -35,12 +35,11 @@ params [
     ["_id", count btc_city_all, [0]]
 ];
 
-private _city = createSimpleObject ["CBA_NamespaceDummy", [_position select 0, _position select 1, getTerrainHeightASL _position], true];
+private _city = createTrigger ["EmptyDetector", [_position select 0, _position select 1, getTerrainHeightASL _position], false];
 
 btc_city_all set [_id, _city];
 _city setVariable ["id", _id];
 
-_city setVariable ["activating", false];
 _city setVariable ["initialized", false];
 _city setVariable ["name", _name];
 _city setVariable ["cachingRadius", _cachingRadius];
@@ -59,6 +58,6 @@ if (btc_p_sea) then {
     (_this select 0) findEmptyPositionReady (_this select 1)
 }, {}, [_position, [0, _cachingRadius]], 5 * 60] call CBA_fnc_waitUntilAndExecute;
 
-[_city, _cachingRadius, _city, _has_en, _name, _type, _id] call btc_city_fnc_trigger_player_side;
+[_city, _cachingRadius] call btc_city_fnc_setPlayerTrigger;
 
 _city

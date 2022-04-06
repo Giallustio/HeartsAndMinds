@@ -42,8 +42,8 @@ if (isServer) then {
     btc_city_fnc_activate = compileScript ["core\fnc\city\activate.sqf"];
     btc_city_fnc_create = compileScript ["core\fnc\city\create.sqf"];
     btc_city_fnc_de_activate = compileScript ["core\fnc\city\de_activate.sqf"];
-    btc_city_fnc_set_clear = compileScript ["core\fnc\city\set_clear.sqf"];
-    btc_city_fnc_trigger_player_side = compileScript ["core\fnc\city\trigger_player_side.sqf"];
+    btc_city_fnc_setClear = compileScript ["core\fnc\city\setClear.sqf"];
+    btc_city_fnc_setPlayerTrigger = compileScript ["core\fnc\city\setPlayerTrigger.sqf"];
     btc_city_fnc_cleanUp = compileScript ["core\fnc\city\cleanUp.sqf"];
     btc_city_fnc_trigger_free_condition = compileScript ["core\fnc\city\trigger_free_condition.sqf"];
     btc_city_fnc_getHouses = compileScript ["core\fnc\city\getHouses.sqf"];
