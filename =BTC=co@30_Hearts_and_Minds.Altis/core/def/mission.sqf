@@ -364,6 +364,12 @@ if (isServer) then {
 
     //Respawn
     btc_respawn_tickets = createHashMap;
+
+    //Delay
+    btc_delay_agent = 0.1;
+    btc_delay_unit = 0.2;
+    btc_delay_vehicle = 0.3;
+    btc_delay_exec = 0.1;
 };
 
 //Civ

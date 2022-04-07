@@ -21,10 +21,10 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-btc_delay_time = btc_delay_time + 0.2;
+btc_delay_time = btc_delay_time + btc_delay_exec;
 
 [{
-    btc_delay_time = btc_delay_time - 0.2;
+    btc_delay_time = btc_delay_time - btc_delay_exec;
 
     params [
         "_parameters",

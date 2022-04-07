@@ -255,7 +255,7 @@ if !(_city getVariable ["has_suicider", false]) then {
         } else {
             [[_city, _spawningRadius], btc_ied_fnc_suicider_create] call btc_delay_fnc_exec;
         };
-        _delay = _delay + 0.2;
+        _delay = _delay + btc_delay_unit;
     };
 };
 
