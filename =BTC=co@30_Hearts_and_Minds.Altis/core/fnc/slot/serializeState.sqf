@@ -40,6 +40,7 @@ private _data = [
 
 if (btc_debug || btc_debug_log) then {
     [format ["%1", name _unit], __FILE__, [btc_debug, btc_debug_log, true]] call btc_debug_fnc_message;
+    [format ["%1", _data], __FILE__, [false, btc_debug_log, false]] call btc_debug_fnc_message;
 };
 
 btc_slots_serialized set [_unit getVariable ["btc_slot_name", [0, 0, 0]], _data];
