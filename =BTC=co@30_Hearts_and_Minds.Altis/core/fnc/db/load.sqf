@@ -59,8 +59,16 @@ private _cities_status = +(profileNamespace getVariable [format ["btc_hm_%1_citi
         };
     };
     if (btc_debug_log) then {
-        [format ["ID: %1 - IsOccupied %2", _id, _occupied], __FILE__, [false]] call btc_debug_fnc_message;
-        [format ["data_city: %1", _x], __FILE__, [false]] call btc_debug_fnc_message;
+        [format [
+            "ID: %1 - _initialized %2 _spawn_more %3 _occupied %4 count _data_units %5 _has_ho %6",
+            _id, _initialized, _spawn_more, 
+            _occupied, count _data_units, _has_ho  
+        ], __FILE__, [false]] call btc_debug_fnc_message;
+        [format [
+            "ID: %1 - _ho_units_spawned %2 count _ieds %3 _has_suicider %4 count _data_animals %5 count _data_tags %6 count _civKilled %7",
+            _id, _ho_units_spawned, count _ieds, _has_suicider,
+            count _data_animals, count _data_tags, count _civKilled  
+        ], __FILE__, [false]] call btc_debug_fnc_message;
     };
 } forEach _cities_status;
 

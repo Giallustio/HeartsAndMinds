@@ -106,9 +106,9 @@ if !(_city getVariable ["active", false]) exitWith {};
     (_city getVariable ["btc_civ_flowers", []]) call CBA_fnc_deleteEntity;
 
     if (btc_debug_log) then {
-        [format ["data units = %1", _data_units], __FILE__, [false]] call btc_debug_fnc_message;
-        [format ["data animals = %1", _data_animals], __FILE__, [false]] call btc_debug_fnc_message;
-        [format ["data tags = %1", _data_tags], __FILE__, [false]] call btc_debug_fnc_message;
+        [format ["count data_units = %1", count _data_units], __FILE__, [false]] call btc_debug_fnc_message;
+        [format ["count data_animals = %1", count _data_animals], __FILE__, [false]] call btc_debug_fnc_message;
+        [format ["count data_tags = %1", count _data_tags], __FILE__, [false]] call btc_debug_fnc_message;
     };
 
     _city setVariable ["has_suicider", _has_suicider];

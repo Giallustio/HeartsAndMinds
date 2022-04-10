@@ -13,6 +13,7 @@ Parameters:
     _isContaminated - Chemically contaminated. [Boolean]
     _medicalDeserializeState - Medical ACE state. [String]
     _vehicle - Vehicle occupied by player. [Object]
+    _field_rations - Thirst and hunger player's. [Array]
 
 Returns:
 
@@ -34,7 +35,8 @@ Author:
         "_flagTexture",
         "_isContaminated",
         "_medicalDeserializeState",
-        ["_vehicle", objNull, [objNull]]
+        ["_vehicle", objNull, [objNull]],
+        ["_field_rations", [], [[]]]
     ];
 
     if (
@@ -53,4 +55,9 @@ Author:
     if (_isContaminated) then {
         player call btc_chem_fnc_damageLoop;
     };
+
+    _field_rations params [["_thirst", 0, [0]], ["_hunger", 0, [0]]];
+    player setVariable ["acex_field_rations_thirst", _thirst];
+    player setVariable ["acex_field_rations_hunger", _hunger];
+
 }, _this] call CBA_fnc_waitUntilAndExecute;
