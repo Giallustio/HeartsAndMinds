@@ -42,28 +42,28 @@ profileNamespace setVariable [format ["btc_hm_%1_date", _name], date];
 private _cities_status = [];
 {
     private _city_status = [];
-    _city_status pushBack (_x getVariable "id");
+    _city_status pushBack _x;
 
-    _city_status pushBack (_x getVariable "initialized");
+    _city_status pushBack (_y getVariable "initialized");
 
-    _city_status pushBack (_x getVariable "spawn_more");
-    _city_status pushBack (_x getVariable "occupied");
+    _city_status pushBack (_y getVariable "spawn_more");
+    _city_status pushBack (_y getVariable "occupied");
 
-    _city_status pushBack (_x getVariable "data_units");
+    _city_status pushBack (_y getVariable "data_units");
 
-    _city_status pushBack (_x getVariable ["has_ho", false]);
-    _city_status pushBack (_x getVariable ["ho_units_spawned", false]);
-    _city_status pushBack (_x getVariable ["ieds", []]);
-    _city_status pushBack (_x getVariable ["has_suicider", false]);
-    _city_status pushBack (_x getVariable ["data_animals", []]);
-    _city_status pushBack (_x getVariable ["data_tags", []]);
-    _city_status pushBack (_x getVariable ["btc_rep_civKilled", []]);
+    _city_status pushBack (_y getVariable ["has_ho", false]);
+    _city_status pushBack (_y getVariable ["ho_units_spawned", false]);
+    _city_status pushBack (_y getVariable ["ieds", []]);
+    _city_status pushBack (_y getVariable ["has_suicider", false]);
+    _city_status pushBack (_y getVariable ["data_animals", []]);
+    _city_status pushBack (_y getVariable ["data_tags", []]);
+    _city_status pushBack (_y getVariable ["btc_rep_civKilled", []]);
 
     _cities_status pushBack _city_status;
     if (btc_debug_log) then {
-        [format ["ID %1 - IsOccupied %2", _x getVariable "id", _x getVariable "occupied"], __FILE__, [false]] call btc_debug_fnc_message;
+        [format ["ID %1 - IsOccupied %2", _y getVariable "id", _y getVariable "occupied"], __FILE__, [false]] call btc_debug_fnc_message;
     };
-} forEach (btc_city_all select {!isNull _x});
+} forEach btc_city_all;
 profileNamespace setVariable [format ["btc_hm_%1_cities", _name], +_cities_status];
 
 //HIDEOUT
@@ -216,9 +216,6 @@ profileNamespace setVariable [format ["btc_hm_%1_tags", _name], +_tags_propertie
 
 //Player respawn tickets
 if (btc_p_respawn_ticketsAtStart >= 0) then {
-    if (btc_p_respawn_ticketsShare) then {
-        btc_respawn_tickets set [str btc_player_side, [btc_player_side] call BIS_fnc_respawnTickets];
-    };
     profileNamespace setVariable [format ["btc_hm_%1_respawnTickets", _name], +btc_respawn_tickets];
 
     private _deadBodyPlayers = (btc_body_deadPlayers  - [objNull]) apply {[

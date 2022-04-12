@@ -54,12 +54,13 @@ if (btc_p_side_mission_cycle > 0) then {
     ["btc_tag_remover" + _x, "STR_BTC_HAM_ACTION_REMOVETAG", _x, ["#(rgb,8,8,3)color(0,0,0,0)"], "\a3\Modules_F_Curator\Data\portraitSmoke_ca.paa"] call ace_tagging_fnc_addCustomTag;
 } forEach ["ACE_SpraypaintRed"];
 
-if (btc_p_respawn_ticketsAtStart >= 0) then {
-    if (btc_p_respawn_ticketsShare) then {
-        private _tickets = btc_p_respawn_ticketsAtStart;
-        if (btc_p_respawn_ticketsAtStart isEqualTo 0) then {
-            _tickets = -1;
-        };
-        [btc_player_side, _tickets] call BIS_fnc_respawnTickets;
+if (
+    btc_p_respawn_ticketsShare &&
+    {btc_p_respawn_ticketsAtStart >= 0}
+) then {
+    private _tickets = btc_respawn_tickets getOrDefault [str btc_player_side, btc_p_respawn_ticketsAtStart];;
+    if (_tickets isEqualTo 0) then {
+        _tickets = -1;
     };
+    [btc_player_side, _tickets] call BIS_fnc_respawnTickets;
 };

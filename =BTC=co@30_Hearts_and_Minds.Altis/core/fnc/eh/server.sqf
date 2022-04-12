@@ -41,9 +41,7 @@ addMissionEventHandler ["BuildingChanged", btc_rep_fnc_buildingchanged];
     }, false] call CBA_fnc_addClassEventHandler;
 } forEach btc_civ_type_veh;
 ["ace_killed", btc_mil_fnc_unit_killed] call CBA_fnc_addEventHandler;
-["ace_repair_setWheelHitPointDamage", {
-    _this remoteExecCall ["btc_rep_fnc_wheelChange", 2];
-}] call CBA_fnc_addEventHandler;
+["ace_repair_setWheelHitPointDamage", btc_rep_fnc_wheelChange] call CBA_fnc_addEventHandler;
 ["ace_disarming_dropItems", btc_rep_fnc_foodRemoved] call CBA_fnc_addEventHandler;
 ["btc_respawn_player", {
     params ["", "_player"];
@@ -123,7 +121,6 @@ if (btc_p_set_skill) then {
 ["ace_tagCreated", btc_tag_fnc_eh] call CBA_fnc_addEventHandler; 
 
 if (btc_p_respawn_ticketsAtStart >= 0) then {
-    ["btc_respawn_player", btc_respawn_fnc_player] call CBA_fnc_addEventHandler;
     ["ace_placedInBodyBag", btc_body_fnc_setBodyBag] call CBA_fnc_addEventHandler;
 
     if !(btc_p_respawn_ticketsShare) then {

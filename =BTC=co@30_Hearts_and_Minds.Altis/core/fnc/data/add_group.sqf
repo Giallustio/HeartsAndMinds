@@ -31,7 +31,7 @@ if (btc_debug_log) then {
 _group setVariable ["no_cache", nil];
 [_group] call CBA_fnc_clearWaypoints;
 
-private _city = [leader _group, btc_city_all, false] call btc_fnc_find_closecity;
+private _city = [leader _group, values btc_city_all, false] call btc_fnc_find_closecity;
 _city setVariable ["occupied", true];
 
 if (_city getVariable ["marker", ""] != "") then {

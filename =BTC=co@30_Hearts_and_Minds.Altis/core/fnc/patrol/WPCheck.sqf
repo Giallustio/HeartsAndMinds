@@ -43,9 +43,9 @@ if (btc_debug) then {
     };
 };
 
-private _start_city = btc_city_all select _start_cityID;
-private _active_city = btc_city_all select _active_cityID;
-private _end_city = btc_city_all select _end_cityID;
+private _start_city = btc_city_all get _start_cityID;
+private _active_city = btc_city_all get _active_cityID;
+private _end_city = btc_city_all get _end_cityID;
 
 //Remove if too far from player
 if ([_active_city, _group, _area] call btc_patrol_fnc_playersInAreaCityGroup) exitWith {

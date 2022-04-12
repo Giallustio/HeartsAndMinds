@@ -36,7 +36,7 @@ private _cities_status = +(profileNamespace getVariable [format ["btc_hm_%1_citi
         ["_civKilled", [], [[]]]
     ];
 
-    private _city = btc_city_all select _id;
+    private _city = btc_city_all get _id;
 
     _city setVariable ["initialized", _initialized];
     _city setVariable ["spawn_more", _spawn_more];
@@ -225,9 +225,6 @@ private _id = ["ace_tagCreated", {
 //Player respawn tickets
 if (btc_p_respawn_ticketsAtStart >= 0) then {
     btc_respawn_tickets = +(profileNamespace getVariable [format ["btc_hm_%1_respawnTickets", _name], btc_respawn_tickets]);
-    if (btc_p_respawn_ticketsShare) then {
-        btc_p_respawn_ticketsAtStart = btc_respawn_tickets getOrDefault [str btc_player_side, btc_p_respawn_ticketsAtStart];
-    };
 
     private _deadBodyPlayers = +(profileNamespace getVariable [format ["btc_hm_%1_deadBodyPlayers", _name], []]);
     private _group = createGroup btc_player_side;
