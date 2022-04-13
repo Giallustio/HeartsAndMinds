@@ -26,7 +26,7 @@ btc_body_deadPlayers pushBack _unit;
 _unit setVariable ["btc_UID", getPlayerUID _player];
 
 if (btc_p_respawn_ticketsShare) then {
-    btc_respawn_tickets set [str btc_player_side, [btc_player_side] call BIS_fnc_respawnTickets];
+    btc_respawn_tickets set [btc_player_side, [btc_player_side] call BIS_fnc_respawnTickets];
 } else {
     btc_respawn_tickets set [getPlayerUID _player, [_player] call BIS_fnc_respawnTickets];
 };
