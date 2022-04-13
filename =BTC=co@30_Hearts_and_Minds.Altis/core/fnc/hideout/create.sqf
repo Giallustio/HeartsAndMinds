@@ -42,19 +42,15 @@ params [
 
 private _city = objNull;
 if (_pos isEqualTo []) then {
-    private _useful = btc_city_all select {(
-        !isNull _x &&
-        {!(_x getVariable ["active", false])} &&
+    private _useful = values btc_city_all select {
+        !(_x getVariable ["active", false]) &&
         {_x distance (getMarkerPos btc_respawn_marker) > btc_hideout_safezone} &&
         {!(_x getVariable ["has_ho", false])} &&
         {_x getVariable ["type", ""] in ["NameLocal", "Hill", "NameVillage", "Airport"]}
-    )};
-    private _inHoRange = btc_city_all select {
-        !isNull _x &&
-        {
-            private _city = _x;
-            (selectMin (btc_hideouts apply {_x distance _city})) < btc_hideout_minRange
-        }
+    };
+    private _inHoRange = values btc_city_all select {
+        private _city = _x;
+        (selectMin (btc_hideouts apply {_x distance _city})) < btc_hideout_minRange
     };
     private _usefulRange = _useful - _inHoRange;
     if (_usefulRange isEqualTo []) then {
@@ -72,15 +68,14 @@ if (_pos isEqualTo []) then {
     _city setVariable ["has_ho", true];
     _city setVariable ["ho_units_spawned", false];
 } else {
-    _city = btc_city_all select _id;
+    _city = btc_city_all get _id;
 };
 
 _city setVariable ["city_realPos", getPos _city];
 _city setPos _pos;
 if (btc_debug) then {deleteMarker format ["loc_%1", _id];};
-deleteVehicle (_city getVariable ["trigger_player_side", objNull]);
 
-[_city, btc_hideouts_radius, _city, _city getVariable "occupied", _city getVariable "name", _city getVariable "type", _city getVariable "id"] call btc_city_fnc_trigger_player_side;
+[_city, btc_hideouts_radius] call btc_city_fnc_setPlayerTrigger;
 [{
     (_this select 0) findEmptyPositionReady (_this select 1)
 }, {}, [_pos, [0, _city getVariable ["cachingRadius", 100]]], 5 * 60] call CBA_fnc_waitUntilAndExecute;

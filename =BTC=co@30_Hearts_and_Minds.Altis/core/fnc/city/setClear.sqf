@@ -1,19 +1,19 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_city_fnc_set_clear
+Function: btc_city_fnc_setClear
 
 Description:
     Define a city with the corresponding ID as clear (no more occupied).
 
 Parameters:
-    _id - ID of the city no more occupied. [Number]
+    _trigger - Enemy trigger with no more enemy. [Number]
     _remainEnemyUnits - Remaining enemy units assigned to the city. [Array]
 
 Returns:
 
 Examples:
     (begin example)
-        _result = [] call btc_city_fnc_set_clear;
+        _result = [] call btc_city_fnc_setClear;
     (end)
 
 Author:
@@ -22,11 +22,11 @@ Author:
 ---------------------------------------------------------------------------- */
 
 params [
-    ["_id", 0, [0]],
+    ["_trigger", objNull, [objNull]],
     ["_remainEnemyUnits", [], [[]]]
 ];
 
-private _city = btc_city_all select _id;
+private _city = _trigger getVariable "playerTrigger";
 _city setVariable ["occupied", false];
 
 if (_remainEnemyUnits isNotEqualTo []) then {
@@ -48,5 +48,6 @@ if (btc_final_phase) then {
 };
 
 if (btc_debug) then {
+    private _id = _city getVariable "id";
     (format ["loc_%1", _id]) setMarkerColor "ColorGreen";
 };

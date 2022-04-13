@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        [] call btc_lift_fnc_hook;
+        [] spawn btc_lift_fnc_hook;
     (end)
 
 Author:

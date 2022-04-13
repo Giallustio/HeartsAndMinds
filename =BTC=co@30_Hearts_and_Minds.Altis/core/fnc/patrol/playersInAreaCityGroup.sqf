@@ -15,7 +15,7 @@ Returns:
 
 Examples:
     (begin example)
-        [selectRandom btc_city_all, group cursorTarget] call btc_patrol_fnc_playersInAreaCityGroup;
+        [selectRandom values btc_city_all, group cursorTarget] call btc_patrol_fnc_playersInAreaCityGroup;
     (end)
 
 Author:

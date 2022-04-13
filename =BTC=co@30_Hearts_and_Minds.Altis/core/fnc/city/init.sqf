@@ -29,8 +29,7 @@ private _locations = configfile >> "cfgworlds" >> worldname >> "names";
 private _citiesType = ["NameVillage", "NameCity", "NameCityCapital", "NameLocal", "Hill", "Airport", "StrongpointArea", "BorderCrossing", "VegetationFir"];
 if (btc_p_sea) then {_citiesType pushBack "NameMarine";};
 
-btc_city_all = [];
-private _cities = [];
+btc_city_all = createHashMap;
 for "_id" from 0 to (count _locations - 1) do {
     private _current = _locations select _id;
 
@@ -68,11 +67,11 @@ for "_id" from 0 to (count _locations - 1) do {
         if ((getMarkerPos "YOUR_MARKER_AREA") inArea [_position, 500, 500, 0, false]) exitWith {};
         */
 
-        private _city = [_position, _type, _name, _cachingRadius, false, _id] call btc_city_fnc_create;
-        _cities pushBack _city;
+        [_position, _type, _name, _cachingRadius, false, _id] call btc_city_fnc_create;
     };
 };
 
+private _cities = values btc_city_all;
 [_cities, true] call CBA_fnc_shuffle;
 private _numberOfCity = round ((count _cities) * _density_of_occupiedCity);
 {
@@ -85,5 +84,3 @@ private _numberOfCity = round ((count _cities) * _density_of_occupiedCity);
 if !(isNil "btc_custom_loc") then {
     {_x call btc_city_fnc_create;} forEach btc_custom_loc;
 };
-
-btc_city_all = btc_city_all apply {if (isNil "_x") then {objNull} else {_x}};

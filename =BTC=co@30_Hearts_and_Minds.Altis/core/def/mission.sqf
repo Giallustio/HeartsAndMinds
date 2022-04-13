@@ -2,7 +2,7 @@
 btc_version = [
     1,
     22,
-    1
+    2
 ];
 diag_log format (["=BTC= HEARTS AND MINDS VERSION %1.%2.%3"] + btc_version);
 
@@ -26,6 +26,7 @@ btc_p_respawn_fromFOBToBase = ("btc_p_respawn_fromFOBToBase" call BIS_fnc_getPar
 btc_p_rallypointTimer = "btc_p_rallypointTimer" call BIS_fnc_getParamValue;
 btc_p_respawn_arsenal = ("btc_p_respawn_arsenal" call BIS_fnc_getParamValue) isEqualTo 1;
 btc_p_respawn_ticketsAtStart = "btc_p_respawn_ticketsAtStart" call BIS_fnc_getParamValue;
+btc_p_respawn_ticketsLost = 1 - ("btc_p_respawn_ticketsLost" call BIS_fnc_getParamValue);
 btc_p_respawn_ticketsShare = ("btc_p_respawn_ticketsShare" call BIS_fnc_getParamValue) isEqualTo 0;
 btc_p_body_timeBeforeShowMarker = ("btc_p_body_timeBeforeShowMarker" call BIS_fnc_getParamValue) * 60;
 
@@ -366,6 +367,12 @@ if (isServer) then {
     btc_respawn_tickets = createHashMap;
 
     btc_slots_serialized = createHashMap;
+
+    //Delay
+    btc_delay_agent = 0.1;
+    btc_delay_unit = 0.2;
+    btc_delay_vehicle = 0.3;
+    btc_delay_exec = 0.1;
 };
 
 //Civ
@@ -684,6 +691,11 @@ btc_rep_malus_building_destroyed = - 5;
 btc_rep_malus_foodRemove = - btc_rep_bonus_foodGive;
 btc_rep_malus_breakDoor = - 2;
 btc_rep_malus_wheelChange = - 7;
+
+btc_rep_level_veryLow = 0;
+btc_rep_level_low = 200;
+btc_rep_level_normal = 500;
+btc_rep_level_high = 750;
 
 //Headless
 btc_units_owners = [];

@@ -36,7 +36,7 @@ private _cities_status = +(profileNamespace getVariable [format ["btc_hm_%1_citi
         ["_civKilled", [], [[]]]
     ];
 
-    private _city = btc_city_all select _id;
+    private _city = btc_city_all get _id;
 
     _city setVariable ["initialized", _initialized];
     _city setVariable ["spawn_more", _spawn_more];
@@ -59,8 +59,16 @@ private _cities_status = +(profileNamespace getVariable [format ["btc_hm_%1_citi
         };
     };
     if (btc_debug_log) then {
-        [format ["ID: %1 - IsOccupied %2", _id, _occupied], __FILE__, [false]] call btc_debug_fnc_message;
-        [format ["data_city: %1", _x], __FILE__, [false]] call btc_debug_fnc_message;
+        [format [
+            "ID: %1 - _initialized %2 _spawn_more %3 _occupied %4 count _data_units %5 _has_ho %6",
+            _id, _initialized, _spawn_more, 
+            _occupied, count _data_units, _has_ho  
+        ], __FILE__, [false]] call btc_debug_fnc_message;
+        [format [
+            "ID: %1 - _ho_units_spawned %2 count _ieds %3 _has_suicider %4 count _data_animals %5 count _data_tags %6 count _civKilled %7",
+            _id, _ho_units_spawned, count _ieds, _has_suicider,
+            count _data_animals, count _data_tags, count _civKilled  
+        ], __FILE__, [false]] call btc_debug_fnc_message;
     };
 } forEach _cities_status;
 
@@ -217,9 +225,6 @@ private _id = ["ace_tagCreated", {
 //Player respawn tickets
 if (btc_p_respawn_ticketsAtStart >= 0) then {
     btc_respawn_tickets = +(profileNamespace getVariable [format ["btc_hm_%1_respawnTickets", _name], btc_respawn_tickets]);
-    if (btc_p_respawn_ticketsShare) then {
-        btc_p_respawn_ticketsAtStart = btc_respawn_tickets getOrDefault [str btc_player_side, btc_p_respawn_ticketsAtStart];
-    };
 
     private _deadBodyPlayers = +(profileNamespace getVariable [format ["btc_hm_%1_deadBodyPlayers", _name], []]);
     private _group = createGroup btc_player_side;

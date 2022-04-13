@@ -52,7 +52,7 @@ if ((round random 3) >= 2 || !_isInterrogate) then {
     if (_isInterrogate) then {_man setVariable ["btc_already_interrogated", true, true];};
 };
 
-//NO < 200 . FAKE < 600 . REAL > 600
+//NO < btc_rep_level_low . FAKE < btc_rep_level_normal + 100 . REAL > btc_rep_level_normal + 100
 
 btc_int_ask_data = nil;
 ["btc_global_reputation"] remoteExecCall ["btc_int_fnc_ask_var", 2];
@@ -64,9 +64,9 @@ private _rep = btc_int_ask_data;
 private _chance = (random 300) + (random _rep) + _rep/2;
 private _info_type = "";
 switch !(_isInterrogate) do {
-    case (_chance < 200) : {_info_type = "NO";};
-    case (_chance >= 200 && _chance < 600) : {_info_type = "FAKE";};
-    case (_chance >= 600) : {_info_type = "REAL";};
+    case (_chance < btc_rep_level_low) : {_info_type = "NO";};
+    case (_chance >= btc_rep_level_low && _chance < btc_rep_level_normal + 100) : {_info_type = "FAKE";};
+    case (_chance >= btc_rep_level_normal + 100) : {_info_type = "REAL";};
 };
 if (_isInterrogate) then {_info_type = "REAL";};
 if (_info_type isEqualTo "NO") exitWith {

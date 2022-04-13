@@ -56,7 +56,7 @@ if !(isServer) exitWith {
     [btc_rep_malus_civ_hd, btc_rep_malus_animal_hd] select _isAgent,
     _instigator
 ] call btc_rep_fnc_change;
-if (btc_global_reputation < 600) then {[getPos _unit] call btc_rep_fnc_eh_effects;};
+if (btc_global_reputation < btc_rep_level_normal + 100) then {[getPos _unit] call btc_rep_fnc_eh_effects;};
 
 if (btc_debug_log) then {
     [format ["REP HD = GREP %1 THIS = %2", btc_global_reputation, _this], __FILE__, [false]] call btc_debug_fnc_message;

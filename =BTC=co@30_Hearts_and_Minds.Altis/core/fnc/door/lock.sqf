@@ -28,10 +28,10 @@ params [
 
 private _houses = +(_city getVariable ["btc_city_housesEntrerable", []]);
 private _ratio = switch (true) do {
-    case (_rep < 200): {1};
-    case (_rep >= 200 && _rep < 500): {1/2};
-    case (_rep >= 500 && _rep < 750): {1/3};
-    case (_rep >= 750): {0};
+    case (_rep < btc_rep_level_low): {1};
+    case (_rep >= btc_rep_level_low && _rep < btc_rep_level_normal): {1/2};
+    case (_rep >= btc_rep_level_normal && _rep < btc_rep_level_high): {1/3};
+    case (_rep >= btc_rep_level_high): {0};
 };
 private _n = (count _houses) * _ratio;
 private _i = 1;
