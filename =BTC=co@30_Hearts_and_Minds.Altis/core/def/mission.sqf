@@ -365,6 +365,8 @@ if (isServer) then {
     //Respawn
     btc_respawn_tickets = createHashMap;
 
+    btc_slots_serialized = createHashMap;
+
     //Delay
     btc_delay_agent = 0.1;
     btc_delay_unit = 0.2;

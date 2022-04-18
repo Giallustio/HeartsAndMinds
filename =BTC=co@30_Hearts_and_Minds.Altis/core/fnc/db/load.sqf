@@ -59,8 +59,16 @@ private _cities_status = +(profileNamespace getVariable [format ["btc_hm_%1_citi
         };
     };
     if (btc_debug_log) then {
-        [format ["ID: %1 - IsOccupied %2", _id, _occupied], __FILE__, [false]] call btc_debug_fnc_message;
-        [format ["data_city: %1", _x], __FILE__, [false]] call btc_debug_fnc_message;
+        [format [
+            "ID: %1 - _initialized %2 _spawn_more %3 _occupied %4 count _data_units %5 _has_ho %6",
+            _id, _initialized, _spawn_more, 
+            _occupied, count _data_units, _has_ho  
+        ], __FILE__, [false]] call btc_debug_fnc_message;
+        [format [
+            "ID: %1 - _ho_units_spawned %2 count _ieds %3 _has_suicider %4 count _data_animals %5 count _data_tags %6 count _civKilled %7",
+            _id, _ho_units_spawned, count _ieds, _has_suicider,
+            count _data_animals, count _data_tags, count _civKilled  
+        ], __FILE__, [false]] call btc_debug_fnc_message;
     };
 } forEach _cities_status;
 
@@ -250,6 +258,21 @@ if (btc_p_respawn_ticketsAtStart >= 0) then {
     deleteGroup _group;
 };
 
+//Player slots
+private _slots_serialized = +(profileNamespace getVariable [format ["btc_hm_%1_slotsSerialized", _name], createHashMap]);
+[{
+    {
+        private _objtClass = _y select 6;
+        if (_objtClass isEqualTo "") then {
+            _objtClass = objNull;
+        } else {
+            _objtClass = nearestObject [ASLToATL (_y select 0), _objtClass];
+        };
+        _y set [6, _objtClass];
+    } forEach _this;
+}, _slots_serialized] call CBA_fnc_execNextFrame; // Need to wait for vehicle creation
+btc_slots_serialized = _slots_serialized;
+
 //Player Markers
 private _markers_properties = +(profileNamespace getVariable [format ["btc_hm_%1_markers", _name], []]);
 {
@@ -266,6 +289,7 @@ private _markers_properties = +(profileNamespace getVariable [format ["btc_hm_%1
     _marker setMarkerAlpha _markerAlpha;
     _marker setMarkerBrush _markerBrush;
     _marker setMarkerDir _markerDir;
+
     _marker setMarkerShape _markerShape;
     if (_markerPolyline isNotEqualTo []) then {
         _marker setMarkerPolyline _markerPolyline;

@@ -86,6 +86,7 @@ if (isServer) then {
 
     //EH
     btc_eh_fnc_server = compileScript ["core\fnc\eh\server.sqf"];
+    btc_eh_fnc_playerConnected = compileScript ["core\fnc\eh\playerConnected.sqf"];
 
     //IED
     btc_ied_fnc_boom = compileScript ["core\fnc\ied\boom.sqf"];
@@ -148,6 +149,10 @@ if (isServer) then {
     btc_patrol_fnc_addWP = compileScript ["core\fnc\patrol\addWP.sqf"];
     btc_patrol_fnc_eh = compileScript ["core\fnc\patrol\eh.sqf"];
     btc_patrol_fnc_addEH = compileScript ["core\fnc\patrol\addEH.sqf"];
+
+    //SLOT
+    btc_slot_fnc_serializeState = compileScript ["core\fnc\slot\serializeState.sqf"];
+    btc_slot_fnc_deserializeState_s = compileScript ["core\fnc\slot\deserializeState_s.sqf"];
 
     //REP
     btc_rep_fnc_call_militia = compileScript ["core\fnc\rep\call_militia.sqf"];
@@ -415,6 +420,9 @@ if (!isDedicated) then {
     btc_tow_fnc_hitch_points = compileScript ["core\fnc\tow\hitch_points.sqf"];
     btc_tow_fnc_unhook = compileScript ["core\fnc\tow\unhook.sqf"];
     btc_tow_fnc_check = compileScript ["core\fnc\tow\check.sqf"];
+
+    //SLOT
+    btc_slot_fnc_deserializeState = compileScript ["core\fnc\slot\deserializeState.sqf"];
 };
 
 /////////////////////HEADLESS\\\\\\\\\\\\\\\\\\\\\
