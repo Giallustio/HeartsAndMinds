@@ -28,6 +28,7 @@ if (btc_db_load && {profileNamespace getVariable [format ["btc_hm_%1_db", worldN
     {
         _x call btc_veh_fnc_add;
     } forEach (getMissionLayerEntities "btc_vehicles" select 0);
+    if (isNil "btc_vehicles") then {btc_vehicles = [];};
 };
 
 [] call btc_eh_fnc_server;
@@ -48,6 +49,7 @@ if (btc_p_db_autoRestart > 0) then {
         missionNamespace setVariable ["btc_veh_respawnable_1", _x, true];
     };
 } forEach (getMissionLayerEntities "btc_veh_respawnable" select 0);
+if (isNil "btc_veh_respawnable") then {btc_veh_respawnable = [];};
 
 if (btc_p_side_mission_cycle > 0) then {
     for "_i" from 1 to btc_p_side_mission_cycle do {
