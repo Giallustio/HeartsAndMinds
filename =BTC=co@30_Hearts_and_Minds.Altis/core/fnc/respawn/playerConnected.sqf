@@ -34,4 +34,4 @@ if (_name isEqualTo "__SERVER__") exitWith {};
         _this call BIS_fnc_getUnitByUID,
         _tickets
     ] call BIS_fnc_respawnTickets;
-}, _uid, 4 * 60] call CBA_fnc_waitUntilAndExecute;
+}, _uid, 20 * 60] call CBA_fnc_waitUntilAndExecute;
