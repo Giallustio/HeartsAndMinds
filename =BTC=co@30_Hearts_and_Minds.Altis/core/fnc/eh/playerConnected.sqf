@@ -23,8 +23,12 @@ params ["_id", "_uid", "_name", "_jip", "_owner", "_idstr"];
 
 if (_name isEqualTo "__SERVER__") exitWith {};
 
+if (btc_debug_log) then {
+    [format ["_this %1", _this], __FILE__, [false]] call btc_debug_fnc_message;
+};
+
 [{
     !isNull ((_this select 1) call BIS_fnc_getUnitByUID)
 }, {
     ["btc_playerConnected", [(_this select 1) call BIS_fnc_getUnitByUID, _this]] call CBA_fnc_localEvent;
-}, _this, 4 * 60] call CBA_fnc_waitUntilAndExecute;
+}, _this, 20 * 60] call CBA_fnc_waitUntilAndExecute;
