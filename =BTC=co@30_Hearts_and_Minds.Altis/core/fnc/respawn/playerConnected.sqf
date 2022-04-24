@@ -42,4 +42,4 @@ if (btc_debug_log) then {
     if (btc_debug_log) then {
         [format ["_respawnTickets %1 _tickets %2 _uid %3", _respawnTickets, _tickets, _this], __FILE__, [false]] call btc_debug_fnc_message;
     };
-}, _uid, 20 * 60] call CBA_fnc_waitUntilAndExecute;
+}, _uid, 4 * 60] call CBA_fnc_waitUntilAndExecute;
