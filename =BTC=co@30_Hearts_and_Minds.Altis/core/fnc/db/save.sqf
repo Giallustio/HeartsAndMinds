@@ -231,12 +231,17 @@ if (btc_p_respawn_ticketsAtStart >= 0) then {
 };
 
 //Player slots
-{_x call btc_slot_fnc_serializeState} forEach (allPlayers - entities "HeadlessClient_F");
+{
+    if (alive _x) then {
+        _x call btc_slot_fnc_serializeState;
+    };
+} forEach (allPlayers - entities "HeadlessClient_F");
 private _slots_serialized = +btc_slots_serialized;
 {
     if (btc_debug_log) then {
-        [format ["btc_slots_serialized %1", _y], __FILE__, [false]] call btc_debug_fnc_message;
+        [format ["btc_slots_serialized %1 %2", _x, _y], __FILE__, [false]] call btc_debug_fnc_message;
     };
+    if (_y isEqualTo []) then {continue};
     _y set [6, typeOf (_y select 6)];
 } forEach _slots_serialized;
 profileNamespace setVariable [format ["btc_hm_%1_slotsSerialized", _name], +_slots_serialized];
