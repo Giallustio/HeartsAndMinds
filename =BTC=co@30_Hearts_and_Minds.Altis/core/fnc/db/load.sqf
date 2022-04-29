@@ -262,6 +262,7 @@ if (btc_p_respawn_ticketsAtStart >= 0) then {
 private _slots_serialized = +(profileNamespace getVariable [format ["btc_hm_%1_slotsSerialized", _name], createHashMap]);
 [{
     {
+        if (_y isEqualTo []) then {continue};
         private _objtClass = _y select 6;
         if (_objtClass isEqualTo "") then {
             _objtClass = objNull;
