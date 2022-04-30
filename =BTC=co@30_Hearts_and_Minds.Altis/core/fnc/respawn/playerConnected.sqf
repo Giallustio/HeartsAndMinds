@@ -26,4 +26,10 @@ private _tickets = btc_respawn_tickets getOrDefault [_uid, btc_p_respawn_tickets
 if (_tickets isEqualTo 0) then {
     _tickets = -1;
 };
-[_player, _tickets] call BIS_fnc_respawnTickets;
+private _respawnTickets = [_player, _tickets] call BIS_fnc_respawnTickets;
+
+if (btc_debug_log) then {
+    [format ["_respawnTickets %1 _tickets %2 _uid %3", _respawnTickets, _tickets, _uid], __FILE__, [false]] call btc_debug_fnc_message;
+};
+
+_respawnTickets
