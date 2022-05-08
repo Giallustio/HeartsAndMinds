@@ -102,6 +102,11 @@ _action = ["Search_intel", localize "STR_A3_Showcase_Marksman_BIS_tskIntel_title
         [btc_copy_inventory, _params] call btc_log_fnc_inventoryPaste
     }, {!isNil "btc_copy_inventory"}, {}, _helipad, [0, 0, 0.4], 5] call ace_interact_menu_fnc_createAction;
     [_object, 0, ["ACE_MainActions", "Tool"], _action] call ace_interact_menu_fnc_addActionToObject;
+    _action = ["Restore_inventory", localize "STR_BTC_HAM_ACTION_COPYPASTE_PASTEI", "\A3\ui_f\data\igui\cfg\simpleTasks\types\rearm_ca.paa", {
+        params ["", "", "_params"];
+        [btc_copy_inventory, _params] call btc_log_fnc_inventoryRestore
+    }, {true}, {}, _helipad, [0, 0, 0.4], 5] call ace_interact_menu_fnc_createAction;
+    [_object, 0, ["ACE_MainActions", "Tool"], _action] call ace_interact_menu_fnc_addActionToObject;
 
     //Bodybag
     if (btc_p_respawn_ticketsAtStart isNotEqualTo -1) then {
