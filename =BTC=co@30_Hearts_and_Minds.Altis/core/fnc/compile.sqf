@@ -200,11 +200,9 @@ if (isServer) then {
     //LOG
     btc_log_fnc_createVehicle = compileScript ["core\fnc\log\createVehicle.sqf"];
     btc_log_fnc_init = compileScript ["core\fnc\log\init.sqf"];
-    btc_log_fnc_inventorySet = compileScript ["core\fnc\log\inventorySet.sqf"];
     btc_log_fnc_server_delete = compileScript ["core\fnc\log\server_delete.sqf"];
     btc_log_fnc_create_s = compileScript ["core\fnc\log\create_s.sqf"];
     btc_log_fnc_server_repair_wreck = compileScript ["core\fnc\log\server_repair_wreck.sqf"];
-    btc_log_fnc_inventoryGet = compileScript ["core\fnc\log\inventoryGet.sqf"];
 
     //DEAF
     btc_deaf_fnc_earringing = compileScript ["core\fnc\deaf\earringing.sqf"];
@@ -269,6 +267,8 @@ btc_int_fnc_ask_var = compileScript ["core\fnc\int\ask_var.sqf"];
 
 //LOG
 btc_log_fnc_place_destroy_camera = compileScript ["core\fnc\log\place_destroy_camera.sqf"];
+btc_log_fnc_inventoryGet = compileScript ["core\fnc\log\inventoryGet.sqf"];
+btc_log_fnc_inventorySet = compileScript ["core\fnc\log\inventorySet.sqf"];
 
 //MIL
 btc_mil_fnc_class = compileScript ["core\fnc\mil\class.sqf"];
@@ -389,6 +389,8 @@ if (!isDedicated) then {
     btc_log_fnc_paste = compileScript ["core\fnc\log\paste.sqf"];
     btc_log_fnc_refuelSource = compileScript ["core\fnc\log\refuelSource.sqf"];
     btc_log_fnc_rearmSource = compileScript ["core\fnc\log\rearmSource.sqf"];
+    btc_log_fnc_inventoryCopy = compileScript ["core\fnc\log\inventoryCopy.sqf"];
+    btc_log_fnc_inventoryPaste = compileScript ["core\fnc\log\inventoryPaste.sqf"];
 
     //REP
     btc_rep_fnc_treatment = compileScript ["core\fnc\rep\treatment.sqf"];
