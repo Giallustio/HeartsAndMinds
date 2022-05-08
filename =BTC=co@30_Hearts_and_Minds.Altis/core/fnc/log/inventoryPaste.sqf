@@ -26,7 +26,7 @@ params [
     ["_searchLocation", objNull, [objNull]]
 ];
 
-private _objects = nearestObjects [_searchLocation, ["allVehicles"], 3];
+private _objects = nearestObjects [_searchLocation, ["AllVehicles", "ThingX"], 3];
 
 if (
     isNil "_inventory" ||

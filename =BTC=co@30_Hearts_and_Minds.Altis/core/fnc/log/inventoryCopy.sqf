@@ -24,7 +24,7 @@ params [
     ["_searchLocation", objNull, [objNull]]
 ];
 
-private _objects = nearestObjects [_searchLocation, ["allVehicles"], 3];
+private _objects = nearestObjects [_searchLocation, ["AllVehicles", "ThingX"], 3];
 
 if (_objects isEqualTo []) exitWith {(localize "STR_BTC_HAM_O_COPY_NOOBJECTS") call CBA_fnc_notify};
 
