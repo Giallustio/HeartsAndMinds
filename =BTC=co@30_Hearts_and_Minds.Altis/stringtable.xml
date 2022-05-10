@@ -2113,6 +2113,9 @@
             <Key ID="STR_BTC_HAM_ACTION_COPYPASTE_PASTEI">
                 <Original>Paste inventory</Original>
             </Key>
+            <Key ID="STR_BTC_HAM_ACTION_RESTOREI">
+                <Original>Restore inventory</Original>
+            </Key>
         </Container>
         <Container name="Action(ACE): Door">
             <Key ID="STR_BTC_HAM_ACTION_DOOR_BREAK">
