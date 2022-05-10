@@ -33,7 +33,7 @@ Author:
 
 params [
     ["_pos", [], [[]]],
-    ["_id_hideout", btc_hideouts_id, [0]],
+    ["_id_hideout", count btc_hideouts, [0]],
     ["_rinf_time", time, [0]],
     ["_cap_time", time - btc_hideout_cap_time, [0]],
     ["_id", 0, [0]],
@@ -117,10 +117,9 @@ if (btc_debug) then {
 };
 
 if (btc_debug_log) then {
-    [format ["_this = %1 ; POS %2 ID %3", _this, _pos, btc_hideouts_id], __FILE__, [false]] call btc_debug_fnc_message;
+    [format ["_this = %1 ; POS %2 ID %3", _this, _pos, count btc_hideouts], __FILE__, [false]] call btc_debug_fnc_message;
 };
 
-btc_hideouts_id = btc_hideouts_id + 1;
 btc_hideouts pushBack _hideout;
 publicVariable "btc_hideouts";
 
