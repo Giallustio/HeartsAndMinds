@@ -736,7 +736,7 @@
                 <German>Tickets werden aufgeteilt zwischen?</German>
                 <Chinesesimp>重生票数在以下玩家间共享:</Chinesesimp>
                 <Czech>Životy se dělí mezi:</Czech>
-                <French>Les tickets sont partagés entre:</French>
+                <French>Les tickets sont partagés entre :</French>
             </Key>
             <Key ID="STR_BTC_HAM_RESP_SAMEFACTION">
                 <Original>Players of the same faction</Original>
