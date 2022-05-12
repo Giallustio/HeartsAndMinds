@@ -729,7 +729,7 @@
                 <German>Anzahl der Tickets bei Missionsstart</German>
                 <Chinesesimp>任务开始时的重生票数:</Chinesesimp>
                 <Czech>Počet životu na začátku mise:</Czech>
-                <French>Nombre de ticket au début de la mission:</French>
+                <French>Nombre de ticket au début de la mission :</French>
             </Key>
             <Key ID="STR_BTC_HAM_RESP_TICKETSHARE">
                 <Original>Tickets are share between:</Original>
