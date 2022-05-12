@@ -1029,7 +1029,7 @@
                 <German>Städte gelten als befreit, wenn Anzahl von Feinden ist kleiner oder gleich:</German>
                 <Chinesesimp>城镇将会被解放, 当敌军数量小于或等于:</Chinesesimp>
                 <Czech>Město bude volné, pokud bude počet nepřátel stejný nebo nižší než:</Czech>
-                <French>La ville sera libre si le nombre d’ennemis est égal ou inférieur à:</French>
+                <French>La ville sera libre si le nombre d’ennemis est égal ou inférieur à :</French>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_OTHER_ALLOWFLAG">
                 <Original>Allow the use of flag:</Original>
