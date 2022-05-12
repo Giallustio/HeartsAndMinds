@@ -1036,7 +1036,7 @@
                 <German>Erlaube die Nutzung von Flaggen:</German>
                 <Chinesesimp>允许悬挂旗帜</Chinesesimp>
                 <Czech>Povolit použití vlajky:</Czech>
-                <French>Autoriser l’utilisation du drapeau:</French>
+                <French>Autoriser l’utilisation du drapeau :</French>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_OTHER_FLAGVEH">
                 <Original>On vehicle</Original>
