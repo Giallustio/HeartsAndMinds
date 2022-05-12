@@ -2929,7 +2929,7 @@
                 <German>Abschleppendes Fahrzeug ausgewählt. Interagiere mit dem Fahrzeuge, welches abgeschleppt werden soll!</German>
                 <Chinesesimp>已选择牵引车, 与被牵引车互动以启用牵引!</Chinesesimp>
                 <Czech>Vybráno tažné vozidlo, interagujte s vozidlem, které chcete táhnout!</Czech>
-                <French>Véhicule de remorquage sélectionné, interagir avec le véhicule à remorquer!</French>
+                <French>Véhicule de remorquage sélectionné, interagir avec le véhicule à remorquer !</French>
             </Key>
             <Key ID="STR_BTC_HAM_TOW_TFAR">
                 <Original>Too far!</Original>
