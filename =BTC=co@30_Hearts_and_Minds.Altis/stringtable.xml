@@ -2943,7 +2943,7 @@
                 <German>Nicht korekt ausgerichtet</German>
                 <Chinesesimp>没有对齐!</Chinesesimp>
                 <Czech>Nezarovnáno!</Czech>
-                <French>Non aligné!</French>
+                <French>Non aligné !</French>
             </Key>
             <Key ID="STR_BTC_HAM_TOW_ALREADYTOWED">
                 <Original>This vehicle is already attached to another!</Original>
