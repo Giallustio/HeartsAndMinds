@@ -1817,7 +1817,7 @@
                 <German>Zivilisten werden durch einen chemischen Kampfstoff bei %1 kontaminiert. Sie benötigen unsere Unterstützung. Dekontaminiere die Zivilisten mit einer kleinen Decon Dusche. Um die Zivilisten zu finden, suche bei der Unteraufgabe nach Bluttropfen und nutze deinen chemischen Detekor.</German>
                 <Chinesesimp>%1 附近的平民感染了一种化学试剂。平民请求您使用小型淋浴器来净化受感染的村民。要确定平民的位置, 请查看次级任务, 跟随红色的血滴并使用化学探测器。</Chinesesimp>
                 <Czech>Civilisté jsou kontaminováni chemickou látkou kolem %1. Žádají vaši pomoc při dekontaminaci těch civilistů malou sprchou. Chcete-li najít civilisty, přejděte na dílčí úkol, postupujte podle kapky červené krve a použijte svůj chemický detektor.</Czech>
-                <French><Original>Les civils sont contaminés par un agent chimique autour de %1. Ils demandent votre aide pour décontaminer ces civils avec une petite douche. Pour localiser les civils, rendez-vous à la sous-tâche, suivez la goutte de sang rouge et utilisez votre détecteur de produits chimiques.</French>
+                <French>Les civils sont contaminés par un agent chimique autour de %1. Ils demandent votre aide pour décontaminer ces civils avec une petite douche. Pour localiser les civils, ouvrez la sous-tâche, suivez les gouttes de sang rouge et utilisez votre détecteur de produits chimiques.</French>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_PANDEMIC_DECON_TITLE">
                 <Original>Decontaminate this civilian</Original>
