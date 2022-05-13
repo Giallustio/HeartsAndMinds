@@ -64,7 +64,7 @@
                 <Original>Add all vehicles that should automatically respawn to "btc_veh_respawnable" layer. If a vehicle should NOT automatically respawn, add it to the layer named "btc_vehicles".</Original>
                 <Chinesesimp>将所有可以自动重生的载具添加到"btc_veh_respawnable"图层。如果一辆载具不可以自动重生, 将其添加到"btc_vehicles"图层。</Chinesesimp>
                 <Czech>Přidejte všechna vozidla, která by se měla automaticky respawnovat, do vrstvy "btc_veh_respawnable". Pokud by se vozidlo NEMĚLO automaticky znovu objevit, přidejte ho do vrstvy s názvem "btc_vehicles"</Czech>
-                <French>Ajouter tous les véhicules qui devraient réapparaître automatiquement à la couche "btc_veh_respawnable". Si un véhicule ne doit PAS réapparaître automatiquement, ajoutez-le à la couche nommée "btc_vehicles".</French>
+                <French>Ajouter tous les véhicules qui devraient réapparaître automatiquement au calque "btc_veh_respawnable". Si un véhicule ne doit PAS réapparaître automatiquement, ajoutez-le au calque nommé "btc_vehicles".</French>
             </Key>
         </Container>
     </Package>
