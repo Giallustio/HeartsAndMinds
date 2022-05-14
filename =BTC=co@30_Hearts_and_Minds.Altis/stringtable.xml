@@ -1810,7 +1810,7 @@
                 <German>Kontaminierte Zivilisten bei %1</German>
                 <Chinesesimp>%1 地区的平民受到感染</Chinesesimp>
                 <Czech>Kontaminovaný civilisti v %1</Czech>
-                <French>Contaminer les civils dans %1</French>
+                <French>Civils contaminés dans %1</French>
             </Key>
             <Key ID="STR_BTC_HAM_SIDE_PANDEMIC_DESC">
                 <Original>Civilians get contaminated by a chemical agent around %1. They are requesting your help to decontaminate those civilans with a little shower. To locate civilians go to the subtask, follow red blood drop and use your chemical detector.</Original>
