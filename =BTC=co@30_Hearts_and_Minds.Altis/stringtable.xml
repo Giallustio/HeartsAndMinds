@@ -58,7 +58,7 @@
                 <Original>Add respawnable vehicles to this layer</Original>
                 <Chinesesimp>将可重生载具添加到此图层</Chinesesimp>
                 <Czech>Přidejte do této vrstvy respawnovatelná vozidla</Czech>
-                <French>Ajouter les véhicules qui réaparaitrons à cette couche</French>
+                <French>Ajouter les véhicules qui réapparaitrons à ce calque</French>
             </Key>
             <Key ID="STR_BTC_HAM_MSQM_MRK_HELODESC">
                 <Original>Add all vehicles that should automatically respawn to "btc_veh_respawnable" layer. If a vehicle should NOT automatically respawn, add it to the layer named "btc_vehicles".</Original>
