@@ -46,7 +46,7 @@
                 <Original>Add vehicles to this layer</Original>
                 <Chinesesimp>将载具添加到此图层</Chinesesimp>
                 <Czech>Přidejte vozidla do této vrstvy</Czech>
-                <French>Ajouter un véhicule à la couche</French>
+                <French>Ajouter un véhicule au calque</French>
             </Key>
             <Key ID="STR_BTC_HAM_MSQM_MRK_VEHDESC">
                 <Original>Add all vehicles that should NOT automatically respawn to "btc_vehicles" layer. If a vehicle SHOULD automatically respawn, add it to the layer named "btc_veh_respawnable".</Original>
