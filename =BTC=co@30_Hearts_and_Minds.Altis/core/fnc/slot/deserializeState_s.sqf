@@ -7,7 +7,7 @@ Description:
 
 Parameters:
     _player - Player. [Object]
-    _slotName - Slot name use by the player. [String, Array]
+    _key - HashMap key. [String, Array]
 
 Returns:
 
@@ -23,10 +23,10 @@ Author:
 
 params [
     ["_player", objNull, [objNull]],
-    ["_slotName", "", ["", []]]
+    ["_key", "", ["", []]]
 ];
 
-private _data = btc_slots_serialized getOrDefault [_slotName, []];
+private _data = btc_slots_serialized getOrDefault [_key, []];
 if (_data isEqualTo []) exitWith {};
 if (_data select 4) then {
     if ((btc_chem_contaminated pushBackUnique _player) > -1) then {
