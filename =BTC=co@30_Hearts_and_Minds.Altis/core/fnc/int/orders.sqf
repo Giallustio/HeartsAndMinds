@@ -64,7 +64,7 @@ if (isNull _unit) then {
                             [name _unit, localize "STR_BTC_HAM_CON_INT_ORDERS_ONLAND"] call btc_fnc_showSubtitle;
                         } else {
                             [[_unit], 0, 4, _pos] remoteExecCall ["btc_int_fnc_orders_give", _unit];
-                            removeMissionEventHandler ["onMapSingleClick", _thisEventHandler];
+                            removeMissionEventHandler ["MapSingleClick", _thisEventHandler];
                             openMap false;
                             private _textMap = selectRandom [
                                     localize "STR_BTC_HAM_CON_INT_ORDERS_TAXI_OK1",
