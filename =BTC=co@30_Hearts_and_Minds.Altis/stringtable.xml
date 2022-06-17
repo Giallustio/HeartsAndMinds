@@ -2135,6 +2135,12 @@
                 <French>Coller le conteneur</French>
                 <Czech>Vložit kontejner</Czech>
             </Key>
+            <Key ID="STR_BTC_HAM_ACTION_COPYPASTE_COPYI">
+                <Original>Copy inventory</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_ACTION_COPYPASTE_PASTEI">
+                <Original>Paste inventory</Original>
+            </Key>
         </Container>
         <Container name="Action(ACE): Door">
             <Key ID="STR_BTC_HAM_ACTION_DOOR_BREAK">
@@ -2790,6 +2796,12 @@
                 <Chinesesimp>集装箱及其货物已记录! 清空该区域以创建一个复制品。</Chinesesimp>
                 <French>Conteneur et cargaison copiés ! Nettoyez la zone avant de faire un coller.</French>
                 <Czech>Kontejner a obsah zkopírovány! Vyčistěte oblast pro přidání nové.</Czech>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_PASTE_NOCOPIEDI">
+                <Original>No copied inventory!</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_COPY_NOOBJECTS">
+                <Original>No objects around!</Original>
             </Key>
         </Container>
         <Container name="Other: Endmission">
