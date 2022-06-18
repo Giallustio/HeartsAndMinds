@@ -153,6 +153,7 @@ if (isServer) then {
     //SLOT
     btc_slot_fnc_serializeState = compileScript ["core\fnc\slot\serializeState.sqf"];
     btc_slot_fnc_deserializeState_s = compileScript ["core\fnc\slot\deserializeState_s.sqf"];
+    btc_slot_fnc_createKey = compileScript ["core\fnc\slot\createKey.sqf"];
 
     //REP
     btc_rep_fnc_call_militia = compileScript ["core\fnc\rep\call_militia.sqf"];
