@@ -223,6 +223,7 @@ if (isServer) then {
     btc_veh_fnc_propertiesGet = compileScript ["core\fnc\veh\propertiesGet.sqf"];
     btc_veh_fnc_propertiesSet = compileScript ["core\fnc\veh\propertiesSet.sqf"];
     btc_veh_fnc_add = compileScript ["core\fnc\veh\add.sqf"];
+    btc_veh_fnc_inventoryRestore = compileScript ["core\fnc\veh\inventoryRestore.sqf"];
 };
 
 /////////////////////CLIENT AND SERVER\\\\\\\\\\\\\\\\\\\\\
@@ -392,6 +393,7 @@ if (!isDedicated) then {
     btc_log_fnc_rearmSource = compileScript ["core\fnc\log\rearmSource.sqf"];
     btc_log_fnc_inventoryCopy = compileScript ["core\fnc\log\inventoryCopy.sqf"];
     btc_log_fnc_inventoryPaste = compileScript ["core\fnc\log\inventoryPaste.sqf"];
+    btc_log_fnc_inventoryRestore = compileScript ["core\fnc\log\inventoryRestore.sqf"];
 
     //REP
     btc_rep_fnc_treatment = compileScript ["core\fnc\rep\treatment.sqf"];
