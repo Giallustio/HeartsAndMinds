@@ -14,7 +14,7 @@ Returns:
 Examples:
     (begin example)
         a = nearestTerrainObjects [player, [], 3, false];
-        [a select 0] call btc_fnc_typeOf;
+        [[a select 0]] call btc_fnc_typeOf;
     (end)
 
 Author:
