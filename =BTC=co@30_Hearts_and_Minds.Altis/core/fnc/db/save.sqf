@@ -145,7 +145,7 @@ private _vehiclesInCargo = _vehicles - _vehiclesNotInCargo;
         ["_flagTexture", "", [""]],
         ["_turretMagazines", [], [[]]],
         ["_notuse", "", [""]],
-        ["_tag", "", [""]]
+        ["_tagTexture", "", [""]]
     ];
 
     private _data = [];
@@ -162,10 +162,8 @@ private _vehiclesInCargo = _vehicles - _vehiclesNotInCargo;
     _data pushBack []; // ViV
     _data pushBack _flagTexture;
     _data pushBack _turretMagazines;
-    _data pushBack _tag;
-    if (btc_debug) then {
-        [format ["_tag %1", _tag], __FILE__, [true, true]] call btc_debug_fnc_message;
-    };
+    _data pushBack _tagTexture;
+
     private _fakeViV = isVehicleCargo attachedTo _x;
     if (
         isNull _fakeViV &&
