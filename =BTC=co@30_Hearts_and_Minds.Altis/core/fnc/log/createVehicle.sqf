@@ -44,7 +44,8 @@ params [
     ["_supplyVehicle", [], [[]]],
     ["_EDENinventory", [], [[]]],
     ["_allHitPointsDamage", [], [[]]],
-    ["_flagTexture", "", [""]]
+    ["_flagTexture", "", [""]],
+    ["_tagTexture", "", [""]]
 ];
 
 private _veh  = createVehicle [_type, ASLToATL _pos, [], 0, "CAN_COLLIDE"];
@@ -72,6 +73,10 @@ if (_allHitPointsDamage isNotEqualTo []) then {
 
 if (_flagTexture isNotEqualTo "") then {
     _veh forceFlagTexture _flagTexture;
+};
+
+if (_tagTexture isNotEqualTo "") then {
+    [objNull, [], _tagTexture, _veh, objNull, "", "", true] call ace_tagging_fnc_createTag;
 };
 
 _veh call btc_veh_fnc_add;

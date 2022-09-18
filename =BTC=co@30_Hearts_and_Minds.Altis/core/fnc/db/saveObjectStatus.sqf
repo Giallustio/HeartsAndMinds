@@ -53,5 +53,6 @@ _data pushBack (_object call btc_body_fnc_dogtagGet);
 _data pushBack (getForcedFlagTexture _object);
 _data pushBack (magazinesAllTurrets _object);
 _data pushBack (_object getVariable ["ace_cargo_customName", ""]);
+_data pushBack (_object getVariable ["btc_tag_vehicle", ""]);
 
 _data

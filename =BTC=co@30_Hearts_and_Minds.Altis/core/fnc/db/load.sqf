@@ -168,14 +168,15 @@ private _vehs = +(profileNamespace getVariable [format ["btc_hm_%1_vehs", _name]
             ["_vectorPos", [], [[]]],
             ["_ViV", [], [[]]],
             ["_flagTexture", "", [""]],
-            ["_turretMagazines", [], [[]]]
+            ["_turretMagazines", [], [[]]],
+            ["_tagTexture", "", [""]]
         ];
 
         if (btc_debug_log) then {
             [format ["_veh = %1", _x], __FILE__, [false]] call btc_debug_fnc_message;
         };
 
-        private _veh = [_veh_type, _veh_pos, _veh_dir, _customization, _isMedicalVehicle, _isRepairVehicle, _fuelSource, _pylons, _isContaminated, _supplyVehicle, _EDENinventory, _veh_AllHitPointsDamage, _flagTexture] call btc_log_fnc_createVehicle;
+        private _veh = [_veh_type, _veh_pos, _veh_dir, _customization, _isMedicalVehicle, _isRepairVehicle, _fuelSource, _pylons, _isContaminated, _supplyVehicle, _EDENinventory, _veh_AllHitPointsDamage, _flagTexture, _tagTexture] call btc_log_fnc_createVehicle;
         _veh setVectorDirAndUp _vectorPos;
         _veh setFuel _veh_fuel;
 
