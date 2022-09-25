@@ -37,6 +37,8 @@ if (
     (getObjectType _from != 1) &&
     !(_from in btc_buildings_changed) ||
     {_classname isKindOf "Wall"} ||
+    {_classname isKindOf "Furniture_base_F"} ||
+    {_classname isKindOf "Items_base_F"} ||
     {_from call ace_logistics_wirecutter_fnc_isFence}
 ) exitWith {};
 
