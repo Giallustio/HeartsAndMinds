@@ -50,6 +50,7 @@ crew _vehicle call btc_fnc_moveOut;
             ["_pylons", [], [[]]],
             ["_isContaminated", false, [false]],
             ["_supplyVehicle", [], [[]]],
+            ["_objectTexture", [], [[]]],
             ["_EDENinventory", [], [[]]]
         ];
 
@@ -62,7 +63,7 @@ crew _vehicle call btc_fnc_moveOut;
             createVehicleCrew _vehicle;
         };
 
-        [_vehicle, _customization, _isMedicalVehicle, _isRepairVehicle, _fuelSource, _pylons, _isContaminated, _supplyVehicle] call btc_veh_fnc_propertiesSet;
+        [_vehicle, _customization, _isMedicalVehicle, _isRepairVehicle, _fuelSource, _pylons, _isContaminated, _supplyVehicle, _objectTexture] call btc_veh_fnc_propertiesSet;
         if (_EDENinventory isNotEqualTo []) then {
             _vehicle setVariable ["btc_EDENinventory", _EDENinventory];
             [_vehicle, _EDENinventory] call btc_log_fnc_inventorySet;
