@@ -3,7 +3,7 @@
 Function: btc_db_fnc_load_old
 
 Description:
-    Load database from profileNamespace depends one worldname
+    Load older database version thanks to profileNamespace getVariable [format ["btc_hm_%1_version", worldName], 1.13].
 
 Parameters:
     _name - Name of the saved game. [String]
@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        ["Altis"] call btc_db_fnc_load_old;
+        ["Altis"] call compileScript ["core\fnc\db\load_old.sqf"];
     (end)
 
 Author:
