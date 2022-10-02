@@ -1,6 +1,6 @@
 
 /* ----------------------------------------------------------------------------
-Function: btc_body_fnc_createBodyBag
+Function: btc_body_fnc_setBodyBag
 
 Description:
     Set bodybag variable from a patient.
@@ -11,7 +11,7 @@ Returns:
 
 Examples:
     (begin example)
-        [] call btc_body_fnc_createBodyBag;
+        [] call btc_body_fnc_setBodyBag;
     (end)
 
 Author:

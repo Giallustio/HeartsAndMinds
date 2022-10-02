@@ -108,7 +108,7 @@ if (btc_p_set_skill) then {
 
 if (btc_p_respawn_ticketsAtStart >= 0) then {
     ["btc_respawn_player", btc_respawn_fnc_player] call CBA_fnc_addEventHandler;
-    ["ace_placedInBodyBag", btc_body_fnc_createBodyBag] call CBA_fnc_addEventHandler;
+    ["ace_placedInBodyBag", btc_body_fnc_setBodyBag] call CBA_fnc_addEventHandler;
 
     if !(btc_p_respawn_ticketsShare) then {
         addMissionEventHandler ["PlayerConnected", btc_respawn_fnc_playerConnected];
