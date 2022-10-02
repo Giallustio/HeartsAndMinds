@@ -116,9 +116,6 @@ if (btc_p_respawn_ticketsAtStart >= 0) then {
 
     addMissionEventHandler ["HandleDisconnect", {
         params ["_unit"];
-        if (btc_debug_log) then {
-            [format ["HandleDisconnect %1 %2 %3", _this, _unit in btc_body_deadPlayers], __FILE__, [true]] call btc_debug_fnc_message;
-        };
         if (
             ace_respawn_removedeadbodiesdisconnected &&
             _unit in btc_body_deadPlayers
@@ -127,7 +124,6 @@ if (btc_p_respawn_ticketsAtStart >= 0) then {
             private _deadUnits  = [[[_unit]] call btc_body_fnc_get] call btc_body_fnc_create;
             private _deadUnit = _deadUnits select 0;
             btc_body_deadPlayers pushBack _deadUnit;
-            [_deadUnit] call btc_body_fnc_createMarker;
         };
     }];
 };
