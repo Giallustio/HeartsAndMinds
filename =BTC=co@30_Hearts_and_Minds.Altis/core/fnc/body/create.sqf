@@ -49,7 +49,9 @@ _bodies  = _serializedBodies apply {
         _body setPosASL _pos;
     }, [_body, _dir, _pos], 3] call CBA_fnc_waitAndExecute;
 
-    _body call btc_body_fnc_createMarker;
+    if (btc_p_body_timeBeforeShowMarker >= 0) then {
+        _body call btc_body_fnc_createMarker;
+    };
 
     _body
 };
