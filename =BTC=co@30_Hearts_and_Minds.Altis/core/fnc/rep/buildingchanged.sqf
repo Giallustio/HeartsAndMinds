@@ -39,7 +39,8 @@ if (
     {_classname isKindOf "Wall"} ||
     {_classname isKindOf "Furniture_base_F"} ||
     {_classname isKindOf "Items_base_F"} ||
-    {_from call ace_logistics_wirecutter_fnc_isFence}
+    {_from call ace_logistics_wirecutter_fnc_isFence} ||
+    {"WALL" in _from}
 ) exitWith {};
 
 btc_buildings_changed pushBack _to;
