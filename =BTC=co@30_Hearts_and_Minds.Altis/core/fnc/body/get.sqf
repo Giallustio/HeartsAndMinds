@@ -3,7 +3,7 @@
 Function: btc_body_fnc_get
 
 Description:
-    Serialize dead body.
+    Serialize dead bodies.
 
 Parameters:
     _bodies - Bodies. [Array]

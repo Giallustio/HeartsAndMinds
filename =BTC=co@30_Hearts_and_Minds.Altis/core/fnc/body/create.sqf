@@ -3,7 +3,7 @@
 Function: btc_body_fnc_create
 
 Description:
-    Create dead body from a serialized array of bodies.
+    Create dead bodies from a serialized array of bodies.
 
 Parameters:
     _serializedBodies - Serialized bodies. [Array]
