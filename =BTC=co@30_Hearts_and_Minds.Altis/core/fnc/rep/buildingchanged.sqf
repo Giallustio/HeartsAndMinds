@@ -28,7 +28,7 @@ params [
     ["_isRuin", false, [false]]
 ];
 
-private _classname = toUpper (([[_from]] call btc_fnc_typeOf) select 0);
+private _classname = toUpper typeOf _from;
 private _malus = [btc_rep_malus_building_damaged, btc_rep_malus_building_destroyed] select _isRuin;
 private _skipCategories = false;
 
@@ -36,11 +36,9 @@ private _skipCategories = false;
 if (
     (getObjectType _from != 1) &&
     !(_from in btc_buildings_changed) ||
+    {_classname isEqualTo ""} ||
     {_classname isKindOf "Wall"} ||
-    {_classname isKindOf "Furniture_base_F"} ||
-    {_classname isKindOf "Items_base_F"} ||
-    {_from call ace_logistics_wirecutter_fnc_isFence} ||
-    {"WALL" in _from}
+    {"GATE" in _classname}
 ) exitWith {};
 
 btc_buildings_changed pushBack _to;
