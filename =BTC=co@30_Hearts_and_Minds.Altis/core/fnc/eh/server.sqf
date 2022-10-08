@@ -124,6 +124,19 @@ if (btc_p_respawn_ticketsAtStart >= 0) then {
     if !(btc_p_respawn_ticketsShare) then {
         ["btc_playerConnected", btc_respawn_fnc_playerConnected] call CBA_fnc_addEventHandler;
     };
+
+    addMissionEventHandler ["HandleDisconnect", {
+        params ["_unit"];
+        if (
+            ace_respawn_removedeadbodiesdisconnected &&
+            _unit in btc_body_deadPlayers
+        ) then {
+            deleteMarker (_unit getVariable ["btc_body_deadMarker", ""]);
+            private _deadUnits  = [[[_unit]] call btc_body_fnc_get] call btc_body_fnc_create;
+            private _deadUnit = _deadUnits select 0;
+            btc_body_deadPlayers pushBack _deadUnit;
+        };
+    }];
 };
 
 //Cargo

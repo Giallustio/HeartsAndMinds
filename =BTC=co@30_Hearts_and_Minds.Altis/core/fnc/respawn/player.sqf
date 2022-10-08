@@ -31,5 +31,5 @@ if (btc_p_respawn_ticketsShare) then {
     btc_respawn_tickets set [getPlayerUID _player, [_player] call BIS_fnc_respawnTickets];
 };
 
-if (btc_p_body_timeBeforeShowMarker isEqualTo -1) exitwith {};
+if (btc_p_body_timeBeforeShowMarker < 0) exitwith {};
 [btc_body_fnc_createMarker, _unit, btc_p_body_timeBeforeShowMarker] call CBA_fnc_waitAndExecute;
