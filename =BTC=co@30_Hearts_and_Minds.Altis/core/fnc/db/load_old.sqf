@@ -228,35 +228,7 @@ if (btc_p_respawn_ticketsAtStart >= 0) then {
     btc_respawn_tickets = +(profileNamespace getVariable [format ["btc_hm_%1_respawnTickets", _name], btc_respawn_tickets]);
 
     private _deadBodyPlayers = +(profileNamespace getVariable [format ["btc_hm_%1_deadBodyPlayers", _name], []]);
-    private _group = createGroup btc_player_side;
-    btc_body_deadPlayers  = _deadBodyPlayers apply {
-        _x params ["_type", "_pos", "_dir", "_loadout", "_dogtag", "_isContaminated",
-            ["_flagTexture", "", [""]]
-        ];
-        private _body = _group createUnit [_type, ASLToAGL _pos, [], 0, "CAN_COLLIDE"];
-        _body setUnitLoadout _loadout;
-        [_body, _dogtag] call btc_body_fnc_dogtagSet;
-
-        if (_isContaminated) then {
-            if ((btc_chem_contaminated pushBackUnique _body) > -1) then {
-                publicVariable "btc_chem_contaminated";
-            };
-        };
-        _body setDamage 1;
-        _body setVariable ["btc_dont_delete", true];
-        _body forceFlagTexture _flagTexture;
-
-        [{
-            params ["_body", "_dir", "_pos"];
-            _body setDir _dir;
-            _body setPosASL _pos;
-        }, [_body, _dir, _pos], 3] call CBA_fnc_waitAndExecute;
-
-        _body call btc_body_fnc_createMarker;
-
-        _body
-    };
-    deleteGroup _group;
+    btc_body_deadPlayers  = [_deadBodyPlayers] call btc_body_fnc_create;
 };
 
 //Player slots
