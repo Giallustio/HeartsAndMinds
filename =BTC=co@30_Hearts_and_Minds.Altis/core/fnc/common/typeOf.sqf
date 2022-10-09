@@ -27,7 +27,7 @@ params [
 ];
 
 if (isNil "btc_modelNamespace") then {
-    btc_modelNamespace = call CBA_fnc_createNamespace;
+    btc_modelNamespace = createHashMap;
 };
 
 private _cfgVehicles = configFile >> "cfgVehicles";
@@ -38,19 +38,19 @@ _objectArray apply {
     if (_type == "") then {
         private _model = (getModelInfo _x) select 1;
         if (_model == "") exitWith {""};
-        _type = btc_modelNamespace getVariable _model;
+        _type = btc_modelNamespace get _model;
         if (isNil "_type") then {
             private _objects = configProperties [
                 _cfgVehicles,
                 "(isClass _x) && {(((getText (_x >> 'model')) select [1]) == _model) || {(getText (_x >> 'model')) == _model}}",
-                 true
+                true
             ];
             if (_objects isEqualTo []) then {
                 _type = "";
             } else {
                 _type = configName (_objects select 0);
             };
-            btc_modelNamespace setVariable [_model, _type];
+            btc_modelNamespace set [_model, _type];
         };
     };
     _type
