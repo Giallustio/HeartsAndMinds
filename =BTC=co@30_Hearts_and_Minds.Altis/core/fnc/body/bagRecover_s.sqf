@@ -46,7 +46,7 @@ if (btc_p_respawn_ticketsShare) then {
         private _player = _UID call BIS_fnc_getUnitByUID;
         [_player, _ticket, _UID] call btc_respawn_fnc_addTicket;
     } else {
-        private _players = (units btc_player_side) select {isPlayer _x};
+        private _players = allPlayers select {side group _x isEqualTo btc_player_side};
         {
             [_x, _ticket, getPlayerUID _x] call btc_respawn_fnc_addTicket;
         } forEach _players;
