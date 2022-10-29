@@ -7,6 +7,7 @@ Description:
 
 Parameters:
     _bodyBag - Body bag or alive enemy. [Object]
+    _player - Player interacting. [Object]
 
 Returns:
 
@@ -21,7 +22,8 @@ Author:
 ---------------------------------------------------------------------------- */
 
 params [
-    ["_bodyBag", objNull, [objNull]]
+    ["_bodyBag", objNull, [objNull]],
+    ["_player", objNull, [objNull]]
 ];
 
 private _ticket = 0;
@@ -42,14 +44,36 @@ if (_ticket isEqualTo 0) exitWith {
 if (btc_p_respawn_ticketsShare) then {
     [btc_player_side, _ticket] call btc_respawn_fnc_addTicket;
 } else {
-    if (_UID isNotEqualTo "") then {
-        private _player = _UID call BIS_fnc_getUnitByUID;
-        [_player, _ticket, _UID] call btc_respawn_fnc_addTicket;
-    } else {
-        private _players = (units btc_player_side) select {isPlayer _x};
+    if (_UID isEqualTo "") then {
+        private _players = [];
+        switch (btc_p_respawn_ticketsFromPrisoners) do { 
+            case 1 : {
+                _players = (units btc_player_side) select {isPlayer _x};
+            }; 
+            case 2 : {
+                _players = [_player];
+            }; 
+            case 3 : {
+                _players = (units btc_player_side) select {isPlayer _x};
+                private _index = _players findIf {[_x] call BIS_fnc_respawnTickets isEqualTo 0};
+                if (_index isNotEqualTo -1) then {
+                    _players = [_players select _index];
+                };
+            }; 
+            case 4 : {
+                _players = (units btc_player_side) select {isPlayer _x};
+                private _tickets = _players apply {[[_x] call BIS_fnc_respawnTickets, _x]};
+                _tickets sort true;
+                _players = [_tickets select 0 select 1];
+            }; 
+            default {}; 
+        };
         {
             [_x, _ticket, getPlayerUID _x] call btc_respawn_fnc_addTicket;
         } forEach _players;
+    } else {
+        private _player = _UID call BIS_fnc_getUnitByUID;
+        [_player, _ticket, _UID] call btc_respawn_fnc_addTicket;
     };
 };
 

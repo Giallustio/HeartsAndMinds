@@ -37,4 +37,4 @@ if (_array isEqualTo []) exitWith {
     localize "STR_BTC_HAM_O_BODYBAG_NO" call CBA_fnc_notify;
 };
 
-[_array select 0] remoteExecCall ["btc_body_fnc_bagRecover_s", 2];
+[_array select 0, player] remoteExecCall ["btc_body_fnc_bagRecover_s", 2];
