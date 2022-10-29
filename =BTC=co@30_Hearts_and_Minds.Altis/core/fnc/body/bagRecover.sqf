@@ -13,7 +13,7 @@ Returns:
 Examples:
     (begin example)
         {_x addCuratorEditableObjects [btc_body_deadPlayers, false];} forEach allCurators; 
-        [btc_log_create_obj] call btc_body_fnc_bagRecover;
+        [btc_create_object_point] call btc_body_fnc_bagRecover;
     (end)
 
 Author:

@@ -35,13 +35,13 @@ if (_UID isEqualTo "") then {
 
         switch (btc_p_respawn_ticketsFromPrisoners) do { 
             case 1 : {
-                _players = (units btc_player_side) select {isPlayer _x};
+                _players = allPlayers select {side group _x isEqualTo btc_player_side};
             }; 
             case 2 : {
                 _players = [_player];
             }; 
             case 3 : {
-                _players = (units btc_player_side) select {isPlayer _x};
+                _players = allPlayers select {side group _x isEqualTo btc_player_side};
                 private _index = _players findIf {[_x] call BIS_fnc_respawnTickets isEqualTo 0};
                 if (_index isEqualTo -1) then {
                     _players = [];
@@ -50,7 +50,7 @@ if (_UID isEqualTo "") then {
                 };
             }; 
             case 4 : {
-                _players = (units btc_player_side) select {isPlayer _x};
+                _players = allPlayers select {side group _x isEqualTo btc_player_side};
                 private _tickets = _players apply {[[_x] call BIS_fnc_respawnTickets, _x]};
                 _tickets sort true;
                 _players = [_tickets select 0 select 1];
@@ -65,7 +65,9 @@ if (_UID isEqualTo "") then {
 if (_ticket isEqualTo 0) exitWith {
     [23] remoteExecCall ["btc_fnc_show_hint", remoteExecutedOwner];
 };
-if (_UID isEqualTo "" && _players isEqualTo []) exitWith {};
+if (_UID isEqualTo "" && _players isEqualTo []) exitWith {
+    [25] remoteExecCall ["btc_fnc_show_hint", remoteExecutedOwner];
+};
 [22] remoteExecCall ["btc_fnc_show_hint", remoteExecutedOwner];
 
 if (btc_p_respawn_ticketsShare) then {
