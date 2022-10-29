@@ -754,11 +754,14 @@
                 <Czech>Hráči stejné frakce</Czech>
                 <French>Joueurs de la même faction</French>
             </Key>
+            <Key ID="STR_BTC_HAM_RESP_TICKETPRISONER">
+                <Original>Attribute tickets from prisoners to (Enable only if tickets are not share):</Original>
+            </Key>
             <Key ID="STR_BTC_HAM_RESP_ALLCONNECTED">
                 <Original>All connected players</Original>
             </Key>
             <Key ID="STR_BTC_HAM_RESP_PLAYER">
-                <Original>To the player interacting the logistic point</Original>
+                <Original>To the player interacting with the logistic point</Original>
             </Key>
             <Key ID="STR_BTC_HAM_RESP_DEADPLAYER">
                 <Original>To player with 0 ticket left</Original>

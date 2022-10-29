@@ -714,6 +714,6 @@ btc_flag_textures = [
 
 //Respawn
 btc_body_bagTicketPlayer = 1;
-btc_body_enemyTicket = 1;
+btc_body_prisonerTicket = 1;
 
 btc_startDate = [2035, 6, 24, 12, 15];
