@@ -50,7 +50,9 @@ Author:
     };
     player setDir _dir;
     player forceFlagTexture _flagTexture;
-    [player, _medicalDeserializeState] call ace_medical_fnc_deserializeState;
+    [{player getVariable ["ace_medical_initialized", false]}, {
+        [player, _this] call ace_medical_fnc_deserializeState;
+    }, _medicalDeserializeState] call CBA_fnc_waitUntilAndExecute;
 
     if (_isContaminated) then {
         player call btc_chem_fnc_damageLoop;
