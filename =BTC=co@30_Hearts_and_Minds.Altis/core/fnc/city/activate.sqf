@@ -116,7 +116,7 @@ if (_data_units isNotEqualTo []) then {
         for "_i" from 1 to round _finalNumberOfGroup do {
             [
                 _city,
-                [_spawningRadius, _spawningRadius/3] select (_i <= _numberOfHouseGroup),
+                [_spawningRadius, _spawningRadius/2] select (_i <= _numberOfHouseGroup),
                 2 + round random 2,
                 [["PATROL", "SENTRY"] selectRandomWeighted [0.7, 0.3], "HOUSE"] select (_i <= _numberOfHouseGroup)
             ] call btc_mil_fnc_create_group;
@@ -124,7 +124,7 @@ if (_data_units isNotEqualTo []) then {
     };
 
     if !(_type in ["Hill", "NameMarine"]) then {
-        ([_city, _spawningRadius/3] call btc_city_fnc_getHouses) params ["_housesEntrerable", "_housesNotEntrerable"];
+        ([_city, _spawningRadius/2] call btc_city_fnc_getHouses) params ["_housesEntrerable", "_housesNotEntrerable"];
 
         if (_has_en) then {
             private _numberOfStatic = (switch _type do {
@@ -190,13 +190,13 @@ if (_city getVariable ["spawn_more", false]) then {
     for "_i" from 1 to round _finalNumberOfGroup do {
         [
             _city,
-            [_spawningRadius, _spawningRadius/3] select (_i <= _numberOfHouseGroup),
+            [_spawningRadius, _spawningRadius/2] select (_i <= _numberOfHouseGroup),
             4 + round random 3,
             ["PATROL", "HOUSE"] select (_i <= _numberOfHouseGroup)
         ] call btc_mil_fnc_create_group;
     };
     if (btc_p_veh_armed_spawn_more) then {
-        [[_city, _spawningRadius/3, 1, btc_type_motorized_armed, 1 + round random 2], btc_city_fnc_send] call btc_delay_fnc_exec;
+        [[_city, _spawningRadius, 1, btc_type_motorized_armed, 1 + round random 2], btc_city_fnc_send] call btc_delay_fnc_exec;
     };
 };
 
@@ -216,7 +216,7 @@ if (
         [btc_cache_pos, 8, 3, "HOUSE"] call btc_mil_fnc_create_group;
         [btc_cache_pos, 50, 4, "SENTRY"] call btc_mil_fnc_create_group;
         if (btc_p_veh_armed_spawn_more) then {
-            [[_city, _spawningRadius/3, 1, btc_type_motorized_armed, 1 + round random 3], btc_city_fnc_send] call btc_delay_fnc_exec;
+            [[_city, _spawningRadius, 1, btc_type_motorized_armed, 1 + round random 3], btc_city_fnc_send] call btc_delay_fnc_exec;
         };
     };
 };
@@ -241,7 +241,7 @@ if (_has_ho && {!(_city getVariable ["ho_units_spawned", false])}) then {
         };
     };
     if (btc_p_veh_armed_ho) then {
-        [[_city, _spawningRadius/3, 1, btc_type_motorized_armed, 2 + round random 3], btc_city_fnc_send] call btc_delay_fnc_exec;
+        [[_city, _spawningRadius, 1, btc_type_motorized_armed, 2 + round random 3], btc_city_fnc_send] call btc_delay_fnc_exec;
     };
 };
 
@@ -290,7 +290,7 @@ if (
     !(_type in ["Hill", "NameMarine"]) &&
     _city getVariable ["btc_city_housesEntrerable", []] isEqualTo []
 ) then {
-    [[_city, _spawningRadius/3], btc_city_fnc_getHouses] call btc_delay_fnc_exec;
+    [[_city, _spawningRadius/2], btc_city_fnc_getHouses] call btc_delay_fnc_exec;
 };
 
 [_city, btc_door_fnc_lock] call btc_delay_fnc_exec;
