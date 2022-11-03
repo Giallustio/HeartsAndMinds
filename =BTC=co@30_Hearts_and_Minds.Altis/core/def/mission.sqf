@@ -28,6 +28,7 @@ btc_p_respawn_arsenal = ("btc_p_respawn_arsenal" call BIS_fnc_getParamValue) isE
 btc_p_respawn_ticketsAtStart = "btc_p_respawn_ticketsAtStart" call BIS_fnc_getParamValue;
 btc_p_respawn_ticketsLost = 1 - ("btc_p_respawn_ticketsLost" call BIS_fnc_getParamValue);
 btc_p_respawn_ticketsShare = ("btc_p_respawn_ticketsShare" call BIS_fnc_getParamValue) isEqualTo 0;
+btc_p_respawn_ticketsFromPrisoners = "btc_p_respawn_ticketsFromPrisoners" call BIS_fnc_getParamValue;
 btc_p_body_timeBeforeShowMarker = ("btc_p_body_timeBeforeShowMarker" call BIS_fnc_getParamValue) * 60;
 
 //<< Faction options >>
@@ -713,6 +714,6 @@ btc_flag_textures = [
 
 //Respawn
 btc_body_bagTicketPlayer = 1;
-btc_body_enemyTicket = 1;
+btc_body_prisonerTicket = 1;
 
 btc_startDate = [2035, 6, 24, 12, 15];
