@@ -77,7 +77,7 @@ At the beginning you have a very low reputation level, so civilians won't help y
     - [Vehicle in vehicle](http://vdauphin.github.io/HeartsAndMinds/InGame-documentation#towing-system) extended
     - [Sling loading](http://vdauphin.github.io/HeartsAndMinds/InGame-documentation#sling-loading)
     - Repair [destroyed vehicles](http://vdauphin.github.io/HeartsAndMinds/InGame-documentation#respawn)
-    - [FOB/Rallypoints](http://vdauphin.github.io/HeartsAndMinds/InGame-documentation#fobrallypoint)
+    - [FOB/Rallypoints](http://vdauphin.github.io/HeartsAndMinds/InGame-documentation#respawn-position)
 - Gameplay elements
     - [Intel](http://vdauphin.github.io/HeartsAndMinds/InGame-documentation#intel) about cache and hideout
     - [Chemical Warfare](http://vdauphin.github.io/HeartsAndMinds/InGame-documentation#chemical-warfare)
