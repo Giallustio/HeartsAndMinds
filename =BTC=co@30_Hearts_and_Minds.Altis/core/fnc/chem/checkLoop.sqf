@@ -72,7 +72,6 @@ private _bodyParts = ["head","body","hand_l","hand_r","leg_l","leg_r"];
         if (_x in _units) then {
             _tempRange = _range / 1.5;
         };
-        systemChat str _tempRange;
         _unitContaminate append (_units inAreaArray [ASLToAGL getPosASL _x, _tempRange, _tempRange, 0, false, 2]);
     } forEach _contaminated;
 
