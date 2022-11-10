@@ -67,11 +67,13 @@ private _bodyParts = ["head","body","hand_l","hand_r","leg_l","leg_r"];
     if (_contaminated isEqualTo []) exitWith {};
 
     private _unitContaminate = [];
+    private _tempRange = _range;
     {
         if (_x in _units) then {
-            _range = _range / 1.5;
+            _tempRange = _range / 1.5;
         };
-        _unitContaminate append (_units inAreaArray [ASLToAGL getPosASL _x, _range, _range, 0, false, 2]);
+        systemChat str _tempRange;
+        _unitContaminate append (_units inAreaArray [ASLToAGL getPosASL _x, _tempRange, _tempRange, 0, false, 2]);
     } forEach _contaminated;
 
     if (_unitContaminate isEqualTo []) exitWith {};
