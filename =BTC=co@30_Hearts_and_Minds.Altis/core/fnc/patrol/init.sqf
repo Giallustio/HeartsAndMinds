@@ -38,7 +38,11 @@ if !(isGroupDeletedWhenEmpty _group) then {
     _group deleteGroupWhenEmpty true;
 };
 
-private _end_city = selectRandom ([[_start_city, _active_city], _area, _isBoat] call btc_patrol_fnc_usefulCity);
+private _useful = [[_start_city, _active_city], _area, _isBoat] call btc_patrol_fnc_usefulCity;
+if (_useful isEqualTo []) exitWith {
+    _group call CBA_fnc_deleteEntity;
+};
+private _end_city = selectRandom _useful;
 
 private _pos = getPos _end_city;
 if (_isBoat) then {
