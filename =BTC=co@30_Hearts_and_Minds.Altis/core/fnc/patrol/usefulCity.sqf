@@ -57,7 +57,5 @@ if (_cities_dirTo isNotEqualTo []) then {
 if (_cities isEqualTo []) then {
     _cities = [[_active_city, _useful, false] call btc_fnc_find_closecity];
 };
-[format ["count _cities %1 count _useful %2", count _cities, count _useful], __FILE__, [btc_debug, btc_debug_log, true]] call btc_debug_fnc_message;
-[format ["_cities %1 _useful %2", _cities, _useful], __FILE__, [false, btc_debug_log, true]] call btc_debug_fnc_message;
 
 _cities
