@@ -40,7 +40,6 @@ if !(isGroupDeletedWhenEmpty _group) then {
 
 [format ["params _group %1 %2", _group, [[_start_city getVariable ["name", _start_city], _active_city getVariable ["name", _active_city]], _area, _isBoat]], __FILE__, [btc_debug, btc_debug_log, true]] call btc_debug_fnc_message;
 private _useful = [[_start_city, _active_city], _area, _isBoat] call btc_patrol_fnc_usefulCity;
-[format ["_useful %1", _useful], __FILE__, [btc_debug, btc_debug_log, true]] call btc_debug_fnc_message;
 if (_useful isEqualTo [] || objNull in _useful) exitWith {
     _group call CBA_fnc_deleteEntity;
 };

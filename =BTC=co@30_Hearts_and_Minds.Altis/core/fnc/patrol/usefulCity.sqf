@@ -41,7 +41,6 @@ if (_isBoat) then {
     _useful = btc_city_all select {!isNull _x && {_x getVariable ["type", ""] != "NameMarine"}};
 };
 private _cities = _useful inAreaArray [getPosWorld _active_city, _area, _area];
-[format ["count %1", count _cities, _cities], __FILE__, [btc_debug, btc_debug_log, true]] call btc_debug_fnc_message;
 private _cities = _cities - (_start_city getVariable ["btc_cities_inaccessible", []]);
 
 //Choose a city to have the _active_city (where the player is) between the _start_city and the _end_city: _start_city  ----> _active_city  ----> _end_city
@@ -58,5 +57,7 @@ if (_cities_dirTo isNotEqualTo []) then {
 if (_cities isEqualTo []) then {
     _cities = [[_active_city, _useful, false] call btc_fnc_find_closecity];
 };
-[format ["end count %1", count _cities], __FILE__, [btc_debug, btc_debug_log, true]] call btc_debug_fnc_message;
+[format ["count _cities %1 count _useful %2", count _cities, count _useful], __FILE__, [btc_debug, btc_debug_log, true]] call btc_debug_fnc_message;
+[format ["_cities %1 _useful %2", _cities, _useful], __FILE__, [false, btc_debug_log, true]] call btc_debug_fnc_message;
+
 _cities
