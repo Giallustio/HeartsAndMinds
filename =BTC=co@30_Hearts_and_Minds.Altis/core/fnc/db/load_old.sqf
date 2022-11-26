@@ -6,13 +6,13 @@ Description:
     Load older database version thanks to profileNamespace getVariable [format ["btc_hm_%1_version", worldName], 1.13].
 
 Parameters:
-    _name - Name of the world currently played. [String]
+    _name - Name of the saved game. [String]
 
 Returns:
 
 Examples:
     (begin example)
-        [] call compileScript ["core\fnc\db\load_old.sqf"];
+        ["Altis"] call compileScript ["core\fnc\db\load_old.sqf"];
     (end)
 
 Author:
@@ -32,7 +32,8 @@ private _cities_status = +(profileNamespace getVariable [format ["btc_hm_%1_citi
 {
     _x params ["_id", "_initialized", "_spawn_more", "_occupied", "_data_units", "_has_ho", "_ho_units_spawned", "_ieds", "_has_suicider",
         ["_data_animals", [], [[]]],
-        ["_data_tags", [], [[]]]
+        ["_data_tags", [], [[]]],
+        ["_civKilled", [], [[]]]
     ];
 
     private _city = btc_city_all get _id;
@@ -47,6 +48,7 @@ private _cities_status = +(profileNamespace getVariable [format ["btc_hm_%1_citi
     _city setVariable ["has_suicider", _has_suicider];
     _city setVariable ["data_animals", _data_animals];
     _city setVariable ["data_tags", _data_tags];
+    _city setVariable ["btc_rep_civKilled", _civKilled];
 
     if (btc_debug) then {
         private _marker = _city getVariable ["marker", ""];
@@ -57,8 +59,16 @@ private _cities_status = +(profileNamespace getVariable [format ["btc_hm_%1_citi
         };
     };
     if (btc_debug_log) then {
-        [format ["ID: %1 - IsOccupied %2", _id, _occupied], __FILE__, [false]] call btc_debug_fnc_message;
-        [format ["data_city: %1", _x], __FILE__, [false]] call btc_debug_fnc_message;
+        [format [
+            "ID: %1 - _initialized %2 _spawn_more %3 _occupied %4 count _data_units %5 _has_ho %6",
+            _id, _initialized, _spawn_more, 
+            _occupied, count _data_units, _has_ho  
+        ], __FILE__, [false]] call btc_debug_fnc_message;
+        [format [
+            "ID: %1 - _ho_units_spawned %2 count _ieds %3 _has_suicider %4 count _data_animals %5 count _data_tags %6 count _civKilled %7",
+            _id, _ho_units_spawned, count _ieds, _has_suicider,
+            count _data_animals, count _data_tags, count _civKilled  
+        ], __FILE__, [false]] call btc_debug_fnc_message;
     };
 } forEach _cities_status;
 
@@ -128,83 +138,10 @@ if !(isNil "btc_vehicles") then {
     btc_vehicles = [];
 };
 
-btc_load_fnc_migrateOldToNew_inventory = {
-    params [
-        ["_weap_obj", [[],[]], [[]]],
-        ["_mags_obj", [], [[]]],
-        ["_items_obj", [], [[]]],
-        ["_backpack_obj", [], [[]]]
-    ];
-
-    private _weaponsItemsCargo = [];
-    {
-        for "_i" from 1 to (_weap_obj select 1 select _forEachindex) do {
-            _weaponsItemsCargo pushBack [_x,"","","",[],[],""];
-        };
-    } forEach (_weap_obj select 0);
-
-    private _itemCargo = [];
-    {
-        for "_i" from 1 to (_items_obj select 1 select _forEachindex) do {
-            _itemCargo pushBack _x;
-        };
-    } forEach (_items_obj select 0);
-
-    private _everyContainer = [];
-    {
-        for "_i" from 1 to (_backpack_obj select 1 select _forEachindex) do {
-            _everyContainer pushBack [_x,[[[],[]],[],[],[]]];
-        };
-    } forEach (_backpack_obj select 0);
-
-    [
-        _mags_obj,
-        _weaponsItemsCargo,
-        _itemCargo,
-        _everyContainer
-    ]
-};
-
 private _objs = +(profileNamespace getVariable [format ["btc_hm_%1_objs", _name], []]);
 [{ // Can't use ace_cargo for objects created during first frame.
     {
-        [_x] call {
-            params [
-                ["_object_data", [], [[]]]
-            ];
-            _object_data params [
-                "_type",
-                "_posWorld",
-                "_dir",
-                "_magClass",
-                "_cargo",
-                "_inventory",
-                "_vectorPos",
-                ["_isContaminated", false, [false]]
-            ];
-
-            private _obj =  _type createVehicle _posWorld;
-
-            _obj setDir _dir;
-            _obj setPosWorld _posWorld;
-            _obj setVectorDirAndUp _vectorPos;
-
-            if (_isContaminated) then {
-                if ((btc_chem_contaminated pushBackUnique _obj) > -1) then {
-                    publicVariable "btc_chem_contaminated";
-                };
-            };
-            if (_magClass isNotEqualTo "") then {_obj setVariable ["ace_rearm_magazineClass", _magClass, true]};
-            if (unitIsUAV _obj) then {
-                createVehicleCrew _obj;
-            };
-
-            [_obj] call btc_log_fnc_init;
-            {
-                _x set [2, (_x select 2) call btc_load_fnc_migrateOldToNew_inventory];
-            } forEach _cargo;
-            [_obj, _cargo, _inventory call btc_load_fnc_migrateOldToNew_inventory] call btc_db_fnc_loadCargo;
-        };
+        [_x] call btc_db_fnc_loadObjectStatus;
     } forEach _this;
 }, _objs] call CBA_fnc_execNextFrame;
 
@@ -219,7 +156,7 @@ private _vehs = +(profileNamespace getVariable [format ["btc_hm_%1_vehs", _name]
             "_veh_fuel",
             "_veh_AllHitPointsDamage",
             "_veh_cargo",
-            "_veh_cont",
+            "_veh_inventory",
             "_customization",
             ["_isMedicalVehicle", false, [false]],
             ["_isRepairVehicle", false, [false]],
@@ -229,32 +166,34 @@ private _vehs = +(profileNamespace getVariable [format ["btc_hm_%1_vehs", _name]
             ["_supplyVehicle", [], [[]]],
             ["_EDENinventory", [], [[]]],
             ["_vectorPos", [], [[]]],
-            ["_ViV", [], [[]]]
+            ["_ViV", [], [[]]],
+            ["_flagTexture", "", [""]],
+            ["_turretMagazines", [], [[]]],
+            ["_tagTexture", "", [""]]
         ];
 
         if (btc_debug_log) then {
             [format ["_veh = %1", _x], __FILE__, [false]] call btc_debug_fnc_message;
         };
 
-        private _veh = [_veh_type, _veh_pos, _veh_dir, _customization, _isMedicalVehicle, _isRepairVehicle, _fuelSource, _pylons, _isContaminated, _supplyVehicle, _EDENinventory call btc_load_fnc_migrateOldToNew_inventory, _veh_AllHitPointsDamage] call btc_log_fnc_createVehicle;
+        private _veh = [_veh_type, _veh_pos, _veh_dir, _customization, _isMedicalVehicle, _isRepairVehicle, _fuelSource, _pylons, _isContaminated, _supplyVehicle, nil, _EDENinventory, _veh_AllHitPointsDamage, _flagTexture, _tagTexture] call btc_log_fnc_createVehicle;
         _veh setVectorDirAndUp _vectorPos;
         _veh setFuel _veh_fuel;
 
-        {
-            _x set [2, (_x select 2) call btc_load_fnc_migrateOldToNew_inventory];
-        } forEach _veh_cargo;
-        [_veh, _veh_cargo, _veh_cont call btc_load_fnc_migrateOldToNew_inventory] call btc_db_fnc_loadCargo;
+        [_veh, _turretMagazines] call btc_db_fnc_setTurretMagazines;
+
+        [_veh, _veh_cargo, _veh_inventory] call btc_db_fnc_loadCargo;
 
         if !(alive _veh) then {
             [_veh, objNull, objNull, nil, false] call btc_veh_fnc_killed;
         };
-        if !(_ViV isEqualTo []) then {
+        if (_ViV isNotEqualTo []) then {
             {
                 private _vehToLoad = _x call _loadVehicle;
                 if !([_vehToLoad, _veh] call btc_tow_fnc_ViV) then {
                     _vehToLoad setVehiclePosition [_veh, [], 100, "NONE"];
                     private _marker = _vehToLoad getVariable ["marker", ""];
-                    if !(_marker isEqualTo "") then {
+                    if (_marker isNotEqualTo "") then {
                         _marker setMarkerPos _vehToLoad;
                     };
                 };
@@ -284,6 +223,30 @@ private _id = ["ace_tagCreated", {
 } forEach _tags_properties;
 ["ace_tagCreated", _id] call CBA_fnc_removeEventHandler;
 
+//Player respawn tickets
+if (btc_p_respawn_ticketsAtStart >= 0) then {
+    btc_respawn_tickets = +(profileNamespace getVariable [format ["btc_hm_%1_respawnTickets", _name], btc_respawn_tickets]);
+
+    private _deadBodyPlayers = +(profileNamespace getVariable [format ["btc_hm_%1_deadBodyPlayers", _name], []]);
+    btc_body_deadPlayers  = [_deadBodyPlayers] call btc_body_fnc_create;
+};
+
+//Player slots
+private _slots_serialized = +(profileNamespace getVariable [format ["btc_hm_%1_slotsSerialized", _name], createHashMap]);
+[{
+    {
+        if (_y isEqualTo []) then {continue};
+        private _objtClass = _y select 6;
+        if (_objtClass isEqualTo "") then {
+            _objtClass = objNull;
+        } else {
+            _objtClass = nearestObject [ASLToATL (_y select 0), _objtClass];
+        };
+        _y set [6, _objtClass];
+    } forEach _this;
+}, _slots_serialized] call CBA_fnc_execNextFrame; // Need to wait for vehicle creation
+btc_slots_serialized = _slots_serialized;
+
 //Player Markers
 private _markers_properties = +(profileNamespace getVariable [format ["btc_hm_%1_markers", _name], []]);
 {
@@ -300,8 +263,9 @@ private _markers_properties = +(profileNamespace getVariable [format ["btc_hm_%1
     _marker setMarkerAlpha _markerAlpha;
     _marker setMarkerBrush _markerBrush;
     _marker setMarkerDir _markerDir;
+
     _marker setMarkerShape _markerShape;
-    if !(_markerPolyline isEqualTo []) then {
+    if (_markerPolyline isNotEqualTo []) then {
         _marker setMarkerPolyline _markerPolyline;
     };
 } forEach _markers_properties;

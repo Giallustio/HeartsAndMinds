@@ -16,6 +16,7 @@ Returns:
     _pylons - Array of pylon. [Array]
     _isContaminated - Is chemically contaminated. [Boolean]
     _supplyVehicle - Is supply vehicle and current supply count. [Boolean]
+    _objectTexture - Texture. [Array]
 
 Examples:
     (begin example)
@@ -45,4 +46,9 @@ private _supplyVehicle = [
     _vehicle call ace_rearm_fnc_getSupplyCount
 ];
 
-[_customization, _isMedicalVehicle, _isRepairVehicle, _fuelSource, _pylons, _isContaminated, _supplyVehicle]
+private _objectTexture = [];
+if (_customization select 0 isEqualTo []) then {
+    _objectTexture = getObjectTextures _vehicle;
+};
+
+[_customization, _isMedicalVehicle, _isRepairVehicle, _fuelSource, _pylons, _isContaminated, _supplyVehicle, _objectTexture]
