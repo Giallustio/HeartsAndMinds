@@ -40,5 +40,5 @@ private _closest = [
 ] call btc_fnc_find_closecity;
 
 for "_i" from 1 to _sendMultipleGroup do {
-    [_closest, [_dest, _spawningRadius/3] call CBA_fnc_randPos, _typeOf_patrol, selectRandom _veh_types] call btc_mil_fnc_send;
+    [_closest, [_dest, _spawningRadius / 2] call CBA_fnc_randPos, _typeOf_patrol, selectRandom _veh_types] call btc_mil_fnc_send;
 };
