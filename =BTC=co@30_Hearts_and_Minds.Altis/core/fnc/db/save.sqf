@@ -234,7 +234,11 @@ private _slots_serialized = +btc_slots_serialized;
         [format ["btc_slots_serialized %1 %2", _x, _y], __FILE__, [false]] call btc_debug_fnc_message;
     };
     if (_y isEqualTo []) then {continue};
-    _y set [6, typeOf (_y select 6)];
+    private _vehicle = _y select 6;
+    if !(isNull _vehicle) then {
+        _y set [0, getPosASL _vehicle];
+    };
+    _y set [6, typeOf _vehicle];
 } forEach _slots_serialized;
 profileNamespace setVariable [format ["btc_hm_%1_slotsSerialized", _name], +_slots_serialized];
 
