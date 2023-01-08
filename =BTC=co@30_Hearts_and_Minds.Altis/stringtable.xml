@@ -603,6 +603,10 @@
                 <French>Type de placement des EEI:</French>
                 <Czech>Typ umístění IED:</Czech>
             </Key>
+			<Key ID="STR_BTC_HAM_PARAM_IED_BOOM">
+                <Original>Type of explosion:</Original>
+                <French>Type d'explosion:</French>
+            </Key>
             <Key ID="STR_BTC_HAM_PARAM_IED_PLACEMENT_MIDDLE">
                 <Original>Middle</Original>
                 <German>Straßenmitte</German>

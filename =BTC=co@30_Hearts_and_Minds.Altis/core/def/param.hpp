@@ -252,7 +252,7 @@ class Params {
         default = 3;
     };
 	class btc_p_ied_boom { // Type of explosion:
-        title = __EVAL(format ["      %1", "type d'explosion"]);
+        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_IED_BOOM"]);
         values[]={0, 1};
         texts[]={"Big","Small"};
         default = 0;
