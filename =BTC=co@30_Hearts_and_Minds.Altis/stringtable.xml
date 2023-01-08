@@ -604,7 +604,7 @@
                 <Czech>Typ umístění IED:</Czech>
             </Key>
 			<Key ID="STR_BTC_HAM_PARAM_IED_BOOM">
-                <Original>Type of explosion:</Original>
+                <Original>Power of IED explosion:</Original>
                 <French>Type d'explosion:</French>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_IED_PLACEMENT_MIDDLE">
