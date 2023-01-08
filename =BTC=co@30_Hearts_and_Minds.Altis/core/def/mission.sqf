@@ -168,7 +168,7 @@ if (isServer) then {
     btc_ied_offset = [0, -0.03, -0.07] select _p_ied_spot;
     btc_ied_list = [];
     btc_ied_range = 10;
-    btc_ied_boom = ["Bo_GBU12_LGB_MI10", "R_MRAAWS_HE_F"] select btc_p_ied_boom;
+    btc_ied_power = ["Bo_GBU12_LGB_MI10", "R_MRAAWS_HE_F"] select btc_p_ied_power;
 
     //FOB
     btc_fobs = [[], [], []];
