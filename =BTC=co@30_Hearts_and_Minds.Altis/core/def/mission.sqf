@@ -43,6 +43,7 @@ btc_p_ied = ("btc_p_ied" call BIS_fnc_getParamValue)/2;
 private _p_ied_spot = "btc_p_ied_spot" call BIS_fnc_getParamValue;
 btc_p_ied_placement = "btc_p_ied_placement" call BIS_fnc_getParamValue;
 btc_p_ied_drone = ("btc_p_ied_drone" call BIS_fnc_getParamValue) isEqualTo 1;
+btc_p_ied_boom = "btc_p_ied_boom" call BIS_fnc_getParamValue;
 
 //<< Hideout/Cache options >>
 btc_hideout_n = "btc_p_hideout_n" call BIS_fnc_getParamValue;
@@ -167,6 +168,7 @@ if (isServer) then {
     btc_ied_offset = [0, -0.03, -0.07] select _p_ied_spot;
     btc_ied_list = [];
     btc_ied_range = 10;
+	btc_ied_boom = ["Bo_GBU12_LGB_MI10", "R_MRAAWS_HE_F"] select btc_p_ied_boom;
 
     //FOB
     btc_fobs = [[], [], []];
