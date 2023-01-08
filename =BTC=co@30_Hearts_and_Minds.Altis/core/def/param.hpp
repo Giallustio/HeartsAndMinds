@@ -254,7 +254,7 @@ class Params {
 	class btc_p_ied_boom { // Type of explosion:
         title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_IED_BOOM"]);
         values[]={0, 1};
-        texts[]={"Big","Small"};
+        texts[]={$STR_MEDIUM,$STR_SMALL};
         default = 0;
 	};
     class btc_p_ied_drone { // Drone bomber:
