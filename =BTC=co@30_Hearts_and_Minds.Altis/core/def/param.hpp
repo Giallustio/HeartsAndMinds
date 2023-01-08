@@ -252,7 +252,7 @@ class Params {
         default = 3;
     };
 	class btc_p_ied_power { // Power of IED explosion:
-        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_IED_BOOM"]);
+        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_PARAM_IED_POWER"]);
         values[]={0, 1};
         texts[]={$STR_MEDIUM,$STR_SMALL};
         default = 0;
