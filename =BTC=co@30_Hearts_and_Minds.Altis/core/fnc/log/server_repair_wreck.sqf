@@ -37,8 +37,8 @@ private _vehProperties = _veh call btc_veh_fnc_propertiesGet;
 
 // Reset properties
 _vehProperties set [5, false];
-(_vehProperties select 3) set [0, _veh getVariable "btc_refuel_defaultFuelCargo"];
-(_vehProperties select 6) set [1, _veh getVariable "btc_rearm_defaultSupply"];
+(_vehProperties select 3) set [0, _veh getVariable "btc_EDEN_defaultFuelCargo"];
+(_vehProperties select 6) set [1, _veh getVariable "btc_EDEN_defaultSupply"];
 
 private _EDENinventory = _veh getVariable ["btc_EDENinventory", []];
 

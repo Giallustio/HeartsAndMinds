@@ -37,14 +37,14 @@ private _isRepairVehicle = _vehicle call ace_repair_fnc_isRepairVehicle;
 private _fuelSource = [
     _vehicle call ace_refuel_fnc_getFuel,
     _vehicle getVariable ["ace_refuel_hooks", []],
-    _vehicle getVariable ["btc_refuel_defaultFuelCargo", _vehicle call ace_refuel_fnc_getFuel]
+    _vehicle getVariable ["btc_EDEN_defaultFuelCargo", _vehicle call ace_refuel_fnc_getFuel]
 ];
 private _pylons = getPylonMagazines _vehicle;
 private _isContaminated = _vehicle in btc_chem_contaminated;
 private _supplyVehicle = [
     _vehicle call ace_rearm_fnc_isSource,
     _vehicle call ace_rearm_fnc_getSupplyCount,
-    _vehicle getVariable ["btc_rearm_defaultSupply", _vehicle call ace_rearm_fnc_getSupplyCount]
+    _vehicle getVariable ["btc_EDEN_defaultSupply", _vehicle call ace_rearm_fnc_getSupplyCount]
 ];
 
 [_customization, _isMedicalVehicle, _isRepairVehicle, _fuelSource, _pylons, _isContaminated, _supplyVehicle]
