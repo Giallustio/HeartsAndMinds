@@ -49,7 +49,8 @@ if (_isRepairVehicle && {!([_vehicle] call ace_repair_fnc_isRepairVehicle)}) the
 if (_fuelSource isNotEqualTo []) then {
     _fuelSource params [
         ["_fuelCargo", 0, [0]],
-        ["_hooks", nil, [[]]]
+        ["_hooks", nil, [[]]],
+        ["_defaultFuelCargo", -1, [0]]
     ];
     if ((!isNil "_hooks") && {_hooks isNotEqualTo (_vehicle getVariable ["ace_refuel_hooks", []])}) then {
         [_vehicle, _fuelCargo, _hooks] call ace_refuel_fnc_makeSource;
@@ -58,6 +59,7 @@ if (_fuelSource isNotEqualTo []) then {
             [_vehicle, _fuelCargo] call ace_refuel_fnc_makeSource;
         };
     };
+    _vehicle setVariable ["btc_refuel_defaultFuelCargo", _defaultFuelCargo];
 };
 if (_pylons isNotEqualTo []) then {
     private _pylonPaths = (configProperties [configOf _vehicle >> "Components" >> "TransportPylonsComponent" >> "Pylons", "isClass _x"]) apply {getArray (_x >> "turret")};
@@ -76,12 +78,14 @@ if (_isContaminated) then {
 if (_supplyVehicle isNotEqualTo []) then {
     _supplyVehicle params [
         ["_isSupplyVehicle", false, [false]],
-        ["_currentSupply", -1, [0]]
+        ["_currentSupply", -1, [0]],
+        ["_defaultSupply", -1, [0]]
     ];
 
     if (_isSupplyVehicle) then {
         [_vehicle, _currentSupply] call ace_rearm_fnc_makeSource;
     };
+    _vehicle setVariable ["btc_rearm_defaultSupply", _defaultSupply];
 };
 
 _vehicle

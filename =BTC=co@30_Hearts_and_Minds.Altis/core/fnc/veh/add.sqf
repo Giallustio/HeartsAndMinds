@@ -31,6 +31,12 @@ if (isNil "btc_vehicles") then {
 if (isNil {_veh getVariable "btc_EDENinventory"}) then {
     _veh setVariable ["btc_EDENinventory", _veh call btc_log_fnc_inventoryGet];
 };
+if (isNil {_veh getVariable "btc_refuel_defaultFuelCargo"}) then {
+    _veh setVariable ["btc_refuel_defaultFuelCargo", _veh call ace_refuel_fnc_getFuel];
+};
+if (isNil {_veh getVariable "btc_rearm_defaultSupply"}) then {
+    _veh setVariable ["btc_rearm_defaultSupply", _veh call ace_rearm_fnc_getSupplyCount];
+};
 
 if (btc_vehicles pushBackUnique _veh isEqualTo -1) exitWith {
     if (btc_debug || btc_debug_log) then {
