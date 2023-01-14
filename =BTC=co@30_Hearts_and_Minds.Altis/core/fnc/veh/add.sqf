@@ -31,12 +31,17 @@ if (isNil "btc_vehicles") then {
 if (isNil {_veh getVariable "btc_EDENinventory"}) then {
     _veh setVariable ["btc_EDENinventory", _veh call btc_log_fnc_inventoryGet];
 };
-if (isNil {_veh getVariable "btc_EDEN_defaultFuelCargo"}) then {
-    _veh setVariable ["btc_EDEN_defaultFuelCargo", _veh call ace_refuel_fnc_getFuel];
-};
-if (isNil {_veh getVariable "btc_EDEN_defaultSupply"}) then {
-    _veh setVariable ["btc_EDEN_defaultSupply", _veh call ace_rearm_fnc_getSupplyCount];
-};
+["ace_settingsInitialized", {
+    _thisArgs params ["_veh"];
+    [str _veh, __FILE__, [btc_debug, btc_debug_log, true]] call btc_debug_fnc_message;
+    if (isNull _veh) exitwith {};
+    if (isNil {_veh getVariable "btc_EDEN_defaultFuelCargo"}) then {
+        _veh setVariable ["btc_EDEN_defaultFuelCargo", _veh call ace_refuel_fnc_getFuel];
+    };
+    if (isNil {_veh getVariable "btc_EDEN_defaultSupply"}) then {
+        _veh setVariable ["btc_EDEN_defaultSupply", _veh call ace_rearm_fnc_getSupplyCount];
+    };
+}, [_veh]] call CBA_fnc_addEventHandlerArgs;
 
 if (btc_vehicles pushBackUnique _veh isEqualTo -1) exitWith {
     if (btc_debug || btc_debug_log) then {
