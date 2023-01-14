@@ -425,6 +425,18 @@ class Params {
         texts[]={$STR_DISABLED,$STR_ENABLED};
         default = 0;
     };
+	    class btc_p_change_time { // Ace Arsenal Enable change day time
+        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_CHANGE_TIME_ENABLEARSENAL"]);
+        values[]={0,1};
+        texts[]={$STR_DISABLED,$STR_ENABLED};
+        default = 0;
+    };    
+    class btc_p_change_weather { // Ace Arsenal Enable change weather
+        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_CHANGE_WEATHER_ENABLEARSENAL"]);
+        values[]={0,1};
+        texts[]={$STR_DISABLED,$STR_ENABLED};
+        default = 0;
+    };  
     class btc_p_main_title { // << Other options >>
         title = $STR_BTC_HAM_PARAM_OTHER_TITLE;
         values[]={0};
