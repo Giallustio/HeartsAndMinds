@@ -17,6 +17,18 @@ class Params {
         texts[]={"1","2","3","4","5","6","7","8","9","10","11","12"};
         default = 5;
     };
+    class btc_p_change_time { // Ace Arsenal Enable change day time
+        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_CHANGE_TIME_ENABLEARSENAL"]);
+        values[]={0,1};
+        texts[]={$STR_DISABLED,$STR_ENABLED};
+        default = 0;
+    };    
+    class btc_p_change_weather { // Ace Arsenal Enable change weather
+        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_CHANGE_WEATHER_ENABLEARSENAL"]);
+        values[]={0,1};
+        texts[]={$STR_DISABLED,$STR_ENABLED};
+        default = 0;
+    };
     class btc_p_db_title { // << Server management >>
         title = $STR_BTC_HAM_PARAM_DB_TITLE;
         values[]={0};
@@ -425,18 +437,6 @@ class Params {
         texts[]={$STR_DISABLED,$STR_ENABLED};
         default = 0;
     };
-	    class btc_p_change_time { // Ace Arsenal Enable change day time
-        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_CHANGE_TIME_ENABLEARSENAL"]);
-        values[]={0,1};
-        texts[]={$STR_DISABLED,$STR_ENABLED};
-        default = 0;
-    };    
-    class btc_p_change_weather { // Ace Arsenal Enable change weather
-        title = __EVAL(format ["      %1", localize "STR_BTC_HAM_CHANGE_WEATHER_ENABLEARSENAL"]);
-        values[]={0,1};
-        texts[]={$STR_DISABLED,$STR_ENABLED};
-        default = 0;
-    };  
     class btc_p_main_title { // << Other options >>
         title = $STR_BTC_HAM_PARAM_OTHER_TITLE;
         values[]={0};
