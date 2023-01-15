@@ -253,7 +253,10 @@ if (btc_p_flag > 1) then {
 //Change day time and weather
 _action = ["env_menu", localize "str_a3_credits_environment", "", {}, {player getVariable ["side_mission", false] && (btc_p_change_time || btc_p_change_weather)}] call ace_interact_menu_fnc_createAction;
 [btc_gear_object, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToObject;
-_action = ["set_day", localize "STR_BTC_HAM_ACTION_SET_DAY", "\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Watch_ca.paa", {((6 - dayTime + 24) % 24) remoteExecCall ["skipTime", 2]}, {btc_p_change_time && player getVariable ["side_mission", false]}] call ace_interact_menu_fnc_createAction;
+_action = ["set_day", localize "STR_BTC_HAM_ACTION_SET_DAY", "\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Watch_ca.paa", {
+    private _hour = date call BIS_fnc_sunriseSunsetTime select 0;
+    ((_hour + 1 - dayTime + 24) % 24) remoteExecCall ["skipTime", 2];
+}, {btc_p_change_time && player getVariable ["side_mission", false]}] call ace_interact_menu_fnc_createAction;
 [btc_gear_object, 0, ["ACE_MainActions", "env_menu"], _action] call ace_interact_menu_fnc_addActionToObject;
 _action = ["set_night", localize "STR_BTC_HAM_ACTION_SET_NIGHT", "\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Watch_ca.paa", {((22 - dayTime + 24) % 24) remoteExecCall ["skipTime"], 2}, {btc_p_change_time && player getVariable ["side_mission", false]}] call ace_interact_menu_fnc_createAction;
 [btc_gear_object, 0, ["ACE_MainActions", "env_menu"], _action] call ace_interact_menu_fnc_addActionToObject;
