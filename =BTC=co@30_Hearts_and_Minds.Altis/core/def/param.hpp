@@ -17,7 +17,7 @@ class Params {
         texts[]={"1","2","3","4","5","6","7","8","9","10","11","12"};
         default = 5;
     };
-    class btc_p_change_time { // Ace Arsenal Enable change day time
+    class btc_p_change_time { // Enable change day time for officer on the arsenal box:
         title = __EVAL(format ["      %1", localize "STR_BTC_HAM_CHANGE_TIME_ENABLEARSENAL"]);
         values[]={0,1};
         texts[]={$STR_DISABLED,$STR_ENABLED};
