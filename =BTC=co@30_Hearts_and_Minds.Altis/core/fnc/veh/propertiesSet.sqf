@@ -59,7 +59,7 @@ if (_fuelSource isNotEqualTo []) then {
             [_vehicle, _fuelCargo] call ace_refuel_fnc_makeSource;
         };
     };
-    _vehicle setVariable ["btc_EDEN_defaultFuelCargo", _defaultFuelCargo];
+    _vehicle setVariable ["btc_EDEN_defaultFuelCargo", _defaultFuelCargo, true];
 };
 if (_pylons isNotEqualTo []) then {
     private _pylonPaths = (configProperties [configOf _vehicle >> "Components" >> "TransportPylonsComponent" >> "Pylons", "isClass _x"]) apply {getArray (_x >> "turret")};
@@ -85,7 +85,7 @@ if (_supplyVehicle isNotEqualTo []) then {
     if (_isSupplyVehicle) then {
         [_vehicle, _currentSupply] call ace_rearm_fnc_makeSource;
     };
-    _vehicle setVariable ["btc_EDEN_defaultSupply", _defaultSupply];
+    _vehicle setVariable ["btc_EDEN_defaultSupply", _defaultSupply, true];
 };
 
 _vehicle

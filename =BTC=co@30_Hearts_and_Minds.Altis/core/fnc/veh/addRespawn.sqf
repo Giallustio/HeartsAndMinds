@@ -36,10 +36,10 @@ if (isNil {_vehicle getVariable "btc_EDENinventory"}) then {
 [{ace_common_settingsInitFinished}, {
     if (isNull _this) exitwith {};
     if (isNil {_this getVariable "btc_EDEN_defaultFuelCargo"}) then {
-        _this setVariable ["btc_EDEN_defaultFuelCargo", _this call ace_refuel_fnc_getFuel];
+        _this setVariable ["btc_EDEN_defaultFuelCargo", _this call ace_refuel_fnc_getFuel, true];
     };
     if (isNil {_this getVariable "btc_EDEN_defaultSupply"}) then {
-        _this setVariable ["btc_EDEN_defaultSupply", _this call ace_rearm_fnc_getSupplyCount];
+        _this setVariable ["btc_EDEN_defaultSupply", _this call ace_rearm_fnc_getSupplyCount, true];
     };
 }, _vehicle] call CBA_fnc_waitUntilAndExecute;
 
