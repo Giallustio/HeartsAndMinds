@@ -30,6 +30,7 @@ if (isServer) then {
     btc_fnc_typeOf = compileScript ["core\fnc\common\typeOf.sqf"];
     btc_fnc_roof = compileScript ["core\fnc\common\roof.sqf"];
     btc_fnc_moveOut = compileScript ["core\fnc\common\moveOut.sqf"];
+    btc_fnc_changeWeather = compileScript ["core\fnc\common\changeWeather.sqf"];
 
     //CHEM
     btc_chem_fnc_checkLoop = compileScript ["core\fnc\chem\checkLoop.sqf"];

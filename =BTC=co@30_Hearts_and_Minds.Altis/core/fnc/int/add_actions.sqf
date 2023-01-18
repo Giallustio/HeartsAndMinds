@@ -249,3 +249,20 @@ if (btc_p_flag > 1) then {
     }, {getForcedFlagTexture _target isNotEqualTo ""}] call ace_interact_menu_fnc_createAction;
     [player, 1, ["ACE_SelfActions", "ACE_Equipment"], _action] call ace_interact_menu_fnc_addActionToObject;
 };
+
+//Change day time and weather
+_action = ["env_menu", localize "str_a3_credits_environment", "", {}, {player getVariable ["side_mission", false] && (btc_p_change_time || btc_p_change_weather)}] call ace_interact_menu_fnc_createAction;
+[btc_gear_object, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToObject;
+_action = ["set_day", localize "STR_BTC_HAM_ACTION_SET_DAY", "\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Watch_ca.paa", {
+    private _hour = date call BIS_fnc_sunriseSunsetTime select 0;
+    ((_hour + 1 - dayTime + 24) % 24) remoteExecCall ["skipTime", 2];
+}, {btc_p_change_time && player getVariable ["side_mission", false]}] call ace_interact_menu_fnc_createAction;
+[btc_gear_object, 0, ["ACE_MainActions", "env_menu"], _action] call ace_interact_menu_fnc_addActionToObject;
+_action = ["set_night", localize "STR_BTC_HAM_ACTION_SET_NIGHT", "\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Watch_ca.paa", {
+    private _hour = date call BIS_fnc_sunriseSunsetTime select 1;
+    ((_hour + 1 - dayTime + 24) % 24) remoteExecCall ["skipTime", 2];
+}, {btc_p_change_time && player getVariable ["side_mission", false]}] call ace_interact_menu_fnc_createAction;
+
+[btc_gear_object, 0, ["ACE_MainActions", "env_menu"], _action] call ace_interact_menu_fnc_addActionToObject;
+_action = ["set_weather", localize "STR_BTC_HAM_ACTION_CHANGE_WEATHER", "a3\3den\data\attributes\slidertimeday\sun_ca.paa", {[] remoteExecCall ["btc_fnc_changeWeather", 2]}, {btc_p_change_weather && player getVariable ["side_mission", false]}] call ace_interact_menu_fnc_createAction;
+[btc_gear_object, 0, ["ACE_MainActions","env_menu"], _action] call ace_interact_menu_fnc_addActionToObject;

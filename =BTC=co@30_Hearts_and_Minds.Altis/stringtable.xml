@@ -2173,6 +2173,28 @@
                 <Czech>Rozbijte zámek dveří</Czech>
             </Key>
         </Container>
+        <Container name="Action(ACE): Change day time and weather">
+            <Key ID="STR_BTC_HAM_ACTION_SET_DAY">
+                <Original>Set day time</Original>
+                <French>Mettre le jour</French>
+            </Key>
+            <Key ID="STR_BTC_HAM_ACTION_SET_NIGHT">
+                <Original>Set night time</Original>
+                <French>Mettre la nuit</French>
+            </Key>
+            <Key ID="STR_BTC_HAM_ACTION_CHANGE_WEATHER">
+                <Original>Change weather</Original>
+                <French>Changer la météo</French>
+            </Key>
+            <Key ID="STR_BTC_HAM_CHANGE_TIME_ENABLEARSENAL">
+                <Original>Enable change day time for officer on the arsenal box:</Original>
+                <French>Autoriser le changement d'heure pour les officiers sur la caisse arsenal:</French>
+            </Key>
+            <Key ID="STR_BTC_HAM_CHANGE_WEATHER_ENABLEARSENAL">
+                <Original>Enable change weather for officer on the arsenal box:</Original>
+                <French>Autoriser le changement de météo pour les officiers sur la caisse arsenal:</French>
+            </Key>
+        </Container>
     </Package>
     <Package name="Conversations">
         <Container name="Conversations: Info">
