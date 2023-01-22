@@ -43,7 +43,7 @@ Author:
         player distance ASLToAGL _previousPos > 50 || // Don't set loadout when near main base
         btc_p_autoloadout isEqualTo 0
     ) then { 
-        [{player setUnitLoadout _this;}, _loadout] call CBA_fnc_execNextFrame;
+        [{[player, _this] call CBA_fnc_setLoadout;}, _loadout] call CBA_fnc_execNextFrame;
     };
     if ((isNull _vehicle) || {!(player moveInAny _vehicle)}) then {
         player setPosASL _previousPos;
