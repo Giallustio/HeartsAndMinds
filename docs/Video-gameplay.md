@@ -32,4 +32,3 @@ Last video on Youtube: [recent gameplay](https://www.youtube.com/results?search_
 ## [![Alt text for your video](http://img.youtube.com/vi/2MC6SPA5AXI/0.jpg)](https://www.youtube.com/watch?v=2MC6SPA5AXI)
 
 ## [![Alt text for your video](http://img.youtube.com/vi/dTcfUv2V8Kc/0.jpg)](https://youtu.be/dTcfUv2V8Kc?t=1315)
-

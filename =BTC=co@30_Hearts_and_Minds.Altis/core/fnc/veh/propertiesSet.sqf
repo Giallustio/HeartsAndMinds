@@ -14,6 +14,7 @@ Parameters:
     _pylons - Array of pylon. [Array]
     _isContaminated - Set a vehicle contaminated. [Boolean]
     _supplyVehicle - Is supply vehicle and current supply count. [Boolean]
+    _objectTexture - Texture. [Array]
 
 Returns:
     _vehicle - Vehicle. [Object]
@@ -36,7 +37,8 @@ params [
     ["_fuelSource", [], [[]]],
     ["_pylons", [], [[]]],
     ["_isContaminated", false, [false]],
-    ["_supplyVehicle", [], [[]]]
+    ["_supplyVehicle", [], [[]]],
+    ["_objectTexture", [], [[]]]
 ];
 
 [_vehicle, _customization select 0, _customization select 1] call BIS_fnc_initVehicle;
@@ -86,6 +88,12 @@ if (_supplyVehicle isNotEqualTo []) then {
         [_vehicle, _currentSupply] call ace_rearm_fnc_makeSource;
     };
     _vehicle setVariable ["btc_EDEN_defaultSupply", _defaultSupply, true];
+};
+
+if (_customization select 0 isEqualTo []) then {
+    {
+        _vehicle setObjectTextureGlobal [_forEachIndex, _x];
+    } forEach _objectTexture; 
 };
 
 _vehicle

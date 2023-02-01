@@ -8,7 +8,7 @@ setTimeMultiplier btc_p_acctime;
 [["btc_dty", "btc_m"], 1] call btc_task_fnc_create;
 
 if (btc_db_load && {profileNamespace getVariable [format ["btc_hm_%1_db", worldName], false]}) then {
-    if ((profileNamespace getVariable [format ["btc_hm_%1_version", worldName], 1.13]) in [btc_version select 1, 21.1]) then {
+    if ((profileNamespace getVariable [format ["btc_hm_%1_version", worldName], 1.13]) in [btc_version select 1, 22.1]) then {
         [] call compileScript ["core\fnc\db\load.sqf"];
     } else {
         [] call compileScript ["core\fnc\db\load_old.sqf"];
@@ -36,12 +36,7 @@ if (btc_db_load && {profileNamespace getVariable [format ["btc_hm_%1_db", worldN
 [] call btc_chem_fnc_checkLoop;
 [] call btc_chem_fnc_handleShower;
 [] call btc_spect_fnc_checkLoop;
-if (btc_p_db_autoRestart > 0) then {
-    [{
-        [19] remoteExecCall ["btc_fnc_show_hint", [0, -2] select isDedicated];
-        [btc_db_fnc_autoRestart, [], 5 * 60] call CBA_fnc_waitAndExecute;
-    }, [], btc_p_db_autoRestartTime * 60 * 60 - 5 * 60] call CBA_fnc_waitAndExecute;
-};
+[] call btc_db_fnc_autoRestartLoop;
 
 {
     [_x, 30] call btc_veh_fnc_addRespawn;
@@ -61,12 +56,13 @@ if (btc_p_side_mission_cycle > 0) then {
     ["btc_tag_remover" + _x, "STR_BTC_HAM_ACTION_REMOVETAG", _x, ["#(rgb,8,8,3)color(0,0,0,0)"], "\a3\Modules_F_Curator\Data\portraitSmoke_ca.paa"] call ace_tagging_fnc_addCustomTag;
 } forEach ["ACE_SpraypaintRed"];
 
-if (btc_p_respawn_ticketsAtStart >= 0) then {
-    if (btc_p_respawn_ticketsShare) then {
-        private _tickets = btc_p_respawn_ticketsAtStart;
-        if (btc_p_respawn_ticketsAtStart isEqualTo 0) then {
-            _tickets = -1;
-        };
-        [btc_player_side, _tickets] call BIS_fnc_respawnTickets;
+if (
+    btc_p_respawn_ticketsShare &&
+    {btc_p_respawn_ticketsAtStart >= 0}
+) then {
+    private _tickets = btc_respawn_tickets getOrDefault [btc_player_side, btc_p_respawn_ticketsAtStart];;
+    if (_tickets isEqualTo 0) then {
+        _tickets = -1;
     };
+    [btc_player_side, _tickets] call BIS_fnc_respawnTickets;
 };

@@ -120,7 +120,7 @@
                 <Czech>Headless and Database</Czech>
             </Key>
             <Key ID="STR_BTC_HAM_DOC_HEADLESS_TEXT">
-                <Original>&lt;img image='\a3\ui_f\data\map\vehicleicons\iconvirtual_ca.paa' width='20' height='20'/&gt; This mission support ACE Headless.&lt;br/&gt;&lt;br/&gt; &lt;img image='\a3\data_f_warlords\Data\preview_cp_transfer.jpg' width='355' height='200' /&gt; &lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/&gt; This mission has a database system. Enemy units, towns, hideouts, cache, objects created or static weapons assembled by players or Zeus, vehicles, vehicle in vehicle, tag, players markers on global channel are saved. All admin can save mission progress at any time with his self interaction key.&lt;br/&gt;&lt;br/&gt; &lt;img image='\a3\data_f_mark\Images\mark_popupImage_01_ca.paa' width='355' height='200' /&gt;</Original>
+                <Original>&lt;img image='\a3\ui_f\data\map\vehicleicons\iconvirtual_ca.paa' width='20' height='20'/&gt; This mission support ACE Headless.&lt;br/&gt;&lt;br/&gt; &lt;img image='\a3\data_f_warlords\Data\preview_cp_transfer.jpg' width='355' height='200' /&gt; &lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/&gt; This mission has a database system. Enemy units, towns, hideouts, cache, objects created or static weapons assembled by players or Zeus, vehicles, vehicle in vehicle, tag, slots position, players markers on global channel are saved. All admin can save mission progress at any time with his self interaction key.&lt;br/&gt;&lt;br/&gt; &lt;img image='\a3\data_f_mark\Images\mark_popupImage_01_ca.paa' width='355' height='200' /&gt;</Original>
                 <Spanish>&lt;img image='\a3\ui_f\data\map\vehicleicons\iconvirtual_ca.paa' width='20' height='20'/&gt; This mission support ACE Headless.&lt;br/&gt;&lt;br/&gt; &lt;img image='\a3\data_f_warlords\Data\preview_cp_transfer.jpg' width='355' height='200' /&gt; &lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/&gt; Esta misión tiene un sistema de base de datos. Se guardan unidades enemigas, ciudades, escondites, caché, objetos creados por jugadores o Zeus, vehículos, marcadores de jugadores (no líneas) en el canal global. Todos los administradores pueden guardar el progreso de la misión en cualquier momento con su clave de auto interacción.&lt;br/&gt;&lt;br/&gt; &lt;img image='\a3\data_f_mark\Images\mark_popupImage_01_ca.paa' width='355' height='200' /&gt;</Spanish>
                 <German>&lt;img image='\a3\ui_f\data\map\vehicleicons\iconvirtual_ca.paa' width='20' height='20'/&gt; This mission support ACE Headless.&lt;br/&gt;&lt;br/&gt; &lt;img image='\a3\data_f_warlords\Data\preview_cp_transfer.jpg' width='355' height='200' /&gt; &lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/&gt; Diese Mission verfügt über ein eingenes Datenbanksystem, in welcher folgende Dinge gespeichert werden: feindliche Einheiten, Städte, Verstecke, feindliche Waffenlager, Fahrzeuge, vom Spieler oder vom Zeus erstelle Objecte und Marker (keine Linien) vom Spieler im Globalen-Channel. Jeder Admin kann zu jeder Zeit den Missionsfortschritt über das Eigen-Interaktionsmenü speichern.&lt;br/&gt;&lt;br/&gt; &lt;img image='\a3\data_f_mark\Images\mark_popupImage_01_ca.paa' width='355' height='200' /&gt;</German>
                 <Portuguese>&lt;img image='\a3\ui_f\data\map\vehicleicons\iconvirtual_ca.paa' width='20' height='20'/&gt; This mission support ACE Headless.&lt;br/&gt;&lt;br/&gt; &lt;img image='\a3\data_f_warlords\Data\preview_cp_transfer.jpg' width='355' height='200' /&gt; &lt;br/&gt;&lt;br/&gt; &lt;img image='\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa' width='20' height='20'/&gt; Esta missão tem um sistema de banco de dados. Unidades inimigas, cidades, esconderijos, cache, objetos criados por jogadores ou Zeus, veículos, marcação de jogadores (sem linhas) no canal global são salvos. O administrador pode salvar o progresso da missão a qualquer momento usando botão de interação.&lt;br/&gt;&lt;br/&gt; &lt;img image='\a3\data_f_mark\Images\mark_popupImage_01_ca.paa' width='355' height='200' /&gt;</Portuguese>
@@ -354,7 +354,10 @@
                 <Czech>&lt;&lt; Časové možnosti &gt;&gt;</Czech>
             </Key>
         </Container>
-        <Container name="Parameters: Database">
+        <Container name="Parameters: Server management">
+            <Key ID="STR_BTC_HAM_PARAM_DB_TITLE">
+                <Original>&lt;&lt; Server management &gt;&gt;</Original>
+            </Key>
             <Key ID="STR_BTC_HAM_PARAM_DB_LOAD">
                 <Original>Load the savegame (if available)</Original>
                 <German>Spielstand wird geladen (wenn verfügbar)</German>
@@ -404,6 +407,9 @@
                 <Chinesesimp>自动重启/关闭服务器前的时间</Chinesesimp>
                 <French>Temps avant le redémarrage / arrêt automatique du serveur</French>
                 <Czech>Čas před automatickým restartem/vypnutím serveru</Czech>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_DB_HRESTARTTIME">
+                <Original>Hour of auto restart/shutdown server</Original>
             </Key>
         </Container>
         <Container name="Parameters: Factions">
@@ -597,6 +603,10 @@
                 <French>Type de placement des EEI:</French>
                 <Czech>Typ umístění IED:</Czech>
             </Key>
+			<Key ID="STR_BTC_HAM_PARAM_IED_POWER">
+                <Original>Power of IED explosion:</Original>
+                <French>Puissance de l'explosion:</French>
+            </Key>
             <Key ID="STR_BTC_HAM_PARAM_IED_PLACEMENT_MIDDLE">
                 <Original>Middle</Original>
                 <German>Straßenmitte</German>
@@ -731,6 +741,9 @@
                 <Czech>Počet životu na začátku mise:</Czech>
                 <French>Nombre de ticket au début de la mission :</French>
             </Key>
+            <Key ID="STR_BTC_HAM_RESP_TICKETSLOST">
+                <Original>Number of tickets lost per death:</Original>
+            </Key>
             <Key ID="STR_BTC_HAM_RESP_TICKETSHARE">
                 <Original>Tickets are share between:</Original>
                 <German>Tickets werden aufgeteilt zwischen?</German>
@@ -744,6 +757,21 @@
                 <Chinesesimp>相同阵营的玩家</Chinesesimp>
                 <Czech>Hráči stejné frakce</Czech>
                 <French>Joueurs de la même faction</French>
+            </Key>
+            <Key ID="STR_BTC_HAM_RESP_TICKETPRISONER">
+                <Original>Attribute tickets from prisoners to (Enable only if tickets are not share):</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_RESP_ALLCONNECTED">
+                <Original>All connected players</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_RESP_PLAYER">
+                <Original>To the player interacting with the logistic point</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_RESP_DEADPLAYER">
+                <Original>To connected player with 0 ticket left</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_RESP_LOWESTPLAYER">
+                <Original>To connected player with the lowest ticket number (0 included)</Original>
             </Key>
             <Key ID="STR_BTC_HAM_RESP_NOTSHARE">
                 <Original>Not share</Original>
@@ -765,6 +793,9 @@
                 <Chinesesimp>ACE军火库在玩家死亡重生后可用:</Chinesesimp>
                 <French>Arsenal ACE disponible après avoir était tué:</French>
                 <Czech>ACE Arsenal dostupný při respawnu po zabití:</Czech>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_SLOT_ISSHARE">
+                <Original>Each slot is share between players</Original>
             </Key>
         </Container>
         <Container name="Parameters: AI Skill">
@@ -1044,6 +1075,9 @@
                 <Chinesesimp>仅限载具</Chinesesimp>
                 <Czech>na vozidle</Czech>
                 <French>Sur les véhicules</French>
+            </Key>
+            <Key ID="STR_BTC_HAM_PARAM_OTHER_FLAGVEHLEADER">
+                <Original>On vehicle and team leader</Original>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_OTHER_FLAGVEHPLAYER">
                 <Original>On vehicle and players</Original>
@@ -2120,6 +2154,15 @@
                 <French>Coller le conteneur</French>
                 <Czech>Vložit kontejner</Czech>
             </Key>
+            <Key ID="STR_BTC_HAM_ACTION_COPYPASTE_COPYI">
+                <Original>Copy inventory</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_ACTION_COPYPASTE_PASTEI">
+                <Original>Paste inventory</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_ACTION_RESTOREI">
+                <Original>Restore inventory</Original>
+            </Key>
         </Container>
         <Container name="Action(ACE): Door">
             <Key ID="STR_BTC_HAM_ACTION_DOOR_BREAK">
@@ -2128,6 +2171,28 @@
                 <French>Casser la serrure</French>
                 <Chinesesimp>撬锁</Chinesesimp>
                 <Czech>Rozbijte zámek dveří</Czech>
+            </Key>
+        </Container>
+        <Container name="Action(ACE): Change day time and weather">
+            <Key ID="STR_BTC_HAM_ACTION_SET_DAY">
+                <Original>Set day time</Original>
+                <French>Mettre le jour</French>
+            </Key>
+            <Key ID="STR_BTC_HAM_ACTION_SET_NIGHT">
+                <Original>Set night time</Original>
+                <French>Mettre la nuit</French>
+            </Key>
+            <Key ID="STR_BTC_HAM_ACTION_CHANGE_WEATHER">
+                <Original>Change weather</Original>
+                <French>Changer la météo</French>
+            </Key>
+            <Key ID="STR_BTC_HAM_CHANGE_TIME_ENABLEARSENAL">
+                <Original>Enable change day time for officer on the arsenal box:</Original>
+                <French>Autoriser le changement d'heure pour les officiers sur la caisse arsenal:</French>
+            </Key>
+            <Key ID="STR_BTC_HAM_CHANGE_WEATHER_ENABLEARSENAL">
+                <Original>Enable change weather for officer on the arsenal box:</Original>
+                <French>Autoriser le changement de météo pour les officiers sur la caisse arsenal:</French>
             </Key>
         </Container>
     </Package>
@@ -2691,11 +2756,11 @@
                 <Czech>Není to vedlejší mise, nelze ji zrušit</Czech>
             </Key>
             <Key ID="STR_BTC_HAM_O_COMMON_REBOOT">
-                <Original>Server reboot in 5min, leave it NOW!</Original>
-                <German>Serverneustart in 5 Minuten. JETZT den Server verlassen</German>
-                <Chinesesimp>服务器将在5分钟后重启, 请立即离开服务器!</Chinesesimp>
-                <French>Redémarrage du serveur dans 5min, décconectez-vous maintenant !</French>
-                <Czech>Server se restartuje za 5 minut</Czech>
+                <Original>Server reboot in %1min, leave it NOW!</Original>
+                <German>Serverneustart in %1 Minuten. JETZT den Server verlassen</German>
+                <Chinesesimp>Server reboot in %1min, leave it NOW!</Chinesesimp>
+                <French>Redémarrage du serveur dans %1min, décconectez-vous maintenant !</French>
+                <Czech>Server se restartuje za %1 minut</Czech>
             </Key>
             <Key ID="STR_BTC_HAM_O_COMMON_TICKETADD">
                 <Original>Respawn ticket added</Original>
@@ -2718,17 +2783,11 @@
                 <Czech>Zbývá %1 tiketu na respawn</Czech>
                 <French>%1 ticket de respawn restant</French>
             </Key>
+            <Key ID="STR_BTC_HAM_O_COMMON_NOPLAYERFTICKET">
+                <Original>None player need ticket</Original>
+            </Key>
         </Container>
         <Container name="Other: Shortcuts">
-            <Key ID="STR_BTC_HAM_O_SHORTC_STOP_TITLE">
-                <Original>Civil Order: Stop!</Original>
-                <Spanish>Orden a Civil: Alto!</Spanish>
-                <German>Befehle (Zivilisten): Stopp!</German>
-                <Portuguese>Ordem ao civil: Pare!</Portuguese>
-                <Chinesesimp>命令平民: 站住!</Chinesesimp>
-                <French>Ordre civil: halte !</French>
-                <Czech>Občane: Stop!</Czech>
-            </Key>
             <Key ID="STR_BTC_HAM_O_SHORTC_STOP_NOTE">
                 <Original>Order a civilian to stop</Original>
                 <Spanish>Ordena a un civil se detenga</Spanish>
@@ -2738,15 +2797,6 @@
                 <French>Ordonner à un civil de s'arrêter</French>
                 <Czech>Nařiďte civilistovi, aby zastavil</Czech>
             </Key>
-            <Key ID="STR_BTC_HAM_O_SHORTC_GETDOWN_TITLE">
-                <Original>Civil Order: Get down!</Original>
-                <Spanish>Orden a Civil: ¡Agáchate!</Spanish>
-                <German>Befehle (Zivilisten): Auf den Boden!</German>
-                <Portuguese>Ordem ao Civil: Pro chão!</Portuguese>
-                <Chinesesimp>命令平民: 趴下!</Chinesesimp>
-                <French>Ordre civil: à terre !</French>
-                <Czech>Občane: Slez!</Czech>
-            </Key>
             <Key ID="STR_BTC_HAM_O_SHORTC_GETDOWN_NOTE">
                 <Original>Order a civilian to get down</Original>
                 <Spanish>Ordena a un civil que se ponga a cubierto</Spanish>
@@ -2755,15 +2805,6 @@
                 <Chinesesimp>命令平民趴下</Chinesesimp>
                 <French>Ordonner à un civil de se mettre à terre</French>
                 <Czech>Přikazuje okolním civilistům, aby si lehli</Czech>
-            </Key>
-            <Key ID="STR_BTC_HAM_O_SHORTC_GOAWAY_TITLE">
-                <Original>Civil Order: Go Away!</Original>
-                <Spanish>Orden a Civil: Vete de aquí!</Spanish>
-                <German>Befehle (Zivilisten): Geh weg!</German>
-                <Portuguese>Ordem ao Civil: Vá embora!</Portuguese>
-                <Chinesesimp>命令平民: 走开!</Chinesesimp>
-                <French>Ordre civil: partez !</French>
-                <Czech>Občane: Jdi pryč!</Czech>
             </Key>
             <Key ID="STR_BTC_HAM_O_SHORTC_GOAWAY_NOTE">
                 <Original>Order a civilian to go away</Original>
@@ -2802,6 +2843,12 @@
                 <Chinesesimp>集装箱及其货物已记录! 清空该区域以创建一个复制品。</Chinesesimp>
                 <French>Conteneur et cargaison copiés ! Nettoyez la zone avant de faire un coller.</French>
                 <Czech>Kontejner a obsah zkopírovány! Vyčistěte oblast pro přidání nové.</Czech>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_PASTE_NOCOPIEDI">
+                <Original>No copied inventory!</Original>
+            </Key>
+            <Key ID="STR_BTC_HAM_O_COPY_NOOBJECTS">
+                <Original>No objects around!</Original>
             </Key>
         </Container>
         <Container name="Other: Endmission">

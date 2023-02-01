@@ -22,11 +22,14 @@ Author:
 
 params ["_tag", "_texture", "_object", "_unit"];
 
-if (_unit in btc_city_all) then {
+if (_unit in values btc_city_all) then {
     _tag setVariable ["btc_texture", _texture]; //Store texture for city de_activation
     _tag setVariable ["btc_city", _unit];
     btc_tags_server pushBack _tag;
 } else {
+    if (isNull _tag) then {
+        _object setVariable ["btc_tag_vehicle", _texture, 2];
+    };
     if (_texture isEqualTo "#(rgb,8,8,3)color(0,0,0,0)") then { //Check if player want to remove a tag
         private _tags = (allSimpleObjects btc_type_blacklist) inAreaArray [getPosWorld _tag, 3, 3];
         if (count _tags > 1) then {

@@ -41,13 +41,15 @@ addMissionEventHandler ["BuildingChanged", btc_rep_fnc_buildingchanged];
     }, false] call CBA_fnc_addClassEventHandler;
 } forEach btc_civ_type_veh;
 ["ace_killed", btc_mil_fnc_unit_killed] call CBA_fnc_addEventHandler;
-["ace_repair_setWheelHitPointDamage", {
-    _this remoteExecCall ["btc_rep_fnc_wheelChange", 2];
-}] call CBA_fnc_addEventHandler;
+["ace_repair_setWheelHitPointDamage", btc_rep_fnc_wheelChange] call CBA_fnc_addEventHandler;
 ["ace_disarming_dropItems", btc_rep_fnc_foodRemoved] call CBA_fnc_addEventHandler;
 ["btc_respawn_player", {
     params ["", "_player"];
     [btc_rep_malus_player_respawn, _player] call btc_rep_fnc_change;
+    btc_slots_serialized set [
+        _player getVariable ["btc_slot_key", [0, 0, 0]],
+        [] // Reset serialized data if slot died
+    ];
 }] call CBA_fnc_addEventHandler;
 
 ["ace_explosives_detonate", {
@@ -59,12 +61,22 @@ addMissionEventHandler ["BuildingChanged", btc_rep_fnc_buildingchanged];
     ] call CBA_fnc_waitAndExecute;
 }] call CBA_fnc_addEventHandler;
 
+addMissionEventHandler ["PlayerConnected", btc_eh_fnc_playerConnected];
 addMissionEventHandler ["HandleDisconnect", {
-    params ["_headless"];
-    if (_headless in (entities "HeadlessClient_F")) then {
-        deleteVehicle _headless;
+    params ["_player"];
+    if (_player in (entities "HeadlessClient_F")) then {
+        deleteVehicle _player;
     };
+    if (alive _player) then {
+        _player call btc_slot_fnc_serializeState;
+    };
+    false
 }];
+["ace_unconscious", btc_slot_fnc_serializeState] call CBA_fnc_addEventHandler;
+["btc_playerConnected", { 
+    params ["_player"];
+    [_player, _player call btc_slot_fnc_createKey] call btc_slot_fnc_deserializeState_s;
+}] call CBA_fnc_addEventHandler;
 if (btc_p_auto_db) then {
     addMissionEventHandler ["HandleDisconnect", {
         if ((allPlayers - entities "HeadlessClient_F") isEqualTo []) then {
@@ -107,11 +119,10 @@ if (btc_p_set_skill) then {
 ["ace_tagCreated", btc_tag_fnc_eh] call CBA_fnc_addEventHandler; 
 
 if (btc_p_respawn_ticketsAtStart >= 0) then {
-    ["btc_respawn_player", btc_respawn_fnc_player] call CBA_fnc_addEventHandler;
     ["ace_placedInBodyBag", btc_body_fnc_setBodyBag] call CBA_fnc_addEventHandler;
 
     if !(btc_p_respawn_ticketsShare) then {
-        addMissionEventHandler ["PlayerConnected", btc_respawn_fnc_playerConnected];
+        ["btc_playerConnected", btc_respawn_fnc_playerConnected] call CBA_fnc_addEventHandler;
     };
 
     addMissionEventHandler ["HandleDisconnect", {

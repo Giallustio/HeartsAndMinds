@@ -42,16 +42,18 @@ params [
     ["_pylons", [], [[]]],
     ["_isContaminated", false, [false]],
     ["_supplyVehicle", [], [[]]],
+    ["_objectTexture", [], [[]]],
     ["_EDENinventory", [], [[]]],
     ["_allHitPointsDamage", [], [[]]],
-    ["_flagTexture", "", [""]]
+    ["_flagTexture", "", [""]],
+    ["_tagTexture", "", [""]]
 ];
 
 private _veh  = createVehicle [_type, ASLToATL _pos, [], 0, "CAN_COLLIDE"];
 _veh setDir _dir;
 _veh setPosASL _pos;
 
-[_veh, _customization, _isMedicalVehicle, _isRepairVehicle, _fuelSource, _pylons, _isContaminated, _supplyVehicle] call btc_veh_fnc_propertiesSet;
+[_veh, _customization, _isMedicalVehicle, _isRepairVehicle, _fuelSource, _pylons, _isContaminated, _supplyVehicle, _objectTexture] call btc_veh_fnc_propertiesSet;
 if (_EDENinventory isNotEqualTo []) then {
     _veh setVariable ["btc_EDENinventory", _EDENinventory];
     [_veh, _EDENinventory] call btc_log_fnc_inventorySet;
@@ -72,6 +74,10 @@ if (_allHitPointsDamage isNotEqualTo []) then {
 
 if (_flagTexture isNotEqualTo "") then {
     _veh forceFlagTexture _flagTexture;
+};
+
+if (_tagTexture isNotEqualTo "") then {
+    [objNull, [], _tagTexture, _veh, objNull, "", "", true] call ace_tagging_fnc_createTag;
 };
 
 _veh call btc_veh_fnc_add;

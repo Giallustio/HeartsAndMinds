@@ -25,8 +25,7 @@ params [
 ];
 
 //// Choose a clear City \\\\
-private _useful = btc_city_all select {
-    !isNull _x &&
+private _useful = values btc_city_all select {
     !(_x getVariable ["occupied", false]) &&
     !((_x getVariable ["type", ""]) in ["NameLocal", "Hill", "NameMarine", "StrongpointArea"])
 };
@@ -67,14 +66,6 @@ if (_r < 1) then {
     //// Add smoke effect on car \\\\
     _fx = "test_EmptyObjectForSmoke" createVehicle (getPosATL _veh);
     _fx attachTo [_veh, [0, 0, 0]];
-} else {
-    _pos = selectRandom ((selectRandom _objects) buildingPos -1);
-    private _phonePos = [_pos select 0, _pos select 1, (_pos select 2) + 0.1];
-
-    _phone_type = selectRandom btc_type_phone;
-    _veh = createVehicle [_phone_type, _phonePos, [], 0, "NONE"];
-    _veh setDir (random 360);
-    _fx = objNull;
 };
 
 private _unit_type = selectRandom btc_civ_type_units;

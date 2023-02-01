@@ -6,7 +6,7 @@ Description:
     Activate the city with the current id passed. This generate IED, random group, populate city with civilian and suicider. It also spawn military patrol and civilian.
 
 Parameters:
-    _id - Number of the city will be activated. [Number]
+    _city - City will be activating. [Number]
     _p_mil_group_ratio - Enemy density. [Number]
     _p_mil_static_group_ratio - Enemy static density. [Number]
     _p_civ_group_ratio - Civilian density. [Number]
@@ -27,7 +27,7 @@ Author:
 ---------------------------------------------------------------------------- */
 
 params [
-    ["_id", 0, [0]],
+    ["_city", objNull, [objNull]],
     ["_p_mil_group_ratio", btc_p_mil_group_ratio, [0]],
     ["_p_mil_static_group_ratio", btc_p_mil_static_group_ratio, [0]],
     ["_p_civ_group_ratio", btc_p_civ_group_ratio, [0]],
@@ -36,15 +36,11 @@ params [
     ["_p_patrol_max", btc_p_patrol_max, [0]]
 ];
 
-private _city = btc_city_all select _id;
-if (_city getVariable "activating") exitWith {};
-
 if (btc_debug) then {
-    [str _id, __FILE__, [btc_debug, btc_debug_log, true]] call btc_debug_fnc_message;
     _city setVariable ["serverTime", serverTime];
 };
 
-_city setVariable ["activating", true];
+_city enableSimulation false;
 _city setVariable ["active", true];
 
 private _data_units = _city getVariable ["data_units", []];
@@ -120,7 +116,7 @@ if (_data_units isNotEqualTo []) then {
         for "_i" from 1 to round _finalNumberOfGroup do {
             [
                 _city,
-                [_spawningRadius, _spawningRadius/3] select (_i <= _numberOfHouseGroup),
+                [_spawningRadius, _spawningRadius/2] select (_i <= _numberOfHouseGroup),
                 2 + round random 2,
                 [["PATROL", "SENTRY"] selectRandomWeighted [0.7, 0.3], "HOUSE"] select (_i <= _numberOfHouseGroup)
             ] call btc_mil_fnc_create_group;
@@ -128,7 +124,7 @@ if (_data_units isNotEqualTo []) then {
     };
 
     if !(_type in ["Hill", "NameMarine"]) then {
-        ([_city, _spawningRadius/3] call btc_city_fnc_getHouses) params ["_housesEntrerable", "_housesNotEntrerable"];
+        ([_city, _spawningRadius/2] call btc_city_fnc_getHouses) params ["_housesEntrerable", "_housesNotEntrerable"];
 
         if (_has_en) then {
             private _numberOfStatic = (switch _type do {
@@ -147,15 +143,15 @@ if (_data_units isNotEqualTo []) then {
 
         // Spawn civilians
         private _numberOfCivi = (switch _type do {
-            case "VegetationFir" : {1};
+            case "VegetationFir" : {2};
             case "BorderCrossing" : {0};
-            case "NameLocal" : {3};
+            case "NameLocal" : {6};
             case "StrongpointArea" : {0};
-            case "NameVillage" : {6};
-            case "NameCity" : {10};
-            case "NameCityCapital" : {19};
-            case "Airport" : {6};
-            default {2};
+            case "NameVillage" : {12};
+            case "NameCity" : {20};
+            case "NameCityCapital" : {38};
+            case "Airport" : {12};
+            default {4};
         });
         [+_housesEntrerable, round (_p_civ_group_ratio * _numberOfCivi), _city] call btc_civ_fnc_populate;
     };
@@ -194,13 +190,13 @@ if (_city getVariable ["spawn_more", false]) then {
     for "_i" from 1 to round _finalNumberOfGroup do {
         [
             _city,
-            [_spawningRadius, _spawningRadius/3] select (_i <= _numberOfHouseGroup),
+            [_spawningRadius, _spawningRadius/2] select (_i <= _numberOfHouseGroup),
             4 + round random 3,
             ["PATROL", "HOUSE"] select (_i <= _numberOfHouseGroup)
         ] call btc_mil_fnc_create_group;
     };
     if (btc_p_veh_armed_spawn_more) then {
-        [[_city, _spawningRadius/3, 1, btc_type_motorized_armed, 1 + round random 2], btc_city_fnc_send] call btc_delay_fnc_exec;
+        [[_city, _spawningRadius, 1, btc_type_motorized_armed, 1 + round random 2], btc_city_fnc_send] call btc_delay_fnc_exec;
     };
 };
 
@@ -220,7 +216,7 @@ if (
         [btc_cache_pos, 8, 3, "HOUSE"] call btc_mil_fnc_create_group;
         [btc_cache_pos, 50, 4, "SENTRY"] call btc_mil_fnc_create_group;
         if (btc_p_veh_armed_spawn_more) then {
-            [[_city, _spawningRadius/3, 1, btc_type_motorized_armed, 1 + round random 3], btc_city_fnc_send] call btc_delay_fnc_exec;
+            [[_city, _spawningRadius, 1, btc_type_motorized_armed, 1 + round random 3], btc_city_fnc_send] call btc_delay_fnc_exec;
         };
     };
 };
@@ -245,13 +241,13 @@ if (_has_ho && {!(_city getVariable ["ho_units_spawned", false])}) then {
         };
     };
     if (btc_p_veh_armed_ho) then {
-        [[_city, _spawningRadius/3, 1, btc_type_motorized_armed, 2 + round random 3], btc_city_fnc_send] call btc_delay_fnc_exec;
+        [[_city, _spawningRadius, 1, btc_type_motorized_armed, 2 + round random 3], btc_city_fnc_send] call btc_delay_fnc_exec;
     };
 };
 
 //Suicider
 if !(_city getVariable ["has_suicider", false]) then {
-    if ((time - btc_ied_suic_spawned) > btc_ied_suic_time && {random 1000 > btc_global_reputation}) then {
+    if ((time - btc_ied_suic_spawned) > btc_ied_suic_time && {random (btc_rep_level_high + 250) > btc_global_reputation}) then {
         btc_ied_suic_spawned = time;
         _city setVariable ["has_suicider", true];
         if (selectRandom [false, false, btc_p_ied_drone]) then {
@@ -259,7 +255,7 @@ if !(_city getVariable ["has_suicider", false]) then {
         } else {
             [[_city, _spawningRadius], btc_ied_fnc_suicider_create] call btc_delay_fnc_exec;
         };
-        _delay = _delay + 0.2;
+        _delay = _delay + btc_delay_unit;
     };
 };
 
@@ -294,7 +290,7 @@ if (
     !(_type in ["Hill", "NameMarine"]) &&
     _city getVariable ["btc_city_housesEntrerable", []] isEqualTo []
 ) then {
-    [[_city, _spawningRadius/3], btc_city_fnc_getHouses] call btc_delay_fnc_exec;
+    [[_city, _spawningRadius/2], btc_city_fnc_getHouses] call btc_delay_fnc_exec;
 };
 
 [_city, btc_door_fnc_lock] call btc_delay_fnc_exec;
@@ -309,19 +305,20 @@ if (_civKilled isNotEqualTo []) then {
 };
 
 [{
-    params ["_has_en", "_city", "_cachingRadius", "_id"];
+    params ["_has_en", "_city", "_cachingRadius"];
 
     if (_has_en) then {
-        private _trigger = createTrigger ["EmptyDetector", getPos _city, false];
+        private _trigger = createTrigger ["EmptyDetector", _city, false];
         _trigger setTriggerArea [_cachingRadius, _cachingRadius, 0, false];
         _trigger setTriggerActivation [str btc_enemy_side, "PRESENT", false];
-        _trigger setTriggerStatements [btc_p_city_free_trigger_condition, format ["[%1, thisList] call btc_city_fnc_set_clear", _id], ""];
+        _trigger setTriggerStatements [btc_p_city_free_trigger_condition, "[thisTrigger, thisList] call btc_city_fnc_setClear", ""];
         _trigger setTriggerInterval 2;
-        _city setVariable ["trigger", _trigger];
+        _trigger setVariable ["playerTrigger", _city];
+        _city setVariable ["enTrigger", _trigger];
     };
 
-    _city setVariable ["activating", false];
-}, [_has_en, _city, _cachingRadius, _id], _delay] call btc_delay_fnc_waitAndExecute;
+    _city enableSimulation true;
+}, [_has_en, _city, _cachingRadius], _delay] call btc_delay_fnc_waitAndExecute;
 
 //Patrol
 btc_patrol_active = btc_patrol_active - [grpNull];
@@ -354,7 +351,7 @@ if (_numberOfCivVeh < _p_civ_max_veh) then {
 // https://feedback.bistudio.com/T162941
 private _HCs = entities "HeadlessClient_F";
 if (_HCs isNotEqualTo []) then {
-    private _triggerZSize = (triggerArea (_city getVariable "trigger_player_side")) select 4;
+    private _triggerZSize = (triggerArea _city) select 4;
     if (_triggerZSize isNotEqualTo -1) then {
         private _cityPos = getPosASL _city;
         private _HCPos = _cityPos vectorAdd [0, 0, -(_triggerZSize + 50)];
@@ -365,5 +362,6 @@ if (_HCs isNotEqualTo []) then {
 };
 
 if (btc_debug || btc_debug_log) then {
+    private _id = _city getVariable "id";
     [format ["%1 - %2ms", _id, (serverTime - (_city getVariable ["serverTime", serverTime])) * 1000] , __FILE__, [btc_debug, btc_debug_log, true]] call btc_debug_fnc_message;
 };

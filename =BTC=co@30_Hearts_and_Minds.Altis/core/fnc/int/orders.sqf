@@ -53,7 +53,7 @@ if (isNull _unit) then {
             params ["_unit", "_pos"];
             private _rep = btc_int_ask_data;
 
-            if (_rep >= 500) then {
+            if (_rep >= btc_rep_level_normal) then {
                 [name _unit, localize "STR_BTC_HAM_CON_INT_ORDERS_SHOWMAP"] call btc_fnc_showSubtitle;
                 openMap true;
                 addMissionEventHandler ["MapSingleClick", 

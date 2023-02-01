@@ -23,10 +23,10 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-btc_delay_time = btc_delay_time + 0.1;
+btc_delay_time = btc_delay_time + btc_delay_agent;
 
 [{
-    btc_delay_time = btc_delay_time - 0.1;
+    btc_delay_time = btc_delay_time - btc_delay_agent;
 
     params [
         ["_agentType", "", [""]],

@@ -28,10 +28,10 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-btc_delay_time = btc_delay_time + 0.3;
+btc_delay_time = btc_delay_time + btc_delay_vehicle;
 
 [{
-    btc_delay_time = btc_delay_time - 0.3;
+    btc_delay_time = btc_delay_time - btc_delay_vehicle;
 
     params [
         ["_group", grpNull, [grpNull]],
@@ -87,4 +87,4 @@ btc_delay_time = btc_delay_time + 0.3;
     ["btc_delay_vehicleInit", [_veh, _group]] call CBA_fnc_localEvent;
 }, _this, btc_delay_time - 0.01] call CBA_fnc_waitAndExecute;
 
-count (_this select 2) * 0.2
+count (_this select 2) * btc_delay_unit

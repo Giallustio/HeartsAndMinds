@@ -39,14 +39,17 @@ _inventory params [
 ];
 
 {
+    if (load _object > 1) exitWith {};
     _object addMagazineCargoGlobal [_x, (_magazines select 1) select _forEachIndex];
 } forEach (_magazines select 0);
 
 {
+    if (load _object > 1) exitWith {};
     _object addWeaponWithAttachmentsCargoGlobal [_x, 1];
 } forEach _weapons;
 
 {
+    if (load _object > 1) exitWith {};
     private _containerType = _x select 0;
     if (_containerType in _items) then {
         _object addItemCargoGlobal [_containerType, 1];
@@ -60,5 +63,6 @@ _inventory params [
 } forEach _everyContainer;
 
 {
+    if (load _object > 1) exitWith {};
     _object addItemCargoGlobal [_x, 1];
 } forEach _items;

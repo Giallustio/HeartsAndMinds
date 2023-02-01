@@ -96,7 +96,7 @@ private _text = switch (_type) do {
     };
     case 19 : {
         [
-            localize "STR_BTC_HAM_O_COMMON_REBOOT", 1.5, [1, 0, 0]
+            format [localize "STR_BTC_HAM_O_COMMON_REBOOT", _custom], 1.5, [1, 0, 0]
         ];
     };
     case 20 : {
@@ -123,6 +123,9 @@ private _text = switch (_type) do {
     };
     case 24 : {
         format [localize "STR_BTC_HAM_O_COMMON_TICKETSLEFT", _custom];
+    };
+    case 25 : {
+        localize "STR_BTC_HAM_O_COMMON_NOPLAYERFTICKET";
     };
 };
 
