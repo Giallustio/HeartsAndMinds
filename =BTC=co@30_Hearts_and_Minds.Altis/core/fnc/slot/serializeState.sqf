@@ -30,7 +30,7 @@ if (
 
 private _loadout = [_unit] call CBA_fnc_getLoadout;
 if (["acre_api"] call ace_common_fnc_isModLoaded) then {
-    _loadout = [_loadout] call acre_api_fnc_filterUnitLoadout;
+    _loadout set [0, [_loadout select 0] call acre_api_fnc_filterUnitLoadout];
 };
 
 private _data = [
