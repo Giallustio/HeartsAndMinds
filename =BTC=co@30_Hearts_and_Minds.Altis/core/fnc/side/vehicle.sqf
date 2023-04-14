@@ -1,66 +1,65 @@
 
-private ["_city","_pos","_roads","_marker","_veh_type","_veh","_useful"];
+/* ----------------------------------------------------------------------------
+Function: btc_side_fnc_vehicle
 
-_useful = [];
-{if (_x getVariable ["type",""] == "NameMarine") then {_useful = _useful + [_x];};} foreach btc_city_all;
-if (count _useful == 0) exitWith {[] spawn btc_fnc_side_create;};
-_city = _useful select (floor random count _useful);
+Description:
+    Fill me when you edit me !
 
-_pos = [getPos _city, 100] call btc_fnc_randomize_pos;
+Parameters:
+    _taskID - Unique task ID. [String]
 
-_roads = _pos nearRoads 300;
+Returns:
 
-if (count _roads > 0) then {_pos = getPos (_roads select (floor random count _roads));};
+Examples:
+    (begin example)
+        [false, "btc_side_fnc_vehicle"] spawn btc_side_fnc_create;
+    (end)
 
-btc_side_aborted = false;
-btc_side_done = false;
-btc_side_failed = false;
-btc_side_assigned = true;publicVariable "btc_side_assigned";
+Author:
+    Giallustio
 
-[[5,_pos,_city getVariable "name"],"btc_fnc_task_create",true] spawn BIS_fnc_MP;
+---------------------------------------------------------------------------- */
 
-btc_side_jip_data = [5,_pos,_city getVariable "name"];
+params [
+    ["_taskID", "btc_side", [""]]
+];
 
-_area = createmarker [format ["sm_%1",_pos],_pos];
-_area setMarkerShape "ELLIPSE";
-_area setMarkerBrush "SolidBorder";
-_area setMarkerSize [30, 30];
-_area setMarkerAlpha 0.3;
-_area setmarkercolor "colorBlue";
+private _useful = values btc_city_all select {
+    !((_x getVariable ["type", ""]) in ["NameMarine", "StrongpointArea"])
+};
+if (_useful isEqualTo []) exitWith {[] spawn btc_side_fnc_create;};
+private _city = selectRandom _useful;
 
-_marker = createmarker [format ["sm_2_%1",_pos],_pos];
-_marker setmarkertype "hd_flag";
-_marker setmarkertext "Vehicle needs assistance";
-_marker setMarkerSize [0.6, 0.6];
+private _pos = [getPos _city, 100] call btc_fnc_randomize_pos;
+private _roads = _pos nearRoads 300;
+if (_roads isNotEqualTo []) then {_pos = getPos (selectRandom _roads);};
 
-_veh_type = btc_civ_type_veh select (floor (random (count btc_civ_type_veh)));
-_veh = createVehicle [_veh_type, _pos, [], 0, "NONE"];
-
+private _veh_type = selectRandom btc_civ_type_veh;
+private _veh = createVehicle [_veh_type, _pos, [], 0, "NONE"];
+(_veh call ace_repair_fnc_getWheelHitPointsWithSelections) params ["_wheelHitPoints", "_wheelHitPointSelections"];
 _veh setDir (random 360);
-
 _veh setDamage 0.7;
+private _damagedWheel = 1 + round random (count _wheelHitPointSelections - 1);
+_wheelHitPointSelections = (_wheelHitPointSelections call BIS_fnc_arrayShuffle) select [0, _damagedWheel];
+{
+    _veh setHit [_x, 1];
+} forEach _wheelHitPointSelections;
 
-_veh setHit ["wheel_1_1_steering", 1];
+[_taskID, 5, _veh, [_city getVariable "name", _veh_type]] call btc_task_fnc_create;
 
-waitUntil {sleep 5; (btc_side_aborted || btc_side_failed || (_veh getHit "wheel_1_1_steering" < 1) || !Alive _veh)};
-
-{deletemarker _x} foreach [_area,_marker];
-
-if (btc_side_aborted || btc_side_failed || !Alive _veh) exitWith {
-	[5,"btc_fnc_task_fail",true] spawn BIS_fnc_MP;
-	btc_side_assigned = false;publicVariable "btc_side_assigned";
+waitUntil {sleep 5;
+    _taskID call BIS_fnc_taskCompleted ||
+    ({_x} count (_wheelHitPointSelections apply {_veh getHit _x < 1})) isEqualTo _damagedWheel ||
+    !alive _veh
 };
 
-15 call btc_fnc_rep_change;
+[[], [_veh]] call btc_fnc_delete;
 
-[5,"btc_fnc_task_set_done",true] spawn BIS_fnc_MP;
-
-_veh spawn {
-
-	waitUntil {sleep 5; ({_x distance _this < 300} count playableUnits == 0)};
-
-	deleteVehicle _this;
+if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {};
+if (!alive _veh) exitWith {
+    [_taskID, "FAILED"] call BIS_fnc_taskSetState;
 };
 
+(- btc_rep_malus_wheelChange * _damagedWheel) call btc_rep_fnc_change;
 
-btc_side_assigned = false;publicVariable "btc_side_assigned";
+[_taskID, "SUCCEEDED"] call BIS_fnc_taskSetState;

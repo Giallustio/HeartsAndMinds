@@ -1,20 +1,50 @@
 
-//btc_info_intel_type = [80,95];//cache - hd - both
+/* ----------------------------------------------------------------------------
+Function: btc_info_fnc_give_intel
 
-private ["_id","_n"];
+Description:
+    Give intel to the player.
 
-_id = 1;
-_n = random 100;
+Parameters:
+    _asker - Player. [Object]
 
-if (count btc_hideouts == 0) then {_n = (btc_info_intel_type select 0) - 10;};
+Returns:
+    _intelType - Return the type of intel. [Number]
+
+Examples:
+    (begin example)
+        _intelType = [player] call btc_info_fnc_give_intel;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
+params [
+    ["_asker", objNull, [objNull]]
+];
+
+private _intelType = random 100;
+
+if (btc_hideouts isEqualTo []) then {_intelType = (btc_info_intel_type select 0) - 10;};
 
 switch (true) do {
-	case (_n < (btc_info_intel_type select 0)) : {[true,0] spawn btc_fnc_info_cache;};//cache
-	case (_n > (btc_info_intel_type select 1) && _n < 101) : {_id = 4;[true,0] spawn btc_fnc_info_cache;[true] spawn btc_fnc_info_hideout;};//both
-	case (_n > (btc_info_intel_type select 0) && _n < (btc_info_intel_type select 1)) : {_id = 5;[true] spawn btc_fnc_info_hideout;};//hd
-	default {_id = 0;[[3],"btc_fnc_show_hint",(_this select 0)] spawn BIS_fnc_MP;};
+    case (_intelType < (btc_info_intel_type select 0)) : { //cache
+        [true] call btc_info_fnc_cache;
+    };
+    case (_intelType > (btc_info_intel_type select 1) && _intelType < 101) : { //both
+        [true] call btc_info_fnc_cache;
+        [] call btc_info_fnc_hideout;
+        [5] remoteExecCall ["btc_fnc_show_hint", _asker];
+    };
+    case (_intelType > (btc_info_intel_type select 0) && _intelType < (btc_info_intel_type select 1)) : { //hd
+        [] call btc_info_fnc_hideout;
+        [5] remoteExecCall ["btc_fnc_show_hint", _asker];
+    };
+    default {
+        [3] remoteExecCall ["btc_fnc_show_hint", _asker];
+    };
 };
 
-if (_id == 0) exitWith {};
-
-[[_id],"btc_fnc_show_hint"] spawn BIS_fnc_MP;
+_intelType

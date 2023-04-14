@@ -1,17 +1,55 @@
-_pos = _this select 0;
-_type = _this select 1;
-_dir = _this select 2;
-_active = _this select 3;
 
-if (btc_debug_log) then {diag_log format ["CREATE IED %1",_this];};
-_ied = _type createVehicle _pos;
+/* ----------------------------------------------------------------------------
+Function: btc_ied_fnc_create
 
-_ied addEventHandler ["HandleDamage",{0}];
+Description:
+    Create wreck and add an IED when it is not a fake. True IED is added to the btc_ied_list to check if player is around.
 
-_ied spawn btc_fnc_ied_fired_near;
+Parameters:
+    _pos - Position of wreck. [Array]
+    _type - Shape name of the wreck. [String]
+    _dir - Direction of the wreck. [Number]
+    _active - Does the wreck has an IED around it. [Boolean]
+    _ied_list - Globale variable which store current active IED and delete them when there are removed. [Array]
 
-_ied setDir (random 360);
+Returns:
+    _wreck - Simple object of the wreck. [Object]
+    _type - Shape name of the wreck. [String]
+    _ied - The IED object created. If fake, objNull is returned. [Object]
 
-_ied setVariable ["active",_active];
+Examples:
+    (begin example)
+        [_wreck, _type, _ied] = [[0,0,0], "a3\armor_f_beta\apc_tracked_01\apc_tracked_01_rcws_f.p3d", 90, true] call btc_ied_fnc_create;
+    (end)
 
-_ied
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
+params [
+    ["_pos", [0, 0, 0], [[]]],
+    ["_type", "", [""]],
+    ["_dir", 0, [0]],
+    ["_active", false, [false]],
+    ["_ied_list", btc_ied_list, [[]]]
+];
+
+if (btc_debug_log) then {
+    [format ["%1", _this], __FILE__, [false]] call btc_debug_fnc_message;
+};
+
+private _wreck = createSimpleObject [_type, _pos];
+_wreck setPosATL [_pos select 0, _pos select 1, 0];
+_wreck setDir _dir;
+_wreck setVectorUp surfaceNormal _pos;
+
+if !(_active) exitWith {[_wreck, _type, objNull]};
+
+private _ied = createMine [selectRandom btc_type_ieds_ace, [_pos select 0, _pos select 1, btc_ied_offset], [], 2];
+_ied setVectorUp surfaceNormal _pos;
+
+_pos params ["_xx", "_yy", "_zz"];
+_ied_list pushBack [_ied, _wreck, [_xx, _yy, _zz + 0.5]];
+
+[_wreck, _type, _ied]

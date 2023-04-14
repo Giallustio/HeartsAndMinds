@@ -1,46 +1,66 @@
-//[_group,_city,600] call btc_fnc_addWP;
 
-private ["_group","_city","_area","_wp","_pos","_rpos","_in_house"];
+/* ----------------------------------------------------------------------------
+Function: btc_mil_fnc_addWP
 
-_group = _this select 0;
-_city = _this select 1;
-_area = _this select 2;
-_wp = _this select 3;
+Description:
+    Add waypoint to already created units.
 
-_pos = [];
+Parameters:
+    _group - Group of enemies. [Group]
+    _city - City to patrol around. [Object]
+    _area - Area to patrol around. [Number]
+    _wp - Type of wp: in "HOUSE", "PATROL" or "SENTRY". [String]
 
-switch (typeName _city) do {
-	case "ARRAY" :{_pos = _city;};
-	case "STRING":{_pos = getMarkerPos _city;};
-	case "OBJECT":{_pos = position _city;};
+Returns:
+
+Examples:
+    (begin example)
+        [group cursorObject, btc_city_all get 0, 200] call btc_mil_fnc_addWP;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
+params [
+    ["_group", grpNull, [grpNull]],
+    ["_city", objNull, [objNull]],
+    ["_area", 0, [0]],
+    ["_wp", "PATROL", [""]]
+];
+
+private _pos = position _city;
+private _rpos = [_pos, _area] call btc_fnc_randomize_pos;
+
+switch (_wp) do {
+    case ("HOUSE") : {
+        private _houses = ([_city, _area] call btc_fnc_getHouses) select 0;
+        if (_houses isNotEqualTo []) then {
+            private _house = selectRandom _houses;
+            [_group, _house] call btc_fnc_house_addWP;
+            _group setVariable ["btc_inHouse", typeOf _house];
+        } else {
+            [
+                _group, _rpos,
+                _area, 2 + floor (random 4), "MOVE", "SAFE", "RED",
+                ["LIMITED", "NORMAL"] select ((vehicle leader _group) isKindOf "Air"),
+                "STAG COLUMN", "", [5, 10, 20]
+            ] remoteExecCall ["CBA_fnc_taskPatrol", groupOwner _group];
+        };
+    };
+    case ("PATROL") : {
+        [
+            _group, _rpos,
+            _area, 2 + floor (random 4), "MOVE", "AWARE", "RED",
+            ["LIMITED", "NORMAL"] select ((vehicle leader _group) isKindOf "Air"),
+            "STAG COLUMN", "", [5, 10, 20]
+        ] remoteExecCall ["CBA_fnc_taskPatrol", groupOwner _group];
+    };
+    case ("SENTRY") : {
+        [_group] call CBA_fnc_clearWaypoints;
+        [_group, _rpos, -1, "SENTRY", "AWARE", "RED", "UNCHANGED", "WEDGE", "(group this) call btc_data_fnc_add_group;", [18000, 36000, 54000]] call CBA_fnc_addWaypoint;
+    };
 };
 
-_rpos = [_pos, _area] call btc_fnc_randomize_pos;
-
-_in_house = false;
-
-switch (true) do {
-	case (_wp < 0.3) : {
-		private ["_houses","_house","_n_pos","_max_pos","_unit"];
-		_houses = [_city,_area] call btc_fnc_getHouses;
-		if (count _houses > 0) then	{
-			_in_house = true;
-			_house = _houses select (floor random count _houses);	
-			[_group,_house] spawn btc_fnc_house_addWP;
-			_group setVariable ["inHouse",_house];
-		} else {[_group,_rpos,_area,"SAFE"] call btc_fnc_task_patrol;};
-	};
-	case (_wp > 0.3 && _wp < 0.75) : {
-		[_group,_rpos,(_area*2),"AWARE"] call btc_fnc_task_patrol;
-	};
-	case (_wp > 0.75) : {
-		private ["_wpa"];
-		_wpa = _group addWaypoint [_rpos, 0];
-		_wpa setWaypointType "SENTRY";
-		_wpa setWaypointCombatMode "RED";
-		_wpa setWaypointBehaviour "AWARE";
-		_wpa setWaypointFormation "WEDGE";
-	};
-};
-
-true 
+true

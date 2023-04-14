@@ -1,53 +1,73 @@
-_group = _this;
-_group setVariable ["no_cache",nil];
-diag_log format ["ADD GROUP = %1",_group];
-_pos = getPos leader _group;
-_dist = 999999;
-_city = objNull;
-{if (_x distance _pos < _dist) then {_city = _x;_dist = _x distance _pos;};} foreach btc_city_all;
 
-if (isNull _city) exitWith
-{
-	while {(count (waypoints _group)) > 0} do
-	{
-		deleteWaypoint ((waypoints _group) select 0);
-	};
-	diag_log format ["IS NULL CITY = %1",_group];
-	_group setBehaviour "AWARE";
-	_wp = _group addWaypoint [position leader _group, 0];
-	_wp setWaypointType "GUARD";
-	_wp setWaypointCompletionRadius 20;
-	_wp setWaypointCombatMode "RED";
+/* ----------------------------------------------------------------------------
+Function: btc_data_fnc_add_group
+
+Description:
+    If player is around: initiate patrol around the destination,
+    Ifnot: save in database and delete units by calling btc_data_fnc_get_group.
+
+Parameters:
+    _group - Group of units. [Group]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_data_fnc_add_group;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
+params [
+    ["_group", grpNull, [grpNull]]
+];
+
+if (btc_debug_log) then {
+    [format ["%1", _group], __FILE__, [false]] call btc_debug_fnc_message;
+};
+_group setVariable ["no_cache", nil];
+[_group] call CBA_fnc_clearWaypoints;
+
+private _city = [leader _group, values btc_city_all, false] call btc_fnc_find_closecity;
+_city setVariable ["occupied", true];
+
+if (_city getVariable ["marker", ""] != "") then {
+    private _marker = _city getVariable ["marker", ""];
+    _marker setMarkerColor "ColorRed";
+    _marker setMarkerAlpha 0.3;
 };
 
-_city setVariable ["occupied",true];
-
-if (btc_debug) then {(format ["loc_%1",_city getVariable "id"]) setMarkerColor "ColorRed";};
-
-if (_city getVariable ["marker",""] != "") then {_marker = _city getVariable ["marker",""]; _marker setMarkerColor "ColorRed";_marker setMarkerAlpha 0.3;};
-
-if !(_city getVariable ["active",false]) then
-{
-	private ["_n","_data_units","_data_group"];
-
-	_n = random 1;
-
-	while {(count (waypoints _group)) > 0} do
-	{
-		deleteWaypoint ((waypoints _group) select 0);
-	};
-
-	[_group,_city,600,(random 1)] call btc_fnc_mil_addWP;
-
-	_data_units = _city getVariable ["data_units",[]];
-	_data_group = _group call btc_fnc_data_get_group;
-	_data_units pushBack _data_group;
-	_city setVariable ["data_units",_data_units];
-	diag_log format ["PUSHBACK = %1",_data_group];
+private _wp = if (vehicle leader _group isEqualTo leader _group) then {
+    selectRandom ["HOUSE", "PATROL", "SENTRY"];
+} else {
+    if ((vehicle leader _group) isKindOf "Air") then {
+        "PATROL";
+    } else {
+        selectRandom ["PATROL", "SENTRY"];
+    };
 };
 
-if (btc_final_phase) then
-{
-	btc_city_remaining = btc_city_remaining + [_city];
+[_group, _city, 200, _wp] call btc_mil_fnc_addWP;
+
+if (_city getVariable ["active", false]) then {
+    _group setVariable ["btc_city", _city];
+} else {
+    private _data_units = _city getVariable ["data_units", []];
+    private _data_group = _group call btc_data_fnc_get_group;
+
+    _data_units pushBack _data_group;
+    _city setVariable ["data_units", _data_units];
+    if (btc_debug_log) then {
+        [format ["PUSHBACK = %1", _data_group], __FILE__, [false]] call btc_debug_fnc_message;
+    };
 };
-diag_log format ["END = %1",[]];
+
+if (btc_final_phase) then {
+    btc_city_remaining pushBack _city;
+};
+if (btc_debug_log) then {
+    [format ["END = %1", []], __FILE__, [false]] call btc_debug_fnc_message;
+};

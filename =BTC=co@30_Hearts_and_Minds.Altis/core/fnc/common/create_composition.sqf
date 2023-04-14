@@ -1,21 +1,47 @@
-_pos = _this select 0;
-//// Direction parameter is align with compass \\\\
-_setdir = -(_this select 1);
-_array = _this select 2;
-_pos_x = _pos select 0;
-_pos_y = _pos select 1;
-_pos_z = 0;if (count _pos > 2) then {_pos_z = _pos select 2;};
-{
-	_type = _x select 0;
-	//// Determine direction function of setdir \\\\
-	_dir  = ((_x select 1) - _setdir);
-	_rel_pos = _x select 2;
-	_rel_x   = _rel_pos select 0;
-	_rel_y   = _rel_pos select 1;
-	_rel_z   = _rel_pos select 2;
-	//// Determine position function of setdir \\\\
-	_pos_obj = [(_pos_x + _rel_x*cos(_setdir) - _rel_y*sin(_setdir)),(_pos_y +  _rel_y*cos(_setdir) + _rel_x*sin(_setdir)),(_pos_z + _rel_z)];
-	_obj = createVehicle [_type, _pos_obj, [], 0, "NONE"];
-	_obj setDir _dir;
-	_obj setPos _pos_obj;
-} foreach _array;
+
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_create_composition
+
+Description:
+    Create a composition based on an array containing line for each object of a composition. An objects is describe by: [type of object, direction, real position].
+
+Parameters:
+    _pos - Position where the composition will be created. [Array]
+    _setDir - Set the direction of composition spawn. [Number]
+    _array - Array of each objects in the composition. [Array]
+
+Returns:
+    _composition_objects - Objects created from the _array. [Array]
+
+Examples:
+    (begin example)
+        _composition_objects = [getPos player, 45, [["Land_Money_F",359.991,[0.833984,-2.00586,1]],["Land_Photoframe_01_F",98.7052,[-0.333984,-2.35547,1]],["Land_BriefingRoomDesk_01_F",0.00013937,[0.285156,-2.2207,0]]]] call btc_fnc_create_composition;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
+params [
+    ["_pos", [0, 0, 0], [[]]],
+    ["_setDir", 0, [0]],
+    ["_array", [], [[]]]
+];
+_pos params ["_pos_x", "_pos_y", ["_pos_z", 0]];
+
+_array apply {
+    _x params ["_type", "_dir", "_rel_pos"];
+    _rel_pos params ["_rel_x", "_rel_y", ["_rel_z", 0]];
+
+    //// Determine position function of setdir \\\\
+    private _final = [_pos_x + _rel_x*cos(_setDir) - _rel_y*sin(- _setDir), _pos_y + _rel_y*cos(_setDir) + _rel_x*sin(- _setDir)];
+    _final pushBack (_pos_z + _rel_z + getTerrainHeightASL _final);
+    private _obj = createVehicle [_type, ASLToATL _final, [], 0, "CAN_COLLIDE"];
+    //// Determine direction function of setdir \\\\
+    _obj setDir (_dir + _setDir);
+
+    _obj setVectorUp surfaceNormal position _obj;
+    _obj setPosASL _final;
+    _obj;
+};

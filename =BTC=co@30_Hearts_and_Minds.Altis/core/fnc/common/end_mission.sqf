@@ -1,9 +1,27 @@
-0 spawn btc_fnc_task_set_done;
 
-hint "All the hideouts are destroyed, finally the Oplitas has been defeated! Mission accomplished";
+/* ----------------------------------------------------------------------------
+Function: btc_fnc_end_mission
 
-while {true} do
-{
-	hintSilent "All the hideouts are destroyed, finally the Oplitas has been defeated! Mission accomplished";
-	sleep 1;
+Description:
+    Message shown when the mission end.
+
+Parameters:
+
+Returns:
+
+Examples:
+    (begin example)
+        [] call btc_fnc_end_mission;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
+hint localize "STR_BTC_HAM_O_COMMON_ENDMISSION";
+
+while {true} do {
+    hintSilent localize "STR_BTC_HAM_O_COMMON_ENDMISSION";
+    sleep 1;
 };

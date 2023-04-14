@@ -1,53 +1,84 @@
-_group = _this;
 
-_units = units _group;
-_type_db   = 0;
-_array_pos    = [];
-_array_type   = [];
-_side         = side (leader _group);
-_array_dam    = [];
-_behaviour    = [behaviour (leader _group),combatMode _group,formation _group];
-_array_wp     = [];
-_array_in_veh = [];
-_array_veh 	  = [];
-_index_wp = 0;
-//_group setVariable ["inHouse",true];
+/* ----------------------------------------------------------------------------
+Function: btc_data_fnc_get_group
+
+Description:
+    Get groups parameters (position, waypoints, behaviour ...), save them and delete.
+
+Parameters:
+    _group - Group of units. [Group]
+
+Returns:
+
+Examples:
+    (begin example)
+        _result = [] call btc_data_fnc_get_group;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
+params [
+    ["_group", grpNull, [grpNull]]
+];
+
+private _units = (units _group) select {alive _x};
+if (_units isEqualTo []) exitWith {nil};
+private _leader = leader _group;
+private _vehicle = vehicle _leader;
+
+private _type_db = 0;
+private _array_pos = [];
+private _array_type = [];
+private _side = side _group;
+private _array_dam = [];
+private _array_in_veh = [];
+private _array_veh = [];
+private _index_wp = currentWaypoint _group;
+private _array_wp = (waypoints _group) apply {[
+    waypointPosition _x,
+    waypointType _x,
+    waypointSpeed _x,
+    waypointFormation _x,
+    waypointCombatMode _x,
+    waypointBehaviour _x,
+    waypointTimeout _x,
+    waypointCompletionRadius _x
+]};
+
 {
-	_array_pos  = _array_pos + [getposATL _x];
-	_array_type = _array_type + [typeOf _x];
-	_array_dam  = _array_dam + [getDammage _x];
-} foreach _units;
+    private _pos = getPosATL _x;
+    if (surfaceIsWater _pos) then {
+        _array_pos pushBack getPos _x;
+    } else {
+        _array_pos pushBack _pos;
+    };
 
-_index_wp = (currentWaypoint _group) + 1;
-{
-	_array_wp = _array_wp + [[waypointPosition _x,waypointType _x,waypointSpeed _x,waypointFormation _x,waypointCombatMode _x,waypointBehaviour _x]];
-} foreach waypoints _group;
+    _array_type pushBack typeOf _x;
+    _array_dam pushBack getDammage _x;
+} forEach _units;
 
-
-if (!isNil {_group getVariable "stop"}) then {_type_db = 2;};
-if (!isNil {_group getVariable "inHouse"}) then {_type_db = 3;_array_veh = _group getVariable "inHouse";};
-if (!isNil {_group getVariable "getWeapons"}) then {_type_db = 4;};
-if (!isNil {_group getVariable "suicider"}) then {_type_db = 5;};
-/*
-if (!isNil {_group getVariable "btc_rebel"}) then {_type_db = 3;};
-if (!isNil {_group getVariable "btc_terrorist"}) then {_type_db = 4;};
-if (!isNil {_group getVariable "getWeapons"}) then {_type_db = 5;};
-*/
-
-if (vehicle leader _group != leader _group) then {_type_db = 1;};
-
-if (_type_db == 1) then 
-{
-	private ["_veh"];
-	_veh = vehicle leader _group;
-	_type = typeOf _veh;
-	_pos = getposATL _veh;
-	_dir = getdir _veh;
-	_fuel = fuel _veh;
-	_array_veh = [_type,_pos,_dir,_fuel];
-	deletevehicle _veh;
+if (_group getVariable ["btc_inHouse", ""] isNotEqualTo "") then {
+    _type_db = 3;
+    _array_veh = _group getVariable ["btc_inHouse", ""];
 };
-_data = [_type_db,_array_pos,_array_type,_side,_array_dam,_behaviour,[_index_wp,_array_wp],_array_veh];
-{deletevehicle _x} foreach _units;deleteGroup _group;
+if (_group getVariable ["getWeapons", false]) then {_type_db = 4;};
+if (_group getVariable ["suicider", false]) then {_type_db = 5;};
+if (_group getVariable ["btc_data_inhouse", []] isNotEqualTo []) then {
+    _type_db = 6;
+    _array_veh = _group getVariable ["btc_data_inhouse", []];
+};
+if (_group getVariable ["btc_ied_drone", false]) then {_type_db = 7;};
+if (
+    _vehicle != _leader &&
+    {_type_db isNotEqualTo 7}
+) then {
+    _type_db = 1;
+    _array_veh = [typeOf _vehicle, getPosATL _vehicle, getDir _vehicle, fuel _vehicle, vectorUp _vehicle];
+};
 
-_data
+[_vehicle, _group] call CBA_fnc_deleteEntity;
+
+[_type_db, _array_pos, _array_type, _side, _array_dam, [], [_index_wp, _array_wp], _array_veh]
