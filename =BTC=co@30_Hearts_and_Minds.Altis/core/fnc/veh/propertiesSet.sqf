@@ -55,7 +55,6 @@ if (_fuelSource isNotEqualTo []) then {
         ["_defaultFuelCargo", getNumber (configOf _vehicle >> "ace_refuel_fuelCargo"), [0]]
     ];
     if ((!isNil "_hooks") && {_hooks isNotEqualTo (_vehicle getVariable ["ace_refuel_hooks", []])}) then {
-        [format ["_fuelCargo: %1 ace_refuel_fnc_getFuel: %2", _fuelCargo, [_vehicle] call ace_refuel_fnc_getFuel], __FILE__, [true, true]] call btc_debug_fnc_message;
         [_vehicle, _fuelCargo, _hooks] call ace_refuel_fnc_makeSource;
     } else {
         if (_fuelCargo != [_vehicle] call ace_refuel_fnc_getFuel) then {
