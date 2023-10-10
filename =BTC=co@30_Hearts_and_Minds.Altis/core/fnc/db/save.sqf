@@ -179,7 +179,7 @@ private _vehiclesInCargo = _vehicles - _vehiclesNotInCargo;
             _fakeViV
         };
         private _index = _vehiclesNotInCargo find _vehicleCargo;
-        ((_array_veh select _index) select 16) pushBack _data;
+        ((_array_veh select _index) select 17) pushBack _data;
     };
 
     if (btc_debug_log) then {
