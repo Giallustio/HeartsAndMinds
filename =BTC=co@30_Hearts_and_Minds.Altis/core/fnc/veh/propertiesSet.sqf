@@ -58,7 +58,7 @@ if (_fuelSource isNotEqualTo []) then {
         [_vehicle, _fuelCargo, _hooks] call ace_refuel_fnc_makeSource;
     } else {
         if (_fuelCargo != [_vehicle] call ace_refuel_fnc_getFuel) then {
-            [_vehicle, _fuelCargo] call ace_refuel_fnc_makeSource;
+            [_vehicle, _fuelCargo] call ace_refuel_fnc_setFuel;
         };
     };
     _vehicle setVariable ["btc_EDEN_defaultFuelCargo", _defaultFuelCargo, true];
