@@ -43,6 +43,7 @@ private _radius = _city getVariable ["cachingRadius", 0];
 private _boxes = [];
 private _composition = [];
 private _blacklist = [];
+private _groups = [];
 for "_i" from 1 to (2 + round random 2) do {
     //// Choose a road \\\\
     private _pos = [getPos _city, _radius/4] call btc_fnc_randomize_pos;
@@ -84,10 +85,12 @@ for "_i" from 1 to (2 + round random 2) do {
     //// Create checkpoint with static at _pos \\\\
     _pos params ["_x", "_y", "_z"];
     private _posStatic = [_x -2.39185*cos(-_direction) - 2.33984*sin(-_direction), _y  + 2.33984 *cos(-_direction) -2.39185*sin(-_direction), _z];
-    [_posStatic, _statics, _direction + 180, [], _city] call btc_mil_fnc_create_static;
+    private _group = [_posStatic, _statics, _direction + 180, [], _city] call btc_mil_fnc_create_static;
+    _groups pushBack _group;
 
     private _posStatic = [_x + 2.72949*cos(-_direction) - -2.03857*sin(-_direction), _y -2.03857*cos(-_direction) +2.72949*sin(-_direction), _z];
-    [_posStatic, _statics, _direction, [], _city] call btc_mil_fnc_create_static;
+    private _group = [_posStatic, _statics, _direction, [], _city] call btc_mil_fnc_create_static;
+    _groups pushBack _group;
 
     _composition append ([_pos, _direction, _composition_checkpoint] call btc_fnc_create_composition);
 
@@ -121,7 +124,9 @@ waitUntil {sleep 5;
 
 [[], _boxes + _composition] call btc_fnc_delete;
 
-if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {};
+if (_taskID call BIS_fnc_taskState isEqualTo "CANCELED") exitWith {
+    [[], _groups apply {vehicle leader _x}] call btc_fnc_delete;
+};
 
 80 call btc_rep_fnc_change;
 
