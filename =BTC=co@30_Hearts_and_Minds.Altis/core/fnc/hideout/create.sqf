@@ -42,21 +42,25 @@ params [
 
 private _city = objNull;
 if (_pos isEqualTo []) then {
-    private _useful = values btc_city_all select {
-        !(_x getVariable ["active", false]) &&
-        {_x distance (getMarkerPos btc_respawn_marker) > btc_hideout_safezone} &&
-        {!(_x getVariable ["has_ho", false])} &&
-        {_x getVariable ["type", ""] in ["NameLocal", "Hill", "NameVillage", "Airport"]}
-    };
-    private _inHoRange = values btc_city_all select {
-        private _city = _x;
-        (selectMin (btc_hideouts apply {_x distance _city})) < btc_hideout_minRange
-    };
-    private _usefulRange = _useful - _inHoRange;
-    if (_usefulRange isEqualTo []) then {
-        _city = selectRandom _useful;
+    if (btc_hideout_cityID isEqualTo []) then {
+        private _useful = values btc_city_all select {
+            !(_x getVariable ["active", false]) &&
+            {_x distance (getMarkerPos btc_respawn_marker) > btc_hideout_safezone} &&
+            {!(_x getVariable ["has_ho", false])} &&
+            {_x getVariable ["type", ""] in ["NameLocal", "Hill", "NameVillage", "Airport"]}
+        };
+        private _inHoRange = values btc_city_all select {
+            private _city = _x;
+            (selectMin (btc_hideouts apply {_x distance _city})) < btc_hideout_minRange
+        };
+        private _usefulRange = _useful - _inHoRange;
+        if (_usefulRange isEqualTo []) then {
+            _city = selectRandom _useful;
+        } else {
+            _city = selectRandom _usefulRange;
+        };
     } else {
-        _city = selectRandom _usefulRange;
+        _city = btc_city_all get (btc_hideout_cityID deleteAt 0);
     };
 
     private _cachingRadius = _city getVariable ["cachingRadius", 0];
