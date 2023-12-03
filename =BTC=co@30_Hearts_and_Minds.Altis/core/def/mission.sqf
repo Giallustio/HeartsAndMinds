@@ -696,6 +696,7 @@ btc_rep_malus_building_destroyed = - 5;
 btc_rep_malus_foodRemove = - btc_rep_bonus_foodGive;
 btc_rep_malus_breakDoor = - 2;
 btc_rep_malus_wheelChange = - 7;
+btc_rep_malus_mil_killed = - 10;
 
 btc_rep_level_veryLow = 0;
 btc_rep_level_low = 200;
