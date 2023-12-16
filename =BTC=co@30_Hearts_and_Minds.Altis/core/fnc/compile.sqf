@@ -200,6 +200,7 @@ if (isServer) then {
     btc_tag_fnc_initArea = compileScript ["core\fnc\tag\initArea.sqf"];
     btc_tag_fnc_eh = compileScript ["core\fnc\tag\eh.sqf"];
     btc_tag_fnc_create = compileScript ["core\fnc\tag\create.sqf"];
+    btc_tag_fnc_vehicle = compileScript ["core\fnc\tag\vehicle.sqf"];
 
     //LOG
     btc_log_fnc_createVehicle = compileScript ["core\fnc\log\createVehicle.sqf"];

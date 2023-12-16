@@ -91,16 +91,7 @@ private _data_tags = [];
 btc_tags_server = btc_tags_server - [objNull];
 
 {
-    private _sentences = localize selectRandom btc_type_tags_sentences;  
-    private _size = 0.35;  
-    private _count =  selectMax ((_sentences splitString " ") apply {count _x});   
-    if (_count > 8) then {  
-        _size = 0.25;  
-    };  
-    if (_count < 5) then {  
-        _size = 0.45;  
-    }; 
-    [_x, _sentences, _size, selectRandom ["f7e9e1f8", "ba2619", "8fce00", "25310a", "87CEEB"]] call ace_tagging_fnc_stencilVehicle; 
+    [_x] call btc_tag_fnc_vehicle; 
 } forEach (btc_vehicles inAreaArray [_pos_city, _cachingRadius, _cachingRadius]);
 
 (_city getVariable ["btc_city_intels", []]) call CBA_fnc_deleteEntity;
