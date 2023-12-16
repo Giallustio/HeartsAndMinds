@@ -25,20 +25,28 @@ params [
 ];
 
 {
-    if (_x isKindOf "Air") then  {
-        if (selectRandom [false, true] && {_x getHitPointDamage "hitavionics" < 1}) then {
-            [_x, ["hitavionics", 1.0]] remoteExecCall ["setHitPointDamage", _x];
-        } else {
-            if (isCollisionLightOn _x && selectRandom [false, true]) then {
-                [_x, false] remoteExecCall ["setCollisionLight", _x];
+    private _veh = _x;
+    if (isEngineOn _x && selectRandom [false, true]) then {
+        [_veh, false] remoteExecCall ["engineOn", _veh];
+    };
+    if (isLightOn _veh && selectRandom [false, true]) then {
+        [_veh, false] remoteExecCall ["setPilotLight", _veh];
+    };
+    if (isCollisionLightOn _veh && selectRandom [false, true]) then {
+        [_veh, false] remoteExecCall ["setCollisionLight", _veh];
+    };
+    {
+        if (
+            "avionics" in _x || {"turret" in _x} || 
+            {"missiles" in _x} || {"svetlo" in _x} || 
+            {"battery" in _x} || {"cam" in _x}
+        ) then {
+            if (_veh getHitIndex _forEachIndex < 1 && selectRandom [false, true]) then {
+                [_veh, [_forEachIndex, 1]] remoteExecCall ["setHitIndex", _veh];
+                systemChat str (getAllHitPointsDamage _veh select 0 select _forEachIndex);
+                break;
             };
         };
-    };
-    if (isLightOn _x && selectRandom [false, true]) then {
-        [_x, false] remoteExecCall ["setPilotLight", _x];
-    } else {
-        if (isEngineOn _x && selectRandom [false, true]) then {
-            [_x, false] remoteExecCall ["engineOn", _x];
-        };
-    };
+    } foreach (getAllHitPointsDamage _veh select 0);
+    systemChat str typeOf _veh;
 } forEach _vehicles;
