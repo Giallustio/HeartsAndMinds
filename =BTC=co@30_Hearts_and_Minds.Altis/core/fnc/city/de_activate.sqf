@@ -90,6 +90,10 @@ private _data_tags = [];
 } forEach (btc_tags_server inAreaArray [_pos_city, _cachingRadius, _cachingRadius]);
 btc_tags_server = btc_tags_server - [objNull];
 
+{
+    [_x, localize selectRandom btc_type_tags_sentences, nil, selectRandom ["f7e9e1f8", "ba2619", "8fce00", "25310a"]] call ace_tagging_fnc_stencilVehicle; 
+} forEach (btc_vehicles inAreaArray [_pos_city, _cachingRadius, _cachingRadius]);
+
 (_city getVariable ["btc_city_intels", []]) call CBA_fnc_deleteEntity;
 
 (_city getVariable ["btc_civ_flowers", []]) call CBA_fnc_deleteEntity;
