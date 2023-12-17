@@ -37,16 +37,12 @@ params [
     };
     {
         if (
-            "avionics" in _x || {"turret" in _x} || 
-            {"missiles" in _x} || {"svetlo" in _x} || 
-            {"battery" in _x} || {"cam" in _x}
+            "avionics" in _x || {"missiles" in _x} || {"svetlo" in _x} || {"battery" in _x} || {"cam" in _x}
         ) then {
             if (_veh getHitIndex _forEachIndex < 1 && selectRandom [false, true]) then {
                 [_veh, [_forEachIndex, 1]] remoteExecCall ["setHitIndex", _veh];
-                systemChat str (getAllHitPointsDamage _veh select 0 select _forEachIndex);
                 break;
             };
         };
     } foreach (getAllHitPointsDamage _veh select 0);
-    systemChat str typeOf _veh;
 } forEach _vehicles;
