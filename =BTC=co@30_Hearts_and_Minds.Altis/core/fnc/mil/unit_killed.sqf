@@ -3,7 +3,7 @@
 Function: btc_mil_fnc_unit_killed
 
 Description:
-    Fill me when you edit me !
+    Handle intel and reputation when an enemy is killed.
 
 Parameters:
     _unit - Object the event handler is assigned to. [Object]
@@ -31,5 +31,14 @@ if (random 100 > btc_info_intel_chance) then {
 };
 
 if (isPlayer _instigator) then {
-    [btc_rep_bonus_mil_killed, _instigator] call btc_rep_fnc_change;
+    private _repValue = btc_rep_bonus_mil_killed;
+    if (
+        _unit getVariable ["ace_captives_isHandcuffed", false] ||
+        _unit getVariable ["ace_captives_isSurrendering", false]
+    ) then {
+        if (_causeOfDeath isNotEqualTo "CardiacArrest:Bleedout") then {
+            _repValue = btc_rep_malus_mil_killed;
+        };
+    };
+    [_repValue, _instigator] call btc_rep_fnc_change;
 };
