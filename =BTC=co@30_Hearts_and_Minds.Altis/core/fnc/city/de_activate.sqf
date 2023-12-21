@@ -90,6 +90,10 @@ private _data_tags = [];
 } forEach (btc_tags_server inAreaArray [_pos_city, _cachingRadius, _cachingRadius]);
 btc_tags_server = btc_tags_server - [objNull];
 
+{
+    [_x] call btc_tag_fnc_vehicle; 
+} forEach (btc_vehicles inAreaArray [_pos_city, _cachingRadius, _cachingRadius]);
+
 (_city getVariable ["btc_city_intels", []]) call CBA_fnc_deleteEntity;
 
 (_city getVariable ["btc_civ_flowers", []]) call CBA_fnc_deleteEntity;
