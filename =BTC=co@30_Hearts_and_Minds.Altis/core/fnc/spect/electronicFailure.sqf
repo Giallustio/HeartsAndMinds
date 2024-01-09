@@ -37,7 +37,7 @@ params [
     };
     {
         if (
-            "avionics" in _x || {"missiles" in _x} || {"svetlo" in _x} || {"battery" in _x} || {"cam" in _x}
+            "avionics" in _x || {"missiles" in _x} || {"svetlo" in _x} || {"battery" in _x} || {"cam" in _x} || {"com" in _x}
         ) then {
             if (_veh getHitIndex _forEachIndex < 1 && selectRandom [false, true]) then {
                 [_veh, [_forEachIndex, 1]] remoteExecCall ["setHitIndex", _veh];
