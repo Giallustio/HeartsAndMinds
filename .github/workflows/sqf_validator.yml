@@ -5,6 +5,9 @@ on:
     branches:
        - master_daily
        - master
+  pull_request:
+    paths-ignore:
+      - '**.md'
 
 jobs:
   run_python:
