@@ -853,7 +853,7 @@
                 <German>Aufklärungsgeschwindigkeit</German>
                 <Portuguese>Velocidade de Reconhecimento</Portuguese>
                 <Chinesesimp>目标识别时间(SpotTime)</Chinesesimp>
-                <French>Temps De Détection</French>
+                <French>Temps de détection</French>
                 <Czech>SpotTime</Czech>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_SKILL_COURAGE">
