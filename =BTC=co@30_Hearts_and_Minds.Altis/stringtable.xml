@@ -779,7 +779,7 @@
             </Key>
             <Key ID="STR_BTC_HAM_RESP_LOWESTPLAYER">
                 <Original>To connected player with the lowest ticket number (0 included)</Original>
-                <French>Le joueur avec le plus faible solde de ticket (0 inclus)</French>
+                <French>Au joueur avec le plus faible solde de ticket (0 inclus)</French>
             </Key>
             <Key ID="STR_BTC_HAM_RESP_NOTSHARE">
                 <Original>Not share</Original>
