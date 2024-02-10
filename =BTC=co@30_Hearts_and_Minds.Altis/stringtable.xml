@@ -775,7 +775,7 @@
             </Key>
             <Key ID="STR_BTC_HAM_RESP_DEADPLAYER">
                 <Original>To connected player with 0 ticket left</Original>
-                <French>Le joueur connecté à un solde de 0 ticket</French>
+                <French>Au joueur connecté avec un solde de 0 ticket</French>
             </Key>
             <Key ID="STR_BTC_HAM_RESP_LOWESTPLAYER">
                 <Original>To connected player with the lowest ticket number (0 included)</Original>
