@@ -3123,7 +3123,7 @@
         <Container name="Logistic: Rearm">
             <Key ID="STR_BTC_HAM_LOG_REARM_COMPLETED">
                 <Original>Rearm completed.</Original>
-                <French>Réarmement éffectué.</French>
+                <French>Réarmement effectué.</French>
             </Key>
         </Container>
     </Package>
