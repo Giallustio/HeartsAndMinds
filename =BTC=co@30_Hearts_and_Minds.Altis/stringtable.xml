@@ -771,7 +771,7 @@
             </Key>
             <Key ID="STR_BTC_HAM_RESP_PLAYER">
                 <Original>To the player interacting with the logistic point</Original>
-                <French>Le joueur interagissant avec le point logistique</French>
+                <French>Au joueur interagissant avec le point logistique</French>
             </Key>
             <Key ID="STR_BTC_HAM_RESP_DEADPLAYER">
                 <Original>To connected player with 0 ticket left</Original>
