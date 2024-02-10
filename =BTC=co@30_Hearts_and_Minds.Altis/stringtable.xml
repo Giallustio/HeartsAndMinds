@@ -2798,7 +2798,7 @@
             </Key>
             <Key ID="STR_BTC_HAM_O_COMMON_NOPLAYERFTICKET">
                 <Original>None player need ticket</Original>
-                <French>Aucun joueur n'as besoin de ticket</French>
+                <French>Aucun joueur n'a besoin de ticket</French>
             </Key>
         </Container>
         <Container name="Other: Shortcuts">
