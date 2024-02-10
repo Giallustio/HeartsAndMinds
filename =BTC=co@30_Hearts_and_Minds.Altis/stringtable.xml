@@ -763,7 +763,7 @@
             </Key>
             <Key ID="STR_BTC_HAM_RESP_TICKETPRISONER">
                 <Original>Attribute tickets from prisoners to (Enable only if tickets are not share):</Original>
-                <French>Nombre de ticket que rapporte un prisonier (Activer cette option seulement si les tickets ne sont pas partagés): </French>
+                <French>Nombre de ticket que rapporte un prisonier (Activer cette option seulement si les tickets ne sont pas partagés) : </French>
             </Key>
             <Key ID="STR_BTC_HAM_RESP_ALLCONNECTED">
                 <Original>All connected players</Original>
