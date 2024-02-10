@@ -804,7 +804,7 @@
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_SLOT_ISSHARE">
                 <Original>Each slot is share between players</Original>
-                <French>Les slot sont partagés entre tous les joueurs</French>
+                <French>Les slots sont partagés entre tous les joueurs</French>
             </Key>
         </Container>
         <Container name="Parameters: AI Skill">
