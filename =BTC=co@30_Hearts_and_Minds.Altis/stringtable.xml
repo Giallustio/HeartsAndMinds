@@ -767,7 +767,7 @@
             </Key>
             <Key ID="STR_BTC_HAM_RESP_ALLCONNECTED">
                 <Original>All connected players</Original>
-                <French>Tous les joueurs sont connectés</French>
+                <French>A tous les joueurs connectés</French>
             </Key>
             <Key ID="STR_BTC_HAM_RESP_PLAYER">
                 <Original>To the player interacting with the logistic point</Original>
