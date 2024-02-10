@@ -2864,7 +2864,7 @@
             </Key>
             <Key ID="STR_BTC_HAM_O_COPY_NOOBJECTS">
                 <Original>No objects around!</Original>
-                <French>Pas d'objet dans les environ!</French>
+                <French>Pas d'objet dans les environs !</French>
             </Key>
         </Container>
         <Container name="Other: Endmission">
