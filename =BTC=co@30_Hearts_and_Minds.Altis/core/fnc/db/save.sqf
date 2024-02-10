@@ -263,6 +263,14 @@ private _mines = [];
         getPosATL _explosive
     ]
 } forEach btc_mines;
+{
+    _mines pushBack [
+        typeof _x,
+        getDir _x,
+        0,
+        getPosATL _x
+    ]
+} forEach (allMines select {_x isKindOf "APERSMineDispenser_Mine_Ammo"});
 profileNamespace setVariable [format ["btc_hm_%1_mines", _name], +_mines];
 
 //End
