@@ -745,7 +745,7 @@
             </Key>
             <Key ID="STR_BTC_HAM_RESP_TICKETSLOST">
                 <Original>Number of tickets lost per death:</Original>
-                <French>Nombre de ticket perdu par mort:</French>
+                <French>Nombre de ticket perdu par mort :</French>
             </Key>
             <Key ID="STR_BTC_HAM_RESP_TICKETSHARE">
                 <Original>Tickets are share between:</Original>
