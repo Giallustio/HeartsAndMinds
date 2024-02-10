@@ -2170,7 +2170,7 @@
             </Key>
             <Key ID="STR_BTC_HAM_ACTION_COPYPASTE_PASTEI">
                 <Original>Paste inventory</Original>
-                <French>Collé l'inventaire</French>
+                <French>Coller l'inventaire</French>
             </Key>
             <Key ID="STR_BTC_HAM_ACTION_RESTOREI">
                 <Original>Restore inventory</Original>
