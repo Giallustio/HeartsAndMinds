@@ -845,7 +845,7 @@
                 <German>Aufklärungsentfernung</German>
                 <Portuguese>Distância de Reconhecimento</Portuguese>
                 <Chinesesimp>目标识别距离(SpotDistance)</Chinesesimp>
-                <French>Distance De Repérage</French>
+                <French>Distance de repérage</French>
                 <Czech>SpotDistance</Czech>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_SKILL_SPOTTIME">
