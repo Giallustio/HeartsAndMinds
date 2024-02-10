@@ -2181,7 +2181,7 @@
             <Key ID="STR_BTC_HAM_ACTION_DOOR_BREAK">
                 <Original>Break door lock</Original>
                 <German>Brich die Tür auf</German>
-                <French>Forcer la porte</French>
+                <French>Forcer la serrure</French>
                 <Chinesesimp>撬锁</Chinesesimp>
                 <Czech>Rozbijte zámek dveří</Czech>
             </Key>
