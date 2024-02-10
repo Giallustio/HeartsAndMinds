@@ -2860,7 +2860,7 @@
             </Key>
             <Key ID="STR_BTC_HAM_O_PASTE_NOCOPIEDI">
                 <Original>No copied inventory!</Original>
-                <French>L'inventaire n'as pas été copier</French>
+                <French>L'inventaire n'a pas été copié</French>
             </Key>
             <Key ID="STR_BTC_HAM_O_COPY_NOOBJECTS">
                 <Original>No objects around!</Original>
