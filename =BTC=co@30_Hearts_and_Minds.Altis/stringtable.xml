@@ -2166,7 +2166,7 @@
             </Key>
             <Key ID="STR_BTC_HAM_ACTION_COPYPASTE_COPYI">
                 <Original>Copy inventory</Original>
-                <French>Copié l'enventaire</French>
+                <French>Copier l'enventaire</French>
             </Key>
             <Key ID="STR_BTC_HAM_ACTION_COPYPASTE_PASTEI">
                 <Original>Paste inventory</Original>
