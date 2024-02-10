@@ -136,3 +136,9 @@ if (btc_p_respawn_ticketsAtStart >= 0) then {
     params ["_unit", "_flag"];
     _flag remoteExecCall ["btc_log_fnc_init", 2];
 }] call CBA_fnc_addEventHandler; 
+
+["ace_explosives_place", {
+    params ["_explosive", "_dir", "_pitch", "_unit"];
+    [format ["_this %1", [_explosive, _dir, _pitch, _unit, typeOf _explosive]], __FILE__, [true]] call btc_debug_fnc_message;
+    btc_mines pushBack _this;
+}] call CBA_fnc_addEventHandler; 

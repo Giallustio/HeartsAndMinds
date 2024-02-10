@@ -378,6 +378,9 @@ if (isServer) then {
     btc_delay_unit = 0.2;
     btc_delay_vehicle = 0.3;
     btc_delay_exec = 0.1;
+
+    //Mines
+    btc_mines = [];
 };
 
 //Civ

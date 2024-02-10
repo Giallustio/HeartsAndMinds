@@ -251,6 +251,20 @@ private _markers_properties = _player_markers apply {
 };
 profileNamespace setVariable [format ["btc_hm_%1_markers", _name], +_markers_properties];
 
+//Mines
+private _mines = [];
+{
+    _x params ["_explosive", "_dir", "_pitch"];
+    if (isNull _explosive) then {continue};
+    _mines pushBack [
+        typeof _explosive,
+        _dir,
+        _pitch,
+        getPosATL _explosive
+    ]
+} forEach btc_mines;
+profileNamespace setVariable [format ["btc_hm_%1_mines", _name], +_mines];
+
 //End
 profileNamespace setVariable [format ["btc_hm_%1_db", _name], true];
 saveProfileNamespace;

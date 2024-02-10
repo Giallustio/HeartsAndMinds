@@ -248,6 +248,21 @@ private _slots_serialized = +(profileNamespace getVariable [format ["btc_hm_%1_s
 }, _slots_serialized] call CBA_fnc_execNextFrame; // Need to wait for vehicle creation
 btc_slots_serialized = _slots_serialized;
 
+
+//Mines
+private _mines = +(profileNamespace getVariable [format ["btc_hm_%1_mines", _name], []]);
+btc_mines = _mines apply {
+    _x params ["_explosiveType", "_dir", "_pitch", "_pos"];
+    private _explosive = createVehicle [_explosiveType, _pos, [], 0, "CAN_COLLIDE"];
+    _explosive setPosATL _pos;
+    [_explosive, _dir, _pitch] call ACE_Explosives_fnc_setPosition;
+    [
+        _explosive,
+        _dir,
+        _pitch
+    ];
+};
+
 //Player Markers
 private _markers_properties = +(profileNamespace getVariable [format ["btc_hm_%1_markers", _name], []]);
 {
