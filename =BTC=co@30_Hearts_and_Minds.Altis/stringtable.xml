@@ -2174,7 +2174,7 @@
             </Key>
             <Key ID="STR_BTC_HAM_ACTION_RESTOREI">
                 <Original>Restore inventory</Original>
-                <French>Restoré l'inventaire</French>
+                <French>Restorer l'inventaire</French>
             </Key>
         </Container>
         <Container name="Action(ACE): Door">
