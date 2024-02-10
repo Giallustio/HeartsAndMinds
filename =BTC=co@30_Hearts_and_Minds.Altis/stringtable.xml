@@ -669,7 +669,7 @@
                 <Original>Density of intel in house:</Original>
                 <Chinesesimp>房屋内的情报密度:</Chinesesimp>
                 <Czech>Hustota intelu v domě:</Czech>
-                <French>Densité du renseignements dans les maisons:</French>
+                <French>Densité du renseignements dans les maisons :</French>
             </Key>
         </Container>
         <Container name="Parameters: Respawn">
