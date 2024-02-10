@@ -1087,7 +1087,7 @@
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_OTHER_FLAGVEHLEADER">
                 <Original>On vehicle and team leader</Original>
-                <French>Sur les véhicule et le team leader</French>
+                <French>Sur les véhicules et le team leader</French>
             </Key>
             <Key ID="STR_BTC_HAM_PARAM_OTHER_FLAGVEHPLAYER">
                 <Original>On vehicle and players</Original>
