@@ -252,10 +252,14 @@ btc_slots_serialized = _slots_serialized;
 //Mines
 private _mines = +(profileNamespace getVariable [format ["btc_hm_%1_mines", _name], []]);
 btc_mines = _mines apply {
-    _x params ["_explosiveType", "_dir", "_pitch", "_pos"];
+    _x params ["_explosiveType", "_dir", "_pitch", "_pos", "_side"];
     private _explosive = createVehicle [_explosiveType, _pos, [], 0, "CAN_COLLIDE"];
     _explosive setPosATL _pos;
     [_explosive, _dir, _pitch] call ACE_Explosives_fnc_setPosition;
+    _explosive setVariable ["btc_side", _side];
+    if (_side isEqualTo btc_player_side) then {
+        _explosive setShotParents [btc_gear_object, objNull];
+    };
     [
         _explosive,
         _dir,

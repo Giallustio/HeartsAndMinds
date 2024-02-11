@@ -260,7 +260,8 @@ private _mines = [];
         typeof _explosive,
         _dir,
         _pitch,
-        getPosATL _explosive
+        getPosATL _explosive,
+        _explosive getVariable ["btc_side", sideEmpty]
     ]
 } forEach btc_mines;
 {
@@ -268,7 +269,8 @@ private _mines = [];
         typeof _x,
         getDir _x,
         0,
-        getPosATL _x
+        getPosATL _x,
+        _x getVariable ["btc_side", side group ((getShotParents _x) select 0)]
     ]
 } forEach (allMines select {_x isKindOf "APERSMineDispenser_Mine_Ammo"});
 profileNamespace setVariable [format ["btc_hm_%1_mines", _name], +_mines];
