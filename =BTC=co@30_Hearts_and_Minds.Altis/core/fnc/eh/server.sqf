@@ -155,5 +155,5 @@ if (btc_p_respawn_ticketsAtStart >= 0) then {
     params ["_explosive", "_dir", "_pitch", "_unit"];
     [format ["_this %1", [_explosive, _dir, _pitch, _unit, typeOf _explosive]], __FILE__, [true, true, true]] call btc_debug_fnc_message;
     _explosive setVariable ["btc_side", side group _unit];
-    btc_mines pushBack _this;
+    btc_explosives pushBack _this;
 }] call CBA_fnc_addEventHandler; 

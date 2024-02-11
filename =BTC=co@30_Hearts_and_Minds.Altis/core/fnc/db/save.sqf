@@ -251,29 +251,29 @@ private _markers_properties = _player_markers apply {
 };
 profileNamespace setVariable [format ["btc_hm_%1_markers", _name], +_markers_properties];
 
-//Mines
-private _mines = [];
+//Explosives
+private _explosives = [];
 {
     _x params ["_explosive", "_dir", "_pitch"];
     if (isNull _explosive) then {continue};
-    _mines pushBack [
-        typeof _explosive,
+    _explosives pushBack [
+        typeOf _explosive,
         _dir,
         _pitch,
         getPosATL _explosive,
         _explosive getVariable ["btc_side", sideEmpty]
     ]
-} forEach btc_mines;
+} forEach btc_explosives;
 {
-    _mines pushBack [
-        typeof _x,
+    _explosives pushBack [
+        typeOf _x,
         getDir _x,
         0,
         getPosATL _x,
         _x getVariable ["btc_side", side group ((getShotParents _x) select 0)]
     ]
 } forEach (allMines select {_x isKindOf "APERSMineDispenser_Mine_Ammo"});
-profileNamespace setVariable [format ["btc_hm_%1_mines", _name], +_mines];
+profileNamespace setVariable [format ["btc_hm_%1_explosives", _name], +_explosives];
 
 //End
 profileNamespace setVariable [format ["btc_hm_%1_db", _name], true];

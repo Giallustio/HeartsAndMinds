@@ -30,7 +30,7 @@ if (
 
 if (
     isPlayer _instigator ||
-    _killer isEqualTo btc_gear_object ||
+    _killer isEqualTo btc_explosives_objectSide ||
     isPlayer _killer
 ) then {
     private _isAgent = isAgent teamMember _unit;

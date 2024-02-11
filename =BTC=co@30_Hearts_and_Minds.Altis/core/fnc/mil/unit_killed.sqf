@@ -32,7 +32,7 @@ if (random 100 > btc_info_intel_chance) then {
 
 if (
     isPlayer _instigator ||
-    _killer isEqualTo btc_gear_object ||
+    _killer isEqualTo btc_explosives_objectSide ||
     isPlayer _killer
 ) then {
     private _repValue = btc_rep_bonus_mil_killed;
