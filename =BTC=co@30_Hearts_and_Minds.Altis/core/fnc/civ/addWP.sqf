@@ -1,59 +1,52 @@
 
-private ["_group","_pos","_radius","_wp","_houses"];
+/* ----------------------------------------------------------------------------
+Function: btc_civ_fnc_addWP
 
-_group = _this;
+Description:
+    Add waypoints to a group. The group will patrol inside a first house, then 4 waypoints outside are added and finally the group will patrol again in an other house.
 
-_pos = getpos leader _group;
-_radius = 50;
+Parameters:
+    _group - Group where waypoints will be added. [Group]
+    _pos - Position to search house and position to patrol. [Array]
+    _radius - Radius number to search around the position. [Number]
 
+Returns:
 
-_wp = _group addWaypoint [_pos, 0];
-_wp setWaypointType "MOVE";
-_wp setWaypointCompletionRadius 0;
-_wp setWaypointSpeed "LIMITED";
-_wp setWaypointBehaviour "SAFE";
+Examples:
+    (begin example)
+        [_group] call btc_civ_fnc_addWP;
+    (end)
 
-_houses = [_pos,_radius] call btc_fnc_getHouses;
-if (count _houses > 0) then {
-	private ["_house","_n_pos"];
-	_house = _houses select (floor random count _houses);
+Author:
+    Giallustio
 
-	_n_pos = 0;
-	while {format ["%1", _house buildingPos _n_pos] != "[0,0,0]" } do {
-		_n_pos = _n_pos + 1;
-		_wp = _group addWaypoint [getPos _house, 0];
-		_wp setWaypointType "MOVE";
-		_wp setWaypointCompletionRadius 0;
-		_wp waypointAttachObject _house;
-		_wp setWaypointHousePosition _n_pos;
-		_wp setWaypointTimeout [15, 20, 30];
-	};
-	_houses = _houses - [_house];
+---------------------------------------------------------------------------- */
+
+params [
+    ["_group", grpNull, [grpNull]],
+    ["_pos", getPos leader param [0], [[]]],
+    ["_radius", 50, [0]]
+];
+
+[_group] call CBA_fnc_clearWaypoints;
+[_group, _pos, -1, "MOVE", "SAFE", "NO CHANGE", "LIMITED"] call CBA_fnc_addWaypoint;
+
+private _houses = ([_pos, _radius] call btc_fnc_getHouses) select 0;
+if (_houses isNotEqualTo []) then {
+    private _house = selectRandom _houses;
+    [_group, _house] call btc_fnc_house_addWP_loop;
+    _houses = _houses - [_house];
 };
 
 for "_i" from 1 to 4 do {
-	private "_wp_pos";
-	_wp_pos = [_pos, _radius] call btc_fnc_randomize_pos;
-	_wp = _group addWaypoint [_wp_pos, 0];
-	_wp setWaypointType "MOVE";
-	_wp setWaypointCompletionRadius 0;
+    private _wp_pos = [_pos, _radius] call btc_fnc_randomize_pos;
+    [_group, _wp_pos, -1, "MOVE"] call CBA_fnc_addWaypoint;
 };
 
-if (count _houses > 0) then {
-	private ["_house","_n_pos"];
-	_house = _houses select (floor random count _houses);
-
-	_n_pos = 0;
-	while {format ["%1", _house buildingPos _n_pos] != "[0,0,0]" } do {
-		_n_pos = _n_pos + 1;
-		_wp = _group addWaypoint [getPos _house, 0];
-		_wp setWaypointType "MOVE";
-		_wp setWaypointCompletionRadius 0;
-		_wp waypointAttachObject _house;
-		_wp setWaypointHousePosition _n_pos;
-	};
-	_houses = _houses - [_house];
+if (_houses isNotEqualTo []) then {
+    private _house = selectRandom _houses;
+    [_group, _house] call btc_fnc_house_addWP_loop;
+    _houses = _houses - [_house];
 };
 
-_wp = _group addWaypoint [_pos, 0];
-_wp setWaypointType "CYCLE";
+[_group, _pos, -1, "CYCLE"] call CBA_fnc_addWaypoint;
