@@ -1,41 +1,89 @@
 
-private ["_unit","_order","_group","_wp_pos"];
+/* ----------------------------------------------------------------------------
+Function: btc_int_fnc_orders_behaviour
 
-_unit = _this select 0;
-_order = _this select 1;
-_wp_pos = _this select 2;
-_group = group _unit;
+Description:
+    Change the behaviour of a unit accordingly to the type of order.
 
-if (_order == _unit getVariable ["order",0]) exitWith {};
+Parameters:
+    _unit - Unit targeted. [Object]
+    _order - Type of order. [Number]
+    _wp_pos - Position the unit must go. [Array]
 
-_unit setVariable ["order",_order];
+Returns:
 
-while {(count (waypoints _group)) > 0} do {deleteWaypoint ((waypoints _group) select 0);};
+Examples:
+    (begin example)
+        [cursorObject, 0] remoteExec ["btc_int_fnc_orders_behaviour", cursorObject];
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
+params [
+    ["_unit", objNull, [objNull]],
+    ["_order", 0, [0]],
+    ["_wp_pos", [0, 0, 0], [[]]]
+];
+
+private _group = group _unit;
+
+if (_order isEqualTo (_unit getVariable ["order", 0])) exitWith {};
+
+_unit setVariable ["order", _order];
+
+if (_unit isEqualTo vehicle _unit) then {
+    [_group] call CBA_fnc_clearWaypoints;
+};
 
 switch (_order) do {
-	case 1 : {doStop _unit;};
-	case 2 : {doStop _unit;_unit setUnitPos "DOWN";};
-	case 3 : {
-		private "_wp_pos";
-		_wp_pos = [getPos _unit, 200] call btc_fnc_randomize_pos;
-		_unit setUnitPos "UP";
-		_unit doMove _wp_pos;
-	};
-	case 4 : {
-		_unit doMove _wp_pos;
-	};
+    case 1 : {
+        doStop _unit;
+        _unit disableAI "PATH";
+    };
+    case 2 : {
+        doStop _unit;
+        _unit disableAI "PATH";
+        if (vehicle _unit != _unit) exitWith {};
+        [_unit, "", 2] call ace_common_fnc_doAnimation;
+        _unit setUnitPos "DOWN";
+    };
+    case 3 : {
+        _unit enableAI "PATH";
+        _unit setUnitPos "UP";
+        _unit doMove _wp_pos;
+    };
+    case 4 : {
+        _unit enableAI "PATH";
+        _unit doMove _wp_pos;
+    };
 };
 
-waitUntil {sleep 3; ((!(_order == 4) && (isNull _unit || !Alive _unit || (count (getpos _unit nearEntities ["SoldierWB", 50]) == 0))) || (((getpos _unit) distance _wp_pos < 10)) && (_order == 4)) };
-
-if (isNull _unit || !Alive _unit) exitWith {};
-
-if (_order == 4) then {
-	doStop _unit;
-	sleep (30 + random 10);
+if (_order isEqualTo 4) then {
+    waitUntil {sleep 3; (isNull _unit || !alive _unit || (_unit inArea [_wp_pos, 10, 10, 0, false]))};
+} else {
+    waitUntil {sleep 3; (
+        isNull _unit ||
+        {!alive _unit} ||
+        {allPlayers inAreaArray [getPosWorld _unit, 50, 50] isEqualTo []}
+    )};
 };
 
-_unit setVariable ["order",nil];
+if (isNull _unit || !alive _unit) exitWith {};
+
+if (_order isEqualTo 4) then {
+    doStop _unit;
+    _unit disableAI "PATH";
+    sleep (30 + random 10);
+};
+
+_unit setVariable ["order", nil];
 _unit setUnitPos "AUTO";
+_unit enableAI "PATH";
 _unit doMove getPos _unit;
-_group spawn btc_fnc_civ_addWP;
+
+if (_unit isEqualTo vehicle _unit) then {
+    [_group] call btc_civ_fnc_addWP;
+};

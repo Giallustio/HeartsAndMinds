@@ -1,21 +1,44 @@
 
-private ["_pos","_order","_units","_wp_pos"];
+/* ----------------------------------------------------------------------------
+Function: btc_int_fnc_orders_give
 
-_pos = _this select 0;
-_order = _this select 1;
+Description:
+    Send order to units
 
-_units = [];
-_wp_pos = [0,0,0];
+Parameters:
+    _units - Units. [Array]
+    _dir - Direction of the order. [Number]
+    _order - Type of order. [Number]
+    _wp_pos - Position to reach (taxi). [Array]
 
-switch (count _this) do {
-	case 2 : {_units = _pos nearEntities [["Car","Civilian_F"], btc_int_radius_orders];};
-	case 3 : {_units = [_this select 2];};
-	case 4 : {
-		_units = [_this select 2];
-		_wp_pos = (_this select 3);
-	};
-};
+Returns:
 
-if (count _units == 0) exitWith {};
+Examples:
+    (begin example)
+        _result = [] call btc_int_fnc_orders_give;
+    (end)
 
-{if ((isNil {group _x getVariable "suicider"}) && ((side _x) == civilian)) then {[_x,_order,_wp_pos] spawn btc_fnc_int_orders_behaviour;};} foreach _units;
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
+params [
+    ["_units", [], [[]]],
+    ["_dir", 0, [0]],
+    ["_order", 0, [0]],
+    ["_wp_pos", [], [[]]]
+];
+
+_units = _units select {!(group _x getVariable ["suicider", false]) && ((side _x) isEqualTo civilian)};
+
+{
+    private _wp_pos_i = if ((_order isEqualTo 3) && (_wp_pos isEqualTo [])) then {
+        [getPos _x, 200, _dir, 40] call CBA_fnc_randPos
+    } else {
+        _wp_pos
+    };
+    [_x, _order, _wp_pos_i] remoteExec ["btc_int_fnc_orders_behaviour", _x];
+} forEach _units;
+
+true

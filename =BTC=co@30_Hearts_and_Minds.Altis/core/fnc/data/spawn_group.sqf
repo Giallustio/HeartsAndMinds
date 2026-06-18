@@ -1,86 +1,115 @@
 
-private ["_type","_array_pos","_array_type","_side","_array_dam","_behaviour","_array_wp","_array_veh","_group"];
+/* ----------------------------------------------------------------------------
+Function: btc_data_fnc_spawn_group
 
-_type 		= _this select 0;
-_array_pos  = _this select 1;
-_array_type = _this select 2;
-_side		= _this select 3;
-_array_dam  = _this select 4;
-_behaviour  = _this select 5;
-_array_wp   = _this select 6;
-_array_veh  = _this select 7;
+Description:
+    Create group previously saved by btc_data_fnc_get_group.
 
-_group = createGroup _side;
+Parameters:
+    _data_unit - All data listed above. [Array]
+        _type - Type of group (3: in house group, 4: civilian with weapon, 5: suicider ...). [Number]
+        _array_pos - Position on units. [Array]
+        _array_type - Type of units. [Array]
+        _side - Side of the group. [Side]
+        _array_dam - Damage of units. [Array]
+        _behaviour - Behaviour of units. [Array]
+        _array_wp - Waypoints of group. [Array]
+        _array_veh - Vehicle occupied by the group. [Array, String]
+    _city - City. [Object]
+    _spawningRadius - Spawning radius. [Number]
 
-for "_i" from 0 to (count _array_pos - 1) do {
-	private ["_u"];
-	_u = _group createUnit [(_array_type select _i), (_array_pos select _i), [], 0, "NONE"];_u setPos (_array_pos select _i);
-	_u setDamage (_array_dam select _i);
+Returns:
+    _delay - Delay due to vehicle spawn. [Number]
+
+Examples:
+    (begin example)
+        _result = [] call btc_data_fnc_spawn_group;
+    (end)
+
+Author:
+    Giallustio
+
+---------------------------------------------------------------------------- */
+
+params [
+    ["_data_unit", [], [[]]],
+    ["_city", objNull, [objNull]],
+    ["_spawningRadius", 100, [0]]
+];
+_data_unit params [
+    ["_type", 1, [0]],
+    ["_array_pos", [], [[]]],
+    ["_array_type", [], [[]]],
+    ["_side", east, [east]],
+    ["_array_dam", [], [[]]],
+    ["_behaviour", [], [[]]],
+    ["_array_wp", [], [[]]],
+    ["_array_veh", [], [[], ""]]
+];
+
+private _delay = 0;
+if (_type isEqualTo 5) exitWith {
+    [[_city, _spawningRadius, _array_pos select 0, _array_type select 0], btc_ied_fnc_suicider_create] call btc_delay_fnc_exec;
+    _delay + btc_delay_unit
+};
+if (_type isEqualTo 7) exitWith {
+    [[_city, _spawningRadius, _array_pos select 0], btc_ied_fnc_drone_create] call btc_delay_fnc_exec;
+    _delay + btc_delay_unit
 };
 
-if (_type == 1) then {
-	private ["_veh"];
-	_veh = (_array_veh select 0) createVehicle (_array_veh select 1);
-	_veh setPos (_array_veh select 1);
-	_veh setDir (_array_veh select 2);
-	_veh setFuel (_array_veh select 3);
-	{
-		private ["_assigned"];
-		_assigned = false;
-		if (!_assigned && _veh emptyPositions "driver" > 0) then {_x moveInDriver _veh;_x assignAsDriver _veh;_assigned = true;};
-		if (!_assigned && _veh emptyPositions "gunner" > 0) then {_x moveinGunner _veh;_x assignAsGunner _veh;_assigned = true;};
-		if (!_assigned && _veh emptyPositions "commander" > 0) then {_x moveinCommander _veh;_x assignAsCommander _veh;_assigned = true;};
-		if (!_assigned && _veh emptyPositions "cargo" > 0) then {_x moveinCargo _veh;_x assignAsCargo _veh;_assigned = true;};
-	} foreach units _group;
-};
-
-//[waypointPosition _x,waypointType _x,waypointSpeed _x,waypointFormation _x,waypointCombatMode _x,waypointBehaviour _x]
-if (_side == civilian && {vehicle leader _group == leader _group}) then {
-	_group spawn btc_fnc_civ_addWP;
+private _group = createGroup _side;
+_group setVariable ["btc_city", _city];
+if (_type isEqualTo 1) then {
+    _array_veh params ["_typeOf", "_posATL", "_dir", "_fuel", ["_vectorUp", []]];
+    _delay = [_group, _typeOf, _array_type, _posATL, _dir, _fuel, _vectorUp] call btc_delay_fnc_createVehicle;
 } else {
-	if (count (_array_wp select 1) > 1) then {
-		{
-			private "_wp";
-			//diag_log text format ["TEST X %1",_x];
-			_wp = _group addWaypoint [(_x select 0), 0];
-			_wp setWaypointType (_x select 1);
-			_wp setWaypointSpeed (_x select 2);
-			_wp setWaypointFormation (_x select 3);
-			_wp setWaypointCombatMode (_x select 4);
-			_wp setWaypointBehaviour (_x select 5);
-		} foreach (_array_wp select 1);
-		_group setcurrentWaypoint [_group,(_array_wp select 0)];
-	};
-};
-if (_type == 2) then {
-	_group setVariable ["stop",true];
-	while {(count (waypoints _group)) > 0} do { deleteWaypoint ((waypoints _group) select 0); };
-	{doStop _x;} foreach units _group;
-};
-if (_type == 3) then {
-	while {(count (waypoints _group)) > 0} do { deleteWaypoint ((waypoints _group) select 0); };
-	[_group,_array_veh] spawn btc_fnc_house_addWP;
-};
-if (_type == 4) then {[[0,0,0],0,units _group] spawn btc_fnc_civ_get_weapons;};
-if (_type == 5) then {
-	_group spawn {
-		_this setVariable ["suicider",true];
-
-		_suicider = leader _this;
-
-		//Main check
-
-		_cond = false;
-
-		while {Alive _suicider && !isNull _suicider && !_cond} do {
-			sleep 5;
-			if (count (getpos _suicider nearEntities ["SoldierWB", 25]) > 0) then {_cond = true;_suicider spawn btc_fnc_ied_suicider_active};
-		};	
-	};
+    for "_i" from 0 to (count _array_pos - 1) do {
+        [_group, _array_type select _i, _array_pos select _i, "CAN_COLLIDE"] call btc_delay_fnc_createUnit;
+        //_u setDamage (_array_dam select _i);
+    };
 };
 
-_group setBehaviour (_behaviour select 0);
-_group setCombatMode (_behaviour select 1);
-_group setFormation (_behaviour select 2);
+[{
+    params ["_data_unit", "_group"];
+    _data_unit params [
+        ["_type", 1, [0]],
+        ["_array_pos", [], [[]]],
+        ["_array_type", [], [[]]],
+        ["_side", east, [east]],
+        ["_array_dam", [], [[]]],
+        ["_behaviour", [], [[]]],
+        ["_array_wp", [], [[]]],
+        ["_array_veh", [], [[], ""]]
+    ];
 
-if (_side == btc_enemy_side) then {{_x call btc_fnc_mil_unit_create} foreach units _group;};
+    if !(_type in [3, 6]) then {
+        [_group] call CBA_fnc_clearWaypoints;
+        {
+            _x params [
+                "_position",
+                "_type",
+                "_speed",
+                "_formation",
+                "_combat",
+                "_behaviour",
+                ["_timeout", [0, 0, 0], [[]], 3],
+                ["_compRadius", 20, [0]]
+            ];
+            [_group, _position, -1, _type, _behaviour, _combat, _speed, _formation, "", _timeout, _compRadius] call CBA_fnc_addWaypoint;
+        } forEach (_array_wp select 1);
+        if (_array_wp select 1 isNotEqualTo []) then {
+            _group setCurrentWaypoint [_group, _array_wp select 0];
+        };
+    };
+    if (_type isEqualTo 3) then {
+        [_group, nearestObject [_array_pos select 0, _array_veh]] call btc_fnc_house_addWP;
+        _group setVariable ["btc_inHouse", _array_veh];
+    };
+    if (_type isEqualTo 4) then {[[0, 0, 0], 0, units _group] call btc_civ_fnc_get_weapons;};
+    if (_type isEqualTo 6) then {
+        [_group, _array_veh select 0] call btc_civ_fnc_addWP;
+        _group setVariable ["btc_data_inhouse", _array_veh];
+    };
+}, [_data_unit, _group], _delay] call btc_delay_fnc_waitAndExecute;
+
+_delay

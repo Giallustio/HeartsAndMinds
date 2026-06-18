@@ -1,60 +1,72 @@
-/*
-mapAnimAdd [1, 0.2, [0,0]]; mapAnimCommit;*/
 
-private ["_fobs","_idc","_fob","_marker","_pos","_text"];
+/* ----------------------------------------------------------------------------
+Function: btc_fob_fnc_redeploy
 
-closeDialog 0;
+Description:
+    Create child statement to redeploy.
 
-btc_int_ask_data = nil;
+Parameters:
+    _target - Is the object being interacted with. [Object]
+    _player - Is ace_player. [Object]
+    _params - Is the optional action parameters. (default [])
 
-[[6,nil,player],"btc_fnc_int_ask_var",false] spawn BIS_fnc_MP;
+Returns:
+    _actions - ACE action generated for redeploy. [Boolean]
 
-waitUntil {!(isNil "btc_int_ask_data")};
+Examples:
+    (begin example)
+        [] call btc_fob_fnc_redeploy;
+    (end)
 
-if (count btc_int_ask_data == 0) exitWith {hint "No FOBs deployed";};
+Author:
+    Vdauphin
 
-_fobs = btc_int_ask_data;
+---------------------------------------------------------------------------- */
 
-forceMap true;
+params [
+    "_target",
+    "_player",
+    "_params"
+];
 
-btc_fob_dlg = false;
+private _actions = [];
+private _childStatement = {
+    params ["_target", "_player", "_params"];
 
-createDialog "btc_fob_redeploy";
+    if ([] call btc_fob_fnc_redeployCheck) then {[_player, _params, false] call BIS_fnc_moveToRespawnPosition};
+};
 
-waitUntil {dialog};
+if (_params isEqualTo "") then { // Redeploy on marker like rallypoints
+    {
+        private _action = [markerText _x, markerText _x, "\A3\ui_f\data\igui\cfg\simpleTasks\types\wait_ca.paa", _childStatement, {true}, {}, _x] call ace_interact_menu_fnc_createAction;
+        _actions pushBack [_action, [], _target];
+    } forEach (([btc_player_side, false] call BIS_fnc_getRespawnMarkers) - [btc_respawn_marker]);
+} else { // Redeploy on object like FOB/Vehicles
+    private _getRespawnPositions = _player call BIS_fnc_getRespawnPositions;
+    private _positions = if (_params isEqualTo "Base") then {
+        _getRespawnPositions inAreaArray [getMarkerPos "btc_base", btc_fob_minDistance, btc_fob_minDistance]
+    } else {
+        private _center = [worldSize / 2, worldsize / 2, 0];
+        _params params ["_min", "_max"];
+        _getRespawnPositions select {
+            if (
+                alive _x && {!(_x inArea [getMarkerPos "btc_base", btc_fob_minDistance, btc_fob_minDistance, 0, false])}
+            ) then {
+                private _dir = _center getDir _x;
+                _min <= _dir &&
+                {_dir < _max}
+            } else {
+                false
+            };
+        };
+    };
 
-_idc = 778;
+    {
+        private ["_identity", "_name", "_pic", "_showName", "_respawnPositions", "_respawnPositionNames", "_respawnPositionNameShow", "_pos"];
+        (_x call BIS_fnc_showRespawnMenuPositionName) params ["_FOBName", "_icon"];
+        private _action = [_FOBName, _FOBName, _icon, _childStatement, {true}, {}, _x] call ace_interact_menu_fnc_createAction;
+        _actions pushBack [_action, [], _target];
+    } forEach _positions;
+};
 
-{lbAdd [ _idc, _x ];} foreach _fobs;
-
-lbSetCurSel [_idc, 0];
-/*
-while {!btc_fob_dlg} do {
-	if !(dialog) then {hint "Do not close the dialog with esc";createDialog "btc_fob_redeploy";{_index = lbAdd [ _idc, _x ];} foreach _fobs;lbSetCurSel [_idc, 0];};
-	sleep 0.1;
-};*/
-
-waitUntil {!dialog || btc_fob_dlg};
-
-if (!btc_fob_dlg) exitWith {forceMap false;};
-
-_fob = lbText [_idc, lbCurSel _idc];
-
-_marker = lbText [_idc, lbCurSel _idc];
-
-if (_marker == "Base") then {_marker = btc_respawn_marker;};
-
-forceMap false;
-
-closeDialog 0;
-
-_pos = getMarkerPos _marker;
-
-_text = format ["Moving to %1",_fob];
-
-titleText [_text, "BLACK OUT"];
-sleep 3;
-titleText [_text, "BLACK FADED"];
-player setPosATL [_pos select 0,_pos select 1,0.45];
-sleep 2;
-titleText ["", "BLACK IN"];
+_actions
